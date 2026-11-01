@@ -181,6 +181,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
   país. Quando vier o mercado com fila de construção (estatal ou privada,
   seção 9), o motor passa a somar a base dos prédios e dos pops; a lei e o
   país não mudam. Leis que liberam ou travam construção entram junto.
+  Imposto sobre **herança** e sobre **grandes fortunas** (bases novas:
+  patrimônio e herança) entram junto com o mercado (01/nov, autor).
 - **Grandes mídias do país** (01/nov): o país declara até 5 grandes mídias
   (nome, alcance, linha). O jogador pode limitar cada uma, dar benefício a
   outras (verba de publicidade, concessão), criar uma emissora estatal e até
@@ -204,6 +206,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
   de opções; negociação e troca de cargos.
 - **Campanha eleitoral** (01/nov, ideia do autor no passo 9): durante a
   eleição, o jogador apela na televisão e faz comícios para mexer no voto.
+  Lei de **financiamento de campanha** (privado / misto / só público,
+  mexe em corrupção e polarização) entra junto com a campanha.
 - **Eleição: o que fica para depois** (01/nov, passo 9): reduzir o desgaste;
   radicais e lealistas pesando no voto; limite de reeleição declarado pelo
   país; cadeiras e coligação mudando depois da eleição; mudar a duração do
@@ -231,3 +235,26 @@ lidas (tag `projeto-antigo-2026-10-31`).
   que desliza pela renda; 3) mobilidade entre pops, junto com o mercado.
   Grupo guarda posição própria, não a média dos pops (os ambientalistas
   pegam um pedaço de cada pop e cairiam no centro).
+- **Leis em pacotes** (01/nov, autor): nenhuma lei faz tudo; cada tema vira
+  um pacote de leis pequenas, e cada uma gera reação num grupo diferente.
+  Parado para fazer o mercado antes; volta depois, um pacote por vez:
+  - **Imposto de renda, "como é cobrado"** (proposta pronta, falta o sim):
+    faixa de isenção (0 a 2 salários médios do país), alíquota comum (a lei
+    de hoje, acima da isenção), adicional sobre altas rendas (até +20 pontos
+    acima de 5 salários médios), deduções (nenhuma / saúde e educação /
+    amplas) e desconto na fonte (só declaração / no salário). A % média do
+    país sai das regras. O motor passa a cobrar cada pop pelas regras e
+    somar; cada pop é uma média, então a faixa anda em degraus. Decisão em
+    aberto: a lei de hoje vira a alíquota comum (recomendado).
+  - **Armas** (modelo aprovado): posse em casa (proibida / com licença /
+    livre para adulto), porte na rua (proibido / licença especial / licença
+    comum / livre), exigências da licença (nenhuma / exame e curso / exame,
+    curso e motivo), registro (nenhum / da arma / da arma e da munição).
+  - **Corrupção como processos**, não um órgão; **cargos de indicação**
+    ainda amplos, abrir mais.
+  - **Direitos, drogas (uma lei por droga) e ensino** (cotas por nível de
+    ensino, leis dos dois lados da bússola): abrir em mais leis, com um
+    grupo de educação.
+  - **Economia** (salário mínimo, tarifa de importação, regras de
+    demissão): desenhar junto com o mercado.
+  - Financiamento de campanha entra com a campanha eleitoral.

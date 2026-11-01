@@ -7,24 +7,22 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-O mapa é a única tela do jogo (fatias 1 a 4 feitas, `src/tela/mapa/mapa.md`).
-Frente atual: **motor de leis**. Feito: **bússola política**. Leis (cada
-ponta da faixa ou opção) e grupos têm posição em dois eixos; o grupo reage
-eixo por eixo ao quanto a lei se aproximou dele, até ±15 por lei. Satisfação,
-voto dos partidos, prévia e setas do mapa leem a bússola
-(`src/motor/grupos/grupos.md`). A lista `grupos` saiu das leis.
+O mapa é a única tela do jogo (`src/tela/mapa/mapa.md`). A bússola política
+está feita (`src/motor/grupos/grupos.md`). As leis em pacotes foram
+discutidas e paradas: o autor mandou fazer o **mercado** antes, para ter
+base para as leis de economia e impostos. Tudo o que foi combinado sobre os
+pacotes (imposto de renda, armas, corrupção, direitos, drogas, ensino) está
+na seção 11 do escopo, item "Leis em pacotes".
 
 ## Próximo
 
-Espera decisão do autor: o passo seguinte é o lote de leis novas, já com
-bússola (índices órfãos Desigualdade e Polarização primeiro), ou os pops com
-posição que desliza pela renda (seção 11 do escopo)?
+Proposta curta do mercado para o autor aprovar: o que entra no primeiro
+passo e uma decisão. Espera o sim do autor.
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 - Commits locais sem push (push só com a palavra do autor).
-
 ## Armadilhas
 
 - `npx tsc -b`, nunca `--noEmit`.
