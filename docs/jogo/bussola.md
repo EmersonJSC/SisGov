@@ -55,17 +55,17 @@ Hoje todas as leis valem igual.
 - Com as 15 leis atuais o país fica perto do centro (f ≲ 0,4); as desejadas
   ficam entre 86 e 99. Faltam leis nas pontas (principalmente autoritário);
   testar de novo no passo 13.
-- As opiniões de partida dos países de teste (55 a 85) estão abaixo das
-  desejadas: a reputação sobe sozinha nos primeiros turnos. Ajuste de números
-  pendente de decisão do autor.
+- As opiniões de partida dos países de teste agora estão perto da desejada
+  (86 a 99): nada se mexe sozinho. Os países de teste saem no final; os
+  países reais (autor: Brasil, EUA...) declaram as suas.
 
 ## Como cresce (ainda não feito)
 
-- **3º ou 4º eixo:** é só acrescentar o nome em `EIXOS`
-  (`src/motor/leis/tipos.ts`) e declarar o eixo nos JSONs. Só a conta fica
-  presa a 2 em três lugares: o tipo `PontoBussola`, os acumuladores de
-  `posicaoDoPais` e o `hypot` da distância (a distância máxima vira 2√N).
-  Refatorar para laço sobre `EIXOS` é pedido separado.
-- **Peso por lei** (`peso_bussola` em cada lei): lei grande puxa mais o país
-  que lei pequena. Mudança de comportamento, pedido separado.
+- **Mais eixos** (autor decidiu que vão entrar): a conta já anda sobre
+  `EIXOS` (`src/motor/leis/tipos.ts`) e a distância máxima é 2√N. Para somar
+  um eixo: acrescentar o nome em `EIXOS` e declarar a posição em potências,
+  grupos e leis. Quais eixos entram é decisão do autor, ainda em aberto.
+- **Peso por lei** (`peso_bussola` em cada lei): hoje toda lei conta igual
+  na média do país; com peso, lei grande (pena de morte) empurraria o ponto
+  do país mais que lei pequena. Fica para o passo 13.
 - **Potência que muda de posição** com o tempo: fica fora do passo 11.

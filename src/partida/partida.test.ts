@@ -66,7 +66,7 @@ describe("eleição", () => {
 describe("opinião das potências", () => {
   it("começa a do país e anda pela bússola quando a lei muda", () => {
     const partida = criarPartida("teste", 42, { semCongresso: true });
-    expect(partida.estado.opinioes["uniao-continental"]).toBe(85);
+    expect(partida.estado.opinioes["uniao-continental"]).toBe(99);
     const igual = jogar(partida, 12).estado.opinioes;
     const pena = jogar(partida, 12, [
       { tipo: "mudar_lei", lei: "pena-de-morte", valor: "crimes-graves" },

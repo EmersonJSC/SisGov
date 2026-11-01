@@ -31,15 +31,15 @@
     "liberdade_civil": 70,
     "polarizacao": 40,
     "meio_ambiente": 50,
-    "reputacao_internacional": 70,
+    "reputacao_internacional": 93.95,
     "popularidade_governo": 50
   },
   "opinioes": {
-    "republica-do-norte": 70,
-    "uniao-continental": 85,
-    "republica-popular-do-oriente": 65,
-    "federacao-do-leste": 55,
-    "liga-do-golfo": 60
+    "republica-do-norte": 95,
+    "uniao-continental": 99,
+    "republica-popular-do-oriente": 92,
+    "federacao-do-leste": 91,
+    "liga-do-golfo": 86
   },
   "parametros": {
     "bases": {

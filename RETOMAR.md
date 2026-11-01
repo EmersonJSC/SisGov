@@ -16,12 +16,10 @@ reputação internacional = média das opiniões pesada pelo `peso`. A bússola
 
 ## Próximo
 
-Decisão do autor, depois pedaço 4. Decidir: (a) opiniões de partida dos dois
-países de teste perto da desejada (hoje a reputação sobe sozinha, 55-85 →
-86-99; só trocar números em 2 JSONs); (b) laço sobre `EIXOS` para aceitar 3º
-ou 4º eixo (refatoração separada); (c) peso por lei na média do país.
-Pedaço 4: segurança externa, índice novo (0 a 100) que cai quando potência
-forte tem opinião ruim do país; proposta curta antes do código.
+Pedaço 4: segurança externa (proposta feita ao autor no chat, espera o sim).
+Feito nesta rodada: opiniões de partida dos testes perto da desejada; conta
+da bússola em laço sobre `EIXOS` (aceita mais eixos). Falta o autor dizer
+quais eixos novos entram (decisão dele). Peso por lei fica para o passo 13.
 
 ## Pendências do autor
 
