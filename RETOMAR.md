@@ -7,30 +7,23 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Versão 1.0 enviada (`v1.0`). Frente nova, decidida com o autor: **a tela do
-jogo é o mapa da tela antiga, reaproveitado** (`src/tela/mapa/`, lendo a
-`VisaoPartida` de `src/partida/visao.ts`). Comportamento em
-`src/tela/mapa/mapa.md`.
-**Fatia 1 feita:** mapa com esferas, leis, bolhas e setas.
-**Fatia 2 feita:** clicar numa lei abre a janela do antigo (`DocumentoLei.tsx`):
-controle, efeitos diretos do motor (`partida/previa.ts`) e "Enviar ao
-Congresso", que põe o pedido na fila do turno (a mesma do Painel).
-**Fatia 3 feita:** barra do topo do antigo (`BarraDoTopo.tsx`: caixa, dívida,
-apoio com dica) e "Passar o turno" no mapa, que abre o "Resultado do turno"
-(`ResultadoDoTurno.tsx`: votações e eleição). O mapa já joga uma partida
-inteira sem o Painel.
-**Fatia 4 feita:** o Painel de tabelas saiu (e `Leis.tsx`); Salvar, Carregar e
-Recomeçar agora ficam na barra do topo. O mapa é a única tela do jogo.
+O mapa é a única tela do jogo (fatias 1 a 4 feitas, `src/tela/mapa/mapa.md`).
+Frente atual: **motor de leis**. Feito: **bússola política**. Leis (cada
+ponta da faixa ou opção) e grupos têm posição em dois eixos; o grupo reage
+eixo por eixo ao quanto a lei se aproximou dele, até ±15 por lei. Satisfação,
+voto dos partidos, prévia e setas do mapa leem a bússola
+(`src/motor/grupos/grupos.md`). A lista `grupos` saiu das leis.
 
 ## Próximo
 
-Frente A: mais leis e revogar lei. Proposta curta para o autor aprovar antes
-de implementar.
+Espera decisão do autor: o passo seguinte é o lote de leis novas, já com
+bússola (índices órfãos Desigualdade e Polarização primeiro), ou os pops com
+posição que desliza pela renda (seção 11 do escopo)?
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
-- Mais leis e revogar lei (frente A) esperam o mapa ficar jogável.
+- Commits locais sem push (push só com a palavra do autor).
 
 ## Armadilhas
 
@@ -42,6 +35,7 @@ de implementar.
 - `import.meta.glob` precisa de `src/vite-env.d.ts`.
 - `0.6 × 1/3` dá 0,1999… no computador: comparação de limite precisa de folga.
 - `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (agora é a referência da tela; ainda sem commit): adicionar arquivo por arquivo.
+- Grupo de centro (perto da posição atual da lei) perde nos dois sentidos: é a bússola, não erro.
 - Grupos medem renda contra o crescimento esperado (`esperado` em `calcularGrupos`); mexer na tendência do país muda a satisfação de todos.
 - A tela só lê/chama `src/partida`; salvar guarda país+semente+estado, as regras voltam do conteúdo.
 - Renomear arquivo que o `main.tsx` importa exige `touch src/main.tsx` com o Vite rodando (cache).
