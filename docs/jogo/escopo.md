@@ -121,7 +121,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 2 | Índices | ✅ arquivo novo com as duas camadas (essenciais ainda migram para o motor no passo 4) |
 | 2b | Fundação | ✅ 31/out — pastas das camadas, fronteiras no lint, `npm run check` verde ([plano](plano-de-desenvolvimento.md)) |
 | 3 | Modelo de lei | ✅ 31/out — imposto de renda (contínua, base `renda` com Laffer e evasão; pico declarado pelo país) e pena de morte (opções); validador |
-| 4 | Turno mínimo | Script joga um mandato; a lei em três valores dá três países diferentes, na direção que a lei promete |
+| 4 | Turno mínimo | ✅ 31/out — `npm run mandato`: força do efeito fraca/média/forte = 1/3/6 pontos (tamanho inteiro, chega ao longo do atraso). Script joga um mandato; a lei em três valores dá três países diferentes, na direção que a lei promete |
 | 5 | Contas | Receita − gasto − juros move a dívida; dívida alta sobe juros |
 | 6 | Leis da V1 | Cada lei com comportamento esperado escrito antes e conferido por script |
 | 7 | Grupos | Leis e índices movem satisfação, radicais e lealistas de cada grupo |

@@ -1,4 +1,9 @@
 // Motor: regras do Estado e cálculos estudados, em TS puro (sem React e sem
-// JSON). Não conhece nomes de leis, partidos ou países. Os módulos nascem a
-// partir do passo 3 (docs/jogo/plano-de-desenvolvimento.md, seção 4).
-export {};
+// JSON). Não conhece nomes de leis, partidos ou países
+// (docs/jogo/plano-de-desenvolvimento.md, seção 4).
+export * from "./acaso";
+export * from "./calculos";
+export * from "./efeitos";
+export * from "./estado";
+export * from "./leis";
+export * from "./turno";

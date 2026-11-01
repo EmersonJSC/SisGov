@@ -6,8 +6,9 @@
 
 ## 1. Onde estamos e por onde começar
 
-- **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação) e 3 (modelo de lei).
-- **Próximo:** passo **4, Turno mínimo**.
+- **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei)
+  e 4 (turno mínimo); versão 0.1 fechada.
+- **Próximo:** passo **5, Contas**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -53,7 +54,7 @@ Arrumar a casa antes da primeira lei.
 **Expande depois:** bases `consumo`, `folha`, `lucro`; lei contínua com
 faixas (imposto progressivo); efeito condicional ("só se desemprego > X").
 
-### Passo 4 — Turno mínimo ⬅ próximo
+### Passo 4 — Turno mínimo ✅
 
 | Começa com | Pronto quando |
 |---|---|
@@ -66,7 +67,7 @@ faixas (imposto progressivo); efeito condicional ("só se desemprego > X").
 **Expande depois:** histórico completo para gráficos; desfazer turno;
 vários países de teste.
 
-### Passo 5 — Contas
+### Passo 5 — Contas ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|

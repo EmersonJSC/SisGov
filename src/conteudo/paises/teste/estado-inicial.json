@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "teste",
+  "essenciais": {
+    "populacao": 50000000,
+    "ocupados": 22000000,
+    "desemprego": 8,
+    "pib": 50,
+    "crescimento_real": 2,
+    "indice_precos": 100,
+    "inflacao": 4,
+    "pib_nominal": 2000000000000,
+    "arrecadacao": 0,
+    "gasto_publico": 30,
+    "resultado_fiscal": -2,
+    "divida_publica": 60,
+    "taxa_juros": 8
+  },
+  "jogabilidade": {
+    "padrao_vida": 50,
+    "instrucao": 50,
+    "industrializacao": 40,
+    "saude": 50,
+    "seguranca": 45,
+    "pobreza": 25,
+    "desigualdade": 50,
+    "corrupcao": 40,
+    "liberdade_civil": 70,
+    "polarizacao": 40,
+    "meio_ambiente": 50,
+    "reputacao_internacional": 55,
+    "popularidade_governo": 50
+  },
+  "parametros": {
+    "bases": {
+      "renda": { "parcela_pib": 0.5, "pico": 0.5, "evasao": 0.15 }
+    },
+    "crescimento": { "tendencia": 2, "volatilidade": 1.5 }
+  }
+}

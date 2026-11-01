@@ -10,7 +10,8 @@
     "format": "prettier --write README.md package.json eslint.config.js vite.config.ts src scripts",
     "format:check": "prettier --check README.md package.json eslint.config.js vite.config.ts src scripts",
     "lint": "eslint .",
-    "check": "npm run format:check && npm run lint && npm run build && npm test"
+    "check": "npm run format:check && npm run lint && npm run build && npm test",
+    "mandato": "vite-node scripts/mandato.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

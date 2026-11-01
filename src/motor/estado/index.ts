@@ -1,6 +1,10 @@
-// Índices essenciais: sem eles um Estado não funciona. São do motor; os de
+// Estado da partida e índices essenciais. Os essenciais são do motor; os de
 // jogabilidade ficam no JSON do mundo. Unidade de cada um em
 // src/conteudo/mundo/indicadores/variaveis.json.
+import type { Acaso } from "../acaso";
+import type { EfeitoEmCurso } from "../efeitos";
+import type { ValorLei } from "../leis";
+
 export const INDICES_ESSENCIAIS = [
   "populacao",
   "ocupados",
@@ -20,3 +24,16 @@ export const INDICES_ESSENCIAIS = [
 export type IdIndiceEssencial = (typeof INDICES_ESSENCIAIS)[number];
 
 export type IndicesEssenciais = Record<IdIndiceEssencial, number>;
+
+/** Tudo o que muda de turno a turno. Nunca alterado no lugar. */
+export interface Estado {
+  /** Turnos jogados (2 meses cada). */
+  turno: number;
+  acaso: Acaso;
+  essenciais: IndicesEssenciais;
+  jogabilidade: Record<string, number>;
+  /** Jogabilidade sem as leis: o que sobra tirando as contribuições. */
+  base: Record<string, number>;
+  leis: Record<string, ValorLei>;
+  efeitos: EfeitoEmCurso[];
+}

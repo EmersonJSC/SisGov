@@ -7,25 +7,24 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-[Escopo](docs/jogo/escopo.md) e [plano](docs/jogo/plano-de-desenvolvimento.md)
-aprovados; passos 2b e **3 fechados**.
+Passos 2b, 3 e **4 fechados: versão 0.1** (um mandato jogado por script).
 
-- `src/motor/estado`: ids dos índices essenciais.
-- `src/motor/calculos`: registro de bases com `renda` (Laffer + evasão; o
-  **país declara o pico**, padrão 0,6; fonte em `calculos.md`).
-- `src/motor/leis`: tipo da lei e validador (erro com arquivo, campo, motivo).
-- `src/conteudo/mundo/leis/`: `imposto-renda.json` e `pena-de-morte.json`.
-- Contrato em `src/partida/conteudo.test.ts`: toda lei nova é validada sozinha.
+- `src/motor/turno`: `avancarTurno(regras, estado, pedidos)`, 10 etapas;
+  as vazias pulam (`turno.md` diz o que cada uma faz hoje).
+- `src/motor/efeitos`: força fraca/média/forte = 1/3/6 pontos, **tamanho
+  inteiro** do efeito, que chega em linha reta ao longo do atraso.
+- `src/motor/acaso`: semente no estado; mesma semente, mesma partida.
+- `src/conteudo/paises/teste/`: país inventado (pico 0,5).
+- `npm run mandato`: IR 10/30/50% → arrecadação sobe, padrão de vida cai.
 
 ## Próximo
 
-**Passo 4, Turno mínimo:** proposta curta para o autor aprovar (turno,
-fila de efeitos com atraso, acaso com semente, país de teste e
-`scripts/mandato.ts`). Decisão em aberto para propor: quanto vale em número
-cada força (`fraca`, `media`, `forte`).
+Autor decide a **tag `v0.1`**. Depois, **passo 5, Contas**: proposta curta
+(receita − gasto − juros → dívida; juros sobem com a dívida).
 
 ## Pendências do autor
 
+- Tag `v0.1` e push (nada enviado ainda).
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas
@@ -33,5 +32,6 @@ cada força (`fraca`, `media`, `forte`).
 - `npx tsc -b`, nunca `--noEmit`.
 - `pkill -f` mata o próprio shell; `sleep` no Bash é bloqueado.
 - O vitest só procura teste em `src/` e `scripts/`; sem isso roda os testes antigos de `arquivo/` e trava.
-- `vite-node` não roda arquivo fora do projeto (fs.allow); demo temporária vai em `rascunho/` e sai depois.
+- `vite-node` não roda arquivo fora do projeto (fs.allow) nem passa o arquivo no `argv`; script que também é importado por teste usa `import.meta.env.MODE !== "test"`.
 - `import.meta.glob` precisa de `src/vite-env.d.ts`.
+- `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (não mexer): adicionar arquivo por arquivo.
