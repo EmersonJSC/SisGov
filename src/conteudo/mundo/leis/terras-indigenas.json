@@ -8,7 +8,10 @@
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 0.3 },
   "passo": 0.01,
-  "grupos": { "ambientalistas": "mais" },
+  "bussola": {
+    "min": { "economico": 0.1, "social": 0.3 },
+    "max": { "economico": -0.2, "social": -0.7 }
+  },
   "efeitos": [
     {
       "indice": "meio_ambiente",

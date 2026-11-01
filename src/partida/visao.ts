@@ -1,6 +1,6 @@
 // Monta a VisaoPartida (formato da tela antiga do mapa) a partir da partida
 // nova. Só lê: nomes e textos vêm do JSON das leis e do mundo.
-import type { Lei } from "../motor";
+import { pontosLei, type Lei, type TipoGrupo } from "../motor";
 import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
@@ -121,7 +121,14 @@ function visaoDaLei(
   };
 }
 
-function ligacoes(leis: Lei[], indices: Set<string>): VisaoLigacao[] {
+/** Pontos (faixa inteira) a partir dos quais a lei liga uma seta ao grupo. */
+const SETA_GRUPO = 10;
+
+function ligacoes(
+  leis: Lei[],
+  indices: Set<string>,
+  grupos: TipoGrupo[],
+): VisaoLigacao[] {
   const saida: VisaoLigacao[] = [];
   for (const lei of leis) {
     // lei de opções: vale o sentido da opção mais alta que cita o índice
@@ -139,16 +146,20 @@ function ligacoes(leis: Lei[], indices: Set<string>): VisaoLigacao[] {
         atrasoMeses: e.atraso_turnos * 2,
         mecanismo: "afim",
       });
+    // seta ao grupo: o que subir a lei do mínimo ao máximo faz com ele
     if (lei.forma === "continua")
-      for (const [grupo, quer] of Object.entries(lei.grupos ?? {}))
-        saida.push({
-          id: `${lei.id}>${grupo}`,
-          origem: lei.id,
-          alvo: grupo,
-          sinal: quer === "mais" ? 1 : -1,
-          atrasoMeses: 0,
-          mecanismo: "afim",
-        });
+      for (const g of grupos) {
+        const pontos = pontosLei(g, lei, lei.faixa.max, lei.faixa.min);
+        if (Math.abs(pontos) >= SETA_GRUPO)
+          saida.push({
+            id: `${lei.id}>${g.id}`,
+            origem: lei.id,
+            alvo: g.id,
+            sinal: pontos > 0 ? 1 : -1,
+            atrasoMeses: 0,
+            mecanismo: "afim",
+          });
+      }
   }
   for (const g of tiposGrupos.grupos)
     for (const c of g.cobra)
@@ -210,7 +221,11 @@ export function montarVisao(partida: Partida): VisaoPartida {
       ),
     ),
     bolhas,
-    ligacoes: ligacoes(leis, new Set(jogabilidade.map((v) => v.id))),
+    ligacoes: ligacoes(
+      leis,
+      new Set(jogabilidade.map((v) => v.id)),
+      regras.grupos,
+    ),
     grupos: [],
     governo: governo(),
   };

@@ -12,7 +12,10 @@
   },
   "passo": 0.001,
   "conta": "gasto",
-  "grupos": { "classe-media": "mais" },
+  "bussola": {
+    "min": { "economico": 0.1, "social": -0.5 },
+    "max": { "economico": -0.1, "social": 0.7 }
+  },
   "efeitos": [
     {
       "indice": "seguranca",

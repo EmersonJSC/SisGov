@@ -30,6 +30,20 @@ describe("validarLei", () => {
     expect(campos({ ...valida, conta: "gasto" })).toEqual(["conta"]);
   });
 
+  it("bússola: eixos conhecidos, entre -1 e 1", () => {
+    const ok = { min: { economico: 0.5 }, max: { economico: -0.5 } };
+    expect(campos({ ...valida, bussola: ok })).toEqual([]);
+    expect(
+      campos({
+        ...valida,
+        bussola: { min: { cultural: 0 }, max: { social: 2 } },
+      }),
+    ).toEqual(["bussola.min.cultural", "bussola.max.social"]);
+    expect(campos({ ...valida, bussola: { min: {} } })).toEqual([
+      "bussola.max",
+    ]);
+  });
+
   it("diz arquivo, campo e motivo", () => {
     const [erro] = validarLei(
       { ...valida, passo: 0 },

@@ -2,7 +2,7 @@
 import { ehBase } from "../calculos";
 import { INDICES_ESSENCIAIS } from "../estado";
 import { ehEstrato, ESTRATOS } from "../populacao";
-import { CAMADAS, FORCAS, type Lei } from "./tipos";
+import { CAMADAS, EIXOS, FORCAS, type Lei } from "./tipos";
 
 export interface ErroLei {
   arquivo: string;
@@ -47,12 +47,13 @@ export function validarLei(
   if (!CAMADAS.includes(dado.camada as never))
     erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
 
-  const grupos = (valor: unknown, campo: string, aceitos: string[]) => {
-    if (valor === undefined) return;
+  const ponto = (valor: unknown, campo: string) => {
     if (!ehObjeto(valor)) return erro(campo, "precisa ser um objeto");
-    for (const [g, v] of Object.entries(valor))
-      if (!aceitos.includes(v as string))
-        erro(`${campo}.${g}`, `precisa ser ${aceitos.join(" ou ")}`);
+    for (const [eixo, v] of Object.entries(valor))
+      if (!EIXOS.includes(eixo as never))
+        erro(`${campo}.${eixo}`, `eixo precisa ser ${EIXOS.join(" ou ")}`);
+      else if (!ehNumero(v) || v < -1 || v > 1)
+        erro(`${campo}.${eixo}`, "precisa estar entre -1 e 1");
   };
 
   const efeitos = (valor: unknown, campo: string) => {
@@ -113,7 +114,13 @@ export function validarLei(
       else if (!ehObjeto(dado.para) || !ehEstrato(dado.para.estrato))
         erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
     }
-    grupos(dado.grupos, "grupos", ["mais", "menos"]);
+    if (dado.bussola !== undefined) {
+      if (!ehObjeto(dado.bussola)) erro("bussola", "precisa ter min e max");
+      else {
+        ponto(dado.bussola.min, "bussola.min");
+        ponto(dado.bussola.max, "bussola.max");
+      }
+    }
     efeitos(dado.efeitos, "efeitos");
   } else if (dado.forma === "opcoes") {
     const opcoes = dado.opcoes;
@@ -127,7 +134,7 @@ export function validarLei(
         else if (vistos.has(op.id))
           erro(`opcoes[${i}].id`, `"${op.id}" repetido`);
         vistos.add(op.id);
-        grupos(op.grupos, `opcoes[${i}].grupos`, ["apoia", "rejeita"]);
+        if (op.bussola !== undefined) ponto(op.bussola, `opcoes[${i}].bussola`);
         if (
           op.mandato_anos !== undefined &&
           !(

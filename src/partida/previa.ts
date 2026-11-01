@@ -63,7 +63,7 @@ export function previaDaLei(
     .map((g) => ({
       id: g.id,
       pontos: pontosLeis(
-        g.id,
+        g,
         so,
         { [leiId]: valor },
         { [leiId]: estado.leis[leiId] },

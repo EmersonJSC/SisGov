@@ -9,4 +9,6 @@ Formato e validador. A lei declara; o motor interpreta.
 - `forma: "opcoes"`: ao menos duas opções, cada uma com seus efeitos.
 - Efeito: índice de jogabilidade, `sentido` ±1, `forca` por nível (o motor
   converte em número), `atraso_turnos` até chegar inteiro.
-- Quem apoia e quem rejeita entra no passo 7, com os grupos.
+- `bussola`: onde a lei fica nos dois eixos (econômico e social), no
+  mínimo e no máximo da faixa ou em cada opção. Quem gosta sai da
+  distância até cada grupo (motor/grupos).

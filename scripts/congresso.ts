@@ -3,12 +3,12 @@
 // Esperado (escrito antes, igual a src/motor/politica/politica.md), país de
 // teste, 200 cadeiras, base = trabalhista + verde + centro (110):
 // - transferência de renda 2% → 4%: base sim, oposição não; passa com 110;
-// - imposto de renda 20% → 30%: verde e centro (classe média) votam contra;
-//   só o governo vota sim; cai;
+// - imposto de renda 20% → 30%: com a bússola (01/nov), verde e centro
+//   votam com o governo; passa com 110;
 // - transferência de renda 2% → 6% (40% da faixa): exorbitante, todos não;
 // - licenciamento ambiental frouxo: liberal vota com o governo, verde contra;
 //   passa. No mandato os ambientalistas perdem satisfação; abaixo de 35 o
-//   verde sai da base.
+//   verde sai da base (com a bússola, no turno 8).
 import {
   criarPartida,
   jogar,

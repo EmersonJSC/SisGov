@@ -15,7 +15,10 @@
     "base": "consumo",
     "modelo": "laffer"
   },
-  "grupos": { "trabalhadores": "menos" },
+  "bussola": {
+    "min": {},
+    "max": { "economico": 0.2 }
+  },
   "efeitos": [
     {
       "indice": "padrao_vida",

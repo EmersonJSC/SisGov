@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Grupo } from "../grupos";
+import type { Grupo, TipoGrupo } from "../grupos";
 import type { Lei } from "../leis";
 import {
   coligacaoAtual,
@@ -16,7 +16,8 @@ const lei: Lei = {
   unidade: "fracao",
   faixa: { min: 0, max: 0.3 },
   passo: 0.01,
-  grupos: { a: "mais", b: "menos" },
+  // subir a lei vai para a direita: perto de a, longe de b
+  bussola: { min: { economico: -1 }, max: { economico: 1 } },
   efeitos: [],
 };
 
@@ -26,8 +27,8 @@ const opcoes: Lei = {
   camada: "jogabilidade",
   forma: "opcoes",
   opcoes: [
-    { id: "x", efeitos: [] },
-    { id: "y", grupos: { b: "apoia" }, efeitos: [] },
+    { id: "x", bussola: { economico: 1 }, efeitos: [] },
+    { id: "y", bussola: { economico: -1 }, efeitos: [] },
   ],
 };
 
@@ -44,9 +45,19 @@ const congresso: Congresso = {
 };
 const base = ["gov", "aliado"];
 
+// a à direita, b à esquerda, c não liga para a economia
+const tipo = (id: string, economico: number, peso: number): TipoGrupo => ({
+  id,
+  membros: {},
+  cobra: [],
+  bussola: { economico },
+  peso: { economico: peso },
+});
+const tipos = [tipo("a", 1, 1), tipo("b", -1, 1), tipo("c", 0, 0)];
+
 describe("congresso", () => {
   it("base vota sim, oposição neutra vota não, grupo contra vota não", () => {
-    const v = votar(congresso, base, lei, 0.1, 0.15);
+    const v = votar(congresso, base, tipos, lei, 0.1, 0.15);
     expect(v.votos).toEqual({
       gov: "sim",
       aliado: "sim",
@@ -56,25 +67,33 @@ describe("congresso", () => {
     expect(v.sim).toBe(55);
     expect(v.aprovada).toBe(true);
     // descer a lei: ped (b quer menos) passa a votar sim
-    expect(votar(congresso, base, lei, 0.1, 0.05).votos.ped).toBe("sim");
+    expect(votar(congresso, base, tipos, lei, 0.1, 0.05).votos.ped).toBe("sim");
   });
 
   it("sem maioria, cai", () => {
-    expect(votar(congresso, ["gov"], lei, 0.1, 0.15).aprovada).toBe(false);
+    expect(votar(congresso, ["gov"], tipos, lei, 0.1, 0.15).aprovada).toBe(
+      false,
+    );
   });
 
   it("exorbitante: mais de 1/3 da faixa, todos votam não", () => {
-    const v = votar(congresso, base, lei, 0.1, 0.25);
+    const v = votar(congresso, base, tipos, lei, 0.1, 0.25);
     expect(v.exorbitante).toBe(true);
     expect(v.sim).toBe(0);
     expect(v.aprovada).toBe(false);
     // lei não legislada conta do mínimo
-    expect(votar(congresso, base, lei, undefined, 0.11).exorbitante).toBe(true);
+    expect(
+      votar(congresso, base, tipos, lei, undefined, 0.11).exorbitante,
+    ).toBe(true);
   });
 
-  it("lei de opções usa apoia e rejeita", () => {
-    expect(votar(congresso, base, opcoes, "x", "y").votos.ped).toBe("sim");
-    expect(votar(congresso, base, opcoes, "y", "x").votos.ped).toBe("nao");
+  it("lei de opções usa a posição de cada opção", () => {
+    expect(votar(congresso, base, tipos, opcoes, "x", "y").votos.ped).toBe(
+      "sim",
+    );
+    expect(votar(congresso, base, tipos, opcoes, "y", "x").votos.ped).toBe(
+      "nao",
+    );
   });
 
   it("partido da base sai com os grupos abaixo de 35", () => {

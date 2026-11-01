@@ -9,7 +9,10 @@
   "faixa": { "min": 0, "max": 0.02 },
   "passo": 0.001,
   "conta": "gasto",
-  "grupos": { "trabalhadores": "mais" },
+  "bussola": {
+    "min": { "economico": 0.2 },
+    "max": { "economico": -0.3 }
+  },
   "efeitos": [
     {
       "indice": "meio_ambiente",

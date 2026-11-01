@@ -1,6 +1,6 @@
 // Política: Congresso (passo 8). Partidos, cadeiras e coligação são do país;
 // o motor não conhece os nomes. Comportamento em politica.md.
-import type { Grupo } from "../grupos";
+import { pontosLei, type Grupo, type TipoGrupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
 
 export interface Partido {
@@ -37,7 +37,6 @@ const EXORBITANTE = 1 / 3;
 const FOLGA = 1e-9;
 /** Satisfação abaixo da qual um partido da base sai da coligação. */
 const LIMIAR_SAIDA = 35;
-const NOTA = { apoia: 1, rejeita: -1 } as const;
 
 /** Motivo de o Congresso do país não fechar, ou null. */
 export function motivoCongressoInvalido(
@@ -79,35 +78,32 @@ export function ehExorbitante(
   return Math.abs((para as number) - antes) > EXORBITANTE * (max - min) + FOLGA;
 }
 
-/** O quanto os grupos que o partido defende querem a mudança (+ a favor). */
+/** Folga do arredondamento: opinião menor que isto conta como nenhuma. */
+const SEM_OPINIAO = 1e-9;
+
+/**
+ * O quanto os grupos que o partido defende querem a mudança (+ a favor):
+ * peso × os pontos que a bússola da lei daria a cada grupo.
+ */
 export function opiniao(
   partido: Partido,
+  tipos: TipoGrupo[],
   lei: Lei,
   de: ValorLei | undefined,
   para: ValorLei,
 ): number {
   let soma = 0;
   for (const [grupo, peso] of Object.entries(partido.defende)) {
-    if (lei.forma === "continua") {
-      const quer = lei.grupos?.[grupo];
-      if (!quer) continue;
-      const antes = (de as number | undefined) ?? lei.faixa.min;
-      const sentido = quer === "mais" ? 1 : -1;
-      soma += peso * sentido * Math.sign((para as number) - antes);
-    } else {
-      const nota = (opcao: ValorLei | undefined) => {
-        const g = lei.opcoes.find((o) => o.id === opcao)?.grupos?.[grupo];
-        return g ? NOTA[g] : 0;
-      };
-      soma += peso * (nota(para) - nota(de));
-    }
+    const tipo = tipos.find((t) => t.id === grupo);
+    if (tipo) soma += peso * pontosLei(tipo, lei, para, de);
   }
-  return soma;
+  return Math.abs(soma) < SEM_OPINIAO ? 0 : soma;
 }
 
 export function votar(
   congresso: Congresso,
   coligacao: string[],
+  tipos: TipoGrupo[],
   lei: Lei,
   de: ValorLei | undefined,
   para: ValorLei,
@@ -122,7 +118,7 @@ export function votar(
     if (exorbitante) voto = "nao";
     else if (p.id === congresso.governo) voto = "sim";
     else {
-      const o = opiniao(p, lei, de, para);
+      const o = opiniao(p, tipos, lei, de, para);
       if (o !== 0) voto = o > 0 ? "sim" : "nao";
       else voto = coligacao.includes(p.id) ? "sim" : "nao";
     }

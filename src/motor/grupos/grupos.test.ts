@@ -5,6 +5,8 @@ import {
   alvosEstoques,
   calcularGrupos,
   motivoGruposInvalidos,
+  pontosLei,
+  posicaoDaLei,
   type Marco,
   type TipoGrupo,
 } from ".";
@@ -21,6 +23,8 @@ const tipo: TipoGrupo = {
   id: "g",
   membros: { a: 1, b: 0.5 },
   cobra: [{ indice: "x", sentido: -1 }],
+  bussola: { economico: 1, social: 0.5 },
+  peso: { economico: 1 },
 };
 
 const lei: Lei = {
@@ -31,7 +35,8 @@ const lei: Lei = {
   unidade: "fracao",
   faixa: { min: 0, max: 0.5 },
   passo: 0.01,
-  grupos: { g: "mais" },
+  // subir a lei vai para a direita, rumo ao grupo
+  bussola: { min: { economico: -1 }, max: { economico: 1 } },
   efeitos: [],
 };
 
@@ -59,7 +64,8 @@ describe("grupos", () => {
     expect(igual.g.satisfacao).toBe(50);
     expect(igual.g.radicais).toBe(5);
 
-    // renda +10% (10), índice x cai 3 (+3), lei +0,1 em faixa 0,5 (+10)
+    // renda +10% (10), índice x cai 3 (+3), lei +0,1 em faixa 0,5: anda
+    // 0,4 rumo ao grupo × peso 1 × 50 = 20, preso em 15
     const melhor = calcularGrupos(
       [tipo],
       { l: lei },
@@ -71,7 +77,7 @@ describe("grupos", () => {
         marco,
       },
     );
-    expect(melhor.g.satisfacao).toBeCloseTo(73);
+    expect(melhor.g.satisfacao).toBeCloseTo(78);
   });
 
   it("renda que cresce no ritmo esperado não muda a satisfação", () => {
@@ -132,18 +138,62 @@ describe("grupos", () => {
     expect(g.g.lealistas).toBe(9);
   });
 
-  it("valida membros, índices e grupos citados nas leis", () => {
-    expect(motivoGruposInvalidos([tipo], ["a", "b"], ["x"], { l: lei })).toBe(
-      null,
-    );
-    expect(motivoGruposInvalidos([tipo], ["a"], ["x"], {})).toMatch(
+  it("bússola: eixo por eixo, aproximar soma e afastar tira", () => {
+    const centro: TipoGrupo = {
+      ...tipo,
+      bussola: { economico: 0, social: 1 },
+      peso: { economico: 1 },
+    };
+    const social: Lei = {
+      ...lei,
+      bussola: { min: { social: -1 }, max: { social: 1 } },
+    };
+    // eixo sem peso não conta: o grupo é autoritário, mas não liga
+    expect(pontosLei(centro, social, 0.5, 0)).toBe(0);
+    // centro reclama da lei que vai para qualquer ponta
+    expect(pontosLei(centro, lei, 0.3, 0.25)).toBeCloseTo(-10);
+    expect(pontosLei(centro, lei, 0.2, 0.25)).toBeCloseTo(-10);
+    // lei não legislada conta como o mínimo da faixa
+    expect(pontosLei(tipo, lei, 0.05, undefined)).toBeCloseTo(10);
+    // uma lei só move no máximo 15
+    expect(pontosLei(centro, lei, 0, 0.25)).toBe(-15);
+    const opcoes: Lei = {
+      versao: 1,
+      id: "o",
+      camada: "jogabilidade",
+      forma: "opcoes",
+      opcoes: [
+        { id: "x", bussola: { economico: -0.5 }, efeitos: [] },
+        { id: "y", bussola: {}, efeitos: [] },
+        { id: "z", efeitos: [] },
+      ],
+    };
+    expect(pontosLei(tipo, opcoes, "y", "x")).toBeCloseTo(15);
+    expect(pontosLei(tipo, opcoes, "y", "y")).toBe(0);
+    // opção sem posição não puxa para lado nenhum
+    expect(pontosLei(tipo, opcoes, "z", "x")).toBe(0);
+    expect(posicaoDaLei(lei, 0.375)).toEqual({ economico: 0.5, social: 0 });
+  });
+
+  it("valida membros, índices e a bússola", () => {
+    expect(motivoGruposInvalidos([tipo], ["a", "b"], ["x"])).toBe(null);
+    expect(motivoGruposInvalidos([tipo], ["a"], ["x"])).toMatch(
       /pop "b" não existe/,
     );
-    expect(motivoGruposInvalidos([tipo], ["a", "b"], [], {})).toMatch(
-      /índice "x"/,
-    );
-    expect(motivoGruposInvalidos([], ["a", "b"], ["x"], { l: lei })).toMatch(
-      /grupo "g" não existe/,
-    );
+    expect(motivoGruposInvalidos([tipo], ["a", "b"], [])).toMatch(/índice "x"/);
+    expect(
+      motivoGruposInvalidos(
+        [{ ...tipo, bussola: { social: 2 } }],
+        ["a", "b"],
+        ["x"],
+      ),
+    ).toMatch(/bússola social/);
+    expect(
+      motivoGruposInvalidos(
+        [{ ...tipo, peso: { economico: -1 } }],
+        ["a", "b"],
+        ["x"],
+      ),
+    ).toMatch(/peso economico/);
   });
 });

@@ -15,7 +15,10 @@
     "base": "lucro",
     "modelo": "laffer"
   },
-  "grupos": { "empresarios": "menos" },
+  "bussola": {
+    "min": { "economico": 0.6 },
+    "max": { "economico": -0.6 }
+  },
   "efeitos": [
     {
       "indice": "industrializacao",

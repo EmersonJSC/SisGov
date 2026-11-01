@@ -23,11 +23,10 @@ economia).
 
 - **Exorbitante:** lei contínua que anda mais de 1/3 da faixa num pedido só.
   Todos votam não, até o governo.
-- **Opinião do partido:** soma, pelos grupos que defende, do peso × o que o
-  grupo quer da mudança (o `"grupos"` da lei). Lei contínua: "mais" e a lei
-  sobe = +1, desce = −1 ("menos" ao contrário). Lei de opções: nota da opção
-  nova − nota da atual (apoia = 1, rejeita = −1). Lei não legislada conta
-  como o mínimo da faixa (ou nenhuma opção).
+- **Opinião do partido:** soma, pelos grupos que defende, do peso × os
+  pontos que a mudança daria ao grupo pela bússola (motor/grupos: o quanto
+  a lei se aproxima dele). Lei não legislada conta como o mínimo da faixa
+  (ou nenhuma opção).
 - **Voto:** o partido do governo vota sim. Os outros: opinião > 0, sim;
   < 0, não; = 0, a base vota sim e a oposição vota não.
 - Passa quando os votos sim passam de `maioria` × total de cadeiras.
@@ -47,7 +46,8 @@ Teste tem 200 cadeiras; base = trabalhista + verde + centro (110).
   defendem trabalhadores, verde é neutro e acompanha), oposição não; passa
   com 110;
 - imposto de renda 20% → 30%: verde e centro defendem a classe média e
-  votam contra; só o governo vota sim; cai;
+  votam contra; só o governo vota sim; cai (com a bússola, passa: ver
+  abaixo);
 - transferência de renda 2% → 6% (40% da faixa): exorbitante, todos votam
   não; cai;
 - licenciamento ambiental frouxo: o liberal (empresários) vota com o
@@ -59,3 +59,7 @@ Observado (01/nov): os três primeiros casos como o esperado (110 × 90,
 60 × 140, 0 × 200). O licenciamento frouxo passa com 135; os ambientalistas
 caem a 41 e voltam a 48 no fim do mandato, então o verde fica na base. Uma
 lei só não racha a base; a saída está coberta pelo teste do módulo.
+
+Com a bússola (01/nov): o imposto de renda 20% → 30% passa com 110 (verde e
+centro votam com o governo); o licenciamento frouxo passa com 150 e o verde
+sai da base no turno 8, quando os ambientalistas ficam abaixo de 35.

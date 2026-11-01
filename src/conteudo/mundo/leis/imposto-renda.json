@@ -9,7 +9,10 @@
   "faixa": { "min": 0, "max": 0.6 },
   "passo": 0.005,
   "calculo": { "base": "renda", "modelo": "laffer" },
-  "grupos": { "classe-media": "menos" },
+  "bussola": {
+    "min": { "economico": 0.5 },
+    "max": { "economico": -0.5 }
+  },
   "efeitos": [
     {
       "indice": "padrao_vida",

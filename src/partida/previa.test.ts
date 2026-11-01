@@ -16,14 +16,19 @@ describe("prévia direta da lei", () => {
     expect(p).toEqual({ indices: [], grupos: [] });
   });
 
-  it("subir e descer a mesma lei dá sinais opostos", () => {
+  it("subir e descer dá sinais opostos a quem está de um lado só", () => {
     const sobe = previaDaLei(partida, "transferencia-renda", 0.04);
     const desce = previaDaLei(partida, "transferencia-renda", 0.01);
-    expect(sobe.grupos.length).toBeGreaterThan(0);
-    for (const g of sobe.grupos) {
-      const oposto = desce.grupos.find((d) => d.id === g.id);
-      expect(Math.sign(oposto?.pontos ?? 0)).toBe(-Math.sign(g.pontos));
-    }
+    const pontos = (p: typeof sobe, id: string) =>
+      p.grupos.find((g) => g.id === id)?.pontos ?? 0;
+    // trabalhadores à esquerda da lei, empresários à direita
+    expect(pontos(sobe, "trabalhadores")).toBeGreaterThan(0);
+    expect(pontos(desce, "trabalhadores")).toBeLessThan(0);
+    expect(pontos(sobe, "empresarios")).toBeLessThan(0);
+    expect(pontos(desce, "empresarios")).toBeGreaterThan(0);
+    // a classe média está em cima da lei: reclama dos dois lados
+    expect(pontos(sobe, "classe-media")).toBeLessThan(0);
+    expect(pontos(desce, "classe-media")).toBeLessThan(0);
   });
 
   it("trocar de opção mexe nos índices com o atraso em meses", () => {

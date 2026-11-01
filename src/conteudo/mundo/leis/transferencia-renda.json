@@ -13,7 +13,10 @@
   "passo": 0.001,
   "conta": "gasto",
   "para": { "estrato": "pobre" },
-  "grupos": { "trabalhadores": "mais" },
+  "bussola": {
+    "min": { "economico": 0.4 },
+    "max": { "economico": -0.6 }
+  },
   "efeitos": [
     {
       "indice": "pobreza",

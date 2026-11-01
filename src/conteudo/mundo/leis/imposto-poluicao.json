@@ -9,7 +9,10 @@
   "faixa": { "min": 0, "max": 0.6 },
   "passo": 0.01,
   "calculo": { "base": "emissoes", "modelo": "laffer" },
-  "grupos": { "empresarios": "menos", "ambientalistas": "mais" },
+  "bussola": {
+    "min": { "economico": 0.2 },
+    "max": { "economico": -0.3, "social": -0.6 }
+  },
   "efeitos": [
     {
       "indice": "meio_ambiente",

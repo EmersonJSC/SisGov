@@ -58,7 +58,14 @@ const congresso: Etapa = (regras, estado, pedidos) => {
     if (atual === pedido.valor) continue;
     votacoes.push(
       regras.congresso
-        ? votar(regras.congresso, estado.coligacao, lei, atual, pedido.valor)
+        ? votar(
+            regras.congresso,
+            estado.coligacao,
+            regras.grupos,
+            lei,
+            atual,
+            pedido.valor,
+          )
         : {
             lei: lei.id,
             valor: pedido.valor,
@@ -411,7 +418,6 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     regras.grupos,
     regras.pops.map((p) => p.id),
     [...INDICES_ESSENCIAIS, ...Object.keys(regras.dominios)],
-    regras.leis,
   );
   if (motivoGrupos) throw new Error(`mundo: ${motivoGrupos}`);
   const coligacao = inicio.coligacao ?? [];

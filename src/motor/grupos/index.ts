@@ -1,6 +1,6 @@
 // Grupos de interesse: leem os pops, os índices e as leis. Tipos vêm do
 // mundo. Comportamento em grupos.md.
-import type { Lei, ValorLei } from "../leis";
+import { EIXOS, type Lei, type PontoBussola, type ValorLei } from "../leis";
 import type { Pop } from "../populacao";
 
 /** Tipo de grupo do mundo. */
@@ -10,6 +10,10 @@ export interface TipoGrupo {
   membros: Record<string, number>;
   /** Índices que o grupo cobra e o sentido que quer (1 subir, -1 descer). */
   cobra: { indice: string; sentido: 1 | -1 }[];
+  /** Posição na bússola (−1 a +1 por eixo). */
+  bussola: PontoBussola;
+  /** O quanto o grupo liga para cada eixo (0 a 1); ausente = 0. */
+  peso: PontoBussola;
 }
 
 /** Grupo no estado. */
@@ -34,9 +38,10 @@ export interface Marco {
 const NEUTRO = 50;
 const LIMITE_RENDA = 25;
 const LIMITE_INDICE = 15;
-const PONTOS_FAIXA = 50;
-const PONTOS_OPCAO = 5;
-const NOTA = { apoia: 1, rejeita: -1 } as const;
+/** Pontos por 1 unidade de eixo que a lei se aproxima do grupo (peso 1). */
+const PONTOS_EIXO = 50;
+/** Uma lei só, contra o marco, move o grupo no máximo isto. */
+const LIMITE_LEI = 15;
 const BASE_ESTOQUE = 5;
 const LIMIAR_RADICAL = 35;
 const LIMIAR_LEAL = 65;
@@ -46,12 +51,11 @@ const PASSO_ESTOQUE = 1;
 const prender = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
 
-/** Motivo de os grupos (ou o que as leis dizem deles) não fecharem, ou null. */
+/** Motivo de os grupos não fecharem, ou null. */
 export function motivoGruposInvalidos(
   tipos: TipoGrupo[],
   pops: string[],
   indices: string[],
-  leis: Record<string, Lei>,
 ): string | null {
   const ids = tipos.map((t) => t.id);
   for (const t of tipos) {
@@ -65,15 +69,16 @@ export function motivoGruposInvalidos(
     for (const c of t.cobra)
       if (!indices.includes(c.indice))
         return `grupo ${t.id}: índice "${c.indice}" não existe`;
+    for (const eixo of EIXOS) {
+      const pos = t.bussola[eixo] ?? 0;
+      const peso = t.peso[eixo] ?? 0;
+      if (!(pos >= -1 && pos <= 1))
+        return `grupo ${t.id}: bússola ${eixo} fora de [-1, 1]`;
+      if (!(peso >= 0 && peso <= 1))
+        return `grupo ${t.id}: peso ${eixo} fora de [0, 1]`;
+    }
   }
-  for (const lei of Object.values(leis)) {
-    const citados =
-      lei.forma === "continua"
-        ? Object.keys(lei.grupos ?? {})
-        : lei.opcoes.flatMap((o) => Object.keys(o.grupos ?? {}));
-    for (const g of citados)
-      if (!ids.includes(g)) return `lei ${lei.id}: grupo "${g}" não existe`;
-  }
+  if (new Set(ids).size !== ids.length) return "grupo repetido";
   return null;
 }
 
@@ -92,31 +97,67 @@ export function rendaDoGrupo(
   return { pessoas, renda_real: ((renda / pessoas) * 100) / indice_precos };
 }
 
+/**
+ * Onde a lei fica na bússola com este valor. Lei contínua: na reta entre o
+ * mínimo e o máximo da faixa (não legislada = mínimo). Lei de opções: a
+ * posição da opção (nenhuma = sem posição). Null: a lei não tem posição.
+ */
+export function posicaoDaLei(
+  lei: Lei,
+  valor: ValorLei | undefined,
+): PontoBussola | null {
+  if (lei.forma === "continua") {
+    if (!lei.bussola) return null;
+    const { min, max } = lei.faixa;
+    const t = (((valor as number | undefined) ?? min) - min) / (max - min);
+    const ponto: PontoBussola = {};
+    for (const eixo of EIXOS) {
+      const de = lei.bussola.min[eixo] ?? 0;
+      ponto[eixo] = de + t * ((lei.bussola.max[eixo] ?? 0) - de);
+    }
+    return ponto;
+  }
+  return lei.opcoes.find((o) => o.id === valor)?.bussola ?? null;
+}
+
+/**
+ * Pontos que a lei dá ao grupo ao ir de `antes` para `agora`: eixo por eixo,
+ * o quanto ela se aproximou dele × o peso do eixo × 50, até ±15.
+ */
+export function pontosLei(
+  tipo: TipoGrupo,
+  lei: Lei,
+  agora: ValorLei | undefined,
+  antes: ValorLei | undefined,
+): number {
+  const de = posicaoDaLei(lei, antes);
+  const para = posicaoDaLei(lei, agora);
+  let pontos = 0;
+  for (const eixo of EIXOS) {
+    const peso = tipo.peso[eixo] ?? 0;
+    if (!peso) continue;
+    const g = tipo.bussola[eixo] ?? 0;
+    // sem posição (opção sem bússola): não puxa o grupo para lado nenhum
+    const longe = (p: PontoBussola | null) =>
+      p ? Math.abs((p[eixo] ?? 0) - g) : null;
+    const d0 = longe(de);
+    const d1 = longe(para);
+    if (d0 === null || d1 === null) continue;
+    pontos += (d0 - d1) * peso * PONTOS_EIXO;
+  }
+  return prender(pontos, -LIMITE_LEI, LIMITE_LEI);
+}
+
 /** Pontos que as leis dão ao grupo, contra o marco. */
 export function pontosLeis(
-  grupo: string,
+  tipo: TipoGrupo,
   leis: Record<string, Lei>,
   agora: Record<string, ValorLei>,
   marco: Record<string, ValorLei>,
 ): number {
   let pontos = 0;
-  for (const lei of Object.values(leis)) {
-    if (lei.forma === "continua") {
-      const quer = lei.grupos?.[grupo];
-      if (!quer) continue;
-      const { min, max } = lei.faixa;
-      const valor = (agora[lei.id] as number | undefined) ?? min;
-      const antes = (marco[lei.id] as number | undefined) ?? min;
-      const sentido = quer === "mais" ? 1 : -1;
-      pontos += (sentido * (valor - antes) * PONTOS_FAIXA) / (max - min);
-    } else {
-      const nota = (opcao: ValorLei | undefined) => {
-        const g = lei.opcoes.find((o) => o.id === opcao)?.grupos?.[grupo];
-        return g ? NOTA[g] : 0;
-      };
-      pontos += (nota(agora[lei.id]) - nota(marco[lei.id])) * PONTOS_OPCAO;
-    }
-  }
+  for (const lei of Object.values(leis))
+    pontos += pontosLei(tipo, lei, agora[lei.id], marco[lei.id]);
   return pontos;
 }
 
@@ -137,7 +178,7 @@ export function satisfacao(
       -LIMITE_INDICE,
       LIMITE_INDICE,
     );
-  pontos += pontosLeis(tipo.id, leis, vigentes, marco.leis);
+  pontos += pontosLeis(tipo, leis, vigentes, marco.leis);
   return prender(NEUTRO + pontos, 0, 100);
 }
 

@@ -110,6 +110,8 @@ function carregarGrupos(): TipoGrupo[] {
       id: g.id,
       membros: g.membros as Record<string, number>,
       cobra: g.cobra as TipoGrupo["cobra"],
+      bussola: g.bussola,
+      peso: g.peso,
     };
   });
 }

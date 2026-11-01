@@ -6,6 +6,16 @@ import type { Estrato } from "../populacao";
 export const FORCAS = ["fraca", "media", "forte"] as const;
 export type Forca = (typeof FORCAS)[number];
 
+/** Posição na bússola, de −1 a +1; eixo ausente = 0 (motor/grupos). */
+export interface PontoBussola {
+  /** Esquerda (−) ↔ direita (+). */
+  economico?: number;
+  /** Verde, libertário (−) ↔ tradicional, autoritário (+). */
+  social?: number;
+}
+
+export const EIXOS = ["economico", "social"] as const;
+
 export const CAMADAS = ["essencial", "jogabilidade"] as const;
 export type Camada = (typeof CAMADAS)[number];
 
@@ -35,15 +45,15 @@ export interface LeiContinua extends LeiBase {
   conta?: "gasto";
   /** Lei de gasto que vira renda de um estrato de pops (motor/populacao). */
   para?: { estrato: Estrato };
-  /** O que cada grupo quer desta lei (motor/grupos). */
-  grupos?: Record<string, "mais" | "menos">;
+  /** Posição na bússola no mínimo e no máximo da faixa (motor/grupos). */
+  bussola?: { min: PontoBussola; max: PontoBussola };
   efeitos: Efeito[];
 }
 
 export interface Opcao {
   id: string;
-  /** Grupos que apoiam ou rejeitam esta opção (motor/grupos). */
-  grupos?: Record<string, "apoia" | "rejeita">;
+  /** Posição desta opção na bússola (motor/grupos). */
+  bussola?: PontoBussola;
   /** Duração do mandato, na lei de mandato (motor/eleicao). */
   mandato_anos?: number;
   efeitos: Efeito[];

@@ -3,6 +3,8 @@
   "grupos": [
     {
       "id": "trabalhadores",
+      "bussola": { "economico": -0.5, "social": 0.2 },
+      "peso": { "economico": 1, "social": 0.4 },
       "nome": "Trabalhadores",
       "membros": { "informais": 1, "operarios": 1, "campo": 1 },
       "cobra": [
@@ -14,6 +16,8 @@
     },
     {
       "id": "classe-media",
+      "bussola": { "economico": 0.2, "social": 0.3 },
+      "peso": { "economico": 0.5, "social": 0.3 },
       "nome": "Classe média",
       "membros": { "servidores": 1, "classe-media": 1 },
       "cobra": [
@@ -25,6 +29,8 @@
     },
     {
       "id": "empresarios",
+      "bussola": { "economico": 0.7, "social": 0 },
+      "peso": { "economico": 1, "social": 0.2 },
       "nome": "Empresários",
       "membros": { "empresarios": 1 },
       "cobra": [
@@ -35,6 +41,8 @@
     },
     {
       "id": "ambientalistas",
+      "bussola": { "economico": -0.2, "social": -0.7 },
+      "peso": { "economico": 0.3, "social": 1 },
       "nome": "Ambientalistas",
       "membros": {
         "informais": 0.02,

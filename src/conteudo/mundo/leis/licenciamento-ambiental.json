@@ -9,7 +9,7 @@
     {
       "id": "frouxo",
       "rotulo": "Licença simples",
-      "grupos": { "empresarios": "apoia", "ambientalistas": "rejeita" },
+      "bussola": { "economico": 0.4, "social": 0.3 },
       "efeitos": [
         {
           "indice": "industrializacao",
@@ -31,11 +31,11 @@
         }
       ]
     },
-    { "id": "normal", "efeitos": [] },
+    { "id": "normal", "bussola": {}, "efeitos": [] },
     {
       "id": "rigoroso",
       "rotulo": "Licença rigorosa com consulta",
-      "grupos": { "empresarios": "rejeita", "ambientalistas": "apoia" },
+      "bussola": { "economico": -0.3, "social": -0.6 },
       "efeitos": [
         {
           "indice": "meio_ambiente",

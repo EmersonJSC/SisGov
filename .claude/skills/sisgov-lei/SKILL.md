@@ -40,6 +40,11 @@ description: Use when writing, reviewing or changing a SisGov law JSON in src/co
   (ex.: alíquota do imposto de renda × progressividade).
 - Gasto é lei contínua em % do PIB; público e privado são esferas separadas,
   cada uma com a sua lei (escopo, seção 11).
+- **Bússola, nunca grupo:** a lei diz onde fica (`bussola`, eixos
+  `economico` esquerda − ↔ direita + e `social` verde/libertário − ↔
+  tradicional/autoritário +, de −1 a +1): `min`/`max` na lei contínua, um
+  ponto por opção. Nunca citar grupo na lei; quem gosta sai da distância
+  (`src/motor/grupos/grupos.md`). Meio ambiente fica no lado − do social.
 - Lei inventada vale se for plausível; número na ordem de grandeza certa.
 
 ## Conferir

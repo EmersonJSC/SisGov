@@ -8,10 +8,23 @@ Um **grupo** lê os pops. Os tipos de grupo são do mundo
 - `cobra`: índices (essenciais ou de jogabilidade) e o sentido que o grupo
   quer (`1` = subir, `-1` = descer).
 
-A lei declara o que cada grupo quer dela (passo 7b, 01/nov/2026):
+- `bussola`: posição do grupo em dois eixos, de −1 a +1, e `peso` de cada
+  eixo (0 a 1, o quanto o grupo liga para ele):
+  - `economico`: esquerda (−) ↔ direita (+);
+  - `social`: verde, libertário (−) ↔ tradicional, autoritário (+). O meio
+    ambiente mora aqui, do lado de baixo (eixo GAL-TAN da pesquisa Chapel
+    Hill; decidido com o autor em 01/nov/2026).
 
-- lei contínua: `"grupos": { "<grupo>": "mais" | "menos" }`;
-- lei de opções: cada opção traz `"grupos": { "<grupo>": "apoia" | "rejeita" }`.
+A lei diz **onde fica na bússola**, nunca qual grupo gosta dela (bússola,
+01/nov/2026; substitui a lista `grupos` de cada lei):
+
+- lei contínua: `"bussola": { "min": {…}, "max": {…} }`, a posição no mínimo
+  e no máximo da faixa; o valor de agora fica na reta entre os dois;
+- lei de opções: cada opção traz `"bussola": {…}`;
+- eixo que a lei não cita é 0 nas duas pontas: ninguém reage a ele. Lei sem
+  `bussola` não mexe na ideologia de ninguém (ex.: duração do mandato).
+
+Grupo novo só declara a própria posição; nenhuma lei precisa mudar.
 
 ## Satisfação (0 a 100)
 
@@ -26,11 +39,15 @@ presa entre 0 e 100.
   acima dele, ou a lei que dá renda, sobe a satisfação.
 - **Índices cobrados:** 1 ponto por ponto do índice, no sentido que o grupo
   quer, até ±15 por índice.
-- **Leis contínuas:** o quanto a lei andou da posição do marco, em fração da
-  faixa, × 50 (atravessar a faixa inteira = 50 pontos). Lei não legislada
-  conta como o mínimo da faixa.
-- **Leis de opções:** apoia = +1, rejeita = −1, nada = 0; (nota de agora −
-  nota do marco) × 5.
+- **Leis (bússola):** eixo por eixo, o quanto cada lei **se aproximou** do
+  grupo desde o marco: (distância no marco − distância agora) × peso do
+  eixo × 50. Aproximar soma, afastar tira; um grupo de centro reclama da
+  lei que vai para qualquer ponta. Lei não legislada conta como o mínimo da
+  faixa. Ex.: imposto sobre empresas vai de +0,6 (0%) a −0,6 (60%); subir
+  10 pontos de imposto anda 0,2 para a esquerda; os empresários (+0,7, peso
+  1. perdem 10 pontos, os trabalhadores (−0,5, peso 1) ganham 10. Uma lei
+     só move o grupo no máximo **±15** (como um índice): nenhuma lei sozinha
+     decide o humor de um grupo.
 
 ## Radicais e lealistas (% do grupo)
 
@@ -42,17 +59,39 @@ presa entre 0 e 100.
 
 Uma crise curta não vira revolta; um mandato inteiro de insatisfação vira.
 
-## Comportamento esperado (escrito antes), país de teste, `npm run grupos`
+## Comportamento esperado da bússola (escrito antes), `npm run grupos` e `npm run congresso`
 
-- turno 1 sem mudar nada: todos perto de 50 (só o sorteio do crescimento
-  mexe com os empresários);
-- transferência de renda 2% → 4% do PIB: trabalhadores sobem uns 15 pontos
-  (renda + lei); classe média e empresários quase não mudam no turno 1; no
-  fim do mandato a dívida maior pesa um pouco nos empresários;
-- imposto sobre empresas 25% → 35%: empresários caem uns 8 pontos;
-- áreas protegidas 10% → 20%: ambientalistas sobem (lei + meio ambiente
-  depois do atraso); empresários não mudam;
-- um mandato sem mudar nada: satisfação perto de 50 (o sorteio do
-  crescimento decide se fica um pouco acima ou abaixo); radicais e
-  lealistas ficam em 5. (Antes do passo 9 subia uns 8 pontos só com o
-  tempo, e o governo parado se reelegia.)
+- sem mudar nada: igual a antes (a bússola só conta o que mudou);
+- transferência 2% → 4%: trabalhadores sobem como antes; empresários caem
+  já no turno 1 (antes só caíam no fim, pela dívida); ambientalistas quase
+  não mudam;
+- imposto sobre empresas 25% → 35%: empresários caem uns 10 pontos;
+  trabalhadores sobem um pouco (antes não mexiam);
+- áreas protegidas 10% → 20%: ambientalistas sobem; empresários caem um
+  pouco; classe média quase não muda;
+- pena de morte para crimes graves: classe média sobe, ambientalistas caem
+  (antes ninguém reagia);
+- duração do mandato: ninguém reage;
+- Congresso: o partido vota pelos pontos que a mudança dá aos grupos que
+  ele defende (soma pesada; sinal decide). Transferência 2% → 4% continua
+  passando; o Movimento Verde continua contra o licenciamento frouxo.
+
+Observado (01/nov, com o limite de ±15 por lei, que entrou ao medir: a pena
+de morte tirava 55 pontos dos ambientalistas de uma vez):
+
+- sem mudar nada: igual a antes;
+- transferência 2% → 4%: trabalhadores 68 (como antes), empresários 38 já no
+  turno 1, classe média 45 (está em cima da lei e reclama dos dois lados),
+  ambientalistas 53;
+- imposto sobre empresas 35%: empresários 38, trabalhadores 60 (sobem mais
+  que "um pouco"), classe média 45;
+- áreas protegidas 20%: ambientalistas 61, empresários 44, classe média 45;
+- pena de morte para crimes graves (prévia): ambientalistas −15, classe
+  média +4,5, empresários −3; duração do mandato: ninguém reage;
+- Congresso: transferência 2% → 4% passa com 110 (igual). **Mudou:**
+  imposto de renda 20% → 30% agora passa com 110 (verde e centro votam com
+  o governo: a classe média quase não perde, a lei estava perto dela);
+  licenciamento frouxo passa com 150, os ambientalistas caem a 29 e o verde
+  sai da base no turno 8.
+
+O comportamento de antes da bússola (passo 9) está no git.
