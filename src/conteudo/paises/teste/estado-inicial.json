@@ -36,10 +36,12 @@
   },
   "parametros": {
     "bases": {
-      "renda": { "parcela_pib": 0.5, "pico": 0.5, "evasao": 0.15 }
+      "renda": { "parcela_pib": 0.5, "pico": 0.5, "evasao": 0.15 },
+      "consumo": { "parcela_pib": 0.6, "pico": 0.5, "evasao": 0.2 },
+      "lucro": { "parcela_pib": 0.15, "pico": 0.35, "evasao": 0.2 }
     },
     "crescimento": { "tendencia": 2, "volatilidade": 1.5 },
-    "receita_fora_das_leis": 25,
+    "receita_fora_das_leis": 18.17,
     "gasto_fora_das_leis": 17.5,
     "juros": { "neutro": 4, "tolerancia_divida": 60 }
   }

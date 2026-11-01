@@ -18,6 +18,13 @@ conta. Base nova = entrada nova em `BASES`.
 Simplificado: alíquota única (faixas ficam para "Expande depois"); evasão
 fixa, não reage à alíquota nem à fiscalização ainda.
 
+## consumo e lucro — mesma curva
+
+Mesma conta da renda; muda só o que o país declara. O lucro tem pico mais
+baixo que a renda (a empresa muda de lugar ou esconde o lucro com mais
+facilidade). Na V1 cada base é uma fatia fixa do PIB (`parcela_pib`); com o
+mercado, o motor passa a somar a base dos prédios e dos pops (escopo, seção 11).
+
 ## juros — prêmio pela dívida
 
 `alvo = neutro + inflação + 0,05 × max(0, dívida − tolerância)`

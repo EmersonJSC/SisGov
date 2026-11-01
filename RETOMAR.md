@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1) aberto**, lista
-aprovada, 6a feito.
+aprovada, 6a e 6b feitos.
 
 - Lista aprovada (10 leis): impostos de renda, consumo e empresas; gasto em
   saúde, educação, polícia e transferência de renda; pena de morte, proteção
@@ -22,16 +22,16 @@ aprovada, 6a feito.
 
 ## Próximo
 
-**6a feito** (`npm run gasto`): 4 leis de gasto com `conta: "gasto"`,
-`gasto_fora_das_leis` 17,5 no país de teste; a partida confere que
-`gasto_publico` = leis + fora. Efeito na saúde é pequeno (dobrar o gasto dá
-+2 pontos): calibrar no 6d. **Próximo: proposta do 6b** (impostos de consumo
-e de empresas, bases novas). Depois 6c (opções) e 6d (segundo país e
+**6a** (`npm run gasto`) e **6b** (`npm run impostos`) feitos. 6b: impostos
+sobre consumo e empresas usam a mesma curva da renda (bases `consumo` e
+`lucro`); `receita_fora_das_leis` caiu para 18,17 e a receita inicial segue
+31,8. Efeitos pequenos (consumo 40% tira 2 pontos de padrão de vida):
+calibrar no 6d. **Próximo: proposta do 6c** (proteção ambiental e
+liberdade de imprensa, leis de opções). Depois 6d (segundo país e
 calibração). Tag v0.2 ao fechar o passo 6.
 
 ## Pendências do autor
 
-- Push dos commits de docs das leis (locais).
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas

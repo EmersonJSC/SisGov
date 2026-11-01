@@ -13,7 +13,8 @@
     "check": "npm run format:check && npm run lint && npm run build && npm test",
     "mandato": "vite-node scripts/mandato.ts",
     "contas": "vite-node scripts/contas.ts",
-    "gasto": "vite-node scripts/gasto.ts"
+    "gasto": "vite-node scripts/gasto.ts",
+    "impostos": "vite-node scripts/impostos.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

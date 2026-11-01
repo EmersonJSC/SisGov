@@ -6,6 +6,8 @@
     "gasto-saude": 0.04,
     "gasto-educacao": 0.05,
     "gasto-policia": 0.015,
-    "transferencia-renda": 0.02
+    "transferencia-renda": 0.02,
+    "imposto-consumo": 0.12,
+    "imposto-empresas": 0.25
   }
 }

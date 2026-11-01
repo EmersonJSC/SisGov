@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "id": "imposto-empresas",
+  "camada": "essencial",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.6
+  },
+  "passo": 0.005,
+  "calculo": {
+    "base": "lucro",
+    "modelo": "laffer"
+  },
+  "efeitos": [
+    {
+      "indice": "industrializacao",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}
