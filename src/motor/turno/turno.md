@@ -19,5 +19,9 @@ Ordem (plano, seção 5). Hoje (passo 5):
 | 9   | Política       | pula (passos 8 e 9)                                                                                              |
 | 10  | Invariantes    | números finitos, ocupados ≤ população, índices no domínio, leis válidas, cofre e dívida ≥ 0, contabilidade fecha |
 
+O país declara só as leis que tem. Lei do mundo fora dessa lista fica **não
+legislada**: não arrecada, não gasta, não mexe em índice; um pedido a
+legisla e os efeitos andam de zero até o valor novo.
+
 Comportamento esperado (passo 4): imposto de renda mais alto dá mais
 arrecadação até o pico do país e padrão de vida menor, que chega em 2 turnos.

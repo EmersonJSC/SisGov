@@ -250,10 +250,14 @@ export interface Inicio {
   leis: Record<string, ValorLei>;
 }
 
-/** Estado do turno 0. Confere leis e índices; as leis vigentes já estão inteiras. */
+/**
+ * Estado do turno 0. Confere leis e índices; as leis vigentes já estão
+ * inteiras. Lei do mundo que o país não declarou fica não legislada: não
+ * arrecada, não gasta, não mexe em índice, e pode ser proposta na partida.
+ */
 export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
-  for (const id of Object.keys(regras.leis))
-    if (!(id in inicio.leis)) throw new Error(`país: falta valor da lei ${id}`);
+  for (const id of Object.keys(inicio.leis))
+    if (!(id in regras.leis)) throw new Error(`país: lei "${id}" não existe`);
   for (const id of Object.keys(regras.dominios))
     if (!(id in inicio.jogabilidade))
       throw new Error(`país: falta o índice ${id}`);

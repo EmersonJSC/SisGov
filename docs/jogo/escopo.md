@@ -182,3 +182,11 @@ lidas (tag `projeto-antigo-2026-10-31`).
   outras (verba de publicidade, concessão), criar uma emissora estatal e até
   banir as outras. Substitui a lei única "liberdade de imprensa". É a
   mecânica "mídia" da seção 9 (fora da V1 hoje).
+- **Terras indígenas completas** (01/nov): na V1 é uma lei contínua (% do
+  território demarcado) que só mexe em índices. Depois: povos indígenas e
+  fazendeiros como grupos (passo 7), invasão e conflito de terra, e país
+  sem povos indígenas, onde a lei nem aparece.
+- **Revogar lei e lei que não se aplica ao país** (01/nov): o país declara
+  só as leis que tem; a que falta fica não legislada e o jogador pode
+  propor. Tirar uma lei em vigor (revogar) e esconder lei que não faz
+  sentido no país vêm com o Congresso (passo 8).
