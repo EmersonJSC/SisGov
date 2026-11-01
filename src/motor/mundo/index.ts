@@ -177,7 +177,10 @@ export function posicaoDoPais(
 /** Maior distância possível na bússola: de um canto ao oposto. */
 const DISTANCIA_MAXIMA = 2 * Math.SQRT2;
 
-/** Opinião que a potência gostaria de ter: 100 na mesma posição, 0 no canto oposto. */
+/**
+ * Opinião que a potência gostaria de ter: 100 na mesma posição, 0 no canto
+ * oposto. Curva: perdoa a diferença pequena e despenca perto do oposto.
+ */
 export function opiniaoDesejada(
   potencia: Potencia,
   pais: Required<PontoBussola>,
@@ -186,7 +189,7 @@ export function opiniaoDesejada(
     pais.economico - potencia.bussola.economico,
     pais.social - potencia.bussola.social,
   );
-  return 100 * (1 - d / DISTANCIA_MAXIMA);
+  return 100 * (1 - (d / DISTANCIA_MAXIMA) ** 2);
 }
 
 /** Reputação: média das opiniões pesada pelo `peso` das potências. */

@@ -154,6 +154,18 @@ describe("opinião das potências", () => {
     );
   });
 
+  it("desejada é curva: perdoa o pouco e despenca perto do oposto", () => {
+    const meio = { economico: 0.5, social: 0 };
+    // f = distância ÷ 2√2; 100 × (1 − f²)
+    const em = (f: number) => ({
+      ...meio,
+      economico: 0.5 - f * 2 * Math.SQRT2,
+    });
+    expect(opiniaoDesejada(a, em(0.25))).toBeCloseTo(93.75);
+    expect(opiniaoDesejada(a, em(0.5))).toBeCloseTo(75);
+    expect(opiniaoDesejada(a, em(0.75))).toBeCloseTo(43.75);
+  });
+
   it("anda 10% rumo à desejada por turno", () => {
     const pais = { economico: 0.5, social: 0 };
     expect(andarOpinioes([a], { a: 50 }, pais).a).toBeCloseTo(55);

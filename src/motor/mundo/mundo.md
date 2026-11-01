@@ -34,9 +34,11 @@ repetido.
 - lei que não declara um eixo não entra na média desse eixo; eixo que
   nenhuma lei declara fica em 0. Todas as leis valem igual.
 
-**Opinião desejada** de cada potência = 100 × (1 − distância ÷ 2√2): 100 com
-o país na mesma posição dela, 0 no canto oposto da bússola (distância comum
-nos dois eixos).
+**Opinião desejada** de cada potência = 100 × (1 − f²), onde f = distância ÷
+2√2 (a maior distância possível, de um canto ao oposto). Curva, não reta
+(decidido em 01/nov): 100 com o país na mesma posição, 0 no canto oposto, e
+a potência perdoa a diferença pequena (f = 0,25 dá 94; f = 0,5 dá 75) mas a
+nota despenca perto do oposto (f = 0,75 dá 44).
 
 **Opinião** (0 a 100), uma por potência:
 
