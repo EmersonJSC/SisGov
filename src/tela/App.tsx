@@ -13,6 +13,7 @@ import {
   type Pedido,
 } from "../partida";
 import { Leis } from "./Leis";
+import { Mapa } from "./mapa/Mapa";
 
 const CHAVE = "sisgov-partida";
 
@@ -130,6 +131,8 @@ export function App() {
         <button onClick={() => trocar(null)}>Recomeçar</button>
         {aviso && <span className="aviso"> {aviso}</span>}
       </header>
+
+      <Mapa />
 
       {eleicao && (
         <section className={eleicao.venceu ? "ganhou" : "perdeu"}>

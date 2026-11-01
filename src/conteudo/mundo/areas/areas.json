@@ -1,0 +1,36 @@
+{
+  "versao": 1,
+  "areas": [
+    {
+      "id": "economia",
+      "nome": "Economia",
+      "cor": "#c9951a",
+      "leis": ["imposto-renda", "imposto-consumo", "imposto-empresas"]
+    },
+    {
+      "id": "social",
+      "nome": "Social",
+      "cor": "#3b82c4",
+      "leis": ["gasto-saude", "gasto-educacao", "transferencia-renda"]
+    },
+    {
+      "id": "seguranca",
+      "nome": "Segurança e instituições",
+      "cor": "#8e5ac8",
+      "leis": ["gasto-policia", "pena-de-morte", "duracao-mandato"]
+    },
+    {
+      "id": "ambiente",
+      "nome": "Meio ambiente",
+      "cor": "#3a9d5d",
+      "leis": [
+        "imposto-poluicao",
+        "licenciamento-ambiental",
+        "areas-protegidas",
+        "policia-ambiental",
+        "terras-indigenas",
+        "saneamento-basico"
+      ]
+    }
+  ]
+}

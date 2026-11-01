@@ -7,25 +7,26 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 10 (Tela) fechado em 01/nov; versão 1.0 completa, tag `v1.0`
-criada (sem push).**
-Tela simples em React (`npm run dev`): escolher país e semente, grupos,
-índices, leis com controle para propor, fila de pedidos, votação do
-Congresso e resultado da eleição. Salvar e carregar no navegador
-(`src/partida/salvar.ts`, texto JSON com país, semente e estado). Jogada uma
-partida inteira na tela: parado perde em 24 turnos e a partida encerra;
-transferência de renda vence e segue.
+Versão 1.0 completa e enviada (`v1.0`). Nova frente, decidida pelo autor:
+**a tela passa a seguir o mapa antigo**, no desenho de
+`docs/jogo/interface/mapa-em-tres-aneis.md` (vale este, não a esfera que abre).
+**Fatia 1 feita:** mapa estático em três anéis na tela (`src/tela/mapa/`):
+leis em fatias por área, índices de jogabilidade, grupos. Quatro áreas em
+`src/conteudo/mundo/areas/areas.json` (cada área lista os ids das leis).
+Layout puro e testado (`layout.ts`); `src/partida/mapa.ts` entrega a estrutura
+do mundo (`mapaDoMundo`). Comportamento em `src/tela/mapa/mapa.md`. Falta
+commitar.
 
 ## Próximo
 
-Conversar com o autor sobre o que vem depois da 1.0
-(plano, seção 9; seção 11 do escopo guarda as ideias). O push do commit e da
-tag `v1.0` espera a palavra do autor.
+Fatia 2: **linhas só no foco** (passar o mouse numa lei acende lei → índice →
+grupo) e clicar na lei abre a régua para propor o pedido; aí o mapa substitui
+a tabela de leis. Proposta curta ao autor antes.
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
-- A tela é a versão simples: o autor decide o que melhorar primeiro.
+- Decidir depois: mais leis e revogar lei (frente A) vs. seguir só a tela.
 
 ## Armadilhas
 
@@ -36,7 +37,8 @@ tag `v1.0` espera a palavra do autor.
 - Importar um script de outro script imprime a saída dele: não importar `mandato.ts` em outro script.
 - `import.meta.glob` precisa de `src/vite-env.d.ts`.
 - `0.6 × 1/3` dá 0,1999… no computador: comparação de limite precisa de folga.
-- `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (não mexer): adicionar arquivo por arquivo.
+- `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (agora é a referência da tela; ainda sem commit): adicionar arquivo por arquivo.
 - Grupos medem renda contra o crescimento esperado (`esperado` em `calcularGrupos`); mexer na tendência do país muda a satisfação de todos.
 - A tela só lê/chama `src/partida`; salvar guarda país+semente+estado, as regras voltam do conteúdo.
 - Renomear arquivo que o `main.tsx` importa exige `touch src/main.tsx` com o Vite rodando (cache).
+- O layout do mapa antigo (1400 linhas, `VisaoPartida`) não foi trazido: a ideia veio, o código foi escrito de novo e curto. O antigo está na tag `projeto-antigo-2026-10-31`.

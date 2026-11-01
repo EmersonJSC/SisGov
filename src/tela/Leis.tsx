@@ -1,6 +1,6 @@
 import type { Partida, Pedido } from "../partida";
 
-const nomeDaLei = (id: string) => {
+export const nomeDaLei = (id: string) => {
   const t = id.replace(/-/g, " ");
   return t[0].toUpperCase() + t.slice(1);
 };

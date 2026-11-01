@@ -50,3 +50,38 @@ button.passar {
   font-size: 1.1em;
   padding: 8px 20px;
 }
+
+.mapa {
+  width: 100%;
+  max-width: 960px;
+  display: block;
+  margin: 0 auto;
+}
+.mapa-anel {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.15;
+  stroke-dasharray: 4 6;
+}
+.mapa-fatia {
+  fill-opacity: 0.18;
+}
+.mapa-presidencia {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.4;
+}
+.mapa-presidencia-texto {
+  font-size: 18px;
+  fill: currentColor;
+}
+.mapa-rotulo {
+  font-size: 16px;
+  fill: currentColor;
+}
+.mapa-indice {
+  fill: #888;
+}
+.mapa-grupo {
+  fill: #c0392b;
+}
