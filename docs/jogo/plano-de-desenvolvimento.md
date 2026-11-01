@@ -10,8 +10,10 @@
   4 (turno mínimo; versão 0.1), 5 (contas), 6 (leis da V1; versão 0.2) e
   7 (população e grupos), 8 (Congresso; versão 0.3) e 9 (eleição e
   desgaste; versão 0.4) e 10 (tela e salvar; versão 1.0).
-- **Próximo:** a seção 9 define o que vem depois da 1.0 (conversar com o
-  autor).
+- **Depois da 1.0, feito:** o mapa como única tela e a bússola política
+  (leis e grupos em dois eixos).
+- **Próximo:** passo 11, o mundo (proposta abaixo, espera o sim do autor).
+  Depois o 12 (mercado) e o 13 (leis em pacotes).
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -128,6 +130,43 @@ desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
 | Salvar e carregar em `partida/` | partida salva volta igual |
 
 **Expande depois:** tela elaborada, gráficos, mapa, arte.
+
+### Passo 11 — Mundo ⬅ próximo (proposta, falta o sim)
+
+O mercado vem depois do mundo: todo país disputa o mesmo mercado, então
+antes é preciso existir quem está do outro lado (01/nov, autor).
+
+| Começa com | Pronto quando |
+|---|---|
+| O mundo declara as **grandes potências**, sem nome de país real: posição na bússola, peso e a relação de cada uma com as outras | o validador recusa potência sem posição ou relação com potência que não existe |
+| Cada potência tem uma **opinião sobre o seu país**; o país declara a de partida | — |
+| A opinião anda pela bússola, como os grupos: lei que aproxima o país da potência sobe a opinião, a que afasta desce | script (`npm run mundo`): uma lei mudada move a opinião de cada potência na direção certa |
+| O mapa mostra as potências e a opinião de cada uma | conferido na tela |
+
+**Fica de fora:** comércio, acordos, sanções, guerra, potência que muda de
+posição sozinha.
+
+### Passo 12 — Mercado
+
+| Começa com | Pronto quando |
+|---|---|
+| Os **produtos** são do mundo, agrupados em setores; um só mercado para todos os países, como o das potências | o validador recusa produto sem setor |
+| O país declara **o que produz** e o que não produz | — |
+| Cada produto tem fábricas no país; os **pops trabalham nelas** e recebem salário; o lucro vai para os donos | `npm run pops`: a renda de cada pop vem das fábricas onde ele trabalha |
+| **Preço fixo** no começo (aprovado em 01/nov) | o PIB é a soma do que as fábricas produzem |
+| A base dos impostos sai das fábricas e dos pops, não de uma fatia fixa declarada pelo país | as contas fecham como hoje |
+
+**Expande depois:** preço por oferta e procura no mercado do mundo;
+importar e exportar; insumos (produto que usa outro); construção estatal
+ou privada; leis que fortalecem todos os produtos ou só alguns, para o país
+se desenvolver e depender ou não de outros países; gente que muda de pop.
+
+### Passo 13 — Leis em pacotes
+
+Cada tema vira um pacote de leis pequenas, cada uma com reação num grupo
+diferente. Um pacote por vez, na ordem do autor. A lista está na seção 11
+do escopo ("Leis em pacotes"): imposto de renda, armas, corrupção, direitos,
+drogas, ensino e as leis de economia, estas desenhadas com o mercado.
 
 ## 4. Camadas
 

@@ -125,6 +125,9 @@ Tela elaborada (vem por último), ministros, dilemas e eventos, bússola
 ideológica, mídia e redes, mercado do Victoria 3, escolha de país, STF,
 pesquisa e tecnologia, regime de partido único.
 
+Depois da 1.0 (01/nov, autor): a bússola já entrou; o mundo e o mercado
+viraram os passos 11 e 12 (seção 10).
+
 ## 10. Ordem de construção
 
 Um passo por vez. Cada passo só fecha quando o critério de pronto roda.
@@ -143,6 +146,9 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 8 | Congresso | ✅ 01/nov — partidos do país votam cada mudança de lei pelos grupos que defendem; mais de 1/3 da faixa num pedido é exorbitante e cai; partido da base com os grupos abaixo de 35 sai da coligação (`npm run congresso`) |
 | 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
 | 10 | Tela | ✅ 01/nov — tela simples em React (`npm run dev`): país e semente, grupos, índices, leis com controle para propor, fila de pedidos, votação do Congresso, resultado da eleição; salvar e carregar no navegador (`partida/salvar.ts`). Partida inteira jogada na tela até a eleição |
+| 11 | Mundo | grandes potências sem nome real, com relação entre si e opinião sobre o seu país que anda pela bússola |
+| 12 | Mercado | produtos do mundo em setores, um mercado para todos os países; o país declara o que produz; pops trabalham nas fábricas; preço fixo no começo |
+| 13 | Leis em pacotes | um pacote por vez (seção 11, "Leis em pacotes") |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
 lidas (tag `projeto-antigo-2026-10-31`).
