@@ -72,8 +72,17 @@ export function paisesDisponiveis(): string[] {
   ];
 }
 
-export function criarPartida(pais: string, semente: number): Partida {
-  const inicial = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
+/** `ajustes` troca essenciais declarados pelo país (cenários de script). */
+export function criarPartida(
+  pais: string,
+  semente: number,
+  ajustes: Partial<IndicesEssenciais> = {},
+): Partida {
+  const declarado = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
+  const inicial = {
+    ...declarado,
+    essenciais: { ...declarado.essenciais, ...ajustes },
+  };
   const vigentes = arquivoPais<LeisVigentes>(pais, "leis-vigentes");
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")

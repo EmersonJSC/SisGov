@@ -161,9 +161,37 @@
       }
     },
     {
+      "id": "juros_pagos",
+      "tipo": "calculado",
+      "nome": "Juros pagos",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Contas",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "juros pagos sobre a dívida (% do PIB)"
+      }
+    },
+    {
+      "id": "resultado_primario",
+      "tipo": "calculado",
+      "nome": "Resultado primário",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {},
+      "area": "Contas",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "receita − gasto (% do PIB)"
+      }
+    },
+    {
       "id": "resultado_fiscal",
       "tipo": "calculado",
-      "nome": "Resultado",
+      "nome": "Resultado nominal",
       "camada": "essencial",
       "unidade": "percentual_pib",
       "dominio": {},
@@ -171,6 +199,21 @@
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "receita − gasto − juros (% do PIB)"
+      }
+    },
+    {
+      "id": "cofre",
+      "tipo": "estoque",
+      "nome": "Cofre",
+      "camada": "essencial",
+      "unidade": "percentual_pib",
+      "dominio": {
+        "minimo": 0
+      },
+      "area": "Contas",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "dinheiro guardado no Tesouro (% do PIB)"
       }
     },
     {
@@ -201,7 +244,7 @@
       "area": "Contas",
       "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "juros pagos sobre a dívida (% ao ano)"
+        "unidade": "taxa de juros da dívida (% ao ano)"
       }
     },
     {

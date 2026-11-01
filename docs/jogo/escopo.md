@@ -122,7 +122,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 2b | Fundação | ✅ 31/out — pastas das camadas, fronteiras no lint, `npm run check` verde ([plano](plano-de-desenvolvimento.md)) |
 | 3 | Modelo de lei | ✅ 31/out — imposto de renda (contínua, base `renda` com Laffer e evasão; pico declarado pelo país) e pena de morte (opções); validador |
 | 4 | Turno mínimo | ✅ 31/out — `npm run mandato`: força do efeito fraca/média/forte = 1/3/6 pontos (tamanho inteiro, chega ao longo do atraso). Script joga um mandato; a lei em três valores dá três países diferentes, na direção que a lei promete |
-| 5 | Contas | Receita − gasto − juros move a dívida; dívida alta sobe juros |
+| 5 | Contas | ✅ 01/nov — `npm run contas`: receita, gasto, juros, cofre e dívida separados; sobra vai ao cofre (abater dívida é lei futura); dívida acima da tolerância do país sobe os juros |
 | 6 | Leis da V1 | Cada lei com comportamento esperado escrito antes e conferido por script |
 | 7 | Grupos | Leis e índices movem satisfação, radicais e lealistas de cada grupo |
 | 8 | Congresso | Lei só muda com voto; o exorbitante é barrado; base e oposição reagem |
@@ -137,3 +137,10 @@ lidas (tag `projeto-antigo-2026-10-31`).
 - Quanto o eleitor percebe o déficit como parâmetro do país: em democracias
   consolidadas déficit pré-eleição não ajuda a reeleger; em novas, ajuda
   (Brender & Drazen, 2008).
+- **Calote** (01/nov): o jogador pode deixar de pagar a dívida; juros
+  explodem, crédito some, reputação internacional cai, grupos reagem.
+  Depende de grupos (passo 7) e Congresso (passo 8).
+- **Inflação que se move** (01/nov): hoje é o número fixo do país. Vem com
+  emissão de moeda: acabou o cofre, o governo escolhe dívida ou moeda.
+- **Regra fiscal** (01/nov): lei que decide quanto da sobra do cofre abate
+  a dívida.

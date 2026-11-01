@@ -17,3 +17,20 @@ conta. Base nova = entrada nova em `BASES`.
 
 Simplificado: alíquota única (faixas ficam para "Expande depois"); evasão
 fixa, não reage à alíquota nem à fiscalização ainda.
+
+## juros — prêmio pela dívida
+
+`alvo = neutro + inflação + 0,05 × max(0, dívida − tolerância)`
+
+- `neutro`: juro real neutro do país (% ao ano), declarado pelo país.
+- `tolerância`: dívida (% do PIB) que o mercado aceita sem cobrar prêmio,
+  declarada pelo país. Países com histórico de calote toleram menos dívida
+  ("intolerância à dívida", Reinhart, Rogoff & Savastano, 2003, _BPEA_ 2003(1)).
+- Prêmio de 5 pontos-base por ponto de dívida acima da tolerância: ordem de
+  grandeza das estimativas de 3 a 5 pb (Laubach, 2009, _JEEA_ 7(4)), no
+  topo da faixa porque o jogo começa por países emergentes.
+- A taxa não pula: anda 20% do caminho até o alvo por turno (suavização da
+  política monetária, Clarida, Galí & Gertler, 2000, _QJE_ 115(1)).
+
+Simplificado: uma taxa só para o Banco Central e para a dívida inteira; sem
+prazo da dívida; prêmio linear (sem crise de confiança).

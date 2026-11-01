@@ -2,7 +2,13 @@
 // anterior. Ordem fixa (plano, seção 5); etapa que ainda não existe pula.
 // O acaso mora no estado (motor/acaso). Comportamento em turno.md.
 import { semear, sortearNormal } from "../acaso";
-import { BASES, ehBase } from "../calculos";
+import { BASES, ehBase, proximaTaxa, taxaAlvo } from "../calculos";
+import {
+  fecharTurno,
+  motivoContaNaoFecha,
+  type Fluxos,
+  type Tesouro,
+} from "../contas";
 import { enfileirar, envelhecer, filaInicial, somaPorIndice } from "../efeitos";
 import type { Estado, IndicesEssenciais } from "../estado";
 import { motivoValorInvalido, type ValorLei } from "../leis";
@@ -40,6 +46,10 @@ const efeitosVencem: Etapa = (_, estado) => ({
   efeitos: envelhecer(estado.efeitos),
 });
 
+/** Taxa anual (%) aplicada a um turno. */
+const doTurno = (anualPct: number) =>
+  Math.pow(1 + anualPct / 100, 1 / TURNOS_POR_ANO);
+
 /** 4. Economia real, por enquanto só o sorteio do crescimento. */
 const economiaReal: Etapa = (regras, estado) => {
   const { tendencia, volatilidade } = regras.pais.crescimento;
@@ -52,14 +62,28 @@ const economiaReal: Etapa = (regras, estado) => {
     essenciais: {
       ...e,
       crescimento_real: anual,
-      pib_nominal:
-        e.pib_nominal * Math.pow(1 + anual / 100, 1 / TURNOS_POR_ANO),
+      pib_nominal: e.pib_nominal * doTurno(anual),
     },
   };
 };
 
-/** 5. Preços e juros: passo 5. */
-const precosEJuros = pular;
+/**
+ * 5. Preços e juros: a inflação (ainda fixa, do país) sobe os preços e o PIB
+ * nominal; a taxa de juros anda rumo ao alvo dado pela dívida.
+ */
+const precosEJuros: Etapa = (regras, estado) => {
+  const e = estado.essenciais;
+  const alvo = taxaAlvo(e.divida_publica, e.inflacao, regras.pais.juros);
+  return {
+    ...estado,
+    essenciais: {
+      ...e,
+      indice_precos: e.indice_precos * doTurno(e.inflacao),
+      pib_nominal: e.pib_nominal * doTurno(e.inflacao),
+      taxa_juros: proximaTaxa(e.taxa_juros, alvo),
+    },
+  };
+};
 
 /** Arrecadação das leis com cálculo, em % do PIB nominal. */
 function arrecadacao(
@@ -85,14 +109,49 @@ function arrecadacao(
   return (total / e.pib_nominal) * 100;
 }
 
-/** 6. Contas: por enquanto só a arrecadação; dívida e juros no passo 5. */
-const contas: Etapa = (regras, estado) => ({
-  ...estado,
-  essenciais: {
-    ...estado.essenciais,
-    arrecadacao: arrecadacao(regras, estado.leis, estado.essenciais),
-  },
-});
+/** Receita, gasto e juros de um turno, na moeda do país. */
+function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
+  const e = estado.essenciais;
+  const receitaPct =
+    arrecadacao(regras, estado.leis, e) + regras.pais.receita_fora_das_leis;
+  const pibTurno = e.pib_nominal / TURNOS_POR_ANO;
+  return {
+    receita: (receitaPct / 100) * pibTurno,
+    gasto: (e.gasto_publico / 100) * pibTurno,
+    juros: ((e.taxa_juros / 100) * estado.tesouro.divida) / TURNOS_POR_ANO,
+  };
+}
+
+/** Contas em % do PIB nominal; fluxos anualizados. */
+function mostrarContas(
+  e: IndicesEssenciais,
+  fluxos: Fluxos,
+  tesouro: Tesouro,
+): IndicesEssenciais {
+  const pct = (v: number) => (v / e.pib_nominal) * 100;
+  const anual = (v: number) => pct(v * TURNOS_POR_ANO);
+  return {
+    ...e,
+    arrecadacao: anual(fluxos.receita),
+    gasto_publico: anual(fluxos.gasto),
+    juros_pagos: anual(fluxos.juros),
+    resultado_primario: anual(fluxos.receita - fluxos.gasto),
+    resultado_fiscal: anual(fluxos.receita - fluxos.gasto - fluxos.juros),
+    cofre: pct(tesouro.cofre),
+    divida_publica: pct(tesouro.divida),
+  };
+}
+
+/** 6. Contas: receita, gasto e juros fecham o turno no cofre e na dívida. */
+const contas: Etapa = (regras, estado) => {
+  const fluxos = fluxosDoTurno(regras, estado);
+  const tesouro = fecharTurno(estado.tesouro, fluxos);
+  return {
+    ...estado,
+    tesouro,
+    essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
+  };
+};
 
 function jogabilidade(regras: Regras, estado: Estado) {
   const soma = somaPorIndice(estado.efeitos);
@@ -123,6 +182,8 @@ const invariantes: Etapa = (regras, estado) => {
     if (!Number.isFinite(v)) falhas.push(`${id} não é número finito`);
   if (estado.essenciais.ocupados > estado.essenciais.populacao)
     falhas.push("ocupados > população");
+  if (estado.tesouro.cofre < 0) falhas.push("cofre negativo");
+  if (estado.tesouro.divida < 0) falhas.push("dívida negativa");
   for (const [id, v] of Object.entries(estado.jogabilidade)) {
     const { min, max } = regras.dominios[id];
     if (!(v >= min && v <= max)) falhas.push(`${id} fora de ${min}–${max}`);
@@ -157,7 +218,11 @@ export function avancarTurno(
   pedidos: Pedido[] = [],
 ): Estado {
   const proximo = { ...estado, turno: estado.turno + 1 };
-  return ETAPAS.reduce((e, etapa) => etapa(regras, e, pedidos), proximo);
+  const novo = ETAPAS.reduce((e, etapa) => etapa(regras, e, pedidos), proximo);
+  // Parte da etapa 10: precisa do estado anterior.
+  const motivo = motivoContaNaoFecha(estado.tesouro, novo.tesouro);
+  if (motivo) throw new Error(`invariante no turno ${novo.turno}: ${motivo}`);
+  return novo;
 }
 
 export interface Inicio {
@@ -184,14 +249,30 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   for (const [id, v] of Object.entries(inicio.jogabilidade))
     base[id] = v - (soma[id] ?? 0);
 
+  const { pib_nominal, cofre, divida_publica } = inicio.essenciais;
+  const tesouro: Tesouro = {
+    cofre: (cofre / 100) * pib_nominal,
+    divida: (divida_publica / 100) * pib_nominal,
+    resultado: 0,
+  };
   const estado: Estado = {
     turno: 0,
     acaso: semear(inicio.semente),
     essenciais: { ...inicio.essenciais },
+    tesouro,
     jogabilidade: { ...inicio.jogabilidade },
     base,
     leis: { ...inicio.leis },
     efeitos,
   };
-  return invariantes(regras, contas(regras, estado, []), []);
+  // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
+  const fluxos = fluxosDoTurno(regras, estado);
+  return invariantes(
+    regras,
+    {
+      ...estado,
+      essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
+    },
+    [],
+  );
 }

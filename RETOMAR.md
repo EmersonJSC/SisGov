@@ -7,24 +7,27 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passos 2b, 3 e **4 fechados: versão 0.1** (um mandato jogado por script),
-com tag `v0.1` e enviada ao GitHub.
+Versão 0.1 com tag e no GitHub. **Passo 5 (Contas) fechado.**
 
-- `src/motor/turno`: `avancarTurno(regras, estado, pedidos)`, 10 etapas;
-  as vazias pulam (`turno.md` diz o que cada uma faz hoje).
-- `src/motor/efeitos`: força fraca/média/forte = 1/3/6 pontos, **tamanho
-  inteiro** do efeito, que chega em linha reta ao longo do atraso.
-- `src/motor/acaso`: semente no estado; mesma semente, mesma partida.
-- `src/conteudo/paises/teste/`: país inventado (pico 0,5).
-- `npm run mandato`: IR 10/30/50% → arrecadação sobe, padrão de vida cai.
+- `src/motor/contas`: receita, gasto, juros, cofre e dívida separados;
+  sobra vai ao cofre, falta sai do cofre e depois vira dívida; invariante
+  "contabilidade fecha" todo turno.
+- `src/motor/calculos/juros.ts`: alvo = neutro + inflação + prêmio acima da
+  tolerância de dívida do país; a taxa anda 20% do caminho por turno.
+- País declara `receita_fora_das_leis` (teste: 25% do PIB), o imposto que
+  ainda não virou lei.
+- Inflação ainda fixa, mas já sobe preços e PIB nominal.
+- `npm run contas` mostra tudo; calote, inflação que se move e regra fiscal
+  foram para a seção 11 do escopo.
 
 ## Próximo
 
-**Passo 5, Contas**: proposta curta para o autor aprovar
-(receita − gasto − juros → dívida; juros sobem com a dívida).
+**Passo 6, Leis da V1**: propor ao autor a lista curta de leis (só JSON);
+cada imposto tira a sua parte de `receita_fora_das_leis`.
 
 ## Pendências do autor
 
+- Push do passo 5 (commit local).
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 
 ## Armadilhas
@@ -33,5 +36,6 @@ com tag `v0.1` e enviada ao GitHub.
 - `pkill -f` mata o próprio shell; `sleep` no Bash é bloqueado.
 - O vitest só procura teste em `src/` e `scripts/`; sem isso roda os testes antigos de `arquivo/` e trava.
 - `vite-node` não roda arquivo fora do projeto (fs.allow) nem passa o arquivo no `argv`; script que também é importado por teste usa `import.meta.env.MODE !== "test"`.
+- Importar um script de outro script imprime a saída dele: não importar `mandato.ts` em outro script.
 - `import.meta.glob` precisa de `src/vite-env.d.ts`.
 - `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (não mexer): adicionar arquivo por arquivo.

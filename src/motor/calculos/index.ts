@@ -24,3 +24,10 @@ export function ehBase(id: string): id is IdBase {
 
 export { arrecadacaoRenda, elasticidadeDoPico, PADRAO_RENDA } from "./renda";
 export type { ParametrosRenda } from "./renda";
+export {
+  AJUSTE_POR_TURNO,
+  PREMIO_POR_PONTO,
+  proximaTaxa,
+  taxaAlvo,
+} from "./juros";
+export type { ParametrosJuros } from "./juros";

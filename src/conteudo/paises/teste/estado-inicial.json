@@ -12,7 +12,10 @@
     "pib_nominal": 2000000000000,
     "arrecadacao": 0,
     "gasto_publico": 30,
-    "resultado_fiscal": -2,
+    "juros_pagos": 0,
+    "resultado_primario": 0,
+    "resultado_fiscal": 0,
+    "cofre": 2,
     "divida_publica": 60,
     "taxa_juros": 8
   },
@@ -35,6 +38,8 @@
     "bases": {
       "renda": { "parcela_pib": 0.5, "pico": 0.5, "evasao": 0.15 }
     },
-    "crescimento": { "tendencia": 2, "volatilidade": 1.5 }
+    "crescimento": { "tendencia": 2, "volatilidade": 1.5 },
+    "receita_fora_das_leis": 25,
+    "juros": { "neutro": 4, "tolerancia_divida": 60 }
   }
 }

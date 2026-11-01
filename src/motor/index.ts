@@ -3,6 +3,7 @@
 // (docs/jogo/plano-de-desenvolvimento.md, seção 4).
 export * from "./acaso";
 export * from "./calculos";
+export * from "./contas";
 export * from "./efeitos";
 export * from "./estado";
 export * from "./leis";

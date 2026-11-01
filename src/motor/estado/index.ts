@@ -2,6 +2,7 @@
 // jogabilidade ficam no JSON do mundo. Unidade de cada um em
 // src/conteudo/mundo/indicadores/variaveis.json.
 import type { Acaso } from "../acaso";
+import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
 import type { ValorLei } from "../leis";
 
@@ -16,7 +17,10 @@ export const INDICES_ESSENCIAIS = [
   "pib_nominal",
   "arrecadacao",
   "gasto_publico",
+  "juros_pagos",
+  "resultado_primario",
   "resultado_fiscal",
+  "cofre",
   "divida_publica",
   "taxa_juros",
 ] as const;
@@ -31,6 +35,8 @@ export interface Estado {
   turno: number;
   acaso: Acaso;
   essenciais: IndicesEssenciais;
+  /** Cofre e dívida na moeda do país; os essenciais mostram em % do PIB. */
+  tesouro: Tesouro;
   jogabilidade: Record<string, number>;
   /** Jogabilidade sem as leis: o que sobra tirando as contribuições. */
   base: Record<string, number>;

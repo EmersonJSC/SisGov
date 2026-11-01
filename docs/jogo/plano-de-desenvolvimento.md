@@ -6,9 +6,9 @@
 
 ## 1. Onde estamos e por onde começar
 
-- **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei)
-  e 4 (turno mínimo); versão 0.1 fechada.
-- **Próximo:** passo **5, Contas**.
+- **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),
+  4 (turno mínimo; versão 0.1) e 5 (contas).
+- **Próximo:** passo **6, Leis da V1**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -67,21 +67,21 @@ faixas (imposto progressivo); efeito condicional ("só se desemprego > X").
 **Expande depois:** histórico completo para gráficos; desfazer turno;
 vários países de teste.
 
-### Passo 5 — Contas ⬅ próximo
+### Passo 5 — Contas ✅
 
 | Começa com | Pronto quando |
 |---|---|
-| `motor/contas`: receita − gasto − juros → dívida | invariante "contabilidade fecha" roda todo turno |
+| `motor/contas`: receita, gasto, juros, cofre e dívida separados; sobra vai ao cofre, falta sai do cofre e depois vira dívida | invariante "contabilidade fecha" roda todo turno |
 | Juros sobem com a dívida (cálculo estudado no registro) | dívida alta sobe juros no script |
 
 **Expande depois:** emissão de moeda e inflação; banco central
 independente ou não (lei essencial); dívida externa e câmbio.
 
-### Passo 6 — Leis da V1
+### Passo 6 — Leis da V1 ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|
-| Poucas leis (lista aprovada pelo autor antes), só JSON | cada lei tem o comportamento esperado escrito antes e conferido por script |
+| Poucas leis (lista aprovada pelo autor antes), só JSON; cada imposto tira a sua parte de `receita_fora_das_leis` | cada lei tem o comportamento esperado escrito antes e conferido por script |
 | Segundo país de teste | o motor roda os dois sem código de país |
 | Calibração de ordem de grandeza | números plausíveis nos dois países |
 
