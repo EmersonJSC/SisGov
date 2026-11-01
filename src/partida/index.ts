@@ -17,6 +17,7 @@ import {
   type TipoPop,
   type ValorLei,
   ehEstrato,
+  satisfacaoMedia,
 } from "../motor";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
@@ -32,6 +33,10 @@ const arquivosPaises = import.meta.glob("../conteudo/paises/*/*.json", {
 });
 
 export interface Partida {
+  /** Como a partida nasceu: é o que o arquivo salvo guarda, com o estado. */
+  pais: string;
+  semente: number;
+  opcoes: OpcoesPartida;
   regras: Regras;
   estado: Estado;
 }
@@ -113,6 +118,29 @@ export const nomesGrupos: Record<string, string> = Object.fromEntries(
   tiposGrupos.grupos.map((g) => [g.id, g.nome]),
 );
 
+export interface DescricaoIndice {
+  id: string;
+  nome: string;
+  essencial: boolean;
+  /** Texto da unidade, para a tela. */
+  unidade: string;
+}
+
+/** Índices do mundo na ordem do arquivo, para a tela. */
+export const indicesDoMundo: DescricaoIndice[] = variaveis.variaveis.map(
+  (v) => ({
+    id: v.id,
+    nome: v.nome,
+    essencial: v.camada === "essencial",
+    unidade: v.medida.unidade,
+  }),
+);
+
+/** Apoio que o governo teria se a eleição fosse hoje. */
+export function apoioAtual(estado: Estado): number {
+  return satisfacaoMedia(estado.grupos) - estado.desgaste;
+}
+
 function arquivoPais<T>(pais: string, nome: string): T {
   const caminho = `../conteudo/paises/${pais}/${nome}.json`;
   const dado = arquivosPaises[caminho] as { versao?: unknown } | undefined;
@@ -145,8 +173,9 @@ export interface OpcoesPartida {
 export function criarPartida(
   pais: string,
   semente: number,
-  { ajustes = {}, semCongresso = false }: OpcoesPartida = {},
+  opcoes: OpcoesPartida = {},
 ): Partida {
+  const { ajustes = {}, semCongresso = false } = opcoes;
   const declarado = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
   const inicial = {
     ...declarado,
@@ -196,7 +225,7 @@ export function criarPartida(
     leis: vigentes.leis,
     coligacao: congresso.coligacao,
   });
-  return { regras, estado };
+  return { pais, semente, opcoes, regras, estado };
 }
 
 export function avancar(partida: Partida, pedidos: Pedido[] = []): Partida {
@@ -217,4 +246,5 @@ export function jogar(
   return p;
 }
 
+export { carregarPartida, salvarPartida } from "./salvar";
 export type { Estado, Pedido } from "../motor";

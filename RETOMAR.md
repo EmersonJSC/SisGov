@@ -7,23 +7,25 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 9 (Eleição e desgaste) fechado em 01/nov; versão 0.4 completa, tag
-`v0.4` criada (sem push).**
-Desgaste de 2,25 por mandato; a lei `duracao-mandato` (4 ou 5 anos, campo
-`mandato_anos` nas opções) define o mandato; no fim dele o apoio (satisfação
-pesada por pessoas − desgaste) decide, e perder encerra a partida
-(`npm run eleicao`). Os grupos agora medem a renda contra o crescimento
-esperado do país: parado, o governo perde por pouco; a transferência de
-renda vence.
+**Passo 10 (Tela) fechado em 01/nov; versão 1.0 completa, falta a tag
+`v1.0` (sem push).**
+Tela simples em React (`npm run dev`): escolher país e semente, grupos,
+índices, leis com controle para propor, fila de pedidos, votação do
+Congresso e resultado da eleição. Salvar e carregar no navegador
+(`src/partida/salvar.ts`, texto JSON com país, semente e estado). Jogada uma
+partida inteira na tela: parado perde em 24 turnos e a partida encerra;
+transferência de renda vence e segue.
 
 ## Próximo
 
-**Passo 10, Tela:** proposta curta para o autor aprovar. O push do
-commit e da tag `v0.4` espera a palavra do autor.
+Propor ao autor a tag `v1.0` e, depois, conversar sobre o que vem depois
+(plano, seção 9; seção 11 do escopo guarda as ideias). O push espera a
+palavra do autor.
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
+- A tela é a versão simples: o autor decide o que melhorar primeiro.
 
 ## Armadilhas
 
@@ -36,3 +38,5 @@ commit e da tag `v0.4` espera a palavra do autor.
 - `0.6 × 1/3` dá 0,1999… no computador: comparação de limite precisa de folga.
 - `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (não mexer): adicionar arquivo por arquivo.
 - Grupos medem renda contra o crescimento esperado (`esperado` em `calcularGrupos`); mexer na tendência do país muda a satisfação de todos.
+- A tela só lê/chama `src/partida`; salvar guarda país+semente+estado, as regras voltam do conteúdo.
+- Renomear arquivo que o `main.tsx` importa exige `touch src/main.tsx` com o Vite rodando (cache).

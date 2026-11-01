@@ -142,7 +142,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 7 | Grupos | ✅ 01/nov — 6 pops com renda pelo motor (`npm run pops`); 4 grupos (trabalhadores, classe média, empresários, ambientalistas) com satisfação medida contra o turno 0; cada lei declara o que cada grupo quer dela (`npm run grupos`) |
 | 8 | Congresso | ✅ 01/nov — partidos do país votam cada mudança de lei pelos grupos que defendem; mais de 1/3 da faixa num pedido é exorbitante e cai; partido da base com os grupos abaixo de 35 sai da coligação (`npm run congresso`) |
 | 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
-| 10 | Tela | Jogar uma partida inteira na tela |
+| 10 | Tela | ✅ 01/nov — tela simples em React (`npm run dev`): país e semente, grupos, índices, leis com controle para propor, fila de pedidos, votação do Congresso, resultado da eleição; salvar e carregar no navegador (`partida/salvar.ts`). Partida inteira jogada na tela até a eleição |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
 lidas (tag `projeto-antigo-2026-10-31`).
