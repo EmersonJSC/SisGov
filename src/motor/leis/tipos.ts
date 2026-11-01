@@ -6,15 +6,17 @@ import type { Estrato } from "../populacao";
 export const FORCAS = ["fraca", "media", "forte"] as const;
 export type Forca = (typeof FORCAS)[number];
 
-/** Posição na bússola, de −1 a +1; eixo ausente = 0 (motor/grupos). */
-export interface PontoBussola {
-  /** Esquerda (−) ↔ direita (+). */
-  economico?: number;
-  /** Verde, libertário (−) ↔ tradicional, autoritário (+). */
-  social?: number;
-}
-
+/**
+ * Eixos da bússola. Para somar um eixo, acrescentar o nome aqui e declarar a
+ * posição nos JSONs: a conta anda sobre esta lista.
+ * `economico`: esquerda (−) ↔ direita (+); `social`: libertário (−) ↔
+ * autoritário (+).
+ */
 export const EIXOS = ["economico", "social"] as const;
+export type Eixo = (typeof EIXOS)[number];
+
+/** Posição na bússola, de −1 a +1; eixo ausente = 0 (motor/grupos). */
+export type PontoBussola = Partial<Record<Eixo, number>>;
 
 export const CAMADAS = ["essencial", "jogabilidade"] as const;
 export type Camada = (typeof CAMADAS)[number];

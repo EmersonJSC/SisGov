@@ -1,6 +1,12 @@
 // Mundo: as grandes potências (src/motor/mundo/mundo.md). O motor não
 // conhece os nomes; elas vêm do conteúdo.
-import { EIXOS, type Lei, type PontoBussola, type ValorLei } from "../leis";
+import {
+  EIXOS,
+  type Eixo,
+  type Lei,
+  type PontoBussola,
+  type ValorLei,
+} from "../leis";
 
 export interface Potencia {
   id: string;
@@ -146,8 +152,11 @@ export function posicaoDoPais(
   leis: Record<string, Lei>,
   vigentes: Record<string, ValorLei>,
 ): Required<PontoBussola> {
-  const soma = { economico: 0, social: 0 };
-  const conta = { economico: 0, social: 0 };
+  const soma = Object.fromEntries(EIXOS.map((e) => [e, 0])) as Record<
+    Eixo,
+    number
+  >;
+  const conta = { ...soma };
   for (const lei of Object.values(leis)) {
     const valor = vigentes[lei.id];
     for (const eixo of EIXOS) {
@@ -168,14 +177,13 @@ export function posicaoDoPais(
       conta[eixo] += 1;
     }
   }
-  return {
-    economico: conta.economico ? soma.economico / conta.economico : 0,
-    social: conta.social ? soma.social / conta.social : 0,
-  };
+  return Object.fromEntries(
+    EIXOS.map((e) => [e, conta[e] ? soma[e] / conta[e] : 0]),
+  ) as Record<Eixo, number>;
 }
 
-/** Maior distância possível na bússola: de um canto ao oposto. */
-const DISTANCIA_MAXIMA = 2 * Math.SQRT2;
+/** Maior distância possível na bússola: de um canto ao oposto (2√N). */
+const DISTANCIA_MAXIMA = 2 * Math.sqrt(EIXOS.length);
 
 /**
  * Opinião que a potência gostaria de ter: 100 na mesma posição, 0 no canto
@@ -185,10 +193,7 @@ export function opiniaoDesejada(
   potencia: Potencia,
   pais: Required<PontoBussola>,
 ): number {
-  const d = Math.hypot(
-    pais.economico - potencia.bussola.economico,
-    pais.social - potencia.bussola.social,
-  );
+  const d = Math.hypot(...EIXOS.map((e) => pais[e] - potencia.bussola[e]));
   return 100 * (1 - (d / DISTANCIA_MAXIMA) ** 2);
 }
 
