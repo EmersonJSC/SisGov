@@ -1,5 +1,5 @@
 // Turno: avancarTurno(regras, estado, pedidos) → novo estado, sem alterar o
-// anterior. Ordem fixa (plano, seção 5); etapa que ainda não existe pula.
+// anterior. Ordem fixa (plano, seção 5).
 // O acaso mora no estado (motor/acaso). Comportamento em turno.md.
 import { semear, sortearNormal } from "../acaso";
 import { BASES, ehBase, proximaTaxa, taxaAlvo, type IdBase } from "../calculos";
@@ -23,6 +23,12 @@ import {
 } from "../grupos";
 import { motivoValorInvalido, type ValorLei } from "../leis";
 import {
+  coligacaoAtual,
+  motivoCongressoInvalido,
+  votar,
+  type Votacao,
+} from "../politica";
+import {
   calcularPops,
   motivoPopsInvalidos,
   type Estrato,
@@ -36,22 +42,43 @@ const TURNOS_POR_ANO = 6;
 
 type Etapa = (regras: Regras, estado: Estado, pedidos: Pedido[]) => Estado;
 
-const pular: Etapa = (_, estado) => estado;
-
-/** 1. Congresso: entra no passo 8. Até lá, todo pedido passa. */
-const congresso = pular;
-
-/** 2. Leis novas: o valor muda e os efeitos entram na fila. */
-const leisNovas: Etapa = (regras, estado, pedidos) => {
-  let { leis, efeitos } = estado;
+/**
+ * 1. Congresso: cada pedido que muda uma lei vai a voto (motor/politica).
+ * Sem Congresso nas regras, todo pedido passa.
+ */
+const congresso: Etapa = (regras, estado, pedidos) => {
+  const votacoes: Votacao[] = [];
   for (const pedido of pedidos) {
     const lei = regras.leis[pedido.lei];
     if (!lei) throw new Error(`pedido: lei "${pedido.lei}" não existe`);
     const motivo = motivoValorInvalido(lei, pedido.valor);
     if (motivo) throw new Error(`pedido: ${pedido.lei} ${motivo}`);
-    if (leis[lei.id] === pedido.valor) continue;
-    leis = { ...leis, [lei.id]: pedido.valor };
-    efeitos = enfileirar(efeitos, lei, pedido.valor);
+    const atual = estado.leis[lei.id];
+    if (atual === pedido.valor) continue;
+    votacoes.push(
+      regras.congresso
+        ? votar(regras.congresso, estado.coligacao, lei, atual, pedido.valor)
+        : {
+            lei: lei.id,
+            valor: pedido.valor,
+            exorbitante: false,
+            votos: {},
+            sim: 0,
+            nao: 0,
+            aprovada: true,
+          },
+    );
+  }
+  return { ...estado, votacoes };
+};
+
+/** 2. Leis novas: o que passou muda de valor e os efeitos entram na fila. */
+const leisNovas: Etapa = (regras, estado) => {
+  let { leis, efeitos } = estado;
+  for (const v of estado.votacoes) {
+    if (!v.aprovada) continue;
+    leis = { ...leis, [v.lei]: v.valor };
+    efeitos = enfileirar(efeitos, regras.leis[v.lei], v.valor);
   }
   return { ...estado, leis, efeitos };
 };
@@ -257,8 +284,18 @@ const popsEGrupos: Etapa = (regras, estado) => {
   return { ...comPops, grupos: grupos(regras, comPops, estado.marco) };
 };
 
-/** 9. Política: passos 8 e 9. */
-const politica = pular;
+/** 9. Política: a base olha os seus grupos (passo 8); eleição no passo 9. */
+const politica: Etapa = (regras, estado) =>
+  regras.congresso
+    ? {
+        ...estado,
+        coligacao: coligacaoAtual(
+          regras.congresso,
+          estado.coligacao,
+          estado.grupos,
+        ),
+      }
+    : estado;
 
 /** 10. Invariantes: falhou, para com erro. */
 const invariantes: Etapa = (regras, estado) => {
@@ -292,6 +329,8 @@ const invariantes: Etapa = (regras, estado) => {
       g.radicais + g.lealistas > 100
     )
       falhas.push(`grupo ${id} inválido`);
+  if (regras.congresso && !estado.coligacao.includes(regras.congresso.governo))
+    falhas.push("coligação sem o governo");
   if (falhas.length > 0)
     throw new Error(
       `invariante no turno ${estado.turno}: ${falhas.join("; ")}`,
@@ -331,6 +370,8 @@ export interface Inicio {
   /** Índices de jogabilidade como o país está hoje, com as leis que tem. */
   jogabilidade: Record<string, number>;
   leis: Record<string, ValorLei>;
+  /** Partidos da base no começo (com Congresso). */
+  coligacao?: string[];
 }
 
 /**
@@ -355,6 +396,15 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     regras.leis,
   );
   if (motivoGrupos) throw new Error(`mundo: ${motivoGrupos}`);
+  const coligacao = inicio.coligacao ?? [];
+  if (regras.congresso) {
+    const motivo = motivoCongressoInvalido(
+      regras.congresso,
+      coligacao,
+      regras.grupos.map((g) => g.id),
+    );
+    if (motivo) throw new Error(`país: congresso: ${motivo}`);
+  }
 
   const efeitos = filaInicial(regras.leis, inicio.leis);
   const soma = somaPorIndice(efeitos);
@@ -380,6 +430,8 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     pops: {},
     grupos: {},
     marco: { indices: {}, leis: {}, renda_real: {} },
+    coligacao: [...coligacao],
+    votacoes: [],
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);

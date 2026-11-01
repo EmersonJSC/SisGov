@@ -6,6 +6,7 @@ import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
 import type { Grupo, Marco } from "../grupos";
 import type { ValorLei } from "../leis";
+import type { Votacao } from "../politica";
 import type { Pop } from "../populacao";
 
 export const INDICES_ESSENCIAIS = [
@@ -50,4 +51,8 @@ export interface Estado {
   grupos: Record<string, Grupo>;
   /** Turno 0, referência dos grupos. */
   marco: Marco;
+  /** Partidos da base do governo (motor/politica). */
+  coligacao: string[];
+  /** Votações do turno (motor/politica). */
+  votacoes: Votacao[];
 }

@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "maioria": 0.5,
+  "governo": "trabalhista",
+  "coligacao": ["trabalhista", "verde", "centro"],
+  "partidos": [
+    {
+      "id": "trabalhista",
+      "nome": "Partido Trabalhista Popular",
+      "cadeiras": 60,
+      "defende": { "trabalhadores": 1, "ambientalistas": 0.3 }
+    },
+    {
+      "id": "verde",
+      "nome": "Movimento Verde",
+      "cadeiras": 20,
+      "defende": { "ambientalistas": 1, "classe-media": 0.3 }
+    },
+    {
+      "id": "centro",
+      "nome": "Partido do Centro",
+      "cadeiras": 30,
+      "defende": { "trabalhadores": 0.5, "classe-media": 0.5 }
+    },
+    {
+      "id": "ordem",
+      "nome": "Partido da Ordem",
+      "cadeiras": 45,
+      "defende": { "classe-media": 1 }
+    },
+    {
+      "id": "liberal",
+      "nome": "Aliança Liberal",
+      "cadeiras": 45,
+      "defende": { "empresarios": 1, "classe-media": 0.3 }
+    }
+  ]
+}

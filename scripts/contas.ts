@@ -15,14 +15,19 @@ const TURNOS_MANDATO = 24;
 export const DIVIDAS = [40, 80, 120];
 
 export function comImposto(aliquota: number, semente = 42): Estado {
-  return jogar(criarPartida("teste", semente), TURNOS_MANDATO, [
-    { tipo: "mudar_lei", lei: "imposto-renda", valor: aliquota },
-  ]).estado;
+  return jogar(
+    criarPartida("teste", semente, { semCongresso: true }),
+    TURNOS_MANDATO,
+    [{ tipo: "mudar_lei", lei: "imposto-renda", valor: aliquota }],
+  ).estado;
 }
 
 export function comDivida(divida: number, semente = 42): Estado {
   return jogar(
-    criarPartida("teste", semente, { divida_publica: divida }),
+    criarPartida("teste", semente, {
+      ajustes: { divida_publica: divida },
+      semCongresso: true,
+    }),
     TURNOS_MANDATO,
   ).estado;
 }
@@ -40,7 +45,10 @@ if (import.meta.env.MODE !== "test") {
     );
   };
   console.log("Contas em % do PIB (fluxos ao ano)\n");
-  linha("início (IR 20%)", criarPartida("teste", 42).estado);
+  linha(
+    "início (IR 20%)",
+    criarPartida("teste", 42, { semCongresso: true }).estado,
+  );
   linha("IR 20%, turno 24", comImposto(0.2));
   linha("IR 10%, turno 24", comImposto(0.1));
   linha("IR 50%, turno 24", comImposto(0.5));
@@ -48,7 +56,10 @@ if (import.meta.env.MODE !== "test") {
   for (const d of DIVIDAS) {
     linha(
       `dívida ${d}%, início`,
-      criarPartida("teste", 42, { divida_publica: d }).estado,
+      criarPartida("teste", 42, {
+        ajustes: { divida_publica: d },
+        semCongresso: true,
+      }).estado,
     );
     linha(`dívida ${d}%, turno 24`, comDivida(d));
   }

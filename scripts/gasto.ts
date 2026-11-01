@@ -12,7 +12,7 @@ const TURNOS_MANDATO = 24;
 const SAUDE = [0.04, 0.08, 0];
 
 export function comSaude(valor: number, turnos: number, semente = 42): Estado {
-  return jogar(criarPartida("teste", semente), turnos, [
+  return jogar(criarPartida("teste", semente, { semCongresso: true }), turnos, [
     { tipo: "mudar_lei", lei: "gasto-saude", valor },
   ]).estado;
 }
@@ -22,7 +22,10 @@ if (import.meta.env.MODE !== "test") {
   for (const valor of SAUDE) {
     console.log(`\nSaúde em ${valor * 100}% do PIB`);
     for (const t of [0, 1, 3, 6, TURNOS_MANDATO]) {
-      const e = t === 0 ? criarPartida("teste", 42).estado : comSaude(valor, t);
+      const e =
+        t === 0
+          ? criarPartida("teste", 42, { semCongresso: true }).estado
+          : comSaude(valor, t);
       const c = e.essenciais;
       console.log(
         `  turno ${String(t).padStart(2)}`,

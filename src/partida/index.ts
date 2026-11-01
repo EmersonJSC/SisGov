@@ -6,6 +6,7 @@ import {
   gastoDasLeis,
   INDICES_ESSENCIAIS,
   lerLei,
+  type Congresso,
   type Estado,
   type IndicesEssenciais,
   type Lei,
@@ -46,6 +47,15 @@ interface EstadoInicialPais {
 interface LeisVigentes {
   versao: 1;
   leis: Record<string, ValorLei>;
+}
+
+/** Partidos do país: nomes, cadeiras e quem é a base. */
+interface CongressoPais {
+  versao: 1;
+  maioria: number;
+  governo: string;
+  coligacao: string[];
+  partidos: (Congresso["partidos"][number] & { nome: string })[];
 }
 
 const jogabilidade = variaveis.variaveis.filter(
@@ -119,11 +129,23 @@ export function paisesDisponiveis(): string[] {
   ];
 }
 
-/** `ajustes` troca essenciais declarados pelo país (cenários de script). */
+/** Nome de cada partido do país, para scripts e tela. */
+export function nomesPartidos(pais: string): Record<string, string> {
+  const { partidos } = arquivoPais<CongressoPais>(pais, "congresso");
+  return Object.fromEntries(partidos.map((p) => [p.id, p.nome]));
+}
+
+export interface OpcoesPartida {
+  /** Troca essenciais declarados pelo país (cenários de script). */
+  ajustes?: Partial<IndicesEssenciais>;
+  /** Todo pedido passa sem voto (scripts que medem a economia). */
+  semCongresso?: boolean;
+}
+
 export function criarPartida(
   pais: string,
   semente: number,
-  ajustes: Partial<IndicesEssenciais> = {},
+  { ajustes = {}, semCongresso = false }: OpcoesPartida = {},
 ): Partida {
   const declarado = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
   const inicial = {
@@ -131,6 +153,7 @@ export function criarPartida(
     essenciais: { ...declarado.essenciais, ...ajustes },
   };
   const vigentes = arquivoPais<LeisVigentes>(pais, "leis-vigentes");
+  const congresso = arquivoPais<CongressoPais>(pais, "congresso");
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
@@ -148,6 +171,17 @@ export function criarPartida(
     pops: carregarPops(),
     grupos: carregarGrupos(),
     pais: inicial.parametros,
+    congresso: semCongresso
+      ? undefined
+      : {
+          maioria: congresso.maioria,
+          governo: congresso.governo,
+          partidos: congresso.partidos.map((p) => ({
+            id: p.id,
+            cadeiras: p.cadeiras,
+            defende: p.defende,
+          })),
+        },
   };
   const gasto =
     gastoDasLeis(regras, vigentes.leis) + regras.pais.gasto_fora_das_leis;
@@ -160,6 +194,7 @@ export function criarPartida(
     essenciais: inicial.essenciais,
     jogabilidade: inicial.jogabilidade,
     leis: vigentes.leis,
+    coligacao: congresso.coligacao,
   });
   return { regras, estado };
 }

@@ -14,3 +14,20 @@ describe("lei não legislada", () => {
     expect(com.essenciais.arrecadacao).toBeGreaterThan(sem);
   });
 });
+
+describe("congresso", () => {
+  it("lei só muda com voto: a que cai não muda nem enfileira efeito", () => {
+    const partida = criarPartida("teste", 42);
+    const caiu = jogar(partida, 1, [
+      { tipo: "mudar_lei", lei: "imposto-renda", valor: 0.3 },
+    ]).estado;
+    expect(caiu.votacoes[0].aprovada).toBe(false);
+    expect(caiu.leis["imposto-renda"]).toBe(0.2);
+    expect(caiu.efeitos).toEqual(jogar(partida, 1).estado.efeitos);
+
+    const sem = jogar(criarPartida("teste", 42, { semCongresso: true }), 1, [
+      { tipo: "mudar_lei", lei: "imposto-renda", valor: 0.3 },
+    ]).estado;
+    expect(sem.leis["imposto-renda"]).toBe(0.3);
+  });
+});

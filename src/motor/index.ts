@@ -8,5 +8,6 @@ export * from "./efeitos";
 export * from "./estado";
 export * from "./grupos";
 export * from "./leis";
+export * from "./politica";
 export * from "./populacao";
 export * from "./turno";

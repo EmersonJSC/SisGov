@@ -104,6 +104,10 @@ esquerda é resultado das leis, nunca objetivo (31/out).
 - O regime vem das leis essenciais do país: quem aprova lei (câmaras,
   quórum, veto), quem escolhe o governo e como se perde o poder.
 - **V1:** presidencialismo (Brasil, EUA) e parlamentarismo.
+- **Partidos são do país** (01/nov): o mundo sabe que existem partidos; os
+  nomes, as cadeiras e os grupos que cada um defende são declarados pelo
+  país. O jogador é um partido; concorre e faz coligação com os outros.
+  Desenho em `src/motor/politica/politica.md`.
 - **Depois (outra versão ou DLC):** regime de partido único (China). Mesmo
   motor, outra estrutura de "parlamento"; o motor não pode fechar essa porta.
 
@@ -136,7 +140,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 5 | Contas | ✅ 01/nov — `npm run contas`: receita, gasto, juros, cofre e dívida separados; sobra vai ao cofre (abater dívida é lei futura); dívida acima da tolerância do país sobe os juros |
 | 6 | Leis da V1 | ✅ 01/nov — 14 leis, cada uma conferida por script (`npm run impostos`, `gasto`, `ambiente`); país declara só as leis que tem; segundo país `teste-pobre` só em JSON (`npm run paises`); força dos efeitos 2/5/10 |
 | 7 | Grupos | ✅ 01/nov — 6 pops com renda pelo motor (`npm run pops`); 4 grupos (trabalhadores, classe média, empresários, ambientalistas) com satisfação medida contra o turno 0; cada lei declara o que cada grupo quer dela (`npm run grupos`) |
-| 8 | Congresso | Lei só muda com voto; o exorbitante é barrado; base e oposição reagem |
+| 8 | Congresso | ✅ 01/nov — partidos do país votam cada mudança de lei pelos grupos que defendem; mais de 1/3 da faixa num pedido é exorbitante e cai; partido da base com os grupos abaixo de 35 sai da coligação (`npm run congresso`) |
 | 9 | Eleição e desgaste | Partida de um mandato termina em vitória ou derrota que o jogador entende |
 | 10 | Tela | Jogar uma partida inteira na tela |
 
@@ -189,8 +193,12 @@ lidas (tag `projeto-antigo-2026-10-31`).
 - **Revogar lei e lei que não se aplica ao país** (01/nov): o país declara
   só as leis que tem; a que falta fica não legislada e o jogador pode
   propor. Tirar uma lei em vigor (revogar) e esconder lei que não faz
-  sentido no país vêm com o Congresso (passo 8).
+  sentido no país: ficaram fora do passo 8 para ele não crescer.
 - **Grupos: o que fica para depois** (01/nov, passo 7b): satisfação inicial
   declarada pelo país (hoje todo grupo começa em 50); grupo que o país cria
   ou tira; conservadores (segurança, pena de morte) junto com leis de
   costumes; o imposto de renda pesar diferente em cada pop (progressividade).
+- **Congresso: o que fica para depois** (01/nov, passo 8): partido da base
+  que volta quando os grupos melhoram; coligação feita ou desfeita pelo
+  jogador e cadeiras que mudam com a eleição (passo 9); exorbitante em lei
+  de opções; negociação e troca de cargos.

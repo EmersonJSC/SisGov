@@ -1,0 +1,32 @@
+{
+  "versao": 1,
+  "maioria": 0.5,
+  "governo": "frente",
+  "coligacao": ["frente", "renovacao", "uniao"],
+  "partidos": [
+    {
+      "id": "frente",
+      "nome": "Frente Camponesa",
+      "cadeiras": 40,
+      "defende": { "trabalhadores": 1 }
+    },
+    {
+      "id": "uniao",
+      "nome": "União Nacional",
+      "cadeiras": 35,
+      "defende": { "classe-media": 1, "empresarios": 0.5 }
+    },
+    {
+      "id": "progresso",
+      "nome": "Partido do Progresso",
+      "cadeiras": 30,
+      "defende": { "empresarios": 1 }
+    },
+    {
+      "id": "renovacao",
+      "nome": "Renovação",
+      "cadeiras": 15,
+      "defende": { "ambientalistas": 1, "trabalhadores": 0.5 }
+    }
+  ]
+}

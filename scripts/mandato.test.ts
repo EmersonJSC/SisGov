@@ -29,8 +29,8 @@ describe("mandato com o imposto de renda em três valores", () => {
       { tipo: "mudar_lei" as const, lei: "imposto-renda", valor: 0.5 },
     ];
     const pv = (turnos: number) =>
-      jogar(criarPartida("teste", 1), turnos, pedido).estado.jogabilidade
-        .padrao_vida;
+      jogar(criarPartida("teste", 1, { semCongresso: true }), turnos, pedido)
+        .estado.jogabilidade.padrao_vida;
     expect(pv(1)).toBeGreaterThan(pv(2));
     expect(pv(2)).toBe(pv(10));
   });
@@ -41,7 +41,7 @@ describe("mandato com o imposto de renda em três valores", () => {
   });
 
   it("o estado anterior não muda", () => {
-    const p = criarPartida("teste", 3);
+    const p = criarPartida("teste", 3, { semCongresso: true });
     const antes = JSON.stringify(p.estado);
     jogar(p, 5, [
       { tipo: "mudar_lei", lei: "pena-de-morte", valor: "crimes-graves" },

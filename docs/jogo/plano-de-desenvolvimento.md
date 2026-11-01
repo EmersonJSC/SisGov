@@ -8,8 +8,8 @@
 
 - **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),
   4 (turno mínimo; versão 0.1), 5 (contas), 6 (leis da V1; versão 0.2) e
-  7 (população e grupos).
-- **Próximo:** passo **8, Congresso**.
+  7 (população e grupos) e 8 (Congresso; versão 0.3).
+- **Próximo:** passo **9, Eleição e desgaste**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -98,18 +98,18 @@ independente ou não (lei essencial); dívida externa e câmbio.
 **Expande depois:** até ~25 pops; migração entre pops (desemprego empurra
 para baixo); grupos novos por JSON.
 
-### Passo 8 — Congresso ⬅ próximo
+### Passo 8 — Congresso ✅
 
 | Começa com | Pronto quando |
 |---|---|
-| `motor/politica`: presidencialismo (uma estrutura de votação) | lei só muda com voto |
+| `motor/politica`: presidencialismo (uma estrutura de votação) | lei só muda com voto (`npm run congresso`) |
 | Exorbitante barrado | proposta absurda cai no script |
 | Base e oposição reagem às leis | — |
 
 **Expande depois:** parlamentarismo (V1, segundo regime); veto e
 derrubada de veto; bicameral; partido único (outra versão ou DLC).
 
-### Passo 9 — Eleição e desgaste
+### Passo 9 — Eleição e desgaste ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|

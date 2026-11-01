@@ -19,7 +19,7 @@ import type { ValorLei } from "../src/motor";
 const TURNOS_MANDATO = 24;
 
 function com(lei: string, valor: ValorLei, turnos: number): Estado {
-  return jogar(criarPartida("teste", 42), turnos, [
+  return jogar(criarPartida("teste", 42, { semCongresso: true }), turnos, [
     { tipo: "mudar_lei", lei, valor },
   ]).estado;
 }
@@ -65,7 +65,11 @@ const CASOS: { lei: string; valores: ValorLei[]; indices: string[] }[] = [
 const n = (v: number) => v.toFixed(1).padStart(5);
 const rotulo = (v: ValorLei) =>
   (typeof v === "number" ? `${+(v * 100).toFixed(1)}%` : v).padStart(8);
-const inicio = jogar(criarPartida("teste", 42), 1, []).estado;
+const inicio = jogar(
+  criarPartida("teste", 42, { semCongresso: true }),
+  1,
+  [],
+).estado;
 console.log(
   `Receita no turno 1, leis como estão: ${n(inicio.essenciais.arrecadacao)}% do PIB`,
 );

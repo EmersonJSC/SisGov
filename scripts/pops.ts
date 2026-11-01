@@ -56,8 +56,12 @@ function mostrar(rotulo: string, e: Estado, antes?: Estado) {
   }
 }
 
-const base = jogar(criarPartida(PAIS, 42), 1).estado;
+const base = jogar(criarPartida(PAIS, 42, { semCongresso: true }), 1).estado;
 for (const [rotulo, turnos, pedidos] of CENARIOS) {
-  const e = jogar(criarPartida(PAIS, 42), turnos, pedidos).estado;
+  const e = jogar(
+    criarPartida(PAIS, 42, { semCongresso: true }),
+    turnos,
+    pedidos,
+  ).estado;
   mostrar(rotulo, e, turnos === 1 && pedidos.length === 0 ? undefined : base);
 }

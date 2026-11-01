@@ -18,7 +18,8 @@
     "ambiente": "vite-node scripts/ambiente.ts",
     "paises": "vite-node scripts/paises.ts",
     "pops": "vite-node scripts/pops.ts",
-    "grupos": "vite-node scripts/grupos.ts"
+    "grupos": "vite-node scripts/grupos.ts",
+    "congresso": "vite-node scripts/congresso.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

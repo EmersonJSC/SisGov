@@ -58,11 +58,21 @@ function linha(rotulo: string, e: Estado): string[] {
 const fora: string[] = [];
 for (const pais of PAISES) {
   console.log(`\n${pais}`);
-  const comeco = jogar(criarPartida(pais, 42), 1).estado;
+  const comeco = jogar(
+    criarPartida(pais, 42, { semCongresso: true }),
+    1,
+  ).estado;
   fora.push(...linha("turno 1", comeco).map((f) => `${pais} ${f}`));
-  const parado = jogar(criarPartida(pais, 42), TURNOS_MANDATO).estado;
+  const parado = jogar(
+    criarPartida(pais, 42, { semCongresso: true }),
+    TURNOS_MANDATO,
+  ).estado;
   fora.push(...linha("fim, sem mudar", parado).map((f) => `${pais} ${f}`));
-  const pacote = jogar(criarPartida(pais, 42), TURNOS_MANDATO, PACOTE).estado;
+  const pacote = jogar(
+    criarPartida(pais, 42, { semCongresso: true }),
+    TURNOS_MANDATO,
+    PACOTE,
+  ).estado;
   fora.push(...linha("fim, com pacote", pacote).map((f) => `${pais} ${f}`));
 }
 

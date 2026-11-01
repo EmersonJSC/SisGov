@@ -11,7 +11,7 @@ export const TURNOS_MANDATO = 24;
 export const ALIQUOTAS = [0.1, 0.3, 0.5];
 
 export function mandato(aliquota: number, semente = 42): Estado {
-  const partida = criarPartida("teste", semente);
+  const partida = criarPartida("teste", semente, { semCongresso: true });
   return jogar(partida, TURNOS_MANDATO, [
     { tipo: "mudar_lei", lei: "imposto-renda", valor: aliquota },
   ]).estado;
@@ -19,7 +19,7 @@ export function mandato(aliquota: number, semente = 42): Estado {
 
 // Roda a saída só fora do teste (o vite-node não passa o arquivo no argv).
 if (import.meta.env.MODE !== "test") {
-  const inicio = criarPartida("teste", 42).estado;
+  const inicio = criarPartida("teste", 42, { semCongresso: true }).estado;
   const linha = (rotulo: string, e: Estado) =>
     console.log(
       rotulo.padEnd(18),

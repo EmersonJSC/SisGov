@@ -41,8 +41,16 @@ function linha(e: Estado, id: string): string {
 }
 
 for (const [rotulo, pedidos] of CENARIOS) {
-  const um = jogar(criarPartida(PAIS, 42), 1, pedidos).estado;
-  const fim = jogar(criarPartida(PAIS, 42), TURNOS_MANDATO, pedidos).estado;
+  const um = jogar(
+    criarPartida(PAIS, 42, { semCongresso: true }),
+    1,
+    pedidos,
+  ).estado;
+  const fim = jogar(
+    criarPartida(PAIS, 42, { semCongresso: true }),
+    TURNOS_MANDATO,
+    pedidos,
+  ).estado;
   console.log(`\n${rotulo}`);
   console.log(
     `  ${"grupo".padEnd(16)} ${"turno 1".padEnd(24)} fim do mandato   (r = radicais %, l = lealistas %)`,

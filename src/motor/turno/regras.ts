@@ -3,6 +3,7 @@
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
 import type { TipoGrupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
+import type { Congresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
 
 export interface ParametrosBase extends ParametrosRenda {
@@ -32,6 +33,8 @@ export interface Regras {
   /** Tipos de grupo do mundo. */
   grupos: TipoGrupo[];
   pais: ParametrosPais;
+  /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
+  congresso?: Congresso;
 }
 
 export interface PedidoMudarLei {
