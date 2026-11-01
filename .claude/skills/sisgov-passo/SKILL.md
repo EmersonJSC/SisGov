@@ -21,6 +21,11 @@ passo tem "Começa com", "Pronto quando" e "Expande depois". Um passo por vez.
 
 - `npx tsc -b` e `npx vitest run <arquivo>` do que mudou. `npm run check` só
   no fechamento.
+- **Conferir o escopo a cada proposta** (pedido do autor, 01/nov): se a
+  conversa passou do "Começa com" do passo, parar e mostrar ao autor em duas
+  listas o que **é do passo** e o que **não é**. O que não é vai para a
+  seção 11 do escopo, com o motivo (ex.: "precisa dos pops do passo 7").
+  Avisar antes de seguir, não depois.
 - O "Expande depois" **não** entra. Ideia nova vai para a seção 11 do escopo
   e o autor fica sabendo.
 - Se o passo exigir mexer em passo pronto, parar: o desenho estava errado,

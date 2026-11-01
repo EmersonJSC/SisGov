@@ -158,7 +158,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
   1 → 0%; 1 a 3 → 10%; 3 a 10 → 20%; 10 a 20 → 30%; acima de 20 → 35%); a
   última faixa vale para todo mundo acima dela. Em aberto para o passo 7: a
   tabela pode virar a própria lei do imposto de renda, com a % média como
-  resultado.
+  resultado. A tabela é livre: plana, progressiva ou regressiva; o jogo não
+  força nenhuma forma.
 - **Público e privado em esferas separadas** (01/nov): saúde e educação com
   duas leis cada, gasto público (hospital e escola do governo) e apoio ao
   privado (voucher, subsídio, dedução no imposto). Setor privado como índice
