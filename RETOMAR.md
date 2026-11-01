@@ -7,8 +7,8 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 9 (Eleição e desgaste) fechado em 01/nov; versão 0.4 pronta, tag
-`v0.4` ainda não criada.**
+**Passo 9 (Eleição e desgaste) fechado em 01/nov; versão 0.4 completa, tag
+`v0.4` criada (sem push).**
 Desgaste de 2,25 por mandato; a lei `duracao-mandato` (4 ou 5 anos, campo
 `mandato_anos` nas opções) define o mandato; no fim dele o apoio (satisfação
 pesada por pessoas − desgaste) decide, e perder encerra a partida
@@ -18,8 +18,8 @@ renda vence.
 
 ## Próximo
 
-**Tag `v0.4`:** esperando o sim do autor. Depois, **passo 10, Tela:**
-proposta curta para o autor aprovar.
+**Passo 10, Tela:** proposta curta para o autor aprovar. O push do
+commit e da tag `v0.4` espera a palavra do autor.
 
 ## Pendências do autor
 
