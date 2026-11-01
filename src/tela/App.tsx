@@ -123,6 +123,8 @@ export function App() {
         fila={fila}
         setFila={setFila}
         onPainel={() => setVista("painel")}
+        onPassar={passar}
+        aviso={aviso}
       />
     );
 

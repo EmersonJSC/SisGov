@@ -1,5 +1,6 @@
 // Moldura do mapa político herdado da tela antiga: monta a visão da partida,
-// guarda o que está aberto e selecionado e a janela da lei (fatia 2).
+// guarda o que está aberto e selecionado, a janela da lei (fatia 2), a barra
+// do topo e o resultado do turno (fatia 3).
 import { useEffect, useMemo, useState } from "react";
 import {
   montarVisao,
@@ -10,9 +11,11 @@ import {
   type VisaoLei,
 } from "../../partida";
 import { comPedido } from "../fila";
+import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
 import { MapaPolitico } from "./MapaPolitico";
+import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
 import { indexarRelacoes, ligacoesDeFundo } from "./relacoes";
 import "./mapa.css";
 
@@ -25,6 +28,8 @@ interface Props {
   fila: Pedido[];
   setFila: (f: Pedido[]) => void;
   onPainel: () => void;
+  onPassar: () => void;
+  aviso: string;
 }
 
 /** Nível da visão que corresponde a um valor do motor. */
@@ -33,7 +38,14 @@ function nivelDe(lei: VisaoLei, valor: Pedido["valor"]): number {
   return Math.max(0, lei.opcoes?.findIndex((o) => o.id === valor) ?? 0);
 }
 
-export function TelaMapa({ partida, fila, setFila, onPainel }: Props) {
+export function TelaMapa({
+  partida,
+  fila,
+  setFila,
+  onPainel,
+  onPassar,
+  aviso,
+}: Props) {
   const visao = useMemo(() => montarVisao(partida), [partida]);
   const base = useMemo(() => montarBase(visao), [visao]);
   const indice = useMemo(() => indexarRelacoes(visao), [visao]);
@@ -44,8 +56,8 @@ export function TelaMapa({ partida, fila, setFila, onPainel }: Props) {
   const [desvio, setDesvio] = useState<Desvio>(CENTRO);
   const [retangulo, setRetangulo] = useState<Retangulo | null>(null);
   const [rascunho, setRascunho] = useState(0);
-  const ano = Math.floor(visao.turno / 6) + 1;
-  const mes = (visao.turno % 6) * 2 + 1;
+  const [resultado, setResultado] = useState(() => temResultado(partida));
+  const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
 
   const lei = visao.leis.find((l) => l.id === janela);
   const pedido = fila.find((p) => p.lei === janela);
@@ -55,9 +67,17 @@ export function TelaMapa({ partida, fila, setFila, onPainel }: Props) {
     return p ? nivelDe(l, p.valor) : Math.max(0, l.meta);
   };
 
-  // Turno novo: a janela aberta volta ao que vale (ou ao que está na fila).
+  // Turno novo: a janela aberta volta ao que vale (ou ao que está na fila)
+  // e o resultado do turno abre se houve votação ou eleição.
   useEffect(() => {
-    if (lei) setRascunho(inicial(lei));
+    // com resultado na mesa, a janela da lei fecha para não empilhar papel
+    if (temResultado(partida)) {
+      setResultado(true);
+      fechar();
+    } else {
+      setResultado(false);
+      if (lei) setRascunho(inicial(lei));
+    }
   }, [partida]);
 
   const valor = lei ? valorDoNivel(partida, lei.id, rascunho) : null;
@@ -85,17 +105,13 @@ export function TelaMapa({ partida, fila, setFila, onPainel }: Props) {
 
   return (
     <div className="tela">
-      <header className="barra-superior">
-        <div className="pais">
-          <strong>{visao.pais}</strong>
-        </div>
-        <span>
-          Ano {ano}, mês {mes}
-        </span>
-        <button className="botao-painel" onClick={onPainel}>
-          Painel ({fila.length} pedido{fila.length === 1 ? "" : "s"})
-        </button>
-      </header>
+      <BarraDoTopo
+        partida={partida}
+        pedidos={fila.length}
+        aviso={aviso}
+        onPassar={onPassar}
+        onPainel={onPainel}
+      />
       <main className="area-mapa">
         <MapaPolitico
           visao={visao}
@@ -141,6 +157,19 @@ export function TelaMapa({ partida, fila, setFila, onPainel }: Props) {
             camada={0}
             ativa
             onFocar={() => setSelecionado(lei.id)}
+          />
+        ) : null}
+        {resultado ? (
+          <ResultadoDoTurno
+            partida={partida}
+            visao={visao}
+            onFechar={() => setResultado(false)}
+            desvio={desvioResultado}
+            onDesvio={setDesvioResultado}
+            onRetangulo={() => {}}
+            camada={1}
+            ativa
+            onFocar={() => {}}
           />
         ) : null}
       </main>

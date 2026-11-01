@@ -8324,3 +8324,88 @@ span.el-mini {
   font-size: 13.5px;
   line-height: 1.4;
 }
+
+/* ------------------------------------- resultado do turno (fatia 3) -- */
+
+.aviso-barra {
+  flex: none;
+  padding: 0 10px;
+  font-size: 12.5px;
+  color: #f0b4a4;
+}
+
+.documento:has(.resultado-turno) {
+  height: auto;
+  max-height: calc(100% - 36px);
+}
+
+.resultado-turno {
+  display: block;
+}
+
+.resultado-turno h2 {
+  margin: 12px 0 6px;
+  font: 700 13px var(--serifa);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.resultado-turno .ganhou .titulo-doc {
+  color: #2f7d4a;
+}
+
+.resultado-turno .perdeu .titulo-doc {
+  color: #a8402e;
+}
+
+.votacoes-turno {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.votacoes-turno li {
+  padding: 8px 0;
+  border-bottom: 1px solid #0000001a;
+}
+
+.votacao-linha {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.votacao-linha > span:first-child {
+  flex: 1;
+}
+
+.votacao-linha small,
+.votacao-nota,
+.votacao-placar {
+  color: var(--tinta-suave);
+}
+
+.votacoes-turno .aprovada b {
+  color: #2f7d4a;
+}
+
+.votacoes-turno .rejeitada b {
+  color: #a8402e;
+}
+
+.votacao-partidos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--tinta-suave);
+}
+
+.barra-superior .botao-turno:disabled {
+  background: #4a4232;
+  color: #b9a985;
+  cursor: default;
+  filter: none;
+}

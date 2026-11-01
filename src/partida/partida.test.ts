@@ -1,6 +1,6 @@
 // Lei não legislada: o país não declarou, a partida abre e o jogador propõe.
 import { describe, expect, it } from "vitest";
-import { criarPartida, jogar } from ".";
+import { criarPartida, jogar, mesesParaEleicao } from ".";
 
 describe("lei não legislada", () => {
   it("fica fora do estado e passa a arrecadar quando proposta", () => {
@@ -33,6 +33,13 @@ describe("congresso", () => {
 });
 
 describe("eleição", () => {
+  it("conta os meses até a eleição: 48 no começo, 2 no último turno antes dela", () => {
+    const partida = criarPartida("teste", 42);
+    expect(mesesParaEleicao(partida)).toBe(48);
+    expect(mesesParaEleicao(jogar(partida, 5))).toBe(38);
+    expect(mesesParaEleicao(jogar(partida, 23))).toBe(2);
+  });
+
   it("governo parado perde no turno 24 e a partida acaba", () => {
     const partida = criarPartida("teste", 42);
     const antes = jogar(partida, 23).estado;

@@ -79,7 +79,7 @@ export type JanelaProps = Readonly<{
 /** Quanto da janela precisa continuar visível ao arrastar para a borda. */
 const SOBRA_VISIVEL = 140;
 
-function Documento({
+export function Documento({
   orgao,
   setor,
   numero,

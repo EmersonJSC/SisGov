@@ -44,6 +44,27 @@ montada por `src/partida/visao.ts` a partir do motor novo.
 - Presidência: "Constituição" e "1 lei constitucional" (plural certo).
 - Passar o turno continua no Painel até a fatia 3.
 
+## Comportamento esperado da fatia 3 (escrito antes)
+
+- Barra do topo do antigo: país, data, três números com dica ao passar o
+  mouse:
+  - Caixa: resultado nominal do turno em % do PIB, verde se sobra e
+    vermelho se falta; dica com receita, gasto, juros pagos e resultado;
+  - Dívida: dívida em % do PIB; dica com cofre e taxa de juros;
+  - Apoio: apoio se a eleição fosse hoje (vence acima de 50), verde ou
+    vermelho; dica com desgaste, grupo mais insatisfeito e quantos meses
+    faltam para a eleição.
+- Botão "Passar o turno (N pedidos)" na barra. Ao passar, o motor anda um
+  turno com a fila, a fila esvazia e abre o documento "Resultado do turno":
+  cada pedido com o nome da lei, o valor pedido, aprovada ou rejeitada, o
+  placar e o voto de cada partido; se houve eleição, quem venceu e o apoio.
+  Fecha no X e some no turno seguinte. Turno sem votação nem eleição não
+  abre nada.
+- Partida encerrada: o botão vira "Partida encerrada" e fica desligado; o
+  resultado da eleição continua aberto.
+- O Painel continua (salvar, carregar, recomeçar, tabelas) até o autor
+  decidir tirar.
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais

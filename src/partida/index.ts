@@ -18,6 +18,7 @@ import {
   type ValorLei,
   ehEstrato,
   satisfacaoMedia,
+  turnosMandato,
 } from "../motor";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
@@ -139,6 +140,14 @@ export const indicesDoMundo: DescricaoIndice[] = variaveis.variaveis.map(
 /** Apoio que o governo teria se a eleição fosse hoje. */
 export function apoioAtual(estado: Estado): number {
   return satisfacaoMedia(estado.grupos) - estado.desgaste;
+}
+
+/** Meses até a próxima eleição, ou null se o país não tem eleição. */
+export function mesesParaEleicao(partida: Partida): number | null {
+  const { regras, estado } = partida;
+  const mandato = turnosMandato(regras.leis, estado.leis);
+  if (mandato === null) return null;
+  return (estado.inicio_mandato + mandato - estado.turno) * 2;
 }
 
 function arquivoPais<T>(pais: string, nome: string): T {
