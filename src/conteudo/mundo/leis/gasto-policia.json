@@ -1,0 +1,21 @@
+{
+  "versao": 1,
+  "id": "gasto-policia",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.05
+  },
+  "passo": 0.001,
+  "conta": "gasto",
+  "efeitos": [
+    {
+      "indice": "seguranca",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

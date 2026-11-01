@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Passo 5 (Contas) fechado e no GitHub. **Passo 6 (Leis da V1) aberto**, lista
-aprovada, nada implementado ainda.
+aprovada, 6a feito.
 
 - Lista aprovada (10 leis): impostos de renda, consumo e empresas; gasto em
   saúde, educação, polícia e transferência de renda; pena de morte, proteção
@@ -22,8 +22,11 @@ aprovada, nada implementado ainda.
 
 ## Próximo
 
-**6a: gasto vira lei** (proposta curta ao autor antes de codar). Depois 6b
-(bases consumo e lucro), 6c (leis de opções), 6d (segundo país de teste e
+**6a feito** (`npm run gasto`): 4 leis de gasto com `conta: "gasto"`,
+`gasto_fora_das_leis` 17,5 no país de teste; a partida confere que
+`gasto_publico` = leis + fora. Efeito na saúde é pequeno (dobrar o gasto dá
++2 pontos): calibrar no 6d. **Próximo: proposta do 6b** (impostos de consumo
+e de empresas, bases novas). Depois 6c (opções) e 6d (segundo país e
 calibração). Tag v0.2 ao fechar o passo 6.
 
 ## Pendências do autor

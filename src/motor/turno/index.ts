@@ -109,6 +109,20 @@ function arrecadacao(
   return (total / e.pib_nominal) * 100;
 }
 
+/** Gasto das leis com `conta: "gasto"`, em % do PIB nominal. */
+export function gastoDasLeis(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+): number {
+  let total = 0;
+  for (const [id, valor] of Object.entries(leis)) {
+    const lei = regras.leis[id];
+    if (lei.forma === "continua" && lei.conta === "gasto")
+      total += (valor as number) * 100;
+  }
+  return total;
+}
+
 /** Receita, gasto e juros de um turno, na moeda do país. */
 function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
   const e = estado.essenciais;
@@ -117,7 +131,10 @@ function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
   const pibTurno = e.pib_nominal / TURNOS_POR_ANO;
   return {
     receita: (receitaPct / 100) * pibTurno,
-    gasto: (e.gasto_publico / 100) * pibTurno,
+    gasto:
+      ((gastoDasLeis(regras, estado.leis) + regras.pais.gasto_fora_das_leis) /
+        100) *
+      pibTurno,
     juros: ((e.taxa_juros / 100) * estado.tesouro.divida) / TURNOS_POR_ANO,
   };
 }

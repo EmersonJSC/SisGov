@@ -95,6 +95,10 @@ export function validarLei(
           erro("calculo.modelo", 'precisa ser "laffer"');
       }
     }
+    if (dado.conta !== undefined && dado.conta !== "gasto")
+      erro("conta", 'precisa ser "gasto"');
+    else if (dado.conta !== undefined && dado.calculo !== undefined)
+      erro("conta", "lei de gasto não tem cálculo de arrecadação");
     efeitos(dado.efeitos, "efeitos");
   } else if (dado.forma === "opcoes") {
     const opcoes = dado.opcoes;

@@ -23,6 +23,13 @@ describe("validarLei", () => {
     expect(validarLei(valida, "leis/teste.json", indices)).toEqual([]);
   });
 
+  it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {
+    const { calculo: _, ...gasto } = valida;
+    expect(campos({ ...gasto, conta: "gasto" })).toEqual([]);
+    expect(campos({ ...gasto, conta: "lucro" })).toEqual(["conta"]);
+    expect(campos({ ...valida, conta: "gasto" })).toEqual(["conta"]);
+  });
+
   it("diz arquivo, campo e motivo", () => {
     const [erro] = validarLei(
       { ...valida, passo: 0 },

@@ -6,7 +6,7 @@ uma linha própria.
 | Conta   | O que é                                    | Tipo           |
 | ------- | ------------------------------------------ | -------------- |
 | Receita | leis com cálculo + `receita_fora_das_leis` | fluxo do turno |
-| Gasto   | `gasto_publico` declarado pelo país        | fluxo do turno |
+| Gasto   | leis de gasto + `gasto_fora_das_leis`      | fluxo do turno |
 | Juros   | taxa de juros × dívida                     | fluxo do turno |
 | Cofre   | dinheiro guardado no Tesouro               | estoque        |
 | Dívida  | o que o país deve                          | estoque        |
@@ -26,7 +26,10 @@ tudo em % do PIB (fluxos anualizados).
 cofre − dívida é igual ao resultado nominal do turno.
 
 `receita_fora_das_leis` é o imposto que ainda não virou lei. Cada lei de
-imposto do passo 6 tira a sua parte desse número.
+imposto do passo 6 tira a sua parte desse número. Do mesmo jeito,
+`gasto_fora_das_leis` é o gasto que ainda não virou lei (previdência,
+salários…); o país declara `gasto_publico` = leis de gasto + esse número, e a
+partida confere ao carregar.
 
 Comportamento esperado (passo 5):
 

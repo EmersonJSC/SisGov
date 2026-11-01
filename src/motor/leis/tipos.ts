@@ -30,6 +30,8 @@ export interface LeiContinua extends LeiBase {
   faixa: { min: number; max: number };
   passo: number;
   calculo?: { base: IdBase; modelo: "laffer" };
+  /** "gasto": o valor é gasto do governo, em fração do PIB (motor/contas). */
+  conta?: "gasto";
   efeitos: Efeito[];
 }
 

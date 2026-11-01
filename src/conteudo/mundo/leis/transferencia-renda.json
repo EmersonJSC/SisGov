@@ -1,0 +1,21 @@
+{
+  "versao": 1,
+  "id": "transferencia-renda",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.1
+  },
+  "passo": 0.001,
+  "conta": "gasto",
+  "efeitos": [
+    {
+      "indice": "pobreza",
+      "sentido": -1,
+      "forca": "forte",
+      "atraso_turnos": 2
+    }
+  ]
+}

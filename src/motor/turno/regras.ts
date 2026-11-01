@@ -14,6 +14,8 @@ export interface ParametrosPais {
   crescimento: { tendencia: number; volatilidade: number };
   /** Imposto que ainda não virou lei, em % do PIB (motor/contas). */
   receita_fora_das_leis: number;
+  /** Gasto que ainda não virou lei, em % do PIB (motor/contas). */
+  gasto_fora_das_leis: number;
   juros: ParametrosJuros;
 }
 

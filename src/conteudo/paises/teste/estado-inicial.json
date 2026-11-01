@@ -40,6 +40,7 @@
     },
     "crescimento": { "tendencia": 2, "volatilidade": 1.5 },
     "receita_fora_das_leis": 25,
+    "gasto_fora_das_leis": 17.5,
     "juros": { "neutro": 4, "tolerancia_divida": 60 }
   }
 }

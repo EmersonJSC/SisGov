@@ -3,6 +3,7 @@
 import {
   avancarTurno,
   estadoInicial,
+  gastoDasLeis,
   INDICES_ESSENCIAIS,
   lerLei,
   type Estado,
@@ -100,6 +101,12 @@ export function criarPartida(
     dominios,
     pais: inicial.parametros,
   };
+  const gasto =
+    gastoDasLeis(regras, vigentes.leis) + regras.pais.gasto_fora_das_leis;
+  if (Math.abs(gasto - inicial.essenciais.gasto_publico) > 1e-6)
+    throw new Error(
+      `país "${pais}" › gasto_publico (${inicial.essenciais.gasto_publico}) ≠ leis de gasto + gasto_fora_das_leis (${gasto})`,
+    );
   const estado = estadoInicial(regras, {
     semente,
     essenciais: inicial.essenciais,

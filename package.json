@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "check": "npm run format:check && npm run lint && npm run build && npm test",
     "mandato": "vite-node scripts/mandato.ts",
-    "contas": "vite-node scripts/contas.ts"
+    "contas": "vite-node scripts/contas.ts",
+    "gasto": "vite-node scripts/gasto.ts"
   },
   "dependencies": {
     "react": "^19.0.0",
