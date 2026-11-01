@@ -6,11 +6,20 @@
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.3 },
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
   "passo": 0.01,
   "bussola": {
-    "min": { "economico": 0.1, "social": 0.3 },
-    "max": { "economico": -0.2, "social": -0.7 }
+    "min": {
+      "economico": 0.1,
+      "social": 0.3
+    },
+    "max": {
+      "economico": -0.2,
+      "social": -0.7
+    }
   },
   "efeitos": [
     {
@@ -18,12 +27,6 @@
       "sentido": 1,
       "forca": "media",
       "atraso_turnos": 12
-    },
-    {
-      "indice": "reputacao_internacional",
-      "sentido": 1,
-      "forca": "media",
-      "atraso_turnos": 3
     },
     {
       "indice": "industrializacao",

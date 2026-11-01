@@ -4,6 +4,7 @@ import {
   lerPotencias,
   motivoOpinioesInvalidas,
   opiniaoDesejada,
+  reputacao,
   posicaoDoPais,
   validarPotencias,
 } from ".";
@@ -11,6 +12,7 @@ import type { Lei } from "../leis";
 
 const base = () => ({
   versao: 1,
+  indice_reputacao: "reputacao",
   potencias: [
     {
       id: "a",
@@ -49,7 +51,9 @@ describe("validar potências", () => {
   it("recusa potência sem um dos eixos", () => {
     const d = base();
     d.potencias[1].bussola = { economico: 0.2 } as never;
-    expect(motivos(d)).toContain("potencias[1].bussola.social: falta a posição");
+    expect(motivos(d)).toContain(
+      "potencias[1].bussola.social: falta a posição",
+    );
   });
 
   it("recusa relação com potência que não existe", () => {
@@ -113,16 +117,22 @@ const pena: Lei = {
     { id: "graves", bussola: { social: 0.8 }, efeitos: [] },
   ],
 };
-const semBussola: Lei = { ...pena, id: "sem", opcoes: [{ id: "x", efeitos: [] }] };
+const semBussola: Lei = {
+  ...pena,
+  id: "sem",
+  opcoes: [{ id: "x", efeitos: [] }],
+};
 const leis = { imposto, pena, sem: semBussola };
 
 describe("posição do país", () => {
   it("é a média das leis, eixo por eixo; lei sem o eixo não entra", () => {
     // Imposto no meio da faixa: econômico 0. Só a pena fala do social.
-    expect(posicaoDoPais(leis, { imposto: 0.2, pena: "graves", sem: "x" }))
-      .toEqual({ economico: 0, social: 0.8 });
-    expect(posicaoDoPais(leis, { imposto: 0.1, pena: "abolida" }).economico)
-      .toBeCloseTo(0.5);
+    expect(
+      posicaoDoPais(leis, { imposto: 0.2, pena: "graves", sem: "x" }),
+    ).toEqual({ economico: 0, social: 0.8 });
+    expect(
+      posicaoDoPais(leis, { imposto: 0.1, pena: "abolida" }).economico,
+    ).toBeCloseTo(0.5);
   });
 
   it("eixo sem lei nenhuma fica em 0", () => {
@@ -139,7 +149,9 @@ describe("opinião das potências", () => {
   it("desejada: 100 na mesma posição, 0 no canto oposto", () => {
     expect(opiniaoDesejada(a, { economico: 0.5, social: 0 })).toBeCloseTo(100);
     const longe = { ...a, bussola: { economico: 1, social: 1 } };
-    expect(opiniaoDesejada(longe, { economico: -1, social: -1 })).toBeCloseTo(0);
+    expect(opiniaoDesejada(longe, { economico: -1, social: -1 })).toBeCloseTo(
+      0,
+    );
   });
 
   it("anda 10% rumo à desejada por turno", () => {
@@ -155,5 +167,21 @@ describe("opinião das potências", () => {
     expect(motivoOpinioesInvalidas(ps, { a: 50 })).toMatch(/falta.*"b"/);
     expect(motivoOpinioesInvalidas(ps, { a: 50, b: 50, c: 1 })).toMatch(/"c"/);
     expect(motivoOpinioesInvalidas(ps, { a: 50, b: 120 })).toMatch(/0 e 100/);
+  });
+});
+
+describe("reputação", () => {
+  it("é a média das opiniões pesada pelo peso", () => {
+    const potencias = lerPotencias(base());
+    expect(reputacao(potencias, { a: 80, b: 30 })).toBeCloseTo(
+      0.6 * 80 + 0.4 * 30,
+    );
+  });
+
+  it("recusa mundo sem o índice da reputação", () => {
+    const { indice_reputacao: _, ...dado } = base();
+    expect(motivos(dado)).toContain(
+      "indice_reputacao: precisa ser o id do índice da reputação",
+    );
   });
 });

@@ -47,10 +47,23 @@ nos dois eixos).
 
 Partida salva antes do pedaço 2 carrega com as opiniões de partida do país.
 
+### Pedaço 3: reputação internacional (01/nov/2026)
+
+- **Reputação** = média das opiniões das potências, pesada pelo `peso`
+  (soma dos pesos é 1, então fica de 0 a 100).
+- O índice que recebe a reputação é declarado em `potencias.json`
+  (`indice_reputacao`); o motor não sabe o nome. Esse índice é calculado a
+  cada turno, na etapa do mundo, e vale também no turno 0. O valor que o
+  país declarou para ele no `estado-inicial.json` não conta.
+- As leis deixam de mexer direto nela (saem os efeitos da pena de morte,
+  terras indígenas e áreas protegidas); a bússola faz o trabalho.
+- Sem potências nas regras, o índice continua como era (base + leis).
+- A escala da opinião desejada fica como está (decidido em 01/nov): hoje as
+  potências não chegam a odiar o país porque faltam leis nas pontas da
+  bússola; testa de novo quando houver mais leis.
+
 ### Pedaços seguintes (ainda sem código)
 
-- **Reputação internacional** = média das opiniões pesada pelo `peso`. As
-  leis deixam de mexer direto nela; a bússola faz o trabalho.
 - **Segurança externa** (0 a 100, índice novo): cai quando potência forte tem
   opinião ruim do país. O país pode ser atacado, mas nunca começa guerra; o
   ataque em si fica para depois.

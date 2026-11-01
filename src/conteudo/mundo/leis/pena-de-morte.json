@@ -6,23 +6,25 @@
   "camada": "jogabilidade",
   "forma": "opcoes",
   "opcoes": [
-    { "id": "abolida", "bussola": { "social": -0.4 }, "efeitos": [] },
+    {
+      "id": "abolida",
+      "bussola": {
+        "social": -0.4
+      },
+      "efeitos": []
+    },
     {
       "id": "crimes-graves",
       "rotulo": "Para crimes graves",
-      "bussola": { "social": 0.7 },
+      "bussola": {
+        "social": 0.7
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
           "sentido": -1,
           "forca": "media",
           "atraso_turnos": 0
-        },
-        {
-          "indice": "reputacao_internacional",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 1
         },
         {
           "indice": "seguranca",

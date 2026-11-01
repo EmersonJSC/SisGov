@@ -272,3 +272,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
 - **Comércio automático** (01/nov, autor): produto em excesso o país exporta
   sozinho para o mercado mundial; o que falta, importa. Vem com o mercado
   (passo 12) ou logo depois.
+- **Leis nas pontas da bússola** (01/nov): com as 15 leis de hoje, nenhuma
+  potência chega a odiar o país (a pior opinião desejada fica em ~43). Faltam
+  leis nas pontas, principalmente no lado autoritário (só a pena de morte
+  passa de +0,3 no social). Quando entrarem os pacotes do passo 13, medir de
+  novo e ver se a escala da opinião desejada precisa mudar.

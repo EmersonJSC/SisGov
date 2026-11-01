@@ -27,6 +27,7 @@ import {
   andarOpinioes,
   motivoOpinioesInvalidas,
   posicaoDoPais,
+  reputacao,
 } from "../mundo";
 import {
   coligacaoAtual,
@@ -254,18 +255,29 @@ const indicesJogabilidade: Etapa = (regras, estado) => ({
   jogabilidade: jogabilidade(regras, estado),
 });
 
+/** A reputação é a média das opiniões, pesada pelo peso (motor/mundo). */
+function comReputacao(regras: Regras, estado: Estado): Estado {
+  const { potencias, indiceReputacao } = regras;
+  if (!potencias || !indiceReputacao) return estado;
+  return {
+    ...estado,
+    jogabilidade: {
+      ...estado.jogabilidade,
+      [indiceReputacao]: reputacao(potencias, estado.opinioes),
+    },
+  };
+}
+
 /** 7b. Mundo: cada potência anda a opinião rumo à desejada (motor/mundo). */
-const mundo: Etapa = (regras, estado) =>
-  regras.potencias
-    ? {
-        ...estado,
-        opinioes: andarOpinioes(
-          regras.potencias,
-          estado.opinioes,
-          posicaoDoPais(regras.leis, estado.leis),
-        ),
-      }
-    : estado;
+const mundo: Etapa = (regras, estado) => {
+  if (!regras.potencias) return estado;
+  const opinioes = andarOpinioes(
+    regras.potencias,
+    estado.opinioes,
+    posicaoDoPais(regras.leis, estado.leis),
+  );
+  return comReputacao(regras, { ...estado, opinioes });
+};
 
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 function pops(regras: Regras, estado: Estado): Record<string, Pop> {
@@ -455,6 +467,8 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   }
 
   if (regras.potencias) {
+    if (!regras.indiceReputacao || !(regras.indiceReputacao in regras.dominios))
+      throw new Error("mundo: falta o índice da reputação");
     const motivo = motivoOpinioesInvalidas(regras.potencias, inicio.opinioes);
     if (motivo) throw new Error(`país: ${motivo}`);
   }
@@ -494,7 +508,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);
   const comPops: Estado = {
-    ...estado,
+    ...comReputacao(regras, estado),
     essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
     pops: pops(regras, estado),
   };

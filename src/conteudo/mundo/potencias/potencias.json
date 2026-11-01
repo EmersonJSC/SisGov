@@ -1,5 +1,6 @@
 {
   "versao": 1,
+  "indice_reputacao": "reputacao_internacional",
   "potencias": [
     {
       "id": "republica-do-norte",

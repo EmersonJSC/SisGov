@@ -77,3 +77,23 @@ describe("opinião das potências", () => {
     expect(pena["uniao-continental"]).toBeLessThan(igual["uniao-continental"]);
   });
 });
+
+describe("reputação internacional", () => {
+  it("é a média das opiniões pesada, no turno 0 e depois", () => {
+    const media = (p: ReturnType<typeof criarPartida>) =>
+      p.regras.potencias!.reduce(
+        (s, x) => s + x.peso * p.estado.opinioes[x.id],
+        0,
+      );
+    const partida = criarPartida("teste", 42, { semCongresso: true });
+    const indice = partida.regras.indiceReputacao!;
+    expect(partida.estado.jogabilidade[indice]).toBeCloseTo(media(partida));
+    const depois = jogar(partida, 3, [
+      { tipo: "mudar_lei", lei: "pena-de-morte", valor: "crimes-graves" },
+    ]);
+    expect(depois.estado.jogabilidade[indice]).toBeCloseTo(media(depois));
+    expect(depois.estado.jogabilidade[indice]).not.toBeCloseTo(
+      partida.estado.jogabilidade[indice],
+    );
+  });
+});

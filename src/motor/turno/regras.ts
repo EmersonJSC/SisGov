@@ -36,6 +36,8 @@ export interface Regras {
   pais: ParametrosPais;
   /** Grandes potências do mundo; sem elas, não há opinião (motor/mundo). */
   potencias?: Potencia[];
+  /** Índice que recebe a reputação (média das opiniões das potências). */
+  indiceReputacao?: string;
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
 }

@@ -27,6 +27,9 @@ const ehNumero = (v: unknown): v is number =>
 const ehKebab = (v: unknown): v is string =>
   typeof v === "string" && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(v);
 
+const ehKebabBaixo = (v: unknown): v is string =>
+  typeof v === "string" && /^[a-z0-9]+(_[a-z0-9]+)*$/.test(v);
+
 /** Folga para somas de frações (0,3 + 0,25 + … não dá 1 exato). */
 const FOLGA = 1e-9;
 
@@ -40,6 +43,8 @@ export function validarPotencias(dado: unknown): ErroMundo[] {
     return erros;
   }
   if (dado.versao !== 1) erro("versao", "precisa ser 1");
+  if (!ehKebabBaixo(dado.indice_reputacao))
+    erro("indice_reputacao", "precisa ser o id do índice da reputação");
   const lista = dado.potencias;
   if (!Array.isArray(lista) || lista.length < 2) {
     erro("potencias", "precisa ter ao menos duas potências");
@@ -73,14 +78,18 @@ export function validarPotencias(dado: unknown): ErroMundo[] {
       }
       for (const eixo of Object.keys(p.bussola))
         if (!EIXOS.includes(eixo as never))
-          erro(`${c}.bussola.${eixo}`, `eixo precisa ser ${EIXOS.join(" ou ")}`);
+          erro(
+            `${c}.bussola.${eixo}`,
+            `eixo precisa ser ${EIXOS.join(" ou ")}`,
+          );
     }
 
     if (!ehNumero(p.peso) || p.peso < 0 || p.peso > 1)
       erro(`${c}.peso`, "precisa estar entre 0 e 1");
     else somaPesos += p.peso;
 
-    if (!ehObjeto(p.relacoes)) return erro(`${c}.relacoes`, "precisa ser um objeto");
+    if (!ehObjeto(p.relacoes))
+      return erro(`${c}.relacoes`, "precisa ser um objeto");
     for (const [outra, v] of Object.entries(p.relacoes)) {
       const cr = `${c}.relacoes.${outra}`;
       if (outra === p.id) erro(cr, "relação consigo mesma");
@@ -114,6 +123,11 @@ export function validarPotencias(dado: unknown): ErroMundo[] {
   }
 
   return erros;
+}
+
+/** Id do índice que recebe a reputação (`indice_reputacao` do JSON). */
+export function indiceDaReputacao(dado: unknown): string {
+  return (dado as { indice_reputacao: string }).indice_reputacao;
 }
 
 /** Valida e devolve as potências tipadas; lança com todos os erros juntos. */
@@ -173,6 +187,14 @@ export function opiniaoDesejada(
     pais.social - potencia.bussola.social,
   );
   return 100 * (1 - d / DISTANCIA_MAXIMA);
+}
+
+/** Reputação: média das opiniões pesada pelo `peso` das potências. */
+export function reputacao(
+  potencias: Potencia[],
+  opinioes: Record<string, number>,
+): number {
+  return potencias.reduce((soma, p) => soma + p.peso * opinioes[p.id], 0);
 }
 
 /** Quanto da distância até a desejada a opinião anda por turno. */

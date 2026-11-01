@@ -6,6 +6,7 @@ import {
   gastoDasLeis,
   INDICES_ESSENCIAIS,
   lerLei,
+  indiceDaReputacao,
   lerPotencias,
   type Congresso,
   type Estado,
@@ -215,6 +216,7 @@ export function criarPartida(
     pops: carregarPops(),
     grupos: carregarGrupos(),
     potencias: lerPotencias(potencias),
+    indiceReputacao: indiceDaReputacao(potencias),
     pais: inicial.parametros,
     congresso: semCongresso
       ? undefined
