@@ -27,8 +27,11 @@ interface Props {
   partida: Partida;
   fila: Pedido[];
   setFila: (f: Pedido[]) => void;
-  onPainel: () => void;
+  podeCarregar: boolean;
   onPassar: () => void;
+  onSalvar: () => void;
+  onCarregar: () => void;
+  onRecomecar: () => void;
   aviso: string;
 }
 
@@ -42,8 +45,11 @@ export function TelaMapa({
   partida,
   fila,
   setFila,
-  onPainel,
+  podeCarregar,
   onPassar,
+  onSalvar,
+  onCarregar,
+  onRecomecar,
   aviso,
 }: Props) {
   const visao = useMemo(() => montarVisao(partida), [partida]);
@@ -109,8 +115,11 @@ export function TelaMapa({
         partida={partida}
         pedidos={fila.length}
         aviso={aviso}
+        podeCarregar={podeCarregar}
         onPassar={onPassar}
-        onPainel={onPainel}
+        onSalvar={onSalvar}
+        onCarregar={onCarregar}
+        onRecomecar={onRecomecar}
       />
       <main className="area-mapa">
         <MapaPolitico

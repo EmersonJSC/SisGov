@@ -19,12 +19,13 @@ Congresso", que põe o pedido na fila do turno (a mesma do Painel).
 apoio com dica) e "Passar o turno" no mapa, que abre o "Resultado do turno"
 (`ResultadoDoTurno.tsx`: votações e eleição). O mapa já joga uma partida
 inteira sem o Painel.
+**Fatia 4 feita:** o Painel de tabelas saiu (e `Leis.tsx`); Salvar, Carregar e
+Recomeçar agora ficam na barra do topo. O mapa é a única tela do jogo.
 
 ## Próximo
 
-Decisão do autor: tirar o Painel de tabelas (salvar, carregar e recomeçar
-iriam para a barra) ou mantê-lo como tela de conferência. Depois, frente A
-(mais leis, revogar lei).
+Frente A: mais leis e revogar lei. Proposta curta para o autor aprovar antes
+de implementar.
 
 ## Pendências do autor
 

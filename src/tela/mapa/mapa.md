@@ -65,6 +65,18 @@ montada por `src/partida/visao.ts` a partir do motor novo.
 - O Painel continua (salvar, carregar, recomeçar, tabelas) até o autor
   decidir tirar.
 
+## Comportamento esperado da fatia 4 (escrito antes)
+
+O autor mandou tirar o Painel (01/nov/2026). O mapa é a única tela do jogo.
+
+- Na barra do topo, no lugar da aba "Painel", três botões: Salvar, Carregar
+  e Recomeçar.
+  - Salvar guarda a partida no navegador e diz "Partida salva." no aviso.
+  - Carregar volta à partida salva (aviso "Partida carregada."); desligado se
+    não há partida salva.
+  - Recomeçar volta à tela de escolher país e semente.
+- Somem a tela de tabelas, a lista de leis dela e o botão "Mapa".
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais

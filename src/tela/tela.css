@@ -9,29 +9,6 @@ main:not(.area-mapa) {
   margin: 0 auto;
   padding: 16px;
 }
-.painel-rolagem section {
-  background: #fff;
-  border-radius: 8px;
-  padding: 8px 16px;
-  margin: 12px 0;
-}
-.painel-rolagem table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.painel-rolagem td,
-.painel-rolagem th {
-  text-align: left;
-  padding: 4px 8px;
-  border-bottom: 1px solid #e3e7ee;
-}
-.unidade {
-  color: #6b7686;
-  font-size: 0.85em;
-}
-.pedido {
-  background: #fff8dc;
-}
 .aviso {
   color: #a05a00;
 }
@@ -40,21 +17,4 @@ main:not(.area-mapa) {
 }
 .perdeu {
   border-left: 6px solid #b22222;
-}
-.voto {
-  margin-right: 12px;
-  font-size: 0.85em;
-  color: #4a5568;
-}
-button.passar {
-  font-size: 1.1em;
-  padding: 8px 20px;
-}
-
-/* o mapa.css trava a rolagem da página; o painel rola por dentro */
-.painel-rolagem {
-  height: 100%;
-  overflow: auto;
-  background: #f4f6f9;
-  color: #13233a;
 }

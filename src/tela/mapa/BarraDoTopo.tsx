@@ -1,7 +1,7 @@
 /**
  * Barra do topo, herdada do projeto antigo (src/ui/mapa/TelaPrincipal.tsx em
- * f62c3fef): país, data, caixa, dívida e apoio com dica, e o botão de passar
- * o turno.
+ * f62c3fef): país, data, caixa, dívida e apoio com dica, salvar, carregar e recomeçar, e o
+ * botão de passar o turno.
  */
 import { useId, useState } from "react";
 import { createPortal } from "react-dom";
@@ -97,14 +97,20 @@ export function BarraDoTopo({
   partida,
   pedidos,
   aviso,
+  podeCarregar,
   onPassar,
-  onPainel,
+  onSalvar,
+  onCarregar,
+  onRecomecar,
 }: {
   partida: Partida;
   pedidos: number;
   aviso: string;
+  podeCarregar: boolean;
   onPassar: () => void;
-  onPainel: () => void;
+  onSalvar: () => void;
+  onCarregar: () => void;
+  onRecomecar: () => void;
 }) {
   const { estado } = partida;
   const e = estado.essenciais;
@@ -178,9 +184,20 @@ export function BarraDoTopo({
         />
       </div>
       {aviso ? <span className="aviso-barra">{aviso}</span> : null}
-      <nav className="abas-topo" aria-label="Telas">
-        <button type="button" className="aba-topo" onClick={onPainel}>
-          Painel
+      <nav className="abas-topo" aria-label="Partida">
+        <button type="button" className="aba-topo" onClick={onSalvar}>
+          Salvar
+        </button>
+        <button
+          type="button"
+          className="aba-topo"
+          onClick={onCarregar}
+          disabled={!podeCarregar}
+        >
+          Carregar
+        </button>
+        <button type="button" className="aba-topo" onClick={onRecomecar}>
+          Recomeçar
         </button>
       </nav>
       <button
