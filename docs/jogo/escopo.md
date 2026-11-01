@@ -79,6 +79,11 @@ esquerda é resultado das leis, nunca objetivo (31/out).
 - **Gasto também é lei** (01/nov): saúde, educação, polícia… são leis
   contínuas em % do PIB. O que o país gasta e ainda não virou lei fica em
   `gasto_fora_das_leis`, como a receita.
+- **Nenhuma lei é um controle só que faz coisas grandes** (01/nov). Cada
+  tema se divide em leis menores, cada uma com uma escolha de verdade (ex.:
+  proteção ambiental = polícia ambiental, licenciamento, áreas protegidas…).
+  Uma lei grande só vale como primeira versão, já sabendo em quais leis ela
+  se divide.
 - **Referências do mundo do jogo** (01/nov): lei, opção e texto nunca se
   descrevem por país real ("como a Suécia"). Medem-se pelo próprio país da
   partida (ex.: faixa de imposto em múltiplos da renda média do país).
@@ -172,3 +177,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
   país. Quando vier o mercado com fila de construção (estatal ou privada,
   seção 9), o motor passa a somar a base dos prédios e dos pops; a lei e o
   país não mudam. Leis que liberam ou travam construção entram junto.
+- **Grandes mídias do país** (01/nov): o país declara até 5 grandes mídias
+  (nome, alcance, linha). O jogador pode limitar cada uma, dar benefício a
+  outras (verba de publicidade, concessão), criar uma emissora estatal e até
+  banir as outras. Substitui a lei única "liberdade de imprensa". É a
+  mecânica "mídia" da seção 9 (fora da V1 hoje).
