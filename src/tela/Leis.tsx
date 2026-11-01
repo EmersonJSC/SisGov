@@ -1,4 +1,5 @@
 import type { Partida, Pedido } from "../partida";
+import { comPedido } from "./fila";
 
 export const nomeDaLei = (id: string) => {
   const t = id.replace(/-/g, " ");
@@ -19,15 +20,8 @@ interface Props {
 export function Leis({ partida, fila, setFila }: Props) {
   const { regras, estado } = partida;
 
-  // Um pedido por lei; voltar ao valor vigente tira o pedido da fila.
-  const pedir = (lei: string, valor: number | string) => {
-    const resto = fila.filter((p) => p.lei !== lei);
-    setFila(
-      valor === estado.leis[lei]
-        ? resto
-        : [...resto, { tipo: "mudar_lei", lei, valor }],
-    );
-  };
+  const pedir = (lei: string, valor: number | string) =>
+    setFila(comPedido(fila, partida, lei, valor));
 
   return (
     <section>

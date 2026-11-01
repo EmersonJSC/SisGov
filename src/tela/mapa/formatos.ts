@@ -113,3 +113,7 @@ export const NOME_PROCESSO: Readonly<Record<string, string>> = {
   "clausula-petrea": "Constituição",
   decreto: "Decreto",
 };
+
+/** "1 lei", "3 leis". */
+export const contarLeis = (n: number): string =>
+  `${n} ${n === 1 ? "lei" : "leis"}`;

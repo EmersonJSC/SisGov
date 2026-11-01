@@ -1,7 +1,16 @@
-// Moldura do mapa político herdado da tela antiga: monta a visão da partida
-// e guarda o que está aberto e selecionado. Fatia 1: só olhar.
-import { useMemo, useState } from "react";
-import { montarVisao, type Partida } from "../../partida";
+// Moldura do mapa político herdado da tela antiga: monta a visão da partida,
+// guarda o que está aberto e selecionado e a janela da lei (fatia 2).
+import { useEffect, useMemo, useState } from "react";
+import {
+  montarVisao,
+  previaDaLei,
+  valorDoNivel,
+  type Partida,
+  type Pedido,
+  type VisaoLei,
+} from "../../partida";
+import { comPedido } from "../fila";
+import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
 import { MapaPolitico } from "./MapaPolitico";
 import { indexarRelacoes, ligacoesDeFundo } from "./relacoes";
@@ -9,21 +18,70 @@ import "./mapa.css";
 
 const VAZIO_MAPA = new Map();
 const VAZIO_SET = new Set<string>();
+const CENTRO: Desvio = { x: 0, y: 0 };
 
 interface Props {
   partida: Partida;
+  fila: Pedido[];
+  setFila: (f: Pedido[]) => void;
   onPainel: () => void;
 }
 
-export function TelaMapa({ partida, onPainel }: Props) {
+/** Nível da visão que corresponde a um valor do motor. */
+function nivelDe(lei: VisaoLei, valor: Pedido["valor"]): number {
+  if (typeof valor === "number") return valor * 100;
+  return Math.max(0, lei.opcoes?.findIndex((o) => o.id === valor) ?? 0);
+}
+
+export function TelaMapa({ partida, fila, setFila, onPainel }: Props) {
   const visao = useMemo(() => montarVisao(partida), [partida]);
   const base = useMemo(() => montarBase(visao), [visao]);
   const indice = useMemo(() => indexarRelacoes(visao), [visao]);
   const fundo = useMemo(() => ligacoesDeFundo(visao), [visao]);
   const [aberta, setAberta] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string | null>(null);
+  const [janela, setJanela] = useState<string | null>(null);
+  const [desvio, setDesvio] = useState<Desvio>(CENTRO);
+  const [retangulo, setRetangulo] = useState<Retangulo | null>(null);
+  const [rascunho, setRascunho] = useState(0);
   const ano = Math.floor(visao.turno / 6) + 1;
   const mes = (visao.turno % 6) * 2 + 1;
+
+  const lei = visao.leis.find((l) => l.id === janela);
+  const pedido = fila.find((p) => p.lei === janela);
+  const inicial = (l: VisaoLei) => {
+    const p = fila.find((x) => x.lei === l.id);
+    // lei de opções sem valor no país começa na primeira opção
+    return p ? nivelDe(l, p.valor) : Math.max(0, l.meta);
+  };
+
+  // Turno novo: a janela aberta volta ao que vale (ou ao que está na fila).
+  useEffect(() => {
+    if (lei) setRascunho(inicial(lei));
+  }, [partida]);
+
+  const valor = lei ? valorDoNivel(partida, lei.id, rascunho) : null;
+  const previa = useMemo(
+    () =>
+      lei && valor !== null && valor !== partida.estado.leis[lei.id]
+        ? previaDaLei(partida, lei.id, valor)
+        : null,
+    [partida, lei, valor],
+  );
+
+  const selecionar = (id: string | null) => {
+    setSelecionado(id);
+    const l = visao.leis.find((x) => x.id === id);
+    if (!l) return;
+    if (l.id !== janela) setRascunho(inicial(l));
+    setJanela(l.id);
+  };
+
+  const fechar = () => {
+    setJanela(null);
+    setRetangulo(null);
+    setSelecionado(null);
+  };
 
   return (
     <div className="tela">
@@ -35,7 +93,7 @@ export function TelaMapa({ partida, onPainel }: Props) {
           Ano {ano}, mês {mes}
         </span>
         <button className="botao-painel" onClick={onPainel}>
-          Painel
+          Painel ({fila.length} pedido{fila.length === 1 ? "" : "s"})
         </button>
       </header>
       <main className="area-mapa">
@@ -47,7 +105,7 @@ export function TelaMapa({ partida, onPainel }: Props) {
           aberta={aberta}
           onAbrir={(id) => setAberta(id === PRESIDENCIA ? null : id)}
           selecionado={selecionado}
-          onSelecionar={setSelecionado}
+          onSelecionar={selecionar}
           marcas={VAZIO_MAPA}
           pulsos={VAZIO_SET}
           variacoes={VAZIO_MAPA}
@@ -55,8 +113,36 @@ export function TelaMapa({ partida, onPainel }: Props) {
           mostrarVariacoes={false}
           onAlternarVariacoes={() => {}}
           painel={0}
-          cobertura={null}
+          cobertura={selecionado === janela ? retangulo : null}
         />
+        {lei && !partida.estado.encerrada ? (
+          <DocumentoLei
+            key={lei.id}
+            lei={lei}
+            visao={visao}
+            base={base}
+            indice={indice}
+            rascunho={rascunho}
+            onRascunho={setRascunho}
+            previa={previa}
+            naFila={!!pedido}
+            enviado={!!pedido && pedido.valor === valor}
+            onEnviar={() =>
+              valor !== null && setFila(comPedido(fila, partida, lei.id, valor))
+            }
+            onTirar={() => {
+              setFila(fila.filter((p) => p.lei !== lei.id));
+              setRascunho(lei.meta);
+            }}
+            onFechar={fechar}
+            desvio={desvio}
+            onDesvio={setDesvio}
+            onRetangulo={setRetangulo}
+            camada={0}
+            ativa
+            onFocar={() => setSelecionado(lei.id)}
+          />
+        ) : null}
       </main>
     </div>
   );

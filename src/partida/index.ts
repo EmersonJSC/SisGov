@@ -248,6 +248,7 @@ export function jogar(
 
 export { carregarPartida, salvarPartida } from "./salvar";
 export { montarVisao } from "./visao";
+export { previaDaLei, valorDoNivel, type PreviaLei } from "./previa";
 export type { Estado, Pedido } from "../motor";
 export type {
   VisaoArea,

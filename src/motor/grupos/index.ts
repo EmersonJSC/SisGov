@@ -93,7 +93,7 @@ export function rendaDoGrupo(
 }
 
 /** Pontos que as leis dão ao grupo, contra o marco. */
-function pontosLeis(
+export function pontosLeis(
   grupo: string,
   leis: Record<string, Lei>,
   agora: Record<string, ValorLei>,

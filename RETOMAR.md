@@ -8,21 +8,19 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Versão 1.0 enviada (`v1.0`). Frente nova, decidida com o autor: **a tela do
-jogo é o mapa da tela antiga, reaproveitado** (esferas por área, leis dentro,
-bolhas com anel, setas no foco). O mapa de três anéis feito antes foi
-descartado.
-**Fatia 1 feita:** componentes de `src/ui/mapa/` do projeto antigo (commit
-`f62c3fef`) copiados para `src/tela/mapa/` quase sem mudança; eles leem a
-`VisaoPartida`, montada por `src/partida/visao.ts` a partir do motor novo.
-Quatro áreas em `mundo/areas/areas.json`; nome, descrição e rótulo das
-opções no JSON de cada lei. Botão "Painel" leva às tabelas, que ainda jogam.
-Comportamento em `src/tela/mapa/mapa.md`.
+jogo é o mapa da tela antiga, reaproveitado** (`src/tela/mapa/`, lendo a
+`VisaoPartida` de `src/partida/visao.ts`). Comportamento em
+`src/tela/mapa/mapa.md`.
+**Fatia 1 feita:** mapa com esferas, leis, bolhas e setas.
+**Fatia 2 feita:** clicar numa lei abre a janela do antigo (`DocumentoLei.tsx`):
+controle, efeitos diretos do motor (`partida/previa.ts`) e "Enviar ao
+Congresso", que põe o pedido na fila do turno (a mesma do Painel).
 
 ## Próximo
 
-Fatia 2: janela da lei (Documentos + ReguaDaLei do antigo): régua das
-opções, efeitos e "Enviar ao Congresso" virando pedido do turno. Proposta
-curta ao autor antes. Depois, fatia 3: barra do topo e passar o turno.
+Fatia 3: barra do topo (caixa, dívida, apoio) e "Passar o turno" no mapa,
+com o resultado das votações. Proposta curta ao autor antes. Com ela, a tela
+de tabelas pode sair.
 
 ## Pendências do autor
 
@@ -44,4 +42,7 @@ curta ao autor antes. Depois, fatia 3: barra do topo e passar o turno.
 - Renomear arquivo que o `main.tsx` importa exige `touch src/main.tsx` com o Vite rodando (cache).
 - A tag `projeto-antigo-2026-10-31` não tem mais as leis antigas: para ver ou rodar a tela antiga, usar o commit `f62c3fef` (`git show f62c3fef:src/ui/mapa/…`; numa worktree, ligar `node_modules` e abrir direto no jogo trocando o estado inicial de `TelaPrincipal`).
 - O `mapa.css` antigo trava a rolagem do `body`: tela que precisa rolar usa contêiner próprio (`.painel-rolagem`); o `main` da tela simples é `main:not(.area-mapa)`.
+- `tela.css` só vale dentro de `.painel-rolagem` (a regra `section` global pintava a janela da lei de branco).
+- Lei sem valor no país (ex.: áreas protegidas no teste-pobre) vira `naoLegislada`, no mínimo da faixa; `undefined × 100` dava NaN no mapa.
+- No navegador do Claude, o primeiro clique numa esfera ou lei às vezes não pega (o hover redesenha o nó): passar o mouse antes de clicar.
 - Retratos do antigo são SVG genéricos (ok); fotos e nomes da tela de fundação são de pessoas reais e não entram.

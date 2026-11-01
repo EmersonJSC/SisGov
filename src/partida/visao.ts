@@ -78,9 +78,11 @@ function visaoDaLei(
     revogavel: false,
     exigencias: [],
     filhas: [],
+    ...(valor === undefined ? { naoLegislada: true } : {}),
   };
+  // sem valor no país: o motor conta a contínua no mínimo da faixa
   if (lei.forma === "continua") {
-    const nivel = Number(valor) * 100;
+    const nivel = Number(valor ?? lei.faixa.min) * 100;
     return {
       ...comum,
       grupo: lei.calculo
@@ -94,6 +96,7 @@ function visaoDaLei(
       meta: nivel,
       minimo: lei.faixa.min * 100,
       maximo: lei.faixa.max * 100,
+      passo: lei.passo * 100,
       unidade: "percentual_0_100",
     };
   }
@@ -114,7 +117,7 @@ function visaoDaLei(
       valor: i,
       saldoAnual: 0,
     })),
-    opcaoAtual: String(valor),
+    opcaoAtual: valor === undefined ? undefined : String(valor),
   };
 }
 

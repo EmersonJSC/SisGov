@@ -117,7 +117,14 @@ export function App() {
   const eleicao = estado.eleicao;
 
   if (vista === "mapa")
-    return <TelaMapa partida={partida} onPainel={() => setVista("painel")} />;
+    return (
+      <TelaMapa
+        partida={partida}
+        fila={fila}
+        setFila={setFila}
+        onPainel={() => setVista("painel")}
+      />
+    );
 
   return (
     <main className="painel-rolagem">

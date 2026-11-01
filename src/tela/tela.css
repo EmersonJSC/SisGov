@@ -9,18 +9,18 @@ main:not(.area-mapa) {
   margin: 0 auto;
   padding: 16px;
 }
-section {
+.painel-rolagem section {
   background: #fff;
   border-radius: 8px;
   padding: 8px 16px;
   margin: 12px 0;
 }
-table {
+.painel-rolagem table {
   width: 100%;
   border-collapse: collapse;
 }
-td,
-th {
+.painel-rolagem td,
+.painel-rolagem th {
   text-align: left;
   padding: 4px 8px;
   border-bottom: 1px solid #e3e7ee;

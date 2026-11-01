@@ -44,4 +44,12 @@ describe("visão da partida para o mapa", () => {
     const g = depois.bolhas.find((b) => b.tipo === "grupo")!;
     expect(g.valor).toBe(jogar(partida, 3).estado.grupos[g.id].satisfacao);
   });
+
+  it("lei que o país não legislou fica no mínimo da faixa, sem NaN", () => {
+    const pobre = montarVisao(criarPartida("teste-pobre", 7));
+    const areas = pobre.leis.find((l) => l.id === "areas-protegidas")!;
+    expect(areas.naoLegislada).toBe(true);
+    expect(areas.nivel).toBe(areas.minimo);
+    for (const l of pobre.leis) expect(Number.isFinite(l.nivel)).toBe(true);
+  });
 });

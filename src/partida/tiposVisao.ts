@@ -67,6 +67,10 @@ export type VisaoLei = Readonly<{
   meta: number;
   minimo?: number;
   maximo?: number;
+  /** O país não declarou valor para esta lei. */
+  naoLegislada?: boolean;
+  /** Passo do controle, na unidade do nível (lei contínua). */
+  passo?: number;
   unidade: string;
   opcoes?: readonly VisaoOpcao[];
   /** Opção mais próxima do nível em funcionamento. */

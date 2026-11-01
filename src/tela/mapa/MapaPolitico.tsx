@@ -29,7 +29,12 @@ import {
   type Camera,
   type Tela,
 } from "./camera";
-import { diferencaNaTela, valorNaTela, variacaoReal } from "./formatos";
+import {
+  contarLeis,
+  diferencaNaTela,
+  valorNaTela,
+  variacaoReal,
+} from "./formatos";
 import {
   RAIO_BASE_BOLHA,
   RAIO_BASE_LEI,
@@ -60,12 +65,7 @@ import {
   type Ponto,
   type PosicaoLei,
 } from "./layout";
-export type Retangulo = Readonly<{
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-}>;
+import type { Retangulo } from "./DocumentoLei";
 import {
   efeitoDe,
   vizinhanca,
@@ -1676,7 +1676,7 @@ export function MapaPolitico({
             }}
             role="button"
             tabIndex={0}
-            aria-label={`Presidência e Constituição, ${totalConstitucionais} leis constitucionais. ${p.aberta ? "Fechar área" : "Abrir área"}`}
+            aria-label={`Presidência e Constituição, ${totalConstitucionais} ${totalConstitucionais === 1 ? "lei constitucional" : "leis constitucionais"}. ${p.aberta ? "Fechar área" : "Abrir área"}`}
             onKeyDown={aoTeclar(() => onAbrir(p.aberta ? null : PRESIDENCIA))}
           >
             <circle cx={p.x} cy={p.y} r={p.r} className="disco-presidencia" />
@@ -1777,7 +1777,7 @@ export function MapaPolitico({
                 }}
                 role="button"
                 tabIndex={0}
-                aria-label={`${ministerio.titulo}: ${ministerio.pastas.map((p) => p.cargo).join(", ")}; ${ministerio.leis.length} leis. ${e.aberta ? "Área aberta" : "Abrir área"}`}
+                aria-label={`${ministerio.titulo}: ${ministerio.pastas.map((p) => p.cargo).join(", ")}; ${contarLeis(ministerio.leis.length)}. ${e.aberta ? "Área aberta" : "Abrir área"}`}
                 aria-expanded={e.aberta}
                 onKeyDown={aoTeclar(() => abrirEsfera(ministerio.nome))}
               >
@@ -1875,7 +1875,7 @@ export function MapaPolitico({
                     {ministerio.pastas.length > 1
                       ? `${ministerio.pastas.length} ministérios`
                       : ministerio.cargo}{" "}
-                    · {ministerio.leis.length} leis
+                    · {contarLeis(ministerio.leis.length)}
                     {constit && e.aberta
                       ? ` · ${constit} constituciona${constit > 1 ? "is" : "l"}`
                       : ""}
@@ -1993,7 +1993,7 @@ export function MapaPolitico({
                     className="rotulo-constituicao"
                     x={10}
                   >
-                    Constituição · {totalConstitucionais} leis
+                    Constituição · {contarLeis(totalConstitucionais)}
                   </text>
                 </g>
               </>
@@ -2038,7 +2038,7 @@ export function MapaPolitico({
                     textAnchor="middle"
                     className="rotulo-constituicao"
                   >
-                    Constituição Federal
+                    Constituição
                   </text>
                   <text
                     y={86}
@@ -2046,7 +2046,10 @@ export function MapaPolitico({
                     textAnchor="middle"
                     className="contagem-constituicao"
                   >
-                    {totalConstitucionais} leis constitucionais
+                    {totalConstitucionais}{" "}
+                    {totalConstitucionais === 1
+                      ? "lei constitucional"
+                      : "leis constitucionais"}
                   </text>
                 </g>
               </>
