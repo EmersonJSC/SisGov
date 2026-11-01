@@ -76,6 +76,12 @@ esquerda é resultado das leis, nunca objetivo (31/out).
   "renda", com Laffer e evasão do motor). A lei não traz fórmula própria.
 - O texto da tela é gerado dos números da lei: texto e motor não discordam.
 - **Poucas e eficientes na V1**; mais leis depois.
+- **Gasto também é lei** (01/nov): saúde, educação, polícia… são leis
+  contínuas em % do PIB. O que o país gasta e ainda não virou lei fica em
+  `gasto_fora_das_leis`, como a receita.
+- **Referências do mundo do jogo** (01/nov): lei, opção e texto nunca se
+  descrevem por país real ("como a Suécia"). Medem-se pelo próprio país da
+  partida (ex.: faixa de imposto em múltiplos da renda média do país).
 
 ## 6. População e grupos
 
@@ -144,3 +150,14 @@ lidas (tag `projeto-antigo-2026-10-31`).
   emissão de moeda: acabou o cofre, o governo escolhe dívida ou moeda.
 - **Regra fiscal** (01/nov): lei que decide quanto da sobra do cofre abate
   a dívida.
+- **Progressividade do imposto de renda** (01/nov): lei separada da
+  alíquota. A lei do imposto de renda diz **quanto** (a % líquida, média do
+  país); esta diz **de quem**, com faixas medidas pela renda do próprio país.
+  Não muda a arrecadação, só divide o peso. Precisa dos pops (passo 7).
+- **Público e privado em esferas separadas** (01/nov): saúde e educação com
+  duas leis cada, gasto público (hospital e escola do governo) e apoio ao
+  privado (voucher, subsídio, dedução no imposto). Setor privado como índice
+  próprio, que cresce com o apoio e demora; privatizar cortando o público
+  antes do privado crescer derruba a saúde no meio da transição. Sem efeito
+  moral embutido ("privado = desigualdade"). Precisa da peça "índice mexe em
+  índice" no motor.

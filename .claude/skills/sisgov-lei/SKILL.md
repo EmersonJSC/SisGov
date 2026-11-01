@@ -33,6 +33,13 @@ description: Use when writing, reviewing or changing a SisGov law JSON in src/co
 - Força por nível (`fraca`, `media`, `forte`), nunca número solto.
 - Todo efeito declara o atraso em turnos (turno = 2 meses).
 - Nenhum nome de país na lei. Nome local ("Selic") é rótulo do país.
+- **Nenhuma referência a país real** em opção, faixa ou texto ("moderado,
+  como o Brasil" é proibido; foi o problema da versão antiga). A régua é o
+  próprio país da partida: renda média, salário, PIB, população dele.
+- A lei diz **quanto**; quem paga ou quem recebe pode ser outra lei
+  (ex.: alíquota do imposto de renda × progressividade).
+- Gasto é lei contínua em % do PIB; público e privado são esferas separadas,
+  cada uma com a sua lei (escopo, seção 11).
 - Lei inventada vale se for plausível; número na ordem de grandeza certa.
 
 ## Conferir
