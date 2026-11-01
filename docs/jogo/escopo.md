@@ -266,4 +266,9 @@ lidas (tag `projeto-antigo-2026-10-31`).
   - Financiamento de campanha entra com a campanha eleitoral.
 - **Mundo sem guerra ativa** (01/nov, autor): as potências não fazem muita
   coisa (sanção, no máximo). Guerra só talvez numa DLC. O país tem um
-  **nível de segurança** que diz se ele pode ser atacado ou não.
+  **nível de segurança** que diz se ele pode ser atacado ou não. O país
+  **pode ser atacado, mas nunca começa uma guerra** (01/nov, autor); o que
+  acontece no ataque fica para depois do passo 11, que só traz o número.
+- **Comércio automático** (01/nov, autor): produto em excesso o país exporta
+  sozinho para o mercado mundial; o que falta, importa. Vem com o mercado
+  (passo 12) ou logo depois.

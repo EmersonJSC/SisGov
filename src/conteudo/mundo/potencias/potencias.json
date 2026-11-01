@@ -1,0 +1,70 @@
+{
+  "versao": 1,
+  "potencias": [
+    {
+      "id": "republica-do-norte",
+      "nome": "República do Norte",
+      "descricao": "A maior potência do ocidente: mercado aberto, moeda forte e a maior força militar do mundo.",
+      "bussola": { "economico": 0.6, "social": 0.2 },
+      "peso": 0.3,
+      "relacoes": {
+        "uniao-continental": 0.8,
+        "republica-popular-do-oriente": -0.5,
+        "federacao-do-leste": -0.8,
+        "liga-do-golfo": 0.5
+      }
+    },
+    {
+      "id": "uniao-continental",
+      "nome": "União Continental",
+      "descricao": "Bloco de países ricos que decidem juntos: cobra direitos humanos e meio ambiente de quem negocia com ele.",
+      "bussola": { "economico": 0.1, "social": -0.4 },
+      "peso": 0.25,
+      "relacoes": {
+        "republica-do-norte": 0.8,
+        "republica-popular-do-oriente": -0.1,
+        "federacao-do-leste": -0.6,
+        "liga-do-golfo": 0.2
+      }
+    },
+    {
+      "id": "republica-popular-do-oriente",
+      "nome": "República Popular do Oriente",
+      "descricao": "A fábrica do mundo: Estado forte na economia, partido único e fome de matéria-prima.",
+      "bussola": { "economico": -0.3, "social": 0.6 },
+      "peso": 0.25,
+      "relacoes": {
+        "republica-do-norte": -0.5,
+        "uniao-continental": -0.1,
+        "federacao-do-leste": 0.6,
+        "liga-do-golfo": 0.4
+      }
+    },
+    {
+      "id": "federacao-do-leste",
+      "nome": "Federação do Leste",
+      "descricao": "Gigante de gás, petróleo e armas, governado com mão de ferro e desconfiado do ocidente.",
+      "bussola": { "economico": -0.1, "social": 0.7 },
+      "peso": 0.1,
+      "relacoes": {
+        "republica-do-norte": -0.8,
+        "uniao-continental": -0.6,
+        "republica-popular-do-oriente": 0.6,
+        "liga-do-golfo": 0.3
+      }
+    },
+    {
+      "id": "liga-do-golfo",
+      "nome": "Liga do Golfo",
+      "descricao": "Monarquias do petróleo: ricas, religiosas e com dinheiro para investir onde forem bem recebidas.",
+      "bussola": { "economico": 0.3, "social": 0.9 },
+      "peso": 0.1,
+      "relacoes": {
+        "republica-do-norte": 0.5,
+        "uniao-continental": 0.2,
+        "republica-popular-do-oriente": 0.4,
+        "federacao-do-leste": 0.3
+      }
+    }
+  ]
+}

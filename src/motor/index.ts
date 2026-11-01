@@ -9,6 +9,7 @@ export * from "./eleicao";
 export * from "./estado";
 export * from "./grupos";
 export * from "./leis";
+export * from "./mundo";
 export * from "./politica";
 export * from "./populacao";
 export * from "./turno";

@@ -131,7 +131,7 @@ desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
 
 **Expande depois:** tela elaborada, gráficos, mapa, arte.
 
-### Passo 11 — Mundo ⬅ próximo (aprovado em 01/nov; falta decidir a segurança)
+### Passo 11 — Mundo ⬅ em andamento (aprovado em 01/nov)
 
 O mercado vem depois do mundo: todo país disputa o mesmo mercado, então
 antes é preciso existir quem está do outro lado (01/nov, autor).
@@ -142,6 +142,7 @@ antes é preciso existir quem está do outro lado (01/nov, autor).
 | Cada potência tem a **sua própria opinião** sobre o seu país; o país declara a de partida | — |
 | A opinião muda com as suas políticas, pela bússola: lei que aproxima o país da potência sobe a opinião, a que afasta desce. É separada da opinião dos pops | script (`npm run mundo`): uma lei mudada move a opinião de cada potência na direção certa |
 | O índice **reputação internacional** passa a ser a média das opiniões, pesada pelo peso de cada potência; as leis que mexiam nele passam a mexer nas potências | o script mostra a média batendo com as opiniões |
+| Índice novo **segurança externa** (0 a 100): cai quando potência forte tem opinião ruim do país. O país pode ser atacado, mas nunca começa guerra; o ataque em si fica para depois | o script mostra a segurança caindo com uma potência hostil |
 | O mapa mostra as potências e a opinião de cada uma | conferido na tela |
 
 **Fica de fora:** comércio e acordos (vêm com o mercado), potência que muda
