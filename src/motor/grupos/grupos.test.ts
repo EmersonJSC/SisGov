@@ -74,6 +74,35 @@ describe("grupos", () => {
     expect(melhor.g.satisfacao).toBeCloseTo(73);
   });
 
+  it("renda que cresce no ritmo esperado não muda a satisfação", () => {
+    const entrada = {
+      pops: { a: pop(10, 110), b: pop(20, 110) },
+      indice_precos: 100,
+      indices: { x: 10 },
+      vigentes: { l: 0.1 },
+      marco,
+    };
+    const no_ritmo = calcularGrupos(
+      [tipo],
+      { l: lei },
+      {
+        ...entrada,
+        esperado: 1.1,
+      },
+    );
+    expect(no_ritmo.g.satisfacao).toBeCloseTo(50);
+    expect(no_ritmo.g.renda_real).toBeCloseTo(110);
+    const acima = calcularGrupos(
+      [tipo],
+      { l: lei },
+      {
+        ...entrada,
+        esperado: 1.05,
+      },
+    );
+    expect(acima.g.satisfacao).toBeGreaterThan(54);
+  });
+
   it("radicais andam 1 ponto por turno rumo ao alvo", () => {
     expect(alvosEstoques(50)).toEqual({ radicais: 5, lealistas: 5 });
     expect(alvosEstoques(20).radicais).toBe(35);

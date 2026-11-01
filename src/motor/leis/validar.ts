@@ -128,8 +128,20 @@ export function validarLei(
           erro(`opcoes[${i}].id`, `"${op.id}" repetido`);
         vistos.add(op.id);
         grupos(op.grupos, `opcoes[${i}].grupos`, ["apoia", "rejeita"]);
+        if (
+          op.mandato_anos !== undefined &&
+          !(
+            Number.isInteger(op.mandato_anos) && (op.mandato_anos as number) > 0
+          )
+        )
+          erro(`opcoes[${i}].mandato_anos`, "precisa ser inteiro > 0");
         efeitos(op.efeitos, `opcoes[${i}].efeitos`);
       });
+      const comMandato = opcoes.filter(
+        (op) => ehObjeto(op) && op.mandato_anos !== undefined,
+      ).length;
+      if (comMandato > 0 && comMandato < opcoes.length)
+        erro("opcoes", "mandato_anos precisa estar em todas as opções");
     }
   } else {
     erro("forma", 'precisa ser "continua" ou "opcoes"');

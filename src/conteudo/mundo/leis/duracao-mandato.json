@@ -1,0 +1,10 @@
+{
+  "versao": 1,
+  "id": "duracao-mandato",
+  "camada": "essencial",
+  "forma": "opcoes",
+  "opcoes": [
+    { "id": "quatro-anos", "mandato_anos": 4, "efeitos": [] },
+    { "id": "cinco-anos", "mandato_anos": 5, "efeitos": [] }
+  ]
+}

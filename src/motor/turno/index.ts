@@ -10,6 +10,7 @@ import {
   type Tesouro,
 } from "../contas";
 import { enfileirar, envelhecer, filaInicial, somaPorIndice } from "../efeitos";
+import { apurar, DESGASTE_POR_TURNO, turnosMandato } from "../eleicao";
 import {
   INDICES_ESSENCIAIS,
   type Estado,
@@ -274,6 +275,10 @@ function grupos(regras: Regras, estado: Estado, marco: Marco) {
     indices: todosIndices(estado),
     vigentes: estado.leis,
     marco,
+    esperado: Math.pow(
+      doTurno(regras.pais.crescimento.tendencia),
+      estado.turno,
+    ),
     anteriores: estado.turno === 0 ? undefined : estado.grupos,
   });
 }
@@ -284,18 +289,27 @@ const popsEGrupos: Etapa = (regras, estado) => {
   return { ...comPops, grupos: grupos(regras, comPops, estado.marco) };
 };
 
-/** 9. Política: a base olha os seus grupos (passo 8); eleição no passo 9. */
-const politica: Etapa = (regras, estado) =>
-  regras.congresso
-    ? {
-        ...estado,
-        coligacao: coligacaoAtual(
-          regras.congresso,
-          estado.coligacao,
-          estado.grupos,
-        ),
-      }
-    : estado;
+/**
+ * 9. Política: a base olha os seus grupos (passo 8); o desgaste sobe e, no
+ * fim do mandato, há eleição (motor/eleicao).
+ */
+const politica: Etapa = (regras, estado) => {
+  const coligacao = regras.congresso
+    ? coligacaoAtual(regras.congresso, estado.coligacao, estado.grupos)
+    : estado.coligacao;
+  const desgaste = estado.desgaste + DESGASTE_POR_TURNO;
+  const comDesgaste = { ...estado, coligacao, desgaste };
+  const mandato = turnosMandato(regras.leis, estado.leis);
+  if (mandato === null || estado.turno - estado.inicio_mandato < mandato)
+    return comDesgaste;
+  const eleicao = apurar(estado.turno, estado.grupos, desgaste);
+  return {
+    ...comDesgaste,
+    eleicao,
+    inicio_mandato: eleicao.venceu ? estado.turno : estado.inicio_mandato,
+    encerrada: !eleicao.venceu,
+  };
+};
 
 /** 10. Invariantes: falhou, para com erro. */
 const invariantes: Etapa = (regras, estado) => {
@@ -331,6 +345,8 @@ const invariantes: Etapa = (regras, estado) => {
       falhas.push(`grupo ${id} inválido`);
   if (regras.congresso && !estado.coligacao.includes(regras.congresso.governo))
     falhas.push("coligação sem o governo");
+  if (!(Number.isFinite(estado.desgaste) && estado.desgaste >= 0))
+    falhas.push("desgaste inválido");
   if (falhas.length > 0)
     throw new Error(
       `invariante no turno ${estado.turno}: ${falhas.join("; ")}`,
@@ -356,6 +372,8 @@ export function avancarTurno(
   estado: Estado,
   pedidos: Pedido[] = [],
 ): Estado {
+  if (estado.encerrada)
+    throw new Error("partida encerrada: o governo perdeu a eleição");
   const proximo = { ...estado, turno: estado.turno + 1 };
   const novo = ETAPAS.reduce((e, etapa) => etapa(regras, e, pedidos), proximo);
   // Parte da etapa 10: precisa do estado anterior.
@@ -432,6 +450,10 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     marco: { indices: {}, leis: {}, renda_real: {} },
     coligacao: [...coligacao],
     votacoes: [],
+    desgaste: 0,
+    inicio_mandato: 0,
+    eleicao: null,
+    encerrada: false,
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);

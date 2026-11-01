@@ -4,6 +4,7 @@
 import type { Acaso } from "../acaso";
 import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
+import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { ValorLei } from "../leis";
 import type { Votacao } from "../politica";
@@ -55,4 +56,12 @@ export interface Estado {
   coligacao: string[];
   /** Votações do turno (motor/politica). */
   votacoes: Votacao[];
+  /** Pontos que o governo perdeu com o tempo (motor/eleicao). */
+  desgaste: number;
+  /** Turno em que o mandato atual começou. */
+  inicio_mandato: number;
+  /** Última eleição, ou null antes da primeira. */
+  eleicao: Eleicao | null;
+  /** O governo perdeu a eleição: a partida acabou. */
+  encerrada: boolean;
 }

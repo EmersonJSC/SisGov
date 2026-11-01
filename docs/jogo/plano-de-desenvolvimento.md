@@ -8,8 +8,9 @@
 
 - **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),
   4 (turno mínimo; versão 0.1), 5 (contas), 6 (leis da V1; versão 0.2) e
-  7 (população e grupos) e 8 (Congresso; versão 0.3).
-- **Próximo:** passo **9, Eleição e desgaste**.
+  7 (população e grupos), 8 (Congresso; versão 0.3) e 9 (eleição e
+  desgaste; versão 0.4).
+- **Próximo:** passo **10, Tela**.
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -109,7 +110,7 @@ para baixo); grupos novos por JSON.
 **Expande depois:** parlamentarismo (V1, segundo regime); veto e
 derrubada de veto; bicameral; partido único (outra versão ou DLC).
 
-### Passo 9 — Eleição e desgaste ⬅ próximo
+### Passo 9 — Eleição e desgaste ✅
 
 | Começa com | Pronto quando |
 |---|---|
@@ -118,7 +119,7 @@ derrubada de veto; bicameral; partido único (outra versão ou DLC).
 **Expande depois:** perder o poder fora da eleição (impeachment, voto de
 desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
 
-### Passo 10 — Tela
+### Passo 10 — Tela ⬅ próximo
 
 | Começa com | Pronto quando |
 |---|---|

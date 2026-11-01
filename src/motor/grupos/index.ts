@@ -161,6 +161,11 @@ export interface EntradaGrupos {
   indices: Record<string, number>;
   vigentes: Record<string, ValorLei>;
   marco: Marco;
+  /**
+   * Quanto a renda real cresce desde o marco no ritmo normal do país
+   * (1 = nada). O grupo mede a renda contra o que espera, não contra o marco.
+   */
+  esperado?: number;
   /** Grupos do turno anterior; sem eles, radicais e lealistas começam na base. */
   anteriores?: Record<string, Grupo>;
 }
@@ -179,7 +184,7 @@ export function calcularGrupos(
     );
     const sat = satisfacao(
       t,
-      renda_real,
+      renda_real / (entrada.esperado ?? 1),
       entrada.indices,
       leis,
       entrada.vigentes,

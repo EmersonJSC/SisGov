@@ -44,6 +44,8 @@ export interface Opcao {
   id: string;
   /** Grupos que apoiam ou rejeitam esta opção (motor/grupos). */
   grupos?: Record<string, "apoia" | "rejeita">;
+  /** Duração do mandato, na lei de mandato (motor/eleicao). */
+  mandato_anos?: number;
   efeitos: Efeito[];
 }
 

@@ -20,7 +20,10 @@ todo grupo está em 50. A cada turno, satisfação = 50 + renda + índices + lei
 presa entre 0 e 100.
 
 - **Renda:** renda real média dos membros (renda dos pops ÷ nível de preços,
-  pesada pelas pessoas). 1 ponto por 1% de variação contra o marco, até ±25.
+  pesada pelas pessoas), comparada com a **renda esperada**: a do marco
+  crescendo na tendência do país (passo 9, 01/nov/2026). 1 ponto por 1% de
+  diferença, até ±25. Crescer no ritmo normal não agrada ninguém; só crescer
+  acima dele, ou a lei que dá renda, sobe a satisfação.
 - **Índices cobrados:** 1 ponto por ponto do índice, no sentido que o grupo
   quer, até ±15 por índice.
 - **Leis contínuas:** o quanto a lei andou da posição do marco, em fração da
@@ -49,5 +52,7 @@ Uma crise curta não vira revolta; um mandato inteiro de insatisfação vira.
 - imposto sobre empresas 25% → 35%: empresários caem uns 8 pontos;
 - áreas protegidas 10% → 20%: ambientalistas sobem (lei + meio ambiente
   depois do atraso); empresários não mudam;
-- um mandato sem mudar nada: satisfação sobe um pouco com o crescimento
-  real da renda, sem passar de 65; radicais e lealistas ficam em 5.
+- um mandato sem mudar nada: satisfação perto de 50 (o sorteio do
+  crescimento decide se fica um pouco acima ou abaixo); radicais e
+  lealistas ficam em 5. (Antes do passo 9 subia uns 8 pontos só com o
+  tempo, e o governo parado se reelegia.)

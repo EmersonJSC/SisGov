@@ -9,8 +9,8 @@
 // - imposto sobre empresas 25% → 35%: empresários caem uns 8 pontos;
 // - áreas protegidas 10% → 20%: ambientalistas sobem (lei + meio ambiente
 //   depois do atraso); empresários não mudam;
-// - um mandato sem mudar nada: satisfação sobe um pouco com o crescimento
-//   real da renda, sem passar de 65; radicais e lealistas ficam em 5.
+// - um mandato sem mudar nada: satisfação perto de 50 (a renda é medida
+//   contra o crescimento esperado, passo 9); radicais e lealistas em 5.
 import {
   criarPartida,
   jogar,

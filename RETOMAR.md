@@ -7,16 +7,19 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 8 (Congresso) fechado em 01/nov; versão 0.3 completa (passos 7 e 8),
-tag `v0.3` publicada.**
-Partidos são do país (`paises/<id>/congresso.json`): cadeiras, grupos que
-defendem, governo e coligação. Toda mudança de lei vai a voto; mais de 1/3
-da faixa num pedido é exorbitante e cai (`npm run congresso`). Scripts de
-economia usam `criarPartida(pais, semente, { semCongresso: true })`.
+**Passo 9 (Eleição e desgaste) fechado em 01/nov; versão 0.4 pronta, tag
+`v0.4` ainda não criada.**
+Desgaste de 2,25 por mandato; a lei `duracao-mandato` (4 ou 5 anos, campo
+`mandato_anos` nas opções) define o mandato; no fim dele o apoio (satisfação
+pesada por pessoas − desgaste) decide, e perder encerra a partida
+(`npm run eleicao`). Os grupos agora medem a renda contra o crescimento
+esperado do país: parado, o governo perde por pouco; a transferência de
+renda vence.
 
 ## Próximo
 
-**Passo 9, Eleição e desgaste:** proposta curta para o autor aprovar.
+**Tag `v0.4`:** esperando o sim do autor. Depois, **passo 10, Tela:**
+proposta curta para o autor aprovar.
 
 ## Pendências do autor
 
@@ -32,3 +35,4 @@ economia usam `criarPartida(pais, semente, { semCongresso: true })`.
 - `import.meta.glob` precisa de `src/vite-env.d.ts`.
 - `0.6 × 1/3` dá 0,1999… no computador: comparação de limite precisa de folga.
 - `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (não mexer): adicionar arquivo por arquivo.
+- Grupos medem renda contra o crescimento esperado (`esperado` em `calcularGrupos`); mexer na tendência do país muda a satisfação de todos.

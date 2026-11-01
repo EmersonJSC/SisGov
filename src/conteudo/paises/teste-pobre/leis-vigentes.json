@@ -3,6 +3,7 @@
   "leis": {
     "imposto-renda": 0.12,
     "pena-de-morte": "crimes-graves",
+    "duracao-mandato": "quatro-anos",
     "gasto-saude": 0.03,
     "gasto-educacao": 0.04,
     "gasto-policia": 0.012,

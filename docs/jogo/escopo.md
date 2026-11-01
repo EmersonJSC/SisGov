@@ -141,7 +141,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 6 | Leis da V1 | ✅ 01/nov — 14 leis, cada uma conferida por script (`npm run impostos`, `gasto`, `ambiente`); país declara só as leis que tem; segundo país `teste-pobre` só em JSON (`npm run paises`); força dos efeitos 2/5/10 |
 | 7 | Grupos | ✅ 01/nov — 6 pops com renda pelo motor (`npm run pops`); 4 grupos (trabalhadores, classe média, empresários, ambientalistas) com satisfação medida contra o turno 0; cada lei declara o que cada grupo quer dela (`npm run grupos`) |
 | 8 | Congresso | ✅ 01/nov — partidos do país votam cada mudança de lei pelos grupos que defendem; mais de 1/3 da faixa num pedido é exorbitante e cai; partido da base com os grupos abaixo de 35 sai da coligação (`npm run congresso`) |
-| 9 | Eleição e desgaste | Partida de um mandato termina em vitória ou derrota que o jogador entende |
+| 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
 | 10 | Tela | Jogar uma partida inteira na tela |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
@@ -202,3 +202,9 @@ lidas (tag `projeto-antigo-2026-10-31`).
   que volta quando os grupos melhoram; coligação feita ou desfeita pelo
   jogador e cadeiras que mudam com a eleição (passo 9); exorbitante em lei
   de opções; negociação e troca de cargos.
+- **Campanha eleitoral** (01/nov, ideia do autor no passo 9): durante a
+  eleição, o jogador apela na televisão e faz comícios para mexer no voto.
+- **Eleição: o que fica para depois** (01/nov, passo 9): reduzir o desgaste;
+  radicais e lealistas pesando no voto; limite de reeleição declarado pelo
+  país; cadeiras e coligação mudando depois da eleição; mudar a duração do
+  mandato no meio dele pode antecipar ou adiar a eleição (decidir a regra).

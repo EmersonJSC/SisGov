@@ -31,3 +31,27 @@ describe("congresso", () => {
     expect(sem.leis["imposto-renda"]).toBe(0.3);
   });
 });
+
+describe("eleição", () => {
+  it("governo parado perde no turno 24 e a partida acaba", () => {
+    const partida = criarPartida("teste", 42);
+    const antes = jogar(partida, 23).estado;
+    expect(antes.eleicao).toBeNull();
+    expect(antes.desgaste).toBeCloseTo((2.25 * 23) / 24);
+    const fim = jogar(partida, 24).estado;
+    expect(fim.eleicao?.turno).toBe(24);
+    expect(fim.eleicao?.venceu).toBe(false);
+    expect(fim.encerrada).toBe(true);
+    expect(() => jogar({ ...partida, estado: fim }, 1)).toThrow(/encerrada/);
+  });
+
+  it("governo que agrada o maior grupo vence e começa outro mandato", () => {
+    const fim = jogar(criarPartida("teste", 42), 24, [
+      { tipo: "mudar_lei", lei: "transferencia-renda", valor: 0.04 },
+    ]).estado;
+    expect(fim.eleicao?.venceu).toBe(true);
+    expect(fim.encerrada).toBe(false);
+    expect(fim.inicio_mandato).toBe(24);
+    expect(fim.desgaste).toBeCloseTo(2.25);
+  });
+});
