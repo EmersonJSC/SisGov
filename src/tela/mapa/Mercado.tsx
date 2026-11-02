@@ -73,11 +73,15 @@ export function Mercado({
           <>
             <section>
               <h2>Em alta</h2>
-              <ul className="mercado-produtos mundo">
-                {mercado.mundo.emAlta.map((p) => (
-                  <Linha key={p.id} p={p} />
-                ))}
-              </ul>
+              {mercado.mundo.emAlta.length ? (
+                <ul className="mercado-produtos mundo">
+                  {mercado.mundo.emAlta.map((p) => (
+                    <Linha key={p.id} p={p} />
+                  ))}
+                </ul>
+              ) : (
+                <p>Nada subiu neste turno.</p>
+              )}
             </section>
             <section>
               <h2>Mais em conta</h2>

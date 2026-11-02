@@ -316,7 +316,10 @@ function visaoDoMercado(
   return {
     mundo: {
       setores: precos,
-      emAlta: [...todos].sort((a, b) => b.variacao - a.variacao).slice(0, TOPO),
+      emAlta: todos
+        .filter((p) => p.variacao > 0.05)
+        .sort((a, b) => b.variacao - a.variacao)
+        .slice(0, TOPO),
       maisEmConta: [...todos].sort((a, b) => a.preco - b.preco).slice(0, TOPO),
     },
     setores: balanco.setores.map((s) => ({
