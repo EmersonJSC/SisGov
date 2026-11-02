@@ -333,4 +333,8 @@ lidas (tag `projeto-antigo-2026-10-31`).
   - **Prédios na tela sem simular um a um**: "≈ N fazendas" = produção ÷
     tamanho da unidade.
   - Escada de riqueza do Vic3 (99 níveis): não entra; ficamos com poucos níveis.
+  - **Equilibrar e testar com um "Brasil" e um "EUA" no final** (autor, 02/nov):
+    depois da comida e dos outros produtos, calibrar cesta, pesos e preços
+    montando dois países grandes e diferentes. **Atenção:** a regra do projeto
+    é não usar país real; decidir se são inspirados (nomes inventados) ou reais.
 

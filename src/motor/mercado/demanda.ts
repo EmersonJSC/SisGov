@@ -138,3 +138,88 @@ export function contaDoPais(
   }
   return { produtos };
 }
+
+/** Fome leve abaixo de 40 de segurança; grave abaixo de 20 (pontos de partida). */
+export const FOME_LEVE = 40;
+export const FOME_GRAVE = 20;
+
+export interface SegurancaDoPop {
+  id: string;
+  /** Parte da renda gasta com a cesta, em %. */
+  gasto: number;
+  /** Falta de comida, em % (igual para todos os pops). */
+  falta: number;
+  /** 100 − gasto − falta, entre 0 e 100. */
+  seguranca: number;
+}
+
+export interface SegurancaDaCesta {
+  id: string;
+  nome: string;
+  pops: SegurancaDoPop[];
+  /** % da população em fome leve (inclui a grave) e em fome grave. */
+  leve: number;
+  grave: number;
+}
+
+/** Segurança alimentar por pop (fatia 6b), uma entrada por cesta. */
+export function segurancaDaCesta(
+  mercado: Mercado,
+  conta: ContaDoPais,
+  pops: Record<string, { pessoas: number; renda: number }>,
+): SegurancaDaCesta[] {
+  const gente = Object.values(pops).reduce((s, p) => s + p.pessoas, 0);
+  const renda = Object.values(pops).reduce(
+    (s, p) => s + p.pessoas * p.renda,
+    0,
+  );
+  const media = gente > 0 ? renda / gente : 0;
+  return mercado.cestas.flatMap((cesta) => {
+    const linhas = mercado.produtos
+      .filter((p) => p.cesta?.id === cesta.id)
+      .map((p) => conta.produtos[p.id])
+      .filter((l): l is LinhaDeDemanda => l !== undefined);
+    const demanda = linhas.reduce((s, l) => s + l.demanda, 0);
+    if (demanda <= 0 || media <= 0) return [];
+    const preco = linhas.reduce(
+      (s, l) => s + (l.demanda * l.preco) / demanda,
+      0,
+    );
+    const falta = linhas.reduce(
+      (s, l) =>
+        s +
+        (l.demanda * Math.max(0, l.demanda - l.oferta)) / l.demanda / demanda,
+      0,
+    );
+    const lista = Object.entries(pops).map(([id, p]) => {
+      const gasto =
+        p.renda > 0
+          ? (100 * cesta.tamanho * (preco / BASE)) / (p.renda / media)
+          : 100;
+      const faltaPct = 100 * falta;
+      return {
+        id,
+        gasto,
+        falta: faltaPct,
+        seguranca: limitar(100 - gasto - faltaPct, 0, 100),
+      };
+    });
+    const parte = (corte: number) =>
+      gente > 0
+        ? lista.reduce(
+            (s, l) => s + (l.seguranca < corte ? pops[l.id]!.pessoas : 0),
+            0,
+          ) *
+          (100 / gente)
+        : 0;
+    return [
+      {
+        id: cesta.id,
+        nome: cesta.nome,
+        pops: lista,
+        leve: parte(FOME_LEVE),
+        grave: parte(FOME_GRAVE),
+      },
+    ];
+  });
+}

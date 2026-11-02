@@ -3,6 +3,7 @@
 import {
   balancoDoPais,
   contaDoPais,
+  segurancaDaCesta,
   empregoDoPais,
   maisBarata,
   arrecadacao,
@@ -14,6 +15,7 @@ import {
   type Regras,
   type TipoGrupo,
 } from "../motor";
+import tiposPops from "../conteudo/mundo/pops/pops.json";
 import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
@@ -405,6 +407,13 @@ function visaoDoMercado(
           })),
         };
       }),
+    })),
+    cestas: segurancaDaCesta(mercado, conta, estado.pops).map((c) => ({
+      ...c,
+      pops: c.pops.map((p) => ({
+        ...p,
+        nome: tiposPops.pops.find((t) => t.id === p.id)?.nome ?? p.id,
+      })),
     })),
     emprego: emprego.setores,
     semEmprego: emprego.semEmprego,

@@ -366,6 +366,20 @@ export type VisaoMercado = Readonly<{
   emprego: readonly VisaoEmprego[];
   /** Pessoas sem emprego formal, em % da população. */
   semEmprego: number;
+  /** Segurança alimentar por pop, uma entrada por cesta (fatia 6b). */
+  cestas: readonly Readonly<{
+    id: string;
+    nome: string;
+    pops: readonly Readonly<{
+      id: string;
+      nome: string;
+      gasto: number;
+      falta: number;
+      seguranca: number;
+    }>[];
+    leve: number;
+    grave: number;
+  }>[];
   /** De quanto cada potência fornece ao país, em % da demanda (média dos produtos). */
   dependencia: readonly Readonly<{ id: string; nome: string; valor: number }>[];
 }>;

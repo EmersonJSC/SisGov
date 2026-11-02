@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { contaDoPais, precoDoPais, type Mercado } from "./index";
+import {
+  contaDoPais,
+  precoDoPais,
+  segurancaDaCesta,
+  type Mercado,
+} from "./index";
 import { precosIniciais } from "./preco";
 
 const mercado: Mercado = {
@@ -88,5 +93,34 @@ describe("demanda dos pops (fatia 6a)", () => {
   it("a faixa do preço vai de 25% a 175% do base", () => {
     expect(precoDoPais(10, 1000, 0, 100)).toBeCloseTo(25, 6);
     expect(precoDoPais(1000, 10, 0, 100)).toBeCloseTo(175, 6);
+  });
+});
+
+describe("fome por pop (fatia 6b)", () => {
+  const pops = {
+    pobre: { pessoas: 500, renda: 0.3 },
+    rico: { pessoas: 500, renda: 1.7 },
+  };
+  const seg = (cobertura: Record<string, number>, potencias = sem) =>
+    segurancaDaCesta(mercado, conta(potencias, cobertura), pops)[0]!;
+  const de = (r: ReturnType<typeof seg>, id: string) =>
+    r.pops.find((p) => p.id === id)!;
+
+  it("com a cesta atendida e preço no base ninguém passa fome", () => {
+    const r = seg({ graos: 100, frutas: 100 });
+    expect(r.leve).toBe(0);
+    expect(r.grave).toBe(0);
+  });
+
+  it("o pobre cai em fome antes do rico quando a comida encarece", () => {
+    const r = seg({ graos: 70, frutas: 70 });
+    expect(de(r, "pobre").seguranca).toBeLessThan(de(r, "rico").seguranca);
+    expect(r.leve).toBeGreaterThan(0);
+  });
+
+  it("a falta de comida tira segurança de todos igual", () => {
+    const r = seg({ graos: 50, frutas: 100 });
+    expect(de(r, "pobre").falta).toBeCloseTo(de(r, "rico").falta, 6);
+    expect(de(r, "rico").falta).toBeGreaterThan(0);
   });
 });

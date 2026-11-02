@@ -188,6 +188,34 @@ export function Mercado({
               </section>
             ))
           : null}
+        {aba === "pais"
+          ? mercado?.cestas.map((c) => (
+              <section key={c.id}>
+                <h2>{c.nome} na mesa</h2>
+                <p className="mercado-emprego">
+                  Fome leve: {um1(c.leve)}% da população · fome grave:{" "}
+                  {um1(c.grave)}%
+                </p>
+                <ul className="mercado-dependencia">
+                  {c.pops.map((p) => (
+                    <li key={p.id}>
+                      <span>{p.nome}</span>
+                      <strong
+                        title={`gasta ${um(p.gasto)}% da renda com comida; falta ${um1(p.falta)}%`}
+                      >
+                        {um(p.seguranca)}
+                      </strong>
+                    </li>
+                  ))}
+                </ul>
+                <p className="folha-explica">
+                  Segurança alimentar, de 0 a 100: 100 menos a parte da renda
+                  gasta com comida, menos a falta de comida. Abaixo de 40 é fome
+                  leve; abaixo de 20, grave.
+                </p>
+              </section>
+            ))
+          : null}
         {aba === "pais" && mercado ? (
           <p className="folha-explica">
             Sem emprego formal: {um(mercado.semEmprego)}% da população. Salário
