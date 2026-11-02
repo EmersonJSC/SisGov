@@ -15,6 +15,32 @@ export function moeda(milhoes: number): string {
   return `${sinal}R$ ${numero(v)} mi`;
 }
 
+/** Valor em unidades da moeda do país (como o motor guarda), com o símbolo. */
+export function dinheiro(unidades: number, simbolo: string): string {
+  const sinal = unidades < 0 ? "−" : "";
+  const v = Math.abs(unidades);
+  if (v < 1) return `${simbolo} 0`;
+  const [n, sufixo] =
+    v >= 1e12
+      ? [v / 1e12, " tri"]
+      : v >= 1e9
+        ? [v / 1e9, " bi"]
+        : v >= 1e6
+          ? [v / 1e6, " mi"]
+          : [v / 1e3, " mil"];
+  return `${sinal}${simbolo} ${numero(n, n < 10 ? 1 : 0)}${sufixo}`;
+}
+
+/** Fluxo anual em % do PIB → dinheiro por ano e por turno (6 por ano). */
+export function porAnoEPorTurno(
+  pctPib: number,
+  pibNominal: number,
+  simbolo: string,
+): string {
+  const ano = (pctPib / 100) * pibNominal;
+  return `${dinheiro(ano, simbolo)} por ano · ${dinheiro(ano / 6, simbolo)} no turno`;
+}
+
 export function valorDaBolha(valor: number, unidade: string): string {
   switch (unidade) {
     case "percentual_0_100":

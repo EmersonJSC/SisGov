@@ -1,6 +1,7 @@
 {
   "versao": 1,
   "id": "teste-pobre",
+  "moeda": "Ɉ",
   "essenciais": {
     "populacao": 120000000,
     "ocupados": 48000000,

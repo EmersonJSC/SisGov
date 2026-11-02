@@ -441,7 +441,13 @@ export function avancarTurno(
   // Parte da etapa 10: precisa do estado anterior.
   const motivo = motivoContaNaoFecha(estado.tesouro, novo.tesouro);
   if (motivo) throw new Error(`invariante no turno ${novo.turno}: ${motivo}`);
-  return novo;
+  return {
+    ...novo,
+    mudanca: {
+      pib: novo.essenciais.pib_nominal - estado.essenciais.pib_nominal,
+      divida: novo.tesouro.divida - estado.tesouro.divida,
+    },
+  };
 }
 
 export interface Inicio {

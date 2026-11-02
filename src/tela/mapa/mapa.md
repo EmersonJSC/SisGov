@@ -131,6 +131,29 @@ da faixa cai), não a tela.
 Fica de fora: avisar do efeito nos grupos, curva de Laffer desenhada, zona
 para leis de opções (continuam com os degraus de hoje).
 
+## Comportamento esperado da fatia 7: dinheiro, não %, na barra do topo (escrito antes, 02/nov/2026)
+
+O motor segue em % do PIB; só a tela converte. O jogador lê dinheiro.
+
+- Cada país declara o **símbolo da moeda** (inventado, sem moeda real) em
+  `moeda` no `estado-inicial.json`; sem ele, "¤". Fica na partida
+  (`partida.moeda`).
+- Valor grande: "1,2 tri", "480 bi", "35 mi", com o símbolo na frente.
+- **Por ano e por turno juntos**: fluxo anual de X (em % do PIB) vira
+  dinheiro = X ÷ 100 × PIB; no turno = ano ÷ 6. A dica mostra os dois:
+  "480 bi por ano · 80 bi no turno".
+- Chip **Caixa**: resultado do turno em dinheiro com sinal ("+80 bi"), verde
+  se sobra, vermelho se falta. Dica: Entra, Sai com as leis, Juros, Sobra ou
+  Falta, cada uma com ano e turno.
+- Chip **Dívida**: dívida em dinheiro. Dica: dívida, cofre, quanto a dívida
+  mudou neste turno ("+5 bi") e o juro (% ao ano continua %, é taxa).
+- Chip novo **PIB**: PIB em dinheiro por ano. Dica: quanto mudou neste turno
+  ("+12 bi") e o crescimento real (%, é taxa).
+- A mudança de PIB e de dívida no turno vem do motor (`estado.mudanca`);
+  partida salva antes disto ou turno 0 não tem mudança e a dica omite a linha.
+- Índices que já são % de verdade (pobreza, apoio, desemprego, juro) ficam em %.
+- Fica de fora desta fatia: Mercado e controles das leis (fatias seguintes).
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais

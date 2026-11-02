@@ -31,11 +31,12 @@ ciclo e choques, pops com setores e capital (empregos, salário e lucro), janela
 Mercado. A janela é vitrine: PIB e impostos ainda não leem o mercado (5b, na
 seção 11 do escopo).
 
-Duas frentes novas do autor, **uma por vez, ordem a confirmar**:
-1. **Dinheiro na tela, não %** (recomendado primeiro): motor em %, tela em moeda
-   do país por ano. Medir onde aparece % antes; decidir por ano ou por turno.
-2. **Mais pops** (autor disse "como combinado"; não achei o combinado
-   registrado, perguntar quais pops). Depois, a 5b.
+**Dinheiro na tela, fatia 1 feita (02/nov):** barra do topo com Caixa, Dívida e
+PIB em dinheiro, por ano e por turno juntos; símbolo da moeda por país
+(`moeda` no `estado-inicial.json`); `estado.mudanca` (PIB e dívida no turno).
+Comportamento em `src/tela/mapa/mapa.md` (fatia 7). Falta: **fatia 2**, Mercado
+em dinheiro (lucro, compra e venda); **fatia 3**, "≈ X por ano" ao lado dos
+controles das leis. Depois, **mais pops** (e mais grupos), e a 5b do mercado.
 
 Outro chat trata da **economia das leis militares**. Também em aberto: quais
 **eixos novos** entram na bússola (paz × militarismo, seção 11).

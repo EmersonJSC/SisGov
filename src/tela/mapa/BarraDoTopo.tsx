@@ -5,6 +5,7 @@
  */
 import { useId, useState } from "react";
 import { createPortal } from "react-dom";
+import { dinheiro, porAnoEPorTurno } from "./formatos";
 import {
   apoioAtual,
   mesesParaEleicao,
@@ -84,8 +85,8 @@ function ChipDado({
 
 const um = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
-const pctPib = (v: number) => `${um(v)}% do PIB`;
-const comSinal = (v: number) => `${v < 0 ? "−" : "+"}${um(Math.abs(v))}%`;
+const comSinal = (v: number, simbolo: string) =>
+  `${v < 0 ? "−" : "+"}${dinheiro(Math.abs(v), simbolo)}`;
 
 function prazo(meses: number | null): string {
   if (meses === null) return "sem eleição";
@@ -116,6 +117,8 @@ export function BarraDoTopo({
 }) {
   const { estado } = partida;
   const e = estado.essenciais;
+  const moeda = partida.moeda;
+  const fluxo = (pct: number) => porAnoEPorTurno(pct, e.pib_nominal, moeda);
   const ano = Math.floor(estado.turno / 6) + 1;
   const mes = (estado.turno % 6) * 2 + 1;
   const apoio = apoioAtual(estado);
@@ -146,32 +149,54 @@ export function BarraDoTopo({
       <div className="metricas" role="group" aria-label="Indicadores do país">
         <ChipDado
           rotulo="Caixa"
-          valor={comSinal(e.resultado_fiscal)}
-          classe={e.resultado_fiscal < 0 ? "ruim" : "boa"}
+          valor={comSinal(estado.tesouro.resultado, moeda)}
+          classe={estado.tesouro.resultado < 0 ? "ruim" : "boa"}
           dica={{
-            titulo: "Caixa do ano",
+            titulo: "Caixa",
             linhas: [
-              ["Entra", pctPib(e.arrecadacao)],
-              ["Sai com as leis", pctPib(e.gasto_publico)],
-              ["Juros da dívida", pctPib(e.juros_pagos)],
+              ["Entra", fluxo(e.arrecadacao)],
+              ["Sai com as leis", fluxo(e.gasto_publico)],
+              ["Juros da dívida", fluxo(e.juros_pagos)],
               [
                 e.resultado_fiscal < 0 ? "Falta" : "Sobra",
-                pctPib(Math.abs(e.resultado_fiscal)),
+                fluxo(Math.abs(e.resultado_fiscal)),
               ],
             ],
-            rodape: "No ritmo do último turno, em % do PIB.",
+            rodape: "No ritmo do último turno.",
           }}
         />
         <ChipDado
           rotulo="Dívida"
-          valor={`${um(e.divida_publica)}%`}
+          valor={dinheiro(estado.tesouro.divida, moeda)}
           classe="neutra"
           dica={{
             titulo: "Dívida pública",
             linhas: [
-              ["Hoje", pctPib(e.divida_publica)],
-              ["Cofre", pctPib(e.cofre)],
+              ["Hoje", dinheiro(estado.tesouro.divida, moeda)],
+              ...(estado.mudanca
+                ? ([
+                    ["Neste turno", comSinal(estado.mudanca.divida, moeda)],
+                  ] as const)
+                : []),
+              ["Cofre", dinheiro(estado.tesouro.cofre, moeda)],
               ["Juro", `${um(e.taxa_juros)}% ao ano`],
+            ],
+          }}
+        />
+        <ChipDado
+          rotulo="PIB"
+          valor={`${dinheiro(e.pib_nominal, moeda)}/ano`}
+          classe="neutra"
+          dica={{
+            titulo: "PIB (por ano)",
+            linhas: [
+              ["Hoje", `${dinheiro(e.pib_nominal, moeda)} por ano`],
+              ...(estado.mudanca
+                ? ([
+                    ["Neste turno", comSinal(estado.mudanca.pib, moeda)],
+                  ] as const)
+                : []),
+              ["Crescimento real", `${um(e.crescimento_real)}% ao ano`],
             ],
           }}
         />

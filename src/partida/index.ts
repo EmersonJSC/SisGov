@@ -48,6 +48,8 @@ export interface Partida {
   pais: string;
   semente: number;
   opcoes: OpcoesPartida;
+  /** Símbolo da moeda do país, só para a tela. */
+  moeda: string;
   regras: Regras;
   estado: Estado;
 }
@@ -55,6 +57,8 @@ export interface Partida {
 interface EstadoInicialPais {
   versao: 1;
   id: string;
+  /** Símbolo da moeda (inventado); sem ele, "¤". */
+  moeda?: string;
   essenciais: IndicesEssenciais;
   jogabilidade: Record<string, number>;
   /** Opinião de partida de cada potência, 0 a 100 (motor/mundo). */
@@ -273,7 +277,14 @@ export function criarPartida(
     coligacao: congresso.coligacao,
     opinioes: inicial.opinioes,
   });
-  return { pais, semente, opcoes, regras, estado };
+  return {
+    pais,
+    semente,
+    opcoes,
+    moeda: declarado.moeda ?? "¤",
+    regras,
+    estado,
+  };
 }
 
 export function avancar(partida: Partida, pedidos: Pedido[] = []): Partida {
