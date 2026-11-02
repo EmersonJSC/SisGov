@@ -4,16 +4,72 @@
     {
       "id": "informais",
       "nome": "Informais e desempregados",
-      "estrato": "pobre"
+      "estrato": "pobre",
+      "setores": {},
+      "capital": 0
     },
-    { "id": "operarios", "nome": "Operários", "estrato": "pobre" },
-    { "id": "campo", "nome": "Trabalhadores do campo", "estrato": "pobre" },
-    { "id": "servidores", "nome": "Servidores públicos", "estrato": "medio" },
+    {
+      "id": "operarios",
+      "nome": "Operários",
+      "estrato": "pobre",
+      "setores": {
+        "industria": 0.45,
+        "infraestrutura": 0.2,
+        "construcao-civil": 0.2,
+        "militar": 0.05,
+        "essenciais": 0.1
+      },
+      "capital": 0
+    },
+    {
+      "id": "campo",
+      "nome": "Trabalhadores do campo",
+      "estrato": "pobre",
+      "setores": {
+        "essenciais": 0.85,
+        "industria": 0.1,
+        "infraestrutura": 0.05
+      },
+      "capital": 0
+    },
+    {
+      "id": "servidores",
+      "nome": "Servidores públicos",
+      "estrato": "medio",
+      "setores": {
+        "essenciais": 0.5,
+        "militar": 0.25,
+        "infraestrutura": 0.25
+      },
+      "capital": 0
+    },
     {
       "id": "classe-media",
       "nome": "Classe média de serviços",
-      "estrato": "medio"
+      "estrato": "medio",
+      "setores": {
+        "tecnologia": 0.3,
+        "essenciais": 0.25,
+        "industria": 0.15,
+        "luxo": 0.1,
+        "construcao-civil": 0.1,
+        "infraestrutura": 0.1
+      },
+      "capital": 0
     },
-    { "id": "empresarios", "nome": "Empresários", "estrato": "rico" }
+    {
+      "id": "empresarios",
+      "nome": "Empresários",
+      "estrato": "rico",
+      "setores": {
+        "industria": 0.25,
+        "tecnologia": 0.2,
+        "luxo": 0.15,
+        "construcao-civil": 0.15,
+        "essenciais": 0.15,
+        "infraestrutura": 0.1
+      },
+      "capital": 1
+    }
   ]
 }

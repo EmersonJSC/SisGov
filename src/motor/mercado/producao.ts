@@ -1,6 +1,7 @@
 // Produção do país e fornecedores do mundo (src/motor/mercado/mercado.md,
 // fatia 2). O motor não conhece nomes de produto nem de potência.
 import type { ErroMercado, Mercado } from "./index";
+import type { Ocupacao } from "./emprego";
 
 /** Para cada potência, a cobertura de cada produto (0 a 200). */
 export type ProducaoDoMundo = Record<string, Cobertura>;
@@ -12,6 +13,8 @@ export interface MercadoDoPais {
   mercado: Mercado;
   producao: ProducaoDoMundo;
   cobertura: Cobertura;
+  /** Onde cada tipo de pop trabalha (do mundo). */
+  ocupacao: Record<string, Ocupacao>;
 }
 
 type Objeto = Record<string, unknown>;
@@ -158,7 +161,7 @@ export function balancoDoPais({
   mercado,
   producao,
   cobertura,
-}: MercadoDoPais): Balanco {
+}: Pick<MercadoDoPais, "mercado" | "producao" | "cobertura">): Balanco {
   const dependencia: Record<string, number> = {};
   const setores = mercado.setores.map((s) => ({
     id: s.id,

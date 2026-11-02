@@ -8784,3 +8784,9 @@ span.el-mini {
 .mercado-var.baixa {
   color: #2f7a57;
 }
+
+.mercado-emprego {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}

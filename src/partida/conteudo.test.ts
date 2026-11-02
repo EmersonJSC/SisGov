@@ -4,11 +4,13 @@ import { validarLei } from "../motor/leis";
 import {
   lerMercado,
   lerPotencias,
+  validarOcupacao,
   validarCobertura,
   validarProducaoDoMundo,
 } from "../motor";
 import produtos from "../conteudo/mundo/mercado/produtos.json";
 import produtores from "../conteudo/mundo/mercado/produtores.json";
+import pops from "../conteudo/mundo/pops/pops.json";
 import potencias from "../conteudo/mundo/potencias/potencias.json";
 import { paisesDisponiveis } from ".";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
@@ -59,6 +61,7 @@ describe("contrato da produção", () => {
     const mercado = lerMercado(produtos);
     const ids = lerPotencias(potencias).map((p) => p.id);
     expect(validarProducaoDoMundo(produtores, mercado, ids)).toEqual([]);
+    expect(validarOcupacao(pops.pops, mercado)).toEqual([]);
     for (const pais of paisesDisponiveis()) {
       const dado = paisesProducao[`../conteudo/paises/${pais}/producao.json`];
       expect(validarCobertura(dado, mercado), pais).toEqual([]);

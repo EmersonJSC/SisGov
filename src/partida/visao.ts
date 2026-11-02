@@ -2,6 +2,7 @@
 // nova. Só lê: nomes e textos vêm do JSON das leis e do mundo.
 import {
   balancoDoPais,
+  empregoDoPais,
   maisBarata,
   arrecadacao,
   BASES,
@@ -294,7 +295,8 @@ function visaoDoMercado(
   const nomes = new Map((regras.potencias ?? []).map((p) => [p.id, p.nome]));
   const nome = (id: string) => nomes.get(id) ?? id;
   const balanco = balancoDoPais(regras.mercado);
-  const { mercado, producao } = regras.mercado;
+  const { mercado, producao, ocupacao } = regras.mercado;
+  const emprego = empregoDoPais(mercado, ocupacao, estado.pops);
   const precos = mercado.setores.map((s) => ({
     id: s.id,
     nome: s.nome,
@@ -333,6 +335,8 @@ function visaoDoMercado(
         })),
       })),
     })),
+    emprego: emprego.setores,
+    semEmprego: emprego.semEmprego,
     dependencia: Object.entries(balanco.dependencia)
       .map(([id, valor]) => ({ id, nome: nome(id), valor }))
       .sort((a, b) => b.valor - a.valor),

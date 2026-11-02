@@ -56,9 +56,27 @@ real. Tempo: turno = 2 meses.
   os 3 **em alta** e os 3 **mais em conta**.
 - Partida salva antes disto: preços recomeçam do alvo.
 
+### Fatia 4: pops com emprego nos setores, salário e lucro (aprovado em 02/nov/2026)
+
+- Cada tipo de pop do mundo (`mundo/pops/pops.json`) ganha `setores` (peso de
+  cada setor; soma 1; vazio = sem emprego formal, caso dos informais) e
+  `capital` (0 a 1: parte da renda bruta que é lucro; o resto é salário).
+  O país não declara nada novo. O validador barra setor que não existe, peso
+  negativo, soma diferente de 1 e capital fora de 0 a 1.
+- Por setor, calculado do estado (nada novo no estado, partida salva serve):
+  - **empregos** = Σ pessoas do pop × peso × (1 − capital), em % da população;
+  - **massa salarial** = Σ pessoas × renda bruta por pessoa × (1 − capital) ×
+    peso, em % do PIB;
+  - **salário médio** = massa ÷ empregos, em vezes a renda média por pessoa;
+  - **lucro** = Σ pessoas × renda bruta × capital × peso, em % do PIB.
+- Fora dos setores: as pessoas sem emprego formal (% da população).
+- Conferência: a soma de massa salarial e lucro dos setores mais a renda dos
+  sem emprego formal dá o PIB nominal (nada se perde nem se cria). O PIB e os
+  impostos não mudam (isso é a fatia 5).
+- Aba "Do país": cada setor mostra empregos, salário médio e lucro.
+
 ### Fatias seguintes (ainda não)
 
-4. Pops com empregos nos setores; salário e lucro (as leis do passo 13 leem).
 5. Choques e ciclos que vêm de fora sobre o preço; PIB e bases dos impostos
    saem da produção e dos pops (países de teste continuam dando o resultado
    de hoje).

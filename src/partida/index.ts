@@ -12,6 +12,7 @@ import {
   lerMercado,
   lerProducaoDoMundo,
   lerCobertura,
+  lerOcupacao,
   type Congresso,
   type Estado,
   type IndicesEssenciais,
@@ -123,6 +124,7 @@ function carregarMercado(pais: string): Regras["mercado"] {
     mercado,
     producao: lerProducaoDoMundo(produtores, mercado, ids),
     cobertura: lerCobertura(declaracaoDoPais(pais), mercado),
+    ocupacao: lerOcupacao(tiposPops.pops, mercado),
   };
 }
 

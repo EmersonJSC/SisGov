@@ -327,11 +327,26 @@ export type VisaoMundoMercado = Readonly<{
   maisEmConta: readonly VisaoPrecoMundo[];
 }>;
 
+/** Emprego, salário e lucro de um setor (motor/mercado, fatia 4). */
+export type VisaoEmprego = Readonly<{
+  id: string;
+  /** Empregos, em % da população. */
+  empregos: number;
+  /** Salário médio, em vezes a renda média por pessoa. */
+  salario: number;
+  /** Lucro, em % do PIB. */
+  lucro: number;
+}>;
+
 /** O que o país produz, compra e vende, por setor (motor/mercado). */
 export type VisaoMercado = Readonly<{
   setores: readonly VisaoSetor[];
   /** Preço de cada produto no mundo. */
   mundo: VisaoMundoMercado;
+  /** Emprego, salário e lucro por setor; os pops vêm do estado. */
+  emprego: readonly VisaoEmprego[];
+  /** Pessoas sem emprego formal, em % da população. */
+  semEmprego: number;
   /** De quanto cada potência fornece ao país, em % da demanda (média dos produtos). */
   dependencia: readonly Readonly<{ id: string; nome: string; valor: number }>[];
 }>;

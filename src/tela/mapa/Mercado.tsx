@@ -10,6 +10,9 @@ import { ICONE_INTERFACE } from "./icones";
 const um = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 0 });
 
+const um1 = (v: number) =>
+  v.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
+
 const preco = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 0 });
 
@@ -118,6 +121,14 @@ export function Mercado({
           ? mercado?.setores.map((setor) => (
               <section key={setor.id}>
                 <h2>{setor.nome}</h2>
+                {mercado.emprego.find((e) => e.id === setor.id) ? (
+                  <p className="mercado-emprego">
+                    {(() => {
+                      const e = mercado.emprego.find((x) => x.id === setor.id)!;
+                      return `Empregos: ${um(e.empregos)}% da população · salário ${um1(e.salario)}× a média · lucro ${um1(e.lucro)}% do PIB`;
+                    })()}
+                  </p>
+                ) : null}
                 <ul className="mercado-produtos">
                   {setor.produtos.map((p) => (
                     <li key={p.id}>
@@ -157,6 +168,12 @@ export function Mercado({
               </section>
             ))
           : null}
+        {aba === "pais" && mercado ? (
+          <p className="folha-explica">
+            Sem emprego formal: {um(mercado.semEmprego)}% da população. Salário
+            em vezes a renda média por pessoa; o dono do negócio vive de lucro.
+          </p>
+        ) : null}
         {aba === "pais" && mercado?.dependencia.length ? (
           <section>
             <h2>Dependência de potências</h2>
