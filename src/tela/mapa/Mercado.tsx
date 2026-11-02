@@ -193,8 +193,8 @@ export function Mercado({
               <section key={c.id}>
                 <h2>{c.nome} na mesa</h2>
                 <p className="mercado-emprego">
-                  Fome leve: {um1(c.leve)}% da população · fome grave:{" "}
-                  {um1(c.grave)}%
+                  Abastecimento: {um1(c.media)} · fome leve: {um1(c.leve)}% da
+                  população · fome grave: {um1(c.grave)}%
                 </p>
                 <ul className="mercado-dependencia">
                   {c.pops.map((p) => (

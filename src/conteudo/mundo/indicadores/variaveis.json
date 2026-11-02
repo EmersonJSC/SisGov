@@ -312,6 +312,22 @@
       }
     },
     {
+      "id": "abastecimento",
+      "tipo": "calculado",
+      "nome": "Abastecimento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = fome geral, 100 = mesa farta para todos"
+      }
+    },
+    {
       "id": "seguranca",
       "tipo": "calculado",
       "nome": "Segurança pública",

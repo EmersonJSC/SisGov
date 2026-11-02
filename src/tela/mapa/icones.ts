@@ -900,6 +900,7 @@ export const ICONE_BOLHA: Readonly<Record<string, string>> = {
   crise_financeira: "chart-line-variant",
   crise_migratoria: "account-arrow-right-outline",
   custo_trabalhista: "account-hard-hat-outline",
+  abastecimento: "food-apple-outline",
   deficit_habitacional: "home-alert-outline",
   deficit_previdenciario: "cash-minus",
   desabastecimento: "package-variant-remove",

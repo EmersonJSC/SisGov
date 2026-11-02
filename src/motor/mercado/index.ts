@@ -13,7 +13,23 @@ export interface Cesta {
   nome: string;
   /** Quanto cada pessoa gasta, em fração da renda média inicial, a preço base. */
   tamanho: number;
+  /** Índice do mundo que recebe a segurança alimentar média (0 a 100). */
+  indice?: string;
+  reacao?: ReacaoDaCesta;
 }
+
+/**
+ * Como o índice da cesta mexe em outros índices (fatia 6c). Desvio é o índice
+ * de hoje menos o do turno 0; `escala` pontos de desvio dão o efeito inteiro;
+ * quando melhora, o efeito vale `ganho` vezes (mais fraco que a piora).
+ */
+export interface ReacaoDaCesta {
+  escala: number;
+  ganho: number;
+  efeitos: { indice: string; sentido: 1 | -1; forca: ForcaDaReacao }[];
+}
+
+export type ForcaDaReacao = "fraca" | "media" | "forte";
 
 export interface Produto {
   id: string;
@@ -85,6 +101,27 @@ export function validarMercado(dado: unknown): ErroMercado[] {
     if (!ehTexto(x.nome)) erro(`${c}.nome`, "precisa ter nome");
     if (typeof x.tamanho !== "number" || !(x.tamanho > 0))
       erro(`${c}.tamanho`, "precisa ser um número maior que 0");
+    if (x.indice !== undefined && !ehTexto(x.indice))
+      erro(`${c}.indice`, "precisa ser texto");
+    if (x.reacao === undefined) return;
+    const r = x.reacao;
+    if (!ehObjeto(r)) return erro(`${c}.reacao`, "precisa ser um objeto");
+    if (!ehTexto(x.indice)) erro(`${c}.indice`, "reação precisa de índice");
+    if (typeof r.escala !== "number" || !(r.escala > 0))
+      erro(`${c}.reacao.escala`, "precisa ser um número maior que 0");
+    if (typeof r.ganho !== "number" || !(r.ganho >= 0))
+      erro(`${c}.reacao.ganho`, "precisa ser um número maior ou igual a 0");
+    if (!Array.isArray(r.efeitos))
+      return erro(`${c}.reacao.efeitos`, "precisa ser uma lista");
+    r.efeitos.forEach((e, j) => {
+      const k = `${c}.reacao.efeitos[${j}]`;
+      if (!ehObjeto(e)) return erro(k, "precisa ser um objeto");
+      if (!ehTexto(e.indice)) erro(`${k}.indice`, "precisa ter índice");
+      if (e.sentido !== 1 && e.sentido !== -1)
+        erro(`${k}.sentido`, "precisa ser 1 ou -1");
+      if (!["fraca", "media", "forte"].includes(String(e.forca)))
+        erro(`${k}.forca`, "precisa ser fraca, media ou forte");
+    });
   });
 
   const idsDeProduto = new Set<string>();

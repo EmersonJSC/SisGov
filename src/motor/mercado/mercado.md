@@ -94,7 +94,7 @@ real. Tempo: turno = 2 meses.
   "Do mundo".
 - Mesma semente e mesmos turnos dão os mesmos choques.
 
-### Fatia 6: demanda dos pops, oferta, preço do país e fome (6a em código, 02/nov/2026; 6b ainda não)
+### Fatia 6: demanda dos pops, oferta, preço do país e fome (6a, 6b e 6c em código, 02/nov/2026)
 
 Desenho completo: a cobertura deixa de ser número declarado e vira resultado.
 Referência de como o Vic3 faz: `docs/jogo/mercado-vic3-referencia.md` (só a
@@ -151,7 +151,7 @@ pontos de partida.
   leve e grave. **Efeito** em nascimentos, mortes e apoio dos grupos **não
   entra aqui**: é proposta própria depois de medir (6c).
 
-**6c. Reação à comida, para os dois lados (proposta, 02/nov/2026)**
+**6c. Reação à comida, para os dois lados (aprovada e em código, 02/nov/2026)**
 
 - Novo índice do mundo, **abastecimento** (0 a 100): a segurança alimentar média
   da população, pesada por pessoas. Sobe com comida barata e abundante; cai com
@@ -171,6 +171,14 @@ pontos de partida.
   como medir fica no JSON do mundo, não no motor.
 - **Fora desta fatia:** nascimentos e mortes (a população hoje é fixa). Fica
   para uma etapa de demografia, pois mexe no PIB, nos impostos e nos pops.
+
+**Como ficou (6c):** a cesta declara no JSON o índice que recebe a média
+(`indice`) e a `reacao` (escala 30 pontos, ganho 0,5 quando melhora, efeitos em
+saúde, pobreza e reputação, todos `media`). O desvio é o índice de hoje menos o
+do turno 0, lido do turno anterior (1 turno de atraso). Grupos de trabalhadores
+e classe média cobram o índice. Medido: a importação amortece a crise (as
+potências têm sobra de grãos), então os números são pequenos; é ajuste do
+"equilibramos". Reputação por exportar comida ainda não entrou.
 
 **Conferência de 6c:** comida pior reduz o apoio dos grupos pobres e a
 reputação; comida melhor sobe os dois; voltar ao normal devolve o apoio aos

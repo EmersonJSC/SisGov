@@ -12,7 +12,7 @@ Passos 11 (mundo) e 12 (mercado, sem a 5b) fechados; dinheiro na tela fechado
 parecido com o do Vic3** (autor): a comida do país depende de pessoas, produção,
 preço e de quem consegue pagar. Pesquisa salva em
 `docs/jogo/mercado-vic3-referencia.md`. Desenho na
-**fatia 6** de `src/motor/mercado/mercado.md`; **6a e 6b em código** (Grãos, Frutas,
+**fatia 6** de `src/motor/mercado/mercado.md`; **6a, 6b e 6c em código** (Grãos, Frutas,
 demanda, preço do país, unidades na tela; falta o autor confirmar na tela): demanda dos pops, oferta, preço
 do país (faixa de 25% a 175%) e segurança alimentar. Autor decidiu: Agro é
 grupo de pop, não produto; produtos novos **Grãos** e **Frutas**; todos os
@@ -20,10 +20,9 @@ produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-Autor olha o bloco "Comida na mesa" (janela Mercado) e confirma a 6b. Depois: 6c, reação à comida nos
-dois sentidos (escrita no `mercado.md`, sem código; autor aprova antes), outros 19 produtos, equilibrar com um "Brasil" e um "EUA"
-(seção 11; ver a regra de país real). Efeito da fome na população e nos grupos é
-proposta própria. Depois: mais pops e grupos (agro, industrial, bilionários,
+Autor olha o índice **Abastecimento** e o bloco "Comida na mesa" (janela Mercado) e
+confirma 6b e 6c. Depois: os outros 19 produtos, equilibrar com um "Brasil" e um "EUA"
+(seção 11; ver a regra de país real). Nascimentos e mortes (demografia) são etapa própria. Depois: mais pops e grupos (agro, industrial, bilionários,
 peso por país), a 5b e os outros 19 produtos.
 
 Outro chat trata da **economia das leis militares**. Em aberto: **eixos novos**

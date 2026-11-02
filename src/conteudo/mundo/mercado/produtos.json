@@ -187,7 +187,29 @@
     {
       "id": "comida",
       "nome": "Comida",
-      "tamanho": 0.12
+      "tamanho": 0.12,
+      "indice": "abastecimento",
+      "reacao": {
+        "escala": 30,
+        "ganho": 0.5,
+        "efeitos": [
+          {
+            "indice": "saude",
+            "sentido": 1,
+            "forca": "media"
+          },
+          {
+            "indice": "pobreza",
+            "sentido": -1,
+            "forca": "media"
+          },
+          {
+            "indice": "reputacao_internacional",
+            "sentido": 1,
+            "forca": "media"
+          }
+        ]
+      }
     }
   ]
 }

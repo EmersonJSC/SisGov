@@ -22,7 +22,14 @@ import {
   rendaDoGrupo,
   type Marco,
 } from "../grupos";
-import { andarChoques, andarPrecos, precosIniciais } from "../mercado";
+import {
+  andarChoques,
+  andarPrecos,
+  contaDoPais,
+  precosIniciais,
+  reacaoDaCesta,
+  segurancaDaCesta,
+} from "../mercado";
 import { motivoValorInvalido, type ValorLei } from "../leis";
 import {
   andarOpinioes,
@@ -241,13 +248,58 @@ const contas: Etapa = (regras, estado) => {
   };
 };
 
+/** Cesta cujo índice o mundo declara (ex.: abastecimento de comida). */
+const cestaComIndice = (regras: Regras) =>
+  regras.mercado?.mercado.cestas.find((c) => c.indice);
+
+/**
+ * Segurança alimentar média da população, com os preços e a renda de hoje
+ * (motor/mercado, fatia 6c). Sem cesta com índice, não há nada a calcular.
+ */
+function abastecimento(regras: Regras, estado: Estado): number | undefined {
+  const cesta = cestaComIndice(regras);
+  const m = regras.mercado;
+  if (!cesta || !m) return undefined;
+  const conta = contaDoPais(
+    m.mercado,
+    m.producao,
+    m.cobertura,
+    m.populacaoBase,
+    estado.essenciais.populacao,
+    estado.precos,
+  );
+  return segurancaDaCesta(m.mercado, conta, estado.pops).find(
+    (c) => c.id === cesta.id,
+  )?.media;
+}
+
+/**
+ * Pontos que a comida soma em outros índices (6c). Usa o abastecimento do
+ * turno anterior: o efeito chega com um turno de atraso.
+ */
+function reacaoDaComida(regras: Regras, estado: Estado) {
+  const cesta = cestaComIndice(regras);
+  const atual = cesta?.indice && estado.jogabilidade[cesta.indice];
+  const marco = cesta?.indice && estado.marco.indices[cesta.indice];
+  if (!cesta?.reacao || atual === undefined || marco === undefined) return {};
+  return reacaoDaCesta(cesta.reacao, Number(atual) - Number(marco));
+}
+
 function jogabilidade(regras: Regras, estado: Estado) {
   const soma = somaPorIndice(estado.efeitos);
+  const comida = reacaoDaComida(regras, estado);
   const indices: Record<string, number> = {};
   for (const [id, base] of Object.entries(estado.base)) {
     const { min, max } = regras.dominios[id];
-    indices[id] = Math.min(max, Math.max(min, base + (soma[id] ?? 0)));
+    indices[id] = Math.min(
+      max,
+      Math.max(min, base + (soma[id] ?? 0) + (comida[id] ?? 0)),
+    );
   }
+  // O abastecimento não tem base: é calculado no passo 8 e passa adiante.
+  const proprio = cestaComIndice(regras)?.indice;
+  if (proprio && proprio in estado.jogabilidade)
+    indices[proprio] = estado.jogabilidade[proprio];
   return indices;
 }
 
@@ -261,7 +313,12 @@ const indicesJogabilidade: Etapa = (regras, estado) => ({
 function comReputacao(regras: Regras, estado: Estado): Estado {
   const { potencias, indiceReputacao } = regras;
   if (!potencias || !indiceReputacao) return estado;
-  const rep = reputacao(potencias, estado.opinioes);
+  const { min, max } = regras.dominios[indiceReputacao];
+  const comida = reacaoDaComida(regras, estado)[indiceReputacao] ?? 0;
+  const rep = Math.min(
+    max,
+    Math.max(min, reputacao(potencias, estado.opinioes) + comida),
+  );
   const jogabilidade = { ...estado.jogabilidade, [indiceReputacao]: rep };
   const { indicePoderDefensivo: poder, indiceSegurancaExterna: seguranca } =
     regras;
@@ -340,9 +397,23 @@ function grupos(regras: Regras, estado: Estado, marco: Marco) {
   });
 }
 
+/** Abastecimento de hoje no estado, para os grupos e o turno seguinte. */
+function comAbastecimento(regras: Regras, estado: Estado): Estado {
+  const indice = cestaComIndice(regras)?.indice;
+  const valor = abastecimento(regras, estado);
+  if (!indice || valor === undefined) return estado;
+  return {
+    ...estado,
+    jogabilidade: { ...estado.jogabilidade, [indice]: valor },
+  };
+}
+
 /** 8. Pops e grupos: renda dos pops, depois satisfação dos grupos. */
 const popsEGrupos: Etapa = (regras, estado) => {
-  const comPops = { ...estado, pops: pops(regras, estado) };
+  const comPops = comAbastecimento(regras, {
+    ...estado,
+    pops: pops(regras, estado),
+  });
   return { ...comPops, grupos: grupos(regras, comPops, estado.marco) };
 };
 
@@ -470,8 +541,11 @@ export interface Inicio {
 export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   for (const id of Object.keys(inicio.leis))
     if (!(id in regras.leis)) throw new Error(`país: lei "${id}" não existe`);
+  const calculados = new Set(
+    regras.mercado?.mercado.cestas.map((c) => c.indice),
+  );
   for (const id of Object.keys(regras.dominios))
-    if (!(id in inicio.jogabilidade))
+    if (!(id in inicio.jogabilidade) && !calculados.has(id))
       throw new Error(`país: falta o índice ${id}`);
   for (const base of Object.keys(regras.pais.bases))
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);
@@ -546,11 +620,11 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);
-  const comPops: Estado = {
+  const comPops: Estado = comAbastecimento(regras, {
     ...comReputacao(regras, estado),
     essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
     pops: pops(regras, estado),
-  };
+  });
   // O marco é o próprio turno 0: grupos começam em 50.
   const marco: Marco = {
     indices: todosIndices(comPops),

@@ -1,7 +1,8 @@
 // Demanda dos pops, oferta e preço do país (src/motor/mercado/mercado.md,
 // fatia 6a). Só os produtos que atendem uma cesta (ex.: comida). Tudo em % do
 // PIB inicial, a preço base. O motor não conhece nomes de produto.
-import type { Mercado, Produto } from "./index";
+import { PONTOS_FORCA } from "../efeitos";
+import type { Mercado, Produto, ReacaoDaCesta } from "./index";
 import { alvoDoPreco, type Preco } from "./preco";
 import type { Cobertura, ProducaoDoMundo } from "./producao";
 
@@ -157,6 +158,8 @@ export interface SegurancaDaCesta {
   id: string;
   nome: string;
   pops: SegurancaDoPop[];
+  /** Segurança média da população, pesada por pessoas (0 a 100). */
+  media: number;
   /** % da população em fome leve (inclui a grave) e em fome grave. */
   leve: number;
   grave: number;
@@ -217,9 +220,35 @@ export function segurancaDaCesta(
         id: cesta.id,
         nome: cesta.nome,
         pops: lista,
+        media:
+          gente > 0
+            ? lista.reduce((s, l) => s + l.seguranca * pops[l.id]!.pessoas, 0) /
+              gente
+            : 0,
         leve: parte(FOME_LEVE),
         grave: parte(FOME_GRAVE),
       },
     ];
   });
+}
+
+/**
+ * Fatia 6c: pontos que a comida soma em outros índices. `desvio` é o índice
+ * de hoje menos o do turno 0: piora pesa inteira, melhora pesa `ganho` vezes.
+ * Voltar ao normal zera o desvio e devolve tudo.
+ */
+export function reacaoDaCesta(
+  reacao: ReacaoDaCesta,
+  desvio: number,
+): Record<string, number> {
+  const parte =
+    limitar(desvio / reacao.escala, -1, 1) * (desvio > 0 ? reacao.ganho : 1);
+  return reacao.efeitos.reduce<Record<string, number>>(
+    (soma, e) => ({
+      ...soma,
+      [e.indice]:
+        (soma[e.indice] ?? 0) + e.sentido * PONTOS_FORCA[e.forca] * parte,
+    }),
+    {},
+  );
 }

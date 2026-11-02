@@ -370,6 +370,8 @@ export type VisaoMercado = Readonly<{
   cestas: readonly Readonly<{
     id: string;
     nome: string;
+    /** Segurança média da população (0 a 100): o índice do mundo. */
+    media: number;
     pops: readonly Readonly<{
       id: string;
       nome: string;
