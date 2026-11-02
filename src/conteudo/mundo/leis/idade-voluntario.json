@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "idade-voluntario",
+  "nome": "Idade mínima do voluntário",
+  "descricao": "A partir de que idade alguém pode se alistar como voluntário nas forças armadas.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "anos",
+  "faixa": {
+    "min": 16,
+    "max": 21
+  },
+  "passo": 1,
+  "bussola": {
+    "min": { "social": 0.3 },
+    "max": { "social": 0 }
+  },
+  "efeitos": [
+    {
+      "indice": "poder_defensivo",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 4
+    }
+  ]
+}

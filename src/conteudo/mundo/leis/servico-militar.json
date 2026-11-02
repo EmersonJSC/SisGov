@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "servico-militar",
+  "nome": "Serviço militar obrigatório",
+  "descricao": "Quantos meses todo jovem é obrigado a servir nas forças armadas. Zero é sem serviço obrigatório.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "meses",
+  "faixa": {
+    "min": 0,
+    "max": 18
+  },
+  "passo": 1,
+  "bussola": {
+    "min": { "social": -0.4 },
+    "max": { "social": 0.7 }
+  },
+  "efeitos": [
+    {
+      "indice": "poder_defensivo",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "liberdade_civil",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 1
+    },
+    {
+      "indice": "padrao_vida",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

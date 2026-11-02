@@ -8,6 +8,10 @@
 // - segurança externa = poder defensivo − (100 − reputação): sobe e desce
 //   junto com a reputação; o poder defensivo não muda (nenhuma lei mexe nele
 //   ainda);
+// - leis militares (bloco A de segurança, 02/nov): verba 4% e serviço de 18
+//   meses sobem o poder defensivo (e a segurança externa junto); o serviço
+//   derruba liberdade civil logo e padrão de vida depois; idade mínima 21
+//   anos (em vez de 16) baixa o poder defensivo um pouco;
 // - enquanto as leis ficam no meio da bússola, a mudança é pequena (poucos
 //   pontos); só leis nas pontas vão pesar de verdade (passo 13).
 import { criarPartida, jogar, type Estado, type Pedido } from "../src/partida";
@@ -24,6 +28,9 @@ const CENARIOS: [string, Pedido[]][] = [
   ["pena de morte para crimes graves", lei("pena-de-morte", "crimes-graves")],
   ["imposto de renda 60%", lei("imposto-renda", 0.6)],
   ["terras indígenas 30%", lei("terras-indigenas", 0.3)],
+  ["verba militar 4% do PIB", lei("gasto-militar", 0.04)],
+  ["serviço militar 18 meses", lei("servico-militar", 18)],
+  ["idade do voluntário 21 anos", lei("idade-voluntario", 21)],
 ];
 
 const n = (v: number) => v.toFixed(1).padStart(5);
@@ -55,6 +62,8 @@ for (const [rotulo, pedidos] of CENARIOS) {
     (e) => e.jogabilidade[indicePoderDefensivo!],
     estados,
   );
+  linha("liberdade civil", (e) => e.jogabilidade.liberdade_civil, estados);
+  linha("padrão de vida", (e) => e.jogabilidade.padrao_vida, estados);
   linha(
     "segurança externa",
     (e) => e.jogabilidade[indiceSegurancaExterna!],

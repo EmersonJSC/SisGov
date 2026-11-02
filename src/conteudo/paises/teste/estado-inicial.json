@@ -53,7 +53,7 @@
     },
     "crescimento": { "tendencia": 2, "volatilidade": 1.5 },
     "receita_fora_das_leis": 18.17,
-    "gasto_fora_das_leis": 16.8,
+    "gasto_fora_das_leis": 15.3,
     "juros": { "neutro": 4, "tolerancia_divida": 60 },
     "pops": {
       "informais": { "parcela_pessoas": 0.2, "parcela_renda": 0.05 },

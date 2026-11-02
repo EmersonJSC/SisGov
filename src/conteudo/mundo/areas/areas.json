@@ -23,7 +23,14 @@
       "curto": "Segurança",
       "cargo": "Justiça",
       "faz": "Polícia, penas e regras do governo.",
-      "leis": ["gasto-policia", "pena-de-morte", "duracao-mandato"]
+      "leis": [
+        "gasto-policia",
+        "gasto-militar",
+        "servico-militar",
+        "idade-voluntario",
+        "pena-de-morte",
+        "duracao-mandato"
+      ]
     },
     {
       "id": "ambiente",

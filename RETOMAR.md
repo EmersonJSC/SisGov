@@ -13,16 +13,18 @@ reputação e **segurança externa** = poder defensivo − (100 − reputação)
 corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
 Índices novos: `poder_defensivo`, `seguranca_externa`, `lotacao_presidios`
 (maior é pior); `seguranca` mostra "Segurança pública". Leis contínuas aceitam
-`unidade: "meses" | "anos"` (nenhuma lei usa ainda).
+`unidade: "meses" | "anos"` (usadas pelo serviço militar e pela idade do voluntário).
 
 ## Próximo
 
 Pedaço 5 feito (`npm run mundo`: a lei move cada opinião, a média e a
-segurança). Depois pedaço 6 (mapa mostra as potências). Em paralelo
-espera o autor: desenho das **leis de segurança** (blocos A exército com
-serviço militar em meses/anos, B proteção digital em UMA lei de 3 opções, C
-câmeras em 2 leis, D maioridade penal, E contrapeso); nenhum arquivo de lei
-antes do okay de cada bloco. Falta o autor dizer quais eixos novos entram.
+segurança). Depois pedaço 6 (mapa mostra as potências). Leis de segurança, **bloco A (Exército) feito**: `gasto-militar` (0–4% do
+PIB), `servico-militar` (0–18 meses) e `idade-voluntario` (16–21 anos), com
+efeito pesquisado (custo do serviço em padrão de vida; NBER, OCDE, GAO).
+Falta o autor: discutir como isso funciona na economia (ele pediu), e aprovar
+os próximos blocos, um por vez: B proteção digital (UMA lei de 3 opções),
+C câmeras (2 leis), D maioridade penal, E contrapeso. Nenhum arquivo de lei
+antes do okay. Falta dizer quais eixos novos entram na bússola.
 
 ## Pendências do autor
 
