@@ -2,6 +2,9 @@
   "versao": 1,
   "leis": {
     "imposto-renda": 0.12,
+    "protecao-digital": "sem-regra",
+    "maioridade-penal": 16,
+    "transparencia-militar": "sigilo-total",
     "pena-de-morte": "crimes-graves",
     "duracao-mandato": "quatro-anos",
     "gasto-saude": 0.03,

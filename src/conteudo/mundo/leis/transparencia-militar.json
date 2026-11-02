@@ -1,0 +1,48 @@
+{
+  "versao": 1,
+  "id": "transparencia-militar",
+  "nome": "Transparência dos contratos militares",
+  "descricao": "Quanto das compras e contratos das forças armadas o público pode ver.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sigilo-total",
+      "rotulo": "Sigilo total",
+      "bussola": { "social": 0.5 },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "sigilo-operacoes",
+      "rotulo": "Sigilo só das operações",
+      "bussola": { "social": 0 },
+      "efeitos": []
+    },
+    {
+      "id": "tudo-publico",
+      "rotulo": "Tudo público",
+      "bussola": { "social": -0.4 },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "poder_defensivo",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

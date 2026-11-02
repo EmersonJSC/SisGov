@@ -1,0 +1,42 @@
+{
+  "versao": 1,
+  "id": "protecao-digital",
+  "nome": "Proteção de dados pessoais",
+  "descricao": "O que empresas e governo podem fazer com os dados das pessoas.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-regra",
+      "rotulo": "Sem regra",
+      "bussola": { "social": 0.1 },
+      "efeitos": []
+    },
+    {
+      "id": "permissao-previa",
+      "rotulo": "Permissão prévia",
+      "bussola": { "social": -0.3 },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "permissao-e-apagar",
+      "rotulo": "Permissão e direito de apagar",
+      "bussola": { "social": -0.6 },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

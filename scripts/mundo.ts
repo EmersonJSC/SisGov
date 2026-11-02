@@ -16,6 +16,10 @@
 //   tira um pouco de liberdade civil; reconhecimento facial sobe a segurança
 //   mais e derruba muito a liberdade civil; uso livre fica no meio dos dois
 //   (o país de teste já parte de "só com ordem judicial");
+// - proteção de dados (permissão e apagar) sobe a liberdade civil; maioridade
+//   14 anos sobe a segurança pouco e os presídios muito (mais tarde), e tira
+//   liberdade; contratos militares públicos baixam a corrupção e sobem um pouco
+//   o poder defensivo;
 // - enquanto as leis ficam no meio da bússola, a mudança é pequena (poucos
 //   pontos); só leis nas pontas vão pesar de verdade (passo 13).
 import { criarPartida, jogar, type Estado, type Pedido } from "../src/partida";
@@ -39,6 +43,15 @@ const CENARIOS: [string, Pedido[]][] = [
   [
     "câmeras: reconhecimento facial",
     lei("regra-cameras", "reconhecimento-facial"),
+  ],
+  [
+    "proteção de dados: permissão e apagar",
+    lei("protecao-digital", "permissao-e-apagar"),
+  ],
+  ["maioridade penal 14 anos", lei("maioridade-penal", 14)],
+  [
+    "contratos militares: tudo público",
+    lei("transparencia-militar", "tudo-publico"),
   ],
   ["câmeras: polícia usa livremente", lei("regra-cameras", "uso-livre")],
 ];
@@ -74,6 +87,12 @@ for (const [rotulo, pedidos] of CENARIOS) {
   );
   linha("liberdade civil", (e) => e.jogabilidade.liberdade_civil, estados);
   linha("segurança pública", (e) => e.jogabilidade.seguranca, estados);
+  linha("corrupção", (e) => e.jogabilidade.corrupcao, estados);
+  linha(
+    "lotação dos presídios",
+    (e) => e.jogabilidade.lotacao_presidios,
+    estados,
+  );
   linha("padrão de vida", (e) => e.jogabilidade.padrao_vida, estados);
   linha(
     "segurança externa",

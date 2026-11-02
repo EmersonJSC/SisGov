@@ -21,17 +21,18 @@ Pedaço 5 feito (`npm run mundo`: a lei move cada opinião, a média e a
 segurança). Depois pedaço 6 (mapa mostra as potências). Leis de segurança, **blocos A (Exército) e C (câmeras: `gasto-cameras` e `regra-cameras`) feitos**; bloco A: `gasto-militar` (0–4% do
 PIB), `servico-militar` (0–18 meses) e `idade-voluntario` (16–21 anos), com
 efeito pesquisado (custo do serviço em padrão de vida; NBER, OCDE, GAO).
-Falta o autor: discutir como isso funciona na economia (ele pediu), e aprovar
-os próximos blocos, um por vez: B proteção digital (UMA lei de 3 opções),
-D maioridade penal, E contrapeso. Reação dos ambientalistas às leis militares:
-autor deixou como está; eixo paz × militarismo anotado no escopo (seção 11). Nenhum arquivo de lei
-antes do okay. Falta dizer quais eixos novos entram na bússola.
+Blocos B (`protecao-digital`), D (`maioridade-penal`, 12–18 anos) e E
+(`transparencia-militar`) feitos em 02/nov por ordem do autor ("vai fazendo").
+**Todas as leis de segurança estão criadas.** Falta o autor: discutir como as
+leis militares funcionam na economia (ele pediu) e dizer quais eixos novos
+entram na bússola (paz × militarismo está anotado no escopo, seção 11).
+Depois: pedaço 6 (mapa mostra as potências), passo 12 Mercado.
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 - Commits locais sem push (push só com a palavra do autor).
-- Proteção de dados: confirmar a lei única de 3 opções.
+- Proteção de dados: lei única de 3 opções (sem regra / permissão prévia / permissão e apagar) foi criada sem confirmação explícita; ver se serve.
 
 ## Armadilhas
 

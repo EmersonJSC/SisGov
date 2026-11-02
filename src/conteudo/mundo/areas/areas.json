@@ -30,6 +30,9 @@
         "gasto-militar",
         "servico-militar",
         "idade-voluntario",
+        "transparencia-militar",
+        "maioridade-penal",
+        "protecao-digital",
         "pena-de-morte",
         "duracao-mandato"
       ]
