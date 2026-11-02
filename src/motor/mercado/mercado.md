@@ -97,5 +97,5 @@ real. Tempo: turno = 2 meses.
 ### Fatias seguintes (ainda não)
 
 5b. PIB e bases dos impostos saem da produção e dos pops (países de teste
-    continuam dando o resultado de hoje). Só depois de o autor revisar o que
-    existe.
+    continuam dando o resultado de hoje). **Adiada** (02/nov): vem depois de
+    mais pops. O passo 12 foi fechado sem ela.

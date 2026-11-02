@@ -54,12 +54,17 @@ export function lerOcupacao(
   const erros = validarOcupacao(pops, mercado);
   if (erros.length)
     throw new Error(
-      erros.map((e) => `mundo/pops/pops.json › ${e.campo}: ${e.motivo}`).join("\n"),
+      erros
+        .map((e) => `mundo/pops/pops.json › ${e.campo}: ${e.motivo}`)
+        .join("\n"),
     );
   return Object.fromEntries(
     pops.map((p) => [
       p.id,
-      { setores: p.setores as Ocupacao["setores"], capital: p.capital as number },
+      {
+        setores: p.setores as Ocupacao["setores"],
+        capital: p.capital as number,
+      },
     ]),
   );
 }
@@ -127,8 +132,7 @@ export function empregoDoPais(
         id: s.id,
         nome: s.nome,
         empregos: populacao > 0 ? (100 * a.empregos) / populacao : 0,
-        salario:
-          a.empregos > 0 && media > 0 ? a.massa / a.empregos / media : 0,
+        salario: a.empregos > 0 && media > 0 ? a.massa / a.empregos / media : 0,
         massa: pib > 0 ? (100 * a.massa) / pib : 0,
         lucro: pib > 0 ? (100 * a.lucro) / pib : 0,
       };

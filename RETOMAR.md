@@ -25,18 +25,17 @@ ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
 
 ## Próximo
 
-**Passo 12 (Mercado), fatias 1 a 4 e 5a prontas.** Fatia 1: 7 setores e 22
-produtos. Fatia 2: cobertura do país (`paises/<id>/producao.json`). Fatia 3:
-dois mercados, preço do mundo no estado (`precos`). Fatia 4: pops com `setores`
-e `capital`; empregos, salário e lucro por setor. Fatia 5a (02/nov): **ciclo**
-(demanda do mundo ondula 8% a cada 24 turnos) e **choques** (2% de chance por
-produto e turno, fator 1,3 a 1,8 sobre o alvo, somem 40% por turno; ficam em
-`estado.choques`). Comportamento em `src/motor/mercado/mercado.md`.
-Próximo: o autor revisa a lista do que existe (chat de 02/nov: pesos dos pops,
-cobertura 0 para produto não listado, conta da dependência). Depois, **5b** (PIB
-e bases dos impostos saindo da produção e dos pops; países de teste com o mesmo
-resultado) em proposta curta, e fechar o passo 12 (`npm run check`, plano e
-escopo com ✅).
+**Passo 12 (Mercado) fechado em 02/nov, sem a 5b** (`npm run check` verde, 134
+testes). Fez: 7 setores e 22 produtos, cobertura do país, preço do mundo com
+ciclo e choques, pops com setores e capital (empregos, salário e lucro), janela
+Mercado. A janela é vitrine: PIB e impostos ainda não leem o mercado (5b, na
+seção 11 do escopo).
+
+Duas frentes novas do autor, **uma por vez, ordem a confirmar**:
+1. **Dinheiro na tela, não %** (recomendado primeiro): motor em %, tela em moeda
+   do país por ano. Medir onde aparece % antes; decidir por ano ou por turno.
+2. **Mais pops** (autor disse "como combinado"; não achei o combinado
+   registrado, perguntar quais pops). Depois, a 5b.
 
 Outro chat trata da **economia das leis militares**. Também em aberto: quais
 **eixos novos** entram na bússola (paz × militarismo, seção 11).

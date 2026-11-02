@@ -289,7 +289,13 @@ const precosDoMundo: Etapa = (regras, estado) => {
   return {
     ...estado,
     choques,
-    precos: andarPrecos(mercado, producao, estado.precos, estado.turno, choques),
+    precos: andarPrecos(
+      mercado,
+      producao,
+      estado.precos,
+      estado.turno,
+      choques,
+    ),
   };
 };
 

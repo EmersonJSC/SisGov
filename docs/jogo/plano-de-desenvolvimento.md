@@ -12,8 +12,8 @@
   desgaste; versão 0.4), 10 (tela e salvar; versão 1.0) e 11 (mundo).
 - **Depois da 1.0, feito:** o mapa como única tela e a bússola política
   (leis e grupos em dois eixos).
-- **Próximo:** passo 12, o mercado (proposta abaixo, espera o sim do autor).
-  Depois o 13 (leis em pacotes).
+- **Próximo:** passo 13 (leis em pacotes), depois de dinheiro na tela e mais pops
+  (chat de 02/nov; ver RETOMAR).
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -149,7 +149,7 @@ antes é preciso existir quem está do outro lado (01/nov, autor).
 de posição sozinha. As potências não fazem muita coisa (sanção é o máximo,
 e fica para depois). **Guerra ativa não existe no jogo** (talvez numa DLC).
 
-### Passo 12 — Mercado ⬅ próximo
+### Passo 12 — Mercado ✅ (02/nov, sem a 5b)
 
 Como no Victoria 3: um **mercado global** e o **mercado do país**. O do país
 do jogador é completo; o dos outros países é simulado, mais simples.
@@ -161,6 +161,12 @@ do jogador é completo; o dos outros países é simulado, mais simples.
 | Os pops têm **empregos** nos setores e recebem salário; o lucro vai para os donos | `npm run pops`: a renda de cada pop vem dos empregos |
 | **Ciclos econômicos** do mundo mexem nos preços (alta e baixa) | script: o preço sobe e desce com o ciclo |
 | O PIB é a soma do que o país produz; a base dos impostos sai da produção e dos pops, não de uma fatia fixa declarada pelo país | as contas fecham como hoje |
+
+**Feito em 02/nov:** setores e produtos, cobertura do país, dois mercados
+(preço do mundo com ciclo e choques), pops com setores e capital (empregos,
+salário e lucro por setor) e janela Mercado. **Ficou de fora (5b):** o PIB e as
+bases dos impostos saírem da produção e dos pops; vai para depois de mais pops
+(escopo, seção 11).
 
 **Expande depois:** preço por oferta e procura; insumos (produto que usa
 outro); construção estatal ou privada; leis que fortalecem todos os

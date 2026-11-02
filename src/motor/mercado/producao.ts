@@ -23,8 +23,6 @@ const ehObjeto = (v: unknown): v is Objeto =>
 const ehNumero = (v: unknown): v is number =>
   typeof v === "number" && Number.isFinite(v);
 
-/** Folga para somas de frações (0,35 + 0,25 + … não dá 1 exato). */
-const FOLGA = 1e-9;
 const COBERTURA_MAX = 200;
 
 /** Valida a produção das potências: cada uma declara todo produto, de 0 a 200. */

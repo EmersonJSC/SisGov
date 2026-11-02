@@ -179,7 +179,9 @@ describe("ciclo e choques", () => {
       expect(a).toEqual(andarChoques(mercado, {}, t));
       for (const f of Object.values(a)) {
         total++;
-        expect(f >= 1.3 && f <= 1.8 || f >= 1 / 1.8 && f <= 1 / 1.3).toBe(true);
+        expect((f >= 1.3 && f <= 1.8) || (f >= 1 / 1.8 && f <= 1 / 1.3)).toBe(
+          true,
+        );
       }
     }
     expect(total).toBeGreaterThan(5);
@@ -210,7 +212,9 @@ describe("emprego, salário e lucro", () => {
   it("nada se perde: salário + lucro + informais = PIB", () => {
     const pib = 4000 + 6000 + 1500;
     const informais = (100 * 1500) / pib;
-    expect(r.setores[0].massa + r.setores[0].lucro + informais).toBeCloseTo(100);
+    expect(r.setores[0].massa + r.setores[0].lucro + informais).toBeCloseTo(
+      100,
+    );
   });
 
   it("barra setor inexistente, soma errada e capital fora", () => {

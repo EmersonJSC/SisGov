@@ -147,7 +147,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
 | 10 | Tela | ✅ 01/nov — tela simples em React (`npm run dev`): país e semente, grupos, índices, leis com controle para propor, fila de pedidos, votação do Congresso, resultado da eleição; salvar e carregar no navegador (`partida/salvar.ts`). Partida inteira jogada na tela até a eleição |
 | 11 | Mundo | ✅ 02/nov — 5 potências com opinião pela bússola, reputação (média pesada), poder defensivo e segurança externa (`npm run mundo`); leis de segurança (blocos A a E); losangos no mapa e chips Reputação e Seg. externa. Pedido: grandes potências que representam blocos reais, sem nome real, com relação entre si e opinião própria sobre o seu país que anda pela bússola; reputação internacional vira a média delas |
-| 12 | Mercado | mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços |
+| 12 | Mercado | ✅ 02/nov (sem a 5b, ver seção 11) — mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços |
 | 13 | Leis em pacotes | um pacote por vez (seção 11, "Leis em pacotes") |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
@@ -297,6 +297,11 @@ lidas (tag `projeto-antigo-2026-10-31`).
   próprio, quem é antimilitarista reage por ele e os outros grupos reagem por
   outros motivos. Autor deixou como está por enquanto; entra junto com a
   decisão de quais eixos novos a bússola ganha (`docs/jogo/bussola.md`).
+- **Mercado: ligar à economia (5b)** (02/nov): PIB e bases dos impostos
+  saindo da produção e dos pops (países de teste com o mesmo resultado). Fica
+  para depois de **mais pops** (autor quer pops melhor estruturados antes).
+- **Dinheiro na tela, não %** (02/nov, autor): o motor segue em % do PIB, mas
+  o jogador vê valores em moeda do país (sem nome real), por ano. Frente própria.
 - **Mercado: fila de construção e infraestrutura** (02/nov, autor):
   - Fila de obras **escondida** do jogador: calcula mais ou menos o custo de
     construir uma fábrica e se o país tem construção civil forte o bastante.
