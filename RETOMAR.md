@@ -19,10 +19,12 @@ produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-**Fatia 8 (Propriedade e processos)**, desenho aprovado em `mercado.md`: fatia do
-Estado em passos de 25%, processo em etapas com escolhas, tela única
-"Propriedade", pacotes como botões. Próximo: **protótipo da tela** para o autor
-ver, antes do motor.
+**Fatia 8 (Propriedade e processos)**, desenho em `mercado.md`, ajustado em
+02/nov após o protótipo: passos de **2%**, votação só no Congresso (câmara
+única), e **sem cofre único**: venda e compra seguem duas leis novas de opções,
+*Déficit* e *Superávit* (hoje fixas em `src/motor/contas`). Próximo: **protótipo
+v2** (barra de 50 blocos, medidor de custo/destino) para o autor ver; depois
+motor das duas leis fiscais, motor do processo, energia, setores, pacotes.
 
 Autor olha a **Energia** (bolha "Infra", 8 leis: 5 verbas por fonte e 3 de
 "quem constrói / opera / vende") e o bloco "Energia: capacidade contra demanda"

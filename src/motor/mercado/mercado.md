@@ -285,7 +285,7 @@ jogo**, não planilha.
 
 **Fatia do Estado.** Toda coisa que muda de dono (as 3 camadas da energia,
 cada setor/indústria do mercado) tem uma fatia do Estado, de 0 a 100%. Alvo em
-passos de 25%. Privatizar e estatizar são o mesmo processo: mover a fatia de X
+passos de 2%. Privatizar e estatizar são o mesmo processo: mover a fatia de X
 para Y. Substitui as 3 leis "quem constrói, opera e vende" (opções fixas); o
 efeito de cada camada (parte privada, ganho de capacidade, margem) passa a
 valer pela fatia atual, em proporção.
@@ -296,19 +296,31 @@ Indenização (estatizar, pode ser contestada) · 4 Pagamento/transição, a fat
 anda aos poucos até o alvo, com greve e protesto possíveis · 5 Concluída. Enquanto
 corre, o valor antigo vale. Cancelar até a etapa 3; depois está comprometido.
 Custo e prazo crescem com o tamanho do pedaço movido (25% custa um quarto de
-100%) e com a resistência. Indenização sai do cofre em parcelas; cofre curto
-atrasa e derruba a confiança dos investidores.
+100%) e com a resistência. Estatizar paga à vista ou em parcelas por turno
+(escolha do jogador no pedido); atrasar parcela derruba a confiança dos
+investidores. A votação é **uma só, no Congresso**: V1 tem câmara única, e o
+regime do país (leis essenciais) define quórum e veto. Senado só no bicameral,
+fora da V1.
 
 **Escolhas no meio (o jogo).** Leilão vazio: baixar o preço mínimo, esperar ou
 cancelar. Indenização contestada: pagar mais ou aguentar a justiça. Greve na
 transição: gastar para acalmar ou segurar firme.
 
-**Três medidores** no pedido, antes de confirmar: Cofre (custo), Povo (protesto,
+**Dinheiro (sem "cofre" único).** Venda e compra não têm caixa próprio; entram
+na regra fiscal do país, que passa a ser **duas leis de opções** (hoje é fixa em
+`contas`: sobra vai ao cofre, falta sai do cofre e depois vira dívida):
+*Déficit* (sai do cofre / vira dívida / metade e metade) e *Superávit* (vai ao
+cofre / paga a dívida / metade e metade). Venda de propriedade é sobra extra
+(saldo) e segue a lei do superávit; compra é falta extra (cada parcela) e segue
+a lei do déficit. Mudar `contas` é passo de motor próprio, com teste.
+
+**Três medidores** no pedido, antes de confirmar: Custo (e de onde sai, pela
+lei do déficit; na venda, para onde vai, pela do superávit), Povo (protesto,
 greve), Investidores (confiança). Confiança dos investidores é medida nova do
 processo, não índice novo (decisão pendente: efeito só em índices existentes).
 
-**Tela única "Propriedade":** um cartão por coisa, barra de 4 blocos (azul
-Estado, laranja mercado), clicar no bloco define o alvo. **Pacotes** são botões
+**Tela única "Propriedade":** um cartão por coisa, barra de 50 blocos de 2% (azul
+Estado, laranja mercado), clicar ou arrastar define o alvo. **Pacotes** são botões
 no topo que preenchem vários cartões (Estatizar tudo, Concessões, Transição
 verde, Combustível e tradição); o jogador ajusta e envia como um projeto só,
 votação conjunta.
