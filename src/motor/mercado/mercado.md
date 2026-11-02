@@ -219,6 +219,41 @@ população maior sobe a demanda; produção menor sobe o preço até o teto de
 175%; pop pobre cai em fome antes do rico quando a comida encarece; com a
 cesta atendida e preço no base, ninguém fica em fome.
 
+### Fatia 7: Energia, capacidade contra demanda (escrito antes; aguarda o sim do autor)
+
+Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
+(uma usina abastece regiões distantes). A regra é de **capacidade**.
+
+- **Oferta (capacidade):** soma das fontes; cada fonte tem capacidade, que cresce
+  quando o Estado investe e só chega depois do prazo de obra (em turnos).
+  A rede de transmissão limita quanto da capacidade chega ao consumo.
+- **Demanda:** das pessoas (fixa por pessoa) mais das empresas, que **pedem mais
+  energia conforme evoluem** (indústria maior, mais demanda).
+- **Se a demanda passa da capacidade:** o crescimento é freado e o preço da
+  energia sobe. Sem investir, o país fica para trás (a demanda cresce e a
+  capacidade não). Apagão com efeito em saúde e apoio: **decisão do autor em
+  aberto** (A: só freio e preço, recomendado; B: também apagão).
+- **Cinco fontes**, cada uma com custo, prazo, emissão e risco:
+  - hidrelétrica: barata de operar, cara e lenta de construir; pesa no ambiente local.
+  - térmica fóssil: rápida e barata de construir; polui; sofre com o preço do combustível lá fora.
+  - nuclear: muita energia constante; muito cara e lenta; risco e exige segurança.
+  - solar: cada vez mais barata; varia com o dia; pede rede e reserva.
+  - eólica: parecida com a solar, em outro ritmo.
+
+**Leis (pacote que cobre os dois eixos da bússola):**
+- Uma lei contínua de **investimento por fonte** (% do PIB), 5 no total, cada uma
+  com posição própria nos **dois eixos** (econômico e social), de modo que o
+  conjunto cubra os dois lados de cada eixo e todo jogador ache um caminho.
+- Duas leis de regra do jogo, uma por eixo: **quem investe** (Estado × mercado,
+  eixo econômico) e **licenciamento das fontes** (verde × tradicional, eixo social).
+- Efeitos só em índices que já existem (meio ambiente, PIB/crescimento,
+  industrialização, saúde); índice novo é pedido ao autor antes.
+- Cada efeito com força por nível e atraso em turnos.
+
+**Conferência (testes):** mesma partida e semente dão o mesmo resultado; demanda
+maior que a capacidade freia o crescimento e sobe o preço; investir amplia a
+capacidade só depois do prazo; fóssil piora o ambiente e limpas melhoram.
+
 ### Fatias seguintes (ainda não)
 
 5b. PIB e bases dos impostos saem da produção e dos pops (países de teste
