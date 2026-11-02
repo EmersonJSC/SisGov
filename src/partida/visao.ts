@@ -1,6 +1,7 @@
 // Monta a VisaoPartida (formato da tela antiga do mapa) a partir da partida
 // nova. Só lê: nomes e textos vêm do JSON das leis e do mundo.
 import {
+  balancoDoPais,
   arrecadacao,
   BASES,
   gastoDasLeis,
@@ -19,6 +20,7 @@ import type {
   VisaoBolha,
   VisaoLei,
   VisaoLigacao,
+  VisaoMercado,
   VisaoPartida,
 } from "./tiposVisao";
 
@@ -278,6 +280,30 @@ export function montarVisao(partida: Partida): VisaoPartida {
       opiniao: estado.opinioes[p.id] ?? 50,
       peso: p.peso,
     })),
+    mercado: regras.mercado && visaoDoMercado(regras),
     governo: governo(),
+  };
+}
+
+function visaoDoMercado(regras: Partida["regras"]): VisaoMercado | undefined {
+  if (!regras.mercado) return undefined;
+  const nomes = new Map((regras.potencias ?? []).map((p) => [p.id, p.nome]));
+  const nome = (id: string) => nomes.get(id) ?? id;
+  const balanco = balancoDoPais(regras.mercado);
+  return {
+    setores: balanco.setores.map((s) => ({
+      ...s,
+      produtos: s.produtos.map((p) => ({
+        ...p,
+        fornecedores: p.fornecedores.map((f) => ({
+          id: f.potencia,
+          nome: nome(f.potencia),
+          parte: f.parte,
+        })),
+      })),
+    })),
+    dependencia: Object.entries(balanco.dependencia)
+      .map(([id, valor]) => ({ id, nome: nome(id), valor }))
+      .sort((a, b) => b.valor - a.valor),
   };
 }

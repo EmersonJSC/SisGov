@@ -8650,3 +8650,103 @@ span.el-mini {
 .regua-lei.sem-faixas .regua-zonas {
   display: none;
 }
+
+.documento:has(.mercado-janela) {
+  height: auto;
+  max-height: calc(100% - 36px);
+  width: min(720px, calc(100% - 24px));
+}
+
+.mercado-janela {
+  display: block;
+}
+
+.mercado-janela h2 {
+  margin: 14px 0 6px;
+  font: 700 13px var(--serifa);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.mercado-produtos,
+.mercado-dependencia {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mercado-produtos li {
+  display: grid;
+  grid-template-columns: 150px 120px 44px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #0000001a;
+}
+
+.mercado-barra {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: #0000001a;
+}
+
+.mercado-barra i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 4px;
+}
+
+.mercado-barra i.falta {
+  background: #b9852f;
+}
+
+.mercado-barra i.sobra {
+  background: #3d7a52;
+}
+
+/* marca dos 100%: o país se basta */
+.mercado-barra b {
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: var(--tinta-suave);
+}
+
+.mercado-produz {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.mercado-fluxo {
+  display: flex;
+  flex-direction: column;
+  font-size: 12.5px;
+}
+
+.mercado-fluxo em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.mercado-fluxo .compra {
+  color: #a8402e;
+}
+
+.mercado-fluxo .vende {
+  color: #2f7d4a;
+}
+
+.mercado-fluxo small {
+  color: var(--tinta-suave);
+}
+
+.mercado-dependencia li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #0000001a;
+}

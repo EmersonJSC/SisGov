@@ -3,6 +3,7 @@
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
 import type { TipoGrupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
+import type { MercadoDoPais } from "../mercado";
 import type { Potencia } from "../mundo";
 import type { Congresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
@@ -41,6 +42,8 @@ export interface Regras {
   /** Índices de defesa (motor/mundo); se os dois existem, a segurança externa é calculada. */
   indicePoderDefensivo?: string;
   indiceSegurancaExterna?: string;
+  /** Produção do país e fornecedores do mundo (motor/mercado); só leitura por ora. */
+  mercado?: MercadoDoPais;
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
 }

@@ -91,3 +91,5 @@ export function lerMercado(dado: unknown): Mercado {
   const { setores, produtos } = dado as Mercado;
   return { setores, produtos };
 }
+
+export * from "./producao";

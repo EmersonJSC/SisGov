@@ -1,0 +1,106 @@
+{
+  "versao": 1,
+  "produtores": {
+    "alimentos": {
+      "republica-do-norte": 0.35,
+      "uniao-continental": 0.25,
+      "federacao-do-leste": 0.25,
+      "republica-popular-do-oriente": 0.15
+    },
+    "remedios": {
+      "republica-do-norte": 0.4,
+      "uniao-continental": 0.4,
+      "republica-popular-do-oriente": 0.2
+    },
+    "energia": {
+      "liga-do-golfo": 0.5,
+      "federacao-do-leste": 0.3,
+      "republica-do-norte": 0.2
+    },
+    "rodovias": {
+      "republica-popular-do-oriente": 0.5,
+      "uniao-continental": 0.3,
+      "republica-do-norte": 0.2
+    },
+    "ferrovias": {
+      "republica-popular-do-oriente": 0.5,
+      "uniao-continental": 0.3,
+      "federacao-do-leste": 0.2
+    },
+    "portos": {
+      "republica-popular-do-oriente": 0.5,
+      "republica-do-norte": 0.3,
+      "uniao-continental": 0.2
+    },
+    "aeroportos": {
+      "republica-do-norte": 0.4,
+      "uniao-continental": 0.4,
+      "republica-popular-do-oriente": 0.2
+    },
+    "aco": {
+      "republica-popular-do-oriente": 0.6,
+      "federacao-do-leste": 0.2,
+      "uniao-continental": 0.2
+    },
+    "maquinas": {
+      "uniao-continental": 0.4,
+      "republica-popular-do-oriente": 0.4,
+      "republica-do-norte": 0.2
+    },
+    "veiculos": {
+      "republica-popular-do-oriente": 0.4,
+      "uniao-continental": 0.3,
+      "republica-do-norte": 0.3
+    },
+    "avioes": { "republica-do-norte": 0.6, "uniao-continental": 0.4 },
+    "chips": {
+      "republica-popular-do-oriente": 0.5,
+      "republica-do-norte": 0.3,
+      "uniao-continental": 0.2
+    },
+    "software": {
+      "republica-do-norte": 0.7,
+      "uniao-continental": 0.2,
+      "republica-popular-do-oriente": 0.1
+    },
+    "redes-sociais": {
+      "republica-do-norte": 0.8,
+      "republica-popular-do-oriente": 0.2
+    },
+    "inteligencia-artificial": {
+      "republica-do-norte": 0.6,
+      "republica-popular-do-oriente": 0.4
+    },
+    "armas": {
+      "federacao-do-leste": 0.4,
+      "republica-do-norte": 0.4,
+      "republica-popular-do-oriente": 0.2
+    },
+    "veiculos-militares": {
+      "federacao-do-leste": 0.5,
+      "republica-do-norte": 0.3,
+      "republica-popular-do-oriente": 0.2
+    },
+    "veiculos-de-luxo": { "uniao-continental": 0.7, "republica-do-norte": 0.3 },
+    "joias": {
+      "liga-do-golfo": 0.4,
+      "uniao-continental": 0.4,
+      "republica-do-norte": 0.2
+    },
+    "eletronicos-de-ponta": {
+      "republica-popular-do-oriente": 0.6,
+      "republica-do-norte": 0.3,
+      "uniao-continental": 0.1
+    },
+    "moradia": {
+      "republica-popular-do-oriente": 0.5,
+      "uniao-continental": 0.3,
+      "republica-do-norte": 0.2
+    },
+    "obras-publicas": {
+      "republica-popular-do-oriente": 0.5,
+      "uniao-continental": 0.3,
+      "republica-do-norte": 0.2
+    }
+  }
+}

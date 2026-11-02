@@ -9,6 +9,9 @@ import {
   indiceDaReputacao,
   indicesDeDefesa,
   lerPotencias,
+  lerMercado,
+  lerProdutores,
+  lerCobertura,
   type Congresso,
   type Estado,
   type IndicesEssenciais,
@@ -27,6 +30,8 @@ import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import potencias from "../conteudo/mundo/potencias/potencias.json";
+import produtos from "../conteudo/mundo/mercado/produtos.json";
+import produtores from "../conteudo/mundo/mercado/produtores.json";
 
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
@@ -102,6 +107,16 @@ function carregarPops(): TipoPop[] {
 export const nomesPops: Record<string, string> = Object.fromEntries(
   tiposPops.pops.map((t) => [t.id, t.nome]),
 );
+
+function carregarMercado(pais: string): Regras["mercado"] {
+  const mercado = lerMercado(produtos);
+  const ids = lerPotencias(potencias).map((p) => p.id);
+  return {
+    mercado,
+    produtores: lerProdutores(produtores, mercado, ids),
+    cobertura: lerCobertura(arquivoPais(pais, "producao"), mercado),
+  };
+}
 
 function carregarGrupos(): TipoGrupo[] {
   if (tiposGrupos.versao !== 1)
@@ -221,6 +236,7 @@ export function criarPartida(
     indicePoderDefensivo: indicesDeDefesa(potencias).poderDefensivo,
     indiceSegurancaExterna: indicesDeDefesa(potencias).segurancaExterna,
     pais: inicial.parametros,
+    mercado: carregarMercado(pais),
     congresso: semCongresso
       ? undefined
       : {
@@ -278,6 +294,9 @@ export type {
   VisaoGrupo,
   VisaoLei,
   VisaoLigacao,
+  VisaoMercado,
+  VisaoProduto,
+  VisaoSetor,
   VisaoMinisterio,
   VisaoOpcao,
   VisaoPartida,

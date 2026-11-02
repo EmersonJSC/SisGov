@@ -17,9 +17,23 @@ real. Tempo: turno = 2 meses.
 - O validador recusa: produto sem setor, produto de setor que não existe, id
   repetido (setor ou produto), setor sem nenhum produto, nome vazio.
 
+### Fatia 2: o país produz uma parte, o resto vem de fora (aprovado em 02/nov/2026)
+
+- O país declara, por produto, a **cobertura**: quanto da demanda do país a
+  produção dele atende, em % (0 a 200). 100 = se basta; abaixo disso, compra
+  o que falta; acima, vende o excesso. Falta produto na lista = erro.
+- O **mundo** declara quem fornece cada produto: as potências e a parte de
+  cada uma (soma 1). Potência que não existe = erro.
+- Conta: **importa** = o que falta para 100; **exporta** = o que passa de 100;
+  cada **fornecedor** entrega sua parte do que o país importa.
+- **Dependência** de uma potência = média, nos produtos, do que o país compra
+  dela (em % da demanda). É só leitura: efeito nas contas vem na fatia 4.
+- Tela: janela "Mercado" (botão no topo), como a do Vic3: produtos separados
+  por setor, cada um com a barra de produção, o que importa (e de quem), o que
+  exporta; no pé, a dependência de cada potência.
+
 ### Fatias seguintes (ainda não)
 
-2. O país declara o que produz; o que não produz, compra de quem produz.
 3. Pops com empregos nos setores; salário e lucro (as leis do passo 13 leem).
 4. Preço mundial por produto, ciclos e choques que vêm de fora; PIB e bases
    dos impostos saem da produção e dos pops (países de teste continuam dando o

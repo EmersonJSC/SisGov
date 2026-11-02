@@ -1,0 +1,27 @@
+{
+  "versao": 1,
+  "cobertura": {
+    "alimentos": 120,
+    "remedios": 60,
+    "energia": 90,
+    "rodovias": 100,
+    "ferrovias": 70,
+    "portos": 100,
+    "aeroportos": 90,
+    "aco": 80,
+    "maquinas": 50,
+    "veiculos": 70,
+    "avioes": 10,
+    "chips": 5,
+    "software": 40,
+    "redes-sociais": 20,
+    "inteligencia-artificial": 10,
+    "armas": 50,
+    "veiculos-militares": 40,
+    "veiculos-de-luxo": 20,
+    "joias": 60,
+    "eletronicos-de-ponta": 15,
+    "moradia": 100,
+    "obras-publicas": 100
+  }
+}

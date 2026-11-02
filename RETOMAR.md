@@ -25,13 +25,17 @@ ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
 
 ## Próximo
 
-**Passo 12 (Mercado), fatia 1 pronta** (setores e produtos: 7 setores, 22
-produtos, validador, `src/motor/mercado/mercado.md`). Próxima: **fatia 2**, o
-país declara o que produz e depende de quem faz o resto (proposta curta no
-chat, esperar o sim). Decidido com o autor: o PIB e as bases dos impostos
-passam a sair da produção na fatia 4 (opção A), com os países de teste dando o
-mesmo resultado de hoje. Insumos, fila de construção e infraestrutura como
-mecânica ficaram na seção 11 do escopo.
+**Passo 12 (Mercado), fatias 1 e 2 prontas.** Fatia 1: 7 setores e 22
+produtos. Fatia 2: cada país declara a **cobertura** de cada produto
+(`paises/<id>/producao.json`, % da demanda que ele mesmo atende), o mundo diz
+quem fornece o quê (`mundo/mercado/produtores.json`); sai o que importa, o que
+exporta, de quem compra e a **dependência** de cada potência. Janela
+"Mercado" no topo, por setor (só leitura). Comportamento em
+`src/motor/mercado/mercado.md`. Próxima: **fatia 3** (pops com emprego nos
+setores, salário e lucro; proposta curta no chat, esperar o sim). A fatia 4
+faz o PIB e as bases saírem da produção (opção A, países de teste com o mesmo
+resultado de hoje). Insumos, fila de construção e infraestrutura como mecânica
+estão na seção 11 do escopo.
 
 Outro chat trata da **economia das leis militares**. Também em aberto: quais
 **eixos novos** entram na bússola (paz × militarismo, seção 11).

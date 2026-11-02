@@ -1,9 +1,23 @@
 // Contrato: todo JSON de lei do mundo passa no validador do motor.
 import { describe, expect, it } from "vitest";
 import { validarLei } from "../motor/leis";
+import {
+  lerMercado,
+  lerPotencias,
+  validarCobertura,
+  validarProdutores,
+} from "../motor";
+import produtos from "../conteudo/mundo/mercado/produtos.json";
+import produtores from "../conteudo/mundo/mercado/produtores.json";
+import potencias from "../conteudo/mundo/potencias/potencias.json";
+import { paisesDisponiveis } from ".";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 
 const leis = import.meta.glob("../conteudo/mundo/leis/*.json", {
+  eager: true,
+  import: "default",
+});
+const paisesProducao = import.meta.glob("../conteudo/paises/*/producao.json", {
   eager: true,
   import: "default",
 });
@@ -37,5 +51,17 @@ describe("contrato do mercado", () => {
     const { validarMercado } = await import("../motor/mercado");
     const mercado = await import("../conteudo/mundo/mercado/produtos.json");
     expect(validarMercado(mercado.default)).toEqual([]);
+  });
+});
+
+describe("contrato da produção", () => {
+  it("fornecedores do mundo e cobertura de cada país passam nos validadores", () => {
+    const mercado = lerMercado(produtos);
+    const ids = lerPotencias(potencias).map((p) => p.id);
+    expect(validarProdutores(produtores, mercado, ids)).toEqual([]);
+    for (const pais of paisesDisponiveis()) {
+      const dado = paisesProducao[`../conteudo/paises/${pais}/producao.json`];
+      expect(validarCobertura(dado, mercado), pais).toEqual([]);
+    }
   });
 });

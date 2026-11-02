@@ -286,6 +286,34 @@ export type VisaoPotencia = Readonly<{
   peso: number;
 }>;
 
+export type VisaoProduto = Readonly<{
+  id: string;
+  nome: string;
+  /** Quanto da demanda a produção do país atende, em %. */
+  cobertura: number;
+  importa: number;
+  exporta: number;
+  fornecedores: readonly Readonly<{
+    id: string;
+    nome: string;
+    parte: number;
+  }>[];
+}>;
+
+export type VisaoSetor = Readonly<{
+  id: string;
+  nome: string;
+  descricao: string;
+  produtos: readonly VisaoProduto[];
+}>;
+
+/** O que o país produz, compra e vende, por setor (motor/mercado). */
+export type VisaoMercado = Readonly<{
+  setores: readonly VisaoSetor[];
+  /** De quanto cada potência fornece ao país, em % da demanda (média dos produtos). */
+  dependencia: readonly Readonly<{ id: string; nome: string; valor: number }>[];
+}>;
+
 export type VisaoPartida = Readonly<{
   pais: string;
   cenario: string;
@@ -296,6 +324,8 @@ export type VisaoPartida = Readonly<{
   grupos: readonly VisaoGrupo[];
   /** Superpotências e a opinião de cada uma; vazio se o mundo não tem. */
   potencias: readonly VisaoPotencia[];
+  /** Produção, importação e exportação por setor; ausente se o país não declara. */
+  mercado?: VisaoMercado;
   /** Áreas do governo e seus ministérios, na ordem do anel. */
   governo: readonly VisaoArea[];
 }>;
