@@ -94,7 +94,7 @@ real. Tempo: turno = 2 meses.
   "Do mundo".
 - Mesma semente e mesmos turnos dão os mesmos choques.
 
-### Fatia 6: demanda dos pops, oferta, preço do país e fome (proposta, 02/nov/2026)
+### Fatia 6: demanda dos pops, oferta, preço do país e fome (6a em código, 02/nov/2026; 6b ainda não)
 
 Desenho completo: a cobertura deixa de ser número declarado e vira resultado.
 Referência de como o Vic3 faz: `docs/jogo/mercado-vic3-referencia.md` (só a
@@ -131,6 +131,14 @@ primeiro; os outros produtos só depois de o autor confirmar a comida na tela.
 - **Prédios na tela, sem simular um a um**: o produto declara uma `unidade`
   (nome, ex. "fazendas", e tamanho em % do PIB); a tela mostra "≈ N unidades"
   = produção ÷ tamanho. Investir para crescer a capacidade vem com a 5b.
+
+**6a feita (02/nov/2026):** `demanda.ts` (`contaDoPais`), Grãos e Frutas no
+mundo, `cestas` e `unidade` em `produtos.json`, `populacaoBase` no país. A
+produção fica fixa (muda com a 5b). A parte de cada produto na cesta usa duas
+passadas (preço do mundo, depois o do país); por isso a cobertura mostrada
+pode diferir 1 ponto da declarada. Importação limitada pelo excedente soma das
+potências (em % da demanda). Pesos 0,5 / 0,2 / 0,3 e cesta de 12% da renda são
+pontos de partida.
 
 **6b. Fome (segurança alimentar) por pop**
 

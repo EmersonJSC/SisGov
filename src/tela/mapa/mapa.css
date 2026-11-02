@@ -8691,6 +8691,12 @@ span.el-mini {
   border-bottom: 1px solid #0000001a;
 }
 
+.mercado-conta {
+  grid-column: 1 / -1;
+  color: var(--tinta-suave);
+  font-size: 12px;
+}
+
 .mercado-barra {
   position: relative;
   height: 8px;

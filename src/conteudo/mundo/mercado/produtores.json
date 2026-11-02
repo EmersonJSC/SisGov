@@ -2,6 +2,8 @@
   "versao": 1,
   "producao": {
     "republica-do-norte": {
+      "graos": 150,
+      "frutas": 120,
       "alimentos": 147,
       "remedios": 158,
       "energia": 114,
@@ -26,6 +28,8 @@
       "obras-publicas": 114
     },
     "uniao-continental": {
+      "graos": 130,
+      "frutas": 140,
       "alimentos": 125,
       "remedios": 158,
       "energia": 40,
@@ -50,6 +54,8 @@
       "obras-publicas": 136
     },
     "republica-popular-do-oriente": {
+      "graos": 110,
+      "frutas": 100,
       "alimentos": 103,
       "remedios": 114,
       "energia": 40,
@@ -74,6 +80,8 @@
       "obras-publicas": 180
     },
     "federacao-do-leste": {
+      "graos": 100,
+      "frutas": 90,
       "alimentos": 125,
       "remedios": 40,
       "energia": 136,
@@ -98,6 +106,8 @@
       "obras-publicas": 40
     },
     "liga-do-golfo": {
+      "graos": 60,
+      "frutas": 110,
       "alimentos": 40,
       "remedios": 40,
       "energia": 180,

@@ -129,6 +129,10 @@ function carregarMercado(pais: string): Regras["mercado"] {
     producao: lerProducaoDoMundo(produtores, mercado, ids),
     cobertura: lerCobertura(declaracaoDoPais(pais), mercado),
     ocupacao: lerOcupacao(tiposPops.pops, mercado),
+    populacaoBase: arquivoPais<{ essenciais: { populacao: number } }>(
+      pais,
+      "estado-inicial",
+    ).essenciais.populacao,
   };
 }
 

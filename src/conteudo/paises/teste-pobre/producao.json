@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "cobertura": {
+    "graos": 80,
+    "frutas": 110,
     "alimentos": 90,
     "remedios": 20,
     "energia": 60,

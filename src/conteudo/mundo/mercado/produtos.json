@@ -38,43 +38,156 @@
     }
   ],
   "produtos": [
-    { "id": "alimentos", "nome": "Alimentos", "setor": "essenciais" },
-    { "id": "remedios", "nome": "Remédios", "setor": "essenciais" },
-    { "id": "energia", "nome": "Energia", "setor": "essenciais" },
-    { "id": "rodovias", "nome": "Rodovias", "setor": "infraestrutura" },
-    { "id": "ferrovias", "nome": "Ferrovias", "setor": "infraestrutura" },
-    { "id": "portos", "nome": "Portos", "setor": "infraestrutura" },
-    { "id": "aeroportos", "nome": "Aeroportos", "setor": "infraestrutura" },
-    { "id": "aco", "nome": "Aço", "setor": "industria" },
-    { "id": "maquinas", "nome": "Máquinas", "setor": "industria" },
-    { "id": "veiculos", "nome": "Veículos comuns", "setor": "industria" },
-    { "id": "avioes", "nome": "Aviões", "setor": "industria" },
-    { "id": "chips", "nome": "Chips", "setor": "industria" },
-    { "id": "software", "nome": "Software e nuvem", "setor": "tecnologia" },
-    { "id": "redes-sociais", "nome": "Redes sociais", "setor": "tecnologia" },
+    {
+      "id": "graos",
+      "nome": "Grãos",
+      "setor": "essenciais",
+      "cesta": {
+        "id": "comida",
+        "peso": 0.5
+      },
+      "unidade": {
+        "nome": "fazendas de grãos",
+        "tamanho": 0.05
+      }
+    },
+    {
+      "id": "frutas",
+      "nome": "Frutas",
+      "setor": "essenciais",
+      "cesta": {
+        "id": "comida",
+        "peso": 0.2
+      },
+      "unidade": {
+        "nome": "pomares",
+        "tamanho": 0.02
+      }
+    },
+    {
+      "id": "alimentos",
+      "nome": "Alimentos",
+      "setor": "essenciais",
+      "cesta": {
+        "id": "comida",
+        "peso": 0.3
+      },
+      "unidade": {
+        "nome": "fábricas de alimentos",
+        "tamanho": 0.03
+      }
+    },
+    {
+      "id": "remedios",
+      "nome": "Remédios",
+      "setor": "essenciais"
+    },
+    {
+      "id": "energia",
+      "nome": "Energia",
+      "setor": "essenciais"
+    },
+    {
+      "id": "rodovias",
+      "nome": "Rodovias",
+      "setor": "infraestrutura"
+    },
+    {
+      "id": "ferrovias",
+      "nome": "Ferrovias",
+      "setor": "infraestrutura"
+    },
+    {
+      "id": "portos",
+      "nome": "Portos",
+      "setor": "infraestrutura"
+    },
+    {
+      "id": "aeroportos",
+      "nome": "Aeroportos",
+      "setor": "infraestrutura"
+    },
+    {
+      "id": "aco",
+      "nome": "Aço",
+      "setor": "industria"
+    },
+    {
+      "id": "maquinas",
+      "nome": "Máquinas",
+      "setor": "industria"
+    },
+    {
+      "id": "veiculos",
+      "nome": "Veículos comuns",
+      "setor": "industria"
+    },
+    {
+      "id": "avioes",
+      "nome": "Aviões",
+      "setor": "industria"
+    },
+    {
+      "id": "chips",
+      "nome": "Chips",
+      "setor": "industria"
+    },
+    {
+      "id": "software",
+      "nome": "Software e nuvem",
+      "setor": "tecnologia"
+    },
+    {
+      "id": "redes-sociais",
+      "nome": "Redes sociais",
+      "setor": "tecnologia"
+    },
     {
       "id": "inteligencia-artificial",
       "nome": "Inteligência artificial",
       "setor": "tecnologia"
     },
-    { "id": "armas", "nome": "Armas e munição", "setor": "militar" },
+    {
+      "id": "armas",
+      "nome": "Armas e munição",
+      "setor": "militar"
+    },
     {
       "id": "veiculos-militares",
       "nome": "Veículos e aeronaves militares",
       "setor": "militar"
     },
-    { "id": "veiculos-de-luxo", "nome": "Veículos de luxo", "setor": "luxo" },
-    { "id": "joias", "nome": "Joias e artigos finos", "setor": "luxo" },
+    {
+      "id": "veiculos-de-luxo",
+      "nome": "Veículos de luxo",
+      "setor": "luxo"
+    },
+    {
+      "id": "joias",
+      "nome": "Joias e artigos finos",
+      "setor": "luxo"
+    },
     {
       "id": "eletronicos-de-ponta",
       "nome": "Eletrônicos de ponta",
       "setor": "luxo"
     },
-    { "id": "moradia", "nome": "Moradias", "setor": "construcao-civil" },
+    {
+      "id": "moradia",
+      "nome": "Moradias",
+      "setor": "construcao-civil"
+    },
     {
       "id": "obras-publicas",
       "nome": "Obras públicas",
       "setor": "construcao-civil"
+    }
+  ],
+  "cestas": [
+    {
+      "id": "comida",
+      "nome": "Comida",
+      "tamanho": 0.12
     }
   ]
 }

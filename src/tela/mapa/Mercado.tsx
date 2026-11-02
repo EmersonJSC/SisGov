@@ -172,6 +172,16 @@ export function Mercado({
                           <em>se basta</em>
                         )}
                       </span>
+                      {p.conta ? (
+                        <small className="mercado-conta">
+                          Os pops querem {um1(p.conta.demanda)}% do PIB · o país
+                          faz {um1(p.conta.producao)}% · preço{" "}
+                          {um(p.conta.preco)} (base 100)
+                          {p.conta.unidades
+                            ? ` · ≈ ${um(p.conta.unidades.quantas)} ${p.conta.unidades.nome}`
+                            : ""}
+                        </small>
+                      ) : null}
                     </li>
                   ))}
                 </ul>

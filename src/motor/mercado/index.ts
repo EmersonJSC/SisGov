@@ -7,15 +7,28 @@ export interface Setor {
   descricao: string;
 }
 
+/** Uma necessidade que vários produtos atendem (ex.: comida). */
+export interface Cesta {
+  id: string;
+  nome: string;
+  /** Quanto cada pessoa gasta, em fração da renda média inicial, a preço base. */
+  tamanho: number;
+}
+
 export interface Produto {
   id: string;
   nome: string;
   setor: string;
+  /** Necessidade que o produto atende e o peso dele na cesta. */
+  cesta?: { id: string; peso: number };
+  /** Prédio típico: nome e tamanho (% do PIB); a tela mostra "≈ N". */
+  unidade?: { nome: string; tamanho: number };
 }
 
 export interface Mercado {
   setores: Setor[];
   produtos: Produto[];
+  cestas: Cesta[];
 }
 
 export interface ErroMercado {
@@ -61,6 +74,19 @@ export function validarMercado(dado: unknown): ErroMercado[] {
       erro(`${c}.descricao`, "precisa ser texto");
   });
 
+  const cestas = Array.isArray(dado.cestas) ? dado.cestas : [];
+  const idsDeCesta = new Set<string>();
+  cestas.forEach((x, i) => {
+    const c = `cestas[${i}]`;
+    if (!ehObjeto(x)) return erro(c, "precisa ser um objeto");
+    if (!ehKebab(x.id)) erro(`${c}.id`, "precisa ser kebab-case");
+    else if (idsDeCesta.has(x.id)) erro(`${c}.id`, `"${x.id}" repetido`);
+    else idsDeCesta.add(x.id);
+    if (!ehTexto(x.nome)) erro(`${c}.nome`, "precisa ter nome");
+    if (typeof x.tamanho !== "number" || !(x.tamanho > 0))
+      erro(`${c}.tamanho`, "precisa ser um número maior que 0");
+  });
+
   const idsDeProduto = new Set<string>();
   const comProduto = new Set<string>();
   produtos.forEach((p, i) => {
@@ -74,6 +100,25 @@ export function validarMercado(dado: unknown): ErroMercado[] {
     else if (!idsDeSetor.has(p.setor))
       erro(`${c}.setor`, `setor "${p.setor}" não existe`);
     else comProduto.add(p.setor);
+    if (p.cesta !== undefined) {
+      const k = p.cesta;
+      if (!ehObjeto(k)) erro(`${c}.cesta`, "precisa ser um objeto");
+      else {
+        if (typeof k.id !== "string" || !idsDeCesta.has(k.id))
+          erro(`${c}.cesta.id`, "cesta não existe");
+        if (typeof k.peso !== "number" || !(k.peso > 0))
+          erro(`${c}.cesta.peso`, "precisa ser um número maior que 0");
+      }
+    }
+    if (p.unidade !== undefined) {
+      const u = p.unidade;
+      if (!ehObjeto(u)) erro(`${c}.unidade`, "precisa ser um objeto");
+      else {
+        if (!ehTexto(u.nome)) erro(`${c}.unidade.nome`, "precisa ter nome");
+        if (typeof u.tamanho !== "number" || !(u.tamanho > 0))
+          erro(`${c}.unidade.tamanho`, "precisa ser um número maior que 0");
+      }
+    }
   });
 
   for (const id of idsDeSetor)
@@ -88,10 +133,11 @@ export function lerMercado(dado: unknown): Mercado {
   const erros = validarMercado(dado);
   if (erros.length > 0)
     throw new Error(erros.map((e) => `${e.campo}: ${e.motivo}`).join("\n"));
-  const { setores, produtos } = dado as Mercado;
-  return { setores, produtos };
+  const { setores, produtos, cestas } = dado as Mercado;
+  return { setores, produtos, cestas: cestas ?? [] };
 }
 
 export * from "./producao";
 export * from "./preco";
 export * from "./emprego";
+export * from "./demanda";

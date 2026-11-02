@@ -2,6 +2,7 @@
 // nova. Só lê: nomes e textos vêm do JSON das leis e do mundo.
 import {
   balancoDoPais,
+  contaDoPais,
   empregoDoPais,
   maisBarata,
   arrecadacao,
@@ -344,6 +345,14 @@ function visaoDoMercado(
   const balanco = balancoDoPais(regras.mercado);
   const { mercado, producao, ocupacao } = regras.mercado;
   const emprego = empregoDoPais(mercado, ocupacao, estado.pops);
+  const conta = contaDoPais(
+    mercado,
+    producao,
+    regras.mercado.cobertura,
+    regras.mercado.populacaoBase,
+    estado.essenciais.populacao,
+    estado.precos,
+  );
   const precos = mercado.setores.map((s) => ({
     id: s.id,
     nome: s.nome,
@@ -373,14 +382,29 @@ function visaoDoMercado(
     },
     setores: balanco.setores.map((s) => ({
       ...s,
-      produtos: s.produtos.map((p) => ({
-        ...p,
-        fornecedores: p.fornecedores.map((f) => ({
-          id: f.potencia,
-          nome: nome(f.potencia),
-          parte: f.parte,
-        })),
-      })),
+      produtos: s.produtos.map((p) => {
+        const c = conta.produtos[p.id];
+        return {
+          ...p,
+          ...(c && {
+            cobertura: c.cobertura,
+            importa: c.demanda > 0 ? (100 * c.importa) / c.demanda : 0,
+            exporta: Math.max(0, c.cobertura - 100),
+            conta: {
+              demanda: c.demanda,
+              producao: c.producao,
+              importa: c.importa,
+              preco: c.preco,
+              unidades: c.unidades,
+            },
+          }),
+          fornecedores: p.fornecedores.map((f) => ({
+            id: f.potencia,
+            nome: nome(f.potencia),
+            parte: f.parte,
+          })),
+        };
+      }),
     })),
     emprego: emprego.setores,
     semEmprego: emprego.semEmprego,

@@ -306,6 +306,15 @@ export type VisaoProduto = Readonly<{
     nome: string;
     parte: number;
   }>[];
+  /** Produto de cesta: demanda dos pops, preço do país e prédios (fatia 6a). */
+  conta?: Readonly<{
+    demanda: number;
+    producao: number;
+    importa: number;
+    /** 100 = preço base. */
+    preco: number;
+    unidades?: Readonly<{ nome: string; quantas: number }>;
+  }>;
 }>;
 
 export type VisaoSetor = Readonly<{
