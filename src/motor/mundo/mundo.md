@@ -68,8 +68,7 @@ Partida salva antes do pedaço 2 carrega com as opiniões de partida do país.
 
 - **Segurança externa** (aprovado em 02/nov/2026, sem corte): o país parte do
   **poder defensivo** e perde, em pontos, o quanto as potências o desgostam:
-  `segurança externa = poder defensivo − (100 − reputação)`, travada em 0 a
-  100. Como a reputação já é a média das opiniões pesada pelo `peso`, a
+  `segurança externa = poder defensivo − (100 − reputação)`, travada em 0 a 100. Como a reputação já é a média das opiniões pesada pelo `peso`, a
   potência grande pesa mais e não há limiar: quanto pior a opinião, maior a
   perda. Com opinião 100 de todas, a segurança é o próprio poder defensivo.
   Hoje as opiniões ficam em 86–99 (perda de uns 7 pontos); só passa a pesar

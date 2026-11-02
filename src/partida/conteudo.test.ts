@@ -26,7 +26,8 @@ describe("contrato das leis", () => {
 describe("contrato das potências", () => {
   it("o JSON das potências passa no validador", async () => {
     const { validarPotencias } = await import("../motor/mundo");
-    const potencias = await import("../conteudo/mundo/potencias/potencias.json");
+    const potencias =
+      await import("../conteudo/mundo/potencias/potencias.json");
     expect(validarPotencias(potencias.default)).toEqual([]);
   });
 });

@@ -192,7 +192,8 @@ describe("reputação", () => {
   });
 
   it("recusa mundo sem o índice da reputação", () => {
-    const { indice_reputacao: _, ...dado } = base();
+    const dado: Record<string, unknown> = { ...base() };
+    delete dado.indice_reputacao;
     expect(motivos(dado)).toContain(
       "indice_reputacao: precisa ser o id do índice da reputação",
     );

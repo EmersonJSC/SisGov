@@ -39,7 +39,9 @@ describe("salvar e carregar", () => {
 describe("partida salva antes das potências", () => {
   it("carrega com as opiniões de partida do país", () => {
     const p = criarPartida("teste", 7);
-    const antigo = JSON.parse(salvarPartida(p)) as { estado: { opinioes?: unknown } };
+    const antigo = JSON.parse(salvarPartida(p)) as {
+      estado: { opinioes?: unknown };
+    };
     delete antigo.estado.opinioes;
     const carregada = carregarPartida(JSON.stringify(antigo));
     expect(carregada.estado.opinioes).toEqual(p.estado.opinioes);

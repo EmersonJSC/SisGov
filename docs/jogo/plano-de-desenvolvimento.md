@@ -9,11 +9,11 @@
 - **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),
   4 (turno mínimo; versão 0.1), 5 (contas), 6 (leis da V1; versão 0.2) e
   7 (população e grupos), 8 (Congresso; versão 0.3) e 9 (eleição e
-  desgaste; versão 0.4) e 10 (tela e salvar; versão 1.0).
+  desgaste; versão 0.4), 10 (tela e salvar; versão 1.0) e 11 (mundo).
 - **Depois da 1.0, feito:** o mapa como única tela e a bússola política
   (leis e grupos em dois eixos).
-- **Próximo:** passo 11, o mundo (proposta abaixo, espera o sim do autor).
-  Depois o 12 (mercado) e o 13 (leis em pacotes).
+- **Próximo:** passo 12, o mercado (proposta abaixo, espera o sim do autor).
+  Depois o 13 (leis em pacotes).
 - **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
   o próximo só abre quando o anterior está pronto.
 
@@ -131,7 +131,7 @@ desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
 
 **Expande depois:** tela elaborada, gráficos, mapa, arte.
 
-### Passo 11 — Mundo ⬅ em andamento (aprovado em 01/nov)
+### Passo 11 — Mundo ✅ (02/nov)
 
 O mercado vem depois do mundo: todo país disputa o mesmo mercado, então
 antes é preciso existir quem está do outro lado (01/nov, autor).
@@ -149,7 +149,7 @@ antes é preciso existir quem está do outro lado (01/nov, autor).
 de posição sozinha. As potências não fazem muita coisa (sanção é o máximo,
 e fica para depois). **Guerra ativa não existe no jogo** (talvez numa DLC).
 
-### Passo 12 — Mercado
+### Passo 12 — Mercado ⬅ próximo
 
 Como no Victoria 3: um **mercado global** e o **mercado do país**. O do país
 do jogador é completo; o dos outros países é simulado, mais simples.

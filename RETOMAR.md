@@ -7,25 +7,22 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passo 11 (mundo) em andamento; comportamento esperado em
-`src/motor/mundo/mundo.md`. Pedaços 1 a 6 feitos: potências, opinião (curva),
-reputação e **segurança externa** = poder defensivo − (100 − reputação), sem
-corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
-Índices novos: `poder_defensivo`, `seguranca_externa`, `lotacao_presidios`
-(maior é pior); `seguranca` mostra "Segurança pública". Leis contínuas aceitam
-`unidade: "meses" | "anos"` (usadas pelo serviço militar e pela idade do voluntário).
+**Passo 11 (mundo) fechado** em 02/nov: `npm run check` verde (107 testes),
+plano e escopo com ✅. Fez: 5 potências (sem nome real) com opinião pela
+bússola, reputação = média pesada, poder defensivo, segurança externa =
+poder defensivo − (100 − reputação), leis de segurança (blocos A a E),
+losangos no mapa e chips "Reputação" e "Seg. externa" na barra do topo.
+Comportamento: `src/motor/mundo/mundo.md` e `src/tela/mapa/mapa.md` (fatia 5).
+Sem tag (o passo 11 não fecha versão).
 
 ## Próximo
 
-**Pedaço 6 feito** (02/nov): as 5 potências são losangos num anel logo atrás
-dos grupos (nome, opinião no anel e dica ao passar o mouse), e a barra do topo
-ganhou os chips "Reputação" e "Seg. externa" (`src/tela/mapa/mapa.md`, fatia 5).
-Visto na tela. Passo 11 só falta fechar: `npm run check`, plano e escopo ✅.
-Antes disso o autor ainda decide: como as leis militares funcionam na economia
-(ele pediu) e quais eixos novos entram na bússola (paz × militarismo está no
-escopo, seção 11). Depois: passo 12 Mercado. Ideia do autor, ainda não feita:
-empresas em volta, perto do anel das potências (outra frente).
-Leis de segurança: todas criadas (blocos A a E).
+O autor abriu **outro chat** para tratar da **economia das leis militares**
+(como verba, serviço e idade do voluntário entram nas contas). Também em
+aberto, decisão do autor: quais **eixos novos** entram na bússola (paz ×
+militarismo está no escopo, seção 11; "depois de tudo pronto"). Depois:
+**passo 12 Mercado** (proposta curta no chat, esperar o sim). Ideia do autor,
+fora do passo: **empresas** em volta, perto do anel das potências.
 
 ## Pendências do autor
 
