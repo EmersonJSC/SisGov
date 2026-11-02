@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "remessa-de-lucro",
+  "nome": "Remessa de lucro ao exterior",
+  "descricao": "Imposto sobre o lucro que sai do país.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "baixa",
+      "rotulo": "Imposto baixo",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "valores": {
+        "imposto": 0.05,
+        "atrai": 1.3
+      },
+      "efeitos": []
+    },
+    {
+      "id": "media",
+      "rotulo": "Imposto médio",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "imposto": 0.2,
+        "atrai": 1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "alta",
+      "rotulo": "Imposto alto",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0.2
+      },
+      "valores": {
+        "imposto": 0.4,
+        "atrai": 0.6
+      },
+      "efeitos": []
+    }
+  ]
+}

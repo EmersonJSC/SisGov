@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "energia-estrangeiro",
+  "nome": "Capital estrangeiro: Energia",
+  "descricao": "Teto da parte de dono estrangeiro, em energia.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "Nenhum",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.5
+      },
+      "valores": {
+        "teto": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "ate-metade",
+      "rotulo": "Até quase metade",
+      "bussola": {
+        "economico": 0,
+        "social": 0.1
+      },
+      "valores": {
+        "teto": 0.49
+      },
+      "efeitos": []
+    },
+    {
+      "id": "livre",
+      "rotulo": "Livre",
+      "bussola": {
+        "economico": 0.4,
+        "social": -0.2
+      },
+      "valores": {
+        "teto": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

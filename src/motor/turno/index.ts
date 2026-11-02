@@ -28,7 +28,12 @@ import {
   andarChoques,
   andarPrecos,
   capacidadeInicial,
+  ajustesDasFichas,
+  andarPropriedade,
   contaDoPais,
+  fichasIniciais,
+  freioDasFichas,
+  SEM_PROPRIEDADE,
   freioDoCrescimento,
   pressaoNosPrecos,
   reacaoCivil,
@@ -113,6 +118,24 @@ const leisNovas: Etapa = (regras, estado) => {
   return { ...estado, leis, efeitos };
 };
 
+/** 2b. Propriedade: a fatia do Estado e o capital de fora andam; o dinheiro do turno. */
+const propriedade: Etapa = (regras, estado) => {
+  const r = andarPropriedade(
+    regras.mercado?.fichas,
+    regras.leis,
+    estado.leis,
+    estado.fichas,
+    estado.propriedade,
+    estado.opinioes,
+  );
+  return {
+    ...estado,
+    fichas: r.fichas,
+    propriedade: r.propriedade,
+    opinioes: r.opinioes,
+  };
+};
+
 /** 3. Efeitos andam um turno em direção ao inteiro. */
 const efeitosVencem: Etapa = (_, estado) => ({
   ...estado,
@@ -122,6 +145,43 @@ const efeitosVencem: Etapa = (_, estado) => ({
 /** Taxa anual (%) aplicada a um turno. */
 const doTurno = (anualPct: number) =>
   Math.pow(1 + anualPct / 100, 1 / TURNOS_POR_ANO);
+
+/** O que as fichas fazem com cada produto, com as leis e a posição de hoje. */
+export const ajustesDoEstado = (regras: Regras, estado: Estado) =>
+  ajustesDasFichas(
+    regras.mercado?.fichas,
+    regras.leis,
+    estado.leis,
+    estado.fichas,
+  );
+
+/** Freio das fichas no crescimento: setor com falta de oferta (pontos ao ano). */
+function freioDosSetores(regras: Regras, estado: Estado): number {
+  const m = regras.mercado;
+  if (!m?.fichas) return 0;
+  const conta = contaDoPais(
+    m.mercado,
+    m.producao,
+    m.cobertura,
+    m.populacaoBase,
+    estado.essenciais.populacao,
+    estado.precos,
+    ajustesDoEstado(regras, estado),
+  );
+  const livre = contaDoPais(
+    m.mercado,
+    m.producao,
+    m.cobertura,
+    m.populacaoBase,
+    estado.essenciais.populacao,
+    estado.precos,
+  );
+  return freioDasFichas(
+    m.fichas,
+    (id) => conta.produtos[id] ?? conta.outros[id],
+    (id) => livre.produtos[id] ?? livre.outros[id],
+  );
+}
 
 /**
  * Capacidade contra demanda de cada rede (motor/mercado, fatia 7), com o
@@ -156,7 +216,8 @@ const economiaReal: Etapa = (regras, estado) => {
       soma + freioDoCrescimento(capacidade, situacao),
     0,
   );
-  const anual = tendencia + volatilidade * z - freio;
+  const anual =
+    tendencia + volatilidade * z - freio - freioDosSetores(regras, estado);
   const e = estado.essenciais;
   return {
     ...estado,
@@ -259,12 +320,14 @@ function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
   const receitaPct =
     arrecadacao(regras, estado.leis, e) + regras.pais.receita_fora_das_leis;
   const pibTurno = e.pib_nominal / TURNOS_POR_ANO;
+  const { receita: vendas, gasto: indenizacoes } = estado.propriedade;
   return {
-    receita: (receitaPct / 100) * pibTurno,
+    receita: (receitaPct / 100) * pibTurno + (vendas / 100) * e.pib_nominal,
     gasto:
       ((gastoDasLeis(regras, estado.leis) + regras.pais.gasto_fora_das_leis) /
         100) *
-      pibTurno,
+        pibTurno +
+      (indenizacoes / 100) * e.pib_nominal,
     juros: ((e.taxa_juros / 100) * estado.tesouro.divida) / TURNOS_POR_ANO,
   };
 }
@@ -326,6 +389,7 @@ function indicesDasCestas(
     m.populacaoBase,
     estado.essenciais.populacao,
     estado.precos,
+    ajustesDoEstado(regras, estado),
   );
   const seguranca = segurancaDaCesta(m.mercado, conta, estado.pops);
   const indices: Record<string, number> = {};
@@ -556,6 +620,7 @@ const invariantes: Etapa = (regras, estado) => {
 const ETAPAS: Etapa[] = [
   congresso,
   leisNovas,
+  propriedade,
   efeitosVencem,
   economiaReal,
   precosEJuros,
@@ -709,6 +774,10 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
           inicio.leis,
         )
       : {},
+    fichas: regras.mercado?.fichas
+      ? fichasIniciais(regras.mercado.fichas, regras.leis, inicio.leis)
+      : {},
+    propriedade: SEM_PROPRIEDADE,
     choques: {},
     coligacao: [...coligacao],
     votacoes: [],

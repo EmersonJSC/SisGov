@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "politica-estatal",
+  "nome": "Política da empresa estatal",
+  "descricao": "Como a empresa do Estado fixa preço e lucro.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "preco-de-mercado",
+      "rotulo": "Preço de mercado",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "preco": 1,
+        "cofre": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "preco-social",
+      "rotulo": "Preço social, abaixo do mercado",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0
+      },
+      "valores": {
+        "preco": 0.85,
+        "cofre": -1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "lucro-para-o-cofre",
+      "rotulo": "Lucro para o cofre",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.1
+      },
+      "valores": {
+        "preco": 1.1,
+        "cofre": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

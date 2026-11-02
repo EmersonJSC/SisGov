@@ -1,12 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { criarPartida, jogar, montarVisao } from ".";
+import { leisDasFichas } from "../motor";
 
 describe("visão da partida para o mapa", () => {
   const partida = criarPartida("teste", 1);
   const visao = montarVisao(partida);
 
   it("toda lei do mundo está numa área, com nome", () => {
-    expect(visao.leis).toHaveLength(Object.keys(partida.regras.leis).length);
+    // As leis das fichas de setor ficam fora do mapa: a decisão é na ficha.
+    const daFicha = leisDasFichas(partida.regras.mercado!.fichas!);
+    expect(visao.leis).toHaveLength(
+      Object.keys(partida.regras.leis).length - daFicha.size,
+    );
     const areas = new Set(visao.governo.map((a) => a.id));
     for (const lei of visao.leis) {
       expect(areas.has(lei.area)).toBe(true);

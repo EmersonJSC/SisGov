@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "regra-pos-venda",
+  "nome": "Regra depois da venda",
+  "descricao": "O que vale para a empresa vendida.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "livre",
+      "rotulo": "Livre",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 1,
+        "tarifa": 1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "agencia",
+      "rotulo": "Agência com teto de tarifa",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 0.8,
+        "tarifa": 0.4
+      },
+      "efeitos": []
+    },
+    {
+      "id": "devolucao",
+      "rotulo": "Com prazo de devolução ao Estado",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 0.7,
+        "tarifa": 0.3
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -73,10 +73,29 @@
         "energia-termica",
         "energia-nuclear",
         "energia-solar",
-        "energia-eolica",
-        "energia-construcao",
-        "energia-rede",
-        "energia-venda"
+        "energia-eolica"
+      ]
+    },
+    {
+      "id": "propriedade",
+      "titulo": "Propriedade e capital",
+      "curto": "Propriedade",
+      "cargo": "Fazenda",
+      "faz": "Regras gerais para estatizar, vender e abrir o país ao capital de fora. Cada setor tem a sua ficha.",
+      "leis": [
+        "indenizacao",
+        "prazo-pagamento",
+        "metodo-venda",
+        "preco-minimo-venda",
+        "regra-pos-venda",
+        "politica-estatal",
+        "setores-do-estado",
+        "triagem-estrangeira",
+        "remessa-de-lucro",
+        "fabrica-de-fora",
+        "fabrica-no-exterior",
+        "concorrencia",
+        "acordo-com-potencias"
       ]
     }
   ]

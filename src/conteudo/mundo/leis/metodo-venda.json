@@ -1,0 +1,62 @@
+{
+  "versao": 1,
+  "id": "metodo-venda",
+  "nome": "Método de venda",
+  "descricao": "Como o Estado vende uma empresa.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "leilao",
+      "rotulo": "Leilão aberto",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "valores": {
+        "receita": 1,
+        "eficiencia": 0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "concessao",
+      "rotulo": "Concessão",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "receita": 0.7,
+        "eficiencia": 0.06
+      },
+      "efeitos": []
+    },
+    {
+      "id": "acao-de-ouro",
+      "rotulo": "Ação de ouro",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "receita": 0.85,
+        "eficiencia": 0.04
+      },
+      "efeitos": []
+    },
+    {
+      "id": "funcionarios",
+      "rotulo": "Venda aos funcionários",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "valores": {
+        "receita": 0.4,
+        "eficiencia": 0.02
+      },
+      "efeitos": []
+    }
+  ]
+}

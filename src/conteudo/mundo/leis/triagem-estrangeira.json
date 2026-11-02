@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "triagem-estrangeira",
+  "nome": "Triagem de compra estrangeira",
+  "descricao": "Como o país olha quem de fora quer comprar empresas.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "livre",
+      "rotulo": "Livre",
+      "bussola": {
+        "economico": 0.5,
+        "social": -0.2
+      },
+      "valores": {
+        "velocidade": 1.2
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aviso",
+      "rotulo": "Aviso ao governo acima de 10%",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "velocidade": 0.9
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aprovacao",
+      "rotulo": "Aprovação do Congresso",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0.4
+      },
+      "valores": {
+        "velocidade": 0.5
+      },
+      "efeitos": []
+    }
+  ]
+}

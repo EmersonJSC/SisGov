@@ -31,6 +31,7 @@ const CORES: Readonly<Record<string, string>> = {
   "seguranca-e-defesa": "#6f4fb0",
   "direitos-e-costumes": "#c2577a",
   "governo-e-instituicoes": "#8a6a45",
+  propriedade: "#4f7a8c",
 };
 
 const RESERVA = ["#4f7fa8", "#9a5f8f", "#5f8f6b", "#a8774f", "#6a6fb0"];

@@ -2,6 +2,7 @@
 // fatia 2). O motor não conhece nomes de produto nem de potência.
 import type { ErroMercado, Mercado } from "./index";
 import type { Ocupacao } from "./emprego";
+import type { Fichas } from "./ficha";
 
 /** Para cada potência, a cobertura de cada produto (0 a 200). */
 export type ProducaoDoMundo = Record<string, Cobertura>;
@@ -17,6 +18,8 @@ export interface MercadoDoPais {
   capacidade: Record<string, number>;
   /** Onde cada tipo de pop trabalha (do mundo). */
   ocupacao: Record<string, Ocupacao>;
+  /** Fichas de setor e leis gerais de propriedade (fatia 8); ausente = sem. */
+  fichas?: Fichas;
   /** População do turno 0: a produção declarada é cobertura × demanda daquele dia. */
   populacaoBase: number;
 }

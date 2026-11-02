@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "prazo-pagamento",
+  "nome": "Prazo de pagamento",
+  "descricao": "Quando o Estado paga a indenização.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "a-vista",
+      "rotulo": "À vista",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "valores": {
+        "parcelas": 1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "parcelado",
+      "rotulo": "Parcelado em um ano",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parcelas": 6
+      },
+      "efeitos": []
+    },
+    {
+      "id": "titulos-longos",
+      "rotulo": "Em títulos, em três anos",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "parcelas": 18
+      },
+      "efeitos": []
+    }
+  ]
+}

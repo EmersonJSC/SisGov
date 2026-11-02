@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "setores-do-estado",
+  "nome": "Onde o Estado pode ter empresa",
+  "descricao": "Em que setores a lei deixa o Estado ser dono.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "Em nenhum",
+      "bussola": {
+        "economico": 0.8,
+        "social": 0
+      },
+      "valores": {
+        "estrategicos": 0,
+        "outros": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-estrategicos",
+      "rotulo": "Só nos estratégicos",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "estrategicos": 1,
+        "outros": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "todos",
+      "rotulo": "Em todos",
+      "bussola": {
+        "economico": -0.7,
+        "social": 0
+      },
+      "valores": {
+        "estrategicos": 1,
+        "outros": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

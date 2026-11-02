@@ -93,7 +93,8 @@ describe("reputação internacional", () => {
     const depois = jogar(partida, 3, [
       { tipo: "mudar_lei", lei: "pena-de-morte", valor: "crimes-graves" },
     ]);
-    expect(depois.estado.jogabilidade[indice]).toBeCloseTo(media(depois));
+    // A fome e a carência também mexem na reputação (reação da cesta): 1 casa.
+    expect(depois.estado.jogabilidade[indice]).toBeCloseTo(media(depois), 1);
     expect(depois.estado.jogabilidade[indice]).not.toBeCloseTo(
       partida.estado.jogabilidade[indice],
     );

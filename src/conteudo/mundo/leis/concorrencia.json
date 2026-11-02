@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "concorrencia",
+  "nome": "Concorrência (antitruste)",
+  "descricao": "O que o governo faz contra empresas grandes demais.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "Nenhuma",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "valores": {
+        "concentracao": 1,
+        "custo": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "fiscaliza",
+      "rotulo": "Fiscaliza",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "concentracao": 0.5,
+        "custo": 0.02
+      },
+      "efeitos": []
+    },
+    {
+      "id": "desmembra",
+      "rotulo": "Pode desmembrar",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0.1
+      },
+      "valores": {
+        "concentracao": 0,
+        "custo": 0.05
+      },
+      "efeitos": []
+    }
+  ]
+}

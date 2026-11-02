@@ -3,6 +3,7 @@
 import {
   balancoDoPais,
   contaDoPais,
+  leisDasFichas,
   segurancaDaCesta,
   empregoDoPais,
   maisBarata,
@@ -267,7 +268,10 @@ function ligacoes(
 export function montarVisao(partida: Partida): VisaoPartida {
   const { regras, estado } = partida;
   const areaDa = areaDaLei();
-  const leis = Object.values(regras.leis);
+  const daFicha = regras.mercado?.fichas
+    ? leisDasFichas(regras.mercado.fichas)
+    : new Set<string>();
+  const leis = Object.values(regras.leis).filter((l) => !daFicha.has(l.id));
   for (const lei of leis)
     if (!areaDa.has(lei.id))
       throw new Error(`mundo/areas/areas.json › lei "${lei.id}" sem área`);

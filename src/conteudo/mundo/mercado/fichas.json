@@ -1,0 +1,197 @@
+{
+  "versao": 1,
+  "gerais": {
+    "indenizacao": "indenizacao",
+    "prazo": "prazo-pagamento",
+    "metodo": "metodo-venda",
+    "minimo": "preco-minimo-venda",
+    "posvenda": "regra-pos-venda",
+    "politica": "politica-estatal",
+    "estado_pode": "setores-do-estado",
+    "triagem": "triagem-estrangeira",
+    "remessa": "remessa-de-lucro",
+    "fabrica_de_fora": "fabrica-de-fora",
+    "fabrica_no_exterior": "fabrica-no-exterior",
+    "antitruste": "concorrencia",
+    "acordo": "acordo-com-potencias"
+  },
+  "fichas": [
+    {
+      "id": "alimentos",
+      "nome": "Alimentos",
+      "descricao": "Grãos, frutas e alimentos: o prato do povo.",
+      "produtos": [
+        "graos",
+        "frutas",
+        "alimentos"
+      ],
+      "capacidades": [],
+      "valor": 12,
+      "freio": 0,
+      "estrategico": true,
+      "leis": {
+        "dono": "alimentos-dono",
+        "importacao": "alimentos-importacao",
+        "estrangeiro": "alimentos-estrangeiro",
+        "preco": "alimentos-preco"
+      }
+    },
+    {
+      "id": "saude",
+      "nome": "Saúde (remédios)",
+      "descricao": "Os remédios que chegam à população.",
+      "produtos": [
+        "remedios"
+      ],
+      "capacidades": [],
+      "valor": 6,
+      "freio": 0,
+      "estrategico": true,
+      "leis": {
+        "dono": "saude-dono",
+        "importacao": "saude-importacao",
+        "estrangeiro": "saude-estrangeiro",
+        "preco": "saude-preco"
+      }
+    },
+    {
+      "id": "energia",
+      "nome": "Energia",
+      "descricao": "Quem é dono da rede e do que gera a energia.",
+      "produtos": [],
+      "capacidades": [
+        "energia"
+      ],
+      "valor": 8,
+      "freio": 0,
+      "estrategico": true,
+      "leis": {
+        "dono": "energia-dono",
+        "importacao": "energia-importacao",
+        "estrangeiro": "energia-estrangeiro",
+        "preco": "energia-preco"
+      }
+    },
+    {
+      "id": "transporte",
+      "nome": "Transporte e obras",
+      "descricao": "Rodovias, ferrovias, portos, aeroportos e obras públicas.",
+      "produtos": [
+        "rodovias",
+        "ferrovias",
+        "portos",
+        "aeroportos",
+        "obras-publicas"
+      ],
+      "capacidades": [],
+      "valor": 10,
+      "freio": 3,
+      "estrategico": true,
+      "leis": {
+        "dono": "transporte-dono",
+        "importacao": "transporte-importacao",
+        "estrangeiro": "transporte-estrangeiro",
+        "preco": "transporte-preco"
+      }
+    },
+    {
+      "id": "moradia",
+      "nome": "Moradia",
+      "descricao": "Construção e oferta de casas.",
+      "produtos": [
+        "moradia"
+      ],
+      "capacidades": [],
+      "valor": 8,
+      "freio": 1.5,
+      "estrategico": false,
+      "leis": {
+        "dono": "moradia-dono",
+        "importacao": "moradia-importacao",
+        "estrangeiro": "moradia-estrangeiro",
+        "preco": "moradia-preco"
+      }
+    },
+    {
+      "id": "industria",
+      "nome": "Indústria pesada",
+      "descricao": "Aço, máquinas, veículos e aviões.",
+      "produtos": [
+        "aco",
+        "maquinas",
+        "veiculos",
+        "avioes"
+      ],
+      "capacidades": [],
+      "valor": 14,
+      "freio": 3,
+      "estrategico": false,
+      "leis": {
+        "dono": "industria-dono",
+        "importacao": "industria-importacao",
+        "estrangeiro": "industria-estrangeiro",
+        "preco": "industria-preco"
+      }
+    },
+    {
+      "id": "tecnologia",
+      "nome": "Tecnologia",
+      "descricao": "Chips, software, redes sociais, inteligência artificial e eletrônicos de ponta.",
+      "produtos": [
+        "chips",
+        "software",
+        "redes-sociais",
+        "inteligencia-artificial",
+        "eletronicos-de-ponta"
+      ],
+      "capacidades": [],
+      "valor": 8,
+      "freio": 2.5,
+      "estrategico": false,
+      "leis": {
+        "dono": "tecnologia-dono",
+        "importacao": "tecnologia-importacao",
+        "estrangeiro": "tecnologia-estrangeiro",
+        "preco": "tecnologia-preco"
+      }
+    },
+    {
+      "id": "defesa",
+      "nome": "Defesa",
+      "descricao": "Armas e veículos militares.",
+      "produtos": [
+        "armas",
+        "veiculos-militares"
+      ],
+      "capacidades": [],
+      "valor": 3,
+      "freio": 1,
+      "estrategico": true,
+      "leis": {
+        "dono": "defesa-dono",
+        "importacao": "defesa-importacao",
+        "estrangeiro": "defesa-estrangeiro",
+        "preco": "defesa-preco"
+      }
+    },
+    {
+      "id": "luxo",
+      "nome": "Luxo",
+      "descricao": "Veículos de luxo e joias.",
+      "produtos": [
+        "veiculos-de-luxo",
+        "joias"
+      ],
+      "capacidades": [],
+      "valor": 4,
+      "freio": 0.5,
+      "estrategico": false,
+      "leis": {
+        "dono": "luxo-dono",
+        "importacao": "luxo-importacao",
+        "estrangeiro": "luxo-estrangeiro",
+        "preco": "luxo-preco"
+      }
+    }
+  ]
+}

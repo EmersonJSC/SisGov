@@ -1071,6 +1071,7 @@ export const ICONE_INTERFACE: Readonly<Record<string, string>> = {
   "protecao-social": "umbrella-outline",
   "educacao-e-cultura": "school",
   "infraestrutura-e-energia": "city-variant-outline",
+  propriedade: "domain",
   "ambiente-e-campo": "leaf",
   "seguranca-e-defesa": "police-badge-outline",
   "direitos-e-costumes": "scale-balance",

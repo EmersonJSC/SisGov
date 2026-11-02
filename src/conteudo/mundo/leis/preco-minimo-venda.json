@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "preco-minimo-venda",
+  "nome": "Preço mínimo da venda",
+  "descricao": "Abaixo de que preço o Estado não vende.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "baixo",
+      "rotulo": "Baixo: vende quase sempre",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "valores": {
+        "minimo": 0.5
+      },
+      "efeitos": []
+    },
+    {
+      "id": "medio",
+      "rotulo": "Médio",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "minimo": 0.7
+      },
+      "efeitos": []
+    },
+    {
+      "id": "alto",
+      "rotulo": "Alto: só vende com compradores confiantes",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "valores": {
+        "minimo": 0.85
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "versao": 1,
+  "id": "indenizacao",
+  "nome": "Indenização na estatização",
+  "descricao": "Quanto o Estado paga ao dono quando toma uma empresa.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "valor-justo",
+      "rotulo": "Valor justo",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "valores": {
+        "pagar": 1,
+        "susto": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "abaixo-do-valor",
+      "rotulo": "Abaixo do valor",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "valores": {
+        "pagar": 0.5,
+        "susto": 4
+      },
+      "efeitos": []
+    },
+    {
+      "id": "confisco",
+      "rotulo": "Confisco, sem pagar",
+      "bussola": {
+        "economico": -0.8,
+        "social": 0.3
+      },
+      "valores": {
+        "pagar": 0,
+        "susto": 14
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -66,6 +66,11 @@ export interface Opcao {
   deficit_do_cofre?: number;
   /** Fração da sobra que vai ao cofre; o resto abate a dívida (motor/contas). */
   superavit_ao_cofre?: number;
+  /**
+   * Números que as fichas de setor leem desta opção pelo papel da lei
+   * (motor/mercado/ficha); o motor não conhece os nomes das chaves.
+   */
+  valores?: Record<string, number>;
   efeitos: Efeito[];
 }
 

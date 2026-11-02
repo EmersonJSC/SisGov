@@ -166,6 +166,16 @@ export function validarLei(
           if (v !== undefined && !(typeof v === "number" && v >= 0 && v <= 1))
             erro(`opcoes[${i}].${campo}`, "precisa ser um número de 0 a 1");
         }
+        if (op.valores !== undefined) {
+          const v = op.valores;
+          if (
+            !ehObjeto(v) ||
+            !Object.values(v).every(
+              (n) => typeof n === "number" && Number.isFinite(n),
+            )
+          )
+            erro(`opcoes[${i}].valores`, "precisa ser números por chave");
+        }
         efeitos(op.efeitos, `opcoes[${i}].efeitos`);
       });
       for (const campo of ["deficit_do_cofre", "superavit_ao_cofre"]) {

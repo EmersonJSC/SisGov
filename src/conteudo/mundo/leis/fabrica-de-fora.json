@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "fabrica-de-fora",
+  "nome": "Fábrica estrangeira no país",
+  "descricao": "O que o país pede de quem abre fábrica aqui.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "isencao",
+      "rotulo": "Isenção de impostos",
+      "bussola": {
+        "economico": 0.4,
+        "social": -0.1
+      },
+      "valores": {
+        "velocidade": 1.3,
+        "producao": 0,
+        "custo": 0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "conteudo-local",
+      "rotulo": "Conteúdo local obrigatório",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0.2
+      },
+      "valores": {
+        "velocidade": 1,
+        "producao": 0.04,
+        "custo": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "tecnologia",
+      "rotulo": "Exigência de tecnologia",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0.3
+      },
+      "valores": {
+        "velocidade": 0.7,
+        "producao": 0.08,
+        "custo": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

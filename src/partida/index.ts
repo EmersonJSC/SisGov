@@ -16,6 +16,7 @@ import {
   type Congresso,
   type Estado,
   type IndicesEssenciais,
+  lerFichas,
   type Lei,
   type ParametrosPais,
   type Pedido,
@@ -33,6 +34,7 @@ import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import potencias from "../conteudo/mundo/potencias/potencias.json";
 import produtos from "../conteudo/mundo/mercado/produtos.json";
 import produtores from "../conteudo/mundo/mercado/produtores.json";
+import fichas from "../conteudo/mundo/mercado/fichas.json";
 
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
@@ -121,7 +123,10 @@ function declaracaoDoPais(pais: string): unknown {
     : { versao: 1, cobertura: {} };
 }
 
-function carregarMercado(pais: string): Regras["mercado"] {
+function carregarMercado(
+  pais: string,
+  leis: Record<string, Lei>,
+): Regras["mercado"] {
   const mercado = lerMercado(produtos);
   const ids = lerPotencias(potencias).map((p) => p.id);
   const declarado = declaracaoDoPais(pais) as {
@@ -132,6 +137,7 @@ function carregarMercado(pais: string): Regras["mercado"] {
     producao: lerProducaoDoMundo(produtores, mercado, ids),
     cobertura: lerCobertura(declarado, mercado),
     capacidade: declarado.capacidade ?? {},
+    fichas: lerFichas(fichas, mercado, leis),
     ocupacao: lerOcupacao(tiposPops.pops, mercado),
     populacaoBase: arquivoPais<{ essenciais: { populacao: number } }>(
       pais,
@@ -248,8 +254,9 @@ export function criarPartida(
       max: v.dominio.maximo ?? Infinity,
     };
 
+  const leis = carregarLeis();
   const regras: Regras = {
-    leis: carregarLeis(),
+    leis,
     dominios,
     pops: carregarPops(),
     grupos: carregarGrupos(),
@@ -258,7 +265,7 @@ export function criarPartida(
     indicePoderDefensivo: indicesDeDefesa(potencias).poderDefensivo,
     indiceSegurancaExterna: indicesDeDefesa(potencias).segurancaExterna,
     pais: inicial.parametros,
-    mercado: carregarMercado(pais),
+    mercado: carregarMercado(pais, leis),
     congresso: semCongresso
       ? undefined
       : {
