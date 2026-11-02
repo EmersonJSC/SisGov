@@ -25,20 +25,18 @@ ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
 
 ## Próximo
 
-**Passo 12 (Mercado), fatias 1 a 4 prontas.** Fatia 1: 7 setores e 22
-produtos. Fatia 2: o país declara a **cobertura** de cada produto
-(`paises/<id>/producao.json`; o que ele não lista, compra do mundo). Fatia 3:
-**dois mercados**; cada potência declara a produção, o **preço do mundo** fica
-no estado (`precos`), janela com abas "Do país" e "Do mundo". Fatia 4
-(02/nov): cada tipo de pop do mundo diz em quais setores trabalha (`setores`) e
-quanto da renda é lucro (`capital`), em `mundo/pops/pops.json`; a aba "Do país"
-mostra por setor empregos, salário médio e lucro (calculado do estado, PIB e
-impostos não mudam). Comportamento em `src/motor/mercado/mercado.md`.
-Próxima: **fatia 5** (choques e ciclos sobre o preço; PIB e bases saindo da
-produção e dos pops, países de teste com o mesmo resultado de hoje). Proposta
-curta no chat, esperar o sim. Depois, fechar o passo 12 (`npm run check`,
-plano e escopo com ✅). Insumos, fila de construção e infraestrutura como
-mecânica estão na seção 11 do escopo.
+**Passo 12 (Mercado), fatias 1 a 4 e 5a prontas.** Fatia 1: 7 setores e 22
+produtos. Fatia 2: cobertura do país (`paises/<id>/producao.json`). Fatia 3:
+dois mercados, preço do mundo no estado (`precos`). Fatia 4: pops com `setores`
+e `capital`; empregos, salário e lucro por setor. Fatia 5a (02/nov): **ciclo**
+(demanda do mundo ondula 8% a cada 24 turnos) e **choques** (2% de chance por
+produto e turno, fator 1,3 a 1,8 sobre o alvo, somem 40% por turno; ficam em
+`estado.choques`). Comportamento em `src/motor/mercado/mercado.md`.
+Próximo: o autor revisa a lista do que existe (chat de 02/nov: pesos dos pops,
+cobertura 0 para produto não listado, conta da dependência). Depois, **5b** (PIB
+e bases dos impostos saindo da produção e dos pops; países de teste com o mesmo
+resultado) em proposta curta, e fechar o passo 12 (`npm run check`, plano e
+escopo com ✅).
 
 Outro chat trata da **economia das leis militares**. Também em aberto: quais
 **eixos novos** entram na bússola (paz × militarismo, seção 11).

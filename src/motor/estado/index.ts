@@ -57,6 +57,8 @@ export interface Estado {
   opinioes: Record<string, number>;
   /** Preço do mundo por produto (motor/mercado); vazio sem mercado. */
   precos: Record<string, Preco>;
+  /** Choques ativos sobre o alvo do preço, por produto (1 = nenhum). */
+  choques: Record<string, number>;
   /** Partidos da base do governo (motor/politica). */
   coligacao: string[];
   /** Votações do turno (motor/politica). */

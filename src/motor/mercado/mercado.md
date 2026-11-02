@@ -75,8 +75,27 @@ real. Tempo: turno = 2 meses.
   impostos não mudam (isso é a fatia 5).
 - Aba "Do país": cada setor mostra empregos, salário médio e lucro.
 
+### Fatia 5a: choques e ciclo sobre o preço do mundo (aprovado em 02/nov/2026)
+
+- Só o **preço do mundo** muda; PIB, impostos e emprego ficam como estão.
+- **Ciclo**: a demanda do mundo ondula devagar, igual para todos os produtos:
+  fator = 1 + 8% × sen(2π × turno ÷ 24) (24 turnos = 4 anos). Multiplica o
+  alvo do preço. No turno 0 o fator é 1.
+- **Choque**: a cada turno, cada produto sem choque ativo tem 2% de chance de
+  sofrer um (sorteio que depende só do turno e do produto, não gasta o acaso
+  da partida). O choque é um fator sobre o alvo: de 1,3 a 1,8 (falta, preço
+  sobe) ou o inverso (sobra, preço cai), meio a meio.
+- O choque **some aos poucos**: a cada turno o desvio do fator em relação a 1
+  cai 40%; abaixo de 2% o choque termina.
+- Os choques ativos ficam no estado (`choques`: produto → fator). Partida
+  salva antes disto começa sem choques.
+- O preço continua andando 25% do caminho até o alvo, com piso 40 e teto 250,
+  então o choque aparece em alguns turnos como seta de alta ou baixa na aba
+  "Do mundo".
+- Mesma semente e mesmos turnos dão os mesmos choques.
+
 ### Fatias seguintes (ainda não)
 
-5. Choques e ciclos que vêm de fora sobre o preço; PIB e bases dos impostos
-   saem da produção e dos pops (países de teste continuam dando o resultado
-   de hoje).
+5b. PIB e bases dos impostos saem da produção e dos pops (países de teste
+    continuam dando o resultado de hoje). Só depois de o autor revisar o que
+    existe.

@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { empregoDoPais, lerMercado, validarOcupacao } from "./index";
-import { andarPrecos, maisBarata, precosIniciais } from "./preco";
+import {
+  andarChoques,
+  andarPrecos,
+  cicloDoMundo,
+  maisBarata,
+  precosIniciais,
+} from "./preco";
 import {
   balancoDoPais,
   partesDoExcedente,
@@ -144,6 +150,40 @@ describe("preço do mundo", () => {
   it("vende mais barato quem mais produz", () => {
     expect(maisBarata(producao, "remedios")).toBe("norte");
     expect(maisBarata({ a: { x: 0 } }, "x")).toBeUndefined();
+  });
+});
+
+describe("ciclo e choques", () => {
+  it("ciclo vale 1 no turno 0, sobe 8% no quarto do período e é igual sempre", () => {
+    expect(cicloDoMundo(0)).toBe(1);
+    expect(cicloDoMundo(6)).toBeCloseTo(1.08);
+    expect(cicloDoMundo(18)).toBeCloseTo(0.92);
+  });
+
+  it("choque empurra o alvo e some aos poucos", () => {
+    const inicial = precosIniciais(mercado, producao);
+    const sem = andarPrecos(mercado, producao, inicial, 1);
+    const com = andarPrecos(mercado, producao, inicial, 1, { alimentos: 1.5 });
+    expect(com.alimentos.valor).toBeGreaterThan(sem.alimentos.valor);
+    const depois = andarChoques(mercado, { alimentos: 1.5 }, 1);
+    expect(depois.alimentos).toBeCloseTo(1.3);
+    expect(andarChoques(mercado, { alimentos: 1.01 }, 1).alimentos).toBe(
+      undefined,
+    );
+  });
+
+  it("sorteia choques só de vez em quando, sempre iguais para o mesmo turno", () => {
+    let total = 0;
+    for (let t = 1; t <= 500; t++) {
+      const a = andarChoques(mercado, {}, t);
+      expect(a).toEqual(andarChoques(mercado, {}, t));
+      for (const f of Object.values(a)) {
+        total++;
+        expect(f >= 1.3 && f <= 1.8 || f >= 1 / 1.8 && f <= 1 / 1.3).toBe(true);
+      }
+    }
+    expect(total).toBeGreaterThan(5);
+    expect(total).toBeLessThan(60);
   });
 });
 

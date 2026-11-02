@@ -22,7 +22,7 @@ import {
   rendaDoGrupo,
   type Marco,
 } from "../grupos";
-import { andarPrecos, precosIniciais } from "../mercado";
+import { andarChoques, andarPrecos, precosIniciais } from "../mercado";
 import { motivoValorInvalido, type ValorLei } from "../leis";
 import {
   andarOpinioes,
@@ -285,9 +285,11 @@ const mundo: Etapa = (regras, estado) => {
 const precosDoMundo: Etapa = (regras, estado) => {
   if (!regras.mercado) return estado;
   const { mercado, producao } = regras.mercado;
+  const choques = andarChoques(mercado, estado.choques, estado.turno);
   return {
     ...estado,
-    precos: andarPrecos(mercado, producao, estado.precos, estado.turno),
+    choques,
+    precos: andarPrecos(mercado, producao, estado.precos, estado.turno, choques),
   };
 };
 
@@ -522,6 +524,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     precos: regras.mercado
       ? precosIniciais(regras.mercado.mercado, regras.mercado.producao)
       : {},
+    choques: {},
     coligacao: [...coligacao],
     votacoes: [],
     desgaste: 0,
