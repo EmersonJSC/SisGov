@@ -2,13 +2,13 @@
   "versao": 1,
   "id": "energia-eolica",
   "nome": "Investimento em energia eólica",
-  "descricao": "Dinheiro do governo para torres de vento. Parecida com a solar, em outro ritmo.",
+  "descricao": "Dinheiro do governo para torres de vento. Cada 1% do PIB por ano compra energia para cerca de 4,5% da demanda do país, pronta em 1,5 ano. Parecida com a solar, em outro ritmo.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {
     "min": 0,
-    "max": 1
+    "max": 0.03
   },
   "passo": 0.0005,
   "conta": "gasto",

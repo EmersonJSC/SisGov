@@ -24,6 +24,9 @@
     "energia-termica": 0.0035,
     "energia-nuclear": 0.0008,
     "energia-solar": 0.0015,
-    "energia-eolica": 0.0015
+    "energia-eolica": 0.0015,
+    "energia-construcao": "estatal",
+    "energia-rede": "estatal",
+    "energia-venda": "estatal"
   }
 }

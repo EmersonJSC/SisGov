@@ -19,15 +19,14 @@ produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-Autor olha a **Energia** na janela Mercado (aba "Do país", bloco "Energia:
-capacidade contra demanda") e confirma, junto com Remédios. Energia (fatia 7)
-está em código: 5 fontes, 5 leis de investimento (área Economia), capacidade
-contra demanda, empresas perdem energia primeiro, freio e preço. Em aberto, a
-decidir com o autor: as duas leis de regra (quem investe, licenciamento), risco
-da nuclear, a linha antiga "Energia" na tabela de produtos. Depois, **uma regra
-própria por vez**: Moradia, Infraestrutura, Militar. Industriais, informação e
-luxo ficam para depois. Equilibrar com "Brasil" e "EUA" só no fim (ver a regra
-de país real). Demografia é etapa própria.
+Autor olha a **Energia** (bolha "Infra", 8 leis: 5 verbas por fonte e 3 de
+"quem constrói / opera / vende") e o bloco "Energia: capacidade contra demanda"
+na janela Mercado, e confirma, junto com Remédios. Em aberto: as outras 5 leis do
+pacote (tarifa social, subsídio à limpa, imposto sobre fóssil, licenciamento,
+fiscalização nuclear), uma por vez; risco da nuclear. Depois, **uma regra
+própria por vez**: Moradia, Infraestrutura (estradas, obras), Militar.
+Industriais, informação e luxo ficam para depois. Equilibrar com "Brasil" e
+"EUA" só no fim (ver a regra de país real). Demografia é etapa própria.
 
 Outro chat trata da **economia das leis militares**. Em aberto: **eixos novos**
 da bússola (paz × militarismo, seção 11).

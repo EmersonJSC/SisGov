@@ -2,13 +2,13 @@
   "versao": 1,
   "id": "energia-hidreletrica",
   "nome": "Investimento em hidrelétricas",
-  "descricao": "Dinheiro do governo para represas e usinas de água. Obra cara e demorada, energia barata depois.",
+  "descricao": "Dinheiro do governo para represas e usinas de água. Cada 1% do PIB por ano compra energia para cerca de 3% da demanda do país, pronta em 4 anos. Obra cara e demorada, energia barata depois.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {
     "min": 0,
-    "max": 1
+    "max": 0.03
   },
   "passo": 0.0005,
   "conta": "gasto",

@@ -34,7 +34,43 @@ export interface Capacidade {
   /** Efeito da falta que chega aos civis (só em crise grave). */
   reacao_civil?: ReacaoDaCesta;
   fontes: FonteDeCapacidade[];
+  /** Leis de opções que mudam como a rede funciona (quem constrói, opera, vende). */
+  camadas?: CamadaDaCapacidade[];
 }
+
+/** O que uma opção de lei faz na rede; tudo opcional, ausente = nada. */
+export interface EfeitoDaOpcao {
+  /** Parte da obra paga por empresas (0 a 0,9): a mesma verba compra mais. */
+  parte_privada?: number;
+  /** Capacidade a mais (ou a menos) que a rede entrega, em %. */
+  ganho_capacidade?: number;
+  /** Pontos de % que o preço sobe (lucro de quem opera ou vende). */
+  margem_preco?: number;
+}
+
+export interface CamadaDaCapacidade {
+  /** Lei de opções do mundo; cada opção diz o que faz na rede. */
+  lei: string;
+  opcoes: Record<string, EfeitoDaOpcao>;
+}
+
+/** Soma dos efeitos das opções em vigor de todas as camadas. */
+export function efeitoDasCamadas(
+  c: Capacidade,
+  leis: Record<string, ValorLei>,
+): Required<EfeitoDaOpcao> {
+  const soma = { parte_privada: 0, ganho_capacidade: 0, margem_preco: 0 };
+  for (const camada of c.camadas ?? []) {
+    const e = camada.opcoes[String(leis[camada.lei])] ?? {};
+    soma.parte_privada += e.parte_privada ?? 0;
+    soma.ganho_capacidade += e.ganho_capacidade ?? 0;
+    soma.margem_preco += e.margem_preco ?? 0;
+  }
+  return { ...soma, parte_privada: Math.min(soma.parte_privada, MAX_PRIVADO) };
+}
+
+/** Empresas nunca pagam mais que isto da obra (a verba do Estado não vira infinito). */
+const MAX_PRIVADO = 0.9;
 
 /** O que uma fonte tem no estado: pronta e obras a chegar (a primeira chega já). */
 export interface FonteNoEstado {
@@ -44,8 +80,11 @@ export interface FonteNoEstado {
 export type CapacidadeNoEstado = Record<string, FonteNoEstado>;
 
 /** Pontos que chegam por turno com a lei no valor dado (fração do PIB). */
-const chegada = (f: FonteDeCapacidade, valor: ValorLei | undefined) =>
-  (Number(valor ?? 0) * 100 * f.custo) / TURNOS_POR_ANO;
+const chegada = (
+  f: FonteDeCapacidade,
+  valor: ValorLei | undefined,
+  privado: number,
+) => (Number(valor ?? 0) * 100 * f.custo) / TURNOS_POR_ANO / (1 - privado);
 
 /** Turno 0: o que o país tem pronto e as obras em andamento, no ritmo das leis. */
 export function capacidadeInicial(
@@ -54,12 +93,16 @@ export function capacidadeInicial(
   leis: Record<string, ValorLei>,
 ): CapacidadeNoEstado {
   const estado: CapacidadeNoEstado = {};
-  for (const c of capacidades)
+  for (const c of capacidades) {
+    const { parte_privada } = efeitoDasCamadas(c, leis);
     for (const f of c.fontes)
       estado[f.id] = {
         pronta: declarada[f.id] ?? 0,
-        obras: Array<number>(f.prazo).fill(chegada(f, leis[f.lei])),
+        obras: Array<number>(f.prazo).fill(
+          chegada(f, leis[f.lei], parte_privada),
+        ),
       };
+  }
   return estado;
 }
 
@@ -70,15 +113,17 @@ export function andarCapacidade(
   leis: Record<string, ValorLei>,
 ): CapacidadeNoEstado {
   const novo: CapacidadeNoEstado = {};
-  for (const c of capacidades)
+  for (const c of capacidades) {
+    const { parte_privada } = efeitoDasCamadas(c, leis);
     for (const f of c.fontes) {
       const hoje = atual[f.id] ?? { pronta: 0, obras: [] };
       const [chega = 0, ...resto] = hoje.obras;
       novo[f.id] = {
         pronta: hoje.pronta * (1 - f.desgaste / TURNOS_POR_ANO) + chega,
-        obras: [...resto, chegada(f, leis[f.lei])],
+        obras: [...resto, chegada(f, leis[f.lei], parte_privada)],
       };
     }
+  }
   return novo;
 }
 
@@ -86,7 +131,7 @@ export interface SituacaoDaCapacidade {
   id: string;
   nome: string;
   demanda: { pessoas: number; empresas: number; total: number };
-  /** Capacidade pronta de todas as fontes. */
+  /** Capacidade que a rede entrega: pronta das fontes, mais o ganho da rede. */
   capacidade: number;
   /** Falta, em % da demanda de cada lado: os civis são atendidos primeiro. */
   faltaCivil: number;
@@ -102,7 +147,12 @@ const BASE = 100;
 export function situacaoDaCapacidade(
   c: Capacidade,
   noEstado: CapacidadeNoEstado,
-  contexto: { pessoas: number; pessoasBase: number; pibReal: number },
+  contexto: {
+    pessoas: number;
+    pessoasBase: number;
+    pibReal: number;
+    leis: Record<string, ValorLei>;
+  },
 ): SituacaoDaCapacidade {
   const pessoas =
     contexto.pessoasBase > 0
@@ -117,7 +167,11 @@ export function situacaoDaCapacidade(
     pronta: noEstado[f.id]?.pronta ?? 0,
     emObra: (noEstado[f.id]?.obras ?? []).reduce((s, v) => s + v, 0),
   }));
-  const capacidade = fontes.reduce((s, f) => s + f.pronta, 0);
+  const camadas = efeitoDasCamadas(c, contexto.leis);
+  const capacidade =
+    (fontes.reduce((s, f) => s + f.pronta, 0) *
+      (BASE + camadas.ganho_capacidade)) /
+    BASE;
   const paraCivis = Math.min(capacidade, pessoas);
   const paraEmpresas = Math.min(Math.max(capacidade - pessoas, 0), empresas);
   const falta = (pedido: number, entregue: number) =>
@@ -130,7 +184,10 @@ export function situacaoDaCapacidade(
     capacidade,
     faltaCivil: falta(pessoas, paraCivis),
     faltaEmpresas: falta(empresas, paraEmpresas),
-    preco: precoDoPais(total, capacidade, 0, BASE),
+    preco:
+      (precoDoPais(total, capacidade, 0, BASE) *
+        (BASE + camadas.margem_preco)) /
+      BASE,
     fontes,
   };
 }
@@ -217,6 +274,34 @@ export function validarCapacidades(dado: unknown): ErroMercado[] {
               erro(`${p}.forca`, "precisa ser fraca, media ou forte");
           });
       }
+    }
+    if (c.camadas !== undefined) {
+      if (!Array.isArray(c.camadas))
+        erro(`${k}.camadas`, "precisa ser uma lista");
+      else
+        c.camadas.forEach((cm, j) => {
+          const p = `${k}.camadas[${j}]`;
+          if (!ehObjeto(cm)) return erro(p, "precisa ser um objeto");
+          if (!ehTexto(cm.lei)) erro(`${p}.lei`, "precisa apontar uma lei");
+          if (!ehObjeto(cm.opcoes))
+            return erro(`${p}.opcoes`, "precisa ser um objeto");
+          for (const [id, e] of Object.entries(cm.opcoes)) {
+            const q = `${p}.opcoes.${id}`;
+            if (!ehObjeto(e)) {
+              erro(q, "precisa ser um objeto");
+              continue;
+            }
+            const pp = e.parte_privada;
+            if (
+              pp !== undefined &&
+              (typeof pp !== "number" || pp < 0 || pp > 0.9)
+            )
+              erro(`${q}.parte_privada`, "precisa estar entre 0 e 0,9");
+            for (const campo of ["ganho_capacidade", "margem_preco"])
+              if (e[campo] !== undefined && typeof e[campo] !== "number")
+                erro(`${q}.${campo}`, "precisa ser número");
+          }
+        });
     }
     if (!Array.isArray(c.fontes) || c.fontes.length === 0)
       return erro(`${k}.fontes`, "precisa ter ao menos uma fonte");

@@ -2,13 +2,13 @@
   "versao": 1,
   "id": "energia-solar",
   "nome": "Investimento em energia solar",
-  "descricao": "Dinheiro do governo para usinas solares. Cada vez mais barata, varia com o dia.",
+  "descricao": "Dinheiro do governo para usinas solares. Cada 1% do PIB por ano compra energia para cerca de 5% da demanda do país, pronta em 1 ano. Cada vez mais barata, mas varia com o dia.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {
     "min": 0,
-    "max": 1
+    "max": 0.03
   },
   "passo": 0.0005,
   "conta": "gasto",

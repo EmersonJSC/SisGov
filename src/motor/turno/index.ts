@@ -141,6 +141,7 @@ export function situacoesDeCapacidade(regras: Regras, estado: Estado) {
       pessoas: estado.essenciais.populacao,
       pessoasBase: m.populacaoBase,
       pibReal: inicio > 0 ? real(estado.essenciais) / inicio : 1,
+      leis: estado.leis,
     }),
   }));
 }
@@ -621,6 +622,19 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
         );
       if (!(f.id in regras.mercado!.capacidade))
         throw new Error(`país: falta a capacidade da fonte "${f.id}"`);
+    }
+  for (const c of regras.mercado?.mercado.capacidades ?? [])
+    for (const camada of c.camadas ?? []) {
+      const lei = regras.leis[camada.lei];
+      if (!lei || lei.forma !== "opcoes")
+        throw new Error(
+          `mundo: camada "${camada.lei}" não é uma lei de opções`,
+        );
+      for (const id of Object.keys(camada.opcoes))
+        if (!lei.opcoes.some((o) => o.id === id))
+          throw new Error(
+            `mundo: camada "${camada.lei}" cita a opção "${id}", que a lei não tem`,
+          );
     }
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);

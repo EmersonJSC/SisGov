@@ -242,16 +242,20 @@ Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
   - solar: cada vez mais barata; varia com o dia; pede rede e reserva.
   - eólica: parecida com a solar, em outro ritmo.
 
-**Leis (pacote que cobre os dois eixos da bússola):**
-
-- Uma lei contínua de **investimento por fonte** (% do PIB), 5 no total, cada uma
-  com posição própria nos **dois eixos** (econômico e social), de modo que o
-  conjunto cubra os dois lados de cada eixo e todo jogador ache um caminho.
-- Duas leis de regra do jogo, uma por eixo: **quem investe** (Estado × mercado,
-  eixo econômico) e **licenciamento das fontes** (verde × tradicional, eixo social).
-- Efeitos só em índices que já existem (meio ambiente, PIB/crescimento,
-  industrialização, saúde); índice novo é pedido ao autor antes.
-- Cada efeito com força por nível e atraso em turnos.
+**Leis (pacote da Energia, leis pequenas; autor, 02/nov/2026):** pacote é um
+tema dividido em várias leis, nunca uma lei com opções grandes. Terceirizar e
+estatizar ao mesmo tempo é possível porque cada camada tem a sua lei.
+- 5 verbas, uma por fonte (% do PIB ao ano; faixa de 0 a 3%).
+- 3 leis de "quem": **quem constrói as usinas** (Estado / concessão / mercado
+  livre), **quem opera a rede** (estatal / concessão) e **quem vende ao
+  consumidor** (estatal / regulada / privada). Cada opção diz, no
+  `produtos.json` (`camadas`), o que faz na rede: parte da obra paga por
+  empresas (a mesma verba compra mais), ganho de capacidade da rede e margem
+  no preço.
+- Depois, uma de cada vez: tarifa social, subsídio à energia limpa, imposto
+  sobre combustível fóssil, licenciamento de usinas, fiscalização nuclear.
+- Todas na bolha própria "Infraestrutura e energia".
+- Efeitos só em índices que já existem; força por nível; atraso em turnos.
 
 **Como ficou (7):** `capacidades` no `produtos.json` (demanda em pontos, turno 0 =
 100: civis 35, empresas 65 que crescem com o PIB real; cada fonte com `lei`,
@@ -265,10 +269,9 @@ baixa a saúde (fraca). Sem falta, nada muda nos países de teste (o gasto das 5
 leis saiu do `gasto_fora_das_leis`). As 5 leis estão na área Economia; o
 meio ambiente vem dos efeitos delas, não da capacidade pronta.
 
-**Ficou para depois (7):** as duas leis de regra (quem investe, licenciamento
-das fontes); o risco da nuclear; transmissão como limite da rede; a linha
-"Energia" antiga da tabela de produtos (compra de fora) ainda aparece e
-contradiz o bloco novo.
+**Ficou para depois (7):** as outras 5 leis do pacote (lista acima); o risco da
+nuclear; a rede de transmissão como limite por região. O produto "Energia" saiu
+da tabela de produtos (a energia é só o bloco de capacidade).
 
 **Conferência (testes):** mesma partida e semente dão o mesmo resultado; demanda
 maior que a capacidade freia o crescimento e sobe o preço; investir amplia a

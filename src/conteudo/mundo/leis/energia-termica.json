@@ -2,13 +2,13 @@
   "versao": 1,
   "id": "energia-termica",
   "nome": "Investimento em térmicas fósseis",
-  "descricao": "Dinheiro do governo para usinas que queimam combustível. Obra rápida, mas polui.",
+  "descricao": "Dinheiro do governo para usinas que queimam combustível. Cada 1% do PIB por ano compra energia para cerca de 6% da demanda do país, pronta em 1 ano. Obra rápida e barata, mas polui.",
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {
     "min": 0,
-    "max": 1
+    "max": 0.03
   },
   "passo": 0.0005,
   "conta": "gasto",

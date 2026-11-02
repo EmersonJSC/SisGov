@@ -7,7 +7,11 @@
       "curto": "Economia",
       "cargo": "Fazenda",
       "faz": "Impostos e contas do governo.",
-      "leis": ["imposto-renda", "imposto-consumo", "imposto-empresas", "energia-hidreletrica", "energia-termica", "energia-nuclear", "energia-solar", "energia-eolica"]
+      "leis": [
+        "imposto-renda",
+        "imposto-consumo",
+        "imposto-empresas"
+      ]
     },
     {
       "id": "protecao-social",
@@ -15,7 +19,11 @@
       "curto": "Social",
       "cargo": "Saúde",
       "faz": "Saúde, educação e renda das famílias.",
-      "leis": ["gasto-saude", "gasto-educacao", "transferencia-renda"]
+      "leis": [
+        "gasto-saude",
+        "gasto-educacao",
+        "transferencia-renda"
+      ]
     },
     {
       "id": "seguranca",
@@ -50,6 +58,23 @@
         "policia-ambiental",
         "terras-indigenas",
         "saneamento-basico"
+      ]
+    },
+    {
+      "id": "infraestrutura-e-energia",
+      "titulo": "Infraestrutura e energia",
+      "curto": "Infra",
+      "cargo": "Infraestrutura",
+      "faz": "Energia e, depois, moradia, estradas e obras.",
+      "leis": [
+        "energia-hidreletrica",
+        "energia-termica",
+        "energia-nuclear",
+        "energia-solar",
+        "energia-eolica",
+        "energia-construcao",
+        "energia-rede",
+        "energia-venda"
       ]
     }
   ]

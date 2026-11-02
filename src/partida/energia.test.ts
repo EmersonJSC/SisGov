@@ -3,6 +3,7 @@
 // crise grave.
 import { describe, expect, it } from "vitest";
 import { criarPartida, jogar, type Partida, type Pedido } from ".";
+import { situacoesDeCapacidade } from "../motor";
 
 const LEIS = [
   "energia-hidreletrica",
@@ -103,5 +104,51 @@ describe("energia (7)", () => {
     expect(jogar(base(), 12, parar).estado).toEqual(
       jogar(base(), 12, parar).estado,
     );
+  });
+
+  describe("quem constrói, opera e vende (camadas)", () => {
+    const com = (lei: string, valor: string): Pedido[] => [
+      { tipo: "mudar_lei", lei, valor },
+    ];
+    const fila = (p: Partida) =>
+      Object.values(p.estado.capacidade).reduce(
+        (s, f) => s + f.obras.reduce((a, v) => a + v, 0),
+        0,
+      );
+    const preco = (p: Partida) =>
+      situacoesDeCapacidade(p.regras, p.estado)[0]!.situacao;
+
+    it("com concessão a mesma verba compra mais usina", () => {
+      const estatal = jogar(base(), 1);
+      const concessao = jogar(
+        base(),
+        1,
+        com("energia-construcao", "concessao"),
+      );
+      expect(fila(concessao)).toBeGreaterThan(fila(estatal));
+    });
+
+    it("rede em concessão entrega mais da mesma capacidade", () => {
+      const estatal = preco(jogar(base(), 1));
+      const concessao = preco(
+        jogar(base(), 1, com("energia-rede", "concessao")),
+      );
+      expect(concessao.capacidade).toBeGreaterThan(estatal.capacidade);
+    });
+
+    it("venda privada com preço livre encarece a energia", () => {
+      const estatal = preco(jogar(base(), 1));
+      const privada = preco(jogar(base(), 1, com("energia-venda", "privada")));
+      expect(privada.preco).toBeGreaterThan(estatal.preco);
+    });
+
+    it("dá para estatizar uma camada e terceirizar outra", () => {
+      const p = jogar(base(), 1, [
+        ...com("energia-construcao", "estatal"),
+        ...com("energia-venda", "privada"),
+      ]);
+      expect(p.estado.leis["energia-construcao"]).toBe("estatal");
+      expect(p.estado.leis["energia-venda"]).toBe("privada");
+    });
   });
 });
