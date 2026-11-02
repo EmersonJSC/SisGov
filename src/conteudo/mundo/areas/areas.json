@@ -25,6 +25,8 @@
       "faz": "Polícia, penas e regras do governo.",
       "leis": [
         "gasto-policia",
+        "gasto-cameras",
+        "regra-cameras",
         "gasto-militar",
         "servico-militar",
         "idade-voluntario",

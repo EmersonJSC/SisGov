@@ -1,0 +1,61 @@
+{
+  "versao": 1,
+  "id": "regra-cameras",
+  "nome": "Regra de uso das imagens",
+  "descricao": "Quem pode ver e usar as imagens das câmeras públicas.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ordem-judicial",
+      "rotulo": "Só com ordem judicial",
+      "bussola": { "social": -0.3 },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 1
+        }
+      ]
+    },
+    {
+      "id": "uso-livre",
+      "rotulo": "Polícia usa livremente",
+      "bussola": { "social": 0.3 },
+      "efeitos": [
+        {
+          "indice": "seguranca",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 1
+        }
+      ]
+    },
+    {
+      "id": "reconhecimento-facial",
+      "rotulo": "Reconhecimento facial permanente",
+      "bussola": { "social": 0.8 },
+      "efeitos": [
+        {
+          "indice": "seguranca",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 1
+        }
+      ]
+    }
+  ]
+}

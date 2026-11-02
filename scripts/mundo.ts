@@ -12,6 +12,10 @@
 //   meses sobem o poder defensivo (e a segurança externa junto); o serviço
 //   derruba liberdade civil logo e padrão de vida depois; idade mínima 21
 //   anos (em vez de 16) baixa o poder defensivo um pouco;
+// - câmeras (bloco C, 02/nov): verba alta sobe a segurança pública um pouco e
+//   tira um pouco de liberdade civil; reconhecimento facial sobe a segurança
+//   mais e derruba muito a liberdade civil; uso livre fica no meio dos dois
+//   (o país de teste já parte de "só com ordem judicial");
 // - enquanto as leis ficam no meio da bússola, a mudança é pequena (poucos
 //   pontos); só leis nas pontas vão pesar de verdade (passo 13).
 import { criarPartida, jogar, type Estado, type Pedido } from "../src/partida";
@@ -31,6 +35,12 @@ const CENARIOS: [string, Pedido[]][] = [
   ["verba militar 4% do PIB", lei("gasto-militar", 0.04)],
   ["serviço militar 18 meses", lei("servico-militar", 18)],
   ["idade do voluntário 21 anos", lei("idade-voluntario", 21)],
+  ["verba das câmeras 0,5% do PIB", lei("gasto-cameras", 0.005)],
+  [
+    "câmeras: reconhecimento facial",
+    lei("regra-cameras", "reconhecimento-facial"),
+  ],
+  ["câmeras: polícia usa livremente", lei("regra-cameras", "uso-livre")],
 ];
 
 const n = (v: number) => v.toFixed(1).padStart(5);
@@ -63,6 +73,7 @@ for (const [rotulo, pedidos] of CENARIOS) {
     estados,
   );
   linha("liberdade civil", (e) => e.jogabilidade.liberdade_civil, estados);
+  linha("segurança pública", (e) => e.jogabilidade.seguranca, estados);
   linha("padrão de vida", (e) => e.jogabilidade.padrao_vida, estados);
   linha(
     "segurança externa",

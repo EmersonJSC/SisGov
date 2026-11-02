@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "gasto-cameras",
+  "nome": "Verba das câmeras",
+  "descricao": "Dinheiro do governo para instalar e manter câmeras de vigilância nas ruas e nos prédios públicos.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.005
+  },
+  "passo": 0.0001,
+  "conta": "gasto",
+  "bussola": {
+    "min": { "social": 0 },
+    "max": { "social": 0.4 }
+  },
+  "efeitos": [
+    {
+      "indice": "seguranca",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "liberdade_civil",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 1
+    }
+  ]
+}

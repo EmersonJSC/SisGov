@@ -7,6 +7,8 @@
     "gasto-saude": 0.03,
     "gasto-educacao": 0.04,
     "gasto-policia": 0.012,
+    "gasto-cameras": 0.001,
+    "regra-cameras": "uso-livre",
     "gasto-militar": 0.01,
     "servico-militar": 12,
     "idade-voluntario": 16,

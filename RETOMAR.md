@@ -18,12 +18,13 @@ corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
 ## Próximo
 
 Pedaço 5 feito (`npm run mundo`: a lei move cada opinião, a média e a
-segurança). Depois pedaço 6 (mapa mostra as potências). Leis de segurança, **bloco A (Exército) feito**: `gasto-militar` (0–4% do
+segurança). Depois pedaço 6 (mapa mostra as potências). Leis de segurança, **blocos A (Exército) e C (câmeras: `gasto-cameras` e `regra-cameras`) feitos**; bloco A: `gasto-militar` (0–4% do
 PIB), `servico-militar` (0–18 meses) e `idade-voluntario` (16–21 anos), com
 efeito pesquisado (custo do serviço em padrão de vida; NBER, OCDE, GAO).
 Falta o autor: discutir como isso funciona na economia (ele pediu), e aprovar
 os próximos blocos, um por vez: B proteção digital (UMA lei de 3 opções),
-C câmeras (2 leis), D maioridade penal, E contrapeso. Nenhum arquivo de lei
+D maioridade penal, E contrapeso. Reação dos ambientalistas às leis militares:
+autor deixou como está; eixo paz × militarismo anotado no escopo (seção 11). Nenhum arquivo de lei
 antes do okay. Falta dizer quais eixos novos entram na bússola.
 
 ## Pendências do autor

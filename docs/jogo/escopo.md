@@ -291,3 +291,9 @@ lidas (tag `projeto-antigo-2026-10-31`).
     usa o maior atraso (`efeitos/index.ts`, `alvos`). Mudar pede uma entrada
     por efeito na fila.
   - Índice `seguranca` aparece na tela como "Segurança pública".
+- **Eixo novo: paz × militarismo** (02/nov, autor): hoje o eixo social mistura
+  "autoritário" com "militarismo", e as leis militares (serviço de 18 meses:
+  ambientalistas −15) irritam o grupo verde mais do que deveriam. Com um eixo
+  próprio, quem é antimilitarista reage por ele e os outros grupos reagem por
+  outros motivos. Autor deixou como está por enquanto; entra junto com a
+  decisão de quais eixos novos a bússola ganha (`docs/jogo/bussola.md`).
