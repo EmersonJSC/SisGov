@@ -28,6 +28,7 @@ import {
   motivoOpinioesInvalidas,
   posicaoDoPais,
   reputacao,
+  segurancaExterna,
 } from "../mundo";
 import {
   coligacaoAtual,
@@ -259,13 +260,13 @@ const indicesJogabilidade: Etapa = (regras, estado) => ({
 function comReputacao(regras: Regras, estado: Estado): Estado {
   const { potencias, indiceReputacao } = regras;
   if (!potencias || !indiceReputacao) return estado;
-  return {
-    ...estado,
-    jogabilidade: {
-      ...estado.jogabilidade,
-      [indiceReputacao]: reputacao(potencias, estado.opinioes),
-    },
-  };
+  const rep = reputacao(potencias, estado.opinioes);
+  const jogabilidade = { ...estado.jogabilidade, [indiceReputacao]: rep };
+  const { indicePoderDefensivo: poder, indiceSegurancaExterna: seguranca } =
+    regras;
+  if (poder && seguranca)
+    jogabilidade[seguranca] = segurancaExterna(jogabilidade[poder], rep);
+  return { ...estado, jogabilidade };
 }
 
 /** 7b. Mundo: cada potência anda a opinião rumo à desejada (motor/mundo). */
@@ -469,6 +470,14 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   if (regras.potencias) {
     if (!regras.indiceReputacao || !(regras.indiceReputacao in regras.dominios))
       throw new Error("mundo: falta o índice da reputação");
+    for (const id of [
+      regras.indicePoderDefensivo,
+      regras.indiceSegurancaExterna,
+    ])
+      if (id && !(id in regras.dominios))
+        throw new Error(`mundo: falta o índice "${id}"`);
+    if (!regras.indicePoderDefensivo !== !regras.indiceSegurancaExterna)
+      throw new Error("mundo: poder defensivo e segurança externa vão juntos");
     const motivo = motivoOpinioesInvalidas(regras.potencias, inicio.opinioes);
     if (motivo) throw new Error(`país: ${motivo}`);
   }

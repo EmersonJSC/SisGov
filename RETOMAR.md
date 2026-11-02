@@ -3,28 +3,32 @@
 Reescrito do zero a cada rodada; o anterior vai para o topo de
 [docs/historico/retomar.md](docs/historico/retomar.md) (não abrir sem precisar).
 
-**01/nov/2026**
+**02/nov/2026**
 
 ## Onde está
 
 Passo 11 (mundo) em andamento; comportamento esperado em
-`src/motor/mundo/mundo.md`. Pedaços 1 a 3 feitos: as 5 potências (sem nome
-real); opinião de cada uma anda 10% por turno rumo à desejada, que é uma
-**curva** (100 × (1 − f²)); posição do país = média das leis na bússola;
-reputação internacional = média das opiniões pesada pelo `peso`. A bússola
-(2 eixos, 4 polos) está resumida em `docs/jogo/bussola.md`.
+`src/motor/mundo/mundo.md`. Pedaços 1 a 4 feitos: potências, opinião (curva),
+reputação e **segurança externa** = poder defensivo − (100 − reputação), sem
+corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
+Índices novos: `poder_defensivo`, `seguranca_externa`, `lotacao_presidios`
+(maior é pior); `seguranca` mostra "Segurança pública". Leis contínuas aceitam
+`unidade: "meses" | "anos"` (nenhuma lei usa ainda).
 
 ## Próximo
 
-Pedaço 4: segurança externa (proposta feita ao autor no chat, espera o sim).
-Feito nesta rodada: opiniões de partida dos testes perto da desejada; conta
-da bússola em laço sobre `EIXOS` (aceita mais eixos). Falta o autor dizer
-quais eixos novos entram (decisão dele). Peso por lei fica para o passo 13.
+Pedaço 5: `npm run mundo` (script que mostra uma lei mudada movendo opiniões,
+média e segurança). Depois pedaço 6 (mapa mostra as potências). Em paralelo
+espera o autor: desenho das **leis de segurança** (blocos A exército com
+serviço militar em meses/anos, B proteção digital em UMA lei de 3 opções, C
+câmeras em 2 leis, D maioridade penal, E contrapeso); nenhum arquivo de lei
+antes do okay de cada bloco. Falta o autor dizer quais eixos novos entram.
 
 ## Pendências do autor
 
 - `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 - Commits locais sem push (push só com a palavra do autor).
+- Proteção de dados: confirmar a lei única de 3 opções.
 
 ## Armadilhas
 

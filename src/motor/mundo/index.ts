@@ -51,6 +51,9 @@ export function validarPotencias(dado: unknown): ErroMundo[] {
   if (dado.versao !== 1) erro("versao", "precisa ser 1");
   if (!ehKebabBaixo(dado.indice_reputacao))
     erro("indice_reputacao", "precisa ser o id do índice da reputação");
+  for (const campo of ["indice_poder_defensivo", "indice_seguranca_externa"])
+    if (dado[campo] !== undefined && !ehKebabBaixo(dado[campo]))
+      erro(campo, "precisa ser o id de um índice");
   const lista = dado.potencias;
   if (!Array.isArray(lista) || lista.length < 2) {
     erro("potencias", "precisa ter ao menos duas potências");
@@ -136,6 +139,21 @@ export function indiceDaReputacao(dado: unknown): string {
   return (dado as { indice_reputacao: string }).indice_reputacao;
 }
 
+/** Ids dos índices de defesa declarados no JSON (opcionais). */
+export function indicesDeDefesa(dado: unknown): {
+  poderDefensivo?: string;
+  segurancaExterna?: string;
+} {
+  const d = dado as {
+    indice_poder_defensivo?: string;
+    indice_seguranca_externa?: string;
+  };
+  return {
+    poderDefensivo: d.indice_poder_defensivo,
+    segurancaExterna: d.indice_seguranca_externa,
+  };
+}
+
 /** Valida e devolve as potências tipadas; lança com todos os erros juntos. */
 export function lerPotencias(dado: unknown): Potencia[] {
   const erros = validarPotencias(dado);
@@ -203,6 +221,17 @@ export function reputacao(
   opinioes: Record<string, number>,
 ): number {
   return potencias.reduce((soma, p) => soma + p.peso * opinioes[p.id], 0);
+}
+
+/**
+ * Segurança externa: parte do poder defensivo e perde o quanto as potências
+ * desgostam do país (100 − reputação). Sem corte; travada em 0 a 100.
+ */
+export function segurancaExterna(
+  poderDefensivo: number,
+  reputacaoDoPais: number,
+): number {
+  return Math.min(100, Math.max(0, poderDefensivo - (100 - reputacaoDoPais)));
 }
 
 /** Quanto da distância até a desejada a opinião anda por turno. */

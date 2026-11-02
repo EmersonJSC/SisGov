@@ -73,7 +73,9 @@ describe("opinião das potências", () => {
     ]).estado.opinioes;
     // Pena de morte é autoritária: quem é autoritário gosta, quem não é, não.
     expect(pena["liga-do-golfo"]).toBeGreaterThan(igual["liga-do-golfo"]);
-    expect(pena["federacao-do-leste"]).toBeGreaterThan(igual["federacao-do-leste"]);
+    expect(pena["federacao-do-leste"]).toBeGreaterThan(
+      igual["federacao-do-leste"],
+    );
     expect(pena["uniao-continental"]).toBeLessThan(igual["uniao-continental"]);
   });
 });
@@ -95,5 +97,31 @@ describe("reputação internacional", () => {
     expect(depois.estado.jogabilidade[indice]).not.toBeCloseTo(
       partida.estado.jogabilidade[indice],
     );
+  });
+});
+
+describe("segurança externa", () => {
+  it("vale poder defensivo menos a perda de reputação, no turno 0 e depois", () => {
+    const esperada = (p: ReturnType<typeof criarPartida>) => {
+      const { indiceReputacao, indicePoderDefensivo } = p.regras;
+      const j = p.estado.jogabilidade;
+      return j[indicePoderDefensivo!] - (100 - j[indiceReputacao!]);
+    };
+    const partida = criarPartida("teste", 42, { semCongresso: true });
+    const id = partida.regras.indiceSegurancaExterna!;
+    expect(partida.estado.jogabilidade[id]).toBeCloseTo(esperada(partida));
+    const depois = jogar(partida, 3, [
+      { tipo: "mudar_lei", lei: "pena-de-morte", valor: "crimes-graves" },
+    ]);
+    expect(depois.estado.jogabilidade[id]).toBeCloseTo(esperada(depois));
+    // anda para o mesmo lado da reputação (o poder defensivo não mudou)
+    const rep = partida.regras.indiceReputacao!;
+    const dRep =
+      depois.estado.jogabilidade[rep] - partida.estado.jogabilidade[rep];
+    const dSeg =
+      depois.estado.jogabilidade[id] - partida.estado.jogabilidade[id];
+    expect(dRep).not.toBeCloseTo(0);
+    expect(Math.sign(dSeg)).toBe(Math.sign(dRep));
+    expect(dSeg).toBeCloseTo(dRep);
   });
 });

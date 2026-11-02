@@ -38,6 +38,9 @@ export interface Regras {
   potencias?: Potencia[];
   /** Índice que recebe a reputação (média das opiniões das potências). */
   indiceReputacao?: string;
+  /** Índices de defesa (motor/mundo); se os dois existem, a segurança externa é calculada. */
+  indicePoderDefensivo?: string;
+  indiceSegurancaExterna?: string;
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
 }

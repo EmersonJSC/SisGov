@@ -1,6 +1,8 @@
 {
   "versao": 1,
   "indice_reputacao": "reputacao_internacional",
+  "indice_poder_defensivo": "poder_defensivo",
+  "indice_seguranca_externa": "seguranca_externa",
   "potencias": [
     {
       "id": "republica-do-norte",

@@ -66,9 +66,19 @@ Partida salva antes do pedaço 2 carrega com as opiniões de partida do país.
 
 ### Pedaços seguintes (ainda sem código)
 
-- **Segurança externa** (0 a 100, índice novo): cai quando potência forte tem
-  opinião ruim do país. O país pode ser atacado, mas nunca começa guerra; o
-  ataque em si fica para depois.
+- **Segurança externa** (aprovado em 02/nov/2026, sem corte): o país parte do
+  **poder defensivo** e perde, em pontos, o quanto as potências o desgostam:
+  `segurança externa = poder defensivo − (100 − reputação)`, travada em 0 a
+  100. Como a reputação já é a média das opiniões pesada pelo `peso`, a
+  potência grande pesa mais e não há limiar: quanto pior a opinião, maior a
+  perda. Com opinião 100 de todas, a segurança é o próprio poder defensivo.
+  Hoje as opiniões ficam em 86–99 (perda de uns 7 pontos); só passa a pesar
+  de verdade com leis nas pontas da bússola (passo 13). Os dois índices são
+  declarados em `potencias.json` (`indice_poder_defensivo` e
+  `indice_seguranca_externa`, opcionais); o motor não sabe os nomes. Calculada
+  na etapa do mundo, no turno 0 também; o valor do `estado-inicial.json` não
+  conta. O país pode ser atacado, mas nunca começa guerra; o ataque em si
+  fica para depois.
 - `npm run mundo` mostra uma lei mudada movendo cada opinião para o lado
   certo, a média batendo e a segurança caindo com potência hostil.
 - O mapa mostra as potências e a opinião de cada uma.

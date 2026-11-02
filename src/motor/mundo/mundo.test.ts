@@ -6,6 +6,7 @@ import {
   opiniaoDesejada,
   reputacao,
   posicaoDoPais,
+  segurancaExterna,
   validarPotencias,
 } from ".";
 import type { Lei } from "../leis";
@@ -195,5 +196,24 @@ describe("reputação", () => {
     expect(motivos(dado)).toContain(
       "indice_reputacao: precisa ser o id do índice da reputação",
     );
+  });
+});
+
+describe("segurança externa", () => {
+  it("sem corte: cai conforme a reputação cai, nunca passa do poder", () => {
+    expect(segurancaExterna(60, 100)).toBe(60);
+    expect(segurancaExterna(60, 90)).toBe(50);
+    expect(segurancaExterna(60, 70)).toBe(30);
+    expect(segurancaExterna(60, 0)).toBe(0);
+    expect(segurancaExterna(10, 50)).toBe(0);
+    expect(segurancaExterna(100, 100)).toBe(100);
+  });
+
+  it("os índices de defesa são opcionais, mas precisam ser ids", () => {
+    const ok = { ...base(), indice_poder_defensivo: "pd" };
+    expect(motivos(ok)).toEqual([]);
+    expect(motivos({ ...ok, indice_seguranca_externa: 3 })).toEqual([
+      "indice_seguranca_externa: precisa ser o id de um índice",
+    ]);
   });
 });

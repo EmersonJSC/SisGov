@@ -7,6 +7,7 @@ import {
   INDICES_ESSENCIAIS,
   lerLei,
   indiceDaReputacao,
+  indicesDeDefesa,
   lerPotencias,
   type Congresso,
   type Estado,
@@ -217,6 +218,8 @@ export function criarPartida(
     grupos: carregarGrupos(),
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),
+    indicePoderDefensivo: indicesDeDefesa(potencias).poderDefensivo,
+    indiceSegurancaExterna: indicesDeDefesa(potencias).segurancaExterna,
     pais: inicial.parametros,
     congresso: semCongresso
       ? undefined

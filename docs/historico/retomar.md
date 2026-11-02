@@ -3,6 +3,31 @@
 Reescrito do zero a cada rodada; o anterior vai para o topo de
 [docs/historico/retomar.md](docs/historico/retomar.md) (não abrir sem precisar).
 
+**01/nov/2026**
+
+## Onde está
+
+Passo 11 (mundo) em andamento; comportamento esperado em
+`src/motor/mundo/mundo.md`. Pedaços 1 a 3 feitos: as 5 potências (sem nome
+real); opinião de cada uma anda 10% por turno rumo à desejada, que é uma
+**curva** (100 × (1 − f²)); posição do país = média das leis na bússola;
+reputação internacional = média das opiniões pesada pelo `peso`. A bússola
+(2 eixos, 4 polos) está resumida em `docs/jogo/bussola.md`.
+
+## Próximo
+
+Pedaço 4: segurança externa (proposta feita ao autor no chat, espera o sim).
+Feito nesta rodada: opiniões de partida dos testes perto da desejada; conta
+da bússola em laço sobre `EIXOS` (aceita mais eixos). Falta o autor dizer
+quais eixos novos entram (decisão dele). Peso por lei fica para o passo 13.
+
+## Pendências do autor
+
+- `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
+- Commits locais sem push (push só com a palavra do autor).
+
+---
+
 **01/nov/2026 (bússola política)**
 
 ## Onde está
