@@ -22,6 +22,11 @@
     "licenciamento-ambiental": "normal",
     "areas-protegidas": 0.1,
     "terras-indigenas": 0.05,
-    "saneamento-basico": 0.005
+    "saneamento-basico": 0.005,
+    "energia-hidreletrica": 0.003,
+    "energia-termica": 0.0035,
+    "energia-nuclear": 0.0008,
+    "energia-solar": 0.0015,
+    "energia-eolica": 0.0015
   }
 }

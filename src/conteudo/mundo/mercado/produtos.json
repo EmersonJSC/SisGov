@@ -239,5 +239,70 @@
         ]
       }
     }
+  ],
+  "capacidades": [
+    {
+      "id": "energia",
+      "nome": "Energia",
+      "demanda": {
+        "pessoas": 35,
+        "empresas": 65
+      },
+      "freio_crescimento": 8,
+      "peso_nos_precos": 0.05,
+      "reacao_civil": {
+        "escala": 20,
+        "ganho": 0,
+        "efeitos": [
+          {
+            "indice": "saude",
+            "sentido": 1,
+            "forca": "fraca"
+          }
+        ]
+      },
+      "fontes": [
+        {
+          "id": "hidreletrica",
+          "nome": "Hidrelétrica",
+          "lei": "energia-hidreletrica",
+          "prazo": 24,
+          "custo": 3,
+          "desgaste": 0.01
+        },
+        {
+          "id": "termica",
+          "nome": "Térmica fóssil",
+          "lei": "energia-termica",
+          "prazo": 6,
+          "custo": 6,
+          "desgaste": 0.04
+        },
+        {
+          "id": "nuclear",
+          "nome": "Nuclear",
+          "lei": "energia-nuclear",
+          "prazo": 36,
+          "custo": 2,
+          "desgaste": 0.015
+        },
+        {
+          "id": "solar",
+          "nome": "Solar",
+          "lei": "energia-solar",
+          "prazo": 6,
+          "custo": 5,
+          "desgaste": 0.03
+        },
+        {
+          "id": "eolica",
+          "nome": "Eólica",
+          "lei": "energia-eolica",
+          "prazo": 9,
+          "custo": 4.5,
+          "desgaste": 0.03
+        }
+      ]
+    }
   ]
 }

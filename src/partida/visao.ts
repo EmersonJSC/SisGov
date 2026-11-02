@@ -9,6 +9,7 @@ import {
   arrecadacao,
   BASES,
   gastoDasLeis,
+  situacoesDeCapacidade,
   pontosLei,
   type Estado,
   type Lei,
@@ -416,6 +417,19 @@ function visaoDoMercado(
         nome: tiposPops.pops.find((t) => t.id === p.id)?.nome ?? p.id,
       })),
     })),
+    capacidades: situacoesDeCapacidade(regras, estado).map(
+      ({ capacidade: c, situacao: s }) => ({
+        ...s,
+        fontes: s.fontes.map((f) => {
+          const lei = c.fontes.find((x) => x.id === f.id)!.lei;
+          return {
+            ...f,
+            lei,
+            investimento: Number(estado.leis[lei] ?? 0) * 100,
+          };
+        }),
+      }),
+    ),
     emprego: emprego.setores,
     semEmprego: emprego.semEmprego,
     dependencia: Object.entries(balanco.dependencia)

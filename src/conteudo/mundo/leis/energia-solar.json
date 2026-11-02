@@ -1,0 +1,37 @@
+{
+  "versao": 1,
+  "id": "energia-solar",
+  "nome": "Investimento em energia solar",
+  "descricao": "Dinheiro do governo para usinas solares. Cada vez mais barata, varia com o dia.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.01,
+    "min": {},
+    "max": {
+      "economico": 0.2,
+      "social": -0.6
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    },
+    {
+      "indice": "reputacao_internacional",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

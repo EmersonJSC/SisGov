@@ -44,6 +44,7 @@ export function carregarPartida(texto: string): Partida {
       ...arquivo.estado,
       opinioes: arquivo.estado.opinioes ?? nova.estado.opinioes,
       precos: arquivo.estado.precos ?? nova.estado.precos,
+      capacidade: arquivo.estado.capacidade ?? nova.estado.capacidade,
       choques: arquivo.estado.choques ?? {},
     },
   };

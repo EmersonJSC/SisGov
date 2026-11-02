@@ -19,6 +19,11 @@
     "imposto-consumo": 0.18,
     "imposto-empresas": 0.3,
     "licenciamento-ambiental": "frouxo",
-    "saneamento-basico": 0.003
+    "saneamento-basico": 0.003,
+    "energia-hidreletrica": 0.003,
+    "energia-termica": 0.0035,
+    "energia-nuclear": 0.0008,
+    "energia-solar": 0.0015,
+    "energia-eolica": 0.0015
   }
 }

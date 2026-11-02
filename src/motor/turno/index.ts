@@ -23,9 +23,15 @@ import {
   type Marco,
 } from "../grupos";
 import {
+  andarCapacidade,
   andarChoques,
   andarPrecos,
+  capacidadeInicial,
   contaDoPais,
+  freioDoCrescimento,
+  pressaoNosPrecos,
+  reacaoCivil,
+  situacaoDaCapacidade,
   precosIniciais,
   reacaoDaCesta,
   segurancaDaCesta,
@@ -116,11 +122,39 @@ const efeitosVencem: Etapa = (_, estado) => ({
 const doTurno = (anualPct: number) =>
   Math.pow(1 + anualPct / 100, 1 / TURNOS_POR_ANO);
 
-/** 4. Economia real, por enquanto só o sorteio do crescimento. */
+/**
+ * Capacidade contra demanda de cada rede (motor/mercado, fatia 7), com o
+ * estado de hoje. Vazio sem mercado.
+ */
+export function situacoesDeCapacidade(regras: Regras, estado: Estado) {
+  const m = regras.mercado;
+  if (!m) return [];
+  const real = (e: IndicesEssenciais) => e.pib_nominal / e.indice_precos;
+  const marco = estado.marco.indices;
+  const inicio =
+    marco.pib_nominal !== undefined && marco.indice_precos !== undefined
+      ? marco.pib_nominal / marco.indice_precos
+      : real(estado.essenciais);
+  return (m.mercado.capacidades ?? []).map((c) => ({
+    capacidade: c,
+    situacao: situacaoDaCapacidade(c, estado.capacidade, {
+      pessoas: estado.essenciais.populacao,
+      pessoasBase: m.populacaoBase,
+      pibReal: inicio > 0 ? real(estado.essenciais) / inicio : 1,
+    }),
+  }));
+}
+
+/** 4. Economia real: o sorteio do crescimento, menos o freio da falta de capacidade. */
 const economiaReal: Etapa = (regras, estado) => {
   const { tendencia, volatilidade } = regras.pais.crescimento;
   const [z, acaso] = sortearNormal(estado.acaso);
-  const anual = tendencia + volatilidade * z;
+  const freio = situacoesDeCapacidade(regras, estado).reduce(
+    (soma, { capacidade, situacao }) =>
+      soma + freioDoCrescimento(capacidade, situacao),
+    0,
+  );
+  const anual = tendencia + volatilidade * z - freio;
   const e = estado.essenciais;
   return {
     ...estado,
@@ -140,16 +174,32 @@ const economiaReal: Etapa = (regras, estado) => {
 const precosEJuros: Etapa = (regras, estado) => {
   const e = estado.essenciais;
   const alvo = taxaAlvo(e.divida_publica, e.inflacao, regras.pais.juros);
+  // O preço de uma rede em falta (ex.: energia) soma à inflação sentida.
+  const pressao = situacoesDeCapacidade(regras, estado).reduce(
+    (soma, { capacidade, situacao }) =>
+      soma + pressaoNosPrecos(capacidade, situacao),
+    0,
+  );
   return {
     ...estado,
     essenciais: {
       ...e,
-      indice_precos: e.indice_precos * doTurno(e.inflacao),
-      pib_nominal: e.pib_nominal * doTurno(e.inflacao),
+      indice_precos: e.indice_precos * doTurno(e.inflacao + pressao),
+      pib_nominal: e.pib_nominal * doTurno(e.inflacao + pressao),
       taxa_juros: proximaTaxa(e.taxa_juros, alvo),
     },
   };
 };
+
+/** 5b. Capacidade: as obras pagas pelas leis chegam e a capacidade desgasta. */
+const capacidades: Etapa = (regras, estado) => ({
+  ...estado,
+  capacidade: andarCapacidade(
+    regras.mercado?.mercado.capacidades ?? [],
+    estado.capacidade,
+    estado.leis,
+  ),
+});
 
 /** Arrecadação anual de cada base, na moeda do país. */
 function arrecadacaoPorBase(
@@ -294,6 +344,10 @@ function reacaoDasCestas(regras: Regras, estado: Estado) {
     for (const [id, v] of Object.entries(pontos))
       soma[id] = (soma[id] ?? 0) + v;
   }
+  // Falta de capacidade que chega aos civis (ex.: apagão em crise grave).
+  for (const { capacidade, situacao } of situacoesDeCapacidade(regras, estado))
+    for (const [id, v] of Object.entries(reacaoCivil(capacidade, situacao)))
+      soma[id] = (soma[id] ?? 0) + v;
   return soma;
 }
 
@@ -499,6 +553,7 @@ const ETAPAS: Etapa[] = [
   efeitosVencem,
   economiaReal,
   precosEJuros,
+  capacidades,
   contas,
   indicesJogabilidade,
   mundo,
@@ -557,6 +612,16 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       throw new Error(`país: falta o índice ${id}`);
   for (const base of Object.keys(regras.pais.bases))
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);
+  for (const c of regras.mercado?.mercado.capacidades ?? [])
+    for (const f of c.fontes) {
+      const lei = regras.leis[f.lei];
+      if (!lei || lei.forma !== "continua")
+        throw new Error(
+          `mundo: fonte "${f.id}" aponta a lei "${f.lei}", que não é contínua`,
+        );
+      if (!(f.id in regras.mercado!.capacidade))
+        throw new Error(`país: falta a capacidade da fonte "${f.id}"`);
+    }
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);
   const motivoGrupos = motivoGruposInvalidos(
@@ -617,6 +682,13 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     opinioes: regras.potencias ? { ...inicio.opinioes } : {},
     precos: regras.mercado
       ? precosIniciais(regras.mercado.mercado, regras.mercado.producao)
+      : {},
+    capacidade: regras.mercado
+      ? capacidadeInicial(
+          regras.mercado.mercado.capacidades ?? [],
+          regras.mercado.capacidade,
+          inicio.leis,
+        )
       : {},
     choques: {},
     coligacao: [...coligacao],

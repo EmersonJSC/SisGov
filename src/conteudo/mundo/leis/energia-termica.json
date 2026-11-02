@@ -1,0 +1,37 @@
+{
+  "versao": 1,
+  "id": "energia-termica",
+  "nome": "Investimento em térmicas fósseis",
+  "descricao": "Dinheiro do governo para usinas que queimam combustível. Obra rápida, mas polui.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.01,
+    "min": {},
+    "max": {
+      "economico": 0.3,
+      "social": 0.5
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "reputacao_internacional",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

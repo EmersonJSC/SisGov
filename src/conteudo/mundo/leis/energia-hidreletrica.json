@@ -1,0 +1,31 @@
+{
+  "versao": 1,
+  "id": "energia-hidreletrica",
+  "nome": "Investimento em hidrelétricas",
+  "descricao": "Dinheiro do governo para represas e usinas de água. Obra cara e demorada, energia barata depois.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.01,
+    "min": {},
+    "max": {
+      "economico": -0.4,
+      "social": -0.2
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 12
+    }
+  ]
+}

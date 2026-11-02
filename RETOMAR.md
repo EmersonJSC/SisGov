@@ -19,12 +19,14 @@ produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-Autor olha **Remédios** na janela Mercado (aba "Do país") e confirma. Depois,
-**uma regra própria por vez** (nada é cesta de comida): Energia (usinas e rede de
-transmissão, viaja longe), Moradia (própria, alugada, feita pelo governo),
-Infraestrutura (capacidade que o Estado constrói) e Militar (segue o tamanho e a
-força do exército). Industriais, informação e luxo ficam para depois. Autor
-escolhe qual vem primeiro. Equilibrar com "Brasil" e "EUA" só no fim (ver a regra
+Autor olha a **Energia** na janela Mercado (aba "Do país", bloco "Energia:
+capacidade contra demanda") e confirma, junto com Remédios. Energia (fatia 7)
+está em código: 5 fontes, 5 leis de investimento (área Economia), capacidade
+contra demanda, empresas perdem energia primeiro, freio e preço. Em aberto, a
+decidir com o autor: as duas leis de regra (quem investe, licenciamento), risco
+da nuclear, a linha antiga "Energia" na tabela de produtos. Depois, **uma regra
+própria por vez**: Moradia, Infraestrutura, Militar. Industriais, informação e
+luxo ficam para depois. Equilibrar com "Brasil" e "EUA" só no fim (ver a regra
 de país real). Demografia é etapa própria.
 
 Outro chat trata da **economia das leis militares**. Em aberto: **eixos novos**

@@ -124,10 +124,14 @@ function declaracaoDoPais(pais: string): unknown {
 function carregarMercado(pais: string): Regras["mercado"] {
   const mercado = lerMercado(produtos);
   const ids = lerPotencias(potencias).map((p) => p.id);
+  const declarado = declaracaoDoPais(pais) as {
+    capacidade?: Record<string, number>;
+  };
   return {
     mercado,
     producao: lerProducaoDoMundo(produtores, mercado, ids),
-    cobertura: lerCobertura(declaracaoDoPais(pais), mercado),
+    cobertura: lerCobertura(declarado, mercado),
+    capacidade: declarado.capacidade ?? {},
     ocupacao: lerOcupacao(tiposPops.pops, mercado),
     populacaoBase: arquivoPais<{ essenciais: { populacao: number } }>(
       pais,

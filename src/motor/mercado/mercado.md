@@ -219,7 +219,7 @@ população maior sobe a demanda; produção menor sobe o preço até o teto de
 175%; pop pobre cai em fome antes do rico quando a comida encarece; com a
 cesta atendida e preço no base, ninguém fica em fome.
 
-### Fatia 7: Energia, capacidade contra demanda (escrito antes; A aprovado em 02/nov/2026)
+### Fatia 7: Energia, capacidade contra demanda (em código, 02/nov/2026)
 
 Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
 (uma usina abastece regiões distantes). A regra é de **capacidade**.
@@ -243,6 +243,7 @@ Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
   - eólica: parecida com a solar, em outro ritmo.
 
 **Leis (pacote que cobre os dois eixos da bússola):**
+
 - Uma lei contínua de **investimento por fonte** (% do PIB), 5 no total, cada uma
   com posição própria nos **dois eixos** (econômico e social), de modo que o
   conjunto cubra os dois lados de cada eixo e todo jogador ache um caminho.
@@ -251,6 +252,23 @@ Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
 - Efeitos só em índices que já existem (meio ambiente, PIB/crescimento,
   industrialização, saúde); índice novo é pedido ao autor antes.
 - Cada efeito com força por nível e atraso em turnos.
+
+**Como ficou (7):** `capacidades` no `produtos.json` (demanda em pontos, turno 0 =
+100: civis 35, empresas 65 que crescem com o PIB real; cada fonte com `lei`,
+`prazo` em turnos, `custo` em pontos por 1% do PIB num ano e `desgaste` ao
+ano). O país declara a capacidade pronta em `producao.json` (105 pontos). O
+estado guarda, por fonte, a capacidade pronta e a fila de obras: o que a lei
+paga hoje só chega depois do prazo. Falta: o freio tira até 8 pontos de
+crescimento ao ano (proporcional à falta das empresas); o preço acima do base
+soma à inflação sentida (0,05 ponto por ponto de preço); crise grave nos civis
+baixa a saúde (fraca). Sem falta, nada muda nos países de teste (o gasto das 5
+leis saiu do `gasto_fora_das_leis`). As 5 leis estão na área Economia; o
+meio ambiente vem dos efeitos delas, não da capacidade pronta.
+
+**Ficou para depois (7):** as duas leis de regra (quem investe, licenciamento
+das fontes); o risco da nuclear; transmissão como limite da rede; a linha
+"Energia" antiga da tabela de produtos (compra de fora) ainda aparece e
+contradiz o bloco novo.
 
 **Conferência (testes):** mesma partida e semente dão o mesmo resultado; demanda
 maior que a capacidade freia o crescimento e sobe o preço; investir amplia a

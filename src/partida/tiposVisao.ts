@@ -384,6 +384,28 @@ export type VisaoMercado = Readonly<{
     leve: number;
     grave: number;
   }>[];
+  /** Redes de capacidade, como a energia (fatia 7). */
+  capacidades: readonly Readonly<{
+    id: string;
+    nome: string;
+    /** Demanda de civis e empresas e capacidade pronta, em pontos (turno 0 = 100). */
+    demanda: Readonly<{ pessoas: number; empresas: number; total: number }>;
+    capacidade: number;
+    /** Falta de cada lado, em % do que pede (civis são atendidos primeiro). */
+    faltaCivil: number;
+    faltaEmpresas: number;
+    /** Preço no país; 100 = base. */
+    preco: number;
+    fontes: readonly Readonly<{
+      id: string;
+      nome: string;
+      pronta: number;
+      emObra: number;
+      /** Lei que paga a fonte e quanto ela gasta hoje, em % do PIB ao ano. */
+      lei: string;
+      investimento: number;
+    }>[];
+  }>[];
   /** De quanto cada potência fornece ao país, em % da demanda (média dos produtos). */
   dependencia: readonly Readonly<{ id: string; nome: string; valor: number }>[];
 }>;

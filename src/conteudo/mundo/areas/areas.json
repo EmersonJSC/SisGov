@@ -7,7 +7,7 @@
       "curto": "Economia",
       "cargo": "Fazenda",
       "faz": "Impostos e contas do governo.",
-      "leis": ["imposto-renda", "imposto-consumo", "imposto-empresas"]
+      "leis": ["imposto-renda", "imposto-consumo", "imposto-empresas", "energia-hidreletrica", "energia-termica", "energia-nuclear", "energia-solar", "energia-eolica"]
     },
     {
       "id": "protecao-social",

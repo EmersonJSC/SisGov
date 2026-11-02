@@ -189,6 +189,40 @@ export function Mercado({
             ))
           : null}
         {aba === "pais"
+          ? mercado?.capacidades.map((c) => (
+              <section key={c.id}>
+                <h2>{c.nome}: capacidade contra demanda</h2>
+                <p className="mercado-emprego">
+                  Capacidade {um(c.capacidade)} · demanda {um(c.demanda.total)}{" "}
+                  (civis {um(c.demanda.pessoas)}, empresas{" "}
+                  {um(c.demanda.empresas)}) · preço {preco(c.preco)}
+                </p>
+                <p className="mercado-emprego">
+                  Falta para as empresas: {um1(c.faltaEmpresas)}% · falta para
+                  os civis: {um1(c.faltaCivil)}%
+                </p>
+                <ul className="mercado-dependencia">
+                  {c.fontes.map((f) => (
+                    <li key={f.id}>
+                      <span>{f.nome}</span>
+                      <strong
+                        title={`pronta ${um1(f.pronta)}; em obra ${um1(f.emObra)}; investe ${f.investimento.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}% do PIB ao ano`}
+                      >
+                        {um1(f.pronta)} (+{um1(f.emObra)} em obra)
+                      </strong>
+                    </li>
+                  ))}
+                </ul>
+                <p className="folha-explica">
+                  A energia vai primeiro para os civis e o que sobra vai para as
+                  empresas. Faltando, as empresas sentem primeiro: o crescimento
+                  freia e o preço sobe. Obra paga hoje só fica pronta depois do
+                  prazo da fonte.
+                </p>
+              </section>
+            ))
+          : null}
+        {aba === "pais"
           ? mercado?.cestas.map((c) => (
               <section key={c.id}>
                 <h2>{c.nome}: segurança por grupo</h2>

@@ -25,5 +25,12 @@
     "eletronicos-de-ponta": 0,
     "moradia": 90,
     "obras-publicas": 80
+  },
+  "capacidade": {
+    "hidreletrica": 45,
+    "termica": 35,
+    "nuclear": 8,
+    "solar": 8,
+    "eolica": 9
   }
 }

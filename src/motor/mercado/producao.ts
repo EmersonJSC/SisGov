@@ -13,6 +13,8 @@ export interface MercadoDoPais {
   mercado: Mercado;
   producao: ProducaoDoMundo;
   cobertura: Cobertura;
+  /** Capacidade pronta de cada fonte no turno 0, em pontos (fatia 7). */
+  capacidade: Record<string, number>;
   /** Onde cada tipo de pop trabalha (do mundo). */
   ocupacao: Record<string, Ocupacao>;
   /** População do turno 0: a produção declarada é cobertura × demanda daquele dia. */
