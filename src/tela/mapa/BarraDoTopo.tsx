@@ -120,6 +120,15 @@ export function BarraDoTopo({
   const [idPior, pior] = Object.entries(estado.grupos).reduce((a, b) =>
     b[1].satisfacao < a[1].satisfacao ? b : a,
   );
+  const { potencias, indiceReputacao, indiceSegurancaExterna } = partida.regras;
+  const reputacao = indiceReputacao
+    ? estado.jogabilidade[indiceReputacao]
+    : undefined;
+  const segExterna = indiceSegurancaExterna
+    ? estado.jogabilidade[indiceSegurancaExterna]
+    : undefined;
+  const classeMundo = (v: number) =>
+    v > 70 ? "boa" : v < 40 ? "ruim" : "neutra";
   const plural = pedidos === 1 ? "" : "s";
 
   return (
@@ -182,6 +191,40 @@ export function BarraDoTopo({
             rodape: "Acima de 50%, o governo vence.",
           }}
         />
+        {potencias && reputacao !== undefined ? (
+          <ChipDado
+            rotulo="Reputação"
+            valor={`${Math.round(reputacao)}`}
+            classe={classeMundo(reputacao)}
+            dica={{
+              titulo: "Reputação internacional",
+              linhas: potencias.map((p) => [
+                p.nome,
+                `${Math.round(estado.opinioes[p.id] ?? 0)}`,
+              ]),
+              rodape:
+                "Média das opiniões das potências, pelo peso de cada uma.",
+            }}
+          />
+        ) : null}
+        {segExterna !== undefined ? (
+          <ChipDado
+            rotulo="Seg. externa"
+            valor={`${Math.round(segExterna)}`}
+            classe={classeMundo(segExterna)}
+            dica={{
+              titulo: "Segurança externa",
+              linhas: [
+                [
+                  "Poder defensivo",
+                  `${Math.round(estado.jogabilidade[partida.regras.indicePoderDefensivo ?? ""] ?? 0)}`,
+                ],
+                ["Reputação", `${Math.round(reputacao ?? 0)}`],
+              ],
+              rodape: "Poder defensivo menos o que falta de reputação.",
+            }}
+          />
+        ) : null}
       </div>
       {aviso ? <span className="aviso-barra">{aviso}</span> : null}
       <nav className="abas-topo" aria-label="Partida">

@@ -17,7 +17,13 @@ import {
   type PointerEvent as PointerEventReact,
   type ReactNode,
 } from "react";
-import type { VisaoBolha, VisaoLei, VisaoPartida } from "../../partida";
+import { createPortal } from "react-dom";
+import type {
+  VisaoBolha,
+  VisaoLei,
+  VisaoPartida,
+  VisaoPotencia,
+} from "../../partida";
 import {
   focarCirculo,
   limitar,
@@ -624,6 +630,106 @@ function hexagono(r: number): string {
   });
   return `M${pontos.join("L")}Z`;
 }
+
+/** Losango de meia-diagonal `r`: a forma das superpotências. */
+function losango(r: number): string {
+  return `M0,${-r}L${(r * 0.86).toFixed(2)},0L0,${r}L${(-r * 0.86).toFixed(2)},0Z`;
+}
+
+/** Superpotência (fatia 5): losango com o anel da opinião sobre o país. */
+const NoPotencia = memo(function NoPotencia({
+  potencia,
+  x,
+  y,
+  r,
+  escalaTela,
+}: {
+  potencia: VisaoPotencia;
+  x: number;
+  y: number;
+  r: number;
+  /** Escala da câmera: o nome fica legível (~12 px) com o mapa todo à vista. */
+  escalaTela: number;
+}) {
+  const [dica, setDica] = useState<{ esquerda: number; topo: number } | null>(
+    null,
+  );
+  const cor = corDaBondade(potencia.opiniao / 100);
+  const mostrar = (alvo: Element) => {
+    const rect = alvo.getBoundingClientRect();
+    setDica({
+      esquerda: Math.min(
+        Math.max(16, rect.right + 8),
+        Math.max(16, window.innerWidth - 296),
+      ),
+      topo: Math.min(Math.max(70, rect.top), window.innerHeight - 190),
+    });
+  };
+  return (
+    <g
+      className="no-potencia"
+      transform={`translate(${x} ${y})`}
+      style={{ "--bondade": cor } as React.CSSProperties}
+      role="img"
+      tabIndex={0}
+      aria-label={`${potencia.nome}: opinião ${Math.round(potencia.opiniao)} de 100 sobre o país`}
+      onPointerEnter={(e) => mostrar(e.currentTarget)}
+      onPointerLeave={() => setDica(null)}
+      onFocus={(e) => mostrar(e.currentTarget)}
+      onBlur={() => setDica(null)}
+    >
+      <circle className="alvo-toque" r={r + 20} />
+      <Anel
+        r={r + 12}
+        fracao={potencia.opiniao / 100}
+        cor={cor}
+        largura={8}
+        classe="anel-valor"
+      />
+      <path className="disco-potencia" d={losango(r)} />
+      <path className="disco-potencia-interno" d={losango(r - 8)} />
+      <g transform={`translate(0 ${-r * 0.18})`}>
+        <IconeSvg nome="earth" tamanho={r * 0.62} cor="#b0562a" />
+      </g>
+      <text
+        className="opiniao-potencia"
+        y={r * 0.5}
+        fontSize={r * 0.3}
+        textAnchor="middle"
+        fill={cor}
+      >
+        {Math.round(potencia.opiniao)}
+      </text>
+      <Rotulo
+        linhas={quebrarNome(potencia.nome, 18, 2)}
+        y={r + 12 + Math.max(34, 12 / escalaTela)}
+        tamanho={Math.max(34, 12 / escalaTela)}
+        classe="rotulo-potencia"
+      />
+      {dica
+        ? createPortal(
+            <div
+              className="chip-dica"
+              role="tooltip"
+              style={{ left: dica.esquerda, top: dica.topo }}
+            >
+              <h4>{potencia.nome}</h4>
+              <div className="chip-dica-linha">
+                <span>Opinião sobre o país</span>
+                <strong>{Math.round(potencia.opiniao)} / 100</strong>
+              </div>
+              <div className="chip-dica-linha">
+                <span>Peso na reputação</span>
+                <strong>{Math.round(potencia.peso * 100)}%</strong>
+              </div>
+              <p>{potencia.descricao}</p>
+            </div>,
+            document.body,
+          )
+        : null}
+    </g>
+  );
+});
 
 const NoBolha = memo(function NoBolha({
   bolha,
@@ -2103,6 +2209,21 @@ export function MapaPolitico({
                 />
               );
             })}
+
+          {/* Superpotências: o anel de trás */}
+          {visao.potencias.map((p) => {
+            const pos = base.potencias.get(p.id);
+            return pos ? (
+              <NoPotencia
+                key={p.id}
+                potencia={p}
+                x={pos.x}
+                y={pos.y}
+                r={pos.r}
+                escalaTela={k}
+              />
+            ) : null;
+          })}
 
           {/* Indicadores, situações e estoques */}
           {visao.bolhas.map((bolha) => {

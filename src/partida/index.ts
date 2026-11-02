@@ -281,4 +281,5 @@ export type {
   VisaoMinisterio,
   VisaoOpcao,
   VisaoPartida,
+  VisaoPotencia,
 } from "./tiposVisao";

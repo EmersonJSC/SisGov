@@ -81,7 +81,7 @@ Partida salva antes do pedaço 2 carrega com as opiniões de partida do país.
   fica para depois.
 - `npm run mundo` mostra uma lei mudada movendo cada opinião para o lado
   certo, a média batendo e a segurança caindo com potência hostil.
-- O mapa mostra as potências e a opinião de cada uma.
+- O mapa mostra as potências e a opinião de cada uma (feito em 02/nov; comportamento em `src/tela/mapa/mapa.md`, fatia 5).
 
 **Fica de fora:** comércio (vai ser automático, com o mercado), sanções,
 ataques, potência que muda de posição sozinha.

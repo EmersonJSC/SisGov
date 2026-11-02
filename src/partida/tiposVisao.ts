@@ -269,6 +269,17 @@ export type VisaoArea = Readonly<{
   ministerios: readonly VisaoMinisterio[];
 }>;
 
+/** Superpotência do mundo, como a tela a desenha. */
+export type VisaoPotencia = Readonly<{
+  id: string;
+  nome: string;
+  descricao: string;
+  /** O que ela pensa do país, de 0 a 100. */
+  opiniao: number;
+  /** O quanto conta na reputação (a soma de todas é 1). */
+  peso: number;
+}>;
+
 export type VisaoPartida = Readonly<{
   pais: string;
   cenario: string;
@@ -277,6 +288,8 @@ export type VisaoPartida = Readonly<{
   bolhas: readonly VisaoBolha[];
   ligacoes: readonly VisaoLigacao[];
   grupos: readonly VisaoGrupo[];
+  /** Superpotências e a opinião de cada uma; vazio se o mundo não tem. */
+  potencias: readonly VisaoPotencia[];
   /** Áreas do governo e seus ministérios, na ordem do anel. */
   governo: readonly VisaoArea[];
 }>;

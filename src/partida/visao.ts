@@ -228,6 +228,13 @@ export function montarVisao(partida: Partida): VisaoPartida {
       regras.grupos,
     ),
     grupos: [],
+    potencias: (regras.potencias ?? []).map((p) => ({
+      id: p.id,
+      nome: p.nome,
+      descricao: p.descricao,
+      opiniao: estado.opinioes[p.id] ?? 50,
+      peso: p.peso,
+    })),
     governo: governo(),
   };
 }

@@ -84,6 +84,8 @@ export type BaseMapa = Readonly<{
   /** Leis que mudam por emenda constitucional: também são da Presidência. */
   constitucionais: readonly string[];
   bolhas: ReadonlyMap<string, PosicaoBolha>;
+  /** Superpotências: anel logo atrás dos grupos (fatia 5). */
+  potencias: ReadonlyMap<string, PosicaoBolha>;
   limites: Limites;
 }>;
 
@@ -290,8 +292,19 @@ export function montarBase(completa: VisaoPartida): BaseMapa {
     .filter(ficaNaPresidencia)
     .map((lei) => lei.id);
   const bolhas = posicionarBolhas(visao, porNome, leis);
-  const limites = calcularLimites(bolhas);
-  return { ministerios, porNome, leis, constitucionais, bolhas, limites };
+  const potencias = posicionarPotencias(
+    visao.potencias.map((p) => ({ id: p.id, peso: p.peso })),
+  );
+  const limites = calcularLimites(new Map([...bolhas, ...potencias]));
+  return {
+    ministerios,
+    porNome,
+    leis,
+    constitucionais,
+    bolhas,
+    potencias,
+    limites,
+  };
 }
 
 type Caixa = {
@@ -418,6 +431,38 @@ function posicionarBolhas(
     ]),
     ...posicionarGrupos(grupos, vetor),
   ]);
+}
+
+/** Anel das superpotências: logo atrás dos grupos, só um pouco mais fora. */
+export const ELIPSE_POTENCIAS = { rx: 3500, ry: 2150 } as const;
+
+/** Raio do losango da potência: cresce com o peso na reputação. */
+export function raioDaPotencia(peso: number): number {
+  return MEDIDAS.raioGrupo + 40 * Math.min(1, Math.max(0, peso) / 0.3);
+}
+
+/**
+ * Ângulos fixos e iguais no anel de trás, começando em cima à esquerda, para
+ * nenhuma potência cair em cima de um grupo nem mudar de lugar entre turnos.
+ */
+export function posicionarPotencias(
+  potencias: readonly { id: string; peso: number }[],
+): Map<string, PosicaoBolha> {
+  const n = potencias.length;
+  return new Map(
+    potencias.map((p, i): [string, PosicaoBolha] => {
+      const a = -Math.PI / 2 + Math.PI / n + (i / n) * Math.PI * 2;
+      return [
+        p.id,
+        {
+          id: p.id,
+          x: Math.cos(a) * ELIPSE_POTENCIAS.rx,
+          y: Math.sin(a) * ELIPSE_POTENCIAS.ry,
+          r: raioDaPotencia(p.peso),
+        },
+      ];
+    }),
+  );
 }
 
 /** Anel dos grupos sociais: a sociedade em volta do governo (SG143). */

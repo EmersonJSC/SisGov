@@ -3006,6 +3006,46 @@ button {
   stroke-width: 5;
 }
 
+/* Superpotência (fatia 5): losango terracota com o anel da opinião. */
+.no-potencia {
+  cursor: default;
+  outline: none;
+}
+
+.disco-potencia {
+  fill: light-dark(#fff8f3, #2a2624);
+  stroke: #b0562a;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 8px #7a3a1a33);
+}
+
+.disco-potencia-interno {
+  fill: none;
+  stroke: #e2a98a;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.opiniao-potencia {
+  font-family: var(--sem-serifa);
+  font-weight: 900;
+  paint-order: stroke;
+  stroke: light-dark(#fff8f3, #2a2624);
+  stroke-width: 3px;
+}
+
+.rotulo-potencia {
+  font-weight: 800;
+  fill: light-dark(#8a3f1a, #f0a981);
+}
+
+.no-potencia:hover .disco-potencia,
+.no-potencia:focus-visible .disco-potencia {
+  stroke: light-dark(#8a3f1a, #f0a981);
+  stroke-width: 5;
+}
+
 /* ------------------------------- lista lateral dos grupos (SG143) ------ */
 
 .painel-grupos {

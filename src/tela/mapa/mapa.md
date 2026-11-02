@@ -77,6 +77,29 @@ O autor mandou tirar o Painel (01/nov/2026). O mapa é a única tela do jogo.
   - Recomeçar volta à tela de escolher país e semente.
 - Somem a tela de tabelas, a lista de leis dela e o botão "Mapa".
 
+## Comportamento esperado da fatia 5 (escrito antes, 02/nov/2026)
+
+As superpotências do mundo (passo 11, peça 6) aparecem no mapa, de dentro
+para fora: leis, índices, grupos e, por último, as potências.
+
+- As 5 potências ficam num anel logo atrás do anel dos grupos, só um pouco
+  mais para fora, em ângulos fixos e iguais. Nenhuma encosta num grupo.
+- Cada uma é um **losango** (os grupos são hexágonos e os índices, círculos)
+  com o nome embaixo. O anel de opinião em volta vai de 0 a 100, na cor da
+  opinião (vermelho a verde); o número fica dentro. O tamanho segue o peso
+  na reputação (a de maior peso é a maior).
+- Passando o mouse: dica com o nome, a descrição, a opinião sobre o país e o
+  peso na reputação.
+- Barra do topo: dois chips novos, "Reputação" (média pesada das opiniões)
+  e "Seg. externa" (segurança externa), com dica; verde acima de 70,
+  vermelho abaixo de 40.
+- Passar o turno: a opinião das potências anda junto com o motor (uma lei
+  que muda a bússola muda os números no turno seguinte).
+- Sem potências nas regras do mundo: o anel e os chips não aparecem.
+
+Fica de fora: ligação potência ↔ índice no foco, empresas em volta,
+comércio, sanções e ataques.
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais

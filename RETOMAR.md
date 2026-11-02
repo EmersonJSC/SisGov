@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Passo 11 (mundo) em andamento; comportamento esperado em
-`src/motor/mundo/mundo.md`. Pedaços 1 a 4 feitos: potências, opinião (curva),
+`src/motor/mundo/mundo.md`. Pedaços 1 a 6 feitos: potências, opinião (curva),
 reputação e **segurança externa** = poder defensivo − (100 − reputação), sem
 corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
 Índices novos: `poder_defensivo`, `seguranca_externa`, `lotacao_presidios`
@@ -17,16 +17,15 @@ corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
 
 ## Próximo
 
-Pedaço 5 feito (`npm run mundo`: a lei move cada opinião, a média e a
-segurança). Depois pedaço 6 (mapa mostra as potências). Leis de segurança, **blocos A (Exército) e C (câmeras: `gasto-cameras` e `regra-cameras`) feitos**; bloco A: `gasto-militar` (0–4% do
-PIB), `servico-militar` (0–18 meses) e `idade-voluntario` (16–21 anos), com
-efeito pesquisado (custo do serviço em padrão de vida; NBER, OCDE, GAO).
-Blocos B (`protecao-digital`), D (`maioridade-penal`, 12–18 anos) e E
-(`transparencia-militar`) feitos em 02/nov por ordem do autor ("vai fazendo").
-**Todas as leis de segurança estão criadas.** Falta o autor: discutir como as
-leis militares funcionam na economia (ele pediu) e dizer quais eixos novos
-entram na bússola (paz × militarismo está anotado no escopo, seção 11).
-Depois: pedaço 6 (mapa mostra as potências), passo 12 Mercado.
+**Pedaço 6 feito** (02/nov): as 5 potências são losangos num anel logo atrás
+dos grupos (nome, opinião no anel e dica ao passar o mouse), e a barra do topo
+ganhou os chips "Reputação" e "Seg. externa" (`src/tela/mapa/mapa.md`, fatia 5).
+Visto na tela. Passo 11 só falta fechar: `npm run check`, plano e escopo ✅.
+Antes disso o autor ainda decide: como as leis militares funcionam na economia
+(ele pediu) e quais eixos novos entram na bússola (paz × militarismo está no
+escopo, seção 11). Depois: passo 12 Mercado. Ideia do autor, ainda não feita:
+empresas em volta, perto do anel das potências (outra frente).
+Leis de segurança: todas criadas (blocos A a E).
 
 ## Pendências do autor
 
