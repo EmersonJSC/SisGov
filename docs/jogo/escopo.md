@@ -316,3 +316,21 @@ lidas (tag `projeto-antigo-2026-10-31`).
     Entra na fatia 4 em versão simples; oferta e procura completa fica depois.
   - Produtos da época, inclusive tecnologia (redes sociais, IA). O que a rede
     social faz com a opinião é a mecânica de mídia, não do setor.
+- **Mercado de verdade: demanda dos pops, preço do país e fome** (02/nov,
+  autor): quer o mercado "bem similar ao Vic3": a comida que chega ao país
+  depende de quantas pessoas há, de quanto se produz e de quem consegue pagar.
+  Referência: `docs/jogo/mercado-vic3-referencia.md`; desenho: fatia 6 de
+  `src/motor/mercado/mercado.md`. Comida primeiro, depois os 22 produtos.
+  - **Agro é grupo de pop, não produto.** Produtos novos: Grãos e Frutas.
+  - **Cadeia produtiva** (autor): produto usa outro como insumo (aço →
+    máquinas → veículos; grão e fruta → processado). O jogador escolhe entre
+    fortalecer a base ou industrializar importando a base.
+  - **Tarifas e subsídios são leis** (autor): mexem no preço de quem importa e
+    na oferta. Entram com a 5b.
+  - **Grupos fortes por país** (autor): o grupo agro forte num país, o
+    industrial em outro, os bilionários em outro. O peso é declarado pelo país
+    no estado inicial; o motor não conhece o nome. Etapa de pops e grupos.
+  - **Prédios na tela sem simular um a um**: "≈ N fazendas" = produção ÷
+    tamanho da unidade.
+  - Escada de riqueza do Vic3 (99 níveis): não entra; ficamos com poucos níveis.
+

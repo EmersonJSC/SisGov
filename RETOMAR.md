@@ -7,46 +7,32 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 12 (mercado) em andamento.** **Passo 11 (mundo) fechado** em 02/nov: `npm run check` verde (107 testes),
-plano e escopo com ✅. Fez: 5 potências (sem nome real) com opinião pela
-bússola, reputação = média pesada, poder defensivo, segurança externa =
-poder defensivo − (100 − reputação), leis de segurança (blocos A a E),
-losangos no mapa e chips "Reputação" e "Seg. externa" na barra do topo.
-Comportamento: `src/motor/mundo/mundo.md` e `src/tela/mapa/mapa.md` (fatia 5).
-Sem tag (o passo 11 não fecha versão).
-
-**Controle das leis em % (02/nov, depois do passo 11):** as 14 leis em % vão
-de 0 a 100% (o Congresso é quem barra: mais de 1/3 da faixa cai). A bússola
-continua calibrada pelo máximo antigo (`bussola.ate` na lei). O slider é
-novo: régua em %, pino com o valor, marca do valor em vigor, zonas (imposto:
-amarelo perto do pico da receita e vermelho depois; verba: vermelho acima do
-ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
-`src/tela/mapa/mapa.md` (fatia 6).
+Passos 11 (mundo) e 12 (mercado, sem a 5b) fechados; dinheiro na tela fechado
+(`npm run check` verde, 137 testes). **Nova frente: mercado de verdade, bem
+parecido com o do Vic3** (autor): a comida do país depende de pessoas, produção,
+preço e de quem consegue pagar. Pesquisa salva em
+`docs/jogo/mercado-vic3-referencia.md`. Desenho escrito (ainda sem código) na
+**fatia 6** de `src/motor/mercado/mercado.md`: demanda dos pops, oferta, preço
+do país (faixa de 25% a 175%) e segurança alimentar. Autor decidiu: Agro é
+grupo de pop, não produto; produtos novos **Grãos** e **Frutas**; todos os
+produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-**Passo 12 (Mercado) fechado em 02/nov, sem a 5b** (`npm run check` verde, 134
-testes). Fez: 7 setores e 22 produtos, cobertura do país, preço do mundo com
-ciclo e choques, pops com setores e capital (empregos, salário e lucro), janela
-Mercado. A janela é vitrine: PIB e impostos ainda não leem o mercado (5b, na
-seção 11 do escopo).
+Autor lê a fatia 6 do `mercado.md` e aprova (ou muda). Depois: 6a em código
+(Grãos, Frutas, demanda, oferta, preço do país, unidades na tela), mostrar na
+tela, confirmar; 6b (fome por pop). Efeito da fome na população e nos grupos é
+proposta própria. Depois: mais pops e grupos (agro, industrial, bilionários,
+peso por país), a 5b e os outros 19 produtos.
 
-**Dinheiro na tela fechada (02/nov):** barra do topo, Mercado (salários e lucro
-por setor) e, ao lado dos controles das leis, "≈ arrecada/custa X por ano · Y
-no turno" com a diferença contra o valor em vigor. Por ano e por turno juntos;
-símbolo da moeda por país (`moeda` no `estado-inicial.json`); `estado.mudanca`.
-Comportamento em `src/tela/mapa/mapa.md` (fatias 7, 8 e 9). `npm run check`
-verde (137 testes). **Pergunta ao autor:** compra e vende do Mercado seguem em %
-da demanda, porque o motor não tem o valor da demanda de cada produto; converter
-pede uma regra nova. Depois: **mais pops** (e mais grupos) e a 5b do mercado.
-
-Outro chat trata da **economia das leis militares**. Também em aberto: quais
-**eixos novos** entram na bússola (paz × militarismo, seção 11).
+Outro chat trata da **economia das leis militares**. Em aberto: **eixos novos**
+da bússola (paz × militarismo, seção 11).
 
 ## Pendências do autor
 
 - Commits locais sem push (push só com a palavra do autor).
-- Proteção de dados: lei única de 3 opções (sem regra / permissão prévia / permissão e apagar) foi criada sem confirmação explícita; ver se serve.
+- Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
+- Antes de publicar o jogo: checar com advogado (mecânicas não são protegidas, expressão é; ver pesquisa no chat de 02/nov).
 
 ## Armadilhas
 

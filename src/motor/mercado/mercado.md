@@ -94,6 +94,67 @@ real. Tempo: turno = 2 meses.
   "Do mundo".
 - Mesma semente e mesmos turnos dão os mesmos choques.
 
+### Fatia 6: demanda dos pops, oferta, preço do país e fome (proposta, 02/nov/2026)
+
+Desenho completo: a cobertura deixa de ser número declarado e vira resultado.
+Referência de como o Vic3 faz: `docs/jogo/mercado-vic3-referencia.md` (só a
+ideia; nomes, textos e números são nossos). Entra em pedaços, a comida
+primeiro; os outros produtos só depois de o autor confirmar a comida na tela.
+
+**6a. Produtos novos e demanda por produto (só os de comida)**
+
+- Dois produtos novos no setor Essenciais: **Grãos** e **Frutas** (o que o
+  campo colhe). **Alimentos** segue como o processado. "Agro" não é produto:
+  é um grupo de pop (etapa de pops e grupos). A ligação entre eles (o
+  processado usa grão e fruta como insumo) é a "cadeia produtiva" da seção 11
+  do escopo; aqui os três são produtos independentes e o pop troca entre eles.
+- Unidade: tudo em **valor a preço base, em % do PIB** (igual ao resto do
+  motor). Preço base = 100.
+- **Demanda de comida** = população × **cesta**. A cesta é a mesma quantia por
+  pessoa em qualquer pop (o mínimo para viver), em % da renda média por pessoa
+  a preço base (ponto de partida: ajustar medindo). Quem é pobre gasta uma
+  fatia maior da renda com a mesma cesta; é assim que o bolso pesa.
+- Os três produtos atendem a mesma necessidade. A parte de cada um na cesta é
+  proporcional a **peso ÷ preço do país**: se o grão encarece, o pop come mais
+  fruta e processado (troca livre, soma fecha a cesta).
+- **Oferta** do produto = produção do país + importação.
+  - Produção inicial = cobertura declarada hoje × demanda inicial ÷ 100; o
+    `producao.json` dos países serve como está (com Grãos e Frutas listados).
+  - Importação = o que falta, limitada ao excedente que as potências têm do
+    produto (`produtores.json`, com Grãos e Frutas listados).
+- **Cobertura** passa a ser resultado: produção ÷ demanda, em %.
+- **Preço do país** = base × faixa × mistura com o mundo:
+  - faixa = 1 + 0,75 × limite((demanda − oferta) ÷ o menor dos dois, −1, +1),
+    ou seja, 25% a 175% do base;
+  - mistura = (1 − m) + m × preço do mundo ÷ 100, com m = importação ÷ oferta
+    (o que vem de fora custa o preço do mundo).
+- **Prédios na tela, sem simular um a um**: o produto declara uma `unidade`
+  (nome, ex. "fazendas", e tamanho em % do PIB); a tela mostra "≈ N unidades"
+  = produção ÷ tamanho. Investir para crescer a capacidade vem com a 5b.
+
+**6b. Fome (segurança alimentar) por pop**
+
+- Por tipo de pop: **gasto com comida** = cesta × preço ÷ renda por pessoa (em
+  %); **falta** = (demanda − oferta) ÷ demanda, quando positiva, igual para
+  todos.
+- **Segurança alimentar** = 100 − gasto com comida − falta, entre 0 e 100.
+  **Fome leve** abaixo de 40; **fome grave** abaixo de 20 (pontos de partida).
+- A tela mostra a segurança de cada pop e quantos % da população estão em fome
+  leve e grave. **Efeito** em nascimentos, mortes e apoio dos grupos **não
+  entra aqui**: é proposta própria depois de medir (6c).
+
+**6c e seguintes (ainda não):** efeito da fome na população e nos grupos; os
+outros 19 produtos com a mesma regra; depois a 5b.
+
+**Tela (6a e 6b)**: aba "Do país" da janela Mercado mostra, por produto,
+demanda, produção, importação, preço do país contra o base e as unidades;
+bloco "Comida na mesa" com a segurança alimentar por pop.
+
+**Conferência (testes)**: mesma partida e mesma semente dão o mesmo resultado;
+população maior sobe a demanda; produção menor sobe o preço até o teto de
+175%; pop pobre cai em fome antes do rico quando a comida encarece; com a
+cesta atendida e preço no base, ninguém fica em fome.
+
 ### Fatias seguintes (ainda não)
 
 5b. PIB e bases dos impostos saem da produção e dos pops (países de teste
