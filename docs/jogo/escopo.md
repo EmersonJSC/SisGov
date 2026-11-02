@@ -337,4 +337,12 @@ lidas (tag `projeto-antigo-2026-10-31`).
     depois da comida e dos outros produtos, calibrar cesta, pesos e preços
     montando dois países grandes e diferentes. **Atenção:** a regra do projeto
     é não usar país real; decidir se são inspirados (nomes inventados) ou reais.
+  - **Remédios, Energia, Moradia e Infraestrutura não são produto de cesta como a
+    comida** (autor, 02/nov): cada um tem regra própria.
+    - **Energia:** não se guarda nem viaja longe; vem de usinas (capacidade) e a
+      demanda é de pops e indústria.
+    - **Moradia:** o povo pode morar em casa própria, alugada ou **feita pelo
+      governo** (programa de habitação). Pede lei e prédio próprios.
+    - **Infraestrutura** (rodovias, ferrovias, portos, aeroportos): é capacidade
+      que o Estado constrói, não mercadoria comprada; mexe no acesso ao mercado.
 
