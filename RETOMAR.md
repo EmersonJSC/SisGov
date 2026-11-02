@@ -25,17 +25,20 @@ ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
 
 ## Próximo
 
-**Passo 12 (Mercado), fatias 1 e 2 prontas.** Fatia 1: 7 setores e 22
-produtos. Fatia 2: cada país declara a **cobertura** de cada produto
-(`paises/<id>/producao.json`, % da demanda que ele mesmo atende), o mundo diz
-quem fornece o quê (`mundo/mercado/produtores.json`); sai o que importa, o que
-exporta, de quem compra e a **dependência** de cada potência. Janela
-"Mercado" no topo, por setor (só leitura). Comportamento em
-`src/motor/mercado/mercado.md`. Próxima: **fatia 3** (pops com emprego nos
-setores, salário e lucro; proposta curta no chat, esperar o sim). A fatia 4
-faz o PIB e as bases saírem da produção (opção A, países de teste com o mesmo
-resultado de hoje). Insumos, fila de construção e infraestrutura como mecânica
-estão na seção 11 do escopo.
+**Passo 12 (Mercado), fatias 1, 2 e 3 prontas.** Fatia 1: 7 setores e 22
+produtos. Fatia 2: o país declara a **cobertura** de cada produto
+(`paises/<id>/producao.json`; o que ele não lista, compra do mundo). Fatia 3
+(02/nov): **dois mercados**. Cada potência declara a própria produção
+(`mundo/mercado/produtores.json`); quem vende o que o país importa sai do
+excedente delas. O **preço do mundo** por produto fica no estado (`precos`),
+anda rumo ao que oferta e demanda pedem, com ruído que não gasta o acaso. A
+janela "Mercado" tem as abas "Do país" e "Do mundo" (em alta, mais em conta,
+mais barato por produto). Comportamento em `src/motor/mercado/mercado.md`.
+Próxima: **fatia 4** (pops com emprego nos setores, salário e lucro; proposta
+curta no chat, esperar o sim). Depois, a fatia 5: choques e ciclos sobre o
+preço, e PIB e bases saindo da produção (países de teste com o mesmo resultado
+de hoje). Insumos, fila de construção e infraestrutura como mecânica estão na
+seção 11 do escopo.
 
 Outro chat trata da **economia das leis militares**. Também em aberto: quais
 **eixos novos** entram na bússola (paz × militarismo, seção 11).

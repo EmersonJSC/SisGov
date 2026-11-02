@@ -307,9 +307,31 @@ export type VisaoSetor = Readonly<{
   produtos: readonly VisaoProduto[];
 }>;
 
+/** Um produto no mercado do mundo: preço, variação e quem vende mais barato. */
+export type VisaoPrecoMundo = Readonly<{
+  id: string;
+  nome: string;
+  preco: number;
+  /** % contra o turno anterior. */
+  variacao: number;
+  maisBarato?: string;
+}>;
+
+export type VisaoMundoMercado = Readonly<{
+  setores: readonly Readonly<{
+    id: string;
+    nome: string;
+    produtos: readonly VisaoPrecoMundo[];
+  }>[];
+  emAlta: readonly VisaoPrecoMundo[];
+  maisEmConta: readonly VisaoPrecoMundo[];
+}>;
+
 /** O que o país produz, compra e vende, por setor (motor/mercado). */
 export type VisaoMercado = Readonly<{
   setores: readonly VisaoSetor[];
+  /** Preço de cada produto no mundo. */
+  mundo: VisaoMundoMercado;
   /** De quanto cada potência fornece ao país, em % da demanda (média dos produtos). */
   dependencia: readonly Readonly<{ id: string; nome: string; valor: number }>[];
 }>;

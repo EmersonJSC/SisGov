@@ -32,9 +32,33 @@ real. Tempo: turno = 2 meses.
   por setor, cada um com a barra de produção, o que importa (e de quem), o que
   exporta; no pé, a dependência de cada potência.
 
+### Fatia 3: dois mercados, o do país e o do mundo (aprovado em 02/nov/2026)
+
+- Cada **potência** declara a sua cobertura de cada produto (0 a 200), igual
+  ao país. Sai a tabela de partes fixas; `mundo/mercado/produtores.json`
+  passa a ser `{produção: {potência: {produto: cobertura}}}`.
+- O país **não precisa listar todos**: produto que ele não declara conta
+  cobertura 0 (compra tudo do mundo). Sem arquivo `producao.json`, o país
+  compra tudo; a janela abre sempre.
+- **Fornecedores** do que o país importa: cada potência entra com o seu
+  excedente (cobertura acima de 100). Se nenhuma tem excedente, entram todas
+  pela cobertura. A conta é a mesma da fatia 2, só muda de onde vem a parte.
+- **Preço do mundo** por produto, base 100, no estado (o país não mexe nele):
+  alvo = 100 × (demanda ÷ oferta)^1,5, com demanda = 100 × nº de potências e
+  oferta = soma das coberturas; limitado a 40–250. Começa no alvo (variação 0).
+  A cada turno anda 25% do caminho até o alvo, mais um ruído pequeno (±2%)
+  que depende só do turno e do produto (não gasta o acaso da partida).
+  **Variação** = % contra o turno anterior.
+- **Mais barato**: a potência com maior cobertura do produto.
+- Tela: a janela "Mercado" ganha duas abas. **País** (como hoje: produz,
+  importa de quem, exporta, dependência). **Mundo**: por setor, o preço, a
+  variação (seta de em alta ou em baixa) e quem vende mais barato; no topo,
+  os 3 **em alta** e os 3 **mais em conta**.
+- Partida salva antes disto: preços recomeçam do alvo.
+
 ### Fatias seguintes (ainda não)
 
-3. Pops com empregos nos setores; salário e lucro (as leis do passo 13 leem).
-4. Preço mundial por produto, ciclos e choques que vêm de fora; PIB e bases
-   dos impostos saem da produção e dos pops (países de teste continuam dando o
-   resultado de hoje).
+4. Pops com empregos nos setores; salário e lucro (as leis do passo 13 leem).
+5. Choques e ciclos que vêm de fora sobre o preço; PIB e bases dos impostos
+   saem da produção e dos pops (países de teste continuam dando o resultado
+   de hoje).

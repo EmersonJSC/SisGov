@@ -10,7 +10,7 @@ import {
   indicesDeDefesa,
   lerPotencias,
   lerMercado,
-  lerProdutores,
+  lerProducaoDoMundo,
   lerCobertura,
   type Congresso,
   type Estado,
@@ -108,13 +108,21 @@ export const nomesPops: Record<string, string> = Object.fromEntries(
   tiposPops.pops.map((t) => [t.id, t.nome]),
 );
 
+/** Produção declarada pelo país; sem arquivo, ele compra tudo do mundo. */
+function declaracaoDoPais(pais: string): unknown {
+  const caminho = `../conteudo/paises/${pais}/producao.json`;
+  return arquivosPaises[caminho]
+    ? arquivoPais(pais, "producao")
+    : { versao: 1, cobertura: {} };
+}
+
 function carregarMercado(pais: string): Regras["mercado"] {
   const mercado = lerMercado(produtos);
   const ids = lerPotencias(potencias).map((p) => p.id);
   return {
     mercado,
-    produtores: lerProdutores(produtores, mercado, ids),
-    cobertura: lerCobertura(arquivoPais(pais, "producao"), mercado),
+    producao: lerProducaoDoMundo(produtores, mercado, ids),
+    cobertura: lerCobertura(declaracaoDoPais(pais), mercado),
   };
 }
 
@@ -295,6 +303,8 @@ export type {
   VisaoLei,
   VisaoLigacao,
   VisaoMercado,
+  VisaoMundoMercado,
+  VisaoPrecoMundo,
   VisaoProduto,
   VisaoSetor,
   VisaoMinisterio,

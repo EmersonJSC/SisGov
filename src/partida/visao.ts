@@ -2,6 +2,7 @@
 // nova. Só lê: nomes e textos vêm do JSON das leis e do mundo.
 import {
   balancoDoPais,
+  maisBarata,
   arrecadacao,
   BASES,
   gastoDasLeis,
@@ -280,17 +281,44 @@ export function montarVisao(partida: Partida): VisaoPartida {
       opiniao: estado.opinioes[p.id] ?? 50,
       peso: p.peso,
     })),
-    mercado: regras.mercado && visaoDoMercado(regras),
+    mercado: regras.mercado && visaoDoMercado(regras, estado),
     governo: governo(),
   };
 }
 
-function visaoDoMercado(regras: Partida["regras"]): VisaoMercado | undefined {
+function visaoDoMercado(
+  regras: Partida["regras"],
+  estado: Partida["estado"],
+): VisaoMercado | undefined {
   if (!regras.mercado) return undefined;
   const nomes = new Map((regras.potencias ?? []).map((p) => [p.id, p.nome]));
   const nome = (id: string) => nomes.get(id) ?? id;
   const balanco = balancoDoPais(regras.mercado);
+  const { mercado, producao } = regras.mercado;
+  const precos = mercado.setores.map((s) => ({
+    id: s.id,
+    nome: s.nome,
+    produtos: mercado.produtos
+      .filter((p) => p.setor === s.id)
+      .map((p) => {
+        const barata = maisBarata(producao, p.id);
+        return {
+          id: p.id,
+          nome: p.nome,
+          preco: estado.precos[p.id]?.valor ?? 100,
+          variacao: estado.precos[p.id]?.variacao ?? 0,
+          maisBarato: barata && nome(barata),
+        };
+      }),
+  }));
+  const todos = precos.flatMap((s) => s.produtos);
+  const TOPO = 3;
   return {
+    mundo: {
+      setores: precos,
+      emAlta: [...todos].sort((a, b) => b.variacao - a.variacao).slice(0, TOPO),
+      maisEmConta: [...todos].sort((a, b) => a.preco - b.preco).slice(0, TOPO),
+    },
     setores: balanco.setores.map((s) => ({
       ...s,
       produtos: s.produtos.map((p) => ({

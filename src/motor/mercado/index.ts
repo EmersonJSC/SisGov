@@ -93,3 +93,4 @@ export function lerMercado(dado: unknown): Mercado {
 }
 
 export * from "./producao";
+export * from "./preco";

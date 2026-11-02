@@ -1,106 +1,125 @@
 {
   "versao": 1,
-  "produtores": {
-    "alimentos": {
-      "republica-do-norte": 0.35,
-      "uniao-continental": 0.25,
-      "federacao-do-leste": 0.25,
-      "republica-popular-do-oriente": 0.15
+  "producao": {
+    "republica-do-norte": {
+      "alimentos": 147,
+      "remedios": 158,
+      "energia": 114,
+      "rodovias": 114,
+      "ferrovias": 40,
+      "portos": 136,
+      "aeroportos": 158,
+      "aco": 40,
+      "maquinas": 114,
+      "veiculos": 136,
+      "avioes": 200,
+      "chips": 136,
+      "software": 200,
+      "redes-sociais": 200,
+      "inteligencia-artificial": 200,
+      "armas": 158,
+      "veiculos-militares": 136,
+      "veiculos-de-luxo": 136,
+      "joias": 114,
+      "eletronicos-de-ponta": 136,
+      "moradia": 114,
+      "obras-publicas": 114
     },
-    "remedios": {
-      "republica-do-norte": 0.4,
-      "uniao-continental": 0.4,
-      "republica-popular-do-oriente": 0.2
+    "uniao-continental": {
+      "alimentos": 125,
+      "remedios": 158,
+      "energia": 40,
+      "rodovias": 136,
+      "ferrovias": 136,
+      "portos": 114,
+      "aeroportos": 158,
+      "aco": 114,
+      "maquinas": 158,
+      "veiculos": 136,
+      "avioes": 158,
+      "chips": 114,
+      "software": 114,
+      "redes-sociais": 40,
+      "inteligencia-artificial": 40,
+      "armas": 40,
+      "veiculos-militares": 40,
+      "veiculos-de-luxo": 200,
+      "joias": 158,
+      "eletronicos-de-ponta": 92,
+      "moradia": 136,
+      "obras-publicas": 136
     },
-    "energia": {
-      "liga-do-golfo": 0.5,
-      "federacao-do-leste": 0.3,
-      "republica-do-norte": 0.2
+    "republica-popular-do-oriente": {
+      "alimentos": 103,
+      "remedios": 114,
+      "energia": 40,
+      "rodovias": 180,
+      "ferrovias": 180,
+      "portos": 180,
+      "aeroportos": 114,
+      "aco": 200,
+      "maquinas": 158,
+      "veiculos": 158,
+      "avioes": 40,
+      "chips": 180,
+      "software": 92,
+      "redes-sociais": 114,
+      "inteligencia-artificial": 158,
+      "armas": 114,
+      "veiculos-militares": 114,
+      "veiculos-de-luxo": 40,
+      "joias": 40,
+      "eletronicos-de-ponta": 200,
+      "moradia": 180,
+      "obras-publicas": 180
     },
-    "rodovias": {
-      "republica-popular-do-oriente": 0.5,
-      "uniao-continental": 0.3,
-      "republica-do-norte": 0.2
+    "federacao-do-leste": {
+      "alimentos": 125,
+      "remedios": 40,
+      "energia": 136,
+      "rodovias": 40,
+      "ferrovias": 114,
+      "portos": 40,
+      "aeroportos": 40,
+      "aco": 114,
+      "maquinas": 40,
+      "veiculos": 40,
+      "avioes": 40,
+      "chips": 40,
+      "software": 40,
+      "redes-sociais": 40,
+      "inteligencia-artificial": 40,
+      "armas": 158,
+      "veiculos-militares": 180,
+      "veiculos-de-luxo": 40,
+      "joias": 40,
+      "eletronicos-de-ponta": 40,
+      "moradia": 40,
+      "obras-publicas": 40
     },
-    "ferrovias": {
-      "republica-popular-do-oriente": 0.5,
-      "uniao-continental": 0.3,
-      "federacao-do-leste": 0.2
-    },
-    "portos": {
-      "republica-popular-do-oriente": 0.5,
-      "republica-do-norte": 0.3,
-      "uniao-continental": 0.2
-    },
-    "aeroportos": {
-      "republica-do-norte": 0.4,
-      "uniao-continental": 0.4,
-      "republica-popular-do-oriente": 0.2
-    },
-    "aco": {
-      "republica-popular-do-oriente": 0.6,
-      "federacao-do-leste": 0.2,
-      "uniao-continental": 0.2
-    },
-    "maquinas": {
-      "uniao-continental": 0.4,
-      "republica-popular-do-oriente": 0.4,
-      "republica-do-norte": 0.2
-    },
-    "veiculos": {
-      "republica-popular-do-oriente": 0.4,
-      "uniao-continental": 0.3,
-      "republica-do-norte": 0.3
-    },
-    "avioes": { "republica-do-norte": 0.6, "uniao-continental": 0.4 },
-    "chips": {
-      "republica-popular-do-oriente": 0.5,
-      "republica-do-norte": 0.3,
-      "uniao-continental": 0.2
-    },
-    "software": {
-      "republica-do-norte": 0.7,
-      "uniao-continental": 0.2,
-      "republica-popular-do-oriente": 0.1
-    },
-    "redes-sociais": {
-      "republica-do-norte": 0.8,
-      "republica-popular-do-oriente": 0.2
-    },
-    "inteligencia-artificial": {
-      "republica-do-norte": 0.6,
-      "republica-popular-do-oriente": 0.4
-    },
-    "armas": {
-      "federacao-do-leste": 0.4,
-      "republica-do-norte": 0.4,
-      "republica-popular-do-oriente": 0.2
-    },
-    "veiculos-militares": {
-      "federacao-do-leste": 0.5,
-      "republica-do-norte": 0.3,
-      "republica-popular-do-oriente": 0.2
-    },
-    "veiculos-de-luxo": { "uniao-continental": 0.7, "republica-do-norte": 0.3 },
-    "joias": {
-      "liga-do-golfo": 0.4,
-      "uniao-continental": 0.4,
-      "republica-do-norte": 0.2
-    },
-    "eletronicos-de-ponta": {
-      "republica-popular-do-oriente": 0.6,
-      "republica-do-norte": 0.3,
-      "uniao-continental": 0.1
-    },
-    "moradia": {
-      "republica-popular-do-oriente": 0.5,
-      "uniao-continental": 0.3,
-      "republica-do-norte": 0.2
-    },
-    "obras-publicas": {
-      "republica-popular-do-oriente": 0.5,
-      "uniao-continental": 0.3,
-      "republica-do-norte": 0.2
+    "liga-do-golfo": {
+      "alimentos": 40,
+      "remedios": 40,
+      "energia": 180,
+      "rodovias": 40,
+      "ferrovias": 40,
+      "portos": 40,
+      "aeroportos": 40,
+      "aco": 40,
+      "maquinas": 40,
+      "veiculos": 40,
+      "avioes": 40,
+      "chips": 40,
+      "software": 40,
+      "redes-sociais": 40,
+      "inteligencia-artificial": 40,
+      "armas": 40,
+      "veiculos-militares": 40,
+      "veiculos-de-luxo": 40,
+      "joias": 158,
+      "eletronicos-de-ponta": 40,
+      "moradia": 40,
+      "obras-publicas": 40
     }
   }
 }

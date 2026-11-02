@@ -2,12 +2,40 @@
  * Janela "Mercado": por setor, o que o país produz, compra e vende (motor/mercado,
  * fatia 2). Papel da janela da lei; só leitura.
  */
-import type { VisaoPartida } from "../../partida";
+import { useState } from "react";
+import type { VisaoPartida, VisaoPrecoMundo } from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
 import { ICONE_INTERFACE } from "./icones";
 
 const um = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 0 });
+
+const preco = (v: number) =>
+  v.toLocaleString("pt-BR", { maximumFractionDigits: 0 });
+
+function Variacao({ v }: { v: number }) {
+  const sinal = v > 0.05 ? "alta" : v < -0.05 ? "baixa" : "estavel";
+  return (
+    <em className={`mercado-var ${sinal}`}>
+      {sinal === "alta" ? "▲" : sinal === "baixa" ? "▼" : "•"}{" "}
+      {v.toLocaleString("pt-BR", {
+        maximumFractionDigits: 1,
+        signDisplay: "exceptZero",
+      })}
+      %
+    </em>
+  );
+}
+
+function Linha({ p }: { p: VisaoPrecoMundo }) {
+  return (
+    <li>
+      <strong>{p.nome}</strong>
+      <span className="mercado-produz">{preco(p.preco)}</span>
+      <Variacao v={p.variacao} />
+    </li>
+  );
+}
 
 export function Mercado({
   visao,
@@ -15,6 +43,7 @@ export function Mercado({
   ...janela
 }: JanelaProps & { visao: VisaoPartida; onFechar: () => void }) {
   const mercado = visao.mercado;
+  const [aba, setAba] = useState<"pais" | "mundo">("pais");
   return (
     <Documento
       orgao="Mercado"
@@ -27,46 +56,104 @@ export function Mercado({
       {...janela}
     >
       <div className="folha mercado-janela">
-        {mercado?.setores.map((setor) => (
-          <section key={setor.id}>
-            <h2>{setor.nome}</h2>
-            <ul className="mercado-produtos">
-              {setor.produtos.map((p) => (
-                <li key={p.id}>
-                  <strong>{p.nome}</strong>
-                  <div
-                    className="mercado-barra"
-                    title={`O país produz ${um(p.cobertura)}% do que consome`}
-                  >
-                    <i
-                      className={p.cobertura < 100 ? "falta" : "sobra"}
-                      style={{ width: `${Math.min(p.cobertura, 200) / 2}%` }}
-                    />
-                    <b />
-                  </div>
-                  <span className="mercado-produz">{um(p.cobertura)}%</span>
-                  <span className="mercado-fluxo">
-                    {p.importa > 0 ? (
-                      <>
-                        <em className="compra">compra {um(p.importa)}%</em>
-                        <small>
-                          {p.fornecedores
-                            .map((f) => `${f.nome} ${um(f.parte)}%`)
-                            .join(" · ")}
-                        </small>
-                      </>
-                    ) : p.exporta > 0 ? (
-                      <em className="vende">vende {um(p.exporta)}%</em>
-                    ) : (
-                      <em>se basta</em>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-        {mercado?.dependencia.length ? (
+        <div className="mercado-abas" role="tablist">
+          {(["pais", "mundo"] as const).map((a) => (
+            <button
+              key={a}
+              role="tab"
+              aria-selected={aba === a}
+              className={aba === a ? "ativa" : ""}
+              onClick={() => setAba(a)}
+            >
+              {a === "pais" ? "Do país" : "Do mundo"}
+            </button>
+          ))}
+        </div>
+        {aba === "mundo" && mercado ? (
+          <>
+            <section>
+              <h2>Em alta</h2>
+              <ul className="mercado-produtos mundo">
+                {mercado.mundo.emAlta.map((p) => (
+                  <Linha key={p.id} p={p} />
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h2>Mais em conta</h2>
+              <ul className="mercado-produtos mundo">
+                {mercado.mundo.maisEmConta.map((p) => (
+                  <Linha key={p.id} p={p} />
+                ))}
+              </ul>
+            </section>
+            {mercado.mundo.setores.map((setor) => (
+              <section key={setor.id}>
+                <h2>{setor.nome}</h2>
+                <ul className="mercado-produtos mundo">
+                  {setor.produtos.map((p) => (
+                    <li key={p.id}>
+                      <strong>{p.nome}</strong>
+                      <span className="mercado-produz">{preco(p.preco)}</span>
+                      <Variacao v={p.variacao} />
+                      <small>
+                        {p.maisBarato ? `mais barato: ${p.maisBarato}` : ""}
+                      </small>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+            <p className="folha-explica">
+              Preço base 100 = o mundo produz o que consome. Falta produto, o
+              preço sobe; sobra, desce.
+            </p>
+          </>
+        ) : null}
+        {aba === "pais"
+          ? mercado?.setores.map((setor) => (
+              <section key={setor.id}>
+                <h2>{setor.nome}</h2>
+                <ul className="mercado-produtos">
+                  {setor.produtos.map((p) => (
+                    <li key={p.id}>
+                      <strong>{p.nome}</strong>
+                      <div
+                        className="mercado-barra"
+                        title={`O país produz ${um(p.cobertura)}% do que consome`}
+                      >
+                        <i
+                          className={p.cobertura < 100 ? "falta" : "sobra"}
+                          style={{
+                            width: `${Math.min(p.cobertura, 200) / 2}%`,
+                          }}
+                        />
+                        <b />
+                      </div>
+                      <span className="mercado-produz">{um(p.cobertura)}%</span>
+                      <span className="mercado-fluxo">
+                        {p.importa > 0 ? (
+                          <>
+                            <em className="compra">compra {um(p.importa)}%</em>
+                            <small>
+                              {p.fornecedores
+                                .map((f) => `${f.nome} ${um(f.parte)}%`)
+                                .join(" · ")}
+                            </small>
+                          </>
+                        ) : p.exporta > 0 ? (
+                          <em className="vende">vende {um(p.exporta)}%</em>
+                        ) : (
+                          <em>se basta</em>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))
+          : null}
+        {aba === "pais" && mercado?.dependencia.length ? (
           <section>
             <h2>Dependência de potências</h2>
             <ul className="mercado-dependencia">
@@ -88,7 +175,6 @@ export function Mercado({
             </p>
           </section>
         ) : null}
-        {mercado ? null : <p>Este país não declarou produção.</p>}
       </div>
     </Documento>
   );

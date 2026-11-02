@@ -8750,3 +8750,37 @@ span.el-mini {
   padding: 5px 0;
   border-bottom: 1px solid #0000001a;
 }
+
+.mercado-abas {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.mercado-abas button {
+  padding: 4px 14px;
+  border: 1px solid #3d6b66;
+  background: transparent;
+  color: inherit;
+  border-radius: 14px;
+  cursor: pointer;
+}
+.mercado-abas button.ativa {
+  background: #3d6b66;
+  color: #fff;
+}
+.mercado-produtos.mundo li {
+  grid-template-columns: 1fr 48px 78px;
+}
+.mercado-produtos.mundo li small {
+  grid-column: 1 / -1;
+}
+.mercado-var {
+  font-style: normal;
+  text-align: right;
+}
+.mercado-var.alta {
+  color: #a8442f;
+}
+.mercado-var.baixa {
+  color: #2f7a57;
+}

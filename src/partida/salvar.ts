@@ -43,6 +43,7 @@ export function carregarPartida(texto: string): Partida {
     estado: {
       ...arquivo.estado,
       opinioes: arquivo.estado.opinioes ?? nova.estado.opinioes,
+      precos: arquivo.estado.precos ?? nova.estado.precos,
     },
   };
 }

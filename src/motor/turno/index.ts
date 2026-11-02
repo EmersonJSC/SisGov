@@ -22,6 +22,7 @@ import {
   rendaDoGrupo,
   type Marco,
 } from "../grupos";
+import { andarPrecos, precosIniciais } from "../mercado";
 import { motivoValorInvalido, type ValorLei } from "../leis";
 import {
   andarOpinioes,
@@ -280,6 +281,16 @@ const mundo: Etapa = (regras, estado) => {
   return comReputacao(regras, { ...estado, opinioes });
 };
 
+/** 7c. Preço do mundo anda rumo ao que a oferta pede (motor/mercado). */
+const precosDoMundo: Etapa = (regras, estado) => {
+  if (!regras.mercado) return estado;
+  const { mercado, producao } = regras.mercado;
+  return {
+    ...estado,
+    precos: andarPrecos(mercado, producao, estado.precos, estado.turno),
+  };
+};
+
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 function pops(regras: Regras, estado: Estado): Record<string, Pop> {
   const e = estado.essenciais;
@@ -404,6 +415,7 @@ const ETAPAS: Etapa[] = [
   contas,
   indicesJogabilidade,
   mundo,
+  precosDoMundo,
   popsEGrupos,
   politica,
   invariantes,
@@ -507,6 +519,9 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     grupos: {},
     marco: { indices: {}, leis: {}, renda_real: {} },
     opinioes: regras.potencias ? { ...inicio.opinioes } : {},
+    precos: regras.mercado
+      ? precosIniciais(regras.mercado.mercado, regras.mercado.producao)
+      : {},
     coligacao: [...coligacao],
     votacoes: [],
     desgaste: 0,

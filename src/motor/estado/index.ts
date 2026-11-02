@@ -8,6 +8,7 @@ import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { ValorLei } from "../leis";
 import type { Votacao } from "../politica";
+import type { Preco } from "../mercado";
 import type { Pop } from "../populacao";
 
 export const INDICES_ESSENCIAIS = [
@@ -54,6 +55,8 @@ export interface Estado {
   marco: Marco;
   /** Opinião de cada potência sobre o país, 0 a 100 (motor/mundo). */
   opinioes: Record<string, number>;
+  /** Preço do mundo por produto (motor/mercado); vazio sem mercado. */
+  precos: Record<string, Preco>;
   /** Partidos da base do governo (motor/politica). */
   coligacao: string[];
   /** Votações do turno (motor/politica). */

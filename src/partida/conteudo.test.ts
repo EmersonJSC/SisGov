@@ -5,7 +5,7 @@ import {
   lerMercado,
   lerPotencias,
   validarCobertura,
-  validarProdutores,
+  validarProducaoDoMundo,
 } from "../motor";
 import produtos from "../conteudo/mundo/mercado/produtos.json";
 import produtores from "../conteudo/mundo/mercado/produtores.json";
@@ -55,10 +55,10 @@ describe("contrato do mercado", () => {
 });
 
 describe("contrato da produção", () => {
-  it("fornecedores do mundo e cobertura de cada país passam nos validadores", () => {
+  it("produção das potências e cobertura de cada país passam nos validadores", () => {
     const mercado = lerMercado(produtos);
     const ids = lerPotencias(potencias).map((p) => p.id);
-    expect(validarProdutores(produtores, mercado, ids)).toEqual([]);
+    expect(validarProducaoDoMundo(produtores, mercado, ids)).toEqual([]);
     for (const pais of paisesDisponiveis()) {
       const dado = paisesProducao[`../conteudo/paises/${pais}/producao.json`];
       expect(validarCobertura(dado, mercado), pais).toEqual([]);
