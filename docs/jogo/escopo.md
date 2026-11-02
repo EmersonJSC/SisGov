@@ -281,3 +281,13 @@ lidas (tag `projeto-antigo-2026-10-31`).
   resumo em `docs/jogo/bussola.md`. Em aberto: 3º ou 4º eixo (cálculo em laço
   sobre `EIXOS`, refatoração separada); peso por lei na média do país;
   opiniões de partida dos países de teste perto da desejada.
+- **Segurança e defesa, ficam para depois** (02/nov, autor):
+  - Pesquisa e tecnologia nunca por clique, só por lei: uma lei patrocina um
+    programa (ex.: a bomba) e dá dinheiro à pesquisa ou à construção. Construir
+    exige materiais comprados no mercado (passo 12).
+  - Sem alianças por enquanto.
+  - Objeção de consciência cortada (complexa demais).
+  - Dois atrasos diferentes no mesmo índice na mesma lei: hoje o motor soma e
+    usa o maior atraso (`efeitos/index.ts`, `alvos`). Mudar pede uma entrada
+    por efeito na fila.
+  - Índice `seguranca` aparece na tela como "Segurança pública".

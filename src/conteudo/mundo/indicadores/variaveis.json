@@ -314,7 +314,7 @@
     {
       "id": "seguranca",
       "tipo": "calculado",
-      "nome": "Segurança",
+      "nome": "Segurança pública",
       "camada": "jogabilidade",
       "unidade": "indice_0_100",
       "dominio": {
@@ -325,6 +325,54 @@
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = guerra civil, 100 = sem crime"
+      }
+    },
+    {
+      "id": "lotacao_presidios",
+      "tipo": "calculado",
+      "nome": "Lotação dos presídios",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0% = presídios vazios, 100% = todas as vagas ocupadas"
+      }
+    },
+    {
+      "id": "poder_defensivo",
+      "tipo": "calculado",
+      "nome": "Poder defensivo",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = sem defesa, 100 = potência militar"
+      }
+    },
+    {
+      "id": "seguranca_externa",
+      "tipo": "calculado",
+      "nome": "Segurança externa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = indefeso diante das potências, 100 = intocável"
       }
     },
     {
