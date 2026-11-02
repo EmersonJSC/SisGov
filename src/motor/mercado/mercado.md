@@ -277,6 +277,45 @@ da tabela de produtos (a energia é só o bloco de capacidade).
 maior que a capacidade freia o crescimento e sobe o preço; investir amplia a
 capacidade só depois do prazo; fóssil piora o ambiente e limpas melhoram.
 
+## Fatia 8: Propriedade e processos (desenho, sem código, 02/nov/2026)
+
+Autor: privatizar e estatizar **não são botão**, são processos; podem ser pela
+metade, por um quarto, ou só numa indústria. Tem de ser **intuitivo e com
+jogo**, não planilha.
+
+**Fatia do Estado.** Toda coisa que muda de dono (as 3 camadas da energia,
+cada setor/indústria do mercado) tem uma fatia do Estado, de 0 a 100%. Alvo em
+passos de 25%. Privatizar e estatizar são o mesmo processo: mover a fatia de X
+para Y. Substitui as 3 leis "quem constrói, opera e vende" (opções fixas); o
+efeito de cada camada (parte privada, ganho de capacidade, margem) passa a
+valer pela fatia atual, em proporção.
+
+**Processo (um molde, vale para os dois sentidos).** Etapas: 1 Estudo (2
+turnos) · 2 Votação no Congresso · 3 Leilão (privatizar, pode dar vazio) ou
+Indenização (estatizar, pode ser contestada) · 4 Pagamento/transição, a fatia
+anda aos poucos até o alvo, com greve e protesto possíveis · 5 Concluída. Enquanto
+corre, o valor antigo vale. Cancelar até a etapa 3; depois está comprometido.
+Custo e prazo crescem com o tamanho do pedaço movido (25% custa um quarto de
+100%) e com a resistência. Indenização sai do cofre em parcelas; cofre curto
+atrasa e derruba a confiança dos investidores.
+
+**Escolhas no meio (o jogo).** Leilão vazio: baixar o preço mínimo, esperar ou
+cancelar. Indenização contestada: pagar mais ou aguentar a justiça. Greve na
+transição: gastar para acalmar ou segurar firme.
+
+**Três medidores** no pedido, antes de confirmar: Cofre (custo), Povo (protesto,
+greve), Investidores (confiança). Confiança dos investidores é medida nova do
+processo, não índice novo (decisão pendente: efeito só em índices existentes).
+
+**Tela única "Propriedade":** um cartão por coisa, barra de 4 blocos (azul
+Estado, laranja mercado), clicar no bloco define o alvo. **Pacotes** são botões
+no topo que preenchem vários cartões (Estatizar tudo, Concessões, Transição
+verde, Combustível e tradição); o jogador ajusta e envia como um projeto só,
+votação conjunta.
+
+**Ordem:** 1) protótipo da tela para o autor ver; 2) motor do processo; 3) ligar
+a energia; 4) setores; 5) pacotes.
+
 ### Fatias seguintes (ainda não)
 
 5b. PIB e bases dos impostos saem da produção e dos pops (países de teste

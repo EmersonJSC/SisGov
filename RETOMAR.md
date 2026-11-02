@@ -19,6 +19,11 @@ produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
+**Fatia 8 (Propriedade e processos)**, desenho aprovado em `mercado.md`: fatia do
+Estado em passos de 25%, processo em etapas com escolhas, tela única
+"Propriedade", pacotes como botões. Próximo: **protótipo da tela** para o autor
+ver, antes do motor.
+
 Autor olha a **Energia** (bolha "Infra", 8 leis: 5 verbas por fonte e 3 de
 "quem constrói / opera / vende") e o bloco "Energia: capacidade contra demanda"
 na janela Mercado, e confirma, junto com Remédios. Em aberto: as outras 5 leis do
