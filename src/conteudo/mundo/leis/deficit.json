@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "deficit",
+  "nome": "Déficit",
+  "descricao": "De onde sai o dinheiro quando o governo gasta mais do que arrecada.",
+  "camada": "essencial",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sai-do-cofre",
+      "rotulo": "Sai do cofre",
+      "deficit_do_cofre": 1,
+      "efeitos": []
+    },
+    {
+      "id": "metade-e-metade",
+      "rotulo": "Metade do cofre, metade dívida",
+      "deficit_do_cofre": 0.5,
+      "efeitos": []
+    },
+    {
+      "id": "vira-divida",
+      "rotulo": "Vira dívida",
+      "deficit_do_cofre": 0,
+      "efeitos": []
+    }
+  ]
+}

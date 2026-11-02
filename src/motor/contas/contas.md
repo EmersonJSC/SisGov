@@ -14,9 +14,14 @@ uma linha própria.
 Por turno (2 meses), na moeda do país:
 
 - primário = receita − gasto; nominal = primário − juros.
-- **Sobra:** vai para o cofre. Abater dívida é decisão de lei futura
-  (regra fiscal), não automática.
-- **Falta:** sai do cofre; acabou o cofre, emite dívida.
+- **Falta (lei Déficit):** a opção vigente diz a fração paga pelo cofre
+  (`deficit_do_cofre`, de 0 a 1); o resto vira dívida. Acabou o cofre, o que
+  faltar também vira dívida.
+- **Sobra (lei Superávit):** a opção vigente diz a fração que vai ao cofre
+  (`superavit_ao_cofre`, de 0 a 1); o resto abate a dívida, e o que passar da
+  dívida vai ao cofre.
+- Sem as leis no mundo, vale o padrão: falta sai do cofre, sobra vai ao cofre.
+  O motor lê só os campos das opções, não o nome da lei.
 - A dívida não vence: o governo paga os juros e rola o principal.
 
 Os estoques ficam em dinheiro no estado (`tesouro`); os essenciais mostram

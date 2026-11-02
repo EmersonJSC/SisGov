@@ -161,8 +161,20 @@ export function validarLei(
           )
         )
           erro(`opcoes[${i}].mandato_anos`, "precisa ser inteiro > 0");
+        for (const campo of ["deficit_do_cofre", "superavit_ao_cofre"]) {
+          const v = op[campo];
+          if (v !== undefined && !(typeof v === "number" && v >= 0 && v <= 1))
+            erro(`opcoes[${i}].${campo}`, "precisa ser um número de 0 a 1");
+        }
         efeitos(op.efeitos, `opcoes[${i}].efeitos`);
       });
+      for (const campo of ["deficit_do_cofre", "superavit_ao_cofre"]) {
+        const com = opcoes.filter(
+          (op) => ehObjeto(op) && op[campo] !== undefined,
+        ).length;
+        if (com > 0 && com < opcoes.length)
+          erro("opcoes", `${campo} precisa estar em todas as opções`);
+      }
       const comMandato = opcoes.filter(
         (op) => ehObjeto(op) && op.mandato_anos !== undefined,
       ).length;

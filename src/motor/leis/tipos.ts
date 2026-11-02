@@ -62,6 +62,10 @@ export interface Opcao {
   bussola?: PontoBussola;
   /** Duração do mandato, na lei de mandato (motor/eleicao). */
   mandato_anos?: number;
+  /** Fração da falta paga pelo cofre; o resto vira dívida (motor/contas). */
+  deficit_do_cofre?: number;
+  /** Fração da sobra que vai ao cofre; o resto abate a dívida (motor/contas). */
+  superavit_ao_cofre?: number;
   efeitos: Efeito[];
 }
 

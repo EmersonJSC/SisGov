@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "superavit",
+  "nome": "Superávit",
+  "descricao": "Para onde vai o dinheiro quando o governo arrecada mais do que gasta.",
+  "camada": "essencial",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "vai-ao-cofre",
+      "rotulo": "Vai ao cofre",
+      "superavit_ao_cofre": 1,
+      "efeitos": []
+    },
+    {
+      "id": "metade-e-metade",
+      "rotulo": "Metade ao cofre, metade abate a dívida",
+      "superavit_ao_cofre": 0.5,
+      "efeitos": []
+    },
+    {
+      "id": "abate-a-divida",
+      "rotulo": "Abate a dívida",
+      "superavit_ao_cofre": 0,
+      "efeitos": []
+    }
+  ]
+}

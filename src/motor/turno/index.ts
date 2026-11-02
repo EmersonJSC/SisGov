@@ -5,6 +5,7 @@ import { semear, sortearNormal } from "../acaso";
 import { BASES, ehBase, proximaTaxa, taxaAlvo, type IdBase } from "../calculos";
 import {
   fecharTurno,
+  regraFiscal,
   motivoContaNaoFecha,
   type Fluxos,
   type Tesouro,
@@ -291,7 +292,11 @@ function mostrarContas(
 /** 6. Contas: receita, gasto e juros fecham o turno no cofre e na dívida. */
 const contas: Etapa = (regras, estado) => {
   const fluxos = fluxosDoTurno(regras, estado);
-  const tesouro = fecharTurno(estado.tesouro, fluxos);
+  const tesouro = fecharTurno(
+    estado.tesouro,
+    fluxos,
+    regraFiscal(regras.leis, estado.leis),
+  );
   return {
     ...estado,
     tesouro,

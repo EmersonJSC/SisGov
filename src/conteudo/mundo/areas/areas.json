@@ -10,7 +10,9 @@
       "leis": [
         "imposto-renda",
         "imposto-consumo",
-        "imposto-empresas"
+        "imposto-empresas",
+        "deficit",
+        "superavit"
       ]
     },
     {
