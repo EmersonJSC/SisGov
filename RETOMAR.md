@@ -20,19 +20,17 @@ Skill nova `sisgov-gamedesign` (6 perguntas antes de desenhar).
 
 ## Próximo
 
-**Fatia 8, plano de 8 passos em `mercado.md`. Autor mandou parar no passo 4.**
-Feito e testado (252 testes, `tsc` ok), ainda sem commit: ficha como 4 leis de
-opções por setor (`<setor>-dono/-importacao/-estrangeiro/-preco`, escondidas do
-mapa), 13 leis gerais (área `propriedade`), `valores` nas opções, motor em
-`src/motor/mercado/ficha.ts` e `propriedade.ts`, `fichas.json`, estado
-`fichas`/`propriedade`, energia migrada (3 leis antigas apagadas), testes em
-`src/partida/ficha.test.ts`. Isto cobre os passos 1, 2, 5, 6 e 7 no motor.
-**Falta (passos 3 e 4):** `previaDaFicha` em `src/partida/previa.ts` (simular
-6 turnos com e sem a mudança: custo, preço, importação, opinião das potências,
-grupos, votos) e a janela `Fichas.tsx` (botão na `BarraDoTopo`, 4 escolhas por
-setor, avisos, "Propor" via `comPedido`), começando por Alimentos; mostrar ao
-autor. Depois: passo 8 (`npm run check`, escopo, plano, commit). Dúvida do
-autor: onde mora a confiança dos investidores (hoje: opinião das potências).
+**Fatia 8, passos 3 e 4 feitos (254 testes, `tsc` ok); autor manda parar aqui.**
+Passo 3: `previaDaFicha` em `src/partida/previa.ts` (6 turnos com e sem a
+mudança: cofre, preço, importação, falta, PIB, investidores, grupos, votos,
+venda travada). Passo 4: botão "Setores" na barra do topo e janela
+`src/tela/mapa/Fichas.tsx` (9 setores, 4 escolhas, aviso, "Propor ao
+Congresso" via `comPedido`); `fichas` entrou na `VisaoPartida`. Visto na tela
+com Alimentos → Estatal (fila foi a 1 pedido).
+**Decisão do autor:** aprovar o jeito da janela (ou pedir mudança), depois
+passo 8 (`npm run check`, escopo seção 10, plano, commit). Dúvida aberta:
+investidores = opinião das potências, serve? (recomendo sim). Ajuste menor:
+depois de "Propor" o botão continua "Propor" (não diz "na fila").
 
 ## Pendências do autor
 

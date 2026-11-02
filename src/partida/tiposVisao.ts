@@ -410,6 +410,25 @@ export type VisaoMercado = Readonly<{
   dependencia: readonly Readonly<{ id: string; nome: string; valor: number }>[];
 }>;
 
+/** Ficha de um setor: as quatro escolhas e onde o setor está hoje. */
+export type VisaoFicha = Readonly<{
+  id: string;
+  nome: string;
+  descricao: string;
+  estrategico: boolean;
+  /** Parte do Estado no setor hoje, 0 a 1 (anda aos poucos). */
+  fatia: number;
+  /** Parte do capital de fora hoje, 0 a 1. */
+  estrangeiro: number;
+  escolhas: readonly Readonly<{
+    papel: "dono" | "importacao" | "estrangeiro" | "preco";
+    lei: string;
+    titulo: string;
+    vigente: string;
+    opcoes: readonly Readonly<{ id: string; rotulo: string }>[];
+  }>[];
+}>;
+
 export type VisaoPartida = Readonly<{
   pais: string;
   cenario: string;
@@ -422,6 +441,8 @@ export type VisaoPartida = Readonly<{
   potencias: readonly VisaoPotencia[];
   /** Produção, importação e exportação por setor; ausente se o país não declara. */
   mercado?: VisaoMercado;
+  /** Fichas dos setores (fatia 8); vazio se o país não tem mercado. */
+  fichas: readonly VisaoFicha[];
   /** Áreas do governo e seus ministérios, na ordem do anel. */
   governo: readonly VisaoArea[];
 }>;

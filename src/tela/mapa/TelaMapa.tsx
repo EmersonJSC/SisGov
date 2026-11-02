@@ -14,6 +14,7 @@ import { comPedido } from "../fila";
 import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
+import { Fichas } from "./Fichas";
 import { Mercado } from "./Mercado";
 import { MapaPolitico } from "./MapaPolitico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
@@ -67,6 +68,8 @@ export function TelaMapa({
   const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
   const [mercado, setMercado] = useState(false);
   const [desvioMercado, setDesvioMercado] = useState<Desvio>(CENTRO);
+  const [fichas, setFichas] = useState(false);
+  const [desvioFichas, setDesvioFichas] = useState<Desvio>(CENTRO);
 
   const lei = visao.leis.find((l) => l.id === janela);
   const pedido = fila.find((p) => p.lei === janela);
@@ -124,6 +127,7 @@ export function TelaMapa({
         onCarregar={onCarregar}
         onRecomecar={onRecomecar}
         onMercado={() => setMercado(!mercado)}
+        onFichas={() => setFichas(!fichas)}
       />
       <main className="area-mapa">
         <MapaPolitico
@@ -184,6 +188,21 @@ export function TelaMapa({
             onDesvio={setDesvioMercado}
             onRetangulo={() => {}}
             camada={2}
+            ativa
+            onFocar={() => {}}
+          />
+        ) : null}
+        {fichas ? (
+          <Fichas
+            partida={partida}
+            visao={visao}
+            fila={fila}
+            setFila={setFila}
+            onFechar={() => setFichas(false)}
+            desvio={desvioFichas}
+            onDesvio={setDesvioFichas}
+            onRetangulo={() => {}}
+            camada={3}
             ativa
             onFocar={() => {}}
           />

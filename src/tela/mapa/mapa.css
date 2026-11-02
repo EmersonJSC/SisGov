@@ -8802,3 +8802,60 @@ span.el-mini {
   font-size: 0.8rem;
   opacity: 0.8;
 }
+
+/* ficha do setor (fatia 8) */
+.documento:has(.ficha-janela) {
+  height: auto;
+  max-height: calc(100% - 36px);
+  width: min(760px, calc(100% - 24px));
+}
+.ficha-janela .mercado-abas {
+  flex-wrap: wrap;
+}
+.ficha-estado {
+  margin: 6px 0;
+}
+.ficha-opcoes {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ficha-opcoes button {
+  padding: 5px 14px;
+  border: 1px solid #4f7a8c;
+  background: transparent;
+  color: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.ficha-opcoes button.vigente {
+  border-style: dashed;
+}
+.ficha-opcoes button.ativa {
+  background: #4f7a8c;
+  color: #fff;
+}
+.ficha-aviso {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #4f7a8c14;
+  border-left: 3px solid #4f7a8c;
+}
+.ficha-produtos li {
+  grid-template-columns: 110px 1fr 1fr 1fr;
+  font-size: 13px;
+}
+.ficha-numeros {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+.ficha-alerta {
+  color: #a8442f;
+  font-weight: 700;
+}
+.ficha-botoes {
+  margin-top: 12px;
+}

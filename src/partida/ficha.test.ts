@@ -1,7 +1,7 @@
 // Fatia 8: ficha do setor. Cada mudança é uma lei de opções; o mercado e o
 // cofre obedecem à ficha e às leis gerais de propriedade.
 import { describe, expect, it } from "vitest";
-import { criarPartida, jogar, type Partida, type Pedido } from ".";
+import { criarPartida, jogar, previaDaFicha, type Partida, type Pedido } from ".";
 import { ajustesDoEstado, contaDoPais } from "../motor";
 
 const base = () => criarPartida("teste", 42, { semCongresso: true });
@@ -234,5 +234,25 @@ describe("os nove setores (passo 7)", () => {
 
   it("a partida sem pedido segue igual com as fichas no começo (determinista)", () => {
     expect(jogar(base(), 12).estado).toEqual(jogar(base(), 12).estado);
+  });
+});
+
+describe("prévia da ficha (passo 3)", () => {
+  it("fechar a importação da indústria mostra preço, falta e voto", () => {
+    const p = criarPartida("teste", 42);
+    const v = previaDaFicha(p, "industria", { importacao: "fechada" });
+    expect(v.mudancas).toHaveLength(1);
+    const avioes = v.produtos.find((x) => x.id === "avioes")!;
+    expect(avioes.importa[1]).toBe(0);
+    expect(avioes.importa[0]).toBeGreaterThan(0);
+    expect(avioes.preco[1]).toBeGreaterThan(avioes.preco[0]);
+    expect(v.votos).toHaveLength(1);
+  });
+
+  it("estatizar custa dinheiro; sem mudança não há nada a mostrar", () => {
+    const p = criarPartida("teste", 42);
+    expect(previaDaFicha(p, "alimentos", {}).mudancas).toHaveLength(0);
+    const v = previaDaFicha(p, "alimentos", { dono: "estatal" });
+    expect(v.custo).toBeGreaterThan(0);
   });
 });
