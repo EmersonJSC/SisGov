@@ -20,7 +20,8 @@
     "pops": "vite-node scripts/pops.ts",
     "grupos": "vite-node scripts/grupos.ts",
     "congresso": "vite-node scripts/congresso.ts",
-    "eleicao": "vite-node scripts/eleicao.ts"
+    "eleicao": "vite-node scripts/eleicao.ts",
+    "mundo": "vite-node scripts/mundo.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

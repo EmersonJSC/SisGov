@@ -17,8 +17,8 @@ corte (autor aprovou; só pesa de verdade com leis nas pontas da bússola).
 
 ## Próximo
 
-Pedaço 5: `npm run mundo` (script que mostra uma lei mudada movendo opiniões,
-média e segurança). Depois pedaço 6 (mapa mostra as potências). Em paralelo
+Pedaço 5 feito (`npm run mundo`: a lei move cada opinião, a média e a
+segurança). Depois pedaço 6 (mapa mostra as potências). Em paralelo
 espera o autor: desenho das **leis de segurança** (blocos A exército com
 serviço militar em meses/anos, B proteção digital em UMA lei de 3 opções, C
 câmeras em 2 leis, D maioridade penal, E contrapeso); nenhum arquivo de lei
