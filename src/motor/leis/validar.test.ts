@@ -23,6 +23,26 @@ describe("validarLei", () => {
     expect(validarLei(valida, "leis/teste.json", indices)).toEqual([]);
   });
 
+  it("unidade meses/anos: faixa na unidade real, sem cálculo nem conta", () => {
+    const servico = {
+      ...valida,
+      calculo: undefined,
+      unidade: "meses",
+      faixa: { min: 0, max: 24 },
+      passo: 1,
+    };
+    expect(campos(servico)).toEqual([]);
+    expect(campos({ ...servico, unidade: "anos" })).toEqual([]);
+    expect(campos({ ...servico, unidade: "dias" })).toEqual(["unidade"]);
+    expect(campos({ ...servico, faixa: { min: 5, max: 5 } })).toEqual([
+      "faixa",
+    ]);
+    expect(campos({ ...servico, conta: "gasto" })).toEqual(["unidade"]);
+    expect(campos({ ...valida, faixa: { min: 0, max: 24 } })).toEqual([
+      "faixa",
+    ]);
+  });
+
   it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {
     const gasto = { ...valida, calculo: undefined };
     expect(campos({ ...gasto, conta: "gasto" })).toEqual([]);

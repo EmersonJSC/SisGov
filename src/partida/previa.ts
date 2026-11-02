@@ -34,7 +34,8 @@ export function valorDoNivel(
     if (!opcao) throw new Error(`${leiId}: opção ${nivel} não existe`);
     return opcao.id;
   }
-  const passos = Math.round((nivel / 100 - lei.faixa.min) / lei.passo);
+  const escala = lei.unidade === "fracao" ? 100 : 1;
+  const passos = Math.round((nivel / escala - lei.faixa.min) / lei.passo);
   const valor = lei.faixa.min + passos * lei.passo;
   return Number(
     Math.min(lei.faixa.max, Math.max(lei.faixa.min, valor)).toFixed(6),

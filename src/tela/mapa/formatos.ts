@@ -88,6 +88,10 @@ export function nivelDaLei(valor: number, unidade: string): string {
   if (unidade === "percentual_receita")
     return `${numero(valor, 2)}% da receita`;
   if (unidade === "percentual_0_100") return `${numero(valor, 2)}%`;
+  if (unidade === "meses")
+    return `${numero(valor, 0)} ${valor === 1 ? "mês" : "meses"}`;
+  if (unidade === "anos")
+    return `${numero(valor, 0)} ${valor === 1 ? "ano" : "anos"}`;
   return numero(valor, 0);
 }
 

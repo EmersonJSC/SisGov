@@ -39,7 +39,8 @@ interface LeiBase {
 
 export interface LeiContinua extends LeiBase {
   forma: "continua";
-  unidade: "fracao";
+  /** "fracao": faixa entre 0 e 1. "meses"/"anos": faixa na unidade real. */
+  unidade: "fracao" | "meses" | "anos";
   faixa: { min: number; max: number };
   passo: number;
   calculo?: { base: IdBase; modelo: "laffer" };

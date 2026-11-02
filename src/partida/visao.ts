@@ -82,7 +82,8 @@ function visaoDaLei(
   };
   // sem valor no país: o motor conta a contínua no mínimo da faixa
   if (lei.forma === "continua") {
-    const nivel = Number(valor ?? lei.faixa.min) * 100;
+    const escala = lei.unidade === "fracao" ? 100 : 1;
+    const nivel = Number(valor ?? lei.faixa.min) * escala;
     return {
       ...comum,
       grupo: lei.calculo
@@ -94,10 +95,10 @@ function visaoDaLei(
       processo: "lei-ordinaria",
       nivel,
       meta: nivel,
-      minimo: lei.faixa.min * 100,
-      maximo: lei.faixa.max * 100,
-      passo: lei.passo * 100,
-      unidade: "percentual_0_100",
+      minimo: lei.faixa.min * escala,
+      maximo: lei.faixa.max * escala,
+      passo: lei.passo * escala,
+      unidade: lei.unidade === "fracao" ? "percentual_0_100" : lei.unidade,
     };
   }
   // opção vale a posição dela na lista; a mandato é da Constituição
