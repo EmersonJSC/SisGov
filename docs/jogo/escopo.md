@@ -339,10 +339,15 @@ lidas (tag `projeto-antigo-2026-10-31`).
     é não usar país real; decidir se são inspirados (nomes inventados) ou reais.
   - **Remédios, Energia, Moradia e Infraestrutura não são produto de cesta como a
     comida** (autor, 02/nov): cada um tem regra própria.
-    - **Energia:** não se guarda nem viaja longe; vem de usinas (capacidade) e a
-      demanda é de pops e indústria.
+    - **Energia:** não se guarda, mas **viaja longe pela rede de transmissão**
+      (uma usina grande serve vários estados). Vem de usinas (capacidade) e a
+      demanda é de pops e indústria; a rede é capacidade que o Estado constrói.
     - **Moradia:** o povo pode morar em casa própria, alugada ou **feita pelo
       governo** (programa de habitação). Pede lei e prédio próprios.
     - **Infraestrutura** (rodovias, ferrovias, portos, aeroportos): é capacidade
       que o Estado constrói, não mercadoria comprada; mexe no acesso ao mercado.
+      A mecânica é de capacidade (quanto o país comporta), diferente da cesta.
+    - **Militar** (armas, veículos militares): a demanda segue o **tamanho e a
+      força do exército**, não o consumo do povo. **Industriais, informação e
+      luxo** também ficam para depois, cada um com a sua regra.
 

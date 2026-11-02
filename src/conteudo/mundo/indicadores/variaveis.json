@@ -328,6 +328,22 @@
       }
     },
     {
+      "id": "acesso_remedios",
+      "tipo": "calculado",
+      "nome": "Acesso a remédios",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = sem remédio para ninguém, 100 = remédio ao alcance de todos"
+      }
+    },
+    {
       "id": "seguranca",
       "tipo": "calculado",
       "nome": "Segurança pública",

@@ -410,6 +410,7 @@ function visaoDoMercado(
     })),
     cestas: segurancaDaCesta(mercado, conta, estado.pops).map((c) => ({
       ...c,
+      termo: mercado.cestas.find((x) => x.id === c.id)?.termo ?? "carência",
       pops: c.pops.map((p) => ({
         ...p,
         nome: tiposPops.pops.find((t) => t.id === p.id)?.nome ?? p.id,

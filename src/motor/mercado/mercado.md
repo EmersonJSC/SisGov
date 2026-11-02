@@ -94,7 +94,7 @@ real. Tempo: turno = 2 meses.
   "Do mundo".
 - Mesma semente e mesmos turnos dão os mesmos choques.
 
-### Fatia 6: demanda dos pops, oferta, preço do país e fome (6a, 6b e 6c em código, 02/nov/2026)
+### Fatia 6: demanda dos pops, oferta, preço do país e fome (6a a 6d em código, 02/nov/2026)
 
 Desenho completo: a cobertura deixa de ser número declarado e vira resultado.
 Referência de como o Vic3 faz: `docs/jogo/mercado-vic3-referencia.md` (só a
@@ -184,7 +184,31 @@ potências têm sobra de grãos), então os números são pequenos; é ajuste do
 reputação; comida melhor sobe os dois; voltar ao normal devolve o apoio aos
 poucos; mesma partida e mesma semente dão o mesmo resultado.
 
-**Depois (ainda não):** os outros 19 produtos com a mesma regra; depois a 5b.
+**6d. Remédios, a segunda cesta (em código, 02/nov/2026)**
+
+- **Remédios** segue o mesmo molde da comida: cesta própria (`remedios`), o
+  produto entra nela com peso 1. Tamanho de partida: 3% da renda média
+  (a comida é 12%). O povo compra, a falta pesa na saúde.
+- Índice novo do mundo, **acesso a remédios** (0 a 100): a mesma conta da
+  segurança da comida (100 menos o gasto, menos a falta), média por pessoas.
+  Abaixo de 40 é carência leve; abaixo de 20, grave.
+- Reação nos dois lados, pelo mesmo desvio contra o turno 0: **saúde** (forte)
+  e **pobreza** (fraca, doença custa renda). Remédio melhor faz o contrário,
+  mais fraco (ganho 0,5). Reputação não entra aqui.
+- O motor passa a aceitar **várias cestas com índice**: as reações somam. O
+  texto de "fome" vira o `termo` que a cesta declara (comida: "fome";
+  remédios: "carência").
+- Fora desta fatia: grupos cobrando o acesso, Energia, Moradia, Infra e os
+  demais (cada um com regra própria, seção 11 do escopo).
+- **Conferência:** a falta de remédios derruba o acesso e a saúde; sobra
+  melhora; a comida segue igual; mesma partida e semente dão o mesmo resultado.
+
+**Como ficou (6d):** `cestas` com `termo` e `indice` no JSON; o turno soma as
+reações de todas as cestas com índice. Remédios: tamanho 0,03; saúde `forte`,
+pobreza `fraca`. Medido na tela: acesso 93 no país de teste. Como a comida, a
+importação amortece a falta. Grupos ainda não cobram o acesso.
+
+**Depois (ainda não):** os outros 18 produtos com a mesma regra; depois a 5b.
 
 **Tela (6a e 6b)**: aba "Do país" da janela Mercado mostra, por produto,
 demanda, produção, importação, preço do país contra o base e as unidades;

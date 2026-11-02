@@ -64,3 +64,38 @@ describe("reação à comida (6c)", () => {
     expect(jogar(comGraos(base(), 40), 6).estado).toEqual(pior.estado);
   });
 });
+
+// Fatia 6d: remédios é a segunda cesta e mexe na saúde pelo mesmo molde.
+const ACESSO = "acesso_remedios";
+
+const comRemedios = (p: Partida, remedios: number): Partida => {
+  const m = p.regras.mercado!;
+  return {
+    ...p,
+    regras: {
+      ...p.regras,
+      mercado: { ...m, cobertura: { ...m.cobertura, remedios } },
+    },
+  };
+};
+
+describe("remédios como cesta (6d)", () => {
+  const normal = jogar(base(), 6);
+  const pior = jogar(comRemedios(base(), 5), 6);
+  const melhor = jogar(comRemedios(base(), 200), 6);
+
+  it("o acesso nasce no turno 0 e muda com a oferta", () => {
+    expect(base().estado.jogabilidade[ACESSO]).toBeGreaterThan(0);
+    expect(j(pior, ACESSO)).toBeLessThan(j(normal, ACESSO));
+    expect(j(melhor, ACESSO)).toBeGreaterThanOrEqual(j(normal, ACESSO));
+  });
+
+  it("falta de remédio derruba a saúde; a comida segue igual", () => {
+    expect(j(pior, "saude")).toBeLessThan(j(normal, "saude"));
+    expect(j(pior, ABASTECIMENTO)).toBeCloseTo(j(normal, ABASTECIMENTO), 6);
+  });
+
+  it("mesma partida e mesma semente dão o mesmo resultado", () => {
+    expect(jogar(comRemedios(base(), 5), 6).estado).toEqual(pior.estado);
+  });
+});

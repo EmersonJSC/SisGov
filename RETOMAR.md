@@ -12,18 +12,20 @@ Passos 11 (mundo) e 12 (mercado, sem a 5b) fechados; dinheiro na tela fechado
 parecido com o do Vic3** (autor): a comida do país depende de pessoas, produção,
 preço e de quem consegue pagar. Pesquisa salva em
 `docs/jogo/mercado-vic3-referencia.md`. Desenho na
-**fatia 6** de `src/motor/mercado/mercado.md`; **6a, 6b e 6c em código** (Grãos, Frutas,
-demanda, preço do país, unidades na tela; falta o autor confirmar na tela): demanda dos pops, oferta, preço
+**fatia 6** de `src/motor/mercado/mercado.md`; **6a a 6d em código** (comida e Remédios como cestas; falta o autor confirmar Remédios na tela): demanda dos pops, oferta, preço
 do país (faixa de 25% a 175%) e segurança alimentar. Autor decidiu: Agro é
 grupo de pop, não produto; produtos novos **Grãos** e **Frutas**; todos os
 produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-Autor olha o índice **Abastecimento** e o bloco "Comida na mesa" (janela Mercado) e
-confirma 6b e 6c. Depois: os outros 19 produtos, equilibrar com um "Brasil" e um "EUA"
-(seção 11; ver a regra de país real). Nascimentos e mortes (demografia) são etapa própria. Depois: mais pops e grupos (agro, industrial, bilionários,
-peso por país), a 5b e os outros 19 produtos.
+Autor olha **Remédios** na janela Mercado (aba "Do país") e confirma. Depois,
+**uma regra própria por vez** (nada é cesta de comida): Energia (usinas e rede de
+transmissão, viaja longe), Moradia (própria, alugada, feita pelo governo),
+Infraestrutura (capacidade que o Estado constrói) e Militar (segue o tamanho e a
+força do exército). Industriais, informação e luxo ficam para depois. Autor
+escolhe qual vem primeiro. Equilibrar com "Brasil" e "EUA" só no fim (ver a regra
+de país real). Demografia é etapa própria.
 
 Outro chat trata da **economia das leis militares**. Em aberto: **eixos novos**
 da bússola (paz × militarismo, seção 11).

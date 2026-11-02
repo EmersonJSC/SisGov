@@ -13,6 +13,8 @@ export interface Cesta {
   nome: string;
   /** Quanto cada pessoa gasta, em fração da renda média inicial, a preço base. */
   tamanho: number;
+  /** Como a tela chama a falta ("fome", "carência"); sem ele, "carência". */
+  termo?: string;
   /** Índice do mundo que recebe a segurança alimentar média (0 a 100). */
   indice?: string;
   reacao?: ReacaoDaCesta;
@@ -101,6 +103,8 @@ export function validarMercado(dado: unknown): ErroMercado[] {
     if (!ehTexto(x.nome)) erro(`${c}.nome`, "precisa ter nome");
     if (typeof x.tamanho !== "number" || !(x.tamanho > 0))
       erro(`${c}.tamanho`, "precisa ser um número maior que 0");
+    if (x.termo !== undefined && !ehTexto(x.termo))
+      erro(`${c}.termo`, "precisa ser texto");
     if (x.indice !== undefined && !ehTexto(x.indice))
       erro(`${c}.indice`, "precisa ser texto");
     if (x.reacao === undefined) return;

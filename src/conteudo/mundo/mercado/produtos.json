@@ -80,7 +80,11 @@
     {
       "id": "remedios",
       "nome": "Remédios",
-      "setor": "essenciais"
+      "setor": "essenciais",
+      "cesta": {
+        "id": "remedios",
+        "peso": 1
+      }
     },
     {
       "id": "energia",
@@ -207,6 +211,30 @@
             "indice": "reputacao_internacional",
             "sentido": 1,
             "forca": "media"
+          }
+        ]
+      },
+      "termo": "fome"
+    },
+    {
+      "id": "remedios",
+      "nome": "Remédios",
+      "tamanho": 0.03,
+      "termo": "carência",
+      "indice": "acesso_remedios",
+      "reacao": {
+        "escala": 30,
+        "ganho": 0.5,
+        "efeitos": [
+          {
+            "indice": "saude",
+            "sentido": 1,
+            "forca": "forte"
+          },
+          {
+            "indice": "pobreza",
+            "sentido": -1,
+            "forca": "fraca"
           }
         ]
       }
