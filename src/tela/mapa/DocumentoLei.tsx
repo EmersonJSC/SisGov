@@ -414,7 +414,10 @@ function ControleNumerico({
     "--c2": c2,
   } as CSSProperties;
   return (
-    <div className={`regua-lei zona-${zona}`} style={estilo}>
+    <div
+      className={`regua-lei zona-${zona}${a?.tipo === "verba" ? " sem-faixas" : ""}`}
+      style={estilo}
+    >
       <div className="regua-marcas" aria-hidden="true">
         {MARCAS_DA_REGUA.map((m) => (
           <span key={m} style={{ left: `${m * 100}%` }}>

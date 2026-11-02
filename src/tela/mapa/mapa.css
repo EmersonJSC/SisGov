@@ -8645,3 +8645,8 @@ span.el-mini {
   font-weight: 700;
   color: var(--cor-zona);
 }
+
+/* verba: o trilho fica neutro; só o pino e o aviso mudam de cor */
+.regua-lei.sem-faixas .regua-zonas {
+  display: none;
+}

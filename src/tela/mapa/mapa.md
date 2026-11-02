@@ -123,7 +123,8 @@ da faixa cai), não a tela.
     receita; vermelho acima disso ("daqui para cima abre déficit"). A marca é
     o valor da verba em que gasto e receita se igualam hoje. Se o país já está
     em déficit, a marca é o valor em vigor: cortar fica verde, subir fica
-    vermelho (cortar verba nunca piora o déficit).
+    vermelho (cortar verba nunca piora o déficit). Na verba o trilho fica neutro
+    (sem faixas de cor); só o pino, o enchimento e o aviso mudam de cor.
   - Sem zona (regra ou lei sem esses dados): trilho neutro, só a régua.
 - O alerta só avisa; arrastar até 100% continua possível.
 
