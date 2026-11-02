@@ -20,8 +20,8 @@ produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
 
 ## Próximo
 
-Autor olha o bloco "Comida na mesa" (janela Mercado) e confirma a 6b. Depois: efeito da
-fome (proposta própria), outros 19 produtos, equilibrar com um "Brasil" e um "EUA"
+Autor olha o bloco "Comida na mesa" (janela Mercado) e confirma a 6b. Depois: 6c, reação à comida nos
+dois sentidos (escrita no `mercado.md`, sem código; autor aprova antes), outros 19 produtos, equilibrar com um "Brasil" e um "EUA"
 (seção 11; ver a regra de país real). Efeito da fome na população e nos grupos é
 proposta própria. Depois: mais pops e grupos (agro, industrial, bilionários,
 peso por país), a 5b e os outros 19 produtos.

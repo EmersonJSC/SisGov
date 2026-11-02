@@ -151,8 +151,32 @@ pontos de partida.
   leve e grave. **Efeito** em nascimentos, mortes e apoio dos grupos **não
   entra aqui**: é proposta própria depois de medir (6c).
 
-**6c e seguintes (ainda não):** efeito da fome na população e nos grupos; os
-outros 19 produtos com a mesma regra; depois a 5b.
+**6c. Reação à comida, para os dois lados (proposta, 02/nov/2026)**
+
+- Novo índice do mundo, **abastecimento** (0 a 100): a segurança alimentar média
+  da população, pesada por pessoas. Sobe com comida barata e abundante; cai com
+  comida cara ou em falta.
+- **Grupos** cobram o índice (sentido +1), como cobram os outros: medem a
+  mudança desde o marco do turno 0. Comida mais farta e barata, os grupos
+  gostam (mais os pobres); comida pior, perdem apoio. Quando volta ao normal,
+  o apoio volta devagar: a reação é por mudança, não é um interruptor.
+- **Fora do país:** o índice `reputacao_internacional` reage nos dois sentidos,
+  com atraso. Abastecimento alto e exportando comida sobe a reputação (país
+  estável, que ajuda os outros); fome grave a derruba (crise humanitária).
+  Quanto à opinião de cada potência, só entra o que a reputação já move.
+- **Saúde e pobreza** (índices que já existem): fome alta derruba a saúde e sobe
+  a pobreza, com atraso de 1 a 2 turnos; abastecimento melhor faz o contrário,
+  mais fraco.
+- Forças por nível (`fraca`, `media`, `forte`), nunca número solto; a lei de
+  como medir fica no JSON do mundo, não no motor.
+- **Fora desta fatia:** nascimentos e mortes (a população hoje é fixa). Fica
+  para uma etapa de demografia, pois mexe no PIB, nos impostos e nos pops.
+
+**Conferência de 6c:** comida pior reduz o apoio dos grupos pobres e a
+reputação; comida melhor sobe os dois; voltar ao normal devolve o apoio aos
+poucos; mesma partida e mesma semente dão o mesmo resultado.
+
+**Depois (ainda não):** os outros 19 produtos com a mesma regra; depois a 5b.
 
 **Tela (6a e 6b)**: aba "Do país" da janela Mercado mostra, por produto,
 demanda, produção, importação, preço do país contra o base e as unidades;
