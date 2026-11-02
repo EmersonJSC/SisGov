@@ -7,7 +7,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Passo 11 (mundo) fechado** em 02/nov: `npm run check` verde (107 testes),
+**Passo 12 (mercado) em andamento.** **Passo 11 (mundo) fechado** em 02/nov: `npm run check` verde (107 testes),
 plano e escopo com ✅. Fez: 5 potências (sem nome real) com opinião pela
 bússola, reputação = média pesada, poder defensivo, segurança externa =
 poder defensivo − (100 − reputação), leis de segurança (blocos A a E),
@@ -25,12 +25,16 @@ ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
 
 ## Próximo
 
-O autor abriu **outro chat** para tratar da **economia das leis militares**
-(como verba, serviço e idade do voluntário entram nas contas). Também em
-aberto, decisão do autor: quais **eixos novos** entram na bússola (paz ×
-militarismo está no escopo, seção 11; "depois de tudo pronto"). Depois:
-**passo 12 Mercado** (proposta curta no chat, esperar o sim). Ideia do autor,
-fora do passo: **empresas** em volta, perto do anel das potências.
+**Passo 12 (Mercado), fatia 1 pronta** (setores e produtos: 7 setores, 22
+produtos, validador, `src/motor/mercado/mercado.md`). Próxima: **fatia 2**, o
+país declara o que produz e depende de quem faz o resto (proposta curta no
+chat, esperar o sim). Decidido com o autor: o PIB e as bases dos impostos
+passam a sair da produção na fatia 4 (opção A), com os países de teste dando o
+mesmo resultado de hoje. Insumos, fila de construção e infraestrutura como
+mecânica ficaram na seção 11 do escopo.
+
+Outro chat trata da **economia das leis militares**. Também em aberto: quais
+**eixos novos** entram na bússola (paz × militarismo, seção 11).
 
 ## Pendências do autor
 

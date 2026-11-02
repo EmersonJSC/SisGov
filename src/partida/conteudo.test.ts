@@ -31,3 +31,11 @@ describe("contrato das potências", () => {
     expect(validarPotencias(potencias.default)).toEqual([]);
   });
 });
+
+describe("contrato do mercado", () => {
+  it("o JSON dos setores e produtos passa no validador", async () => {
+    const { validarMercado } = await import("../motor/mercado");
+    const mercado = await import("../conteudo/mundo/mercado/produtos.json");
+    expect(validarMercado(mercado.default)).toEqual([]);
+  });
+});

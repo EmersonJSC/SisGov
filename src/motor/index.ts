@@ -13,3 +13,4 @@ export * from "./mundo";
 export * from "./politica";
 export * from "./populacao";
 export * from "./turno";
+export * from "./mercado";

@@ -1,0 +1,80 @@
+{
+  "versao": 1,
+  "setores": [
+    {
+      "id": "essenciais",
+      "nome": "Essenciais",
+      "descricao": "O que a população precisa para viver: comida, remédios e energia."
+    },
+    {
+      "id": "infraestrutura",
+      "nome": "Infraestrutura",
+      "descricao": "O que sustenta todos os outros setores: estradas, trilhos, portos e aeroportos."
+    },
+    {
+      "id": "industria",
+      "nome": "Indústria",
+      "descricao": "Fábricas: aço, máquinas, veículos, aviões e chips."
+    },
+    {
+      "id": "tecnologia",
+      "nome": "Tecnologia e informação",
+      "descricao": "Software, nuvem, redes sociais e inteligência artificial."
+    },
+    {
+      "id": "militar",
+      "nome": "Militar",
+      "descricao": "Armas e equipamento das forças armadas."
+    },
+    {
+      "id": "luxo",
+      "nome": "Luxo",
+      "descricao": "O que só os mais ricos compram: carros caros, joias e eletrônicos de ponta."
+    },
+    {
+      "id": "construcao-civil",
+      "nome": "Construção civil",
+      "descricao": "Quem constrói casas, fábricas e obras públicas."
+    }
+  ],
+  "produtos": [
+    { "id": "alimentos", "nome": "Alimentos", "setor": "essenciais" },
+    { "id": "remedios", "nome": "Remédios", "setor": "essenciais" },
+    { "id": "energia", "nome": "Energia", "setor": "essenciais" },
+    { "id": "rodovias", "nome": "Rodovias", "setor": "infraestrutura" },
+    { "id": "ferrovias", "nome": "Ferrovias", "setor": "infraestrutura" },
+    { "id": "portos", "nome": "Portos", "setor": "infraestrutura" },
+    { "id": "aeroportos", "nome": "Aeroportos", "setor": "infraestrutura" },
+    { "id": "aco", "nome": "Aço", "setor": "industria" },
+    { "id": "maquinas", "nome": "Máquinas", "setor": "industria" },
+    { "id": "veiculos", "nome": "Veículos comuns", "setor": "industria" },
+    { "id": "avioes", "nome": "Aviões", "setor": "industria" },
+    { "id": "chips", "nome": "Chips", "setor": "industria" },
+    { "id": "software", "nome": "Software e nuvem", "setor": "tecnologia" },
+    { "id": "redes-sociais", "nome": "Redes sociais", "setor": "tecnologia" },
+    {
+      "id": "inteligencia-artificial",
+      "nome": "Inteligência artificial",
+      "setor": "tecnologia"
+    },
+    { "id": "armas", "nome": "Armas e munição", "setor": "militar" },
+    {
+      "id": "veiculos-militares",
+      "nome": "Veículos e aeronaves militares",
+      "setor": "militar"
+    },
+    { "id": "veiculos-de-luxo", "nome": "Veículos de luxo", "setor": "luxo" },
+    { "id": "joias", "nome": "Joias e artigos finos", "setor": "luxo" },
+    {
+      "id": "eletronicos-de-ponta",
+      "nome": "Eletrônicos de ponta",
+      "setor": "luxo"
+    },
+    { "id": "moradia", "nome": "Moradias", "setor": "construcao-civil" },
+    {
+      "id": "obras-publicas",
+      "nome": "Obras públicas",
+      "setor": "construcao-civil"
+    }
+  ]
+}

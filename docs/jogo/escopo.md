@@ -297,3 +297,17 @@ lidas (tag `projeto-antigo-2026-10-31`).
   próprio, quem é antimilitarista reage por ele e os outros grupos reagem por
   outros motivos. Autor deixou como está por enquanto; entra junto com a
   decisão de quais eixos novos a bússola ganha (`docs/jogo/bussola.md`).
+- **Mercado: fila de construção e infraestrutura** (02/nov, autor):
+  - Fila de obras **escondida** do jogador: calcula mais ou menos o custo de
+    construir uma fábrica e se o país tem construção civil forte o bastante.
+    Dá as leis de construção civil. Fica fora do passo 12.
+  - Infraestrutura (rodovias, ferrovias, portos, aeroportos) é setor próprio e
+    deve limitar ou ajudar os outros setores (pouca ferrovia encarece a
+    indústria e a exportação). Vem junto com a fila.
+  - Lucro e salário por setor ficam expostos para as leis do passo 13: quanto
+    do lucro o governo pega, participação dos trabalhadores, salário mínimo.
+  - Mundo vivo: preço mundial por produto, ciclos e choques que vêm de fora
+    (um país inunda o mercado de carros baratos e as fábricas daqui quebram).
+    Entra na fatia 4 em versão simples; oferta e procura completa fica depois.
+  - Produtos da época, inclusive tecnologia (redes sociais, IA). O que a rede
+    social faz com a opinião é a mecânica de mídia, não do setor.
