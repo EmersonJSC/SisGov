@@ -219,7 +219,7 @@ população maior sobe a demanda; produção menor sobe o preço até o teto de
 175%; pop pobre cai em fome antes do rico quando a comida encarece; com a
 cesta atendida e preço no base, ninguém fica em fome.
 
-### Fatia 7: Energia, capacidade contra demanda (escrito antes; aguarda o sim do autor)
+### Fatia 7: Energia, capacidade contra demanda (escrito antes; A aprovado em 02/nov/2026)
 
 Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
 (uma usina abastece regiões distantes). A regra é de **capacidade**.
@@ -229,10 +229,12 @@ Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
   A rede de transmissão limita quanto da capacidade chega ao consumo.
 - **Demanda:** das pessoas (fixa por pessoa) mais das empresas, que **pedem mais
   energia conforme evoluem** (indústria maior, mais demanda).
-- **Se a demanda passa da capacidade:** o crescimento é freado e o preço da
-  energia sobe. Sem investir, o país fica para trás (a demanda cresce e a
-  capacidade não). Apagão com efeito em saúde e apoio: **decisão do autor em
-  aberto** (A: só freio e preço, recomendado; B: também apagão).
+- **Se a demanda passa da capacidade (decidido: A):** a energia vai primeiro
+  para os civis e o que sobra vai para as empresas. Falta pouca: só as empresas
+  sentem, o crescimento é freado e o preço da energia sobe. Os civis só
+  entram na falta se ela passar de toda a demanda das empresas (crise grave),
+  com efeito fraco em saúde e apoio. Sem investir, o país fica para trás (a
+  demanda cresce e a capacidade não).
 - **Cinco fontes**, cada uma com custo, prazo, emissão e risco:
   - hidrelétrica: barata de operar, cara e lenta de construir; pesa no ambiente local.
   - térmica fóssil: rápida e barata de construir; polui; sofre com o preço do combustível lá fora.
