@@ -277,56 +277,96 @@ da tabela de produtos (a energia é só o bloco de capacidade).
 maior que a capacidade freia o crescimento e sobe o preço; investir amplia a
 capacidade só depois do prazo; fóssil piora o ambiente e limpas melhoram.
 
-## Fatia 8: Propriedade e processos (desenho, sem código, 02/nov/2026)
+## Fatia 8: Propriedade (redesenho, sem código, 02/nov/2026)
 
-Autor: privatizar e estatizar **não são botão**, são processos; podem ser pela
-metade, por um quarto, ou só numa indústria. Tem de ser **intuitivo e com
-jogo**, não planilha.
+Autor rejeitou o desenho anterior (barra de 50 blocos, projeto conjunto, leilão
+como tela de gestão). Aprovado em 02/nov: **regras gerais são leis (bolhas);
+a decisão por setor fica na ficha do setor, e cada mudança é um projeto de lei**
+(votação no Congresso, atraso, aviso). O jogador não constrói nada.
 
-**Fatia do Estado.** Toda coisa que muda de dono (as 3 camadas da energia,
-cada setor/indústria do mercado) tem uma fatia do Estado, de 0 a 100%. Alvo em
-passos de 2%. Privatizar e estatizar são o mesmo processo: mover a fatia de X
-para Y. Substitui as 3 leis "quem constrói, opera e vende" (opções fixas); o
-efeito de cada camada (parte privada, ganho de capacidade, margem) passa a
-valer pela fatia atual, em proporção.
+**Seis perguntas (sisgov-gamedesign).** Verbo: propõe mudar o dono, a abertura e
+o preço de UM setor. Apresentação: regras = bolhas; setor = ficha. Escolha com
+dente: estatizar caro e limpo × confiscar barato e arriscado; vender rápido e
+barato × devagar e bem; abrir ao mundo × proteger. Tensão: cofre (Déficit e
+Superávit), povo, investidores, potências. Sentir: preço e falta do setor,
+confiança dos investidores, dependência. Criatividade: cada setor com uma
+postura diferente (liberal na indústria, estatal na comida).
 
-**Processo (um molde, vale para os dois sentidos).** Etapas: 1 Estudo (2
-turnos) · 2 Votação no Congresso · 3 Leilão (privatizar, pode dar vazio) ou
-Indenização (estatizar, pode ser contestada) · 4 Pagamento/transição, a fatia
-anda aos poucos até o alvo, com greve e protesto possíveis · 5 Concluída. Enquanto
-corre, o valor antigo vale. Cancelar até a etapa 3; depois está comprometido.
-Custo e prazo crescem com o tamanho do pedaço movido (25% custa um quarto de
-100%) e com a resistência. Estatizar paga à vista ou em parcelas por turno
-(escolha do jogador no pedido); atrasar parcela derruba a confiança dos
-investidores. A votação é **uma só, no Congresso**: V1 tem câmara única, e o
-regime do país (leis essenciais) define quórum e veto. Senado só no bicameral,
-fora da V1.
+**Ficha do setor** (uma por setor; proposta de 9, o autor corrige):
+Alimentos (grãos, frutas, alimentos) · Saúde (remédios) · Energia · Transporte e
+obras (rodovias, ferrovias, portos, aeroportos, obras públicas) · Moradia ·
+Indústria pesada (aço, máquinas, veículos, aviões) · Tecnologia (chips,
+software, redes sociais, IA, eletrônicos de ponta) · Defesa (armas, veículos
+militares) · Luxo (veículos de luxo, joias). Em cada ficha o jogador escolhe:
+- **Dono:** estatal, mista ou privada (dado: fatia do Estado, 0 a 100%; 0, 50 e
+  100 na V1). Estatizar e privatizar são o mesmo pedido, em sentidos opostos.
+- **Importação:** aberta, com cota ou fechada.
+- **Capital estrangeiro:** teto do setor (0 a 100%).
+- **Preço:** livre, com teto ou com piso.
 
-**Escolhas no meio (o jogo).** Leilão vazio: baixar o preço mínimo, esperar ou
-cancelar. Indenização contestada: pagar mais ou aguentar a justiça. Greve na
-transição: gastar para acalmar ou segurar firme.
+**Pedido = projeto de lei.** Antes de mandar, a ficha mostra os avisos: custo e
+de onde sai o dinheiro, quem ganha e quem perde, reação dos investidores e das
+potências. Congresso vota (câmara única na V1, regime do país define quórum e
+veto); enquanto corre, o valor antigo vale; o efeito chega com atraso e a
+fatia anda aos poucos. A operação **segue as leis gerais**, que mudam o custo.
 
-**Dinheiro (sem "cofre" único).** Venda e compra não têm caixa próprio; entram
-na regra fiscal do país, que passa a ser **duas leis de opções** (hoje é fixa em
-`contas`: sobra vai ao cofre, falta sai do cofre e depois vira dívida):
-*Déficit* (sai do cofre / vira dívida / metade e metade) e *Superávit* (vai ao
-cofre / paga a dívida / metade e metade). Venda de propriedade é sobra extra
-(saldo) e segue a lei do superávit; compra é falta extra (cada parcela) e segue
-a lei do déficit. Mudar `contas` é passo de motor próprio, com teste.
+**Leis gerais (bolhas, país inteiro; opções ou contínuas):**
+- Indenização na estatização: valor justo / abaixo do valor / confisco.
+- Prazo de pagamento: à vista / parcelado / em títulos.
+- Método de venda permitido: leilão / concessão / ação de ouro / venda aos
+  funcionários.
+- Preço mínimo da venda (contínua).
+- Regra pós-venda: livre / agência com teto de tarifa / prazo de devolução.
+- Política da estatal: preço de mercado / preço social / lucro para o cofre.
+- Setores onde o Estado pode ter empresa: nenhum / só estratégicos / todos.
+- Triagem de compra estrangeira: livre / aviso acima de 10% / aprovação do
+  Congresso.
+- Remessa de lucro (imposto, contínua).
+- Fábrica estrangeira no país: isenção / conteúdo local / exigência de
+  tecnologia.
+- Fábrica nossa no exterior: livre / com imposto / proibida.
+- Concorrência (antitruste): nenhuma / fiscaliza / pode desmembrar.
+- **Déficit** (sai do cofre / vira dívida / metade e metade) e **Superávit**
+  (vai ao cofre / abate a dívida / metade e metade): hoje fixas em
+  `src/motor/contas`; mudar é passo de motor próprio, com teste.
+- Acordo com potência: aberto / preferencial / fechado.
 
-**Três medidores** no pedido, antes de confirmar: Custo (e de onde sai, pela
-lei do déficit; na venda, para onde vai, pela do superávit), Povo (protesto,
-greve), Investidores (confiança). Confiança dos investidores é medida nova do
-processo, não índice novo (decisão pendente: efeito só em índices existentes).
+**Substitui** as 3 leis `energia-construcao`, `energia-rede`, `energia-venda`
+(botões sem criatividade, autor 02/nov): a energia vira um setor com ficha.
+Fomento ao setor e crédito ao produtor ficam para depois (autor achou amplo).
 
-**Tela única "Propriedade":** um cartão por coisa, barra de 50 blocos de 2% (azul
-Estado, laranja mercado), clicar ou arrastar define o alvo. **Pacotes** são botões
-no topo que preenchem vários cartões (Estatizar tudo, Concessões, Transição
-verde, Combustível e tradição); o jogador ajusta e envia como um projeto só,
-votação conjunta.
+**Feito:** lista de setores e de leis aprovada; Déficit e Superávit em `contas`.
 
-**Ordem:** 1) protótipo da tela para o autor ver; 2) motor do processo; 3) ligar
-a energia; 4) setores; 5) pacotes.
+### Plano para fechar a fatia 8 (proposto em 02/nov, aguarda aprovação)
+
+Cada passo tem comportamento escrito antes, testes e fecha sozinho. Medido: hoje
+`importa` é resultado da conta (`demanda.ts`), `PISO`/`TETO` do preço são
+internos (`preco.ts`), e o Congresso (`politica.votar`) só vota leis.
+
+1. **Estado do setor (motor, sem tela).** Cada setor ganha 4 dados no estado da
+   partida: fatia do Estado (0/50/100), importação (aberta/cota/fechada), teto
+   de capital estrangeiro, preço (livre/teto/piso). Valor inicial vem do país.
+   O mercado passa a obedecer: cota e fechada limitam `importa`; teto e piso
+   limitam o preço; Estado com fatia maior segue a política da estatal.
+   *Pronto quando:* testes mostram falta e preço mudando com cada dado.
+2. **Projeto de lei do setor.** Mudar a ficha vira pedido: Congresso vota, valor
+   antigo vale até passar, efeito chega com atraso, fatia anda aos poucos.
+   *Pronto quando:* teste de aprovado, rejeitado e em andamento.
+3. **Avisos.** Prévia do pedido: custo e de onde sai, quem ganha e perde,
+   reação de investidores e potências. **Decisão do autor antes:** onde mora a
+   confiança dos investidores sem criar índice novo.
+4. **Ficha na tela, só Alimentos.** Mostrar ao autor e ele aprova o jeito antes
+   dos outros.
+5. **Leis gerais de estatização e venda** (bolhas, opções lidas por campo):
+   indenização, prazo de pagamento, método de venda, preço mínimo, regra
+   pós-venda, política da estatal, setores onde o Estado pode ter empresa.
+6. **Leis gerais de estrangeiros:** triagem de compra, remessa de lucro, fábrica
+   estrangeira, fábrica nossa no exterior, antitruste, acordo com potência.
+7. **Os 9 setores.** Dados dos 9 no mundo, ficha para todos; Energia entra e
+   substitui as 3 leis `energia-construcao/rede/venda`.
+8. **Fechamento.** `npm run check`, escopo seção 10, plano, `RETOMAR.md`, commit.
+
+Cada passo termina com algo visível (teste ou tela) antes do próximo.
 
 ### Fatias seguintes (ainda não)
 

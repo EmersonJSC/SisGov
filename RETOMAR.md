@@ -7,42 +7,38 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passos 11 (mundo) e 12 (mercado, sem a 5b) fechados; dinheiro na tela fechado
-(`npm run check` verde, 137 testes). **Nova frente: mercado de verdade, bem
-parecido com o do Vic3** (autor): a comida do país depende de pessoas, produção,
-preço e de quem consegue pagar. Pesquisa salva em
-`docs/jogo/mercado-vic3-referencia.md`. Desenho na
-**fatia 6** de `src/motor/mercado/mercado.md`; **6a a 6d em código** (comida e Remédios como cestas; falta o autor confirmar Remédios na tela): demanda dos pops, oferta, preço
-do país (faixa de 25% a 175%) e segurança alimentar. Autor decidiu: Agro é
-grupo de pop, não produto; produtos novos **Grãos** e **Frutas**; todos os
-produtos, mas a comida primeiro e só depois de confirmada na tela os outros.
+Passos 11 (mundo) e 12 (mercado, sem a 5b) fechados; dinheiro na tela fechado.
+Mercado tipo Vic3 em código até a fatia 7 (comida, Remédios, Energia).
+**Fatia 8 (Propriedade) redesenhada e aprovada pelo autor em 02/nov:** o
+protótipo v2 (barra de 50 blocos) foi descartado. **Regras gerais = leis
+(bolhas)**; **decisão por setor = ficha do setor** (dono estatal/mista/privada,
+importação, teto de capital estrangeiro, preço), e cada mudança é um projeto de
+lei votado, que segue as leis gerais (indenização, método de venda, prazo,
+triagem, Déficit e Superávit etc.). Tudo em `src/motor/mercado/mercado.md`,
+fatia 8. Princípios 8 e 9 do escopo (bolha; dados antes da narrativa) escritos.
+Skill nova `sisgov-gamedesign` (6 perguntas antes de desenhar).
 
 ## Próximo
 
-**Fatia 8 (Propriedade e processos)**, desenho em `mercado.md`, ajustado em
-02/nov após o protótipo: passos de **2%**, votação só no Congresso (câmara
-única), e **sem cofre único**: venda e compra seguem duas leis novas de opções,
-*Déficit* e *Superávit* (hoje fixas em `src/motor/contas`). Próximo: **protótipo
-v2** (barra de 50 blocos, medidor de custo/destino) para o autor ver; depois
-motor das duas leis fiscais, motor do processo, energia, setores, pacotes.
-
-Autor olha a **Energia** (bolha "Infra", 8 leis: 5 verbas por fonte e 3 de
-"quem constrói / opera / vende") e o bloco "Energia: capacidade contra demanda"
-na janela Mercado, e confirma, junto com Remédios. Em aberto: as outras 5 leis do
-pacote (tarifa social, subsídio à limpa, imposto sobre fóssil, licenciamento,
-fiscalização nuclear), uma por vez; risco da nuclear. Depois, **uma regra
-própria por vez**: Moradia, Infraestrutura (estradas, obras), Militar.
-Industriais, informação e luxo ficam para depois. Equilibrar com "Brasil" e
-"EUA" só no fim (ver a regra de país real). Demografia é etapa própria.
-
-Outro chat trata da **economia das leis militares**. Em aberto: **eixos novos**
-da bússola (paz × militarismo, seção 11).
+**Plano de 8 passos para fechar a fatia 8 escrito em `mercado.md`; o autor
+aprova e começa o passo 1 (estado do setor no motor, sem tela).**
+**Feito em 02/nov:** Déficit e Superávit (leis de opções na área Economia,
+`fecharTurno` lê `deficit_do_cofre` e `superavit_ao_cofre` das opções, 10 testes
+em `contas.test.ts`, vistas no mapa). Os 9 setores foram aprovados como estão
+(expandimos depois). Agora, nesta ordem: ficha do setor Alimentos com os avisos; leis de venda e estatização;
+estrangeiros; energia (substitui as 3 leis "quem constrói/opera/vende").
+Sem commit ainda: `docs/jogo/escopo.md`, `mercado.md`, `RETOMAR.md`, `src/motor/contas`, `src/motor/leis`, `src/motor/turno`, `src/conteudo` (leis e países),
+`docs/historico/retomar.md` e `.claude/skills/sisgov-gamedesign/` (adicionar
+arquivo por arquivo).
 
 ## Pendências do autor
 
+- Confirmar Energia e Remédios na tela.
 - Commits locais sem push (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
-- Antes de publicar o jogo: checar com advogado (mecânicas não são protegidas, expressão é; ver pesquisa no chat de 02/nov).
+- Antes de publicar o jogo: checar com advogado.
+- Eixos novos da bússola (paz × militarismo, seção 11); outro chat trata da economia militar.
+- Equilibrar com "Brasil" e "EUA" só no fim (regra de país real).
 
 ## Armadilhas
 

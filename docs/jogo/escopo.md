@@ -42,6 +42,14 @@ esquerda é resultado das leis, nunca objetivo (31/out).
    essenciais e os cálculos econômicos estudados (curva de Laffer, evasão,
    multiplicador, defasagem da política monetária…); o Estado pode ser
    complexo. Não conhece nomes de leis, partidos ou países (31/out).
+8. **Toda regra aparece como uma bolha** (autor, 02/nov). No mapa, a lei é
+   sempre uma bolha, nunca um painel de gestão. Qualquer regra nova
+   (propriedade, mercado, energia) chega ao jogador como bolha de lei. A
+   decisão **por setor** (dono, importação, capital estrangeiro, preço) fica
+   na ficha do setor, e cada mudança é um projeto de lei votado, sujeito às
+   leis gerais; o jogador nunca constrói nem opera nada.
+9. **Dados primeiro, narrativa depois** (autor, 02/nov). Primeiro os dados
+   que a narrativa vai ler; texto, frases e eventos vêm depois.
 
 ## 3. Tempo
 
