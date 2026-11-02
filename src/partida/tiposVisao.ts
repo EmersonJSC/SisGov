@@ -77,6 +77,14 @@ export type VisaoLei = Readonly<{
    * do valor em que o gasto total passa da receita.
    */
   alerta?: Readonly<{ tipo: "imposto" | "verba"; limite: number }>;
+  /**
+   * Como o valor vira dinheiro no caixa (lei contínua em %): verba é o
+   * próprio valor em % do PIB; imposto traz a receita em % do PIB para as
+   * alíquotas de 0 a 100% (de 1 em 1 ponto).
+   */
+  fluxo?: Readonly<
+    { tipo: "verba" } | { tipo: "imposto"; curva: readonly number[] }
+  >;
   unidade: string;
   opcoes?: readonly VisaoOpcao[];
   /** Opção mais próxima do nível em funcionamento. */

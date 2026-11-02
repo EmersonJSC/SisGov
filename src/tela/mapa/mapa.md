@@ -170,6 +170,27 @@ Mesma regra da fatia 7: o motor segue em %, a tela converte.
 - Abas e "Do mundo" não mudam (preço do mundo é índice, base 100).
 - Símbolo da moeda e PIB vêm da partida (`partida.moeda`, `estado.essenciais`).
 
+## Comportamento esperado da fatia 9: dinheiro ao lado dos controles das leis (escrito antes, 02/nov/2026)
+
+O controle segue em % (é a alíquota ou a fatia do PIB). Embaixo dele, uma
+linha mostra o que o valor escolhido rende ou custa, em dinheiro, por ano e
+por turno. O motor não muda; a tela converte.
+
+- **Verba** (lei de gasto, % do PIB): "≈ custa 480 bi por ano · 80 bi no turno"
+  = valor ÷ 100 × PIB.
+- **Imposto** (lei com cálculo): "≈ arrecada 300 bi por ano · 50 bi no turno".
+  Não é linear (a curva sobe e depois cai), então a visão entrega a receita da
+  lei em % do PIB para as alíquotas de 0 a 100% (passo de 1 ponto) e a tela
+  lê a que está no pino, com interpolação entre os pontos. Passar do pico
+  mostra a receita caindo, de acordo com o aviso da zona.
+- A linha acompanha o pino enquanto se arrasta. Quando o valor escolhido difere
+  do em vigor, a linha mostra também a diferença: "(+30 bi por ano)" ou
+  "(−30 bi por ano)", contra o valor em vigor.
+- Regra e lei sem efeito direto no caixa (sem `conta` nem `calculo`): sem linha.
+- Leis de opções não mudam. Símbolo e PIB vêm da partida.
+- Fica de fora: efeito no PIB, nos grupos e nos índices (isso já tem seção
+  própria na janela).
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais

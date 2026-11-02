@@ -97,6 +97,48 @@ function alertaDaLei(
   return { tipo: "verba", limite: nivel + Math.max(0, receita - gasto) };
 }
 
+/**
+ * Receita do imposto em % do PIB para as alíquotas de 0 a 100% (de 1 em 1
+ * ponto): a curva não é linear, então a tela lê o ponto do pino.
+ */
+function curvaDoImposto(lei: Lei, regras: Regras, estado: Estado): number[] {
+  if (lei.forma !== "continua" || !lei.calculo) return [];
+  const base = lei.calculo.base;
+  const parametros = regras.pais.bases[base] ?? {
+    ...BASES[base].padrao,
+    parcela_pib: 0,
+  };
+  const pib = estado.essenciais.pib_nominal;
+  return Array.from(
+    { length: 101 },
+    (_, i) =>
+      (BASES[base].arrecadar(
+        i / 100,
+        pib * parametros.parcela_pib,
+        parametros,
+      ) /
+        pib) *
+      100,
+  );
+}
+
+/** Diz à tela o que o valor da lei rende ou custa no caixa (só leis em %). */
+function comFluxo(
+  visao: VisaoLei,
+  lei: Lei,
+  regras: Regras,
+  estado: Estado,
+): VisaoLei {
+  if (lei.forma !== "continua") return visao;
+  if (lei.calculo)
+    return {
+      ...visao,
+      fluxo: { tipo: "imposto", curva: curvaDoImposto(lei, regras, estado) },
+    };
+  if (lei.conta === "gasto") return { ...visao, fluxo: { tipo: "verba" } };
+  return visao;
+}
+
 function visaoDaLei(
   lei: Lei,
   valor: number | string,
@@ -260,11 +302,16 @@ export function montarVisao(partida: Partida): VisaoPartida {
     turno: estado.turno,
     leis: areas.areas.flatMap((a) =>
       a.leis.map((id) =>
-        visaoDaLei(
+        comFluxo(
+          visaoDaLei(
+            regras.leis[id],
+            estado.leis[id],
+            areaDa.get(id)!,
+            alertaDaLei(regras.leis[id], regras, estado),
+          ),
           regras.leis[id],
-          estado.leis[id],
-          areaDa.get(id)!,
-          alertaDaLei(regras.leis[id], regras, estado),
+          regras,
+          estado,
         ),
       ),
     ),

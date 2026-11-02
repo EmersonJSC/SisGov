@@ -149,6 +149,8 @@ export function TelaMapa({
             key={lei.id}
             lei={lei}
             visao={visao}
+            moeda={partida.moeda}
+            pib={partida.estado.essenciais.pib_nominal}
             base={base}
             indice={indice}
             rascunho={rascunho}

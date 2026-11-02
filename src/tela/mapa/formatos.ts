@@ -1,19 +1,12 @@
 /** Números para o jogador: moeda do país, porcentagens e índices. */
 
+import type { VisaoLei } from "../../partida";
+
 const numero = (valor: number, casas = 1) =>
   valor.toLocaleString("pt-BR", {
     minimumFractionDigits: 0,
     maximumFractionDigits: casas,
   });
-
-/** Valores em milhões da moeda do país (como a `VisaoPartida` entrega). */
-export function moeda(milhoes: number): string {
-  const sinal = milhoes < 0 ? "−" : "";
-  const v = Math.abs(milhoes);
-  if (v >= 1_000_000) return `${sinal}R$ ${numero(v / 1_000_000)} tri`;
-  if (v >= 1_000) return `${sinal}R$ ${numero(v / 1_000)} bi`;
-  return `${sinal}R$ ${numero(v)} mi`;
-}
 
 /** Valor em unidades da moeda do país (como o motor guarda), com o símbolo. */
 export function dinheiro(unidades: number, simbolo: string): string {
@@ -41,6 +34,18 @@ export function porAnoEPorTurno(
   return `${dinheiro(ano, simbolo)} por ano · ${dinheiro(ano / 6, simbolo)} no turno`;
 }
 
+/** Fluxo anual da lei (% do PIB) para o valor do pino; imposto interpola a curva. */
+export function fluxoDaLei(
+  fluxo: NonNullable<VisaoLei["fluxo"]>,
+  valor: number,
+): number {
+  if (fluxo.tipo === "verba") return valor;
+  const c = fluxo.curva;
+  const x = Math.min(Math.max(valor, 0), c.length - 1);
+  const i = Math.min(Math.floor(x), c.length - 2);
+  return c[i] + (c[i + 1] - c[i]) * (x - i);
+}
+
 export function valorDaBolha(valor: number, unidade: string): string {
   switch (unidade) {
     case "percentual_0_100":
@@ -51,8 +56,6 @@ export function valorDaBolha(valor: number, unidade: string): string {
       return `${numero(valor)} por 100 mil`;
     case "indice_0_100":
       return `${numero(valor, 0)} / 100`;
-    case "moeda_ano":
-      return `${moeda(valor)}/ano`;
     default:
       return numero(valor);
   }
@@ -109,7 +112,6 @@ export function diferenca(valor: number, unidade: string): string {
 }
 
 export function nivelDaLei(valor: number, unidade: string): string {
-  if (unidade === "moeda_ano") return `${moeda(valor)}/ano`;
   // vinculação (SG137): parte da receita que vai para a área
   if (unidade === "percentual_receita")
     return `${numero(valor, 2)}% da receita`;

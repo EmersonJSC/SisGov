@@ -14,7 +14,14 @@ import {
   type ReactNode,
 } from "react";
 import type { PreviaLei, VisaoLei, VisaoPartida } from "../../partida";
-import { NOME_GRUPO, atraso, nivelDaLei } from "./formatos";
+import {
+  NOME_GRUPO,
+  atraso,
+  dinheiro,
+  fluxoDaLei,
+  nivelDaLei,
+  porAnoEPorTurno,
+} from "./formatos";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { iconeLei } from "./iconesPersonalizados";
@@ -388,10 +395,14 @@ function ControleNumerico({
   lei,
   valor,
   onValor,
+  moeda,
+  pib,
 }: {
   lei: VisaoLei;
   valor: number;
   onValor: (v: number) => void;
+  moeda: string;
+  pib: number;
 }) {
   const min = lei.minimo ?? 0;
   const max = lei.maximo ?? 100;
@@ -448,6 +459,21 @@ function ControleNumerico({
       <p className="regua-aviso" aria-live="polite">
         {aviso || "\u00a0"}
       </p>
+      {lei.fluxo ? (
+        <p className="regua-dinheiro">
+          {(() => {
+            const f = lei.fluxo;
+            const agora = fluxoDaLei(f, valor);
+            const dif = agora - fluxoDaLei(f, lei.nivel);
+            const verbo = f.tipo === "verba" ? "custa" : "arrecada";
+            return `≈ ${verbo} ${porAnoEPorTurno(agora, pib, moeda)}${
+              Math.abs(dif) >= 0.005
+                ? ` (${dif > 0 ? "+" : "−"}${dinheiro(Math.abs(dif / 100) * pib, moeda)} por ano)`
+                : ""
+            }`;
+          })()}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -479,6 +505,8 @@ const pontos = (p: number) =>
 export function DocumentoLei({
   lei,
   visao,
+  moeda,
+  pib,
   base,
   indice,
   rascunho,
@@ -493,6 +521,8 @@ export function DocumentoLei({
 }: JanelaProps & {
   lei: VisaoLei;
   visao: VisaoPartida;
+  moeda: string;
+  pib: number;
   base: BaseMapa;
   indice: IndiceRelacoes;
   /** Nível escolhido na janela, na unidade da visão. */
@@ -636,7 +666,13 @@ export function DocumentoLei({
               onEscolher={onRascunho}
             />
           ) : (
-            <ControleNumerico lei={lei} valor={rascunho} onValor={onRascunho} />
+            <ControleNumerico
+              lei={lei}
+              valor={rascunho}
+              onValor={onRascunho}
+              moeda={moeda}
+              pib={pib}
+            />
           )}
           {naFila ? (
             <div className="cg-envio folha-congresso">
