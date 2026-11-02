@@ -1,6 +1,15 @@
 // Monta a VisaoPartida (formato da tela antiga do mapa) a partir da partida
 // nova. Só lê: nomes e textos vêm do JSON das leis e do mundo.
-import { pontosLei, type Lei, type TipoGrupo } from "../motor";
+import {
+  arrecadacao,
+  BASES,
+  gastoDasLeis,
+  pontosLei,
+  type Estado,
+  type Lei,
+  type Regras,
+  type TipoGrupo,
+} from "../motor";
 import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
@@ -57,10 +66,36 @@ function governo(): VisaoArea[] {
   }));
 }
 
+/**
+ * Zona de alerta do controle, em % (imposto: o pico da receita que o país
+ * declara; verba: o valor em que o gasto total iguala a receita de hoje).
+ */
+function alertaDaLei(
+  lei: Lei,
+  regras: Regras,
+  estado: Estado,
+): VisaoLei["alerta"] {
+  if (lei.forma !== "continua" || lei.unidade !== "fracao") return undefined;
+  if (lei.calculo) {
+    const base = lei.calculo.base;
+    const pico = regras.pais.bases[base]?.pico ?? BASES[base].padrao.pico;
+    return { tipo: "imposto", limite: pico * 100 };
+  }
+  if (lei.conta !== "gasto") return undefined;
+  const receita =
+    arrecadacao(regras, estado.leis, estado.essenciais) +
+    regras.pais.receita_fora_das_leis;
+  const gasto =
+    gastoDasLeis(regras, estado.leis) + regras.pais.gasto_fora_das_leis;
+  const nivel = Number(estado.leis[lei.id] ?? lei.faixa.min) * 100;
+  return { tipo: "verba", limite: Math.max(0, nivel + receita - gasto) };
+}
+
 function visaoDaLei(
   lei: Lei,
   valor: number | string,
   area: (typeof areas.areas)[number],
+  alerta: VisaoLei["alerta"],
 ): VisaoLei {
   const t = textos.get(lei.id) ?? {};
   const comum = {
@@ -98,6 +133,7 @@ function visaoDaLei(
       minimo: lei.faixa.min * escala,
       maximo: lei.faixa.max * escala,
       passo: lei.passo * escala,
+      ...(alerta ? { alerta } : {}),
       unidade: lei.unidade === "fracao" ? "percentual_0_100" : lei.unidade,
     };
   }
@@ -218,7 +254,12 @@ export function montarVisao(partida: Partida): VisaoPartida {
     turno: estado.turno,
     leis: areas.areas.flatMap((a) =>
       a.leis.map((id) =>
-        visaoDaLei(regras.leis[id], estado.leis[id], areaDa.get(id)!),
+        visaoDaLei(
+          regras.leis[id],
+          estado.leis[id],
+          areaDa.get(id)!,
+          alertaDaLei(regras.leis[id], regras, estado),
+        ),
       ),
     ),
     bolhas,

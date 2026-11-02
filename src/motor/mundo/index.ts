@@ -2,6 +2,7 @@
 // conhece os nomes; elas vêm do conteúdo.
 import {
   EIXOS,
+  fracaoDaBussola,
   type Eixo,
   type Lei,
   type PontoBussola,
@@ -183,8 +184,7 @@ export function posicaoDoPais(
         const b = lei.bussola;
         if (!b || (b.min[eixo] === undefined && b.max[eixo] === undefined))
           continue;
-        const { min, max } = lei.faixa;
-        const t = (((valor as number | undefined) ?? min) - min) / (max - min);
+        const t = fracaoDaBussola(lei, valor as number | undefined);
         const de = b.min[eixo] ?? 0;
         v = de + t * ((b.max[eixo] ?? 0) - de);
       } else {

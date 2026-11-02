@@ -1,6 +1,12 @@
 // Grupos de interesse: leem os pops, os índices e as leis. Tipos vêm do
 // mundo. Comportamento em grupos.md.
-import { EIXOS, type Lei, type PontoBussola, type ValorLei } from "../leis";
+import {
+  EIXOS,
+  fracaoDaBussola,
+  type Lei,
+  type PontoBussola,
+  type ValorLei,
+} from "../leis";
 import type { Pop } from "../populacao";
 
 /** Tipo de grupo do mundo. */
@@ -108,8 +114,7 @@ export function posicaoDaLei(
 ): PontoBussola | null {
   if (lei.forma === "continua") {
     if (!lei.bussola) return null;
-    const { min, max } = lei.faixa;
-    const t = (((valor as number | undefined) ?? min) - min) / (max - min);
+    const t = fracaoDaBussola(lei, valor as number | undefined);
     const ponto: PontoBussola = {};
     for (const eixo of EIXOS) {
       const de = lei.bussola.min[eixo] ?? 0;

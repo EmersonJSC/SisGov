@@ -8,10 +8,11 @@
   "unidade": "fracao",
   "faixa": {
     "min": 0,
-    "max": 0.4
+    "max": 1
   },
   "passo": 0.01,
   "bussola": {
+    "ate": 0.4,
     "min": {},
     "max": {
       "economico": -0.2,

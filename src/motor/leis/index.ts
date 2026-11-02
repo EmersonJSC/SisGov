@@ -10,4 +10,9 @@ export type {
 export { EIXOS } from "./tipos";
 export type { Eixo } from "./tipos";
 export { validarLei, lerLei, type ErroLei } from "./validar";
-export { motivoValorInvalido, efeitosDoValor, type ValorLei } from "./valor";
+export {
+  motivoValorInvalido,
+  efeitosDoValor,
+  fracaoDaBussola,
+  type ValorLei,
+} from "./valor";

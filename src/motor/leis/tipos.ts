@@ -48,8 +48,11 @@ export interface LeiContinua extends LeiBase {
   conta?: "gasto";
   /** Lei de gasto que vira renda de um estrato de pops (motor/populacao). */
   para?: { estrato: Estrato };
-  /** Posição na bússola no mínimo e no máximo da faixa (motor/grupos). */
-  bussola?: { min: PontoBussola; max: PontoBussola };
+  /**
+   * Posição na bússola no mínimo da faixa (`min`) e em `ate` (`max`); acima de
+   * `ate` a lei fica na ponta. Sem `ate`, vale o máximo da faixa.
+   */
+  bussola?: { min: PontoBussola; max: PontoBussola; ate?: number };
   efeitos: Efeito[];
 }
 

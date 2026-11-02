@@ -125,6 +125,19 @@ export function validarLei(
       else {
         ponto(dado.bussola.min, "bussola.min");
         ponto(dado.bussola.max, "bussola.max");
+        const ate = dado.bussola.ate;
+        const f = ehObjeto(faixa) ? faixa : {};
+        if (
+          ate !== undefined &&
+          !(
+            typeof ate === "number" &&
+            ehNumero(f.min) &&
+            ehNumero(f.max) &&
+            ate > f.min &&
+            ate <= f.max
+          )
+        )
+          erro("bussola.ate", "precisa estar dentro da faixa");
       }
     }
     efeitos(dado.efeitos, "efeitos");

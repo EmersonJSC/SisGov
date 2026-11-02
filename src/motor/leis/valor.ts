@@ -1,5 +1,5 @@
 // Valor de uma lei em vigor: fração (contínua) ou id de opção.
-import type { Lei } from "./tipos";
+import type { Lei, LeiContinua } from "./tipos";
 
 export type ValorLei = number | string;
 
@@ -29,4 +29,15 @@ export function efeitosDoValor(lei: Lei, valor: ValorLei) {
   }
   const opcao = lei.opcoes.find((op) => op.id === valor);
   return (opcao?.efeitos ?? []).map((efeito) => ({ efeito, intensidade: 1 }));
+}
+
+/** Onde a lei contínua está entre o `min` e o `max` da bússola (0 a 1). */
+export function fracaoDaBussola(
+  lei: LeiContinua,
+  valor: number | undefined,
+): number {
+  const { min, max } = lei.faixa;
+  const ate = lei.bussola?.ate ?? max;
+  const t = ((valor ?? min) - min) / (ate - min);
+  return Math.min(1, Math.max(0, t));
 }

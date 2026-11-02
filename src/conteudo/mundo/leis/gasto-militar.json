@@ -8,11 +8,12 @@
   "unidade": "fracao",
   "faixa": {
     "min": 0,
-    "max": 0.04
+    "max": 1
   },
   "passo": 0.001,
   "conta": "gasto",
   "bussola": {
+    "ate": 0.04,
     "min": { "social": 0 },
     "max": { "social": 0.3 }
   },

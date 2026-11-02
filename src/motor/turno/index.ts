@@ -170,7 +170,7 @@ function arrecadacaoPorBase(
 }
 
 /** Arrecadação das leis com cálculo, em % do PIB nominal. */
-function arrecadacao(
+export function arrecadacao(
   regras: Regras,
   leis: Record<string, ValorLei>,
   e: IndicesEssenciais,

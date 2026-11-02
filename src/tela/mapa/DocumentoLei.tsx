@@ -364,6 +364,26 @@ function ControleEmDegraus({
   );
 }
 
+type Zona = "boa" | "atencao" | "perigo";
+
+/** Zona do valor no controle e a frase de aviso (vazia sem alerta). */
+function zonaDoValor(lei: VisaoLei, v: number): [Zona, string] {
+  const a = lei.alerta;
+  if (!a) return ["boa", ""];
+  if (a.tipo === "imposto") {
+    if (v > a.limite) return ["perigo", "A receita cai a partir daqui."];
+    if (v >= a.limite * ZONA_PERTO_DO_PICO)
+      return ["atencao", "Perto do pico: a receita quase para de subir."];
+    return ["boa", ""];
+  }
+  return v > a.limite
+    ? ["perigo", "Daqui para cima abre déficit."]
+    : ["boa", ""];
+}
+
+const ZONA_PERTO_DO_PICO = 0.8;
+const MARCAS_DA_REGUA = [0, 0.25, 0.5, 0.75, 1];
+
 function ControleNumerico({
   lei,
   valor,
@@ -376,37 +396,55 @@ function ControleNumerico({
   const min = lei.minimo ?? 0;
   const max = lei.maximo ?? 100;
   const passo = lei.passo ?? 0.1;
+  const pos = (v: number) => (v - min) / (max - min);
+  const [zona, aviso] = zonaDoValor(lei, valor);
+  const a = lei.alerta;
+  // paradas da faixa de cores atrás do trilho
+  const cortes =
+    a?.tipo === "imposto"
+      ? [pos(a.limite * ZONA_PERTO_DO_PICO), pos(a.limite)]
+      : a
+        ? [pos(a.limite), pos(a.limite)]
+        : [1, 1];
+  const [c1, c2] = cortes.map((c) => `${Math.min(1, Math.max(0, c)) * 100}%`);
+  const estilo = {
+    "--p": pos(valor),
+    "--vigente": pos(lei.nivel),
+    "--c1": c1,
+    "--c2": c2,
+  } as CSSProperties;
   return (
-    <div className="controle-doc">
-      <div className="controle-topo">
-        <span>Novo valor</span>
-        <strong>{nivelDaLei(valor, lei.unidade)}</strong>
+    <div className={`regua-lei zona-${zona}`} style={estilo}>
+      <div className="regua-marcas" aria-hidden="true">
+        {MARCAS_DA_REGUA.map((m) => (
+          <span key={m} style={{ left: `${m * 100}%` }}>
+            {nivelDaLei(min + m * (max - min), lei.unidade)}
+          </span>
+        ))}
       </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={passo}
-        value={valor}
-        onChange={(e) => onValor(Number(e.target.value))}
-        aria-label={`Nível de ${lei.nome}`}
-      />
-      <div className="controle-escala">
-        <span>{nivelDaLei(min, lei.unidade)}</span>
+      <div className="regua-corpo">
+        <div className="regua-trilho">
+          <div className="regua-zonas" />
+          <div className="regua-cheio" />
+          <i className="regua-vigente" title="Em vigor" />
+        </div>
+        <output className="regua-pino" aria-live="polite">
+          {nivelDaLei(valor, lei.unidade)}
+        </output>
         <input
-          type="number"
+          type="range"
           min={min}
           max={max}
           step={passo}
-          value={Number(valor.toFixed(4))}
-          onChange={(e) => {
-            const v = Number(e.target.value);
-            if (Number.isFinite(v)) onValor(Math.min(max, Math.max(min, v)));
-          }}
-          aria-label="Valor exato"
+          value={valor}
+          onChange={(e) => onValor(Number(e.target.value))}
+          aria-label={`Nível de ${lei.nome}`}
+          aria-valuetext={nivelDaLei(valor, lei.unidade)}
         />
-        <span>{nivelDaLei(max, lei.unidade)}</span>
       </div>
+      <p className="regua-aviso" aria-live="polite">
+        {aviso || "\u00a0"}
+      </p>
     </div>
   );
 }

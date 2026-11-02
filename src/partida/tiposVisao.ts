@@ -71,6 +71,12 @@ export type VisaoLei = Readonly<{
   naoLegislada?: boolean;
   /** Passo do controle, na unidade do nível (lei contínua). */
   passo?: number;
+  /**
+   * Zona de alerta do controle (lei contínua), na mesma unidade do nível:
+   * imposto avisa perto do pico da receita e depois dele; verba avisa acima
+   * do valor em que o gasto total passa da receita.
+   */
+  alerta?: Readonly<{ tipo: "imposto" | "verba"; limite: number }>;
   unidade: string;
   opcoes?: readonly VisaoOpcao[];
   /** Opção mais próxima do nível em funcionamento. */

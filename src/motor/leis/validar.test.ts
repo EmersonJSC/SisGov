@@ -134,3 +134,16 @@ describe("validarLei", () => {
     ).toEqual(["opcoes[1].id"]);
   });
 });
+
+describe("bússola.ate", () => {
+  const com = (ate: unknown) => ({
+    ...valida,
+    bussola: { min: { economico: 0.5 }, max: { economico: -0.5 }, ate },
+  });
+  it("vale dentro da faixa; fora dela é erro", () => {
+    expect(campos(com(0.3))).toEqual([]);
+    expect(campos(com(0.5))).toEqual([]);
+    expect(campos(com(0))).toEqual(["bussola.ate"]);
+    expect(campos(com(0.9))).toEqual(["bussola.ate"]);
+  });
+});

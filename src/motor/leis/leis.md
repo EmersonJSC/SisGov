@@ -17,3 +17,7 @@ Formato e validador. A lei declara; o motor interpreta.
 - `bussola`: onde a lei fica nos dois eixos (econômico e social), no
   mínimo e no máximo da faixa ou em cada opção. Quem gosta sai da
   distância até cada grupo (motor/grupos).
+  Na lei contínua, `bussola.ate` diz até onde a bússola anda: de `min` na
+  base da faixa até `max` em `ate`; acima disso a lei fica na ponta (100% de
+  imposto é tão extremo quanto 90%). Sem `ate`, vale o máximo da faixa. Assim
+  a faixa do controle (0 a 100%) não mexe no equilíbrio das leis.

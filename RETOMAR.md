@@ -15,6 +15,14 @@ losangos no mapa e chips "Reputação" e "Seg. externa" na barra do topo.
 Comportamento: `src/motor/mundo/mundo.md` e `src/tela/mapa/mapa.md` (fatia 5).
 Sem tag (o passo 11 não fecha versão).
 
+**Controle das leis em % (02/nov, depois do passo 11):** as 14 leis em % vão
+de 0 a 100% (o Congresso é quem barra: mais de 1/3 da faixa cai). A bússola
+continua calibrada pelo máximo antigo (`bussola.ate` na lei). O slider é
+novo: régua em %, pino com o valor, marca do valor em vigor, zonas (imposto:
+amarelo perto do pico da receita e vermelho depois; verba: vermelho acima do
+ponto em que o gasto passa da receita) e sem caixa de número. Comportamento em
+`src/tela/mapa/mapa.md` (fatia 6).
+
 ## Próximo
 
 O autor abriu **outro chat** para tratar da **economia das leis militares**

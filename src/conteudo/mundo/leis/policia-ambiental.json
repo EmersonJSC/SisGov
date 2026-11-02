@@ -6,10 +6,11 @@
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.01 },
-  "passo": 0.0005,
+  "faixa": { "min": 0, "max": 1 },
+  "passo": 0.001,
   "conta": "gasto",
   "bussola": {
+    "ate": 0.01,
     "min": {},
     "max": { "economico": -0.1, "social": -0.6 }
   },

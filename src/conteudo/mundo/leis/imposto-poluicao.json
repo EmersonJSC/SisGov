@@ -6,10 +6,11 @@
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.6 },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.01,
   "calculo": { "base": "emissoes", "modelo": "laffer" },
   "bussola": {
+    "ate": 0.6,
     "min": { "economico": 0.2 },
     "max": { "economico": -0.3, "social": -0.6 }
   },

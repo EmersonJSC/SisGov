@@ -100,6 +100,34 @@ para fora: leis, índices, grupos e, por último, as potências.
 Fica de fora: ligação potência ↔ índice no foco, empresas em volta,
 comércio, sanções e ataques.
 
+## Comportamento esperado da fatia 6 (escrito antes, 02/nov/2026)
+
+Leis contínuas (imposto, verba, regra em %) ganham faixa larga e um controle
+novo. O jogo é permissivo: quem bloqueia é o Congresso (pedido de mais de 1/3
+da faixa cai), não a tela.
+
+- **Faixa de 0 a 100%** em todas as leis contínuas que são % (impostos e
+  verbas). Leis em meses/anos (serviço militar, idade) ficam como estão.
+- **Sem caixa de número.** Só o controle de arrastar.
+- **Controle em jogo:** trilho grosso e arredondado que enche até o pino; o
+  pino é grande e leva o valor em cima (ex.: "42%"). O cheio usa a cor da
+  zona onde o pino está. Setas do teclado mexem pelo passo da lei.
+- **Régua em cima do trilho:** marcas em 0, 25, 50, 75 e 100%, e uma marca
+  fina no valor em vigor (para ver o quanto se está mexendo).
+- **Zonas de alerta no trilho** (cor + texto curto embaixo do pino):
+  - Imposto (lei com cálculo): verde até 80% do pico da receita; amarelo de
+    80% do pico até o pico ("perto do pico: a receita quase para de subir");
+    vermelho depois do pico ("a receita cai a partir daqui"). O pico vem do
+    que o país declara (`pico` da base), não do código da lei.
+  - Verba (lei com `conta: gasto`): verde enquanto o gasto total cabe na
+    receita; vermelho acima disso ("daqui para cima abre déficit"). A marca é
+    o valor da verba em que gasto e receita se igualam hoje.
+  - Sem zona (regra ou lei sem esses dados): trilho neutro, só a régua.
+- O alerta só avisa; arrastar até 100% continua possível.
+
+Fica de fora: avisar do efeito nos grupos, curva de Laffer desenhada, zona
+para leis de opções (continuam com os degraus de hoje).
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais
