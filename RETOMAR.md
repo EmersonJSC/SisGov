@@ -26,7 +26,6 @@ fora do passo: **empresas** em volta, perto do anel das potências.
 
 ## Pendências do autor
 
-- `_lixo/superpowers-antigo/` (336 MB) espera o autor apagar.
 - Commits locais sem push (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções (sem regra / permissão prévia / permissão e apagar) foi criada sem confirmação explícita; ver se serve.
 
