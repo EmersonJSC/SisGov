@@ -154,6 +154,22 @@ O motor segue em % do PIB; só a tela converte. O jogador lê dinheiro.
 - Índices que já são % de verdade (pobreza, apoio, desemprego, juro) ficam em %.
 - Fica de fora desta fatia: Mercado e controles das leis (fatias seguintes).
 
+## Comportamento esperado da fatia 8: Mercado em dinheiro (escrito antes, 02/nov/2026)
+
+Mesma regra da fatia 7: o motor segue em %, a tela converte.
+
+- Aba "Do país", linha de cada setor: o **lucro** deixa de ser "% do PIB" e
+  vira dinheiro por ano e por turno ("lucro 480 bi por ano · 80 bi no turno").
+  Entra também a **massa salarial** do setor, no mesmo formato.
+- Empregos (% da população) e salário (vezes a renda média) continuam como
+  estão: são proporções, não dinheiro.
+- Conta: lucro em dinheiro = lucro % ÷ 100 × PIB nominal; massa igual.
+- **Compra e vende** (importa/exporta) ficam em % da demanda: o motor ainda
+  não tem o valor da demanda de cada produto, então não dá para converter sem
+  inventar. Fica como pergunta ao autor.
+- Abas e "Do mundo" não mudam (preço do mundo é índice, base 100).
+- Símbolo da moeda e PIB vêm da partida (`partida.moeda`, `estado.essenciais`).
+
 ## Fica de fora
 
 Jornal, censo, pressão, bússola, gabinete, orçamento e índices essenciais

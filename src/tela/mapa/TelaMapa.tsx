@@ -175,6 +175,8 @@ export function TelaMapa({
         {mercado ? (
           <Mercado
             visao={visao}
+            moeda={partida.moeda}
+            pib={partida.estado.essenciais.pib_nominal}
             onFechar={() => setMercado(false)}
             desvio={desvioMercado}
             onDesvio={setDesvioMercado}

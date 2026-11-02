@@ -31,12 +31,14 @@ ciclo e choques, pops com setores e capital (empregos, salário e lucro), janela
 Mercado. A janela é vitrine: PIB e impostos ainda não leem o mercado (5b, na
 seção 11 do escopo).
 
-**Dinheiro na tela, fatia 1 feita (02/nov):** barra do topo com Caixa, Dívida e
-PIB em dinheiro, por ano e por turno juntos; símbolo da moeda por país
-(`moeda` no `estado-inicial.json`); `estado.mudanca` (PIB e dívida no turno).
-Comportamento em `src/tela/mapa/mapa.md` (fatia 7). Falta: **fatia 2**, Mercado
-em dinheiro (lucro, compra e venda); **fatia 3**, "≈ X por ano" ao lado dos
-controles das leis. Depois, **mais pops** (e mais grupos), e a 5b do mercado.
+**Dinheiro na tela, fatias 1 e 2 feitas (02/nov):** barra do topo (Caixa,
+Dívida, PIB) e Mercado (salários e lucro por setor) em dinheiro, por ano e por
+turno juntos; símbolo da moeda por país (`moeda` no `estado-inicial.json`);
+`estado.mudanca`. Comportamento em `src/tela/mapa/mapa.md` (fatias 7 e 8).
+**Pergunta ao autor:** compra e vende do Mercado seguem em % da demanda, porque
+o motor não tem o valor da demanda de cada produto; converter pede uma regra
+nova. Falta: **fatia 3**, "≈ X por ano" ao lado dos controles das leis. Depois
+`npm run check`, **mais pops** (e mais grupos) e a 5b do mercado.
 
 Outro chat trata da **economia das leis militares**. Também em aberto: quais
 **eixos novos** entram na bússola (paz × militarismo, seção 11).

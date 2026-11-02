@@ -334,6 +334,8 @@ export type VisaoEmprego = Readonly<{
   empregos: number;
   /** Salário médio, em vezes a renda média por pessoa. */
   salario: number;
+  /** Massa salarial, em % do PIB. */
+  massa: number;
   /** Lucro, em % do PIB. */
   lucro: number;
 }>;

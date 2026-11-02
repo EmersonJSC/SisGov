@@ -5,6 +5,7 @@
 import { useState } from "react";
 import type { VisaoPartida, VisaoPrecoMundo } from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
+import { porAnoEPorTurno } from "./formatos";
 import { ICONE_INTERFACE } from "./icones";
 
 const um = (v: number) =>
@@ -42,9 +43,16 @@ function Linha({ p }: { p: VisaoPrecoMundo }) {
 
 export function Mercado({
   visao,
+  moeda,
+  pib,
   onFechar,
   ...janela
-}: JanelaProps & { visao: VisaoPartida; onFechar: () => void }) {
+}: JanelaProps & {
+  visao: VisaoPartida;
+  moeda: string;
+  pib: number;
+  onFechar: () => void;
+}) {
   const mercado = visao.mercado;
   const [aba, setAba] = useState<"pais" | "mundo">("pais");
   return (
@@ -125,7 +133,9 @@ export function Mercado({
                   <p className="mercado-emprego">
                     {(() => {
                       const e = mercado.emprego.find((x) => x.id === setor.id)!;
-                      return `Empregos: ${um(e.empregos)}% da população · salário ${um1(e.salario)}× a média · lucro ${um1(e.lucro)}% do PIB`;
+                      const din = (pct: number) =>
+                        porAnoEPorTurno(pct, pib, moeda);
+                      return `Empregos: ${um(e.empregos)}% da população · salário ${um1(e.salario)}× a média · salários ${din(e.massa)} · lucro ${din(e.lucro)}`;
                     })()}
                   </p>
                 ) : null}
