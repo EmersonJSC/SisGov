@@ -68,7 +68,8 @@ function governo(): VisaoArea[] {
 
 /**
  * Zona de alerta do controle, em % (imposto: o pico da receita que o país
- * declara; verba: o valor em que o gasto total iguala a receita de hoje).
+ * declara; verba: o valor em que o gasto total iguala a receita de hoje, ou o valor
+ * em vigor se já há déficit).
  */
 function alertaDaLei(
   lei: Lei,
@@ -88,7 +89,8 @@ function alertaDaLei(
   const gasto =
     gastoDasLeis(regras, estado.leis) + regras.pais.gasto_fora_das_leis;
   const nivel = Number(estado.leis[lei.id] ?? lei.faixa.min) * 100;
-  return { tipo: "verba", limite: Math.max(0, nivel + receita - gasto) };
+  // com déficit, o valor em vigor já é o limite: cortar verba nunca piora
+  return { tipo: "verba", limite: nivel + Math.max(0, receita - gasto) };
 }
 
 function visaoDaLei(

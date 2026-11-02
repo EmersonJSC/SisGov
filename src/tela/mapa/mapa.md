@@ -121,7 +121,9 @@ da faixa cai), não a tela.
     que o país declara (`pico` da base), não do código da lei.
   - Verba (lei com `conta: gasto`): verde enquanto o gasto total cabe na
     receita; vermelho acima disso ("daqui para cima abre déficit"). A marca é
-    o valor da verba em que gasto e receita se igualam hoje.
+    o valor da verba em que gasto e receita se igualam hoje. Se o país já está
+    em déficit, a marca é o valor em vigor: cortar fica verde, subir fica
+    vermelho (cortar verba nunca piora o déficit).
   - Sem zona (regra ou lei sem esses dados): trilho neutro, só a régua.
 - O alerta só avisa; arrastar até 100% continua possível.
 
