@@ -156,7 +156,7 @@ export function situacoesDeCapacidade(regras: Regras, estado: Estado) {
 }
 
 /** Soma das alíquotas das leis que cobram sobre o lucro (fração). */
-function impostoSobreLucro(
+export function impostoSobreLucro(
   regras: Regras,
   leis: Record<string, ValorLei>,
 ): number {

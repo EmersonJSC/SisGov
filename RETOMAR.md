@@ -42,11 +42,11 @@ faltam (~30% do jogo).
 
 ## Próximo
 
-12b pilar 1, fatia 1c: tela do Mercado mostra "≈ N unidades (+obras)" por
-setor, com lucro e obras. Propor no chat antes. Depois: pilar 2 (empresas
-ligadas às construções, lucro vai ao dono) e pilar 3 (bolsa).
+Pilar 1 do Mercado fechado (1a, 1b, 1c). Perguntar ao autor: pilar 2
+(empresas) e pilar 3 (bolsa) ainda entram na 12b ou o autor muda de frente?
+`npm run check` roda ao fechar a mecânica.
 
-**Feito 03/nov: fatia 1a (commit 46799fda) e 1b (commit abaixo).**
+**Feito 03/nov: fatia 1a (46799fda), 1b (f8b8a705) e 1c (tela do Mercado: linha "Construções" por setor, lucro × o de antes, aviso de prejuízo e fechamento).**
 `construcoes.ts` + `obras` em `produtos.json`; PIB real = capacidade pronta;
 investimento privado abre obras (decisão A do autor). 1b: lucro por setor
 (receita − salários − imposto), investimento vai para a margem relativa que

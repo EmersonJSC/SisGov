@@ -357,6 +357,21 @@ export type VisaoEmprego = Readonly<{
   lucro: number;
 }>;
 
+/** Construções de um setor: capacidade, obras e lucro (12b, fatia 1c). */
+export type VisaoConstrucao = Readonly<{
+  id: string;
+  /** Capacidade pronta, em % do PIB real do turno 0. */
+  pronta: number;
+  /** Obras andando e na fila, em % do PIB real do turno 0. */
+  emObra: number;
+  /** Lucro de hoje ÷ lucro do turno 0; ausente em setor sem dono privado. */
+  lucro?: number;
+  /** Turnos seguidos de prejuízo. */
+  prejuizo: number;
+  /** Perde capacidade por prejuízo seguido. */
+  fechando: boolean;
+}>;
+
 /** O que o país produz, compra e vende, por setor (motor/mercado). */
 export type VisaoMercado = Readonly<{
   setores: readonly VisaoSetor[];
@@ -364,6 +379,8 @@ export type VisaoMercado = Readonly<{
   mundo: VisaoMundoMercado;
   /** Emprego, salário e lucro por setor; os pops vêm do estado. */
   emprego: readonly VisaoEmprego[];
+  /** Construções por setor; vazio sem construções. */
+  construcoes: readonly VisaoConstrucao[];
   /** Pessoas sem emprego formal, em % da população. */
   semEmprego: number;
   /** Segurança alimentar por pop, uma entrada por cesta (fatia 6b). */

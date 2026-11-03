@@ -8797,6 +8797,10 @@ span.el-mini {
   color: #2f7a57;
 }
 
+.mercado-emprego[data-alerta] {
+  color: #b3541e;
+}
+
 .mercado-emprego {
   margin: 0 0 0.4rem;
   font-size: 0.8rem;

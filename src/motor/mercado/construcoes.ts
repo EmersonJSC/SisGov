@@ -64,9 +64,9 @@ const SOBRECUSTO_MAXIMO = 0.5;
 /** Folga da construção civil no turno 0: anda 1,5 vez o que o ritmo pede. */
 const FOLGA_DA_CONSTRUCAO = 1.5;
 /** Turnos seguidos de prejuízo até o setor começar a fechar. */
-const TURNOS_ATE_FECHAR = 3;
+export const TURNOS_ATE_FECHAR = 3;
 /** Parte da capacidade que um setor em prejuízo fechado perde por turno. */
-const FECHAMENTO_POR_TURNO = 0.05;
+export const FECHAMENTO_POR_TURNO = 0.05;
 /** A margem relativa pesa de 0 a 2 na divisão do investimento. */
 const PESO_MAXIMO_DA_MARGEM = 2;
 const TURNOS_POR_ANO = 6;

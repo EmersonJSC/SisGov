@@ -139,6 +139,29 @@ export function Mercado({
                     })()}
                   </p>
                 ) : null}
+                {(() => {
+                  const k = mercado.construcoes.find((x) => x.id === setor.id);
+                  if (!k) return null;
+                  const partes = [
+                    `Construções: ${um1(k.pronta)} prontas · ${um1(k.emObra)} em obra`,
+                  ];
+                  if (k.lucro !== undefined)
+                    partes.push(`lucro ${k.lucro.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}× o de antes`);
+                  if (k.fechando)
+                    partes.push(
+                      `fechando: perde 5% por turno (prejuízo há ${k.prejuizo} turnos)`,
+                    );
+                  else if (k.prejuizo > 0)
+                    partes.push(`prejuízo há ${k.prejuizo} turnos`);
+                  return (
+                    <p
+                      className="mercado-emprego"
+                      data-alerta={k.prejuizo > 0 || undefined}
+                    >
+                      {partes.join(" · ")}
+                    </p>
+                  );
+                })()}
                 <ul className="mercado-produtos">
                   {setor.produtos.map((p) => (
                     <li key={p.id}>

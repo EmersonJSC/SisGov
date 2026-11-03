@@ -406,3 +406,5 @@ constrói, índice que atrasa, prazo, desgaste). Cenários: `npm run construcoes
 - Partida salva antes do 1b não tem `lucro`: sem fechamento, divisão por tamanho.
 - Ainda não: insumos e cadeia (R16.5), demanda por setor, demissão chegando
   nos pops (R11.5), "≈ N (+obras)" na tela (1c).
+
+**Tela (1c, 03/nov):** cada setor do Mercado ganha a linha "Construções: N prontas · M em obra · lucro ×  o de antes", com aviso de prejuízo e de fechamento. Só leitura; vem de `visao.construcoes`.

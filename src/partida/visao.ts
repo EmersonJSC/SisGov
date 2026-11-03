@@ -11,6 +11,11 @@ import {
   gastoDasLeis,
   situacoesDeCapacidade,
   pontosLei,
+  impostoSobreLucro,
+  lucroDosSetores,
+  precoDosSetores,
+  obrasPorSetor,
+  TURNOS_ATE_FECHAR,
   type Estado,
   type Lei,
   type Regras,
@@ -24,6 +29,7 @@ import type { Partida } from ".";
 import type {
   VisaoArea,
   VisaoBolha,
+  VisaoConstrucao,
   VisaoLei,
   VisaoLigacao,
   VisaoMercado,
@@ -431,9 +437,36 @@ function visaoDoMercado(
       }),
     ),
     emprego: emprego.setores,
+    construcoes: construcoesDoPais(regras, estado),
     semEmprego: emprego.semEmprego,
     dependencia: Object.entries(balanco.dependencia)
       .map(([id, valor]) => ({ id, nome: nome(id), valor }))
       .sort((a, b) => b.valor - a.valor),
   };
+}
+
+function construcoesDoPais(
+  regras: Partida["regras"],
+  estado: Partida["estado"],
+): VisaoConstrucao[] {
+  const c = estado.construcoes;
+  if (!c || !regras.mercado) return [];
+  const lucro = lucroDosSetores(
+    c,
+    precoDosSetores(regras.mercado.mercado, estado.precos),
+    impostoSobreLucro(regras, estado.leis),
+    impostoSobreLucro(regras, estado.marco.leis),
+  );
+  const obras = obrasPorSetor(c);
+  return Object.entries(c.prontas).map(([id, pronta]) => {
+    const seguidos = c.lucro?.seguidos[id] ?? 0;
+    return {
+      id,
+      pronta,
+      emObra: obras[id]?.volume ?? 0,
+      lucro: lucro[id]?.relativa,
+      prejuizo: seguidos,
+      fechando: seguidos >= TURNOS_ATE_FECHAR,
+    };
+  });
 }
