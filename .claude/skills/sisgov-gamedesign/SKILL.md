@@ -15,7 +15,7 @@ código, responder estas perguntas **por escrito, em 5 linhas**, no chat.
    "escolhe o preço mínimo do leilão"). Se o verbo é "ajusta um valor", é
    slider: refazer.
 2. **Apresentação:** como aparece? No SisGov **toda lei é uma bolha no mapa**
-   (escopo, princípio 8). Painel de leitura pode existir; a decisão fica na lei.
+   (GDD, princípio 2). Painel de leitura pode existir; a decisão fica na lei.
 3. **Escolha com dente:** quais as 2–3 opções que têm ganho E custo, sem
    opção certa? (Escopo: "nada é bom ou ruim".) Se uma opção domina, não é
    escolha.
@@ -60,7 +60,7 @@ entra no projeto; nada de nome, número ou ligação de outro jogo.
 - Lei "quem constrói / opera / vende" como botão de opções que troca tudo de
   uma vez: sem meio-termo, sem criatividade (autor, 02/nov).
 - Narrativa antes dos dados.
-- Opinar sem medir no código ou no escopo.
+- Opinar sem medir no código ou no GDD.
 
 ## Resposta ao autor
 

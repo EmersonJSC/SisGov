@@ -155,15 +155,65 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
 | 10 | Tela | ✅ 01/nov — tela simples em React (`npm run dev`): país e semente, grupos, índices, leis com controle para propor, fila de pedidos, votação do Congresso, resultado da eleição; salvar e carregar no navegador (`partida/salvar.ts`). Partida inteira jogada na tela até a eleição |
 | 11 | Mundo | ✅ 02/nov — 5 potências com opinião pela bússola, reputação (média pesada), poder defensivo e segurança externa (`npm run mundo`); leis de segurança (blocos A a E); losangos no mapa e chips Reputação e Seg. externa. Pedido: grandes potências que representam blocos reais, sem nome real, com relação entre si e opinião própria sobre o seu país que anda pela bússola; reputação internacional vira a média delas |
-| 12 | Mercado | ✅ 02/nov (sem a 5b, ver seção 11) — mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços. **Fatia 8 (Propriedade, 02/nov):** ficha do setor (dono, importação, teto de capital de fora, preço) em 9 setores, 13 leis gerais na área Propriedade, janela "Setores" com prévia de 6 turnos; cada mudança é projeto de lei votado |
-| 13 | Leis em pacotes | um pacote por vez (seção 11, "Leis em pacotes") |
+| 12 | Mercado | ✅ 02/nov (sem a 5b, ver seção 11) — mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços. A fatia 8 (ficha do setor) foi desfeita em 02/nov; ficaram 8 leis na área Propriedade |
+| 12b | Economia: construções, empresas, bolsa | três pilares em ordem (seção 11, "Em curso"); cada um fecha jogável na tela |
+| 13 | Leis em pacotes | um pacote por vez (seção 11, "Leis em pacotes"); só depois do 12b |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
 lidas (tag `projeto-antigo-2026-10-31`).
 
 ## 11. Ideias para depois
 
-- **Bolsa de valores simulada** (02/nov): investidores hoje = opinião média das potências; uma bolsa própria, com preço de ações que reage às fichas e às leis, ficaria para depois da propriedade.
+### Em curso: Economia (construções → empresas → bolsa)
+
+Reorganizado em 02/nov (autor): depois da 1.0 abrimos várias frentes pelo
+topo (bolsa antes de existir lucro). Agora é **uma mecânica só, em três
+pilares, da base para o topo**. Um pilar fecha jogável antes do próximo abrir.
+Tudo o mais desta seção fica **estacionado** até a mecânica fechar.
+
+**Pilar 1 — Construções** (a base; o jogador não vê uma a uma)
+- Cada setor do país tem construções (fazenda, fábrica, usina, ferrovia…)
+  que existem só para o cálculo: produzem, empregam e dão lucro.
+- Obra nova entra numa fila escondida. Tempo e custo dependem da
+  **construção civil** do país (forte = rápido) e da **corrupção** (alta =
+  lento e caro).
+- O PIB e as bases dos impostos passam a sair das construções e dos pops
+  (a antiga "5b"); os países de teste dão o mesmo resultado de hoje.
+  Imposto sobre herança e grandes fortunas entra junto (bases novas).
+- Infraestrutura (rodovias, ferrovias, portos, aeroportos) e a rede de
+  energia são construções de capacidade: pouca ferrovia encarece a indústria.
+
+**Pilar 2 — Empresas e dono**
+- Empresa = conjunto de construções de um setor (como as companhias do
+  Victoria 3). O país declara as empresas de partida (`empresas.json`).
+- Dono da empresa: **Estado, privado nacional, estrangeiro ou cooperativa**.
+- O jogador pode: **estatizar** (comprar ou tomar à força), **criar
+  estatal** (investe e as construções entram na fila), **transformar em
+  cooperativa**, **vender** a empresa inteira ou só uma construção (ex.: uma
+  hidrelétrica).
+- Monopólio natural (água, trilhos, rede): limite de criar e vender (regra a
+  fechar no pilar).
+- O setor privado também abre empresas sozinho quando o lucro compensa.
+- As 8 leis de propriedade (indenização, prazo, regra pós-venda, política
+  estatal, triagem estrangeira, remessa de lucro, fábrica de fora,
+  concorrência) passam a agir aqui; hoje não têm efeito.
+
+**Pilar 3 — Bolsa (minigame Pregão)**
+- Ações em blocos de 2%, tudo no mesmo turno. **Ação dá lucro (dividendo),
+  não dá mando**: o dono da empresa só muda pelos atos do pilar 2.
+- Preço do bloco = lucro da empresa × múltiplo; leis que baixam o lucro
+  baixam o preço.
+- Compradores (pops ricos, fundo, multinacional, estrangeira) com caixa
+  próprio: vender um bloco derruba o preço dos outros; metade volta por turno.
+- Dinheiro entra e sai do cofre de verdade; grupos e potências reagem.
+- Protótipo de tela já existe (`src/tela/mapa/Pregao.tsx`, sem motor).
+
+### Estacionado
+
+- **Universidades e pops que mudam de setor** (autor, 02/nov): o pop estuda
+  e passa a trabalhar onde paga mais (onde as construções dão mais lucro e
+  abrem vagas). Universidade é construção e tem verba; formar gente leva
+  turnos. Entra depois do 12b, junto com pops e grupos maiores.
 - Quanto o eleitor percebe o déficit como parâmetro do país: em democracias
   consolidadas déficit pré-eleição não ajuda a reeleger; em novas, ajuda
   (Brender & Drazen, 2008).
@@ -191,13 +241,6 @@ lidas (tag `projeto-antigo-2026-10-31`).
   antes do privado crescer derruba a saúde no meio da transição. Sem efeito
   moral embutido ("privado = desigualdade"). Precisa da peça "índice mexe em
   índice" no motor.
-- **Bases dos impostos lidas do mercado** (01/nov): na V1 a base de cada
-  imposto (renda, consumo, lucro) é uma fatia fixa do PIB declarada pelo
-  país. Quando vier o mercado com fila de construção (estatal ou privada,
-  seção 9), o motor passa a somar a base dos prédios e dos pops; a lei e o
-  país não mudam. Leis que liberam ou travam construção entram junto.
-  Imposto sobre **herança** e sobre **grandes fortunas** (bases novas:
-  patrimônio e herança) entram junto com o mercado (01/nov, autor).
 - **Grandes mídias do país** (01/nov): o país declara até 5 grandes mídias
   (nome, alcance, linha). O jogador pode limitar cada uma, dar benefício a
   outras (verba de publicidade, concessão), criar uma emissora estatal e até
@@ -306,18 +349,9 @@ lidas (tag `projeto-antigo-2026-10-31`).
   próprio, quem é antimilitarista reage por ele e os outros grupos reagem por
   outros motivos. Autor deixou como está por enquanto; entra junto com a
   decisão de quais eixos novos a bússola ganha (`docs/jogo/bussola.md`).
-- **Mercado: ligar à economia (5b)** (02/nov): PIB e bases dos impostos
-  saindo da produção e dos pops (países de teste com o mesmo resultado). Fica
-  para depois de **mais pops** (autor quer pops melhor estruturados antes).
 - **Dinheiro na tela, não %** (02/nov, autor): o motor segue em % do PIB, mas
   o jogador vê valores em moeda do país (sem nome real), por ano. Frente própria.
-- **Mercado: fila de construção e infraestrutura** (02/nov, autor):
-  - Fila de obras **escondida** do jogador: calcula mais ou menos o custo de
-    construir uma fábrica e se o país tem construção civil forte o bastante.
-    Dá as leis de construção civil. Fica fora do passo 12.
-  - Infraestrutura (rodovias, ferrovias, portos, aeroportos) é setor próprio e
-    deve limitar ou ajudar os outros setores (pouca ferrovia encarece a
-    indústria e a exportação). Vem junto com a fila.
+- **Mercado: o que sobra depois dos pilares** (02/nov, autor):
   - Lucro e salário por setor ficam expostos para as leis do passo 13: quanto
     do lucro o governo pega, participação dos trabalhadores, salário mínimo.
   - Mundo vivo: preço mundial por produto, ciclos e choques que vêm de fora

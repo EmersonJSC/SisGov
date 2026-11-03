@@ -10,7 +10,7 @@ passo tem "Começa com", "Pronto quando" e "Expande depois". Um passo por vez.
 
 ## Abrir
 
-1. Ler só a linha do passo no plano e a do escopo (seção 10). Nada de abrir
+1. Ler só a linha do passo no plano e a do plano (seções 1 e 3). Nada de abrir
    código antigo "para ver"; peça antiga volta só lida e quando o passo pede.
 2. Proposta curta no chat: o que entra (só o "Começa com"), o que fica de
    fora, e **uma** decisão que é do autor, com recomendação. Esperar o sim.
@@ -21,12 +21,12 @@ passo tem "Começa com", "Pronto quando" e "Expande depois". Um passo por vez.
 
 - `npx tsc -b` e `npx vitest run <arquivo>` do que mudou. `npm run check` só
   no fechamento.
-- **Conferir o escopo a cada proposta** (pedido do autor, 01/nov): se a
+- **Conferir o GDD a cada proposta** (pedido do autor, 01/nov): se a
   conversa passou do "Começa com" do passo, parar e mostrar ao autor em duas
   listas o que **é do passo** e o que **não é**. O que não é vai para a
-  seção 11 do escopo, com o motivo (ex.: "precisa dos pops do passo 7").
+  seção 18 (Perguntas em aberto) do GDD, com o motivo (ex.: "precisa dos pops do passo 7").
   Avisar antes de seguir, não depois.
-- O "Expande depois" **não** entra. Ideia nova vai para a seção 11 do escopo
+- O "Expande depois" **não** entra. Ideia nova vai para a seção 18 (Perguntas em aberto) do GDD
   e o autor fica sabendo.
 - Se o passo exigir mexer em passo pronto, parar: o desenho estava errado,
   rever com o autor.

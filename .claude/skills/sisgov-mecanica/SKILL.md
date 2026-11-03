@@ -13,7 +13,7 @@ procurando.
 | O que | Onde |
 | --- | --- |
 | Onde parei | `RETOMAR.md` |
-| Regras e ordem dos passos | `docs/jogo/escopo.md` |
+| O jogo como deve ser | `docs/jogo/gdd.md` |
 | Como construir (camadas, roteiro, "começa com / expande depois") | `docs/jogo/plano-de-desenvolvimento.md` |
 | Regras e cálculos do Estado | `src/motor/<modulo>/` (cada módulo com `index.ts` e `.md`) |
 | Montar, salvar e carregar a partida | `src/partida/` |

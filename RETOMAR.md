@@ -7,34 +7,51 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Passos 11 (mundo) e 12 (mercado, sem a 5b) fechados; dinheiro na tela fechado.
-Mercado tipo Vic3 em código até a fatia 7 (comida, Remédios, Energia).
-**Fatia 8 (Propriedade) redesenhada e aprovada pelo autor em 02/nov:** o
-protótipo v2 (barra de 50 blocos) foi descartado. **Regras gerais = leis
-(bolhas)**; **decisão por setor = ficha do setor** (dono estatal/mista/privada,
-importação, teto de capital estrangeiro, preço), e cada mudança é um projeto de
-lei votado, que segue as leis gerais (indenização, método de venda, prazo,
-triagem, Déficit e Superávit etc.). Tudo em `src/motor/mercado/mercado.md`,
-fatia 8. Princípios 8 e 9 do escopo (bolha; dados antes da narrativa) escritos.
-Skill nova `sisgov-gamedesign` (6 perguntas antes de desenhar).
+**Premissa (autor, 02/nov):** bolsa moderna no lugar do mercado vitoriano e da
+fatia 8. Minigame **Pregão**: blocos de 2%, tudo no mesmo turno, sem efeito
+neutro. Quer tudo junto: várias empresas, criar empresa, cofre real.
+
+**Feito nesta rodada (sem commit):**
+- Passo 1: fatia 8 apagada (ficha.ts, propriedade.ts, fichas.json, Fichas.tsx,
+  botão "Setores", previaDaFicha, 36 leis de setor, 5 leis de propriedade:
+  metodo-venda, preco-minimo-venda, setores-do-estado, fabrica-no-exterior,
+  acordo-com-potencias). Energia voltou às 3 camadas antigas. tsc e 187 testes ok.
+- Ficam 8 leis na área "Propriedade" (indenizacao, prazo-pagamento,
+  regra-pos-venda, politica-estatal, triagem-estrangeira, remessa-de-lucro,
+  fabrica-de-fora, concorrencia); ainda sem efeito (campo `valores` no motor).
+- Passo 2: `empresas.json` por país (teste: 5, teste-pobre: 3; nomes inventados),
+  `empresasDoPais` em `src/partida/index.ts`, Pregão com uma aba por empresa.
+
+**GDD reescrito (autor, 02/nov):** `docs/jogo/gdd.md` descreve o **jogo
+pronto**, sem plano nem "depois". Entraram: você é o partido (chapa,
+presidente do partido, coesão, caixa); sucessão (assassinato; sucessor de
+outro partido = desvantagem até a eleição); ministros como fichas de RPG;
+mídia com mecânica própria; coligação; campanha; mandatos e reeleição.
+O feito e a ordem foram para o plano (seção 1). Ideia nova = GDD seção 18
+(Perguntas em aberto).
+
+**Mesa (autor, 03/nov):** GDD seção 17 virou "Tela: mapa e mesa". A mesa
+recebe papéis (lei aprovada pelo Congresso, situação, pedido) para assinar,
+vetar, recusar, encaminhar ao ministro ou ignorar; ignorar tem consequência.
+Respostas do autor na seção 18 foram para os sistemas; a 18 tem só o que
+segue aberto.
+
+**Requisitos (03/nov):** `docs/jogo/requisitos.md`, 108 requisitos (R4.1…)
+tirados do GDD com status medido no código: 31 feitos, 17 parciais, 60
+faltam (~30% do jogo).
 
 ## Próximo
 
-**Fatia 8 (Propriedade) fechada em 02/nov** (passos 1 a 8; `npm run check` verde,
-254 testes). Autor aprovou o jeito da janela "Setores" ("serve, depois
-corrigimos"). Próxima ação: autor escolhe a frente seguinte (recomendo
-confirmar Energia e Remédios na tela, depois o passo 13, leis em pacotes).
-Ajuste menor para depois: depois de "Propor" o botão continua "Propor ao
-Congresso" (não diz "na fila"). Investidores = opinião média das potências
-(ficou assim; bolsa simulada foi para a seção 11 do escopo).
+Autor confere `requisitos.md` e decide: fechar o 12b (economia) antes de abrir
+outra frente. Recomendação: sim; pilar 1 (construções, R16.7–R16.10).
 
 ## Pendências do autor
 
-- Confirmar Energia e Remédios na tela.
+- Jogar o Pregão (botão "Bolsa").
 - Commits locais sem push (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
 - Antes de publicar o jogo: checar com advogado.
-- Eixos novos da bússola (paz × militarismo, seção 11); outro chat trata da economia militar.
+- Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.
 - Equilibrar com "Brasil" e "EUA" só no fim (regra de país real).
 
 ## Armadilhas

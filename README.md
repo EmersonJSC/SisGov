@@ -10,7 +10,7 @@ O projeto recomeçou do zero em 31/out/2026. O código antigo está na tag
 ## Antes de começar
 
 1. [RETOMAR.md](RETOMAR.md): onde parei e o próximo passo.
-2. [docs/jogo/escopo.md](docs/jogo/escopo.md): o que o jogo é e a ordem de construção.
+2. [docs/jogo/gdd.md](docs/jogo/gdd.md): o jogo como deve ser quando pronto.
 3. [docs/jogo/plano-de-desenvolvimento.md](docs/jogo/plano-de-desenvolvimento.md): como construir, passo a passo.
 4. [CLAUDE.md](CLAUDE.md): regras de trabalho.
 

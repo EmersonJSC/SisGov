@@ -1,8 +1,8 @@
 # Plano de desenvolvimento
 
-> **Status: APROVADO em 31/out/2026.** O [escopo](escopo.md) diz **o quê**;
-> este plano diz **como e em que ordem**. Em conflito, vale o escopo. Os
-> números dos passos são os mesmos do escopo.
+> **Status: APROVADO em 31/out/2026.** O [GDD](gdd.md) descreve o jogo pronto
+> (**o quê** e **por quê**); este plano diz **o que já está feito, em que
+> ordem e como construir**. Em conflito, vale o GDD.
 
 ## 1. Onde estamos e por onde começar
 
@@ -12,10 +12,19 @@
   desgaste; versão 0.4), 10 (tela e salvar; versão 1.0) e 11 (mundo).
 - **Depois da 1.0, feito:** o mapa como única tela e a bússola política
   (leis e grupos em dois eixos).
-- **Próximo:** passo 13 (leis em pacotes), depois de dinheiro na tela e mais pops
-  (chat de 02/nov; ver RETOMAR).
-- **Depois, em ordem:** 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10. Um passo por vez;
-  o próximo só abre quando o anterior está pronto.
+- **Próximo:** passo 12b (economia: construções → empresas → bolsa),
+  começando pelo pilar 1 (construções), com as regras de lucro, salário e
+  obra do GDD (seção 16).
+- **Ordem do que falta** (um por vez; o próximo só abre quando o anterior
+  fecha jogável):
+  1. 12b pilar 1 — Construções.
+  2. 12b pilar 2 — Empresas e dono.
+  3. 12b pilar 3 — Bolsa.
+  4. Passo 13 — Leis em pacotes, um por vez.
+  5. O resto do GDD, na ordem que o autor escolher (partido, ministros,
+     mídia, campanha, coligação…).
+  6. No fim: equilibrar com dois países grandes e diferentes (inspirados,
+     com nome inventado); checar com advogado antes de publicar.
 
 ## 2. Regra de expansão
 
@@ -120,7 +129,7 @@ derrubada de veto; bicameral; partido único (outra versão ou DLC).
 | Desgaste fixo por período; eleição a cada 6N turnos pelo apoio pesado por tamanho | mandato termina em vitória ou derrota que o jogador entende |
 
 **Expande depois:** perder o poder fora da eleição (impeachment, voto de
-desconfiança); percepção do déficit pelo eleitor (escopo, seção 11).
+desconfiança); percepção do déficit pelo eleitor (GDD, seção 13).
 
 ### Passo 10 — Tela ✅
 
@@ -165,20 +174,31 @@ do jogador é completo; o dos outros países é simulado, mais simples.
 **Feito em 02/nov:** setores e produtos, cobertura do país, dois mercados
 (preço do mundo com ciclo e choques), pops com setores e capital (empregos,
 salário e lucro por setor) e janela Mercado. **Ficou de fora (5b):** o PIB e as
-bases dos impostos saírem da produção e dos pops; vai para depois de mais pops
-(escopo, seção 11).
+bases dos impostos saírem da produção e dos pops; entrou no pilar 1 do 12b.
 
-**Fatia 8 (Propriedade, 02/nov):** ficha do setor para os 9 setores (dono, importação, teto de capital de fora, preço), 13 leis gerais, prévia de 6 turnos (`previaDaFicha`) e janela "Setores". Investidores = opinião média das potências.
+A fatia 8 (ficha do setor) foi desfeita em 02/nov: era painel de gestão, não
+jogo. Ficaram 8 leis na área Propriedade, ainda sem efeito.
 
-**Expande depois:** preço por oferta e procura; insumos (produto que usa
-outro); construção estatal ou privada; leis que fortalecem todos os
-produtos ou só alguns (pacote de economia, passo 13); gente que muda de pop.
+### Passo 12b — Economia: construções, empresas, bolsa ⬅ próximo
+
+Uma mecânica em três pilares, da base para o topo (GDD, seção 16).
+Um pilar fecha jogável na tela antes do próximo abrir. Nada mais
+abre até o 12b fechar.
+
+| Pilar | Começa com | Pronto quando |
+|---|---|---|
+| 1 Construções | construções por setor (só cálculo) que produzem, empregam e dão lucro; fila de obras escondida; tempo e custo pela construção civil e pela corrupção | script: PIB e bases saem das construções e os países de teste dão o mesmo resultado; obra mais rápida com construção civil forte, mais lenta com corrupção alta |
+| 2 Empresas e dono | empresa = conjunto de construções; dono Estado, privado, estrangeiro ou cooperativa; estatizar, criar estatal, virar cooperativa, vender empresa ou construção; as 8 leis de propriedade agem | script: cada ato muda o dono e o cofre; cada lei de propriedade muda algo visível; o privado abre empresa quando o lucro compensa. Na tela: os atos do jogador |
+| 3 Bolsa | Pregão em blocos de 2% sobre as empresas; preço = lucro × múltiplo; caixa dos compradores; dividendos no cofre | script: vender derruba o preço dos outros blocos; contas fecham com dividendos. Na tela: comprar e vender no mesmo turno |
+
+**Fica de fora:** oferta e procura completa, fome, cadeia de insumos, comércio
+automático, dinheiro na tela (GDD, seções 10 e 16).
 
 ### Passo 13 — Leis em pacotes
 
 Cada tema vira um pacote de leis pequenas, cada uma com reação num grupo
-diferente. Um pacote por vez, na ordem do autor. A lista está na seção 11
-do escopo ("Leis em pacotes"): imposto de renda, armas, corrupção, direitos,
+diferente. Um pacote por vez, na ordem do autor. A lista está na seção 7
+do GDD (Leis): imposto de renda, armas, corrupção, direitos,
 drogas, ensino e as leis de economia, estas desenhadas com o mercado.
 
 ## 4. Camadas
@@ -259,7 +279,7 @@ Mecânica instável não ganha teste de número.
 5. `npm run check`, commit com assunto, RETOMAR atualizado. Push só com a
    palavra do autor.
 
-Ideia nova no meio do passo vai para a seção 11 do escopo. Terceira
+Ideia nova no meio do passo vai para a seção 18 (Perguntas em aberto) do GDD. Terceira
 tentativa sem fechar: para e revê com o autor.
 
 ## 9. Versões

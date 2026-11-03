@@ -39,7 +39,7 @@ description: Use when writing, reviewing or changing a SisGov law JSON in src/co
 - A lei diz **quanto**; quem paga ou quem recebe pode ser outra lei
   (ex.: alíquota do imposto de renda × progressividade).
 - Gasto é lei contínua em % do PIB; público e privado são esferas separadas,
-  cada uma com a sua lei (escopo, seção 11).
+  cada uma com a sua lei (GDD, seção 7).
 - **Bússola, nunca grupo:** a lei diz onde fica (`bussola`, eixos
   `economico` esquerda − ↔ direita + e `social` verde/libertário − ↔
   tradicional/autoritário +, de −1 a +1): `min`/`max` na lei contínua, um
