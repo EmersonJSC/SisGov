@@ -104,7 +104,7 @@
 
 - ✅ **R11.1** Pops (profissão × estrato) com renda vinda da economia: 25 tipos no mundo, cada país declara as parcelas.
 - ✅ **R11.7** Cada pop tem bússola (economico e social); ainda não move nada (R8.5).
-- ✅ **R11.2** Grupos com bússola, tamanho e satisfação; país declara os fortes.
+- ✅ **R11.2** Grupos com bússola, tamanho e satisfação; 16 grupos no mundo, os 25 pops têm casa; país declara os fortes.
 - ✅ **R11.3** Radicais e lealistas.
 - ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).
 - ☐ **R11.5** Pops mudam de setor estudando (universidade é construção).

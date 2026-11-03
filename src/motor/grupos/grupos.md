@@ -1,5 +1,12 @@
 # Grupos de interesse
 
+> 03/nov: o mundo tem 16 grupos (operários, serviços e domésticos, gente do campo,
+> sem trabalho formal, educação e saúde, burocracia, militares, pequeno comércio,
+> escritório/técnicos/tecnologia, estudantes, cultura e imprensa, aposentados,
+> indústria, finanças, donos de terra, ambientalistas). Os números e nomes dos
+> cenários abaixo são da época dos 4 grupos (trabalhadores, classe média,
+> empresários, ambientalistas).
+
 Um **grupo** lê os pops. Os tipos de grupo são do mundo
 (`conteudo/mundo/grupos/`); o motor não conhece os nomes. Cada grupo declara:
 

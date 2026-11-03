@@ -2,34 +2,24 @@
   "versao": 1,
   "grupos": [
     {
-      "id": "trabalhadores",
+      "id": "operarios",
       "bussola": {
-        "economico": -0.5,
-        "social": 0.2
+        "economico": -0.55,
+        "social": 0.15
       },
       "peso": {
         "economico": 1,
         "social": 0.4
       },
-      "nome": "Trabalhadores",
+      "nome": "Operários",
       "membros": {
-        "desempregados": 1,
-        "informais-urbanos": 1,
-        "domesticos": 1,
         "operarios-fabrica": 1,
-        "operarios-obra": 1,
-        "servicos-basicos": 1,
-        "pequenos-agricultores": 1,
-        "assalariados-rurais": 1
+        "operarios-obra": 1
       },
       "cobra": [
         {
           "indice": "padrao_vida",
           "sentido": 1
-        },
-        {
-          "indice": "pobreza",
-          "sentido": -1
         },
         {
           "indice": "desemprego",
@@ -46,38 +36,129 @@
       ]
     },
     {
-      "id": "classe-media",
+      "id": "servicos",
       "bussola": {
-        "economico": 0.2,
-        "social": 0.3
+        "economico": -0.4,
+        "social": 0.25
       },
       "peso": {
-        "economico": 0.5,
-        "social": 0.3
+        "economico": 1,
+        "social": 0.4
       },
-      "nome": "Classe média",
+      "nome": "Serviços e domésticos",
       "membros": {
-        "professores": 1,
-        "profissionais-saude": 1,
-        "militares": 1,
-        "burocratas": 1,
-        "tecnicos": 1,
-        "profissionais-tecnologia": 1,
-        "comerciantes": 1,
-        "estudantes": 1,
-        "aposentados": 1,
-        "trabalhadores-escritorio": 1,
-        "artistas-jornalistas": 1
+        "servicos-basicos": 1,
+        "domesticos": 1
       },
       "cobra": [
         {
-          "indice": "seguranca",
+          "indice": "padrao_vida",
           "sentido": 1
         },
+        {
+          "indice": "abastecimento",
+          "sentido": 1
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "campo",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0.4
+      },
+      "peso": {
+        "economico": 0.8,
+        "social": 0.5
+      },
+      "nome": "Gente do campo",
+      "membros": {
+        "pequenos-agricultores": 1,
+        "assalariados-rurais": 1
+      },
+      "cobra": [
+        {
+          "indice": "abastecimento",
+          "sentido": 1
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "sem-trabalho",
+      "bussola": {
+        "economico": -0.35,
+        "social": 0.15
+      },
+      "peso": {
+        "economico": 1,
+        "social": 0.3
+      },
+      "nome": "Sem trabalho formal",
+      "membros": {
+        "desempregados": 1,
+        "informais-urbanos": 1
+      },
+      "cobra": [
+        {
+          "indice": "desemprego",
+          "sentido": -1
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "educacao-saude",
+      "bussola": {
+        "economico": -0.4,
+        "social": -0.25
+      },
+      "peso": {
+        "economico": 0.8,
+        "social": 0.6
+      },
+      "nome": "Educação e saúde",
+      "membros": {
+        "professores": 1,
+        "profissionais-saude": 1
+      },
+      "cobra": [
         {
           "indice": "instrucao",
           "sentido": 1
         },
+        {
+          "indice": "saude",
+          "sentido": 1
+        }
+      ]
+    },
+    {
+      "id": "burocracia",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.3
+      },
+      "peso": {
+        "economico": 0.5,
+        "social": 0.4
+      },
+      "nome": "Burocracia",
+      "membros": {
+        "burocratas": 1,
+        "altos-funcionarios": 1
+      },
+      "cobra": [
         {
           "indice": "corrupcao",
           "sentido": -1
@@ -85,31 +166,187 @@
         {
           "indice": "inflacao",
           "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "militares",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.7
+      },
+      "peso": {
+        "economico": 0.4,
+        "social": 1
+      },
+      "nome": "Militares",
+      "membros": {
+        "militares": 1
+      },
+      "cobra": [
+        {
+          "indice": "seguranca",
+          "sentido": 1
         },
         {
-          "indice": "abastecimento",
+          "indice": "poder_defensivo",
+          "sentido": 1
+        },
+        {
+          "indice": "seguranca_externa",
           "sentido": 1
         }
       ]
     },
     {
-      "id": "empresarios",
+      "id": "pequeno-comercio",
       "bussola": {
-        "economico": 0.7,
-        "social": 0
+        "economico": 0.4,
+        "social": 0.3
+      },
+      "peso": {
+        "economico": 0.9,
+        "social": 0.4
+      },
+      "nome": "Pequeno comércio",
+      "membros": {
+        "comerciantes": 1
+      },
+      "cobra": [
+        {
+          "indice": "inflacao",
+          "sentido": -1
+        },
+        {
+          "indice": "seguranca",
+          "sentido": 1
+        },
+        {
+          "indice": "taxa_juros",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "escritorio-tecnologia",
+      "bussola": {
+        "economico": 0.15,
+        "social": -0.05
+      },
+      "peso": {
+        "economico": 0.5,
+        "social": 0.5
+      },
+      "nome": "Escritório, técnicos e tecnologia",
+      "membros": {
+        "trabalhadores-escritorio": 1,
+        "tecnicos": 1,
+        "profissionais-tecnologia": 1
+      },
+      "cobra": [
+        {
+          "indice": "inflacao",
+          "sentido": -1
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1
+        },
+        {
+          "indice": "instrucao",
+          "sentido": 1
+        }
+      ]
+    },
+    {
+      "id": "estudantes",
+      "bussola": {
+        "economico": -0.3,
+        "social": -0.6
+      },
+      "peso": {
+        "economico": 0.6,
+        "social": 1
+      },
+      "nome": "Estudantes",
+      "membros": {
+        "estudantes": 1
+      },
+      "cobra": [
+        {
+          "indice": "instrucao",
+          "sentido": 1
+        },
+        {
+          "indice": "desemprego",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "cultura-imprensa",
+      "bussola": {
+        "economico": -0.4,
+        "social": -0.7
+      },
+      "peso": {
+        "economico": 0.5,
+        "social": 1
+      },
+      "nome": "Cultura e imprensa",
+      "membros": {
+        "artistas-jornalistas": 1
+      },
+      "cobra": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "aposentados",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0.5
+      },
+      "peso": {
+        "economico": 0.6,
+        "social": 0.6
+      },
+      "nome": "Aposentados",
+      "membros": {
+        "aposentados": 1
+      },
+      "cobra": [
+        {
+          "indice": "saude",
+          "sentido": 1
+        },
+        {
+          "indice": "inflacao",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "industria",
+      "bussola": {
+        "economico": 0.65,
+        "social": 0.05
       },
       "peso": {
         "economico": 1,
         "social": 0.2
       },
-      "nome": "Empresários",
+      "nome": "Indústria e grandes empresas",
       "membros": {
         "grandes-empresarios": 1,
-        "industriais": 1,
-        "rentistas": 1,
-        "proprietarios-rurais": 1,
-        "profissionais-liberais": 1,
-        "altos-funcionarios": 1
+        "industriais": 1
       },
       "cobra": [
         {
@@ -121,8 +358,63 @@
           "sentido": -1
         },
         {
+          "indice": "industrializacao",
+          "sentido": 1
+        }
+      ]
+    },
+    {
+      "id": "financas",
+      "bussola": {
+        "economico": 0.65,
+        "social": 0
+      },
+      "peso": {
+        "economico": 1,
+        "social": 0.2
+      },
+      "nome": "Finanças",
+      "membros": {
+        "rentistas": 1,
+        "profissionais-liberais": 1
+      },
+      "cobra": [
+        {
           "indice": "divida_publica",
           "sentido": -1
+        },
+        {
+          "indice": "taxa_juros",
+          "sentido": 1
+        },
+        {
+          "indice": "inflacao",
+          "sentido": -1
+        }
+      ]
+    },
+    {
+      "id": "donos-terra",
+      "bussola": {
+        "economico": 0.7,
+        "social": 0.6
+      },
+      "peso": {
+        "economico": 1,
+        "social": 0.5
+      },
+      "nome": "Donos de terra",
+      "membros": {
+        "proprietarios-rurais": 1
+      },
+      "cobra": [
+        {
+          "indice": "crescimento_real",
+          "sentido": 1
+        },
+        {
+          "indice": "abastecimento",
+          "sentido": 1
         }
       ]
     },

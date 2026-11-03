@@ -22,13 +22,13 @@ describe("prévia direta da lei", () => {
     const pontos = (p: typeof sobe, id: string) =>
       p.grupos.find((g) => g.id === id)?.pontos ?? 0;
     // trabalhadores à esquerda da lei, empresários à direita
-    expect(pontos(sobe, "trabalhadores")).toBeGreaterThan(0);
-    expect(pontos(desce, "trabalhadores")).toBeLessThan(0);
-    expect(pontos(sobe, "empresarios")).toBeLessThan(0);
-    expect(pontos(desce, "empresarios")).toBeGreaterThan(0);
+    expect(pontos(sobe, "operarios")).toBeGreaterThan(0);
+    expect(pontos(desce, "operarios")).toBeLessThan(0);
+    expect(pontos(sobe, "industria")).toBeLessThan(0);
+    expect(pontos(desce, "industria")).toBeGreaterThan(0);
     // a classe média está em cima da lei: reclama dos dois lados
-    expect(pontos(sobe, "classe-media")).toBeLessThan(0);
-    expect(pontos(desce, "classe-media")).toBeLessThan(0);
+    expect(pontos(sobe, "escritorio-tecnologia")).toBeLessThan(0);
+    expect(pontos(desce, "escritorio-tecnologia")).toBeLessThan(0);
   });
 
   it("trocar de opção mexe nos índices com o atraso em meses", () => {

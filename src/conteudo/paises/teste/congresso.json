@@ -8,31 +8,81 @@
       "id": "trabalhista",
       "nome": "Partido Trabalhista Popular",
       "cadeiras": 60,
-      "defende": { "trabalhadores": 1, "ambientalistas": 0.3 }
+      "defende": {
+        "operarios": 0.25,
+        "servicos": 0.25,
+        "campo": 0.25,
+        "sem-trabalho": 0.25,
+        "ambientalistas": 0.3
+      }
     },
     {
       "id": "verde",
       "nome": "Movimento Verde",
       "cadeiras": 20,
-      "defende": { "ambientalistas": 1, "classe-media": 0.3 }
+      "defende": {
+        "ambientalistas": 1,
+        "educacao-saude": 0.037,
+        "burocracia": 0.037,
+        "militares": 0.037,
+        "pequeno-comercio": 0.037,
+        "escritorio-tecnologia": 0.037,
+        "estudantes": 0.037,
+        "cultura-imprensa": 0.037,
+        "aposentados": 0.037
+      }
     },
     {
       "id": "centro",
       "nome": "Partido do Centro",
       "cadeiras": 30,
-      "defende": { "trabalhadores": 0.5, "classe-media": 0.5 }
+      "defende": {
+        "operarios": 0.125,
+        "servicos": 0.125,
+        "campo": 0.125,
+        "sem-trabalho": 0.125,
+        "educacao-saude": 0.062,
+        "burocracia": 0.062,
+        "militares": 0.062,
+        "pequeno-comercio": 0.062,
+        "escritorio-tecnologia": 0.062,
+        "estudantes": 0.062,
+        "cultura-imprensa": 0.062,
+        "aposentados": 0.062
+      }
     },
     {
       "id": "ordem",
       "nome": "Partido da Ordem",
       "cadeiras": 45,
-      "defende": { "classe-media": 1 }
+      "defende": {
+        "educacao-saude": 0.125,
+        "burocracia": 0.125,
+        "militares": 0.125,
+        "pequeno-comercio": 0.125,
+        "escritorio-tecnologia": 0.125,
+        "estudantes": 0.125,
+        "cultura-imprensa": 0.125,
+        "aposentados": 0.125
+      }
     },
     {
       "id": "liberal",
       "nome": "Aliança Liberal",
       "cadeiras": 45,
-      "defende": { "empresarios": 1, "classe-media": 0.3 }
+      "defende": {
+        "industria": 0.333,
+        "financas": 0.333,
+        "donos-terra": 0.333,
+        "educacao-saude": 0.037,
+        "burocracia": 0.037,
+        "militares": 0.037,
+        "pequeno-comercio": 0.037,
+        "escritorio-tecnologia": 0.037,
+        "estudantes": 0.037,
+        "cultura-imprensa": 0.037,
+        "aposentados": 0.037
+      }
     }
   ]
 }

@@ -8,25 +8,52 @@
       "id": "frente",
       "nome": "Frente Camponesa",
       "cadeiras": 40,
-      "defende": { "trabalhadores": 1 }
+      "defende": {
+        "operarios": 0.25,
+        "servicos": 0.25,
+        "campo": 0.25,
+        "sem-trabalho": 0.25
+      }
     },
     {
       "id": "uniao",
       "nome": "União Nacional",
       "cadeiras": 35,
-      "defende": { "classe-media": 1, "empresarios": 0.5 }
+      "defende": {
+        "educacao-saude": 0.125,
+        "burocracia": 0.125,
+        "militares": 0.125,
+        "pequeno-comercio": 0.125,
+        "escritorio-tecnologia": 0.125,
+        "estudantes": 0.125,
+        "cultura-imprensa": 0.125,
+        "aposentados": 0.125,
+        "industria": 0.167,
+        "financas": 0.167,
+        "donos-terra": 0.167
+      }
     },
     {
       "id": "progresso",
       "nome": "Partido do Progresso",
       "cadeiras": 30,
-      "defende": { "empresarios": 1 }
+      "defende": {
+        "industria": 0.333,
+        "financas": 0.333,
+        "donos-terra": 0.333
+      }
     },
     {
       "id": "renovacao",
       "nome": "Renovação",
       "cadeiras": 15,
-      "defende": { "ambientalistas": 1, "trabalhadores": 0.5 }
+      "defende": {
+        "ambientalistas": 1,
+        "operarios": 0.125,
+        "servicos": 0.125,
+        "campo": 0.125,
+        "sem-trabalho": 0.125
+      }
     }
   ]
 }

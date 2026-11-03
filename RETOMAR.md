@@ -15,12 +15,16 @@ reapontados; aparecem na tela do Mercado. Testes e `tsc -b` verdes.
 Efeito visível: "sem emprego formal" subiu (35→38% no teste-pobre) por causa de
 estudantes e aposentados, que não têm setor.
 
+**16 grupos** no lugar dos 4 (`mundo/grupos/grupos.json`); os 25 pops têm casa;
+os partidos dos países (`congresso.json`) defendem os novos ids; testes e `tsc -b`
+verdes; aparecem no mapa.
+
 O Partido (GDD §4, R4.5–R4.10, R6.11–R6.12) está escrito e commitado, sem código.
 
 ## Próximo
 
 Falta fechar pops e grupos: R11.5 (estudar e mudar de setor), R11.6 (subir e
-descer de estrato), R8.5 (pop desliza na bússola) e grupos de ~4 para ~8.
+descer de estrato), R8.5 (pop desliza na bússola) (grupos já feitos: 16).
 Decisão do autor: ordem desses quatro; recomendado grupos novos primeiro.
 `npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
 

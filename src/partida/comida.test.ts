@@ -17,7 +17,7 @@ const comGraos = (p: Partida, graos: number): Partida => {
 };
 
 const base = () => criarPartida("teste", 42, { semCongresso: true });
-const trab = (p: Partida) => p.estado.grupos["trabalhadores"].satisfacao;
+const trab = (p: Partida) => p.estado.grupos["operarios"].satisfacao;
 const j = (p: Partida, id: string) => p.estado.jogabilidade[id];
 
 describe("reação à comida (6c)", () => {
