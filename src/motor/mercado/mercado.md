@@ -106,8 +106,8 @@ primeiro; os outros produtos só depois de o autor confirmar a comida na tela.
 - Dois produtos novos no setor Essenciais: **Grãos** e **Frutas** (o que o
   campo colhe). **Alimentos** segue como o processado. "Agro" não é produto:
   é um grupo de pop (etapa de pops e grupos). A ligação entre eles (o
-  processado usa grão e fruta como insumo) é a "cadeia produtiva" da seção 11
-  do escopo; aqui os três são produtos independentes e o pop troca entre eles.
+  processado usa grão e fruta como insumo) é a "cadeia produtiva" (GDD,
+  seção 16); aqui os três são produtos independentes e o pop troca entre eles.
 - Unidade: tudo em **valor a preço base, em % do PIB** (igual ao resto do
   motor). Preço base = 100.
 - **Demanda de comida** = população × **cesta**. A cesta é a mesma quantia por
@@ -199,7 +199,7 @@ poucos; mesma partida e mesma semente dão o mesmo resultado.
   texto de "fome" vira o `termo` que a cesta declara (comida: "fome";
   remédios: "carência").
 - Fora desta fatia: grupos cobrando o acesso, Energia, Moradia, Infra e os
-  demais (cada um com regra própria, seção 11 do escopo).
+  demais (cada um com regra própria, seção 16 do GDD).
 - **Conferência:** a falta de remédios derruba o acesso e a saúde; sobra
   melhora; a comida segue igual; mesma partida e semente dão o mesmo resultado.
 
@@ -245,7 +245,6 @@ Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
 **Leis (pacote da Energia, leis pequenas; autor, 02/nov/2026):** pacote é um
 tema dividido em várias leis, nunca uma lei com opções grandes. Terceirizar e
 estatizar ao mesmo tempo é possível porque cada camada tem a sua lei.
-
 - 5 verbas, uma por fonte (% do PIB ao ano; faixa de 0 a 3%).
 - 3 leis de "quem": **quem constrói as usinas** (Estado / concessão / mercado
   livre), **quem opera a rede** (estatal / concessão) e **quem vende ao
@@ -299,7 +298,6 @@ obras (rodovias, ferrovias, portos, aeroportos, obras públicas) · Moradia ·
 Indústria pesada (aço, máquinas, veículos, aviões) · Tecnologia (chips,
 software, redes sociais, IA, eletrônicos de ponta) · Defesa (armas, veículos
 militares) · Luxo (veículos de luxo, joias). Em cada ficha o jogador escolhe:
-
 - **Dono:** estatal, mista ou privada (dado: fatia do Estado, 0 a 100%; 0, 50 e
   100 na V1). Estatizar e privatizar são o mesmo pedido, em sentidos opostos.
 - **Importação:** aberta, com cota ou fechada.
@@ -313,7 +311,6 @@ veto); enquanto corre, o valor antigo vale; o efeito chega com atraso e a
 fatia anda aos poucos. A operação **segue as leis gerais**, que mudam o custo.
 
 **Leis gerais (bolhas, país inteiro; opções ou contínuas):**
-
 - Indenização na estatização: valor justo / abaixo do valor / confisco.
 - Prazo de pagamento: à vista / parcelado / em títulos.
 - Método de venda permitido: leilão / concessão / ação de ouro / venda aos
@@ -351,10 +348,10 @@ internos (`preco.ts`), e o Congresso (`politica.votar`) só vota leis.
    de capital estrangeiro, preço (livre/teto/piso). Valor inicial vem do país.
    O mercado passa a obedecer: cota e fechada limitam `importa`; teto e piso
    limitam o preço; Estado com fatia maior segue a política da estatal.
-   _Pronto quando:_ testes mostram falta e preço mudando com cada dado.
+   *Pronto quando:* testes mostram falta e preço mudando com cada dado.
 2. **Projeto de lei do setor.** Mudar a ficha vira pedido: Congresso vota, valor
    antigo vale até passar, efeito chega com atraso, fatia anda aos poucos.
-   _Pronto quando:_ teste de aprovado, rejeitado e em andamento.
+   *Pronto quando:* teste de aprovado, rejeitado e em andamento.
 3. **Avisos.** Prévia do pedido: custo e de onde sai, quem ganha e perde,
    reação de investidores e potências. **Decisão do autor antes:** onde mora a
    confiança dos investidores sem criar índice novo.
@@ -367,7 +364,7 @@ internos (`preco.ts`), e o Congresso (`politica.votar`) só vota leis.
    estrangeira, fábrica nossa no exterior, antitruste, acordo com potência.
 7. **Os 9 setores.** Dados dos 9 no mundo, ficha para todos; Energia entra e
    substitui as 3 leis `energia-construcao/rede/venda`.
-8. **Fechamento.** `npm run check`, escopo seção 10, plano, `RETOMAR.md`, commit.
+8. **Fechamento.** `npm run check`, plano (seção 1), `RETOMAR.md`, commit.
 
 Cada passo termina com algo visível (teste ou tela) antes do próximo.
 

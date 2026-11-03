@@ -106,7 +106,7 @@ describe("energia (7)", () => {
     );
   });
 
-  describe("ficha da energia (dono, importação, capital de fora, preço)", () => {
+  describe("quem constrói, opera e vende (camadas)", () => {
     const com = (lei: string, valor: string): Pedido[] => [
       { tipo: "mudar_lei", lei, valor },
     ];
@@ -118,32 +118,37 @@ describe("energia (7)", () => {
     const preco = (p: Partida) =>
       situacoesDeCapacidade(p.regras, p.estado)[0]!.situacao;
 
-    it("com dono privado a mesma verba compra mais usina", () => {
+    it("com concessão a mesma verba compra mais usina", () => {
       const estatal = jogar(base(), 1);
-      const privada = jogar(base(), 1, com("energia-dono", "privada"));
-      expect(fila(privada)).toBeGreaterThan(fila(estatal));
-    });
-
-    it("importar energia entrega mais da mesma capacidade", () => {
-      const fechada = preco(jogar(base(), 1));
-      const aberta = preco(
-        jogar(base(), 1, com("energia-importacao", "aberta")),
+      const concessao = jogar(
+        base(),
+        1,
+        com("energia-construcao", "concessao"),
       );
-      expect(aberta.capacidade).toBeGreaterThan(fechada.capacidade);
+      expect(fila(concessao)).toBeGreaterThan(fila(estatal));
     });
 
-    it("dono privado encarece a energia", () => {
+    it("rede em concessão entrega mais da mesma capacidade", () => {
       const estatal = preco(jogar(base(), 1));
-      const privada = preco(jogar(base(), 1, com("energia-dono", "privada")));
+      const concessao = preco(
+        jogar(base(), 1, com("energia-rede", "concessao")),
+      );
+      expect(concessao.capacidade).toBeGreaterThan(estatal.capacidade);
+    });
+
+    it("venda privada com preço livre encarece a energia", () => {
+      const estatal = preco(jogar(base(), 1));
+      const privada = preco(jogar(base(), 1, com("energia-venda", "privada")));
       expect(privada.preco).toBeGreaterThan(estatal.preco);
     });
 
-    it("teto de preço barateia e piso encarece", () => {
-      const livre = preco(jogar(base(), 1));
-      const teto = preco(jogar(base(), 1, com("energia-preco", "teto")));
-      const piso = preco(jogar(base(), 1, com("energia-preco", "piso")));
-      expect(teto.preco).toBeLessThan(livre.preco);
-      expect(piso.preco).toBeGreaterThan(livre.preco);
+    it("dá para estatizar uma camada e terceirizar outra", () => {
+      const p = jogar(base(), 1, [
+        ...com("energia-construcao", "estatal"),
+        ...com("energia-venda", "privada"),
+      ]);
+      expect(p.estado.leis["energia-construcao"]).toBe("estatal");
+      expect(p.estado.leis["energia-venda"]).toBe("privada");
     });
   });
 });

@@ -1,0 +1,8 @@
+{
+  "versao": 1,
+  "empresas": [
+    { "id": "pnac", "nome": "PNAC · Petrolífera Nacional", "setor": "Energia", "valor": 0.06, "estado": 50 },
+    { "id": "cooperativa", "nome": "Cooperativa do Campo", "setor": "Alimentos", "valor": 0.03, "estado": 30 },
+    { "id": "ferrovias", "nome": "Ferrovias do Interior", "setor": "Transporte", "valor": 0.015, "estado": 50 }
+  ]
+}

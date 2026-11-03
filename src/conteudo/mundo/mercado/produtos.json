@@ -300,52 +300,38 @@
       ],
       "camadas": [
         {
-          "lei": "energia-dono",
+          "lei": "energia-construcao",
           "opcoes": {
             "estatal": {},
-            "mista": {
-              "parte_privada": 0.3,
+            "concessao": {
+              "parte_privada": 0.4,
+              "margem_preco": 3
+            },
+            "livre": {
+              "parte_privada": 0.7,
+              "margem_preco": 6
+            }
+          }
+        },
+        {
+          "lei": "energia-rede",
+          "opcoes": {
+            "estatal": {},
+            "concessao": {
+              "ganho_capacidade": 4,
+              "margem_preco": 3
+            }
+          }
+        },
+        {
+          "lei": "energia-venda",
+          "opcoes": {
+            "estatal": {},
+            "regulada": {
               "margem_preco": 2
             },
             "privada": {
-              "parte_privada": 0.6,
-              "margem_preco": 5
-            }
-          }
-        },
-        {
-          "lei": "energia-importacao",
-          "opcoes": {
-            "aberta": {
-              "ganho_capacidade": 6
-            },
-            "cota": {
-              "ganho_capacidade": 3
-            },
-            "fechada": {}
-          }
-        },
-        {
-          "lei": "energia-estrangeiro",
-          "opcoes": {
-            "nenhum": {},
-            "ate-metade": {
-              "parte_privada": 0.1
-            },
-            "livre": {
-              "parte_privada": 0.2
-            }
-          }
-        },
-        {
-          "lei": "energia-preco",
-          "opcoes": {
-            "livre": {},
-            "teto": {
-              "margem_preco": -2
-            },
-            "piso": {
-              "margem_preco": 3
+              "margem_preco": 6
             }
           }
         }

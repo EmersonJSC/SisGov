@@ -24,7 +24,7 @@ Mesma conta da renda; muda só o que o país declara. O lucro tem pico mais
 baixo que a renda (a empresa muda de lugar ou esconde o lucro com mais
 facilidade). Emissões é o valor do que se polui; base pequena e pico baixo
 (a indústria troca de processo ou esconde a emissão). Na V1 cada base é uma fatia fixa do PIB (`parcela_pib`); com o
-mercado, o motor passa a somar a base dos prédios e dos pops (escopo, seção 11).
+mercado, o motor passa a somar a base dos prédios e dos pops (GDD, seção 16).
 
 ## juros — prêmio pela dívida
 

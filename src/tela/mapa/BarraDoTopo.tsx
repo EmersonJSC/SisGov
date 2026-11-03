@@ -104,7 +104,7 @@ export function BarraDoTopo({
   onCarregar,
   onRecomecar,
   onMercado,
-  onFichas,
+  onBolsa,
 }: {
   partida: Partida;
   pedidos: number;
@@ -115,7 +115,7 @@ export function BarraDoTopo({
   onCarregar: () => void;
   onRecomecar: () => void;
   onMercado: () => void;
-  onFichas: () => void;
+  onBolsa: () => void;
 }) {
   const { estado } = partida;
   const e = estado.essenciais;
@@ -260,8 +260,8 @@ export function BarraDoTopo({
         <button type="button" className="aba-topo" onClick={onMercado}>
           Mercado
         </button>
-        <button type="button" className="aba-topo" onClick={onFichas}>
-          Setores
+        <button type="button" className="aba-topo" onClick={onBolsa}>
+          Bolsa
         </button>
         <button type="button" className="aba-topo" onClick={onSalvar}>
           Salvar

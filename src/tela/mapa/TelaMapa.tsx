@@ -9,13 +9,14 @@ import {
   type Partida,
   type Pedido,
   type VisaoLei,
+  empresasDoPais,
 } from "../../partida";
 import { comPedido } from "../fila";
 import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
-import { Fichas } from "./Fichas";
 import { Mercado } from "./Mercado";
+import { Pregao, pregaoInicial } from "./Pregao";
 import { MapaPolitico } from "./MapaPolitico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
 import { indexarRelacoes, ligacoesDeFundo } from "./relacoes";
@@ -68,8 +69,12 @@ export function TelaMapa({
   const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
   const [mercado, setMercado] = useState(false);
   const [desvioMercado, setDesvioMercado] = useState<Desvio>(CENTRO);
-  const [fichas, setFichas] = useState(false);
-  const [desvioFichas, setDesvioFichas] = useState<Desvio>(CENTRO);
+  const [bolsa, setBolsa] = useState(false);
+  const [desvioBolsa, setDesvioBolsa] = useState<Desvio>(CENTRO);
+  const empresas = useMemo(() => empresasDoPais(partida.pais), [partida.pais]);
+  const [pregao, setPregao] = useState(() =>
+    pregaoInicial(partida.estado.turno, empresas),
+  );
 
   const lei = visao.leis.find((l) => l.id === janela);
   const pedido = fila.find((p) => p.lei === janela);
@@ -127,7 +132,7 @@ export function TelaMapa({
         onCarregar={onCarregar}
         onRecomecar={onRecomecar}
         onMercado={() => setMercado(!mercado)}
-        onFichas={() => setFichas(!fichas)}
+        onBolsa={() => setBolsa(!bolsa)}
       />
       <main className="area-mapa">
         <MapaPolitico
@@ -192,17 +197,17 @@ export function TelaMapa({
             onFocar={() => {}}
           />
         ) : null}
-        {fichas ? (
-          <Fichas
+        {bolsa ? (
+          <Pregao
             partida={partida}
-            visao={visao}
-            fila={fila}
-            setFila={setFila}
-            onFechar={() => setFichas(false)}
-            desvio={desvioFichas}
-            onDesvio={setDesvioFichas}
+            empresas={empresas}
+            pregao={pregao}
+            setPregao={setPregao}
+            onFechar={() => setBolsa(false)}
+            desvio={desvioBolsa}
+            onDesvio={setDesvioBolsa}
             onRetangulo={() => {}}
-            camada={3}
+            camada={4}
             ativa
             onFocar={() => {}}
           />

@@ -8,7 +8,7 @@ import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { ValorLei } from "../leis";
 import type { Votacao } from "../politica";
-import type { CapacidadeNoEstado, FichasNoEstado, Preco } from "../mercado";
+import type { CapacidadeNoEstado, Preco } from "../mercado";
 import type { Pop } from "../populacao";
 
 export const INDICES_ESSENCIAIS = [
@@ -59,13 +59,6 @@ export interface Estado {
   precos: Record<string, Preco>;
   /** Capacidade pronta e obras de cada fonte (motor/mercado); vazio sem mercado. */
   capacidade: CapacidadeNoEstado;
-  /** Fatia do Estado e capital de fora de cada ficha de setor (fatia 8). */
-  fichas: FichasNoEstado;
-  /**
-   * Propriedade: parcelas de indenização que ainda vão sair do cofre (cada
-   * posição é um turno, em % do PIB) e o fluxo deste turno (% do PIB).
-   */
-  propriedade: { fila: number[]; receita: number; gasto: number };
   /**
    * O que mudou no último turno, na moeda do país: PIB nominal e dívida.
    * Ausente no turno 0 e em partida salva antes desta função.

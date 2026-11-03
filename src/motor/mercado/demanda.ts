@@ -9,9 +9,6 @@ import type { Cobertura, ProducaoDoMundo } from "./producao";
 const BASE = 100;
 /** Quanto a falta ou a sobra mexe no preço: 25% a 175% do base. */
 const FORCA_DA_FAIXA = 0.75;
-/** Quanto o produtor corta (teto de preço) ou aumenta (piso) a produção. */
-const CORTE_MIN = 0.6;
-const CORTE_MAX = 1.15;
 
 export interface LinhaDeDemanda {
   id: string;
@@ -34,23 +31,7 @@ export interface LinhaDeDemanda {
 export interface ContaDoPais {
   /** Entrada de cada produto de cesta. */
   produtos: Record<string, LinhaDeDemanda>;
-  /** Produtos sem cesta (ficha do setor): demanda cresce com a gente. */
-  outros: Record<string, LinhaDeDemanda>;
 }
-
-/** O que a ficha do setor faz com um produto (motor/mercado/ficha). */
-export interface Ajuste {
-  /** Parte da importação que a regra deixa entrar (0 a 1). */
-  importacao: number;
-  /** Multiplica a produção (eficiência do dono, capital de fora). */
-  producao: number;
-  /** Multiplica o preço (política da estatal). */
-  preco?: number;
-  precoMin?: number;
-  precoMax?: number;
-}
-
-export type Ajustes = Record<string, Ajuste>;
 
 const limitar = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
@@ -96,7 +77,6 @@ export function contaDoPais(
   populacaoBase: number,
   pessoas: number,
   precosMundo: Record<string, Preco>,
-  ajustes: Ajustes = {},
 ): ContaDoPais {
   const produtos: Record<string, LinhaDeDemanda> = {};
   const noMundo = (id: string) => precosMundo[id]?.valor ?? BASE;
@@ -113,23 +93,20 @@ export function contaDoPais(
       BASE;
     const conta = (
       preco: (id: string) => number,
-      corte: Record<string, number> = {},
     ): Record<string, LinhaDeDemanda> => {
       const parte = partes(doGrupo, preco);
       return Object.fromEntries(
         doGrupo.map((p) => {
           const demanda = total(pessoas) * parte[p.id]!;
-          const feito =
-            producao(p) * (ajustes[p.id]?.producao ?? 1) * (corte[p.id] ?? 1);
+          const feito = producao(p);
           const excedente = Object.values(potencias).reduce(
             (s, c) => s + Math.max(0, (c[p.id] ?? 0) - BASE),
             0,
           );
-          const importa =
-            Math.min(
-              Math.max(0, demanda - feito),
-              (excedente * demanda) / BASE,
-            ) * (ajustes[p.id]?.importacao ?? 1);
+          const importa = Math.min(
+            Math.max(0, demanda - feito),
+            (excedente * demanda) / BASE,
+          );
           const oferta = feito + importa;
           return [
             p.id,
@@ -140,9 +117,7 @@ export function contaDoPais(
               importa,
               oferta,
               cobertura: demanda > 0 ? (100 * feito) / demanda : 0,
-              preco:
-                precoDoPais(demanda, oferta, importa, noMundo(p.id)) *
-                (ajustes[p.id]?.preco ?? 1),
+              preco: precoDoPais(demanda, oferta, importa, noMundo(p.id)),
             } satisfies LinhaDeDemanda,
           ];
         }),
@@ -151,24 +126,9 @@ export function contaDoPais(
     // O preço do país depende da parte de cada um, que depende do preço:
     // duas passadas (a primeira com o preço do mundo) fecham a conta.
     const primeira = conta(noMundo);
-    let final = conta((id) => primeira[id]!.preco);
-    // Teto de preço faz o produtor produzir menos; piso faz produzir mais.
-    const corte: Record<string, number> = {};
-    for (const p of doGrupo) {
-      const { precoMin, precoMax } = ajustes[p.id] ?? {};
-      const livre = final[p.id]!.preco;
-      if (precoMax !== undefined && livre > precoMax)
-        corte[p.id] = limitar(precoMax / livre, CORTE_MIN, 1);
-      else if (precoMin !== undefined && livre < precoMin)
-        corte[p.id] = limitar(precoMin / livre, 1, CORTE_MAX);
-    }
-    if (Object.keys(corte).length > 0)
-      final = conta((id) => primeira[id]!.preco, corte);
+    const final = conta((id) => primeira[id]!.preco);
     for (const p of doGrupo) {
       const linha = final[p.id]!;
-      const { precoMin, precoMax } = ajustes[p.id] ?? {};
-      if (precoMax !== undefined) linha.preco = Math.min(linha.preco, precoMax);
-      if (precoMin !== undefined) linha.preco = Math.max(linha.preco, precoMin);
       if (p.unidade)
         linha.unidades = {
           nome: p.unidade.nome,
@@ -177,52 +137,7 @@ export function contaDoPais(
       produtos[p.id] = linha;
     }
   }
-  const outros: Record<string, LinhaDeDemanda> = {};
-  if (populacaoBase > 0)
-    for (const p of mercado.produtos) {
-      if (p.cesta) continue;
-      const a = ajustes[p.id];
-      const demanda = (BASE * pessoas) / populacaoBase;
-      const feito = (cobertura[p.id] ?? 0) * (pessoas / populacaoBase);
-      const excedente = Object.values(potencias).reduce(
-        (s, c) => s + Math.max(0, (c[p.id] ?? 0) - BASE),
-        0,
-      );
-      const linha = (corte: number, prender: boolean): LinhaDeDemanda => {
-        const produz = feito * (a?.producao ?? 1) * corte;
-        const importa =
-          Math.min(
-            Math.max(0, demanda - produz),
-            (excedente * demanda) / BASE,
-          ) * (a?.importacao ?? 1);
-        const oferta = produz + importa;
-        let preco =
-          precoDoPais(demanda, oferta, importa, noMundo(p.id)) *
-          (a?.preco ?? 1);
-        if (prender && a?.precoMax !== undefined)
-          preco = Math.min(preco, a.precoMax);
-        if (prender && a?.precoMin !== undefined)
-          preco = Math.max(preco, a.precoMin);
-        return {
-          id: p.id,
-          demanda,
-          producao: produz,
-          importa,
-          oferta,
-          cobertura: demanda > 0 ? (100 * produz) / demanda : 0,
-          preco,
-        };
-      };
-      const livre = linha(1, false).preco;
-      const corte =
-        a?.precoMax !== undefined && livre > a.precoMax
-          ? limitar(a.precoMax / livre, CORTE_MIN, 1)
-          : a?.precoMin !== undefined && livre < a.precoMin
-            ? limitar(a.precoMin / livre, 1, CORTE_MAX)
-            : 1;
-      outros[p.id] = linha(corte, true);
-    }
-  return { produtos, outros };
+  return { produtos };
 }
 
 /** Fome leve abaixo de 40 de segurança; grave abaixo de 20 (pontos de partida). */

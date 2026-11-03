@@ -3,8 +3,6 @@
 import {
   balancoDoPais,
   contaDoPais,
-  leisDasFichas,
-  PAPEIS,
   segurancaDaCesta,
   empregoDoPais,
   maisBarata,
@@ -28,7 +26,6 @@ import type {
   VisaoBolha,
   VisaoLei,
   VisaoLigacao,
-  VisaoFicha,
   VisaoMercado,
   VisaoPartida,
 } from "./tiposVisao";
@@ -270,10 +267,7 @@ function ligacoes(
 export function montarVisao(partida: Partida): VisaoPartida {
   const { regras, estado } = partida;
   const areaDa = areaDaLei();
-  const daFicha = regras.mercado?.fichas
-    ? leisDasFichas(regras.mercado.fichas)
-    : new Set<string>();
-  const leis = Object.values(regras.leis).filter((l) => !daFicha.has(l.id));
+  const leis = Object.values(regras.leis);
   for (const lei of leis)
     if (!areaDa.has(lei.id))
       throw new Error(`mundo/areas/areas.json › lei "${lei.id}" sem área`);
@@ -340,43 +334,8 @@ export function montarVisao(partida: Partida): VisaoPartida {
       peso: p.peso,
     })),
     mercado: regras.mercado && visaoDoMercado(regras, estado),
-    fichas: visaoDasFichas(regras, estado),
     governo: governo(),
   };
-}
-
-function visaoDasFichas(
-  regras: Partida["regras"],
-  estado: Partida["estado"],
-): VisaoFicha[] {
-  const fichas = regras.mercado?.fichas;
-  if (!fichas) return [];
-  return fichas.fichas.map((f) => ({
-    id: f.id,
-    nome: f.nome,
-    descricao: f.descricao,
-    estrategico: f.estrategico,
-    fatia: estado.fichas[f.id]?.fatia ?? 0,
-    estrangeiro: estado.fichas[f.id]?.estrangeiro ?? 0,
-    escolhas: PAPEIS.map((papel) => {
-      const lei = regras.leis[f.leis[papel]]!;
-      return {
-        papel,
-        lei: lei.id,
-        titulo: textos.get(lei.id)?.nome ?? nomeDoId(lei.id),
-        vigente: String(estado.leis[lei.id] ?? ""),
-        opcoes:
-          lei.forma === "opcoes"
-            ? lei.opcoes.map((o) => ({
-                id: o.id,
-                rotulo:
-                  textos.get(lei.id)?.opcoes?.find((x) => x.id === o.id)
-                    ?.rotulo ?? nomeDoId(o.id),
-              }))
-            : [],
-      };
-    }),
-  }));
 }
 
 function visaoDoMercado(

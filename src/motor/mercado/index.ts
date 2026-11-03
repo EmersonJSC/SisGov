@@ -193,5 +193,3 @@ export * from "./preco";
 export * from "./emprego";
 export * from "./demanda";
 export * from "./capacidade";
-export * from "./ficha";
-export * from "./propriedade";

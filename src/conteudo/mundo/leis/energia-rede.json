@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "energia-rede",
+  "nome": "Quem opera a rede de transmissão",
+  "descricao": "Quem cuida dos fios que levam a energia das usinas até as cidades. Rede privada perde menos energia no caminho, mas cobra pelo serviço.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "estatal",
+      "rotulo": "Rede estatal",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0.0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "concessao",
+      "rotulo": "Rede em concessão (entrega 4% mais energia; energia 3% mais cara)",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0.0
+      },
+      "efeitos": []
+    }
+  ]
+}
