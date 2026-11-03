@@ -26,6 +26,12 @@ import {
 import {
   andarCapacidade,
   andarChoques,
+  andarConstrucoes,
+  animoDoInvestimento,
+  construcoesIniciais,
+  empregoDoPais,
+  investimentoBase,
+  tamanhoDaEconomia,
   andarPrecos,
   capacidadeInicial,
   contaDoPais,
@@ -147,7 +153,26 @@ export function situacoesDeCapacidade(regras: Regras, estado: Estado) {
   }));
 }
 
-/** 4. Economia real: o sorteio do crescimento, menos o freio da falta de capacidade. */
+/** Soma das alíquotas das leis que cobram sobre o lucro (fração). */
+function impostoSobreLucro(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+): number {
+  let total = 0;
+  for (const [id, valor] of Object.entries(leis)) {
+    const lei = regras.leis[id];
+    if (lei?.forma === "continua" && lei.calculo?.base === "lucro")
+      total += valor as number;
+  }
+  return total;
+}
+
+/**
+ * 4. Economia real. Com construções (12b): o investimento privado, freado por
+ * juro e imposto sobre lucro, abre obras; o PIB real anda com a capacidade
+ * pronta. Sem elas: o sorteio do crescimento. Nos dois, a falta de capacidade
+ * (ex.: energia) freia.
+ */
 const economiaReal: Etapa = (regras, estado) => {
   const { tendencia, volatilidade } = regras.pais.crescimento;
   const [z, acaso] = sortearNormal(estado.acaso);
@@ -156,11 +181,44 @@ const economiaReal: Etapa = (regras, estado) => {
       soma + freioDoCrescimento(capacidade, situacao),
     0,
   );
-  const anual = tendencia + volatilidade * z - freio;
   const e = estado.essenciais;
+  const regra = regras.mercado?.mercado.obras;
+  const c = estado.construcoes;
+  let anual = tendencia + volatilidade * z - freio;
+  let construcoes = c;
+  if (regra && c) {
+    const marco = estado.marco.indices;
+    const atraso = estado.jogabilidade[regra.indice_atraso] ?? 0;
+    const animo = animoDoInvestimento(
+      e.taxa_juros,
+      // Régua: o juro de equilíbrio do turno 0, não o declarado (que anda até ele).
+      taxaAlvo(
+        marco.divida_publica ?? e.divida_publica,
+        marco.inflacao ?? e.inflacao,
+        regras.pais.juros,
+      ),
+      impostoSobreLucro(regras, estado.leis),
+      impostoSobreLucro(regras, estado.marco.leis),
+    );
+    const base = investimentoBase(
+      regra,
+      tendencia,
+      marco[regra.indice_atraso] ?? atraso,
+    );
+    const taxa = Math.max(0, base * animo + volatilidade * z);
+    const capacidade = Object.values(c.prontas).reduce((s, v) => s + v, 0);
+    construcoes = andarConstrucoes(regra, c, tendencia + regra.desgaste * 100, {
+      investimento: (taxa / 100 / TURNOS_POR_ANO) * capacidade,
+      atraso,
+      perdaExtra: freio,
+    });
+    const fator = tamanhoDaEconomia(construcoes) / tamanhoDaEconomia(c);
+    anual = (Math.pow(fator, TURNOS_POR_ANO) - 1) * 100;
+  }
   return {
     ...estado,
     acaso,
+    construcoes,
     essenciais: {
       ...e,
       crescimento_real: anual,
@@ -641,6 +699,11 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
             `mundo: camada "${camada.lei}" cita a opção "${id}", que a lei não tem`,
           );
     }
+  const obras = regras.mercado?.mercado.obras;
+  if (obras && !(obras.indice_atraso in regras.dominios))
+    throw new Error(
+      `mundo: obras: o índice "${obras.indice_atraso}" não existe`,
+    );
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);
   const motivoGrupos = motivoGruposInvalidos(
@@ -724,6 +787,17 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
     pops: pops(regras, estado),
   });
+  // Construções do turno 0: cada setor vale a renda que paga (motor/mercado).
+  const m = regras.mercado;
+  if (m?.mercado.obras) {
+    const emprego = empregoDoPais(m.mercado, m.ocupacao, comPops.pops);
+    comPops.construcoes = construcoesIniciais(
+      m.mercado.obras,
+      Object.fromEntries(emprego.setores.map((s) => [s.id, s.massa + s.lucro])),
+      regras.pais.crescimento.tendencia,
+      comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
+    );
+  }
   // O marco é o próprio turno 0: grupos começam em 50.
   const marco: Marco = {
     indices: todosIndices(comPops),

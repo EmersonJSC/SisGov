@@ -235,6 +235,12 @@
       }
     }
   ],
+  "obras": {
+    "setor": "construcao-civil",
+    "indice_atraso": "corrupcao",
+    "prazo": 4,
+    "desgaste": 0.04
+  },
   "capacidades": [
     {
       "id": "energia",

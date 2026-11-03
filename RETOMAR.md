@@ -3,7 +3,7 @@
 Reescrito do zero a cada rodada; o anterior vai para o topo de
 [docs/historico/retomar.md](docs/historico/retomar.md) (não abrir sem precisar).
 
-**02/nov/2026**
+**03/nov/2026**
 
 ## Onde está
 
@@ -42,13 +42,19 @@ faltam (~30% do jogo).
 
 ## Próximo
 
-Autor confere `requisitos.md` e decide: fechar o 12b (economia) antes de abrir
-outra frente. Recomendação: sim; pilar 1 (construções, R16.7–R16.10).
+12b pilar 1, fatia 1b: lucro por setor (receita − salários − impostos) e
+construção que dá prejuízo seguido fecha (R16.9). Propor no chat antes.
+
+**Feito 03/nov (sem commit): fatia 1a.** `src/motor/mercado/construcoes.ts`
++ `obras` em `produtos.json`; `economiaReal` usa a capacidade pronta; o
+investimento privado abre obras (decisão A do autor: "se tem vácuo, alguém
+pega"). Teste 2,0%/ano e teste-pobre 3,3%/ano, como antes. Cenários:
+`npm run construcoes`; teste `scripts/construcoes.test.ts`.
 
 ## Pendências do autor
 
 - Jogar o Pregão (botão "Bolsa").
-- Commits locais sem push (push só com a palavra do autor).
+- Commits locais sem push (55eb0ff2, 5adddb3c) (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
 - Antes de publicar o jogo: checar com advogado.
 - Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.
@@ -65,6 +71,7 @@ outra frente. Recomendação: sim; pilar 1 (construções, R16.7–R16.10).
 - `0.6 × 1/3` dá 0,1999… no computador: comparação de limite precisa de folga.
 - `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (agora é a referência da tela; ainda sem commit): adicionar arquivo por arquivo.
 - Grupo de centro (perto da posição atual da lei) perde nos dois sentidos: é a bússola, não erro.
+- Freio do juro nas obras mede contra o juro de equilíbrio do turno 0 (`taxaAlvo`), não o declarado: o teste-pobre declara 10 e anda a 13.
 - Grupos medem renda contra o crescimento esperado (`esperado` em `calcularGrupos`); mexer na tendência do país muda a satisfação de todos.
 - A tela só lê/chama `src/partida`; salvar guarda país+semente+estado, as regras voltam do conteúdo.
 - Renomear arquivo que o `main.tsx` importa exige `touch src/main.tsx` com o Vite rodando (cache).

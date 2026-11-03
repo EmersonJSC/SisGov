@@ -21,7 +21,8 @@
     "grupos": "vite-node scripts/grupos.ts",
     "congresso": "vite-node scripts/congresso.ts",
     "eleicao": "vite-node scripts/eleicao.ts",
-    "mundo": "vite-node scripts/mundo.ts"
+    "mundo": "vite-node scripts/mundo.ts",
+    "construcoes": "vite-node scripts/construcoes.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

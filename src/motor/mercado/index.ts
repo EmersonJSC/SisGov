@@ -1,6 +1,7 @@
 // Mercado: setores e produtos do mundo (src/motor/mercado/mercado.md). O motor
 // não conhece os nomes; eles vêm do conteúdo.
 import { validarCapacidades, type Capacidade } from "./capacidade";
+import { validarRegraDasObras, type RegraDasObras } from "./construcoes";
 
 export interface Setor {
   id: string;
@@ -50,6 +51,8 @@ export interface Mercado {
   cestas: Cesta[];
   /** Redes de capacidade (ex.: energia), sem cesta (fatia 7). */
   capacidades?: Capacidade[];
+  /** Quem constrói e o que atrasa as obras (12b pilar 1); sem ela, PIB por tendência. */
+  obras?: RegraDasObras;
 }
 
 export interface ErroMercado {
@@ -170,6 +173,11 @@ export function validarMercado(dado: unknown): ErroMercado[] {
       erro("setores", `o setor "${id}" não tem nenhum produto`);
 
   erros.push(...validarCapacidades(dado.capacidades));
+  erros.push(
+    ...validarRegraDasObras(dado.obras, {
+      setores: setores.filter(ehObjeto) as unknown as Setor[],
+    }),
+  );
 
   return erros;
 }
@@ -179,12 +187,13 @@ export function lerMercado(dado: unknown): Mercado {
   const erros = validarMercado(dado);
   if (erros.length > 0)
     throw new Error(erros.map((e) => `${e.campo}: ${e.motivo}`).join("\n"));
-  const { setores, produtos, cestas, capacidades } = dado as Mercado;
+  const { setores, produtos, cestas, capacidades, obras } = dado as Mercado;
   return {
     setores,
     produtos,
     cestas: cestas ?? [],
     capacidades: capacidades ?? [],
+    ...(obras ? { obras } : {}),
   };
 }
 
@@ -193,3 +202,4 @@ export * from "./preco";
 export * from "./emprego";
 export * from "./demanda";
 export * from "./capacidade";
+export * from "./construcoes";

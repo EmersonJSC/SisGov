@@ -373,3 +373,21 @@ Cada passo termina com algo visível (teste ou tela) antes do próximo.
 5b. PIB e bases dos impostos saem da produção e dos pops (países de teste
 continuam dando o resultado de hoje). **Adiada** (02/nov): vem depois de
 mais pops. O passo 12 foi fechado sem ela.
+
+## 12b pilar 1: construções (03/nov/2026)
+
+Código em `construcoes.ts`; a regra vem de `obras` em `produtos.json` (setor que
+constrói, índice que atrasa, prazo, desgaste). Cenários: `npm run construcoes`.
+
+- Cada setor tem capacidade pronta, em % do PIB real do turno 0 (no turno 0,
+  a renda que o setor paga). O PIB real anda com a soma delas.
+- Todo turno a capacidade desgasta (4%/ano, mais o freio da energia) e o
+  investimento privado abre obras, divididas pelo tamanho dos setores.
+- Investimento no turno 0 = o que faz o país crescer a tendência dele. Juro
+  acima do equilíbrio do turno 0 tira 8% por ponto; imposto sobre lucro acima
+  do turno 0 tira 3% por ponto. O sorteio do país mexe no investimento.
+- Construção civil decide o volume que anda ao mesmo tempo (1,5× o ritmo do
+  turno 0, crescendo com ela); o resto espera na fila.
+- O índice de atraso (corrupção) alonga o prazo (até 2×) e encarece (até
+  +50%) a obra.
+- Ainda não: lucro por setor e fechamento (1b), "≈ N (+obras)" na tela (1c).
