@@ -20,11 +20,7 @@
       "id": "alimentos",
       "nome": "Alimentos",
       "descricao": "Grãos, frutas e alimentos: o prato do povo.",
-      "produtos": [
-        "graos",
-        "frutas",
-        "alimentos"
-      ],
+      "produtos": ["graos", "frutas", "alimentos"],
       "capacidades": [],
       "valor": 12,
       "freio": 0,
@@ -40,9 +36,7 @@
       "id": "saude",
       "nome": "Saúde (remédios)",
       "descricao": "Os remédios que chegam à população.",
-      "produtos": [
-        "remedios"
-      ],
+      "produtos": ["remedios"],
       "capacidades": [],
       "valor": 6,
       "freio": 0,
@@ -59,9 +53,7 @@
       "nome": "Energia",
       "descricao": "Quem é dono da rede e do que gera a energia.",
       "produtos": [],
-      "capacidades": [
-        "energia"
-      ],
+      "capacidades": ["energia"],
       "valor": 8,
       "freio": 0,
       "estrategico": true,
@@ -98,9 +90,7 @@
       "id": "moradia",
       "nome": "Moradia",
       "descricao": "Construção e oferta de casas.",
-      "produtos": [
-        "moradia"
-      ],
+      "produtos": ["moradia"],
       "capacidades": [],
       "valor": 8,
       "freio": 1.5,
@@ -116,12 +106,7 @@
       "id": "industria",
       "nome": "Indústria pesada",
       "descricao": "Aço, máquinas, veículos e aviões.",
-      "produtos": [
-        "aco",
-        "maquinas",
-        "veiculos",
-        "avioes"
-      ],
+      "produtos": ["aco", "maquinas", "veiculos", "avioes"],
       "capacidades": [],
       "valor": 14,
       "freio": 3,
@@ -159,10 +144,7 @@
       "id": "defesa",
       "nome": "Defesa",
       "descricao": "Armas e veículos militares.",
-      "produtos": [
-        "armas",
-        "veiculos-militares"
-      ],
+      "produtos": ["armas", "veiculos-militares"],
       "capacidades": [],
       "valor": 3,
       "freio": 1,
@@ -178,10 +160,7 @@
       "id": "luxo",
       "nome": "Luxo",
       "descricao": "Veículos de luxo e joias.",
-      "produtos": [
-        "veiculos-de-luxo",
-        "joias"
-      ],
+      "produtos": ["veiculos-de-luxo", "joias"],
       "capacidades": [],
       "valor": 4,
       "freio": 0.5,

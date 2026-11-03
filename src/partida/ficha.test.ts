@@ -1,7 +1,13 @@
 // Fatia 8: ficha do setor. Cada mudança é uma lei de opções; o mercado e o
 // cofre obedecem à ficha e às leis gerais de propriedade.
 import { describe, expect, it } from "vitest";
-import { criarPartida, jogar, previaDaFicha, type Partida, type Pedido } from ".";
+import {
+  criarPartida,
+  jogar,
+  previaDaFicha,
+  type Partida,
+  type Pedido,
+} from ".";
 import { ajustesDoEstado, contaDoPais } from "../motor";
 
 const base = () => criarPartida("teste", 42, { semCongresso: true });
@@ -28,7 +34,11 @@ const aco = ["aco", "maquinas", "veiculos", "avioes"];
 describe("importação e preço (passo 1)", () => {
   it("importação fechada corta o que entra de fora", () => {
     const aberta = jogar(base(), 1);
-    const fechada = jogar(base(), 1, pedir(["industria-importacao", "fechada"]));
+    const fechada = jogar(
+      base(),
+      1,
+      pedir(["industria-importacao", "fechada"]),
+    );
     expect(importa(aberta, aco)).toBeGreaterThan(0);
     expect(importa(fechada, aco)).toBe(0);
   });
@@ -203,7 +213,11 @@ describe("capital estrangeiro (passo 6)", () => {
 
   it("acordo fechado esfria a opinião das potências", () => {
     const aberto = jogar(base(), 6);
-    const fechado = jogar(base(), 6, pedir(["acordo-com-potencias", "fechado"]));
+    const fechado = jogar(
+      base(),
+      6,
+      pedir(["acordo-com-potencias", "fechado"]),
+    );
     const media = (p: Partida) =>
       Object.values(p.estado.opinioes).reduce((s, v) => s + v, 0);
     expect(media(fechado)).toBeLessThan(media(aberto));

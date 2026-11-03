@@ -26,10 +26,15 @@ const PAPEL: Record<string, string> = {
 const n1 = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
 const sinal = (v: number) =>
-  v.toLocaleString("pt-BR", { maximumFractionDigits: 1, signDisplay: "exceptZero" });
+  v.toLocaleString("pt-BR", {
+    maximumFractionDigits: 1,
+    signDisplay: "exceptZero",
+  });
 const pct = (v: number) => `${Math.round(v * 100)}%`;
 
-type Escolhas = Partial<Record<VisaoFicha["escolhas"][number]["papel"], string>>;
+type Escolhas = Partial<
+  Record<VisaoFicha["escolhas"][number]["papel"], string>
+>;
 
 export function Fichas({
   partida,
@@ -56,7 +61,9 @@ export function Fichas({
       ]),
     );
   const [rascunho, setRascunho] = useState<Record<string, Escolhas>>({});
-  const escolhas: Escolhas = ficha ? { ...doSetor(ficha), ...rascunho[ficha.id] } : {};
+  const escolhas: Escolhas = ficha
+    ? { ...doSetor(ficha), ...rascunho[ficha.id] }
+    : {};
   const previa = useMemo(
     () => (ficha ? previaDaFicha(partida, ficha.id, escolhas) : null),
     [partida, ficha, JSON.stringify(escolhas)],
@@ -134,8 +141,8 @@ export function Fichas({
             <h2>Em 6 turnos, se aprovar</h2>
             {previa.semComprador ? (
               <p className="ficha-alerta">
-                Ninguém quer comprar: a venda não anda enquanto as potências
-                não gostarem mais do país.
+                Ninguém quer comprar: a venda não anda enquanto as potências não
+                gostarem mais do país.
               </p>
             ) : null}
             <ul className="mercado-produtos ficha-produtos">
@@ -184,7 +191,12 @@ export function Fichas({
           </section>
         ) : null}
         <div className="ficha-botoes">
-          <button type="button" className="aba-topo" onClick={propor} disabled={!muda && !naFila}>
+          <button
+            type="button"
+            className="aba-topo"
+            onClick={propor}
+            disabled={!muda && !naFila}
+          >
             {muda ? "Propor ao Congresso" : "Retirar propostas"}
           </button>
         </div>

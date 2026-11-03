@@ -117,7 +117,10 @@ const media = (v: number[]) =>
   v.length ? v.reduce((s, x) => s + x, 0) / v.length : 0;
 
 function rodar(partida: Partida, pedidos: Pedido[]) {
-  const sem = { ...partida, regras: { ...partida.regras, congresso: undefined } };
+  const sem = {
+    ...partida,
+    regras: { ...partida.regras, congresso: undefined },
+  };
   let p: Partida = sem;
   let custo = 0;
   for (let t = 0; t < TURNOS_DA_PREVIA; t++) {

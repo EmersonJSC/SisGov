@@ -155,7 +155,7 @@ Ideia nova durante um passo vai para a seção 11, não para o passo.
 | 9 | Eleição e desgaste | ✅ 01/nov — desgaste de 2,25 por mandato; eleição no fim do mandato (lei `duracao-mandato`, 4 ou 5 anos) pelo apoio = satisfação pesada por pessoas − desgaste; perder encerra a partida (`npm run eleicao`). Os grupos passaram a medir a renda contra o crescimento esperado do país, senão o governo parado vencia |
 | 10 | Tela | ✅ 01/nov — tela simples em React (`npm run dev`): país e semente, grupos, índices, leis com controle para propor, fila de pedidos, votação do Congresso, resultado da eleição; salvar e carregar no navegador (`partida/salvar.ts`). Partida inteira jogada na tela até a eleição |
 | 11 | Mundo | ✅ 02/nov — 5 potências com opinião pela bússola, reputação (média pesada), poder defensivo e segurança externa (`npm run mundo`); leis de segurança (blocos A a E); losangos no mapa e chips Reputação e Seg. externa. Pedido: grandes potências que representam blocos reais, sem nome real, com relação entre si e opinião própria sobre o seu país que anda pela bússola; reputação internacional vira a média delas |
-| 12 | Mercado | ✅ 02/nov (sem a 5b, ver seção 11) — mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços |
+| 12 | Mercado | ✅ 02/nov (sem a 5b, ver seção 11) — mercado global e mercado do país (o dos outros países é simulado); produtos do mundo em setores; o país declara o que produz e depende de quem faz o resto; pops com empregos; ciclos econômicos mexem nos preços. **Fatia 8 (Propriedade, 02/nov):** ficha do setor (dono, importação, teto de capital de fora, preço) em 9 setores, 13 leis gerais na área Propriedade, janela "Setores" com prévia de 6 turnos; cada mudança é projeto de lei votado |
 | 13 | Leis em pacotes | um pacote por vez (seção 11, "Leis em pacotes") |
 
 Peças do código antigo voltam só quando um passo precisar delas, depois de
@@ -163,6 +163,7 @@ lidas (tag `projeto-antigo-2026-10-31`).
 
 ## 11. Ideias para depois
 
+- **Bolsa de valores simulada** (02/nov): investidores hoje = opinião média das potências; uma bolsa própria, com preço de ações que reage às fichas e às leis, ficaria para depois da propriedade.
 - Quanto o eleitor percebe o déficit como parâmetro do país: em democracias
   consolidadas déficit pré-eleição não ajuda a reeleger; em novas, ajuda
   (Brender & Drazen, 2008).

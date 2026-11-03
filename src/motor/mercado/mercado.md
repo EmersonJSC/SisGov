@@ -245,6 +245,7 @@ Energia não é cesta: não se guarda e viaja longe pela rede de transmissão
 **Leis (pacote da Energia, leis pequenas; autor, 02/nov/2026):** pacote é um
 tema dividido em várias leis, nunca uma lei com opções grandes. Terceirizar e
 estatizar ao mesmo tempo é possível porque cada camada tem a sua lei.
+
 - 5 verbas, uma por fonte (% do PIB ao ano; faixa de 0 a 3%).
 - 3 leis de "quem": **quem constrói as usinas** (Estado / concessão / mercado
   livre), **quem opera a rede** (estatal / concessão) e **quem vende ao
@@ -298,6 +299,7 @@ obras (rodovias, ferrovias, portos, aeroportos, obras públicas) · Moradia ·
 Indústria pesada (aço, máquinas, veículos, aviões) · Tecnologia (chips,
 software, redes sociais, IA, eletrônicos de ponta) · Defesa (armas, veículos
 militares) · Luxo (veículos de luxo, joias). Em cada ficha o jogador escolhe:
+
 - **Dono:** estatal, mista ou privada (dado: fatia do Estado, 0 a 100%; 0, 50 e
   100 na V1). Estatizar e privatizar são o mesmo pedido, em sentidos opostos.
 - **Importação:** aberta, com cota ou fechada.
@@ -311,6 +313,7 @@ veto); enquanto corre, o valor antigo vale; o efeito chega com atraso e a
 fatia anda aos poucos. A operação **segue as leis gerais**, que mudam o custo.
 
 **Leis gerais (bolhas, país inteiro; opções ou contínuas):**
+
 - Indenização na estatização: valor justo / abaixo do valor / confisco.
 - Prazo de pagamento: à vista / parcelado / em títulos.
 - Método de venda permitido: leilão / concessão / ação de ouro / venda aos
@@ -348,10 +351,10 @@ internos (`preco.ts`), e o Congresso (`politica.votar`) só vota leis.
    de capital estrangeiro, preço (livre/teto/piso). Valor inicial vem do país.
    O mercado passa a obedecer: cota e fechada limitam `importa`; teto e piso
    limitam o preço; Estado com fatia maior segue a política da estatal.
-   *Pronto quando:* testes mostram falta e preço mudando com cada dado.
+   _Pronto quando:_ testes mostram falta e preço mudando com cada dado.
 2. **Projeto de lei do setor.** Mudar a ficha vira pedido: Congresso vota, valor
    antigo vale até passar, efeito chega com atraso, fatia anda aos poucos.
-   *Pronto quando:* teste de aprovado, rejeitado e em andamento.
+   _Pronto quando:_ teste de aprovado, rejeitado e em andamento.
 3. **Avisos.** Prévia do pedido: custo e de onde sai, quem ganha e perde,
    reação de investidores e potências. **Decisão do autor antes:** onde mora a
    confiança dos investidores sem criar índice novo.

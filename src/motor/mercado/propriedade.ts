@@ -36,8 +36,9 @@ export interface ResultadoDaPropriedade {
 }
 
 const somarFila = (fila: number[], parcelas: number, total: number) =>
-  Array.from({ length: Math.max(fila.length, parcelas) }, (_, i) =>
-    (fila[i] ?? 0) + (i < parcelas ? total / parcelas : 0),
+  Array.from(
+    { length: Math.max(fila.length, parcelas) },
+    (_, i) => (fila[i] ?? 0) + (i < parcelas ? total / parcelas : 0),
   );
 
 /** Um turno de propriedade: move as fichas e fecha o dinheiro do turno. */

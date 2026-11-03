@@ -191,11 +191,14 @@ export function contaDoPais(
       const linha = (corte: number, prender: boolean): LinhaDeDemanda => {
         const produz = feito * (a?.producao ?? 1) * corte;
         const importa =
-          Math.min(Math.max(0, demanda - produz), (excedente * demanda) / BASE) *
-          (a?.importacao ?? 1);
+          Math.min(
+            Math.max(0, demanda - produz),
+            (excedente * demanda) / BASE,
+          ) * (a?.importacao ?? 1);
         const oferta = produz + importa;
         let preco =
-          precoDoPais(demanda, oferta, importa, noMundo(p.id)) * (a?.preco ?? 1);
+          precoDoPais(demanda, oferta, importa, noMundo(p.id)) *
+          (a?.preco ?? 1);
         if (prender && a?.precoMax !== undefined)
           preco = Math.min(preco, a.precoMax);
         if (prender && a?.precoMin !== undefined)

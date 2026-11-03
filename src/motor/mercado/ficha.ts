@@ -84,7 +84,8 @@ export function validarFichas(
 ): ErroMercado[] {
   const erros: ErroMercado[] = [];
   const erro = (campo: string, motivo: string) => erros.push({ campo, motivo });
-  if (!ehObjeto(dado)) return [{ campo: "(raiz)", motivo: "precisa ser um objeto" }];
+  if (!ehObjeto(dado))
+    return [{ campo: "(raiz)", motivo: "precisa ser um objeto" }];
   if (dado.versao !== 1) erro("versao", "precisa ser 1");
   const produtos = new Set(mercado.produtos.map((p) => p.id));
   const redes = new Set((mercado.capacidades ?? []).map((c) => c.id));
@@ -99,7 +100,8 @@ export function validarFichas(
   const gerais = dado.gerais;
   if (!ehObjeto(gerais)) erro("gerais", "precisa ser um objeto");
   else
-    for (const papel of PAPEIS_GERAIS) temOpcoes(gerais[papel], `gerais.${papel}`);
+    for (const papel of PAPEIS_GERAIS)
+      temOpcoes(gerais[papel], `gerais.${papel}`);
   if (!Array.isArray(dado.fichas) || dado.fichas.length === 0)
     erro("fichas", "precisa ter ao menos uma ficha");
   else {
@@ -112,7 +114,7 @@ export function validarFichas(
       else if (vistos.has(f.id)) erro(`${c}.id`, `"${f.id}" repetido`);
       vistos.add(f.id);
       for (const campo of ["valor", "freio"])
-        if (typeof f[campo] !== "number" || !(f[campo] as number >= 0))
+        if (typeof f[campo] !== "number" || !((f[campo] as number) >= 0))
           erro(`${c}.${campo}`, "precisa ser um número ≥ 0");
       if (typeof f.estrategico !== "boolean")
         erro(`${c}.estrategico`, "precisa ser verdadeiro ou falso");
@@ -292,7 +294,8 @@ export function moverFicha(
     geral(fichas, leis, vigentes, papel, chave, padrao);
   let alvo = s.fatiaAlvo;
   // A lei geral pode proibir empresa do Estado neste tipo de setor.
-  if (!estadoPodeTer(fichas, f, leis, vigentes)) alvo = Math.min(alvo, atual.fatia);
+  if (!estadoPodeTer(fichas, f, leis, vigentes))
+    alvo = Math.min(alvo, atual.fatia);
   let fatia = rumo(atual.fatia, alvo, PASSO_FATIA);
   let semComprador = false;
   if (fatia < atual.fatia && 0.5 + 0.6 * interesse < g("minimo", "minimo", 0)) {
@@ -346,10 +349,14 @@ export function fatorDePreco(
 ): number {
   const g = (papel: PapelGeral, chave: string, padrao: number) =>
     geral(fichas, leis, vigentes, papel, chave, padrao);
-  const doEstado = (g("politica", "preco", 1) - 1) * (atual.fatia - atual.fatia0);
-  const privado = (1 - atual.fatia) - (1 - atual.fatia0);
+  const doEstado =
+    (g("politica", "preco", 1) - 1) * (atual.fatia - atual.fatia0);
+  const privado = 1 - atual.fatia - (1 - atual.fatia0);
   const concentracao =
-    0.08 * g("antitruste", "concentracao", 1) * g("posvenda", "tarifa", 1) * privado;
+    0.08 *
+    g("antitruste", "concentracao", 1) *
+    g("posvenda", "tarifa", 1) *
+    privado;
   return limitar(1 + doEstado + concentracao, 0.6, 1.6);
 }
 
@@ -395,8 +402,7 @@ export function freioDasFichas(
   return fichas.fichas.reduce((freio, f) => {
     const demanda = f.produtos.reduce((s, p) => s + (hoje(p)?.demanda ?? 0), 0);
     if (demanda <= 0) return freio;
-    const nova =
-      falta(f.produtos.map(hoje)) - falta(f.produtos.map(semFicha));
+    const nova = falta(f.produtos.map(hoje)) - falta(f.produtos.map(semFicha));
     return freio + f.freio * (Math.max(0, nova) / demanda);
   }, 0);
 }

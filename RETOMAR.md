@@ -20,17 +20,13 @@ Skill nova `sisgov-gamedesign` (6 perguntas antes de desenhar).
 
 ## Próximo
 
-**Fatia 8, passos 3 e 4 feitos (254 testes, `tsc` ok); autor manda parar aqui.**
-Passo 3: `previaDaFicha` em `src/partida/previa.ts` (6 turnos com e sem a
-mudança: cofre, preço, importação, falta, PIB, investidores, grupos, votos,
-venda travada). Passo 4: botão "Setores" na barra do topo e janela
-`src/tela/mapa/Fichas.tsx` (9 setores, 4 escolhas, aviso, "Propor ao
-Congresso" via `comPedido`); `fichas` entrou na `VisaoPartida`. Visto na tela
-com Alimentos → Estatal (fila foi a 1 pedido).
-**Decisão do autor:** aprovar o jeito da janela (ou pedir mudança), depois
-passo 8 (`npm run check`, escopo seção 10, plano, commit). Dúvida aberta:
-investidores = opinião das potências, serve? (recomendo sim). Ajuste menor:
-depois de "Propor" o botão continua "Propor" (não diz "na fila").
+**Fatia 8 (Propriedade) fechada em 02/nov** (passos 1 a 8; `npm run check` verde,
+254 testes). Autor aprovou o jeito da janela "Setores" ("serve, depois
+corrigimos"). Próxima ação: autor escolhe a frente seguinte (recomendo
+confirmar Energia e Remédios na tela, depois o passo 13, leis em pacotes).
+Ajuste menor para depois: depois de "Propor" o botão continua "Propor ao
+Congresso" (não diz "na fila"). Investidores = opinião média das potências
+(ficou assim; bolsa simulada foi para a seção 11 do escopo).
 
 ## Pendências do autor
 

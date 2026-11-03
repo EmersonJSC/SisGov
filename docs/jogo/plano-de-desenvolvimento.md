@@ -168,6 +168,8 @@ salário e lucro por setor) e janela Mercado. **Ficou de fora (5b):** o PIB e as
 bases dos impostos saírem da produção e dos pops; vai para depois de mais pops
 (escopo, seção 11).
 
+**Fatia 8 (Propriedade, 02/nov):** ficha do setor para os 9 setores (dono, importação, teto de capital de fora, preço), 13 leis gerais, prévia de 6 turnos (`previaDaFicha`) e janela "Setores". Investidores = opinião média das potências.
+
 **Expande depois:** preço por oferta e procura; insumos (produto que usa
 outro); construção estatal ou privada; leis que fortalecem todos os
 produtos ou só alguns (pacote de economia, passo 13); gente que muda de pop.

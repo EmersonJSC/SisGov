@@ -21,11 +21,7 @@
       "curto": "Social",
       "cargo": "Saúde",
       "faz": "Saúde, educação e renda das famílias.",
-      "leis": [
-        "gasto-saude",
-        "gasto-educacao",
-        "transferencia-renda"
-      ]
+      "leis": ["gasto-saude", "gasto-educacao", "transferencia-renda"]
     },
     {
       "id": "seguranca",
