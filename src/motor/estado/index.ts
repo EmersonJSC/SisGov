@@ -65,6 +65,8 @@ export interface Estado {
    * saiu (−) de cada pop (motor/populacao); ausente = ninguém mudou.
    */
   migracao?: Record<string, number>;
+  /** Setores de cada pop hoje (estudo muda); sem isso vale o declarado. */
+  setores?: Record<string, Record<string, number>>;
   /** Turno 0, referência dos grupos. */
   marco: Marco;
   /** Opinião de cada potência sobre o país, 0 a 100 (motor/mundo). */

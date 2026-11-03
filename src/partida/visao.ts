@@ -353,7 +353,7 @@ function visaoDoMercado(
   const nome = (id: string) => nomes.get(id) ?? id;
   const balanco = balancoDoPais(regras.mercado);
   const { mercado, producao, ocupacao } = regras.mercado;
-  const emprego = empregoDoPais(mercado, ocupacao, estado.pops);
+  const emprego = empregoDoPais(mercado, ocupacao, estado.pops, estado.setores);
   const conta = contaDoPais(
     mercado,
     producao,

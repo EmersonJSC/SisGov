@@ -34,6 +34,7 @@ import {
   lucroDosSetores,
   precoDosSetores,
   empregoDoPais,
+  migrarSetores,
   investimentoBase,
   tamanhoDaEconomia,
   andarPrecos,
@@ -572,6 +573,19 @@ function migracao(regras: Regras, estado: Estado) {
   });
 }
 
+/** Gente estuda e muda para o setor que paga mais (motor/mercado/emprego). */
+function setores(regras: Regras, estado: Estado) {
+  const m = regras.mercado;
+  if (!m) return estado.setores;
+  return migrarSetores(
+    m.mercado,
+    m.ocupacao,
+    estado.setores,
+    estado.pops,
+    todosIndices(estado),
+  );
+}
+
 /** Índices das cestas de hoje no estado, para os grupos e o turno seguinte. */
 function comIndicesDasCestas(regras: Regras, estado: Estado): Estado {
   const indices = indicesDasCestas(regras, estado);
@@ -593,6 +607,7 @@ const popsEGrupos: Etapa = (regras, estado) => {
     ...comGrupos,
     deslize: deslize(regras, comGrupos),
     migracao: migracao(regras, comGrupos),
+    setores: setores(regras, comGrupos),
   };
 };
 

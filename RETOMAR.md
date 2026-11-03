@@ -30,10 +30,15 @@ Em 12 turnos parados o deslize é pequeno (~0,005); não equilibrado.
 parados mexe ~1% e quase tudo é descida; não equilibrado. A tela ainda não mostra
 "quem subiu" direto: só aparece nos grupos e no emprego.
 
+**R11.5 feito**: pop estuda e muda para o setor que paga mais (`Estado.setores`,
+`treina` em `pops.json`, velocidade pela instrução). Universidade NÃO é
+construção (decisão do autor): é só o índice. Em 24 turnos tecnologia sobe
+~50% de empregos no `teste`; não equilibrado.
+
 ## Próximo
 
-Falta R11.5 (pop estuda e muda de setor; universidade é construção) e a mídia
-(R8.5/R11.4). Decisão do autor: qual primeiro; recomendo R11.5.
+Falta só a mídia (R8.5/R11.4) e o R8.6. Decisão do autor: fazer a mídia agora?
+Recomendo sim. Ao fechar: `npm run check` e marcar R16.7–R16.10 como ✅.
 `npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
 
 ## Pendências do autor

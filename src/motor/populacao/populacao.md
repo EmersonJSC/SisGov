@@ -44,3 +44,18 @@ Comportamento esperado (escrito antes), país de teste, `npm run pops`:
   a dos médios e ricos não muda;
 - num mandato sem mudar nada: todas as rendas sobem com o PIB nominal, e a
   ordem entre os pops não muda.
+
+## Estudar e mudar de setor (R11.5)
+
+O setor onde cada pop trabalha deixa de ser fixo: `Estado.setores` guarda a
+mistura de hoje (sem isso vale o `setores` declarado em `pops.json`). Todo
+turno, `migrarSetores` (`motor/mercado/emprego.ts`) tira um pouco do setor que
+paga menos e põe no que paga mais, entre os que o pop já tem e os que ele
+declara em `treina.para`. Pop sem `treina` não muda.
+
+- Velocidade: `PASSO_SETOR` (0,5% do pop por turno) × índice de `treina.exige`
+  (0 a 1, ex.: instrução). Instrução zero = ninguém muda.
+- Só muda se o destino paga pelo menos 5% a mais. Quando a gente entra, o
+  salário médio do setor cai, e isso freia a corrida.
+- Universidade não é construção: o estudo é simulado pelo índice de instrução.
+- Aparece na tela do Mercado (empregos e salário por setor).

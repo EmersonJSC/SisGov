@@ -60,6 +60,13 @@
       "sobe": {
         "para": "tecnicos",
         "exige": "instrucao"
+      },
+      "treina": {
+        "para": [
+          "tecnologia",
+          "construcao-civil"
+        ],
+        "exige": "instrucao"
       }
     },
     {
@@ -77,6 +84,13 @@
       "capital": 0,
       "sobe": {
         "para": "tecnicos",
+        "exige": "instrucao"
+      },
+      "treina": {
+        "para": [
+          "industria",
+          "tecnologia"
+        ],
         "exige": "instrucao"
       }
     },
@@ -97,6 +111,13 @@
       "sobe": {
         "para": "trabalhadores-escritorio",
         "exige": "instrucao"
+      },
+      "treina": {
+        "para": [
+          "tecnologia",
+          "luxo"
+        ],
+        "exige": "instrucao"
       }
     },
     {
@@ -114,6 +135,13 @@
       "capital": 0,
       "sobe": {
         "para": "comerciantes",
+        "exige": "instrucao"
+      },
+      "treina": {
+        "para": [
+          "industria",
+          "construcao-civil"
+        ],
         "exige": "instrucao"
       }
     },
@@ -133,6 +161,13 @@
       "capital": 0,
       "sobe": {
         "para": "tecnicos",
+        "exige": "instrucao"
+      },
+      "treina": {
+        "para": [
+          "construcao-civil",
+          "luxo"
+        ],
         "exige": "instrucao"
       }
     },
@@ -207,7 +242,13 @@
         "para": "altos-funcionarios",
         "exige": "instrucao"
       },
-      "desce": "informais-urbanos"
+      "desce": "informais-urbanos",
+      "treina": {
+        "para": [
+          "tecnologia"
+        ],
+        "exige": "instrucao"
+      }
     },
     {
       "id": "tecnicos",
@@ -228,7 +269,13 @@
         "para": "industriais",
         "exige": "instrucao"
       },
-      "desce": "operarios-fabrica"
+      "desce": "operarios-fabrica",
+      "treina": {
+        "para": [
+          "luxo"
+        ],
+        "exige": "instrucao"
+      }
     },
     {
       "id": "profissionais-tecnologia",
@@ -248,7 +295,13 @@
         "para": "grandes-empresarios",
         "exige": "instrucao"
       },
-      "desce": "informais-urbanos"
+      "desce": "informais-urbanos",
+      "treina": {
+        "para": [
+          "infraestrutura"
+        ],
+        "exige": "instrucao"
+      }
     },
     {
       "id": "comerciantes",
@@ -269,7 +322,13 @@
         "para": "grandes-empresarios",
         "exige": "instrucao"
       },
-      "desce": "informais-urbanos"
+      "desce": "informais-urbanos",
+      "treina": {
+        "para": [
+          "tecnologia"
+        ],
+        "exige": "instrucao"
+      }
     },
     {
       "id": "estudantes",
@@ -313,7 +372,13 @@
         "para": "profissionais-liberais",
         "exige": "instrucao"
       },
-      "desce": "servicos-basicos"
+      "desce": "servicos-basicos",
+      "treina": {
+        "para": [
+          "infraestrutura"
+        ],
+        "exige": "instrucao"
+      }
     },
     {
       "id": "artistas-jornalistas",
@@ -332,7 +397,13 @@
         "para": "profissionais-liberais",
         "exige": "instrucao"
       },
-      "desce": "informais-urbanos"
+      "desce": "informais-urbanos",
+      "treina": {
+        "para": [
+          "essenciais"
+        ],
+        "exige": "instrucao"
+      }
     },
     {
       "id": "grandes-empresarios",

@@ -107,7 +107,7 @@
 - ✅ **R11.2** Grupos com bússola, tamanho e satisfação; 16 grupos no mundo, os 25 pops têm casa; país declara os fortes.
 - ✅ **R11.3** Radicais e lealistas.
 - ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).
-- ☐ **R11.5** Pops mudam de setor estudando (universidade é construção).
+- ✅ **R11.5** Pops mudam de setor estudando (03/nov/2026): um pouco da gente de cada pop vai, todo turno, para o setor que paga mais, na velocidade da instrução. Universidade não é construção própria: a simulação é pelo índice (decisão do autor).
 - ✅ **R11.6** Pops sobem e descem de estrato (03/nov/2026): renda real acima do esperado faz gente subir, na medida da instrução; abaixo, descer. Estudar (R11.5) fica à parte.
 
 ## 12. Congresso e coligação
