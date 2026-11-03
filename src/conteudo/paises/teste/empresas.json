@@ -1,10 +1,40 @@
 {
   "versao": 1,
   "empresas": [
-    { "id": "pnac", "nome": "PNAC · Petrolífera Nacional", "setor": "Energia", "valor": 0.05, "estado": 31 },
-    { "id": "banco", "nome": "Banco do Povo", "setor": "Finanças", "valor": 0.03, "estado": 40 },
-    { "id": "ferrovias", "nome": "Ferrovias do Interior", "setor": "Transporte", "valor": 0.02, "estado": 50 },
-    { "id": "telenorte", "nome": "Telenorte Comunicações", "setor": "Comunicação", "valor": 0.02, "estado": 20 },
-    { "id": "aguas", "nome": "Águas Unidas", "setor": "Saneamento", "valor": 0.015, "estado": 36 }
+    {
+      "id": "pnac",
+      "nome": "PNAC · Petrolífera Nacional",
+      "setor": "Energia",
+      "valor": 0.05,
+      "estado": 31
+    },
+    {
+      "id": "banco",
+      "nome": "Banco do Povo",
+      "setor": "Finanças",
+      "valor": 0.03,
+      "estado": 40
+    },
+    {
+      "id": "ferrovias",
+      "nome": "Ferrovias do Interior",
+      "setor": "Transporte",
+      "valor": 0.02,
+      "estado": 50
+    },
+    {
+      "id": "telenorte",
+      "nome": "Telenorte Comunicações",
+      "setor": "Comunicação",
+      "valor": 0.02,
+      "estado": 20
+    },
+    {
+      "id": "aguas",
+      "nome": "Águas Unidas",
+      "setor": "Saneamento",
+      "valor": 0.015,
+      "estado": 36
+    }
   ]
 }

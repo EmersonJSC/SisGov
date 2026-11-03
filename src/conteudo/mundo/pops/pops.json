@@ -62,10 +62,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "tecnologia",
-          "construcao-civil"
-        ],
+        "para": ["tecnologia", "construcao-civil"],
         "exige": "instrucao"
       }
     },
@@ -87,10 +84,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "industria",
-          "tecnologia"
-        ],
+        "para": ["industria", "tecnologia"],
         "exige": "instrucao"
       }
     },
@@ -113,10 +107,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "tecnologia",
-          "luxo"
-        ],
+        "para": ["tecnologia", "luxo"],
         "exige": "instrucao"
       }
     },
@@ -138,10 +129,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "industria",
-          "construcao-civil"
-        ],
+        "para": ["industria", "construcao-civil"],
         "exige": "instrucao"
       }
     },
@@ -164,10 +152,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "construcao-civil",
-          "luxo"
-        ],
+        "para": ["construcao-civil", "luxo"],
         "exige": "instrucao"
       }
     },
@@ -244,9 +229,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "tecnologia"
-        ],
+        "para": ["tecnologia"],
         "exige": "instrucao"
       }
     },
@@ -271,9 +254,7 @@
       },
       "desce": "operarios-fabrica",
       "treina": {
-        "para": [
-          "luxo"
-        ],
+        "para": ["luxo"],
         "exige": "instrucao"
       }
     },
@@ -297,9 +278,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "infraestrutura"
-        ],
+        "para": ["infraestrutura"],
         "exige": "instrucao"
       }
     },
@@ -324,9 +303,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "tecnologia"
-        ],
+        "para": ["tecnologia"],
         "exige": "instrucao"
       }
     },
@@ -374,9 +351,7 @@
       },
       "desce": "servicos-basicos",
       "treina": {
-        "para": [
-          "infraestrutura"
-        ],
+        "para": ["infraestrutura"],
         "exige": "instrucao"
       }
     },
@@ -399,9 +374,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "essenciais"
-        ],
+        "para": ["essenciais"],
         "exige": "instrucao"
       }
     },

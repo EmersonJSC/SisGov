@@ -95,7 +95,10 @@ export function migrarSetores(
     if (!o.treina) continue;
     const pesos = { ...mix[id] };
     novo[id] = pesos;
-    const forca = Math.min(1, Math.max(0, (indices[o.treina.exige] ?? 0) / 100));
+    const forca = Math.min(
+      1,
+      Math.max(0, (indices[o.treina.exige] ?? 0) / 100),
+    );
     const daqui = Object.keys(pesos)
       .filter((k) => pesos[k] > 0)
       .sort((a, b) => salario[a] - salario[b])[0];

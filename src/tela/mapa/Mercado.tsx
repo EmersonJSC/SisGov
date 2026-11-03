@@ -146,7 +146,9 @@ export function Mercado({
                     `Construções: ${um1(k.pronta)} prontas · ${um1(k.emObra)} em obra`,
                   ];
                   if (k.lucro !== undefined)
-                    partes.push(`lucro ${k.lucro.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}× o de antes`);
+                    partes.push(
+                      `lucro ${k.lucro.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}× o de antes`,
+                    );
                   if (k.fechando)
                     partes.push(
                       `fechando: perde 5% por turno (prejuízo há ${k.prejuizo} turnos)`,

@@ -81,7 +81,8 @@ export function validarRegraDasObras(
   mercado: Pick<Mercado, "setores">,
 ): ErroMercado[] {
   if (dado === undefined) return [];
-  if (!ehObjeto(dado)) return [{ campo: "obras", motivo: "precisa ser um objeto" }];
+  if (!ehObjeto(dado))
+    return [{ campo: "obras", motivo: "precisa ser um objeto" }];
   const erros: ErroMercado[] = [];
   const erro = (campo: string, motivo: string) =>
     erros.push({ campo: `obras.${campo}`, motivo });
@@ -263,14 +264,16 @@ export function andarConstrucoes(
   ritmo: number,
   turno: TurnoDasObras,
 ): ConstrucoesNoEstado {
-  const perda = (regra.desgaste * 100 + turno.perdaExtra) / 100 / TURNOS_POR_ANO;
+  const perda =
+    (regra.desgaste * 100 + turno.perdaExtra) / 100 / TURNOS_POR_ANO;
   const prontas: Record<string, number> = {};
   const seguidos: Record<string, number> = {};
   for (const [setor, v] of Object.entries(c.prontas)) {
     // Prejuízo seguido: o setor fecha aos poucos até voltar a dar lucro.
     const prejuizo = (turno.lucro?.[setor]?.liquido ?? 0) < 0;
     seguidos[setor] = prejuizo ? (c.lucro?.seguidos[setor] ?? 0) + 1 : 0;
-    const fecha = seguidos[setor] >= TURNOS_ATE_FECHAR ? FECHAMENTO_POR_TURNO : 0;
+    const fecha =
+      seguidos[setor] >= TURNOS_ATE_FECHAR ? FECHAMENTO_POR_TURNO : 0;
     prontas[setor] = v * Math.max(0, 1 - perda) * (1 - fecha);
   }
   const passo = 1 / atrasoDasObras(turno.atraso).prazo;

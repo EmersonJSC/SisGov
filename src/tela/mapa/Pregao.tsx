@@ -281,7 +281,11 @@ export function Pregao({
         </h2>
         <p className="ficha-estado">
           Estado: <strong>{pct(blocos.estado)}</strong>{" "}
-          {controle ? "(controla)" : <b className="ficha-alerta">(sem controle)</b>}
+          {controle ? (
+            "(controla)"
+          ) : (
+            <b className="ficha-alerta">(sem controle)</b>
+          )}
           {" · "}Valor justo do bloco de 2%: <strong>{din(justo)}</strong>
         </p>
         <div className="pregao-barra" aria-hidden>
@@ -346,7 +350,8 @@ export function Pregao({
         </table>
         <section className="ficha-aviso pregao-saldo">
           <h2>
-            Cofre: <span className={pregao.cofre < 0 ? "menos" : "mais"}>
+            Cofre:{" "}
+            <span className={pregao.cofre < 0 ? "menos" : "mais"}>
               {pregao.cofre >= 0 ? "+" : ""}
               {din(pregao.cofre)}
             </span>
@@ -354,18 +359,23 @@ export function Pregao({
           {efeitos.length ? (
             <ul className="pregao-efeitos">
               {efeitos.map(([k, v]) => (
-                <li key={k} className={v > 0 !== RUINS.has(k) ? "mais" : "menos"}>
+                <li
+                  key={k}
+                  className={v > 0 !== RUINS.has(k) ? "mais" : "menos"}
+                >
                   {k} {v > 0 ? "+" : ""}
                   {v}
                 </li>
               ))}
             </ul>
           ) : (
-            <p>Clique em Vender ou Comprar numa linha para negociar um bloco.</p>
+            <p>
+              Clique em Vender ou Comprar numa linha para negociar um bloco.
+            </p>
           )}
           <p className="pregao-dica">
-            Cada bloco com o mesmo comprador sai mais barato (venda) ou mais caro
-            (compra). No próximo turno os preços voltam metade do caminho.
+            Cada bloco com o mesmo comprador sai mais barato (venda) ou mais
+            caro (compra). No próximo turno os preços voltam metade do caminho.
           </p>
         </section>
         {pregao.registro.length ? (

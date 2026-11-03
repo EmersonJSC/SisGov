@@ -43,7 +43,10 @@ export const construtora: Mexida = (p) => {
     ...p,
     estado: {
       ...p.estado,
-      construcoes: { ...c, inicio: { ...c.inicio, [setor]: c.inicio[setor]! / 2 } },
+      construcoes: {
+        ...c,
+        inicio: { ...c.inicio, [setor]: c.inicio[setor]! / 2 },
+      },
     },
   };
 };
@@ -58,7 +61,13 @@ export function resumo(
   const pedidos =
     imposto === undefined
       ? []
-      : [{ tipo: "mudar_lei" as const, lei: "imposto-empresas", valor: imposto }];
+      : [
+          {
+            tipo: "mudar_lei" as const,
+            lei: "imposto-empresas",
+            valor: imposto,
+          },
+        ];
   const fim = jogar(inicio, TURNOS, pedidos).estado;
   const anual =
     (Math.pow(real(fim) / real(inicio.estado), 6 / TURNOS) - 1) * 100;
@@ -99,13 +108,21 @@ if (import.meta.env.MODE !== "test") {
 // a do turno 0, capacidade ÷ a do turno 0 e quantas sementes têm o setor fechando.
 if (import.meta.env.MODE !== "test") {
   for (const pais of ["teste", "teste-pobre"]) {
-    const linhas: Record<string, { rel: number; cap: number; fecha: number; n: number }> = {};
+    const linhas: Record<
+      string,
+      { rel: number; cap: number; fecha: number; n: number }
+    > = {};
     for (const semente of SEMENTES) {
       const p = criarPartida(pais, semente, { semCongresso: true });
       const fim = jogar(p, TURNOS, []).estado;
       const c = fim.construcoes!;
       const mercado = p.regras.mercado!.mercado;
-      const lucro = lucroDosSetores(c, precoDosSetores(mercado, fim.precos), 0, 0);
+      const lucro = lucroDosSetores(
+        c,
+        precoDosSetores(mercado, fim.precos),
+        0,
+        0,
+      );
       for (const [id, l] of Object.entries(lucro)) {
         const x = (linhas[id] ??= { rel: 0, cap: 0, fecha: 0, n: 0 });
         x.rel += l.relativa;
@@ -114,7 +131,9 @@ if (import.meta.env.MODE !== "test") {
         x.n += 1;
       }
     }
-    console.log(`\n${pais}: lucro por setor no turno 24 (média de ${SEMENTES.length} sementes)`);
+    console.log(
+      `\n${pais}: lucro por setor no turno 24 (média de ${SEMENTES.length} sementes)`,
+    );
     for (const [id, x] of Object.entries(linhas))
       console.log(
         `  ${id.padEnd(20)} margem ${(x.rel / x.n).toFixed(2)}× · capacidade ${(x.cap / x.n).toFixed(2)}× · fechando em ${x.fecha}/${x.n}`,

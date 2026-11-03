@@ -95,7 +95,10 @@ describe("construções", () => {
 
     it("o capital vai para onde a margem melhorou", () => {
       const alta = Object.fromEntries(
-        Object.entries(preco0).map(([id, v]) => [id, id === alvo ? v * 1.2 : v]),
+        Object.entries(preco0).map(([id, v]) => [
+          id,
+          id === alvo ? v * 1.2 : v,
+        ]),
       );
       const lucro = lucroDosSetores(c, alta, 0.2, 0.2);
       const f = andarConstrucoes(regra, c, 5, {

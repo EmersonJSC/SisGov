@@ -17,10 +17,13 @@ describe("estudar e mudar de setor (R11.5)", () => {
   it("depois de alguns turnos alguém mudou e cada pop segue somando 1", () => {
     const mix = p12.estado.setores ?? {};
     expect(Object.keys(mix).length).toBeGreaterThan(0);
-    for (const [id, m] of Object.entries(mix)) expect(soma(m), id).toBeCloseTo(1, 6);
+    for (const [id, m] of Object.entries(mix))
+      expect(soma(m), id).toBeCloseTo(1, 6);
     const o = p12.regras.mercado!.ocupacao;
     const mudou = Object.entries(mix).some(([id, m]) =>
-      Object.entries(m).some(([s, v]) => Math.abs(v - (o[id].setores[s] ?? 0)) > 1e-6),
+      Object.entries(m).some(
+        ([s, v]) => Math.abs(v - (o[id].setores[s] ?? 0)) > 1e-6,
+      ),
     );
     expect(mudou).toBe(true);
   });
@@ -41,7 +44,12 @@ describe("estudar e mudar de setor (R11.5)", () => {
   it("a conta de empregos usa o setor de hoje e a gente total não muda", () => {
     const { mercado, ocupacao } = p12.regras.mercado!;
     const a = empregoDoPais(mercado, ocupacao, p12.estado.pops);
-    const b = empregoDoPais(mercado, ocupacao, p12.estado.pops, p12.estado.setores);
+    const b = empregoDoPais(
+      mercado,
+      ocupacao,
+      p12.estado.pops,
+      p12.estado.setores,
+    );
     expect(b.semEmprego).toBeCloseTo(a.semEmprego, 6);
     const tot = (r: typeof a) => r.setores.reduce((x, s) => x + s.empregos, 0);
     expect(tot(b)).toBeCloseTo(tot(a), 4);
