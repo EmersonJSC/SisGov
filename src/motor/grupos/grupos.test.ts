@@ -4,6 +4,8 @@ import type { Pop } from "../populacao";
 import {
   alvosEstoques,
   calcularGrupos,
+  deslizarPops,
+  gruposComDeslize,
   motivoGruposInvalidos,
   pontosLei,
   posicaoDaLei,
@@ -195,5 +197,88 @@ describe("grupos", () => {
         ["x"],
       ),
     ).toMatch(/peso economico/);
+  });
+});
+
+describe("pops deslizam na bússola", () => {
+  const tipoPop = {
+    id: "a",
+    estrato: "pobre" as const,
+    bussola: { economico: 0.2, social: 0 },
+  };
+  const tipoB = {
+    id: "b",
+    estrato: "rico" as const,
+    bussola: { economico: 0.2, social: 0 },
+  };
+  const grupoA: TipoGrupo = {
+    ...tipo,
+    id: "g",
+    membros: { a: 1 },
+    cobra: [],
+    bussola: { economico: 0.2, social: 0 },
+  };
+  const entrada = (sat: number, renda: number, esperado = 1) => ({
+    pops: { a: pop(10, renda) },
+    grupos: {
+      g: {
+        pessoas: 10,
+        renda_real: renda,
+        satisfacao: sat,
+        radicais: 5,
+        lealistas: 5,
+      },
+    },
+    tipos: [grupoA],
+    pais: { economico: 0.8, social: 0 },
+    indice_precos: 100,
+    esperado,
+    marco: { ...marco, renda_pop: { a: 100 } },
+  });
+
+  it("renda abaixo do esperado empurra para a esquerda; acima, para a direita", () => {
+    const mal = deslizarPops([tipoPop], undefined, entrada(50, 75));
+    const bem = deslizarPops([tipoPop], undefined, entrada(50, 125));
+    expect(mal.a.economico).toBeCloseTo(-0.02);
+    expect(bem.a.economico).toBeCloseTo(0.02);
+    expect(mal.a.social).toBeCloseTo(0);
+  });
+
+  it("satisfeito se aproxima do país; insatisfeito se afasta", () => {
+    const feliz = deslizarPops([tipoPop], undefined, entrada(100, 100));
+    const bravo = deslizarPops([tipoPop], undefined, entrada(0, 100));
+    expect(feliz.a.economico).toBeGreaterThan(0);
+    expect(bravo.a.economico).toBeLessThan(0);
+  });
+
+  it("satisfeito mas sem renda: a fome pesa contra", () => {
+    const d = deslizarPops([tipoPop], undefined, entrada(100, 75));
+    const so_gosto = deslizarPops([tipoPop], undefined, entrada(100, 100));
+    expect(d.a.economico).toBeLessThan(so_gosto.a.economico ?? 0);
+  });
+
+  it("tem teto de 0,3 e a bússola fica entre −1 e +1", () => {
+    let d = undefined as ReturnType<typeof deslizarPops> | undefined;
+    for (let i = 0; i < 100; i++)
+      d = deslizarPops([tipoPop], d, entrada(50, 50));
+    expect(d!.a.economico).toBeCloseTo(-0.3);
+    const colado = { ...tipoPop, bussola: { economico: 0.9, social: 0 } };
+    let e = undefined as ReturnType<typeof deslizarPops> | undefined;
+    for (let i = 0; i < 100; i++)
+      e = deslizarPops([colado], e, entrada(50, 200));
+    expect(0.9 + (e?.a.economico ?? 0)).toBeLessThanOrEqual(1);
+  });
+
+  it("o grupo anda com a média dos pops, por pessoas", () => {
+    const g: TipoGrupo = { ...grupoA, membros: { a: 1, b: 1 } };
+    const pops = { a: pop(30, 100), b: pop(10, 100) };
+    const [novo] = gruposComDeslize([g], pops, {
+      a: { economico: -0.2 },
+      b: { economico: 0.2 },
+    });
+    expect(novo.bussola.economico).toBeCloseTo(0.2 - 0.1);
+    // sem deslize, nada muda
+    expect(gruposComDeslize([g], pops, undefined)[0]).toBe(g);
+    void tipoB;
   });
 });

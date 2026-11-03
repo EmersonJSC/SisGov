@@ -19,6 +19,8 @@ import {
 } from "../estado";
 import {
   calcularGrupos,
+  deslizarPops,
+  gruposComDeslize,
   motivoGruposInvalidos,
   rendaDoGrupo,
   type Marco,
@@ -91,7 +93,7 @@ const congresso: Etapa = (regras, estado, pedidos) => {
         ? votar(
             regras.congresso,
             estado.coligacao,
-            regras.grupos,
+            gruposComDeslize(regras.grupos, estado.pops, estado.deslize),
             lei,
             atual,
             pedido.valor,
@@ -522,19 +524,37 @@ const todosIndices = (estado: Estado): Record<string, number> => ({
   ...estado.jogabilidade,
 });
 
+/** Quanto a renda real cresce no ritmo normal do país desde o turno 0. */
+const rendaEsperada = (regras: Regras, estado: Estado) =>
+  Math.pow(doTurno(regras.pais.crescimento.tendencia), estado.turno);
+
 /** Grupos com os pops já calculados no estado (motor/grupos). */
 function grupos(regras: Regras, estado: Estado, marco: Marco) {
-  return calcularGrupos(regras.grupos, regras.leis, {
+  return calcularGrupos(
+    gruposComDeslize(regras.grupos, estado.pops, estado.deslize),
+    regras.leis,
+    {
+      pops: estado.pops,
+      indice_precos: estado.essenciais.indice_precos,
+      indices: todosIndices(estado),
+      vigentes: estado.leis,
+      marco,
+      esperado: rendaEsperada(regras, estado),
+      anteriores: estado.turno === 0 ? undefined : estado.grupos,
+    },
+  );
+}
+
+/** Pops andam na bússola com a vida e com o governo (motor/grupos). */
+function deslize(regras: Regras, estado: Estado) {
+  return deslizarPops(regras.pops, estado.deslize, {
     pops: estado.pops,
+    grupos: estado.grupos,
+    tipos: regras.grupos,
+    pais: posicaoDoPais(regras.leis, estado.leis),
     indice_precos: estado.essenciais.indice_precos,
-    indices: todosIndices(estado),
-    vigentes: estado.leis,
-    marco,
-    esperado: Math.pow(
-      doTurno(regras.pais.crescimento.tendencia),
-      estado.turno,
-    ),
-    anteriores: estado.turno === 0 ? undefined : estado.grupos,
+    esperado: rendaEsperada(regras, estado),
+    marco: estado.marco,
   });
 }
 
@@ -551,7 +571,11 @@ const popsEGrupos: Etapa = (regras, estado) => {
     ...estado,
     pops: pops(regras, estado),
   });
-  return { ...comPops, grupos: grupos(regras, comPops, estado.marco) };
+  const comGrupos = {
+    ...comPops,
+    grupos: grupos(regras, comPops, estado.marco),
+  };
+  return { ...comGrupos, deslize: deslize(regras, comGrupos) };
 };
 
 /**
@@ -808,13 +832,21 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       regras.pais.crescimento.tendencia,
       comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
       {
-        salarios: Object.fromEntries(emprego.setores.map((s) => [s.id, s.massa])),
+        salarios: Object.fromEntries(
+          emprego.setores.map((s) => [s.id, s.massa]),
+        ),
         preco0: precoDosSetores(m.mercado, comPops.precos),
       },
     );
   }
   // O marco é o próprio turno 0: grupos começam em 50.
   const marco: Marco = {
+    renda_pop: Object.fromEntries(
+      Object.entries(comPops.pops).map(([id, p]) => [
+        id,
+        (p.renda * 100) / comPops.essenciais.indice_precos,
+      ]),
+    ),
     indices: todosIndices(comPops),
     leis: { ...comPops.leis },
     renda_real: Object.fromEntries(

@@ -6,7 +6,7 @@ import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
 import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
-import type { ValorLei } from "../leis";
+import type { PontoBussola, ValorLei } from "../leis";
 import type { Votacao } from "../politica";
 import type {
   CapacidadeNoEstado,
@@ -55,6 +55,11 @@ export interface Estado {
   pops: Record<string, Pop>;
   /** Grupos por id do tipo (motor/grupos). */
   grupos: Record<string, Grupo>;
+  /**
+   * Quanto cada pop andou na bússola desde o começo (motor/grupos); ausente
+   * em partida salva antes do deslize = zero.
+   */
+  deslize?: Record<string, PontoBussola>;
   /** Turno 0, referência dos grupos. */
   marco: Marco;
   /** Opinião de cada potência sobre o país, 0 a 100 (motor/mundo). */

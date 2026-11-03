@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { calcularPops, motivoPopsInvalidos, type TipoPop } from ".";
 
 const TIPOS: TipoPop[] = [
-  { id: "a", estrato: "pobre" },
-  { id: "b", estrato: "rico" },
+  { id: "a", estrato: "pobre", bussola: {} },
+  { id: "b", estrato: "rico", bussola: {} },
 ];
 const PAIS = {
   a: { parcela_pessoas: 0.8, parcela_renda: 0.4 },

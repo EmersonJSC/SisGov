@@ -56,6 +56,22 @@ presa entre 0 e 100.
      só move o grupo no máximo **±15** (como um índice): nenhuma lei sozinha
      decide o humor de um grupo.
 
+## Pops deslizam na bússola (R8.5, 03/nov)
+
+A bússola é interna: o jogador não a vê, só sente o apoio, a satisfação e os
+votos. Cada pop tem a sua (`pops.json`) e anda um pouco por turno (`deslize`
+no estado, quanto andou desde o começo). Duas forças, até ±0,02 por eixo:
+
+- **vida** (só econômico): renda real abaixo do que se espera puxa o pop para a
+  esquerda, acima para a direita (cheia a ±25%);
+- **governo** (os dois eixos): pop satisfeito (média dos grupos dele) se
+  aproxima da posição do país; insatisfeito se afasta.
+
+Teto: 0,3 de onde começou, sempre entre −1 e +1. A bússola do grupo é a
+declarada mais a média, por pessoas, do deslize dos pops dele (turno 0 = a
+declarada). Isso muda os votos do Congresso e a satisfação. A mídia fica para
+depois.
+
 ## Radicais e lealistas (% do grupo)
 
 - Alvo dos radicais = 5 + 2 × (35 − satisfação), se a satisfação está abaixo

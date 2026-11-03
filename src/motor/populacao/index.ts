@@ -1,6 +1,8 @@
 // Pops: fatias da população com renda calculada pelo motor. Tipos vêm do
 // mundo, parcelas do país. Comportamento em populacao.md.
 
+import type { PontoBussola } from "../leis";
+
 export const ESTRATOS = ["pobre", "medio", "rico"] as const;
 export type Estrato = (typeof ESTRATOS)[number];
 
@@ -12,6 +14,8 @@ export function ehEstrato(v: unknown): v is Estrato {
 export interface TipoPop {
   id: string;
   estrato: Estrato;
+  /** Onde o pop começa na bússola (−1 a +1 por eixo); desliza com a vida. */
+  bussola: PontoBussola;
 }
 
 /** O que o país declara de cada tipo de pop (frações que somam 1). */

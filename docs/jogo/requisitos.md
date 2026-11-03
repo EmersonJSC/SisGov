@@ -82,7 +82,7 @@
 - ✅ **R8.2** Leis, partidos, grupos e potências têm posição.
 - ✅ **R8.3** Posição do país = média das leis com peso.
 - ✅ **R8.4** Quem gosta sai da distância.
-- ☐ **R8.5** Pops deslizam com a vida e com a mídia.
+- ◐ **R8.5** Pops deslizam com a vida e com a mídia. Vida feita (03/nov): renda e satisfação empurram cada pop na bússola; a do grupo anda junto. Falta a mídia (não existe no código).
 - ☐ **R8.6** Jogo percebe padrões ("corte de gastos").
 
 ## 9. Índices
@@ -103,7 +103,7 @@
 ## 11. População e grupos
 
 - ✅ **R11.1** Pops (profissão × estrato) com renda vinda da economia: 25 tipos no mundo, cada país declara as parcelas.
-- ✅ **R11.7** Cada pop tem bússola (economico e social); ainda não move nada (R8.5).
+- ✅ **R11.7** Cada pop tem bússola (economico e social); desliza com a vida (R8.5).
 - ✅ **R11.2** Grupos com bússola, tamanho e satisfação; 16 grupos no mundo, os 25 pops têm casa; país declara os fortes.
 - ✅ **R11.3** Radicais e lealistas.
 - ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).

@@ -7,7 +7,7 @@ import {
   type PontoBussola,
   type ValorLei,
 } from "../leis";
-import type { Pop } from "../populacao";
+import type { Pop, TipoPop } from "../populacao";
 
 /** Tipo de grupo do mundo. */
 export interface TipoGrupo {
@@ -39,7 +39,12 @@ export interface Marco {
   indices: Record<string, number>;
   leis: Record<string, ValorLei>;
   renda_real: Record<string, number>;
+  /** Renda real de cada pop; sem ela, a vida não empurra o pop. */
+  renda_pop?: Record<string, number>;
 }
+
+/** Quanto cada pop andou na bússola desde o começo. */
+export type Deslize = Record<string, PontoBussola>;
 
 const NEUTRO = 50;
 const LIMITE_RENDA = 25;
@@ -53,6 +58,13 @@ const LIMIAR_RADICAL = 35;
 const LIMIAR_LEAL = 65;
 const GANHO_ESTOQUE = 2;
 const PASSO_ESTOQUE = 1;
+
+/** Quanto um pop anda por turno em cada força (vida e governo). */
+const PASSO_BUSSOLA = 0.02;
+/** Quanto um pop pode se afastar do ponto onde começou. */
+const LIMITE_DESLIZE = 0.3;
+/** Renda real que empurra o pop com força cheia (±25% do esperado). */
+const LIMITE_VIDA = 0.25;
 
 const prender = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
@@ -247,4 +259,100 @@ export function calcularGrupos(
     };
   }
   return grupos;
+}
+
+/**
+ * Os grupos com a bússola de hoje: a declarada mais a média, por pessoas, do
+ * quanto os pops deles andaram. Sem deslize, são os próprios tipos.
+ */
+export function gruposComDeslize(
+  tipos: TipoGrupo[],
+  pops: Record<string, Pop>,
+  deslize: Deslize | undefined,
+): TipoGrupo[] {
+  if (!deslize) return tipos;
+  return tipos.map((t) => {
+    let total = 0;
+    const soma: Record<string, number> = {};
+    for (const [id, f] of Object.entries(t.membros)) {
+      const peso = (pops[id]?.pessoas ?? 0) * f;
+      total += peso;
+      for (const eixo of EIXOS)
+        soma[eixo] = (soma[eixo] ?? 0) + peso * (deslize[id]?.[eixo] ?? 0);
+    }
+    if (total === 0) return t;
+    const bussola: PontoBussola = {};
+    for (const eixo of EIXOS)
+      bussola[eixo] = prender(
+        (t.bussola[eixo] ?? 0) + soma[eixo] / total,
+        -1,
+        1,
+      );
+    return { ...t, bussola };
+  });
+}
+
+export interface EntradaDeslize {
+  pops: Record<string, Pop>;
+  /** Grupos já calculados neste turno. */
+  grupos: Record<string, Grupo>;
+  /** Tipos dos grupos, para saber a que grupos cada pop pertence. */
+  tipos: TipoGrupo[];
+  /** Onde o país está na bússola (média das leis). */
+  pais: Required<PontoBussola>;
+  indice_precos: number;
+  esperado: number;
+  marco: Marco;
+}
+
+/**
+ * Um turno de vida dos pops na bússola. Duas forças, de até ±0,02 por eixo:
+ * - vida (econômico): renda real abaixo do esperado puxa o pop para a
+ *   esquerda, acima para a direita;
+ * - governo (os dois eixos): pop satisfeito (média dos seus grupos) se
+ *   aproxima da posição do país, insatisfeito se afasta.
+ * Cada pop fica a no máximo 0,3 de onde começou e dentro de −1 a +1.
+ */
+export function deslizarPops(
+  tipos: TipoPop[],
+  atual: Deslize | undefined,
+  e: EntradaDeslize,
+): Deslize {
+  const novo: Deslize = {};
+  for (const t of tipos) {
+    let peso = 0;
+    let soma = 0;
+    for (const g of e.tipos) {
+      const f = g.membros[t.id];
+      if (!f || !e.grupos[g.id]) continue;
+      peso += f;
+      soma += f * e.grupos[g.id].satisfacao;
+    }
+    const gosto = peso ? (soma / peso - NEUTRO) / NEUTRO : 0;
+    const marcoRenda = e.marco.renda_pop?.[t.id];
+    const renda = (e.pops[t.id].renda * 100) / e.indice_precos;
+    const vida = marcoRenda
+      ? prender(
+          renda / marcoRenda / e.esperado - 1,
+          -LIMITE_VIDA,
+          LIMITE_VIDA,
+        ) / LIMITE_VIDA
+      : 0;
+    const ponto: PontoBussola = {};
+    for (const eixo of EIXOS) {
+      const base = t.bussola[eixo] ?? 0;
+      const desl = atual?.[t.id]?.[eixo] ?? 0;
+      const aqui = base + desl;
+      let passo = PASSO_BUSSOLA * gosto * prender(e.pais[eixo] - aqui, -1, 1);
+      if (eixo === "economico") passo += PASSO_BUSSOLA * vida;
+      const alvo = prender(
+        prender(desl + passo, -LIMITE_DESLIZE, LIMITE_DESLIZE),
+        -1 - base,
+        1 - base,
+      );
+      ponto[eixo] = alvo;
+    }
+    novo[t.id] = ponto;
+  }
+  return novo;
 }

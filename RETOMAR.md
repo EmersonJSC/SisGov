@@ -21,11 +21,14 @@ verdes; aparecem no mapa.
 
 O Partido (GDD §4, R4.5–R4.10, R6.11–R6.12) está escrito e commitado, sem código.
 
+**R8.5 (vida) feito**: cada pop desliza na bússola (renda + satisfação), a do
+grupo anda junto; interno, o jogador sente só apoio e votos. Falta a mídia.
+Em 12 turnos parados o deslize é pequeno (~0,005); não equilibrado.
+
 ## Próximo
 
-Falta fechar pops e grupos: R11.5 (estudar e mudar de setor), R11.6 (subir e
-descer de estrato), R8.5 (pop desliza na bússola) (grupos já feitos: 16).
-Decisão do autor: ordem desses quatro; recomendado grupos novos primeiro.
+Falta fechar pops e grupos: R11.5 (estudar e mudar de setor) e R11.6 (subir e
+descer de estrato). Decisão do autor: qual primeiro; recomendo R11.6.
 `npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
 
 ## Pendências do autor

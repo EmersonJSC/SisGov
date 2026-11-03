@@ -105,6 +105,7 @@ function carregarPops(): TipoPop[] {
   return tiposPops.pops.map((t) => ({
     id: t.id,
     estrato: t.estrato as TipoPop["estrato"],
+    bussola: t.bussola,
   }));
 }
 
