@@ -11,9 +11,9 @@
 
 | Sistema (GDD) | ✅ | ◐ | ☐ | Pronto |
 |---|---|---|---|---|
-| 4. Partida e turno | 2 | 2 | 3 | ~40% |
+| 4. Partida e turno | 2 | 2 | 6 | ~30% |
 | 5. Partido | 0 | 0 | 5 | 0% |
-| 6. Presidente, sucessão, ministros | 0 | 1 | 9 | ~5% |
+| 6. Presidente, sucessão, ministros | 0 | 1 | 12 | ~4% |
 | 7. Leis | 5 | 2 | 1 | ~75% |
 | 8. Bússola | 4 | 0 | 2 | ~65% |
 | 9. Índices | 2 | 1 | 0 | ~85% |
@@ -25,7 +25,7 @@
 | 15. Mundo | 2 | 1 | 3 | ~40% |
 | 16. Economia | 3 | 4 | 9 | ~30% |
 | 17. Tela: mapa e mesa | 3 | 2 | 6 | ~35% |
-| **Total** | **31** | **17** | **60** | **~30%** |
+| **Total** | **31** | **17** | **66** | **~28%** |
 
 ---
 
@@ -35,13 +35,16 @@
 - ✅ **R4.2** Passar o turno: efeitos chegam com atraso declarado.
 - ◐ **R4.3** Escolher o país no começo (há `teste` e `teste-pobre`; falta país de verdade).
 - ◐ **R4.4** Partida termina quando o partido deixa o poder (hoje: perder a eleição).
-- ☐ **R4.5** Escolher o partido entre os do país.
-- ☐ **R4.6** Escolher presidente, vice e presidente do partido entre fichas.
+- ☐ **R4.5** Criar o partido: o jogador dá nome e sigla; não escolhe lado.
+- ☐ **R4.6** Montar a chapa: presidente do partido, candidato e vice, escolhidos entre pessoas de todos os partidos do país (nasce a coligação).
 - ☐ **R4.7** Placar final: tempo no poder e país deixado.
+- ☐ **R4.8** O lado do partido (bússola e base) sai da chapa; o jogo nunca fala de lado ao jogador nem pede que ele escolha um.
+- ☐ **R4.9** Montar o ministério: escolher ministérios e ministros, ou sortear os ministros pela ideologia da chapa.
+- ☐ **R4.10** Tela de início de jogo em sequência: país → partido → chapa → ministério → iniciar.
 
 ## 5. O partido
 
-- ☐ **R5.1** Ficha do partido: bússola, base, cadeiras, caixa, desgaste, coesão.
+- ☐ **R5.1** Ficha do partido: bússola (vem da chapa), base, cadeiras, caixa, desgaste, coesão.
 - ☐ **R5.2** Governar longe da base derruba coesão; o partido muda de lugar devagar.
 - ☐ **R5.3** Presidente do partido (ficha) pesa na negociação e na campanha; troca custa coesão.
 - ☐ **R5.4** Caixa do partido: entra por financiamento (lei), sai na campanha; doação privada traz interesse.
@@ -59,6 +62,8 @@
 - ☐ **R6.8** Ficha do ministro mexe na força e no atraso das leis da área.
 - ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão, candidato) e custo de troca.
 - ☐ **R6.10** Criar, fundir e extinguir ministérios por lei.
+- ☐ **R6.11** Perfil de rede social da pessoa (posts, fotos, curtidas, lugares, opiniões), gerado da ficha; sem rótulo de lado.
+- ☐ **R6.12** Lista de pessoas por vaga (chapa, ministério) com o perfil abrindo ao clicar.
 
 ## 7. Leis
 

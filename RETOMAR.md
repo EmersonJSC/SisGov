@@ -7,57 +7,33 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**Premissa (autor, 02/nov):** bolsa moderna no lugar do mercado vitoriano e da
-fatia 8. Minigame **Pregão**: blocos de 2%, tudo no mesmo turno, sem efeito
-neutro. Quer tudo junto: várias empresas, criar empresa, cofre real.
+Mercado, pilar 1 (construções) fechado e commitado (1a, 1b, 1c). O autor mudou
+de frente: agora é o **Partido** (começo da partida). Pilares 2 e 3 da 12b
+(empresas, bolsa) ficam fora por enquanto.
 
-**Feito nesta rodada (sem commit):**
-- Passo 1: fatia 8 apagada (ficha.ts, propriedade.ts, fichas.json, Fichas.tsx,
-  botão "Setores", previaDaFicha, 36 leis de setor, 5 leis de propriedade:
-  metodo-venda, preco-minimo-venda, setores-do-estado, fabrica-no-exterior,
-  acordo-com-potencias). Energia voltou às 3 camadas antigas. tsc e 187 testes ok.
-- Ficam 8 leis na área "Propriedade" (indenizacao, prazo-pagamento,
-  regra-pos-venda, politica-estatal, triagem-estrangeira, remessa-de-lucro,
-  fabrica-de-fora, concorrencia); ainda sem efeito (campo `valores` no motor).
-- Passo 2: `empresas.json` por país (teste: 5, teste-pobre: 3; nomes inventados),
-  `empresasDoPais` em `src/partida/index.ts`, Pregão com uma aba por empresa.
-
-**GDD reescrito (autor, 02/nov):** `docs/jogo/gdd.md` descreve o **jogo
-pronto**, sem plano nem "depois". Entraram: você é o partido (chapa,
-presidente do partido, coesão, caixa); sucessão (assassinato; sucessor de
-outro partido = desvantagem até a eleição); ministros como fichas de RPG;
-mídia com mecânica própria; coligação; campanha; mandatos e reeleição.
-O feito e a ordem foram para o plano (seção 1). Ideia nova = GDD seção 18
-(Perguntas em aberto).
-
-**Mesa (autor, 03/nov):** GDD seção 17 virou "Tela: mapa e mesa". A mesa
-recebe papéis (lei aprovada pelo Congresso, situação, pedido) para assinar,
-vetar, recusar, encaminhar ao ministro ou ignorar; ignorar tem consequência.
-Respostas do autor na seção 18 foram para os sistemas; a 18 tem só o que
-segue aberto.
-
-**Requisitos (03/nov):** `docs/jogo/requisitos.md`, 108 requisitos (R4.1…)
-tirados do GDD com status medido no código: 31 feitos, 17 parciais, 60
-faltam (~30% do jogo).
+**Decidido com o autor (03/nov) e escrito no GDD (§3 princípio 4, §4 Começo,
+nova "A rede da pessoa", §5) e nos requisitos (R4.5–R4.10, R5.1, R6.11–R6.12):**
+- O jogo é um teste: nunca fala de lado político, só de consequência; o
+  jogador não escolhe lado. O lado sai da **chapa**.
+- Início: país → cria partido (**só nome e sigla**) → chapa (presidente do
+  partido, candidato, vice), cada vaga abre lista de pessoas de **todos** os
+  partidos (aí nasce a coligação) → clicar na pessoa abre o **perfil de rede
+  social** (posts, fotos, curtidas, lugares; sem rótulo de lado) → ministério
+  (sorteado pela ideologia da chapa, ou escolhido) → iniciar.
+- Hoje no código: `congresso.json` fixa `governo`/`coligacao`; a tela inicial
+  só pede país e semente; não há fichas de pessoas.
 
 ## Próximo
 
-Pilar 1 do Mercado fechado (1a, 1b, 1c). Perguntar ao autor: pilar 2
-(empresas) e pilar 3 (bolsa) ainda entram na 12b ou o autor muda de frente?
-`npm run check` roda ao fechar a mecânica.
-
-**Feito 03/nov: fatia 1a (46799fda), 1b (f8b8a705) e 1c (tela do Mercado: linha "Construções" por setor, lucro × o de antes, aviso de prejuízo e fechamento).**
-`construcoes.ts` + `obras` em `produtos.json`; PIB real = capacidade pronta;
-investimento privado abre obras (decisão A do autor). 1b: lucro por setor
-(receita − salários − imposto), investimento vai para a margem relativa que
-melhorou, 3 turnos de prejuízo fecham 5%/turno, setor do Estado não fecha.
-Teste 2,0%/ano e teste-pobre 3,3%/ano, iguais ao 1a. Cenários:
-`npm run construcoes`; testes `scripts/construcoes.test.ts` (10).
+Proposta curta no chat da **fatia 1 do Partido** com a tela nova: nome+sigla,
+chapa com lista de pessoas e perfil. Decisão do autor: o que vem primeiro, a
+ficha da pessoa (gerador + bússola) ou a tela de início. Sem código antes do sim.
+`npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
 
 ## Pendências do autor
 
 - Jogar o Pregão (botão "Bolsa").
-- Commits locais sem push (55eb0ff2, 5adddb3c) (push só com a palavra do autor).
+- Commits locais sem push (55eb0ff2, 5adddb3c, 46799fda, f8b8a705, 0d121456) (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
 - Antes de publicar o jogo: checar com advogado.
 - Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.

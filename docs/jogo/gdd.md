@@ -61,7 +61,10 @@ continuar no poder governando por leis.**
    em leis menores, cada uma com uma escolha de verdade.
 4. **Nada é bom ou ruim.** Toda lei tem ganhadores, perdedores e
    consequências; textos e cores descrevem, não elogiam nem condenam. Parecer
-   de direita ou de esquerda é resultado, nunca objetivo.
+   de direita ou de esquerda é resultado, nunca objetivo. O jogo é um teste:
+   nunca fala de lado político ao jogador e nunca pede que ele escolha um
+   lado. Só mostra consequências. O lado do partido sai das pessoas que o
+   jogador escolhe (a chapa).
 5. **Nada aparece do nada (realismo).** A conta sempre fecha: todo dinheiro
    do Estado entra por uma lei (imposto, venda, taxa) ou por um bem do Estado
    (lucro de estatal, dividendo de ação, juros recebidos), e todo gasto sai
@@ -93,12 +96,33 @@ continuar no poder governando por leis.**
 
 1. **Escolhe o país** (países inventados, cada um com economia, Congresso,
    partidos, mídias e grupos próprios).
-2. **Escolhe o partido** entre os do país. O partido tem posição na
-   bússola, base de grupos, cadeiras e caixa.
-3. **A chapa já venceu:** o jogador escolhe quem foi eleito presidente e
-   vice entre as fichas do partido e dos aliados, e quem preside o partido.
-4. **Monta o ministério:** escolhe os ministros entre fichas geradas.
-5. Governa.
+2. **Cria o partido:** dá um nome e uma sigla. O jogador não escolhe lado,
+   posição nem bússola; o partido nasce sem lado.
+3. **Monta a chapa:** três vagas: presidente do partido, candidato a
+   presidente e vice. Clicar numa vaga abre a lista de pessoas de todos os
+   partidos do país (é assim que nascem as coligações). Clicar numa pessoa
+   abre o perfil dela (ver "A rede da pessoa"). A chapa já venceu.
+4. **Monta o ministério:** escolhe os ministérios e os ministros. Pode
+   deixar o jogo sortear os ministros (pela ideologia da chapa) ou escolher
+   cada um.
+5. Inicia o jogo e governa.
+
+O lado político do partido vem das pessoas da chapa e dos aliados que ela
+traz: a posição na bússola e a base de grupos saem delas. O jogador descobre
+o lado do próprio governo pelas consequências, não por um rótulo.
+
+### A rede da pessoa
+
+Cada pessoa da lista tem um perfil de rede social, como o de uma rede
+real. É por ele que o jogador conhece a pessoa:
+
+- **O que ela posta:** opiniões, fotos, o que anda curtindo, quem segue.
+- **Onde ela vai e o que frequenta:** lugares, eventos, companhias.
+- **O que ela diz sobre os temas do país:** a opinião aparece em texto
+  solto, nunca como rótulo de esquerda ou direita.
+
+O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade).
+Nada diz "esta pessoa é de tal lado"; o jogador deduz, como na vida real.
 
 ### O turno (2 meses)
 
@@ -145,7 +169,9 @@ continuar no poder governando por leis.**
 **O que o jogador faz:** decide quem fala pelo partido, com quem ele se
 alia e o quanto ele se afasta da própria história.
 
-- **Ficha do partido:** posição na bússola (de onde ele veio), grupos da
+- **Criação:** o jogador dá só nome e sigla. A posição na bússola e a base
+  saem das pessoas da chapa, não de uma escolha de lado.
+- **Ficha do partido:** posição na bússola (vem da chapa), grupos da
   base, cadeiras no Congresso, caixa do partido, desgaste, coesão interna.
 - **Base e identidade.** Governar longe da posição do partido irrita a base:
   os lealistas viram descontentes, a coesão cai, deputados do próprio
