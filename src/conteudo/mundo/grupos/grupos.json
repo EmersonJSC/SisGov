@@ -3,58 +3,173 @@
   "grupos": [
     {
       "id": "trabalhadores",
-      "bussola": { "economico": -0.5, "social": 0.2 },
-      "peso": { "economico": 1, "social": 0.4 },
+      "bussola": {
+        "economico": -0.5,
+        "social": 0.2
+      },
+      "peso": {
+        "economico": 1,
+        "social": 0.4
+      },
       "nome": "Trabalhadores",
-      "membros": { "informais": 1, "operarios": 1, "campo": 1 },
+      "membros": {
+        "desempregados": 1,
+        "informais-urbanos": 1,
+        "domesticos": 1,
+        "operarios-fabrica": 1,
+        "operarios-obra": 1,
+        "servicos-basicos": 1,
+        "pequenos-agricultores": 1,
+        "assalariados-rurais": 1
+      },
       "cobra": [
-        { "indice": "padrao_vida", "sentido": 1 },
-        { "indice": "pobreza", "sentido": -1 },
-        { "indice": "desemprego", "sentido": -1 },
-        { "indice": "saude", "sentido": 1 },
-        { "indice": "abastecimento", "sentido": 1 }
+        {
+          "indice": "padrao_vida",
+          "sentido": 1
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1
+        },
+        {
+          "indice": "desemprego",
+          "sentido": -1
+        },
+        {
+          "indice": "saude",
+          "sentido": 1
+        },
+        {
+          "indice": "abastecimento",
+          "sentido": 1
+        }
       ]
     },
     {
       "id": "classe-media",
-      "bussola": { "economico": 0.2, "social": 0.3 },
-      "peso": { "economico": 0.5, "social": 0.3 },
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.3
+      },
+      "peso": {
+        "economico": 0.5,
+        "social": 0.3
+      },
       "nome": "Classe média",
-      "membros": { "servidores": 1, "classe-media": 1 },
+      "membros": {
+        "professores": 1,
+        "profissionais-saude": 1,
+        "militares": 1,
+        "burocratas": 1,
+        "tecnicos": 1,
+        "profissionais-tecnologia": 1,
+        "comerciantes": 1,
+        "estudantes": 1,
+        "aposentados": 1,
+        "trabalhadores-escritorio": 1,
+        "artistas-jornalistas": 1
+      },
       "cobra": [
-        { "indice": "seguranca", "sentido": 1 },
-        { "indice": "instrucao", "sentido": 1 },
-        { "indice": "corrupcao", "sentido": -1 },
-        { "indice": "inflacao", "sentido": -1 },
-        { "indice": "abastecimento", "sentido": 1 }
+        {
+          "indice": "seguranca",
+          "sentido": 1
+        },
+        {
+          "indice": "instrucao",
+          "sentido": 1
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1
+        },
+        {
+          "indice": "inflacao",
+          "sentido": -1
+        },
+        {
+          "indice": "abastecimento",
+          "sentido": 1
+        }
       ]
     },
     {
       "id": "empresarios",
-      "bussola": { "economico": 0.7, "social": 0 },
-      "peso": { "economico": 1, "social": 0.2 },
+      "bussola": {
+        "economico": 0.7,
+        "social": 0
+      },
+      "peso": {
+        "economico": 1,
+        "social": 0.2
+      },
       "nome": "Empresários",
-      "membros": { "empresarios": 1 },
+      "membros": {
+        "grandes-empresarios": 1,
+        "industriais": 1,
+        "rentistas": 1,
+        "proprietarios-rurais": 1,
+        "profissionais-liberais": 1,
+        "altos-funcionarios": 1
+      },
       "cobra": [
-        { "indice": "crescimento_real", "sentido": 1 },
-        { "indice": "taxa_juros", "sentido": -1 },
-        { "indice": "divida_publica", "sentido": -1 }
+        {
+          "indice": "crescimento_real",
+          "sentido": 1
+        },
+        {
+          "indice": "taxa_juros",
+          "sentido": -1
+        },
+        {
+          "indice": "divida_publica",
+          "sentido": -1
+        }
       ]
     },
     {
       "id": "ambientalistas",
-      "bussola": { "economico": -0.2, "social": -0.7 },
-      "peso": { "economico": 0.3, "social": 1 },
+      "bussola": {
+        "economico": -0.2,
+        "social": -0.7
+      },
+      "peso": {
+        "economico": 0.3,
+        "social": 1
+      },
       "nome": "Ambientalistas",
       "membros": {
-        "informais": 0.02,
-        "operarios": 0.03,
-        "campo": 0.02,
-        "servidores": 0.1,
-        "classe-media": 0.15,
-        "empresarios": 0.05
+        "desempregados": 0.02,
+        "informais-urbanos": 0.02,
+        "domesticos": 0.02,
+        "operarios-fabrica": 0.03,
+        "operarios-obra": 0.03,
+        "servicos-basicos": 0.03,
+        "pequenos-agricultores": 0.02,
+        "assalariados-rurais": 0.02,
+        "professores": 0.1,
+        "profissionais-saude": 0.1,
+        "militares": 0.1,
+        "burocratas": 0.1,
+        "tecnicos": 0.15,
+        "profissionais-tecnologia": 0.2,
+        "comerciantes": 0.15,
+        "estudantes": 0.3,
+        "aposentados": 0.15,
+        "trabalhadores-escritorio": 0.15,
+        "artistas-jornalistas": 0.35,
+        "grandes-empresarios": 0.05,
+        "industriais": 0.05,
+        "rentistas": 0.05,
+        "proprietarios-rurais": 0.05,
+        "profissionais-liberais": 0.05,
+        "altos-funcionarios": 0.05
       },
-      "cobra": [{ "indice": "meio_ambiente", "sentido": 1 }]
+      "cobra": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1
+        }
+      ]
     }
   ]
 }

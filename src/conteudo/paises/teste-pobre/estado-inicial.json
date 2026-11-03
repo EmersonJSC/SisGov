@@ -47,22 +47,138 @@
   },
   "parametros": {
     "bases": {
-      "renda": { "parcela_pib": 0.45, "pico": 0.45, "evasao": 0.3 },
-      "consumo": { "parcela_pib": 0.65, "pico": 0.45, "evasao": 0.3 },
-      "lucro": { "parcela_pib": 0.12, "pico": 0.35, "evasao": 0.35 },
-      "emissoes": { "parcela_pib": 0.05, "pico": 0.3, "evasao": 0.4 }
+      "renda": {
+        "parcela_pib": 0.45,
+        "pico": 0.45,
+        "evasao": 0.3
+      },
+      "consumo": {
+        "parcela_pib": 0.65,
+        "pico": 0.45,
+        "evasao": 0.3
+      },
+      "lucro": {
+        "parcela_pib": 0.12,
+        "pico": 0.35,
+        "evasao": 0.35
+      },
+      "emissoes": {
+        "parcela_pib": 0.05,
+        "pico": 0.3,
+        "evasao": 0.4
+      }
     },
-    "crescimento": { "tendencia": 3, "volatilidade": 2.5 },
+    "crescimento": {
+      "tendencia": 3,
+      "volatilidade": 2.5
+    },
     "receita_fora_das_leis": 14.13,
     "gasto_fora_das_leis": 13.87,
-    "juros": { "neutro": 4, "tolerancia_divida": 50 },
+    "juros": {
+      "neutro": 4,
+      "tolerancia_divida": 50
+    },
     "pops": {
-      "informais": { "parcela_pessoas": 0.35, "parcela_renda": 0.08 },
-      "operarios": { "parcela_pessoas": 0.2, "parcela_renda": 0.14 },
-      "campo": { "parcela_pessoas": 0.25, "parcela_renda": 0.08 },
-      "servidores": { "parcela_pessoas": 0.06, "parcela_renda": 0.12 },
-      "classe-media": { "parcela_pessoas": 0.12, "parcela_renda": 0.28 },
-      "empresarios": { "parcela_pessoas": 0.02, "parcela_renda": 0.3 }
+      "desempregados": {
+        "parcela_pessoas": 0.1225,
+        "parcela_renda": 0.02
+      },
+      "informais-urbanos": {
+        "parcela_pessoas": 0.1575,
+        "parcela_renda": 0.04
+      },
+      "domesticos": {
+        "parcela_pessoas": 0.07,
+        "parcela_renda": 0.02
+      },
+      "operarios-fabrica": {
+        "parcela_pessoas": 0.09,
+        "parcela_renda": 0.07
+      },
+      "operarios-obra": {
+        "parcela_pessoas": 0.06,
+        "parcela_renda": 0.042
+      },
+      "servicos-basicos": {
+        "parcela_pessoas": 0.05,
+        "parcela_renda": 0.028
+      },
+      "pequenos-agricultores": {
+        "parcela_pessoas": 0.1375,
+        "parcela_renda": 0.044
+      },
+      "assalariados-rurais": {
+        "parcela_pessoas": 0.1125,
+        "parcela_renda": 0.036
+      },
+      "professores": {
+        "parcela_pessoas": 0.018,
+        "parcela_renda": 0.0336
+      },
+      "profissionais-saude": {
+        "parcela_pessoas": 0.009,
+        "parcela_renda": 0.0264
+      },
+      "militares": {
+        "parcela_pessoas": 0.012,
+        "parcela_renda": 0.024
+      },
+      "burocratas": {
+        "parcela_pessoas": 0.021,
+        "parcela_renda": 0.036
+      },
+      "tecnicos": {
+        "parcela_pessoas": 0.0144,
+        "parcela_renda": 0.042
+      },
+      "profissionais-tecnologia": {
+        "parcela_pessoas": 0.0144,
+        "parcela_renda": 0.056
+      },
+      "comerciantes": {
+        "parcela_pessoas": 0.024,
+        "parcela_renda": 0.0476
+      },
+      "estudantes": {
+        "parcela_pessoas": 0.012,
+        "parcela_renda": 0.0084
+      },
+      "aposentados": {
+        "parcela_pessoas": 0.0144,
+        "parcela_renda": 0.0224
+      },
+      "trabalhadores-escritorio": {
+        "parcela_pessoas": 0.0336,
+        "parcela_renda": 0.0756
+      },
+      "artistas-jornalistas": {
+        "parcela_pessoas": 0.0072,
+        "parcela_renda": 0.028
+      },
+      "grandes-empresarios": {
+        "parcela_pessoas": 0.006,
+        "parcela_renda": 0.09
+      },
+      "industriais": {
+        "parcela_pessoas": 0.0044,
+        "parcela_renda": 0.066
+      },
+      "rentistas": {
+        "parcela_pessoas": 0.004,
+        "parcela_renda": 0.06
+      },
+      "proprietarios-rurais": {
+        "parcela_pessoas": 0.0024,
+        "parcela_renda": 0.036
+      },
+      "profissionais-liberais": {
+        "parcela_pessoas": 0.002,
+        "parcela_renda": 0.03
+      },
+      "altos-funcionarios": {
+        "parcela_pessoas": 0.0012,
+        "parcela_renda": 0.018
+      }
     }
   }
 }

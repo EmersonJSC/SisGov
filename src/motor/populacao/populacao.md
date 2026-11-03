@@ -17,6 +17,9 @@ Por pessoa, ao ano, na moeda do país (passo 7a, 01/nov/2026):
 
 Na V1 o tamanho de cada pop fica na parcela declarada (sem migração).
 
+São 25 tipos (8 pobres, 11 médios, 6 ricos). Cada um tem `bussola` (economico e
+social, −1 a +1); por enquanto só descreve o pop, ainda não move nada.
+
 Comportamento esperado (escrito antes), país de teste, `npm run pops`:
 
 - turno 1: renda média por pessoa = PIB nominal ÷ população; empresário

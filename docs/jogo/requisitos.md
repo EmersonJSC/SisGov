@@ -18,14 +18,14 @@
 | 8. Bússola | 4 | 0 | 2 | ~65% |
 | 9. Índices | 2 | 1 | 0 | ~85% |
 | 10. Contas | 3 | 1 | 2 | ~60% |
-| 11. População e grupos | 3 | 1 | 2 | ~55% |
+| 11. População e grupos | 4 | 1 | 2 | ~60% |
 | 12. Congresso e coligação | 2 | 1 | 6 | ~25% |
 | 13. Eleição, campanha, mandatos | 2 | 1 | 5 | ~25% |
 | 14. Mídia | 0 | 0 | 7 | 0% |
 | 15. Mundo | 2 | 1 | 3 | ~40% |
 | 16. Economia | 3 | 4 | 9 | ~30% |
 | 17. Tela: mapa e mesa | 3 | 2 | 6 | ~35% |
-| **Total** | **31** | **17** | **66** | **~28%** |
+| **Total** | **32** | **17** | **66** | **~28%** |
 
 ---
 
@@ -102,7 +102,8 @@
 
 ## 11. População e grupos
 
-- ✅ **R11.1** Pops (profissão × estrato) com renda vinda da economia.
+- ✅ **R11.1** Pops (profissão × estrato) com renda vinda da economia: 25 tipos no mundo, cada país declara as parcelas.
+- ✅ **R11.7** Cada pop tem bússola (economico e social); ainda não move nada (R8.5).
 - ✅ **R11.2** Grupos com bússola, tamanho e satisfação; país declara os fortes.
 - ✅ **R11.3** Radicais e lealistas.
 - ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).

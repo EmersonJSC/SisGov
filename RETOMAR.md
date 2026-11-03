@@ -7,27 +7,21 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Mercado, pilar 1 (construções) fechado e commitado (1a, 1b, 1c). O autor mudou
-de frente: agora é o **Partido** (começo da partida). Pilares 2 e 3 da 12b
-(empresas, bolsa) ficam fora por enquanto.
+Frente atual: **pops e grupos** (o autor pediu fechar antes do Partido, porque
+a chapa e o perfil de rede dependem deles). Feito em 03/nov: os **25 pops**
+(8 pobres, 11 médios, 6 ricos) em `mundo/pops/pops.json`, cada um com bússola;
+parcelas dos dois países refeitas somando o mesmo que os 6 antigos; grupos
+reapontados; aparecem na tela do Mercado. Testes e `tsc -b` verdes.
+Efeito visível: "sem emprego formal" subiu (35→38% no teste-pobre) por causa de
+estudantes e aposentados, que não têm setor.
 
-**Decidido com o autor (03/nov) e escrito no GDD (§3 princípio 4, §4 Começo,
-nova "A rede da pessoa", §5) e nos requisitos (R4.5–R4.10, R5.1, R6.11–R6.12):**
-- O jogo é um teste: nunca fala de lado político, só de consequência; o
-  jogador não escolhe lado. O lado sai da **chapa**.
-- Início: país → cria partido (**só nome e sigla**) → chapa (presidente do
-  partido, candidato, vice), cada vaga abre lista de pessoas de **todos** os
-  partidos (aí nasce a coligação) → clicar na pessoa abre o **perfil de rede
-  social** (posts, fotos, curtidas, lugares; sem rótulo de lado) → ministério
-  (sorteado pela ideologia da chapa, ou escolhido) → iniciar.
-- Hoje no código: `congresso.json` fixa `governo`/`coligacao`; a tela inicial
-  só pede país e semente; não há fichas de pessoas.
+O Partido (GDD §4, R4.5–R4.10, R6.11–R6.12) está escrito e commitado, sem código.
 
 ## Próximo
 
-Proposta curta no chat da **fatia 1 do Partido** com a tela nova: nome+sigla,
-chapa com lista de pessoas e perfil. Decisão do autor: o que vem primeiro, a
-ficha da pessoa (gerador + bússola) ou a tela de início. Sem código antes do sim.
+Falta fechar pops e grupos: R11.5 (estudar e mudar de setor), R11.6 (subir e
+descer de estrato), R8.5 (pop desliza na bússola) e grupos de ~4 para ~8.
+Decisão do autor: ordem desses quatro; recomendado grupos novos primeiro.
 `npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
 
 ## Pendências do autor

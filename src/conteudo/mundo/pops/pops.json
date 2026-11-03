@@ -2,74 +2,355 @@
   "versao": 1,
   "pops": [
     {
-      "id": "informais",
-      "nome": "Informais e desempregados",
+      "id": "desempregados",
+      "nome": "Desempregados",
       "estrato": "pobre",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0.1
+      },
       "setores": {},
       "capital": 0
     },
     {
-      "id": "operarios",
-      "nome": "Operários",
+      "id": "informais-urbanos",
+      "nome": "Informais urbanos",
       "estrato": "pobre",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0.2
+      },
+      "setores": {},
+      "capital": 0
+    },
+    {
+      "id": "domesticos",
+      "nome": "Trabalhadores domésticos",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0.3
+      },
+      "setores": {},
+      "capital": 0
+    },
+    {
+      "id": "operarios-fabrica",
+      "nome": "Operários de fábrica",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.6,
+        "social": 0.1
+      },
       "setores": {
-        "industria": 0.45,
-        "infraestrutura": 0.2,
-        "construcao-civil": 0.2,
-        "militar": 0.05,
-        "essenciais": 0.1
+        "industria": 0.75,
+        "militar": 0.1,
+        "infraestrutura": 0.1,
+        "essenciais": 0.05
       },
       "capital": 0
     },
     {
-      "id": "campo",
-      "nome": "Trabalhadores do campo",
+      "id": "operarios-obra",
+      "nome": "Operários de obra",
       "estrato": "pobre",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0.2
+      },
       "setores": {
-        "essenciais": 0.85,
-        "industria": 0.1,
-        "infraestrutura": 0.05
+        "construcao-civil": 0.6,
+        "infraestrutura": 0.4
       },
       "capital": 0
     },
     {
-      "id": "servidores",
-      "nome": "Servidores públicos",
+      "id": "servicos-basicos",
+      "nome": "Trabalhadores de serviços básicos",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0.2
+      },
+      "setores": {
+        "essenciais": 0.7,
+        "industria": 0.15,
+        "infraestrutura": 0.15
+      },
+      "capital": 0
+    },
+    {
+      "id": "pequenos-agricultores",
+      "nome": "Pequenos agricultores",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.5
+      },
+      "setores": {
+        "essenciais": 0.95,
+        "industria": 0.05
+      },
+      "capital": 0
+    },
+    {
+      "id": "assalariados-rurais",
+      "nome": "Assalariados rurais",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0.3
+      },
+      "setores": {
+        "essenciais": 0.75,
+        "industria": 0.15,
+        "infraestrutura": 0.1
+      },
+      "capital": 0
+    },
+    {
+      "id": "professores",
+      "nome": "Professores",
       "estrato": "medio",
+      "bussola": {
+        "economico": -0.5,
+        "social": -0.3
+      },
+      "setores": {
+        "essenciais": 1
+      },
+      "capital": 0
+    },
+    {
+      "id": "profissionais-saude",
+      "nome": "Profissionais de saúde",
+      "estrato": "medio",
+      "bussola": {
+        "economico": -0.3,
+        "social": -0.2
+      },
+      "setores": {
+        "essenciais": 1
+      },
+      "capital": 0
+    },
+    {
+      "id": "militares",
+      "nome": "Militares",
+      "estrato": "medio",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.7
+      },
+      "setores": {
+        "militar": 1
+      },
+      "capital": 0
+    },
+    {
+      "id": "burocratas",
+      "nome": "Servidores administrativos",
+      "estrato": "medio",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0.2
+      },
       "setores": {
         "essenciais": 0.5,
-        "militar": 0.25,
-        "infraestrutura": 0.25
+        "infraestrutura": 0.5
       },
       "capital": 0
     },
     {
-      "id": "classe-media",
-      "nome": "Classe média de serviços",
+      "id": "tecnicos",
+      "nome": "Técnicos e engenheiros",
       "estrato": "medio",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.1
+      },
+      "setores": {
+        "industria": 0.4,
+        "infraestrutura": 0.25,
+        "construcao-civil": 0.2,
+        "tecnologia": 0.15
+      },
+      "capital": 0
+    },
+    {
+      "id": "profissionais-tecnologia",
+      "nome": "Profissionais de tecnologia",
+      "estrato": "medio",
+      "bussola": {
+        "economico": 0.3,
+        "social": -0.4
+      },
+      "setores": {
+        "tecnologia": 0.8,
+        "industria": 0.1,
+        "luxo": 0.1
+      },
+      "capital": 0
+    },
+    {
+      "id": "comerciantes",
+      "nome": "Pequenos comerciantes",
+      "estrato": "medio",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0.3
+      },
+      "setores": {
+        "essenciais": 0.4,
+        "luxo": 0.3,
+        "industria": 0.15,
+        "construcao-civil": 0.15
+      },
+      "capital": 0
+    },
+    {
+      "id": "estudantes",
+      "nome": "Estudantes",
+      "estrato": "medio",
+      "bussola": {
+        "economico": -0.3,
+        "social": -0.6
+      },
+      "setores": {},
+      "capital": 0
+    },
+    {
+      "id": "aposentados",
+      "nome": "Aposentados",
+      "estrato": "medio",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0.5
+      },
+      "setores": {},
+      "capital": 0
+    },
+    {
+      "id": "trabalhadores-escritorio",
+      "nome": "Trabalhadores de escritório e serviços",
+      "estrato": "medio",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.2
+      },
+      "setores": {
+        "essenciais": 0.3,
+        "tecnologia": 0.25,
+        "luxo": 0.15,
+        "industria": 0.15,
+        "construcao-civil": 0.15
+      },
+      "capital": 0
+    },
+    {
+      "id": "artistas-jornalistas",
+      "nome": "Artistas e jornalistas",
+      "estrato": "medio",
+      "bussola": {
+        "economico": -0.4,
+        "social": -0.7
+      },
+      "setores": {
+        "tecnologia": 0.6,
+        "luxo": 0.4
+      },
+      "capital": 0
+    },
+    {
+      "id": "grandes-empresarios",
+      "nome": "Grandes empresários",
+      "estrato": "rico",
+      "bussola": {
+        "economico": 0.7,
+        "social": -0.1
+      },
       "setores": {
         "tecnologia": 0.3,
-        "essenciais": 0.25,
-        "industria": 0.15,
-        "luxo": 0.1,
-        "construcao-civil": 0.1,
-        "infraestrutura": 0.1
+        "industria": 0.2,
+        "luxo": 0.2,
+        "infraestrutura": 0.15,
+        "essenciais": 0.15
+      },
+      "capital": 1
+    },
+    {
+      "id": "industriais",
+      "nome": "Industriais",
+      "estrato": "rico",
+      "bussola": {
+        "economico": 0.6,
+        "social": 0.2
+      },
+      "setores": {
+        "industria": 0.6,
+        "construcao-civil": 0.2,
+        "infraestrutura": 0.2
+      },
+      "capital": 1
+    },
+    {
+      "id": "rentistas",
+      "nome": "Rentistas e investidores",
+      "estrato": "rico",
+      "bussola": {
+        "economico": 0.8,
+        "social": 0.2
+      },
+      "setores": {
+        "tecnologia": 0.3,
+        "luxo": 0.3,
+        "construcao-civil": 0.2,
+        "essenciais": 0.2
+      },
+      "capital": 1
+    },
+    {
+      "id": "proprietarios-rurais",
+      "nome": "Proprietários rurais",
+      "estrato": "rico",
+      "bussola": {
+        "economico": 0.7,
+        "social": 0.6
+      },
+      "setores": {
+        "essenciais": 1
+      },
+      "capital": 1
+    },
+    {
+      "id": "profissionais-liberais",
+      "nome": "Profissionais liberais",
+      "estrato": "rico",
+      "bussola": {
+        "economico": 0.4,
+        "social": -0.2
+      },
+      "setores": {
+        "essenciais": 0.4,
+        "tecnologia": 0.3,
+        "luxo": 0.3
       },
       "capital": 0
     },
     {
-      "id": "empresarios",
-      "nome": "Empresários",
+      "id": "altos-funcionarios",
+      "nome": "Altos funcionários",
       "estrato": "rico",
-      "setores": {
-        "industria": 0.25,
-        "tecnologia": 0.2,
-        "luxo": 0.15,
-        "construcao-civil": 0.15,
-        "essenciais": 0.15,
-        "infraestrutura": 0.1
+      "bussola": {
+        "economico": 0.3,
+        "social": 0.4
       },
-      "capital": 1
+      "setores": {
+        "essenciais": 0.4,
+        "militar": 0.3,
+        "infraestrutura": 0.3
+      },
+      "capital": 0
     }
   ]
 }

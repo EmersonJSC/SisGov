@@ -56,6 +56,15 @@ describe("contrato do mercado", () => {
   });
 });
 
+describe("contrato dos pops", () => {
+  it("são 25, cada um com bússola de −1 a +1", () => {
+    expect(pops.pops).toHaveLength(25);
+    for (const p of pops.pops)
+      for (const v of [p.bussola.economico, p.bussola.social])
+        expect(Math.abs(v), p.id).toBeLessThanOrEqual(1);
+  });
+});
+
 describe("contrato da produção", () => {
   it("produção das potências e cobertura de cada país passam nos validadores", () => {
     const mercado = lerMercado(produtos);
