@@ -37,9 +37,11 @@ construção (decisão do autor): é só o índice. Em 24 turnos tecnologia sobe
 
 ## Próximo
 
-Falta só a mídia (R8.5/R11.4) e o R8.6. Decisão do autor: fazer a mídia agora?
-Recomendo sim. Ao fechar: `npm run check` e marcar R16.7–R16.10 como ✅.
-`npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
+Pops e grupos **fechados sem a mídia** (03/nov, `npm run check` verde, 229
+testes). R8.5 e R11.4 ficam ◐ "falta mídia"; a mídia (R14) está no GDD §18, o
+autor quer ir com calma. R16.7–R16.10 são das construções, não dos pops: não
+marcar. Decisão do autor: qual frente agora? Recomendo voltar ao Partido
+(GDD §4), que esperava pops e grupos.
 
 ## Pendências do autor
 

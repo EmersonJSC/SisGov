@@ -606,6 +606,8 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 
 **Mundo**
 - Como um ataque acontece e como termina.
+- Mídia (R14, R8.5, R11.4): quando abrir e como empurra a bússola dos pops. Autor
+  quer ir com calma; pops e grupos fecham sem ela.
 
 **Fora do jogo pronto (decidido):** guerra iniciada pelo país, alianças
 militares, partido único jogável, tribunal superior, pesquisa e tecnologia
