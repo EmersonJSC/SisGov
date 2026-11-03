@@ -22,6 +22,7 @@ import {
   type Regras,
   type TipoGrupo,
   type TipoPop,
+  motivoEscadasInvalidas,
   type ValorLei,
   ehEstrato,
   satisfacaoMedia,
@@ -102,11 +103,16 @@ function carregarPops(): TipoPop[] {
       throw new Error(
         `mundo/pops/pops.json › ${t.id}: estrato "${t.estrato}" não existe`,
       );
-  return tiposPops.pops.map((t) => ({
+  const tipos = tiposPops.pops.map((t) => ({
     id: t.id,
     estrato: t.estrato as TipoPop["estrato"],
     bussola: t.bussola,
+    sobe: "sobe" in t ? (t.sobe as TipoPop["sobe"]) : undefined,
+    desce: "desce" in t ? (t.desce as string) : undefined,
   }));
+  const motivo = motivoEscadasInvalidas(tipos);
+  if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);
+  return tipos;
 }
 
 /** Nome de cada tipo de pop, para scripts e tela. */

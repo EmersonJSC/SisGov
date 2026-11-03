@@ -63,6 +63,7 @@ import {
 } from "../politica";
 import {
   calcularPops,
+  migrarPops,
   motivoPopsInvalidos,
   type Estrato,
   type Pop,
@@ -515,6 +516,7 @@ function pops(regras: Regras, estado: Estado): Record<string, Pop> {
     pib_nominal: e.pib_nominal,
     imposto_renda: arrecadacaoPorBase(regras, estado.leis, e).renda ?? 0,
     transferencias,
+    migracao: estado.migracao,
   });
 }
 
@@ -558,6 +560,18 @@ function deslize(regras: Regras, estado: Estado) {
   });
 }
 
+/** Gente sobe e desce de estrato com a renda e a instrução (motor/populacao). */
+function migracao(regras: Regras, estado: Estado) {
+  return migrarPops(regras.pops, regras.pais.pops, estado.migracao, {
+    pops: estado.pops,
+    populacao: estado.essenciais.populacao,
+    renda_pop: estado.marco.renda_pop,
+    indice_precos: estado.essenciais.indice_precos,
+    esperado: rendaEsperada(regras, estado),
+    indices: todosIndices(estado),
+  });
+}
+
 /** Índices das cestas de hoje no estado, para os grupos e o turno seguinte. */
 function comIndicesDasCestas(regras: Regras, estado: Estado): Estado {
   const indices = indicesDasCestas(regras, estado);
@@ -575,7 +589,11 @@ const popsEGrupos: Etapa = (regras, estado) => {
     ...comPops,
     grupos: grupos(regras, comPops, estado.marco),
   };
-  return { ...comGrupos, deslize: deslize(regras, comGrupos) };
+  return {
+    ...comGrupos,
+    deslize: deslize(regras, comGrupos),
+    migracao: migracao(regras, comGrupos),
+  };
 };
 
 /**

@@ -15,7 +15,21 @@ Por pessoa, ao ano, na moeda do país (passo 7a, 01/nov/2026):
   valor igual entre as pessoas desse estrato.
 - **Renda** (disponível) = bruta − imposto + transferência.
 
-Na V1 o tamanho de cada pop fica na parcela declarada (sem migração).
+O tamanho de cada pop parte da parcela declarada e muda com a mobilidade
+(abaixo).
+
+**Subir e descer de estrato (R11.6).** O tipo de pop declara no mundo `sobe`
+(`para` e `exige`, um índice) e `desce` (o pop de baixo). Todo turno, pelo
+quanto a renda real do pop fugiu do esperado (±25% = força total):
+
+- acima: um pouco de gente sobe, vezes `índice exigido ÷ 100` (ex.: instrução);
+- abaixo: um pouco desce, sem exigir nada.
+
+No máximo 1% do pop por turno; cada pop ganha ou perde no máximo 30% do que
+declarou. Fica em `Estado.migracao` (fração da população que entrou ou saiu de
+cada pop; soma zero). Quem muda passa a ganhar como o pop novo, e a renda
+total continua sendo o PIB. Pobre não desce e rico não sobe. Os grupos
+crescem e encolhem sozinhos, porque contam pessoas por pop.
 
 São 25 tipos (8 pobres, 11 médios, 6 ricos). Cada um tem `bussola` (economico e
 social, −1 a +1); por enquanto só descreve o pop, ainda não move nada.

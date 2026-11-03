@@ -21,7 +21,11 @@
         "social": 0.2
       },
       "setores": {},
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "comerciantes",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "domesticos",
@@ -32,7 +36,11 @@
         "social": 0.3
       },
       "setores": {},
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "trabalhadores-escritorio",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "operarios-fabrica",
@@ -48,7 +56,11 @@
         "infraestrutura": 0.1,
         "essenciais": 0.05
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "tecnicos",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "operarios-obra",
@@ -62,7 +74,11 @@
         "construcao-civil": 0.6,
         "infraestrutura": 0.4
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "tecnicos",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "servicos-basicos",
@@ -77,7 +93,11 @@
         "industria": 0.15,
         "infraestrutura": 0.15
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "trabalhadores-escritorio",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "pequenos-agricultores",
@@ -91,7 +111,11 @@
         "essenciais": 0.95,
         "industria": 0.05
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "comerciantes",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "assalariados-rurais",
@@ -106,7 +130,11 @@
         "industria": 0.15,
         "infraestrutura": 0.1
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "tecnicos",
+        "exige": "instrucao"
+      }
     },
     {
       "id": "professores",
@@ -119,7 +147,12 @@
       "setores": {
         "essenciais": 1
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "altos-funcionarios",
+        "exige": "instrucao"
+      },
+      "desce": "servicos-basicos"
     },
     {
       "id": "profissionais-saude",
@@ -132,7 +165,12 @@
       "setores": {
         "essenciais": 1
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "profissionais-liberais",
+        "exige": "instrucao"
+      },
+      "desce": "servicos-basicos"
     },
     {
       "id": "militares",
@@ -145,7 +183,12 @@
       "setores": {
         "militar": 1
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "altos-funcionarios",
+        "exige": "instrucao"
+      },
+      "desce": "servicos-basicos"
     },
     {
       "id": "burocratas",
@@ -159,7 +202,12 @@
         "essenciais": 0.5,
         "infraestrutura": 0.5
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "altos-funcionarios",
+        "exige": "instrucao"
+      },
+      "desce": "informais-urbanos"
     },
     {
       "id": "tecnicos",
@@ -175,7 +223,12 @@
         "construcao-civil": 0.2,
         "tecnologia": 0.15
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "industriais",
+        "exige": "instrucao"
+      },
+      "desce": "operarios-fabrica"
     },
     {
       "id": "profissionais-tecnologia",
@@ -190,7 +243,12 @@
         "industria": 0.1,
         "luxo": 0.1
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "grandes-empresarios",
+        "exige": "instrucao"
+      },
+      "desce": "informais-urbanos"
     },
     {
       "id": "comerciantes",
@@ -206,7 +264,12 @@
         "industria": 0.15,
         "construcao-civil": 0.15
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "grandes-empresarios",
+        "exige": "instrucao"
+      },
+      "desce": "informais-urbanos"
     },
     {
       "id": "estudantes",
@@ -245,7 +308,12 @@
         "industria": 0.15,
         "construcao-civil": 0.15
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "profissionais-liberais",
+        "exige": "instrucao"
+      },
+      "desce": "servicos-basicos"
     },
     {
       "id": "artistas-jornalistas",
@@ -259,7 +327,12 @@
         "tecnologia": 0.6,
         "luxo": 0.4
       },
-      "capital": 0
+      "capital": 0,
+      "sobe": {
+        "para": "profissionais-liberais",
+        "exige": "instrucao"
+      },
+      "desce": "informais-urbanos"
     },
     {
       "id": "grandes-empresarios",
@@ -276,7 +349,8 @@
         "infraestrutura": 0.15,
         "essenciais": 0.15
       },
-      "capital": 1
+      "capital": 1,
+      "desce": "comerciantes"
     },
     {
       "id": "industriais",
@@ -291,7 +365,8 @@
         "construcao-civil": 0.2,
         "infraestrutura": 0.2
       },
-      "capital": 1
+      "capital": 1,
+      "desce": "tecnicos"
     },
     {
       "id": "rentistas",
@@ -307,7 +382,8 @@
         "construcao-civil": 0.2,
         "essenciais": 0.2
       },
-      "capital": 1
+      "capital": 1,
+      "desce": "comerciantes"
     },
     {
       "id": "proprietarios-rurais",
@@ -320,7 +396,8 @@
       "setores": {
         "essenciais": 1
       },
-      "capital": 1
+      "capital": 1,
+      "desce": "comerciantes"
     },
     {
       "id": "profissionais-liberais",
@@ -335,7 +412,8 @@
         "tecnologia": 0.3,
         "luxo": 0.3
       },
-      "capital": 0
+      "capital": 0,
+      "desce": "trabalhadores-escritorio"
     },
     {
       "id": "altos-funcionarios",
@@ -350,7 +428,8 @@
         "militar": 0.3,
         "infraestrutura": 0.3
       },
-      "capital": 0
+      "capital": 0,
+      "desce": "burocratas"
     }
   ]
 }

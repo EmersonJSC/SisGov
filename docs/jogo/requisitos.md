@@ -108,7 +108,7 @@
 - ✅ **R11.3** Radicais e lealistas.
 - ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).
 - ☐ **R11.5** Pops mudam de setor estudando (universidade é construção).
-- ☐ **R11.6** Pops sobem e descem de estrato.
+- ✅ **R11.6** Pops sobem e descem de estrato (03/nov/2026): renda real acima do esperado faz gente subir, na medida da instrução; abaixo, descer. Estudar (R11.5) fica à parte.
 
 ## 12. Congresso e coligação
 

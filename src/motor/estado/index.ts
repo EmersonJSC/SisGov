@@ -60,6 +60,11 @@ export interface Estado {
    * em partida salva antes do deslize = zero.
    */
   deslize?: Record<string, PontoBussola>;
+  /**
+   * Quem subiu ou desceu de estrato: fração da população que entrou (+) ou
+   * saiu (−) de cada pop (motor/populacao); ausente = ninguém mudou.
+   */
+  migracao?: Record<string, number>;
   /** Turno 0, referência dos grupos. */
   marco: Marco;
   /** Opinião de cada potência sobre o país, 0 a 100 (motor/mundo). */

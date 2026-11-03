@@ -25,16 +25,21 @@ O Partido (GDD §4, R4.5–R4.10, R6.11–R6.12) está escrito e commitado, sem 
 grupo anda junto; interno, o jogador sente só apoio e votos. Falta a mídia.
 Em 12 turnos parados o deslize é pequeno (~0,005); não equilibrado.
 
+**R11.6 feito**: gente sobe e desce de estrato com a renda real e a instrução
+(`Estado.migracao`, escadas `sobe`/`desce` em `pops.json`). Em 24 turnos
+parados mexe ~1% e quase tudo é descida; não equilibrado. A tela ainda não mostra
+"quem subiu" direto: só aparece nos grupos e no emprego.
+
 ## Próximo
 
-Falta fechar pops e grupos: R11.5 (estudar e mudar de setor) e R11.6 (subir e
-descer de estrato). Decisão do autor: qual primeiro; recomendo R11.6.
+Falta R11.5 (pop estuda e muda de setor; universidade é construção) e a mídia
+(R8.5/R11.4). Decisão do autor: qual primeiro; recomendo R11.5.
 `npm run check` ao fechar a mecânica; depois marcar R16.7–R16.10 como ✅.
 
 ## Pendências do autor
 
 - Jogar o Pregão (botão "Bolsa").
-- Commits locais sem push (55eb0ff2, 5adddb3c, 46799fda, f8b8a705, 0d121456) (push só com a palavra do autor).
+- Commits locais sem push (55eb0ff2, 5adddb3c, 46799fda, f8b8a705, 0d121456 e os de pops/grupos) (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
 - Antes de publicar o jogo: checar com advogado.
 - Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.
