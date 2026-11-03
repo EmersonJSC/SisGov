@@ -390,4 +390,19 @@ constrói, índice que atrasa, prazo, desgaste). Cenários: `npm run construcoes
   turno 0, crescendo com ela); o resto espera na fila.
 - O índice de atraso (corrupção) alonga o prazo (até 2×) e encarece (até
   +50%) a obra.
-- Ainda não: lucro por setor e fechamento (1b), "≈ N (+obras)" na tela (1c).
+
+**Lucro e fechamento (1b, 03/nov):**
+- Lucro do setor no turno = capacidade × (preço médio dos produtos ÷ o do
+  turno 0) − salários − imposto sobre lucro. Salários seguem a capacidade e
+  não caem com o preço; imposto só incide se há lucro.
+- Margem relativa = margem de hoje ÷ margem do turno 0 do próprio setor. O
+  investimento é dividido pelo tamanho × margem relativa (de 0 a 2), então o
+  capital vai para onde a margem melhorou; o total não muda.
+- 3 turnos seguidos de prejuízo: o setor perde 5% da capacidade por turno até
+  voltar a dar lucro.
+- Setor sem lucro no turno 0 (do Estado) não tem dono privado: nunca fecha.
+- Prejuízo é raro com os preços de hoje (variam 10 a 15% num mandato); um
+  choque de preço forte num setor de margem baixa (essenciais, 14%) é o caso.
+- Partida salva antes do 1b não tem `lucro`: sem fechamento, divisão por tamanho.
+- Ainda não: insumos e cadeia (R16.5), demanda por setor, demissão chegando
+  nos pops (R11.5), "≈ N (+obras)" na tela (1c).

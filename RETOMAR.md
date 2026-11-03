@@ -42,14 +42,17 @@ faltam (~30% do jogo).
 
 ## Próximo
 
-12b pilar 1, fatia 1b: lucro por setor (receita − salários − impostos) e
-construção que dá prejuízo seguido fecha (R16.9). Propor no chat antes.
+12b pilar 1, fatia 1c: tela do Mercado mostra "≈ N unidades (+obras)" por
+setor, com lucro e obras. Propor no chat antes. Depois: pilar 2 (empresas
+ligadas às construções, lucro vai ao dono) e pilar 3 (bolsa).
 
-**Feito 03/nov (sem commit): fatia 1a.** `src/motor/mercado/construcoes.ts`
-+ `obras` em `produtos.json`; `economiaReal` usa a capacidade pronta; o
-investimento privado abre obras (decisão A do autor: "se tem vácuo, alguém
-pega"). Teste 2,0%/ano e teste-pobre 3,3%/ano, como antes. Cenários:
-`npm run construcoes`; teste `scripts/construcoes.test.ts`.
+**Feito 03/nov: fatia 1a (commit 46799fda) e 1b (commit abaixo).**
+`construcoes.ts` + `obras` em `produtos.json`; PIB real = capacidade pronta;
+investimento privado abre obras (decisão A do autor). 1b: lucro por setor
+(receita − salários − imposto), investimento vai para a margem relativa que
+melhorou, 3 turnos de prejuízo fecham 5%/turno, setor do Estado não fecha.
+Teste 2,0%/ano e teste-pobre 3,3%/ano, iguais ao 1a. Cenários:
+`npm run construcoes`; testes `scripts/construcoes.test.ts` (10).
 
 ## Pendências do autor
 

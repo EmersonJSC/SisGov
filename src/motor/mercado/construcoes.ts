@@ -32,6 +32,25 @@ export interface ConstrucoesNoEstado {
   obras: Obra[];
   /** Capacidade de cada setor no turno 0 (régua das vagas e do PIB). */
   inicio: Record<string, number>;
+  /** Contas de lucro por setor; ausente em partida salva antes do 1b. */
+  lucro?: ContasDoLucro;
+}
+
+export interface ContasDoLucro {
+  /** Salários de cada setor no turno 0, em % do PIB real do turno 0. */
+  salarios: Record<string, number>;
+  /** Preço médio dos produtos de cada setor no turno 0. */
+  preco0: Record<string, number>;
+  /** Turnos seguidos de prejuízo de cada setor. */
+  seguidos: Record<string, number>;
+}
+
+/** Resultado de um setor no turno. */
+export interface LucroDoSetor {
+  /** Lucro depois do imposto, em % do PIB real do turno 0 (negativo = prejuízo). */
+  liquido: number;
+  /** Margem de hoje ÷ margem do turno 0 do próprio setor; 1 = como começou. */
+  relativa: number;
 }
 
 /** Pontos de juro acima do turno 0 que tiram 8% do investimento cada. */
@@ -44,6 +63,12 @@ const ATRASO_MAXIMO = 1;
 const SOBRECUSTO_MAXIMO = 0.5;
 /** Folga da construção civil no turno 0: anda 1,5 vez o que o ritmo pede. */
 const FOLGA_DA_CONSTRUCAO = 1.5;
+/** Turnos seguidos de prejuízo até o setor começar a fechar. */
+const TURNOS_ATE_FECHAR = 3;
+/** Parte da capacidade que um setor em prejuízo fechado perde por turno. */
+const FECHAMENTO_POR_TURNO = 0.05;
+/** A margem relativa pesa de 0 a 2 na divisão do investimento. */
+const PESO_MAXIMO_DA_MARGEM = 2;
 const TURNOS_POR_ANO = 6;
 
 type Objeto = Record<string, unknown>;
@@ -140,6 +165,7 @@ export function construcoesIniciais(
   porSetor: Record<string, number>,
   tendencia: number,
   atraso: number,
+  lucro?: Pick<ContasDoLucro, "salarios" | "preco0">,
 ): ConstrucoesNoEstado {
   const prontas = { ...porSetor };
   const lento = atrasoDasObras(atraso).prazo;
@@ -154,7 +180,65 @@ export function construcoesIniciais(
           tamanho: ritmo * v,
           falta: Math.min(regra.prazo, t / lento),
         });
-  return { prontas, obras, inicio: { ...porSetor } };
+  return {
+    prontas,
+    obras,
+    inicio: { ...porSetor },
+    lucro: lucro && {
+      ...lucro,
+      seguidos: Object.fromEntries(Object.keys(porSetor).map((id) => [id, 0])),
+    },
+  };
+}
+
+/** Preço médio dos produtos de cada setor (sem produto, fica 100). */
+export function precoDosSetores(
+  mercado: Pick<Mercado, "produtos">,
+  precos: Record<string, { valor: number }>,
+): Record<string, number> {
+  const soma: Record<string, { total: number; n: number }> = {};
+  for (const p of mercado.produtos) {
+    const preco = precos[p.id];
+    if (!preco) continue;
+    const s = (soma[p.setor] ??= { total: 0, n: 0 });
+    s.total += preco.valor;
+    s.n += 1;
+  }
+  return Object.fromEntries(
+    Object.entries(soma).map(([id, s]) => [id, s.total / s.n]),
+  );
+}
+
+/**
+ * Lucro de cada setor: receita (capacidade × preço de hoje ÷ o do turno 0) −
+ * salários (seguem a capacidade, não caem com o preço) − imposto sobre o lucro.
+ * Setor sem lucro no turno 0 (do Estado) não tem dono privado: não entra.
+ */
+export function lucroDosSetores(
+  c: ConstrucoesNoEstado,
+  preco: Record<string, number>,
+  imposto: number,
+  impostoInicial: number,
+): Record<string, LucroDoSetor> {
+  const l = c.lucro;
+  const saida: Record<string, LucroDoSetor> = {};
+  if (!l) return saida;
+  for (const [id, pronta] of Object.entries(c.prontas)) {
+    const inicio = c.inicio[id] ?? 0;
+    const lucro0 = inicio - (l.salarios[id] ?? 0);
+    if (!(inicio > 0) || !(lucro0 > 0)) continue;
+    const preco0 = l.preco0[id] ?? 0;
+    const razao = preco0 > 0 ? (preco[id] ?? preco0) / preco0 : 1;
+    const parte = pronta / inicio;
+    const bruto = pronta * razao - (l.salarios[id] ?? 0) * parte;
+    const liquido = bruto > 0 ? bruto * (1 - imposto) : bruto;
+    const margem0 = (lucro0 / inicio) * (1 - impostoInicial);
+    saida[id] = {
+      liquido,
+      relativa: pronta > 0 && margem0 > 0 ? liquido / pronta / margem0 : 0,
+    };
+  }
+  return saida;
 }
 
 export interface TurnoDasObras {
@@ -164,6 +248,8 @@ export interface TurnoDasObras {
   atraso: number;
   /** Perda extra de capacidade por ano, em % (ex.: falta de energia). */
   perdaExtra: number;
+  /** Lucro de cada setor (`lucroDosSetores`); sem ele não há fechamento. */
+  lucro?: Record<string, LucroDoSetor>;
 }
 
 /**
@@ -179,8 +265,14 @@ export function andarConstrucoes(
 ): ConstrucoesNoEstado {
   const perda = (regra.desgaste * 100 + turno.perdaExtra) / 100 / TURNOS_POR_ANO;
   const prontas: Record<string, number> = {};
-  for (const [setor, v] of Object.entries(c.prontas))
-    prontas[setor] = v * Math.max(0, 1 - perda);
+  const seguidos: Record<string, number> = {};
+  for (const [setor, v] of Object.entries(c.prontas)) {
+    // Prejuízo seguido: o setor fecha aos poucos até voltar a dar lucro.
+    const prejuizo = (turno.lucro?.[setor]?.liquido ?? 0) < 0;
+    seguidos[setor] = prejuizo ? (c.lucro?.seguidos[setor] ?? 0) + 1 : 0;
+    const fecha = seguidos[setor] >= TURNOS_ATE_FECHAR ? FECHAMENTO_POR_TURNO : 0;
+    prontas[setor] = v * Math.max(0, 1 - perda) * (1 - fecha);
+  }
   const passo = 1 / atrasoDasObras(turno.atraso).prazo;
   let livre = vagas(regra, c, ritmo, turno.atraso);
   const obras: Obra[] = [];
@@ -196,17 +288,32 @@ export function andarConstrucoes(
       prontas[obra.setor] = (prontas[obra.setor] ?? 0) + obra.tamanho;
     else obras.push({ ...obra, falta });
   }
-  const total = somar(c.prontas);
+  // O capital vai mais para onde a margem melhorou (peso 1 = como começou).
+  const peso = (setor: string, v: number) =>
+    v *
+    Math.min(
+      PESO_MAXIMO_DA_MARGEM,
+      Math.max(0, turno.lucro?.[setor]?.relativa ?? 1),
+    );
+  const total = Object.entries(c.prontas).reduce(
+    (s, [setor, v]) => s + peso(setor, v),
+    0,
+  );
   const custo = atrasoDasObras(turno.atraso).custo;
   if (turno.investimento > 0 && total > 0)
     for (const [setor, v] of Object.entries(c.prontas))
-      if (v > 0)
+      if (peso(setor, v) > 0)
         obras.push({
           setor,
-          tamanho: (turno.investimento * v) / total / custo,
+          tamanho: (turno.investimento * peso(setor, v)) / total / custo,
           falta: regra.prazo,
         });
-  return { prontas, obras, inicio: c.inicio };
+  return {
+    prontas,
+    obras,
+    inicio: c.inicio,
+    lucro: c.lucro && { ...c.lucro, seguidos },
+  };
 }
 
 /** Obras de cada setor: andando e na fila, em % do PIB real do turno 0. */

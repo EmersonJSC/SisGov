@@ -7,6 +7,7 @@
 // - corrupção alta deixa as obras mais lentas e mais caras;
 // - construção civil forte faz a fila andar mais rápido.
 import { criarPartida, jogar, type Estado } from "../src/partida";
+import { lucroDosSetores, precoDosSetores } from "../src/motor/mercado";
 
 const TURNOS = 24;
 const SEMENTES = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -91,5 +92,32 @@ if (import.meta.env.MODE !== "test") {
           ` · satisfação ${media((x) => x.satisfacao)}`,
       );
     }
+  }
+}
+
+// Lucro por setor no fim de 24 turnos (média das sementes): margem de hoje ÷
+// a do turno 0, capacidade ÷ a do turno 0 e quantas sementes têm o setor fechando.
+if (import.meta.env.MODE !== "test") {
+  for (const pais of ["teste", "teste-pobre"]) {
+    const linhas: Record<string, { rel: number; cap: number; fecha: number; n: number }> = {};
+    for (const semente of SEMENTES) {
+      const p = criarPartida(pais, semente, { semCongresso: true });
+      const fim = jogar(p, TURNOS, []).estado;
+      const c = fim.construcoes!;
+      const mercado = p.regras.mercado!.mercado;
+      const lucro = lucroDosSetores(c, precoDosSetores(mercado, fim.precos), 0, 0);
+      for (const [id, l] of Object.entries(lucro)) {
+        const x = (linhas[id] ??= { rel: 0, cap: 0, fecha: 0, n: 0 });
+        x.rel += l.relativa;
+        x.cap += c.prontas[id]! / c.inicio[id]!;
+        x.fecha += (c.lucro!.seguidos[id] ?? 0) >= 3 ? 1 : 0;
+        x.n += 1;
+      }
+    }
+    console.log(`\n${pais}: lucro por setor no turno 24 (média de ${SEMENTES.length} sementes)`);
+    for (const [id, x] of Object.entries(linhas))
+      console.log(
+        `  ${id.padEnd(20)} margem ${(x.rel / x.n).toFixed(2)}× · capacidade ${(x.cap / x.n).toFixed(2)}× · fechando em ${x.fecha}/${x.n}`,
+      );
   }
 }

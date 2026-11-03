@@ -29,6 +29,8 @@ import {
   andarConstrucoes,
   animoDoInvestimento,
   construcoesIniciais,
+  lucroDosSetores,
+  precoDosSetores,
   empregoDoPais,
   investimentoBase,
   tamanhoDaEconomia,
@@ -207,10 +209,19 @@ const economiaReal: Etapa = (regras, estado) => {
     );
     const taxa = Math.max(0, base * animo + volatilidade * z);
     const capacidade = Object.values(c.prontas).reduce((s, v) => s + v, 0);
+    const lucro = regras.mercado
+      ? lucroDosSetores(
+          c,
+          precoDosSetores(regras.mercado.mercado, estado.precos),
+          impostoSobreLucro(regras, estado.leis),
+          impostoSobreLucro(regras, estado.marco.leis),
+        )
+      : undefined;
     construcoes = andarConstrucoes(regra, c, tendencia + regra.desgaste * 100, {
       investimento: (taxa / 100 / TURNOS_POR_ANO) * capacidade,
       atraso,
       perdaExtra: freio,
+      lucro,
     });
     const fator = tamanhoDaEconomia(construcoes) / tamanhoDaEconomia(c);
     anual = (Math.pow(fator, TURNOS_POR_ANO) - 1) * 100;
@@ -796,6 +807,10 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       Object.fromEntries(emprego.setores.map((s) => [s.id, s.massa + s.lucro])),
       regras.pais.crescimento.tendencia,
       comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
+      {
+        salarios: Object.fromEntries(emprego.setores.map((s) => [s.id, s.massa])),
+        preco0: precoDosSetores(m.mercado, comPops.precos),
+      },
     );
   }
   // O marco é o próprio turno 0: grupos começam em 50.
