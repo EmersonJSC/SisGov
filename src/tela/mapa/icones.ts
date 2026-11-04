@@ -973,6 +973,7 @@ export const ICONE_BOLHA: Readonly<Record<string, string>> = {
   infraestrutura: "bridge",
   infraestrutura_energia: "transmission-tower",
   infraestrutura_saneamento: "water-outline",
+  saneamento: "water-outline",
   infraestrutura_transportes: "road-variant",
   inovacao: "lightbulb-on-outline",
   inseguranca_alimentar: "food-off-outline",

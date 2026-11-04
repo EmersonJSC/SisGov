@@ -586,6 +586,22 @@
       }
     },
     {
+      "id": "saneamento",
+      "tipo": "calculado",
+      "nome": "Saneamento",
+      "camada": "jogabilidade",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% das famílias com água tratada e esgoto"
+      }
+    },
+    {
       "id": "concentracao_terra",
       "tipo": "calculado",
       "nome": "Concentração de terra",

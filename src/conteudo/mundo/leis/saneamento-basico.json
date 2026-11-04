@@ -23,6 +23,12 @@
   },
   "efeitos": [
     {
+      "indice": "saneamento",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
       "indice": "meio_ambiente",
       "sentido": 1,
       "forca": "media",

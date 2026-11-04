@@ -141,7 +141,14 @@ ficha da lei que mexe na concentração mostra o déficit no fim do êxodo ("aos
 poucos"). Verba do órgão de terras a 1,95% no teste-pobre: −4,9 concentração,
 −1,2 déficit, visto na tela. 264 testes e `tsc -b` verdes. Nessas leis, a ficha
 avisa que o déficit vem pelo êxodo. Pobreza → favela segue sem seta nem linha na ficha. Commitado.
-**Próximo:** proposta do que a favela piora e quais grupos cobram moradia (GDD §18).
+**04/nov (11): favela com consequência.** Favela acima do começo piora saúde,
+segurança e o índice novo `saneamento` (deriva fraca); a lei de saneamento move
+esse índice. Grupos cobram favela, déficit e preço (rentistas querem preço alto).
+Derivas têm seta no mapa, visto na tela. 266 testes e `tsc -b` verdes. Commitado.
+`docs/jogo/indices-avaliacao.md` separa índices avaliados e não avaliados.
+Organizações criminosas estão no GDD §18. Save antigo mostra saneamento 0%.
+**Próximo:** escolher com o autor o próximo índice a
+avaliar.
 
 ## Pendências do autor
 

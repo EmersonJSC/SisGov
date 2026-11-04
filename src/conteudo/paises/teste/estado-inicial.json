@@ -39,6 +39,7 @@
     "deficit_habitacional": 20,
     "preco_moradia": 50,
     "favela": 15,
+    "saneamento": 60,
     "concentracao_terra": 50,
     "popularidade_governo": 50
   },

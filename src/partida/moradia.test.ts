@@ -213,6 +213,23 @@ describe("estoque na partida", () => {
     expect(ligacao?.sinal).toBe(1);
   });
 
+  it("o mapa liga a favela ao que ela piora", () => {
+    const { ligacoes } = montarVisao(base());
+    for (const alvo of ["saude", "seguranca", "saneamento"])
+      expect(
+        ligacoes.find((l) => l.origem === "favela" && l.alvo === alvo)?.sinal,
+      ).toBe(-1);
+  });
+
+  it("favela acima do começo puxa saúde, segurança e saneamento para baixo", () => {
+    const partida = base();
+    const inicio = { ...partida.estado.jogabilidade };
+    partida.estado.jogabilidade.favela = inicio.favela + 10;
+    const { jogabilidade } = avancar(partida).estado;
+    for (const id of ["saude", "seguranca", "saneamento"])
+      expect(jogabilidade[id]).toBeLessThan(inicio[id]);
+  });
+
   it("a ficha da verba mostra o que ela tira por ano, depois da obra", () => {
     const { indices } = previaDaLei(base(), "verba-habitacao", 0.03);
     const deficit = indices.find((i) => i.id === "deficit_habitacional");

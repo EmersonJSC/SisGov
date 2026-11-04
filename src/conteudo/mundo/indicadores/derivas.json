@@ -7,6 +7,24 @@
       "por": "deficit_habitacional",
       "sentido": 1,
       "forca": "media"
+    },
+    {
+      "indice": "saude",
+      "por": "favela",
+      "sentido": -1,
+      "forca": "fraca"
+    },
+    {
+      "indice": "seguranca",
+      "por": "favela",
+      "sentido": -1,
+      "forca": "fraca"
+    },
+    {
+      "indice": "saneamento",
+      "por": "favela",
+      "sentido": -1,
+      "forca": "fraca"
     }
   ]
 }

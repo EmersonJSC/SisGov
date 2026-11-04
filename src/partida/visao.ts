@@ -16,6 +16,7 @@ import {
   precoDosSetores,
   obrasPorSetor,
   TURNOS_ATE_FECHAR,
+  type Deriva,
   type Estado,
   type Lei,
   type Regras,
@@ -224,6 +225,7 @@ function ligacoes(
   leis: Lei[],
   indices: Set<string>,
   grupos: TipoGrupo[],
+  derivas: Deriva[],
   moradia?: {
     lei: string;
     indices: string[];
@@ -254,6 +256,17 @@ function ligacoes(
       mecanismo: "afim",
     });
   }
+  // A deriva: um índice empurra o outro, turno a turno.
+  for (const d of derivas)
+    if (indices.has(d.por) && indices.has(d.indice))
+      saida.push({
+        id: `${d.por}>${d.indice}`,
+        origem: d.por,
+        alvo: d.indice,
+        sinal: d.sentido,
+        atrasoMeses: 0,
+        mecanismo: "afim",
+      });
   for (const lei of leis) {
     // lei de opções: vale o sentido da opção mais alta que cita o índice
     const efeitos =
@@ -359,6 +372,7 @@ export function montarVisao(partida: Partida): VisaoPartida {
       leis,
       new Set(jogabilidade.map((v) => v.id)),
       regras.grupos,
+      regras.derivas ?? [],
       regras.moradia && {
         lei: regras.moradia.lei_verba,
         indices: [regras.moradia.indice_deficit, regras.moradia.indice_favela],

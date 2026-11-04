@@ -32,6 +32,10 @@
         {
           "indice": "abastecimento",
           "sentido": 1
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sentido": -1
         }
       ]
     },
@@ -61,6 +65,10 @@
         },
         {
           "indice": "pobreza",
+          "sentido": -1
+        },
+        {
+          "indice": "deficit_habitacional",
           "sentido": -1
         }
       ]
@@ -113,6 +121,10 @@
         },
         {
           "indice": "pobreza",
+          "sentido": -1
+        },
+        {
+          "indice": "favela",
           "sentido": -1
         }
       ]
@@ -255,6 +267,10 @@
         {
           "indice": "instrucao",
           "sentido": 1
+        },
+        {
+          "indice": "preco_moradia",
+          "sentido": -1
         }
       ]
     },
@@ -279,6 +295,10 @@
         },
         {
           "indice": "desemprego",
+          "sentido": -1
+        },
+        {
+          "indice": "preco_moradia",
           "sentido": -1
         }
       ]
@@ -390,6 +410,10 @@
         {
           "indice": "inflacao",
           "sentido": -1
+        },
+        {
+          "indice": "preco_moradia",
+          "sentido": 1
         }
       ]
     },
