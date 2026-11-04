@@ -14,6 +14,7 @@ import {
   lerCobertura,
   lerOcupacao,
   type Congresso,
+  type Deriva,
   type Estado,
   type IndicesEssenciais,
   type Lei,
@@ -28,6 +29,7 @@ import {
   satisfacaoMedia,
   turnosMandato,
 } from "../motor";
+import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
@@ -266,6 +268,7 @@ export function criarPartida(
     indiceSegurancaExterna: indicesDeDefesa(potencias).segurancaExterna,
     pais: inicial.parametros,
     mercado: carregarMercado(pais),
+    derivas: derivas.derivas as Deriva[],
     congresso: semCongresso
       ? undefined
       : {

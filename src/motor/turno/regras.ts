@@ -1,6 +1,7 @@
 // O que não muda durante a partida: leis do mundo, domínio dos índices e
 // parâmetros do país. Monta-se em partida/ a partir do conteúdo.
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
+import type { Deriva } from "../deriva";
 import type { TipoGrupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
 import type { MercadoDoPais } from "../mercado";
@@ -46,6 +47,8 @@ export interface Regras {
   mercado?: MercadoDoPais;
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
+  /** Índices que andam sozinhos, empurrados por outros (motor/deriva). */
+  derivas?: Deriva[];
 }
 
 export interface PedidoMudarLei {

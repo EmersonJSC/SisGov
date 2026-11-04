@@ -31,7 +31,7 @@ Ordem (`ETAPAS` em `src/motor/turno/index.ts`):
 5. Preços e juros
 6. Capacidades (mercado, construções)
 7. Contas (cofre e dívida)
-8. Índices de jogabilidade
+8. Índices de jogabilidade (a deriva anda antes)
 9. Mundo (potências)
 10. Preços do mundo
 11. Pops e grupos
@@ -44,7 +44,7 @@ Ordem (`ETAPAS` em `src/motor/turno/index.ts`):
 | ------------- | ----------------------------------------------------------------------- | -------------------------------------- |
 | **Índice**    | número que o jogador vê (0–100 ou %). Tipo `estoque`, `derivado` ou `calculado` | `mundo/indicadores/variaveis.json`     |
 | **Lei**       | bolha no mapa. Um lado da bússola, de "nada" a "mais". Mexe só em índices | `mundo/leis/*.json`, `motor/leis`      |
-| **Processo**  | estoque que anda sozinho pelos turnos, empurrado pelas leis em vigor. Sem meta nem ritmo. *(ainda sem código)* | —                                      |
+| **Processo**  | índice que anda sozinho pelos turnos (**deriva**): outro índice empurra a base, medindo contra o turno 0. Sem meta nem ritmo | `mundo/indicadores/derivas.json`, `motor/deriva` |
 | **Colisão**   | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. *(ainda sem código)* | —                                      |
 | **Área**      | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma | `mundo/areas/areas.json`               |
 | **Órgão**     | quem executa uma regra. A verba (lei contínua, % do PIB) dá a força; verba demais vira corrupção. O jogador nunca escolhe a fazenda ou a fábrica. *(ainda sem código)* | —                                      |
@@ -65,6 +65,7 @@ extremo da bússola é um caminho: cada lei anda um pouco nele.
 | [acaso](../../src/motor/acaso/acaso.md)        | sorteio com semente                              |
 | [calculos](../../src/motor/calculos/calculos.md) | bases de cálculo (renda, consumo, lucro, emissões, terra; Laffer) |
 | [contas](../../src/motor/contas/contas.md)     | Tesouro: receita, gasto, juros, cofre, dívida    |
+| [deriva](../../src/motor/deriva/deriva.md)     | índice anda sozinho, empurrado por outro         |
 | [efeitos](../../src/motor/efeitos/efeitos.md)  | leis contribuem pontos para os índices, com atraso |
 | [eleicao](../../src/motor/eleicao/eleicao.md)  | mandato, desgaste, apuração                      |
 | [grupos](../../src/motor/grupos/grupos.md)     | satisfação e apoio pela bússola                  |

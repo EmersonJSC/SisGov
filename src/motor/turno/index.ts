@@ -10,6 +10,7 @@ import {
   type Fluxos,
   type Tesouro,
 } from "../contas";
+import { andarDerivas } from "../deriva";
 import { enfileirar, envelhecer, filaInicial, somaPorIndice } from "../efeitos";
 import { apurar, DESGASTE_POR_TURNO, turnosMandato } from "../eleicao";
 import {
@@ -448,11 +449,21 @@ function jogabilidade(regras: Regras, estado: Estado) {
   return indices;
 }
 
-/** 7. Índices de jogabilidade: base do país + contribuições das leis. */
-const indicesJogabilidade: Etapa = (regras, estado) => ({
-  ...estado,
-  jogabilidade: jogabilidade(regras, estado),
-});
+/** 7. Índices de jogabilidade: base do país + contribuições das leis; a deriva move a base. */
+const indicesJogabilidade: Etapa = (regras, estado) => {
+  const base = regras.derivas
+    ? andarDerivas(
+        regras.derivas,
+        estado.base,
+        todosIndices(estado),
+        estado.marco.indices,
+        somaPorIndice(estado.efeitos),
+        regras.dominios,
+      )
+    : estado.base;
+  const comBase = { ...estado, base };
+  return { ...comBase, jogabilidade: jogabilidade(regras, comBase) };
+};
 
 /** A reputação é a média das opiniões, pesada pelo peso (motor/mundo). */
 function comReputacao(regras: Regras, estado: Estado): Estado {
@@ -742,6 +753,12 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   for (const id of Object.keys(regras.dominios))
     if (!(id in inicio.jogabilidade) && !calculados.has(id))
       throw new Error(`país: falta o índice ${id}`);
+  for (const d of regras.derivas ?? []) {
+    if (!(d.indice in regras.dominios))
+      throw new Error(`mundo: deriva de índice "${d.indice}" que não existe`);
+    if (!(d.por in regras.dominios) && !(d.por in inicio.essenciais))
+      throw new Error(`mundo: deriva empurrada por "${d.por}", que não existe`);
+  }
   for (const base of Object.keys(regras.pais.bases))
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);
   for (const c of regras.mercado?.mercado.capacidades ?? [])
