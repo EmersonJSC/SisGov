@@ -44,6 +44,16 @@ describe("deriva (motor)", () => {
     );
     expect(nova.a).toBe(97);
   });
+
+  it("freio no máximo corta a ligação; na metade, anda a metade", () => {
+    const comFreio = { ...regra, freio: "lei-x" };
+    const andar = (f: number) =>
+      andarDerivas([comFreio], { a: 40 }, { b: 40 }, { b: 30 }, {}, dominios, {
+        "lei-x": f,
+      }).a;
+    expect(andar(1)).toBe(40);
+    expect(andar(0.5)).toBeCloseTo(40.25);
+  });
 });
 
 describe("deriva na partida", () => {

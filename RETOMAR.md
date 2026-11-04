@@ -108,8 +108,13 @@ terra 5× tira 10 da concentração e 6 do déficit. Na tela: sem lei, déficit
 passa; a eleição continua). Na tela, teste-pobre, verba de habitação máxima,
 12 turnos: déficit 35→30,5, favela 30→27,4. "Terra invadida" retirada (área
 com 10 leis; nota no GDD §18). 243 testes e `tsc -b` verdes. Sem commit.
-**Próximo:** pobreza → favela com freio pela verba de habitação (autor concordou
-que pobreza só vira favela sem casa pública; GDD §18). Propor antes de fazer.
+Commits `4a724781` e `52f607f9`.
+**04/nov (6): freio feito.** Ligação de deriva pode ter `freio` (lei contínua);
+pobreza → favela freada pela verba de habitação, verba máxima corta inteira
+(decisão do autor). 244 testes e `tsc -b` verdes. Na partida quase não se vê:
+a pobreza do teste-pobre fica parada em 45 por 24 turnos. Commit feito (motor: freio na deriva).
+**Próximo:** o autor escolhe a próxima peça da moradia (colisões, estoque,
+triagem-estrangeira em terra, tirar moradia dos produtores).
 
 ## Pendências do autor
 

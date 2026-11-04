@@ -449,6 +449,20 @@ function jogabilidade(regras: Regras, estado: Estado) {
   return indices;
 }
 
+/** Quanto cada lei-freio freia: posição do valor na faixa (0 a 1). */
+function freiosDasDerivas(regras: Regras, estado: Estado) {
+  const freios: Record<string, number> = {};
+  for (const { freio } of regras.derivas ?? []) {
+    const lei = freio ? regras.leis[freio] : undefined;
+    const valor = freio ? estado.leis[freio] : undefined;
+    if (!freio || lei?.forma !== "continua" || typeof valor !== "number")
+      continue;
+    const { min, max } = lei.faixa;
+    freios[freio] = Math.min(1, Math.max(0, (valor - min) / (max - min)));
+  }
+  return freios;
+}
+
 /** 7. Índices de jogabilidade: base do país + contribuições das leis; a deriva move a base. */
 const indicesJogabilidade: Etapa = (regras, estado) => {
   const base = regras.derivas
@@ -459,6 +473,7 @@ const indicesJogabilidade: Etapa = (regras, estado) => {
         estado.marco.indices,
         somaPorIndice(estado.efeitos),
         regras.dominios,
+        freiosDasDerivas(regras, estado),
       )
     : estado.base;
   const comBase = { ...estado, base };
@@ -758,6 +773,8 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       throw new Error(`mundo: deriva de índice "${d.indice}" que não existe`);
     if (!(d.por in regras.dominios) && !(d.por in inicio.essenciais))
       throw new Error(`mundo: deriva empurrada por "${d.por}", que não existe`);
+    if (d.freio && regras.leis[d.freio]?.forma !== "continua")
+      throw new Error(`mundo: freio "${d.freio}" não é lei contínua`);
   }
   for (const base of Object.keys(regras.pais.bases))
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);
