@@ -37,11 +37,31 @@ construção (decisão do autor): é só o índice. Em 24 turnos tecnologia sobe
 
 ## Próximo
 
-Pops e grupos **fechados sem a mídia** (03/nov, `npm run check` verde, 229
-testes). R8.5 e R11.4 ficam ◐ "falta mídia"; a mídia (R14) está no GDD §18, o
-autor quer ir com calma. R16.7–R16.10 são das construções, não dos pops: não
-marcar. Decisão do autor: qual frente agora? Recomendo voltar ao Partido
-(GDD §4), que esperava pops e grupos.
+Pops e grupos **fechados sem a mídia** (03/nov, check verde, 229 testes).
+R8.5/R11.4 ◐ "falta mídia"; R16.7–R16.10 são das construções: não marcar.
+Partido adiado pelo autor ("precisamos de algumas coisas antes").
+
+**Frente atual: moradia (leis ↔ índices, por área).** Hoje moradia é produto
+comerciável do mercado (`produtos.json`, `produtores.json`), sem demanda nem
+índice. Decidido: vira estoque local, sai dos produtores do mundo; construída
+por empresas, governo e pops privados (pobre autoconstrói precário, médio
+financia, rico investe). Três índices em estudo (ids ainda não criados, o autor
+aprova): déficit, preço e favela.
+**Regras do autor (03/nov):** (1) processo = estoque que anda sozinho pelos
+turnos, empurrado pelas leis em vigor; NÃO é painel com meta/ritmo; (2) cada lei
+vai de "nada" a "mais" em UM lado da bússola, nunca de um extremo ao outro;
+(3) leis em todos os lados. Proposta no chat: processo "urbanizar favelas" com
+leis de esquerda, direita, libertário, autoritário e verde. **Molde aprovado
+(03/nov):** jogador monta "builds"; só leis que se colidem não valem juntas
+(como anti-armas × pró-armas). Próximo: propor as leis dos processos déficit e
+preço, e a lista de colisões, antes de qualquer código. **Feito:** 3 índices em
+`variaveis.json` (`deficit_habitacional`, `preco_moradia`, `favela`, calculados,
+ainda sem cálculo no motor). Lista das 18 leis (3 índices × 6 lados) e 5
+colisões enviada no chat; autor concordou em manter os 3 índices separados.
+**04/nov:** criado `docs/jogo/arquitetura.md` (camadas, turno, peças: índice,
+lei, processo, colisão, área). O autor quer "mudar algumas coisas antes de
+continuar": esperar o que muda. Falta: criar as 18 leis, o cálculo, tirar
+moradia dos produtores.
 
 ## Pendências do autor
 
