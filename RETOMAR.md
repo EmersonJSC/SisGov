@@ -3,7 +3,7 @@
 Reescrito do zero a cada rodada; o anterior vai para o topo de
 [docs/historico/retomar.md](docs/historico/retomar.md) (não abrir sem precisar).
 
-**03/nov/2026**
+**04/nov/2026**
 
 ## Onde está
 
@@ -126,6 +126,17 @@ casa precária. Casas desgastam 4% ao ano. A obra leva cerca de 1 ano. Saíram a
 derivas de déficit e favela e o freio; ficou déficit → preço. Verba no máximo, no
 teste: déficit 20 → 16,3 e favela 15 → 14,2 em 18 turnos, visto na tela. A ficha
 da Verba mostra os pontos por ano e o mapa mantém as setas.
+Commit `3a88543d`.
+**04/nov (9): êxodo simples e pobreza na conta de casas.** Os pops do campo são
+o limite (o país não declara tamanho do campo, decisão do autor). Concentração
+acima do turno 0 tira famílias do campo, aos poucos, e elas entram no déficit;
+abaixo, famílias sem casa formal voltam e saem do déficit, mesmo abaixo do
+começo. Pobreza acima do turno 0 faz mais famílias sem casa levantarem casa
+precária. Sem índice novo; ninguém muda de pop. 261 testes e `tsc -b` verdes.
+Teste, verba do órgão de terras 2%, 23 turnos: concentração 45, déficit 19,8 → 19,2
+e favela 15,0 → 14,6 contra a partida sem lei; 19,2 visto na tela. Efeito pequeno.
+O mapa não tem seta concentração → déficit e a ficha da lei de terra não mostra
+esse ganho. Sem commit.
 **Próximo:** commit, com a palavra do autor. Depois, escolher a próxima peça da
 moradia: o que a favela piora e quais grupos cobram moradia (GDD §18).
 

@@ -56,7 +56,12 @@ import {
   valoresComPedidos,
   type ValorLei,
 } from "../leis";
-import { andarMoradia, indicesDaMoradia, moradiaInicial } from "../moradia";
+import {
+  andarMoradia,
+  familias,
+  indicesDaMoradia,
+  moradiaInicial,
+} from "../moradia";
 import {
   andarOpinioes,
   motivoOpinioesInvalidas,
@@ -489,6 +494,10 @@ const moradia: Etapa = (regras, estado) => {
     ? (c.prontas[obras.setor] ?? 0) / c.inicio[obras.setor]
     : 1;
   const preco0 = marco[regra.indice_preco];
+  const noCampo = regra.pops_campo.reduce(
+    (soma, id) => soma + estado.pops[id].pessoas,
+    0,
+  );
   const nova = andarMoradia(regra, obras, m, {
     populacao,
     verba: typeof verba === "number" ? verba : 0,
@@ -497,6 +506,11 @@ const moradia: Etapa = (regras, estado) => {
     setor,
     preco: preco0 > 0 ? estado.jogabilidade[regra.indice_preco] / preco0 : 1,
     animo: animoDoPais(regras, estado),
+    familias_campo: familias(regra, noCampo),
+    concentracao:
+      estado.jogabilidade[regra.indice_terra] - marco[regra.indice_terra],
+    pobreza:
+      estado.jogabilidade[regra.indice_pobreza] - marco[regra.indice_pobreza],
   });
   const antes = indicesDaMoradia(regra, m, populacao);
   const depois = indicesDaMoradia(regra, nova, populacao);
@@ -876,9 +890,18 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   if (regras.moradia) {
     const r = regras.moradia;
     if (!obras) throw new Error("mundo: moradia precisa da regra das obras");
-    for (const id of [r.indice_deficit, r.indice_favela, r.indice_preco])
+    for (const id of [
+      r.indice_deficit,
+      r.indice_favela,
+      r.indice_preco,
+      r.indice_terra,
+      r.indice_pobreza,
+    ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: moradia: o índice "${id}" não existe`);
+    for (const id of r.pops_campo)
+      if (!regras.pops.some((p) => p.id === id))
+        throw new Error(`mundo: moradia: o pop "${id}" não existe`);
     if (regras.leis[r.lei_verba]?.forma !== "continua")
       throw new Error(`mundo: moradia: "${r.lei_verba}" não é lei contínua`);
     if (

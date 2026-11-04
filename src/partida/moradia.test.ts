@@ -16,10 +16,16 @@ const regra: RegraDaMoradia = {
   indice_deficit: "d",
   indice_favela: "f",
   indice_preco: "p",
+  indice_terra: "t",
+  indice_pobreza: "b",
+  pops_campo: [],
   lei_verba: "v",
   pessoas_por_familia: 3,
   custo_casa: 4,
   autoconstrucao: 0.05,
+  campo_por_ponto: 0.01,
+  exodo_velocidade: 0.1,
+  pobreza_por_ponto: 0.01,
 };
 const obras: RegraDasObras = {
   setor: "s",
@@ -42,6 +48,9 @@ const parado: TurnoDaMoradia = {
   setor: 1,
   preco: 1,
   animo: 1,
+  familias_campo: 100_000,
+  concentracao: 0,
+  pobreza: 0,
 };
 
 /** Índices depois de `turnos` turnos com as mesmas condições. */
@@ -86,6 +95,50 @@ describe("estoque de casas (motor)", () => {
     expect(depois(4, { verba: 0.03 }).deficit).toBeCloseTo(depois(4).deficit);
     expect(depois(6, { verba: 0.03 }).deficit).toBeLessThan(depois(6).deficit);
   });
+
+  it("concentração sobe: famílias saem do campo e o êxodo para no limite", () => {
+    const limite = (10 / 100) * 100_000; // 10 pontos, em famílias do campo
+    let m = moradiaInicial(regra, obras, pais);
+    for (let t = 0; t < 200; t++)
+      m = andarMoradia(regra, obras, m, { ...parado, concentracao: 10 });
+    expect(m.exodo).toBeCloseTo(limite);
+    expect(depois(30, { concentracao: 10 }).deficit).toBeGreaterThan(20.5);
+  });
+
+  it("concentração volta: as famílias voltam e o déficit cai", () => {
+    let m = moradiaInicial(regra, obras, pais);
+    for (let t = 0; t < 100; t++)
+      m = andarMoradia(regra, obras, m, { ...parado, concentracao: 10 });
+    const alto = indicesDaMoradia(regra, m, pais.populacao).deficit;
+    for (let t = 0; t < 100; t++) m = andarMoradia(regra, obras, m, parado);
+    expect(m.exodo).toBeLessThan(1);
+    expect(indicesDaMoradia(regra, m, pais.populacao).deficit).toBeLessThan(alto);
+  });
+
+  it("concentração abaixo do turno 0: o déficit fica menor que no começo", () => {
+    expect(depois(30, { concentracao: -10 }).deficit).toBeLessThan(19.5);
+  });
+
+  it("só volta quem está sem casa formal", () => {
+    const cheio = { ...pais, deficit: 1, favela: 0 };
+    let m = moradiaInicial(regra, obras, cheio);
+    for (let t = 0; t < 100; t++)
+      m = andarMoradia(regra, obras, m, {
+        ...parado,
+        concentracao: -100,
+        animo: 2,
+      });
+    expect(m.formais).toBeLessThanOrEqual(1_000_000);
+    expect(-(m.exodo ?? 0)).toBeLessThanOrEqual(100_000);
+  });
+
+  it("pobreza sobe: mais famílias sem casa formal levantam casa precária", () => {
+    const { deficit, favela } = depois(100, { pobreza: 10 });
+    expect(deficit).toBeCloseTo(20, 1);
+    expect(favela).toBeGreaterThan(16.5);
+    expect(favela).toBeLessThanOrEqual(deficit);
+    expect(depois(100, { pobreza: -10 }).favela).toBeLessThan(13.5);
+  });
 });
 
 describe("estoque na partida", () => {
@@ -108,6 +161,23 @@ describe("estoque na partida", () => {
     expect(com.deficit_habitacional).toBeLessThan(sem.deficit_habitacional);
     expect(com.preco_moradia).toBeLessThan(sem.preco_moradia);
     expect(com.favela).toBeLessThan(sem.favela);
+  });
+
+  it("lei que divide a terra tira famílias do déficit", () => {
+    const sem = jogar(base(), 20).estado;
+    const com = jogar(
+      avancar(base(), [
+        { tipo: "mudar_lei", lei: "verba-orgao-terras", valor: 0.02 },
+      ]),
+      19,
+    ).estado;
+    expect(com.jogabilidade.concentracao_terra).toBeLessThan(
+      sem.jogabilidade.concentracao_terra,
+    );
+    expect(com.moradia?.exodo).toBeLessThan(0);
+    expect(com.jogabilidade.deficit_habitacional).toBeLessThan(
+      sem.jogabilidade.deficit_habitacional,
+    );
   });
 
   it("a ficha da verba mostra o que ela tira por ano, depois da obra", () => {

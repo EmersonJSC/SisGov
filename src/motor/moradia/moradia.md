@@ -17,6 +17,12 @@ Estoque de casas do país, só no motor (a tela mostra os índices). Aprovado em
 - **Obras:** governo e empresas entram na mesma fila; levam o prazo das obras, e
   a corrupção alonga.
 - **Sem casa:** quem fica sem casa formal levanta casa precária aos poucos, na
-  proporção do turno 0 (`autoconstrucao` é a velocidade).
+  proporção do turno 0 (`autoconstrucao` é a velocidade). Pobreza acima do
+  turno 0 aumenta essa proporção; abaixo, diminui (`pobreza_por_ponto`).
+- **Campo:** as famílias dos pops do campo são o limite. Cada ponto de
+  concentração acima do turno 0 tira `campo_por_ponto` delas do campo, aos
+  poucos (`exodo_velocidade`), e elas entram no déficit; o êxodo para ao chegar
+  nessa conta. Concentração abaixo disso abre vagas: famílias sem casa formal
+  voltam e saem do déficit. Sem pop mudando nem renda da cidade pesando.
 - O país começa parado: as obras do turno 0 só repõem o desgaste.
 - Não equilibrado: os números só dão a direção.

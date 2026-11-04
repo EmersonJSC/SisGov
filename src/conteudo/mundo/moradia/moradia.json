@@ -4,8 +4,18 @@
   "indice_deficit": "deficit_habitacional",
   "indice_favela": "favela",
   "indice_preco": "preco_moradia",
+  "indice_terra": "concentracao_terra",
+  "indice_pobreza": "pobreza",
+  "pops_campo": [
+    "pequenos-agricultores",
+    "assalariados-rurais",
+    "proprietarios-rurais"
+  ],
   "lei_verba": "verba-habitacao",
   "pessoas_por_familia": 3,
   "custo_casa": 4,
-  "autoconstrucao": 0.05
+  "autoconstrucao": 0.05,
+  "campo_por_ponto": 0.01,
+  "exodo_velocidade": 0.1,
+  "pobreza_por_ponto": 0.01
 }
