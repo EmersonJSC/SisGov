@@ -95,7 +95,21 @@ o Estado não tem). No lugar, mecânica **Tomar e dar destino** anotada no GDD
 saneamento ganha favela −, áreas protegidas ganha preço +. Área com 11 leis,
 240 testes e `tsc -b` verdes, visto na tela. Falta: triagem-estrangeira em
 terra, código das colisões (aluguel × despejo; título × remoção), estoques e
-cálculo dos 4 índices, tirar moradia de `produtores.json`.
+cálculo dos 4 índices, tirar moradia de `produtores.json`. Commit `fc76e2aa`.
+**04/nov (4): deriva feita** (modelo aprovado: índice = base + leis + deriva).
+`motor/deriva` move a base a cada turno, medindo quem empurra contra o turno
+0 (país começa parado); ligações em `mundo/indicadores/derivas.json`
+(concentração → déficit; crescimento → déficit −; déficit → preço e favela;
+pobreza → favela). 244 testes e `tsc -b` verdes. Teste-pobre em 20 turnos:
+verba de habitação máxima tira 5 do déficit, 3 do preço e 5 da favela; teto de
+terra 5× tira 10 da concentração e 6 do déficit. Na tela: sem lei, déficit
+35→35,5 e favela 30→30,3 (o Congresso recusou a verba). Não equilibrado.
+**04/nov (5):** caixa "Sem Congresso (teste)" na tela inicial (toda lei
+passa; a eleição continua). Na tela, teste-pobre, verba de habitação máxima,
+12 turnos: déficit 35→30,5, favela 30→27,4. "Terra invadida" retirada (área
+com 10 leis; nota no GDD §18). 243 testes e `tsc -b` verdes. Sem commit.
+**Próximo:** pobreza → favela com freio pela verba de habitação (autor concordou
+que pobreza só vira favela sem casa pública; GDD §18). Propor antes de fazer.
 
 ## Pendências do autor
 

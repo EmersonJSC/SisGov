@@ -670,6 +670,14 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   mesmas leis, e o que a comunidade produz. Substitui "Dono da terra",
   "Terra comunal" e "Arrendamento", recusadas (cruzavam a bússola ou
   dependiam de terra que o Estado ainda não tem).
+- **Ocupação de terra (04/nov):** "Terra invadida fica de fora" (fazenda
+  ocupada sai da fila da reforma agrária por 2/4/8 anos) foi retirada:
+  misturava ocupação, fila e prazo, e a fila (vistoria → desapropriação) ainda
+  não existe. Voltar quando a fila existir, como leis separadas nos dois lados:
+  uma que castiga a ocupação (autoritário) e uma que a acelera (esquerda), e
+  dizer quais terras entram (só improdutivas?).
+- **Pobreza → favela com freio (04/nov):** a pobreza só empurra a favela se o
+  Estado não oferece casa; a Verba de habitação vira freio dessa deriva.
 
 **Órgãos**
 - Órgãos do Estado como peça do jogo (um fiscal ambiental, um de terras, um

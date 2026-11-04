@@ -26,6 +26,7 @@ export function App() {
   const [aviso, setAviso] = useState("");
   const [pais, setPais] = useState(paisesDisponiveis()[0]);
   const [semente, setSemente] = useState(42);
+  const [semCongresso, setSemCongresso] = useState(false);
 
   const trocar = (p: Partida | null, texto = "") => {
     setPartida(p);
@@ -35,7 +36,7 @@ export function App() {
 
   const comecar = () => {
     try {
-      trocar(criarPartida(pais, semente));
+      trocar(criarPartida(pais, semente, { semCongresso }));
     } catch (e) {
       setAviso((e as Error).message);
     }
@@ -90,6 +91,14 @@ export function App() {
             value={semente}
             onChange={(e) => setSemente(Number(e.target.value))}
           />
+        </label>{" "}
+        <label>
+          <input
+            type="checkbox"
+            checked={semCongresso}
+            onChange={(e) => setSemCongresso(e.target.checked)}
+          />{" "}
+          Sem Congresso (teste: toda lei passa)
         </label>
         <p>
           <button onClick={comecar}>Começar</button>{" "}

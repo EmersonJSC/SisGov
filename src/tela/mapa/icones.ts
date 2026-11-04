@@ -709,7 +709,6 @@ export const ICONE_LEI: Readonly<Record<string, string>> = {
   "imposto-terra-parada": "terrain",
   "verba-orgao-terras": "clipboard-search-outline",
   "credito-compra-terra": "cash-plus",
-  "terra-invadida": "shield-home-outline",
   "verba-habitacao": "home-plus-outline",
   "credito-imobiliario": "home-account",
   "teto-aluguel": "percent-outline",
