@@ -224,11 +224,17 @@ function ligacoes(
   leis: Lei[],
   indices: Set<string>,
   grupos: TipoGrupo[],
-  moradia?: { lei: string; indices: string[]; atrasoMeses: number },
+  moradia?: {
+    lei: string;
+    indices: string[];
+    atrasoMeses: number;
+    terra: string;
+    deficit: string;
+  },
 ): VisaoLigacao[] {
   const saida: VisaoLigacao[] = [];
   // A verba de casas age pelo estoque, sem efeito declarado na lei.
-  if (moradia)
+  if (moradia) {
     for (const indice of moradia.indices)
       saida.push({
         id: `${moradia.lei}>${indice}`,
@@ -238,6 +244,16 @@ function ligacoes(
         atrasoMeses: moradia.atrasoMeses,
         mecanismo: "afim",
       });
+    // O êxodo: quem sai do campo entra no déficit.
+    saida.push({
+      id: `${moradia.terra}>${moradia.deficit}`,
+      origem: moradia.terra,
+      alvo: moradia.deficit,
+      sinal: 1,
+      atrasoMeses: 0,
+      mecanismo: "afim",
+    });
+  }
   for (const lei of leis) {
     // lei de opções: vale o sentido da opção mais alta que cita o índice
     const efeitos =
@@ -347,6 +363,8 @@ export function montarVisao(partida: Partida): VisaoPartida {
         lei: regras.moradia.lei_verba,
         indices: [regras.moradia.indice_deficit, regras.moradia.indice_favela],
         atrasoMeses: mesesDaObra(partida),
+        terra: regras.moradia.indice_terra,
+        deficit: regras.moradia.indice_deficit,
       },
     ),
     grupos: [],

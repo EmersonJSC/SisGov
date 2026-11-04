@@ -23,6 +23,7 @@ Estoque de casas do país, só no motor (a tela mostra os índices). Aprovado em
   concentração acima do turno 0 tira `campo_por_ponto` delas do campo, aos
   poucos (`exodo_velocidade`), e elas entram no déficit; o êxodo para ao chegar
   nessa conta. Concentração abaixo disso abre vagas: famílias sem casa formal
-  voltam e saem do déficit. Sem pop mudando nem renda da cidade pesando.
+  voltam e saem do déficit. Sem pop mudando nem renda da cidade pesando. A ficha
+  da lei mostra o déficit no fim do êxodo; o mapa liga concentração a déficit.
 - O país começa parado: as obras do turno 0 só repõem o desgaste.
 - Não equilibrado: os números só dão a direção.

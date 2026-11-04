@@ -3,6 +3,7 @@
 // O motor não conhece nomes de lei nem de índice. Regras em moradia.md.
 import type { RegraDasObras } from "../mercado/construcoes";
 import { atrasoDasObras } from "../mercado/construcoes";
+import type { Pop } from "../populacao";
 
 const TURNOS_POR_ANO = 6;
 
@@ -71,6 +72,12 @@ export interface TurnoDaMoradia {
 /** Famílias do país: as pessoas dos pops divididas pelo tamanho da família. */
 export const familias = (regra: RegraDaMoradia, populacao: number) =>
   populacao / regra.pessoas_por_familia;
+
+/** Pessoas dos pops que vivem do campo. */
+export const pessoasNoCampo = (
+  regra: RegraDaMoradia,
+  pops: Record<string, Pop>,
+) => regra.pops_campo.reduce((soma, id) => soma + pops[id].pessoas, 0);
 
 /** Famílias que deixam o campo neste turno; negativo: voltam para ele. */
 function movimentoDoCampo(
@@ -198,6 +205,16 @@ export function pontosDaVerbaPorAno(
 ): number {
   const custo = regra.custo_casa * atrasoDasObras(atraso).custo;
   return ((verba * regra.pessoas_por_familia) / custo) * 100;
+}
+
+/** Pontos de déficit que a concentração move, quando o êxodo termina. */
+export function pontosDoExodo(
+  regra: RegraDaMoradia,
+  concentracao: number,
+  noCampo: number,
+  populacao: number,
+): number {
+  return regra.campo_por_ponto * concentracao * (noCampo / populacao) * 100;
 }
 
 /** Déficit e favela contados, em % das famílias. */

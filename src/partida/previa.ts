@@ -1,10 +1,12 @@
 // Prévia direta de uma lei na janela da tela: o que a própria lei muda nos
 // índices (fila de efeitos do motor) e na satisfação dos grupos (pontos de
-// lei do motor). Sem efeito em cadeia: isso é a prévia completa, depois.
+// lei do motor). Da cadeia, só o êxodo; o resto é a prévia completa, depois.
 import {
   atrasoDasObras,
   enfileirar,
+  pessoasNoCampo,
   pontosDaVerbaPorAno,
+  pontosDoExodo,
   pontosLeis,
   type ValorLei,
 } from "../motor";
@@ -18,6 +20,8 @@ export interface PreviaLei {
     atrasoMeses: number;
     /** Pontos que se repetem a cada ano (ex.: casas construídas). */
     porAno?: boolean;
+    /** O efeito chega devagar, depois do atraso (ex.: famílias mudando). */
+    aosPoucos?: boolean;
   }[];
   /** Pontos de satisfação que a lei dá a cada grupo, contra hoje. */
   grupos: { id: string; pontos: number }[];
@@ -92,6 +96,29 @@ function previaDaMoradia(
   ];
 }
 
+/** O que a lei faz no déficit ao mudar a concentração de terra (êxodo). */
+function previaDoCampo(
+  { estado, regras }: Partida,
+  indices: PreviaLei["indices"],
+): PreviaLei["indices"] {
+  const regra = regras.moradia;
+  if (!regra) return [];
+  const noCampo = pessoasNoCampo(regra, estado.pops);
+  return indices
+    .filter((e) => e.id === regra.indice_terra)
+    .map((e) => ({
+      id: regra.indice_deficit,
+      pontos: pontosDoExodo(
+        regra,
+        e.pontos,
+        noCampo,
+        estado.essenciais.populacao,
+      ),
+      atrasoMeses: e.atrasoMeses,
+      aosPoucos: true,
+    }));
+}
+
 export function previaDaLei(
   partida: Partida,
   leiId: string,
@@ -109,7 +136,10 @@ export function previaDaLei(
       atrasoMeses: e.atraso * MESES_POR_TURNO,
     }))
     .filter((e) => Math.abs(e.pontos) > 1e-9);
-  indices.push(...previaDaMoradia(partida, leiId, valor));
+  indices.push(
+    ...previaDaMoradia(partida, leiId, valor),
+    ...previaDoCampo(partida, indices),
+  );
   const so = { [leiId]: lei };
   const grupos = regras.grupos
     .map((g) => ({

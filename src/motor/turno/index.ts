@@ -61,6 +61,7 @@ import {
   familias,
   indicesDaMoradia,
   moradiaInicial,
+  pessoasNoCampo,
 } from "../moradia";
 import {
   andarOpinioes,
@@ -494,10 +495,6 @@ const moradia: Etapa = (regras, estado) => {
     ? (c.prontas[obras.setor] ?? 0) / c.inicio[obras.setor]
     : 1;
   const preco0 = marco[regra.indice_preco];
-  const noCampo = regra.pops_campo.reduce(
-    (soma, id) => soma + estado.pops[id].pessoas,
-    0,
-  );
   const nova = andarMoradia(regra, obras, m, {
     populacao,
     verba: typeof verba === "number" ? verba : 0,
@@ -506,7 +503,7 @@ const moradia: Etapa = (regras, estado) => {
     setor,
     preco: preco0 > 0 ? estado.jogabilidade[regra.indice_preco] / preco0 : 1,
     animo: animoDoPais(regras, estado),
-    familias_campo: familias(regra, noCampo),
+    familias_campo: familias(regra, pessoasNoCampo(regra, estado.pops)),
     concentracao:
       estado.jogabilidade[regra.indice_terra] - marco[regra.indice_terra],
     pobreza:

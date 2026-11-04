@@ -135,10 +135,13 @@ começo. Pobreza acima do turno 0 faz mais famílias sem casa levantarem casa
 precária. Sem índice novo; ninguém muda de pop. 261 testes e `tsc -b` verdes.
 Teste, verba do órgão de terras 2%, 23 turnos: concentração 45, déficit 19,8 → 19,2
 e favela 15,0 → 14,6 contra a partida sem lei; 19,2 visto na tela. Efeito pequeno.
-O mapa não tem seta concentração → déficit e a ficha da lei de terra não mostra
-esse ganho. Sem commit.
-**Próximo:** commit, com a palavra do autor. Depois, escolher a próxima peça da
-moradia: o que a favela piora e quais grupos cobram moradia (GDD §18).
+Commit `c6d17746`.
+**04/nov (10): ligação à vista.** O mapa tem seta concentração → déficit, e a
+ficha da lei que mexe na concentração mostra o déficit no fim do êxodo ("aos
+poucos"). Verba do órgão de terras a 1,95% no teste-pobre: −4,9 concentração,
+−1,2 déficit, visto na tela. 264 testes e `tsc -b` verdes. Nessas leis, a ficha
+avisa que o déficit vem pelo êxodo. Pobreza → favela segue sem seta nem linha na ficha. Commitado.
+**Próximo:** proposta do que a favela piora e quais grupos cobram moradia (GDD §18).
 
 ## Pendências do autor
 

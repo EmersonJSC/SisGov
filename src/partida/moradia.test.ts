@@ -8,7 +8,7 @@ import {
   type RegraDasObras,
   type TurnoDaMoradia,
 } from "../motor";
-import { avancar, criarPartida, jogar, previaDaLei } from ".";
+import { avancar, criarPartida, jogar, montarVisao, previaDaLei } from ".";
 
 const base = () => criarPartida("teste", 42, { semCongresso: true });
 
@@ -178,6 +178,39 @@ describe("estoque na partida", () => {
     expect(com.jogabilidade.deficit_habitacional).toBeLessThan(
       sem.jogabilidade.deficit_habitacional,
     );
+  });
+
+  it("a ficha da lei de terra mostra o déficit que ela tira", () => {
+    const { indices } = previaDaLei(base(), "verba-orgao-terras", 0.02);
+    const terra = indices.find((i) => i.id === "concentracao_terra");
+    const deficit = indices.find((i) => i.id === "deficit_habitacional");
+    expect(terra?.pontos).toBeLessThan(0);
+    expect(deficit?.pontos).toBeLessThan(0);
+    expect(deficit?.aosPoucos).toBe(true);
+    expect(deficit?.atrasoMeses).toBe(terra?.atrasoMeses);
+  });
+
+  it("nenhuma lei repete o déficit na ficha", () => {
+    const partida = base();
+    for (const [id, lei] of Object.entries(partida.regras.leis)) {
+      const valor =
+        lei.forma === "continua"
+          ? lei.faixa.max
+          : lei.opcoes[lei.opcoes.length - 1].id;
+      const linhas = previaDaLei(partida, id, valor).indices.filter(
+        (i) => i.id === "deficit_habitacional",
+      );
+      expect(linhas.length).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("o mapa liga a concentração ao déficit", () => {
+    const ligacao = montarVisao(base()).ligacoes.find(
+      (l) =>
+        l.origem === "concentracao_terra" &&
+        l.alvo === "deficit_habitacional",
+    );
+    expect(ligacao?.sinal).toBe(1);
   });
 
   it("a ficha da verba mostra o que ela tira por ano, depois da obra", () => {

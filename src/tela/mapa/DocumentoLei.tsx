@@ -578,7 +578,9 @@ export function DocumentoLei({
             texto: pontos(e.pontos),
             detalhe: e.porAno
               ? `por ano, ${atraso(e.atrasoMeses)}`
-              : atraso(e.atrasoMeses),
+              : e.aosPoucos
+                ? `aos poucos, ${atraso(e.atrasoMeses)}`
+                : atraso(e.atrasoMeses),
           };
         }),
         ...previa.grupos.map((g) => ({
@@ -701,7 +703,11 @@ export function DocumentoLei({
             <h2>Efeitos</h2>
           </div>
           {previa ? (
-            <p className="vazio">Só o que esta lei muda direto, sem cadeia.</p>
+            <p className="vazio">
+              {previa.indices.some((e) => e.aosPoucos)
+                ? "O que esta lei muda; o déficit vem aos poucos, pelo êxodo."
+                : "Só o que esta lei muda direto, sem cadeia."}
+            </p>
           ) : null}
           {secoes.map((g) => (
             <section key={g.secao} className="efeitos-secao">
