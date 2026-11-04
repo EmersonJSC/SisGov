@@ -5,6 +5,7 @@ import type { Deriva } from "../deriva";
 import type { TipoGrupo } from "../grupos";
 import type { Colisao, Lei, ValorLei } from "../leis";
 import type { MercadoDoPais } from "../mercado";
+import type { RegraDaMoradia } from "../moradia";
 import type { Potencia } from "../mundo";
 import type { Congresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
@@ -49,6 +50,8 @@ export interface Regras {
   congresso?: Congresso;
   /** Índices que andam sozinhos, empurrados por outros (motor/deriva). */
   derivas?: Deriva[];
+  /** Estoque de casas (motor/moradia); precisa da regra das obras. */
+  moradia?: RegraDaMoradia;
   /** Pares de leis que não valem juntas (motor/leis/colisao). */
   colisoes?: Colisao[];
 }

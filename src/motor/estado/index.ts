@@ -7,6 +7,7 @@ import type { EfeitoEmCurso } from "../efeitos";
 import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { PontoBussola, ValorLei } from "../leis";
+import type { MoradiaNoEstado } from "../moradia";
 import type { Votacao } from "../politica";
 import type {
   CapacidadeNoEstado,
@@ -80,6 +81,8 @@ export interface Estado {
    * regra das obras no mundo ou em partida salva antes dela.
    */
   construcoes?: ConstrucoesNoEstado;
+  /** Estoque de casas (motor/moradia); ausente sem a regra ou em partida salva antes dela. */
+  moradia?: MoradiaNoEstado;
   /**
    * O que mudou no último turno, na moeda do país: PIB nominal e dívida.
    * Ausente no turno 0 e em partida salva antes desta função.

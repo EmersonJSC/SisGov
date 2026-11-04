@@ -56,6 +56,7 @@ import {
   valoresComPedidos,
   type ValorLei,
 } from "../leis";
+import { andarMoradia, indicesDaMoradia, moradiaInicial } from "../moradia";
 import {
   andarOpinioes,
   motivoOpinioesInvalidas,
@@ -188,6 +189,23 @@ export function impostoSobreLucro(
   return total;
 }
 
+/** Ânimo do investimento: juro e imposto sobre lucro contra o turno 0. */
+function animoDoPais(regras: Regras, estado: Estado): number {
+  const e = estado.essenciais;
+  const marco = estado.marco.indices;
+  return animoDoInvestimento(
+    e.taxa_juros,
+    // Régua: o juro de equilíbrio do turno 0, não o declarado (que anda até ele).
+    taxaAlvo(
+      marco.divida_publica ?? e.divida_publica,
+      marco.inflacao ?? e.inflacao,
+      regras.pais.juros,
+    ),
+    impostoSobreLucro(regras, estado.leis),
+    impostoSobreLucro(regras, estado.marco.leis),
+  );
+}
+
 /**
  * 4. Economia real. Com construções (12b): o investimento privado, freado por
  * juro e imposto sobre lucro, abre obras; o PIB real anda com a capacidade
@@ -210,17 +228,7 @@ const economiaReal: Etapa = (regras, estado) => {
   if (regra && c) {
     const marco = estado.marco.indices;
     const atraso = estado.jogabilidade[regra.indice_atraso] ?? 0;
-    const animo = animoDoInvestimento(
-      e.taxa_juros,
-      // Régua: o juro de equilíbrio do turno 0, não o declarado (que anda até ele).
-      taxaAlvo(
-        marco.divida_publica ?? e.divida_publica,
-        marco.inflacao ?? e.inflacao,
-        regras.pais.juros,
-      ),
-      impostoSobreLucro(regras, estado.leis),
-      impostoSobreLucro(regras, estado.marco.leis),
-    );
+    const animo = animoDoPais(regras, estado);
     const base = investimentoBase(
       regra,
       tendencia,
@@ -463,19 +471,47 @@ function jogabilidade(regras: Regras, estado: Estado) {
   return indices;
 }
 
-/** Quanto cada lei-freio freia: posição do valor na faixa (0 a 1). */
-function freiosDasDerivas(regras: Regras, estado: Estado) {
-  const freios: Record<string, number> = {};
-  for (const { freio } of regras.derivas ?? []) {
-    const lei = freio ? regras.leis[freio] : undefined;
-    const valor = freio ? estado.leis[freio] : undefined;
-    if (!freio || lei?.forma !== "continua" || typeof valor !== "number")
-      continue;
-    const { min, max } = lei.faixa;
-    freios[freio] = Math.min(1, Math.max(0, (valor - min) / (max - min)));
-  }
-  return freios;
-}
+/**
+ * 6b. Moradia: casas desgastam, ficam prontas e começam (motor/moradia). O que
+ * a contagem andou move a base do déficit e da favela.
+ */
+const moradia: Etapa = (regras, estado) => {
+  const regra = regras.moradia;
+  const obras = regras.mercado?.mercado.obras;
+  const m = estado.moradia;
+  const c = estado.construcoes;
+  if (!regra || !obras || !m || !c) return estado;
+  const { populacao } = estado.essenciais;
+  const marco = estado.marco.indices;
+  const verba = estado.leis[regra.lei_verba];
+  const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
+  const setor = c.inicio[obras.setor]
+    ? (c.prontas[obras.setor] ?? 0) / c.inicio[obras.setor]
+    : 1;
+  const preco0 = marco[regra.indice_preco];
+  const nova = andarMoradia(regra, obras, m, {
+    populacao,
+    verba: typeof verba === "number" ? verba : 0,
+    atraso,
+    atraso_inicial: marco[obras.indice_atraso] ?? atraso,
+    setor,
+    preco: preco0 > 0 ? estado.jogabilidade[regra.indice_preco] / preco0 : 1,
+    animo: animoDoPais(regras, estado),
+  });
+  const antes = indicesDaMoradia(regra, m, populacao);
+  const depois = indicesDaMoradia(regra, nova, populacao);
+  return {
+    ...estado,
+    moradia: nova,
+    base: {
+      ...estado.base,
+      [regra.indice_deficit]:
+        estado.base[regra.indice_deficit] + depois.deficit - antes.deficit,
+      [regra.indice_favela]:
+        estado.base[regra.indice_favela] + depois.favela - antes.favela,
+    },
+  };
+};
 
 /** 7. Índices de jogabilidade: base do país + contribuições das leis; a deriva move a base. */
 const indicesJogabilidade: Etapa = (regras, estado) => {
@@ -487,7 +523,6 @@ const indicesJogabilidade: Etapa = (regras, estado) => {
         estado.marco.indices,
         somaPorIndice(estado.efeitos),
         regras.dominios,
-        freiosDasDerivas(regras, estado),
       )
     : estado.base;
   const comBase = { ...estado, base };
@@ -710,6 +745,17 @@ const invariantes: Etapa = (regras, estado) => {
   for (const [id, v] of Object.entries(estado.opinioes))
     if (!(Number.isFinite(v) && v >= 0 && v <= 100))
       falhas.push(`opinião de ${id} fora de 0–100`);
+  const casas = estado.moradia;
+  if (
+    casas &&
+    !(
+      Number.isFinite(casas.formais) &&
+      Number.isFinite(casas.precarias) &&
+      casas.formais >= 0 &&
+      casas.precarias >= 0
+    )
+  )
+    falhas.push("estoque de casas inválido");
   if (!(Number.isFinite(estado.desgaste) && estado.desgaste >= 0))
     falhas.push("desgaste inválido");
   if (falhas.length > 0)
@@ -727,6 +773,7 @@ const ETAPAS: Etapa[] = [
   precosEJuros,
   capacidades,
   contas,
+  moradia,
   indicesJogabilidade,
   mundo,
   precosDoMundo,
@@ -787,8 +834,6 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       throw new Error(`mundo: deriva de índice "${d.indice}" que não existe`);
     if (!(d.por in regras.dominios) && !(d.por in inicio.essenciais))
       throw new Error(`mundo: deriva empurrada por "${d.por}", que não existe`);
-    if (d.freio && regras.leis[d.freio]?.forma !== "continua")
-      throw new Error(`mundo: freio "${d.freio}" não é lei contínua`);
   }
   for (const [a, b] of regras.colisoes ?? []) {
     for (const id of [a, b])
@@ -828,6 +873,20 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     throw new Error(
       `mundo: obras: o índice "${obras.indice_atraso}" não existe`,
     );
+  if (regras.moradia) {
+    const r = regras.moradia;
+    if (!obras) throw new Error("mundo: moradia precisa da regra das obras");
+    for (const id of [r.indice_deficit, r.indice_favela, r.indice_preco])
+      if (!(id in regras.dominios))
+        throw new Error(`mundo: moradia: o índice "${id}" não existe`);
+    if (regras.leis[r.lei_verba]?.forma !== "continua")
+      throw new Error(`mundo: moradia: "${r.lei_verba}" não é lei contínua`);
+    if (
+      inicio.jogabilidade[r.indice_favela] >
+      inicio.jogabilidade[r.indice_deficit]
+    )
+      throw new Error("país: favela maior que o déficit habitacional");
+  }
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);
   const motivoGrupos = motivoGruposInvalidos(
@@ -927,6 +986,17 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
         preco0: precoDosSetores(m.mercado, comPops.precos),
       },
     );
+  }
+  if (regras.moradia && m?.mercado.obras) {
+    const r = regras.moradia;
+    const verba = comPops.leis[r.lei_verba];
+    comPops.moradia = moradiaInicial(r, m.mercado.obras, {
+      populacao: comPops.essenciais.populacao,
+      deficit: comPops.jogabilidade[r.indice_deficit],
+      favela: comPops.jogabilidade[r.indice_favela],
+      verba: typeof verba === "number" ? verba : 0,
+      atraso: comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
+    });
   }
   // O marco é o próprio turno 0: grupos começam em 50.
   const marco: Marco = {

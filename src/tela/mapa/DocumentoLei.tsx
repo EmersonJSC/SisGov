@@ -576,7 +576,9 @@ export function DocumentoLei({
             secao: "indice" as const,
             efeito: efeitoDe(Math.sign(e.pontos), b?.avaliacao),
             texto: pontos(e.pontos),
-            detalhe: atraso(e.atrasoMeses),
+            detalhe: e.porAno
+              ? `por ano, ${atraso(e.atrasoMeses)}`
+              : atraso(e.atrasoMeses),
           };
         }),
         ...previa.grupos.map((g) => ({

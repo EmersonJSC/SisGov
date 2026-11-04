@@ -26,6 +26,7 @@ import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
+import { mesesDaObra } from "./previa";
 import type {
   VisaoArea,
   VisaoBolha,
@@ -223,8 +224,20 @@ function ligacoes(
   leis: Lei[],
   indices: Set<string>,
   grupos: TipoGrupo[],
+  moradia?: { lei: string; indices: string[]; atrasoMeses: number },
 ): VisaoLigacao[] {
   const saida: VisaoLigacao[] = [];
+  // A verba de casas age pelo estoque, sem efeito declarado na lei.
+  if (moradia)
+    for (const indice of moradia.indices)
+      saida.push({
+        id: `${moradia.lei}>${indice}`,
+        origem: moradia.lei,
+        alvo: indice,
+        sinal: -1,
+        atrasoMeses: moradia.atrasoMeses,
+        mecanismo: "afim",
+      });
   for (const lei of leis) {
     // lei de opções: vale o sentido da opção mais alta que cita o índice
     const efeitos =
@@ -330,6 +343,11 @@ export function montarVisao(partida: Partida): VisaoPartida {
       leis,
       new Set(jogabilidade.map((v) => v.id)),
       regras.grupos,
+      regras.moradia && {
+        lei: regras.moradia.lei_verba,
+        indices: [regras.moradia.indice_deficit, regras.moradia.indice_favela],
+        atrasoMeses: mesesDaObra(partida),
+      },
     ),
     grupos: [],
     potencias: (regras.potencias ?? []).map((p) => ({

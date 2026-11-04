@@ -1,9 +1,6 @@
-// Deriva: déficit, preço e favela andam sozinhos, empurrados por outros índices.
+// Deriva: um índice anda sozinho, empurrado por outro.
 import { describe, expect, it } from "vitest";
 import { andarDerivas } from "../motor";
-import { avancar, criarPartida, jogar } from ".";
-
-const base = () => criarPartida("teste", 42, { semCongresso: true });
 
 describe("deriva (motor)", () => {
   const dominios = { a: { min: 0, max: 100 }, b: { min: 0, max: 100 } };
@@ -43,30 +40,5 @@ describe("deriva (motor)", () => {
       dominios,
     );
     expect(nova.a).toBe(97);
-  });
-
-  it("freio no máximo corta a ligação; na metade, anda a metade", () => {
-    const comFreio = { ...regra, freio: "lei-x" };
-    const andar = (f: number) =>
-      andarDerivas([comFreio], { a: 40 }, { b: 40 }, { b: 30 }, {}, dominios, {
-        "lei-x": f,
-      }).a;
-    expect(andar(1)).toBe(40);
-    expect(andar(0.5)).toBeCloseTo(40.25);
-  });
-});
-
-describe("deriva na partida", () => {
-  it("verba de habitação alta derruba o déficit e, com o tempo, o preço e a favela", () => {
-    const sem = jogar(base(), 20).estado.jogabilidade;
-    const com = jogar(
-      avancar(base(), [
-        { tipo: "mudar_lei", lei: "verba-habitacao", valor: 0.03 },
-      ]),
-      19,
-    ).estado.jogabilidade;
-    expect(com.deficit_habitacional).toBeLessThan(sem.deficit_habitacional);
-    expect(com.preco_moradia).toBeLessThan(sem.preco_moradia);
-    expect(com.favela).toBeLessThan(sem.favela);
   });
 });

@@ -1,0 +1,11 @@
+{
+  "versao": 1,
+  "id": "moradia-mundo",
+  "indice_deficit": "deficit_habitacional",
+  "indice_favela": "favela",
+  "indice_preco": "preco_moradia",
+  "lei_verba": "verba-habitacao",
+  "pessoas_por_familia": 3,
+  "custo_casa": 4,
+  "autoconstrucao": 0.05
+}

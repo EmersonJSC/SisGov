@@ -676,8 +676,11 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   não existe. Voltar quando a fila existir, como leis separadas nos dois lados:
   uma que castiga a ocupação (autoritário) e uma que a acelera (esquerda), e
   dizer quais terras entram (só improdutivas?).
-- **Pobreza → favela com freio (04/nov):** a pobreza só empurra a favela se o
-  Estado não oferece casa; a Verba de habitação vira freio dessa deriva.
+- **Favela sem consequência (04/nov):** déficit, preço e favela ainda não
+  movem nenhum outro índice e nenhum grupo os cobra. Falta decidir o que a
+  favela piora (ex.: saúde, segurança) e quais grupos cobram moradia.
+- **Caminhos até a casa (04/nov):** governos de lados diferentes chegam à casa
+  por caminhos diferentes, e o setor privado tem seus ganhos e perdas por lei.
 
 **Órgãos**
 - Órgãos do Estado como peça do jogo (um fiscal ambiental, um de terras, um

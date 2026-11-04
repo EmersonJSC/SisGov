@@ -118,8 +118,16 @@ aluguel × despejo rápido; título de posse × remoção). É um "ou" (autor): 
 jogador põe uma ou outra, nunca as duas, e nenhuma lei manda na outra. Para
 trocar, revoga uma e propõe a outra no turno seguinte. A tela não cita a outra
 lei. 248 testes e `tsc -b` verdes; visto na tela. Commit feito (motor: colisão).
-**Próximo:** o autor escolhe a próxima peça da moradia (estoque,
-triagem-estrangeira em terra, tirar moradia dos produtores).
+**04/nov (8): estoque de casas feito.** `motor/moradia` conta casas formais,
+precárias e obras; déficit e favela saem dessa conta (família = pessoas ÷ 3).
+Governo constrói com a Verba de habitação; empresas constroem pelo preço, pelo
+setor construção civil, por juro, imposto e corrupção; quem fica sem casa levanta
+casa precária. Casas desgastam 4% ao ano. A obra leva cerca de 1 ano. Saíram as
+derivas de déficit e favela e o freio; ficou déficit → preço. Verba no máximo, no
+teste: déficit 20 → 16,3 e favela 15 → 14,2 em 18 turnos, visto na tela. A ficha
+da Verba mostra os pontos por ano e o mapa mantém as setas.
+**Próximo:** commit, com a palavra do autor. Depois, escolher a próxima peça da
+moradia: o que a favela piora e quais grupos cobram moradia (GDD §18).
 
 ## Pendências do autor
 

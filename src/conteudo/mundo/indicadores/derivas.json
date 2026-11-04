@@ -3,36 +3,10 @@
   "id": "derivas-mundo",
   "derivas": [
     {
-      "indice": "deficit_habitacional",
-      "por": "concentracao_terra",
-      "sentido": 1,
-      "forca": "media"
-    },
-    {
-      "indice": "deficit_habitacional",
-      "por": "crescimento_real",
-      "sentido": -1,
-      "forca": "fraca",
-      "escala": 5
-    },
-    {
       "indice": "preco_moradia",
       "por": "deficit_habitacional",
       "sentido": 1,
       "forca": "media"
-    },
-    {
-      "indice": "favela",
-      "por": "deficit_habitacional",
-      "sentido": 1,
-      "forca": "media"
-    },
-    {
-      "indice": "favela",
-      "por": "pobreza",
-      "sentido": 1,
-      "forca": "fraca",
-      "freio": "verba-habitacao"
     }
   ]
 }

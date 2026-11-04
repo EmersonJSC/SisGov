@@ -66,6 +66,7 @@ extremo da bússola é um caminho: cada lei anda um pouco nele.
 | [calculos](../../src/motor/calculos/calculos.md) | bases de cálculo (renda, consumo, lucro, emissões, terra; Laffer) |
 | [contas](../../src/motor/contas/contas.md)     | Tesouro: receita, gasto, juros, cofre, dívida    |
 | [deriva](../../src/motor/deriva/deriva.md)     | índice anda sozinho, empurrado por outro         |
+| [moradia](../../src/motor/moradia/moradia.md)  | estoque de casas: déficit e favela saem da conta |
 | [efeitos](../../src/motor/efeitos/efeitos.md)  | leis contribuem pontos para os índices, com atraso |
 | [eleicao](../../src/motor/eleicao/eleicao.md)  | mandato, desgaste, apuração                      |
 | [grupos](../../src/motor/grupos/grupos.md)     | satisfação e apoio pela bússola                  |

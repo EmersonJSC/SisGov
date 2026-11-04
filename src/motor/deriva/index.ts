@@ -19,12 +19,10 @@ export interface Deriva {
   forca: Forca;
   /** Pontos do índice por unidade de quem empurra (padrão 1). */
   escala?: number;
-  /** Lei contínua que freia a ligação: no máximo da faixa, corta inteira. */
-  freio?: string;
 }
 
 /**
- * Bases do próximo turno. `freios` diz, por lei, quanto ela freia (0 a 1). Quem empurra mede contra o turno 0: o país começa
+ * Bases do próximo turno. Quem empurra mede contra o turno 0: o país começa
  * parado. A base fica dentro do domínio, já contando as leis (sem acumular
  * para além do teto).
  */
@@ -35,7 +33,6 @@ export function andarDerivas(
   marco: Record<string, number>,
   leis: Record<string, number>,
   dominios: Record<string, { min: number; max: number }>,
-  freios: Record<string, number> = {},
 ): Record<string, number> {
   const nova = { ...base };
   for (const d of derivas) {
@@ -43,13 +40,8 @@ export function andarDerivas(
     const inicio = marco[d.por];
     if (atual === undefined || inicio === undefined || !(d.indice in nova))
       continue;
-    const solta = 1 - (d.freio ? (freios[d.freio] ?? 0) : 0);
     nova[d.indice] +=
-      d.sentido *
-      TAXA_DERIVA[d.forca] *
-      (atual - inicio) *
-      (d.escala ?? 1) *
-      solta;
+      d.sentido * TAXA_DERIVA[d.forca] * (atual - inicio) * (d.escala ?? 1);
   }
   for (const d of derivas) {
     const { min, max } = dominios[d.indice];

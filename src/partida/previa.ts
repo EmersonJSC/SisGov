@@ -1,12 +1,24 @@
 // Prévia direta de uma lei na janela da tela: o que a própria lei muda nos
 // índices (fila de efeitos do motor) e na satisfação dos grupos (pontos de
 // lei do motor). Sem efeito em cadeia: isso é a prévia completa, depois.
-import { enfileirar, pontosLeis, type ValorLei } from "../motor";
+import {
+  atrasoDasObras,
+  enfileirar,
+  pontosDaVerbaPorAno,
+  pontosLeis,
+  type ValorLei,
+} from "../motor";
 import type { Partida } from "./index";
 
 export interface PreviaLei {
   /** Pontos (0–100) que a lei passa a dar a cada índice, contra hoje. */
-  indices: { id: string; pontos: number; atrasoMeses: number }[];
+  indices: {
+    id: string;
+    pontos: number;
+    atrasoMeses: number;
+    /** Pontos que se repetem a cada ano (ex.: casas construídas). */
+    porAno?: boolean;
+  }[];
   /** Pontos de satisfação que a lei dá a cada grupo, contra hoje. */
   grupos: { id: string; pontos: number }[];
 }
@@ -42,6 +54,44 @@ export function valorDoNivel(
   );
 }
 
+/** Meses até a obra ficar pronta, com a corrupção de hoje. */
+export function mesesDaObra({ regras, estado }: Partida): number {
+  const obras = regras.mercado?.mercado.obras;
+  if (!obras) return 0;
+  const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
+  return (
+    Math.ceil(obras.prazo * atrasoDasObras(atraso).prazo) * MESES_POR_TURNO
+  );
+}
+
+/** O que a verba de casas faz por ano: age pelo estoque, não pela fila de efeitos. */
+function previaDaMoradia(
+  partida: Partida,
+  leiId: string,
+  valor: ValorLei,
+): PreviaLei["indices"] {
+  const { estado, regras } = partida;
+  const regra = regras.moradia;
+  const obras = regras.mercado?.mercado.obras;
+  const m = estado.moradia;
+  const atual = estado.leis[leiId] ?? 0;
+  if (regra?.lei_verba !== leiId || !obras || !m) return [];
+  if (typeof valor !== "number" || typeof atual !== "number") return [];
+  const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
+  const pontos = -pontosDaVerbaPorAno(regra, valor - atual, atraso);
+  if (Math.abs(pontos) < 1e-9) return [];
+  const atrasoMeses = mesesDaObra(partida);
+  return [
+    { id: regra.indice_deficit, pontos, atrasoMeses, porAno: true },
+    {
+      id: regra.indice_favela,
+      pontos: pontos * m.parte_precaria,
+      atrasoMeses,
+      porAno: true,
+    },
+  ];
+}
+
 export function previaDaLei(
   partida: Partida,
   leiId: string,
@@ -59,6 +109,7 @@ export function previaDaLei(
       atrasoMeses: e.atraso * MESES_POR_TURNO,
     }))
     .filter((e) => Math.abs(e.pontos) > 1e-9);
+  indices.push(...previaDaMoradia(partida, leiId, valor));
   const so = { [leiId]: lei };
   const grupos = regras.grupos
     .map((g) => ({

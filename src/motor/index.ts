@@ -15,3 +15,4 @@ export * from "./politica";
 export * from "./populacao";
 export * from "./turno";
 export * from "./mercado";
+export * from "./moradia";

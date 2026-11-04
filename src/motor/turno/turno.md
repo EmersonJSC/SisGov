@@ -14,6 +14,7 @@ Ordem (plano, seção 5). Hoje (passo 8):
 | 4   | Economia real  | crescimento real = tendência + sorteio; PIB nominal cresce por ele                                                                                                                |
 | 5   | Preços e juros | inflação (fixa) sobe preços e PIB nominal; juros andam rumo ao alvo                                                                                                               |
 | 6   | Contas         | receita, gasto e juros fecham no cofre e na dívida (`motor/contas`)                                                                                                               |
+| 6b  | Moradia        | casas desgastam, ficam prontas e começam; a contagem move a base do déficit e da favela (`motor/moradia`)                                                                         |
 | 7   | Jogabilidade   | base do país + contribuições das leis, dentro do domínio                                                                                                                          |
 | 8   | Pops e grupos  | renda dos pops (`motor/populacao`), depois os grupos (`motor/grupos`)                                                                                                             |
 | 9   | Política       | partido da base com os grupos abaixo de 35 sai da coligação; eleição no passo 9                                                                                                   |

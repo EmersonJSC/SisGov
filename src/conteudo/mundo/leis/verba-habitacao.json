@@ -23,18 +23,5 @@
       "social": 0.1
     }
   },
-  "efeitos": [
-    {
-      "indice": "deficit_habitacional",
-      "sentido": -1,
-      "forca": "media",
-      "atraso_turnos": 12
-    },
-    {
-      "indice": "favela",
-      "sentido": -1,
-      "forca": "fraca",
-      "atraso_turnos": 18
-    }
-  ]
+  "efeitos": []
 }
