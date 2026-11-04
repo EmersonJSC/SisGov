@@ -45,7 +45,7 @@ Ordem (`ETAPAS` em `src/motor/turno/index.ts`):
 | **Índice**    | número que o jogador vê (0–100 ou %). Tipo `estoque`, `derivado` ou `calculado` | `mundo/indicadores/variaveis.json`     |
 | **Lei**       | bolha no mapa. Um lado da bússola, de "nada" a "mais". Mexe só em índices | `mundo/leis/*.json`, `motor/leis`      |
 | **Processo**  | índice que anda sozinho pelos turnos (**deriva**): outro índice empurra a base, medindo contra o turno 0. Sem meta nem ritmo | `mundo/indicadores/derivas.json`, `motor/deriva` |
-| **Colisão**   | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. *(ainda sem código)* | —                                      |
+| **Colisão**   | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. Pares em `mundo/colisoes/colisoes.json`; é um "ou": o jogador põe uma ou outra, nunca as duas. Para trocar, revoga uma e propõe a outra no turno seguinte (`motor/leis/colisao.ts`). | —                                      |
 | **Área**      | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma | `mundo/areas/areas.json`               |
 | **Órgão**     | quem executa uma regra. A verba (lei contínua, % do PIB) dá a força; verba demais vira corrupção. O jogador nunca escolhe a fazenda ou a fábrica. *(ainda sem código)* | —                                      |
 | **Destino**   | o que vira o bem que o Estado toma (comunidade, Estado, famílias). Uma lei por destino. *(a decidir, GDD §18)* | —                                      |

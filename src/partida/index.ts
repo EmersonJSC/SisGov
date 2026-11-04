@@ -14,6 +14,9 @@ import {
   lerCobertura,
   lerOcupacao,
   type Congresso,
+  colisoesDe,
+  valoresComPedidos,
+  type Colisao,
   type Deriva,
   type Estado,
   type IndicesEssenciais,
@@ -29,6 +32,7 @@ import {
   satisfacaoMedia,
   turnosMandato,
 } from "../motor";
+import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
 import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
@@ -269,6 +273,7 @@ export function criarPartida(
     pais: inicial.parametros,
     mercado: carregarMercado(pais),
     derivas: derivas.derivas as Deriva[],
+    colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
     congresso: semCongresso
       ? undefined
       : {
@@ -310,6 +315,20 @@ export function avancar(partida: Partida, pedidos: Pedido[] = []): Partida {
     ...partida,
     estado: avancarTurno(partida.regras, partida.estado, pedidos),
   };
+}
+
+/** A lei não pode sair do "nada": outra, em vigor ou na fila, não vale junto. */
+export function leiTravada(
+  partida: Partida,
+  lei: string,
+  fila: readonly Pedido[],
+): boolean {
+  const { regras, estado } = partida;
+  const outros = fila.filter((p) => p.lei !== lei);
+  const valores = valoresComPedidos(regras.leis, estado.leis, outros);
+  return (
+    colisoesDe(lei, regras.colisoes ?? [], regras.leis, valores).length > 0
+  );
 }
 
 /** Joga `turnos` turnos; os pedidos entram no primeiro. */

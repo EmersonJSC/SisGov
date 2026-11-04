@@ -113,7 +113,12 @@ Commits `4a724781` e `52f607f9`.
 pobreza → favela freada pela verba de habitação, verba máxima corta inteira
 (decisão do autor). 244 testes e `tsc -b` verdes. Na partida quase não se vê:
 a pobreza do teste-pobre fica parada em 45 por 24 turnos. Commit feito (motor: freio na deriva).
-**Próximo:** o autor escolhe a próxima peça da moradia (colisões, estoque,
+**04/nov (7): colisões feitas.** `mundo/colisoes/colisoes.json` (teto de
+aluguel × despejo rápido; título de posse × remoção). É um "ou" (autor): o
+jogador põe uma ou outra, nunca as duas, e nenhuma lei manda na outra. Para
+trocar, revoga uma e propõe a outra no turno seguinte. A tela não cita a outra
+lei. 248 testes e `tsc -b` verdes; visto na tela. Commit feito (motor: colisão).
+**Próximo:** o autor escolhe a próxima peça da moradia (estoque,
 triagem-estrangeira em terra, tirar moradia dos produtores).
 
 ## Pendências do autor

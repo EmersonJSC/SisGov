@@ -3,6 +3,7 @@
 // do topo e o resultado do turno (fatia 3).
 import { useEffect, useMemo, useState } from "react";
 import {
+  leiTravada,
   montarVisao,
   previaDaLei,
   valorDoNivel,
@@ -166,6 +167,7 @@ export function TelaMapa({
             onRascunho={setRascunho}
             previa={previa}
             naFila={!!pedido}
+            travada={leiTravada(partida, lei.id, fila)}
             enviado={!!pedido && pedido.valor === valor}
             onEnviar={() =>
               valor !== null && setFila(comPedido(fila, partida, lei.id, valor))

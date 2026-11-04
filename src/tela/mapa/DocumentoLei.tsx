@@ -513,6 +513,7 @@ export function DocumentoLei({
   onRascunho,
   previa,
   naFila,
+  travada,
   enviado,
   onEnviar,
   onTirar,
@@ -532,6 +533,8 @@ export function DocumentoLei({
   previa: PreviaLei | null;
   /** Há pedido desta lei na fila do turno. */
   naFila: boolean;
+  /** Só pode ficar no "nada": não vale junto com outra escolha do jogador. */
+  travada: boolean;
   /** O rascunho é o mesmo que já está na fila. */
   enviado: boolean;
   /** Põe (ou troca) o pedido do rascunho na fila. */
@@ -656,12 +659,17 @@ export function DocumentoLei({
           {lei.descricao ? (
             <p className="folha-explica">{lei.descricao}</p>
           ) : null}
+          {travada ? (
+            <p className="bloqueio-doc">
+              Não vale junto com o que já está em vigor ou na fila.
+            </p>
+          ) : null}
           {opcoes.length ? (
             <ControleEmDegraus
               opcoes={opcoes}
               indice={Math.round(rascunho)}
               vigente={lei.opcaoAtual}
-              bloqueada={() => false}
+              bloqueada={(i) => i > 0 && travada}
               motivo={() => undefined}
               onEscolher={onRascunho}
             />

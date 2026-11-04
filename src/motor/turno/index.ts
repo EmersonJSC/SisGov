@@ -49,7 +49,13 @@ import {
   reacaoDaCesta,
   segurancaDaCesta,
 } from "../mercado";
-import { motivoValorInvalido, type ValorLei } from "../leis";
+import {
+  colisoesDe,
+  leiAtiva,
+  motivoValorInvalido,
+  valoresComPedidos,
+  type ValorLei,
+} from "../leis";
 import {
   andarOpinioes,
   motivoOpinioesInvalidas,
@@ -84,11 +90,19 @@ type Etapa = (regras: Regras, estado: Estado, pedidos: Pedido[]) => Estado;
  */
 const congresso: Etapa = (regras, estado, pedidos) => {
   const votacoes: Votacao[] = [];
+  const anteriores: Pedido[] = [];
   for (const pedido of pedidos) {
     const lei = regras.leis[pedido.lei];
     if (!lei) throw new Error(`pedido: lei "${pedido.lei}" não existe`);
     const motivo = motivoValorInvalido(lei, pedido.valor);
     if (motivo) throw new Error(`pedido: ${pedido.lei} ${motivo}`);
+    const valores = valoresComPedidos(regras.leis, estado.leis, anteriores);
+    const colide = leiAtiva(lei, pedido.valor)
+      ? colisoesDe(lei.id, regras.colisoes ?? [], regras.leis, valores)
+      : [];
+    if (colide.length)
+      throw new Error(`pedido: ${lei.id} colide com ${colide.join(", ")}`);
+    anteriores.push(pedido);
     const atual = estado.leis[lei.id];
     if (atual === pedido.valor) continue;
     votacoes.push(
@@ -775,6 +789,14 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       throw new Error(`mundo: deriva empurrada por "${d.por}", que não existe`);
     if (d.freio && regras.leis[d.freio]?.forma !== "continua")
       throw new Error(`mundo: freio "${d.freio}" não é lei contínua`);
+  }
+  for (const [a, b] of regras.colisoes ?? []) {
+    for (const id of [a, b])
+      if (!(id in regras.leis))
+        throw new Error(`mundo: colisão com lei "${id}", que não existe`);
+    const leis = regras.leis;
+    if (leiAtiva(leis[a], inicio.leis[a]) && leiAtiva(leis[b], inicio.leis[b]))
+      throw new Error(`país: "${a}" e "${b}" colidem e começam as duas`);
   }
   for (const base of Object.keys(regras.pais.bases))
     if (!ehBase(base)) throw new Error(`país: base "${base}" não existe`);

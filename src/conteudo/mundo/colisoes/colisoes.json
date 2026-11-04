@@ -1,0 +1,8 @@
+{
+  "versao": 1,
+  "id": "colisoes-mundo",
+  "colisoes": [
+    ["teto-aluguel", "despejo-rapido"],
+    ["titulo-posse", "remocao-area-risco"]
+  ]
+}

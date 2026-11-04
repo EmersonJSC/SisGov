@@ -3,7 +3,7 @@
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
 import type { Deriva } from "../deriva";
 import type { TipoGrupo } from "../grupos";
-import type { Lei, ValorLei } from "../leis";
+import type { Colisao, Lei, ValorLei } from "../leis";
 import type { MercadoDoPais } from "../mercado";
 import type { Potencia } from "../mundo";
 import type { Congresso } from "../politica";
@@ -49,6 +49,8 @@ export interface Regras {
   congresso?: Congresso;
   /** Índices que andam sozinhos, empurrados por outros (motor/deriva). */
   derivas?: Deriva[];
+  /** Pares de leis que não valem juntas (motor/leis/colisao). */
+  colisoes?: Colisao[];
 }
 
 export interface PedidoMudarLei {
