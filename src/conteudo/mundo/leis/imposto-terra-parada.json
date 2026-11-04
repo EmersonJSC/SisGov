@@ -1,0 +1,31 @@
+{
+  "versao": 1,
+  "id": "imposto-terra-parada",
+  "nome": "Imposto sobre terra e imóvel parado",
+  "descricao": "Imposto por ano sobre terra sem uso e imóvel vazio. A terra grande e a parada há mais tempo pagam mais.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 1 },
+  "passo": 0.01,
+  "calculo": { "base": "terra", "modelo": "laffer" },
+  "bussola": {
+    "ate": 0.5,
+    "min": { "economico": 0.1 },
+    "max": { "economico": -0.6, "social": 0.1 }
+  },
+  "efeitos": [
+    {
+      "indice": "concentracao_terra",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "preco_moradia",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

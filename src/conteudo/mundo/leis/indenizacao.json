@@ -2,7 +2,7 @@
   "versao": 1,
   "id": "indenizacao",
   "nome": "Indenização na estatização",
-  "descricao": "Quanto o Estado paga ao dono quando toma uma empresa.",
+  "descricao": "Quanto o Estado paga ao dono quando toma uma empresa ou uma terra.",
   "camada": "jogabilidade",
   "forma": "opcoes",
   "opcoes": [

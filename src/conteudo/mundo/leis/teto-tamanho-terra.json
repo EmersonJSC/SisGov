@@ -1,0 +1,71 @@
+{
+  "versao": 1,
+  "id": "teto-tamanho-terra",
+  "nome": "Teto de tamanho da terra",
+  "descricao": "Maior fazenda que uma pessoa ou empresa pode ter, contada em vezes a fazenda média do país. O que passa do teto o dono vende ou o órgão de terras desapropria.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-teto",
+      "rotulo": "Sem teto",
+      "bussola": { "economico": 0.1, "social": 0 },
+      "valores": { "vezes_media": 0 },
+      "efeitos": []
+    },
+    {
+      "id": "cinquenta-vezes",
+      "rotulo": "Até 50 vezes a média",
+      "bussola": { "economico": -0.2, "social": 0 },
+      "valores": { "vezes_media": 50 },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "vinte-vezes",
+      "rotulo": "Até 20 vezes a média",
+      "bussola": { "economico": -0.5, "social": 0.1 },
+      "valores": { "vezes_media": 20 },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "abastecimento",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "cinco-vezes",
+      "rotulo": "Até 5 vezes a média",
+      "bussola": { "economico": -0.8, "social": 0.3 },
+      "valores": { "vezes_media": 5 },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "abastecimento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

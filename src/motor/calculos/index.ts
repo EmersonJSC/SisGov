@@ -12,13 +12,15 @@ export interface Base {
   padrao: ParametrosRenda;
 }
 
-// Consumo, lucro e emissões usam a mesma curva (Laffer + evasão); muda só o que o país
+// Consumo, lucro, emissões e terra usam a mesma curva (Laffer + evasão); muda só o que o país
 // declara (tamanho da base, pico e evasão). Ver calculos.md.
 export const BASES = {
   renda: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
   consumo: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
   lucro: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
   emissoes: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
+  // Valor da terra e do imóvel parados (motor/calculos/calculos.md).
+  terra: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
 } satisfies Record<string, Base>;
 
 export type IdBase = keyof typeof BASES;

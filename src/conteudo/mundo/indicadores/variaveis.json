@@ -536,6 +536,70 @@
       "medida": {
         "unidade": "% que aprova o governo"
       }
+    },
+    {
+      "id": "deficit_habitacional",
+      "tipo": "calculado",
+      "nome": "Déficit habitacional",
+      "camada": "jogabilidade",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% das famílias sem casa adequada"
+      }
+    },
+    {
+      "id": "preco_moradia",
+      "tipo": "calculado",
+      "nome": "Preço da moradia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = barata, 100 = fora do alcance da maioria"
+      }
+    },
+    {
+      "id": "favela",
+      "tipo": "calculado",
+      "nome": "Favela",
+      "camada": "jogabilidade",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% das famílias morando em favela"
+      }
+    },
+    {
+      "id": "concentracao_terra",
+      "tipo": "calculado",
+      "nome": "Concentração de terra",
+      "camada": "jogabilidade",
+      "unidade": "percentual_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% da terra rural nas mãos dos donos grandes"
+      }
     }
   ]
 }

@@ -6,13 +6,20 @@
   "camada": "jogabilidade",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 1 },
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
   "passo": 0.001,
   "conta": "gasto",
   "bussola": {
     "ate": 0.02,
-    "min": { "economico": 0.2 },
-    "max": { "economico": -0.3 }
+    "min": {
+      "economico": 0.2
+    },
+    "max": {
+      "economico": -0.3
+    }
   },
   "efeitos": [
     {
@@ -21,6 +28,17 @@
       "forca": "media",
       "atraso_turnos": 12
     },
-    { "indice": "saude", "sentido": 1, "forca": "media", "atraso_turnos": 12 }
+    {
+      "indice": "saude",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "favela",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 12
+    }
   ]
 }

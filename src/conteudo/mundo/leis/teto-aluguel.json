@@ -1,0 +1,91 @@
+{
+  "versao": 1,
+  "id": "teto-aluguel",
+  "nome": "Teto de aluguel",
+  "descricao": "Quanto o aluguel pode subir por ano, além da inflação.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-teto",
+      "rotulo": "Sem teto",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "valores": {
+        "acima_inflacao": -1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "inflacao-mais-vinte",
+      "rotulo": "Inflação + 20%",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "acima_inflacao": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "inflacao-mais-dez",
+      "rotulo": "Inflação + 10%",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0.1
+      },
+      "valores": {
+        "acima_inflacao": 0.1
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "so-inflacao",
+      "rotulo": "Só a inflação",
+      "bussola": {
+        "economico": -0.6,
+        "social": 0.2
+      },
+      "valores": {
+        "acima_inflacao": 0
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

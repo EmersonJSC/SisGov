@@ -1,0 +1,71 @@
+{
+  "versao": 1,
+  "id": "terra-invadida",
+  "nome": "Terra invadida fica de fora",
+  "descricao": "Por quantos anos a terra invadida não pode ser vistoriada nem desapropriada.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nao",
+      "rotulo": "Não fica de fora",
+      "bussola": { "economico": 0, "social": 0 },
+      "valores": { "anos_fora": 0 },
+      "efeitos": []
+    },
+    {
+      "id": "dois-anos",
+      "rotulo": "Dois anos",
+      "bussola": { "economico": 0.2, "social": 0.2 },
+      "valores": { "anos_fora": 2 },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "quatro-anos",
+      "rotulo": "Quatro anos",
+      "bussola": { "economico": 0.3, "social": 0.4 },
+      "valores": { "anos_fora": 4 },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "seguranca",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "oito-anos",
+      "rotulo": "Oito anos",
+      "bussola": { "economico": 0.4, "social": 0.7 },
+      "valores": { "anos_fora": 8 },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "seguranca",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

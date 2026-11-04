@@ -14,7 +14,7 @@
 | 4. Partida e turno | 2 | 2 | 6 | ~30% |
 | 5. Partido | 0 | 0 | 5 | 0% |
 | 6. Presidente, sucessão, ministros | 0 | 1 | 12 | ~4% |
-| 7. Leis | 5 | 2 | 1 | ~75% |
+| 7. Leis | 5 | 2 | 4 | ~55% |
 | 8. Bússola | 4 | 0 | 2 | ~65% |
 | 9. Índices | 2 | 1 | 0 | ~85% |
 | 10. Contas | 3 | 1 | 2 | ~60% |
@@ -23,9 +23,9 @@
 | 13. Eleição, campanha, mandatos | 2 | 1 | 5 | ~25% |
 | 14. Mídia | 0 | 0 | 7 | 0% |
 | 15. Mundo | 2 | 1 | 3 | ~40% |
-| 16. Economia | 3 | 4 | 9 | ~30% |
+| 16. Economia | 3 | 5 | 17 | ~22% |
 | 17. Tela: mapa e mesa | 3 | 2 | 6 | ~35% |
-| **Total** | **32** | **17** | **66** | **~28%** |
+| **Total** | **32** | **18** | **77** | **~25%** |
 
 ---
 
@@ -75,6 +75,9 @@
 - ◐ **R7.6** Temas em pacotes de leis pequenas (41 leis; faltam trabalho, armas, drogas, mídia, campanha, comércio…).
 - ◐ **R7.7** Todo dinheiro passa por lei (8 leis de propriedade ainda sem efeito).
 - ☐ **R7.8** Revogar = propor de volta a "não legislada", com voto.
+- ☐ **R7.9** Colisão: leis que colidem não valem juntas; fora isso, toda combinação vale (build).
+- ☐ **R7.10** Processo: estoque que anda sozinho pelos turnos, empurrado pelas leis em vigor.
+- ☐ **R7.11** Órgão responsável: o jogador não escolhe fazenda ou fábrica; a regra funciona na medida da verba do órgão; verba demais vira corrupção.
 
 ## 8. Bússola
 
@@ -161,6 +164,17 @@
 - ◐ **R16.4** Comércio por tarifa, subsídio e acordo.
 - ◐ **R16.5** Cadeia entre setores (aço → máquinas → veículos).
 - ☐ **R16.6** Setores com regra própria (moradia, remédios, militar).
+
+**Terra e moradia (campo × cidade)**
+- ☐ **R16.17** Moradia é estoque local (formal e precária) e sai do mercado do mundo.
+- ☐ **R16.18** Quem constrói: empresas, governo (lei) e pops (pobre autoconstrói, médio financia, rico investe).
+- ◐ **R16.19** Índices déficit, preço e favela (criados em `variaveis.json`; falta o cálculo).
+- ☐ **R16.20** Leis da cidade em 4 alavancas × 6 lados, com colisões.
+- ☐ **R16.21** Terra rural de donos grandes, pequenos ou parada; concentração muda quanta gente vive do campo.
+- ☐ **R16.22** Êxodo: gente do campo vai à cidade quando a renda esperada lá passa a do campo.
+- ☐ **R16.23** Quem chega à cidade pede casa; sem oferta, sobe déficit e favela.
+- ☐ **R16.24** Leis do campo nos 6 lados, ligadas à cidade só pelo êxodo.
+- ☐ **R16.25** Bem tomado pelo Estado (terra ou empresa) ganha destino por lei: comunidade, Estado ou famílias com título; uma lei por destino (GDD §18, a decidir).
 
 **Construções** (pilar 1)
 - ☐ **R16.7** Construções produzem, empregam e dão lucro; o PIB é a soma delas.

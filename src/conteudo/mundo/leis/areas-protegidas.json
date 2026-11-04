@@ -37,6 +37,12 @@
       "sentido": -1,
       "forca": "fraca",
       "atraso_turnos": 12
+    },
+    {
+      "indice": "preco_moradia",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 12
     }
   ]
 }

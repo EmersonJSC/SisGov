@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "verba-habitacao",
+  "nome": "Verba de habitação",
+  "descricao": "Dinheiro do governo para construir casas e entregar a quem não tem.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.03
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.015,
+    "min": {
+      "economico": 0.1,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.5,
+      "social": 0.1
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "deficit_habitacional",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "favela",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 18
+    }
+  ]
+}

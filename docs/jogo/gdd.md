@@ -270,6 +270,18 @@ alia e o quanto ele se afasta da própria história.
   ser proposta. Lei que não faz sentido no país não aparece.
 - **Revogar** é propor a lei de volta a "não legislada"; também passa pelo
   Congresso.
+- **Um lado por lei.** Cada lei vai de "nada" a "mais" num lado da bússola,
+  nunca de um extremo ao outro. Um tema tem leis nos 6 lados (esquerda,
+  direita, libertário, autoritário, verde, tradicional).
+- **Build:** o jogador combina leis de lados diferentes como quiser. Só
+  leis que **colidem** não valem juntas (teto de aluguel × aluguel livre).
+- **Processo:** estoque que anda sozinho pelos turnos (casas, favelas,
+  terra dividida), empurrado pelas leis em vigor. Não é painel com meta: o
+  extremo da bússola é um caminho, e cada lei anda um pouco nele.
+- **Órgão faz, o jogador não escolhe:** o jogador nunca escolhe a fazenda, a
+  fábrica ou a obra. Lei de regra diz o quê; lei de verba dá força ao órgão
+  responsável. A regra funciona na medida da verba; verba muito acima do
+  necessário vira corrupção.
 
 ## 8. Bússola política
 
@@ -457,8 +469,47 @@ constrói é a economia.
   subsídios e acordos (leis).
 - **Energia e infraestrutura** são capacidade, não estoque: usinas, rede e
   ferrovias contra a demanda. Faltar encarece e trava a indústria.
-- Setores com regra própria: moradia (própria, aluguel, programa do
-  governo), remédios, militar (demanda pelo tamanho das forças).
+- Setores com regra própria: moradia (abaixo), remédios, militar (demanda
+  pelo tamanho das forças).
+
+### Terra e moradia (campo × cidade)
+
+**O que o jogador faz:** escolhe leis de terra no campo e de moradia na
+cidade; as duas pontas se ligam pela gente que se muda.
+
+- **Moradia é estoque local**, não produto do mundo: não se importa casa.
+  Há casa **formal** e **precária** (favela).
+- **Quem constrói:** empresas (pelo lucro), governo (por lei) e pops. Pobre
+  autoconstrói precário, classe média financia, rico investe para alugar.
+- **Três índices:** déficit (famílias sem casa), preço (aluguel e compra
+  contra a renda) e favela (parte das casas que é precária).
+- **Leis da cidade em 4 alavancas** (Construir, Terra urbana, Aluguel,
+  Ocupação), cada uma com leis nos 6 lados; colisões só dentro da mesma
+  alavanca.
+- **Campo:** a terra rural é de donos grandes, de pequenos agricultores ou
+  de ninguém (parada). Quanto mais concentrada, menos gente vive dela.
+- **Êxodo:** todo turno um pouco da gente do campo vai para a cidade quando
+  a renda esperada lá (salário × chance de emprego) passa a do campo.
+  Concentração de terra e máquinas no campo empurram; renda no campo segura.
+- **A ponte:** quem chega à cidade pede casa. Se a cidade não constrói no
+  mesmo ritmo, sobe o déficit; o pobre autoconstrói e sobe a favela.
+- **Reforma agrária é processo, não lei:** terra parada → desapropriada ou
+  comprada → assentamento → título. Cada lei empurra uma etapa.
+- **Antes de toda lei:** "um presidente real assinaria e pronto, ou é um
+  processo?" Se é processo, as leis são as peças que ele assina.
+- **Fazendas em 3 tamanhos** (pequena, média, grande), cada uma com parte
+  produtiva e parte parada. Concentração = parte da terra nas grandes.
+- **Imposto sobre terra e imóvel parado** vai de 0 a 100%, como todo
+  imposto: a curva de Laffer do motor decide quanto arrecada; quem paga
+  vende, produz ou aluga, e a base parada encolhe.
+- **Desapropriar:** o órgão de terras vistoria fazendas (quantas, pela
+  verba); a abaixo da regra entra no prazo de defesa do dono; depois é
+  desapropriada e paga pela lei de indenização.
+- **Leis do campo nos 6 lados** (o que é terra parada, indenização, crédito
+  para comprar terra, título de posse, reserva de mata…). Mexem no campo e, pelo êxodo, na cidade. Lei
+  nenhuma fala das duas: a ligação é a gente.
+- **Tensão:** produzir mais no campo (máquinas, fazenda grande) solta gente
+  para a cidade; dividir a terra segura gente e irrita o dono de terra.
 
 ### Construções
 
@@ -603,6 +654,28 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - Quanto do lucro privado vai aos investidores e quanto à reserva.
 - Custo e prazo de cada tipo de obra (números).
 - Se a verba da estatal é uma lei por estatal ou por setor.
+
+**Terra e moradia**
+- Se o êxodo aparece como índice ou só como gente mudando de pop.
+- Lista das leis do campo nos 6 lados e as colisões delas.
+- Se a desapropriação de terra parada é uma lei só (campo e cidade) ou duas.
+- Números: velocidade do êxodo, custo da casa, ritmo da autoconstrução.
+- **Tomar e dar destino (04/nov):** o Estado toma terra ou empresa
+  (desapropriação, estatização; a Indenização diz quanto paga) e o bem tomado
+  precisa de um destino: **comunidade** (dona coletiva, não vende; esquerda/
+  verde), **Estado** (fica dono e arrenda; autoritário) ou **famílias com
+  título** (direita). Cada destino é uma lei própria, de "nada" a "mais" no seu
+  lado, nunca uma lei de 3 opções. Falta decidir: o que acontece quando duas
+  leis de destino valem juntas (divide? colide?), se empresa e terra usam as
+  mesmas leis, e o que a comunidade produz. Substitui "Dono da terra",
+  "Terra comunal" e "Arrendamento", recusadas (cruzavam a bússola ou
+  dependiam de terra que o Estado ainda não tem).
+
+**Órgãos**
+- Órgãos do Estado como peça do jogo (um fiscal ambiental, um de terras, um
+  de vigilância sanitária…), com verba, necessidade e corrupção. Cada
+  processo tem o seu. Falta decidir: lista, se ficam sob os ministérios
+  (seção 6), se o ministro mexe na força deles, nomes fictícios.
 
 **Mundo**
 - Como um ataque acontece e como termina.

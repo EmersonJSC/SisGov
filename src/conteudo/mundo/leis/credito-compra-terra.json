@@ -1,0 +1,31 @@
+{
+  "versao": 1,
+  "id": "credito-compra-terra",
+  "nome": "Crédito para comprar terra",
+  "descricao": "Empréstimo barato do governo para o pequeno agricultor comprar terra de quem quer vender, pelo preço de mercado.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.01 },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.003,
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.4, "social": -0.1 }
+  },
+  "efeitos": [
+    {
+      "indice": "concentracao_terra",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 8
+    },
+    {
+      "indice": "desigualdade",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 12
+    }
+  ]
+}

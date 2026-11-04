@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "credito-imobiliario",
+  "nome": "Crédito imobiliário",
+  "descricao": "Dinheiro do governo para baixar os juros de quem financia a casa própria.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.005,
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0.1
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "deficit_habitacional",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 8
+    },
+    {
+      "indice": "preco_moradia",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 6
+    }
+  ]
+}

@@ -91,6 +91,26 @@
         "fabrica-de-fora",
         "concorrencia"
       ]
+    },
+    {
+      "id": "terra-e-moradia",
+      "titulo": "Terra e moradia",
+      "curto": "Terra",
+      "cargo": "Agricultura",
+      "faz": "Quem é dono da terra no campo e, depois, a casa na cidade.",
+      "leis": [
+        "teto-tamanho-terra",
+        "imposto-terra-parada",
+        "verba-orgao-terras",
+        "credito-compra-terra",
+        "terra-invadida",
+        "verba-habitacao",
+        "credito-imobiliario",
+        "teto-aluguel",
+        "despejo-rapido",
+        "remocao-area-risco",
+        "titulo-posse"
+      ]
     }
   ]
 }

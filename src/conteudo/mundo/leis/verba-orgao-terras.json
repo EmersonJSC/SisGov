@@ -1,0 +1,31 @@
+{
+  "versao": 1,
+  "id": "verba-orgao-terras",
+  "nome": "Verba do órgão de terras",
+  "descricao": "Dinheiro do governo para o órgão que vistoria a terra parada, desapropria e monta os assentamentos.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.02 },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.005,
+    "min": { "economico": 0.1, "social": 0 },
+    "max": { "economico": -0.5, "social": 0.2 }
+  },
+  "efeitos": [
+    {
+      "indice": "concentracao_terra",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "pobreza",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 18
+    }
+  ]
+}

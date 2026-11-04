@@ -62,6 +62,40 @@ colisões enviada no chat; autor concordou em manter os 3 índices separados.
 lei, processo, colisão, área). O autor quer "mudar algumas coisas antes de
 continuar": esperar o que muda. Falta: criar as 18 leis, o cálculo, tirar
 moradia dos produtores.
+**04/nov (2):** autor aprovou ligar **campo × cidade** pelo êxodo. Anotado no
+GDD (§7 build/colisão/processo; §16 "Terra e moradia"; §18 dúvidas) e nos
+requisitos (R7.9–R7.10, R16.17–R16.24). Índice `concentracao_terra` aprovado e
+criado; os 4 índices novos têm valor de partida nos 2 países (sem isso 12 testes
+quebravam). 229 testes e `tsc -b` verdes. Autor rejeitou "Reforma agrária X%":
+é processo em 4 etapas, leis são as peças. Nova pergunta antes de toda lei:
+"presidente real assinaria e pronto?". Leis do campo refeitas no chat.
+Aprovado: fazendas em 3 tamanhos; vistoria → defesa → desapropriação. Regra nova
+(GDD §7): jogador não escolhe fazenda/fábrica; leis dão verba ao órgão, força pela
+verba, excesso vira corrupção (NÃO "régua que anda"). Órgãos no GDD §18.
+Imposto sobre terra parada: 0–100% com o Laffer que o motor já tem
+(`modelo: laffer`). Autor achou dividido demais: lista enxuta (13 leis, 4
+reaproveitadas: indenizacao, policia-ambiental, areas-protegidas,
+saneamento-basico) enviada no chat. Depois: + "Dono da terra" (essencial,
+opções privada/arrendada/coletiva/do Estado) e + "Teto de tamanho da terra";
+triagem-estrangeira ganha efeito em terra; zoneamento recusado (complexo).
+Lista final de 15 leis e 4 índices no chat: esperando aprovação para criar.
+**04/nov (3):** autor aprovou criar. "Dono da terra" RECUSADA: ia de um lado da
+bússola ao outro. Proposta de troca no chat: "Terra comunal" (V) e "Arrendamento
+de terra pública" (A); a privada é o padrão sem lei; "do Estado" vira caminho.
+Criadas as 5 do campo (`teto-tamanho-terra`, `imposto-terra-parada`,
+`verba-orgao-terras`, `credito-compra-terra`, `terra-invadida`), área nova
+"Terra e moradia" no mapa, base de cálculo `terra` (Laffer, parcela por país);
+indenização vale para terra (só o texto). 234 testes e `tsc -b` verdes, visto na
+tela. Falta no motor: progressividade, corrupção por verba demais, estoques.
+"Terra comunal" e "Arrendamento" descartadas (confusas, dependiam de terra que
+o Estado não tem). No lugar, mecânica **Tomar e dar destino** anotada no GDD
+§18, R16.25 e `arquitetura.md` (peças Órgão e Destino). Criadas as 6 da cidade
+(`verba-habitacao`, `credito-imobiliario` como gasto % PIB e não "% dos juros",
+`teto-aluguel`, `despejo-rapido`, `remocao-area-risco`, `titulo-posse`);
+saneamento ganha favela −, áreas protegidas ganha preço +. Área com 11 leis,
+240 testes e `tsc -b` verdes, visto na tela. Falta: triagem-estrangeira em
+terra, código das colisões (aluguel × despejo; título × remoção), estoques e
+cálculo dos 4 índices, tirar moradia de `produtores.json`.
 
 ## Pendências do autor
 

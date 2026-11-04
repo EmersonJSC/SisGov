@@ -46,7 +46,9 @@ Ordem (`ETAPAS` em `src/motor/turno/index.ts`):
 | **Lei**       | bolha no mapa. Um lado da bússola, de "nada" a "mais". Mexe só em índices | `mundo/leis/*.json`, `motor/leis`      |
 | **Processo**  | estoque que anda sozinho pelos turnos, empurrado pelas leis em vigor. Sem meta nem ritmo. *(ainda sem código)* | —                                      |
 | **Colisão**   | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. *(ainda sem código)* | —                                      |
-| **Área**      | tema que junta índices, processos e leis. Moradia é a primeira. *(ainda sem código)* | —                                      |
+| **Área**      | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma | `mundo/areas/areas.json`               |
+| **Órgão**     | quem executa uma regra. A verba (lei contínua, % do PIB) dá a força; verba demais vira corrupção. O jogador nunca escolhe a fazenda ou a fábrica. *(ainda sem código)* | —                                      |
+| **Destino**   | o que vira o bem que o Estado toma (comunidade, Estado, famílias). Uma lei por destino. *(a decidir, GDD §18)* | —                                      |
 | **Pop**       | fatia da população: profissão num estrato                               | `mundo/pops`, `motor/populacao`        |
 | **Grupo**     | junta pops; gosta ou não de uma lei pela distância na bússola           | `mundo/grupos`, `motor/grupos`         |
 
@@ -61,7 +63,7 @@ extremo da bússola é um caminho: cada lei anda um pouco nele.
 | Módulo                                         | Uma linha                                        |
 | ---------------------------------------------- | ------------------------------------------------ |
 | [acaso](../../src/motor/acaso/acaso.md)        | sorteio com semente                              |
-| [calculos](../../src/motor/calculos/calculos.md) | bases de cálculo (renda, juros)                |
+| [calculos](../../src/motor/calculos/calculos.md) | bases de cálculo (renda, consumo, lucro, emissões, terra; Laffer) |
 | [contas](../../src/motor/contas/contas.md)     | Tesouro: receita, gasto, juros, cofre, dívida    |
 | [efeitos](../../src/motor/efeitos/efeitos.md)  | leis contribuem pontos para os índices, com atraso |
 | [eleicao](../../src/motor/eleicao/eleicao.md)  | mandato, desgaste, apuração                      |

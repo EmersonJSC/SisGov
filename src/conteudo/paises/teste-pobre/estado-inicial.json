@@ -36,6 +36,10 @@
     "polarizacao": 55,
     "meio_ambiente": 45,
     "reputacao_internacional": 95.75,
+    "deficit_habitacional": 35,
+    "preco_moradia": 60,
+    "favela": 30,
+    "concentracao_terra": 70,
     "popularidade_governo": 50
   },
   "opinioes": {
@@ -66,6 +70,11 @@
         "parcela_pib": 0.05,
         "pico": 0.3,
         "evasao": 0.4
+      },
+      "terra": {
+        "parcela_pib": 0.06,
+        "pico": 0.4,
+        "evasao": 0.25
       }
     },
     "crescimento": {

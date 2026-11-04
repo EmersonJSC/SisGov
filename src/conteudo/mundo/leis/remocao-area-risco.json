@@ -1,0 +1,103 @@
+{
+  "versao": 1,
+  "id": "remocao-area-risco",
+  "nome": "Remoção de área de risco",
+  "descricao": "De onde o governo pode tirar quem mora em casa precária.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "Não remove",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "alcance": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-risco",
+      "rotulo": "Só área de risco",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "valores": {
+        "alcance": 1
+      },
+      "efeitos": [
+        {
+          "indice": "favela",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "area-publica",
+      "rotulo": "Risco e área pública",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.4
+      },
+      "valores": {
+        "alcance": 2
+      },
+      "efeitos": [
+        {
+          "indice": "favela",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "qualquer",
+      "rotulo": "Qualquer área",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.7
+      },
+      "valores": {
+        "alcance": 3
+      },
+      "efeitos": [
+        {
+          "indice": "favela",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

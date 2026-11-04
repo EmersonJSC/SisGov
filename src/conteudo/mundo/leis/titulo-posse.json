@@ -1,0 +1,91 @@
+{
+  "versao": 1,
+  "id": "titulo-posse",
+  "nome": "Título de posse",
+  "descricao": "Em quantos anos quem ocupa e usa uma terra ou casa sem dono vira dono dela.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-titulo",
+      "rotulo": "Não vira dono",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "anos": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "dez-anos",
+      "rotulo": "Dez anos",
+      "bussola": {
+        "economico": 0.1,
+        "social": -0.2
+      },
+      "valores": {
+        "anos": 10
+      },
+      "efeitos": [
+        {
+          "indice": "favela",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "cinco-anos",
+      "rotulo": "Cinco anos",
+      "bussola": {
+        "economico": 0.2,
+        "social": -0.4
+      },
+      "valores": {
+        "anos": 5
+      },
+      "efeitos": [
+        {
+          "indice": "favela",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "concentracao_terra",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "dois-anos",
+      "rotulo": "Dois anos",
+      "bussola": {
+        "economico": 0.3,
+        "social": -0.6
+      },
+      "valores": {
+        "anos": 2
+      },
+      "efeitos": [
+        {
+          "indice": "favela",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "concentracao_terra",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

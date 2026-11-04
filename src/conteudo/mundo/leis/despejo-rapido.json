@@ -1,0 +1,91 @@
+{
+  "versao": 1,
+  "id": "despejo-rapido",
+  "nome": "Despejo rápido",
+  "descricao": "Em quanto tempo o dono pode tirar quem não paga o aluguel.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "justica-comum",
+      "rotulo": "Na justiça comum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "meses": 12
+      },
+      "efeitos": []
+    },
+    {
+      "id": "seis-meses",
+      "rotulo": "Seis meses",
+      "bussola": {
+        "economico": 0.2,
+        "social": -0.1
+      },
+      "valores": {
+        "meses": 6
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "tres-meses",
+      "rotulo": "Três meses",
+      "bussola": {
+        "economico": 0.3,
+        "social": -0.3
+      },
+      "valores": {
+        "meses": 3
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "favela",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "um-mes",
+      "rotulo": "Um mês",
+      "bussola": {
+        "economico": 0.4,
+        "social": -0.5
+      },
+      "valores": {
+        "meses": 1
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "favela",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}
