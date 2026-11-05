@@ -18,7 +18,7 @@
   estado de cada lei ficam no `RETOMAR.md`.
 - **Ordem do que falta** (um por vez; o próximo só abre quando o anterior
   fecha jogável):
-  1. Avaliação dos índices: Saúde (11 das 19 leis faltam, GDD §18), Educação
+  1. Avaliação dos índices: Saúde (1 das 19 leis falta, GDD §18), Educação
      e os demais.
   2. 12b pilar 1 — Construções.
   3. 12b pilar 2 — Empresas e dono.

@@ -606,6 +606,9 @@ export function leisDoAtendimento(
     disputa: parteDaLei(regras, valores, regra.lei_gestao, "disputa"),
     missao: parteDaLei(regras, valores, regra.lei_missao),
     ambiental: parteDaLei(regras, valores, regra.lei_ambiental),
+    programa: parteDaLei(regras, valores, regra.lei_vacina),
+    obrigacao: parteDaLei(regras, valores, regra.lei_vacina, "obrigacao"),
+    recusa: parteDaLei(regras, valores, regra.lei_recusa),
   };
 }
 
@@ -883,6 +886,10 @@ const atendimento: Etapa = (regras, estado) => {
       [regra.indice_vida]: base[regra.indice_vida] - fraqueza + s.fraqueza,
       [regra.indice_industria]:
         base[regra.indice_industria] - nova.industria + s.industria,
+      [regra.indice_vacina]:
+        base[regra.indice_vacina] + (nova.vacina - s.vacina) * 100,
+      [regra.indice_liberdade]:
+        base[regra.indice_liberdade] + nova.liberdade - s.liberdade,
     },
   };
 };
@@ -1322,6 +1329,8 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.indice_desigualdade,
       r.indice_vida,
       r.indice_informal,
+      r.indice_vacina,
+      r.indice_liberdade,
     ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: atendimento: o índice "${id}" não existe`);
@@ -1350,6 +1359,8 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.lei_carreira,
       r.lei_missao,
       r.lei_ambiental,
+      r.lei_vacina,
+      r.lei_recusa,
       ...r.leis_alcance,
     ])
       if (regras.leis[id]?.forma !== "opcoes")
@@ -1502,6 +1513,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
         parteAbaixoDe(comPops.pops, r.renda_plano * rendaMedia(comPops.pops)),
       na_folha: pessoasNaFolha(r, comPops.pops, populacao),
       informal: indiceDoInformal(r, comPops.pops, populacao),
+      vacina: comPops.jogabilidade[r.indice_vacina],
     });
     const teto = indiceDoAtendimento(r, {
       populacao,

@@ -284,6 +284,11 @@ function ligacoes(
     seta(r.lei_missao, r.indice_reputacao, 1);
     seta(r.lei_ambiental, r.indice_vida, 1);
     seta(r.lei_ambiental, r.indice_industria, -1);
+    seta(r.lei_vacina, r.indice_vacina, 1);
+    seta(r.lei_vacina, r.indice_liberdade, -1);
+    seta(r.lei_recusa, r.indice_vacina, -1);
+    seta(r.lei_recusa, r.indice_liberdade, 1);
+    seta(r.indice, r.indice_vacina, 1);
     for (const id of r.leis_alcance) {
       seta(id, r.indice, 1);
       const lei = leis.find((l) => l.id === id);

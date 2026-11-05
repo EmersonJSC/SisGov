@@ -248,6 +248,8 @@ function previaDoAtendimento(
     regra.lei_carreira,
     regra.lei_missao,
     regra.lei_ambiental,
+    regra.lei_vacina,
+    regra.lei_recusa,
     ...regra.leis_alcance,
   ];
   if (!leis.includes(leiId)) return [];
@@ -310,6 +312,18 @@ function previaDoAtendimento(
       atrasoMeses: 0,
       aosPoucos: true,
     },
+    {
+      id: regra.indice_vacina,
+      pontos: pontos.vacina,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_liberdade,
+      pontos: pontos.liberdade,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
     { id: regra.indice_desvio, pontos: pontos.desvio, atrasoMeses },
     {
       id: regra.indice_desigualdade,
@@ -338,6 +352,14 @@ function previaDoAtendimento(
           TAXA_DERIVA[d.forca] *
           (pontos.rede + pontos.planos + pontos.cuidado),
         atrasoMeses,
+        aosPoucos: true,
+      })),
+    ...(regras.derivas ?? [])
+      .filter((d) => d.por === regra.indice_vacina)
+      .map((d) => ({
+        id: d.indice,
+        pontos: d.sentido * TAXA_DERIVA[d.forca] * pontos.vacina,
+        atrasoMeses: 0,
         aosPoucos: true,
       })),
   ];

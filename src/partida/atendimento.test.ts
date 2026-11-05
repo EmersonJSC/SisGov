@@ -240,6 +240,38 @@ describe("leis da rede: cada uma tem ganho e custo", () => {
     expect(custo(com)).toBeGreaterThan(0);
   });
 
+  it("vacinação: sobe a cobertura e a saúde, e a obrigação pesa nas liberdades", () => {
+    const com = depois({ "programa-vacinacao": "obrigatoria" });
+    expect(com.jogabilidade.vacinacao).toBeGreaterThan(
+      depois().jogabilidade.vacinacao + 1,
+    );
+    expect(com.jogabilidade.saude).toBeGreaterThan(depois().jogabilidade.saude);
+    expect(com.jogabilidade.liberdade_civil).toBeLessThan(
+      depois().jogabilidade.liberdade_civil - 1,
+    );
+    expect(custo(com)).toBeGreaterThan(0);
+  });
+
+  it("vacinação: a rede fraca alcança menos", () => {
+    const ganho = (pais: string) =>
+      depois({ "programa-vacinacao": "obrigatoria" }, pais).jogabilidade
+        .vacinacao - depois({}, pais).jogabilidade.vacinacao;
+    const parteDe = (pais: string) =>
+      ganho(pais) / (100 - partida(pais).estado.jogabilidade.vacinacao);
+    expect(parteDe("teste-pobre")).toBeLessThan(parteDe("teste"));
+  });
+
+  it("direito de recusar: sobe as liberdades e baixa a cobertura e a saúde", () => {
+    const com = depois({ "direito-recusar": "livre" });
+    expect(com.jogabilidade.liberdade_civil).toBeGreaterThan(
+      depois().jogabilidade.liberdade_civil + 1,
+    );
+    expect(com.jogabilidade.vacinacao).toBeLessThan(
+      depois().jogabilidade.vacinacao - 1,
+    );
+    expect(com.jogabilidade.saude).toBeLessThan(depois().jogabilidade.saude);
+  });
+
   it("o custo entra no gasto do governo", () => {
     const com = depois({ "saude-ambiental": "todo-o-territorio" });
     expect(
@@ -265,12 +297,20 @@ describe("leis da rede: cada uma tem ganho e custo", () => {
     expect(
       pontosDe("saude-ambiental", "todo-o-territorio", "industrializacao"),
     ).toBeLessThan(0);
+    expect(
+      pontosDe("programa-vacinacao", "obrigatoria", "vacinacao"),
+    ).toBeGreaterThan(0);
+    expect(
+      pontosDe("programa-vacinacao", "obrigatoria", "liberdade_civil"),
+    ).toBeLessThan(0);
+    expect(pontosDe("direito-recusar", "livre", "saude")).toBeLessThan(0);
   });
 
   it("as leis que colidem não valem juntas", () => {
     const regras = partida().regras.colisoes ?? [];
     expect(regras).toContainEqual(["cobertura-gratuita", "coparticipacao"]);
     expect(regras).toContainEqual(["carreira-exclusiva", "gestao-privada"]);
+    expect(regras).toContainEqual(["programa-vacinacao", "direito-recusar"]);
   });
 });
 

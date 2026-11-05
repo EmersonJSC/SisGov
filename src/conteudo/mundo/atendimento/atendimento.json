@@ -11,6 +11,8 @@
   "indice_reputacao": "reputacao_internacional",
   "indice_industria": "industrializacao",
   "indice_ambiente": "meio_ambiente",
+  "indice_vacina": "vacinacao",
+  "indice_liberdade": "liberdade_civil",
   "pop_profissionais": "profissionais-saude",
   "pop_origem": "servicos-basicos",
   "lei_verba": "gasto-saude",
@@ -33,6 +35,8 @@
   "lei_gestao": "gestao-privada",
   "lei_missao": "missoes-medicas",
   "lei_ambiental": "saude-ambiental",
+  "lei_vacina": "programa-vacinacao",
+  "lei_recusa": "direito-recusar",
   "pops_folha": [
     "operarios-fabrica",
     "operarios-obra",
@@ -82,5 +86,8 @@
   "reputacao_missao": 40,
   "custo_ambiental": 0.01,
   "vida_ambiental": 10,
-  "industria_ambiental": 6
+  "industria_ambiental": 6,
+  "custo_vacina": 0.004,
+  "liberdade_obrigacao": 8,
+  "liberdade_recusa": 30
 }

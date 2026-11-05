@@ -685,9 +685,9 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   Seguro na folha (4 níveis, de sem seguro até formais e família), Cobertura
   gratuita (4 níveis, de só urgência até tudo para todos), Coparticipação, Dedução
   do plano, Conta de saúde, Filantrópicos, Carreira exclusiva, Gestão privada,
-  Missões médicas e Saúde ambiental (05/nov, 4 níveis cada).
-  Faltam, em Como prevenir: Direito de recusar, Vacinação e Imposto sobre vícios;
-  essas três esperam decisão do autor. Colisões:
+  Missões médicas, Saúde ambiental, Vacinação e Direito de recusar (05/nov, 4
+  níveis cada). Falta, em Como prevenir: Imposto sobre vícios, que espera decisão
+  do autor. Colisões:
   Cobertura × Coparticipação, Carreira × Gestão, Vacinação × Recusar, Limite ×
   Dedução, Seguro × Conta, Conta × Cobertura.
 - **Formação de profissionais (04/nov):** fica na área da educação, não na

@@ -9,17 +9,17 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 Frente atual: **avaliar os índices, um por vez** (lista em
 [docs/jogo/indices-avaliacao.md](docs/jogo/indices-avaliacao.md)). Favela e
-saneamento fechados. **Saúde em andamento**, tratada como área: 16 das 19 leis
-feitas e commitadas. `npx tsc -b`
-limpo, 365 testes passando. Número sem balanço.
+saneamento fechados. **Saúde em andamento**, tratada como área: 18 das 19 leis
+feitas e commitadas, com o índice `vacinacao`.
+`npx tsc -b` limpo, 370 testes passando. Número sem balanço.
 
 | Grupo | Feitas | Faltam |
 |---|---|---|
 | Quem paga | Verba, Abertura de planos, Limite aos planos, Seguro na folha, Cobertura gratuita, Coparticipação, Dedução do plano, Conta de saúde, Filantrópicos | |
 | Quem atende | Telemedicina livre, Serviço obrigatório, Carreira exclusiva, Gestão privada, Missões médicas | |
-| Como prevenir | Atenção preventiva, Saúde ambiental | Direito de recusar, Vacinação, Imposto sobre vícios |
+| Como prevenir | Atenção preventiva, Saúde ambiental, Vacinação, Direito de recusar | Imposto sobre vícios |
 
-Colisões feitas: todas, menos Vacinação × Recusar. Valem juntas: Seguro +
+Colisões feitas: todas. Valem juntas: Seguro +
 Cobertura, Conta + Coparticipação.
 
 Como funciona a rede: `src/motor/atendimento/atendimento.md`. O que as leis custam
@@ -27,10 +27,12 @@ ou trazem fora da verba fica em `atendimento.custo` e entra no gasto do governo.
 
 ## Próximo
 
-Decisão do autor sobre as 3 leis que faltam: Vacinação e Direito de recusar pedem peça ou índice novo, e o
-Imposto sobre vícios precisa dizer sobre o que incide. Fechada a saúde: Saúde vai
-para "Avaliados", e a próxima área é a Educação (com vagas públicas, faculdades
-privadas e diploma estrangeiro, GDD §18). As rodadas até 05/nov estão em
+Fechar a saúde: Imposto sobre vícios (proposta no chat), Saúde para "Avaliados" e
+`npm run check`. Depois, o autor quer **replanejar sem código**: rever GDD, requisitos
+e arquitetura, e transformar saúde e saneamento numa mecânica só, as **redes**, motor
+de algumas esferas do Estado. Fases grandes aprovadas: Serviços do Estado, Economia
+real, Política, Mundo e conflito, Fechamento. As rodadas
+até 05/nov estão em
 [docs/historico/retomar.md](docs/historico/retomar.md).
 
 ## Pontos em aberto da saúde
@@ -52,7 +54,7 @@ Caminhos até a casa, organizações criminosas (GDD §18), campo e a fila da te
 ## Pendências do autor
 
 - Jogar o Pregão (botão "Bolsa").
-- 92 commits locais sem push (push só com a palavra do autor).
+- 93 commits locais sem push (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
 - Antes de publicar o jogo: checar com advogado.
 - Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.

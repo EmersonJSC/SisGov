@@ -10,6 +10,7 @@
     ["carreira-exclusiva", "gestao-privada"],
     ["limite-planos", "deducao-plano"],
     ["seguro-folha", "conta-saude"],
-    ["conta-saude", "cobertura-gratuita"]
+    ["conta-saude", "cobertura-gratuita"],
+    ["programa-vacinacao", "direito-recusar"]
   ]
 }

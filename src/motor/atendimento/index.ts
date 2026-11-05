@@ -53,6 +53,10 @@ export interface RegraDoAtendimento {
   lei_missao: string;
   /** Lei de opções da vigilância; `valores.parte` é o alcance dela. */
   lei_ambiental: string;
+  /** Lei de opções do programa; `valores.parte` é o alcance, `valores.obrigacao` a cobrança. */
+  lei_vacina: string;
+  /** Lei de opções da recusa; `valores.parte` é quem pode recusar e recusa. */
+  lei_recusa: string;
   /** Pops com salário em folha: quem o seguro cobre. */
   pops_folha: string[];
   /** Pops que perdem emprego formal quando a folha encarece. */
@@ -109,6 +113,16 @@ export interface RegraDoAtendimento {
   indice_industria: string;
   /** Índice do ambiente: quanto pior, mais a vigilância rende. */
   indice_ambiente: string;
+  /** Parte das pessoas vacinadas. */
+  indice_vacina: string;
+  /** Índice que a obrigação tira e a recusa devolve. */
+  indice_liberdade: string;
+  /** Fração do PIB que o programa inteiro custa. */
+  custo_vacina: number;
+  /** Pontos do índice de liberdade que a obrigação inteira tira. */
+  liberdade_obrigacao: number;
+  /** Pontos do índice de liberdade que a recusa inteira soma. */
+  liberdade_recusa: number;
   /** Verba por ano (fração do PIB) que a cobrança traz, com todos pagando tudo. */
   receita_cobranca: number;
   /** Fração do PIB que o governo deixa de arrecadar, por plano e por dedução inteira. */
@@ -181,6 +195,14 @@ export interface AtendimentoNoEstado {
   missao: number;
   /** Alcance da vigilância ambiental, hoje (0 a 1). */
   ambiental: number;
+  /** Alcance do programa de vacinação, hoje (0 a 1). */
+  programa: number;
+  /** Parte das pessoas vacinadas, hoje (0 a 1). */
+  vacina: number;
+  /** Parte que se vacina sem programa nenhum (0 a 1). */
+  vacina_fora: number;
+  /** Pontos que a obrigação e a recusa somam ao índice de liberdade. */
+  liberdade: number;
   /** Fração do PIB que a rede custa ao governo fora da verba (negativa: traz). */
   custo: number;
   /** Pontos que as missões somam ao índice de reputação. */
@@ -230,6 +252,12 @@ export interface LeisDoAtendimento {
   missao: number;
   /** Alcance da vigilância ambiental (0 a 1). */
   ambiental: number;
+  /** Parte de quem não se vacina que o programa alcança (0 a 1). */
+  programa: number;
+  /** Quanto o programa obriga (0 a 1). */
+  obrigacao: number;
+  /** Parte das pessoas que recusa a vacina (0 a 1). */
+  recusa: number;
 }
 
 export interface Rede {
@@ -441,6 +469,21 @@ export function desigualdadeDaRede(
   );
 }
 
+/**
+ * Parte das pessoas vacinadas com estas leis. Quem vacina é a rede: o programa só
+ * alcança quem ela atende, e quem recusa fica de fora.
+ */
+const vacinaAlvo = (
+  leis: LeisDoAtendimento,
+  fora: number,
+  atendidos: number,
+) => (fora + leis.programa * (1 - fora) * atendidos) * (1 - leis.recusa);
+
+/** Pontos do índice de liberdade com estas leis. */
+const liberdadeAlvo = (regra: RegraDoAtendimento, leis: LeisDoAtendimento) =>
+  leis.recusa * regra.liberdade_recusa -
+  leis.obrigacao * regra.liberdade_obrigacao;
+
 /** Fração do PIB que a rede custa ao governo fora da verba; negativa, ela traz. */
 function custoDaRede(
   regra: RegraDoAtendimento,
@@ -453,6 +496,7 @@ function custoDaRede(
     | "disputa"
     | "missao"
     | "ambiental"
+    | "programa"
   >,
   deducao: number,
   cobertos: number,
@@ -461,7 +505,8 @@ function custoDaRede(
     (s.planos - s.seguro) * deducao * regra.custo_deducao +
     s.filantropia * regra.custo_filantropia +
     (s.reserva + s.disputa) * cobertos * regra.custo_carreira +
-    s.ambiental * regra.custo_ambiental -
+    s.ambiental * regra.custo_ambiental +
+    s.programa * regra.custo_vacina -
     s.missao * cobertos * regra.receita_missao
   );
 }
@@ -491,10 +536,12 @@ export function atendimentoInicial(
     na_folha: number;
     /** Índice do emprego informal. */
     informal: number;
+    /** Índice da vacinação. */
+    vacina: number;
   },
 ): AtendimentoNoEstado {
   const { populacao, profissionais, leis } = pais;
-  const { filantropia, reserva, disputa, missao, ambiental } = leis;
+  const { filantropia, reserva, disputa, missao, ambiental, programa } = leis;
   const privados = planosAlvo(regra, leis, pais.com_bolso);
   const seguro = seguroAlvo(leis, privados, pais.na_folha, pais.com_bolso);
   const planos = privados + seguro;
@@ -513,6 +560,8 @@ export function atendimentoInicial(
     (Math.max(0, pais.atendimento - soPlanos) / 100) *
     populacao *
     (1 + procura);
+  const vacinados = pais.vacina / 100 / (1 - leis.recusa);
+  const alcancados = (programa * pais.atendimento) / 100;
   return {
     vagas,
     vagas_fora:
@@ -553,9 +602,22 @@ export function atendimentoInicial(
     disputa,
     missao,
     ambiental,
+    programa,
+    vacina: pais.vacina / 100,
+    vacina_fora: Math.max(0, (vacinados - alcancados) / (1 - alcancados)),
+    liberdade: liberdadeAlvo(regra, leis),
     custo: custoDaRede(
       regra,
-      { planos, seguro, filantropia, reserva, disputa, missao, ambiental },
+      {
+        planos,
+        seguro,
+        filantropia,
+        reserva,
+        disputa,
+        missao,
+        ambiental,
+        programa,
+      },
       leis.deducao,
       indiceDosProfissionais(regra, profissionais, populacao) / 100,
     ),
@@ -615,6 +677,7 @@ export function andarAtendimento(
     disputa: anda(s.disputa, turno.leis.disputa),
     missao: anda(s.missao, turno.leis.missao),
     ambiental: anda(s.ambiental, turno.leis.ambiental),
+    programa: anda(s.programa, turno.leis.programa),
   };
   return {
     ...s,
@@ -629,6 +692,11 @@ export function andarAtendimento(
     ),
     reputacao: andados.missao * regra.reputacao_missao,
     industria: andados.ambiental * regra.industria_ambiental,
+    vacina: anda(
+      s.vacina,
+      vacinaAlvo(turno.leis, s.vacina_fora, s.indice / 100),
+    ),
+    liberdade: anda(s.liberdade, liberdadeAlvo(regra, turno.leis)),
     encargo: anda(s.encargo, turno.leis.informal),
     procura: anda(s.procura, procuraAlvo(turno.leis, turno.com_bolso)),
     cobertura:
@@ -742,5 +810,10 @@ export function pontosDoAtendimento(
     fraqueza: diferenca(fraquezaDaRede),
     reputacao: (depois.missao - antes.missao) * regra.reputacao_missao,
     industria: (depois.ambiental - antes.ambiental) * regra.industria_ambiental,
+    vacina:
+      (vacinaAlvo(depois, s.vacina_fora, s.indice / 100) -
+        vacinaAlvo(antes, s.vacina_fora, s.indice / 100)) *
+      100,
+    liberdade: liberdadeAlvo(regra, depois) - liberdadeAlvo(regra, antes),
   };
 }

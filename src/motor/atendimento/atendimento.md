@@ -79,6 +79,16 @@ Saúde ambiental: `valores.parte` soma pontos ao índice de vida, mais quanto pi
 índice do ambiente (`vida_ambiental`). Custa verba (`custo_ambiental`) e tira pontos
 do índice de indústria (`industria_ambiental`).
 
+Vacinação: o índice `indice_vacina` conta quem está vacinado, e empurra a saúde pela
+deriva. O programa traz `valores.parte` (parte de quem não se vacina que ele alcança)
+e `valores.obrigacao`. Quem vacina é a rede: só alcança na medida do índice de
+atendimento, então a rede fraca rende menos. Custa verba (`custo_vacina`), e a
+obrigação tira pontos do índice de liberdade (`liberdade_obrigacao`). `vacina_fora`
+guarda quem se vacina sem programa.
+
+Direito de recusar: `valores.parte` é quem recusa, tirado da cobertura. Soma pontos
+ao índice de liberdade (`liberdade_recusa`).
+
 O que essas leis custam ou trazem fica em `custo`, fração do PIB que entra no gasto
 do governo, sem lei de verba.
 

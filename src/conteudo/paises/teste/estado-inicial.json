@@ -26,6 +26,7 @@
     "industrializacao": 40,
     "saude": 50,
     "atendimento": 55,
+    "vacinacao": 70,
     "profissionais_saude": 75,
     "emprego_informal": 9,
     "seguranca": 45,

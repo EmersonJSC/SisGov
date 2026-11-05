@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "direito-recusar",
+  "nome": "Direito de recusar",
+  "descricao": "Quem pode dizer não à vacina. Soma às liberdades; mas quem recusa fica sem proteção, e a saúde de todos sente.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-recusa",
+      "rotulo": "Sem recusa",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "motivo-medico",
+      "rotulo": "Só por motivo médico",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "valores": {
+        "parte": 0.02
+      },
+      "efeitos": []
+    },
+    {
+      "id": "motivo-de-crenca",
+      "rotulo": "Por motivo de crença",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "valores": {
+        "parte": 0.08
+      },
+      "efeitos": []
+    },
+    {
+      "id": "livre",
+      "rotulo": "Livre para todos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "valores": {
+        "parte": 0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

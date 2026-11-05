@@ -45,6 +45,12 @@
       "forca": "media"
     },
     {
+      "indice": "saude",
+      "por": "vacinacao",
+      "sentido": 1,
+      "forca": "media"
+    },
+    {
       "indice": "pobreza",
       "por": "saude",
       "sentido": -1,

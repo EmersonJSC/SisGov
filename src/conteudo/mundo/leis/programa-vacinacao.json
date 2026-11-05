@@ -1,0 +1,62 @@
+{
+  "versao": 1,
+  "id": "programa-vacinacao",
+  "nome": "Vacinação",
+  "descricao": "Até onde o Estado leva a vacina e cobra quem não toma. Só alcança quem a rede atende; custa verba, e a obrigação pesa nas liberdades.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-programa",
+      "rotulo": "Sem programa",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0,
+        "obrigacao": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "campanhas",
+      "rotulo": "Campanhas",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "valores": {
+        "parte": 0.3,
+        "obrigacao": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "calendario-escolar",
+      "rotulo": "Calendário nas escolas",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "valores": {
+        "parte": 0.6,
+        "obrigacao": 0.3
+      },
+      "efeitos": []
+    },
+    {
+      "id": "obrigatoria",
+      "rotulo": "Obrigatória para escola e emprego",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "valores": {
+        "parte": 0.8,
+        "obrigacao": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

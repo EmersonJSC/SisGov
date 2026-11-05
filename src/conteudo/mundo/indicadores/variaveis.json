@@ -348,6 +348,24 @@
       }
     },
     {
+      "id": "vacinacao",
+      "tipo": "calculado",
+      "nome": "Vacinação",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% de pessoas vacinadas",
+        "zero": 0,
+        "cem": 100
+      }
+    },
+    {
       "id": "profissionais_saude",
       "tipo": "calculado",
       "nome": "Profissionais de saúde",
