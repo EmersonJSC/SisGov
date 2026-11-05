@@ -67,6 +67,7 @@ import {
 import {
   andarAtendimento,
   atendimentoInicial,
+  desvioDaRede,
   fluxoDeProfissionais,
   indiceDoAtendimento,
   indiceDosProfissionais,
@@ -743,14 +744,18 @@ const atendimento: Etapa = (regras, estado) => {
     ritmo: ritmoDasObras(regras, estado),
     com_bolso: comBolsoParaPlano(regra, estado),
   });
-  const { formados, param, emigrados } = fluxoDeProfissionais(regra, s, {
-    populacao,
-    profissionais: pop.pessoas,
-    instrucao: instrucao0 > 0 ? instrucao / instrucao0 : 1,
-    renda: renda0
-      ? (pop.renda * 100) / estado.essenciais.indice_precos / renda0
-      : 1,
-  });
+  const { turmas, formados, param, emigrados } = fluxoDeProfissionais(
+    regra,
+    s,
+    {
+      populacao,
+      profissionais: pop.pessoas,
+      instrucao: instrucao0 > 0 ? instrucao / instrucao0 : 1,
+      renda: renda0
+        ? (pop.renda * 100) / estado.essenciais.indice_precos / renda0
+        : 1,
+    },
+  );
   const profissionais = pop.pessoas + formados - param - emigrados;
   const novaPopulacao = populacao - emigrados;
   const troca = (formados - param - emigrados) / populacao;
@@ -760,12 +765,14 @@ const atendimento: Etapa = (regras, estado) => {
       (estado.migracao?.[regra.pop_profissionais] ?? 0) + troca,
     [regra.pop_origem]: (estado.migracao?.[regra.pop_origem] ?? 0) - troca,
   };
-  const indice = indiceDoAtendimento(regra, {
+  const rede = {
     populacao: novaPopulacao,
     profissionais,
     vagas: nova.vagas,
     planos: nova.planos,
-  });
+  };
+  const indice = indiceDoAtendimento(regra, rede);
+  const desvio = desvioDaRede(regra, rede);
   const indice_profissionais = indiceDosProfissionais(
     regra,
     profissionais,
@@ -776,7 +783,7 @@ const atendimento: Etapa = (regras, estado) => {
     ...estado,
     essenciais: { ...estado.essenciais, populacao: novaPopulacao },
     migracao,
-    atendimento: { ...nova, indice, indice_profissionais },
+    atendimento: { ...nova, turmas, indice, indice_profissionais, desvio },
     base: {
       ...base,
       [regra.indice]: base[regra.indice] + indice - s.indice,
@@ -784,6 +791,7 @@ const atendimento: Etapa = (regras, estado) => {
         base[regra.indice_profissionais] +
         indice_profissionais -
         s.indice_profissionais,
+      [regra.indice_desvio]: base[regra.indice_desvio] + desvio - s.desvio,
     },
   };
 };
@@ -1210,7 +1218,12 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   if (regras.atendimento) {
     const r = regras.atendimento;
     if (!obras) throw new Error("mundo: atendimento precisa das obras");
-    for (const id of [r.indice, r.indice_profissionais, r.indice_instrucao])
+    for (const id of [
+      r.indice,
+      r.indice_profissionais,
+      r.indice_instrucao,
+      r.indice_desvio,
+    ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: atendimento: o índice "${id}" não existe`);
     for (const id of [r.pop_profissionais, r.pop_origem])

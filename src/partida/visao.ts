@@ -254,6 +254,7 @@ function ligacoes(
         mecanismo: "afim",
       });
     seta(r.lei_verba, r.indice, 1);
+    seta(r.lei_verba, r.indice_desvio, 1);
     seta(r.lei_abertura, r.indice, 1);
     seta(r.lei_abertura, r.indice_profissionais, -1);
     seta(r.lei_limite, r.indice, -1);

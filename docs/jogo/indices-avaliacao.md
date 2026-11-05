@@ -9,10 +9,10 @@ ligado ou criado e ainda não passou por avaliação entra em **Não avaliados**
 
 ## Avaliados
 
-| Índice | Movido por | Empurra | Cobrado por | Data |
-|---|---|---|---|---|
-| Favela (`favela`) | contagem de casas, preço contra a renda dos pops, leis de moradia | piora saúde, segurança e saneamento | sem trabalho formal | 04/nov/2026 |
-| Saneamento (`saneamento`) | contagem da rede (verba, concessão, teto da tarifa, tratamento), conta contra a renda dos pops, favela | melhora saúde e meio ambiente | sem trabalho formal, gente do campo | 04/nov/2026 |
+| Índice                    | Movido por                                                                                             | Empurra                             | Cobrado por                         | Data        |
+| ------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------- | ----------- |
+| Favela (`favela`)         | contagem de casas, preço contra a renda dos pops, leis de moradia                                      | piora saúde, segurança e saneamento | sem trabalho formal                 | 04/nov/2026 |
+| Saneamento (`saneamento`) | contagem da rede (verba, concessão, teto da tarifa, tratamento), conta contra a renda dos pops, favela | melhora saúde e meio ambiente       | sem trabalho formal, gente do campo | 04/nov/2026 |
 
 ## Não avaliados
 
@@ -21,7 +21,7 @@ Ligados ou criados pelas avaliações da favela e do saneamento:
 - Saúde (`saude`): em avaliação. Já é movida pela rede de atendimento; faltam 16
   das 19 leis da área.
 - Atendimento (`atendimento`): quem é atendido; o resto é a fila da saúde.
-- Médicos por habitante (`profissionais_saude`): profissionais contra o que o
+- Profissionais de saúde (`profissionais_saude`): profissionais contra o que o
   país precisa; hoje saem de `instrucao`, depois da rede escolar.
 - Segurança (`seguranca`)
 - Meio ambiente (`meio_ambiente`)

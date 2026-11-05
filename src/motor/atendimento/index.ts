@@ -22,7 +22,9 @@ export interface RegraDoAtendimento {
   lei_limite: string;
   /** Pessoas que um profissional atende. */
   pessoas_por_profissional: number;
-  /** Verba por ano de uma vaga, em anos de PIB por pessoa. */
+  /** Índice que recebe a verba parada em vagas sem atendimento. */
+  indice_desvio: string;
+  /** Verba por ano (fração do PIB) que cobre 63% do país; cada vaga custa mais que a anterior. */
   custo_vaga: number;
   /** Trabalho da obra de uma vaga no setor, em anos de PIB por pessoa. */
   custo_obra: number;
@@ -42,6 +44,10 @@ export interface RegraDoAtendimento {
   aposentadoria: number;
   /** Parte que emigra por ano, com a renda real zerada (0 a 1). */
   emigracao: number;
+  /** Turnos para a instrução de hoje virar profissional formado. */
+  formatura: number;
+  /** Pontos do índice de desvio por ponto da população em vagas paradas. */
+  desvio: number;
 }
 
 export interface ObraDoAtendimento {
@@ -60,9 +66,13 @@ export interface AtendimentoNoEstado {
   planos: number;
   /** Parte da população que se forma por turno, no ritmo do turno 0. */
   formacao: number;
+  /** Instrução das turmas que se formam ÷ a do turno 0. */
+  turmas: number;
   /** Índices contados no último turno. */
   indice: number;
   indice_profissionais: number;
+  /** Pontos que a verba parada soma ao índice de desvio. */
+  desvio: number;
 }
 
 /** O que as leis em vigor pedem, em números. */
@@ -102,22 +112,27 @@ export const planosAlvo = (
   (regra.plano_livre + leis.abertura * (1 - regra.plano_livre)) *
   (1 - leis.limite);
 
-/** Vagas que a verba paga; a corrupção encarece. */
+/**
+ * Vagas que a verba paga. O retorno cai: a vaga nova custa mais que a anterior,
+ * porque atende quem está mais longe. A corrupção encarece.
+ */
 const vagasDaVerba = (
   regra: RegraDoAtendimento,
   populacao: number,
   verba: number,
   atraso: number,
-) => (verba * populacao) / (regra.custo_vaga * atrasoDasObras(atraso).custo);
+) =>
+  populacao *
+  (1 - Math.exp(-verba / (regra.custo_vaga * atrasoDasObras(atraso).custo)));
 
 /**
- * Quem é atendido hoje, em % da população. O plano vem primeiro: paga mais e
- * fica com os profissionais; a rede pública atende com o que sobra.
+ * Quem o plano e a rede pública atendem. O plano vem primeiro: paga mais e fica
+ * com os profissionais; a rede pública atende com o que sobra.
  */
-export function indiceDoAtendimento(
+function contaDaRede(
   regra: RegraDoAtendimento,
   { populacao, profissionais, vagas, planos }: Rede,
-): number {
+) {
   const porProfissional = regra.pessoas_por_profissional;
   const clientes = populacao * planos;
   const noPlano = Math.min(
@@ -130,7 +145,22 @@ export function indiceDoAtendimento(
     vagas,
     (profissionais - noPlano) * porProfissional,
   );
-  return ((doPlano + publico) / populacao) * 100;
+  return { doPlano, publico };
+}
+
+/** Quem é atendido hoje, em % da população. */
+export function indiceDoAtendimento(
+  regra: RegraDoAtendimento,
+  rede: Rede,
+): number {
+  const { doPlano, publico } = contaDaRede(regra, rede);
+  return ((doPlano + publico) / rede.populacao) * 100;
+}
+
+/** Pontos do índice de desvio: verba em vagas que ninguém atende. */
+export function desvioDaRede(regra: RegraDoAtendimento, rede: Rede): number {
+  const paradas = rede.vagas - contaDaRede(regra, rede).publico;
+  return (Math.max(0, paradas) / rede.populacao) * 100 * regra.desvio;
 }
 
 /** Quantos o país tem de profissionais contra o que precisa, de 0 a 100. */
@@ -174,12 +204,14 @@ export function atendimentoInicial(
     planos,
     formacao:
       ((profissionais / populacao) * regra.aposentadoria) / TURNOS_POR_ANO,
+    turmas: 1,
     indice: pais.atendimento,
     indice_profissionais: indiceDosProfissionais(
       regra,
       profissionais,
       populacao,
     ),
+    desvio: 0,
   };
 }
 
@@ -220,8 +252,8 @@ export function andarAtendimento(
 }
 
 /**
- * Quem entra e quem sai da profissão num turno, em pessoas. Forma-se mais com
- * instrução melhor; quem perde renda real emigra.
+ * Quem entra e quem sai da profissão num turno, em pessoas. A instrução melhor
+ * só forma mais depois de `formatura`; quem perde renda real emigra.
  */
 export function fluxoDeProfissionais(
   regra: RegraDoAtendimento,
@@ -236,8 +268,10 @@ export function fluxoDeProfissionais(
   },
 ) {
   const perda = Math.min(1, Math.max(0, 1 - turno.renda));
+  const turmas = s.turmas + (turno.instrucao - s.turmas) / regra.formatura;
   return {
-    formados: s.formacao * turno.instrucao * turno.populacao,
+    turmas,
+    formados: s.formacao * turmas * turno.populacao,
     param: (turno.profissionais * regra.aposentadoria) / TURNOS_POR_ANO,
     emigrados: (turno.profissionais * regra.emigracao * perda) / TURNOS_POR_ANO,
   };
@@ -251,7 +285,8 @@ export const trabalhoDoAtendimento = (
 
 /**
  * O que mudar as leis faz, para a ficha: pontos do índice pela rede pública e
- * pelos planos. Sem profissional para atender, a vaga nova não dá ponto.
+ * pelos planos. Sem profissional para atender, a vaga nova não dá ponto e vira
+ * desvio.
  */
 export function pontosDoAtendimento(
   regra: RegraDoAtendimento,
@@ -273,11 +308,20 @@ export function pontosDoAtendimento(
     );
   const planosCom = (leis: LeisDoAtendimento) =>
     planosAlvo(regra, leis, com_bolso);
+  const rede = (vagas: number, planos: number) => ({
+    populacao,
+    profissionais,
+    vagas,
+    planos,
+  });
   const indice = (vagas: number, planos: number) =>
-    indiceDoAtendimento(regra, { populacao, profissionais, vagas, planos });
+    indiceDoAtendimento(regra, rede(vagas, planos));
   const hoje = indice(vagasCom(antes), planosCom(antes));
   return {
     rede: indice(vagasCom(depois), planosCom(antes)) - hoje,
     planos: indice(vagasCom(antes), planosCom(depois)) - hoje,
+    desvio:
+      desvioDaRede(regra, rede(vagasCom(depois), planosCom(depois))) -
+      desvioDaRede(regra, rede(vagasCom(antes), planosCom(antes))),
   };
 }

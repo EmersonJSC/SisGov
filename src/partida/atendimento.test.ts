@@ -1,6 +1,10 @@
 // Rede de atendimento: a fila sai da contagem de vagas, planos e profissionais.
 import { describe, expect, it } from "vitest";
-import { indiceDoAtendimento, type RegraDoAtendimento } from "../motor";
+import {
+  fluxoDeProfissionais,
+  indiceDoAtendimento,
+  type RegraDoAtendimento,
+} from "../motor";
 import { avancar, criarPartida, jogar, montarVisao, previaDaLei } from ".";
 
 const TURNOS = 20;
@@ -87,6 +91,33 @@ describe("rede de atendimento", () => {
       depois({ "gasto-saude": verba }, pais).jogabilidade.atendimento -
       depois({}, pais).jogabilidade.atendimento;
     expect(ganho("teste-pobre", 0.1)).toBeLessThan(ganho("teste", 0.11));
+  });
+
+  it("cada ponto de verba rende menos que o anterior", () => {
+    const vagas = (verba: number) =>
+      depois({ "gasto-saude": verba }).atendimento?.vagas ?? 0;
+    expect(vagas(0.06) - vagas(0.05)).toBeLessThan(vagas(0.05) - vagas(0.04));
+  });
+
+  it("verba que os profissionais não usam vira corrupção", () => {
+    const sobra = depois({ "gasto-saude": 0.2 });
+    expect(sobra.atendimento?.desvio).toBeGreaterThan(0);
+    expect(sobra.jogabilidade.corrupcao).toBeGreaterThan(
+      depois().jogabilidade.corrupcao,
+    );
+  });
+
+  it("instrução nova demora para virar profissional", () => {
+    const { regras, estado } = partida();
+    const r = regras.atendimento as RegraDoAtendimento;
+    const turno = {
+      populacao: 1000,
+      profissionais: 10,
+      instrucao: 2,
+      renda: 1,
+    };
+    const { turmas } = fluxoDeProfissionais(r, estado.atendimento!, turno);
+    expect(turmas).toBeLessThan(1.1);
   });
 
   it("proibir os planos põe quem tinha plano na fila da rede", () => {

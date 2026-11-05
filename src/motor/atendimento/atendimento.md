@@ -15,10 +15,14 @@ atendimento pela deriva.
 
 ## Vagas
 
-A verba paga vagas (`custo_vaga`). Verba a mais vira obra, que disputa o setor de
+A verba paga vagas (`custo_vaga`), e cada vaga nova custa mais que a anterior:
+o retorno cai sem parar. Verba a mais vira obra, que disputa o setor de
 construção com casas e rede de água. Verba a menos fecha vagas aos poucos
 (`fechamento`). A corrupção encarece. `vagas_fora` guarda o que o país tem além
 do que a verba paga no turno 0, para o país começar parado.
+
+Vaga sem profissional não atende e o dinheiro fica parado: vira pontos no índice
+de desvio (`desvio`). Quando a vaga fecha ou o profissional chega, os pontos saem.
 
 ## Planos
 
@@ -30,8 +34,9 @@ proíbe. Quem perde o plano volta para a fila.
 
 São o pop `pop_profissionais`, e mudam pela migração dos pops:
 
-- entram na medida do índice de instrução (a rede escolar substitui isso depois);
-- param no ritmo de `aposentadoria`;
+- entram na medida do índice de instrução, com `formatura` turnos de atraso (a
+  rede escolar substitui isso depois);
+- param no ritmo de `aposentadoria`: 3% ao ano, carreira de uns 33 anos;
 - emigram quando a renda real cai abaixo da do turno 0: o pop encolhe, a
   população do país cai, e não voltam sozinhos.
 

@@ -255,6 +255,7 @@ function previaDoAtendimento(
       atrasoMeses: 0,
       aosPoucos: true,
     },
+    { id: regra.indice_desvio, pontos: pontos.desvio, atrasoMeses },
     // A deriva: cada ponto de atendimento empurra os outros índices.
     ...(regras.derivas ?? [])
       .filter((d) => d.por === regra.indice)

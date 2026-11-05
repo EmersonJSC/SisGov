@@ -332,7 +332,7 @@
     {
       "id": "profissionais_saude",
       "tipo": "calculado",
-      "nome": "Médicos por habitante",
+      "nome": "Profissionais de saúde",
       "camada": "jogabilidade",
       "unidade": "indice_0_100",
       "dominio": {
@@ -342,7 +342,9 @@
       "area": "Sociedade",
       "avaliacao": "maior_melhor",
       "medida": {
-        "unidade": "0 = sem profissional, 100 = dá para atender todo mundo"
+        "unidade": "por mil habitantes",
+        "zero": 0,
+        "cem": 20
       }
     },
     {
