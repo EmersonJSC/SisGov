@@ -682,11 +682,12 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - **Área da saúde (04/nov):** 19 leis aprovadas pelo autor. Feitas: Verba,
   Abertura de planos, Limite aos planos, Atenção preventiva, Telemedicina livre
   Serviço obrigatório (4 níveis, de quem estudou de graça até lugar sorteado),
-  Seguro na folha (4 níveis, de sem seguro até formais e família) e Cobertura
-  gratuita (4 níveis, de só urgência até tudo para todos).
-  Faltam, em Quem paga: Dedução do plano, Coparticipação, Conta de saúde e Filantrópicos; em Quem atende: Carreira
-  exclusiva, Gestão privada e Missões médicas; em Como prevenir: Saúde ambiental,
-  Direito de recusar, Vacinação e Imposto sobre vícios. Colisões:
+  Seguro na folha (4 níveis, de sem seguro até formais e família), Cobertura
+  gratuita (4 níveis, de só urgência até tudo para todos), Coparticipação, Dedução
+  do plano, Conta de saúde, Filantrópicos, Carreira exclusiva, Gestão privada,
+  Missões médicas e Saúde ambiental (05/nov, 4 níveis cada).
+  Faltam, em Como prevenir: Direito de recusar, Vacinação e Imposto sobre vícios;
+  essas três esperam decisão do autor. Colisões:
   Cobertura × Coparticipação, Carreira × Gestão, Vacinação × Recusar, Limite ×
   Dedução, Seguro × Conta, Conta × Cobertura.
 - **Formação de profissionais (04/nov):** fica na área da educação, não na

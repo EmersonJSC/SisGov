@@ -1,0 +1,74 @@
+{
+  "versao": 1,
+  "id": "carreira-exclusiva",
+  "nome": "Carreira exclusiva",
+  "descricao": "Quanto o profissional da rede pública fica só nela, com salário de carreira. Rende mais, a verba vai mais longe e o plano não o leva; mas custa salário, e parte larga a profissão por não poder ter consultório.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-carreira",
+      "rotulo": "Sem carreira",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0,
+        "alcance": 0,
+        "fraco": 0,
+        "abandono": 0,
+        "eficiencia": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "incentivo",
+      "rotulo": "Incentivo à exclusividade",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.2,
+        "alcance": 0.05,
+        "fraco": 0,
+        "abandono": 0,
+        "eficiencia": 0.03
+      },
+      "efeitos": []
+    },
+    {
+      "id": "novos-concursos",
+      "rotulo": "Novos concursos",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.5,
+        "alcance": 0.1,
+        "fraco": 0,
+        "abandono": 0.01,
+        "eficiencia": 0.06
+      },
+      "efeitos": []
+    },
+    {
+      "id": "toda-a-rede",
+      "rotulo": "Toda a rede",
+      "bussola": {
+        "economico": -0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.8,
+        "alcance": 0.15,
+        "fraco": 0,
+        "abandono": 0.03,
+        "eficiencia": 0.1
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -268,14 +268,28 @@ function ligacoes(
     seta(r.lei_gratuidade, r.indice, -1);
     seta(r.lei_gratuidade, r.indice_vida, 1);
     seta(r.lei_gratuidade, r.indice_desigualdade, -1);
+    seta(r.lei_cobranca, r.indice, 1);
+    seta(r.lei_cobranca, r.indice_vida, -1);
+    seta(r.lei_cobranca, r.indice_desigualdade, 1);
+    seta(r.lei_deducao, r.indice, 1);
+    seta(r.lei_deducao, r.indice_profissionais, -1);
+    seta(r.lei_deducao, r.indice_desigualdade, 1);
+    seta(r.lei_conta, r.indice, 1);
+    seta(r.lei_conta, r.indice_desigualdade, 1);
+    seta(r.lei_conta, r.indice_informal, 1);
+    seta(r.lei_filantropia, r.indice, 1);
+    seta(r.lei_filantropia, r.indice_desigualdade, 1);
+    seta(r.lei_missao, r.indice, -1);
+    seta(r.lei_missao, r.indice_profissionais, -1);
+    seta(r.lei_missao, r.indice_reputacao, 1);
+    seta(r.lei_ambiental, r.indice_vida, 1);
+    seta(r.lei_ambiental, r.indice_industria, -1);
     for (const id of r.leis_alcance) {
       seta(id, r.indice, 1);
-      seta(id, r.indice_vida, -1);
       const lei = leis.find((l) => l.id === id);
-      if (
-        lei?.forma === "opcoes" &&
-        lei.opcoes.some((o) => o.valores?.abandono)
-      )
+      if (lei?.forma !== "opcoes") continue;
+      if (lei.opcoes.some((o) => o.valores?.fraco)) seta(id, r.indice_vida, -1);
+      if (lei.opcoes.some((o) => o.valores?.abandono))
         seta(id, r.indice_profissionais, -1);
     }
     seta(r.indice_profissionais, r.indice, 1);

@@ -1,0 +1,62 @@
+{
+  "versao": 1,
+  "id": "conta-saude",
+  "nome": "Conta de saúde",
+  "descricao": "Parte do salário vai para uma poupança que só paga saúde. Custa pouco ao governo; mas quem ganha pouco junta pouco e continua na fila, e a obrigação empurra gente para fora da carteira.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-conta",
+      "rotulo": "Sem conta",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0,
+        "informal": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "voluntaria",
+      "rotulo": "Voluntária",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.3,
+        "informal": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "obrigatoria-parcial",
+      "rotulo": "Obrigatória para parte",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.6,
+        "informal": 0.02
+      },
+      "efeitos": []
+    },
+    {
+      "id": "obrigatoria-todos",
+      "rotulo": "Obrigatória para todos",
+      "bussola": {
+        "economico": 0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 1,
+        "informal": 0.05
+      },
+      "efeitos": []
+    }
+  ]
+}

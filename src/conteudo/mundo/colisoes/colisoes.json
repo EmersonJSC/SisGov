@@ -5,6 +5,11 @@
     ["teto-aluguel", "despejo-rapido"],
     ["titulo-posse", "remocao-area-risco"],
     ["concessao-rede", "teto-tarifa"],
-    ["abertura-planos", "limite-planos"]
+    ["abertura-planos", "limite-planos"],
+    ["cobertura-gratuita", "coparticipacao"],
+    ["carreira-exclusiva", "gestao-privada"],
+    ["limite-planos", "deducao-plano"],
+    ["seguro-folha", "conta-saude"],
+    ["conta-saude", "cobertura-gratuita"]
   ]
 }

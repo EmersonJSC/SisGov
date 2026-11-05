@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "missoes-medicas",
+  "nome": "Missões médicas",
+  "descricao": "Quantos profissionais o Estado manda atender em outros países. Traz dinheiro e reputação; mas quem vai não atende aqui, e com gente demais fora a fila cresce em casa.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-missoes",
+      "rotulo": "Sem missões",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "ajuda-em-desastres",
+      "rotulo": "Ajuda em desastres",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "valores": {
+        "parte": 0.03
+      },
+      "efeitos": []
+    },
+    {
+      "id": "acordos",
+      "rotulo": "Acordos com vizinhos",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "valores": {
+        "parte": 0.08
+      },
+      "efeitos": []
+    },
+    {
+      "id": "exportacao",
+      "rotulo": "Exportação de serviços",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "valores": {
+        "parte": 0.15
+      },
+      "efeitos": []
+    }
+  ]
+}

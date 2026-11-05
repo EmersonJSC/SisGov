@@ -18,7 +18,7 @@ ligado ou criado e ainda não passou por avaliação entra em **Não avaliados**
 
 Ligados ou criados pelas avaliações da favela e do saneamento:
 
-- Saúde (`saude`): em avaliação. Já é movida pela rede de atendimento; faltam 11
+- Saúde (`saude`): em avaliação. Já é movida pela rede de atendimento; faltam 3
   das 19 leis da área.
 - Atendimento (`atendimento`): quem é atendido; o resto é a fila da saúde.
 - Profissionais de saúde (`profissionais_saude`): profissionais contra o que o

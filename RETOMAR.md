@@ -9,33 +9,37 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 Frente atual: **avaliar os índices, um por vez** (lista em
 [docs/jogo/indices-avaliacao.md](docs/jogo/indices-avaliacao.md)). Favela e
-saneamento fechados. **Saúde em andamento**, tratada como área: 8 das 19 leis
-feitas e commitadas (último commit `ba6a74ec`, Cobertura gratuita). `npx tsc -b`
-limpo, 342 testes passando. Número sem balanço.
+saneamento fechados. **Saúde em andamento**, tratada como área: 16 das 19 leis
+feitas e commitadas. `npx tsc -b`
+limpo, 365 testes passando. Número sem balanço.
 
 | Grupo | Feitas | Faltam |
 |---|---|---|
-| Quem paga | Verba, Abertura de planos, Limite aos planos, Seguro na folha, Cobertura gratuita | Coparticipação, Dedução do plano, Conta de saúde, Filantrópicos |
-| Quem atende | Telemedicina livre, Serviço obrigatório | Carreira exclusiva, Gestão privada, Missões médicas |
-| Como prevenir | Atenção preventiva | Saúde ambiental, Direito de recusar, Vacinação, Imposto sobre vícios |
+| Quem paga | Verba, Abertura de planos, Limite aos planos, Seguro na folha, Cobertura gratuita, Coparticipação, Dedução do plano, Conta de saúde, Filantrópicos | |
+| Quem atende | Telemedicina livre, Serviço obrigatório, Carreira exclusiva, Gestão privada, Missões médicas | |
+| Como prevenir | Atenção preventiva, Saúde ambiental | Direito de recusar, Vacinação, Imposto sobre vícios |
 
-Colisões que faltam: Cobertura × Coparticipação, Carreira × Gestão, Vacinação ×
-Recusar, Limite × Dedução, Seguro × Conta, Conta × Cobertura. Valem juntas:
-Seguro + Cobertura, Conta + Coparticipação. Limite × Abertura já existe.
+Colisões feitas: todas, menos Vacinação × Recusar. Valem juntas: Seguro +
+Cobertura, Conta + Coparticipação.
 
-Como funciona a rede: `src/motor/atendimento/atendimento.md`. A peça `procura`
-(quanto cada pessoa usa a rede pública) já existe; a Coparticipação usa a mesma
-peça com valor negativo.
+Como funciona a rede: `src/motor/atendimento/atendimento.md`. O que as leis custam
+ou trazem fora da verba fica em `atendimento.custo` e entra no gasto do governo.
 
 ## Próximo
 
-Coparticipação, depois as outras 10 leis. Fechada a saúde: colisões, Saúde vai
+Decisão do autor sobre as 3 leis que faltam: Vacinação e Direito de recusar pedem peça ou índice novo, e o
+Imposto sobre vícios precisa dizer sobre o que incide. Fechada a saúde: Saúde vai
 para "Avaliados", e a próxima área é a Educação (com vagas públicas, faculdades
-privadas e diploma estrangeiro, GDD §18). Depois, os demais índices. As rodadas
-até 05/nov estão em [docs/historico/retomar.md](docs/historico/retomar.md).
+privadas e diploma estrangeiro, GDD §18). As rodadas até 05/nov estão em
+[docs/historico/retomar.md](docs/historico/retomar.md).
 
 ## Pontos em aberto da saúde
 
+- A ficha não mostra dinheiro das leis de opções: o custo das 8 leis novas só
+  aparece no gasto do governo.
+- A Coparticipação mede o bolso contra a renda do próprio país: pesa pela
+  desigualdade de renda, não pelo PIB. No `teste` a saúde cai mais que no
+  `teste-pobre`, porque ele tem mais gente na rede.
 - A fila de 45% no país `teste` é estado de teste, não balanço.
 - A ficha mostra só um turno da deriva; o acumulado fica maior.
 - `emprego_informal` ainda não tem grupo que cobre nem empurrão próprio.
@@ -48,7 +52,7 @@ Caminhos até a casa, organizações criminosas (GDD §18), campo e a fila da te
 ## Pendências do autor
 
 - Jogar o Pregão (botão "Bolsa").
-- 90 commits locais sem push (push só com a palavra do autor).
+- 92 commits locais sem push (push só com a palavra do autor).
 - Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
 - Antes de publicar o jogo: checar com advogado.
 - Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.
@@ -79,3 +83,5 @@ Caminhos até a casa, organizações criminosas (GDD §18), campo e a fila da te
 - `docs/jogo/gdd.md` não passa no prettier: `--write` mexe em linhas de fora; não formatar.
 - No zsh, `--include=*.ts` sem aspas quebra: pôr o padrão entre aspas.
 - `jogar` nos testes falha depois do turno ~24: usar 20 turnos.
+- `icones.ts` diz que é gerado, mas `scripts/icones/` não existe: lei nova entra à mão em `ICONE_LEI`, com desenho que já esteja em `DESENHOS`.
+- `reputacao_internacional` vem das potências, não da base: mexer na `base` não faz nada; somar em `comReputacao`.

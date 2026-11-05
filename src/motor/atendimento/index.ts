@@ -37,6 +37,22 @@ export interface RegraDoAtendimento {
    * cada pessoa usa a rede pública) e `valores.saida` (parte que larga o plano).
    */
   lei_gratuidade: string;
+  /** Lei de opções da cobrança por consulta; `valores.cobranca` é a parte paga. */
+  lei_cobranca: string;
+  /** Lei de opções da dedução do plano no imposto; `valores.parte` é o incentivo. */
+  lei_deducao: string;
+  /** Lei de opções da poupança de saúde; `valores.parte` é a parte da folha, `valores.informal` como no seguro. */
+  lei_conta: string;
+  /** Lei de opções das entidades; `valores.parte` é a gente que elas comportam. */
+  lei_filantropia: string;
+  /** Lei de opções da carreira; `valores.parte` é quem o plano não alcança, e `valores.eficiencia` soma à gestão. */
+  lei_carreira: string;
+  /** Lei de opções da gestão; traz `valores.eficiencia` e `valores.disputa`. */
+  lei_gestao: string;
+  /** Lei de opções das missões; `valores.parte` é quem vai para fora. */
+  lei_missao: string;
+  /** Lei de opções da vigilância; `valores.parte` é o alcance dela. */
+  lei_ambiental: string;
   /** Pops com salário em folha: quem o seguro cobre. */
   pops_folha: string[];
   /** Pops que perdem emprego formal quando a folha encarece. */
@@ -87,6 +103,32 @@ export interface RegraDoAtendimento {
   basico_teto: number;
   /** Índice que sobe quando quem paga é atendido e o resto fica na fila. */
   indice_desigualdade: string;
+  /** Índice que sobe com as missões. */
+  indice_reputacao: string;
+  /** Índice que a vigilância ambiental freia. */
+  indice_industria: string;
+  /** Índice do ambiente: quanto pior, mais a vigilância rende. */
+  indice_ambiente: string;
+  /** Verba por ano (fração do PIB) que a cobrança traz, com todos pagando tudo. */
+  receita_cobranca: number;
+  /** Fração do PIB que o governo deixa de arrecadar, por plano e por dedução inteira. */
+  custo_deducao: number;
+  /** Fração do PIB em isenções, por pessoa nas entidades. */
+  custo_filantropia: number;
+  /** Pontos de desigualdade por ponto de gente nas entidades: atendem onde estão. */
+  desigual_filantropia: number;
+  /** Fração do PIB em salários, com todos os profissionais na carreira ou disputados. */
+  custo_carreira: number;
+  /** Fração do PIB que as missões trazem, com todos os profissionais fora. */
+  receita_missao: number;
+  /** Pontos do índice de reputação, com todos os profissionais fora. */
+  reputacao_missao: number;
+  /** Fração do PIB que a vigilância inteira custa. */
+  custo_ambiental: number;
+  /** Pontos do índice de vida, com a vigilância inteira e o ambiente em zero. */
+  vida_ambiental: number;
+  /** Pontos do índice de indústria que a vigilância inteira tira. */
+  industria_ambiental: number;
   /** Pontos do índice por ponto de "com plano × na fila", em % ao quadrado ÷ 100. */
   desigualdade: number;
 }
@@ -129,6 +171,22 @@ export interface AtendimentoNoEstado {
   alcance: number;
   /** Pontos que o atendimento esticado tira do índice de vida. */
   fraqueza: number;
+  /** Parte da população nas entidades, hoje (0 a 1). */
+  filantropia: number;
+  /** Parte dos profissionais que o plano não alcança, hoje (0 a 1). */
+  reserva: number;
+  /** Quanto a mais o privado ocupa de cada profissional, hoje (0,2 = 20%). */
+  disputa: number;
+  /** Parte dos profissionais fora do país, hoje (0 a 1). */
+  missao: number;
+  /** Alcance da vigilância ambiental, hoje (0 a 1). */
+  ambiental: number;
+  /** Fração do PIB que a rede custa ao governo fora da verba (negativa: traz). */
+  custo: number;
+  /** Pontos que as missões somam ao índice de reputação. */
+  reputacao: number;
+  /** Pontos que a vigilância tira do índice de indústria. */
+  industria: number;
 }
 
 /** O que as leis em vigor pedem, em números. */
@@ -148,12 +206,30 @@ export interface LeisDoAtendimento {
   abandono: number;
   /** Parte da folha que o seguro cobre (0 a 1). */
   seguro: number;
-  /** Parte dos `pops_encargo` que o seguro tira do emprego formal (0 a 1). */
+  /** Parte dos `pops_encargo` que a folha cara tira do emprego formal (0 a 1). */
   informal: number;
   /** Quanto a mais cada pessoa usa a rede pública. */
   procura: number;
   /** Parte de quem tem plano que o larga pela rede de graça (0 a 1). */
   saida: number;
+  /** Parte da consulta que quem usa paga (0 a 1). */
+  cobranca: number;
+  /** Parte de quem não compraria e compra, pela dedução (0 a 1). */
+  deducao: number;
+  /** Parte da folha que poupa para a saúde (0 a 1). */
+  conta: number;
+  /** Parte da população que as entidades comportam (0 a 1). */
+  filantropia: number;
+  /** Parte dos profissionais que o plano não alcança (0 a 1). */
+  reserva: number;
+  /** Quanto a mais a verba rende com gestão privada. */
+  eficiencia: number;
+  /** Quanto a mais o privado ocupa de cada profissional. */
+  disputa: number;
+  /** Parte dos profissionais fora do país (0 a 1). */
+  missao: number;
+  /** Alcance da vigilância ambiental (0 a 1). */
+  ambiental: number;
 }
 
 export interface Rede {
@@ -167,6 +243,13 @@ export interface Rede {
   cobertura?: number;
   fraco?: number;
   procura?: number;
+  filantropia?: number;
+  reserva?: number;
+  disputa?: number;
+  missao?: number;
+  ambiental?: number;
+  /** Índice do ambiente hoje (0 a 100). */
+  ambiente?: number;
 }
 
 export interface TurnoDoAtendimento {
@@ -180,6 +263,8 @@ export interface TurnoDoAtendimento {
   com_bolso: number;
   /** Parte das pessoas com salário em folha (0 a 1). */
   na_folha: number;
+  /** Profissionais do país, dentro e fora. */
+  profissionais: number;
 }
 
 /** Parte da população que acaba com plano, com estas leis. */
@@ -189,16 +274,29 @@ export const planosAlvo = (
   comBolso: number,
 ) =>
   comBolso *
-  (regra.plano_livre + leis.abertura * (1 - regra.plano_livre)) *
+  (regra.plano_livre +
+    (1 - (1 - leis.abertura) * (1 - leis.deducao)) * (1 - regra.plano_livre)) *
   (1 - leis.limite) *
   (1 - leis.saida);
 
 /**
  * Parte da população que entra pelo seguro, sem contar quem já tem plano. O seguro
- * vem da folha, não do bolso: o limite aos planos não o toca.
+ * vem da folha, não do bolso: o limite aos planos não o toca. A poupança vem da
+ * folha também, mas só cobre quem ganha o bastante para juntar.
  */
-const seguroAlvo = (leis: LeisDoAtendimento, planos: number, naFolha: number) =>
-  (1 - planos) * naFolha * leis.seguro;
+const seguroAlvo = (
+  leis: LeisDoAtendimento,
+  planos: number,
+  naFolha: number,
+  comBolso: number,
+) => (1 - planos) * naFolha * (leis.seguro + leis.conta * comBolso);
+
+/**
+ * Quanto cada pessoa usa a rede. A cobrança pesa em quem não tem bolso: esse deixa
+ * de ir; quem tem paga e continua.
+ */
+const procuraAlvo = (leis: LeisDoAtendimento, comBolso: number) =>
+  leis.procura - leis.cobranca * (1 - comBolso);
 
 /**
  * Vagas que a verba paga. O retorno cai: a vaga nova custa mais que a anterior,
@@ -212,6 +310,26 @@ const vagasDaVerba = (
 ) =>
   populacao *
   (1 - Math.exp(-verba / (regra.custo_vaga * atrasoDasObras(atraso).custo)));
+
+/**
+ * Vagas que as leis pagam: a verba, com o que a cobrança traz de quem pode pagar e
+ * o que a gestão faz render, e as entidades, que não pedem verba.
+ */
+const vagasPagas = (
+  regra: RegraDoAtendimento,
+  populacao: number,
+  leis: LeisDoAtendimento,
+  comBolso: number,
+  atraso: number,
+) =>
+  vagasDaVerba(
+    regra,
+    populacao,
+    (leis.verba + regra.receita_cobranca * leis.cobranca * comBolso) *
+      (1 + leis.eficiencia),
+    atraso,
+  ) +
+  populacao * leis.filantropia;
 
 /** Parte da fila que o atendimento básico alcança, com esta verba. */
 const coberturaAlvo = (
@@ -239,19 +357,27 @@ function contaDaRede(
     alcance = 0,
     cobertura = 0,
     procura = 0,
+    reserva = 0,
+    disputa = 0,
+    missao = 0,
   }: Rede,
 ) {
   const porProfissional = regra.pessoas_por_profissional;
   const clientes = populacao * planos;
+  const presentes = profissionais * (1 - missao);
   const peso =
-    planos > 0
+    (1 + disputa) *
+    (planos > 0
       ? ((planos - seguro) * regra.peso_plano + seguro * regra.peso_seguro) /
         planos
-      : regra.peso_plano;
-  const noPlano = Math.min(profissionais, (clientes * peso) / porProfissional);
+      : regra.peso_plano);
+  const noPlano = Math.min(
+    presentes * (1 - reserva),
+    (clientes * peso) / porProfissional,
+  );
   const doPlano = (noPlano * porProfissional) / peso;
   const uso = 1 + procura;
-  const semEsticar = ((profissionais - noPlano) * porProfissional) / uso;
+  const semEsticar = ((presentes - noPlano) * porProfissional) / uso;
   const teto = Math.min(populacao - doPlano, vagas / uso);
   const publico = Math.min(teto, semEsticar * (1 + alcance));
   const basico = (populacao - doPlano - publico) * cobertura;
@@ -287,13 +413,18 @@ export function fraquezaDaRede(regra: RegraDoAtendimento, rede: Rede): number {
   const { esticado, publico } = contaDaRede(regra, rede);
   const pressa = esticado * (rede.fraco ?? 0);
   const cedo = publico * (rede.procura ?? 0) * regra.cuidado_cedo;
-  return ((pressa - cedo) / rede.populacao) * 100;
+  const limpeza =
+    (rede.ambiental ?? 0) *
+    (1 - (rede.ambiente ?? 100) / 100) *
+    regra.vida_ambiental;
+  return ((pressa - cedo) / rede.populacao) * 100 - limpeza;
 }
 
 /**
  * Pontos do índice de desigualdade: a saúde de dois andares. Pesa quando há gente
  * com plano e gente na fila; sem fila, ou sem plano, não há dois andares. Quem usa
- * a rede sem pagar ganha como se fosse renda.
+ * a rede sem pagar ganha como se fosse renda. As entidades atendem onde estão, não
+ * onde falta.
  */
 export function desigualdadeDaRede(
   regra: RegraDoAtendimento,
@@ -303,8 +434,35 @@ export function desigualdadeDaRede(
   const { publico } = contaDaRede(regra, rede);
   const deGraca = (publico / rede.populacao) * (rede.procura ?? 0);
   return (
-    (rede.planos * fila * regra.desigualdade - deGraca * regra.renda_indireta) *
+    (rede.planos * fila * regra.desigualdade -
+      deGraca * regra.renda_indireta +
+      (rede.filantropia ?? 0) * regra.desigual_filantropia) *
     100
+  );
+}
+
+/** Fração do PIB que a rede custa ao governo fora da verba; negativa, ela traz. */
+function custoDaRede(
+  regra: RegraDoAtendimento,
+  s: Pick<
+    AtendimentoNoEstado,
+    | "planos"
+    | "seguro"
+    | "filantropia"
+    | "reserva"
+    | "disputa"
+    | "missao"
+    | "ambiental"
+  >,
+  deducao: number,
+  cobertos: number,
+) {
+  return (
+    (s.planos - s.seguro) * deducao * regra.custo_deducao +
+    s.filantropia * regra.custo_filantropia +
+    (s.reserva + s.disputa) * cobertos * regra.custo_carreira +
+    s.ambiental * regra.custo_ambiental -
+    s.missao * cobertos * regra.receita_missao
   );
 }
 
@@ -335,9 +493,10 @@ export function atendimentoInicial(
     informal: number;
   },
 ): AtendimentoNoEstado {
-  const { populacao, profissionais } = pais;
-  const privados = planosAlvo(regra, pais.leis, pais.com_bolso);
-  const seguro = seguroAlvo(pais.leis, privados, pais.na_folha);
+  const { populacao, profissionais, leis } = pais;
+  const { filantropia, reserva, disputa, missao, ambiental } = leis;
+  const privados = planosAlvo(regra, leis, pais.com_bolso);
+  const seguro = seguroAlvo(leis, privados, pais.na_folha, pais.com_bolso);
   const planos = privados + seguro;
   const soPlanos = indiceDoAtendimento(regra, {
     populacao,
@@ -345,8 +504,11 @@ export function atendimentoInicial(
     vagas: 0,
     planos,
     seguro,
+    reserva,
+    disputa,
+    missao,
   });
-  const { procura } = pais.leis;
+  const procura = procuraAlvo(leis, pais.com_bolso);
   const vagas =
     (Math.max(0, pais.atendimento - soPlanos) / 100) *
     populacao *
@@ -354,11 +516,11 @@ export function atendimentoInicial(
   return {
     vagas,
     vagas_fora:
-      vagas - vagasDaVerba(regra, populacao, pais.leis.verba, pais.atraso),
+      vagas - vagasPagas(regra, populacao, leis, pais.com_bolso, pais.atraso),
     obras: [],
     planos,
     seguro,
-    encargo: pais.leis.informal,
+    encargo: leis.informal,
     procura,
     formacao:
       ((profissionais / populacao) * regra.aposentadoria) / TURNOS_POR_ANO,
@@ -366,7 +528,7 @@ export function atendimentoInicial(
     indice: pais.atendimento,
     indice_profissionais: indiceDosProfissionais(
       regra,
-      profissionais,
+      profissionais * (1 - missao),
       populacao,
     ),
     indice_informal: pais.informal,
@@ -378,10 +540,27 @@ export function atendimentoInicial(
       planos,
       seguro,
       procura,
+      filantropia,
+      reserva,
+      disputa,
+      missao,
     }),
     cobertura: 0,
     alcance: 0,
     fraqueza: 0,
+    filantropia,
+    reserva,
+    disputa,
+    missao,
+    ambiental,
+    custo: custoDaRede(
+      regra,
+      { planos, seguro, filantropia, reserva, disputa, missao, ambiental },
+      leis.deducao,
+      indiceDosProfissionais(regra, profissionais, populacao) / 100,
+    ),
+    reputacao: missao * regra.reputacao_missao,
+    industria: ambiental * regra.industria_ambiental,
   };
 }
 
@@ -405,7 +584,13 @@ export function andarAtendimento(
   const alvo = Math.max(
     0,
     s.vagas_fora +
-      vagasDaVerba(regra, turno.populacao, turno.leis.verba, turno.atraso),
+      vagasPagas(
+        regra,
+        turno.populacao,
+        turno.leis,
+        turno.com_bolso,
+        turno.atraso,
+      ),
   );
   if (vagas > alvo)
     vagas -= ((vagas - alvo) * regra.fechamento) / TURNOS_POR_ANO;
@@ -413,16 +598,39 @@ export function andarAtendimento(
   const novas = alvo - vagas - naFila;
   if (novas > 1e-6) fila.push({ vagas: novas, falta: regra.prazo });
   const privados = planosAlvo(regra, turno.leis, turno.com_bolso);
-  const seguro = seguroAlvo(turno.leis, privados, turno.na_folha);
+  const seguro = seguroAlvo(
+    turno.leis,
+    privados,
+    turno.na_folha,
+    turno.com_bolso,
+  );
   const planos = privados + seguro;
+  const anda = (hoje: number, alvoDaLei: number) =>
+    hoje + regra.velocidade * (alvoDaLei - hoje);
+  const andados = {
+    planos: anda(s.planos, planos),
+    seguro: anda(s.seguro, seguro),
+    filantropia: anda(s.filantropia, turno.leis.filantropia),
+    reserva: anda(s.reserva, turno.leis.reserva),
+    disputa: anda(s.disputa, turno.leis.disputa),
+    missao: anda(s.missao, turno.leis.missao),
+    ambiental: anda(s.ambiental, turno.leis.ambiental),
+  };
   return {
     ...s,
+    ...andados,
     vagas,
     obras: fila,
-    planos: s.planos + regra.velocidade * (planos - s.planos),
-    seguro: s.seguro + regra.velocidade * (seguro - s.seguro),
-    encargo: s.encargo + regra.velocidade * (turno.leis.informal - s.encargo),
-    procura: s.procura + regra.velocidade * (turno.leis.procura - s.procura),
+    custo: custoDaRede(
+      regra,
+      andados,
+      turno.leis.deducao,
+      indiceDosProfissionais(regra, turno.profissionais, turno.populacao) / 100,
+    ),
+    reputacao: andados.missao * regra.reputacao_missao,
+    industria: andados.ambiental * regra.industria_ambiental,
+    encargo: anda(s.encargo, turno.leis.informal),
+    procura: anda(s.procura, procuraAlvo(turno.leis, turno.com_bolso)),
     cobertura:
       s.cobertura +
       regra.velocidade *
@@ -483,17 +691,20 @@ export function pontosDoAtendimento(
     atraso: number;
     com_bolso: number;
     na_folha: number;
+    /** Índice do ambiente hoje (0 a 100). */
+    ambiente: number;
   },
 ) {
-  const { populacao, profissionais, atraso, com_bolso, na_folha } = turno;
+  const { populacao, profissionais, atraso, com_bolso, na_folha, ambiente } =
+    turno;
   const vagasCom = (leis: LeisDoAtendimento) =>
     Math.max(
       0,
-      s.vagas_fora + vagasDaVerba(regra, populacao, leis.verba, atraso),
+      s.vagas_fora + vagasPagas(regra, populacao, leis, com_bolso, atraso),
     );
   const rede = (leis: LeisDoAtendimento) => {
     const privados = planosAlvo(regra, leis, com_bolso);
-    const seguro = seguroAlvo(leis, privados, na_folha);
+    const seguro = seguroAlvo(leis, privados, na_folha, com_bolso);
     return {
       populacao,
       profissionais,
@@ -503,7 +714,13 @@ export function pontosDoAtendimento(
       alcance: leis.alcance,
       cobertura: coberturaAlvo(regra, leis.basica, atraso),
       fraco: leis.fraco,
-      procura: leis.procura,
+      procura: procuraAlvo(leis, com_bolso),
+      filantropia: leis.filantropia,
+      reserva: leis.reserva,
+      disputa: leis.disputa,
+      missao: leis.missao,
+      ambiental: leis.ambiental,
+      ambiente,
     };
   };
   const redeAntes = rede(antes);
@@ -512,15 +729,18 @@ export function pontosDoAtendimento(
   const comMudanca = (mudanca: Partial<Rede>) =>
     indiceDoAtendimento(regra, { ...redeAntes, ...mudanca }) - hoje;
   const { vagas, planos, seguro, alcance, cobertura, procura } = redeDepois;
+  const { reserva, disputa, missao } = redeDepois;
   const diferenca = (
     conta: (regra: RegraDoAtendimento, rede: Rede) => number,
   ) => conta(regra, redeDepois) - conta(regra, redeAntes);
   return {
     rede: comMudanca({ vagas }),
-    planos: comMudanca({ planos, seguro, procura }),
+    planos: comMudanca({ planos, seguro, procura, reserva, disputa, missao }),
     cuidado: comMudanca({ alcance, cobertura }),
     desvio: diferenca(desvioDaRede),
     desigualdade: diferenca(desigualdadeDaRede),
     fraqueza: diferenca(fraquezaDaRede),
+    reputacao: (depois.missao - antes.missao) * regra.reputacao_missao,
+    industria: (depois.ambiental - antes.ambiental) * regra.industria_ambiental,
   };
 }

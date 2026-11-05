@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "filantropicos",
+  "nome": "Filantrópicos",
+  "descricao": "Quanto o Estado apoia hospitais de entidades religiosas e beneficentes, com isenção de imposto. Abre vagas por pouco dinheiro; mas elas atendem onde estão, não onde falta.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-apoio",
+      "rotulo": "Sem apoio",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "isencao",
+      "rotulo": "Isenção de impostos",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "valores": {
+        "parte": 0.02
+      },
+      "efeitos": []
+    },
+    {
+      "id": "convenios",
+      "rotulo": "Convênios com a rede",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "valores": {
+        "parte": 0.05
+      },
+      "efeitos": []
+    },
+    {
+      "id": "rede-de-entidades",
+      "rotulo": "Rede de entidades",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "valores": {
+        "parte": 0.08
+      },
+      "efeitos": []
+    }
+  ]
+}

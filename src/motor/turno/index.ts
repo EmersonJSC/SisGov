@@ -390,7 +390,9 @@ function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
   return {
     receita: (receitaPct / 100) * pibTurno,
     gasto:
-      ((gastoDasLeis(regras, estado.leis) + regras.pais.gasto_fora_das_leis) /
+      ((gastoDasLeis(regras, estado.leis) +
+        regras.pais.gasto_fora_das_leis +
+        (estado.atendimento?.custo ?? 0) * 100) /
         100) *
       pibTurno,
     juros: ((e.taxa_juros / 100) * estado.tesouro.divida) / TURNOS_POR_ANO,
@@ -588,9 +590,22 @@ export function leisDoAtendimento(
         : 0,
     abandono: soma((id) => parteDaLei(regras, valores, id, "abandono")),
     seguro: parteDaLei(regras, valores, regra.lei_seguro),
-    informal: parteDaLei(regras, valores, regra.lei_seguro, "informal"),
+    informal:
+      parteDaLei(regras, valores, regra.lei_seguro, "informal") +
+      parteDaLei(regras, valores, regra.lei_conta, "informal"),
     procura: parteDaLei(regras, valores, regra.lei_gratuidade, "procura"),
     saida: parteDaLei(regras, valores, regra.lei_gratuidade, "saida"),
+    cobranca: parteDaLei(regras, valores, regra.lei_cobranca, "cobranca"),
+    deducao: parteDaLei(regras, valores, regra.lei_deducao),
+    conta: parteDaLei(regras, valores, regra.lei_conta),
+    filantropia: parteDaLei(regras, valores, regra.lei_filantropia),
+    reserva: parteDaLei(regras, valores, regra.lei_carreira),
+    eficiencia:
+      parteDaLei(regras, valores, regra.lei_gestao, "eficiencia") +
+      parteDaLei(regras, valores, regra.lei_carreira, "eficiencia"),
+    disputa: parteDaLei(regras, valores, regra.lei_gestao, "disputa"),
+    missao: parteDaLei(regras, valores, regra.lei_missao),
+    ambiental: parteDaLei(regras, valores, regra.lei_ambiental),
   };
 }
 
@@ -781,6 +796,7 @@ const atendimento: Etapa = (regras, estado) => {
     ritmo: ritmoDasObras(regras, estado),
     com_bolso: comBolsoParaPlano(regra, estado),
     na_folha: pessoasNaFolha(regra, estado.pops, populacao),
+    profissionais: pop.pessoas,
   });
   const { turmas, formados, param, emigrados } = fluxoDeProfissionais(
     regra,
@@ -820,6 +836,12 @@ const atendimento: Etapa = (regras, estado) => {
     cobertura: nova.cobertura,
     fraco: leis.fraco,
     procura: nova.procura,
+    filantropia: nova.filantropia,
+    reserva: nova.reserva,
+    disputa: nova.disputa,
+    missao: nova.missao,
+    ambiental: nova.ambiental,
+    ambiente: estado.jogabilidade[regra.indice_ambiente],
   };
   const indice = indiceDoAtendimento(regra, rede);
   const desvio = desvioDaRede(regra, rede);
@@ -827,7 +849,7 @@ const atendimento: Etapa = (regras, estado) => {
   const fraqueza = fraquezaDaRede(regra, rede);
   const indice_profissionais = indiceDosProfissionais(
     regra,
-    profissionais,
+    profissionais * (1 - nova.missao),
     novaPopulacao,
   );
   const indice_informal = indiceDoInformal(regra, estado.pops, novaPopulacao);
@@ -859,6 +881,8 @@ const atendimento: Etapa = (regras, estado) => {
       [regra.indice_desigualdade]:
         base[regra.indice_desigualdade] + desigualdade - s.desigualdade,
       [regra.indice_vida]: base[regra.indice_vida] - fraqueza + s.fraqueza,
+      [regra.indice_industria]:
+        base[regra.indice_industria] - nova.industria + s.industria,
     },
   };
 };
@@ -887,7 +911,12 @@ function comReputacao(regras: Regras, estado: Estado): Estado {
   const dasCestas = reacaoDasCestas(regras, estado)[indiceReputacao] ?? 0;
   const rep = Math.min(
     max,
-    Math.max(min, reputacao(potencias, estado.opinioes) + dasCestas),
+    Math.max(
+      min,
+      reputacao(potencias, estado.opinioes) +
+        dasCestas +
+        (estado.atendimento?.reputacao ?? 0),
+    ),
   );
   const jogabilidade = { ...estado.jogabilidade, [indiceReputacao]: rep };
   const { indicePoderDefensivo: poder, indiceSegurancaExterna: seguranca } =
@@ -1313,6 +1342,14 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.lei_limite,
       r.lei_seguro,
       r.lei_gratuidade,
+      r.lei_cobranca,
+      r.lei_deducao,
+      r.lei_conta,
+      r.lei_filantropia,
+      r.lei_gestao,
+      r.lei_carreira,
+      r.lei_missao,
+      r.lei_ambiental,
       ...r.leis_alcance,
     ])
       if (regras.leis[id]?.forma !== "opcoes")

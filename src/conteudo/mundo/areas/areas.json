@@ -29,7 +29,15 @@
         "telemedicina-livre",
         "servico-obrigatorio",
         "seguro-folha",
-        "cobertura-gratuita"
+        "cobertura-gratuita",
+        "coparticipacao",
+        "deducao-plano",
+        "conta-saude",
+        "filantropicos",
+        "carreira-exclusiva",
+        "gestao-privada",
+        "missoes-medicas",
+        "saude-ambiental"
       ]
     },
     {

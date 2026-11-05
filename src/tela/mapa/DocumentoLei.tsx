@@ -635,7 +635,7 @@ export function DocumentoLei({
             type="button"
             className="botao-arquivar"
             disabled={!mudou}
-            onClick={() => onRascunho(lei.meta)}
+            onClick={() => onRascunho(Math.max(0, lei.meta))}
           >
             Desfazer
           </button>

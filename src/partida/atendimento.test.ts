@@ -104,6 +104,176 @@ describe("cobertura gratuita", () => {
   });
 });
 
+describe("leis da rede: cada uma tem ganho e custo", () => {
+  const comVerba = { "gasto-saude": 0.1 };
+  const custo = (estado: ReturnType<typeof depois>) =>
+    estado.atendimento?.custo ?? 0;
+  const pontosDe = (lei: string, opcao: string, id: string) =>
+    previaDaLei(partida(), lei, opcao)
+      .indices.filter((l) => l.id === id)
+      .reduce((soma, l) => soma + l.pontos, 0);
+
+  it("coparticipação: a fila cai porque quem não pode pagar deixa de ir", () => {
+    const com = depois({ coparticipacao: "boa-parte-da-conta" });
+    expect(com.jogabilidade.atendimento).toBeGreaterThan(
+      depois().jogabilidade.atendimento + 5,
+    );
+    expect(com.jogabilidade.saude).toBeLessThan(
+      depois().jogabilidade.saude - 1,
+    );
+    expect(com.jogabilidade.desigualdade).toBeGreaterThan(
+      depois().jogabilidade.desigualdade + 1,
+    );
+  });
+
+  it("dedução: mais planos, e o governo deixa de arrecadar", () => {
+    const com = depois({ "deducao-plano": "plano-e-familia" });
+    expect(com.atendimento?.planos).toBeGreaterThan(
+      depois().atendimento?.planos ?? 0,
+    );
+    expect(custo(com)).toBeGreaterThan(0);
+    expect(com.jogabilidade.desigualdade).toBeGreaterThan(
+      depois().jogabilidade.desigualdade,
+    );
+  });
+
+  it("conta de saúde: cobre menos que o seguro e empurra para o informal", () => {
+    const conta = depois({ "conta-saude": "obrigatoria-todos" });
+    const seguro = depois({ "seguro-folha": "todo-emprego" });
+    expect(conta.atendimento?.seguro).toBeGreaterThan(0);
+    expect(conta.atendimento?.seguro).toBeLessThan(
+      seguro.atendimento?.seguro ?? 0,
+    );
+    expect(conta.atendimento?.encargo).toBeGreaterThan(0);
+    expect(custo(conta)).toBe(0);
+  });
+
+  it("filantrópicos: vagas baratas, mas desiguais", () => {
+    const com = depois({ filantropicos: "rede-de-entidades" });
+    expect(com.jogabilidade.atendimento).toBeGreaterThan(
+      depois().jogabilidade.atendimento + 3,
+    );
+    expect(com.jogabilidade.desigualdade).toBeGreaterThan(
+      depois().jogabilidade.desigualdade,
+    );
+    expect(custo(com)).toBeGreaterThan(0);
+  });
+
+  it("filantrópicos sem profissional para atender não abrem atendimento", () => {
+    const com = { ...comVerba, filantropicos: "rede-de-entidades" };
+    expect(depois(com).jogabilidade.atendimento).toBeCloseTo(
+      depois(comVerba).jogabilidade.atendimento,
+      0,
+    );
+  });
+
+  it("carreira: o plano não leva quem é da rede pública", () => {
+    const poucos = {
+      populacao: 1000,
+      profissionais: 4,
+      vagas: 900,
+      planos: 0.15,
+    };
+    expect(
+      indiceDoAtendimento(regra, { ...poucos, reserva: 0.8 }),
+    ).toBeGreaterThan(indiceDoAtendimento(regra, poucos));
+  });
+
+  it("carreira: rende, custa salário e perde profissionais", () => {
+    const com = depois({ "carreira-exclusiva": "toda-a-rede" });
+    expect(com.jogabilidade.atendimento).toBeGreaterThan(
+      depois().jogabilidade.atendimento,
+    );
+    expect(custo(com)).toBeGreaterThan(0);
+    expect(com.jogabilidade.profissionais_saude).toBeLessThan(
+      depois().jogabilidade.profissionais_saude - 1,
+    );
+  });
+
+  it("gestão: a verba rende mais, e quem paga mais encarece a rede", () => {
+    const com = depois({ "gestao-privada": "toda-a-rede" });
+    expect(com.jogabilidade.atendimento).toBeGreaterThan(
+      depois().jogabilidade.atendimento + 1,
+    );
+    expect(custo(com)).toBeGreaterThan(0);
+  });
+
+  it("gestão: disputar profissional escasso tira gente da rede pública", () => {
+    const poucos = {
+      populacao: 1000,
+      profissionais: 4,
+      vagas: 900,
+      planos: 0.05,
+    };
+    expect(
+      indiceDoAtendimento(regra, { ...poucos, disputa: 0.35 }),
+    ).toBeLessThan(indiceDoAtendimento(regra, poucos));
+  });
+
+  it("missões: com médico sobrando, só trazem dinheiro e reputação", () => {
+    const com = depois({ "missoes-medicas": "exportacao" });
+    expect(custo(com)).toBeLessThan(0);
+    expect(com.jogabilidade.reputacao_internacional).toBeGreaterThan(
+      depois().jogabilidade.reputacao_internacional + 1,
+    );
+    expect(com.jogabilidade.atendimento).toBeCloseTo(
+      depois().jogabilidade.atendimento,
+      0,
+    );
+  });
+
+  it("missões: com médico faltando, a fila cresce em casa", () => {
+    const com = { ...comVerba, "missoes-medicas": "exportacao" };
+    expect(depois(com).jogabilidade.atendimento).toBeLessThan(
+      depois(comVerba).jogabilidade.atendimento - 2,
+    );
+  });
+
+  it("saúde ambiental: sobe a saúde e pesa nas fábricas", () => {
+    const com = depois({ "saude-ambiental": "todo-o-territorio" });
+    expect(com.jogabilidade.saude).toBeGreaterThan(
+      depois().jogabilidade.saude + 1,
+    );
+    expect(com.jogabilidade.industrializacao).toBeLessThan(
+      depois().jogabilidade.industrializacao - 1,
+    );
+    expect(custo(com)).toBeGreaterThan(0);
+  });
+
+  it("o custo entra no gasto do governo", () => {
+    const com = depois({ "saude-ambiental": "todo-o-territorio" });
+    expect(
+      com.essenciais.gasto_publico / com.essenciais.pib_nominal,
+    ).toBeGreaterThan(
+      depois().essenciais.gasto_publico / depois().essenciais.pib_nominal,
+    );
+  });
+
+  it("a ficha mostra o que cada lei faz", () => {
+    expect(
+      pontosDe("coparticipacao", "boa-parte-da-conta", "atendimento"),
+    ).toBeGreaterThan(0);
+    expect(
+      pontosDe("coparticipacao", "boa-parte-da-conta", "saude"),
+    ).toBeLessThan(0);
+    expect(
+      pontosDe("missoes-medicas", "exportacao", "reputacao_internacional"),
+    ).toBeGreaterThan(0);
+    expect(
+      pontosDe("saude-ambiental", "todo-o-territorio", "saude"),
+    ).toBeGreaterThan(0);
+    expect(
+      pontosDe("saude-ambiental", "todo-o-territorio", "industrializacao"),
+    ).toBeLessThan(0);
+  });
+
+  it("as leis que colidem não valem juntas", () => {
+    const regras = partida().regras.colisoes ?? [];
+    expect(regras).toContainEqual(["cobertura-gratuita", "coparticipacao"]);
+    expect(regras).toContainEqual(["carreira-exclusiva", "gestao-privada"]);
+  });
+});
+
 describe("seguro na folha", () => {
   const com = (opcao: string, pais = "teste", leis = {}) =>
     depois({ ...leis, "seguro-folha": opcao }, pais);

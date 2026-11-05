@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "saude-ambiental",
+  "nome": "Saúde ambiental",
+  "descricao": "Até onde o Estado fiscaliza água, ar e lixo para evitar doença. Rende mais onde o ambiente está pior; mas custa verba e pesa nas fábricas.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-vigilancia",
+      "rotulo": "Sem vigilância",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "agua-e-ar",
+      "rotulo": "Água e ar das cidades",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "valores": {
+        "parte": 0.3
+      },
+      "efeitos": []
+    },
+    {
+      "id": "fabricas-e-lixo",
+      "rotulo": "Fábricas e lixo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "valores": {
+        "parte": 0.6
+      },
+      "efeitos": []
+    },
+    {
+      "id": "todo-o-territorio",
+      "rotulo": "Todo o território",
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "valores": {
+        "parte": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

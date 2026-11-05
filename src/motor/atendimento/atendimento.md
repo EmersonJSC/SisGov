@@ -47,6 +47,41 @@ enche. Em troca, a gente na rede soma `cuidado_cedo` ao índice de vida e tira
 `renda_indireta` do índice de desigualdade, por ponto de procura. O seguro não
 muda.
 
+Coparticipação: cada opção traz `valores.cobranca`. Quem não tem bolso deixa de
+ir, então a procura fica negativa: a fila cai, mas a saúde e a desigualdade pioram
+pelas mesmas contas da Cobertura, ao contrário. Quem tem bolso paga, e esse dinheiro
+soma à verba (`receita_cobranca`). A conta do bolso é contra a renda do próprio
+país: pesa pela desigualdade de renda, não pelo PIB.
+
+Dedução do plano: `valores.parte` faz mais gente com bolso comprar plano, como a
+abertura. O governo deixa de arrecadar por plano (`custo_deducao`).
+
+Conta de saúde: entra junto com o seguro, mas só cobre quem tem bolso para juntar.
+A obrigação traz `valores.informal`, como o seguro. Não custa ao governo.
+
+Filantrópicos: `valores.parte` abre vagas sem verba, por isenção
+(`custo_filantropia`). Sem profissional, ficam paradas como as outras. Atendem onde
+estão, então somam `desigual_filantropia` ao índice de desigualdade.
+
+Carreira exclusiva: `valores.parte` é a reserva, os profissionais que o plano não
+alcança. Rende como a telemedicina, mas sem `fraco`; soma `valores.eficiencia` à
+verba, custa salário (`custo_carreira`) e traz `abandono`.
+
+Gestão privada: `valores.eficiencia` faz a verba render mais, e o alcance estica sem
+`fraco`. `valores.disputa` faz o privado ocupar mais de cada profissional e custa
+salário, como a carreira: só tira da rede pública onde falta profissional.
+
+Missões médicas: `valores.parte` tira profissionais do país. Trazem dinheiro
+(`receita_missao`) e reputação (`reputacao_missao`, somada à das potências). Com
+profissional sobrando, a fila não muda; faltando, cresce.
+
+Saúde ambiental: `valores.parte` soma pontos ao índice de vida, mais quanto pior o
+índice do ambiente (`vida_ambiental`). Custa verba (`custo_ambiental`) e tira pontos
+do índice de indústria (`industria_ambiental`).
+
+O que essas leis custam ou trazem fica em `custo`, fração do PIB que entra no gasto
+do governo, sem lei de verba.
+
 Atendimento básico: a Atenção preventiva paga agentes da comunidade, que alcançam
 parte da fila (`basico_teto`), sem vaga e sem profissional. Por pegar uma parte da
 fila, rende mais no país pobre. A corrupção encarece, como nas vagas.

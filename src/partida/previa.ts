@@ -240,6 +240,14 @@ function previaDoAtendimento(
     lei_basica,
     regra.lei_seguro,
     regra.lei_gratuidade,
+    regra.lei_cobranca,
+    regra.lei_deducao,
+    regra.lei_conta,
+    regra.lei_filantropia,
+    regra.lei_gestao,
+    regra.lei_carreira,
+    regra.lei_missao,
+    regra.lei_ambiental,
     ...regra.leis_alcance,
   ];
   if (!leis.includes(leiId)) return [];
@@ -255,6 +263,7 @@ function previaDoAtendimento(
     atraso: obras ? (estado.jogabilidade[obras.indice_atraso] ?? 0) : 0,
     com_bolso: comBolsoParaPlano(regra, estado),
     na_folha: pessoasNaFolha(regra, estado.pops, estado.essenciais.populacao),
+    ambiente: estado.jogabilidade[regra.indice_ambiente],
   });
   const atrasoMeses = mesesDaSaude(partida);
   const linhas: PreviaLei["indices"] = [
@@ -282,6 +291,24 @@ function previaDoAtendimento(
       pontos: (antes.abandono - depois.abandono) * s.indice_profissionais,
       atrasoMeses: 0,
       porAno: true,
+    },
+    {
+      id: regra.indice_profissionais,
+      pontos: (antes.missao - depois.missao) * s.indice_profissionais,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_reputacao,
+      pontos: pontos.reputacao,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_industria,
+      pontos: -pontos.industria,
+      atrasoMeses: 0,
+      aosPoucos: true,
     },
     { id: regra.indice_desvio, pontos: pontos.desvio, atrasoMeses },
     {

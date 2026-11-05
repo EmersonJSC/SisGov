@@ -1,0 +1,74 @@
+{
+  "versao": 1,
+  "id": "gestao-privada",
+  "nome": "Gestão privada",
+  "descricao": "Quanto da rede pública é tocada por empresas contratadas. O serviço anda e a verba rende mais; mas elas pagam mais e disputam os profissionais com o resto do país.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "gestao-publica",
+      "rotulo": "Gestão pública",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 0,
+        "disputa": 0,
+        "alcance": 0,
+        "fraco": 0,
+        "abandono": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "servicos-de-apoio",
+      "rotulo": "Serviços de apoio",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 0.05,
+        "disputa": 0.1,
+        "alcance": 0,
+        "fraco": 0,
+        "abandono": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "hospitais-novos",
+      "rotulo": "Hospitais novos",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 0.1,
+        "disputa": 0.2,
+        "alcance": 0.05,
+        "fraco": 0,
+        "abandono": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "toda-a-rede",
+      "rotulo": "Toda a rede",
+      "bussola": {
+        "economico": 0.6,
+        "social": 0
+      },
+      "valores": {
+        "eficiencia": 0.2,
+        "disputa": 0.35,
+        "alcance": 0.1,
+        "fraco": 0,
+        "abandono": 0
+      },
+      "efeitos": []
+    }
+  ]
+}
