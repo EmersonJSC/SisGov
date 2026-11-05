@@ -261,6 +261,10 @@ function ligacoes(
     seta(r.lei_limite, r.indice, -1);
     seta(r.lei_limite, r.indice_desigualdade, -1);
     seta(r.lei_basica, r.indice, 1);
+    seta(r.lei_seguro, r.indice, 1);
+    seta(r.lei_seguro, r.indice_profissionais, -1);
+    seta(r.lei_seguro, r.indice_desigualdade, 1);
+    seta(r.lei_seguro, r.indice_informal, 1);
     for (const id of r.leis_alcance) {
       seta(id, r.indice, 1);
       seta(id, r.indice_vida, -1);

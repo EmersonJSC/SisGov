@@ -8,6 +8,7 @@ import {
   atrasoDasObras,
   enfileirar,
   comBolsoParaPlano,
+  pessoasNaFolha,
   indiceDoSaneamento,
   leisDoAtendimento,
   leisDoSaneamento,
@@ -237,6 +238,7 @@ function previaDoAtendimento(
     lei_abertura,
     lei_limite,
     lei_basica,
+    regra.lei_seguro,
     ...regra.leis_alcance,
   ];
   if (!leis.includes(leiId)) return [];
@@ -251,6 +253,7 @@ function previaDoAtendimento(
     profissionais: pop.pessoas,
     atraso: obras ? (estado.jogabilidade[obras.indice_atraso] ?? 0) : 0,
     com_bolso: comBolsoParaPlano(regra, estado),
+    na_folha: pessoasNaFolha(regra, estado.pops, estado.essenciais.populacao),
   });
   const atrasoMeses = mesesDaSaude(partida);
   const linhas: PreviaLei["indices"] = [
@@ -283,6 +286,17 @@ function previaDoAtendimento(
     {
       id: regra.indice_desigualdade,
       pontos: pontos.desigualdade,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_informal,
+      pontos:
+        (depois.informal - antes.informal) *
+        regra.pops_encargo.reduce(
+          (soma, id) => soma + regras.pais.pops[id].parcela_pessoas * 100,
+          0,
+        ),
       atrasoMeses: 0,
       aosPoucos: true,
     },

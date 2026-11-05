@@ -27,6 +27,7 @@
     "saude": 35,
     "atendimento": 35,
     "profissionais_saude": 45,
+    "emprego_informal": 15.75,
     "seguranca": 30,
     "lotacao_presidios": 80,
     "poder_defensivo": 30,

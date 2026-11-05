@@ -50,6 +50,24 @@
       }
     },
     {
+      "id": "emprego_informal",
+      "tipo": "calculado",
+      "nome": "Emprego informal",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Trabalho",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% das pessoas sem carteira",
+        "zero": 0,
+        "cem": 100
+      }
+    },
+    {
       "id": "pib",
       "tipo": "calculado",
       "nome": "PIB real",

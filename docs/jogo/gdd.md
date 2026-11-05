@@ -681,8 +681,9 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   não tem lei natural desse lado, e não se inventa lei só para preencher.
 - **Área da saúde (04/nov):** 19 leis aprovadas pelo autor. Feitas: Verba,
   Abertura de planos, Limite aos planos, Atenção preventiva, Telemedicina livre
-  e Serviço obrigatório (4 níveis, de quem estudou de graça até lugar sorteado).
-  Faltam, em Quem paga: Cobertura gratuita, Seguro na folha, Dedução do plano,
+  Serviço obrigatório (4 níveis, de quem estudou de graça até lugar sorteado) e
+  Seguro na folha (4 níveis, de sem seguro até formais e família).
+  Faltam, em Quem paga: Cobertura gratuita, Dedução do plano,
   Coparticipação, Conta de saúde e Filantrópicos; em Quem atende: Carreira
   exclusiva, Gestão privada e Missões médicas; em Como prevenir: Saúde ambiental,
   Direito de recusar, Vacinação e Imposto sobre vícios. Colisões:

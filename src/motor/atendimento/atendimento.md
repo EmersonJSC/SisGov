@@ -30,6 +30,16 @@ profissional, e tiram a verba parada da corrupção. Quem é atendido assim cont
 menos para a saúde (`fraco`), e o serviço duro faz gente largar a profissão
 (`abandono`).
 
+Seguro na folha: parte do salário paga atendimento para quem tem emprego formal,
+sem sair do orçamento. Cada opção traz `valores.parte` (quem da folha entra) e
+`valores.informal` (parte dos `pops_encargo` que perde o emprego formal). O
+segurado entra junto com os planos, antes da rede pública, mas pesa
+`peso_seguro` (paga tabela, não luxo) e o limite aos planos não o toca. Por isso
+a rede pública perde profissionais, e a verba dela pode cair sem perder
+atendimento. Quem fica de fora conta nos dois andares. Quem sai da folha vai para
+`pop_informal` aos poucos e volta se a lei cair; `indice_informal` mostra essa
+parte das pessoas.
+
 Atendimento básico: a Atenção preventiva paga agentes da comunidade, que alcançam
 parte da fila (`basico_teto`), sem vaga e sem profissional. Por pegar uma parte da
 fila, rende mais no país pobre. A corrupção encarece, como nas vagas.

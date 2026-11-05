@@ -18,7 +18,7 @@ ligado ou criado e ainda não passou por avaliação entra em **Não avaliados**
 
 Ligados ou criados pelas avaliações da favela e do saneamento:
 
-- Saúde (`saude`): em avaliação. Já é movida pela rede de atendimento; faltam 13
+- Saúde (`saude`): em avaliação. Já é movida pela rede de atendimento; faltam 12
   das 19 leis da área.
 - Atendimento (`atendimento`): quem é atendido; o resto é a fila da saúde.
 - Profissionais de saúde (`profissionais_saude`): profissionais contra o que o
@@ -27,6 +27,7 @@ Ligados ou criados pelas avaliações da favela e do saneamento:
 - Meio ambiente (`meio_ambiente`)
 - Padrão de vida (`padrao_vida`)
 - Desigualdade (`desigualdade`): sobe com a saúde de dois andares (com plano × na fila).
+- Emprego informal (`emprego_informal`): parte das pessoas sem carteira; hoje sobe com o Seguro na folha.
 
 Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
 

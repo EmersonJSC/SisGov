@@ -27,6 +27,17 @@ export interface RegraDoAtendimento {
    * `valores.alcance`, `valores.fraco` e `valores.abandono`.
    */
   leis_alcance: string[];
+  /**
+   * Lei de opções do seguro pago na folha; cada opção traz `valores.parte` (quem
+   * da folha entra) e `valores.informal` (quem o custo tira do emprego formal).
+   */
+  lei_seguro: string;
+  /** Pops com salário em folha: quem o seguro cobre. */
+  pops_folha: string[];
+  /** Pops que perdem emprego formal quando a folha encarece. */
+  pops_encargo: string[];
+  /** Pop para onde vai quem perde o emprego formal. */
+  pop_informal: string;
   /** Pessoas que um profissional atende. */
   pessoas_por_profissional: number;
   /** Índice que recebe a verba parada em vagas sem atendimento. */
@@ -45,6 +56,8 @@ export interface RegraDoAtendimento {
   plano_livre: number;
   /** Quanto um cliente de plano ocupa um profissional (1 = como na rede pública). */
   peso_plano: number;
+  /** O mesmo, para quem vem do seguro: paga tabela, não luxo. */
+  peso_seguro: number;
   /** Parte da distância até os planos novos que anda por turno (0 a 1). */
   velocidade: number;
   /** Parte dos profissionais que para de atender por ano (0 a 1). */
@@ -57,6 +70,8 @@ export interface RegraDoAtendimento {
   desvio: number;
   /** Índice que perde com o atendimento esticado. */
   indice_vida: string;
+  /** Parte das pessoas no pop informal. */
+  indice_informal: string;
   /** Verba por ano (fração do PIB) que paga 63% do `basico_teto`. */
   custo_basico: number;
   /** Parte da fila que o atendimento básico alcança, no máximo (0 a 1). */
@@ -79,8 +94,12 @@ export interface AtendimentoNoEstado {
   /** Vagas que não dependem da verba (pode ser negativa: a rede custa mais). */
   vagas_fora: number;
   obras: ObraDoAtendimento[];
-  /** Parte da população com plano (0 a 1). */
+  /** Parte da população com plano ou seguro (0 a 1). */
   planos: number;
+  /** Quantos desses vêm do seguro (0 a 1). */
+  seguro: number;
+  /** Parte dos `pops_encargo` que o seguro já tirou do emprego formal (0 a 1). */
+  encargo: number;
   /** Parte da população que se forma por turno, no ritmo do turno 0. */
   formacao: number;
   /** Instrução das turmas que se formam ÷ a do turno 0. */
@@ -88,6 +107,7 @@ export interface AtendimentoNoEstado {
   /** Índices contados no último turno. */
   indice: number;
   indice_profissionais: number;
+  indice_informal: number;
   /** Pontos que a verba parada soma ao índice de desvio. */
   desvio: number;
   /** Pontos que a saúde de dois andares soma ao índice de desigualdade. */
@@ -115,6 +135,10 @@ export interface LeisDoAtendimento {
   fraco: number;
   /** Parte dos profissionais que larga a profissão por ano (0 a 1). */
   abandono: number;
+  /** Parte da folha que o seguro cobre (0 a 1). */
+  seguro: number;
+  /** Parte dos `pops_encargo` que o seguro tira do emprego formal (0 a 1). */
+  informal: number;
 }
 
 export interface Rede {
@@ -122,6 +146,8 @@ export interface Rede {
   profissionais: number;
   vagas: number;
   planos: number;
+  /** Parte de `planos` que vem do seguro. */
+  seguro?: number;
   alcance?: number;
   cobertura?: number;
   fraco?: number;
@@ -136,6 +162,8 @@ export interface TurnoDoAtendimento {
   ritmo: number;
   /** Parte das pessoas com renda para pagar um plano (0 a 1). */
   com_bolso: number;
+  /** Parte das pessoas com salário em folha (0 a 1). */
+  na_folha: number;
 }
 
 /** Parte da população que acaba com plano, com estas leis. */
@@ -147,6 +175,13 @@ export const planosAlvo = (
   comBolso *
   (regra.plano_livre + leis.abertura * (1 - regra.plano_livre)) *
   (1 - leis.limite);
+
+/**
+ * Parte da população que entra pelo seguro, sem contar quem já tem plano. O seguro
+ * vem da folha, não do bolso: o limite aos planos não o toca.
+ */
+const seguroAlvo = (leis: LeisDoAtendimento, planos: number, naFolha: number) =>
+  (1 - planos) * naFolha * leis.seguro;
 
 /**
  * Vagas que a verba paga. O retorno cai: a vaga nova custa mais que a anterior,
@@ -177,15 +212,25 @@ const coberturaAlvo = (
  */
 function contaDaRede(
   regra: RegraDoAtendimento,
-  { populacao, profissionais, vagas, planos, alcance = 0, cobertura = 0 }: Rede,
+  {
+    populacao,
+    profissionais,
+    vagas,
+    planos,
+    seguro = 0,
+    alcance = 0,
+    cobertura = 0,
+  }: Rede,
 ) {
   const porProfissional = regra.pessoas_por_profissional;
   const clientes = populacao * planos;
-  const noPlano = Math.min(
-    profissionais,
-    (clientes * regra.peso_plano) / porProfissional,
-  );
-  const doPlano = (noPlano * porProfissional) / regra.peso_plano;
+  const peso =
+    planos > 0
+      ? ((planos - seguro) * regra.peso_plano + seguro * regra.peso_seguro) /
+        planos
+      : regra.peso_plano;
+  const noPlano = Math.min(profissionais, (clientes * peso) / porProfissional);
+  const doPlano = (noPlano * porProfissional) / peso;
   const semEsticar = (profissionais - noPlano) * porProfissional;
   const teto = Math.min(populacao - doPlano, vagas);
   const publico = Math.min(teto, semEsticar * (1 + alcance));
@@ -253,15 +298,21 @@ export function atendimentoInicial(
     leis: LeisDoAtendimento;
     atraso: number;
     com_bolso: number;
+    na_folha: number;
+    /** Índice do emprego informal. */
+    informal: number;
   },
 ): AtendimentoNoEstado {
   const { populacao, profissionais } = pais;
-  const planos = planosAlvo(regra, pais.leis, pais.com_bolso);
+  const privados = planosAlvo(regra, pais.leis, pais.com_bolso);
+  const seguro = seguroAlvo(pais.leis, privados, pais.na_folha);
+  const planos = privados + seguro;
   const soPlanos = indiceDoAtendimento(regra, {
     populacao,
     profissionais,
     vagas: 0,
     planos,
+    seguro,
   });
   const vagas = (Math.max(0, pais.atendimento - soPlanos) / 100) * populacao;
   return {
@@ -270,6 +321,8 @@ export function atendimentoInicial(
       vagas - vagasDaVerba(regra, populacao, pais.leis.verba, pais.atraso),
     obras: [],
     planos,
+    seguro,
+    encargo: pais.leis.informal,
     formacao:
       ((profissionais / populacao) * regra.aposentadoria) / TURNOS_POR_ANO,
     turmas: 1,
@@ -279,12 +332,14 @@ export function atendimentoInicial(
       profissionais,
       populacao,
     ),
+    indice_informal: pais.informal,
     desvio: 0,
     desigualdade: desigualdadeDaRede(regra, {
       populacao,
       profissionais,
       vagas,
       planos,
+      seguro,
     }),
     cobertura: 0,
     alcance: 0,
@@ -319,12 +374,16 @@ export function andarAtendimento(
   const naFila = fila.reduce((soma, o) => soma + o.vagas, 0);
   const novas = alvo - vagas - naFila;
   if (novas > 1e-6) fila.push({ vagas: novas, falta: regra.prazo });
-  const planos = planosAlvo(regra, turno.leis, turno.com_bolso);
+  const privados = planosAlvo(regra, turno.leis, turno.com_bolso);
+  const seguro = seguroAlvo(turno.leis, privados, turno.na_folha);
+  const planos = privados + seguro;
   return {
     ...s,
     vagas,
     obras: fila,
     planos: s.planos + regra.velocidade * (planos - s.planos),
+    seguro: s.seguro + regra.velocidade * (seguro - s.seguro),
+    encargo: s.encargo + regra.velocidade * (turno.leis.informal - s.encargo),
     cobertura:
       s.cobertura +
       regra.velocidade *
@@ -384,37 +443,41 @@ export function pontosDoAtendimento(
     profissionais: number;
     atraso: number;
     com_bolso: number;
+    na_folha: number;
   },
 ) {
-  const { populacao, profissionais, atraso, com_bolso } = turno;
+  const { populacao, profissionais, atraso, com_bolso, na_folha } = turno;
   const vagasCom = (leis: LeisDoAtendimento) =>
     Math.max(
       0,
       s.vagas_fora + vagasDaVerba(regra, populacao, leis.verba, atraso),
     );
-  const planosCom = (leis: LeisDoAtendimento) =>
-    planosAlvo(regra, leis, com_bolso);
-  const rede = (vagas: number, planos: number, cuidado: LeisDoAtendimento) => ({
-    populacao,
-    profissionais,
-    vagas,
-    planos,
-    alcance: cuidado.alcance,
-    cobertura: coberturaAlvo(regra, cuidado.basica, atraso),
-    fraco: cuidado.fraco,
-  });
-  const redeAntes = rede(vagasCom(antes), planosCom(antes), antes);
-  const redeDepois = rede(vagasCom(depois), planosCom(depois), depois);
+  const rede = (leis: LeisDoAtendimento) => {
+    const privados = planosAlvo(regra, leis, com_bolso);
+    const seguro = seguroAlvo(leis, privados, na_folha);
+    return {
+      populacao,
+      profissionais,
+      vagas: vagasCom(leis),
+      planos: privados + seguro,
+      seguro,
+      alcance: leis.alcance,
+      cobertura: coberturaAlvo(regra, leis.basica, atraso),
+      fraco: leis.fraco,
+    };
+  };
+  const redeAntes = rede(antes);
+  const redeDepois = rede(depois);
   const hoje = indiceDoAtendimento(regra, redeAntes);
   const comMudanca = (mudanca: Partial<Rede>) =>
     indiceDoAtendimento(regra, { ...redeAntes, ...mudanca }) - hoje;
-  const { vagas, planos, alcance, cobertura } = redeDepois;
+  const { vagas, planos, seguro, alcance, cobertura } = redeDepois;
   const diferenca = (
     conta: (regra: RegraDoAtendimento, rede: Rede) => number,
   ) => conta(regra, redeDepois) - conta(regra, redeAntes);
   return {
     rede: comMudanca({ vagas }),
-    planos: comMudanca({ planos }),
+    planos: comMudanca({ planos, seguro }),
     cuidado: comMudanca({ alcance, cobertura }),
     desvio: diferenca(desvioDaRede),
     desigualdade: diferenca(desigualdadeDaRede),

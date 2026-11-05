@@ -52,6 +52,66 @@ describe("conta da fila (motor)", () => {
   });
 });
 
+describe("seguro na folha", () => {
+  const com = (opcao: string, pais = "teste", leis = {}) =>
+    depois({ ...leis, "seguro-folha": opcao }, pais);
+  const informais = (estado: ReturnType<typeof depois>) =>
+    estado.pops["informais-urbanos"].pessoas / estado.essenciais.populacao;
+
+  it("cobre quem tem emprego e passa do teto dos planos", () => {
+    expect(com("todo-emprego").atendimento?.planos).toBeGreaterThan(0.25);
+    expect(com("todo-emprego").jogabilidade.atendimento).toBeGreaterThan(
+      depois().jogabilidade.atendimento + 5,
+    );
+  });
+
+  it("encarece o emprego: gente vai para o informal", () => {
+    expect(informais(com("com-familia"))).toBeGreaterThan(
+      informais(depois()) + 0.01,
+    );
+  });
+
+  it("o índice de emprego informal segue o pop", () => {
+    const estado = com("com-familia");
+    expect(estado.jogabilidade.emprego_informal).toBeCloseTo(
+      informais(estado) * 100,
+      0,
+    );
+    expect(estado.jogabilidade.emprego_informal).toBeGreaterThan(
+      depois().jogabilidade.emprego_informal + 1,
+    );
+  });
+
+  it("quem fica de fora vira segundo andar", () => {
+    expect(com("todo-emprego").jogabilidade.desigualdade).toBeGreaterThan(
+      depois().jogabilidade.desigualdade + 3,
+    );
+  });
+
+  it("no país sem profissionais, seguro demais piora a fila", () => {
+    const pobre = (opcao: string) =>
+      com(opcao, "teste-pobre").jogabilidade.atendimento;
+    expect(pobre("com-familia")).toBeLessThan(pobre("grandes-empresas"));
+  });
+
+  it("deixa cortar a verba: a rede vazia não precisa do mesmo dinheiro", () => {
+    const corte = { "gasto-saude": 0.02 };
+    expect(
+      com("todo-emprego", "teste", corte).jogabilidade.atendimento,
+    ).toBeGreaterThan(depois(corte).jogabilidade.atendimento + 10);
+    expect(
+      com("todo-emprego", "teste", corte).jogabilidade.corrupcao,
+    ).toBeLessThan(com("todo-emprego").jogabilidade.corrupcao);
+  });
+
+  it("o limite aos planos não toca o seguro", () => {
+    const leis = { "limite-planos": "proibidos" };
+    expect(
+      com("todo-emprego", "teste", leis).atendimento?.seguro,
+    ).toBeGreaterThan(0.2);
+  });
+});
+
 describe("leis que rompem a falta de profissionais", () => {
   const verba = { teste: 0.08, "teste-pobre": 0.07 };
   const atendimento = (leis: Record<string, number | string>, pais: string) =>

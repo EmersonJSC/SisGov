@@ -587,6 +587,8 @@ export function leisDoAtendimento(
           ) / alcance
         : 0,
     abandono: soma((id) => parteDaLei(regras, valores, id, "abandono")),
+    seguro: parteDaLei(regras, valores, regra.lei_seguro),
+    informal: parteDaLei(regras, valores, regra.lei_seguro, "informal"),
   };
 }
 
@@ -627,6 +629,21 @@ export function comBolsoParaPlano(
   const { hoje, inicio } = rendasReais(estado);
   return 1 - parteAbaixoDe(hoje, regra.renda_plano * rendaMedia(inicio));
 }
+
+/** Parte das pessoas com salário em folha. */
+export const pessoasNaFolha = (
+  regra: RegraDoAtendimento,
+  pops: Estado["pops"],
+  populacao: number,
+) =>
+  regra.pops_folha.reduce((soma, id) => soma + pops[id].pessoas, 0) / populacao;
+
+/** Índice do emprego informal: a parte das pessoas no pop informal. */
+export const indiceDoInformal = (
+  regra: RegraDoAtendimento,
+  pops: Estado["pops"],
+  populacao: number,
+) => (pops[regra.pop_informal].pessoas / populacao) * 100;
 
 /** Quanto o preço pesa no bolso, a mais que no turno 0 (motor/moradia). */
 export function apertoDaMoradia(
@@ -761,6 +778,7 @@ const atendimento: Etapa = (regras, estado) => {
     atraso: estado.jogabilidade[obras.indice_atraso] ?? 0,
     ritmo: ritmoDasObras(regras, estado),
     com_bolso: comBolsoParaPlano(regra, estado),
+    na_folha: pessoasNaFolha(regra, estado.pops, populacao),
   });
   const { turmas, formados, param, emigrados } = fluxoDeProfissionais(
     regra,
@@ -784,11 +802,18 @@ const atendimento: Etapa = (regras, estado) => {
       (estado.migracao?.[regra.pop_profissionais] ?? 0) + troca,
     [regra.pop_origem]: (estado.migracao?.[regra.pop_origem] ?? 0) - troca,
   };
+  for (const id of regra.pops_encargo) {
+    const saiu =
+      regras.pais.pops[id].parcela_pessoas * (nova.encargo - s.encargo);
+    migracao[id] = (migracao[id] ?? 0) - saiu;
+    migracao[regra.pop_informal] = (migracao[regra.pop_informal] ?? 0) + saiu;
+  }
   const rede = {
     populacao: novaPopulacao,
     profissionais,
     vagas: nova.vagas,
     planos: nova.planos,
+    seguro: nova.seguro,
     alcance: nova.alcance,
     cobertura: nova.cobertura,
     fraco: leis.fraco,
@@ -802,6 +827,7 @@ const atendimento: Etapa = (regras, estado) => {
     profissionais,
     novaPopulacao,
   );
+  const indice_informal = indiceDoInformal(regra, estado.pops, novaPopulacao);
   const { base } = estado;
   return {
     ...estado,
@@ -812,6 +838,7 @@ const atendimento: Etapa = (regras, estado) => {
       turmas,
       indice,
       indice_profissionais,
+      indice_informal,
       desvio,
       desigualdade,
       fraqueza,
@@ -823,6 +850,8 @@ const atendimento: Etapa = (regras, estado) => {
         base[regra.indice_profissionais] +
         indice_profissionais -
         s.indice_profissionais,
+      [regra.indice_informal]:
+        base[regra.indice_informal] + indice_informal - s.indice_informal,
       [regra.indice_desvio]: base[regra.indice_desvio] + desvio - s.desvio,
       [regra.indice_desigualdade]:
         base[regra.indice_desigualdade] + desigualdade - s.desigualdade,
@@ -1260,16 +1289,28 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.indice_desvio,
       r.indice_desigualdade,
       r.indice_vida,
+      r.indice_informal,
     ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: atendimento: o índice "${id}" não existe`);
-    for (const id of [r.pop_profissionais, r.pop_origem])
+    for (const id of [
+      r.pop_profissionais,
+      r.pop_origem,
+      r.pop_informal,
+      ...r.pops_folha,
+      ...r.pops_encargo,
+    ])
       if (!regras.pops.some((p) => p.id === id))
         throw new Error(`mundo: atendimento: o pop "${id}" não existe`);
     for (const id of [r.lei_verba, r.lei_basica])
       if (regras.leis[id]?.forma !== "continua")
         throw new Error(`mundo: atendimento: "${id}" não é lei contínua`);
-    for (const id of [r.lei_abertura, r.lei_limite, ...r.leis_alcance])
+    for (const id of [
+      r.lei_abertura,
+      r.lei_limite,
+      r.lei_seguro,
+      ...r.leis_alcance,
+    ])
       if (regras.leis[id]?.forma !== "opcoes")
         throw new Error(`mundo: atendimento: "${id}" não é lei de opções`);
   }
@@ -1418,12 +1459,15 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       com_bolso:
         1 -
         parteAbaixoDe(comPops.pops, r.renda_plano * rendaMedia(comPops.pops)),
+      na_folha: pessoasNaFolha(r, comPops.pops, populacao),
+      informal: indiceDoInformal(r, comPops.pops, populacao),
     });
     const teto = indiceDoAtendimento(r, {
       populacao,
       profissionais,
       vagas: populacao,
       planos: comPops.atendimento.planos,
+      seguro: comPops.atendimento.seguro,
     });
     if (atendimento > teto + 1e-6)
       throw new Error("país: atendimento maior que o dos profissionais");
