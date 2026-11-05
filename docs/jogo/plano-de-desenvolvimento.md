@@ -10,20 +10,23 @@
   4 (turno mínimo; versão 0.1), 5 (contas), 6 (leis da V1; versão 0.2) e
   7 (população e grupos), 8 (Congresso; versão 0.3) e 9 (eleição e
   desgaste; versão 0.4), 10 (tela e salvar; versão 1.0) e 11 (mundo).
-- **Depois da 1.0, feito:** o mapa como única tela e a bússola política
-  (leis e grupos em dois eixos).
-- **Próximo:** passo 12b (economia: construções → empresas → bolsa),
-  começando pelo pilar 1 (construções), com as regras de lucro, salário e
-  obra do GDD (seção 16).
+- **Depois da 1.0, feito:** o mapa como única tela, a bússola política
+  (leis e grupos em dois eixos), 25 pops e 16 grupos (sem a mídia), e as áreas
+  de terra, moradia e saneamento.
+- **Agora:** avaliar os índices, um por vez
+  ([indices-avaliacao.md](indices-avaliacao.md)). O que falta da frente e o
+  estado de cada lei ficam no `RETOMAR.md`.
 - **Ordem do que falta** (um por vez; o próximo só abre quando o anterior
   fecha jogável):
-  1. 12b pilar 1 — Construções.
-  2. 12b pilar 2 — Empresas e dono.
-  3. 12b pilar 3 — Bolsa.
-  4. Passo 13 — Leis em pacotes, um por vez.
-  5. O resto do GDD, na ordem que o autor escolher (partido, ministros,
+  1. Avaliação dos índices: Saúde (11 das 19 leis faltam, GDD §18), Educação
+     e os demais.
+  2. 12b pilar 1 — Construções.
+  3. 12b pilar 2 — Empresas e dono.
+  4. 12b pilar 3 — Bolsa.
+  5. Passo 13 — Leis em pacotes, um por vez.
+  6. O resto do GDD, na ordem que o autor escolher (partido, ministros,
      mídia, campanha, coligação…).
-  6. No fim: equilibrar com dois países grandes e diferentes (inspirados,
+  7. No fim: equilibrar com dois países grandes e diferentes (inspirados,
      com nome inventado); checar com advogado antes de publicar.
 
 ## 2. Regra de expansão
@@ -179,7 +182,7 @@ bases dos impostos saírem da produção e dos pops; entrou no pilar 1 do 12b.
 A fatia 8 (ficha do setor) foi desfeita em 02/nov: era painel de gestão, não
 jogo. Ficaram 8 leis na área Propriedade, ainda sem efeito.
 
-### Passo 12b — Economia: construções, empresas, bolsa ⬅ próximo
+### Passo 12b — Economia: construções, empresas, bolsa (espera a avaliação dos índices)
 
 Uma mecânica em três pilares, da base para o topo (GDD, seção 16).
 Um pilar fecha jogável na tela antes do próximo abrir. Nada mais
