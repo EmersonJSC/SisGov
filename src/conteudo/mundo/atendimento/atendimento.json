@@ -6,11 +6,14 @@
   "indice_instrucao": "instrucao",
   "indice_desvio": "corrupcao",
   "indice_desigualdade": "desigualdade",
+  "indice_vida": "saude",
   "pop_profissionais": "profissionais-saude",
   "pop_origem": "servicos-basicos",
   "lei_verba": "gasto-saude",
   "lei_abertura": "abertura-planos",
   "lei_limite": "limite-planos",
+  "lei_basica": "atencao-preventiva",
+  "leis_alcance": ["telemedicina-livre", "servico-obrigatorio"],
   "pessoas_por_profissional": 50,
   "custo_vaga": 0.1,
   "custo_obra": 0.1,
@@ -24,5 +27,7 @@
   "emigracao": 0.5,
   "formatura": 36,
   "desvio": 0.5,
-  "desigualdade": 1
+  "desigualdade": 1,
+  "custo_basico": 0.01,
+  "basico_teto": 0.5
 }

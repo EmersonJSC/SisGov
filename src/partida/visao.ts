@@ -260,6 +260,17 @@ function ligacoes(
     seta(r.lei_abertura, r.indice_desigualdade, 1);
     seta(r.lei_limite, r.indice, -1);
     seta(r.lei_limite, r.indice_desigualdade, -1);
+    seta(r.lei_basica, r.indice, 1);
+    for (const id of r.leis_alcance) {
+      seta(id, r.indice, 1);
+      seta(id, r.indice_vida, -1);
+      const lei = leis.find((l) => l.id === id);
+      if (
+        lei?.forma === "opcoes" &&
+        lei.opcoes.some((o) => o.valores?.abandono)
+      )
+        seta(id, r.indice_profissionais, -1);
+    }
     seta(r.indice_profissionais, r.indice, 1);
     seta(r.indice_instrucao, r.indice_profissionais, 1);
   }

@@ -680,12 +680,12 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   verde. O lado tradicional/autoritário fica vazio por decisão do autor: o tema
   não tem lei natural desse lado, e não se inventa lei só para preencher.
 - **Área da saúde (04/nov):** 19 leis aprovadas pelo autor. Feitas: Verba,
-  Abertura de planos e Limite aos planos. Faltam, em Quem paga: Cobertura
-  gratuita, Seguro na folha, Dedução do plano, Coparticipação, Conta de saúde e
-  Filantrópicos; em Quem atende: Carreira exclusiva, Gestão privada, Telemedicina
-  livre, Serviço obrigatório (4 níveis, de quem estudou de graça até lugar
-  sorteado) e Missões médicas; em Como prevenir: Atenção preventiva, Saúde
-  ambiental, Direito de recusar, Vacinação e Imposto sobre vícios. Colisões:
+  Abertura de planos, Limite aos planos, Atenção preventiva, Telemedicina livre
+  e Serviço obrigatório (4 níveis, de quem estudou de graça até lugar sorteado).
+  Faltam, em Quem paga: Cobertura gratuita, Seguro na folha, Dedução do plano,
+  Coparticipação, Conta de saúde e Filantrópicos; em Quem atende: Carreira
+  exclusiva, Gestão privada e Missões médicas; em Como prevenir: Saúde ambiental,
+  Direito de recusar, Vacinação e Imposto sobre vícios. Colisões:
   Cobertura × Coparticipação, Carreira × Gestão, Vacinação × Recusar, Limite ×
   Dedução, Seguro × Conta, Conta × Cobertura.
 - **Formação de profissionais (04/nov):** fica na área da educação, não na

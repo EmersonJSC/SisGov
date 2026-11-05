@@ -163,7 +163,9 @@ conta os atendidos. Em 20 turnos: preço +20 dá favela +3,5 no `teste` e +7 no
 +0,8. Ficha e mapa mostram. Renda é medida contra a média do próprio país, como
 nas cestas.
 
-**05/nov (16): Abertura com custo, sem commit.** Saúde de dois andares: "com plano × na fila" sobe a desigualdade (`desigualdadeDaRede`), então a verba e o Limite baixam esse custo. Mercado aberto em 20 turnos: `teste` +7,2 atendimento e +2,1 desigualdade; `teste-pobre` +3,6 e +3,4. Seta e ficha conferidas na tela. Próximo: proposta das leis que rompem a parede de profissionais do país pobre (Atenção preventiva, Telemedicina livre, Serviço obrigatório), depois as outras 13.
+**05/nov (17): Atenção preventiva, Telemedicina livre e Serviço obrigatório feitas, sem commit.** Atenção preventiva: verba (até 3% do PIB) que alcança parte da fila sem vaga nem profissional; rende mais no país pobre (0,5% do PIB: +6,6 no `teste-pobre`, +4,9 no `teste`). Telemedicina e Serviço esticam o profissional da rede pública (`valores.alcance`, `fraco`, `abandono`): só rendem onde falta profissional, e sozinhas no país sem parede mostram só o custo. Fichas conferidas na tela. Próximo: Quem paga (Seguro na folha, Cobertura gratuita, Dedução, Coparticipação, Conta de saúde, Filantrópicos). Lei nova com `leis_alcance` é só JSON.
+
+**05/nov (16): Abertura com custo, commitada.** Saúde de dois andares: "com plano × na fila" sobe a desigualdade (`desigualdadeDaRede`), então a verba e o Limite baixam esse custo. Mercado aberto em 20 turnos: `teste` +7,2 atendimento e +2,1 desigualdade; `teste-pobre` +3,6 e +3,4. Seta e ficha conferidas na tela.
 
 **04/nov (15): verba da saúde corrigida, commitada.** A verba rende menos a cada ponto; vaga sem profissional vira corrupção e sai quando a vaga fecha ou o profissional chega. Instrução leva 6 anos para virar formados. "Médicos por habitante" virou "Profissionais de saúde", em "por mil habitantes". Planos param em cerca de 18% (Seguro na folha deve resolver).
 

@@ -70,6 +70,7 @@ import {
   desigualdadeDaRede,
   desvioDaRede,
   fluxoDeProfissionais,
+  fraquezaDaRede,
   indiceDoAtendimento,
   indiceDosProfissionais,
   trabalhoDoAtendimento,
@@ -539,10 +540,11 @@ function parteDaLei(
   regras: Regras,
   valores: Record<string, ValorLei>,
   id: string,
+  chave = "parte",
 ): number {
   const lei = regras.leis[id];
   if (lei?.forma !== "opcoes") return 0;
-  return lei.opcoes.find((o) => o.id === valores[id])?.valores?.parte ?? 0;
+  return lei.opcoes.find((o) => o.id === valores[id])?.valores?.[chave] ?? 0;
 }
 
 /** O que as leis pedem à rede, em números. */
@@ -567,10 +569,24 @@ export function leisDoAtendimento(
   valores: Record<string, ValorLei>,
 ): LeisDoAtendimento {
   const verba = valores[regra.lei_verba];
+  const basica = valores[regra.lei_basica];
+  const soma = (conta: (id: string) => number) =>
+    regra.leis_alcance.reduce((total, id) => total + conta(id), 0);
+  const alcanceDe = (id: string) => parteDaLei(regras, valores, id, "alcance");
+  const alcance = soma(alcanceDe);
   return {
     verba: typeof verba === "number" ? verba : 0,
     abertura: parteDaLei(regras, valores, regra.lei_abertura),
     limite: parteDaLei(regras, valores, regra.lei_limite),
+    basica: typeof basica === "number" ? basica : 0,
+    alcance,
+    fraco:
+      alcance > 0
+        ? soma(
+            (id) => alcanceDe(id) * parteDaLei(regras, valores, id, "fraco"),
+          ) / alcance
+        : 0,
+    abandono: soma((id) => parteDaLei(regras, valores, id, "abandono")),
   };
 }
 
@@ -738,9 +754,10 @@ const atendimento: Etapa = (regras, estado) => {
   const instrucao = estado.jogabilidade[regra.indice_instrucao];
   const instrucao0 = marco[regra.indice_instrucao];
   const renda0 = estado.marco.renda_pop?.[regra.pop_profissionais];
+  const leis = leisDoAtendimento(regras, regra, estado.leis);
   const nova = andarAtendimento(regra, s, {
     populacao,
-    leis: leisDoAtendimento(regras, regra, estado.leis),
+    leis,
     atraso: estado.jogabilidade[obras.indice_atraso] ?? 0,
     ritmo: ritmoDasObras(regras, estado),
     com_bolso: comBolsoParaPlano(regra, estado),
@@ -755,6 +772,7 @@ const atendimento: Etapa = (regras, estado) => {
       renda: renda0
         ? (pop.renda * 100) / estado.essenciais.indice_precos / renda0
         : 1,
+      abandono: leis.abandono,
     },
   );
   const profissionais = pop.pessoas + formados - param - emigrados;
@@ -771,10 +789,14 @@ const atendimento: Etapa = (regras, estado) => {
     profissionais,
     vagas: nova.vagas,
     planos: nova.planos,
+    alcance: nova.alcance,
+    cobertura: nova.cobertura,
+    fraco: leis.fraco,
   };
   const indice = indiceDoAtendimento(regra, rede);
   const desvio = desvioDaRede(regra, rede);
   const desigualdade = desigualdadeDaRede(regra, rede);
+  const fraqueza = fraquezaDaRede(regra, rede);
   const indice_profissionais = indiceDosProfissionais(
     regra,
     profissionais,
@@ -792,6 +814,7 @@ const atendimento: Etapa = (regras, estado) => {
       indice_profissionais,
       desvio,
       desigualdade,
+      fraqueza,
     },
     base: {
       ...base,
@@ -803,6 +826,7 @@ const atendimento: Etapa = (regras, estado) => {
       [regra.indice_desvio]: base[regra.indice_desvio] + desvio - s.desvio,
       [regra.indice_desigualdade]:
         base[regra.indice_desigualdade] + desigualdade - s.desigualdade,
+      [regra.indice_vida]: base[regra.indice_vida] - fraqueza + s.fraqueza,
     },
   };
 };
@@ -1235,17 +1259,17 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.indice_instrucao,
       r.indice_desvio,
       r.indice_desigualdade,
+      r.indice_vida,
     ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: atendimento: o índice "${id}" não existe`);
     for (const id of [r.pop_profissionais, r.pop_origem])
       if (!regras.pops.some((p) => p.id === id))
         throw new Error(`mundo: atendimento: o pop "${id}" não existe`);
-    if (regras.leis[r.lei_verba]?.forma !== "continua")
-      throw new Error(
-        `mundo: atendimento: "${r.lei_verba}" não é lei contínua`,
-      );
-    for (const id of [r.lei_abertura, r.lei_limite])
+    for (const id of [r.lei_verba, r.lei_basica])
+      if (regras.leis[id]?.forma !== "continua")
+        throw new Error(`mundo: atendimento: "${id}" não é lei contínua`);
+    for (const id of [r.lei_abertura, r.lei_limite, ...r.leis_alcance])
       if (regras.leis[id]?.forma !== "opcoes")
         throw new Error(`mundo: atendimento: "${id}" não é lei de opções`);
   }

@@ -21,7 +21,14 @@
       "curto": "Saúde",
       "cargo": "Saúde",
       "faz": "Hospitais, planos e a fila da saúde.",
-      "leis": ["gasto-saude", "abertura-planos", "limite-planos"]
+      "leis": [
+        "gasto-saude",
+        "abertura-planos",
+        "limite-planos",
+        "atencao-preventiva",
+        "telemedicina-livre",
+        "servico-obrigatorio"
+      ]
     },
     {
       "id": "protecao-social",

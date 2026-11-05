@@ -52,6 +52,81 @@ describe("conta da fila (motor)", () => {
   });
 });
 
+describe("leis que rompem a falta de profissionais", () => {
+  const verba = { teste: 0.08, "teste-pobre": 0.07 };
+  const atendimento = (leis: Record<string, number | string>, pais: string) =>
+    depois(leis, pais).jogabilidade.atendimento;
+
+  it("atenção preventiva rende mais no país com fila grande", () => {
+    const sobe = (pais: string) =>
+      atendimento({ "atencao-preventiva": 0.005 }, pais) -
+      atendimento({}, pais);
+    expect(sobe("teste")).toBeGreaterThan(2);
+    expect(sobe("teste-pobre")).toBeGreaterThan(sobe("teste"));
+  });
+
+  it("telemedicina só ajuda onde falta profissional", () => {
+    const livre = { "telemedicina-livre": "livre" };
+    expect(atendimento(livre, "teste-pobre")).toBeCloseTo(
+      atendimento({}, "teste-pobre"),
+    );
+    const parede = { "gasto-saude": verba["teste-pobre"] };
+    expect(atendimento({ ...parede, ...livre }, "teste-pobre")).toBeGreaterThan(
+      atendimento(parede, "teste-pobre") + 3,
+    );
+  });
+
+  it("esticar o profissional tira a verba parada da corrupção", () => {
+    const parede = { "gasto-saude": verba["teste-pobre"] };
+    const com = { ...parede, "telemedicina-livre": "livre" };
+    expect(depois(com, "teste-pobre").jogabilidade.corrupcao).toBeLessThan(
+      depois(parede, "teste-pobre").jogabilidade.corrupcao,
+    );
+  });
+
+  it("o atendimento esticado custa saúde", () => {
+    const parede = { "gasto-saude": verba["teste-pobre"] };
+    const duro = { ...parede, "servico-obrigatorio": "todos-dois-anos" };
+    const manso = { ...parede, "servico-obrigatorio": "todos-um-ano" };
+    expect(depois(duro, "teste-pobre").jogabilidade.saude).toBeLessThan(
+      depois(manso, "teste-pobre").jogabilidade.saude,
+    );
+  });
+
+  it("lugar sorteado atende mais, mas perde profissionais e liberdade", () => {
+    const parede = { "gasto-saude": verba["teste-pobre"] };
+    const leis = (nivel: string) => ({
+      ...parede,
+      "servico-obrigatorio": nivel,
+    });
+    const sorteado = depois(leis("lugar-sorteado"), "teste-pobre").jogabilidade;
+    const doisAnos = depois(
+      leis("todos-dois-anos"),
+      "teste-pobre",
+    ).jogabilidade;
+    expect(sorteado.atendimento).toBeGreaterThan(doisAnos.atendimento);
+    expect(sorteado.profissionais_saude).toBeLessThan(
+      doisAnos.profissionais_saude,
+    );
+    expect(sorteado.liberdade_civil).toBeLessThan(doisAnos.liberdade_civil);
+  });
+
+  it("a ficha mostra o ganho, o custo e quem larga a profissão", () => {
+    const p = avancar(partida("teste-pobre"), [
+      { tipo: "mudar_lei", lei: "gasto-saude", valor: 0.07 },
+    ]);
+    const { indices } = previaDaLei(
+      jogar(p, 15),
+      "servico-obrigatorio",
+      "lugar-sorteado",
+    );
+    const de = (id: string) =>
+      indices.filter((i) => i.id === id).reduce((s, i) => s + i.pontos, 0);
+    expect(de("atendimento")).toBeGreaterThan(0);
+    expect(de("profissionais_saude")).toBeLessThan(0);
+  });
+});
+
 describe("saúde de dois andares", () => {
   it("mais planos sobem a desigualdade, e pesa mais com a fila grande", () => {
     const sobe = (pais: string) =>
@@ -141,6 +216,7 @@ describe("rede de atendimento", () => {
       profissionais: 10,
       instrucao: 2,
       renda: 1,
+      abandono: 0,
     };
     const { turmas } = fluxoDeProfissionais(r, estado.atendimento!, turno);
     expect(turmas).toBeLessThan(1.1);

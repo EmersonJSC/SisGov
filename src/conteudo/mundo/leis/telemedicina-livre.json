@@ -1,0 +1,66 @@
+{
+  "versao": 1,
+  "id": "telemedicina-livre",
+  "nome": "Telemedicina livre",
+  "descricao": "Até onde o profissional da rede pública pode atender à distância. Atende mais gente, com menos cuidado.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-presencial",
+      "rotulo": "Só presencial",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "alcance": 0,
+        "fraco": 0,
+        "abandono": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "retornos",
+      "rotulo": "Só retornos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "valores": {
+        "alcance": 0.1,
+        "fraco": 0.2,
+        "abandono": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "consultas",
+      "rotulo": "Consultas",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "valores": {
+        "alcance": 0.2,
+        "fraco": 0.2,
+        "abandono": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "livre",
+      "rotulo": "Livre",
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "valores": {
+        "alcance": 0.35,
+        "fraco": 0.3,
+        "abandono": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

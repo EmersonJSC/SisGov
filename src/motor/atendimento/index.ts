@@ -20,6 +20,13 @@ export interface RegraDoAtendimento {
   /** Leis de opções; cada opção traz o número em `valores.parte`. */
   lei_abertura: string;
   lei_limite: string;
+  /** Lei contínua (fração do PIB) que paga o atendimento básico. */
+  lei_basica: string;
+  /**
+   * Leis de opções que esticam o profissional da rede pública; cada opção traz
+   * `valores.alcance`, `valores.fraco` e `valores.abandono`.
+   */
+  leis_alcance: string[];
   /** Pessoas que um profissional atende. */
   pessoas_por_profissional: number;
   /** Índice que recebe a verba parada em vagas sem atendimento. */
@@ -48,6 +55,12 @@ export interface RegraDoAtendimento {
   formatura: number;
   /** Pontos do índice de desvio por ponto da população em vagas paradas. */
   desvio: number;
+  /** Índice que perde com o atendimento esticado. */
+  indice_vida: string;
+  /** Verba por ano (fração do PIB) que paga 63% do `basico_teto`. */
+  custo_basico: number;
+  /** Parte da fila que o atendimento básico alcança, no máximo (0 a 1). */
+  basico_teto: number;
   /** Índice que sobe quando quem paga é atendido e o resto fica na fila. */
   indice_desigualdade: string;
   /** Pontos do índice por ponto de "com plano × na fila", em % ao quadrado ÷ 100. */
@@ -79,6 +92,12 @@ export interface AtendimentoNoEstado {
   desvio: number;
   /** Pontos que a saúde de dois andares soma ao índice de desigualdade. */
   desigualdade: number;
+  /** Parte da fila no atendimento básico, hoje (0 a 1). */
+  cobertura: number;
+  /** Quanto a mais o profissional da rede pública atende, hoje (0,2 = 20%). */
+  alcance: number;
+  /** Pontos que o atendimento esticado tira do índice de vida. */
+  fraqueza: number;
 }
 
 /** O que as leis em vigor pedem, em números. */
@@ -88,6 +107,14 @@ export interface LeisDoAtendimento {
   /** Parte do mercado de planos aberta e parte limitada (0 a 1). */
   abertura: number;
   limite: number;
+  /** Fração do PIB. */
+  basica: number;
+  /** Quanto a mais o profissional atende, somando as leis. */
+  alcance: number;
+  /** Pontos do índice de vida perdidos por ponto de gente no atendimento esticado. */
+  fraco: number;
+  /** Parte dos profissionais que larga a profissão por ano (0 a 1). */
+  abandono: number;
 }
 
 export interface Rede {
@@ -95,6 +122,9 @@ export interface Rede {
   profissionais: number;
   vagas: number;
   planos: number;
+  alcance?: number;
+  cobertura?: number;
+  fraco?: number;
 }
 
 export interface TurnoDoAtendimento {
@@ -131,13 +161,23 @@ const vagasDaVerba = (
   populacao *
   (1 - Math.exp(-verba / (regra.custo_vaga * atrasoDasObras(atraso).custo)));
 
+/** Parte da fila que o atendimento básico alcança, com esta verba. */
+const coberturaAlvo = (
+  regra: RegraDoAtendimento,
+  verba: number,
+  atraso: number,
+) =>
+  regra.basico_teto *
+  (1 - Math.exp(-verba / (regra.custo_basico * atrasoDasObras(atraso).custo)));
+
 /**
  * Quem o plano e a rede pública atendem. O plano vem primeiro: paga mais e fica
- * com os profissionais; a rede pública atende com o que sobra.
+ * com os profissionais; a rede pública atende com o que sobra. O atendimento
+ * básico alcança parte de quem sobrou, sem vaga e sem profissional.
  */
 function contaDaRede(
   regra: RegraDoAtendimento,
-  { populacao, profissionais, vagas, planos }: Rede,
+  { populacao, profissionais, vagas, planos, alcance = 0, cobertura = 0 }: Rede,
 ) {
   const porProfissional = regra.pessoas_por_profissional;
   const clientes = populacao * planos;
@@ -146,12 +186,16 @@ function contaDaRede(
     (clientes * regra.peso_plano) / porProfissional,
   );
   const doPlano = (noPlano * porProfissional) / regra.peso_plano;
-  const publico = Math.min(
-    populacao - doPlano,
-    vagas,
-    (profissionais - noPlano) * porProfissional,
-  );
-  return { doPlano, publico };
+  const semEsticar = (profissionais - noPlano) * porProfissional;
+  const teto = Math.min(populacao - doPlano, vagas);
+  const publico = Math.min(teto, semEsticar * (1 + alcance));
+  const basico = (populacao - doPlano - publico) * cobertura;
+  return {
+    doPlano,
+    publico,
+    basico,
+    esticado: publico - Math.min(teto, semEsticar),
+  };
 }
 
 /** Quem é atendido hoje, em % da população. */
@@ -159,14 +203,20 @@ export function indiceDoAtendimento(
   regra: RegraDoAtendimento,
   rede: Rede,
 ): number {
-  const { doPlano, publico } = contaDaRede(regra, rede);
-  return ((doPlano + publico) / rede.populacao) * 100;
+  const { doPlano, publico, basico } = contaDaRede(regra, rede);
+  return ((doPlano + publico + basico) / rede.populacao) * 100;
 }
 
 /** Pontos do índice de desvio: verba em vagas que ninguém atende. */
 export function desvioDaRede(regra: RegraDoAtendimento, rede: Rede): number {
   const paradas = rede.vagas - contaDaRede(regra, rede).publico;
   return (Math.max(0, paradas) / rede.populacao) * 100 * regra.desvio;
+}
+
+/** Pontos que o índice de vida perde: gente atendida às pressas. */
+export function fraquezaDaRede(regra: RegraDoAtendimento, rede: Rede): number {
+  const { esticado } = contaDaRede(regra, rede);
+  return (esticado / rede.populacao) * 100 * (rede.fraco ?? 0);
 }
 
 /**
@@ -236,6 +286,9 @@ export function atendimentoInicial(
       vagas,
       planos,
     }),
+    cobertura: 0,
+    alcance: 0,
+    fraqueza: 0,
   };
 }
 
@@ -272,6 +325,11 @@ export function andarAtendimento(
     vagas,
     obras: fila,
     planos: s.planos + regra.velocidade * (planos - s.planos),
+    cobertura:
+      s.cobertura +
+      regra.velocidade *
+        (coberturaAlvo(regra, turno.leis.basica, turno.atraso) - s.cobertura),
+    alcance: s.alcance + regra.velocidade * (turno.leis.alcance - s.alcance),
   };
 }
 
@@ -289,6 +347,8 @@ export function fluxoDeProfissionais(
     instrucao: number;
     /** Renda real do pop: hoje ÷ turno 0. */
     renda: number;
+    /** Parte que larga a profissão por ano, pelas leis (0 a 1). */
+    abandono: number;
   },
 ) {
   const perda = Math.min(1, Math.max(0, 1 - turno.renda));
@@ -296,7 +356,9 @@ export function fluxoDeProfissionais(
   return {
     turmas,
     formados: s.formacao * turmas * turno.populacao,
-    param: (turno.profissionais * regra.aposentadoria) / TURNOS_POR_ANO,
+    param:
+      (turno.profissionais * (regra.aposentadoria + turno.abandono)) /
+      TURNOS_POR_ANO,
     emigrados: (turno.profissionais * regra.emigracao * perda) / TURNOS_POR_ANO,
   };
 }
@@ -309,7 +371,7 @@ export const trabalhoDoAtendimento = (
 
 /**
  * O que mudar as leis faz, para a ficha: pontos do índice pela rede pública e
- * pelos planos. Sem profissional para atender, a vaga nova não dá ponto e vira
+ * pelos planos, e pelo cuidado esticado ou básico. Sem profissional para atender, a vaga nova não dá ponto e vira
  * desvio.
  */
 export function pontosDoAtendimento(
@@ -332,23 +394,30 @@ export function pontosDoAtendimento(
     );
   const planosCom = (leis: LeisDoAtendimento) =>
     planosAlvo(regra, leis, com_bolso);
-  const rede = (vagas: number, planos: number) => ({
+  const rede = (vagas: number, planos: number, cuidado: LeisDoAtendimento) => ({
     populacao,
     profissionais,
     vagas,
     planos,
+    alcance: cuidado.alcance,
+    cobertura: coberturaAlvo(regra, cuidado.basica, atraso),
+    fraco: cuidado.fraco,
   });
-  const indice = (vagas: number, planos: number) =>
-    indiceDoAtendimento(regra, rede(vagas, planos));
-  const hoje = indice(vagasCom(antes), planosCom(antes));
+  const redeAntes = rede(vagasCom(antes), planosCom(antes), antes);
+  const redeDepois = rede(vagasCom(depois), planosCom(depois), depois);
+  const hoje = indiceDoAtendimento(regra, redeAntes);
+  const comMudanca = (mudanca: Partial<Rede>) =>
+    indiceDoAtendimento(regra, { ...redeAntes, ...mudanca }) - hoje;
+  const { vagas, planos, alcance, cobertura } = redeDepois;
+  const diferenca = (
+    conta: (regra: RegraDoAtendimento, rede: Rede) => number,
+  ) => conta(regra, redeDepois) - conta(regra, redeAntes);
   return {
-    rede: indice(vagasCom(depois), planosCom(antes)) - hoje,
-    planos: indice(vagasCom(antes), planosCom(depois)) - hoje,
-    desvio:
-      desvioDaRede(regra, rede(vagasCom(depois), planosCom(depois))) -
-      desvioDaRede(regra, rede(vagasCom(antes), planosCom(antes))),
-    desigualdade:
-      desigualdadeDaRede(regra, rede(vagasCom(depois), planosCom(depois))) -
-      desigualdadeDaRede(regra, rede(vagasCom(antes), planosCom(antes))),
+    rede: comMudanca({ vagas }),
+    planos: comMudanca({ planos }),
+    cuidado: comMudanca({ alcance, cobertura }),
+    desvio: diferenca(desvioDaRede),
+    desigualdade: diferenca(desigualdadeDaRede),
+    fraqueza: diferenca(fraquezaDaRede),
   };
 }

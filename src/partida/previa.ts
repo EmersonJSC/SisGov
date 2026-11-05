@@ -231,21 +231,27 @@ function previaDoAtendimento(
   const s = estado.atendimento;
   const pop = regra && estado.pops[regra.pop_profissionais];
   if (!regra || !s || !pop) return [];
-  const { lei_verba, lei_abertura, lei_limite } = regra;
-  if (![lei_verba, lei_abertura, lei_limite].includes(leiId)) return [];
+  const { lei_verba, lei_abertura, lei_limite, lei_basica } = regra;
+  const leis = [
+    lei_verba,
+    lei_abertura,
+    lei_limite,
+    lei_basica,
+    ...regra.leis_alcance,
+  ];
+  if (!leis.includes(leiId)) return [];
   const obras = regras.mercado?.mercado.obras;
-  const pontos = pontosDoAtendimento(
-    regra,
-    s,
-    leisDoAtendimento(regras, regra, estado.leis),
-    leisDoAtendimento(regras, regra, { ...estado.leis, [leiId]: valor }),
-    {
-      populacao: estado.essenciais.populacao,
-      profissionais: pop.pessoas,
-      atraso: obras ? (estado.jogabilidade[obras.indice_atraso] ?? 0) : 0,
-      com_bolso: comBolsoParaPlano(regra, estado),
-    },
-  );
+  const antes = leisDoAtendimento(regras, regra, estado.leis);
+  const depois = leisDoAtendimento(regras, regra, {
+    ...estado.leis,
+    [leiId]: valor,
+  });
+  const pontos = pontosDoAtendimento(regra, s, antes, depois, {
+    populacao: estado.essenciais.populacao,
+    profissionais: pop.pessoas,
+    atraso: obras ? (estado.jogabilidade[obras.indice_atraso] ?? 0) : 0,
+    com_bolso: comBolsoParaPlano(regra, estado),
+  });
   const atrasoMeses = mesesDaSaude(partida);
   const linhas: PreviaLei["indices"] = [
     { id: regra.indice, pontos: pontos.rede, atrasoMeses },
@@ -254,6 +260,24 @@ function previaDoAtendimento(
       pontos: pontos.planos,
       atrasoMeses: 0,
       aosPoucos: true,
+    },
+    {
+      id: regra.indice,
+      pontos: pontos.cuidado,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_vida,
+      pontos: -pontos.fraqueza,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_profissionais,
+      pontos: (antes.abandono - depois.abandono) * s.indice_profissionais,
+      atrasoMeses: 0,
+      porAno: true,
     },
     { id: regra.indice_desvio, pontos: pontos.desvio, atrasoMeses },
     {
@@ -268,7 +292,9 @@ function previaDoAtendimento(
       .map((d) => ({
         id: d.indice,
         pontos:
-          d.sentido * TAXA_DERIVA[d.forca] * (pontos.rede + pontos.planos),
+          d.sentido *
+          TAXA_DERIVA[d.forca] *
+          (pontos.rede + pontos.planos + pontos.cuidado),
         atrasoMeses,
         aosPoucos: true,
       })),

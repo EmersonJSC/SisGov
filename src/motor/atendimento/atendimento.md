@@ -24,6 +24,16 @@ do que a verba paga no turno 0, para o país começar parado.
 Vaga sem profissional não atende e o dinheiro fica parado: vira pontos no índice
 de desvio (`desvio`). Quando a vaga fecha ou o profissional chega, os pontos saem.
 
+Esticar a rede: Telemedicina e Serviço obrigatório fazem o profissional da rede
+pública atender mais (`alcance`), andando na `velocidade`. Só rendem onde falta
+profissional, e tiram a verba parada da corrupção. Quem é atendido assim conta
+menos para a saúde (`fraco`), e o serviço duro faz gente largar a profissão
+(`abandono`).
+
+Atendimento básico: a Atenção preventiva paga agentes da comunidade, que alcançam
+parte da fila (`basico_teto`), sem vaga e sem profissional. Por pegar uma parte da
+fila, rende mais no país pobre. A corrupção encarece, como nas vagas.
+
 Saúde de dois andares: quem tem plano é atendido e o resto fica na fila. O índice
 de desigualdade sobe com "com plano × na fila" (`desigualdade`). Sem fila, ou sem
 plano, não há dois andares; por isso a verba também baixa esse custo, e a mesma

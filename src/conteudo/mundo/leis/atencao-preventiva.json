@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "id": "atencao-preventiva",
+  "nome": "Atenção preventiva",
+  "descricao": "Dinheiro para agentes da comunidade e cuidado simples, perto de casa. Alcança quem está na fila sem hospital nem médico.",
+  "camada": "jogabilidade",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.03
+  },
+  "passo": 0.001,
+  "conta": "gasto",
+  "bussola": {
+    "ate": 0.02,
+    "min": {},
+    "max": {
+      "economico": -0.2,
+      "social": -0.5
+    }
+  },
+  "efeitos": []
+}
