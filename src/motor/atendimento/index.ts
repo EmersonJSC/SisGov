@@ -32,6 +32,11 @@ export interface RegraDoAtendimento {
    * da folha entra) e `valores.informal` (quem o custo tira do emprego formal).
    */
   lei_seguro: string;
+  /**
+   * Lei de opções da gratuidade; cada opção traz `valores.procura` (quanto a mais
+   * cada pessoa usa a rede pública) e `valores.saida` (parte que larga o plano).
+   */
+  lei_gratuidade: string;
   /** Pops com salário em folha: quem o seguro cobre. */
   pops_folha: string[];
   /** Pops que perdem emprego formal quando a folha encarece. */
@@ -74,6 +79,10 @@ export interface RegraDoAtendimento {
   indice_informal: string;
   /** Verba por ano (fração do PIB) que paga 63% do `basico_teto`. */
   custo_basico: number;
+  /** Pontos do índice de vida por ponto de gente na rede, por 100% de procura. */
+  cuidado_cedo: number;
+  /** Pontos do índice de desigualdade que cada ponto de gente na rede de graça tira, por 100% de procura. */
+  renda_indireta: number;
   /** Parte da fila que o atendimento básico alcança, no máximo (0 a 1). */
   basico_teto: number;
   /** Índice que sobe quando quem paga é atendido e o resto fica na fila. */
@@ -100,6 +109,8 @@ export interface AtendimentoNoEstado {
   seguro: number;
   /** Parte dos `pops_encargo` que o seguro já tirou do emprego formal (0 a 1). */
   encargo: number;
+  /** Quanto a mais cada pessoa usa a rede pública, hoje (0,2 = 20%). */
+  procura: number;
   /** Parte da população que se forma por turno, no ritmo do turno 0. */
   formacao: number;
   /** Instrução das turmas que se formam ÷ a do turno 0. */
@@ -139,6 +150,10 @@ export interface LeisDoAtendimento {
   seguro: number;
   /** Parte dos `pops_encargo` que o seguro tira do emprego formal (0 a 1). */
   informal: number;
+  /** Quanto a mais cada pessoa usa a rede pública. */
+  procura: number;
+  /** Parte de quem tem plano que o larga pela rede de graça (0 a 1). */
+  saida: number;
 }
 
 export interface Rede {
@@ -151,6 +166,7 @@ export interface Rede {
   alcance?: number;
   cobertura?: number;
   fraco?: number;
+  procura?: number;
 }
 
 export interface TurnoDoAtendimento {
@@ -174,7 +190,8 @@ export const planosAlvo = (
 ) =>
   comBolso *
   (regra.plano_livre + leis.abertura * (1 - regra.plano_livre)) *
-  (1 - leis.limite);
+  (1 - leis.limite) *
+  (1 - leis.saida);
 
 /**
  * Parte da população que entra pelo seguro, sem contar quem já tem plano. O seguro
@@ -207,8 +224,9 @@ const coberturaAlvo = (
 
 /**
  * Quem o plano e a rede pública atendem. O plano vem primeiro: paga mais e fica
- * com os profissionais; a rede pública atende com o que sobra. O atendimento
- * básico alcança parte de quem sobrou, sem vaga e sem profissional.
+ * com os profissionais; a rede pública atende com o que sobra, e quem a procura
+ * mais ocupa mais. O atendimento básico alcança parte de quem sobrou, sem vaga e
+ * sem profissional.
  */
 function contaDaRede(
   regra: RegraDoAtendimento,
@@ -220,6 +238,7 @@ function contaDaRede(
     seguro = 0,
     alcance = 0,
     cobertura = 0,
+    procura = 0,
   }: Rede,
 ) {
   const porProfissional = regra.pessoas_por_profissional;
@@ -231,8 +250,9 @@ function contaDaRede(
       : regra.peso_plano;
   const noPlano = Math.min(profissionais, (clientes * peso) / porProfissional);
   const doPlano = (noPlano * porProfissional) / peso;
-  const semEsticar = (profissionais - noPlano) * porProfissional;
-  const teto = Math.min(populacao - doPlano, vagas);
+  const uso = 1 + procura;
+  const semEsticar = ((profissionais - noPlano) * porProfissional) / uso;
+  const teto = Math.min(populacao - doPlano, vagas / uso);
   const publico = Math.min(teto, semEsticar * (1 + alcance));
   const basico = (populacao - doPlano - publico) * cobertura;
   return {
@@ -254,26 +274,38 @@ export function indiceDoAtendimento(
 
 /** Pontos do índice de desvio: verba em vagas que ninguém atende. */
 export function desvioDaRede(regra: RegraDoAtendimento, rede: Rede): number {
-  const paradas = rede.vagas - contaDaRede(regra, rede).publico;
+  const { publico } = contaDaRede(regra, rede);
+  const paradas = rede.vagas - publico * (1 + (rede.procura ?? 0));
   return (Math.max(0, paradas) / rede.populacao) * 100 * regra.desvio;
 }
 
-/** Pontos que o índice de vida perde: gente atendida às pressas. */
+/**
+ * Pontos que o índice de vida perde: gente atendida às pressas. Quem procura a
+ * rede mais cedo devolve pontos.
+ */
 export function fraquezaDaRede(regra: RegraDoAtendimento, rede: Rede): number {
-  const { esticado } = contaDaRede(regra, rede);
-  return (esticado / rede.populacao) * 100 * (rede.fraco ?? 0);
+  const { esticado, publico } = contaDaRede(regra, rede);
+  const pressa = esticado * (rede.fraco ?? 0);
+  const cedo = publico * (rede.procura ?? 0) * regra.cuidado_cedo;
+  return ((pressa - cedo) / rede.populacao) * 100;
 }
 
 /**
  * Pontos do índice de desigualdade: a saúde de dois andares. Pesa quando há gente
- * com plano e gente na fila; sem fila, ou sem plano, não há dois andares.
+ * com plano e gente na fila; sem fila, ou sem plano, não há dois andares. Quem usa
+ * a rede sem pagar ganha como se fosse renda.
  */
 export function desigualdadeDaRede(
   regra: RegraDoAtendimento,
   rede: Rede,
 ): number {
   const fila = 1 - indiceDoAtendimento(regra, rede) / 100;
-  return rede.planos * fila * 100 * regra.desigualdade;
+  const { publico } = contaDaRede(regra, rede);
+  const deGraca = (publico / rede.populacao) * (rede.procura ?? 0);
+  return (
+    (rede.planos * fila * regra.desigualdade - deGraca * regra.renda_indireta) *
+    100
+  );
 }
 
 /** Quantos o país tem de profissionais contra o que precisa, de 0 a 100. */
@@ -314,7 +346,11 @@ export function atendimentoInicial(
     planos,
     seguro,
   });
-  const vagas = (Math.max(0, pais.atendimento - soPlanos) / 100) * populacao;
+  const { procura } = pais.leis;
+  const vagas =
+    (Math.max(0, pais.atendimento - soPlanos) / 100) *
+    populacao *
+    (1 + procura);
   return {
     vagas,
     vagas_fora:
@@ -323,6 +359,7 @@ export function atendimentoInicial(
     planos,
     seguro,
     encargo: pais.leis.informal,
+    procura,
     formacao:
       ((profissionais / populacao) * regra.aposentadoria) / TURNOS_POR_ANO,
     turmas: 1,
@@ -340,6 +377,7 @@ export function atendimentoInicial(
       vagas,
       planos,
       seguro,
+      procura,
     }),
     cobertura: 0,
     alcance: 0,
@@ -384,6 +422,7 @@ export function andarAtendimento(
     planos: s.planos + regra.velocidade * (planos - s.planos),
     seguro: s.seguro + regra.velocidade * (seguro - s.seguro),
     encargo: s.encargo + regra.velocidade * (turno.leis.informal - s.encargo),
+    procura: s.procura + regra.velocidade * (turno.leis.procura - s.procura),
     cobertura:
       s.cobertura +
       regra.velocidade *
@@ -464,6 +503,7 @@ export function pontosDoAtendimento(
       alcance: leis.alcance,
       cobertura: coberturaAlvo(regra, leis.basica, atraso),
       fraco: leis.fraco,
+      procura: leis.procura,
     };
   };
   const redeAntes = rede(antes);
@@ -471,13 +511,13 @@ export function pontosDoAtendimento(
   const hoje = indiceDoAtendimento(regra, redeAntes);
   const comMudanca = (mudanca: Partial<Rede>) =>
     indiceDoAtendimento(regra, { ...redeAntes, ...mudanca }) - hoje;
-  const { vagas, planos, seguro, alcance, cobertura } = redeDepois;
+  const { vagas, planos, seguro, alcance, cobertura, procura } = redeDepois;
   const diferenca = (
     conta: (regra: RegraDoAtendimento, rede: Rede) => number,
   ) => conta(regra, redeDepois) - conta(regra, redeAntes);
   return {
     rede: comMudanca({ vagas }),
-    planos: comMudanca({ planos, seguro }),
+    planos: comMudanca({ planos, seguro, procura }),
     cuidado: comMudanca({ alcance, cobertura }),
     desvio: diferenca(desvioDaRede),
     desigualdade: diferenca(desigualdadeDaRede),

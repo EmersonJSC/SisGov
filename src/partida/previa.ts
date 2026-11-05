@@ -239,6 +239,7 @@ function previaDoAtendimento(
     lei_limite,
     lei_basica,
     regra.lei_seguro,
+    regra.lei_gratuidade,
     ...regra.leis_alcance,
   ];
   if (!leis.includes(leiId)) return [];

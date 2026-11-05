@@ -1,0 +1,62 @@
+{
+  "versao": 1,
+  "id": "cobertura-gratuita",
+  "nome": "Cobertura gratuita",
+  "descricao": "Até onde a rede pública atende sem cobrar. De graça, o pobre se trata cedo e a fila separa menos; mas todo mundo usa mais a rede, e parte de quem tem plano volta para ela.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-urgencia",
+      "rotulo": "Só urgência",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "procura": 0,
+        "saida": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "consultas-exames",
+      "rotulo": "Consultas e exames",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "procura": 0.1,
+        "saida": 0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "internacao-cirurgia",
+      "rotulo": "Internação e cirurgia",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "valores": {
+        "procura": 0.2,
+        "saida": 0.2
+      },
+      "efeitos": []
+    },
+    {
+      "id": "tudo-para-todos",
+      "rotulo": "Tudo, para todos",
+      "bussola": {
+        "economico": -0.6,
+        "social": 0
+      },
+      "valores": {
+        "procura": 0.3,
+        "saida": 0.35
+      },
+      "efeitos": []
+    }
+  ]
+}

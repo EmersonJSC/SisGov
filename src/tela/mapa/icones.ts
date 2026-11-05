@@ -698,6 +698,7 @@ export const ICONE_LEI: Readonly<Record<string, string>> = {
   "concessao-rede": "handshake-outline",
   "abertura-planos": "card-account-details-outline",
   "seguro-folha": "briefcase-plus-outline",
+  "cobertura-gratuita": "hand-heart-outline",
   "limite-planos": "hospital-box-outline",
   "atencao-preventiva": "account-heart-outline",
   "telemedicina-livre": "cellphone-message",

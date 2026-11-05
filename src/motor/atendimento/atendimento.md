@@ -40,6 +40,13 @@ atendimento. Quem fica de fora conta nos dois andares. Quem sai da folha vai par
 `pop_informal` aos poucos e volta se a lei cair; `indice_informal` mostra essa
 parte das pessoas.
 
+Cobertura gratuita: cada opção traz `valores.procura` (quanto a mais cada pessoa
+usa a rede pública) e `valores.saida` (parte que larga o plano). Quem procura
+mais ocupa mais vaga e mais profissional, então a fila cresce e a vaga parada se
+enche. Em troca, a gente na rede soma `cuidado_cedo` ao índice de vida e tira
+`renda_indireta` do índice de desigualdade, por ponto de procura. O seguro não
+muda.
+
 Atendimento básico: a Atenção preventiva paga agentes da comunidade, que alcançam
 parte da fila (`basico_teto`), sem vaga e sem profissional. Por pegar uma parte da
 fila, rende mais no país pobre. A corrupção encarece, como nas vagas.

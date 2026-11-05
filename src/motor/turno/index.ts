@@ -589,6 +589,8 @@ export function leisDoAtendimento(
     abandono: soma((id) => parteDaLei(regras, valores, id, "abandono")),
     seguro: parteDaLei(regras, valores, regra.lei_seguro),
     informal: parteDaLei(regras, valores, regra.lei_seguro, "informal"),
+    procura: parteDaLei(regras, valores, regra.lei_gratuidade, "procura"),
+    saida: parteDaLei(regras, valores, regra.lei_gratuidade, "saida"),
   };
 }
 
@@ -817,6 +819,7 @@ const atendimento: Etapa = (regras, estado) => {
     alcance: nova.alcance,
     cobertura: nova.cobertura,
     fraco: leis.fraco,
+    procura: nova.procura,
   };
   const indice = indiceDoAtendimento(regra, rede);
   const desvio = desvioDaRede(regra, rede);
@@ -1309,6 +1312,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.lei_abertura,
       r.lei_limite,
       r.lei_seguro,
+      r.lei_gratuidade,
       ...r.leis_alcance,
     ])
       if (regras.leis[id]?.forma !== "opcoes")
@@ -1468,6 +1472,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       vagas: populacao,
       planos: comPops.atendimento.planos,
       seguro: comPops.atendimento.seguro,
+      procura: comPops.atendimento.procura,
     });
     if (atendimento > teto + 1e-6)
       throw new Error("país: atendimento maior que o dos profissionais");

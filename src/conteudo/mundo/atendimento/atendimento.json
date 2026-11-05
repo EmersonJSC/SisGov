@@ -16,6 +16,7 @@
   "lei_basica": "atencao-preventiva",
   "leis_alcance": ["telemedicina-livre", "servico-obrigatorio"],
   "lei_seguro": "seguro-folha",
+  "lei_gratuidade": "cobertura-gratuita",
   "pops_folha": [
     "operarios-fabrica",
     "operarios-obra",
@@ -53,5 +54,7 @@
   "desvio": 0.5,
   "desigualdade": 1,
   "custo_basico": 0.01,
-  "basico_teto": 0.5
+  "basico_teto": 0.5,
+  "cuidado_cedo": 1,
+  "renda_indireta": 0.3
 }

@@ -52,6 +52,58 @@ describe("conta da fila (motor)", () => {
   });
 });
 
+describe("cobertura gratuita", () => {
+  const lei = "cobertura-gratuita";
+  const tudo = (pais = "teste", leis = {}) =>
+    depois({ ...leis, [lei]: "tudo-para-todos" }, pais);
+
+  it("cada um usa mais a rede: a fila cresce", () => {
+    expect(tudo().jogabilidade.atendimento).toBeLessThan(
+      depois().jogabilidade.atendimento - 5,
+    );
+  });
+
+  it("quem se trata cedo sobe a saúde, mesmo com mais fila", () => {
+    expect(tudo().jogabilidade.saude).toBeGreaterThan(
+      depois().jogabilidade.saude + 1,
+    );
+  });
+
+  it("a rede de graça baixa a desigualdade", () => {
+    expect(tudo().jogabilidade.desigualdade).toBeLessThan(
+      depois().jogabilidade.desigualdade - 1,
+    );
+  });
+
+  it("parte de quem tem plano volta para a rede", () => {
+    expect(tudo().atendimento?.planos).toBeLessThan(
+      depois().atendimento?.planos ?? 0,
+    );
+  });
+
+  it("com vagas paradas, a procura as ocupa e o desvio cai", () => {
+    const verba = { "gasto-saude": 0.06 };
+    expect(tudo("teste-pobre", verba).jogabilidade.corrupcao).toBeLessThan(
+      depois(verba, "teste-pobre").jogabilidade.corrupcao,
+    );
+  });
+
+  it("rende mais no país com rede para atender", () => {
+    const ganho = (pais: string) =>
+      tudo(pais).jogabilidade.saude - depois({}, pais).jogabilidade.saude;
+    expect(ganho("teste")).toBeGreaterThan(ganho("teste-pobre"));
+  });
+
+  it("a ficha mostra a fila e a saúde", () => {
+    const { indices } = previaDaLei(partida(), lei, "tudo-para-todos");
+    const pontos = (id: string) =>
+      indices.filter((l) => l.id === id).reduce((s, l) => s + l.pontos, 0);
+    expect(pontos("atendimento")).toBeLessThan(0);
+    expect(pontos("saude")).toBeGreaterThan(0);
+    expect(pontos("desigualdade")).toBeLessThan(0);
+  });
+});
+
 describe("seguro na folha", () => {
   const com = (opcao: string, pais = "teste", leis = {}) =>
     depois({ ...leis, "seguro-folha": opcao }, pais);
