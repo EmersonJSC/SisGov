@@ -16,12 +16,20 @@
       ]
     },
     {
+      "id": "saude",
+      "titulo": "Saúde",
+      "curto": "Saúde",
+      "cargo": "Saúde",
+      "faz": "Hospitais, planos e a fila da saúde.",
+      "leis": ["gasto-saude", "abertura-planos", "limite-planos"]
+    },
+    {
       "id": "protecao-social",
       "titulo": "Proteção social",
       "curto": "Social",
-      "cargo": "Saúde",
-      "faz": "Saúde, educação e renda das famílias.",
-      "leis": ["gasto-saude", "gasto-educacao", "transferencia-renda"]
+      "cargo": "Assistência Social",
+      "faz": "Educação e renda das famílias.",
+      "leis": ["gasto-educacao", "transferencia-renda"]
     },
     {
       "id": "seguranca",

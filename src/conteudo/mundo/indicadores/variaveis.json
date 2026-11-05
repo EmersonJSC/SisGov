@@ -312,6 +312,40 @@
       }
     },
     {
+      "id": "atendimento",
+      "tipo": "calculado",
+      "nome": "Atendimento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% na fila da saúde",
+        "zero": 100,
+        "cem": 0
+      }
+    },
+    {
+      "id": "profissionais_saude",
+      "tipo": "calculado",
+      "nome": "Médicos por habitante",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "area": "Sociedade",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = sem profissional, 100 = dá para atender todo mundo"
+      }
+    },
+    {
       "id": "abastecimento",
       "tipo": "calculado",
       "nome": "Abastecimento",

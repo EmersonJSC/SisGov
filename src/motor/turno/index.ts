@@ -65,6 +65,16 @@ import {
   type RegraDaMoradia,
 } from "../moradia";
 import {
+  andarAtendimento,
+  atendimentoInicial,
+  fluxoDeProfissionais,
+  indiceDoAtendimento,
+  indiceDosProfissionais,
+  trabalhoDoAtendimento,
+  type LeisDoAtendimento,
+  type RegraDoAtendimento,
+} from "../atendimento";
+import {
   andarSaneamento,
   indiceDoSaneamento,
   rendaParaAConta,
@@ -498,7 +508,7 @@ function tamanhoDoSetor(regras: Regras, estado: Estado): number {
   return (c.prontas[obras.setor] ?? 0) / c.inicio[obras.setor];
 }
 
-/** Quanto as obras andam neste turno: casas e rede disputam o mesmo setor. */
+/** Quanto as obras andam neste turno: casas, rede e hospitais disputam o mesmo setor. */
 export function ritmoDasObras(regras: Regras, estado: Estado): number {
   const { saneamento: regra, moradia } = regras;
   const s = estado.saneamento;
@@ -511,7 +521,13 @@ export function ritmoDasObras(regras: Regras, estado: Estado): number {
       moradia.custo_casa,
       estado.moradia?.obras ?? [],
       s.obras,
-    ),
+    ) +
+      (regras.atendimento
+        ? trabalhoDoAtendimento(
+            regras.atendimento,
+            estado.atendimento?.obras ?? [],
+          )
+        : 0),
     s.trabalho_inicial,
   );
 }
@@ -542,6 +558,20 @@ export function leisDoSaneamento(
   };
 }
 
+/** O que as leis pedem à rede de atendimento, em números. */
+export function leisDoAtendimento(
+  regras: Regras,
+  regra: RegraDoAtendimento,
+  valores: Record<string, ValorLei>,
+): LeisDoAtendimento {
+  const verba = valores[regra.lei_verba];
+  return {
+    verba: typeof verba === "number" ? verba : 0,
+    abertura: parteDaLei(regras, valores, regra.lei_abertura),
+    limite: parteDaLei(regras, valores, regra.lei_limite),
+  };
+}
+
 /** Renda real dos pops: a de hoje e a do turno 0, com as pessoas de hoje. */
 function rendasReais({ pops, essenciais, marco }: Estado) {
   const hoje: Record<string, { pessoas: number; renda: number }> = {};
@@ -569,6 +599,15 @@ export function apertoDoBolso(
     parteAbaixoDe(hoje, minimo * media) -
     parteAbaixoDe(inicio, minimoInicial * media)
   );
+}
+
+/** Parte das pessoas com renda para pagar um plano de saúde. */
+export function comBolsoParaPlano(
+  regra: RegraDoAtendimento,
+  estado: Estado,
+): number {
+  const { hoje, inicio } = rendasReais(estado);
+  return 1 - parteAbaixoDe(hoje, regra.renda_plano * rendaMedia(inicio));
 }
 
 /** Quanto o preço pesa no bolso, a mais que no turno 0 (motor/moradia). */
@@ -677,6 +716,74 @@ const saneamento: Etapa = (regras, estado) => {
       [regra.indice_vida]: base[regra.indice_vida] + nova.vida - s.vida,
       [regra.indice_ambiente]:
         base[regra.indice_ambiente] + nova.ambiente - s.ambiente,
+    },
+  };
+};
+
+/**
+ * 6d. Atendimento: vagas, planos e profissionais andam (motor/atendimento). Quem
+ * se forma ou para muda de pop; quem emigra sai da população. O que a contagem
+ * andou move a base dos índices.
+ */
+const atendimento: Etapa = (regras, estado) => {
+  const regra = regras.atendimento;
+  const obras = regras.mercado?.mercado.obras;
+  const s = estado.atendimento;
+  const pop = regra && estado.pops[regra.pop_profissionais];
+  if (!regra || !obras || !s || !pop) return estado;
+  const { populacao } = estado.essenciais;
+  const marco = estado.marco.indices;
+  const instrucao = estado.jogabilidade[regra.indice_instrucao];
+  const instrucao0 = marco[regra.indice_instrucao];
+  const renda0 = estado.marco.renda_pop?.[regra.pop_profissionais];
+  const nova = andarAtendimento(regra, s, {
+    populacao,
+    leis: leisDoAtendimento(regras, regra, estado.leis),
+    atraso: estado.jogabilidade[obras.indice_atraso] ?? 0,
+    ritmo: ritmoDasObras(regras, estado),
+    com_bolso: comBolsoParaPlano(regra, estado),
+  });
+  const { formados, param, emigrados } = fluxoDeProfissionais(regra, s, {
+    populacao,
+    profissionais: pop.pessoas,
+    instrucao: instrucao0 > 0 ? instrucao / instrucao0 : 1,
+    renda: renda0
+      ? (pop.renda * 100) / estado.essenciais.indice_precos / renda0
+      : 1,
+  });
+  const profissionais = pop.pessoas + formados - param - emigrados;
+  const novaPopulacao = populacao - emigrados;
+  const troca = (formados - param - emigrados) / populacao;
+  const migracao = {
+    ...estado.migracao,
+    [regra.pop_profissionais]:
+      (estado.migracao?.[regra.pop_profissionais] ?? 0) + troca,
+    [regra.pop_origem]: (estado.migracao?.[regra.pop_origem] ?? 0) - troca,
+  };
+  const indice = indiceDoAtendimento(regra, {
+    populacao: novaPopulacao,
+    profissionais,
+    vagas: nova.vagas,
+    planos: nova.planos,
+  });
+  const indice_profissionais = indiceDosProfissionais(
+    regra,
+    profissionais,
+    novaPopulacao,
+  );
+  const { base } = estado;
+  return {
+    ...estado,
+    essenciais: { ...estado.essenciais, populacao: novaPopulacao },
+    migracao,
+    atendimento: { ...nova, indice, indice_profissionais },
+    base: {
+      ...base,
+      [regra.indice]: base[regra.indice] + indice - s.indice,
+      [regra.indice_profissionais]:
+        base[regra.indice_profissionais] +
+        indice_profissionais -
+        s.indice_profissionais,
     },
   };
 };
@@ -935,6 +1042,17 @@ const invariantes: Etapa = (regras, estado) => {
     )
   )
     falhas.push("rede de saneamento inválida");
+  const saude = estado.atendimento;
+  if (
+    saude &&
+    !(
+      Number.isFinite(saude.vagas) &&
+      Number.isFinite(saude.planos) &&
+      saude.vagas >= 0 &&
+      saude.planos >= 0
+    )
+  )
+    falhas.push("rede de atendimento inválida");
   if (!(Number.isFinite(estado.desgaste) && estado.desgaste >= 0))
     falhas.push("desgaste inválido");
   if (falhas.length > 0)
@@ -954,6 +1072,7 @@ const ETAPAS: Etapa[] = [
   contas,
   moradia,
   saneamento,
+  atendimento,
   indicesJogabilidade,
   mundo,
   precosDoMundo,
@@ -1088,6 +1207,23 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       if (regras.leis[id]?.forma !== "opcoes")
         throw new Error(`mundo: saneamento: "${id}" não é lei de opções`);
   }
+  if (regras.atendimento) {
+    const r = regras.atendimento;
+    if (!obras) throw new Error("mundo: atendimento precisa das obras");
+    for (const id of [r.indice, r.indice_profissionais, r.indice_instrucao])
+      if (!(id in regras.dominios))
+        throw new Error(`mundo: atendimento: o índice "${id}" não existe`);
+    for (const id of [r.pop_profissionais, r.pop_origem])
+      if (!regras.pops.some((p) => p.id === id))
+        throw new Error(`mundo: atendimento: o pop "${id}" não existe`);
+    if (regras.leis[r.lei_verba]?.forma !== "continua")
+      throw new Error(
+        `mundo: atendimento: "${r.lei_verba}" não é lei contínua`,
+      );
+    for (const id of [r.lei_abertura, r.lei_limite])
+      if (regras.leis[id]?.forma !== "opcoes")
+        throw new Error(`mundo: atendimento: "${id}" não é lei de opções`);
+  }
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);
   const motivoGrupos = motivoGruposInvalidos(
@@ -1218,6 +1354,30 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
         [],
       ),
     });
+  }
+  if (regras.atendimento && m?.mercado.obras) {
+    const r = regras.atendimento;
+    const { populacao } = comPops.essenciais;
+    const profissionais = comPops.pops[r.pop_profissionais].pessoas;
+    const atendimento = comPops.jogabilidade[r.indice];
+    comPops.atendimento = atendimentoInicial(r, {
+      populacao,
+      profissionais,
+      atendimento,
+      leis: leisDoAtendimento(regras, r, comPops.leis),
+      atraso: comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
+      com_bolso:
+        1 -
+        parteAbaixoDe(comPops.pops, r.renda_plano * rendaMedia(comPops.pops)),
+    });
+    const teto = indiceDoAtendimento(r, {
+      populacao,
+      profissionais,
+      vagas: populacao,
+      planos: comPops.atendimento.planos,
+    });
+    if (atendimento > teto + 1e-6)
+      throw new Error("país: atendimento maior que o dos profissionais");
   }
   // O marco é o próprio turno 0: grupos começam em 50.
   const marco: Marco = {

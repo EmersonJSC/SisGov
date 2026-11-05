@@ -1,0 +1,23 @@
+{
+  "versao": 1,
+  "id": "atendimento-mundo",
+  "indice": "atendimento",
+  "indice_profissionais": "profissionais_saude",
+  "indice_instrucao": "instrucao",
+  "pop_profissionais": "profissionais-saude",
+  "pop_origem": "servicos-basicos",
+  "lei_verba": "gasto-saude",
+  "lei_abertura": "abertura-planos",
+  "lei_limite": "limite-planos",
+  "pessoas_por_profissional": 50,
+  "custo_vaga": 0.1,
+  "custo_obra": 0.1,
+  "prazo": 8,
+  "fechamento": 0.3,
+  "renda_plano": 1.5,
+  "plano_livre": 0.4,
+  "peso_plano": 1.5,
+  "velocidade": 0.05,
+  "aposentadoria": 0.03,
+  "emigracao": 0.5
+}

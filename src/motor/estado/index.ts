@@ -8,6 +8,7 @@ import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { PontoBussola, ValorLei } from "../leis";
 import type { MoradiaNoEstado } from "../moradia";
+import type { AtendimentoNoEstado } from "../atendimento";
 import type { SaneamentoNoEstado } from "../saneamento";
 import type { Votacao } from "../politica";
 import type {
@@ -86,6 +87,8 @@ export interface Estado {
   moradia?: MoradiaNoEstado;
   /** Rede de água e esgoto (motor/saneamento); ausente sem a regra ou em partida salva antes dela. */
   saneamento?: SaneamentoNoEstado;
+  /** Rede de atendimento (motor/atendimento); ausente sem a regra ou em partida salva antes dela. */
+  atendimento?: AtendimentoNoEstado;
   /**
    * O que mudou no último turno, na moeda do país: PIB nominal e dívida.
    * Ausente no turno 0 e em partida salva antes desta função.

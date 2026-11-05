@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "limite-planos",
+  "nome": "Limite aos planos",
+  "descricao": "Até onde o governo restringe os planos de saúde, de cobrir só o que a rede pública não faz até proibir.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-limite",
+      "rotulo": "Sem limite",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-o-que-falta",
+      "rotulo": "Só o que a rede não faz",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.5
+      },
+      "efeitos": []
+    },
+    {
+      "id": "quase-nenhum",
+      "rotulo": "Quase nenhum",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.8
+      },
+      "efeitos": []
+    },
+    {
+      "id": "proibidos",
+      "rotulo": "Proibidos",
+      "bussola": {
+        "economico": -0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

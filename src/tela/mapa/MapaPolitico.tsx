@@ -912,7 +912,10 @@ const NoBolha = memo(function NoBolha({
                   </tspan>
                 ))
               ) : (
-                <tspan x={0}>{valorNaTela(bolha, bolha.valor)}</tspan>
+                <tspan x={0}>
+                  {valorNaTela(bolha, bolha.valor)}
+                  {bolha.medida?.convertida ? ` ${bolha.medida.unidade}` : ""}
+                </tspan>
               )}
               {mudou ? (
                 <tspan fill={corVariacao} dx={6}>

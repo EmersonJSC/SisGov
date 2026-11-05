@@ -163,7 +163,17 @@ conta os atendidos. Em 20 turnos: preço +20 dá favela +3,5 no `teste` e +7 no
 +0,8. Ficha e mapa mostram. Renda é medida contra a média do próprio país, como
 nas cestas.
 
-**Próximo:** escolher o próximo índice em `docs/jogo/indices-avaliacao.md`.
+**04/nov (14): saúde, primeira parte, sem commit.** A bolha Atendimento mostra a fila ("45 % na fila da saúde"); a bolha Desigualdade passou a mostrar o Gini pelo mesmo conserto. Saúde virou área própria no
+mapa. `motor/atendimento` conta vagas, planos e profissionais; índices novos
+`atendimento` (mostra a fila da saúde) e `profissionais_saude`. Verba e Remoção
+de área de risco não mexem mais direto na saúde. Leis novas: Abertura e Limite aos
+planos, que colidem. Profissionais saem de `instrucao` e emigram quando perdem
+renda real; a população cai. Em 20 turnos: verba acima de +2 pontos do PIB não
+rende mais, porque falta profissional; abertura máxima dá atendimento +7,2 no
+`teste` e +3,6 no `teste-pobre`. Número sem balanço.
+
+**Próximo:** commit com a palavra do autor; depois as 16 leis da saúde que faltam
+(lista no GDD §18), uma pergunta por vez. A educação é a próxima área.
 
 ## Pendências do autor
 

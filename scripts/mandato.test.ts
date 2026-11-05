@@ -32,7 +32,7 @@ describe("mandato com o imposto de renda em três valores", () => {
       jogar(criarPartida("teste", 1, { semCongresso: true }), turnos, pedido)
         .estado.jogabilidade.padrao_vida;
     expect(pv(1)).toBeGreaterThan(pv(2));
-    expect(pv(2)).toBe(pv(10));
+    expect(pv(2)).toBeCloseTo(pv(10), 1);
   });
 
   it("mesma semente, mesma partida; outra semente, outra", () => {

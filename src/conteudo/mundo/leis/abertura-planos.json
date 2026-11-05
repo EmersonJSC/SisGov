@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "abertura-planos",
+  "nome": "Abertura de planos",
+  "descricao": "Quanto o mercado de planos de saúde pode vender e crescer. Só compra quem tem renda.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "mercado-fechado",
+      "rotulo": "Mercado fechado",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "poucos-planos",
+      "rotulo": "Poucos planos",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.25
+      },
+      "efeitos": []
+    },
+    {
+      "id": "concorrencia",
+      "rotulo": "Concorrência",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.5
+      },
+      "efeitos": []
+    },
+    {
+      "id": "mercado-aberto",
+      "rotulo": "Mercado aberto",
+      "bussola": {
+        "economico": 0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 1
+      },
+      "efeitos": []
+    }
+  ]
+}

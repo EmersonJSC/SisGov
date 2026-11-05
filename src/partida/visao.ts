@@ -17,6 +17,7 @@ import {
   obrasPorSetor,
   TURNOS_ATE_FECHAR,
   type Deriva,
+  type RegraDoAtendimento,
   type RegraDoSaneamento,
   type Estado,
   type Lei,
@@ -28,7 +29,7 @@ import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
-import { mesesDaObra, mesesDaRede } from "./previa";
+import { mesesDaObra, mesesDaRede, mesesDaSaude } from "./previa";
 import type {
   VisaoArea,
   VisaoBolha,
@@ -237,8 +238,28 @@ function ligacoes(
     favela: string;
   },
   rede?: { regra: RegraDoSaneamento; atrasoMeses: number },
+  saude?: { regra: RegraDoAtendimento; atrasoMeses: number },
 ): VisaoLigacao[] {
   const saida: VisaoLigacao[] = [];
+  // As leis da saúde agem pela contagem, sem efeito declarado na lei.
+  if (saude) {
+    const r = saude.regra;
+    const seta = (origem: string, alvo: string, sinal: 1 | -1) =>
+      saida.push({
+        id: `${origem}>${alvo}`,
+        origem,
+        alvo,
+        sinal,
+        atrasoMeses: saude.atrasoMeses,
+        mecanismo: "afim",
+      });
+    seta(r.lei_verba, r.indice, 1);
+    seta(r.lei_abertura, r.indice, 1);
+    seta(r.lei_abertura, r.indice_profissionais, -1);
+    seta(r.lei_limite, r.indice, -1);
+    seta(r.indice_profissionais, r.indice, 1);
+    seta(r.indice_instrucao, r.indice_profissionais, 1);
+  }
   // As leis da rede agem pela contagem, sem efeito declarado na lei.
   if (rede) {
     const r = rede.regra;
@@ -345,6 +366,17 @@ function ligacoes(
   return saida;
 }
 
+/** A medida real da bolha, quando o índice declara as balizas 0 e 100. */
+function medidaReal(
+  medida: Readonly<{ unidade: string; zero?: number; cem?: number }>,
+  pontos: number,
+): VisaoBolha["medida"] {
+  const { unidade, zero, cem } = medida;
+  if (zero === undefined || cem === undefined) return undefined;
+  const valor = zero + ((cem - zero) * pontos) / 100;
+  return { valor, unidade, convertida: true, zero, cem };
+}
+
 export function montarVisao(partida: Partida): VisaoPartida {
   const { regras, estado } = partida;
   const areaDa = areaDaLei();
@@ -367,6 +399,7 @@ export function montarVisao(partida: Partida): VisaoPartida {
       valor: estado.jogabilidade[v.id] ?? 0,
       minimo: v.dominio.minimo ?? 0,
       maximo: v.dominio.maximo ?? 100,
+      medida: medidaReal(v.medida, estado.jogabilidade[v.id] ?? 0),
     })),
     ...tiposGrupos.grupos.map((g) => ({
       id: g.id,
@@ -418,6 +451,10 @@ export function montarVisao(partida: Partida): VisaoPartida {
       regras.saneamento && {
         regra: regras.saneamento,
         atrasoMeses: mesesDaRede(partida),
+      },
+      regras.atendimento && {
+        regra: regras.atendimento,
+        atrasoMeses: mesesDaSaude(partida),
       },
     ),
     grupos: [],

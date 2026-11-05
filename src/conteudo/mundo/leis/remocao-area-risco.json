@@ -34,12 +34,6 @@
           "sentido": -1,
           "forca": "fraca",
           "atraso_turnos": 6
-        },
-        {
-          "indice": "saude",
-          "sentido": 1,
-          "forca": "fraca",
-          "atraso_turnos": 6
         }
       ]
     },

@@ -134,6 +134,10 @@
         {
           "indice": "saneamento",
           "sentido": 1
+        },
+        {
+          "indice": "atendimento",
+          "sentido": 1
         }
       ]
     },
@@ -159,6 +163,10 @@
         },
         {
           "indice": "saude",
+          "sentido": 1
+        },
+        {
+          "indice": "profissionais_saude",
           "sentido": 1
         }
       ]
@@ -358,6 +366,10 @@
         {
           "indice": "inflacao",
           "sentido": -1
+        },
+        {
+          "indice": "atendimento",
+          "sentido": 1
         }
       ]
     },

@@ -7,10 +7,13 @@ import {
   apertoDoBolso,
   atrasoDasObras,
   enfileirar,
+  comBolsoParaPlano,
   indiceDoSaneamento,
+  leisDoAtendimento,
   leisDoSaneamento,
   pessoasNoCampo,
   pontosDaVerbaPorAno,
+  pontosDoAtendimento,
   pontosDoExodo,
   pontosDoSaneamento,
   pontosLeis,
@@ -88,6 +91,19 @@ export function mesesDaRede({ regras, estado }: Partida): number {
   return (
     Math.ceil(
       (regras.saneamento.prazo * atrasoDasObras(atraso).prazo) /
+        ritmoDasObras(regras, estado),
+    ) * MESES_POR_TURNO
+  );
+}
+
+/** Meses até a obra de hospital ficar pronta, com a corrupção e o setor de hoje. */
+export function mesesDaSaude({ regras, estado }: Partida): number {
+  const obras = regras.mercado?.mercado.obras;
+  if (!obras || !regras.atendimento) return 0;
+  const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
+  return (
+    Math.ceil(
+      (regras.atendimento.prazo * atrasoDasObras(atraso).prazo) /
         ritmoDasObras(regras, estado),
     ) * MESES_POR_TURNO
   );
@@ -204,6 +220,55 @@ function previaDoSaneamento(
   return linhas.filter((l) => Math.abs(l.pontos) > 1e-9);
 }
 
+/** O que as leis da saúde fazem: agem pela contagem, e o resto vem pelas setas. */
+function previaDoAtendimento(
+  partida: Partida,
+  leiId: string,
+  valor: ValorLei,
+): PreviaLei["indices"] {
+  const { estado, regras } = partida;
+  const regra = regras.atendimento;
+  const s = estado.atendimento;
+  const pop = regra && estado.pops[regra.pop_profissionais];
+  if (!regra || !s || !pop) return [];
+  const { lei_verba, lei_abertura, lei_limite } = regra;
+  if (![lei_verba, lei_abertura, lei_limite].includes(leiId)) return [];
+  const obras = regras.mercado?.mercado.obras;
+  const pontos = pontosDoAtendimento(
+    regra,
+    s,
+    leisDoAtendimento(regras, regra, estado.leis),
+    leisDoAtendimento(regras, regra, { ...estado.leis, [leiId]: valor }),
+    {
+      populacao: estado.essenciais.populacao,
+      profissionais: pop.pessoas,
+      atraso: obras ? (estado.jogabilidade[obras.indice_atraso] ?? 0) : 0,
+      com_bolso: comBolsoParaPlano(regra, estado),
+    },
+  );
+  const atrasoMeses = mesesDaSaude(partida);
+  const linhas: PreviaLei["indices"] = [
+    { id: regra.indice, pontos: pontos.rede, atrasoMeses },
+    {
+      id: regra.indice,
+      pontos: pontos.planos,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    // A deriva: cada ponto de atendimento empurra os outros índices.
+    ...(regras.derivas ?? [])
+      .filter((d) => d.por === regra.indice)
+      .map((d) => ({
+        id: d.indice,
+        pontos:
+          d.sentido * TAXA_DERIVA[d.forca] * (pontos.rede + pontos.planos),
+        atrasoMeses,
+        aosPoucos: true,
+      })),
+  ];
+  return linhas.filter((l) => Math.abs(l.pontos) > 1e-9);
+}
+
 /** O que a lei faz no déficit ao mudar a concentração de terra (êxodo). */
 function previaDoCampo(
   { estado, regras }: Partida,
@@ -272,6 +337,7 @@ export function previaDaLei(
   indices.push(
     ...previaDaMoradia(partida, leiId, valor),
     ...previaDoSaneamento(partida, leiId, valor),
+    ...previaDoAtendimento(partida, leiId, valor),
     ...previaDoCampo(partida, indices),
     ...previaDoBolso(partida, indices),
   );

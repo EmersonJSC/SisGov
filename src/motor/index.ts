@@ -17,3 +17,4 @@ export * from "./turno";
 export * from "./mercado";
 export * from "./moradia";
 export * from "./saneamento";
+export * from "./atendimento";

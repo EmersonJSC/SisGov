@@ -6,6 +6,7 @@ import type { TipoGrupo } from "../grupos";
 import type { Colisao, Lei, ValorLei } from "../leis";
 import type { MercadoDoPais } from "../mercado";
 import type { RegraDaMoradia } from "../moradia";
+import type { RegraDoAtendimento } from "../atendimento";
 import type { RegraDoSaneamento } from "../saneamento";
 import type { Potencia } from "../mundo";
 import type { Congresso } from "../politica";
@@ -55,6 +56,8 @@ export interface Regras {
   moradia?: RegraDaMoradia;
   /** Rede de água e esgoto (motor/saneamento); precisa da moradia e das obras. */
   saneamento?: RegraDoSaneamento;
+  /** Rede de atendimento (motor/atendimento); precisa das obras. */
+  atendimento?: RegraDoAtendimento;
   /** Pares de leis que não valem juntas (motor/leis/colisao). */
   colisoes?: Colisao[];
 }

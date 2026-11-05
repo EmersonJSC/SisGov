@@ -676,8 +676,22 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   não existe. Voltar quando a fila existir, como leis separadas nos dois lados:
   uma que castiga a ocupação (autoritário) e uma que a acelera (esquerda), e
   dizer quais terras entram (só improdutivas?).
-- **Saneamento nos outros lados (04/nov):** o pacote da rede tem esquerda,
-  direita e verde. Faltam leis boas para libertário, autoritário e tradicional.
+- **Saneamento e a bússola (04/nov):** o pacote da rede tem esquerda, direita e
+  verde. O lado tradicional/autoritário fica vazio por decisão do autor: o tema
+  não tem lei natural desse lado, e não se inventa lei só para preencher.
+- **Área da saúde (04/nov):** 19 leis aprovadas pelo autor. Feitas: Verba,
+  Abertura de planos e Limite aos planos. Faltam, em Quem paga: Cobertura
+  gratuita, Seguro na folha, Dedução do plano, Coparticipação, Conta de saúde e
+  Filantrópicos; em Quem atende: Carreira exclusiva, Gestão privada, Telemedicina
+  livre, Serviço obrigatório (4 níveis, de quem estudou de graça até lugar
+  sorteado) e Missões médicas; em Como prevenir: Atenção preventiva, Saúde
+  ambiental, Direito de recusar, Vacinação e Imposto sobre vícios. Colisões:
+  Cobertura × Coparticipação, Carreira × Gestão, Vacinação × Recusar, Limite ×
+  Dedução, Seguro × Conta, Conta × Cobertura.
+- **Formação de profissionais (04/nov):** fica na área da educação, não na
+  saúde. Um profissional se forma pelo público ou pelo privado. Leis para ver
+  quando a educação for avaliada: vagas públicas, faculdades privadas e
+  validação de diploma estrangeiro.
 - **Organizações criminosas (04/nov):** ideia do autor: a favela fortalece
   organizações criminosas. Ainda não existem no jogo. Falta decidir se são um
   índice novo ou uma peça própria, o que as fortalece além da favela, o que

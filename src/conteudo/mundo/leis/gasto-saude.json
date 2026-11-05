@@ -14,15 +14,12 @@
   "conta": "gasto",
   "bussola": {
     "ate": 0.12,
-    "min": { "economico": 0.4 },
-    "max": { "economico": -0.5 }
-  },
-  "efeitos": [
-    {
-      "indice": "saude",
-      "sentido": 1,
-      "forca": "forte",
-      "atraso_turnos": 6
+    "min": {
+      "economico": 0.4
+    },
+    "max": {
+      "economico": -0.5
     }
-  ]
+  },
+  "efeitos": []
 }

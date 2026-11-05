@@ -37,6 +37,24 @@
       "por": "saneamento",
       "sentido": 1,
       "forca": "media"
+    },
+    {
+      "indice": "saude",
+      "por": "atendimento",
+      "sentido": 1,
+      "forca": "media"
+    },
+    {
+      "indice": "pobreza",
+      "por": "saude",
+      "sentido": -1,
+      "forca": "fraca"
+    },
+    {
+      "indice": "padrao_vida",
+      "por": "saude",
+      "sentido": 1,
+      "forca": "fraca"
     }
   ]
 }

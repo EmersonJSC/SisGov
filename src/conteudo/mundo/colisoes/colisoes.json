@@ -4,6 +4,7 @@
   "colisoes": [
     ["teto-aluguel", "despejo-rapido"],
     ["titulo-posse", "remocao-area-risco"],
-    ["concessao-rede", "teto-tarifa"]
+    ["concessao-rede", "teto-tarifa"],
+    ["abertura-planos", "limite-planos"]
   ]
 }

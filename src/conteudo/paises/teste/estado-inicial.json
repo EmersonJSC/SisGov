@@ -25,6 +25,8 @@
     "instrucao": 50,
     "industrializacao": 40,
     "saude": 50,
+    "atendimento": 55,
+    "profissionais_saude": 75,
     "seguranca": 45,
     "lotacao_presidios": 60,
     "poder_defensivo": 50,
