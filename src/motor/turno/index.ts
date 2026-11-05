@@ -67,6 +67,7 @@ import {
 import {
   andarAtendimento,
   atendimentoInicial,
+  desigualdadeDaRede,
   desvioDaRede,
   fluxoDeProfissionais,
   indiceDoAtendimento,
@@ -773,6 +774,7 @@ const atendimento: Etapa = (regras, estado) => {
   };
   const indice = indiceDoAtendimento(regra, rede);
   const desvio = desvioDaRede(regra, rede);
+  const desigualdade = desigualdadeDaRede(regra, rede);
   const indice_profissionais = indiceDosProfissionais(
     regra,
     profissionais,
@@ -783,7 +785,14 @@ const atendimento: Etapa = (regras, estado) => {
     ...estado,
     essenciais: { ...estado.essenciais, populacao: novaPopulacao },
     migracao,
-    atendimento: { ...nova, turmas, indice, indice_profissionais, desvio },
+    atendimento: {
+      ...nova,
+      turmas,
+      indice,
+      indice_profissionais,
+      desvio,
+      desigualdade,
+    },
     base: {
       ...base,
       [regra.indice]: base[regra.indice] + indice - s.indice,
@@ -792,6 +801,8 @@ const atendimento: Etapa = (regras, estado) => {
         indice_profissionais -
         s.indice_profissionais,
       [regra.indice_desvio]: base[regra.indice_desvio] + desvio - s.desvio,
+      [regra.indice_desigualdade]:
+        base[regra.indice_desigualdade] + desigualdade - s.desigualdade,
     },
   };
 };
@@ -1223,6 +1234,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.indice_profissionais,
       r.indice_instrucao,
       r.indice_desvio,
+      r.indice_desigualdade,
     ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: atendimento: o índice "${id}" não existe`);

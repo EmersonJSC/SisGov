@@ -26,6 +26,7 @@ Ligados ou criados pelas avaliações da favela e do saneamento:
 - Segurança (`seguranca`)
 - Meio ambiente (`meio_ambiente`)
 - Padrão de vida (`padrao_vida`)
+- Desigualdade (`desigualdade`): sobe com a saúde de dois andares (com plano × na fila).
 
 Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
 
@@ -37,7 +38,7 @@ Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
   `resultado_fiscal`, `cofre`, `divida_publica`, `taxa_juros`
 - Sociedade: `instrucao`, `abastecimento`, `acesso_remedios`,
   `lotacao_presidios`, `poder_defensivo`, `seguranca_externa`, `pobreza`,
-  `desigualdade`, `deficit_habitacional`, `preco_moradia`,
+  `deficit_habitacional`, `preco_moradia`,
   `concentracao_terra`
 - Política: `corrupcao`, `liberdade_civil`, `polarizacao`,
   `reputacao_internacional`, `popularidade_governo`

@@ -52,6 +52,32 @@ describe("conta da fila (motor)", () => {
   });
 });
 
+describe("saúde de dois andares", () => {
+  it("mais planos sobem a desigualdade, e pesa mais com a fila grande", () => {
+    const sobe = (pais: string) =>
+      depois({ "abertura-planos": "mercado-aberto" }, pais).jogabilidade
+        .desigualdade - depois({}, pais).jogabilidade.desigualdade;
+    expect(sobe("teste")).toBeGreaterThan(1);
+    expect(sobe("teste-pobre")).toBeGreaterThan(sobe("teste"));
+  });
+
+  it("limitar os planos baixa a desigualdade", () => {
+    expect(
+      depois({ "limite-planos": "proibidos" }).jogabilidade.desigualdade,
+    ).toBeLessThan(depois().jogabilidade.desigualdade);
+  });
+
+  it("a ficha da Abertura mostra a desigualdade", () => {
+    const { indices } = previaDaLei(
+      partida(),
+      "abertura-planos",
+      "mercado-aberto",
+    );
+    const linha = indices.find((i) => i.id === "desigualdade");
+    expect(linha?.pontos).toBeGreaterThan(0);
+  });
+});
+
 describe("rede de atendimento", () => {
   it("sem lei nova, o atendimento fica perto de onde começou", () => {
     for (const pais of ["teste", "teste-pobre"]) {

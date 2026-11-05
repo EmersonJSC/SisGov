@@ -257,7 +257,9 @@ function ligacoes(
     seta(r.lei_verba, r.indice_desvio, 1);
     seta(r.lei_abertura, r.indice, 1);
     seta(r.lei_abertura, r.indice_profissionais, -1);
+    seta(r.lei_abertura, r.indice_desigualdade, 1);
     seta(r.lei_limite, r.indice, -1);
+    seta(r.lei_limite, r.indice_desigualdade, -1);
     seta(r.indice_profissionais, r.indice, 1);
     seta(r.indice_instrucao, r.indice_profissionais, 1);
   }

@@ -24,6 +24,11 @@ do que a verba paga no turno 0, para o país começar parado.
 Vaga sem profissional não atende e o dinheiro fica parado: vira pontos no índice
 de desvio (`desvio`). Quando a vaga fecha ou o profissional chega, os pontos saem.
 
+Saúde de dois andares: quem tem plano é atendido e o resto fica na fila. O índice
+de desigualdade sobe com "com plano × na fila" (`desigualdade`). Sem fila, ou sem
+plano, não há dois andares; por isso a verba também baixa esse custo, e a mesma
+Abertura pesa mais no país com fila grande.
+
 ## Planos
 
 Só tem plano quem tem renda (`renda_plano`, em vezes a renda média do turno 0,

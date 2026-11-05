@@ -48,6 +48,10 @@ export interface RegraDoAtendimento {
   formatura: number;
   /** Pontos do índice de desvio por ponto da população em vagas paradas. */
   desvio: number;
+  /** Índice que sobe quando quem paga é atendido e o resto fica na fila. */
+  indice_desigualdade: string;
+  /** Pontos do índice por ponto de "com plano × na fila", em % ao quadrado ÷ 100. */
+  desigualdade: number;
 }
 
 export interface ObraDoAtendimento {
@@ -73,6 +77,8 @@ export interface AtendimentoNoEstado {
   indice_profissionais: number;
   /** Pontos que a verba parada soma ao índice de desvio. */
   desvio: number;
+  /** Pontos que a saúde de dois andares soma ao índice de desigualdade. */
+  desigualdade: number;
 }
 
 /** O que as leis em vigor pedem, em números. */
@@ -163,6 +169,18 @@ export function desvioDaRede(regra: RegraDoAtendimento, rede: Rede): number {
   return (Math.max(0, paradas) / rede.populacao) * 100 * regra.desvio;
 }
 
+/**
+ * Pontos do índice de desigualdade: a saúde de dois andares. Pesa quando há gente
+ * com plano e gente na fila; sem fila, ou sem plano, não há dois andares.
+ */
+export function desigualdadeDaRede(
+  regra: RegraDoAtendimento,
+  rede: Rede,
+): number {
+  const fila = 1 - indiceDoAtendimento(regra, rede) / 100;
+  return rede.planos * fila * 100 * regra.desigualdade;
+}
+
 /** Quantos o país tem de profissionais contra o que precisa, de 0 a 100. */
 export const indiceDosProfissionais = (
   regra: RegraDoAtendimento,
@@ -212,6 +230,12 @@ export function atendimentoInicial(
       populacao,
     ),
     desvio: 0,
+    desigualdade: desigualdadeDaRede(regra, {
+      populacao,
+      profissionais,
+      vagas,
+      planos,
+    }),
   };
 }
 
@@ -323,5 +347,8 @@ export function pontosDoAtendimento(
     desvio:
       desvioDaRede(regra, rede(vagasCom(depois), planosCom(depois))) -
       desvioDaRede(regra, rede(vagasCom(antes), planosCom(antes))),
+    desigualdade:
+      desigualdadeDaRede(regra, rede(vagasCom(depois), planosCom(depois))) -
+      desigualdadeDaRede(regra, rede(vagasCom(antes), planosCom(antes))),
   };
 }

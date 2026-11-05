@@ -5,6 +5,7 @@
   "indice_profissionais": "profissionais_saude",
   "indice_instrucao": "instrucao",
   "indice_desvio": "corrupcao",
+  "indice_desigualdade": "desigualdade",
   "pop_profissionais": "profissionais-saude",
   "pop_origem": "servicos-basicos",
   "lei_verba": "gasto-saude",
@@ -22,5 +23,6 @@
   "aposentadoria": 0.03,
   "emigracao": 0.5,
   "formatura": 36,
-  "desvio": 0.5
+  "desvio": 0.5,
+  "desigualdade": 1
 }
