@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "tratamento-esgoto",
+  "nome": "Tratamento de esgoto",
+  "descricao": "Quanto do esgoto coletado precisa ser tratado antes de voltar ao rio.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-exigencia",
+      "rotulo": "Sem exigência",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "trinta",
+      "rotulo": "30% tratado",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "valores": {
+        "parte": 0.3
+      },
+      "efeitos": []
+    },
+    {
+      "id": "sessenta",
+      "rotulo": "60% tratado",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "valores": {
+        "parte": 0.6
+      },
+      "efeitos": []
+    },
+    {
+      "id": "noventa",
+      "rotulo": "90% tratado",
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "valores": {
+        "parte": 0.9
+      },
+      "efeitos": []
+    }
+  ]
+}

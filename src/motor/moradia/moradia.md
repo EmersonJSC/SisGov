@@ -17,8 +17,15 @@ Estoque de casas do país, só no motor (a tela mostra os índices). Aprovado em
 - **Obras:** governo e empresas entram na mesma fila; levam o prazo das obras, e
   a corrupção alonga.
 - **Sem casa:** quem fica sem casa formal levanta casa precária aos poucos, na
-  proporção do turno 0 (`autoconstrucao` é a velocidade). Pobreza acima do
-  turno 0 aumenta essa proporção; abaixo, diminui (`pobreza_por_ponto`).
+  proporção do turno 0 (`autoconstrucao` é a velocidade).
+- **Bolso:** o preço da moradia pede uma renda (`renda_por_ponto`, em vezes a
+  renda média do turno 0, com a inflação tirada). A renda de cada pop diz quem
+  paga. Nenhuma lei sabe disso: o resultado sai do país. Se mais famílias que no
+  turno 0 deixam de pagar, elas perdem a casa formal aos poucos
+  (`despejo_velocidade`), mais gente sem casa levanta casa precária e a empresa
+  só constrói para quem paga. Quem volta a pagar volta para a casa. Com menos
+  gente sem pagar que no turno 0, quem está sem casa formal levanta menos casa
+  precária. A casa do governo não depende disso.
 - **Campo:** as famílias dos pops do campo são o limite. Cada ponto de
   concentração acima do turno 0 tira `campo_por_ponto` delas do campo, aos
   poucos (`exodo_velocidade`), e elas entram no déficit; o êxodo para ao chegar

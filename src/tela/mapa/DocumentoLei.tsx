@@ -705,7 +705,7 @@ export function DocumentoLei({
           {previa ? (
             <p className="vazio">
               {previa.indices.some((e) => e.aosPoucos)
-                ? "O que esta lei muda; o déficit vem aos poucos, pelo êxodo."
+                ? "O que esta lei muda; parte vem aos poucos, pela cadeia."
                 : "Só o que esta lei muda direto, sem cadeia."}
             </p>
           ) : null}
@@ -713,8 +713,8 @@ export function DocumentoLei({
             <section key={g.secao} className="efeitos-secao">
               <h3>{NOME_DA_SECAO[g.secao]}</h3>
               <ul className="efeitos-folha">
-                {g.linhas.map((l) => (
-                  <li key={l.id}>
+                {g.linhas.map((l, i) => (
+                  <li key={`${l.id}-${i}`}>
                     <div
                       className={`efeito-linha${l.texto ? " com-texto" : ""}`}
                     >

@@ -1,13 +1,22 @@
 // Prévia direta de uma lei na janela da tela: o que a própria lei muda nos
 // índices (fila de efeitos do motor) e na satisfação dos grupos (pontos de
-// lei do motor). Da cadeia, só o êxodo; o resto é a prévia completa, depois.
+// lei do motor). Da cadeia, só o êxodo e o bolso; o resto é a prévia completa,
+// depois.
 import {
+  apertoDaMoradia,
+  apertoDoBolso,
   atrasoDasObras,
   enfileirar,
+  indiceDoSaneamento,
+  leisDoSaneamento,
   pessoasNoCampo,
   pontosDaVerbaPorAno,
   pontosDoExodo,
+  pontosDoSaneamento,
   pontosLeis,
+  rendaParaAConta,
+  ritmoDasObras,
+  TAXA_DERIVA,
   type ValorLei,
 } from "../motor";
 import type { Partida } from "./index";
@@ -64,7 +73,23 @@ export function mesesDaObra({ regras, estado }: Partida): number {
   if (!obras) return 0;
   const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
   return (
-    Math.ceil(obras.prazo * atrasoDasObras(atraso).prazo) * MESES_POR_TURNO
+    Math.ceil(
+      (obras.prazo * atrasoDasObras(atraso).prazo) /
+        ritmoDasObras(regras, estado),
+    ) * MESES_POR_TURNO
+  );
+}
+
+/** Meses até a obra da rede ficar pronta, com a corrupção e o setor de hoje. */
+export function mesesDaRede({ regras, estado }: Partida): number {
+  const obras = regras.mercado?.mercado.obras;
+  if (!obras || !regras.saneamento) return 0;
+  const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
+  return (
+    Math.ceil(
+      (regras.saneamento.prazo * atrasoDasObras(atraso).prazo) /
+        ritmoDasObras(regras, estado),
+    ) * MESES_POR_TURNO
   );
 }
 
@@ -96,6 +121,89 @@ function previaDaMoradia(
   ];
 }
 
+/** O que as leis da rede fazem: agem pela contagem, e o resto vem pelas setas. */
+function previaDoSaneamento(
+  partida: Partida,
+  leiId: string,
+  valor: ValorLei,
+): PreviaLei["indices"] {
+  const { estado, regras } = partida;
+  const regra = regras.saneamento;
+  const s = estado.saneamento;
+  if (!regra || !s) return [];
+  const { lei_verba, lei_concessao, lei_teto, lei_tratamento } = regra;
+  if (![lei_verba, lei_concessao, lei_teto, lei_tratamento].includes(leiId))
+    return [];
+  const { populacao } = estado.essenciais;
+  const obras = regras.mercado?.mercado.obras;
+  const antes = leisDoSaneamento(regras, regra, estado.leis);
+  const depois = leisDoSaneamento(regras, regra, {
+    ...estado.leis,
+    [leiId]: valor,
+  });
+  const parte_ligada = indiceDoSaneamento(regra, s, populacao) / 100;
+  const pontos = pontosDoSaneamento(regra, antes, depois, {
+    atraso: obras ? (estado.jogabilidade[obras.indice_atraso] ?? 0) : 0,
+    parte_ligada,
+    parte_rede:
+      s.ligadas > s.cortadas
+        ? (parte_ligada * s.ligadas) / (s.ligadas - s.cortadas)
+        : 0,
+    ritmo_local: s.ritmo_local,
+    populacao,
+    aperto: apertoDoBolso(
+      estado,
+      rendaParaAConta(regra, depois),
+      rendaParaAConta(regra, antes),
+    ),
+  });
+  const atrasoMeses = mesesDaRede(partida);
+  const linhas: PreviaLei["indices"] = [
+    { id: regra.indice, pontos: pontos.indice, atrasoMeses, porAno: true },
+    // Quem deixa de pagar é cortado, ou volta: depende da renda do país.
+    {
+      id: regra.indice,
+      pontos: pontos.cortes,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    // A deriva: cada ponto da rede empurra os outros índices, turno a turno.
+    ...(regras.derivas ?? [])
+      .filter(
+        (d) => d.por === regra.indice && d.indice !== regra.indice_ambiente,
+      )
+      .map((d) => ({
+        id: d.indice,
+        pontos: d.sentido * TAXA_DERIVA[d.forca] * pontos.indice,
+        atrasoMeses,
+        aosPoucos: true,
+      })),
+    {
+      id: regra.indice_vida,
+      pontos: pontos.vida,
+      atrasoMeses: 0,
+      aosPoucos: true,
+    },
+    {
+      id: regra.indice_ambiente,
+      pontos:
+        pontos.ambiente +
+        (regras.derivas ?? [])
+          .filter(
+            (d) => d.por === regra.indice && d.indice === regra.indice_ambiente,
+          )
+          .reduce(
+            (soma, d) =>
+              soma + d.sentido * TAXA_DERIVA[d.forca] * pontos.indice,
+            0,
+          ),
+      atrasoMeses,
+      aosPoucos: true,
+    },
+  ];
+  return linhas.filter((l) => Math.abs(l.pontos) > 1e-9);
+}
+
 /** O que a lei faz no déficit ao mudar a concentração de terra (êxodo). */
 function previaDoCampo(
   { estado, regras }: Partida,
@@ -119,6 +227,31 @@ function previaDoCampo(
     }));
 }
 
+/** O que a lei faz na favela ao mudar o preço: depende de quem ainda paga. */
+function previaDoBolso(
+  { estado, regras }: Partida,
+  indices: PreviaLei["indices"],
+): PreviaLei["indices"] {
+  const regra = regras.moradia;
+  const m = estado.moradia;
+  if (!regra || !m) return [];
+  const preco = estado.jogabilidade[regra.indice_preco];
+  const semCasa = estado.jogabilidade[regra.indice_deficit] / 100;
+  return indices
+    .filter((e) => e.id === regra.indice_preco)
+    .map((e) => ({
+      id: regra.indice_favela,
+      pontos:
+        (apertoDaMoradia(regra, estado, preco + e.pontos) -
+          apertoDaMoradia(regra, estado, preco)) *
+        (m.parte_precaria + semCasa) *
+        100,
+      atrasoMeses: e.atrasoMeses,
+      aosPoucos: true,
+    }))
+    .filter((e) => Math.abs(e.pontos) > 1e-9);
+}
+
 export function previaDaLei(
   partida: Partida,
   leiId: string,
@@ -138,7 +271,9 @@ export function previaDaLei(
     .filter((e) => Math.abs(e.pontos) > 1e-9);
   indices.push(
     ...previaDaMoradia(partida, leiId, valor),
+    ...previaDoSaneamento(partida, leiId, valor),
     ...previaDoCampo(partida, indices),
+    ...previaDoBolso(partida, indices),
   );
   const so = { [leiId]: lei };
   const grupos = regras.grupos

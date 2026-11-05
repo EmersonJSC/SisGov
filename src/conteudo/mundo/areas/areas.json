@@ -55,7 +55,10 @@
         "areas-protegidas",
         "policia-ambiental",
         "terras-indigenas",
-        "saneamento-basico"
+        "saneamento-basico",
+        "concessao-rede",
+        "teto-tarifa",
+        "tratamento-esgoto"
       ]
     },
     {

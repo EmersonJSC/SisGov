@@ -3,6 +3,7 @@
   "id": "colisoes-mundo",
   "colisoes": [
     ["teto-aluguel", "despejo-rapido"],
-    ["titulo-posse", "remocao-area-risco"]
+    ["titulo-posse", "remocao-area-risco"],
+    ["concessao-rede", "teto-tarifa"]
   ]
 }

@@ -147,8 +147,23 @@ esse índice. Grupos cobram favela, déficit e preço (rentistas querem preço a
 Derivas têm seta no mapa, visto na tela. 266 testes e `tsc -b` verdes. Commitado.
 `docs/jogo/indices-avaliacao.md` separa índices avaliados e não avaliados.
 Organizações criminosas estão no GDD §18. Save antigo mostra saneamento 0%.
-**Próximo:** escolher com o autor o próximo índice a
-avaliar.
+**04/nov (12): saneamento avaliado.** `motor/saneamento` conta as
+famílias ligadas à rede (`mundo/saneamento/saneamento.json`). Pacote: Verba de
+saneamento, Concessão da rede, Teto da tarifa de água e Tratamento de esgoto, sem
+efeito direto; concessão × teto colidem. Setas saneamento → saúde e meio
+ambiente; Sem trabalho formal e Gente do campo cobram. Casas e rede disputam o
+setor de construção: passou de 2× o trabalho do turno 0, as obras das duas
+atrasam. Prazo base da rede: 6 turnos. Número sem balanço.
+**04/nov (13): bolso.** A lei não sabe do país: a renda real de cada
+pop contra a conta diz quem paga (`parteAbaixoDe`, `apertoDoBolso`). Moradia:
+preço alto tira a casa de quem não paga, sobe a favela e a empresa só constrói
+para quem paga; saiu a regra da pobreza. Rede: quem não paga é cortado, e o índice
+conta os atendidos. Em 20 turnos: preço +20 dá favela +3,5 no `teste` e +7 no
+`teste-pobre`; teto máximo dá saneamento −1,2 e +1,0; concessão máxima +1,9 e
++0,8. Ficha e mapa mostram. Renda é medida contra a média do próprio país, como
+nas cestas.
+
+**Próximo:** escolher o próximo índice em `docs/jogo/indices-avaliacao.md`.
 
 ## Pendências do autor
 

@@ -35,6 +35,7 @@ import {
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
 import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import moradia from "../conteudo/mundo/moradia/moradia.json";
+import saneamento from "../conteudo/mundo/saneamento/saneamento.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
@@ -275,6 +276,7 @@ export function criarPartida(
     mercado: carregarMercado(pais),
     derivas: derivas.derivas as Deriva[],
     moradia,
+    saneamento,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
     congresso: semCongresso
       ? undefined

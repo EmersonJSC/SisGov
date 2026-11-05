@@ -11,15 +11,17 @@ ligado ou criado e ainda não passou por avaliação entra em **Não avaliados**
 
 | Índice | Movido por | Empurra | Cobrado por | Data |
 |---|---|---|---|---|
-| Favela (`favela`) | contagem de casas, pobreza, leis de moradia | piora saúde, segurança e saneamento | sem trabalho formal | 04/nov/2026 |
+| Favela (`favela`) | contagem de casas, preço contra a renda dos pops, leis de moradia | piora saúde, segurança e saneamento | sem trabalho formal | 04/nov/2026 |
+| Saneamento (`saneamento`) | contagem da rede (verba, concessão, teto da tarifa, tratamento), conta contra a renda dos pops, favela | melhora saúde e meio ambiente | sem trabalho formal, gente do campo | 04/nov/2026 |
 
 ## Não avaliados
 
-Ligados ou criados pela avaliação da favela:
+Ligados ou criados pelas avaliações da favela e do saneamento:
 
-- Saneamento (`saneamento`), criado em 04/nov/2026
 - Saúde (`saude`)
 - Segurança (`seguranca`)
+- Meio ambiente (`meio_ambiente`)
+- Padrão de vida (`padrao_vida`)
 
 Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
 
@@ -29,9 +31,9 @@ Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
   `pib_nominal`, `industrializacao`
 - Contas: `arrecadacao`, `gasto_publico`, `juros_pagos`, `resultado_primario`,
   `resultado_fiscal`, `cofre`, `divida_publica`, `taxa_juros`
-- Sociedade: `padrao_vida`, `instrucao`, `abastecimento`, `acesso_remedios`,
+- Sociedade: `instrucao`, `abastecimento`, `acesso_remedios`,
   `lotacao_presidios`, `poder_defensivo`, `seguranca_externa`, `pobreza`,
-  `desigualdade`, `meio_ambiente`, `deficit_habitacional`, `preco_moradia`,
+  `desigualdade`, `deficit_habitacional`, `preco_moradia`,
   `concentracao_terra`
 - Política: `corrupcao`, `liberdade_civil`, `polarizacao`,
   `reputacao_internacional`, `popularidade_governo`

@@ -17,7 +17,6 @@ const regra: RegraDaMoradia = {
   indice_favela: "f",
   indice_preco: "p",
   indice_terra: "t",
-  indice_pobreza: "b",
   pops_campo: [],
   lei_verba: "v",
   pessoas_por_familia: 3,
@@ -25,7 +24,8 @@ const regra: RegraDaMoradia = {
   autoconstrucao: 0.05,
   campo_por_ponto: 0.01,
   exodo_velocidade: 0.1,
-  pobreza_por_ponto: 0.01,
+  renda_por_ponto: 0.005,
+  despejo_velocidade: 0.05,
 };
 const obras: RegraDasObras = {
   setor: "s",
@@ -50,7 +50,7 @@ const parado: TurnoDaMoradia = {
   animo: 1,
   familias_campo: 100_000,
   concentracao: 0,
-  pobreza: 0,
+  aperto: 0,
 };
 
 /** Índices depois de `turnos` turnos com as mesmas condições. */
@@ -112,7 +112,9 @@ describe("estoque de casas (motor)", () => {
     const alto = indicesDaMoradia(regra, m, pais.populacao).deficit;
     for (let t = 0; t < 100; t++) m = andarMoradia(regra, obras, m, parado);
     expect(m.exodo).toBeLessThan(1);
-    expect(indicesDaMoradia(regra, m, pais.populacao).deficit).toBeLessThan(alto);
+    expect(indicesDaMoradia(regra, m, pais.populacao).deficit).toBeLessThan(
+      alto,
+    );
   });
 
   it("concentração abaixo do turno 0: o déficit fica menor que no começo", () => {
@@ -132,12 +134,88 @@ describe("estoque de casas (motor)", () => {
     expect(-(m.exodo ?? 0)).toBeLessThanOrEqual(100_000);
   });
 
-  it("pobreza sobe: mais famílias sem casa formal levantam casa precária", () => {
-    const { deficit, favela } = depois(100, { pobreza: 10 });
-    expect(deficit).toBeCloseTo(20, 1);
-    expect(favela).toBeGreaterThan(16.5);
+  it("quem deixa de pagar perde a casa e a favela cresce", () => {
+    const { deficit, favela } = depois(100, { aperto: 0.1 });
+    expect(deficit).toBeGreaterThan(25);
+    expect(favela).toBeGreaterThan(20);
     expect(favela).toBeLessThanOrEqual(deficit);
-    expect(depois(100, { pobreza: -10 }).favela).toBeLessThan(13.5);
+  });
+
+  it("quem volta a pagar volta para a casa", () => {
+    let m = moradiaInicial(regra, obras, pais);
+    for (let t = 0; t < 100; t++)
+      m = andarMoradia(regra, obras, m, { ...parado, aperto: 0.1 });
+    const alta = m.despejadas ?? 0;
+    for (let t = 0; t < 100; t++) m = andarMoradia(regra, obras, m, parado);
+    expect(alta).toBeGreaterThan(0);
+    expect(m.despejadas).toBeLessThan(alta / 10);
+  });
+
+  it("a empresa só constrói para quem paga", () => {
+    const preco = 2;
+    expect(depois(50, { preco, aperto: 0.4 }).deficit).toBeGreaterThan(
+      depois(50, { preco }).deficit,
+    );
+  });
+
+  it("com mais gente pagando, menos famílias sem casa levantam casa precária", () => {
+    const { deficit, favela } = depois(100, { aperto: -0.1 });
+    expect(deficit).toBeCloseTo(20, 1);
+    expect(favela).toBeLessThan(13.5);
+  });
+});
+
+describe("bolso: o mesmo preço, países diferentes", () => {
+  /** Favela depois de 20 turnos, com o preço `alta` pontos acima. */
+  function favela(pais: string, alta: number, renda = 1) {
+    let p = criarPartida(pais, 42, { semCongresso: true });
+    p = {
+      ...p,
+      estado: {
+        ...p.estado,
+        base: {
+          ...p.estado.base,
+          preco_moradia: p.estado.base.preco_moradia + alta,
+        },
+        marco: {
+          ...p.estado.marco,
+          renda_pop: Object.fromEntries(
+            Object.entries(p.estado.marco.renda_pop ?? {}).map(([id, r]) => [
+              id,
+              r / renda,
+            ]),
+          ),
+        },
+      },
+    };
+    return jogar(p, 20).estado.jogabilidade.favela;
+  }
+
+  it("o preço alto empurra mais gente para a favela no país pobre", () => {
+    const rico = favela("teste", 20) - favela("teste", 0);
+    const pobre = favela("teste-pobre", 20) - favela("teste-pobre", 0);
+    expect(rico).toBeGreaterThan(0);
+    expect(pobre).toBeGreaterThan(rico);
+  });
+
+  it("com renda boa, o mesmo preço não derruba ninguém", () => {
+    const apertado = favela("teste", 20) - favela("teste", 0);
+    const folgado = favela("teste", 20, 2) - favela("teste", 0, 2);
+    expect(folgado).toBeLessThan(apertado / 2);
+  });
+
+  it("o mapa liga o preço à favela", () => {
+    const ligacao = montarVisao(base()).ligacoes.find(
+      (l) => l.origem === "preco_moradia" && l.alvo === "favela",
+    );
+    expect(ligacao?.sinal).toBe(1);
+  });
+
+  it("a ficha mostra a favela da lei que mexe no preço", () => {
+    const { indices } = previaDaLei(base(), "credito-imobiliario", 0.01);
+    const favela = indices.find((i) => i.id === "favela");
+    expect(favela?.pontos).toBeGreaterThan(0);
+    expect(favela?.aosPoucos).toBe(true);
   });
 });
 
@@ -207,8 +285,7 @@ describe("estoque na partida", () => {
   it("o mapa liga a concentração ao déficit", () => {
     const ligacao = montarVisao(base()).ligacoes.find(
       (l) =>
-        l.origem === "concentracao_terra" &&
-        l.alvo === "deficit_habitacional",
+        l.origem === "concentracao_terra" && l.alvo === "deficit_habitacional",
     );
     expect(ligacao?.sinal).toBe(1);
   });

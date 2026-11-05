@@ -17,6 +17,7 @@ import {
   obrasPorSetor,
   TURNOS_ATE_FECHAR,
   type Deriva,
+  type RegraDoSaneamento,
   type Estado,
   type Lei,
   type Regras,
@@ -27,7 +28,7 @@ import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
-import { mesesDaObra } from "./previa";
+import { mesesDaObra, mesesDaRede } from "./previa";
 import type {
   VisaoArea,
   VisaoBolha,
@@ -232,9 +233,32 @@ function ligacoes(
     atrasoMeses: number;
     terra: string;
     deficit: string;
+    preco: string;
+    favela: string;
   },
+  rede?: { regra: RegraDoSaneamento; atrasoMeses: number },
 ): VisaoLigacao[] {
   const saida: VisaoLigacao[] = [];
+  // As leis da rede agem pela contagem, sem efeito declarado na lei.
+  if (rede) {
+    const r = rede.regra;
+    const seta = (origem: string, alvo: string, sinal: 1 | -1) =>
+      saida.push({
+        id: `${origem}>${alvo}`,
+        origem,
+        alvo,
+        sinal,
+        atrasoMeses: rede.atrasoMeses,
+        mecanismo: "afim",
+      });
+    seta(r.lei_verba, r.indice, 1);
+    seta(r.lei_concessao, r.indice, 1);
+    seta(r.lei_concessao, r.indice_vida, -1);
+    seta(r.lei_teto, r.indice, -1);
+    seta(r.lei_teto, r.indice_vida, 1);
+    seta(r.lei_tratamento, r.indice, -1);
+    seta(r.lei_tratamento, r.indice_ambiente, 1);
+  }
   // A verba de casas age pelo estoque, sem efeito declarado na lei.
   if (moradia) {
     for (const indice of moradia.indices)
@@ -251,6 +275,15 @@ function ligacoes(
       id: `${moradia.terra}>${moradia.deficit}`,
       origem: moradia.terra,
       alvo: moradia.deficit,
+      sinal: 1,
+      atrasoMeses: 0,
+      mecanismo: "afim",
+    });
+    // O bolso: quem não paga o preço perde a casa.
+    saida.push({
+      id: `${moradia.preco}>${moradia.favela}`,
+      origem: moradia.preco,
+      alvo: moradia.favela,
       sinal: 1,
       atrasoMeses: 0,
       mecanismo: "afim",
@@ -379,6 +412,12 @@ export function montarVisao(partida: Partida): VisaoPartida {
         atrasoMeses: mesesDaObra(partida),
         terra: regras.moradia.indice_terra,
         deficit: regras.moradia.indice_deficit,
+        preco: regras.moradia.indice_preco,
+        favela: regras.moradia.indice_favela,
+      },
+      regras.saneamento && {
+        regra: regras.saneamento,
+        atrasoMeses: mesesDaRede(partida),
       },
     ),
     grupos: [],

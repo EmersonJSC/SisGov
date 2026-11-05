@@ -676,6 +676,8 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   não existe. Voltar quando a fila existir, como leis separadas nos dois lados:
   uma que castiga a ocupação (autoritário) e uma que a acelera (esquerda), e
   dizer quais terras entram (só improdutivas?).
+- **Saneamento nos outros lados (04/nov):** o pacote da rede tem esquerda,
+  direita e verde. Faltam leis boas para libertário, autoritário e tradicional.
 - **Organizações criminosas (04/nov):** ideia do autor: a favela fortalece
   organizações criminosas. Ainda não existem no jogo. Falta decidir se são um
   índice novo ou uma peça própria, o que as fortalece além da favela, o que

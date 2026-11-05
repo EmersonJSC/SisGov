@@ -13,7 +13,6 @@ export interface RegraDaMoradia {
   indice_favela: string;
   indice_preco: string;
   indice_terra: string;
-  indice_pobreza: string;
   /** Pops que vivem do campo. */
   pops_campo: string[];
   /** Lei contínua (fração do PIB) com que o governo constrói. */
@@ -27,8 +26,10 @@ export interface RegraDaMoradia {
   campo_por_ponto: number;
   /** Parte da distância ao êxodo "natural" que anda por turno (0 a 1). */
   exodo_velocidade: number;
-  /** Parte a mais de quem levanta casa precária por ponto de pobreza. */
-  pobreza_por_ponto: number;
+  /** Renda que paga a moradia, por ponto de preço, em vezes a renda média do turno 0. */
+  renda_por_ponto: number;
+  /** Parte da distância ao despejo "natural" que anda por turno (0 a 1). */
+  despejo_velocidade: number;
 }
 
 export interface ObraDeCasas {
@@ -47,6 +48,8 @@ export interface MoradiaNoEstado {
   parte_precaria: number;
   /** Famílias que saíram do campo desde o turno 0; negativo: entraram. Ausente em partida salva antes dele. */
   exodo?: number;
+  /** Famílias que perderam a casa formal por não pagar. Ausente em partida salva antes dele. */
+  despejadas?: number;
 }
 
 export interface TurnoDaMoradia {
@@ -64,9 +67,12 @@ export interface TurnoDaMoradia {
   animo: number;
   /** Famílias dos pops do campo. */
   familias_campo: number;
-  /** Concentração de terra e pobreza: pontos acima do turno 0. */
+  /** Concentração de terra: pontos acima do turno 0. */
   concentracao: number;
-  pobreza: number;
+  /** Parte das famílias que não paga a moradia, acima do turno 0 (−1 a 1). */
+  aperto: number;
+  /** Quanto as obras andam por turno, com o setor cheio (0 a 1; padrão 1). */
+  ritmo?: number;
 }
 
 /** Famílias do país: as pessoas dos pops divididas pelo tamanho da família. */
@@ -88,10 +94,22 @@ function movimentoDoCampo(
   turno: TurnoDaMoradia,
 ): number {
   const fora = Math.min(1, regra.campo_por_ponto * turno.concentracao);
-  const passo =
-    regra.exodo_velocidade * (turno.familias_campo * fora - exodo);
+  const passo = regra.exodo_velocidade * (turno.familias_campo * fora - exodo);
   // Sai quem tem casa formal; volta quem não tem.
   return Math.max(formais - total, Math.min(formais, passo));
+}
+
+/** Famílias que perdem a casa neste turno; negativo: voltam a pagar. */
+function movimentoDoBolso(
+  regra: RegraDaMoradia,
+  despejadas: number,
+  formais: number,
+  total: number,
+  aperto: number,
+): number {
+  const passo =
+    regra.despejo_velocidade * (total * Math.max(0, aperto) - despejadas);
+  return Math.max(-despejadas, Math.min(formais, passo));
 }
 
 /** Casas que a verba paga num turno; a corrupção encarece. */
@@ -144,8 +162,8 @@ export function moradiaInicial(
 
 /**
  * Um turno: casas desgastam, as obras prontas entram, famílias saem do campo
- * ou voltam, quem ficou sem casa levanta casa precária, e governo e empresas
- * começam obras novas.
+ * ou voltam, quem não paga perde a casa, quem ficou sem casa levanta casa
+ * precária, e governo e empresas começam obras novas.
  */
 export function andarMoradia(
   regra: RegraDaMoradia,
@@ -154,7 +172,7 @@ export function andarMoradia(
   turno: TurnoDaMoradia,
 ): MoradiaNoEstado {
   const total = familias(regra, turno.populacao);
-  const passo = 1 / atrasoDasObras(turno.atraso).prazo;
+  const passo = (turno.ritmo ?? 1) / atrasoDasObras(turno.atraso).prazo;
   let formais = m.formais * (1 - obras.desgaste / TURNOS_POR_ANO);
   const fila: ObraDeCasas[] = [];
   for (const obra of m.obras) {
@@ -166,11 +184,17 @@ export function andarMoradia(
   const exodo = m.exodo ?? 0;
   const movimento = movimentoDoCampo(regra, exodo, formais, total, turno);
   formais -= movimento;
-  const semCasa = total - formais;
-  const parte = Math.min(
-    1,
-    Math.max(0, m.parte_precaria + regra.pobreza_por_ponto * turno.pobreza),
+  const despejadas = m.despejadas ?? 0;
+  const despejo = movimentoDoBolso(
+    regra,
+    despejadas,
+    formais,
+    total,
+    turno.aperto,
   );
+  formais -= despejo;
+  const semCasa = total - formais;
+  const parte = Math.min(1, Math.max(0, m.parte_precaria + turno.aperto));
   const alvo = semCasa * parte;
   const precarias = Math.min(
     semCasa,
@@ -179,8 +203,13 @@ export function andarMoradia(
   const custo =
     atrasoDasObras(turno.atraso_inicial).custo /
     atrasoDasObras(turno.atraso).custo;
-  const privadas =
-    m.ritmo_privado * turno.setor * turno.preco * turno.animo * custo;
+  // A empresa só vende para quem paga.
+  const naFila = fila.reduce((soma, o) => soma + o.casas, 0);
+  const clientes = total * (1 - Math.max(0, turno.aperto));
+  const privadas = Math.min(
+    Math.max(0, clientes - formais - naFila),
+    m.ritmo_privado * turno.setor * turno.preco * turno.animo * custo,
+  );
   const governo = casasDoGoverno(
     regra,
     turno.populacao,
@@ -194,6 +223,7 @@ export function andarMoradia(
     precarias,
     obras: fila,
     exodo: exodo + movimento,
+    despejadas: despejadas + despejo,
   };
 }
 

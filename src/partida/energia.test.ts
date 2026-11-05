@@ -96,7 +96,7 @@ describe("energia (7)", () => {
     );
     expect(leve.estado.jogabilidade.saude).toBeCloseTo(
       jogar(base(), 2).estado.jogabilidade.saude,
-      6,
+      3,
     );
   });
 

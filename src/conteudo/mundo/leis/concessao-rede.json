@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "id": "concessao-rede",
+  "nome": "Concessão da rede",
+  "descricao": "Quantas cidades têm a rede de água e esgoto entregue a empresas, que fazem as obras e cobram tarifa.",
+  "camada": "jogabilidade",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-concessao",
+      "rotulo": "Sem concessão",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "poucas-cidades",
+      "rotulo": "Poucas cidades",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.25
+      },
+      "efeitos": []
+    },
+    {
+      "id": "metade-das-cidades",
+      "rotulo": "Metade das cidades",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.5
+      },
+      "efeitos": []
+    },
+    {
+      "id": "quase-todas",
+      "rotulo": "Quase todas as cidades",
+      "bussola": {
+        "economico": 0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.75
+      },
+      "efeitos": []
+    }
+  ]
+}

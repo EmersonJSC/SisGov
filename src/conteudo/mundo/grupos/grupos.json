@@ -96,6 +96,10 @@
         {
           "indice": "pobreza",
           "sentido": -1
+        },
+        {
+          "indice": "saneamento",
+          "sentido": 1
         }
       ]
     },
@@ -126,6 +130,10 @@
         {
           "indice": "favela",
           "sentido": -1
+        },
+        {
+          "indice": "saneamento",
+          "sentido": 1
         }
       ]
     },

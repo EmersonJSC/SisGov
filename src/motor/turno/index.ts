@@ -62,7 +62,18 @@ import {
   indicesDaMoradia,
   moradiaInicial,
   pessoasNoCampo,
+  type RegraDaMoradia,
 } from "../moradia";
+import {
+  andarSaneamento,
+  indiceDoSaneamento,
+  rendaParaAConta,
+  ritmoDoSetor,
+  saneamentoInicial,
+  trabalhoEmObra,
+  type LeisDoSaneamento,
+  type RegraDoSaneamento,
+} from "../saneamento";
 import {
   andarOpinioes,
   motivoOpinioesInvalidas,
@@ -80,6 +91,8 @@ import {
   calcularPops,
   migrarPops,
   motivoPopsInvalidos,
+  parteAbaixoDe,
+  rendaMedia,
   type Estrato,
   type Pop,
 } from "../populacao";
@@ -477,6 +490,100 @@ function jogabilidade(regras: Regras, estado: Estado) {
   return indices;
 }
 
+/** Capacidade do setor que constrói: hoje ÷ turno 0. */
+function tamanhoDoSetor(regras: Regras, estado: Estado): number {
+  const obras = regras.mercado?.mercado.obras;
+  const c = estado.construcoes;
+  if (!obras || !c?.inicio[obras.setor]) return 1;
+  return (c.prontas[obras.setor] ?? 0) / c.inicio[obras.setor];
+}
+
+/** Quanto as obras andam neste turno: casas e rede disputam o mesmo setor. */
+export function ritmoDasObras(regras: Regras, estado: Estado): number {
+  const { saneamento: regra, moradia } = regras;
+  const s = estado.saneamento;
+  if (!regra || !moradia || !s) return 1;
+  return ritmoDoSetor(
+    regra,
+    tamanhoDoSetor(regras, estado),
+    trabalhoEmObra(
+      regra,
+      moradia.custo_casa,
+      estado.moradia?.obras ?? [],
+      s.obras,
+    ),
+    s.trabalho_inicial,
+  );
+}
+
+/** Número da opção em vigor (`valores.parte`); sem a lei, 0. */
+function parteDaLei(
+  regras: Regras,
+  valores: Record<string, ValorLei>,
+  id: string,
+): number {
+  const lei = regras.leis[id];
+  if (lei?.forma !== "opcoes") return 0;
+  return lei.opcoes.find((o) => o.id === valores[id])?.valores?.parte ?? 0;
+}
+
+/** O que as leis pedem à rede, em números. */
+export function leisDoSaneamento(
+  regras: Regras,
+  regra: RegraDoSaneamento,
+  valores: Record<string, ValorLei>,
+): LeisDoSaneamento {
+  const verba = valores[regra.lei_verba];
+  return {
+    verba: typeof verba === "number" ? verba : 0,
+    concessao: parteDaLei(regras, valores, regra.lei_concessao),
+    teto: parteDaLei(regras, valores, regra.lei_teto),
+    tratamento: parteDaLei(regras, valores, regra.lei_tratamento),
+  };
+}
+
+/** Renda real dos pops: a de hoje e a do turno 0, com as pessoas de hoje. */
+function rendasReais({ pops, essenciais, marco }: Estado) {
+  const hoje: Record<string, { pessoas: number; renda: number }> = {};
+  const inicio: typeof hoje = {};
+  for (const [id, { pessoas, renda }] of Object.entries(pops)) {
+    const real = (renda * 100) / essenciais.indice_precos;
+    hoje[id] = { pessoas, renda: real };
+    inicio[id] = { pessoas, renda: marco.renda_pop?.[id] ?? real };
+  }
+  return { hoje, inicio };
+}
+
+/**
+ * Parte das famílias que não paga uma conta, a mais que no turno 0. Os mínimos
+ * são de renda, em vezes a renda média do turno 0.
+ */
+export function apertoDoBolso(
+  estado: Estado,
+  minimo: number,
+  minimoInicial: number,
+): number {
+  const { hoje, inicio } = rendasReais(estado);
+  const media = rendaMedia(inicio);
+  return (
+    parteAbaixoDe(hoje, minimo * media) -
+    parteAbaixoDe(inicio, minimoInicial * media)
+  );
+}
+
+/** Quanto o preço pesa no bolso, a mais que no turno 0 (motor/moradia). */
+export function apertoDaMoradia(
+  regra: RegraDaMoradia,
+  estado: Estado,
+  preco: number,
+): number {
+  return apertoDoBolso(
+    estado,
+    regra.renda_por_ponto * preco,
+    regra.renda_por_ponto * estado.marco.indices[regra.indice_preco],
+  );
+}
+
 /**
  * 6b. Moradia: casas desgastam, ficam prontas e começam (motor/moradia). O que
  * a contagem andou move a base do déficit e da favela.
@@ -485,29 +592,29 @@ const moradia: Etapa = (regras, estado) => {
   const regra = regras.moradia;
   const obras = regras.mercado?.mercado.obras;
   const m = estado.moradia;
-  const c = estado.construcoes;
-  if (!regra || !obras || !m || !c) return estado;
+  if (!regra || !obras || !m || !estado.construcoes) return estado;
   const { populacao } = estado.essenciais;
   const marco = estado.marco.indices;
   const verba = estado.leis[regra.lei_verba];
   const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
-  const setor = c.inicio[obras.setor]
-    ? (c.prontas[obras.setor] ?? 0) / c.inicio[obras.setor]
-    : 1;
   const preco0 = marco[regra.indice_preco];
   const nova = andarMoradia(regra, obras, m, {
     populacao,
     verba: typeof verba === "number" ? verba : 0,
     atraso,
     atraso_inicial: marco[obras.indice_atraso] ?? atraso,
-    setor,
+    setor: tamanhoDoSetor(regras, estado),
+    ritmo: ritmoDasObras(regras, estado),
     preco: preco0 > 0 ? estado.jogabilidade[regra.indice_preco] / preco0 : 1,
     animo: animoDoPais(regras, estado),
     familias_campo: familias(regra, pessoasNoCampo(regra, estado.pops)),
     concentracao:
       estado.jogabilidade[regra.indice_terra] - marco[regra.indice_terra],
-    pobreza:
-      estado.jogabilidade[regra.indice_pobreza] - marco[regra.indice_pobreza],
+    aperto: apertoDaMoradia(
+      regra,
+      estado,
+      estado.jogabilidade[regra.indice_preco],
+    ),
   });
   const antes = indicesDaMoradia(regra, m, populacao);
   const depois = indicesDaMoradia(regra, nova, populacao);
@@ -520,6 +627,56 @@ const moradia: Etapa = (regras, estado) => {
         estado.base[regra.indice_deficit] + depois.deficit - antes.deficit,
       [regra.indice_favela]:
         estado.base[regra.indice_favela] + depois.favela - antes.favela,
+    },
+  };
+};
+
+/**
+ * 6c. Saneamento: a rede desgasta, as ligações ficam prontas e começam
+ * (motor/saneamento). O que a contagem andou move a base dos índices.
+ */
+const saneamento: Etapa = (regras, estado) => {
+  const regra = regras.saneamento;
+  const obras = regras.mercado?.mercado.obras;
+  const s = estado.saneamento;
+  if (!regra || !regras.moradia || !obras || !s) return estado;
+  const { populacao } = estado.essenciais;
+  const atraso = estado.jogabilidade[obras.indice_atraso] ?? 0;
+  const casas = estado.moradia;
+  const leis = leisDoSaneamento(regras, regra, estado.leis);
+  const nova = andarSaneamento(regra, s, {
+    populacao,
+    leis,
+    atraso,
+    atraso_inicial: estado.marco.indices[obras.indice_atraso] ?? atraso,
+    setor: tamanhoDoSetor(regras, estado),
+    animo: animoDoPais(regras, estado),
+    sem_lucro:
+      (casas?.precarias ?? 0) +
+      familias(regras.moradia, pessoasNoCampo(regras.moradia, estado.pops)),
+    ritmo: ritmoDasObras(regras, estado),
+    aperto: apertoDoBolso(
+      estado,
+      rendaParaAConta(regra, leis),
+      rendaParaAConta(
+        regra,
+        leisDoSaneamento(regras, regra, estado.marco.leis),
+      ),
+    ),
+  });
+  const { base } = estado;
+  return {
+    ...estado,
+    saneamento: nova,
+    base: {
+      ...base,
+      [regra.indice]:
+        base[regra.indice] +
+        indiceDoSaneamento(regra, nova, populacao) -
+        indiceDoSaneamento(regra, s, populacao),
+      [regra.indice_vida]: base[regra.indice_vida] + nova.vida - s.vida,
+      [regra.indice_ambiente]:
+        base[regra.indice_ambiente] + nova.ambiente - s.ambiente,
     },
   };
 };
@@ -767,6 +924,17 @@ const invariantes: Etapa = (regras, estado) => {
     )
   )
     falhas.push("estoque de casas inválido");
+  const rede = estado.saneamento;
+  if (
+    rede &&
+    !(
+      Number.isFinite(rede.ligadas) &&
+      Number.isFinite(rede.cortadas) &&
+      rede.cortadas >= 0 &&
+      rede.ligadas >= rede.cortadas
+    )
+  )
+    falhas.push("rede de saneamento inválida");
   if (!(Number.isFinite(estado.desgaste) && estado.desgaste >= 0))
     falhas.push("desgaste inválido");
   if (falhas.length > 0)
@@ -785,6 +953,7 @@ const ETAPAS: Etapa[] = [
   capacidades,
   contas,
   moradia,
+  saneamento,
   indicesJogabilidade,
   mundo,
   precosDoMundo,
@@ -892,7 +1061,6 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       r.indice_favela,
       r.indice_preco,
       r.indice_terra,
-      r.indice_pobreza,
     ])
       if (!(id in regras.dominios))
         throw new Error(`mundo: moradia: o índice "${id}" não existe`);
@@ -906,6 +1074,19 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       inicio.jogabilidade[r.indice_deficit]
     )
       throw new Error("país: favela maior que o déficit habitacional");
+  }
+  if (regras.saneamento) {
+    const r = regras.saneamento;
+    if (!regras.moradia || !obras)
+      throw new Error("mundo: saneamento precisa da moradia e das obras");
+    for (const id of [r.indice, r.indice_vida, r.indice_ambiente])
+      if (!(id in regras.dominios))
+        throw new Error(`mundo: saneamento: o índice "${id}" não existe`);
+    if (regras.leis[r.lei_verba]?.forma !== "continua")
+      throw new Error(`mundo: saneamento: "${r.lei_verba}" não é lei contínua`);
+    for (const id of [r.lei_concessao, r.lei_teto, r.lei_tratamento])
+      if (regras.leis[id]?.forma !== "opcoes")
+        throw new Error(`mundo: saneamento: "${id}" não é lei de opções`);
   }
   const motivoPops = motivoPopsInvalidos(regras.pops, regras.pais.pops);
   if (motivoPops) throw new Error(`país: ${motivoPops}`);
@@ -1016,6 +1197,26 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       favela: comPops.jogabilidade[r.indice_favela],
       verba: typeof verba === "number" ? verba : 0,
       atraso: comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
+    });
+  }
+  if (regras.saneamento && regras.moradia && m?.mercado.obras) {
+    const r = regras.saneamento;
+    const leis = leisDoSaneamento(regras, r, comPops.leis);
+    comPops.saneamento = saneamentoInicial(r, {
+      populacao: comPops.essenciais.populacao,
+      saneamento: comPops.jogabilidade[r.indice],
+      leis,
+      atraso: comPops.jogabilidade[m.mercado.obras.indice_atraso] ?? 0,
+      sem_bolso: parteAbaixoDe(
+        comPops.pops,
+        rendaParaAConta(r, leis) * rendaMedia(comPops.pops),
+      ),
+      trabalho_casas: trabalhoEmObra(
+        r,
+        regras.moradia.custo_casa,
+        comPops.moradia?.obras ?? [],
+        [],
+      ),
     });
   }
   // O marco é o próprio turno 0: grupos começam em 50.

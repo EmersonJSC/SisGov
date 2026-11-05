@@ -25,6 +25,18 @@
       "por": "favela",
       "sentido": -1,
       "forca": "fraca"
+    },
+    {
+      "indice": "saude",
+      "por": "saneamento",
+      "sentido": 1,
+      "forca": "media"
+    },
+    {
+      "indice": "meio_ambiente",
+      "por": "saneamento",
+      "sentido": 1,
+      "forca": "media"
     }
   ]
 }

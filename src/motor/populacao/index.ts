@@ -58,6 +58,36 @@ export interface EntradaPops {
 /** Fração da população que entrou (+) ou saiu (−) de cada pop. */
 export type Migracao = Record<string, number>;
 
+/** Dentro de um pop, a renda vai da média −50% à média +50%. */
+const ESPALHO = 0.5;
+
+/** Renda média das pessoas dos pops. */
+export function rendaMedia(
+  pops: Record<string, { pessoas: number; renda: number }>,
+): number {
+  const lista = Object.values(pops);
+  const pessoas = lista.reduce((s, p) => s + p.pessoas, 0);
+  const renda = lista.reduce((s, p) => s + p.pessoas * p.renda, 0);
+  return pessoas > 0 ? renda / pessoas : 0;
+}
+
+/** Parte das pessoas (0 a 1) com renda abaixo de `minimo`. */
+export function parteAbaixoDe(
+  pops: Record<string, { pessoas: number; renda: number }>,
+  minimo: number,
+): number {
+  const lista = Object.values(pops);
+  const pessoas = lista.reduce((s, p) => s + p.pessoas, 0);
+  if (pessoas <= 0) return 0;
+  const abaixo = lista.reduce((soma, p) => {
+    if (p.renda <= 0) return soma + p.pessoas;
+    const piso = p.renda * (1 - ESPALHO);
+    const faixa = p.renda * 2 * ESPALHO;
+    return soma + p.pessoas * Math.min(1, Math.max(0, (minimo - piso) / faixa));
+  }, 0);
+  return abaixo / pessoas;
+}
+
 /** Motivo de as parcelas do país não fecharem, ou null. */
 export function motivoPopsInvalidos(
   tipos: TipoPop[],
