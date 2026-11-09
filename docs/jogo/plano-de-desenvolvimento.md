@@ -13,21 +13,23 @@
 - **Depois da 1.0, feito:** o mapa como única tela, a bússola política
   (leis e grupos em dois eixos), 25 pops e 16 grupos (sem a mídia), e as áreas
   de terra, moradia e saneamento.
-- **Agora:** avaliar os índices, um por vez
-  ([indices-avaliacao.md](indices-avaliacao.md)). O que falta da frente e o
-  estado de cada lei ficam no `RETOMAR.md`.
-- **Ordem do que falta** (um por vez; o próximo só abre quando o anterior
-  fecha jogável):
-  1. Avaliação dos índices: Saúde (1 das 19 leis falta, GDD §18), Educação
-     e os demais.
-  2. 12b pilar 1 — Construções.
-  3. 12b pilar 2 — Empresas e dono.
-  4. 12b pilar 3 — Bolsa.
-  5. Passo 13 — Leis em pacotes, um por vez.
-  6. O resto do GDD, na ordem que o autor escolher (partido, ministros,
-     mídia, campanha, coligação…).
-  7. No fim: equilibrar com dois países grandes e diferentes (inspirados,
-     com nome inventado); checar com advogado antes de publicar.
+- **Agora:** planejar tudo em `docs/jogo/leis.xlsx` antes de programar: leis, índices,
+  esferas, ligações e pops, depois os mecanismos. Base aprovada em 05/nov: População no
+  centro, ligada a Economia e Governo (GDD, seção 2). A próxima frente é a Economia.
+- **A consertar quando o código voltar:** renda do pop vinda de salário e lucro; falta de
+  trabalhador freando a produção; desemprego se movendo; toda lei chegando ao pop;
+  idade e dados dentro do pop; reações de sair. Requisitos R7.12, R9.5, R11.8 a R11.11 e
+  R16.26 a R16.28. A ordem das fases abaixo se revê depois da planilha.
+- **Como uma fase anda:** desenhar a fase inteira, o autor decide tudo de uma vez,
+  produzir até o fim sem parar, verificar no fim.
+- **Fases** (a próxima só abre quando a anterior fecha jogável):
+  1. Serviços do Estado: as redes (saúde, saneamento, educação, segurança) e Vícios.
+  2. Economia real: 12b, construções, empresas e dono, bolsa.
+  3. Política: partido, ministros, coligação, campanha, mídia.
+  4. Mundo e conflito: organizações, potências, economia militar.
+  5. Fechamento: índices ainda sem avaliação, leis em pacotes (passo 13), balanço
+     com dois países grandes e diferentes (inspirados, com nome inventado), e
+     checagem com advogado antes de publicar.
 
 ## 2. Regra de expansão
 

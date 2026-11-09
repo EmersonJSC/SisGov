@@ -4,7 +4,7 @@
 > Cada requisito aponta a seção do GDD. O GDD diz **o quê**; o
 > [plano](plano-de-desenvolvimento.md) diz **em que ordem**.
 >
-> **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 03/nov.
+> **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 03/nov; base do jogo em 05/nov.
 > Requisito novo só entra depois de decidido no GDD (seção 18).
 
 ## Resumo
@@ -14,18 +14,18 @@
 | 4. Partida e turno | 2 | 2 | 6 | ~30% |
 | 5. Partido | 0 | 0 | 5 | 0% |
 | 6. Presidente, sucessão, ministros | 0 | 1 | 12 | ~4% |
-| 7. Leis | 5 | 3 | 3 | ~59% |
+| 7. Leis | 5 | 5 | 3 | ~58% |
 | 8. Bússola | 4 | 0 | 2 | ~65% |
-| 9. Índices | 2 | 1 | 0 | ~85% |
+| 9. Índices | 2 | 2 | 3 | ~43% |
 | 10. Contas | 3 | 1 | 2 | ~60% |
-| 11. População e grupos | 4 | 1 | 2 | ~60% |
-| 12. Congresso e coligação | 2 | 1 | 6 | ~25% |
+| 11. População e grupos | 5 | 2 | 11 | ~33% |
+| 12. Congresso e coligação | 2 | 1 | 7 | ~25% |
 | 13. Eleição, campanha, mandatos | 2 | 1 | 5 | ~25% |
 | 14. Mídia | 0 | 0 | 7 | 0% |
 | 15. Mundo | 2 | 1 | 3 | ~40% |
-| 16. Economia | 4 | 4 | 17 | ~24% |
+| 16. Economia | 4 | 4 | 31 | ~15% |
 | 17. Tela: mapa e mesa | 3 | 2 | 6 | ~35% |
-| **Total** | **33** | **19** | **75** | **~26%** |
+| **Total** | **34** | **22** | **103** | **~28%** |
 
 ---
 
@@ -61,7 +61,7 @@
 - ☐ **R6.7** Ministros com ficha (competência, habilidade, carisma, honestidade, lealdade, bússola, origem).
 - ☐ **R6.8** Ficha do ministro mexe na força e no atraso das leis da área.
 - ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão, candidato) e custo de troca.
-- ☐ **R6.10** Criar, fundir e extinguir ministérios por lei.
+- ☐ **R6.10** Criar, fundir e extinguir ministérios por lei; cada ministério é um conjunto de esferas.
 - ☐ **R6.11** Perfil de rede social da pessoa (posts, fotos, curtidas, lugares, opiniões), gerado da ficha; sem rótulo de lado.
 - ☐ **R6.12** Lista de pessoas por vaga (chapa, ministério) com o perfil abrindo ao clicar.
 
@@ -78,6 +78,8 @@
 - ☐ **R7.9** Colisão: leis que colidem não valem juntas; fora isso, toda combinação vale (build).
 - ◐ **R7.10** Processo: estoque que anda sozinho pelos turnos, empurrado pelas leis em vigor (deriva feita em 04/nov; falta o estoque de casas).
 - ☐ **R7.11** Órgão responsável: o jogador não escolhe fazenda ou fábrica; a regra funciona na medida da verba do órgão; verba demais vira corrupção.
+- ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito (hoje 2 das 71 mudam a renda direto).
+- ◐ **R7.13** Toda lei e todo índice pertencem a uma esfera (feito na planilha; falta no jogo).
 
 ## 8. Bússola
 
@@ -93,6 +95,10 @@
 - ✅ **R9.1** Índices essenciais do motor.
 - ✅ **R9.2** Índices de jogabilidade do mundo.
 - ◐ **R9.3** Inflação que se move (hoje parada; ver R10.4).
+- ◐ **R9.4** Todo índice tem efeito além da cobrança dos grupos (14 ainda não têm).
+- ☐ **R9.5** Desemprego e ocupados se movem com a economia.
+- ☐ **R9.6** Índice da bolsa mostra o valor médio das empresas.
+- ☐ **R9.7** Confiança do mercado sai de regras, corrupção, dívida, violência e ameaças de estatizar.
 
 ## 10. Contas do Estado
 
@@ -105,13 +111,24 @@
 
 ## 11. População e grupos
 
-- ✅ **R11.1** Pops (profissão × estrato) com renda vinda da economia: 25 tipos no mundo, cada país declara as parcelas.
+- ◐ **R11.1** Pops (profissão × estrato) com renda vinda da economia: 25 tipos no mundo, cada país declara as parcelas; a renda ainda é parte fixa do PIB (ver R16.26).
 - ✅ **R11.7** Cada pop tem bússola (economico e social); desliza com a vida (R8.5).
 - ✅ **R11.2** Grupos com bússola, tamanho e satisfação; 16 grupos no mundo, os 25 pops têm casa; país declara os fortes.
 - ✅ **R11.3** Radicais e lealistas.
 - ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).
 - ✅ **R11.5** Pops mudam de setor estudando (03/nov/2026): um pouco da gente de cada pop vai, todo turno, para o setor que paga mais, na velocidade da instrução. Universidade não é construção própria: a simulação é pelo índice (decisão do autor).
 - ✅ **R11.6** Pops sobem e descem de estrato (03/nov/2026): renda real acima do esperado faz gente subir, na medida da instrução; abaixo, descer. Estudar (R11.5) fica à parte.
+- ☐ **R11.8** Cada pop guarda faixas de idade, cidade ou campo, vínculo, escolaridade e patrimônio.
+- ☐ **R11.9** Gente nasce, envelhece e morre; estudantes e aposentados mudam de tamanho.
+- ☐ **R11.10** Quem está insatisfeito pode sair: informalidade, fuga de dinheiro ou emigração.
+- ☐ **R11.11** Grupo forte torna mais populares as leis perto dele, sem escolher lei.
+- ☐ **R11.12** 32 pops em 4 blocos, com crianças; números dos países de teste refeitos.
+- ☐ **R11.13** 25 grupos atravessam os pops: cada pop se divide entre vários grupos.
+- ☐ **R11.14** Organizações políticas nascem de radicais de vários grupos e têm nome, líder e ação.
+- ☐ **R11.15** Crime organizado nasce do mercado ilegal, de presídios e da falta de Estado.
+- ☐ **R11.16** Gerador de organizações: sem lista fixa, com nome, gente, dinheiro, armas, poder e nível de ameaça.
+- ☐ **R11.17** País pode ter regiões, sem ser obrigatório.
+- ☐ **R11.18** Organizações podem ter financiadores; rastro leva a investigação, escândalo e sanção.
 
 ## 12. Congresso e coligação
 
@@ -124,6 +141,7 @@
 - ☐ **R12.7** Uma ou duas casas, declarado pelo país.
 - ☐ **R12.8** Parlamentarismo (perder a base derruba o governo).
 - ☐ **R12.9** Cadeiras mudam a cada eleição pelo voto.
+- ☐ **R12.10** Lei popular passa mais fácil, e o Congresso pode propô-la por conta própria.
 
 ## 13. Eleição, campanha, mandatos
 
@@ -191,6 +209,22 @@
 **Bolsa** (pilar 3)
 - ◐ **R16.15** Pregão: blocos de 2%, dividendo sem mando (protótipo na tela).
 - ☐ **R16.16** Preço = lucro × múltiplo; compradores com caixa; cofre real; ficha da empresa.
+- ☐ **R16.28** Ações fazem parte do patrimônio dos pops; dividendo vira renda.
+- ☐ **R16.29** Bolsa funciona sem o governo: empresas, investidores e preços andam sozinhos.
+- ☐ **R16.34** Preço da ação sai de lucro, juros, risco, crescimento esperado e humor.
+- ☐ **R16.35** Investidores com caixa e comportamento próprio geram alta, euforia, pânico e quebra.
+- ☐ **R16.30** Base do mercado e leis para regulamentar ou entrar, com caminhos liberal, coordenado e Estado dono.
+- ☐ **R16.31** Serviços do Estado são prédios fora do mercado: pagos pelo orçamento, com emprego e sem lucro.
+- ☐ **R16.32** Terceirizar serviços do Estado por lei, como segurança, presídios, hospitais e escolas.
+
+**Ligação entre pops e economia** (base do jogo)
+- ☐ **R16.26** A renda do pop sai de salário, lucro, aluguel e transferência.
+- ☐ **R16.27** Falta de trabalhador freia a produção; o desemprego sai daí.
+- ☐ **R16.36** Consumo: pops, pequenos mercados, mercados, prédios, Estado e exterior compram.
+- ☐ **R16.37** Prédio contrata por qualificação; salário sai de qualificação, lucro e disputa por gente.
+- ☐ **R16.38** Crédito de bancos a pops, prédios e Estado.
+- ☐ **R16.39** Câmbio, regime e reservas ligam comércio, inflação, dívida e investidores.
+- ☐ **R16.33** Caminho do lucro completo: valor adicionado, salário, encargos, desgaste, juros, imposto, reinvestimento e dividendo.
 
 ## 17. Tela: mapa e mesa
 

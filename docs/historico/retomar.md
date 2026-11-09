@@ -1,5 +1,114 @@
 # Onde parei
 
+**07/nov/2026**
+
+## Onde está
+
+**Saúde fechada** (18 leis, em "Avaliados"), `npm run check` verde. Os dois índices
+anteriores, favela e saneamento, também. Agora o trabalho anda em **fases grandes**:
+desenhar a fase, o autor decide tudo de uma vez, produzir até o fim sem parar.
+
+## Próximo
+
+Vícios fechado no desenho: 12 leis e 3 índices em
+[docs/jogo/fase-1-redes.md](docs/jogo/fase-1-redes.md), seção 5; nada criado no código.
+Autor mudou o método em 05/nov: primeiro a planilha com todas as leis
+([docs/jogo/leis.xlsx](docs/jogo/leis.xlsx): 266 leis em 29 esferas aprovadas, e as abas Índices e Pops),
+depois os mecanismos, e só com tudo pronto se programa. Ministério é um conjunto de esferas
+(GDD, seções 6 e 7). Autor quer fundamentar a base, pops e leis: as abas Pops, Pops - como
+funciona e Pops - estudos estão prontas. Decidido: os pops ganham dados dentro
+deles (idade, lugar, vínculo, escolaridade, patrimônio). Base do jogo aprovada: População no centro,
+ligada a Economia e Governo, num ciclo; toda lei chega ao pop (GDD, seções 2 e 3). GDD,
+requisitos, plano e aba Ligações atualizados.
+Aprovados: 15 setores, prédios do Estado e 32 pops em 4 blocos. Planilha
+atualizada: Pops, Grupos (nova), 74 prédios, 266 leis e números dos dois países; o código e os
+JSONs ainda têm 25 pops. Autor aprovou esses números como base. Grupo: pops organizados pelos interesses, atravessando os pops.
+Três camadas fechadas: pop, grupo e organização (GDD, seção 11). 25 grupos aprovados na aba Grupos; abas Organizações, Organizações - vida e
+Grupos - estudos prontas. Caminho do lucro aprovado (Economia - lucro e donos). Bolsa aprovada (Economia - ações e investidores), com Índice da bolsa e
+Confiança do mercado na aba Índices. Base reunida: Pops - dados, Grupos - pops, Organizações - gerador e as abas
+Economia de consumo, cesta, qualificação, trabalho e dinheiro. Números são ponto de partida. A
+planilha reúne a mecânica para evitar perguntas básicas; programar por partes, nunca tudo de uma
+vez. Roteiro de 8 passos aprovado (GDD, seção 7): aba Leis - roteiro com as 22 leis de Saúde e
+Saneamento. Autor definiu em 07/nov: a Bússola é a raiz do jogo (GDD, seções 2 e 8).
+Economia segue como pilar. Educação: 15 leis novas e índice Vagas na escola aprovados, com 19 roteiros. Trabalho: 21 leis
+aprovadas e pesquisadas, com roteiros (132 leis no total). Previdência: 11 leis aprovadas, com roteiros (143 leis); aposentadoria é verba em % do PIB. Índices: 12 novos, coluna Na tela
+(visível ou invisível); 93 índices. Gatilhos só com as narrativas, no fim. Assistência social: 15 leis (Transferência de renda é a verba; as outras dividem ou regram) e 4
+índices novos; 156 leis, 65 índices. Moradia: 13 leis com roteiros
+(163 leis). Filhos por pessoa na aba Pops - dados. Modelo de moradia aprovado (estoque em 3 faixas, quem constrói, casas descem de faixa) e índice Casas vazias. Impostos: 15 leis com roteiros, índices Sonegação e Saída de ricos (175 leis, 68 índices); lei com
+prazo, lei com escolha e igreja como entidade sem lucro no GDD; medida provisória na seção 18.
+Anistia perdoa multa de dívidas antigas, com índice Dívida atrasada (69 índices). Igreja é também
+organização, com vertente e engajamento; corrupção interna em toda organização. Segurança pública: 29 leis com roteiros (inclui a agência de inteligência; Chefes presos e Dinheiro do crime apreendido viraram índices) e 6 índices novos; o índice Segurança pública será
+substituído (197 leis, 75 índices). Verba tem lado pequeno (GDD, seção 7); faltam corrigir as
+outras leis que atravessam o meio da bússola. Justiça e prisões: 22 leis com roteiros, 6 índices (Certeza de punição x Peso das penas), presos com
+nome e Graça (215 leis, 81 índices). Esfera Transporte virou Infraestrutura e transporte; obra nova é lei separada (Construção de
+hospitais, escolas, universidades, delegacias e presídios) (215 leis). Vícios: 14 leis com roteiros, prédios Fábrica de bebidas e cigarros e Casa de apostas, índice
+Mortes no trânsito (217 leis, 84 índices). Defesa: 7 leis com roteiros (+ Missões de paz para versão futura), programa nuclear público ou secreto,
+índice Risco de golpe; Venda de armas foi para Comércio exterior (223 leis, 85 índices, 74 prédios).
+Sem limite de leis por esfera (autor, 07/nov); se ficar demais, reduz depois.
+Direitos e liberdades: 13 leis com roteiros, índices Discriminação e Tensão religiosa visíveis (235
+leis, 87 índices). Estado e eleições: 17 leis com roteiros, 3 índices (251 leis, 90 índices). Comunicação e tecnologia: 15 leis com
+roteiros, 3 índices, mecânicas da mídia e a rede do presidente com a inteligência e o botão Espiar; 8 maiores mídias e histórico do país no GDD (266 leis, 93
+índices). Mídia desenhada inteira em 08/nov (GDD §14, planilha Economia - como funciona, 10 linhas): fato e versão (notícia falsa existe), pauta, jornal e redes das emissoras, entrevista, atos do presidente, partido, escândalo em ciclo, vazamento, jornalistas, boato; 3 índices novos (96 índices). Mídia: regra da mentira descoberta e do dono que muda de lado escritas; entrevista e 2 leis do horário eleitoral escritas (268 leis); custo dos atos fica para as narrativas. Mídia fechada. Relações exteriores (08/nov): 13 leis com roteiros e 2 índices, Soberania e Tensão internacional (281 leis, 98 índices); mundo com países reais (10 maiores jogáveis, ranking de 30, vizinhos, resto) no GDD §15 e §19. Aba dos 30 países fica para o planejamento final (autor, 08/nov), junto com a planilha completa e o documento que, com o GDD, escreve todo o jogo passo a passo (GDD §18). Imigração (08/nov): 16 leis com roteiros e 5 índices (297 leis, 103 índices); 'nascido fora' é dado dentro do pop (GDD §11). Orçamento e dívida (08/nov): 14 leis novas com roteiros e 5 índices (311 leis, 108 índices); Regra fiscal em 4 leis; cada lei abre sua figura (GDD §16, 'Orçamento e dívida'). Déficit e Superávit ficam como estavam, 'a revisar'. Moeda e bancos (08/nov): 10 leis com roteiros e 6 índices (321 leis, 114 índices); câmbio é um corredor com preço-alvo e faixa; resgate de bancos e as crises ficam para as narrativas (GDD §16 e §18). Empresas e estatais (08/nov): 15 leis novas com roteiros e 5 índices; lista de companhias, cotas com meta e prazo, estatização e privatização por papéis na mesa (GDD §16). As 5 leis antigas ficam 'a revisar'. Tipos fechados em 08/nov: Lei, Lei com prazo, Ato, Operação (colunas Tipo e Forma padrão na aba Leis; 340 leis); decisões de país e de companhia não são leis; entram 4 leis de controle (Verba das estatais por setor, Construção de estatais, Autorização para estatizar e vender, Aprovação de tratados, Alcance das sanções). Princípio do mercado indireto no GDD §16. Falta definir o conteúdo de cada papel. Resumo para outro chat em docs/jogo/resumo-para-outro-chat.md (não está no git). Próximo: autor escolhe a próxima esfera (faltam 9; recomendo Comércio exterior e capital). Sem documento novo: tudo vai na planilha. Situação das leis em
+[docs/jogo/leis-situacao.md](docs/jogo/leis-situacao.md): 22 verificadas, 49 a revisar.
+Crime organizado só com a Segurança. Falta requisitos.md ganhar as redes.
+Sem commit ainda: este desenho,
+plano, GDD e o ajuste de formatação em `motor/atendimento`.
+
+## Pontos em aberto da saúde (entram nas redes ou no balanço)
+
+- A ficha não mostra dinheiro das leis de opções: o custo das 8 leis novas só
+  aparece no gasto do governo.
+- A Coparticipação mede o bolso contra a renda do próprio país: pesa pela
+  desigualdade de renda, não pelo PIB. No `teste` a saúde cai mais que no
+  `teste-pobre`, porque ele tem mais gente na rede.
+- A fila de 45% no país `teste` é estado de teste, não balanço.
+- A ficha mostra só um turno da deriva; o acumulado fica maior.
+- `emprego_informal` ainda não tem grupo que cobre nem empurrão próprio.
+- `acesso_remedios` vem do mercado; ver se entra na rede.
+
+## Depois da saúde (ideias guardadas)
+
+Caminhos até a casa, organizações criminosas (GDD §18), campo e a fila da terra.
+
+## Pendências do autor
+
+- Jogar o Pregão (botão "Bolsa").
+- 93 commits locais sem push (push só com a palavra do autor).
+- Proteção de dados: lei única de 3 opções foi criada sem confirmação explícita; ver se serve.
+- Antes de publicar o jogo: checar com advogado.
+- Eixos novos da bússola (talvez 3, GDD seção 18); outro chat trata da economia militar.
+- Equilibrar com "Brasil" e "EUA" só no fim (regra de país real).
+
+## Armadilhas
+
+- `npx tsc -b`, nunca `--noEmit`.
+- `pkill -f` mata o próprio shell; `sleep` no Bash é bloqueado.
+- O vitest só procura teste em `src/` e `scripts/`; sem isso roda os testes antigos de `arquivo/` e trava.
+- `vite-node` não roda arquivo fora do projeto (fs.allow) nem passa o arquivo no `argv`; script que também é importado por teste usa `import.meta.env.MODE !== "test"`.
+- Importar um script de outro script imprime a saída dele: não importar `mandato.ts` em outro script.
+- `import.meta.glob` precisa de `src/vite-env.d.ts`.
+- `0.6 × 1/3` dá 0,1999… no computador: comparação de limite precisa de folga.
+- `git add docs` pega `docs/jogo/interface/mapa-em-tres-aneis.md` (agora é a referência da tela; ainda sem commit): adicionar arquivo por arquivo.
+- Grupo de centro (perto da posição atual da lei) perde nos dois sentidos: é a bússola, não erro.
+- Freio do juro nas obras mede contra o juro de equilíbrio do turno 0 (`taxaAlvo`), não o declarado: o teste-pobre declara 10 e anda a 13.
+- Grupos medem renda contra o crescimento esperado (`esperado` em `calcularGrupos`); mexer na tendência do país muda a satisfação de todos.
+- A tela só lê/chama `src/partida`; salvar guarda país+semente+estado, as regras voltam do conteúdo.
+- Renomear arquivo que o `main.tsx` importa exige `touch src/main.tsx` com o Vite rodando (cache).
+- A tag `projeto-antigo-2026-10-31` não tem mais as leis antigas: para ver ou rodar a tela antiga, usar o commit `f62c3fef` (`git show f62c3fef:src/ui/mapa/…`; numa worktree, ligar `node_modules` e abrir direto no jogo trocando o estado inicial de `TelaPrincipal`).
+- O `mapa.css` antigo trava a rolagem do `body`: tela que precisa rolar usa contêiner próprio (`.painel-rolagem`); o `main` da tela simples é `main:not(.area-mapa)`.
+- `tela.css` só vale dentro de `.painel-rolagem` (a regra `section` global pintava a janela da lei de branco).
+- Lei sem valor no país (ex.: áreas protegidas no teste-pobre) vira `naoLegislada`, no mínimo da faixa; `undefined × 100` dava NaN no mapa.
+- Para testar muitos turnos no navegador, clicar "Passar o turno" por JavaScript em laço (a eleição do teste-pobre sai no turno 24).
+- No navegador do Claude, o primeiro clique numa esfera ou lei às vezes não pega (o hover redesenha o nó): passar o mouse antes de clicar.
+- Retratos do antigo são SVG genéricos (ok); fotos e nomes da tela de fundação são de pessoas reais e não entram.
+- `docs/jogo/gdd.md` não passa no prettier: `--write` mexe em linhas de fora; não formatar.
+- No zsh, `--include=*.ts` sem aspas quebra: pôr o padrão entre aspas.
+- `jogar` nos testes falha depois do turno ~24: usar 20 turnos.
+- `icones.ts` diz que é gerado, mas `scripts/icones/` não existe: lei nova entra à mão em `ICONE_LEI`, com desenho que já esteja em `DESENHOS`.
+- `reputacao_internacional` vem das potências, não da base: mexer na `base` não faz nada; somar em `comReputacao`.
+
+---
+
 **04/nov/2026**
 
 ## Onde está

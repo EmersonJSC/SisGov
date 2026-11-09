@@ -43,14 +43,15 @@ Ordem (`ETAPAS` em `src/motor/turno/index.ts`):
 | Peça          | O que é                                                                 | Onde                                   |
 | ------------- | ----------------------------------------------------------------------- | -------------------------------------- |
 | **Índice**    | número que o jogador vê (0–100 ou %). Tipo `estoque`, `derivado` ou `calculado` | `mundo/indicadores/variaveis.json`     |
-| **Lei**       | bolha no mapa. Um lado da bússola, de "nada" a "mais". Mexe só em índices | `mundo/leis/*.json`, `motor/leis`      |
+| **Lei**       | bolha no mapa. Um lado da bússola, de "nada" a "mais". Age por um processo ou uma rede, não direto no índice (seção 5) | `mundo/leis/*.json`, `motor/leis`      |
 | **Processo**  | índice que anda sozinho pelos turnos (**deriva**): outro índice empurra a base, medindo contra o turno 0. Sem meta nem ritmo | `mundo/indicadores/derivas.json`, `motor/deriva` |
 | **Colisão**   | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. Pares em `mundo/colisoes/colisoes.json`; é um "ou": o jogador põe uma ou outra, nunca as duas. Para trocar, revoga uma e propõe a outra no turno seguinte (`motor/leis/colisao.ts`). | —                                      |
-| **Área**      | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma | `mundo/areas/areas.json`               |
+| **Área**      | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma. A esfera (`docs/jogo/leis.xlsx`) é a peça menor; ministério é um conjunto de esferas | `mundo/areas/areas.json`               |
 | **Órgão**     | quem executa uma regra. A verba (lei contínua, % do PIB) dá a força; verba demais vira corrupção. O jogador nunca escolhe a fazenda ou a fábrica. *(ainda sem código)* | —                                      |
 | **Destino**   | o que vira o bem que o Estado toma (comunidade, Estado, famílias). Uma lei por destino. *(a decidir, GDD §18)* | —                                      |
 | **Pop**       | fatia da população: profissão num estrato                               | `mundo/pops`, `motor/populacao`        |
-| **Grupo**     | junta pops; gosta ou não de uma lei pela distância na bússola           | `mundo/grupos`, `motor/grupos`         |
+| **Grupo**     | interesse organizado que atravessa os pops; gosta ou não de uma lei pela distância na bússola           | `mundo/grupos`, `motor/grupos`         |
+| **Organização** | nasce na partida, com nome, líder e ação própria: política, de radicais de vários grupos; ou crime, do lucro ilegal *(a construir)* | `docs/jogo/leis.xlsx` |
 
 **Bússola:** `economico` (esquerda − ↔ direita +) e `social`
 (verde/libertário − ↔ tradicional/autoritário +), de −1 a +1.
@@ -63,6 +64,7 @@ extremo da bússola é um caminho: cada lei anda um pouco nele.
 | Módulo                                         | Uma linha                                        |
 | ---------------------------------------------- | ------------------------------------------------ |
 | [acaso](../../src/motor/acaso/acaso.md)        | sorteio com semente                              |
+| [atendimento](../../src/motor/atendimento/atendimento.md) | rede da saúde: vagas, profissionais, planos, fila |
 | [calculos](../../src/motor/calculos/calculos.md) | bases de cálculo (renda, consumo, lucro, emissões, terra; Laffer) |
 | [contas](../../src/motor/contas/contas.md)     | Tesouro: receita, gasto, juros, cofre, dívida    |
 | [deriva](../../src/motor/deriva/deriva.md)     | índice anda sozinho, empurrado por outro         |
@@ -75,6 +77,7 @@ extremo da bússola é um caminho: cada lei anda um pouco nele.
 | [mundo](../../src/motor/mundo/mundo.md)        | potências e opinião sobre o país                 |
 | [politica](../../src/motor/politica/politica.md) | Congresso e coligação                          |
 | [populacao](../../src/motor/populacao/populacao.md) | pops: renda, estrato, setor                 |
+| [saneamento](../../src/motor/saneamento/saneamento.md) | rede de água e esgoto: ligações, conta, concessão |
 | [turno](../../src/motor/turno/turno.md)        | a ordem das etapas                               |
 
 Partida: [salvar](../../src/partida/salvar.md). Tela: [mapa](../../src/tela/mapa/mapa.md).
@@ -88,3 +91,30 @@ Partida: [salvar](../../src/partida/salvar.md). Tela: [mapa](../../src/tela/mapa
 - Lei é descrita pela bússola, nunca por grupo, e não cita país real.
 - Toda decisão é uma bolha no mapa; nada de painel de gestão.
 - Módulos funcionam sozinhos; as ligações vêm no JSON das leis.
+
+## 6. Regras da lei
+
+Decididas pelo autor. Antes de toda lei, quatro perguntas: quanto? partes ou todo?
+processo ou lei? um presidente real assinaria e pronto?
+
+- A lei vai de "nada" a "mais" em um lado da bússola, aos poucos, sem cruzar. Exceção
+  pedida pelo autor: as escadas de liberação dos vícios.
+- Tema grande vira várias leis, em vários lados, para o jogador montar país misto.
+- Leis que se chocam são um "ou"; nenhuma lei manda em outra.
+- Lei não move índice direto: age por um processo ou uma rede.
+- Nenhuma lei é só ganho ou só perda.
+- Lei não traz condição escrita: a mesma lei muda de sentido pelo estado do país.
+- Lei dá verba ao órgão; verba demais vira corrupção. O jogador nunca escolhe a fazenda
+  ou a fábrica.
+- Antes de pedir decisão, listar as leis: o que fazem e como funcionam.
+
+## 7. Regras da rede
+
+Uma rede é um serviço que o Estado presta. Hoje são duas: atendimento e saneamento. O
+desenho para as outras está em [fase-1-redes.md](fase-1-redes.md), à espera do autor.
+
+- O índice sai da contagem de quem é atendido; lei nenhuma mexe nele direto.
+- Capacidade leva tempo e custa; sem verba, se desgasta.
+- A renda das pessoas diz quem consegue pagar.
+- O país começa parado: no turno 0, nada anda sozinho.
+- Toda lei da rede tem ganho e custo, e o jogador vê o efeito na ficha e no mapa.

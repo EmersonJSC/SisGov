@@ -12,14 +12,13 @@ ligado ou criado e ainda não passou por avaliação entra em **Não avaliados**
 | Índice                    | Movido por                                                                                             | Empurra                             | Cobrado por                         | Data        |
 | ------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------- | ----------- |
 | Favela (`favela`)         | contagem de casas, preço contra a renda dos pops, leis de moradia                                      | piora saúde, segurança e saneamento | sem trabalho formal                 | 04/nov/2026 |
+| Saúde (`saude`)           | rede de atendimento, saneamento, favela, vacinação, saúde ambiental                                    | melhora padrão de vida e reduz pobreza | operários, educação e saúde, aposentados | 05/nov/2026 |
 | Saneamento (`saneamento`) | contagem da rede (verba, concessão, teto da tarifa, tratamento), conta contra a renda dos pops, favela | melhora saúde e meio ambiente       | sem trabalho formal, gente do campo | 04/nov/2026 |
 
 ## Não avaliados
 
 Ligados ou criados pelas avaliações da favela e do saneamento:
 
-- Saúde (`saude`): em avaliação. Já é movida pela rede de atendimento; falta 1
-  das 19 leis da área.
 - Atendimento (`atendimento`): quem é atendido; o resto é a fila da saúde.
 - Profissionais de saúde (`profissionais_saude`): profissionais contra o que o
   país precisa; hoje saem de `instrucao`, depois da rede escolar.
@@ -49,3 +48,6 @@ Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
 ## Ainda não existem
 
 - Organizações criminosas: a favela as fortalece; desenho pendente (GDD §18).
+- Dependência de drogas (`dependencia_drogas`), dependência de jogos
+  (`dependencia_jogos`) e mercado ilegal (`mercado_ilegal`): aprovados em 05/nov;
+  desenho em [fase-1-redes.md](fase-1-redes.md).
