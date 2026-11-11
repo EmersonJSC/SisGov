@@ -27,7 +27,7 @@ Nenhuma esfera. Toda lei viva tem roteiro e mecânica.
 
 ## Pendências do autor
 
-- Acesso a remédios completo em 11/nov: 5 leis novas (Teto do preço dos remédios, Remédio pago pelo governo na farmácia, Troca pelo genérico, Imposto sobre remédio, Onde se vende remédio). Próxima frente sugerida: estados e governadores.
+- Acesso a remédios completo em 11/nov: 5 leis novas (Teto do preço dos remédios, Remédio pago pelo governo na farmácia, Troca pelo genérico, Imposto sobre remédio, Onde se vende remédio). Governadores decididos em 11/nov (GDD §18): termômetro, verba, bancada do estado, pedidos e campanha. Campanha sem limite de ações (freio: caixa e cansaço), 11/nov. Mídia decidida em 11/nov: muda o lado do pop devagar (6 regras) e mobiliza a raiva do grupo (número rápido). Aba dos 30 países adiada (autor, 11/nov: não é importante agora). Próximo: o autor escolhe a frente; candidatas na revisão geral (calibração no motor, estado inicial, revisão do Fable).
 
 - Vídeo de apresentação (5 min) em `arquivo/sisgov-apresentacao.mp4`, 09/nov: voz neural é rascunho; falta decidir a voz final e a chamada do fim.
 - Decidir o roteiro: manter a aba "Leis - roteiro" ou fundir o essencial na aba Leis.

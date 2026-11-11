@@ -739,8 +739,9 @@ agem juntas na política; a organização tem nome, líder e ação própria.
 ### Campanha
 
 - Abre nos últimos turnos do mandato (ex.: 3 turnos, 6 meses).
-- **O que o jogador faz:** gasta o caixa do partido e o tempo do candidato
-  em **ações de campanha** com alvo: comício (um grupo), TV (todo o público,
+- **O que o jogador faz:** gasta o caixa do partido em **ações de campanha**
+  com alvo (sem limite de ações por turno, 11/nov; o freio é o caixa e o
+  cansaço: repetir a ação no mesmo grupo rende cada vez menos): comício (um grupo), TV (todo o público,
   pela mídia), redes (jovens e grupos mais engajados), debate (arrisca:
   carisma contra o adversário), promessa (vira lei esperada; descumprir
   cobra no mandato seguinte).
@@ -823,6 +824,32 @@ pode mexer nesse filtro, pagando por isso.
   descobre segredos; pode ser ameaçado, preso ou agredido.
 - **Índices:** Liberdade de imprensa, Credibilidade da imprensa, Concentração
   da mídia, Desinformação, Polarização, Violência contra a imprensa.
+- **A mídia muda o lado do pop (11/nov):** devagar, em anos.
+  - A cada turno o pop anda um pouco na bússola para as mídias que assiste,
+    pesadas pela audiência nele e pela credibilidade.
+  - Bolha: o pop assiste mais a mídia perto dele e larga a longe; a
+    polarização nasce sozinha.
+  - Redes: empurram mais rápido, só jovens e engajados, e para o lado mais
+    perto do pop, nunca para o centro; instrução baixa deixa o boato pegar.
+  - A vida pesa mais que a TV: a mídia muda o lado, a satisfação vem do que a
+    lei faz na vida do pop. Mídia que diz o contrário do que ele vive perde
+    credibilidade com ele.
+  - Freio: instrução alta e redação forte.
+  - Tela: a ficha do grupo mostra uma seta para onde ele vai na bússola e qual
+    mídia empurra.
+  - O jogador compra ou cria mídia, dá publicidade, censura: efeito em
+    mandatos, custo na hora (liberdade, escândalo, reputação).
+- **A mídia mobiliza a raiva (11/nov):** coisa diferente de mudar o lado.
+  - Raiva do grupo, 0 a 100: sobe em 1 ou 2 turnos quando uma mídia repete um
+    fato contra o grupo (qualquer mídia, inclusive a do governo, da oposição e
+    das organizações); cai sozinha em poucos turnos quando a pauta muda.
+  - Com satisfação alta, pouco efeito. Com satisfação baixa, os radicais
+    crescem e o grupo protesta. Com satisfação baixa e organização com líder:
+    greve, sabotagem e, poucos, atentado. Vale o limite de cada grupo
+    (pacifista no máximo vai à rua).
+  - O presidente também mobiliza: a base contra o Congresso derruba a
+    paciência; mobilizar demais cria radicais do próprio lado.
+  - Tela: o grupo pulsa vermelho no mapa e sai manchete.
 
 ## 15. Mundo
 
@@ -1584,7 +1611,7 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - Tipos de papel: 7 famílias decididas em 11/nov (§17).
 
 **Mídia e campanha**
-- Quantas ações de campanha por turno.
+- Ações de campanha: sem limite por turno, freio é caixa e cansaço (11/nov, §13).
 
 **Bússola**
 - Quais eixos novos entram (talvez 3 eixos, um cubo; candidato: paz ×
@@ -1674,6 +1701,17 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   canalizado é estadual; nos EUA a distribuição é regulada por cada estado). O arquivo
   do país declara; lei que não cabe ao presidente fica inativa e alguém pode propô-la.
   O jogo pode mostrar ou gerar avatar para governadores, mas eles têm pouca influência.
+  **Decidido em 11/nov** (só peças que já existem):
+  - Cada estado tem governador com partido, lugar na bússola e termômetro com
+    o presidente, como os partidos.
+  - Verba: aliado faz a verba federal render mais no estado; oposição demora a
+    gastar e culpa o presidente na mídia local.
+  - Congresso: os deputados do estado puxam um pouco para o governador; bancada
+    pequena que acorda só quando a lei mexe com o estado.
+  - Mesa: pede obra, socorro e polo (família Pedidos).
+  - Eleição: aliado faz campanha pelo presidente no estado; oposição, contra.
+  - O jogador não governa estado nem escolhe obra. O peso dos pops por estado
+    no motor segue como estudo de código.
 - **Aba dos 30 países (08/nov):** pesquisar PIB, lado na bússola, poder militar e
   relações entre os países; deixada para o planejamento (autor).
 - **Vírus para fins militares (09/nov):** saiu de Ciência e pesquisa; decidir em Defesa
@@ -1727,8 +1765,7 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 
 **Mundo**
 - Como um ataque acontece e como termina.
-- Mídia (R14, R8.5, R11.4): quando abrir e como empurra a bússola dos pops. Autor
-  quer ir com calma; pops e grupos fecham sem ela.
+- Mídia: como empurra a bússola dos pops e a raiva decididos em 11/nov (§14).
 
 **Fora do jogo pronto (decidido):** guerra iniciada pelo país, tribunal superior, pesquisa e tecnologia
 como árvore.
