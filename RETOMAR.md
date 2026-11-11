@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Fase de **desenho das leis na planilha** ([docs/jogo/leis.xlsx](docs/jogo/leis.xlsx)); código parado.
-Contagens vêm só da planilha (script), não deste texto (hoje: 515 leis, 10 delas substituídas, 146 índices, 505 roteiros).
+Contagens vêm só da planilha (script), não deste texto (hoje: 520 leis, 10 delas substituídas, 146 índices, 510 roteiros).
 **As 30 esferas estão desenhadas** (09/nov). Rodada de **arrumação** feita em 08/nov: Bússola em números
 (coluna "Bússola: origem"), glossário no GDD §16, tipos de lei (Lei, Lei com prazo, Ato,
 Posição por país, Operação), "construção" virou "prédio", "programa" reservado.
@@ -27,7 +27,7 @@ Nenhuma esfera. Toda lei viva tem roteiro e mecânica.
 
 ## Pendências do autor
 
-- Acesso a remédios está incompleto (só 2 leis); faltam leis do preço e da compra de remédio (autor, 11/nov).
+- Acesso a remédios completo em 11/nov: 5 leis novas (Teto do preço dos remédios, Remédio pago pelo governo na farmácia, Troca pelo genérico, Imposto sobre remédio, Onde se vende remédio). Próxima frente sugerida: estados e governadores.
 
 - Vídeo de apresentação (5 min) em `arquivo/sisgov-apresentacao.mp4`, 09/nov: voz neural é rascunho; falta decidir a voz final e a chamada do fim.
 - Decidir o roteiro: manter a aba "Leis - roteiro" ou fundir o essencial na aba Leis.
