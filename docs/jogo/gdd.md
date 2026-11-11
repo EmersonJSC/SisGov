@@ -1270,8 +1270,8 @@ renda dos pops, que voltam a consumir, poupar e investir.
 - **Cada sim é conta para sempre:** a fatia Patrimônio paga a conservação, e se ela não
   acompanha, os bens começam a estragar. **Cada não é definitivo:** o casarão recusado vira
   estacionamento e não volta.
-- **Na bolha:** "12 na fila · 2 na sua mesa · 9 bens em risco". São números da fila, não
-  índices novos.
+- **Na bolha:** "12 na fila · 2 na sua mesa · 9 bens em risco". Bens em risco é índice:
+  bens protegidos sem o dinheiro da conservação. Os outros dois são números da fila.
 - **Efeito:** quem pediu aprova, quem perdeu reclama, e o que é protegido leva turista a
   Hotel e restaurante.
 - **Papéis:** casarão do deputado aliado entrou na fila; Museu em risco (tirar de outra
@@ -1513,6 +1513,12 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   for avaliada.
 - **Organizações (06/nov):** fechadas na seção 11. Faltam regras e números de
   nascer e crescer, ações de cada tipo e como o jogador as enfrenta.
+- **Programas reais (11/nov):** a coluna "Programa real (de quem)" da planilha
+  liga cada lei aos programas de governos reais que ela faz. Uso futuro: um
+  desbloqueio ("você imitou o programa tal do presidente tal") quando o jogador
+  monta as mesmas leis, e campanhas de imitar um presidente ou construir o país
+  a partir dele. Presidente real entra só na campanha e no desbloqueio, nunca no
+  texto da lei.
 - **Caminhos até a casa (04/nov):** governos de lados diferentes chegam à casa
   por caminhos diferentes, e o setor privado tem seus ganhos e perdas por lei.
 
