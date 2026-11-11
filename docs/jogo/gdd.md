@@ -562,10 +562,156 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   para assinar ou vetar; o Congresso pode derrubar o veto.
 - **Uma ou duas casas:** o país declara se tem só Câmara ou Câmara e
   Senado.
-- **Regimes:** presidencialismo e parlamentarismo (no parlamentarismo, perder
-  a base derruba o governo). O motor deixa a porta aberta para partido
-  único, sem que ele faça parte do jogo pronto.
+- **Regimes:** presidencialismo, parlamentarismo (perder a base derruba o
+  governo), semipresidencialismo e partido único. O partido único entra no
+  jogo pronto (11/nov, para a China jogável): o Congresso vota por **alas** do
+  partido, cada uma com lado na bússola e grupos, no mesmo motor do voto.
 - Cadeiras mudam a cada eleição, pelo voto.
+
+### O coração do voto (11/nov)
+
+- **Placar previsto:** a bolha da lei mostra, antes da votação, quantos votos
+  tem a favor, contra e indecisos, com a linha do quórum. O placar previsto é o
+  placar real: **sem sorteio**. Só muda se um fato do turno o mudar (escândalo,
+  crise, manchete), e o fato aparece.
+- **Voto por partido:** cada partido dá à lei uma nota de −1 a +1, somando
+  distância na bússola, ganho ou perda dos grupos que defende, base ou
+  oposição, apoio da população à lei e aprovação do presidente. A coesão
+  divide a bancada em fiéis (seguem o partido) e livres (votam pela conta
+  deles, olhando mais os grupos). Os pesos são de partida e se calibram no
+  motor.
+- **Indecisos e moedas:** partido perto do zero aparece cinza e mostra o que
+  aceita para mudar o voto, e cada moeda cobra depois: ceder na régua,
+  ministério, cargos, emenda, promessa de lei, decreto. Ao passar o dedo, o
+  partido mostra os dois motivos que mais pesam no voto dele.
+- **Tipos de país:** o país declara o regime e as casas. O jogo cobre os
+  sistemas da maioria dos países; o sistema eleitoral (proporcional, misto,
+  distrital) é lei do jogo.
+- **Tempo da lei:** no máximo 2 turnos. Turno 1: o jogador propõe e negocia,
+  as casas votam no fim do turno; lei do governo aprovada sem mudança vira lei
+  direto, com efeito no turno seguinte. Se o Congresso aprova um valor menor, a
+  lei vai à mesa no turno 2 (assinar ou vetar) e o veto pode ser derrubado no
+  mesmo turno. Regra do poder e mandato votam duas vezes, nos turnos 1 e 2. Não
+  há urgência: tudo já é rápido.
+- **O que muda em cada regime (11/nov):** o motor do voto, o placar e as moedas
+  são iguais; muda quem vota e como o jogador cai.
+  - Presidencialismo: maioria a cada lei; perder a base trava, não derruba.
+    Cai por impeachment (fato grave, aprovação abaixo de 30%, 2/3 dos votos).
+  - Parlamentarismo: chefe de governo escolhido pelo Congresso; com maioria
+    tudo passa e não há veto. Cai por moção de desconfiança; pode chamar
+    eleição antes da hora.
+  - Semipresidencialismo: com maioria, como o parlamentarismo. Sem ela,
+    coabitação: o primeiro-ministro de outro partido manda na economia e nos
+    serviços; o presidente fica com Defesa, Exterior e o veto.
+  - Partido único: o Congresso vota por alas; sem oposição, as alas brigam. O
+    perigo é a ala rival, não a urna.
+- **Partido único por dentro (11/nov):** no lugar da eleição nacional, o
+  **congresso do partido** (o país declara de quanto em quanto tempo) reparte
+  as cadeiras do comando entre as alas. O apoio da ala do jogador vem do
+  resultado (crescimento, emprego, ordem), dos grupos que ela defende e das
+  moedas de sempre. Arma própria: o **expurgo**, uma investigação de corrupção
+  contra a ala rival; só tira cadeiras se houver corrupção real na área dela, e
+  custa medo nas outras alas, coesão e manchete. A população **vota na base**
+  (eleições locais), o que o motor não simula; grupo muito insatisfeito
+  protesta, enfraquece a ala do jogador e sobe o Risco de golpe. Se a ala rival
+  ganha o comando, o jogador segue como ala, como "sucessor de outro partido",
+  até o próximo congresso.
+- **Quórum (11/nov):** cada lei declara a classe dela (comum, absoluta,
+  constitucional, mandato); o país começa com o valor de cada classe, e a lei
+  **Quórum das votações** (abas Constituição, Derrubar veto, Imposto e dívida)
+  muda esses valores. Simples: mais sim que não. Absoluta: imposto, dívida,
+  ministério, derrubar veto. Constitucional: regras do poder. Mandato: duração,
+  reeleição e impeachment. Toda mudança passa pelo quórum que vale na hora.
+  Mexer no próprio mandato pede o quórum de mandato e custa paciência e grupos;
+  marcar "vale só no próximo mandato" tira o custo extra.
+- **Programa Reforma política:** Quórum das votações, Sistema eleitoral,
+  Cláusula de barreira e as leis de mandato.
+- **As 6 moedas (11/nov):** o que o jogador oferece ao indeciso; todas são
+  poucas e todas cobram depois.
+  - Ceder na régua: placar melhora na hora; a lei faz menos.
+  - Ministério: aliado fiel enquanto o ministro dele ficar; tira cargo do
+    próprio partido (coesão cai), o ministro pensa como o aliado, demitir irrita.
+  - Cargos: aliado mais fiel por alguns turnos; órgão menos eficiente e mais
+    corrupção. Reserva dada pela lei Cargos de livre nomeação.
+  - Emenda: o partido vota a favor desta lei; sai do orçamento, e emenda
+    secreta sobe a corrupção. Reserva dada pela lei Emendas dos parlamentares.
+  - Promessa de lei: voto hoje, lei do aliado em até 4 turnos; vira papel com
+    prazo, e descumprir enfurece o aliado e dá manchete.
+  - Decreto: a lei vale já, sem voto, se a lei Poder de decreto deixar; o
+    Congresso tem 2 turnos para confirmar, e cada uso derruba mais a paciência.
+- **Paciência do Congresso (11/nov):** 0 a 100, uma por casa; quanto o
+  Congresso aguenta ser atropelado.
+  - Cai com decreto, veto, ir à mídia contra o Congresso e lei demais no turno.
+  - Sobe um pouco por turno sozinha, e mais no turno sem lei nova do governo.
+  - Abaixo de 30: toda lei do governo perde votos, vai para o fim da fila, e o
+    Congresso aprova leis caras e populares por conta própria (vetar dá
+    manchete, assinar estoura o caixa).
+- **Termômetro de cada partido (11/nov):** 0 a 100, em todos os partidos, da
+  base e da oposição; a relação do governo com cada um.
+  - Sobe com ministério, cargos, emenda, leis perto do lado dele e os grupos
+    dele satisfeitos.
+  - Cai com leis longe dele, grupos dele insatisfeitos, promessa descumprida e
+    pedido dele ignorado na mesa.
+  - Na base: abaixo de 30 chega o papel "partido ameaça sair" (um turno para
+    dar algo); abaixo de 20 ele sai.
+  - Na oposição: termômetro alto deixa a nota dele mais perto do governo e,
+    acima de 70, ele aceita convite para entrar na base.
+  - Paciência é com a casa inteira; termômetro, com cada partido. A base pode
+    estar feliz com o Congresso cansado de decreto, e o contrário.
+- **O Congresso agindo sozinho (11/nov):** ele não só responde; age pelos
+  números que já existem (paciência, termômetro, quórum, aprovação).
+  - Rejeitar: lei derrotada fica 2 turnos sem poder voltar.
+  - Emendar: aprova um valor menor que o proposto; chega à mesa como papel, o
+    jogador assina ou veta.
+  - Derrubar veto: com o quórum da aba Derrubar veto da lei Quórum das votações.
+  - Propor lei: com vaga na pauta, propõe leis populares; paciência baixa
+    deixa essas leis caras.
+  - Travar a pauta: o presidente da casa segura as leis do governo se o
+    partido dele tiver termômetro baixo.
+  - CPI: abre com escândalo; só acha corrupção que existe no jogo; derruba a
+    aprovação.
+  - Impeachment: precisa de fato (crime ou escândalo), aprovação abaixo de 30%
+    e 2/3 dos votos.
+  - Moção de desconfiança: no parlamentarismo, no lugar do impeachment;
+    derruba o governo por maioria simples.
+- **Bancadas temáticas (11/nov):** deputados de vários partidos com o mesmo
+  interesse (campo, fé, segurança, sindicatos…). Cada bancada nasce de um grupo
+  que já existe; dorme até uma lei mexer no grupo dela e, nessa votação, vota
+  pela bancada, não pelo partido. Na tela, faixa colorida no placar.
+- **Lobby (11/nov):** feito pelas companhias que existem na partida, no setor
+  que a lei toca. Companhia maior empurra mais; a lei Doação de empresas
+  decide a força (proibida, fraco; liberada, forte). O lobby não compra a lei:
+  aumenta o peso da bancada ligada ao setor.
+- **Congresso sobrecarregado (11/nov):** sem pontos de ação; o freio é a casa.
+  - Cada casa tem uma carga (barra no semicírculo). Lei proposta e negócio
+    enchem; a carga esvazia sozinha a cada turno, conforme as leis são votadas.
+  - O limite depende da casa (menor aguenta menos) e da paciência com o
+    presidente (alta, limite maior; baixa, menor).
+  - Passou do limite: o presidente da casa avisa que não vai rolar agora. Nada
+    é proibido: o jogador ainda envia leis e faz negócios, mas eles entram na
+    fila e não são votados naquele turno.
+- **Tela do Congresso (11/nov):** sem painel, tudo no mapa.
+  - Semicírculo no anel do Estado, uma cadeira por deputado na cor do partido.
+  - Termômetro: arco fino em volta de cada partido, do frio ao quente.
+  - Paciência: ponteiro no alto do semicírculo.
+  - Carga: barra embaixo do semicírculo, com o limite marcado.
+  - Placar da lei: barra de sim e não com a linha do quórum; bancadas como
+    faixas coloridas dentro dela.
+  - "Até aqui passa": ao mexer na régua da lei, marca até onde o Congresso
+    aprova.
+  - Papéis novos na mesa: emenda, partido ameaça sair, promessa com prazo,
+    veto derrubado, CPI aberta, aviso do presidente da casa.
+- **Ligações com o resto (11/nov):**
+  - Entra: grupos (insatisfeito baixa o termômetro do partido e acorda a
+    bancada), aprovação (alta puxa indeciso; baixa abre CPI e impeachment),
+    mídia (manchete contra tira votos), corrupção (o que a CPI acha),
+    companhias (lobby), eleição (as cadeiras).
+  - Sai: coesão do partido do presidente (ministério dado a aliado), corrupção
+    (emenda secreta, cargos), orçamento (emendas), aprovação (CPI, veto
+    derrubado, promessa descumprida), eleição seguinte (quem saiu da base faz
+    campanha como oposição).
+  - Ano de eleição: no último ano do mandato, o deputado vota mais com o povo
+    que com o partido; lei impopular perde votos mesmo na base fiel.
 
 ## 13. Eleição, campanha e mandatos
 
@@ -1364,9 +1510,48 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
 - **O Congresso usa a mesa como arma.** A oposição com votos aprova leis em
   lote, longe da sua bússola. Você veta uma a uma (cada veto irrita quem
   aprovou e vira manchete) ou deixa passar o que não dá tempo de ler.
-- **Tempo do presidente:** só dá para despachar alguns papéis por turno
-  pessoalmente. O resto fica na pilha ou vai ao ministro.
-- **Encaminhar ao ministro** poupa tempo, e o ministro decide pela ficha:
+- **Sem limite de papéis (11/nov):** o presidente despacha quantos quiser.
+  O freio é do mundo: cada papel tem prazo e ignorar tem consequência; com
+  paciência baixa a oposição despeja leis em lote.
+- **Prazos (11/nov, calibrar no fim):** lei aprovada e emenda, 1 turno (regra
+  do país: silêncio é sanção ou veto); situação urgente, 1 turno (piora, vira
+  crise e manchete); situação calma, 3 turnos (quem pede fica chateado e a
+  oferta some); pedido de aliado, 2 turnos (termômetro cai); partido ameaça
+  sair, 1 turno (sai); promessa, o prazo prometido, até 4 turnos (aliado
+  furioso e manchete); papel do partido, 2 turnos (doador vai a outro partido).
+- **Famílias de papel (11/nov):** sem lista papel por papel; o conteúdo sai
+  dos números do momento.
+  - Leis (Congresso): lei aprovada, emenda, veto derrubado.
+  - Crises (índices e eventos): enchente, greve, banco quebrando, apagão.
+  - Pedidos (partidos, governadores, ministros): ministério, verba, obra, demissão.
+  - Ofertas (potências e companhias): acordo, compra de estatal, investimento.
+  - Órgãos (filas das esferas): caso disputado da fila, vistoria.
+  - Partido (partido do presidente): doador, filiação, expulsar ou perdoar.
+  - Duvidosos (corrupção), misturados nas outras famílias.
+- **Veto com observação (11/nov):** em qualquer lei, o presidente veta e diz o
+  valor que assinaria (outro degrau, outro ponto da régua). O motor trata como
+  veto com observação. No turno seguinte o Congresso escolhe: derrubar o veto
+  (quórum da aba Derrubar veto; vale o valor dele), aceitar a observação
+  (maioria simples; vale o valor do presidente, sem voltar à mesa) ou nada (a
+  lei cai). Nas leis com abas ou dois controles, a observação pode ser só numa
+  parte e o resto é assinado.
+- **Papéis duvidosos (11/nov):** a porta de entrada da corrupção.
+  - Chegam como qualquer papel, disfarçados mas visíveis: o texto parece
+    normal e traz pistas (preço acima do comum, intermediário, pressa,
+    "apoio à campanha"). Só a música e o som mudam.
+  - Exemplos: empreiteira que "apoia a campanha" e quer a obra; aditivo na
+    obra em andamento; aliado indica alguém de ficha suja; doador pede isenção
+    do setor dele; pedido para segurar investigação; companhia quer mudar regra
+    da agência.
+  - Ganho: dinheiro de campanha, voto do aliado na hora, termômetro sobe.
+  - Custo: corrupção do órgão sobe e o papel assinado fica como rastro; a cada
+    turno o rastro pode ser descoberto pela regra da mentira descoberta (§13).
+    Descoberto: escândalo, a CPI acha, honestidade do presidente cai, e conta
+    como o fato do impeachment.
+  - Recusar: quem pediu fica chateado. Denunciar: aprovação sobe, quem pediu
+    vira inimigo. Encaminhado a ministro desonesto, ele assina e o rastro cai
+    nele.
+- **Encaminhar ao ministro** é conforto, não obrigação; o ministro decide pela ficha:
   competente acerta mais, desleal decide a favor dele, desonesto assina o
   que rende propina.
 - **Ignorar tem consequência**, conforme o papel: lei passa, situação piora
@@ -1394,9 +1579,9 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - Quantos ministérios o país tem no começo.
 
 **Mesa**
-- Quantos papéis o presidente despacha por turno; prazo de cada papel.
-- Se o veto pode ser parcial (vetar só um trecho da lei).
-- Lista dos tipos de situação e de pedido.
+- Prazos decididos em 11/nov (§17), sem limite de papéis por turno.
+- Veto parcial resolvido em 11/nov: veto com observação (§17).
+- Tipos de papel: 7 famílias decididas em 11/nov (§17).
 
 **Mídia e campanha**
 - Quantas ações de campanha por turno.
@@ -1522,18 +1707,30 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - **Caminhos até a casa (04/nov):** governos de lados diferentes chegam à casa
   por caminhos diferentes, e o setor privado tem seus ganhos e perdas por lei.
 
-**Órgãos**
-- Órgãos do Estado como peça do jogo (um fiscal ambiental, um de terras, um
-  de vigilância sanitária…), com verba, necessidade e corrupção. Cada
-  processo tem o seu. Falta decidir: lista, se ficam sob os ministérios
-  (seção 6), se o ministro mexe na força deles, nomes fictícios.
+**Órgãos (decidido em 11/nov)**
+- Um órgão por esfera (30), cada um um prédio no mapa, na área da esfera.
+- Fica sob o ministério da sua esfera.
+- O ministro não mexe na verba (é lei); a ficha dele muda o órgão:
+  competência alta, rende mais; honestidade baixa, mais corrupção. Chefe com
+  mandato (lei de independência) obedece menos ao ministro.
+- Nome de função ("Órgão ambiental", "Órgão de terras"); o país dá o rótulo local.
+- Números: verba (da lei), necessidade (o trabalho que as leis pedem),
+  rendimento (verba ÷ necessidade: pouca verba, a fila anda devagar; verba
+  demais, a sobra vira corrupção) e corrupção interna (sobe com sobra de
+  verba, cargos de livre nomeação e ministro desonesto).
+- Tela: no mapa, prédio pequeno com frase curta ("12 na fila · 2 na sua mesa")
+  e cor do rendimento (verde rende, amarelo falta verba, vermelho sobra e vira
+  corrupção). Clicar abre ficha só de leitura, sem botão: chefe e ministro,
+  verba × necessidade numa barra, corrupção interna, fila (se houver) e leis
+  que mexem no órgão (clicar abre a bolha). Mudar o órgão é sempre lei,
+  ministro ou papel na mesa.
 
 **Mundo**
 - Como um ataque acontece e como termina.
 - Mídia (R14, R8.5, R11.4): quando abrir e como empurra a bússola dos pops. Autor
   quer ir com calma; pops e grupos fecham sem ela.
 
-**Fora do jogo pronto (decidido):** guerra iniciada pelo país, partido único jogável, tribunal superior, pesquisa e tecnologia
+**Fora do jogo pronto (decidido):** guerra iniciada pelo país, tribunal superior, pesquisa e tecnologia
 como árvore.
 
 ## 19. Regras de conteúdo
