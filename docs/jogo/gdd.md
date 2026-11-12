@@ -135,6 +135,13 @@ começo nem fim: mexer numa ponta volta pela outra.
    presidente e vice. Clicar numa vaga abre a lista de pessoas de todos os
    partidos do país (é assim que nascem as coligações). Clicar numa pessoa
    abre o perfil dela (ver "A rede da pessoa"). A chapa já venceu.
+   - **Como se chega lá (12/nov):** o país começa como está; o partido que
+     governava vira oposição. O jogador entra com uma história ("no meio de
+     uma polarização, você surge como a salvação do país"): partido novo, com
+     poucas cadeiras, e presidente popular. A Aprovação começa alta e a base
+     tem que ser construída com coligação. No começo, o jogador pode pôr o
+     partido que governava na coligação, em vez de deixá-lo na oposição. A lembrança dos programas que já
+     existem fica com quem o arquivo do país disser (se disser).
 4. **Monta o ministério:** escolhe os ministérios e os ministros. Pode
    deixar o jogo sortear os ministros (pela ideologia da chapa) ou escolher
    cada um.
@@ -487,7 +494,13 @@ que não cabe ao presidente fica inativa.
     pelo menos o mínimo na direção do programa dentro de um mandato. Só entra
     lei de verdade: Operação, Ato e Posição por país ficam fora da lista.
   - **Vários ministérios:** programa com leis de mais de uma esfera anda no
-    passo do ministro mais fraco (seção 6).
+    passo do ministro mais fraco (seção 6): as leis dele usam o atraso e a
+    força desse ministro.
+  - **Miúdos (12/nov):** conta quando a lei é aprovada, não quando o efeito
+    chega; a janela é o mandato atual; lei em dois programas conta para os
+    dois; lei com prazo conta enquanto vale. Antes de uma lei desfazer um
+    programa, a tela avisa. Recriado pelo mesmo partido, a nostalgia volta
+    inteira, sem dividir o crédito.
   - **Nome:** cada programa tem nome genérico; o JSON do país pode dar o nome
     próprio dele (como a Selic), e o país que já começa com o programa traz o
     nome. Sem nome do país, o **gerador** cria um, e o jornal anuncia
@@ -744,7 +757,11 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   crise, manchete), e o fato aparece.
 - **Voto por partido:** cada partido dá à lei uma nota de −1 a +1, somando
   distância na bússola, ganho ou perda dos grupos que defende, base ou
-  oposição, apoio da população à lei e aprovação do presidente. A coesão
+  oposição, apoio da população à lei e aprovação do presidente. Entra também
+  a **conta da lei** (12/nov): quanto ela sobe o gasto, em % do PIB, pesando
+  mais nos partidos que ligam para as contas e mais ainda com o déficit já
+  alto. **Exorbitante** é a lei que perde a maioria por causa da conta; a conta
+  aparece entre os dois motivos que o partido mostra. A coesão
   divide a bancada em fiéis (seguem o partido) e livres (votam pela conta
   deles, olhando mais os grupos). Os pesos são de partida e se calibram no
   motor.
@@ -752,11 +769,14 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   aceita para mudar o voto, e cada moeda cobra depois: ceder na régua,
   ministério, cargos, emenda, promessa de lei, decreto. Ao passar o dedo, o
   partido mostra os dois motivos que mais pesam no voto dele.
-- **Tempo da lei:** no máximo 2 turnos. Turno 1: o jogador propõe e negocia,
-  as casas votam no fim do turno; lei do governo aprovada sem mudança vira lei
-  direto, com efeito no turno seguinte. Se o Congresso aprova um valor menor, a
-  lei vai à mesa no turno 2 (assinar ou vetar) e o veto pode ser derrubado no
-  mesmo turno. Regra do poder e mandato votam duas vezes, nos turnos 1 e 2. Não
+- **Tempo da lei:** 2 turnos, 3 se o Senado mudar. Turno 1: o jogador propõe e
+  negocia, a Câmara vota no fim do turno. Turno 2: o Senado vota (12/nov: duas
+  votações em sequência, cada casa com o seu placar e a sua paciência; um
+  aliado no Senado pode segurar o que passou fácil na Câmara). Aprovada sem
+  mudança, vira lei, com efeito no turno seguinte. Se o Senado muda o texto
+  (ex.: valor menor), a lei volta à Câmara no turno 3 e depois vai à mesa
+  (assinar ou vetar); o veto pode ser derrubado no mesmo turno. País de uma
+  casa só vota uma vez, e a lei fica pronta no turno 1. Regra do poder e mandato votam duas vezes, nos turnos 1 e 2. Não
   há urgência: tudo já é rápido.
 - **O que muda em cada sistema (11/nov):** o motor do voto, o placar e as moedas
   são iguais; muda quem vota e como o jogador cai.
@@ -805,6 +825,11 @@ agem juntas na política; a organização tem nome, líder e ação própria.
     Congresso tem 2 turnos para confirmar, ou cai; cada uso derruba mais a
     paciência, mais a cada vez. É a "medida provisória" do Brasil: o nome é
     rótulo do país (12/nov).
+    - **Fato consumado (12/nov):** enquanto o decreto vale, quem ganha com a
+      lei já conta com ela (a família que passou a receber o benefício).
+      Derrubar custa a quem derruba: os grupos que ganhavam ficam com raiva
+      dos partidos que votaram contra. O jogador usa o decreto para encurralar
+      o Congresso, não pelo efeito, que pode nem ter chegado.
   - **Preço que sobe (12/nov):** cada compra (cargo, emenda, ministério) ensina
     o partido que o governo paga, e o preço do próximo voto dele sobe. Quem
     entrou por compra é fiel ao dinheiro: quando o caixa ou os cargos acabam,
@@ -933,6 +958,22 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   Remédio barato"). Principal pesa no voto de todos; subíndice e programa,
   mais nos grupos que se importam. Cumprida, sobe esse voto; quebrada, derruba
   e sobe o desgaste.
+  - **Tamanho (12/nov):** o prêmio depende da dificuldade: prometer o que o
+    país faria sozinho dá quase nada, prometer muito dá muito (e quebrar
+    também custa mais).
+  - **Em parte (12/nov):** chegar perto vale em parte (62 numa meta de 65 dá a
+    maior parte do prêmio).
+  - **Quando (12/nov):** avaliada no primeiro turno da eleição; trocar a
+    promessa no meio do mandato conta como quebrar.
+- **Adversários (12/nov):** os partidos de oposição; cada um lança chapa e
+  eles podem se coligar entre si.
+- **Dois turnos (12/nov):** se ninguém passa da metade dos votos, os dois mais
+  votados vão ao segundo turno. O segundo turno cai no último turno jogável do
+  mandato e o primeiro no turno anterior; a duração vem da lei Duração do
+  mandato.
+- **Aprovação (12/nov):** é a satisfação média de todos os pops, pesada pelo
+  tamanho de cada um: a mesma conta do voto, sem campanha nem adversário. É o
+  termômetro do mandato (puxa o deputado indeciso, abre CPI e impeachment).
 - Resultado: Presidência e cadeiras do Congresso.
 
 ## 14. Mídia
@@ -1895,6 +1936,10 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   produz; Liberação de armas sobe o Conflito no campo.
 - O que vários índices batendo metas juntos significam.
 
+**Da partida no papel (12/nov)**
+- Decreto: quais leis aceitam decreto; decreto permitido pela lei do país
+  conta como passo autoritário?
+
 **Ideias guardadas**
 - **Programa inventado (12/nov):** o jogador junta leis livres e o jogo cria
   um programa novo, com nome do gerador. Para depois.
@@ -1935,6 +1980,8 @@ tecnologia como árvore.
 - O que é público e sem marca pode ser usado (nomes de moedas, cargos,
   instituições comuns); o que tem marca ou dono ganha nome alternativo
   parecido.
+- **Partidos reais (12/nov):** entram com o nome e a cor; logotipo, símbolo e
+  marca não entram.
 - Lei e texto se medem pelo próprio país da partida ("2 salários médios do
   país"), nunca por país real.
 - Antes de publicar: conferir com advogado.
