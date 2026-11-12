@@ -830,6 +830,13 @@ agem juntas na política; a organização tem nome, líder e ação própria.
       Derrubar custa a quem derruba: os grupos que ganhavam ficam com raiva
       dos partidos que votaram contra. O jogador usa o decreto para encurralar
       o Congresso, não pelo efeito, que pode nem ter chegado.
+    - **Alcance (12/nov):** a lei Poder de decreto diz o que se decreta, em 4
+      degraus: nenhum; só verba e preço; tudo menos impostos, regras do poder
+      e mandato (como a medida provisória); tudo, sem o Congresso confirmar.
+      Decretar dentro da lei não é passo autoritário; subir ao degrau 4 ou
+      decretar por fora dela é.
+    - O decreto que só cumpre uma lei (publicar o valor do mínimo que a lei
+      manda) fica fora do jogo: o motor faz sozinho (12/nov).
   - **Preço que sobe (12/nov):** cada compra (cargo, emenda, ministério) ensina
     o partido que o governo paga, e o preço do próximo voto dele sobe. Quem
     entrou por compra é fiel ao dinheiro: quando o caixa ou os cargos acabam,
@@ -1935,10 +1942,6 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
 - Massacre no campo chega como papel; dono na fila desmata para provar que
   produz; Liberação de armas sobe o Conflito no campo.
 - O que vários índices batendo metas juntos significam.
-
-**Da partida no papel (12/nov)**
-- Decreto: quais leis aceitam decreto; decreto permitido pela lei do país
-  conta como passo autoritário?
 
 **Ideias guardadas**
 - **Programa inventado (12/nov):** o jogador junta leis livres e o jogo cria
