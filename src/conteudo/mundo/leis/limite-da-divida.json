@@ -5,6 +5,7 @@
   "descricao": "A dívida nunca passa de X% do PIB (de sem limite até 40%). Aparece como uma caixa d'água com linha máxima.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do PIB",

@@ -5,6 +5,7 @@
   "descricao": "Você marca a área (saúde, educação, outras) e fixa um piso em % da receita. Aparece como envelopes com cadeado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

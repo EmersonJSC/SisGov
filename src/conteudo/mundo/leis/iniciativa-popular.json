@@ -5,6 +5,7 @@
   "descricao": "Quanto poder o povo tem para propor e decidir leis. Escada: nenhum, só os políticos propõem; o povo propõe lei com assinaturas e o Congresso decide; lei com muitas assinaturas vai a plebiscito; o povo também revoga leis por voto.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Vai de pagar tudo, passa por renegociar prazo e juros, até calote parcial e total.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

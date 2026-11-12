@@ -4,6 +4,7 @@
   "nome": "Duração do mandato",
   "descricao": "Quantos anos o governo fica até a próxima eleição.",
   "camada": "essencial",
+  "classe": "mandato",
   "forma": "opcoes",
   "opcoes": [
     { "id": "quatro-anos", "mandato_anos": 4, "efeitos": [] },

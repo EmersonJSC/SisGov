@@ -5,6 +5,7 @@
   "descricao": "Quem escolhe o chefe dos investigadores e procuradores: o governo livre, de uma lista do órgão, ou chefe com mandato fixo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

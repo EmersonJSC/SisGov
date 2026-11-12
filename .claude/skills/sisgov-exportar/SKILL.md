@@ -15,6 +15,7 @@ description: Use when a SisGov law, index or area changes in docs/jogo/leis.xlsx
 
 - **A planilha manda.** Mudar a lei na planilha e exportar; não editar o JSON
   gerado à mão.
+- A coluna **Classe** da aba Leis (comum, absoluta, constitucional, mandato) vira `classe` na lei. Lei escrita à mão leva `classe` à mão.
 - Todo arquivo gerado leva `"origem": "planilha"`. Lei escrita à mão (sem
   esse campo) nunca é tocada nem apagada pelo exportador.
 - Lei que saiu da planilha e ainda está no jogo: apagar só com o autor, e

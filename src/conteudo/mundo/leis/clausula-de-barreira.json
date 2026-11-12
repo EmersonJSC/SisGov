@@ -5,6 +5,7 @@
   "descricao": "Voto mínimo que o partido precisa no país para ter cadeira, de 0% a 5%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

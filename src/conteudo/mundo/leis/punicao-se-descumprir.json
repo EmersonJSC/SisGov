@@ -5,6 +5,7 @@
   "descricao": "O que acontece quando uma regra é quebrada: nenhuma, corte automático, proibir aumento de salário e contratação, ou crime de responsabilidade. Aparece como luzes de painel (amarelo e vermelho).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

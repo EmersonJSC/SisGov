@@ -5,6 +5,7 @@
   "descricao": "Desconto de imposto para os setores que o jogador marca na lei.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

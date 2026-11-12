@@ -5,6 +5,7 @@
   "descricao": "Quanto da dívida é em moeda de fora (0 a 100%). Aparece como a parte de outra cor na caixa d'água.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

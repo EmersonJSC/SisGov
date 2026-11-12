@@ -396,6 +396,7 @@ function exportarPedaco(l: Linha, p: Pedaco, parte: boolean): void {
     camada: "jogabilidade",
     origem: ORIGEM,
     ...(parte ? { parte_de: l["Lei"] } : {}),
+    ...(l["Classe"] && l["Classe"] !== "comum" ? { classe: l["Classe"] } : {}),
   };
   let lei: Json;
   if (p.degraus) {

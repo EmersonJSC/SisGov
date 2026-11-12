@@ -5,6 +5,7 @@
   "descricao": "O governo promete fechar o ano com sobra de X% do PIB (de déficit permitido até superávit exigido). Aparece como um cofrinho com linha-alvo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do PIB",

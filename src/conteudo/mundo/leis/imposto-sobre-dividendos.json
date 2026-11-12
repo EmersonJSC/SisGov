@@ -5,6 +5,7 @@
   "descricao": "Cobrança sobre o lucro que a empresa paga ao dono.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

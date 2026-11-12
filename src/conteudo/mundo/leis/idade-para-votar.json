@@ -5,6 +5,7 @@
   "descricao": "A partir de que idade se pode votar: 16, 17 ou 18.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

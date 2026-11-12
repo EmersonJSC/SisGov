@@ -5,6 +5,7 @@
   "descricao": "Quanto paga quem muda de país levando fortuna, sobre o que ganhou aqui, de 0% a 30%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

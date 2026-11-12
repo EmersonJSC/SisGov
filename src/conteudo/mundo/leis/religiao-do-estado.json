@@ -5,6 +5,7 @@
   "descricao": "Escada: Estado laico, apoio a religiões, ou religião oficial.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

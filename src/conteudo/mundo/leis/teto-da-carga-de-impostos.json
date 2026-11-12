@@ -5,6 +5,7 @@
   "descricao": "Quanto o país inteiro pode pagar de imposto, somando todos, em % do PIB: de sem teto até um teto apertado. Batido o teto, subir um imposto obriga a baixar outro.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

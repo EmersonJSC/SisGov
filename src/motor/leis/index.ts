@@ -1,4 +1,5 @@
 export type {
+  ClasseLei,
   Efeito,
   Forca,
   Lei,
@@ -7,7 +8,7 @@ export type {
   Opcao,
   PontoBussola,
 } from "./tipos";
-export { EIXOS } from "./tipos";
+export { CLASSES, EIXOS } from "./tipos";
 export type { Eixo } from "./tipos";
 export { validarLei, lerLei, type ErroLei } from "./validar";
 export {

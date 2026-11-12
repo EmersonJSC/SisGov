@@ -5,6 +5,7 @@
   "descricao": "Imposto extra sobre o lucro dos bancos, de 0% a 30% acima do que as outras empresas pagam.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

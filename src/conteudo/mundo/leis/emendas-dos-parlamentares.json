@@ -5,6 +5,7 @@
   "descricao": "Vai de nenhuma, passa por emendas transparentes, até emendas obrigatórias e secretas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

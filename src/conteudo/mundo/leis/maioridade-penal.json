@@ -4,6 +4,7 @@
   "nome": "Maioridade penal",
   "descricao": "A idade a partir da qual um jovem responde como adulto na justiça criminal.",
   "camada": "jogabilidade",
+  "classe": "constitucional",
   "forma": "continua",
   "unidade": "anos",
   "faixa": { "min": 12, "max": 18 },

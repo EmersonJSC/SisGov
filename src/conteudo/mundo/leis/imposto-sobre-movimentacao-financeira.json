@@ -5,6 +5,7 @@
   "descricao": "Quanto se paga em cada transferência ou pagamento feito pelo banco, de 0% a 1%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

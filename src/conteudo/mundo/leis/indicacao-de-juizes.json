@@ -5,6 +5,7 @@
   "descricao": "Escada: o Congresso aprova, o presidente indica livre, ou o presidente aumenta a corte.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

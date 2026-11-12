@@ -5,6 +5,7 @@
   "descricao": "Quanto cada filho reduz o Imposto de renda. Régua: de 0% a 20% da renda por filho.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

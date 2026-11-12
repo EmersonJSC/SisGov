@@ -4,6 +4,7 @@
   "nome": "Pena de morte",
   "descricao": "Se o Estado pode executar condenados por crimes graves.",
   "camada": "jogabilidade",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

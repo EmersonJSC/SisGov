@@ -6,6 +6,7 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "parte_de": "Imposto sobre imóvel caro",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário mínimo",

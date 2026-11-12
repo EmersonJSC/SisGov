@@ -5,6 +5,7 @@
   "descricao": "Verba para auditores que cobram quem sonega.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

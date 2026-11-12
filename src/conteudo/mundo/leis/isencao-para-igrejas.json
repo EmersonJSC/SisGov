@@ -5,6 +5,7 @@
   "descricao": "Quanto das igrejas e entidades religiosas fica livre de imposto. Escada: nenhuma isenção; só o prédio do templo; templo e doações recebidas; templo, doações e negócios ligados à igreja.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

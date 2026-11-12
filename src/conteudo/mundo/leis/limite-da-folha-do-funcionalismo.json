@@ -5,6 +5,7 @@
   "descricao": "Teto do que o Estado gasta com salários, em % da receita.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

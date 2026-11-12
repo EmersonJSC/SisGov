@@ -5,6 +5,7 @@
   "descricao": "O quanto o Estado pode ver das contas das pessoas. Escada: Estado vê todas as contas sem pedir; vê só movimentos de valor alto; só com ordem de juiz; só com ordem de juiz e em crime grave.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Como o voto vira cadeira no Congresso. Escada: proporcional (cadeiras na proporção dos votos); misto (metade proporcional, metade por distrito); distrital (cada distrito elege o mais votado). Vale na eleição seguinte.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

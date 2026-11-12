@@ -6,6 +6,7 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "parte_de": "Imposto sobre aplicações grandes",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

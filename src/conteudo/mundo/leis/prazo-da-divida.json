@@ -5,6 +5,7 @@
   "descricao": "Vai de curto (mais barato, arriscado) até longo (mais caro, seguro). Aparece como uma escada de vencimentos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

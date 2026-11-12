@@ -5,6 +5,7 @@
   "descricao": "Cobrança sobre o que se herda.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

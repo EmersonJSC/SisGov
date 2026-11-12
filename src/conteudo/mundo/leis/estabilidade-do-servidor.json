@@ -5,6 +5,7 @@
   "descricao": "Quando o funcionário público pode ser mandado embora. Escada: emprego para a vida toda; sai por falta grave; avaliação todo ano, duas notas ruins e sai; contrato igual ao do trabalhador comum (fora juiz, policial, diplomata e auditor).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

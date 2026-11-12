@@ -5,6 +5,7 @@
   "descricao": "Quais políticos só podem ser julgados por tribunal superior. Escada: ninguém, políticos são julgados como qualquer cidadão; só por crimes cometidos no exercício do cargo; todos os crimes de ministros e parlamentares; todos os crimes, e vale até depois que deixam o cargo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

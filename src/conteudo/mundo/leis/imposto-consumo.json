@@ -4,6 +4,7 @@
   "nome": "Imposto sobre consumo",
   "descricao": "Imposto embutido no preço de tudo o que se compra.",
   "camada": "essencial",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

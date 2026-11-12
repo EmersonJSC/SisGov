@@ -5,6 +5,7 @@
   "descricao": "Como o governo pune quem o critica. Escada: nenhuma; multa por ofender autoridades; prisão por criticar o governo; jornais e redes só publicam com aprovação prévia.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

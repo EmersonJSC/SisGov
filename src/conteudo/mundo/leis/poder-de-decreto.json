@@ -5,6 +5,7 @@
   "descricao": "Escada do que o presidente pode mudar sozinho: 1) sem decreto; 2) só verba e preço, com prazo; 3) tudo menos impostos, regras do poder e mandato, com prazo (como a medida provisória); 4) decreto amplo: tudo, sem o Congresso confirmar. Com prazo, a lei vale já e o Congresso tem 2 turnos para confirmar, ou cai.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

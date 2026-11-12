@@ -2,7 +2,7 @@
 import { ehBase } from "../calculos";
 import { INDICES_ESSENCIAIS } from "../estado";
 import { ehEstrato, ESTRATOS } from "../populacao";
-import { CAMADAS, EIXOS, FORCAS, type Lei } from "./tipos";
+import { CAMADAS, CLASSES, EIXOS, FORCAS, type Lei } from "./tipos";
 
 export interface ErroLei {
   arquivo: string;
@@ -46,6 +46,8 @@ export function validarLei(
     erro("id", `difere do nome do arquivo`);
   if (!CAMADAS.includes(dado.camada as never))
     erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
+  if (dado.classe !== undefined && !CLASSES.includes(dado.classe as never))
+    erro("classe", `precisa ser ${CLASSES.join(", ")}`);
 
   const ponto = (valor: unknown, campo: string) => {
     if (!ehObjeto(valor)) return erro(campo, "precisa ser um objeto");

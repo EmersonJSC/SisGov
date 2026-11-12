@@ -5,6 +5,7 @@
   "descricao": "Vai de nenhuma, passa por revisar as maiores áreas a cada 4 anos, até base zero. Aparece como um pente fino: lista de programas em verde, amarelo e vermelho, com quanto vai liberar antes de aplicar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

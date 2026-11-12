@@ -5,6 +5,7 @@
   "descricao": "Quanto a alíquota do Imposto de renda sobe para quem ganha mais. Escada: todos pagam a mesma alíquota (imposto único); sobe pouco; sobe médio; sobe muito.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

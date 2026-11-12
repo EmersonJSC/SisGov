@@ -5,6 +5,7 @@
   "descricao": "Quantos mandatos o presidente espera fora antes de poder voltar: 0 é voltar em seguida.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "mandato",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "mandatos",

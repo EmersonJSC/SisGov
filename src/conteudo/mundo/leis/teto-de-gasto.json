@@ -5,6 +5,7 @@
   "descricao": "O gasto só pode crescer até X% por ano (de livre até congelado). Aparece como um velocímetro com limite.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

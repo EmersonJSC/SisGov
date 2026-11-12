@@ -5,6 +5,7 @@
   "descricao": "Vai de nenhum, passa por consultivo, até com poder de veto. Dá confiança às projeções e dificulta a contabilidade criativa.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

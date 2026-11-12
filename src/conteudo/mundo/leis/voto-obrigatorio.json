@@ -5,6 +5,7 @@
   "descricao": "Se todos precisam votar e o que acontece com quem falta. Escada: voto livre; obrigatório com multa pequena; obrigatório com multa maior; obrigatório, e quem não vota não tira passaporte nem presta concurso.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

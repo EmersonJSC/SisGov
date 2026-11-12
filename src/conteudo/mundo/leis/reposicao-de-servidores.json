@@ -5,6 +5,7 @@
   "descricao": "Para cada servidor que se aposenta ou sai, quantos entram no lugar, de 0 a 1,5. Marca em 1 = repõe todos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% dos servidores que saem",

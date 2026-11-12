@@ -5,6 +5,7 @@
   "descricao": "Quantos mandatos seguidos o presidente pode cumprir antes de parar: de 1 a 4, ou ilimitado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "mandato",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "mandatos",

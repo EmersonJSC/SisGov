@@ -5,6 +5,7 @@
   "descricao": "Guarda parte do superávit para crises ou para as próximas gerações: de nenhum até fundo geracional. Aparece como uma barra de reserva.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

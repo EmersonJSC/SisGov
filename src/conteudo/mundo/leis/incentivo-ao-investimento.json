@@ -5,6 +5,7 @@
   "descricao": "Quanto do gasto da empresa em máquinas e prédios ela abate na hora do imposto. Régua: de 0% a 100% do gasto abatido no mesmo ano.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

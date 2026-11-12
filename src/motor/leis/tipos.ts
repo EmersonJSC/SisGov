@@ -21,6 +21,19 @@ export type PontoBussola = Partial<Record<Eixo, number>>;
 export const CAMADAS = ["essencial", "jogabilidade"] as const;
 export type Camada = (typeof CAMADAS)[number];
 
+/**
+ * Quórum que a lei pede no Congresso (motor/politica): comum (mais sim que
+ * não), absoluta (imposto, dívida), constitucional (regras do poder) ou
+ * mandato (duração e reeleição).
+ */
+export const CLASSES = [
+  "comum",
+  "absoluta",
+  "constitucional",
+  "mandato",
+] as const;
+export type ClasseLei = (typeof CLASSES)[number];
+
 /** Efeito de jogabilidade. Receita, PIB e juros vêm do cálculo, não daqui. */
 export interface Efeito {
   /** Id de um índice de jogabilidade do mundo. */
@@ -35,6 +48,8 @@ interface LeiBase {
   versao: 1;
   id: string;
   camada: Camada;
+  /** Ausente = comum. */
+  classe?: ClasseLei;
 }
 
 export interface LeiContinua extends LeiBase {

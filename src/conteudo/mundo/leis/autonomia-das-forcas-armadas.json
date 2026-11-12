@@ -5,6 +5,7 @@
   "descricao": "Escada de 5 níveis: ministro civil com Congresso aprovando, ministro civil, ministro militar, militares escolhem comando e orçamento, militares acima do governo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "constitucional",
   "forma": "opcoes",
   "opcoes": [
     {

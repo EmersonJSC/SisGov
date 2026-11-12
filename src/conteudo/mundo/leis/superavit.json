@@ -4,6 +4,7 @@
   "nome": "Superávit",
   "descricao": "Para onde vai o dinheiro quando o governo arrecada mais do que gasta.",
   "camada": "essencial",
+  "classe": "absoluta",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Imposto por ano sobre jato, iate, helicóptero e carro caro, de 0% a 5% do valor.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {
