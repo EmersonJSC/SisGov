@@ -7,6 +7,7 @@ export * from "./contas";
 export * from "./deriva";
 export * from "./efeitos";
 export * from "./eleicao";
+export * from "./fatos";
 export * from "./estado";
 export * from "./grupos";
 export * from "./leis";

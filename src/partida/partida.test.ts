@@ -126,3 +126,35 @@ describe("segurança externa", () => {
     expect(dSeg).toBeCloseTo(dRep);
   });
 });
+
+describe("fatos do turno", () => {
+  it("votação e eleição vão para a mesa; a mesa envelhece", () => {
+    const partida = criarPartida("teste", 42);
+    const um = jogar(partida, 1, [
+      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.2 },
+    ]).estado;
+    expect(um.fatos).toContainEqual(
+      expect.objectContaining({
+        tipo: "lei-rejeitada",
+        turno: 1,
+        sobre: "areas-protegidas",
+      }),
+    );
+    expect(jogar(partida, 2).estado.fatos ?? []).not.toContainEqual(
+      expect.objectContaining({ sobre: "areas-protegidas" }),
+    );
+    const fim = jogar(partida, 24).estado;
+    expect(fim.fatos).toContainEqual(
+      expect.objectContaining({ tipo: "eleicao-perdida", turno: 24 }),
+    );
+  });
+
+  it("mesma semente e mesmos pedidos, mesma mesa", () => {
+    const pedidos = [
+      { tipo: "mudar_lei" as const, lei: "transferencia-renda", valor: 0.04 },
+    ];
+    const a = jogar(criarPartida("teste", 7), 12, pedidos).estado.fatos;
+    const b = jogar(criarPartida("teste", 7), 12, pedidos).estado.fatos;
+    expect(a).toEqual(b);
+  });
+});

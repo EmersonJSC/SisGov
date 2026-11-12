@@ -7,6 +7,7 @@ import type { EfeitoEmCurso } from "../efeitos";
 import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { PontoBussola, ValorLei } from "../leis";
+import type { Fato } from "../fatos";
 import type { MoradiaNoEstado } from "../moradia";
 import type { AtendimentoNoEstado } from "../atendimento";
 import type { SaneamentoNoEstado } from "../saneamento";
@@ -108,4 +109,9 @@ export interface Estado {
   eleicao: Eleicao | null;
   /** O governo perdeu a eleição: a partida acabou. */
   encerrada: boolean;
+  /**
+   * Mesa de fatos (motor/fatos): o que aconteceu nos últimos turnos; ausente
+   * em partida salva antes dela = mesa vazia.
+   */
+  fatos?: Fato[];
 }

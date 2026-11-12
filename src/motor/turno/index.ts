@@ -14,6 +14,12 @@ import { andarDerivas } from "../deriva";
 import { enfileirar, envelhecer, filaInicial, somaPorIndice } from "../efeitos";
 import { apurar, DESGASTE_POR_TURNO, turnosMandato } from "../eleicao";
 import {
+  envelhecerFatos,
+  motivoFatoInvalido,
+  novoFato,
+  type Fato,
+} from "../fatos";
+import {
   INDICES_ESSENCIAIS,
   type Estado,
   type IndicesEssenciais,
@@ -23,6 +29,7 @@ import {
   deslizarPops,
   gruposComDeslize,
   motivoGruposInvalidos,
+  posicaoDaLei,
   rendaDoGrupo,
   type Marco,
 } from "../grupos";
@@ -159,8 +166,35 @@ const congresso: Etapa = (regras, estado, pedidos) => {
           },
     );
   }
-  return { ...estado, votacoes };
+  return {
+    ...estado,
+    votacoes,
+    fatos: [
+      ...(estado.fatos ?? []),
+      ...fatosDasVotacoes(regras, estado.turno, votacoes),
+    ],
+  };
 };
+
+/** Cada votação vira fato; `quem` são os partidos que votaram não. */
+function fatosDasVotacoes(
+  regras: Regras,
+  turno: number,
+  votacoes: Votacao[],
+): Fato[] {
+  return votacoes.map((v) => {
+    const contra = Object.keys(v.votos).filter((p) => v.votos[p] === "nao");
+    const lado = v.aprovada ? posicaoDaLei(regras.leis[v.lei], v.valor) : null;
+    return novoFato({
+      tipo: v.aprovada ? "lei-aprovada" : "lei-rejeitada",
+      turno,
+      tamanho: v.aprovada ? "medio" : "pequeno",
+      sobre: v.lei,
+      ...(contra.length ? { quem: contra } : {}),
+      ...(lado ? { lado } : {}),
+    });
+  });
+}
 
 /** 2. Leis novas: o que passou muda de valor e os efeitos entram na fila. */
 const leisNovas: Etapa = (regras, estado) => {
@@ -1081,18 +1115,54 @@ const politica: Etapa = (regras, estado) => {
     ? coligacaoAtual(regras.congresso, estado.coligacao, estado.grupos)
     : estado.coligacao;
   const desgaste = estado.desgaste + DESGASTE_POR_TURNO;
-  const comDesgaste = { ...estado, coligacao, desgaste };
+  const fatos = [
+    ...(estado.fatos ?? []),
+    ...fatosDaBase(estado.turno, estado.coligacao, coligacao),
+  ];
+  const comDesgaste = { ...estado, coligacao, desgaste, fatos };
   const mandato = turnosMandato(regras.leis, estado.leis);
   if (mandato === null || estado.turno - estado.inicio_mandato < mandato)
     return comDesgaste;
   const eleicao = apurar(estado.turno, estado.grupos, desgaste);
+  const resultado = novoFato({
+    tipo: eleicao.venceu ? "eleicao-vencida" : "eleicao-perdida",
+    turno: estado.turno,
+    tamanho: "grande",
+  });
   return {
     ...comDesgaste,
+    fatos: [...fatos, resultado],
     eleicao,
     inicio_mandato: eleicao.venceu ? estado.turno : estado.inicio_mandato,
     encerrada: !eleicao.venceu,
   };
 };
+
+/** Partido que saiu ou entrou na base vira fato. */
+function fatosDaBase(turno: number, antes: string[], agora: string[]): Fato[] {
+  return [
+    ...antes
+      .filter((p) => !agora.includes(p))
+      .map((p) =>
+        novoFato({
+          tipo: "partido-saiu-da-base",
+          turno,
+          tamanho: "grande",
+          quem: [p],
+        }),
+      ),
+    ...agora
+      .filter((p) => !antes.includes(p))
+      .map((p) =>
+        novoFato({
+          tipo: "partido-entrou-na-base",
+          turno,
+          tamanho: "medio",
+          quem: [p],
+        }),
+      ),
+  ];
+}
 
 /** 10. Invariantes: falhou, para com erro. */
 const invariantes: Etapa = (regras, estado) => {
@@ -1166,6 +1236,10 @@ const invariantes: Etapa = (regras, estado) => {
     falhas.push("rede de atendimento inválida");
   if (!(Number.isFinite(estado.desgaste) && estado.desgaste >= 0))
     falhas.push("desgaste inválido");
+  for (const f of estado.fatos ?? []) {
+    const motivo = motivoFatoInvalido(f);
+    if (motivo) falhas.push(`fato: ${motivo}`);
+  }
   if (falhas.length > 0)
     throw new Error(
       `invariante no turno ${estado.turno}: ${falhas.join("; ")}`,
@@ -1199,7 +1273,12 @@ export function avancarTurno(
 ): Estado {
   if (estado.encerrada)
     throw new Error("partida encerrada: o governo perdeu a eleição");
-  const proximo = { ...estado, turno: estado.turno + 1 };
+  // A mesa envelhece antes das etapas escreverem os fatos deste turno.
+  const proximo: Estado = {
+    ...estado,
+    turno: estado.turno + 1,
+    fatos: envelhecerFatos(estado.fatos ?? []),
+  };
   const novo = ETAPAS.reduce((e, etapa) => etapa(regras, e, pedidos), proximo);
   // Parte da etapa 10: precisa do estado anterior.
   const motivo = motivoContaNaoFecha(estado.tesouro, novo.tesouro);
@@ -1441,6 +1520,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     inicio_mandato: 0,
     eleicao: null,
     encerrada: false,
+    fatos: [],
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);

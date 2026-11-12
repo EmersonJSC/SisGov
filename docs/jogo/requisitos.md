@@ -58,7 +58,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R4.3** Escolher o país: `brasil-2026` (12/nov; 476 leis com o valor de hoje, 19 partidos com nome e cor, companhias inventadas). Dívida: juros comem 16% do PIB e a dívida vai de 78% a 107% em 24 turnos; calibrar na Economia.
 - ◐ **R4.4** A partida acaba quando o partido perde o poder federal (hoje só pela eleição; ver R6.13).
 - ✅ **R4.11** Mundo sai da planilha: `npm run exportar` grava leis e índices (12/nov).
-- ☐ **R4.12** Fatos do turno: cada módulo devolve, junto do estado novo, a lista do que aconteceu; o turno passa a lista adiante.
+- ✅ **R4.12** Fatos do turno: mesa de fatos (memória curta, como RAM) em `motor/fatos`; cada etapa escreve, cada módulo pergunta o que precisa; fato gera fato; some em 1–3 turnos pelo tamanho. Hoje escrevem Congresso (lei aprovada/derrubada) e Política (base, eleição); a tela mostra como manchete no Resultado do turno (12/nov).
 - ☐ **R4.5** Criar o partido: nome e sigla; não escolhe lado.
 - ☐ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação).
 - ☐ **R4.8** O lado do partido sai da chapa; o jogo nunca pede lado.
