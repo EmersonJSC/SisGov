@@ -471,10 +471,38 @@ que não cabe ao presidente fica inativa.
   no menu do país que fica valendo, como Sanções e Aliança) e **Operação** (em etapas,
   sobre uma companhia, com papéis na mesa; vive na lista de companhias e não vira
   bolha). **Programa** é um pacote de leis que resolve um problema (ex.:
-  Tarifa social: luz, água e gás); a planilha marca na coluna Programa. A **forma** de uma lei é separada do tipo: Régua, Níveis, Escolha,
+  Tarifa social: luz, água e gás); regras logo abaixo e nas abas Programas e
+  Programas - leis da planilha (a coluna Programa da aba Leis é só etiqueta). A **forma** de uma lei é separada do tipo: Régua, Níveis, Escolha,
   Dois controles, Meta e prazo ou **Régua por setor** (a lei tem uma aba por setor,
   cada uma com a sua régua, como a Tarifa de importação) ou **Divisão de 100%** (fatias que somam a verba toda: subir uma derruba as outras, como a Divisão da verba de ciência). Por onde chega ao motor: Dinheiro, Preço, Regra,
   Direito ou Serviço.
+- **Programas (12/nov):** 74 pacotes, da Saúde à Cultura, com os lados
+  equilibrados (22 de esquerda, 22 de direita, 3 deles também tradicionais ou
+  autoritários, 14 do meio, 4 verdes e o resto tradicional, libertário,
+  nacionalista, autoritário, pegadinha ou de qualquer lado). A aba Programas diz
+  o lado, as esferas e as palavras do nome; a aba Programas - leis diz, para
+  cada lei, a **direção** (sobe, desce, liga, mais fechado…) e o **mínimo** que
+  conta (1 degrau, 10% da régua, 1 fatia da divisão).
+  - **Forma-se** quando a maior parte das leis da lista (3 de 4, 2 de 3) anda
+    pelo menos o mínimo na direção do programa dentro de um mandato. Só entra
+    lei de verdade: Operação, Ato e Posição por país ficam fora da lista.
+  - **Vários ministérios:** programa com leis de mais de uma esfera anda no
+    passo do ministro mais fraco (seção 6).
+  - **Nome:** cada programa tem nome genérico; o JSON do país pode dar o nome
+    próprio dele (como a Selic), e o país que já começa com o programa traz o
+    nome. Sem nome do país, o **gerador** cria um, e o jornal anuncia
+    ("Governo lança o *Mais Escola*").
+  - **Gerador de nomes:** moldes com lacunas ("Minha ___, Minha ___", "___
+    para Todos", "Mais ___", "País sem ___", "Bolsa ___", "Pacto pela ___",
+    "Programa Nacional de ___" com sigla, "Ordem e ___", "___ Livre") preenchidos
+    com as 4 palavras do programa: tema, bem, mal e público. O lado do partido
+    escolhe o molde: esquerda puxa "para Todos" e "sem ___", direita "Livre" e
+    "Responsável", autoritário "Ordem e ___". Os moldes são do mundo; o motor
+    não conhece nomes.
+  - **Programas reais:** a aba Programas lista os de governos reais parecidos
+    (dos 110 citados na planilha, os que são lei caem num programa; ficam
+    fora as posições por país, como reatar com um país, e leis soltas, como a
+    dolarização).
 - **Leis controlam decisões:** as opções do menu de um país ou de uma companhia
   não são leis; as leis decidem o que o presidente pode fazer (ex.: Alcance das
   sanções, Aprovação de tratados, Autorização para estatizar e vender, Indenização).
@@ -1094,7 +1122,7 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 | **Ato** | Decisão do presidente que acontece uma vez (Graça, visita de Estado, suspender a regra fiscal). |
 | **Posição por país** | Nível que o presidente decide no menu de um país e que fica valendo até mudar (Sanções, Aliança). |
 | **Operação** | Decisão em etapas sobre uma companhia, com papéis na mesa (Estatização, Privatização). |
-| **Programa** | Um pacote de leis que resolve um problema (Tarifa social; Reforma política; Imposto dos ricos; Remédio barato). A planilha marca na coluna Programa. |
+| **Programa** | Um pacote de leis que resolve um problema (Tarifa social; Reforma política; Imposto dos ricos; Remédio barato). Forma-se quando a maior parte das leis anda na direção dele num mandato; o país ou o gerador dá o nome. Abas Programas e Programas - leis. |
 | **Companhia** | A dona. Tem ações, reserva de investimento e várias empresas. |
 | **Empresa** | A parte de uma companhia em um setor. É um conjunto de prédios. |
 | **Prédio** | A unidade que produz ou presta serviço: fábrica, fazenda, usina, hospital. (Antes aparecia como "construção".) |
@@ -1850,6 +1878,12 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
 - O que vários índices batendo metas juntos significam.
 
 **Ideias guardadas**
+- **Programa inventado (12/nov):** o jogador junta leis livres e o jogo cria
+  um programa novo, com nome do gerador. Para depois.
+- **Leis que faltam aos programas (12/nov):** ajuda para a empresa reduzir a
+  jornada sem demitir; controle de natalidade.
+- **Programas de Drogas e Apostas (12/nov):** só se formam quando as leis de
+  Vícios ("A criar") forem escritas.
 - **Capital nova (09/nov):** megaobra; não entrou na lista.
 - **Compra escondida por laranjas (08/nov):** o partido compra ação sem avisar;
   escândalo se descoberto.
