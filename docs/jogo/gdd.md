@@ -639,6 +639,10 @@ agem juntas na política; a organização tem nome, líder e ação própria.
     prazo, e descumprir enfurece o aliado e dá manchete.
   - Decreto: a lei vale já, sem voto, se a lei Poder de decreto deixar; o
     Congresso tem 2 turnos para confirmar, e cada uso derruba mais a paciência.
+  - **Preço que sobe (12/nov):** cada compra (cargo, emenda, ministério) ensina
+    o partido que o governo paga, e o preço do próximo voto dele sobe. Quem
+    entrou por compra é fiel ao dinheiro: quando o caixa ou os cargos acabam,
+    sai da base.
 - **Paciência do Congresso (11/nov):** 0 a 100, uma por casa; quanto o
   Congresso aguenta ser atropelado.
   - Cai com decreto, veto, ir à mídia contra o Congresso e lei demais no turno.
@@ -757,6 +761,9 @@ agem juntas na política; a organização tem nome, líder e ação própria.
 - **Desgaste** sobe a cada mandato e com escândalos; o jogador reduz, nunca
   zera.
 - O eleitor percebe o déficit e a inflação, não a contabilidade.
+- **Promessa (12/nov):** a promessa de campanha é a meta do mandato e fica na
+  tela até a eleição. Cumprida, sobe o voto do grupo que pediu; quebrada,
+  derruba esse voto e sobe o desgaste.
 - Resultado: Presidência e cadeiras do Congresso.
 
 ## 14. Mídia
@@ -1613,6 +1620,10 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
 - **Momentos do partido** (montar ministério, chapa, coligação, campanha)
   são telas curtas de escolha, não painéis.
 - Manchetes do turno, votação, passar o turno, salvar e carregar.
+- **Causa e efeito (12/nov):** a bolha do índice mostra "o que empurra" (leis e
+  índices que mexem nele, com seta, força e turnos até chegar); a bolha da lei,
+  antes de assinar, mostra "a conta que vem" (o que cada índice deve fazer em 1
+  e em 4 anos); o gráfico do índice marca o turno em que cada lei foi assinada.
 - Dinheiro na moeda do país. A tela só lê e chama a partida; não calcula.
 
 ## 18. Perguntas em aberto (requisitos a decidir)
@@ -1716,6 +1727,28 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
     sobe).
   - Tela: prédio no anel do Estado ("320 processos · 2 seus") e cadeiras do
     tribunal superior coloridas. Impeachment segue com o Congresso.
+- **Corrupção em cadeia (decidido em 12/nov):**
+  - O rastro não some: todo papel duvidoso vai para o arquivo do país. A chance
+    de ser descoberto usa a Independência dos investigadores de hoje, não a da
+    época. Se ela subir (CPI, governo seguinte), os rastros antigos aparecem de
+    uma vez: escândalo, processo, até prisão do ex-presidente.
+  - Baixar a independência contamina em cadeia: sem medo de investigação, a
+    corrupção de cada órgão sobe sozinha, o rendimento cai e o serviço piora.
+    A corrupção do presidente vira a corrupção do país.
+- **Caminho autoritário (decidido em 12/nov):** o custo vem de quem tem as armas
+  e de quem tem raiva.
+  - Cada passo autoritário (censurar, ignorar o tribunal, governar por decreto,
+    adiar a eleição) sobe a raiva dos grupos contrários.
+  - Raiva alta com satisfação baixa: protesto, atentado e, no topo, tentativa de
+    assassinato do presidente; a chance cai com a segurança do presidente. Se der
+    certo, a partida acaba.
+  - Sem apoio armado (Forças Armadas pouco leais, polícia dividida, facções
+    fortes), o Risco de golpe sobe a cada turno.
+  - Guerra civil: grupos grandes com raiva e armas divididas. O país racha por
+    estados, e governadores da oposição se rebelam junto.
+  - Com as armas leais e o povo calmo, a ditadura funciona, mas cara: sanções,
+    investimento de fora caindo, gente estudada indo embora, generais que podem
+    trocar o presidente.
 - **Capital nova (09/nov):** ideia de megaobra guardada; não entrou na lista.
 - **Custo dos atos com a mídia (08/nov):** quanto cada ato (entrevista,
   pressão, processo, notícia falsa) desgasta e por quanto tempo o efeito dura
@@ -1729,8 +1762,8 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - **Caminhos sem núcleo reduzido (08/nov):** o jogo deve ter centenas de caminhos
   possíveis, por isso não se corta um núcleo de ~40 leis. O jogador pode focar numa
   área (ex.: segurança pública), gastando uma **cota** ali, e ganhar a eleição pela
-  promessa mesmo sem focar no resto. A definir: o que é a cota e como a promessa
-  entra na eleição.
+  promessa mesmo sem focar no resto. A promessa entra na eleição pelo voto do
+  grupo que pediu (§13, 12/nov). A definir: o que é a cota.
 - **Problema de otimização: estados × pops (08/nov):** com pops divididos por estado, o
   Brasil passa de 32 para 32 × 27 = 864 pops. Estudar quanto isso pesa no turno do
   motor, antes de programar.
