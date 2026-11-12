@@ -868,8 +868,8 @@ pode mexer nesse filtro, pagando por isso.
 
 ## 15. Mundo
 
-- **Países reais (08/nov):** as **10 maiores economias** têm ficha completa e
-  são jogáveis; o ranking mostra os **30 maiores** (do 11º ao 30º, ficha
+- **Países reais (08/nov):** as **10 maiores economias e a Rússia** (12/nov) têm ficha
+  completa e são jogáveis; o ranking mostra os **30 maiores** (do 11º ao 30º, ficha
   simples), mais os vizinhos do país jogado e o resto do mundo num bloco só. O
   país jogado sai da lista dos outros. Nomes e números reais ficam em arquivo de
   dados, com data e fonte; o motor continua sem conhecer nomes.
