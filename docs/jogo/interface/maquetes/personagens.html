@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escolha da chapa (maquete)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papel: #F1E8D2;
+    --preto: #1C1A1A;
+    --vermelho: #D8362B;
+    --azul: #1F4E8C;
+    --amarelo: #F4B81C;
+    --verde: #2F7D5B;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--papel);
+    color: var(--preto);
+    font-family: "Oswald", Impact, sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 40px;
+    background-image: repeating-linear-gradient(
+      -62deg, transparent 0 38px, rgba(28,26,26,.05) 38px 40px);
+  }
+
+  header {
+    background: var(--preto);
+    color: var(--papel);
+    padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; flex-wrap: wrap;
+    transform: rotate(-.6deg);
+    max-width: 1100px; margin: 0 auto 28px;
+  }
+  header h1 { font-size: 26px; font-weight: 700; letter-spacing: .5px; }
+  header span { font-size: 16px; color: var(--amarelo); }
+
+  h2 {
+    font-size: clamp(34px, 6vw, 56px);
+    font-weight: 700;
+    text-transform: uppercase;
+    max-width: 1100px; margin: 0 auto 8px;
+    letter-spacing: .5px;
+  }
+  .sub {
+    max-width: 1100px; margin: 0 auto 30px;
+    font-size: 19px; font-weight: 500;
+  }
+
+  .grade {
+    max-width: 1100px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 26px;
+  }
+
+  .cartao {
+    position: relative;
+    background: var(--papel);
+    border: 3px solid var(--preto);
+    box-shadow: 6px 6px 0 var(--azul);
+    padding: 16px 16px 18px;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+  }
+  .cartao:nth-child(odd) { transform: rotate(-1.2deg); }
+  .cartao:nth-child(even) { transform: rotate(1deg); }
+  .cartao:hover, .cartao:focus-visible {
+    outline: none;
+    box-shadow: 9px 9px 0 var(--vermelho);
+    transform: rotate(0) translateY(-3px);
+  }
+  .cartao.escolhido {
+    box-shadow: 9px 9px 0 var(--verde);
+    transform: rotate(0);
+    border-color: var(--preto);
+  }
+
+  .retrato {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--preto);
+    background: var(--amarelo);
+  }
+
+  .faixa {
+    margin-top: 12px;
+    background: var(--cor);
+    color: var(--papel);
+    padding: 6px 10px;
+    font-size: 15px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    display: inline-block;
+  }
+  .nome {
+    display: block;
+    font-size: 26px; font-weight: 700;
+    margin-top: 10px;
+    line-height: 1.05;
+  }
+  .papel-de-cargo {
+    display: block;
+    font-size: 16px; font-weight: 500;
+    margin-top: 4px;
+  }
+  .frase {
+    display: block;
+    font-size: 15px; font-weight: 500;
+    margin-top: 10px;
+    line-height: 1.3;
+    border-top: 2px dashed var(--preto);
+    padding-top: 10px;
+  }
+  .carimbo {
+    position: absolute;
+    top: 14px; right: -10px;
+    background: var(--verde);
+    color: var(--papel);
+    padding: 4px 10px;
+    font-size: 15px; font-weight: 700;
+    transform: rotate(6deg);
+    border: 2px solid var(--preto);
+    display: none;
+  }
+  .cartao.escolhido .carimbo { display: block; }
+
+  .rodape {
+    max-width: 1100px; margin: 34px auto 0;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .botao {
+    font: inherit; font-size: 20px; font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px 26px;
+    border: 3px solid var(--preto);
+    background: var(--amarelo);
+    color: var(--preto);
+    box-shadow: 4px 4px 0 var(--preto);
+    cursor: pointer;
+    transform: rotate(-1deg);
+  }
+  .botao:disabled { opacity: .4; cursor: not-allowed; }
+  .botao.voltar { background: var(--azul); color: var(--papel); transform: rotate(1deg); }
+  .nota {
+    font-size: 14px; font-weight: 500;
+    max-width: 420px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cartao { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Escolha do governo</h1>
+  <span>Maquete · personagens de exemplo</span>
+</header>
+
+<h2>Quem vai governar?</h2>
+<p class="sub">Escolha quem comanda a chapa. Cada um traz um jeito de governar e um partido.</p>
+
+<main class="grade" id="grade">
+
+  <button class="cartao" data-id="economista" style="--cor: var(--azul);">
+    <span class="carimbo">ESCOLHIDO</span>
+    <svg class="retrato" viewBox="0 0 240 280" role="img" aria-label="Retrato de exemplo: mulher de cabelo curto, blazer azul">
+      <rect width="240" height="280" fill="#F4B81C"/>
+      <path d="M20 280 C30 220 70 205 120 205 C170 205 210 220 220 280 Z" fill="#1F4E8C" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M100 200 L120 240 L140 200 Z" fill="#F1E8D2" stroke="#1C1A1A" stroke-width="3"/>
+      <rect x="104" y="170" width="32" height="40" fill="#E8B88A" stroke="#1C1A1A" stroke-width="3"/>
+      <ellipse cx="120" cy="125" rx="58" ry="66" fill="#E8B88A" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M58 118 C52 60 90 42 122 42 C160 42 186 64 182 120 C172 92 150 80 120 82 C92 84 72 96 58 118 Z" fill="#1C1A1A"/>
+      <circle cx="100" cy="128" r="5" fill="#1C1A1A"/>
+      <circle cx="140" cy="128" r="5" fill="#1C1A1A"/>
+      <path d="M104 160 Q120 170 136 160" fill="none" stroke="#1C1A1A" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <span class="faixa" style="background: var(--azul);">Partido exemplo A</span>
+    <span class="nome">Nome exemplo 1</span>
+    <span class="papel-de-cargo">Economista de mercado</span>
+    <span class="frase">Cresce a economia primeiro e paga a conta depois.</span>
+  </button>
+
+  <button class="cartao" data-id="sindicalista" style="--cor: var(--vermelho);">
+    <span class="carimbo">ESCOLHIDO</span>
+    <svg class="retrato" viewBox="0 0 240 280" role="img" aria-label="Retrato de exemplo: homem de bigode, boné e camisa vermelha">
+      <rect width="240" height="280" fill="#F1E8D2"/>
+      <path d="M10 280 C20 214 66 196 120 196 C174 196 220 214 230 280 Z" fill="#D8362B" stroke="#1C1A1A" stroke-width="4"/>
+      <rect x="104" y="170" width="32" height="34" fill="#C98E5F" stroke="#1C1A1A" stroke-width="3"/>
+      <ellipse cx="120" cy="130" rx="54" ry="60" fill="#C98E5F" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M64 102 C64 62 92 54 120 54 C150 54 178 62 178 102 L172 96 C160 80 82 80 70 96 Z" fill="#1F4E8C" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M50 96 L186 96 L186 104 L50 104 Z" fill="#1F4E8C" stroke="#1C1A1A" stroke-width="3"/>
+      <circle cx="100" cy="138" r="5" fill="#1C1A1A"/>
+      <circle cx="140" cy="138" r="5" fill="#1C1A1A"/>
+      <path d="M100 166 Q120 172 140 166" fill="none" stroke="#1C1A1A" stroke-width="4" stroke-linecap="round"/>
+      <path d="M102 160 Q120 154 138 160 L138 166 Q120 160 102 166 Z" fill="#1C1A1A"/>
+    </svg>
+    <span class="faixa" style="background: var(--vermelho);">Partido exemplo B</span>
+    <span class="nome">Nome exemplo 2</span>
+    <span class="papel-de-cargo">Líder sindical</span>
+    <span class="frase">O trabalhador primeiro, e a conta vem depois do salário.</span>
+  </button>
+
+  <button class="cartao" data-id="general" style="--cor: var(--verde);">
+    <span class="carimbo">ESCOLHIDO</span>
+    <svg class="retrato" viewBox="0 0 240 280" role="img" aria-label="Retrato de exemplo: homem de cabelo grisalho curto, óculos e farda verde">
+      <rect width="240" height="280" fill="#2F7D5B"/>
+      <path d="M10 280 C20 216 66 198 120 198 C174 198 220 216 230 280 Z" fill="#F1E8D2" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M20 232 L220 232 L220 244 L20 244 Z" fill="#2F7D5B" stroke="#1C1A1A" stroke-width="3"/>
+      <rect x="104" y="170" width="32" height="34" fill="#E0B088" stroke="#1C1A1A" stroke-width="3"/>
+      <ellipse cx="120" cy="128" rx="56" ry="62" fill="#E0B088" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M66 110 C66 70 94 62 120 62 C150 62 176 70 174 110 C166 90 146 84 120 84 C94 84 74 90 66 110 Z" fill="#8A8F94" stroke="#1C1A1A" stroke-width="3"/>
+      <circle cx="98" cy="128" r="17" fill="none" stroke="#1C1A1A" stroke-width="4"/>
+      <circle cx="142" cy="128" r="17" fill="none" stroke="#1C1A1A" stroke-width="4"/>
+      <line x1="115" y1="128" x2="125" y2="128" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M104 164 L136 164" stroke="#1C1A1A" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <span class="faixa" style="background: var(--verde);">Partido exemplo C</span>
+    <span class="nome">Nome exemplo 3</span>
+    <span class="papel-de-cargo">Ex-militar, gestor de obra</span>
+    <span class="frase">Ordem e obra pronta. Quem atrasa paga o preço.</span>
+  </button>
+
+  <button class="cartao" data-id="professora" style="--cor: var(--amarelo);">
+    <span class="carimbo">ESCOLHIDO</span>
+    <svg class="retrato" viewBox="0 0 240 280" role="img" aria-label="Retrato de exemplo: mulher de cabelo preso e lenço amarelo">
+      <rect width="240" height="280" fill="#1F4E8C"/>
+      <path d="M10 280 C20 212 66 194 120 194 C174 194 220 212 230 280 Z" fill="#F4B81C" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M92 194 L120 222 L148 194" fill="#F1E8D2" stroke="#1C1A1A" stroke-width="3"/>
+      <rect x="104" y="168" width="32" height="34" fill="#8A5A3B" stroke="#1C1A1A" stroke-width="3"/>
+      <ellipse cx="120" cy="126" rx="54" ry="62" fill="#8A5A3B" stroke="#1C1A1A" stroke-width="4"/>
+      <path d="M66 110 C60 56 94 40 120 40 C152 40 180 58 174 110 C166 84 150 78 120 78 C90 78 74 88 66 110 Z" fill="#1C1A1A"/>
+      <circle cx="120" cy="50" r="18" fill="#1C1A1A" stroke="#1C1A1A" stroke-width="3"/>
+      <circle cx="100" cy="128" r="5" fill="#F1E8D2"/>
+      <circle cx="140" cy="128" r="5" fill="#F1E8D2"/>
+      <path d="M104 160 Q120 172 136 160" fill="none" stroke="#F1E8D2" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <span class="faixa" style="background: var(--preto);">Partido exemplo D</span>
+    <span class="nome">Nome exemplo 4</span>
+    <span class="papel-de-cargo">Professora, ex-vereadora</span>
+    <span class="frase">Escola cheia e gente ouvida. Eu governo com as bases.</span>
+  </button>
+
+</main>
+
+<div class="rodape">
+  <button class="botao voltar" type="button">Voltar</button>
+  <p class="nota" id="nota">Escolha um personagem para liberar o botão.</p>
+  <button class="botao" id="avancar" type="button" disabled>Montar a chapa</button>
+</div>
+
+<script>
+  const cartoes = document.querySelectorAll('.cartao');
+  const avancar = document.getElementById('avancar');
+  const nota = document.getElementById('nota');
+
+  cartoes.forEach((c) => {
+    c.addEventListener('click', () => {
+      cartoes.forEach((x) => x.classList.remove('escolhido'));
+      c.classList.add('escolhido');
+      avancar.disabled = false;
+      nota.textContent = 'Escolhido: ' + c.querySelector('.nome').textContent + '.';
+    });
+  });
+</script>
+</body>
+</html>

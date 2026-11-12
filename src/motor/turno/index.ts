@@ -14,6 +14,7 @@ import {
   contas,
 } from "./etapas/economia";
 import { governo } from "./etapas/governo";
+import { midia } from "./etapas/midia";
 import { programas } from "./etapas/programas";
 import { invariantes } from "./etapas/invariantes";
 import { indicesJogabilidade } from "./etapas/jogabilidade";
@@ -69,6 +70,7 @@ const ETAPAS: Etapa[] = [
   governo,
   programas,
   politica,
+  midia,
   invariantes,
 ];
 export function avancarTurno(

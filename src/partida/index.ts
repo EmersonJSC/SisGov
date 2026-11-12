@@ -40,9 +40,11 @@ import {
   placarPrevisto,
   satisfacaoMedia,
   turnosMandato,
+  motivoMidiasInvalidas,
   motivoProgramasInvalidos,
   type FormadoDoPais,
   type Programa,
+  type RegrasMidia,
   type RegrasProgramas,
 } from "../motor";
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
@@ -209,6 +211,19 @@ function carregarProgramas(
   const motivo = motivoProgramasInvalidos(regras, leis);
   if (motivo) throw new Error(`país "${pais}" › programas: ${motivo}`);
   return regras;
+}
+
+/** Mídias do país (midias.json, opcional); sem o arquivo o jornal sai sem mídias. */
+function carregarMidias(pais: string, grupos: TipoGrupo[]): RegrasMidia {
+  if (!arquivosPaises[`../conteudo/paises/${pais}/midias.json`])
+    return { midias: [] };
+  const regras = arquivoPais<RegrasMidia>(pais, "midias");
+  const motivo = motivoMidiasInvalidas(
+    regras,
+    grupos.map((g) => g.id),
+  );
+  if (motivo) throw new Error(`país "${pais}" › midias: ${motivo}`);
+  return { midias: regras.midias };
 }
 
 export interface NomesDoGoverno {
@@ -401,11 +416,12 @@ export function criarPartida(
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
 
   const leis = carregarLeis();
+  const grupos = carregarGrupos();
   const regras: Regras = {
     leis,
     dominios: dominiosDosIndices(),
     pops: carregarPops(),
-    grupos: carregarGrupos(),
+    grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),
     indicePoderDefensivo: indicesDeDefesa(potencias).poderDefensivo,
@@ -418,6 +434,7 @@ export function criarPartida(
     atendimento,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
     programas: carregarProgramas(pais, leis),
+    midia: carregarMidias(pais, grupos),
     ...(governo ? { governo: governo.regras } : {}),
     congresso: semCongresso ? undefined : congressoDasRegras(congresso),
   };
@@ -495,6 +512,7 @@ export function jogar(
 
 export { carregarPartida, salvarPartida } from "./salvar";
 export { montarVisao } from "./visao";
+export { manchete, type NomesDoJornal } from "./jornal";
 export { previaDaLei, valorDoNivel, type PreviaLei } from "./previa";
 export type {
   Estado,

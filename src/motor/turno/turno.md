@@ -20,6 +20,7 @@ Ordem (plano, seção 5). Hoje (passo 8):
 | 8b  | Governo        | moedas Ministério e pedidos de nomear viram ministros; cada órgão anda um turno de corrupção (`motor/governo`)                                                                    |
 | 8c  | Programas      | as leis já mudadas formam ou desfazem programas; o ministro mais fraco dá o passo (`motor/programas`)                                                                             |
 | 9   | Política       | partido da base com os grupos abaixo de 35 sai da coligação; eleição no passo 9                                                                                                   |
+| 9b  | Mídia          | o jornal reúne as 3 notícias de maior impacto do turno (`motor/midia`)                                                                                                            |
 | 10  | Invariantes    | números finitos, ocupados ≤ população, índices no domínio, leis válidas, cofre e dívida ≥ 0, contabilidade fecha, pops somam a população, grupos válidos, coligação com o governo |
 
 O país declara só as leis que tem. Lei do mundo fora dessa lista fica **não

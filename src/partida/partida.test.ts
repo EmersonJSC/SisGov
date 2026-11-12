@@ -1,9 +1,10 @@
 // Lei não legislada: o país não declarou, a partida abre e o jogador propõe.
 import { describe, expect, it } from "vitest";
-import { montarMesa, type Ficha } from "../motor";
+import { montarMesa, TIPOS_DE_FATO, type Ficha } from "../motor";
 import {
   criarPartida,
   jogar,
+  manchete,
   mesesParaEleicao,
   placarDaLei,
   type Partida,
@@ -424,5 +425,68 @@ describe("programas", () => {
     const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
     const antes = partida.estado.programas?.vidas;
     expect(jogar(partida, 12).estado.programas?.vidas).toEqual(antes);
+  });
+});
+
+describe("jornal", () => {
+  it("o Brasil tem as mídias dele e começa com a credibilidade declarada", () => {
+    const partida = criarPartida("brasil-2026", 1);
+    const midias = partida.regras.midia?.midias ?? [];
+    expect(midias.length).toBe(9);
+    expect(partida.estado.midia?.credibilidade).toEqual(
+      Object.fromEntries(midias.map((m) => [m.id, m.credibilidade])),
+    );
+  });
+
+  it("todo tipo de fato tem molde de manchete", () => {
+    const nomes = {
+      lei: (id: string) => id,
+      quem: {},
+      caixa: {},
+      area: {},
+      programa: (id: string) => id,
+    };
+    for (const tipo of TIPOS_DE_FATO)
+      expect(
+        manchete({ tipo, turno: 1, tamanho: "medio", restam: 1 }, nomes),
+        tipo,
+      ).not.toBe(tipo);
+  });
+
+  it("a manchete troca os ids pelos nomes", () => {
+    const nomes = {
+      lei: () => "Lei X",
+      quem: { p1: "Partido Um", p2: "Partido Dois" },
+      caixa: {},
+      area: {},
+      programa: (id: string) => id,
+    };
+    const f = {
+      tipo: "lei-rejeitada" as const,
+      turno: 1,
+      tamanho: "pequeno" as const,
+      restam: 1,
+      sobre: "x",
+      quem: ["p1", "p2"],
+    };
+    expect(manchete(f, nomes)).toBe(
+      "Congresso derruba Lei X com votos de Partido Um, Partido Dois",
+    );
+    expect(manchete({ ...f, quem: undefined }, nomes)).toBe(
+      "Congresso derruba Lei X",
+    );
+  });
+
+  it("depois do turno, o jornal traz o que aconteceu, o maior primeiro", () => {
+    const partida = criarPartida("brasil-2026", 1);
+    const livre = (partida.regras.governo?.pessoas ?? []).find(
+      (p) => !partida.estado.governo?.caixas.some((c) => c.ministro === p.id),
+    ) as Ficha;
+    const caixa = partida.estado.governo?.caixas[0].molde as string;
+    const jornal =
+      jogar(partida, 1, [{ tipo: "nomear", caixa, ministro: livre.id }]).estado
+        .midia?.jornal ?? [];
+    expect(jornal.length).toBeGreaterThan(0);
+    expect(jornal.every((f) => f.turno === 1)).toBe(true);
   });
 });

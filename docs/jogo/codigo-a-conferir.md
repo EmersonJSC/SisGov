@@ -254,3 +254,16 @@ testes. Os testes não cobrem tudo; conferir estes pontos:
     (Brasil: os 3 declarados). Conferir se a lembrança calculada diz o que o
     Brasil real sentiu (quem gosta do Bolsa Família etc.); o país pode
     declarar a sua à mão.
+
+## G. Jornal mínimo (passo 7, 12/nov)
+
+36. **Tabela de apelo por tipo de fato** (`motor/midia/jornal.ts`): números
+    chutados (eleição 3, escândalo 2,5, programa 1,5…). Só decidem qual
+    manchete abre o jornal.
+37. **Audiência das mídias** (`scripts/gerar-midias.ts`): fórmula
+    `alcance × (1 − distância/máxima)²` entre a bússola do grupo e a da mídia.
+    Os alcances e as bússolas das 9 mídias do Brasil são palpite; as mídias
+    são inventadas, sem marca real.
+38. **Manchetes saíram do `switch` da tela** para
+    `mundo/jornal/manchetes.json` + `partida/jornal.ts`. O texto é o mesmo;
+    conferir a tela do Resultado do turno com os 24 tipos de fato.

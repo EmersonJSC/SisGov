@@ -9,6 +9,7 @@ import {
   INDICES_ESSENCIAIS,
 } from "../estado";
 import { type GovernoDoPais, iniciarGoverno } from "../governo";
+import { iniciarMidia } from "../midia";
 import { iniciarProgramas } from "../programas";
 import { motivoGruposInvalidos, type Marco, rendaDoGrupo } from "../grupos";
 import { type ValorLei, leiAtiva } from "../leis";
@@ -316,6 +317,7 @@ function estadoBase(
           ),
         }
       : {}),
+    midia: iniciarMidia(regras.midia ?? { midias: [] }),
     ...(regras.programas
       ? {
           programas: iniciarProgramas(

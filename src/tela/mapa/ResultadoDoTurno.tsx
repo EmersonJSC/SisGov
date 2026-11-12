@@ -2,12 +2,13 @@
  * Documento "Resultado do turno": o que o Congresso votou e, se houve, a
  * eleição. Usa o papel da janela da lei.
  */
-import { forcaDoFato, type Fato } from "../../motor";
+import { forcaDoFato } from "../../motor";
 import { PACIENCIA_BAIXA, TERMOMETRO_CONVITE } from "../../motor";
 import {
+  manchete,
   nomesDoGoverno,
   nomesPartidos,
-  type NomesDoGoverno,
+  type NomesDoJornal,
   type Partida,
   type Pedido,
   type VisaoPartida,
@@ -39,78 +40,6 @@ export function temResultado(partida: Partida): boolean {
   );
 }
 
-/** Nomes que a manchete usa; o motor só guarda ids. */
-interface Nomes {
-  lei: (id: string) => string;
-  /** Partidos e pessoas, pelo id. */
-  quem: Record<string, string>;
-  governo: NomesDoGoverno;
-  /** Nome que o programa recebeu ao se formar. */
-  programa: (id: string) => string;
-}
-
-/** Manchete do fato. */
-function manchete(fato: Fato, nomes: Nomes): string {
-  const lei = fato.sobre ? nomes.lei(fato.sobre) : "";
-  const caixa = nomes.governo.caixas[fato.sobre ?? ""] ?? fato.sobre ?? "";
-  const area = nomes.governo.esferas[fato.sobre ?? ""] ?? fato.sobre ?? "";
-  const ids = fato.quem ?? [];
-  const quem =
-    ids.length > 3
-      ? `${ids.length} partidos`
-      : ids.map((p) => nomes.quem[p] ?? p).join(", ");
-  switch (fato.tipo) {
-    case "lei-aprovada":
-      return `Congresso aprova ${lei}`;
-    case "lei-rejeitada":
-      return `Congresso derruba ${lei}${quem ? ` com votos de ${quem}` : ""}`;
-    case "partido-saiu-da-base":
-      return `${quem} deixa a base do governo`;
-    case "partido-entrou-na-base":
-      return `${quem} entra na base do governo`;
-    case "emenda":
-      return `Senado muda ${lei} e devolve à Câmara`;
-    case "papel-assinado":
-      return `Presidente assina ${lei}`;
-    case "papel-vetado":
-      return `Presidente veta ${lei}`;
-    case "papel-ignorado":
-      return `Presidente deixa ${lei} sem resposta`;
-    case "veto-derrubado":
-      return `Congresso derruba o veto a ${lei}`;
-    case "decreto":
-      return `Governo decreta ${lei}`;
-    case "decreto-derrubado":
-      return `Congresso derruba o decreto sobre ${lei}`;
-    case "promessa-cumprida":
-      return `Governo cumpre a promessa de ${lei} a ${quem}`;
-    case "promessa-descumprida":
-      return `Governo quebra a promessa de ${lei} a ${quem}`;
-    case "partido-ameaca-sair":
-      return `${quem} ameaça deixar a base`;
-    case "escandalo":
-      return `Escândalo na área ${area}${quem ? `: ${quem}` : ""}`;
-    case "ministro-nomeado":
-      return `${quem} assume o ministério ${caixa}`;
-    case "ministro-demitido":
-      return `Governo troca o ministro ${caixa}; ${quem} perde o cargo`;
-    case "ministerio-oferecido":
-      return `Governo dá o ministério ${caixa} a ${quem}`;
-    case "programa-formado":
-      return `Governo forma o programa ${nomes.programa(fato.sobre ?? "")}`;
-    case "programa-desfeito":
-      return `Programa ${nomes.programa(fato.sobre ?? "")} se desfaz`;
-    case "manchete-contra":
-      return "Imprensa vai contra o governo";
-    case "grupo-com-raiva":
-      return "Grupo com raiva do governo";
-    case "eleicao-vencida":
-      return "Governo vence a eleição";
-    case "eleicao-perdida":
-      return "Governo perde a eleição";
-  }
-}
-
 export function ResultadoDoTurno({
   partida,
   visao,
@@ -129,10 +58,11 @@ export function ResultadoDoTurno({
   const { estado } = partida;
   const partidos = nomesPartidos(partida.pais);
   const governo = nomesDoGoverno(partida);
-  const nomes: Nomes = {
+  const nomes: NomesDoJornal = {
     lei: (id) => lei(id)?.nome ?? id,
     quem: { ...partidos, ...governo.pessoas },
-    governo,
+    caixa: governo.caixas,
+    area: governo.esferas,
     programa: (id) => estado.programas?.vidas[id]?.nome ?? id,
   };
   const eleicao =
@@ -170,6 +100,21 @@ export function ResultadoDoTurno({
               adversário (desgaste {um(eleicao.desgaste)}).
               {estado.encerrada ? " A partida terminou." : ""}
             </p>
+          </section>
+        ) : null}
+        {estado.midia?.jornal.length ? (
+          <section className="jornal-do-turno">
+            <h2>Jornal do turno</h2>
+            <h1 className="titulo-doc">
+              {manchete(estado.midia.jornal[0], nomes)}
+            </h1>
+            <ul className="fatos-turno">
+              {estado.midia.jornal.slice(1).map((f, i) => (
+                <li key={`${f.tipo}-${f.sobre ?? ""}-${i}`}>
+                  <strong>{manchete(f, nomes)}</strong>
+                </li>
+              ))}
+            </ul>
           </section>
         ) : null}
         {fatos.length ? (

@@ -1,0 +1,257 @@
+{
+  "versao": 1,
+  "midias": [
+    {
+      "id": "rede-aurora",
+      "nome": "Rede Aurora",
+      "dono": "privado",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.2
+      },
+      "credibilidade": 62,
+      "audiencia": {
+        "operarios": 0.54,
+        "servicos": 0.62,
+        "campo": 0.66,
+        "sem-trabalho": 0.65,
+        "educacao-saude": 0.54,
+        "burocracia": 0.9,
+        "militares": 0.68,
+        "pequeno-comercio": 0.85,
+        "escritorio-tecnologia": 0.83,
+        "estudantes": 0.44,
+        "cultura-imprensa": 0.38,
+        "aposentados": 0.72,
+        "industria": 0.69,
+        "financas": 0.68,
+        "donos-terra": 0.6,
+        "ambientalistas": 0.42
+      }
+    },
+    {
+      "id": "canal-nacional",
+      "nome": "Canal Nacional",
+      "dono": "estatal",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.1
+      },
+      "credibilidade": 55,
+      "audiencia": {
+        "operarios": 0.46,
+        "servicos": 0.5,
+        "campo": 0.47,
+        "sem-trabalho": 0.53,
+        "educacao-saude": 0.44,
+        "burocracia": 0.46,
+        "militares": 0.33,
+        "pequeno-comercio": 0.36,
+        "escritorio-tecnologia": 0.45,
+        "estudantes": 0.34,
+        "cultura-imprensa": 0.3,
+        "aposentados": 0.44,
+        "industria": 0.29,
+        "financas": 0.29,
+        "donos-terra": 0.24,
+        "ambientalistas": 0.31
+      }
+    },
+    {
+      "id": "jornal-da-capital",
+      "nome": "Jornal da Capital",
+      "dono": "privado",
+      "bussola": {
+        "economico": 0.3,
+        "social": -0.1
+      },
+      "credibilidade": 75,
+      "audiencia": {
+        "operarios": 0.24,
+        "servicos": 0.26,
+        "campo": 0.26,
+        "sem-trabalho": 0.28,
+        "educacao-saude": 0.28,
+        "burocracia": 0.35,
+        "militares": 0.26,
+        "pequeno-comercio": 0.36,
+        "escritorio-tecnologia": 0.45,
+        "estudantes": 0.26,
+        "cultura-imprensa": 0.23,
+        "aposentados": 0.28,
+        "industria": 0.37,
+        "financas": 0.38,
+        "donos-terra": 0.26,
+        "ambientalistas": 0.26
+      }
+    },
+    {
+      "id": "folha-do-povo",
+      "nome": "Folha do Povo",
+      "dono": "privado",
+      "bussola": {
+        "economico": -0.4,
+        "social": -0.3
+      },
+      "credibilidade": 70,
+      "audiencia": {
+        "operarios": 0.35,
+        "servicos": 0.32,
+        "campo": 0.28,
+        "sem-trabalho": 0.35,
+        "educacao-saude": 0.48,
+        "burocracia": 0.26,
+        "militares": 0.17,
+        "pequeno-comercio": 0.21,
+        "escritorio-tecnologia": 0.31,
+        "estudantes": 0.39,
+        "cultura-imprensa": 0.37,
+        "aposentados": 0.24,
+        "industria": 0.19,
+        "financas": 0.19,
+        "donos-terra": 0.12,
+        "ambientalistas": 0.35
+      }
+    },
+    {
+      "id": "rede-fe-e-vida",
+      "nome": "Rede Fé e Vida",
+      "dono": "privado",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.7
+      },
+      "credibilidade": 50,
+      "audiencia": {
+        "operarios": 0.29,
+        "servicos": 0.35,
+        "campo": 0.41,
+        "sem-trabalho": 0.34,
+        "educacao-saude": 0.23,
+        "burocracia": 0.44,
+        "militares": 0.56,
+        "pequeno-comercio": 0.41,
+        "escritorio-tecnologia": 0.32,
+        "estudantes": 0.16,
+        "cultura-imprensa": 0.14,
+        "aposentados": 0.49,
+        "industria": 0.29,
+        "financas": 0.28,
+        "donos-terra": 0.37,
+        "ambientalistas": 0.15
+      }
+    },
+    {
+      "id": "revista-sul",
+      "nome": "Revista Sul",
+      "dono": "privado",
+      "bussola": {
+        "economico": 0.6,
+        "social": 0.1
+      },
+      "credibilidade": 68,
+      "audiencia": {
+        "operarios": 0.11,
+        "servicos": 0.12,
+        "campo": 0.13,
+        "sem-trabalho": 0.13,
+        "educacao-saude": 0.12,
+        "burocracia": 0.2,
+        "militares": 0.17,
+        "pequeno-comercio": 0.24,
+        "escritorio-tecnologia": 0.21,
+        "estudantes": 0.11,
+        "cultura-imprensa": 0.09,
+        "aposentados": 0.15,
+        "industria": 0.29,
+        "financas": 0.28,
+        "donos-terra": 0.2,
+        "ambientalistas": 0.11
+      }
+    },
+    {
+      "id": "radio-interior",
+      "nome": "Rádio Interior",
+      "dono": "privado",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "credibilidade": 58,
+      "audiencia": {
+        "operarios": 0.37,
+        "servicos": 0.43,
+        "campo": 0.48,
+        "sem-trabalho": 0.43,
+        "educacao-saude": 0.32,
+        "burocracia": 0.54,
+        "militares": 0.46,
+        "pequeno-comercio": 0.44,
+        "escritorio-tecnologia": 0.42,
+        "estudantes": 0.24,
+        "cultura-imprensa": 0.21,
+        "aposentados": 0.54,
+        "industria": 0.33,
+        "financas": 0.32,
+        "donos-terra": 0.33,
+        "ambientalistas": 0.22
+      }
+    },
+    {
+      "id": "agencia-global",
+      "nome": "Agência Global",
+      "dono": "estrangeiro",
+      "bussola": {
+        "economico": 0.4,
+        "social": -0.4
+      },
+      "credibilidade": 72,
+      "audiencia": {
+        "operarios": 0.15,
+        "servicos": 0.16,
+        "campo": 0.16,
+        "sem-trabalho": 0.18,
+        "educacao-saude": 0.2,
+        "burocracia": 0.21,
+        "militares": 0.15,
+        "pequeno-comercio": 0.23,
+        "escritorio-tecnologia": 0.29,
+        "estudantes": 0.22,
+        "cultura-imprensa": 0.19,
+        "aposentados": 0.16,
+        "industria": 0.27,
+        "financas": 0.28,
+        "donos-terra": 0.16,
+        "ambientalistas": 0.23
+      }
+    },
+    {
+      "id": "redes",
+      "nome": "Redes sociais",
+      "dono": "rede",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "credibilidade": 35,
+      "audiencia": {
+        "operarios": 0.45,
+        "servicos": 0.49,
+        "campo": 0.47,
+        "sem-trabalho": 0.52,
+        "educacao-saude": 0.49,
+        "burocracia": 0.55,
+        "militares": 0.39,
+        "pequeno-comercio": 0.47,
+        "escritorio-tecnologia": 0.62,
+        "estudantes": 0.41,
+        "cultura-imprensa": 0.36,
+        "aposentados": 0.47,
+        "industria": 0.41,
+        "financas": 0.42,
+        "donos-terra": 0.32,
+        "ambientalistas": 0.39
+      }
+    }
+  ]
+}

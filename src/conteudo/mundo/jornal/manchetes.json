@@ -1,0 +1,43 @@
+{
+  "versao": 1,
+  "manchetes": {
+    "lei-aprovada": { "texto": "Congresso aprova {lei}" },
+    "lei-rejeitada": {
+      "texto": "Congresso derruba {lei}",
+      "comQuem": "Congresso derruba {lei} com votos de {quem}"
+    },
+    "partido-saiu-da-base": { "texto": "{quem} deixa a base do governo" },
+    "partido-entrou-na-base": { "texto": "{quem} entra na base do governo" },
+    "eleicao-vencida": { "texto": "Governo vence a eleição" },
+    "eleicao-perdida": { "texto": "Governo perde a eleição" },
+    "emenda": { "texto": "Senado muda {lei} e devolve à Câmara" },
+    "papel-assinado": { "texto": "Presidente assina {lei}" },
+    "papel-vetado": { "texto": "Presidente veta {lei}" },
+    "papel-ignorado": { "texto": "Presidente deixa {lei} sem resposta" },
+    "veto-derrubado": { "texto": "Congresso derruba o veto a {lei}" },
+    "decreto": { "texto": "Governo decreta {lei}" },
+    "decreto-derrubado": { "texto": "Congresso derruba o decreto sobre {lei}" },
+    "promessa-cumprida": {
+      "texto": "Governo cumpre a promessa de {lei} a {quem}"
+    },
+    "promessa-descumprida": {
+      "texto": "Governo quebra a promessa de {lei} a {quem}"
+    },
+    "partido-ameaca-sair": { "texto": "{quem} ameaça deixar a base" },
+    "ministro-nomeado": { "texto": "{quem} assume o ministério {caixa}" },
+    "ministro-demitido": {
+      "texto": "Governo troca o ministro {caixa}; {quem} perde o cargo"
+    },
+    "ministerio-oferecido": {
+      "texto": "Governo dá o ministério {caixa} a {quem}"
+    },
+    "programa-formado": { "texto": "Governo forma o programa {programa}" },
+    "programa-desfeito": { "texto": "Programa {programa} se desfaz" },
+    "escandalo": {
+      "texto": "Escândalo na área {area}",
+      "comQuem": "Escândalo na área {area}: {quem}"
+    },
+    "manchete-contra": { "texto": "Imprensa vai contra o governo" },
+    "grupo-com-raiva": { "texto": "Grupo com raiva do governo" }
+  }
+}

@@ -14,6 +14,7 @@
     "medir": "vite-node scripts/medir.ts",
     "governo": "vite-node scripts/gerar-governo.ts",
     "programas": "vite-node scripts/gerar-programas.ts",
+    "midias": "vite-node scripts/gerar-midias.ts",
     "mandato": "vite-node scripts/mandato.ts",
     "contas": "vite-node scripts/contas.ts",
     "gasto": "vite-node scripts/gasto.ts",

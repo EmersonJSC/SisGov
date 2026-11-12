@@ -164,7 +164,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 - ✅ **R7.18** 73 programas (aba Programas; 1 espera leis que o jogo ainda não tem): forma-se quando a maior parte das leis anda o mínimo na direção dele dentro do mandato; desfaz-se se elas voltam. (12/nov)
 - ◐ **R7.19** Lembrança e nostalgia: formado, os grupos lembram (pesa no voto); desfeito, vira nostalgia; recriado, o jogo pergunta se usa o mesmo nome. (12/nov: a lembrança de cada grupo é guardada e a nostalgia fica; refeito, volta com o mesmo nome. Falta pesar no voto e perguntar o nome.)
-- ◐ **R7.20** Nome: o país dá o nome próprio; senão o gerador cria pelos moldes e pelas 4 palavras; o jornal anuncia. (12/nov: país e gerador feitos; o anúncio é uma manchete no Resultado do turno, o jornal vem no passo 7.)
+- ◐ **R7.20** Nome: o país dá o nome próprio; senão o gerador cria pelos moldes e pelas 4 palavras; o jornal anuncia. (12/nov: feito; o jornal do turno anuncia o programa formado.)
 - ✅ **R7.21** Programa espalhado por vários ministérios anda no passo do ministro mais fraco. (12/nov: o programa espera o maior atraso entre as leis dele, 0 ou 1 turno.)
 
 **Construção (programas)**
@@ -292,8 +292,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 14. Mídia
 
-- ☐ **R14.1** Mídias do país (8 maiores e redes): dono, bússola, audiência por grupo, credibilidade.
-- ☐ **R14.4** Jornal do turno: a notícia de maior impacto sai dos fatos.
+- ◐ **R14.1** Mídias do país (8 maiores e redes): dono, bússola, audiência por grupo, credibilidade. (12/nov: Brasil com 8 mídias inventadas e as redes, no estado; ninguém lê ainda, é o passo 12.)
+- ✅ **R14.4** Jornal do turno: a notícia de maior impacto sai dos fatos. (12/nov: as 3 maiores, no topo do Resultado do turno.)
 - ☐ **R14.3** Pauta: cada mídia escolhe uns 3 fatos (tamanho, lado, dono, medo).
 - ☐ **R14.2** Enquadramento: o efeito da lei na opinião passa pela mídia.
 - ☐ **R14.8** A mídia muda o lado do pop devagar (bolha, redes, freio da instrução).
@@ -305,7 +305,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 **Construção**
 
-- Dados: `paises/<id>/midias.json` (nome inventado, dono, bússola, audiência, credibilidade); manchetes por moldes em `mundo/manchetes.json`.
+- Dados: `paises/<id>/midias.json` (nome inventado, dono, bússola, audiência, credibilidade); manchetes por moldes em `mundo/jornal/manchetes.json`.
 - Estado: `midias` (credibilidade, pauta do turno).
 - Módulo: `midia`.
 - Turno: depois de todos os módulos que emitem fatos.

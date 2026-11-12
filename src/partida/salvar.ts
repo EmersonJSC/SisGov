@@ -50,6 +50,7 @@ export function carregarPartida(texto: string): Partida {
       congresso: arquivo.estado.congresso ?? nova.estado.congresso,
       governo: arquivo.estado.governo ?? nova.estado.governo,
       programas: arquivo.estado.programas ?? nova.estado.programas,
+      midia: arquivo.estado.midia ?? nova.estado.midia,
     },
   };
 }
