@@ -28,8 +28,11 @@ continuar no poder governando por leis.**
   quem constrói é a economia.
 - **Não há meta pronta.** O jogador leva o país para onde quiser. Quem joga
   bem tende a enriquecer e industrializar o país, mas o jogo não cobra isso.
-- **Perder** é deixar o poder: perder a eleição, ou ver a Presidência cair
-  nas mãos de outro partido e não conseguir recuperá-la.
+- **O jogador é o governo** (12/nov): controla tudo o que um governo controla
+  (seção 6, "A fronteira do governo").
+- **Perder** é perder o poder federal: a Presidência (no parlamentarismo, o
+  chefe de governo) sai do seu partido, por qualquer caminho. A partida acaba
+  (12/nov, para agora; jogar como oposição fica para depois).
 - **Gênero:** simulador político de governo, com uma economia viva de
   empresas, obras e bolsa (inspiração no Victoria 3, só como ideia).
 
@@ -193,8 +196,9 @@ zé-ninguém quase ninguém procura; espiar um líder, juiz ou jornalista, sim.
 
 - O mandato tem a duração da lei do país (4 anos = 24 turnos). No fim há
   eleição; vencer abre outro mandato, com o desgaste maior.
-- A partida termina quando o partido deixa o poder. Não há vitória final: o
-  placar é quanto tempo o partido governou e que país deixou.
+- A partida termina quando o partido perde o poder federal (seção 6, "Como se
+  perde o poder"). Não há vitória final: o placar é quanto tempo o partido
+  governou e que país deixou.
 
 ### Por que é difícil escolher
 
@@ -245,7 +249,8 @@ alia e o quanto ele se afasta da própria história.
 - São fichas (ver abaixo). O presidente dá o tom: carisma pesa na
   aprovação, honestidade no risco de escândalo, habilidade política na
   relação com o Congresso.
-- O vice costuma vir de um partido aliado: é o preço da coligação.
+- O vice costuma vir de um partido aliado: é o preço da coligação, e um risco:
+  se ele assumir, o poder sai do seu partido e a partida acaba.
 
 ### Sucessão
 
@@ -255,12 +260,8 @@ alia e o quanto ele se afasta da própria história.
 - **Quem assume é o vice**, depois a linha de sucessão do país.
 - **Sucessor do seu partido:** o governo continua, com um choque de
   aprovação (simpatia ou caos) e a ficha nova no lugar.
-- **Sucessor de outro partido:** você **continua jogando**, mas com
-  **desvantagem até a próxima eleição**: o presidente é de outro partido e
-  puxa para a bússola dele, pode vetar leis suas, troca ministros seus pelos
-  dele, e a mídia e os eleitores passam a dividir o crédito e a culpa. Você
-  continua no governo como partido da base (ou sai dele) e tenta recuperar a
-  Presidência na urna.
+- **Sucessor de outro partido**, mesmo aliado: o poder federal sai do seu
+  partido e a partida acaba (12/nov).
 - **Impeachment:** a oposição abre o pedido; o Congresso aceita e, quando o
   país tem Senado, o Senado julga. Pesa a maioria contra você, radicais
   altos e poucos lealistas, e escândalos.
@@ -303,6 +304,39 @@ alia e o quanto ele se afasta da própria história.
   esferas; apagar é redistribuí-las. Infraestrutura pode ser Transporte,
   Energia e Saneamento, e outro governo pode separar tudo. A divisão muda com
   quem governa, como na realidade.
+
+### A fronteira do governo (12/nov)
+
+O jogador é o governo. As fichas (presidente, vice, ministros) não decidem por
+ele: mudam o quanto ele consegue (carisma, competência, honestidade, lealdade)
+e podem cair.
+
+- **Controla:** leis (propor, assinar, vetar, decretar se a lei deixar);
+  pessoas (nomear e demitir ministros e chefes de órgão, indicar juiz na vaga);
+  verbas, sempre por lei; estatais (Operações); exterior (posições por país e
+  atos); polícia federal e Forças Armadas, dentro da lei de autonomia delas;
+  emissora estatal e inteligência; a mesa inteira.
+- **Só influencia:** Congresso (moedas, termômetro, paciência), Justiça
+  (indicação e pressão, com rastro), governadores (verba e termômetro), mídia
+  privada, empresas, grupos e pops (leis e a vida deles), banco central (se a
+  lei de independência deixar).
+
+### Como se perde o poder (12/nov)
+
+Perder o poder federal acaba a partida.
+
+| Caminho | Quando | Fim? |
+|---|---|---|
+| Eleição | voto no fim do mandato | se outro partido vence |
+| Morte, assassinato, renúncia | idade, atentado, escândalo grande | se o vice é de outro partido |
+| Impeachment (presidencialismo) | fato grave, aprovação abaixo de 30%, 2/3 dos votos | se o vice é de outro partido |
+| Moção de desconfiança (parlamentarismo) | a base sai e a maioria vota contra | se a nova maioria não é sua |
+| Golpe | Risco de golpe alto, Forças Armadas pouco leais | sempre |
+| Guerra civil | grupos grandes com raiva e armas divididas | se o governo perde a capital |
+| Ala rival (partido único) | perder o congresso do partido | sempre |
+
+No semipresidencialismo, perder a maioria não tira a Presidência: vira
+coabitação (seção 12) e o jogo segue.
 
 ### Órgãos (11/nov)
 
@@ -363,7 +397,7 @@ O custo vem de quem tem as armas e de quem tem raiva.
   adiar a eleição) sobe a raiva dos grupos contrários.
 - Raiva alta com satisfação baixa: protesto, atentado e, no topo, tentativa de
   assassinato do presidente; a chance cai com a segurança do presidente. Se der
-  certo, a partida acaba.
+  certo, vale a sucessão: vice de outro partido acaba a partida.
 - Sem apoio armado (Forças Armadas pouco leais, polícia dividida, facções
   fortes), o Risco de golpe sobe a cada turno.
 - Guerra civil: grupos grandes com raiva e armas divididas. O país racha por
@@ -689,8 +723,7 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   custa medo nas outras alas, coesão e manchete. A população **vota na base**
   (eleições locais), o que o motor não simula; grupo muito insatisfeito
   protesta, enfraquece a ala do jogador e sobe o Risco de golpe. Se a ala rival
-  ganha o comando, o jogador segue como ala, como "sucessor de outro partido",
-  até o próximo congresso.
+  ganha o comando, a partida acaba (12/nov).
 - **Quórum (11/nov):** cada lei declara a classe dela (comum, absoluta,
   constitucional, mandato); o país começa com o valor de cada classe, e a lei
   **Quórum das votações** (abas Constituição, Derrubar veto, Imposto e dívida)
@@ -809,7 +842,7 @@ agem juntas na política; a organização tem nome, líder e ação própria.
 
 - Antes da eleição o jogador monta a chapa: candidato e vice, entre fichas
   do partido e dos aliados. Ministro com bom desempenho vira candidato
-  natural; vice de aliado traz os votos dele.
+  natural; vice de aliado traz os votos dele, mas se assumir, a partida acaba.
 
 ### Coligação eleitoral
 
@@ -1765,11 +1798,9 @@ em 12/nov: o que estava decidido foi para o sistema (Órgãos, Justiça, Caminho
 autoritário e Governadores na seção 6; decreto e medida provisória juntos na
 seção 12; promessa e cota na seção 13; mundo na seção 15).
 
-**Próxima frente: o governo (12/nov)**
-- O jogador é o partido, não o presidente (seção 1). Falta desenhar a mecânica
-  de governo a partir disso: o que o presidente (uma ficha) faz por conta
-  própria, o que o partido manda e o que acontece quando um presidente de outro
-  partido assume.
+**Governo (12/nov)**
+- A fronteira do governo e como se perde o poder foram decididos (seção 6).
+- Jogar como oposição depois de perder o poder: para depois.
 - Quantos ministérios o país tem no começo.
 
 **Base do jogo (05/nov)**
