@@ -4,6 +4,7 @@
   "nome": "Crédito para comprar terra",
   "descricao": "Empréstimo barato do governo para o pequeno agricultor comprar terra de quem quer vender, pelo preço de mercado.",
   "camada": "jogabilidade",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 0.01 },

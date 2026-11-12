@@ -4,6 +4,7 @@
   "nome": "Carreira exclusiva",
   "descricao": "Quanto o profissional da rede pública fica só nela, com salário de carreira. Rende mais, a verba vai mais longe e o plano não o leva; mas custa salário, e parte larga a profissão por não poder ter consultório.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

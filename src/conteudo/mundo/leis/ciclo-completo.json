@@ -5,6 +5,7 @@
   "descricao": "Até onde a mesma polícia patrulha e investiga. Escada: separado; só em flagrante; crimes leves; todos os crimes.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

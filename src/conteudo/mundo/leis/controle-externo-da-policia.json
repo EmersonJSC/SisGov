@@ -5,6 +5,7 @@
   "descricao": "Quem investiga a polícia: ela mesma, outra polícia ou um órgão independente.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

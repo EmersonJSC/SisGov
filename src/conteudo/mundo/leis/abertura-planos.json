@@ -4,6 +4,7 @@
   "nome": "Abertura de planos",
   "descricao": "Quanto o mercado de planos de saúde pode vender e crescer. Só compra quem tem renda.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

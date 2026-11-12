@@ -5,6 +5,7 @@
   "descricao": "Máximo de horas de trabalho por semana.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "horas por semana",

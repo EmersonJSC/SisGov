@@ -5,6 +5,7 @@
   "descricao": "Quanto o casal jovem pode pegar emprestado para a casa, de 0 a 40 salários mínimos. A cada filho, um terço da dívida é perdoado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário mínimo",

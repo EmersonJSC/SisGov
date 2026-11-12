@@ -5,6 +5,8 @@
   "descricao": "Quais veículos passam por vistoria: caminhão e ônibus, carro velho, moto velha, todo veículo todo ano.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "opcoes",
   "opcoes": [
     {

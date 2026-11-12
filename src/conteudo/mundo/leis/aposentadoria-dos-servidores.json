@@ -5,6 +5,7 @@
   "descricao": "Como se aposenta quem trabalha para o Estado. Escada: salário integral; o aposentado também contribui; mesmo teto do trabalhador comum.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "opcoes",
   "opcoes": [
     {

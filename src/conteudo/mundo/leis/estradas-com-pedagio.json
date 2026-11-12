@@ -5,6 +5,8 @@
   "descricao": "Quanto das estradas federais fica com empresas que consertam e cobram pedágio, de 0% a 100%. O jogo escolhe os trechos sozinho.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

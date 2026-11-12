@@ -5,6 +5,7 @@
   "descricao": "Quantos policiais usam câmera no uniforme.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

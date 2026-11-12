@@ -5,6 +5,7 @@
   "descricao": "Em que casos a polícia pode atirar para matar. Escada: só em legítima defesa; também para salvar refém ou outra pessoa em risco imediato; também contra quem foge armado depois de um crime; também contra qualquer suspeito armado em área de crime.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

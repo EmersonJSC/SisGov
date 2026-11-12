@@ -4,6 +4,7 @@
   "nome": "Saúde ambiental",
   "descricao": "Até onde o Estado fiscaliza água, ar e lixo para evitar doença. Rende mais onde o ambiente está pior; mas custa verba e pesa nas fábricas.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -4,6 +4,7 @@
   "nome": "Missões médicas",
   "descricao": "Quantos profissionais o Estado manda atender em outros países. Traz dinheiro e reputação; mas quem vai não atende aqui, e com gente demais fora a fila cresce em casa.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

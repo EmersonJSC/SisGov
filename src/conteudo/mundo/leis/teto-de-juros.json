@@ -5,6 +5,7 @@
   "descricao": "Juro máximo que o banco pode cobrar. Uma aba por tipo de crédito (cartão, cheque especial, empréstimo pessoal, consignado), cada uma de sem teto até teto baixo, e uma aba \"Todos\". Por ora, uma régua só para todos os setores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

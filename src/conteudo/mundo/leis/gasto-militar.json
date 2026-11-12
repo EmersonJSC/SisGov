@@ -4,6 +4,7 @@
   "nome": "Verba militar",
   "descricao": "Dinheiro do governo para as forças armadas: soldo, equipamento e manutenção.",
   "camada": "jogabilidade",
+  "esfera": "defesa",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

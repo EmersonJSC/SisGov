@@ -5,6 +5,8 @@
   "descricao": "Se ofender bandeira, hino, policiais ou juízes é crime. Escada: livre; punido só se houver ameaça ou violência; multa por ofender bandeira e hino; multa também por ofender policiais e juízes; prisão por ofender símbolos e autoridades.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "direitos-e-liberdades",
+  "subesfera": "liberdades",
   "forma": "opcoes",
   "opcoes": [
     {

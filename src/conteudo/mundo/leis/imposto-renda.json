@@ -4,6 +4,7 @@
   "nome": "Imposto de renda",
   "descricao": "Quanto as pessoas pagam sobre o que ganham.",
   "camada": "essencial",
+  "esfera": "impostos",
   "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",

@@ -4,6 +4,7 @@
   "nome": "Verba da polícia",
   "descricao": "Dinheiro do governo para policiamento e investigação.",
   "camada": "jogabilidade",
+  "esfera": "seguranca-publica",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

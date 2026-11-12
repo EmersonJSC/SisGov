@@ -4,6 +4,7 @@
   "nome": "Coparticipação",
   "descricao": "Quanto quem usa a rede pública paga por consulta. Corta o uso à toa e traz dinheiro para a rede; mas quem não tem bolso deixa de ir, e quem deixa de ir adoece.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

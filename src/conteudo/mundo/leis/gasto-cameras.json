@@ -4,6 +4,7 @@
   "nome": "Verba das câmeras",
   "descricao": "Dinheiro do governo para instalar e manter câmeras de vigilância nas ruas e nos prédios públicos.",
   "camada": "jogabilidade",
+  "esfera": "seguranca-publica",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

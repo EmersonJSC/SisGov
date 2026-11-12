@@ -5,6 +5,8 @@
   "descricao": "Quanto custa ser pego roubando dinheiro público. Escada: devolve o dinheiro e paga multa; perde o cargo e não pode ser candidato; prisão em regime fechado; prisão e perda dos bens sem origem.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "controle-e-transparencia",
   "forma": "opcoes",
   "opcoes": [
     {

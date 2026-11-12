@@ -5,6 +5,7 @@
   "descricao": "Como os militares se aposentam em comparação com os demais trabalhadores. Escada: mesmas regras de todo mundo; idade mínima menor que a dos civis; idade menor e salário cheio na aposentadoria; idade menor, salário cheio e pensão vitalícia para a família.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "opcoes",
   "opcoes": [
     {

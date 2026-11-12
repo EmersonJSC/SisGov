@@ -5,6 +5,7 @@
   "descricao": "Dinheiro do Estado para exportadores. A lei tem uma aba por setor, cada uma com a sua régua de % do PIB. Por ora, uma régua só para todos os setores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comercio-exterior-e-capital",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

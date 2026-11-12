@@ -5,6 +5,8 @@
   "descricao": "Quem é condenado por corrupção deixa de contratar com o Estado. Escada: nada; só a condenada; também as do mesmo grupo; volta com acordo e multa.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "obras",
   "forma": "opcoes",
   "opcoes": [
     {

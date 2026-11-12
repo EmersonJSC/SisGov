@@ -5,6 +5,7 @@
   "descricao": "A inflação que o Banco Central persegue, de 0 a 10% ao ano.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

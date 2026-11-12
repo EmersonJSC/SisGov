@@ -5,6 +5,7 @@
   "descricao": "Quanto aparelhos, prédios e fábricas precisam economizar energia: de nenhum até aparelhos, prédios e indústria.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "opcoes",
   "opcoes": [
     {

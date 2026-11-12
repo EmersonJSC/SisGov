@@ -5,6 +5,8 @@
   "descricao": "Verba do órgão que ensina o pequeno produtor a plantar e criar melhor.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

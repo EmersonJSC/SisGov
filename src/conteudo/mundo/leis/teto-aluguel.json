@@ -4,6 +4,7 @@
   "nome": "Teto de aluguel",
   "descricao": "Quanto o aluguel pode subir por ano, além da inflação.",
   "camada": "jogabilidade",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

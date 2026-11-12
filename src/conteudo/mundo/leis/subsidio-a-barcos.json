@@ -5,6 +5,8 @@
   "descricao": "Quanto o Estado paga por barco de pesca.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "pesca",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

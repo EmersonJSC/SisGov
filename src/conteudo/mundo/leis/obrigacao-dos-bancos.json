@@ -5,6 +5,7 @@
   "descricao": "Quanto os bancos precisam avisar o governo sobre movimentações suspeitas. Escada: nenhuma; avisar só valores muito altos; avisar valores médios e guardar os dados por cinco anos; avisar qualquer movimento fora do padrão do cliente, com multa para o banco que não avisar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

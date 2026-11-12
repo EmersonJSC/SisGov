@@ -5,6 +5,8 @@
   "descricao": "Quanto o candidato precisa mostrar do que tem e do que deve. Escada: não precisa; só os bens, uma vez, na candidatura; bens e dívidas todo ano; bens e dívidas do candidato e da família, conferidos pela Receita.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "controle-e-transparencia",
   "forma": "opcoes",
   "opcoes": [
     {

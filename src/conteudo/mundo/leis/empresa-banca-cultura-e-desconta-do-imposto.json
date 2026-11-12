@@ -5,6 +5,8 @@
   "descricao": "Quanto do patrocínio a cultura e esporte a empresa desconta do imposto, de 0 a 100%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "cultura-e-esporte",
+  "subesfera": "cultura",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

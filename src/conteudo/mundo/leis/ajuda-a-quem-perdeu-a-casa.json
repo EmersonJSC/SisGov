@@ -5,6 +5,7 @@
   "descricao": "O que a família atingida por desastre recebe, cada degrau incluindo o anterior: abrigo e cesta; aluguel por meses; casa nova.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa-civil",
   "forma": "opcoes",
   "opcoes": [
     {

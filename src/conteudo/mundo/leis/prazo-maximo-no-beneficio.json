@@ -5,6 +5,7 @@
   "descricao": "Por quanto tempo uma família pode receber a Transferência de renda.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "meses",
   "faixa": {

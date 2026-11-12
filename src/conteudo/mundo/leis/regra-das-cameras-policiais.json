@@ -5,6 +5,7 @@
   "descricao": "Se o policial usa câmera no uniforme e quem decide ligar. Escada: sem câmera; câmera que o policial liga quando quiser; câmera sempre ligada durante o turno; câmera sempre ligada e imagens revistas por órgão independente.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

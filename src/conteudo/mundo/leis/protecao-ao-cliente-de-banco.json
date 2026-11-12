@@ -5,6 +5,7 @@
   "descricao": "O que o banco deve ao cliente. Escada: nada; custo total claro no contrato; 7 dias para desistir e fim da tarifa escondida; órgão que recebe reclamação e manda devolver.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

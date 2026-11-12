@@ -5,6 +5,7 @@
   "descricao": "Escada: sem regra, avisar quando é IA, testes em crédito, emprego, saúde e polícia, proibir usos perigosos, ou licença para modelos grandes.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -4,6 +4,7 @@
   "nome": "Verba de habitação",
   "descricao": "Dinheiro do governo para construir casas e entregar a quem não tem.",
   "camada": "jogabilidade",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

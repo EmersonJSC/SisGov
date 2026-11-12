@@ -6,6 +6,8 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "parte_de": "Mercado de carbono",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,7 @@
   "descricao": "Quanto o governo paga do pacote de viagem na baixa temporada, de 0 a 80%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,7 @@
   "descricao": "Quanto a farmácia pode subir o preço do remédio por ano. Régua: livre; inflação mais folga; só a inflação; abaixo da inflação.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

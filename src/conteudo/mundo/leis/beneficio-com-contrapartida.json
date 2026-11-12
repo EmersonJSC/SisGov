@@ -5,6 +5,7 @@
   "descricao": "O que quem recebe ajuda do governo precisa fazer em troca. Escada: nada, a ajuda é livre; filhos na escola e vacina em dia; curso ou trabalho comunitário para os adultos; emprego ou curso obrigatório para quem pode trabalhar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "opcoes",
   "opcoes": [
     {

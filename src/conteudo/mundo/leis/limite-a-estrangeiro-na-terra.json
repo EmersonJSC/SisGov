@@ -5,6 +5,7 @@
   "descricao": "Até onde quem é de fora pode ter terra: livre, teto por município, só arrendar, proibido.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "opcoes",
   "opcoes": [
     {

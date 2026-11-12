@@ -5,6 +5,7 @@
   "descricao": "Que regras existem para comprar arma. Escada: venda livre; checagem de antecedentes; checagem mais curso e exame de tiro; licença só com motivo comprovado e limite de armas por pessoa; proibido para civis.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

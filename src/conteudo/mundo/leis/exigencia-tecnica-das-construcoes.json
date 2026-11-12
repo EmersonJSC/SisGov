@@ -5,6 +5,8 @@
   "descricao": "O que todo prédio tem que cumprir. Escada: mínima; padrão; rigorosa (incêndio, enchente, terremoto).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "obras",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "De 0 a 100%, quanto da terra o órgão compra e quanto desapropria.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,7 @@
   "descricao": "Quais crimes podem ter tornozeleira ou serviço comunitário no lugar da prisão. Escada: prisão para qualquer crime; serviço comunitário só para infrações mínimas; tornozeleira ou serviço também para crimes leves; tornozeleira ou serviço também para crimes médios sem violência.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Quem pode vender remédio. Escada: só farmácia; remédio sem receita também no mercado; venda pela internet; receita só para remédio controlado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

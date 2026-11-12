@@ -5,6 +5,7 @@
   "descricao": "Quem espera o julgamento preso. Escada: ninguém, só casos raros; só quem cometeu crime violento; também quem cometeu crime com pena alta; a maioria dos acusados de crime.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "opcoes",
   "opcoes": [
     {

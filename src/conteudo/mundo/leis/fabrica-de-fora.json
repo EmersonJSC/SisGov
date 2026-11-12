@@ -4,6 +4,7 @@
   "nome": "Fábrica estrangeira no país",
   "descricao": "O que o país pede de quem abre fábrica aqui.",
   "camada": "jogabilidade",
+  "esfera": "comercio-exterior-e-capital",
   "forma": "opcoes",
   "opcoes": [
     {

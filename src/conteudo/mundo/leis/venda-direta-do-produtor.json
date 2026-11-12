@@ -5,6 +5,8 @@
   "descricao": "Até onde o pequeno pode vender sem registro: proibida, feira da cidade, dentro do estado, livre.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Até que idade o jovem é obrigado a estudar. Régua: de 10 a 18 anos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

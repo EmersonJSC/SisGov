@@ -5,6 +5,7 @@
   "descricao": "Quanto de bebida o motorista pode ter no sangue. Escada: sem limite; limite alto com multa; limite baixo com multa e suspensão da carteira; tolerância zero com prisão.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "vicios",
   "forma": "opcoes",
   "opcoes": [
     {

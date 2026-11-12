@@ -4,6 +4,7 @@
   "nome": "Transferência de renda",
   "descricao": "Dinheiro pago direto às famílias mais pobres.",
   "camada": "jogabilidade",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

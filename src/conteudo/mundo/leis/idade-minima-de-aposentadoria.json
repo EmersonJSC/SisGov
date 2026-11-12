@@ -5,6 +5,7 @@
   "descricao": "Idade a partir da qual se pode aposentar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

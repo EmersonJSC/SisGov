@@ -5,6 +5,7 @@
   "descricao": "Quantos dias por ano uma casa pode ser alugada por dia, por aplicativo. Régua: de 0 a 365 dias por ano.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "dias por ano",

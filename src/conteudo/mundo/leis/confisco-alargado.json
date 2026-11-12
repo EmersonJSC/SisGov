@@ -5,6 +5,7 @@
   "descricao": "Que bens o Estado pode tomar de quem é ligado ao crime. Escada: só bens provados do crime após condenação; também bens ligados ao crime antes da condenação; também patrimônio que não bate com a renda de condenados; patrimônio que não bate com a renda de qualquer investigado, que precisa provar que é legal.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

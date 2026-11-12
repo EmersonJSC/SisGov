@@ -5,6 +5,7 @@
   "descricao": "Vai de livre, passa por taxa sobre entrada especulativa, até controle de saída.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

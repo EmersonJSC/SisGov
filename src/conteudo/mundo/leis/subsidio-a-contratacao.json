@@ -5,6 +5,7 @@
   "descricao": "O Estado paga parte do salário de quem é contratado no privado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

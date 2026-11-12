@@ -5,6 +5,7 @@
   "descricao": "Se há religião na escola pública e de que jeito. Escada: nenhuma religião na escola; aula opcional sobre a história de todas as religiões; aula opcional da religião escolhida pela família; aula obrigatória da religião da maioria.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

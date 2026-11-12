@@ -5,6 +5,7 @@
   "descricao": "Quanto da Transferência de renda só pode ser gasto em comida, de 0% a 100%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

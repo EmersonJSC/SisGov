@@ -5,6 +5,8 @@
   "descricao": "Quanto o Estado paga de desconto em cada carro elétrico.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

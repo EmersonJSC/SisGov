@@ -4,6 +4,7 @@
   "nome": "Atenção preventiva",
   "descricao": "Dinheiro para agentes da comunidade e cuidado simples, perto de casa. Alcança quem está na fila sem hospital nem médico.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

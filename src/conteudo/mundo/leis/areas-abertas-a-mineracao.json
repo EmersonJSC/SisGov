@@ -5,6 +5,7 @@
   "descricao": "Onde mina nova pode abrir. Escada: nenhuma área nova; só onde já tem mina; terras do governo; todo o país, fora das áreas protegidas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "opcoes",
   "opcoes": [
     {

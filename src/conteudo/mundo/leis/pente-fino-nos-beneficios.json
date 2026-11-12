@@ -5,6 +5,7 @@
   "descricao": "Quanto o governo confere quem recebe benefício para cortar fraudes. Escada: nenhuma conferência; conferência uma vez por ano em um cadastro; cruzamento constante de vários cadastros; recadastro obrigatório com corte automático de quem não responde.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "opcoes",
   "opcoes": [
     {

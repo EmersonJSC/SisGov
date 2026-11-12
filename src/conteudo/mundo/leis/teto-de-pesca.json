@@ -5,6 +5,8 @@
   "descricao": "% do peixe que pode ser tirado por ano.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "pesca",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

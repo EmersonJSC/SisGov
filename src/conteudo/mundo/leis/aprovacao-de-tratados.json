@@ -5,6 +5,7 @@
   "descricao": "Quem aprova os tratados com outros países: só o presidente, o Congresso, ou referendo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "relacoes-exteriores",
   "forma": "opcoes",
   "opcoes": [
     {

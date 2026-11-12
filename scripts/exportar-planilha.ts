@@ -24,6 +24,7 @@ const PLANILHA = "docs/jogo/leis.xlsx";
 const PASTA_LEIS = "src/conteudo/mundo/leis";
 const VARIAVEIS = "src/conteudo/mundo/indicadores/variaveis.json";
 const AREAS = "src/conteudo/mundo/areas/areas.json";
+const MOLDES = "src/conteudo/mundo/ministerios/moldes.json";
 
 /** Área do mapa de cada esfera da planilha (o mapa ainda tem 8 áreas). */
 const AREA_DA_ESFERA: Record<string, string> = {
@@ -397,6 +398,8 @@ function exportarPedaco(l: Linha, p: Pedaco, parte: boolean): void {
     origem: ORIGEM,
     ...(parte ? { parte_de: l["Lei"] } : {}),
     ...(l["Classe"] && l["Classe"] !== "comum" ? { classe: l["Classe"] } : {}),
+    esfera: kebab(l["Esfera"]),
+    ...(l["Subesfera"] ? { subesfera: kebab(l["Subesfera"]) } : {}),
   };
   let lei: Json;
   if (p.degraus) {
@@ -491,6 +494,43 @@ writeFileSync(
 );
 
 writeFileSync(AREAS, `${JSON.stringify(areas, null, 2)}\n`);
+
+// ---------- moldes de ministério (aba Ministérios) ----------
+
+/** "Estado e eleições: Governo" → { esfera, subesfera }; "tudo o que sobrar" → sobra. */
+function esferasDoMolde(texto: string) {
+  const partes = texto.split(";").map((p) => p.trim());
+  const sobra = partes.some((p) => /sobrar/i.test(p));
+  const esferas = partes
+    .filter((p) => p && !/sobrar/i.test(p))
+    .map((p) => {
+      const [esfera, sub] = p.split(":").map((t) => t.trim());
+      return {
+        esfera: kebab(esfera),
+        ...(sub ? { subesfera: kebab(sub) } : {}),
+      };
+    });
+  return { esferas, sobra };
+}
+
+const moldes = aba("Ministérios").map((l) => {
+  const nome = l["Ministério (nome de função)"];
+  return {
+    id: kebab(nome.replace(/\s*\(.*\)\s*$/, "")),
+    nome: nome.replace(/\s*\(.*\)\s*$/, ""),
+    tipo: l["Tipo"],
+    ...esferasDoMolde(l["Esferas e subesferas"]),
+  };
+});
+/** Nome de cada esfera, para a tela dar nome ao órgão dela. */
+const esferas = Object.fromEntries(
+  aba("Leis").map((l) => [kebab(l["Esfera"]), l["Esfera"]]),
+);
+writeFileSync(
+  MOLDES,
+  `${JSON.stringify({ versao: 1, origem: ORIGEM, esferas, moldes }, null, 2)}\n`,
+);
+console.log("Moldes de ministério:", moldes.length);
 
 console.log("Leis gravadas:", contagem);
 console.log("Índices novos:", novosIndices.length);

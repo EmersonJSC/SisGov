@@ -5,6 +5,8 @@
   "descricao": "Quanto do dinheiro das campanhas pode vir de empresas. Régua: de 0% a 100% do gasto da campanha.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "eleicoes",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

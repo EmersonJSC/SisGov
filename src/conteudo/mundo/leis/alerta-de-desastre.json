@@ -5,6 +5,7 @@
   "descricao": "Como o país avisa antes do desastre, cada degrau incluindo o anterior: nenhum; aviso por celular; sirenes em áreas de risco; rede nacional de monitoramento.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa-civil",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -4,6 +4,8 @@
   "nome": "Concorrência (antitruste)",
   "descricao": "O que o governo faz contra empresas grandes demais.",
   "camada": "jogabilidade",
+  "esfera": "empresas-e-estatais",
+  "subesfera": "estatais-e-regras",
   "forma": "opcoes",
   "opcoes": [
     {

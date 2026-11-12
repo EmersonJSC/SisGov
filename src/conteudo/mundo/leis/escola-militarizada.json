@@ -5,6 +5,7 @@
   "descricao": "Quantas escolas públicas têm disciplina militar. Escada: nenhuma; só algumas escolas de bairros violentos; as escolas que a comunidade pedir; todas as escolas públicas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

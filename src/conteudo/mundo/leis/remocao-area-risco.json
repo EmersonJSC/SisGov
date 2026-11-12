@@ -4,6 +4,7 @@
   "nome": "Remoção de área de risco",
   "descricao": "De onde o governo pode tirar quem mora em casa precária.",
   "camada": "jogabilidade",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

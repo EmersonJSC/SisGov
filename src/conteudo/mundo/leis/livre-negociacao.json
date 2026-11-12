@@ -5,6 +5,7 @@
   "descricao": "O que o acordo entre empresa e empregado pode mudar em relação à lei. Escada: nada, a lei vale sempre; só horário e jornada; também férias e intervalos; quase tudo, menos salário mínimo e segurança.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

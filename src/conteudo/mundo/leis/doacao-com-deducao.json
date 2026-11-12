@@ -5,6 +5,7 @@
   "descricao": "Quanto do valor doado a entidades pode ser descontado do imposto de quem doa. Régua: de 0% a 50% da doação descontada do imposto.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

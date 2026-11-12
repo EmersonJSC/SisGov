@@ -5,6 +5,7 @@
   "descricao": "Subsídio para companhias construírem usinas solares e eólicas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

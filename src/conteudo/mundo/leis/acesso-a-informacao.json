@@ -5,6 +5,8 @@
   "descricao": "Quanto o governo é obrigado a mostrar e responder. Escada: nada obrigatório; gastos publicados no site; qualquer pessoa pede dados e o governo responde em até 20 dias; todos os contratos no site em tempo real e punição para quem esconde.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "controle-e-transparencia",
   "forma": "opcoes",
   "opcoes": [
     {

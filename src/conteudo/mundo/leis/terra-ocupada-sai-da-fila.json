@@ -5,6 +5,7 @@
   "descricao": "Quantos anos a fazenda ocupada fica sem poder ser desapropriada.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

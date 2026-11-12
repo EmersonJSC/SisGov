@@ -4,6 +4,7 @@
   "nome": "Telemedicina livre",
   "descricao": "Até onde o profissional da rede pública pode atender à distância. Atende mais gente, com menos cuidado.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

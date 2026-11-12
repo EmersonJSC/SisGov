@@ -5,6 +5,7 @@
   "descricao": "Até onde o trabalhador pode parar de trabalhar para negociar. Um dos degraus: greve só vale com votação secreta da maioria, antes de proibir.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

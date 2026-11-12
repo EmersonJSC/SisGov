@@ -5,6 +5,8 @@
   "descricao": "Punição de quem desmata ou polui fora da lei: multa, embargo da área, corte de crédito público ou perda da terra.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "opcoes",
   "opcoes": [
     {

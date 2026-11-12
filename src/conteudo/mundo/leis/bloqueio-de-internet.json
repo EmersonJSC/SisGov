@@ -5,6 +5,7 @@
   "descricao": "Escada: nenhum, bloquear um site por ordem do juiz, bloquear redes em crise declarada, ou apagão local onde há conflito. O apagão nacional só existe no Estado de exceção no nível sítio.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

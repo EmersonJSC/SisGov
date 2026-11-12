@@ -5,6 +5,7 @@
   "descricao": "Quanto o ensino superior privado pode formar profissionais. Escada: nenhuma faculdade privada; poucas, com prova de qualidade antes de abrir; abertura livre com prova de qualidade no fim do curso; abertura livre sem nenhum controle.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

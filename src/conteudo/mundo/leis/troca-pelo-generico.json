@@ -5,6 +5,7 @@
   "descricao": "Se o farmacêutico pode trocar o remédio de marca pela cópia barata. Escada: proibida; permitida; obrigatória se o médico não vetar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

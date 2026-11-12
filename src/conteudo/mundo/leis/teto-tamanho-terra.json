@@ -4,6 +4,7 @@
   "nome": "Teto de tamanho da terra",
   "descricao": "Maior fazenda que uma pessoa ou empresa pode ter, contada em vezes a fazenda média do país. O que passa do teto o dono vende ou o órgão de terras desapropria.",
   "camada": "jogabilidade",
+  "esfera": "terra",
   "forma": "opcoes",
   "opcoes": [
     {

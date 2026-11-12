@@ -5,6 +5,8 @@
   "descricao": "Quais condenados ficam impedidos de ser candidatos. Escada: sem regra, qualquer um pode concorrer; só condenado em definitivo, sem mais recurso; também condenado em segunda instância, ainda com recurso; também réu em processo de corrupção aceito pela Justiça.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "eleicoes",
   "forma": "opcoes",
   "opcoes": [
     {

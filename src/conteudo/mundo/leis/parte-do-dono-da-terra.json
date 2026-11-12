@@ -5,6 +5,7 @@
   "descricao": "Quanto do imposto da mina vai para o dono da terra onde ela fica, de 0 a 50%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

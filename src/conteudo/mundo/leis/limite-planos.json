@@ -4,6 +4,7 @@
   "nome": "Limite aos planos",
   "descricao": "Até onde o governo restringe os planos de saúde, de cobrir só o que a rede pública não faz até proibir.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

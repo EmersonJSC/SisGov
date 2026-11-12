@@ -4,6 +4,7 @@
   "nome": "Dedução do plano",
   "descricao": "Quanto do plano de saúde se abate do imposto. Mais gente compra plano e sai da fila; o governo deixa de arrecadar, e quem ganha mais é quem mais usa.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

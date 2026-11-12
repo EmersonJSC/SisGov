@@ -5,6 +5,7 @@
   "descricao": "Quantas famílias entram na Transferência de renda, das 5% mais pobres até a metade do país.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

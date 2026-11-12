@@ -5,6 +5,8 @@
   "descricao": "Parte da programação que precisa ser feita no país. Escada: nada; cinema; rádio e TV aberta; TV paga; streaming.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "cultura-e-esporte",
+  "subesfera": "cultura",
   "forma": "opcoes",
   "opcoes": [
     {

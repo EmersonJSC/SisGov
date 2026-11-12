@@ -5,6 +5,8 @@
   "descricao": "Quem contrata não pode pagar menos do que uma % do custo da viagem do caminhoneiro.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do custo da viagem",

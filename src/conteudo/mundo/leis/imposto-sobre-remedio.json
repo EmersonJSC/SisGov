@@ -5,6 +5,7 @@
   "descricao": "Quanto de imposto entra no preço do remédio, de 0 a 30%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

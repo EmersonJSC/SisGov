@@ -5,6 +5,7 @@
   "descricao": "A idade a partir da qual se pode trabalhar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

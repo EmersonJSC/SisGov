@@ -5,6 +5,8 @@
   "descricao": "Quantas toneladas um caminhão pode levar, de 30 a 90.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "toneladas",

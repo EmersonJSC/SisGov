@@ -5,6 +5,7 @@
   "descricao": "Piso e plano de carreira dos professores. Escada: nada, cada escola paga o que quiser; piso de salário igual para todos; piso mais aumento a cada tempo de casa; piso, carreira e emprego fixo com dedicação a uma escola só.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

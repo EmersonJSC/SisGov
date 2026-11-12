@@ -5,6 +5,8 @@
   "descricao": "Até quanto o vizinho prejudicado pode cobrar na Justiça de quem poluiu.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do dano",

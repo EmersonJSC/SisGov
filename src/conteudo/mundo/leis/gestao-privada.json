@@ -4,6 +4,7 @@
   "nome": "Gestão privada",
   "descricao": "Quanto da rede pública é tocada por empresas contratadas. O serviço anda e a verba rende mais; mas elas pagam mais e disputam os profissionais com o resto do país.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -4,6 +4,7 @@
   "nome": "Cobertura gratuita",
   "descricao": "Até onde a rede pública atende sem cobrar. De graça, o pobre se trata cedo e a fila separa menos; mas todo mundo usa mais a rede, e parte de quem tem plano volta para ela.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

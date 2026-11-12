@@ -5,6 +5,7 @@
   "descricao": "O Estado paga vagas em faculdades privadas para renda baixa.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

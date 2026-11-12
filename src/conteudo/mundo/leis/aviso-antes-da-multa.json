@@ -5,6 +5,7 @@
   "descricao": "O fiscal primeiro avisa e dá prazo para a empresa pequena corrigir; a multa só vem se ela não corrigir. Escada: multa direta para todos; aviso para o pequeno; aviso para todas as empresas; multa só com dano provado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

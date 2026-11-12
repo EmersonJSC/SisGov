@@ -5,6 +5,7 @@
   "descricao": "Paga a família se o filho for à escola.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

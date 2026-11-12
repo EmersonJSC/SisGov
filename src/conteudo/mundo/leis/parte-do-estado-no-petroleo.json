@@ -5,6 +5,7 @@
   "descricao": "Quanto do que é extraído fica com o Estado, de 0% a 80%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

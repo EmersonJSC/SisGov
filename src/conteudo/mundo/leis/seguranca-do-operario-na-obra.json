@@ -5,6 +5,7 @@
   "descricao": "O que a obra deve ao operário: nada, equipamento e fiscal, seguro por morte, meses de salário ao acabar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

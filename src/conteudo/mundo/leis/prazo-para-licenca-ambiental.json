@@ -5,6 +5,8 @@
   "descricao": "Em quantos meses o órgão precisa responder. Passou do prazo, a licença está aprovada.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "meses",
   "faixa": {

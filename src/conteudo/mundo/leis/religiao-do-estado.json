@@ -6,6 +6,8 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "classe": "constitucional",
+  "esfera": "direitos-e-liberdades",
+  "subesfera": "liberdades",
   "forma": "opcoes",
   "opcoes": [
     {

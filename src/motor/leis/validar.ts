@@ -48,6 +48,9 @@ export function validarLei(
     erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
   if (dado.classe !== undefined && !CLASSES.includes(dado.classe as never))
     erro("classe", `precisa ser ${CLASSES.join(", ")}`);
+  for (const campo of ["esfera", "subesfera"] as const)
+    if (dado[campo] !== undefined && !ehKebab(dado[campo]))
+      erro(campo, "precisa ser kebab-case");
 
   const ponto = (valor: unknown, campo: string) => {
     if (!ehObjeto(valor)) return erro(campo, "precisa ser um objeto");

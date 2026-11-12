@@ -5,6 +5,7 @@
   "descricao": "Em quanto tempo o preso vê um juiz: de 24 horas a 30 dias, ou sem prazo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "dias",

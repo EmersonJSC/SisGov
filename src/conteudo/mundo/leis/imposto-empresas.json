@@ -4,6 +4,7 @@
   "nome": "Imposto sobre empresas",
   "descricao": "Quanto as empresas pagam sobre o lucro.",
   "camada": "essencial",
+  "esfera": "impostos",
   "classe": "absoluta",
   "forma": "continua",
   "unidade": "fracao",

@@ -4,6 +4,8 @@
   "nome": "Imposto sobre poluição",
   "descricao": "Quem polui paga por tonelada emitida.",
   "camada": "jogabilidade",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 1 },

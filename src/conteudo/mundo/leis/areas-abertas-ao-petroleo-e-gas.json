@@ -5,6 +5,7 @@
   "descricao": "Escada do que se pode explorar: nenhuma área nova, terra, mar raso, águas profundas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "opcoes",
   "opcoes": [
     {

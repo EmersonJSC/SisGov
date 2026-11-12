@@ -5,6 +5,7 @@
   "descricao": "Quanto de desconto as famílias pobres têm na conta de água e esgoto. Régua: de 0% a 50% de desconto na conta.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

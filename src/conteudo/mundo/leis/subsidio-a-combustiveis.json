@@ -5,6 +5,7 @@
   "descricao": "Quanto o Estado paga para o combustível sair mais barato na bomba.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

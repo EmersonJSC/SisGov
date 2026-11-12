@@ -5,6 +5,7 @@
   "descricao": "Quanto do custo do curso o aluno paga na universidade pública. Régua: de 0% a 50% do custo do curso pago pelo aluno.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

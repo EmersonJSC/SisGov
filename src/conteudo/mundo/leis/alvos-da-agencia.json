@@ -5,6 +5,7 @@
   "descricao": "Quem a agência pode vigiar: crime e terrorismo, organizações radicais, movimentos e imprensa, ou opositores do governo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

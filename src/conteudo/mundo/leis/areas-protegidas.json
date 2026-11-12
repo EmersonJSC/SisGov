@@ -4,6 +4,8 @@
   "nome": "Áreas protegidas",
   "descricao": "Parte do território guardada como parque ou reserva.",
   "camada": "jogabilidade",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

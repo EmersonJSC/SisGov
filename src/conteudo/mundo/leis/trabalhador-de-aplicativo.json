@@ -5,6 +5,7 @@
   "descricao": "Se quem trabalha por aplicativo é empregado ou autônomo. Escada: autônomo sem regra; autônomo com seguro de acidente e ganho mínimo por hora; autônomo com férias e aposentadoria pagas em parte pelo aplicativo; empregado com carteira assinada.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

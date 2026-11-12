@@ -5,6 +5,7 @@
   "descricao": "Escolhe o alvo do país: satélite, foguete, astronauta, estação ou chegar à Lua na corrida com os outros países.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "ciencia-e-pesquisa",
   "forma": "opcoes",
   "opcoes": [
     {

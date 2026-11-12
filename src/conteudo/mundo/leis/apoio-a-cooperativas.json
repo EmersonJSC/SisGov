@@ -5,6 +5,8 @@
   "descricao": "Crédito e imposto menor para empresas dos trabalhadores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "empresas-e-estatais",
+  "subesfera": "pequenas-empresas-e-cooperativas",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

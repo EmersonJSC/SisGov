@@ -5,6 +5,7 @@
   "descricao": "Dinheiro de embaixadas, negociadores e missões no exterior.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "relacoes-exteriores",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,7 @@
   "descricao": "Para onde vai o dinheiro dos royalties. Uma aba por área: educação, saúde, Fundo soberano, estados produtores, cidades da mina e caixa geral. Por ora, uma régua só para todos os setores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,7 @@
   "descricao": "Piso do salário formal, medido pela renda média do país.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário médio",

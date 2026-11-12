@@ -5,6 +5,8 @@
   "descricao": "O que entra na fila, cada degrau incluindo o anterior: prédios e monumentos do governo; centros históricos; terreiros e quilombos; festas e saberes.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "cultura-e-esporte",
+  "subesfera": "cultura",
   "forma": "opcoes",
   "opcoes": [
     {

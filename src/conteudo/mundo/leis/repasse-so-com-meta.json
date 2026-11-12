@@ -5,6 +5,7 @@
   "descricao": "O que o estado precisa cumprir para receber dinheiro federal da escola. Escada: sem exigência; plano de melhora; nota mínima; troca da direção da escola ruim.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

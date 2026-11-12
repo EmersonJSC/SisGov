@@ -5,6 +5,7 @@
   "descricao": "% mínimo da colheita que fica com o meeiro, e o direito de continuar na terra.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

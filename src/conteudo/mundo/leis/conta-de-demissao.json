@@ -5,6 +5,7 @@
   "descricao": "Quem paga quem fica sem emprego. Escada: só o Estado, pelo Seguro-desemprego; parte numa conta do trabalhador; tudo na conta, com fundo do Estado para quem junta pouco; só a conta.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

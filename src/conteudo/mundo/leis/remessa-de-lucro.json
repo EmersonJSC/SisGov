@@ -4,6 +4,7 @@
   "nome": "Remessa de lucro ao exterior",
   "descricao": "Imposto sobre o lucro que sai do país.",
   "camada": "jogabilidade",
+  "esfera": "comercio-exterior-e-capital",
   "forma": "opcoes",
   "opcoes": [
     {

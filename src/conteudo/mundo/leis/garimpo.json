@@ -5,6 +5,7 @@
   "descricao": "O que o garimpeiro pode fazer. Escada: proibido; só cooperativa registrada; livre com taxa e seguro de saúde; livre sem controle.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "opcoes",
   "opcoes": [
     {

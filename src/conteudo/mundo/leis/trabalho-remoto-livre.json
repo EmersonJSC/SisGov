@@ -5,6 +5,7 @@
   "descricao": "Quanto o empregado pode trabalhar de casa. Escada: só presencial; um dia por semana de casa; até três dias por semana de casa; todos os dias de casa se patrão e empregado combinarem.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

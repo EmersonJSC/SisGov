@@ -5,6 +5,7 @@
   "descricao": "Quanto as empresas precisam dar prioridade a quem é do país. Escada: nenhuma; vaga anunciada primeiro para quem é do país; limite de estrangeiros nas empresas grandes; contratar de fora só se não houver nacional qualificado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

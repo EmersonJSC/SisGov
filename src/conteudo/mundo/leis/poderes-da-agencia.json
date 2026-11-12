@@ -5,6 +5,7 @@
   "descricao": "O que a agência pode fazer: só analisar informação, escutar com ordem do juiz, escutar sem juiz e infiltrar, ou fazer operações secretas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

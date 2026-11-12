@@ -5,6 +5,8 @@
   "descricao": "Por insumo, quanto o Estado paga de fertilizante, máquinas e sementes. Por ora, uma régua só para todos os setores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

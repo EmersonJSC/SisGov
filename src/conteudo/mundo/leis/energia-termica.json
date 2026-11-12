@@ -4,6 +4,7 @@
   "nome": "Investimento em térmicas fósseis",
   "descricao": "Dinheiro do governo para usinas que queimam combustível. Cada 1% do PIB por ano compra energia para cerca de 6% da demanda do país, pronta em 1 ano. Obra rápida e barata, mas polui.",
   "camada": "jogabilidade",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

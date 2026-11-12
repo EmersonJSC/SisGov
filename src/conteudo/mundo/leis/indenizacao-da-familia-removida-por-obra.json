@@ -5,6 +5,7 @@
   "descricao": "O que recebe quem precisa sair por causa de uma obra: só quem tem escritura recebe; o valor da casa mesmo sem escritura; também o aluguel até a nova casa; casa nova antes de sair.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

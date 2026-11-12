@@ -4,6 +4,7 @@
   "nome": "Idade mínima do voluntário",
   "descricao": "A partir de que idade alguém pode se alistar como voluntário nas forças armadas.",
   "camada": "jogabilidade",
+  "esfera": "defesa",
   "forma": "continua",
   "unidade": "anos",
   "faixa": {

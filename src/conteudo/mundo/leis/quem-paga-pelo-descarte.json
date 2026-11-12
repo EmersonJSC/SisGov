@@ -5,6 +5,8 @@
   "descricao": "Quem arca com plástico e lixo: a prefeitura, o fabricante por taxa, o fabricante recolhendo ou a proibição de descartáveis.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "opcoes",
   "opcoes": [
     {

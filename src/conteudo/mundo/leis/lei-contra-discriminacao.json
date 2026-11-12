@@ -5,6 +5,8 @@
   "descricao": "Proíbe tratar pior alguém por cor, sexo, religião, origem ou orientação. Escada: no emprego, também nos serviços, também na moradia e no crédito.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "direitos-e-liberdades",
+  "subesfera": "igualdade-e-minorias",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Que tipos de contrato de trabalho a empresa pode usar além do fixo. Escada: só contrato fixo; também contrato temporário com prazo; também pagamento por hora; também trabalho intermitente, em que a pessoa é chamada só quando há serviço.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

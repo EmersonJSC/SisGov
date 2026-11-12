@@ -5,6 +5,7 @@
   "descricao": "Quantos meses o dono tem na Justiça antes de a fazenda ser desapropriada.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "meses",
   "faixa": {

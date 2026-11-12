@@ -5,6 +5,7 @@
   "descricao": "Dinheiro do Estado para construir linhas entre os estados, em % do PIB.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

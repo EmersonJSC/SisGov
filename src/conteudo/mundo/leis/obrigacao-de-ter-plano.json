@@ -5,6 +5,7 @@
   "descricao": "Quem é obrigado a ter plano de saúde. Escada: ninguém; multa leve; multa pesada; desconto direto no salário.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

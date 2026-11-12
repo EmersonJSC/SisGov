@@ -5,6 +5,7 @@
   "descricao": "Escada: nenhum, combustível de usina, pesquisa e medicina, nível de bomba.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Quanto da Transferência de renda vai só para quem trabalha e ganha pouco. Escada: nada, o benefício é igual para todos; um extra pequeno para quem trabalha; metade do benefício só para quem trabalha; todo o benefício só para quem trabalha.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "opcoes",
   "opcoes": [
     {

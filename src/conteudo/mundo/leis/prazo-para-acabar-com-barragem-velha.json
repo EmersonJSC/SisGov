@@ -5,6 +5,7 @@
   "descricao": "Em quanto tempo as barragens antigas precisam acabar. Sem prazo; 10, 5 ou 3 anos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "opcoes",
   "opcoes": [
     {

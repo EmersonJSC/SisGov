@@ -4,6 +4,7 @@
   "nome": "Despejo rápido",
   "descricao": "Em quanto tempo o dono pode tirar quem não paga o aluguel.",
   "camada": "jogabilidade",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

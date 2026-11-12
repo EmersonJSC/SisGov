@@ -5,6 +5,7 @@
   "descricao": "Se o remédio aprovado lá fora pode ser vendido aqui. Escada: análise completa aqui; prazo máximo, passou e está aprovado; vale a aprovação de agência forte de fora; vale a de qualquer agência reconhecida, sem análise.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

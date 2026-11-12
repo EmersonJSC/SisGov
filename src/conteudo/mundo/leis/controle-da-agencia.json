@@ -5,6 +5,7 @@
   "descricao": "Quem fiscaliza a agência: ninguém, o governo, o Congresso, ou o Congresso e um juiz.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,8 @@
   "descricao": "Até onde a cidade pode ir: pode proibir aplicativo, só pode limitar os carros, não pode limitar, e licença de táxi não se vende nem se herda.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "opcoes",
   "opcoes": [
     {

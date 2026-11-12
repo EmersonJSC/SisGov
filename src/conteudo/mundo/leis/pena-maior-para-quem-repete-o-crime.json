@@ -5,6 +5,7 @@
   "descricao": "Quanto pesa cometer crime de novo. Escada: igual para todos; pena dobra na segunda vez; prisão perpétua no terceiro crime violento; prisão perpétua no terceiro crime de qualquer tipo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "opcoes",
   "opcoes": [
     {

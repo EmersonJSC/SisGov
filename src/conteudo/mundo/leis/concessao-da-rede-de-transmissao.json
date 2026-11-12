@@ -5,6 +5,7 @@
   "descricao": "Quem opera as grandes linhas de energia entre os estados: de só o Estado até concessão total a companhias.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "opcoes",
   "opcoes": [
     {

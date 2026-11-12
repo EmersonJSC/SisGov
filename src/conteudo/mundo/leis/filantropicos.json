@@ -4,6 +4,7 @@
   "nome": "Filantrópicos",
   "descricao": "Quanto o Estado apoia hospitais de entidades religiosas e beneficentes, com isenção de imposto. Abre vagas por pouco dinheiro; mas elas atendem onde estão, não onde falta.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

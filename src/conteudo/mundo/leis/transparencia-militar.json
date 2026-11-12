@@ -4,6 +4,7 @@
   "nome": "Transparência dos contratos militares",
   "descricao": "Quanto das compras e contratos das forças armadas o público pode ver.",
   "camada": "jogabilidade",
+  "esfera": "defesa",
   "forma": "opcoes",
   "opcoes": [
     {

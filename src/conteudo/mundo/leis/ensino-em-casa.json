@@ -5,6 +5,7 @@
   "descricao": "Se os pais podem ensinar o filho em casa. Escada: proibido; com registro e prova todo ano; só registro, sem prova; livre.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

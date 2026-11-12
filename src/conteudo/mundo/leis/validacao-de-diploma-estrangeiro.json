@@ -5,6 +5,7 @@
   "descricao": "Se quem se formou fora pode atender aqui e com que prova. Escada: não aceita; aceita só depois de curso e prova completos; aceita com prova curta; aceita direto, com registro no conselho.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

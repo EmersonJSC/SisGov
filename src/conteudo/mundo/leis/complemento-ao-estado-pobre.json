@@ -5,6 +5,7 @@
   "descricao": "Até onde a União completa o gasto por aluno do estado que gasta menos, de 0% a 100% da média do país.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

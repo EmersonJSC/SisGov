@@ -4,6 +4,7 @@
   "nome": "Verba da saúde",
   "descricao": "Dinheiro do governo para hospitais, postos e remédios.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

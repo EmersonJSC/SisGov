@@ -5,6 +5,7 @@
   "descricao": "Como o país sabe quem é dono: cartórios locais, cadastro nacional, por satélite, público para qualquer um ver.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "opcoes",
   "opcoes": [
     {

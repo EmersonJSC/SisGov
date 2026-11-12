@@ -4,6 +4,7 @@
   "nome": "Imposto sobre terra e imóvel parado",
   "descricao": "Imposto por ano sobre terra sem uso e imóvel vazio. A terra grande e a parada há mais tempo pagam mais.",
   "camada": "jogabilidade",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 1 },

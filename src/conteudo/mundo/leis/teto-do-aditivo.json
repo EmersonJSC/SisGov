@@ -5,6 +5,8 @@
   "descricao": "Quanto a obra pode encarecer depois de assinada, de 0 a 50% do preço.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "obras",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

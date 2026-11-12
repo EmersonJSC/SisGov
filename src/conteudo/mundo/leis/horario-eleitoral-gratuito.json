@@ -5,6 +5,8 @@
   "descricao": "Horas por dia de TV e rádio, de graça, para os partidos na campanha. De nenhuma (só quem paga aparece) até muitas, divididas entre os partidos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "eleicoes",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "horas por dia",

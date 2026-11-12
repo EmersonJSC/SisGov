@@ -5,6 +5,7 @@
   "descricao": "Quem pode abrir banco e em quanto tempo. Escada: nenhum banco novo; análise de anos; bancos digitais e cooperativas com análise curta; licença em meses para qualquer tipo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

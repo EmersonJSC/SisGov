@@ -6,6 +6,8 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "parte_de": "Peso da multa",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "opcoes",
   "opcoes": [
     {

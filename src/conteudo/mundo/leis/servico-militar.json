@@ -4,6 +4,7 @@
   "nome": "Serviço militar obrigatório",
   "descricao": "Quantos meses todo jovem é obrigado a servir nas forças armadas. Zero é sem serviço obrigatório.",
   "camada": "jogabilidade",
+  "esfera": "defesa",
   "forma": "continua",
   "unidade": "meses",
   "faixa": {

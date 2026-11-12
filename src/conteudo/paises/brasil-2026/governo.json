@@ -1,0 +1,1272 @@
+{
+  "versao": 1,
+  "leis": {
+    "cargos": "cargos-de-livre-nomeacao"
+  },
+  "ministerios": [
+    {
+      "molde": "gabinete-do-chefe-de-governo",
+      "ministro": "p004"
+    },
+    {
+      "molde": "relacoes-institucionais",
+      "ministro": "p025"
+    },
+    {
+      "molde": "controle-e-transparencia",
+      "ministro": "p058"
+    },
+    {
+      "molde": "fazenda",
+      "ministro": "p022"
+    },
+    {
+      "molde": "planejamento-e-orcamento",
+      "ministro": "p059"
+    },
+    {
+      "molde": "industria-e-comercio",
+      "ministro": "p037"
+    },
+    {
+      "molde": "pequenas-empresas-e-cooperativas",
+      "ministro": "p060"
+    },
+    {
+      "molde": "trabalho",
+      "ministro": "p043"
+    },
+    {
+      "molde": "previdencia",
+      "ministro": "p061"
+    },
+    {
+      "molde": "desenvolvimento-social",
+      "ministro": "p031"
+    },
+    {
+      "molde": "saude",
+      "ministro": "p062"
+    },
+    {
+      "molde": "educacao",
+      "ministro": "p016"
+    },
+    {
+      "molde": "ciencia-e-tecnologia",
+      "ministro": "p063"
+    },
+    {
+      "molde": "comunicacoes",
+      "ministro": "p013"
+    },
+    {
+      "molde": "cultura",
+      "ministro": "p064"
+    },
+    {
+      "molde": "esporte-e-turismo",
+      "ministro": "p007"
+    },
+    {
+      "molde": "justica-e-seguranca",
+      "ministro": "p065"
+    },
+    {
+      "molde": "defesa",
+      "ministro": "p019"
+    },
+    {
+      "molde": "relacoes-exteriores",
+      "ministro": "p066"
+    },
+    {
+      "molde": "meio-ambiente",
+      "ministro": "p005"
+    },
+    {
+      "molde": "povos-indigenas",
+      "ministro": "p067"
+    },
+    {
+      "molde": "agricultura",
+      "ministro": "p026"
+    },
+    {
+      "molde": "desenvolvimento-agrario",
+      "ministro": "p068"
+    },
+    {
+      "molde": "pesca",
+      "ministro": "p023"
+    },
+    {
+      "molde": "minas-e-energia",
+      "ministro": "p069"
+    },
+    {
+      "molde": "transportes",
+      "ministro": "p038"
+    },
+    {
+      "molde": "portos-e-aeroportos",
+      "ministro": "p070"
+    },
+    {
+      "molde": "cidades",
+      "ministro": "p044"
+    },
+    {
+      "molde": "integracao-regional",
+      "ministro": "p071"
+    },
+    {
+      "molde": "direitos-humanos",
+      "ministro": "p032"
+    },
+    {
+      "molde": "igualdade-e-minorias",
+      "ministro": "p072"
+    },
+    {
+      "molde": "mulheres",
+      "ministro": "p017"
+    }
+  ],
+  "pessoas": [
+    {
+      "id": "p001",
+      "nome": "Marina Lisnezola",
+      "competencia": 46,
+      "habilidade": 38,
+      "carisma": 84,
+      "honestidade": 78,
+      "lealdade": 70,
+      "bussola": {
+        "economico": -0.19,
+        "social": 0.38
+      },
+      "origem": "pl"
+    },
+    {
+      "id": "p002",
+      "nome": "Flavia Fervesardo",
+      "competencia": 43,
+      "habilidade": 32,
+      "carisma": 49,
+      "honestidade": 44,
+      "lealdade": 67,
+      "bussola": {
+        "economico": 0.45,
+        "social": -0.63
+      },
+      "origem": "pl"
+    },
+    {
+      "id": "p003",
+      "nome": "Caio Larroseira",
+      "competencia": 40,
+      "habilidade": 37,
+      "carisma": 27,
+      "honestidade": 72,
+      "lealdade": 58,
+      "bussola": {
+        "economico": -0.64,
+        "social": -0.67
+      },
+      "origem": "pl"
+    },
+    {
+      "id": "p004",
+      "nome": "Elisa Ferneza",
+      "competencia": 81,
+      "habilidade": 31,
+      "carisma": 69,
+      "honestidade": 59,
+      "lealdade": 43,
+      "bussola": {
+        "economico": -0.68,
+        "social": -0.55
+      },
+      "origem": "pt"
+    },
+    {
+      "id": "p005",
+      "nome": "Samuel Mortanado",
+      "competencia": 87,
+      "habilidade": 42,
+      "carisma": 29,
+      "honestidade": 75,
+      "lealdade": 83,
+      "bussola": {
+        "economico": 0.44,
+        "social": -0.57
+      },
+      "origem": "pt"
+    },
+    {
+      "id": "p006",
+      "nome": "Kleber Lismori",
+      "competencia": 60,
+      "habilidade": 31,
+      "carisma": 44,
+      "honestidade": 26,
+      "lealdade": 85,
+      "bussola": {
+        "economico": -0.25,
+        "social": -0.05
+      },
+      "origem": "pt"
+    },
+    {
+      "id": "p007",
+      "nome": "Julia Quinpena",
+      "competencia": 55,
+      "habilidade": 43,
+      "carisma": 75,
+      "honestidade": 86,
+      "lealdade": 44,
+      "bussola": {
+        "economico": -0.23,
+        "social": 0.44
+      },
+      "origem": "uniao"
+    },
+    {
+      "id": "p008",
+      "nome": "Rafaela Corveseira",
+      "competencia": 81,
+      "habilidade": 57,
+      "carisma": 89,
+      "honestidade": 29,
+      "lealdade": 71,
+      "bussola": {
+        "economico": -0.43,
+        "social": 0.28
+      },
+      "origem": "uniao"
+    },
+    {
+      "id": "p009",
+      "nome": "Laura Brasanado",
+      "competencia": 68,
+      "habilidade": 86,
+      "carisma": 42,
+      "honestidade": 58,
+      "lealdade": 56,
+      "bussola": {
+        "economico": 0.45,
+        "social": 0.32
+      },
+      "origem": "uniao"
+    },
+    {
+      "id": "p010",
+      "nome": "Gael Dollarez",
+      "competencia": 84,
+      "habilidade": 42,
+      "carisma": 84,
+      "honestidade": 73,
+      "lealdade": 51,
+      "bussola": {
+        "economico": 0.53,
+        "social": -0.38
+      },
+      "origem": "pp"
+    },
+    {
+      "id": "p011",
+      "nome": "Laura Dritanado",
+      "competencia": 43,
+      "habilidade": 74,
+      "carisma": 56,
+      "honestidade": 28,
+      "lealdade": 75,
+      "bussola": {
+        "economico": 0.54,
+        "social": 0.41
+      },
+      "origem": "pp"
+    },
+    {
+      "id": "p012",
+      "nome": "Samuel Nezlisi",
+      "competencia": 62,
+      "habilidade": 68,
+      "carisma": 86,
+      "honestidade": 86,
+      "lealdade": 57,
+      "bussola": {
+        "economico": -0.26,
+        "social": 0.64
+      },
+      "origem": "pp"
+    },
+    {
+      "id": "p013",
+      "nome": "Mateus Kelsani",
+      "competencia": 88,
+      "habilidade": 39,
+      "carisma": 50,
+      "honestidade": 83,
+      "lealdade": 84,
+      "bussola": {
+        "economico": 0.32,
+        "social": -0.19
+      },
+      "origem": "psd"
+    },
+    {
+      "id": "p014",
+      "nome": "Laura Lisdoleira",
+      "competencia": 86,
+      "habilidade": 56,
+      "carisma": 47,
+      "honestidade": 85,
+      "lealdade": 64,
+      "bussola": {
+        "economico": -0.48,
+        "social": -0.16
+      },
+      "origem": "psd"
+    },
+    {
+      "id": "p015",
+      "nome": "Tereza Mortaneira",
+      "competencia": 40,
+      "habilidade": 55,
+      "carisma": 43,
+      "honestidade": 32,
+      "lealdade": 59,
+      "bussola": {
+        "economico": 0.25,
+        "social": 0.25
+      },
+      "origem": "psd"
+    },
+    {
+      "id": "p016",
+      "nome": "Tereza Corgalado",
+      "competencia": 78,
+      "habilidade": 55,
+      "carisma": 44,
+      "honestidade": 25,
+      "lealdade": 48,
+      "bussola": {
+        "economico": 0.39,
+        "social": 0.46
+      },
+      "origem": "mdb"
+    },
+    {
+      "id": "p017",
+      "nome": "Beatriz Kelcora",
+      "competencia": 57,
+      "habilidade": 88,
+      "carisma": 64,
+      "honestidade": 58,
+      "lealdade": 86,
+      "bussola": {
+        "economico": 0.25,
+        "social": -0.37
+      },
+      "origem": "mdb"
+    },
+    {
+      "id": "p018",
+      "nome": "Laura Morkeleira",
+      "competencia": 86,
+      "habilidade": 54,
+      "carisma": 71,
+      "honestidade": 30,
+      "lealdade": 73,
+      "bussola": {
+        "economico": 0.5,
+        "social": 0.51
+      },
+      "origem": "mdb"
+    },
+    {
+      "id": "p019",
+      "nome": "Beatriz Lisferez",
+      "competencia": 48,
+      "habilidade": 71,
+      "carisma": 88,
+      "honestidade": 49,
+      "lealdade": 90,
+      "bussola": {
+        "economico": 0.59,
+        "social": -0.09
+      },
+      "origem": "republicanos"
+    },
+    {
+      "id": "p020",
+      "nome": "Samuel Corzanola",
+      "competencia": 83,
+      "habilidade": 44,
+      "carisma": 35,
+      "honestidade": 66,
+      "lealdade": 53,
+      "bussola": {
+        "economico": 0.55,
+        "social": -0.66
+      },
+      "origem": "republicanos"
+    },
+    {
+      "id": "p021",
+      "nome": "Camila Quinbraense",
+      "competencia": 57,
+      "habilidade": 56,
+      "carisma": 39,
+      "honestidade": 83,
+      "lealdade": 87,
+      "bussola": {
+        "economico": -0.15,
+        "social": -0.61
+      },
+      "origem": "republicanos"
+    },
+    {
+      "id": "p022",
+      "nome": "Fabio Penmora",
+      "competencia": 81,
+      "habilidade": 34,
+      "carisma": 56,
+      "honestidade": 43,
+      "lealdade": 88,
+      "bussola": {
+        "economico": -0.52,
+        "social": 0.14
+      },
+      "origem": "pdt"
+    },
+    {
+      "id": "p023",
+      "nome": "Paulo Drilisa",
+      "competencia": 52,
+      "habilidade": 66,
+      "carisma": 60,
+      "honestidade": 30,
+      "lealdade": 72,
+      "bussola": {
+        "economico": 0.23,
+        "social": -0.54
+      },
+      "origem": "pdt"
+    },
+    {
+      "id": "p024",
+      "nome": "Diana Morsano",
+      "competencia": 44,
+      "habilidade": 70,
+      "carisma": 46,
+      "honestidade": 68,
+      "lealdade": 80,
+      "bussola": {
+        "economico": -0.54,
+        "social": -0.05
+      },
+      "origem": "pdt"
+    },
+    {
+      "id": "p025",
+      "nome": "Caio Kelnezi",
+      "competencia": 61,
+      "habilidade": 43,
+      "carisma": 58,
+      "honestidade": 27,
+      "lealdade": 42,
+      "bussola": {
+        "economico": -0.35,
+        "social": -0.05
+      },
+      "origem": "psb"
+    },
+    {
+      "id": "p026",
+      "nome": "Samuel Santreini",
+      "competencia": 55,
+      "habilidade": 83,
+      "carisma": 45,
+      "honestidade": 58,
+      "lealdade": 77,
+      "bussola": {
+        "economico": -0.19,
+        "social": -0.13
+      },
+      "origem": "psb"
+    },
+    {
+      "id": "p027",
+      "nome": "Diana Larkelo",
+      "competencia": 52,
+      "habilidade": 77,
+      "carisma": 51,
+      "honestidade": 33,
+      "lealdade": 82,
+      "bussola": {
+        "economico": -0.04,
+        "social": -0.07
+      },
+      "origem": "psb"
+    },
+    {
+      "id": "p028",
+      "nome": "Mateus Galquinense",
+      "competencia": 46,
+      "habilidade": 35,
+      "carisma": 83,
+      "honestidade": 66,
+      "lealdade": 53,
+      "bussola": {
+        "economico": 0.57,
+        "social": -0.52
+      },
+      "origem": "podemos"
+    },
+    {
+      "id": "p029",
+      "nome": "Fabio Quingalini",
+      "competencia": 85,
+      "habilidade": 76,
+      "carisma": 65,
+      "honestidade": 80,
+      "lealdade": 59,
+      "bussola": {
+        "economico": 0.27,
+        "social": -0.1
+      },
+      "origem": "podemos"
+    },
+    {
+      "id": "p030",
+      "nome": "Paulo Ferbori",
+      "competencia": 61,
+      "habilidade": 35,
+      "carisma": 28,
+      "honestidade": 56,
+      "lealdade": 53,
+      "bussola": {
+        "economico": -0.1,
+        "social": 0.6
+      },
+      "origem": "podemos"
+    },
+    {
+      "id": "p031",
+      "nome": "Gael Mirbraola",
+      "competencia": 62,
+      "habilidade": 43,
+      "carisma": 33,
+      "honestidade": 85,
+      "lealdade": 74,
+      "bussola": {
+        "economico": 0,
+        "social": 0.45
+      },
+      "origem": "psol"
+    },
+    {
+      "id": "p032",
+      "nome": "Samuel Drifereira",
+      "competencia": 78,
+      "habilidade": 79,
+      "carisma": 27,
+      "honestidade": 28,
+      "lealdade": 51,
+      "bussola": {
+        "economico": -0.6,
+        "social": -0.36
+      },
+      "origem": "psol"
+    },
+    {
+      "id": "p033",
+      "nome": "Olivia Listrea",
+      "competencia": 71,
+      "habilidade": 46,
+      "carisma": 51,
+      "honestidade": 58,
+      "lealdade": 49,
+      "bussola": {
+        "economico": 0.41,
+        "social": 0.69
+      },
+      "origem": "psol"
+    },
+    {
+      "id": "p034",
+      "nome": "Bruno Tremorola",
+      "competencia": 48,
+      "habilidade": 65,
+      "carisma": 69,
+      "honestidade": 77,
+      "lealdade": 69,
+      "bussola": {
+        "economico": 0.35,
+        "social": 0.19
+      },
+      "origem": "psdb"
+    },
+    {
+      "id": "p035",
+      "nome": "Laura Borlari",
+      "competencia": 49,
+      "habilidade": 57,
+      "carisma": 68,
+      "honestidade": 71,
+      "lealdade": 76,
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.1
+      },
+      "origem": "psdb"
+    },
+    {
+      "id": "p036",
+      "nome": "Yara Ferquinini",
+      "competencia": 40,
+      "habilidade": 56,
+      "carisma": 39,
+      "honestidade": 58,
+      "lealdade": 75,
+      "bussola": {
+        "economico": 0.46,
+        "social": -0.49
+      },
+      "origem": "psdb"
+    },
+    {
+      "id": "p037",
+      "nome": "Nelson Bordriola",
+      "competencia": 76,
+      "habilidade": 81,
+      "carisma": 40,
+      "honestidade": 66,
+      "lealdade": 65,
+      "bussola": {
+        "economico": 0.46,
+        "social": 0.65
+      },
+      "origem": "pcdob"
+    },
+    {
+      "id": "p038",
+      "nome": "Marina Mirzanardo",
+      "competencia": 74,
+      "habilidade": 82,
+      "carisma": 53,
+      "honestidade": 28,
+      "lealdade": 51,
+      "bussola": {
+        "economico": 0.56,
+        "social": 0.61
+      },
+      "origem": "pcdob"
+    },
+    {
+      "id": "p039",
+      "nome": "Samuel Vesvalense",
+      "competencia": 47,
+      "habilidade": 87,
+      "carisma": 27,
+      "honestidade": 52,
+      "lealdade": 58,
+      "bussola": {
+        "economico": -0.7,
+        "social": -0.4
+      },
+      "origem": "pcdob"
+    },
+    {
+      "id": "p040",
+      "nome": "Caio Morsanense",
+      "competencia": 62,
+      "habilidade": 66,
+      "carisma": 46,
+      "honestidade": 59,
+      "lealdade": 83,
+      "bussola": {
+        "economico": 0.36,
+        "social": -0.37
+      },
+      "origem": "avante"
+    },
+    {
+      "id": "p041",
+      "nome": "Heitor Lartreeira",
+      "competencia": 36,
+      "habilidade": 40,
+      "carisma": 74,
+      "honestidade": 90,
+      "lealdade": 70,
+      "bussola": {
+        "economico": -0.65,
+        "social": -0.57
+      },
+      "origem": "avante"
+    },
+    {
+      "id": "p042",
+      "nome": "Eduardo Lisferi",
+      "competencia": 49,
+      "habilidade": 73,
+      "carisma": 50,
+      "honestidade": 40,
+      "lealdade": 71,
+      "bussola": {
+        "economico": 0.04,
+        "social": -0.5
+      },
+      "origem": "avante"
+    },
+    {
+      "id": "p043",
+      "nome": "Gael Bramori",
+      "competencia": 44,
+      "habilidade": 69,
+      "carisma": 57,
+      "honestidade": 62,
+      "lealdade": 89,
+      "bussola": {
+        "economico": 0.07,
+        "social": 0.14
+      },
+      "origem": "pv"
+    },
+    {
+      "id": "p044",
+      "nome": "Laura Galmirez",
+      "competencia": 62,
+      "habilidade": 75,
+      "carisma": 89,
+      "honestidade": 78,
+      "lealdade": 89,
+      "bussola": {
+        "economico": -0.51,
+        "social": -0.06
+      },
+      "origem": "pv"
+    },
+    {
+      "id": "p045",
+      "nome": "Elisa Dolmirense",
+      "competencia": 66,
+      "habilidade": 34,
+      "carisma": 44,
+      "honestidade": 32,
+      "lealdade": 64,
+      "bussola": {
+        "economico": -0.66,
+        "social": 0.2
+      },
+      "origem": "pv"
+    },
+    {
+      "id": "p046",
+      "nome": "Kleber Quinvaleira",
+      "competencia": 63,
+      "habilidade": 35,
+      "carisma": 43,
+      "honestidade": 37,
+      "lealdade": 58,
+      "bussola": {
+        "economico": 0.48,
+        "social": 0.53
+      },
+      "origem": "novo"
+    },
+    {
+      "id": "p047",
+      "nome": "Alice Dolpeni",
+      "competencia": 70,
+      "habilidade": 69,
+      "carisma": 32,
+      "honestidade": 45,
+      "lealdade": 47,
+      "bussola": {
+        "economico": -0.35,
+        "social": 0.2
+      },
+      "origem": "novo"
+    },
+    {
+      "id": "p048",
+      "nome": "Gael Fermorado",
+      "competencia": 90,
+      "habilidade": 80,
+      "carisma": 60,
+      "honestidade": 30,
+      "lealdade": 54,
+      "bussola": {
+        "economico": -0.34,
+        "social": 0.41
+      },
+      "origem": "novo"
+    },
+    {
+      "id": "p049",
+      "nome": "Irene Mirvalardo",
+      "competencia": 67,
+      "habilidade": 84,
+      "carisma": 52,
+      "honestidade": 34,
+      "lealdade": 72,
+      "bussola": {
+        "economico": 0.66,
+        "social": -0.42
+      },
+      "origem": "solidariedade"
+    },
+    {
+      "id": "p050",
+      "nome": "Gael Cormirini",
+      "competencia": 54,
+      "habilidade": 50,
+      "carisma": 63,
+      "honestidade": 51,
+      "lealdade": 51,
+      "bussola": {
+        "economico": -0.69,
+        "social": -0.41
+      },
+      "origem": "solidariedade"
+    },
+    {
+      "id": "p051",
+      "nome": "Gael Zanpeni",
+      "competencia": 70,
+      "habilidade": 89,
+      "carisma": 33,
+      "honestidade": 28,
+      "lealdade": 84,
+      "bussola": {
+        "economico": -0.61,
+        "social": -0.36
+      },
+      "origem": "solidariedade"
+    },
+    {
+      "id": "p052",
+      "nome": "Laura Borvesini",
+      "competencia": 79,
+      "habilidade": 88,
+      "carisma": 71,
+      "honestidade": 55,
+      "lealdade": 44,
+      "bussola": {
+        "economico": -0.14,
+        "social": 0.26
+      },
+      "origem": "cidadania"
+    },
+    {
+      "id": "p053",
+      "nome": "Beatriz Larborado",
+      "competencia": 45,
+      "habilidade": 86,
+      "carisma": 50,
+      "honestidade": 60,
+      "lealdade": 89,
+      "bussola": {
+        "economico": -0.01,
+        "social": -0.01
+      },
+      "origem": "cidadania"
+    },
+    {
+      "id": "p054",
+      "nome": "Julia Mirquina",
+      "competencia": 58,
+      "habilidade": 79,
+      "carisma": 56,
+      "honestidade": 41,
+      "lealdade": 48,
+      "bussola": {
+        "economico": 0,
+        "social": -0.38
+      },
+      "origem": "cidadania"
+    },
+    {
+      "id": "p055",
+      "nome": "Helena Quinlisense",
+      "competencia": 59,
+      "habilidade": 90,
+      "carisma": 47,
+      "honestidade": 88,
+      "lealdade": 40,
+      "bussola": {
+        "economico": 0.17,
+        "social": -0.48
+      },
+      "origem": "prd"
+    },
+    {
+      "id": "p056",
+      "nome": "Elisa Dolzana",
+      "competencia": 73,
+      "habilidade": 38,
+      "carisma": 70,
+      "honestidade": 25,
+      "lealdade": 70,
+      "bussola": {
+        "economico": 0.24,
+        "social": -0.57
+      },
+      "origem": "prd"
+    },
+    {
+      "id": "p057",
+      "nome": "Bruno Nezlarola",
+      "competencia": 71,
+      "habilidade": 71,
+      "carisma": 65,
+      "honestidade": 74,
+      "lealdade": 80,
+      "bussola": {
+        "economico": 0.57,
+        "social": 0.48
+      },
+      "origem": "prd"
+    },
+    {
+      "id": "p058",
+      "nome": "Samuel Bragalense",
+      "competencia": 58,
+      "habilidade": 62,
+      "carisma": 38,
+      "honestidade": 32,
+      "lealdade": 71,
+      "bussola": {
+        "economico": -0.14,
+        "social": -0.7
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p059",
+      "nome": "Fabio Zandria",
+      "competencia": 61,
+      "habilidade": 64,
+      "carisma": 58,
+      "honestidade": 37,
+      "lealdade": 70,
+      "bussola": {
+        "economico": 0.31,
+        "social": 0.06
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p060",
+      "nome": "Samuel Vesbraini",
+      "competencia": 72,
+      "habilidade": 56,
+      "carisma": 65,
+      "honestidade": 75,
+      "lealdade": 73,
+      "bussola": {
+        "economico": -0.68,
+        "social": -0.57
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p061",
+      "nome": "Samuel Penmiri",
+      "competencia": 79,
+      "habilidade": 87,
+      "carisma": 36,
+      "honestidade": 47,
+      "lealdade": 67,
+      "bussola": {
+        "economico": -0.6,
+        "social": -0.6
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p062",
+      "nome": "Laura Braferardo",
+      "competencia": 70,
+      "habilidade": 38,
+      "carisma": 50,
+      "honestidade": 75,
+      "lealdade": 78,
+      "bussola": {
+        "economico": 0.31,
+        "social": 0.38
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p063",
+      "nome": "Beatriz Dollarola",
+      "competencia": 78,
+      "habilidade": 72,
+      "carisma": 42,
+      "honestidade": 48,
+      "lealdade": 90,
+      "bussola": {
+        "economico": -0.11,
+        "social": -0.38
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p064",
+      "nome": "Beatriz Corzanola",
+      "competencia": 71,
+      "habilidade": 36,
+      "carisma": 50,
+      "honestidade": 70,
+      "lealdade": 81,
+      "bussola": {
+        "economico": 0.5,
+        "social": 0.49
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p065",
+      "nome": "Tereza Liscoreira",
+      "competencia": 67,
+      "habilidade": 41,
+      "carisma": 81,
+      "honestidade": 69,
+      "lealdade": 66,
+      "bussola": {
+        "economico": 0.18,
+        "social": 0.02
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p066",
+      "nome": "Eduardo Dollara",
+      "competencia": 74,
+      "habilidade": 60,
+      "carisma": 36,
+      "honestidade": 79,
+      "lealdade": 84,
+      "bussola": {
+        "economico": -0.16,
+        "social": 0.09
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p067",
+      "nome": "Fabio Mirkeleira",
+      "competencia": 66,
+      "habilidade": 73,
+      "carisma": 60,
+      "honestidade": 70,
+      "lealdade": 63,
+      "bussola": {
+        "economico": -0.61,
+        "social": -0.16
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p068",
+      "nome": "Rafaela Braborado",
+      "competencia": 74,
+      "habilidade": 63,
+      "carisma": 36,
+      "honestidade": 80,
+      "lealdade": 86,
+      "bussola": {
+        "economico": 0.49,
+        "social": 0.19
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p069",
+      "nome": "Gael Roslisi",
+      "competencia": 70,
+      "habilidade": 32,
+      "carisma": 82,
+      "honestidade": 73,
+      "lealdade": 85,
+      "bussola": {
+        "economico": -0.13,
+        "social": 0.67
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p070",
+      "nome": "Helena Galtanola",
+      "competencia": 59,
+      "habilidade": 39,
+      "carisma": 85,
+      "honestidade": 86,
+      "lealdade": 55,
+      "bussola": {
+        "economico": 0.35,
+        "social": -0.25
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p071",
+      "nome": "Mateus Tredolardo",
+      "competencia": 57,
+      "habilidade": 38,
+      "carisma": 44,
+      "honestidade": 82,
+      "lealdade": 56,
+      "bussola": {
+        "economico": 0.05,
+        "social": -0.14
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p072",
+      "nome": "Mateus Rosvalardo",
+      "competencia": 81,
+      "habilidade": 39,
+      "carisma": 42,
+      "honestidade": 52,
+      "lealdade": 77,
+      "bussola": {
+        "economico": -0.47,
+        "social": -0.02
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p073",
+      "nome": "Jonas Borbrao",
+      "competencia": 71,
+      "habilidade": 85,
+      "carisma": 59,
+      "honestidade": 32,
+      "lealdade": 59,
+      "bussola": {
+        "economico": -0.07,
+        "social": -0.48
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p074",
+      "nome": "Adalberto Valrosa",
+      "competencia": 66,
+      "habilidade": 49,
+      "carisma": 38,
+      "honestidade": 49,
+      "lealdade": 50,
+      "bussola": {
+        "economico": -0.04,
+        "social": -0.32
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p075",
+      "nome": "Julia Lisquineira",
+      "competencia": 73,
+      "habilidade": 37,
+      "carisma": 81,
+      "honestidade": 81,
+      "lealdade": 78,
+      "bussola": {
+        "economico": -0.68,
+        "social": 0.63
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p076",
+      "nome": "Irene Pentanense",
+      "competencia": 61,
+      "habilidade": 71,
+      "carisma": 35,
+      "honestidade": 39,
+      "lealdade": 71,
+      "bussola": {
+        "economico": 0.63,
+        "social": -0.12
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p077",
+      "nome": "Mateus Vallarez",
+      "competencia": 77,
+      "habilidade": 42,
+      "carisma": 77,
+      "honestidade": 37,
+      "lealdade": 57,
+      "bussola": {
+        "economico": -0.31,
+        "social": 0.03
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p078",
+      "nome": "Fabio Brakelola",
+      "competencia": 90,
+      "habilidade": 89,
+      "carisma": 62,
+      "honestidade": 32,
+      "lealdade": 72,
+      "bussola": {
+        "economico": 0.31,
+        "social": -0.62
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p079",
+      "nome": "Beatriz Tandrio",
+      "competencia": 78,
+      "habilidade": 50,
+      "carisma": 65,
+      "honestidade": 84,
+      "lealdade": 52,
+      "bussola": {
+        "economico": -0.03,
+        "social": 0.62
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p080",
+      "nome": "Diana Kelgalense",
+      "competencia": 82,
+      "habilidade": 82,
+      "carisma": 62,
+      "honestidade": 64,
+      "lealdade": 51,
+      "bussola": {
+        "economico": 0.38,
+        "social": 0.44
+      },
+      "origem": "tecnico"
+    },
+    {
+      "id": "p081",
+      "nome": "Julia Galbraeira",
+      "competencia": 71,
+      "habilidade": 48,
+      "carisma": 58,
+      "honestidade": 66,
+      "lealdade": 82,
+      "bussola": {
+        "economico": -0.65,
+        "social": -0.13
+      },
+      "origem": "tecnico"
+    }
+  ]
+}

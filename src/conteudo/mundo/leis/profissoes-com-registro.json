@@ -5,6 +5,7 @@
   "descricao": "Quem precisa de diploma e carteira do conselho para trabalhar. Escada: toda profissão com conselho; só saúde, direito e engenharia; só saúde e engenharia (o que põe vida em risco); só médico, enfermeiro e farmacêutico.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

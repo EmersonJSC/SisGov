@@ -5,6 +5,7 @@
   "descricao": "Quanto das escolas públicas tem aula de manhã e de tarde, de 0% a 100%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

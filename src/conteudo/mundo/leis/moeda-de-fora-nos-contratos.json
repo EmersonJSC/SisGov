@@ -5,6 +5,7 @@
   "descricao": "Se a moeda de outro país pode ser usada aqui. Escada: proibida; em contratos grandes e aluguel; circula junto com a nossa; substitui a nossa.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

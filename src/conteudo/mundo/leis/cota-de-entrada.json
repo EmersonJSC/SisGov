@@ -5,6 +5,7 @@
   "descricao": "Quantos imigrantes entram por ano, em % da população: de fechada até aberta.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "imigracao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

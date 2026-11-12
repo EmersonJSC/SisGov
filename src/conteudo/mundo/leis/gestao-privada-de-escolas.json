@@ -5,6 +5,7 @@
   "descricao": "Quanto da rede de escolas é tocada por empresas contratadas. Régua: de 0% a 50% das escolas da rede.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

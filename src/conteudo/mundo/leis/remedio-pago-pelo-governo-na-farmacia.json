@@ -5,6 +5,7 @@
   "descricao": "A pessoa pega o remédio na farmácia comum e o governo paga. Escada: nada; desconto na lista básica; lista básica grátis; doença crônica grátis (pressão, diabetes, asma).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

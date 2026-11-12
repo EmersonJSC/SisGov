@@ -5,6 +5,7 @@
   "descricao": "O que todo plano de saúde tem que cobrir. Escada: o plano vende o que quiser; tem que cobrir urgência; não pode recusar quem já tem doença; pacote completo (consulta, internação, parto e remédio).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Onde o exército patrulha as ruas. Escada: em lugar nenhum; só em fronteiras e presídios; em bairros violentos por tempo limitado; permanente nas grandes cidades.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa",
   "forma": "opcoes",
   "opcoes": [
     {

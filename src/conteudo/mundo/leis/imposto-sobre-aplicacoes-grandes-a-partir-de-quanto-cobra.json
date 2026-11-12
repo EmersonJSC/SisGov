@@ -7,6 +7,7 @@
   "origem": "planilha",
   "parte_de": "Imposto sobre aplicações grandes",
   "classe": "absoluta",
+  "esfera": "impostos",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário mínimo",

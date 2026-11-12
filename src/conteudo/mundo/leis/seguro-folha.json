@@ -4,6 +4,7 @@
   "nome": "Seguro na folha",
   "descricao": "Parte do salário, paga por patrão e empregado, compra atendimento para quem tem emprego formal. Não sai do orçamento, mas encarece o emprego.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

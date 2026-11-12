@@ -5,6 +5,7 @@
   "descricao": "Vai de nenhum, passa por essenciais, até geral.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

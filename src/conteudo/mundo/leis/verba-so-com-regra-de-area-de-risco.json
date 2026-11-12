@@ -5,6 +5,7 @@
   "descricao": "O que a cidade precisa cumprir para receber repasse federal, cada degrau incluindo o anterior: sem exigência; cidade mapeia o risco; cidade barra casa nova em área de risco.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa-civil",
   "forma": "opcoes",
   "opcoes": [
     {

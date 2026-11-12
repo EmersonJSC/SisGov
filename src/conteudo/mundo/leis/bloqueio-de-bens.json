@@ -5,6 +5,7 @@
   "descricao": "Quando os bens de um suspeito podem ser congelados. Escada: só depois da condenação; depois que a acusação é aceita; durante a investigação, com ordem do juiz; automático ao abrir a investigação.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

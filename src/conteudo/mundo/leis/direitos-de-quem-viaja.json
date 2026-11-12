@@ -5,6 +5,8 @@
   "descricao": "O que a empresa deve ao passageiro de voo ou ônibus entre estados: comida, hotel, dinheiro de volta ou outra viagem, indenização.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "portos-e-aeroportos",
   "forma": "opcoes",
   "opcoes": [
     {

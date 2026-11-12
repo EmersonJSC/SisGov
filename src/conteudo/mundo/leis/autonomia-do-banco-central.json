@@ -5,6 +5,7 @@
   "descricao": "Quem manda no Banco Central: de o governo manda, passa por mandato com indicação do presidente, até mandato fixo independente.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

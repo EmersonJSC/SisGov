@@ -5,6 +5,7 @@
   "descricao": "Verba para levar água, esgoto, rua e luz à favela.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -4,6 +4,8 @@
   "nome": "Fiscalização ambiental",
   "descricao": "Dinheiro para fiscais que combatem desmatamento e poluição.",
   "camada": "jogabilidade",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 1 },

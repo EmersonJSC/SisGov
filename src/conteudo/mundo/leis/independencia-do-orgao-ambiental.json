@@ -5,6 +5,8 @@
   "descricao": "Quem manda no órgão que dá as licenças: o presidente, um chefe com mandato ou um órgão independente.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "opcoes",
   "opcoes": [
     {

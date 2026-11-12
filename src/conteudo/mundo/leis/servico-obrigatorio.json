@@ -4,6 +4,7 @@
   "nome": "Serviço obrigatório",
   "descricao": "Quem se forma em saúde trabalha um tempo na rede pública antes de seguir carreira.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,8 @@
   "descricao": "O que se exige para dirigir: autoescola obrigatória com curso e 20 horas de aula; curso grátis na internet e 2 horas de aula com instrutor à escolha, mais a prova; aprender com alguém habilitado, com licença provisória, e fazer a prova; sem exame.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -4,6 +4,7 @@
   "nome": "Verba do órgão de terras",
   "descricao": "Dinheiro do governo para o órgão que vistoria a terra parada, desapropria e monta os assentamentos.",
   "camada": "jogabilidade",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 0.02 },

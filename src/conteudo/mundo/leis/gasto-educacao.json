@@ -4,6 +4,7 @@
   "nome": "Verba da educação",
   "descricao": "Dinheiro do governo para escolas e universidades.",
   "camada": "jogabilidade",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

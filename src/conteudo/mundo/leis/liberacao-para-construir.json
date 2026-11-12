@@ -5,6 +5,7 @@
   "descricao": "Até onde a cidade pode limitar andares e casas por terreno. Escada: a cidade decide tudo; regra federal perto de transporte; a cidade não pode barrar prédio onde há água e esgoto; vale a regra federal em todo o país.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

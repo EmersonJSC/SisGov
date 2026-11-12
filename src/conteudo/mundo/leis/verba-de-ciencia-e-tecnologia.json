@@ -5,6 +5,7 @@
   "descricao": "Quanto do PIB o Estado põe em ciência e tecnologia. Mais verba sobe tudo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "ciencia-e-pesquisa",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

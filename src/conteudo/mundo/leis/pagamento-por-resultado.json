@@ -5,6 +5,7 @@
   "descricao": "Quanto o professor ganha a mais pela nota dos alunos. Escada: nenhum bônus; bônus pequeno para a escola inteira que melhora; bônus por nota da turma; bônus alto por professor conforme a nota dos alunos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

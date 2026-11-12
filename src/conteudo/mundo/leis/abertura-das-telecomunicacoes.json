@@ -5,6 +5,7 @@
   "descricao": "Quantas empresas podem vender internet e telefone. Escada: só a empresa do Estado; Estado mais uma empresa privada; poucas empresas com licença; qualquer empresa que cumpra as regras.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

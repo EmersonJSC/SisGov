@@ -4,6 +4,7 @@
   "nome": "Vacinação",
   "descricao": "Até onde o Estado leva a vacina e cobra quem não toma. Só alcança quem a rede atende; custa verba, e a obrigação pesa nas liberdades.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

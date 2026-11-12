@@ -5,6 +5,7 @@
   "descricao": "Se o preso trabalha durante a pena e para quem. Escada: não trabalha; trabalho voluntário dentro do presídio (cozinha, limpeza); trabalho obrigatório dentro do presídio; trabalho obrigatório também para empresas de fora.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

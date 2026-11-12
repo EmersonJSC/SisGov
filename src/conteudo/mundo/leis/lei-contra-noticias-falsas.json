@@ -5,6 +5,7 @@
   "descricao": "Como se pune quem espalha notícia falsa. Escada: nenhuma; a plataforma precisa pôr aviso na notícia provada falsa; remoção da notícia provada falsa; multa para quem espalha de propósito; prisão para quem espalha de propósito.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

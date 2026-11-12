@@ -5,6 +5,7 @@
   "descricao": "O Estado emprega quem está sem trabalho.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

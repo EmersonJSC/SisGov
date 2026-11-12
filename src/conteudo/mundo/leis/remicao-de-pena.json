@@ -5,6 +5,7 @@
   "descricao": "Pena menor para quem faz algo de útil na prisão. Escada, cada degrau incluindo o anterior: nenhuma; quem trabalha; quem conclui curso; quem lê livros.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "opcoes",
   "opcoes": [
     {

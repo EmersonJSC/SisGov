@@ -5,6 +5,7 @@
   "descricao": "Se o morador pode comprar a casa do Estado e com que desconto. Escada: nenhuma venda; venda ao morador com pequeno desconto; venda ao morador com grande desconto; venda ao morador com grande desconto e das casas vazias a qualquer comprador.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

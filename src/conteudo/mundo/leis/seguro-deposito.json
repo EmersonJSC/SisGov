@@ -5,6 +5,7 @@
   "descricao": "Vai de nenhum, passa por até um limite, até total.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -4,6 +4,7 @@
   "nome": "Triagem de compra estrangeira",
   "descricao": "Como o país olha quem de fora quer comprar empresas.",
   "camada": "jogabilidade",
+  "esfera": "comercio-exterior-e-capital",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Quanto da alta de custo da energia o governo não deixa chegar à conta.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

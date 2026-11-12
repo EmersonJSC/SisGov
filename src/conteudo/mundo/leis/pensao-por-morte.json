@@ -5,6 +5,7 @@
   "descricao": "Quanto a família recebe da aposentadoria de quem morreu. Escada: valor inteiro e para a vida toda; valor inteiro, por tempo que depende da idade de quem fica; 60% do valor, por tempo limitado; só para filhos menores e dependentes.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "opcoes",
   "opcoes": [
     {

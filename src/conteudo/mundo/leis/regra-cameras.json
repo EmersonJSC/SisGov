@@ -4,6 +4,7 @@
   "nome": "Regra de uso das imagens",
   "descricao": "Quem pode ver e usar as imagens das câmeras públicas.",
   "camada": "jogabilidade",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

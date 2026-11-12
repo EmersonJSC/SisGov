@@ -5,6 +5,7 @@
   "descricao": "Quanto da Reserva da fazenda o dono pode cumprir comprando mata em outra região, de 0% a 100%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

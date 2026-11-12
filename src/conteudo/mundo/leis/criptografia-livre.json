@@ -5,6 +5,7 @@
   "descricao": "Até onde o governo pode exigir acesso às mensagens. Escada: livre; acesso com ordem do juiz; o governo guarda a chave; proibida.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Dinheiro para levar luz a quem ainda não tem, sobretudo no campo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

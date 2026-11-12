@@ -5,6 +5,7 @@
   "descricao": "Quantas vagas novas por ano o Estado abre nos cursos de medicina, enfermagem e outros de saúde. Régua: de 0 a 20 mil vagas novas por ano.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "mil vagas novas por ano",

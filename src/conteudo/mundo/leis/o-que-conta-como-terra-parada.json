@@ -5,6 +5,7 @@
   "descricao": "Quais fazendas podem entrar na fila da reforma: só a abandonada, a que quase nada produz, ou a que produz abaixo da média da região.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "opcoes",
   "opcoes": [
     {

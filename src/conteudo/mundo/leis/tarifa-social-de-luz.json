@@ -5,6 +5,7 @@
   "descricao": "Quanto de desconto as famílias pobres têm na conta de luz. Escada: nenhum desconto; desconto pequeno só para famílias muito pobres; desconto grande para pobres e quase pobres; luz grátis até o consumo básico para todos os pobres.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "opcoes",
   "opcoes": [
     {

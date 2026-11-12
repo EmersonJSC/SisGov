@@ -5,6 +5,8 @@
   "descricao": "Quanto do PIB vai para cultura e esporte. Escola de samba e escolinha de futebol disputam o mesmo dinheiro.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "cultura-e-esporte",
+  "subesfera": "cultura",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

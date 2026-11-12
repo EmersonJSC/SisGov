@@ -5,6 +5,7 @@
   "descricao": "Se a pessoa escolhe quando se aposentar e como o valor muda. Escada: uma idade única para todos; duas idades possíveis, com valor menor na mais cedo; qualquer idade dentro de uma faixa, com valor que cresce a cada ano adiado; qualquer idade a partir de um mínimo baixo, com valor pelo que cada um contribuiu.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "opcoes",
   "opcoes": [
     {

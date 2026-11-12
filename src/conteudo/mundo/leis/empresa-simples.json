@@ -5,6 +5,7 @@
   "descricao": "Quanto o governo facilita registro e imposto de quem trabalha por conta própria. Escada: nenhum regime especial; registro grátis e rápido; registro rápido e imposto único simples; imposto único baixo e sem papelada para quem fatura pouco.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "O que a agência de espionagem pode fazer em outros países. Escada: nada; só ler notícias e relatórios das embaixadas; também escutar comunicações; também infiltrar agentes.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

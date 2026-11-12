@@ -5,6 +5,7 @@
   "descricao": "Quem escolhe o diretor da emissora: o governo, um conselho, ou mandato fixo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

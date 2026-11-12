@@ -4,6 +4,7 @@
   "nome": "Crédito imobiliário",
   "descricao": "Dinheiro do governo para baixar os juros de quem financia a casa própria.",
   "camada": "jogabilidade",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

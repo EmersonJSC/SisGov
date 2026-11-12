@@ -4,6 +4,7 @@
   "nome": "Investimento em energia solar",
   "descricao": "Dinheiro do governo para usinas solares. Cada 1% do PIB por ano compra energia para cerca de 5% da demanda do país, pronta em 1 ano. Cada vez mais barata, mas varia com o dia.",
   "camada": "jogabilidade",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

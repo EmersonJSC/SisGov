@@ -5,6 +5,7 @@
   "descricao": "O Estado paga parte do aluguel das famílias pobres.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

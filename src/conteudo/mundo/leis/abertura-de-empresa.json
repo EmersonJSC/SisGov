@@ -5,6 +5,8 @@
   "descricao": "Régua do tempo e custo para abrir uma empresa, de muito burocrática até simples. Marca na régua: atividade de baixo risco não precisa de alvará.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "empresas-e-estatais",
+  "subesfera": "pequenas-empresas-e-cooperativas",
   "forma": "continua",
   "unidade": "meses",
   "faixa": {

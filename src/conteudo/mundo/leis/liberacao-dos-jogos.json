@@ -5,6 +5,7 @@
   "descricao": "Escada do que é permitido: nada, loteria, bingo e corrida, cassino presencial, apostas pela internet, cassino pela internet.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "vicios",
   "forma": "opcoes",
   "opcoes": [
     {

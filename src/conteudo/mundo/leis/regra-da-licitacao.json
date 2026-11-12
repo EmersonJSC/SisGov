@@ -5,6 +5,8 @@
   "descricao": "Como o governo escolhe a empreiteira da obra. Escada: menor preço; preço e qualidade; obra pronta (a empreiteira projeta e faz); contratação direta em emergência.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "obras",
   "forma": "opcoes",
   "opcoes": [
     {

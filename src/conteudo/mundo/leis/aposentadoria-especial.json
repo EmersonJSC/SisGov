@@ -5,6 +5,7 @@
   "descricao": "Quem pode se aposentar antes por ter trabalho pesado. Escada: ninguém, todos seguem a mesma regra; só quem trabalha com risco de vida, como mineiro; também quem faz trabalho pesado ou insalubre; também professores e trabalhadores rurais.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "opcoes",
   "opcoes": [
     {

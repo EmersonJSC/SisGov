@@ -5,6 +5,7 @@
   "descricao": "Imposto cobrado na bomba de combustível.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

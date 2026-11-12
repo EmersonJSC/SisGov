@@ -5,6 +5,8 @@
   "descricao": "Quem pode pescar: reservada ao pequeno, livre, por barco, cota vendável.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "pesca",
   "forma": "opcoes",
   "opcoes": [
     {

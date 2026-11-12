@@ -5,6 +5,7 @@
   "descricao": "Quanto as companhias podem construir e vender energia nova: de fechada até leilões e contratos longos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "opcoes",
   "opcoes": [
     {

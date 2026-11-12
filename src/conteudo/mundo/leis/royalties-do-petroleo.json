@@ -5,6 +5,7 @@
   "descricao": "Imposto sobre o petróleo e o gás extraídos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

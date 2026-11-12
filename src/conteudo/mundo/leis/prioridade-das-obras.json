@@ -5,6 +5,8 @@
   "descricao": "De 0 a 100%, qual fila vem primeiro na construção civil: a pública ou a privada.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "obras",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

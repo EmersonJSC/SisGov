@@ -5,6 +5,7 @@
   "descricao": "Quanto do PIB vai para prevenir, socorrer e reconstruir depois de desastres.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa-civil",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

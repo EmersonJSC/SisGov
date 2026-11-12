@@ -5,6 +5,7 @@
   "descricao": "O Estado paga igrejas e entidades para atender.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

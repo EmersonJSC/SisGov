@@ -5,6 +5,7 @@
   "descricao": "Se pode explorar petróleo, gás e minério em floresta e área protegida: proibida, com exceções ou permitida.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "opcoes",
   "opcoes": [
     {

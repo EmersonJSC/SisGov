@@ -5,6 +5,7 @@
   "descricao": "Quantas emissoras de rádio e TV um mesmo dono pode ter; menos é limite mais duro. Régua: de 10 a 1 emissoras por dono (sem a lei, sem limite).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "emissoras por dono",

@@ -5,6 +5,7 @@
   "descricao": "Para quem o país pode vender armas. Escada: proibida; só para países aliados, com licença caso a caso; para qualquer país sem embargo; livre, com licença simples.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comercio-exterior-e-capital",
   "forma": "opcoes",
   "opcoes": [
     {

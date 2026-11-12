@@ -5,6 +5,7 @@
   "descricao": "Quanto dinheiro próprio o banco precisa ter, de baixo a alto.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

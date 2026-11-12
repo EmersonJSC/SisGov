@@ -5,6 +5,7 @@
   "descricao": "Quantas posições a fazenda ocupada sobe na fila.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "terra",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "posições",

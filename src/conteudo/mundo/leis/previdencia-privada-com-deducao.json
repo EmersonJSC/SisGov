@@ -5,6 +5,7 @@
   "descricao": "Quanto do salário guardado em plano de previdência privada pode ser descontado do imposto. Régua: de 0% a 20% da renda.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

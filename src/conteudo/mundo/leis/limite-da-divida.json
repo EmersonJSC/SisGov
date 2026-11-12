@@ -6,6 +6,7 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "classe": "absoluta",
+  "esfera": "orcamento-e-divida",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do PIB",

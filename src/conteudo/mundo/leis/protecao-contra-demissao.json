@@ -5,6 +5,7 @@
   "descricao": "Quanto custa e o que é preciso para o patrão demitir. Escada: demissão livre, sem aviso; aviso de um mês e multa pequena; aviso longo e multa de vários meses de salário; demissão só com falta grave do empregado.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Quanto do salário vai para a previdência.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

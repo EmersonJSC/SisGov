@@ -5,6 +5,7 @@
   "descricao": "Quanto da mensalidade do plano o governo paga para quem ganha pouco e não tem carteira assinada, de 0% a 100%.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "saude",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

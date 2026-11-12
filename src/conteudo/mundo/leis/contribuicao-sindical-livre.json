@@ -5,6 +5,7 @@
   "descricao": "Quem é obrigado a pagar sindicato. Escada: todos pagam, descontado direto do salário; só paga quem a assembleia do sindicato aprovar; só paga quem autorizar por escrito; ninguém paga sem filiação, o sindicato vive só dos sócios.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

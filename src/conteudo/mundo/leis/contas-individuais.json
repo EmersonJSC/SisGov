@@ -5,6 +5,7 @@
   "descricao": "Quanto da contribuição de aposentadoria vai para a conta de cada um, investida por fundos. Régua: de 0% a 50% da contribuição.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

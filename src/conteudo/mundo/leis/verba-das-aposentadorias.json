@@ -5,6 +5,7 @@
   "descricao": "Quanto do dinheiro do país (% do PIB) vai para os aposentados. Cada um recebe a verba dividida pelo número de aposentados.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "previdencia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

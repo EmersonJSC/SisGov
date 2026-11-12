@@ -5,6 +5,7 @@
   "descricao": "O quanto as penas são duras.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% das penas atuais",

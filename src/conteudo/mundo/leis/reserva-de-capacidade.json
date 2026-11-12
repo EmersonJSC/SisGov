@@ -5,6 +5,7 @@
   "descricao": "Quanto de usina fica de prontidão para quando faltar sol, vento ou chuva: de nenhuma até reserva obrigatória.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "energia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

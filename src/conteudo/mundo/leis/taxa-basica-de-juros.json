@@ -5,6 +5,7 @@
   "descricao": "Os juros básicos da economia. Você manda só se o Banco Central não for independente; se for, a régua só mostra a decisão dele.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

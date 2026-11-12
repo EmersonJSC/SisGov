@@ -5,6 +5,8 @@
   "descricao": "Quanto o Estado paga por hectare de mata que o dono mantém de pé.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "meio-ambiente",
+  "subesfera": "meio-ambiente",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

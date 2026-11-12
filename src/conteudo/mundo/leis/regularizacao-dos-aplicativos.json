@@ -5,6 +5,8 @@
   "descricao": "Regra geral para aplicativos de transporte: nada exigido, carteira e ficha criminal conferidas, seguro do passageiro, carro de até 10 anos, curso de direção.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "estradas-e-veiculos",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Dinheiro para guardas e condições dos presídios.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,7 @@
   "descricao": "Quem pode entrar: de qualquer um, passa por ter oferta de emprego, até sistema de pontos (qualificação, idade, idioma).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "imigracao",
   "forma": "opcoes",
   "opcoes": [
     {

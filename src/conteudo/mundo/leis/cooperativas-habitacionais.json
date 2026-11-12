@@ -5,6 +5,7 @@
   "descricao": "Apoio a grupos de famílias que constroem juntas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

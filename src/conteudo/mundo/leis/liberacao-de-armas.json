@@ -5,6 +5,7 @@
   "descricao": "Quem pode ter e andar com arma. Escada: arma proibida para civis; só caçadores, atiradores e vigilantes; cidadão sem antecedentes pode ter arma em casa; também pode andar armado na rua.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

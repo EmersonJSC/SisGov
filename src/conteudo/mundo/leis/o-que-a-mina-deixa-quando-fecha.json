@@ -5,6 +5,7 @@
   "descricao": "O que a mineradora precisa fazer ao fechar, cada degrau incluindo o anterior: nada; tapar e cercar; recuperar terra e rio; dinheiro para a cidade recomeçar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "opcoes",
   "opcoes": [
     {

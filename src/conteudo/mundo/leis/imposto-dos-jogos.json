@@ -5,6 +5,7 @@
   "descricao": "Imposto sobre o que é legal nos jogos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "vicios",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

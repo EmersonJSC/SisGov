@@ -5,6 +5,7 @@
   "descricao": "Imposto sobre o que entra no país. A lei tem uma aba por setor, cada uma com a sua tarifa de 0 a 50%, e uma aba \"Todos\" que mexe todas juntas. Por ora, uma régua só para todos os setores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comercio-exterior-e-capital",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

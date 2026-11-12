@@ -5,6 +5,7 @@
   "descricao": "Quanto a companhia deposita antes de explorar, para pagar vazamentos e acidentes. Vale também para rompimento de barragem de minério.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

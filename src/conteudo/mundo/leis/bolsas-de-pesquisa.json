@@ -5,6 +5,7 @@
   "descricao": "Quantas bolsas de mestrado e doutorado o Estado paga.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "ciencia-e-pesquisa",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

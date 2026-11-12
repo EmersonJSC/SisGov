@@ -5,6 +5,8 @@
   "descricao": "% do PIB para levar água ao campo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

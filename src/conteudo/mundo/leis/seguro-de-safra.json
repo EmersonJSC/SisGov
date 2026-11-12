@@ -5,6 +5,8 @@
   "descricao": "Quanto do seguro da colheita o Estado paga.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

@@ -5,6 +5,8 @@
   "descricao": "Como o Estado confere a comida: nenhuma, por amostra, permanente, padrão de exportação para todos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "opcoes",
   "opcoes": [
     {

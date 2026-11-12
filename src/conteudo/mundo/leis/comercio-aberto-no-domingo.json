@@ -5,6 +5,7 @@
   "descricao": "Se lojas e serviços podem abrir no domingo e no feriado. Escada: fechado; abre com acordo do sindicato; livre, com folga em outro dia; livre, sem folga a mais.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

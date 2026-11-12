@@ -5,6 +5,7 @@
   "descricao": "Quanto um militar ganha. A régua marca \"igual a um civil do mesmo nível\".",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do salário civil do mesmo nível",

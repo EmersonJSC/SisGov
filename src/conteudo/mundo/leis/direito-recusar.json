@@ -4,6 +4,7 @@
   "nome": "Direito de recusar",
   "descricao": "Quem pode dizer não à vacina. Soma às liberdades; mas quem recusa fica sem proteção, e a saúde de todos sente.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

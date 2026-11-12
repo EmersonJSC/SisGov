@@ -5,6 +5,7 @@
   "descricao": "Como os presos são separados na cadeia. Escada: todos juntos; separa quem cometeu crime violento; separa quem está preso pela primeira vez dos reincidentes; presídio próprio para quem está preso pela primeira vez, com estudo e trabalho.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "opcoes",
   "opcoes": [
     {

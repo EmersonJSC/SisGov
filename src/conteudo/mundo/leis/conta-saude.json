@@ -4,6 +4,7 @@
   "nome": "Conta de saúde",
   "descricao": "Parte do salário vai para uma poupança que só paga saúde. Custa pouco ao governo; mas quem ganha pouco junta pouco e continua na fila, e a obrigação empurra gente para fora da carteira.",
   "camada": "jogabilidade",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,8 @@
   "descricao": "O que o produtor precisa provar para pegar crédito do Estado: nada, não ter multa aberta, reserva em dia, ou conferência por satélite.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Aceitar que o país seja julgado por um tribunal de fora: de não aceitar até aceitar por completo.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "relacoes-exteriores",
   "forma": "opcoes",
   "opcoes": [
     {

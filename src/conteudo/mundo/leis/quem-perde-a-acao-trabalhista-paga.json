@@ -5,6 +5,7 @@
   "descricao": "Quem paga a conta quando o trabalhador perde a ação contra o patrão. Escada: nunca paga; paga se mentiu; paga as custas; paga as custas e o advogado do patrão.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

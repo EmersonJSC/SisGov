@@ -4,6 +4,8 @@
   "nome": "Proteção de dados pessoais",
   "descricao": "O que empresas e governo podem fazer com os dados das pessoas.",
   "camada": "jogabilidade",
+  "esfera": "direitos-e-liberdades",
+  "subesfera": "liberdades",
   "forma": "opcoes",
   "opcoes": [
     {

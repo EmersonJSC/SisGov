@@ -5,6 +5,7 @@
   "descricao": "Policiais fixos num bairro, que conhecem os moradores e resolvem problemas com eles.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

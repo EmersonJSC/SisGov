@@ -5,6 +5,7 @@
   "descricao": "Reduz o encargo cobrado sobre o salário.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

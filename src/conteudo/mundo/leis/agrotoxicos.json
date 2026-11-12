@@ -5,6 +5,8 @@
   "descricao": "Quais venenos de lavoura são permitidos: livres, proíbe os mais tóxicos, reavalia todos, quase nenhum.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "agricultura-e-pesca",
+  "subesfera": "agricultura",
   "forma": "opcoes",
   "opcoes": [
     {

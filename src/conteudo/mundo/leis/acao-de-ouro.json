@@ -5,6 +5,8 @@
   "descricao": "Vai de nenhuma, passa por veto na venda a estrangeiro, até veto amplo. O Estado vende mas mantém voz nas decisões estratégicas.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "empresas-e-estatais",
+  "subesfera": "estatais-e-regras",
   "forma": "opcoes",
   "opcoes": [
     {

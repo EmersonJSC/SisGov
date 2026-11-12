@@ -5,6 +5,7 @@
   "descricao": "Imposto sobre o minério extraído, de 0 a 15% do valor.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "mineracao-e-petroleo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

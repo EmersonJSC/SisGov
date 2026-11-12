@@ -5,6 +5,7 @@
   "descricao": "Para onde vão os bens confiscados: leilão ou reuso social.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Construir a bomba: nenhum, público ou secreto.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "defesa",
   "forma": "opcoes",
   "opcoes": [
     {

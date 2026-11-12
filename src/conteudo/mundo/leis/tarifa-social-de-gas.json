@@ -5,6 +5,7 @@
   "descricao": "Quanto de desconto as famílias pobres do cadastro têm no botijão de gás. Régua: de 0% a 50% de desconto no preço do botijão.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

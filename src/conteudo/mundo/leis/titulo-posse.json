@@ -4,6 +4,7 @@
   "nome": "Título de posse",
   "descricao": "Em quantos anos quem ocupa e usa uma terra ou casa sem dono vira dono dela.",
   "camada": "jogabilidade",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

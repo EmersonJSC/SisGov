@@ -5,6 +5,7 @@
   "descricao": "Quanto do que a companhia gasta em pesquisa volta como desconto no imposto.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "ciencia-e-pesquisa",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

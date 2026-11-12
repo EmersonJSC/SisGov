@@ -5,6 +5,7 @@
   "descricao": "Se quem é de fora pode comprar casa no país. Escada: livre; imposto extra na compra; no máximo uma casa por pessoa e nada de terra rural; proibido comprar.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moradia",
   "forma": "opcoes",
   "opcoes": [
     {

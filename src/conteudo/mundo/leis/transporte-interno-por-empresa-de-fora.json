@@ -5,6 +5,8 @@
   "descricao": "Se navio e avião de fora podem levar carga e gente entre cidades do país. Uma aba para navio e outra para avião, cada uma com: só empresa do país; de fora quando falta; de fora com metade da tripulação daqui; livre. Por ora, uma régua só para todos os setores.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "infraestrutura-e-transporte",
+  "subesfera": "portos-e-aeroportos",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

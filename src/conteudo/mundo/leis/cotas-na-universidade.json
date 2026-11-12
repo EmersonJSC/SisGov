@@ -5,6 +5,7 @@
   "descricao": "Quem tem vaga reservada na universidade pública. Escada: sem cotas; vagas para quem veio de escola pública; vagas para escola pública e família de baixa renda; vagas para escola pública, baixa renda e cor da pele.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "educacao",
   "forma": "opcoes",
   "opcoes": [
     {

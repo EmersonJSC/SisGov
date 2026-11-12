@@ -5,6 +5,7 @@
   "descricao": "Quanto o governo manda nas licenças de rádio e TV. Escada: licença por prazo fixo e só a Justiça pode cassar; o governo cassa só com processo e defesa; o governo renova ou cassa como achar melhor; o governo escolhe quem tem licença e cassa quando quiser.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "comunicacao-e-tecnologia",
   "forma": "opcoes",
   "opcoes": [
     {

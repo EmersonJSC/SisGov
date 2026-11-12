@@ -5,6 +5,7 @@
   "descricao": "Quanto do sistema de presídios é operado por empresas. Escada: todos os presídios públicos; empresas cuidam só de comida, limpeza e saúde; empresas operam alguns presídios inteiros; empresas operam a maioria dos presídios.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "justica-e-prisoes",
   "forma": "opcoes",
   "opcoes": [
     {

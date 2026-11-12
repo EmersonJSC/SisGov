@@ -4,6 +4,8 @@
   "nome": "Terras indígenas",
   "descricao": "Parte do território reconhecida como terra dos povos indígenas.",
   "camada": "jogabilidade",
+  "esfera": "meio-ambiente",
+  "subesfera": "povos-indigenas",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

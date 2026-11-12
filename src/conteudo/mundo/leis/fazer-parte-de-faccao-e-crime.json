@@ -5,6 +5,7 @@
   "descricao": "Quem pode ser preso por ligação com facção. Escada: só quem comete o crime; ser membro é crime; também quem ajuda a facção (guarda dinheiro, paga, leva recado); também quem tem sinais de pertencer (tatuagem, mensagem, morar com o chefe).",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {

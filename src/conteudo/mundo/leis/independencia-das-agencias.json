@@ -5,6 +5,8 @@
   "descricao": "Quem manda em quem fiscaliza luz, telefone, combustível e transporte. Escada: o ministro manda; chefe com mandato fixo; órgão independente com verba própria.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "empresas-e-estatais",
+  "subesfera": "estatais-e-regras",
   "forma": "opcoes",
   "opcoes": [
     {

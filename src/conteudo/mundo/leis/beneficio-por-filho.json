@@ -5,6 +5,7 @@
   "descricao": "Quanto da transferência de renda é dividido por criança. Régua: de 0% a 50% da transferência paga por filho.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "assistencia-social",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

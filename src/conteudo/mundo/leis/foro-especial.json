@@ -6,6 +6,8 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "classe": "constitucional",
+  "esfera": "estado-e-eleicoes",
+  "subesfera": "controle-e-transparencia",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,6 +5,7 @@
   "descricao": "Limita anúncio e marca. Dois controles na mesma lei: drogas e jogos.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "vicios",
   "forma": "opcoes",
   "opcoes": [
     {

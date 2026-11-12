@@ -5,6 +5,7 @@
   "descricao": "Vai de proibidas, passa por reguladas, até livres.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "moeda-e-bancos",
   "forma": "opcoes",
   "opcoes": [
     {

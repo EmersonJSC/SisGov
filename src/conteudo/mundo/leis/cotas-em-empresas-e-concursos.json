@@ -5,6 +5,8 @@
   "descricao": "Quantas vagas são reservadas a grupos com menos acesso. Escada: sem cotas; cotas só em concursos públicos; também vagas reservadas nos conselhos de grandes empresas; também cotas de contratação em empresas médias e grandes.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "direitos-e-liberdades",
+  "subesfera": "igualdade-e-minorias",
   "forma": "opcoes",
   "opcoes": [
     {

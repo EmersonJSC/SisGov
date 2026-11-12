@@ -5,6 +5,7 @@
   "descricao": "Até onde vale o acordo feito pelo sindicato. Escada: não vale nada além da lei; vale só para os sócios do sindicato; vale para todos da empresa; vale para o setor inteiro.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "trabalho",
   "forma": "opcoes",
   "opcoes": [
     {

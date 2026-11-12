@@ -5,6 +5,7 @@
   "descricao": "Quanto da segurança é feito por empresas: prédios, ruas, bairros ou toda a polícia.",
   "camada": "jogabilidade",
   "origem": "planilha",
+  "esfera": "seguranca-publica",
   "forma": "opcoes",
   "opcoes": [
     {
