@@ -425,6 +425,11 @@ mostra para onde as escolhas levam o país, sem decidir nada sozinha.
   corrupção, liberdades, polarização, meio ambiente, reputação
   internacional, segurança externa, aprovação, índice da bolsa e confiança do
   mercado.
+- **Principais (12/nov):** 6 índices resumem o país e o eleitor sente:
+  PIB real, Desemprego, Inflação, Saúde, Educação (Instrução) e Segurança
+  pública (resume Homicídios, Crimes contra o patrimônio e Sensação de
+  insegurança). Os outros são subíndices, embaixo do principal deles. Coluna
+  Principal na aba Índices.
 - Índice novo só com decisão do autor.
 - **Todo índice tem efeito.** Ele muda algo no país, além de ser cobrado pelos
   grupos. Efeito de cada índice e esfera dele: `docs/jogo/leis.xlsx`.
@@ -762,8 +767,11 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   zera.
 - O eleitor percebe o déficit e a inflação, não a contabilidade.
 - **Promessa (12/nov):** a promessa de campanha é a meta do mandato e fica na
-  tela até a eleição. Cumprida, sobe o voto do grupo que pediu; quebrada,
-  derruba esse voto e sobe o desgaste.
+  tela até a eleição. Mira um índice principal com meta ("Saúde de 52 para
+  60"), um subíndice ("Homicídios caem 20%") ou um programa ("aprovar o
+  Remédio barato"). Principal pesa no voto de todos; subíndice e programa,
+  mais nos grupos que se importam. Cumprida, sobe esse voto; quebrada, derruba
+  e sobe o desgaste.
 - Resultado: Presidência e cadeiras do Congresso.
 
 ## 14. Mídia
@@ -1762,8 +1770,9 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - **Caminhos sem núcleo reduzido (08/nov):** o jogo deve ter centenas de caminhos
   possíveis, por isso não se corta um núcleo de ~40 leis. O jogador pode focar numa
   área (ex.: segurança pública), gastando uma **cota** ali, e ganhar a eleição pela
-  promessa mesmo sem focar no resto. A promessa entra na eleição pelo voto do
-  grupo que pediu (§13, 12/nov). A definir: o que é a cota.
+  promessa mesmo sem focar no resto. Decidido em 12/nov: o foco é a promessa
+  (índice principal, subíndice ou programa, §13), e a cota é a carga do
+  Congresso (§12), sem pontos: ele lota, fica lento e não vota tudo.
 - **Problema de otimização: estados × pops (08/nov):** com pops divididos por estado, o
   Brasil passa de 32 para 32 × 27 = 864 pops. Estudar quanto isso pesa no turno do
   motor, antes de programar.

@@ -25,7 +25,7 @@ campanha ficam em GDD §18.
 
 1ª rodada (11/nov) feita, mas virou revisão de contas, não de game design, e gastou ~20% da cota (autor). Mantido tudo o que ele fez (autor: "não desfaça"): Teto da carga de impostos, Validade das regras, Aviso antes da multa, índice Preço do combustível, Confiança na aposentadoria com leis, colisões Polícia sem formato militar × Força letal e Sigilo bancário × Obrigação dos bancos, citações a Substituídas trocadas, 4 acertos no GDD.
 Fable não se usa mais (autor, 11/nov). A opinião de game designer é dada na conversa.
-Opinião de game design dada em 12/nov: escritos no GDD a promessa como meta (§13), o preço que sobe na compra de votos (§12), causa e efeito na tela (§17), corrupção em cadeia e caminho autoritário (§18).
+Opinião de game design dada em 12/nov: escritos no GDD a promessa como meta (§13), o preço que sobe na compra de votos (§12), causa e efeito na tela (§17), corrupção em cadeia e caminho autoritário (§18). Cota decidida: 6 índices principais (coluna Principal na aba Índices), promessa mira principal, subíndice ou programa; a cota é a carga do Congresso.
 
 ## Faltam
 
