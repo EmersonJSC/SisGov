@@ -24,9 +24,10 @@ campanha ficam em GDD §18.
 ## Revisão do Fable (próxima sessão)
 
 1. Gerar por script um resumo da planilha (por esfera: leis, forma, lado, programa; índices e ligações; contagem de lados) num arquivo do scratchpad.
-2. Um agente Fable (`model: fable`), imparcial, lê `docs/jogo/gdd.md` e o resumo, nunca as linhas da planilha.
-3. Pedido: buracos de mecânica, peças que não se ligam, contradições entre seções, lados desequilibrados, o que o jogador não sente. Lista curta, por gravidade.
-4. O autor decide cada achado; nada se muda sem a palavra dele.
+2. Um agente Fable (`model: fable`), imparcial, vê o jogo inteiro: `docs/jogo/gdd.md`, o resumo e, quando precisar, a planilha.
+3. Ele acha e **arruma sozinho** os buracos de mecânica e de ideia: peças que não se ligam, contradições entre seções, lados desequilibrados, o que o jogador não sente. Pode escrever leis, índices e trechos do GDD (autor, 11/nov: "ele é forte o suficiente para construir algumas coisas sozinho").
+4. Regras para ele: as do CLAUDE.md e da skill sisgov-lei-boa; marcar "Fable 11/nov" na coluna Revisão; nada do Democracy 4; sem pontos de ação; sem nome real no texto da lei.
+5. No fim, um relatório curto do que mudou e do que ficou em dúvida; o autor aprova antes do commit.
 
 ## Faltam
 
