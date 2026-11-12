@@ -1676,8 +1676,28 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   índice Vagas na escola na planilha; faltam conferir os roteiros. Validação de
   diploma estrangeiro e Ensino técnico ficam no centro da Bússola: os estudos não
   dão lado, e a reação vem do efeito nos pops.
-- **Sistema judiciário (07/nov):** tribunais e juízes como peça do jogo; a
-  Indicação de juízes e o Foro especial mexem nele. Desenhar depois.
+- **Sistema judiciário (decidido em 11/nov, "por enquanto"):**
+  - A Justiça é o órgão da esfera Justiça e prisões: verba (Verba da Justiça),
+    fila de processos (pouca verba, fila lenta e o caso prescreve), corrupção
+    interna e independência (Indicação de juízes, Independência dos
+    investigadores).
+  - Um caso anda: rastro, investigação, processo, sentença. Condena se a prova
+    existe de verdade, conforme a independência; Foro especial manda o político
+    ao tribunal de cima, mais lento; Delação premiada acelera. Vale para papel
+    duvidoso, líder de organização e escândalo de ministro.
+  - Tribunal superior entra, simples: poucas cadeiras, cada uma com o lado do
+    juiz na bússola. A vaga abre na aposentadoria e chega como papel na mesa;
+    o presidente indica e, conforme a lei, o Congresso aprova. O lado do
+    tribunal muda juiz a juiz, em mandatos.
+  - Suspender lei: quando a lei bate em direito (degrau extremo de censura,
+    pena de morte, mandato sem fim). Chance pela distância entre o tribunal e
+    a lei; chega o papel "tribunal suspendeu a lei".
+  - O presidente aceita, aumenta a corte (Indicação de juízes; caro no
+    Congresso e na mídia), pressiona o juiz (papel duvidoso, rastro) ou ignora
+    a decisão (crise institucional; liberdade e reputação caem; Risco de golpe
+    sobe).
+  - Tela: prédio no anel do Estado ("320 processos · 2 seus") e cadeiras do
+    tribunal superior coloridas. Impeachment segue com o Congresso.
 - **Capital nova (09/nov):** ideia de megaobra guardada; não entrou na lista.
 - **Custo dos atos com a mídia (08/nov):** quanto cada ato (entrevista,
   pressão, processo, notícia falsa) desgasta e por quanto tempo o efeito dura
@@ -1767,7 +1787,7 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - Como um ataque acontece e como termina.
 - Mídia: como empurra a bússola dos pops e a raiva decididos em 11/nov (§14).
 
-**Fora do jogo pronto (decidido):** guerra iniciada pelo país, tribunal superior, pesquisa e tecnologia
+**Fora do jogo pronto (decidido):** guerra iniciada pelo país, pesquisa e tecnologia
 como árvore.
 
 ## 19. Regras de conteúdo

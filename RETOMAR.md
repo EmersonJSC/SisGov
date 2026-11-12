@@ -30,8 +30,8 @@ Nenhuma esfera. Toda lei viva tem roteiro e mecânica.
 - Acesso a remédios completo em 11/nov: 5 leis novas (Teto do preço dos remédios, Remédio pago pelo governo na farmácia, Troca pelo genérico, Imposto sobre remédio, Onde se vende remédio). Governadores decididos em 11/nov (GDD §18): termômetro, verba, bancada do estado, pedidos e campanha. Campanha sem limite de ações (freio: caixa e cansaço), 11/nov. Mídia decidida em 11/nov: muda o lado do pop devagar (6 regras) e mobiliza a raiva do grupo (número rápido). Aba dos 30 países adiada (autor, 11/nov: não é importante agora). Próximo: o autor escolhe a frente; candidatas na revisão geral (calibração no motor, estado inicial, revisão do Fable).
 
 - Vídeo de apresentação (5 min) em `arquivo/sisgov-apresentacao.mp4`, 09/nov: voz neural é rascunho; falta decidir a voz final e a chamada do fim.
-- Decidir o roteiro: manter a aba "Leis - roteiro" ou fundir o essencial na aba Leis.
-- Conteúdo de cada papel das Operações; Congresso; sistema judiciário; construção civil.
+- Aba "Leis - roteiro" fica separada (autor, 11/nov).
+- Conteúdo de cada papel das Operações; construção civil; próximo: construção civil. (Congresso, Mesa, Órgãos e sistema judiciário desenhados em 11/nov; o tribunal superior entrou "por enquanto".)
 - Estudo final de tudo depois das últimas esferas (autor, 09/nov).
 - Aba dos 30 países e planejamento final (planilha completa + documento passo a passo).
 
