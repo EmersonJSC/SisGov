@@ -14,10 +14,13 @@ ao lado (✅ ok, ❌ defeito, 🔧 melhorar) e o autor decide.
   `eslint-disable`.
 - Código novo do motor (`politica`, `governo`, `mesa`, `fatos`): a maior função
   tem 53 linhas (`notaDoPartido`); as demais ficam abaixo de 48.
-- Código antigo ou misto, o ponto fraco: `src/tela/mapa/MapaPolitico.tsx` (2.386
-  linhas, uma função de 1.387), `src/motor/turno/index.ts` (1.759 linhas;
-  `estadoInicial` com 334) e `validarLei` (190).
-- 53 funções passam de 60 linhas em todo o `src/`; 116 usos de `as` e 30 de `!`.
+- Código antigo ou misto, o ponto fraco: a camada da tela (`MapaPolitico.tsx`
+  com 2.386 linhas e uma função de 1.387; as janelas e o CSS), que vai ser
+  reformulada e por isso ficou de fora da limpeza.
+- Depois da limpeza de 12/nov: fora da tela sobraram 6 funções acima de 60
+  linhas (61 a 102, quase todas montam um registro grande); na tela são 32,
+  para a reformulação. `turno/index.ts` caiu de 1.759 para 96 linhas.
+- 116 usos de `as` e 30 de `!` no `src/` (não revisados um a um).
 - O hook `typescript-patterns-enforcer` reclama de números dentro de tabelas
   nomeadas e de laços `for`; o projeto inteiro usa os dois e eu segui o
   costume. Decidir se vale impor a regra do hook ou desligá-la.
@@ -96,11 +99,14 @@ ao lado (✅ ok, ❌ defeito, 🔧 melhorar) e o autor decide.
 
 ## B. Manutenção e limpeza
 
-10. **`estadoInicial` e `turno/index.ts`.** `src/motor/turno/index.ts:~1425`.
-    Cada módulo novo acrescenta algumas linhas ao estado inicial, à lista de
-    etapas e ao `Pedido`. O certo é cada módulo ter o seu `iniciar*` (já temos
-    `iniciarCongresso`, `iniciarGoverno`) e o `estadoInicial` só montar. Quebrar
-    em funções, sem mudar comportamento.
+10. **`turno/index.ts` foi dividido (12/nov).** As etapas foram movidas para
+    `src/motor/turno/etapas/*.ts` (uma por assunto), `estadoInicial` para
+    `inicio.ts` e quebrado em conferências e montadores pequenos. Foi uma
+    mudança só de lugar, feita por script (`arquivo/_dividir_turno.cjs`,
+    fora do repositório); os 874 testes passam. Conferir: nenhuma etapa ficou
+    com dependência circular perigosa entre arquivos (hoje funciona porque só
+    há funções e constantes de seta); `estadoBase` (63 linhas) ainda monta o
+    estado inteiro de uma vez.
 
 11. **Campos opcionais no estado.** `Estado` tem `congresso?`, `mesa?`,
     `governo?`, `fatos?`. Cada um gera `?? []`, `if (!regras.governo ||
@@ -184,3 +190,35 @@ medir`). Se crescer, calcular a nota uma vez e separar só o termo da conta.
   Hoje o `turno` liga todos e injeta funções (`candidato`, `ministros`).
 - O custo do turno escala? Hoje ~10 ms (Brasil). Estados, governadores e o mundo
   leve vão multiplicar. Onde pôr o orçamento e o teste de regressão de tempo.
+
+## E. A limpeza de 12/nov: o que conferir
+
+Tudo abaixo foi refatoração sem mudar o comportamento, protegida pelos 874
+testes. Os testes não cobrem tudo; conferir estes pontos:
+
+23. **Ordem das mensagens de `invariantes`.** `etapas/invariantes.ts` virou uma
+    lista de conferências. A ordem em que as falhas aparecem na mensagem mudou
+    um pouco (desgaste vem antes de casas, rede de saneamento e atendimento).
+    Só importa se algum teste ou tela depender da ordem exata.
+24. **Validadores quebrados em funções** (`leis/validar.ts`, `mercado/index.ts`,
+    `mercado/capacidade.ts`, `mundo/index.ts`). Conferir que nenhuma regra de
+    validação se perdeu na quebra: comparar a lista de mensagens de erro de
+    antes e depois. `conferirEfeitosDeReacao` passou a ser compartilhado entre
+    o mercado e as capacidades.
+25. **`partida/visao.ts`** (`ligacoes`, `montarVisao`, `visaoDoMercado`,
+    `visaoDaLei`) e **`partida/previa.ts`** foram divididos; as setas e as
+    linhas da prévia saem na mesma ordem (conferido nos testes de visão), mas a
+    tela não foi reaberta depois: abrir o mapa e uma lei de saúde e de
+    saneamento.
+26. **`motor/atendimento`** (`andarAtendimento`, `pontosDoAtendimento`):
+    extraídas `andarVagas`, `andarPlanos`, `redeDasLeis`. É código numérico:
+    conferir que as contas ficaram idênticas (as expressões foram copiadas, não
+    reescritas).
+27. **`estadoInicial` e as conferências do país** (`turno/inicio.ts`): a ordem
+    em que os erros do país são lançados é a mesma, mas agora há um
+    `erro(): never` e três auxiliares (`faltaIndice`, `faltaPop`, `faltaLei`)
+    que juntam mensagens parecidas. Conferir as mensagens de erro.
+28. **Restam 6 funções acima de 60 linhas fora da tela:** `atendimentoInicial`
+    (102), `previaDoAtendimento` (93), `segurancaDaCesta` (65), `estadoBase`
+    (63), `andarMoradia` (61), `previaDoSaneamento` (61). Quase todas montam um
+    registro grande; vale decidir se dividir ajuda ou só espalha.

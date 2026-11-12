@@ -623,15 +623,16 @@ export function atendimentoInicial(
   };
 }
 
-/**
- * Um turno: as obras prontas abrem vagas, a verba a mais começa obras, a verba a
- * menos fecha vagas aos poucos, e os planos andam com a renda e as leis.
- */
-export function andarAtendimento(
+/** Anda `hoje` a fração `velocidade` do caminho até o que a lei pede. */
+const andar = (regra: RegraDoAtendimento, hoje: number, alvo: number) =>
+  hoje + regra.velocidade * (alvo - hoje);
+
+/** As obras prontas abrem vagas; verba a mais começa obra e a menos fecha vagas. */
+function andarVagas(
   regra: RegraDoAtendimento,
   s: AtendimentoNoEstado,
   turno: TurnoDoAtendimento,
-): AtendimentoNoEstado {
+) {
   const passo = turno.ritmo / atrasoDasObras(turno.atraso).prazo;
   let { vagas } = s;
   const fila: ObraDoAtendimento[] = [];
@@ -656,6 +657,15 @@ export function andarAtendimento(
   const naFila = fila.reduce((soma, o) => soma + o.vagas, 0);
   const novas = alvo - vagas - naFila;
   if (novas > 1e-6) fila.push({ vagas: novas, falta: regra.prazo });
+  return { vagas, obras: fila };
+}
+
+/** Planos, filantropia, reserva, disputa, missão, ambiental e programa andam até as leis. */
+function andarPlanos(
+  regra: RegraDoAtendimento,
+  s: AtendimentoNoEstado,
+  turno: TurnoDoAtendimento,
+) {
   const privados = planosAlvo(regra, turno.leis, turno.com_bolso);
   const seguro = seguroAlvo(
     turno.leis,
@@ -663,11 +673,9 @@ export function andarAtendimento(
     turno.na_folha,
     turno.com_bolso,
   );
-  const planos = privados + seguro;
-  const anda = (hoje: number, alvoDaLei: number) =>
-    hoje + regra.velocidade * (alvoDaLei - hoje);
-  const andados = {
-    planos: anda(s.planos, planos),
+  const anda = (hoje: number, alvo: number) => andar(regra, hoje, alvo);
+  return {
+    planos: anda(s.planos, privados + seguro),
     seguro: anda(s.seguro, seguro),
     filantropia: anda(s.filantropia, turno.leis.filantropia),
     reserva: anda(s.reserva, turno.leis.reserva),
@@ -676,11 +684,25 @@ export function andarAtendimento(
     ambiental: anda(s.ambiental, turno.leis.ambiental),
     programa: anda(s.programa, turno.leis.programa),
   };
+}
+
+/**
+ * Um turno: as obras prontas abrem vagas, a verba a mais começa obras, a verba a
+ * menos fecha vagas aos poucos, e os planos andam com a renda e as leis.
+ */
+export function andarAtendimento(
+  regra: RegraDoAtendimento,
+  s: AtendimentoNoEstado,
+  turno: TurnoDoAtendimento,
+): AtendimentoNoEstado {
+  const { vagas, obras } = andarVagas(regra, s, turno);
+  const andados = andarPlanos(regra, s, turno);
+  const anda = (hoje: number, alvo: number) => andar(regra, hoje, alvo);
   return {
     ...s,
     ...andados,
     vagas,
-    obras: fila,
+    obras,
     custo: custoDaRede(
       regra,
       andados,
@@ -696,11 +718,11 @@ export function andarAtendimento(
     liberdade: anda(s.liberdade, liberdadeAlvo(regra, turno.leis)),
     encargo: anda(s.encargo, turno.leis.informal),
     procura: anda(s.procura, procuraAlvo(turno.leis, turno.com_bolso)),
-    cobertura:
-      s.cobertura +
-      regra.velocidade *
-        (coberturaAlvo(regra, turno.leis.basica, turno.atraso) - s.cobertura),
-    alcance: s.alcance + regra.velocidade * (turno.leis.alcance - s.alcance),
+    cobertura: anda(
+      s.cobertura,
+      coberturaAlvo(regra, turno.leis.basica, turno.atraso),
+    ),
+    alcance: anda(s.alcance, turno.leis.alcance),
   };
 }
 
@@ -740,6 +762,46 @@ export const trabalhoDoAtendimento = (
   obras: readonly ObraDoAtendimento[],
 ) => obras.reduce((soma, o) => soma + o.vagas, 0) * regra.custo_obra;
 
+/** A rede de atendimento que as leis dão, como o índice a lê (para comparar antes e depois). */
+function redeDasLeis(
+  regra: RegraDoAtendimento,
+  s: AtendimentoNoEstado,
+  leis: LeisDoAtendimento,
+  turno: {
+    populacao: number;
+    profissionais: number;
+    atraso: number;
+    com_bolso: number;
+    na_folha: number;
+    ambiente: number;
+  },
+): Rede {
+  const { populacao, profissionais, atraso, com_bolso, na_folha, ambiente } =
+    turno;
+  const privados = planosAlvo(regra, leis, com_bolso);
+  const seguro = seguroAlvo(leis, privados, na_folha, com_bolso);
+  return {
+    populacao,
+    profissionais,
+    vagas: Math.max(
+      0,
+      s.vagas_fora + vagasPagas(regra, populacao, leis, com_bolso, atraso),
+    ),
+    planos: privados + seguro,
+    seguro,
+    alcance: leis.alcance,
+    cobertura: coberturaAlvo(regra, leis.basica, atraso),
+    fraco: leis.fraco,
+    procura: procuraAlvo(leis, com_bolso),
+    filantropia: leis.filantropia,
+    reserva: leis.reserva,
+    disputa: leis.disputa,
+    missao: leis.missao,
+    ambiental: leis.ambiental,
+    ambiente,
+  };
+}
+
 /**
  * O que mudar as leis faz, para a ficha: pontos do índice pela rede pública e
  * pelos planos, e pelo cuidado esticado ou básico. Sem profissional para atender, a vaga nova não dá ponto e vira
@@ -760,36 +822,8 @@ export function pontosDoAtendimento(
     ambiente: number;
   },
 ) {
-  const { populacao, profissionais, atraso, com_bolso, na_folha, ambiente } =
-    turno;
-  const vagasCom = (leis: LeisDoAtendimento) =>
-    Math.max(
-      0,
-      s.vagas_fora + vagasPagas(regra, populacao, leis, com_bolso, atraso),
-    );
-  const rede = (leis: LeisDoAtendimento) => {
-    const privados = planosAlvo(regra, leis, com_bolso);
-    const seguro = seguroAlvo(leis, privados, na_folha, com_bolso);
-    return {
-      populacao,
-      profissionais,
-      vagas: vagasCom(leis),
-      planos: privados + seguro,
-      seguro,
-      alcance: leis.alcance,
-      cobertura: coberturaAlvo(regra, leis.basica, atraso),
-      fraco: leis.fraco,
-      procura: procuraAlvo(leis, com_bolso),
-      filantropia: leis.filantropia,
-      reserva: leis.reserva,
-      disputa: leis.disputa,
-      missao: leis.missao,
-      ambiental: leis.ambiental,
-      ambiente,
-    };
-  };
-  const redeAntes = rede(antes);
-  const redeDepois = rede(depois);
+  const redeAntes = redeDasLeis(regra, s, antes, turno);
+  const redeDepois = redeDasLeis(regra, s, depois, turno);
   const hoje = indiceDoAtendimento(regra, redeAntes);
   const comMudanca = (mudanca: Partial<Rede>) =>
     indiceDoAtendimento(regra, { ...redeAntes, ...mudanca }) - hoje;

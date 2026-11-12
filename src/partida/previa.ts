@@ -138,6 +138,15 @@ function previaDaMoradia(
   ];
 }
 
+type LinhaDaPrevia = PreviaLei["indices"][number];
+
+/** Uma linha da prévia: sem atraso nem rótulo de tempo, salvo o que vier em `extra`. */
+const linha = (
+  id: string,
+  pontos: number,
+  extra: Partial<LinhaDaPrevia> = {},
+): LinhaDaPrevia => ({ id, pontos, atrasoMeses: 0, ...extra });
+
 /** O que as leis da rede fazem: agem pela contagem, e o resto vem pelas setas. */
 function previaDoSaneamento(
   partida: Partida,
@@ -175,48 +184,28 @@ function previaDoSaneamento(
     ),
   });
   const atrasoMeses = mesesDaRede(partida);
+  const daRede = (regras.derivas ?? []).filter((d) => d.por === regra.indice);
+  const empurra = (d: (typeof daRede)[number]) =>
+    d.sentido * TAXA_DERIVA[d.forca] * pontos.indice;
   const linhas: PreviaLei["indices"] = [
-    { id: regra.indice, pontos: pontos.indice, atrasoMeses, porAno: true },
+    linha(regra.indice, pontos.indice, { atrasoMeses, porAno: true }),
     // Quem deixa de pagar é cortado, ou volta: depende da renda do país.
-    {
-      id: regra.indice,
-      pontos: pontos.cortes,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
+    linha(regra.indice, pontos.cortes, { aosPoucos: true }),
     // A deriva: cada ponto da rede empurra os outros índices, turno a turno.
-    ...(regras.derivas ?? [])
-      .filter(
-        (d) => d.por === regra.indice && d.indice !== regra.indice_ambiente,
-      )
-      .map((d) => ({
-        id: d.indice,
-        pontos: d.sentido * TAXA_DERIVA[d.forca] * pontos.indice,
-        atrasoMeses,
-        aosPoucos: true,
-      })),
-    {
-      id: regra.indice_vida,
-      pontos: pontos.vida,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_ambiente,
-      pontos:
-        pontos.ambiente +
-        (regras.derivas ?? [])
-          .filter(
-            (d) => d.por === regra.indice && d.indice === regra.indice_ambiente,
-          )
-          .reduce(
-            (soma, d) =>
-              soma + d.sentido * TAXA_DERIVA[d.forca] * pontos.indice,
-            0,
-          ),
-      atrasoMeses,
-      aosPoucos: true,
-    },
+    ...daRede
+      .filter((d) => d.indice !== regra.indice_ambiente)
+      .map((d) =>
+        linha(d.indice, empurra(d), { atrasoMeses, aosPoucos: true }),
+      ),
+    linha(regra.indice_vida, pontos.vida, { aosPoucos: true }),
+    linha(
+      regra.indice_ambiente,
+      pontos.ambiente +
+        daRede
+          .filter((d) => d.indice === regra.indice_ambiente)
+          .reduce((soma, d) => soma + empurra(d), 0),
+      { atrasoMeses, aosPoucos: true },
+    ),
   ];
   return linhas.filter((l) => Math.abs(l.pontos) > 1e-9);
 }
@@ -268,100 +257,50 @@ function previaDoAtendimento(
     ambiente: estado.jogabilidade[regra.indice_ambiente],
   });
   const atrasoMeses = mesesDaSaude(partida);
+  const deriva = (por: string, base: number, atraso: number) =>
+    (regras.derivas ?? [])
+      .filter((d) => d.por === por)
+      .map((d) =>
+        linha(d.indice, d.sentido * TAXA_DERIVA[d.forca] * base, {
+          atrasoMeses: atraso,
+          aosPoucos: true,
+        }),
+      );
+  const informal =
+    (depois.informal - antes.informal) *
+    regra.pops_encargo.reduce(
+      (soma, id) => soma + regras.pais.pops[id].parcela_pessoas * 100,
+      0,
+    );
   const linhas: PreviaLei["indices"] = [
-    { id: regra.indice, pontos: pontos.rede, atrasoMeses },
-    {
-      id: regra.indice,
-      pontos: pontos.planos,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice,
-      pontos: pontos.cuidado,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_vida,
-      pontos: -pontos.fraqueza,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_profissionais,
-      pontos: (antes.abandono - depois.abandono) * s.indice_profissionais,
-      atrasoMeses: 0,
-      porAno: true,
-    },
-    {
-      id: regra.indice_profissionais,
-      pontos: (antes.missao - depois.missao) * s.indice_profissionais,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_reputacao,
-      pontos: pontos.reputacao,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_industria,
-      pontos: -pontos.industria,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_vacina,
-      pontos: pontos.vacina,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_liberdade,
-      pontos: pontos.liberdade,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    { id: regra.indice_desvio, pontos: pontos.desvio, atrasoMeses },
-    {
-      id: regra.indice_desigualdade,
-      pontos: pontos.desigualdade,
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
-    {
-      id: regra.indice_informal,
-      pontos:
-        (depois.informal - antes.informal) *
-        regra.pops_encargo.reduce(
-          (soma, id) => soma + regras.pais.pops[id].parcela_pessoas * 100,
-          0,
-        ),
-      atrasoMeses: 0,
-      aosPoucos: true,
-    },
+    linha(regra.indice, pontos.rede, { atrasoMeses }),
+    linha(regra.indice, pontos.planos, { aosPoucos: true }),
+    linha(regra.indice, pontos.cuidado, { aosPoucos: true }),
+    linha(regra.indice_vida, -pontos.fraqueza, { aosPoucos: true }),
+    linha(
+      regra.indice_profissionais,
+      (antes.abandono - depois.abandono) * s.indice_profissionais,
+      { porAno: true },
+    ),
+    linha(
+      regra.indice_profissionais,
+      (antes.missao - depois.missao) * s.indice_profissionais,
+      { aosPoucos: true },
+    ),
+    linha(regra.indice_reputacao, pontos.reputacao, { aosPoucos: true }),
+    linha(regra.indice_industria, -pontos.industria, { aosPoucos: true }),
+    linha(regra.indice_vacina, pontos.vacina, { aosPoucos: true }),
+    linha(regra.indice_liberdade, pontos.liberdade, { aosPoucos: true }),
+    linha(regra.indice_desvio, pontos.desvio, { atrasoMeses }),
+    linha(regra.indice_desigualdade, pontos.desigualdade, { aosPoucos: true }),
+    linha(regra.indice_informal, informal, { aosPoucos: true }),
     // A deriva: cada ponto de atendimento empurra os outros índices.
-    ...(regras.derivas ?? [])
-      .filter((d) => d.por === regra.indice)
-      .map((d) => ({
-        id: d.indice,
-        pontos:
-          d.sentido *
-          TAXA_DERIVA[d.forca] *
-          (pontos.rede + pontos.planos + pontos.cuidado),
-        atrasoMeses,
-        aosPoucos: true,
-      })),
-    ...(regras.derivas ?? [])
-      .filter((d) => d.por === regra.indice_vacina)
-      .map((d) => ({
-        id: d.indice,
-        pontos: d.sentido * TAXA_DERIVA[d.forca] * pontos.vacina,
-        atrasoMeses: 0,
-        aosPoucos: true,
-      })),
+    ...deriva(
+      regra.indice,
+      pontos.rede + pontos.planos + pontos.cuidado,
+      atrasoMeses,
+    ),
+    ...deriva(regra.indice_vacina, pontos.vacina, 0),
   ];
   return linhas.filter((l) => Math.abs(l.pontos) > 1e-9);
 }

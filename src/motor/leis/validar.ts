@@ -19,6 +19,193 @@ const ehNumero = (v: unknown): v is number =>
 const ehKebab = (v: unknown): v is string =>
   typeof v === "string" && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(v);
 
+/** O que cada conferência precisa: onde anotar o erro e os índices do mundo. */
+interface Contexto {
+  erro: (campo: string, motivo: string) => void;
+  indices: readonly string[];
+}
+
+function conferirCabecalho(c: Contexto, dado: Objeto, arquivo: string) {
+  if (dado.versao !== 1) c.erro("versao", "precisa ser 1");
+  if (!ehKebab(dado.id)) c.erro("id", "precisa ser kebab-case");
+  else if (
+    !arquivo.endsWith(`/${dado.id}.json`) &&
+    arquivo !== `${dado.id}.json`
+  )
+    c.erro("id", `difere do nome do arquivo`);
+  if (!CAMADAS.includes(dado.camada as never))
+    c.erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
+  if (dado.classe !== undefined && !CLASSES.includes(dado.classe as never))
+    c.erro("classe", `precisa ser ${CLASSES.join(", ")}`);
+  for (const campo of ["esfera", "subesfera"] as const)
+    if (dado[campo] !== undefined && !ehKebab(dado[campo]))
+      c.erro(campo, "precisa ser kebab-case");
+}
+
+/** Posição na bússola: eixos conhecidos, cada um de −1 a +1. */
+function conferirPonto(c: Contexto, valor: unknown, campo: string) {
+  if (!ehObjeto(valor)) return c.erro(campo, "precisa ser um objeto");
+  for (const [eixo, v] of Object.entries(valor))
+    if (!EIXOS.includes(eixo as never))
+      c.erro(`${campo}.${eixo}`, `eixo precisa ser ${EIXOS.join(" ou ")}`);
+    else if (!ehNumero(v) || v < -1 || v > 1)
+      c.erro(`${campo}.${eixo}`, "precisa estar entre -1 e 1");
+}
+
+function conferirEfeito(c: Contexto, ef: unknown, campo: string) {
+  if (!ehObjeto(ef)) return c.erro(campo, "precisa ser um objeto");
+  if (INDICES_ESSENCIAIS.includes(ef.indice as never))
+    c.erro(
+      `${campo}.indice`,
+      `"${ef.indice}" é essencial: vem do cálculo do motor, não da lei`,
+    );
+  else if (!c.indices.includes(ef.indice as string))
+    c.erro(
+      `${campo}.indice`,
+      `índice "${String(ef.indice)}" não existe no mundo`,
+    );
+  if (ef.sentido !== 1 && ef.sentido !== -1)
+    c.erro(`${campo}.sentido`, "precisa ser 1 ou -1");
+  if (!FORCAS.includes(ef.forca as never))
+    c.erro(`${campo}.forca`, `precisa ser ${FORCAS.join(", ")}`);
+  if (!Number.isInteger(ef.atraso_turnos) || (ef.atraso_turnos as number) < 0)
+    c.erro(`${campo}.atraso_turnos`, "precisa ser inteiro ≥ 0");
+}
+
+function conferirEfeitos(c: Contexto, valor: unknown, campo: string) {
+  if (!Array.isArray(valor)) return c.erro(campo, "precisa ser uma lista");
+  valor.forEach((ef, i) => conferirEfeito(c, ef, `${campo}[${i}]`));
+}
+
+/** Unidade, faixa e passo da lei de régua. */
+function conferirRegua(c: Contexto, dado: Objeto) {
+  const fracao = dado.unidade === "fracao";
+  if (
+    !fracao &&
+    dado.unidade !== "meses" &&
+    dado.unidade !== "anos" &&
+    dado.unidade !== "livre"
+  )
+    c.erro("unidade", 'precisa ser "fracao", "meses", "anos" ou "livre"');
+  if (
+    dado.unidade === "livre" &&
+    (typeof dado.rotulo_unidade !== "string" || !dado.rotulo_unidade.trim())
+  )
+    c.erro("rotulo_unidade", 'unidade "livre" precisa do nome da unidade');
+  const faixa = dado.faixa;
+  if (!ehObjeto(faixa) || !ehNumero(faixa.min) || !ehNumero(faixa.max))
+    c.erro("faixa", "precisa ter min e max numéricos");
+  else if (faixa.min >= faixa.max) c.erro("faixa", "precisa ter min < max");
+  else if (faixa.min < 0 && dado.unidade !== "livre")
+    c.erro("faixa", "abaixo de zero só na unidade livre");
+  else if (fracao && faixa.max > 1)
+    c.erro("faixa", "em fração, precisa ter max ≤ 1");
+  if (!fracao && (dado.calculo !== undefined || dado.conta !== undefined))
+    c.erro("unidade", "calculo e conta só existem em fração");
+  if (!ehNumero(dado.passo) || dado.passo <= 0)
+    c.erro("passo", "precisa ser > 0");
+}
+
+/** Cálculo de arrecadação, conta de gasto e para quem o gasto vira renda. */
+function conferirContas(c: Contexto, dado: Objeto) {
+  if (dado.calculo !== undefined) {
+    const calc = dado.calculo;
+    if (!ehObjeto(calc)) c.erro("calculo", "precisa ser um objeto");
+    else {
+      if (typeof calc.base !== "string" || !ehBase(calc.base))
+        c.erro(
+          "calculo.base",
+          `base "${String(calc.base)}" não existe no motor`,
+        );
+      if (calc.modelo !== "laffer")
+        c.erro("calculo.modelo", 'precisa ser "laffer"');
+    }
+  }
+  if (dado.conta !== undefined && dado.conta !== "gasto")
+    c.erro("conta", 'precisa ser "gasto"');
+  else if (dado.conta !== undefined && dado.calculo !== undefined)
+    c.erro("conta", "lei de gasto não tem cálculo de arrecadação");
+  if (dado.para !== undefined) {
+    if (dado.conta !== "gasto") c.erro("para", "só lei de gasto tem para");
+    else if (!ehObjeto(dado.para) || !ehEstrato(dado.para.estrato))
+      c.erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
+  }
+}
+
+/** Bússola da régua: os dois extremos e, se houver, onde ela chega ao máximo. */
+function conferirBussolaDaRegua(c: Contexto, dado: Objeto) {
+  if (dado.bussola === undefined) return;
+  if (!ehObjeto(dado.bussola))
+    return c.erro("bussola", "precisa ter min e max");
+  conferirPonto(c, dado.bussola.min, "bussola.min");
+  conferirPonto(c, dado.bussola.max, "bussola.max");
+  const ate = dado.bussola.ate;
+  const f = ehObjeto(dado.faixa) ? dado.faixa : {};
+  if (
+    ate !== undefined &&
+    !(
+      typeof ate === "number" &&
+      ehNumero(f.min) &&
+      ehNumero(f.max) &&
+      ate > f.min &&
+      ate <= f.max
+    )
+  )
+    c.erro("bussola.ate", "precisa estar dentro da faixa");
+}
+
+function conferirOpcao(
+  c: Contexto,
+  op: unknown,
+  i: number,
+  vistos: Set<unknown>,
+) {
+  const campo = `opcoes[${i}]`;
+  if (!ehObjeto(op)) return c.erro(campo, "precisa ser um objeto");
+  if (!ehKebab(op.id)) c.erro(`${campo}.id`, "precisa ser kebab-case");
+  else if (vistos.has(op.id)) c.erro(`${campo}.id`, `"${op.id}" repetido`);
+  vistos.add(op.id);
+  if (op.bussola !== undefined)
+    conferirPonto(c, op.bussola, `${campo}.bussola`);
+  if (
+    op.mandato_anos !== undefined &&
+    !(Number.isInteger(op.mandato_anos) && (op.mandato_anos as number) > 0)
+  )
+    c.erro(`${campo}.mandato_anos`, "precisa ser inteiro > 0");
+  for (const nome of ["deficit_do_cofre", "superavit_ao_cofre"]) {
+    const v = op[nome];
+    if (v !== undefined && !(typeof v === "number" && v >= 0 && v <= 1))
+      c.erro(`${campo}.${nome}`, "precisa ser um número de 0 a 1");
+  }
+  if (
+    op.valores !== undefined &&
+    (!ehObjeto(op.valores) ||
+      !Object.values(op.valores).every(
+        (n) => typeof n === "number" && Number.isFinite(n),
+      ))
+  )
+    c.erro(`${campo}.valores`, "precisa ser números por chave");
+  conferirEfeitos(c, op.efeitos, `${campo}.efeitos`);
+}
+
+/** Campo que, se uma opção tem, todas precisam ter. */
+function conferirTodasOuNenhuma(c: Contexto, opcoes: unknown[], campo: string) {
+  const com = opcoes.filter((op) => ehObjeto(op) && op[campo] !== undefined);
+  if (com.length > 0 && com.length < opcoes.length)
+    c.erro("opcoes", `${campo} precisa estar em todas as opções`);
+}
+
+function conferirOpcoes(c: Contexto, dado: Objeto) {
+  const opcoes = dado.opcoes;
+  if (!Array.isArray(opcoes) || opcoes.length < 2)
+    return c.erro("opcoes", "precisa ter ao menos duas opções");
+  const vistos = new Set<unknown>();
+  opcoes.forEach((op, i) => conferirOpcao(c, op, i, vistos));
+  for (const campo of ["deficit_do_cofre", "superavit_ao_cofre"])
+    conferirTodasOuNenhuma(c, opcoes, campo);
+  conferirTodasOuNenhuma(c, opcoes, "mandato_anos");
+}
+
 /**
  * Valida uma lei vinda de JSON.
  * @param indices ids dos índices de jogabilidade do mundo
@@ -29,188 +216,22 @@ export function validarLei(
   indices: readonly string[],
 ): ErroLei[] {
   const erros: ErroLei[] = [];
-  const erro = (campo: string, motivo: string) =>
-    erros.push({ arquivo, campo, motivo });
-
+  const c: Contexto = {
+    erro: (campo, motivo) => erros.push({ arquivo, campo, motivo }),
+    indices,
+  };
   if (!ehObjeto(dado)) {
-    erro("(raiz)", "a lei precisa ser um objeto");
+    c.erro("(raiz)", "a lei precisa ser um objeto");
     return erros;
   }
-
-  if (dado.versao !== 1) erro("versao", "precisa ser 1");
-  if (!ehKebab(dado.id)) erro("id", "precisa ser kebab-case");
-  else if (
-    !arquivo.endsWith(`/${dado.id}.json`) &&
-    arquivo !== `${dado.id}.json`
-  )
-    erro("id", `difere do nome do arquivo`);
-  if (!CAMADAS.includes(dado.camada as never))
-    erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
-  if (dado.classe !== undefined && !CLASSES.includes(dado.classe as never))
-    erro("classe", `precisa ser ${CLASSES.join(", ")}`);
-  for (const campo of ["esfera", "subesfera"] as const)
-    if (dado[campo] !== undefined && !ehKebab(dado[campo]))
-      erro(campo, "precisa ser kebab-case");
-
-  const ponto = (valor: unknown, campo: string) => {
-    if (!ehObjeto(valor)) return erro(campo, "precisa ser um objeto");
-    for (const [eixo, v] of Object.entries(valor))
-      if (!EIXOS.includes(eixo as never))
-        erro(`${campo}.${eixo}`, `eixo precisa ser ${EIXOS.join(" ou ")}`);
-      else if (!ehNumero(v) || v < -1 || v > 1)
-        erro(`${campo}.${eixo}`, "precisa estar entre -1 e 1");
-  };
-
-  const efeitos = (valor: unknown, campo: string) => {
-    if (!Array.isArray(valor)) return erro(campo, "precisa ser uma lista");
-    valor.forEach((ef, i) => {
-      const c = `${campo}[${i}]`;
-      if (!ehObjeto(ef)) return erro(c, "precisa ser um objeto");
-      if (INDICES_ESSENCIAIS.includes(ef.indice as never))
-        erro(
-          `${c}.indice`,
-          `"${ef.indice}" é essencial: vem do cálculo do motor, não da lei`,
-        );
-      else if (!indices.includes(ef.indice as string))
-        erro(
-          `${c}.indice`,
-          `índice "${String(ef.indice)}" não existe no mundo`,
-        );
-      if (ef.sentido !== 1 && ef.sentido !== -1)
-        erro(`${c}.sentido`, "precisa ser 1 ou -1");
-      if (!FORCAS.includes(ef.forca as never))
-        erro(`${c}.forca`, `precisa ser ${FORCAS.join(", ")}`);
-      if (
-        !Number.isInteger(ef.atraso_turnos) ||
-        (ef.atraso_turnos as number) < 0
-      )
-        erro(`${c}.atraso_turnos`, "precisa ser inteiro ≥ 0");
-    });
-  };
-
+  conferirCabecalho(c, dado, arquivo);
   if (dado.forma === "continua") {
-    const fracao = dado.unidade === "fracao";
-    if (
-      !fracao &&
-      dado.unidade !== "meses" &&
-      dado.unidade !== "anos" &&
-      dado.unidade !== "livre"
-    )
-      erro("unidade", 'precisa ser "fracao", "meses", "anos" ou "livre"');
-    if (
-      dado.unidade === "livre" &&
-      (typeof dado.rotulo_unidade !== "string" || !dado.rotulo_unidade.trim())
-    )
-      erro("rotulo_unidade", 'unidade "livre" precisa do nome da unidade');
-    const faixa = dado.faixa;
-    if (!ehObjeto(faixa) || !ehNumero(faixa.min) || !ehNumero(faixa.max))
-      erro("faixa", "precisa ter min e max numéricos");
-    else if (faixa.min >= faixa.max) erro("faixa", "precisa ter min < max");
-    else if (faixa.min < 0 && dado.unidade !== "livre")
-      erro("faixa", "abaixo de zero só na unidade livre");
-    else if (fracao && faixa.max > 1)
-      erro("faixa", "em fração, precisa ter max ≤ 1");
-    if (!fracao && (dado.calculo !== undefined || dado.conta !== undefined))
-      erro("unidade", "calculo e conta só existem em fração");
-    if (!ehNumero(dado.passo) || dado.passo <= 0)
-      erro("passo", "precisa ser > 0");
-    if (dado.calculo !== undefined) {
-      const calc = dado.calculo;
-      if (!ehObjeto(calc)) erro("calculo", "precisa ser um objeto");
-      else {
-        if (typeof calc.base !== "string" || !ehBase(calc.base))
-          erro(
-            "calculo.base",
-            `base "${String(calc.base)}" não existe no motor`,
-          );
-        if (calc.modelo !== "laffer")
-          erro("calculo.modelo", 'precisa ser "laffer"');
-      }
-    }
-    if (dado.conta !== undefined && dado.conta !== "gasto")
-      erro("conta", 'precisa ser "gasto"');
-    else if (dado.conta !== undefined && dado.calculo !== undefined)
-      erro("conta", "lei de gasto não tem cálculo de arrecadação");
-    if (dado.para !== undefined) {
-      if (dado.conta !== "gasto") erro("para", "só lei de gasto tem para");
-      else if (!ehObjeto(dado.para) || !ehEstrato(dado.para.estrato))
-        erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
-    }
-    if (dado.bussola !== undefined) {
-      if (!ehObjeto(dado.bussola)) erro("bussola", "precisa ter min e max");
-      else {
-        ponto(dado.bussola.min, "bussola.min");
-        ponto(dado.bussola.max, "bussola.max");
-        const ate = dado.bussola.ate;
-        const f = ehObjeto(faixa) ? faixa : {};
-        if (
-          ate !== undefined &&
-          !(
-            typeof ate === "number" &&
-            ehNumero(f.min) &&
-            ehNumero(f.max) &&
-            ate > f.min &&
-            ate <= f.max
-          )
-        )
-          erro("bussola.ate", "precisa estar dentro da faixa");
-      }
-    }
-    efeitos(dado.efeitos, "efeitos");
-  } else if (dado.forma === "opcoes") {
-    const opcoes = dado.opcoes;
-    if (!Array.isArray(opcoes) || opcoes.length < 2)
-      erro("opcoes", "precisa ter ao menos duas opções");
-    else {
-      const vistos = new Set<unknown>();
-      opcoes.forEach((op, i) => {
-        if (!ehObjeto(op)) return erro(`opcoes[${i}]`, "precisa ser um objeto");
-        if (!ehKebab(op.id)) erro(`opcoes[${i}].id`, "precisa ser kebab-case");
-        else if (vistos.has(op.id))
-          erro(`opcoes[${i}].id`, `"${op.id}" repetido`);
-        vistos.add(op.id);
-        if (op.bussola !== undefined) ponto(op.bussola, `opcoes[${i}].bussola`);
-        if (
-          op.mandato_anos !== undefined &&
-          !(
-            Number.isInteger(op.mandato_anos) && (op.mandato_anos as number) > 0
-          )
-        )
-          erro(`opcoes[${i}].mandato_anos`, "precisa ser inteiro > 0");
-        for (const campo of ["deficit_do_cofre", "superavit_ao_cofre"]) {
-          const v = op[campo];
-          if (v !== undefined && !(typeof v === "number" && v >= 0 && v <= 1))
-            erro(`opcoes[${i}].${campo}`, "precisa ser um número de 0 a 1");
-        }
-        if (op.valores !== undefined) {
-          const v = op.valores;
-          if (
-            !ehObjeto(v) ||
-            !Object.values(v).every(
-              (n) => typeof n === "number" && Number.isFinite(n),
-            )
-          )
-            erro(`opcoes[${i}].valores`, "precisa ser números por chave");
-        }
-        efeitos(op.efeitos, `opcoes[${i}].efeitos`);
-      });
-      for (const campo of ["deficit_do_cofre", "superavit_ao_cofre"]) {
-        const com = opcoes.filter(
-          (op) => ehObjeto(op) && op[campo] !== undefined,
-        ).length;
-        if (com > 0 && com < opcoes.length)
-          erro("opcoes", `${campo} precisa estar em todas as opções`);
-      }
-      const comMandato = opcoes.filter(
-        (op) => ehObjeto(op) && op.mandato_anos !== undefined,
-      ).length;
-      if (comMandato > 0 && comMandato < opcoes.length)
-        erro("opcoes", "mandato_anos precisa estar em todas as opções");
-    }
-  } else {
-    erro("forma", 'precisa ser "continua" ou "opcoes"');
-  }
-
+    conferirRegua(c, dado);
+    conferirContas(c, dado);
+    conferirBussolaDaRegua(c, dado);
+    conferirEfeitos(c, dado.efeitos, "efeitos");
+  } else if (dado.forma === "opcoes") conferirOpcoes(c, dado);
+  else c.erro("forma", 'precisa ser "continua" ou "opcoes"');
   return erros;
 }
 

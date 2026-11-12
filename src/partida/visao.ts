@@ -21,6 +21,8 @@ import {
   type RegraDoSaneamento,
   type Estado,
   type Lei,
+  type LeiContinua,
+  type LeiOpcoes,
   type Regras,
   type TipoGrupo,
 } from "../motor";
@@ -153,14 +155,17 @@ function comFluxo(
   return visao;
 }
 
-function visaoDaLei(
+type Area = (typeof areas.areas)[number];
+type TextosDaLei = NonNullable<ReturnType<typeof textos.get>>;
+
+/** Campos que toda lei tem na tela, de régua ou de degraus. */
+function visaoComumDaLei(
   lei: Lei,
   valor: number | string,
-  area: (typeof areas.areas)[number],
-  alerta: VisaoLei["alerta"],
-): VisaoLei {
-  const t = textos.get(lei.id) ?? {};
-  const comum = {
+  area: Area,
+  t: TextosDaLei,
+) {
+  return {
     id: lei.id,
     nome: t.nome ?? nomeDoId(lei.id),
     descricao: t.descricao ?? "",
@@ -177,34 +182,44 @@ function visaoDaLei(
     filhas: [],
     ...(valor === undefined ? { naoLegislada: true } : {}),
   };
-  // sem valor no país: o motor conta a contínua no mínimo da faixa
-  if (lei.forma === "continua") {
-    const escala = lei.unidade === "fracao" ? 100 : 1;
-    const nivel = Number(valor ?? lei.faixa.min) * escala;
-    return {
-      ...comum,
-      grupo: lei.calculo
-        ? "tributaria"
-        : lei.conta
-          ? "orcamentaria"
-          : "regulatoria",
-      familia: lei.calculo ? "imposto" : lei.conta ? "verba" : "regra",
-      processo: "lei-ordinaria",
-      nivel,
-      meta: nivel,
-      minimo: lei.faixa.min * escala,
-      maximo: lei.faixa.max * escala,
-      passo: lei.passo * escala,
-      ...(alerta ? { alerta } : {}),
-      unidade: lei.unidade === "fracao" ? "percentual_0_100" : lei.unidade,
-      ...(lei.rotulo_unidade ? { rotuloUnidade: lei.rotulo_unidade } : {}),
-    };
-  }
-  // opção vale a posição dela na lista; a mandato é da Constituição
+}
+
+/** Lei de régua: sem valor no país, o motor a conta no mínimo da faixa. */
+function visaoDaRegua(
+  lei: LeiContinua,
+  valor: number | string,
+  alerta: VisaoLei["alerta"],
+) {
+  const escala = lei.unidade === "fracao" ? 100 : 1;
+  const nivel = Number(valor ?? lei.faixa.min) * escala;
+  return {
+    grupo: lei.calculo
+      ? "tributaria"
+      : lei.conta
+        ? "orcamentaria"
+        : "regulatoria",
+    familia: lei.calculo ? "imposto" : lei.conta ? "verba" : "regra",
+    processo: "lei-ordinaria",
+    nivel,
+    meta: nivel,
+    minimo: lei.faixa.min * escala,
+    maximo: lei.faixa.max * escala,
+    passo: lei.passo * escala,
+    ...(alerta ? { alerta } : {}),
+    unidade: lei.unidade === "fracao" ? "percentual_0_100" : lei.unidade,
+    ...(lei.rotulo_unidade ? { rotuloUnidade: lei.rotulo_unidade } : {}),
+  };
+}
+
+/** Lei de degraus: a opção vale a posição dela na lista; a de mandato é da Constituição. */
+function visaoDosDegraus(
+  lei: LeiOpcoes,
+  valor: number | string,
+  t: TextosDaLei,
+) {
   const constitucional = lei.opcoes.some((o) => o.mandato_anos !== undefined);
   const nivel = lei.opcoes.findIndex((o) => o.id === valor);
   return {
-    ...comum,
     grupo: constitucional ? "institucional" : "regulatoria",
     familia: constitucional ? "constitucional" : "regra",
     processo: constitucional ? "emenda-constitucional" : "lei-ordinaria",
@@ -221,190 +236,194 @@ function visaoDaLei(
   };
 }
 
+function visaoDaLei(
+  lei: Lei,
+  valor: number | string,
+  area: Area,
+  alerta: VisaoLei["alerta"],
+): VisaoLei {
+  const t = textos.get(lei.id) ?? {};
+  const comum = visaoComumDaLei(lei, valor, area, t);
+  return {
+    ...comum,
+    ...(lei.forma === "continua"
+      ? visaoDaRegua(lei, valor, alerta)
+      : visaoDosDegraus(lei, valor, t)),
+  } as VisaoLei;
+}
+
 /** Pontos (faixa inteira) a partir dos quais a lei liga uma seta ao grupo. */
 const SETA_GRUPO = 10;
+
+type Seta = [origem: string, alvo: string, sinal: 1 | -1];
+
+const ligacao = (
+  origem: string,
+  alvo: string,
+  sinal: 1 | -1,
+  atrasoMeses = 0,
+): VisaoLigacao => ({
+  id: `${origem}>${alvo}`,
+  origem,
+  alvo,
+  sinal,
+  atrasoMeses,
+  mecanismo: "afim",
+});
+
+/** As leis da saúde agem pela contagem, sem efeito declarado na lei. */
+function ligacoesDaSaude(
+  leis: Lei[],
+  saude: { regra: RegraDoAtendimento; atrasoMeses: number },
+): VisaoLigacao[] {
+  const r = saude.regra;
+  const alcance = r.leis_alcance.flatMap((id): Seta[] => {
+    const lei = leis.find((l) => l.id === id);
+    return [
+      [id, r.indice, 1],
+      ...(lei?.forma === "opcoes" && lei.opcoes.some((o) => o.valores?.fraco)
+        ? ([[id, r.indice_vida, -1]] as Seta[])
+        : []),
+      ...(lei?.forma === "opcoes" && lei.opcoes.some((o) => o.valores?.abandono)
+        ? ([[id, r.indice_profissionais, -1]] as Seta[])
+        : []),
+    ];
+  });
+  const setas: Seta[] = [
+    [r.lei_verba, r.indice, 1],
+    [r.lei_verba, r.indice_desvio, 1],
+    [r.lei_abertura, r.indice, 1],
+    [r.lei_abertura, r.indice_profissionais, -1],
+    [r.lei_abertura, r.indice_desigualdade, 1],
+    [r.lei_limite, r.indice, -1],
+    [r.lei_limite, r.indice_desigualdade, -1],
+    [r.lei_basica, r.indice, 1],
+    [r.lei_seguro, r.indice, 1],
+    [r.lei_seguro, r.indice_profissionais, -1],
+    [r.lei_seguro, r.indice_desigualdade, 1],
+    [r.lei_seguro, r.indice_informal, 1],
+    [r.lei_gratuidade, r.indice, -1],
+    [r.lei_gratuidade, r.indice_vida, 1],
+    [r.lei_gratuidade, r.indice_desigualdade, -1],
+    [r.lei_cobranca, r.indice, 1],
+    [r.lei_cobranca, r.indice_vida, -1],
+    [r.lei_cobranca, r.indice_desigualdade, 1],
+    [r.lei_deducao, r.indice, 1],
+    [r.lei_deducao, r.indice_profissionais, -1],
+    [r.lei_deducao, r.indice_desigualdade, 1],
+    [r.lei_conta, r.indice, 1],
+    [r.lei_conta, r.indice_desigualdade, 1],
+    [r.lei_conta, r.indice_informal, 1],
+    [r.lei_filantropia, r.indice, 1],
+    [r.lei_filantropia, r.indice_desigualdade, 1],
+    [r.lei_missao, r.indice, -1],
+    [r.lei_missao, r.indice_profissionais, -1],
+    [r.lei_missao, r.indice_reputacao, 1],
+    [r.lei_ambiental, r.indice_vida, 1],
+    [r.lei_ambiental, r.indice_industria, -1],
+    [r.lei_vacina, r.indice_vacina, 1],
+    [r.lei_vacina, r.indice_liberdade, -1],
+    [r.lei_recusa, r.indice_vacina, -1],
+    [r.lei_recusa, r.indice_liberdade, 1],
+    [r.indice, r.indice_vacina, 1],
+    ...alcance,
+    [r.indice_profissionais, r.indice, 1],
+    [r.indice_instrucao, r.indice_profissionais, 1],
+  ];
+  return setas.map(([o, a, sinal]) => ligacao(o, a, sinal, saude.atrasoMeses));
+}
+
+/** As leis da rede de água e esgoto agem pela contagem, sem efeito na lei. */
+function ligacoesDaRede(rede: {
+  regra: RegraDoSaneamento;
+  atrasoMeses: number;
+}): VisaoLigacao[] {
+  const r = rede.regra;
+  const setas: Seta[] = [
+    [r.lei_verba, r.indice, 1],
+    [r.lei_concessao, r.indice, 1],
+    [r.lei_concessao, r.indice_vida, -1],
+    [r.lei_teto, r.indice, -1],
+    [r.lei_teto, r.indice_vida, 1],
+    [r.lei_tratamento, r.indice, -1],
+    [r.lei_tratamento, r.indice_ambiente, 1],
+  ];
+  return setas.map(([o, a, sinal]) => ligacao(o, a, sinal, rede.atrasoMeses));
+}
+
+type Moradia = {
+  lei: string;
+  indices: string[];
+  atrasoMeses: number;
+  terra: string;
+  deficit: string;
+  preco: string;
+  favela: string;
+};
+
+/** A verba de casas age pelo estoque; o êxodo e o bolso movem déficit e favela. */
+function ligacoesDaMoradia(m: Moradia): VisaoLigacao[] {
+  return [
+    ...m.indices.map((indice) => ligacao(m.lei, indice, -1, m.atrasoMeses)),
+    // O êxodo: quem sai do campo entra no déficit.
+    ligacao(m.terra, m.deficit, 1),
+    // O bolso: quem não paga o preço perde a casa.
+    ligacao(m.preco, m.favela, 1),
+  ];
+}
+
+/** A deriva: um índice empurra o outro, turno a turno. */
+const ligacoesDeDeriva = (derivas: Deriva[], indices: Set<string>) =>
+  derivas
+    .filter((d) => indices.has(d.por) && indices.has(d.indice))
+    .map((d) => ligacao(d.por, d.indice, d.sentido));
+
+/** Efeitos declarados da lei e a seta ao grupo que ela mais mexe. */
+function ligacoesDaLei(lei: Lei, grupos: TipoGrupo[]): VisaoLigacao[] {
+  // lei de opções: vale o sentido da opção mais alta que cita o índice
+  const efeitos =
+    lei.forma === "continua"
+      ? lei.efeitos
+      : lei.opcoes.flatMap((o) => o.efeitos);
+  const dosIndices = [...new Map(efeitos.map((e) => [e.indice, e]))].map(
+    ([indice, e]) => ligacao(lei.id, indice, e.sentido, e.atraso_turnos * 2),
+  );
+  if (lei.forma !== "continua") return dosIndices;
+  // seta ao grupo: o que subir a lei do mínimo ao máximo faz com ele
+  const dosGrupos = grupos.flatMap((g) => {
+    const pontos = pontosLei(g, lei, lei.faixa.max, lei.faixa.min);
+    return Math.abs(pontos) >= SETA_GRUPO
+      ? [ligacao(lei.id, g.id, pontos > 0 ? 1 : -1)]
+      : [];
+  });
+  return [...dosIndices, ...dosGrupos];
+}
+
+/** O que cada grupo cobra de um índice. */
+const ligacoesDosGrupos = (indices: Set<string>) =>
+  tiposGrupos.grupos.flatMap((g) =>
+    g.cobra
+      .filter((c) => indices.has(c.indice))
+      .map((c) => ligacao(c.indice, g.id, c.sentido === 1 ? 1 : -1)),
+  );
 
 function ligacoes(
   leis: Lei[],
   indices: Set<string>,
   grupos: TipoGrupo[],
   derivas: Deriva[],
-  moradia?: {
-    lei: string;
-    indices: string[];
-    atrasoMeses: number;
-    terra: string;
-    deficit: string;
-    preco: string;
-    favela: string;
-  },
+  moradia?: Moradia,
   rede?: { regra: RegraDoSaneamento; atrasoMeses: number },
   saude?: { regra: RegraDoAtendimento; atrasoMeses: number },
 ): VisaoLigacao[] {
-  const saida: VisaoLigacao[] = [];
-  // As leis da saúde agem pela contagem, sem efeito declarado na lei.
-  if (saude) {
-    const r = saude.regra;
-    const seta = (origem: string, alvo: string, sinal: 1 | -1) =>
-      saida.push({
-        id: `${origem}>${alvo}`,
-        origem,
-        alvo,
-        sinal,
-        atrasoMeses: saude.atrasoMeses,
-        mecanismo: "afim",
-      });
-    seta(r.lei_verba, r.indice, 1);
-    seta(r.lei_verba, r.indice_desvio, 1);
-    seta(r.lei_abertura, r.indice, 1);
-    seta(r.lei_abertura, r.indice_profissionais, -1);
-    seta(r.lei_abertura, r.indice_desigualdade, 1);
-    seta(r.lei_limite, r.indice, -1);
-    seta(r.lei_limite, r.indice_desigualdade, -1);
-    seta(r.lei_basica, r.indice, 1);
-    seta(r.lei_seguro, r.indice, 1);
-    seta(r.lei_seguro, r.indice_profissionais, -1);
-    seta(r.lei_seguro, r.indice_desigualdade, 1);
-    seta(r.lei_seguro, r.indice_informal, 1);
-    seta(r.lei_gratuidade, r.indice, -1);
-    seta(r.lei_gratuidade, r.indice_vida, 1);
-    seta(r.lei_gratuidade, r.indice_desigualdade, -1);
-    seta(r.lei_cobranca, r.indice, 1);
-    seta(r.lei_cobranca, r.indice_vida, -1);
-    seta(r.lei_cobranca, r.indice_desigualdade, 1);
-    seta(r.lei_deducao, r.indice, 1);
-    seta(r.lei_deducao, r.indice_profissionais, -1);
-    seta(r.lei_deducao, r.indice_desigualdade, 1);
-    seta(r.lei_conta, r.indice, 1);
-    seta(r.lei_conta, r.indice_desigualdade, 1);
-    seta(r.lei_conta, r.indice_informal, 1);
-    seta(r.lei_filantropia, r.indice, 1);
-    seta(r.lei_filantropia, r.indice_desigualdade, 1);
-    seta(r.lei_missao, r.indice, -1);
-    seta(r.lei_missao, r.indice_profissionais, -1);
-    seta(r.lei_missao, r.indice_reputacao, 1);
-    seta(r.lei_ambiental, r.indice_vida, 1);
-    seta(r.lei_ambiental, r.indice_industria, -1);
-    seta(r.lei_vacina, r.indice_vacina, 1);
-    seta(r.lei_vacina, r.indice_liberdade, -1);
-    seta(r.lei_recusa, r.indice_vacina, -1);
-    seta(r.lei_recusa, r.indice_liberdade, 1);
-    seta(r.indice, r.indice_vacina, 1);
-    for (const id of r.leis_alcance) {
-      seta(id, r.indice, 1);
-      const lei = leis.find((l) => l.id === id);
-      if (lei?.forma !== "opcoes") continue;
-      if (lei.opcoes.some((o) => o.valores?.fraco)) seta(id, r.indice_vida, -1);
-      if (lei.opcoes.some((o) => o.valores?.abandono))
-        seta(id, r.indice_profissionais, -1);
-    }
-    seta(r.indice_profissionais, r.indice, 1);
-    seta(r.indice_instrucao, r.indice_profissionais, 1);
-  }
-  // As leis da rede agem pela contagem, sem efeito declarado na lei.
-  if (rede) {
-    const r = rede.regra;
-    const seta = (origem: string, alvo: string, sinal: 1 | -1) =>
-      saida.push({
-        id: `${origem}>${alvo}`,
-        origem,
-        alvo,
-        sinal,
-        atrasoMeses: rede.atrasoMeses,
-        mecanismo: "afim",
-      });
-    seta(r.lei_verba, r.indice, 1);
-    seta(r.lei_concessao, r.indice, 1);
-    seta(r.lei_concessao, r.indice_vida, -1);
-    seta(r.lei_teto, r.indice, -1);
-    seta(r.lei_teto, r.indice_vida, 1);
-    seta(r.lei_tratamento, r.indice, -1);
-    seta(r.lei_tratamento, r.indice_ambiente, 1);
-  }
-  // A verba de casas age pelo estoque, sem efeito declarado na lei.
-  if (moradia) {
-    for (const indice of moradia.indices)
-      saida.push({
-        id: `${moradia.lei}>${indice}`,
-        origem: moradia.lei,
-        alvo: indice,
-        sinal: -1,
-        atrasoMeses: moradia.atrasoMeses,
-        mecanismo: "afim",
-      });
-    // O êxodo: quem sai do campo entra no déficit.
-    saida.push({
-      id: `${moradia.terra}>${moradia.deficit}`,
-      origem: moradia.terra,
-      alvo: moradia.deficit,
-      sinal: 1,
-      atrasoMeses: 0,
-      mecanismo: "afim",
-    });
-    // O bolso: quem não paga o preço perde a casa.
-    saida.push({
-      id: `${moradia.preco}>${moradia.favela}`,
-      origem: moradia.preco,
-      alvo: moradia.favela,
-      sinal: 1,
-      atrasoMeses: 0,
-      mecanismo: "afim",
-    });
-  }
-  // A deriva: um índice empurra o outro, turno a turno.
-  for (const d of derivas)
-    if (indices.has(d.por) && indices.has(d.indice))
-      saida.push({
-        id: `${d.por}>${d.indice}`,
-        origem: d.por,
-        alvo: d.indice,
-        sinal: d.sentido,
-        atrasoMeses: 0,
-        mecanismo: "afim",
-      });
-  for (const lei of leis) {
-    // lei de opções: vale o sentido da opção mais alta que cita o índice
-    const efeitos =
-      lei.forma === "continua"
-        ? lei.efeitos
-        : lei.opcoes.flatMap((o) => o.efeitos);
-    const porIndice = new Map(efeitos.map((e) => [e.indice, e]));
-    for (const [indice, e] of porIndice)
-      saida.push({
-        id: `${lei.id}>${indice}`,
-        origem: lei.id,
-        alvo: indice,
-        sinal: e.sentido,
-        atrasoMeses: e.atraso_turnos * 2,
-        mecanismo: "afim",
-      });
-    // seta ao grupo: o que subir a lei do mínimo ao máximo faz com ele
-    if (lei.forma === "continua")
-      for (const g of grupos) {
-        const pontos = pontosLei(g, lei, lei.faixa.max, lei.faixa.min);
-        if (Math.abs(pontos) >= SETA_GRUPO)
-          saida.push({
-            id: `${lei.id}>${g.id}`,
-            origem: lei.id,
-            alvo: g.id,
-            sinal: pontos > 0 ? 1 : -1,
-            atrasoMeses: 0,
-            mecanismo: "afim",
-          });
-      }
-  }
-  for (const g of tiposGrupos.grupos)
-    for (const c of g.cobra)
-      if (indices.has(c.indice))
-        saida.push({
-          id: `${c.indice}>${g.id}`,
-          origem: c.indice,
-          alvo: g.id,
-          sinal: c.sentido === 1 ? 1 : -1,
-          atrasoMeses: 0,
-          mecanismo: "afim",
-        });
-  return saida;
+  return [
+    ...(saude ? ligacoesDaSaude(leis, saude) : []),
+    ...(rede ? ligacoesDaRede(rede) : []),
+    ...(moradia ? ligacoesDaMoradia(moradia) : []),
+    ...ligacoesDeDeriva(derivas, indices),
+    ...leis.flatMap((lei) => ligacoesDaLei(lei, grupos)),
+    ...ligacoesDosGrupos(indices),
+  ];
 }
 
 /** A medida real da bolha, quando o índice declara as balizas 0 e 100. */
@@ -418,18 +437,12 @@ function medidaReal(
   return { valor, unidade, convertida: true, zero, cem };
 }
 
-export function montarVisao(partida: Partida): VisaoPartida {
-  const { regras, estado } = partida;
-  const areaDa = areaDaLei();
-  const leis = Object.values(regras.leis);
-  for (const lei of leis)
-    if (!areaDa.has(lei.id))
-      throw new Error(`mundo/areas/areas.json › lei "${lei.id}" sem área`);
-
+/** Índices de jogabilidade e satisfação dos grupos, como bolhas. */
+function bolhasDaPartida(estado: Partida["estado"]): VisaoBolha[] {
   const jogabilidade = variaveis.variaveis.filter(
     (v) => v.camada !== "essencial",
   );
-  const bolhas: VisaoBolha[] = [
+  return [
     ...jogabilidade.map((v) => ({
       id: v.id,
       nome: v.nome,
@@ -454,6 +467,45 @@ export function montarVisao(partida: Partida): VisaoPartida {
       maximo: 100,
     })),
   ];
+}
+
+/** Setas entre leis, índices e grupos, com as regras de moradia, rede e saúde. */
+function ligacoesDaPartida(partida: Partida): VisaoLigacao[] {
+  const { regras } = partida;
+  const indices = variaveis.variaveis
+    .filter((v) => v.camada !== "essencial")
+    .map((v) => v.id);
+  return ligacoes(
+    Object.values(regras.leis),
+    new Set(indices),
+    regras.grupos,
+    regras.derivas ?? [],
+    regras.moradia && {
+      lei: regras.moradia.lei_verba,
+      indices: [regras.moradia.indice_deficit, regras.moradia.indice_favela],
+      atrasoMeses: mesesDaObra(partida),
+      terra: regras.moradia.indice_terra,
+      deficit: regras.moradia.indice_deficit,
+      preco: regras.moradia.indice_preco,
+      favela: regras.moradia.indice_favela,
+    },
+    regras.saneamento && {
+      regra: regras.saneamento,
+      atrasoMeses: mesesDaRede(partida),
+    },
+    regras.atendimento && {
+      regra: regras.atendimento,
+      atrasoMeses: mesesDaSaude(partida),
+    },
+  );
+}
+
+export function montarVisao(partida: Partida): VisaoPartida {
+  const { regras, estado } = partida;
+  const areaDa = areaDaLei();
+  for (const lei of Object.values(regras.leis))
+    if (!areaDa.has(lei.id))
+      throw new Error(`mundo/areas/areas.json › lei "${lei.id}" sem área`);
 
   return {
     pais: partida.pais,
@@ -474,30 +526,8 @@ export function montarVisao(partida: Partida): VisaoPartida {
         ),
       ),
     ),
-    bolhas,
-    ligacoes: ligacoes(
-      leis,
-      new Set(jogabilidade.map((v) => v.id)),
-      regras.grupos,
-      regras.derivas ?? [],
-      regras.moradia && {
-        lei: regras.moradia.lei_verba,
-        indices: [regras.moradia.indice_deficit, regras.moradia.indice_favela],
-        atrasoMeses: mesesDaObra(partida),
-        terra: regras.moradia.indice_terra,
-        deficit: regras.moradia.indice_deficit,
-        preco: regras.moradia.indice_preco,
-        favela: regras.moradia.indice_favela,
-      },
-      regras.saneamento && {
-        regra: regras.saneamento,
-        atrasoMeses: mesesDaRede(partida),
-      },
-      regras.atendimento && {
-        regra: regras.atendimento,
-        atrasoMeses: mesesDaSaude(partida),
-      },
-    ),
+    bolhas: bolhasDaPartida(estado),
+    ligacoes: ligacoesDaPartida(partida),
     grupos: [],
     potencias: (regras.potencias ?? []).map((p) => ({
       id: p.id,
@@ -511,25 +541,17 @@ export function montarVisao(partida: Partida): VisaoPartida {
   };
 }
 
-function visaoDoMercado(
-  regras: Partida["regras"],
+type RegrasDoMercado = NonNullable<Partida["regras"]["mercado"]>;
+type ContaDoPais = ReturnType<typeof contaDoPais>;
+
+/** Preço de cada produto no mundo e quem vende mais barato. */
+function precosDoMundo(
+  regras: RegrasDoMercado,
   estado: Partida["estado"],
-): VisaoMercado | undefined {
-  if (!regras.mercado) return undefined;
-  const nomes = new Map((regras.potencias ?? []).map((p) => [p.id, p.nome]));
-  const nome = (id: string) => nomes.get(id) ?? id;
-  const balanco = balancoDoPais(regras.mercado);
-  const { mercado, producao, ocupacao } = regras.mercado;
-  const emprego = empregoDoPais(mercado, ocupacao, estado.pops, estado.setores);
-  const conta = contaDoPais(
-    mercado,
-    producao,
-    regras.mercado.cobertura,
-    regras.mercado.populacaoBase,
-    estado.essenciais.populacao,
-    estado.precos,
-  );
-  const precos = mercado.setores.map((s) => ({
+  nome: (id: string) => string,
+) {
+  const { mercado, producao } = regras;
+  const setores = mercado.setores.map((s) => ({
     id: s.id,
     nome: s.nome,
     produtos: mercado.produtos
@@ -545,64 +567,106 @@ function visaoDoMercado(
         };
       }),
   }));
-  const todos = precos.flatMap((s) => s.produtos);
+  const todos = setores.flatMap((s) => s.produtos);
   const TOPO = 3;
   return {
-    mundo: {
-      setores: precos,
-      emAlta: todos
-        .filter((p) => p.variacao > 0.05)
-        .sort((a, b) => b.variacao - a.variacao)
-        .slice(0, TOPO),
-      maisEmConta: [...todos].sort((a, b) => a.preco - b.preco).slice(0, TOPO),
-    },
-    setores: balanco.setores.map((s) => ({
+    setores,
+    emAlta: todos
+      .filter((p) => p.variacao > 0.05)
+      .sort((a, b) => b.variacao - a.variacao)
+      .slice(0, TOPO),
+    maisEmConta: [...todos].sort((a, b) => a.preco - b.preco).slice(0, TOPO),
+  };
+}
+
+/** Cobertura, importação e conta de cada produto, com os fornecedores. */
+function setoresDoMercado(
+  balanco: ReturnType<typeof balancoDoPais>,
+  conta: ContaDoPais,
+  nome: (id: string) => string,
+) {
+  return balanco.setores.map((s) => ({
+    ...s,
+    produtos: s.produtos.map((p) => {
+      const c = conta.produtos[p.id];
+      return {
+        ...p,
+        ...(c && {
+          cobertura: c.cobertura,
+          importa: c.demanda > 0 ? (100 * c.importa) / c.demanda : 0,
+          exporta: Math.max(0, c.cobertura - 100),
+          conta: {
+            demanda: c.demanda,
+            producao: c.producao,
+            importa: c.importa,
+            preco: c.preco,
+            unidades: c.unidades,
+          },
+        }),
+        fornecedores: p.fornecedores.map((f) => ({
+          id: f.potencia,
+          nome: nome(f.potencia),
+          parte: f.parte,
+        })),
+      };
+    }),
+  }));
+}
+
+function capacidadesDoMercado(
+  regras: Partida["regras"],
+  estado: Partida["estado"],
+) {
+  return situacoesDeCapacidade(regras, estado).map(
+    ({ capacidade: c, situacao: s }) => ({
       ...s,
-      produtos: s.produtos.map((p) => {
-        const c = conta.produtos[p.id];
+      fontes: s.fontes.map((f) => {
+        const lei = c.fontes.find((x) => x.id === f.id)!.lei;
         return {
-          ...p,
-          ...(c && {
-            cobertura: c.cobertura,
-            importa: c.demanda > 0 ? (100 * c.importa) / c.demanda : 0,
-            exporta: Math.max(0, c.cobertura - 100),
-            conta: {
-              demanda: c.demanda,
-              producao: c.producao,
-              importa: c.importa,
-              preco: c.preco,
-              unidades: c.unidades,
-            },
-          }),
-          fornecedores: p.fornecedores.map((f) => ({
-            id: f.potencia,
-            nome: nome(f.potencia),
-            parte: f.parte,
-          })),
+          ...f,
+          lei,
+          investimento: Number(estado.leis[lei] ?? 0) * 100,
         };
       }),
-    })),
-    cestas: segurancaDaCesta(mercado, conta, estado.pops).map((c) => ({
+    }),
+  );
+}
+
+function visaoDoMercado(
+  regras: Partida["regras"],
+  estado: Partida["estado"],
+): VisaoMercado | undefined {
+  const m = regras.mercado;
+  if (!m) return undefined;
+  const nomes = new Map((regras.potencias ?? []).map((p) => [p.id, p.nome]));
+  const nome = (id: string) => nomes.get(id) ?? id;
+  const balanco = balancoDoPais(m);
+  const emprego = empregoDoPais(
+    m.mercado,
+    m.ocupacao,
+    estado.pops,
+    estado.setores,
+  );
+  const conta = contaDoPais(
+    m.mercado,
+    m.producao,
+    m.cobertura,
+    m.populacaoBase,
+    estado.essenciais.populacao,
+    estado.precos,
+  );
+  return {
+    mundo: precosDoMundo(m, estado, nome),
+    setores: setoresDoMercado(balanco, conta, nome),
+    cestas: segurancaDaCesta(m.mercado, conta, estado.pops).map((c) => ({
       ...c,
-      termo: mercado.cestas.find((x) => x.id === c.id)?.termo ?? "carência",
+      termo: m.mercado.cestas.find((x) => x.id === c.id)?.termo ?? "carência",
       pops: c.pops.map((p) => ({
         ...p,
         nome: tiposPops.pops.find((t) => t.id === p.id)?.nome ?? p.id,
       })),
     })),
-    capacidades: situacoesDeCapacidade(regras, estado).map(
-      ({ capacidade: c, situacao: s }) => ({
-        ...s,
-        fontes: s.fontes.map((f) => {
-          const lei = c.fontes.find((x) => x.id === f.id)!.lei;
-          return {
-            ...f,
-            lei,
-            investimento: Number(estado.leis[lei] ?? 0) * 100,
-          };
-        }),
-      }),
-    ),
+    capacidades: capacidadesDoMercado(regras, estado),
     emprego: emprego.setores,
     construcoes: construcoesDoPais(regras, estado),
     semEmprego: emprego.semEmprego,

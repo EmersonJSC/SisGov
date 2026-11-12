@@ -305,6 +305,52 @@ export interface OpcoesPartida {
   semCongresso?: boolean;
 }
 
+/** Faixa de cada índice de jogabilidade. */
+function dominiosDosIndices(): Regras["dominios"] {
+  return Object.fromEntries(
+    jogabilidade.map((v) => [
+      v.id,
+      { min: v.dominio.minimo ?? -Infinity, max: v.dominio.maximo ?? Infinity },
+    ]),
+  );
+}
+
+/** O Congresso que o motor lê, a partir do que o país declara. */
+function congressoDasRegras(
+  c: CongressoPais,
+): NonNullable<Regras["congresso"]> {
+  return {
+    maioria: c.maioria,
+    governo: c.governo,
+    ...(c.senado ? { senado: c.senado } : {}),
+    ...(c.carga ? { carga: c.carga } : {}),
+    ...(c.leis ? { leis: c.leis } : {}),
+    ...(c.ignorar ? { ignorar: c.ignorar } : {}),
+    partidos: c.partidos.map((p) => ({
+      id: p.id,
+      cadeiras: p.cadeiras,
+      defende: p.defende,
+      ...(p.coesao !== undefined ? { coesao: p.coesao } : {}),
+      ...(p.contas !== undefined ? { contas: p.contas } : {}),
+    })),
+  };
+}
+
+/** O gasto que o país declara fecha com as leis de gasto mais o que ainda não virou lei. */
+function conferirGasto(
+  pais: string,
+  regras: Regras,
+  vigentes: LeisVigentes,
+  declarado: number,
+) {
+  const gasto =
+    gastoDasLeis(regras, vigentes.leis) + regras.pais.gasto_fora_das_leis;
+  if (Math.abs(gasto - declarado) > 1e-6)
+    throw new Error(
+      `país "${pais}" › gasto_publico (${declarado}) ≠ leis de gasto + gasto_fora_das_leis (${gasto})`,
+    );
+}
+
 export function criarPartida(
   pais: string,
   semente: number,
@@ -326,16 +372,9 @@ export function criarPartida(
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
 
-  const dominios: Regras["dominios"] = {};
-  for (const v of jogabilidade)
-    dominios[v.id] = {
-      min: v.dominio.minimo ?? -Infinity,
-      max: v.dominio.maximo ?? Infinity,
-    };
-
   const regras: Regras = {
     leis: carregarLeis(),
-    dominios,
+    dominios: dominiosDosIndices(),
     pops: carregarPops(),
     grupos: carregarGrupos(),
     potencias: lerPotencias(potencias),
@@ -350,30 +389,9 @@ export function criarPartida(
     atendimento,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
     ...(governo ? { governo: governo.regras } : {}),
-    congresso: semCongresso
-      ? undefined
-      : {
-          maioria: congresso.maioria,
-          governo: congresso.governo,
-          ...(congresso.senado ? { senado: congresso.senado } : {}),
-          ...(congresso.carga ? { carga: congresso.carga } : {}),
-          ...(congresso.leis ? { leis: congresso.leis } : {}),
-          ...(congresso.ignorar ? { ignorar: congresso.ignorar } : {}),
-          partidos: congresso.partidos.map((p) => ({
-            id: p.id,
-            cadeiras: p.cadeiras,
-            defende: p.defende,
-            ...(p.coesao !== undefined ? { coesao: p.coesao } : {}),
-            ...(p.contas !== undefined ? { contas: p.contas } : {}),
-          })),
-        },
+    congresso: semCongresso ? undefined : congressoDasRegras(congresso),
   };
-  const gasto =
-    gastoDasLeis(regras, vigentes.leis) + regras.pais.gasto_fora_das_leis;
-  if (Math.abs(gasto - inicial.essenciais.gasto_publico) > 1e-6)
-    throw new Error(
-      `país "${pais}" › gasto_publico (${inicial.essenciais.gasto_publico}) ≠ leis de gasto + gasto_fora_das_leis (${gasto})`,
-    );
+  conferirGasto(pais, regras, vigentes, inicial.essenciais.gasto_publico);
   const estado = estadoInicial(regras, {
     semente,
     essenciais: inicial.essenciais,

@@ -65,6 +65,34 @@ export function precoDoPais(
   return BASE * faixa * (1 - m + (m * precoMundo) / BASE);
 }
 
+/** Demanda, produção, importação e preço de um produto, dado o que o país produz. */
+function linhaDeDemanda(
+  p: Produto,
+  demanda: number,
+  feito: number,
+  potencias: ProducaoDoMundo,
+  precoMundo: number,
+): LinhaDeDemanda {
+  const excedente = Object.values(potencias).reduce(
+    (s, c) => s + Math.max(0, (c[p.id] ?? 0) - BASE),
+    0,
+  );
+  const importa = Math.min(
+    Math.max(0, demanda - feito),
+    (excedente * demanda) / BASE,
+  );
+  const oferta = feito + importa;
+  return {
+    id: p.id,
+    demanda,
+    producao: feito,
+    importa,
+    oferta,
+    cobertura: demanda > 0 ? (100 * feito) / demanda : 0,
+    preco: precoDoPais(demanda, oferta, importa, precoMundo),
+  };
+}
+
 /**
  * A conta de cada produto de cesta: demanda dos pops, produção, importação
  * e preço do país. `populacaoBase` é a população do turno 0 (a produção
@@ -98,27 +126,9 @@ export function contaDoPais(
       return Object.fromEntries(
         doGrupo.map((p) => {
           const demanda = total(pessoas) * parte[p.id]!;
-          const feito = producao(p);
-          const excedente = Object.values(potencias).reduce(
-            (s, c) => s + Math.max(0, (c[p.id] ?? 0) - BASE),
-            0,
-          );
-          const importa = Math.min(
-            Math.max(0, demanda - feito),
-            (excedente * demanda) / BASE,
-          );
-          const oferta = feito + importa;
           return [
             p.id,
-            {
-              id: p.id,
-              demanda,
-              producao: feito,
-              importa,
-              oferta,
-              cobertura: demanda > 0 ? (100 * feito) / demanda : 0,
-              preco: precoDoPais(demanda, oferta, importa, noMundo(p.id)),
-            } satisfies LinhaDeDemanda,
+            linhaDeDemanda(p, demanda, producao(p), potencias, noMundo(p.id)),
           ];
         }),
       );

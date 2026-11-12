@@ -1,6 +1,8 @@
 // Mede quanto custa um turno. Roda com `npm run medir`; use antes e depois de
 // mexer em módulo pesado. Orçamento de partida: turno abaixo de 50 ms e placar
-// previsto abaixo de 5 ms (a tela recalcula o placar a cada movimento).
+// previsto abaixo de 5 ms (a tela recalcula o placar a cada movimento). Os
+// números oscilam com a carga da máquina (navegador e servidor abertos podem
+// dobrar o tempo): compare rodadas na mesma condição, de preferência fechadas.
 import { avancar, criarPartida, jogar, placarDaLei } from "../src/partida";
 
 const PAIS = "brasil-2026";

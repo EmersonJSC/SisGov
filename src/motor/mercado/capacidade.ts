@@ -220,106 +220,124 @@ const ehTexto = (v: unknown): v is string => typeof v === "string" && v !== "";
 const positivo = (v: unknown): v is number =>
   typeof v === "number" && Number.isFinite(v) && v > 0;
 
+type Erro = (campo: string, motivo: string) => void;
+
+/** Efeitos de uma reação em índices: índice, sentido e força. */
+export function conferirEfeitosDeReacao(
+  erro: Erro,
+  campo: string,
+  efeitos: unknown,
+) {
+  if (!Array.isArray(efeitos)) return erro(campo, "precisa ser uma lista");
+  efeitos.forEach((e, j) => {
+    const p = `${campo}[${j}]`;
+    if (!ehObjeto(e)) return erro(p, "precisa ser um objeto");
+    if (!ehTexto(e.indice)) erro(`${p}.indice`, "precisa ter índice");
+    if (e.sentido !== 1 && e.sentido !== -1)
+      erro(`${p}.sentido`, "precisa ser 1 ou -1");
+    if (!["fraca", "media", "forte"].includes(String(e.forca)))
+      erro(`${p}.forca`, "precisa ser fraca, media ou forte");
+  });
+}
+
+function conferirDemanda(erro: Erro, k: string, d: unknown) {
+  if (!ehObjeto(d)) return erro(`${k}.demanda`, "precisa ser um objeto");
+  if (!positivo(d.pessoas))
+    erro(`${k}.demanda.pessoas`, "precisa ser um número maior que 0");
+  if (!positivo(d.empresas))
+    erro(`${k}.demanda.empresas`, "precisa ser um número maior que 0");
+  if (d.elasticidade !== undefined && !positivo(d.elasticidade))
+    erro(`${k}.demanda.elasticidade`, "precisa ser um número maior que 0");
+}
+
+function conferirReacaoCivil(erro: Erro, k: string, r: unknown) {
+  if (!ehObjeto(r)) return erro(`${k}.reacao_civil`, "precisa ser um objeto");
+  if (!positivo(r.escala))
+    erro(`${k}.reacao_civil.escala`, "precisa ser um número maior que 0");
+  if (typeof r.ganho !== "number" || !(r.ganho >= 0))
+    erro(`${k}.reacao_civil.ganho`, "precisa ser um número maior ou igual a 0");
+  conferirEfeitosDeReacao(erro, `${k}.reacao_civil.efeitos`, r.efeitos);
+}
+
+/** Camadas: o que cada opção de uma lei de opções faz com a capacidade. */
+function conferirCamadas(erro: Erro, k: string, camadas: unknown) {
+  if (!Array.isArray(camadas))
+    return erro(`${k}.camadas`, "precisa ser uma lista");
+  camadas.forEach((cm, j) => {
+    const p = `${k}.camadas[${j}]`;
+    if (!ehObjeto(cm)) return erro(p, "precisa ser um objeto");
+    if (!ehTexto(cm.lei)) erro(`${p}.lei`, "precisa apontar uma lei");
+    if (!ehObjeto(cm.opcoes))
+      return erro(`${p}.opcoes`, "precisa ser um objeto");
+    for (const [id, e] of Object.entries(cm.opcoes)) {
+      const q = `${p}.opcoes.${id}`;
+      if (!ehObjeto(e)) {
+        erro(q, "precisa ser um objeto");
+        continue;
+      }
+      const pp = e.parte_privada;
+      if (pp !== undefined && (typeof pp !== "number" || pp < 0 || pp > 0.9))
+        erro(`${q}.parte_privada`, "precisa estar entre 0 e 0,9");
+      for (const campo of ["ganho_capacidade", "margem_preco"])
+        if (e[campo] !== undefined && typeof e[campo] !== "number")
+          erro(`${q}.${campo}`, "precisa ser número");
+    }
+  });
+}
+
+function conferirFonte(erro: Erro, p: string, f: unknown, vistas: Set<string>) {
+  if (!ehObjeto(f)) return erro(p, "precisa ser um objeto");
+  if (!ehKebab(f.id)) erro(`${p}.id`, "precisa ser kebab-case");
+  else if (vistas.has(f.id)) erro(`${p}.id`, `"${f.id}" repetido`);
+  else vistas.add(f.id);
+  if (!ehTexto(f.nome)) erro(`${p}.nome`, "precisa ter nome");
+  if (!ehTexto(f.lei)) erro(`${p}.lei`, "precisa apontar uma lei");
+  if (!Number.isInteger(f.prazo) || (f.prazo as number) < 1)
+    erro(`${p}.prazo`, "precisa ser um inteiro maior ou igual a 1");
+  if (!positivo(f.custo))
+    erro(`${p}.custo`, "precisa ser um número maior que 0");
+  if (typeof f.desgaste !== "number" || f.desgaste < 0 || f.desgaste > 1)
+    erro(`${p}.desgaste`, "precisa estar entre 0 e 1");
+}
+
+function conferirCapacidade(
+  erro: Erro,
+  k: string,
+  c: unknown,
+  ids: Set<string>,
+  fontesVistas: Set<string>,
+) {
+  if (!ehObjeto(c)) return erro(k, "precisa ser um objeto");
+  if (!ehKebab(c.id)) erro(`${k}.id`, "precisa ser kebab-case");
+  else if (ids.has(c.id)) erro(`${k}.id`, `"${c.id}" repetido`);
+  else ids.add(c.id);
+  if (!ehTexto(c.nome)) erro(`${k}.nome`, "precisa ter nome");
+  conferirDemanda(erro, k, c.demanda);
+  if (!positivo(c.freio_crescimento))
+    erro(`${k}.freio_crescimento`, "precisa ser um número maior que 0");
+  if (typeof c.peso_nos_precos !== "number" || !(c.peso_nos_precos >= 0))
+    erro(`${k}.peso_nos_precos`, "precisa ser um número maior ou igual a 0");
+  if (c.reacao_civil !== undefined)
+    conferirReacaoCivil(erro, k, c.reacao_civil);
+  if (c.camadas !== undefined) conferirCamadas(erro, k, c.camadas);
+  if (!Array.isArray(c.fontes) || c.fontes.length === 0)
+    return erro(`${k}.fontes`, "precisa ter ao menos uma fonte");
+  c.fontes.forEach((f, j) =>
+    conferirFonte(erro, `${k}.fontes[${j}]`, f, fontesVistas),
+  );
+}
+
 /** Valida o bloco `capacidades` do JSON dos produtos (ausente vale lista vazia). */
 export function validarCapacidades(dado: unknown): ErroMercado[] {
   const erros: ErroMercado[] = [];
-  const erro = (campo: string, motivo: string) => erros.push({ campo, motivo });
+  const erro: Erro = (campo, motivo) => erros.push({ campo, motivo });
   if (dado === undefined) return erros;
   if (!Array.isArray(dado))
     return [{ campo: "capacidades", motivo: "precisa ser uma lista" }];
   const ids = new Set<string>();
   const fontesVistas = new Set<string>();
-  dado.forEach((c, i) => {
-    const k = `capacidades[${i}]`;
-    if (!ehObjeto(c)) return erro(k, "precisa ser um objeto");
-    if (!ehKebab(c.id)) erro(`${k}.id`, "precisa ser kebab-case");
-    else if (ids.has(c.id)) erro(`${k}.id`, `"${c.id}" repetido`);
-    else ids.add(c.id);
-    if (!ehTexto(c.nome)) erro(`${k}.nome`, "precisa ter nome");
-    const d = c.demanda;
-    if (!ehObjeto(d)) erro(`${k}.demanda`, "precisa ser um objeto");
-    else {
-      if (!positivo(d.pessoas))
-        erro(`${k}.demanda.pessoas`, "precisa ser um número maior que 0");
-      if (!positivo(d.empresas))
-        erro(`${k}.demanda.empresas`, "precisa ser um número maior que 0");
-      if (d.elasticidade !== undefined && !positivo(d.elasticidade))
-        erro(`${k}.demanda.elasticidade`, "precisa ser um número maior que 0");
-    }
-    if (!positivo(c.freio_crescimento))
-      erro(`${k}.freio_crescimento`, "precisa ser um número maior que 0");
-    if (typeof c.peso_nos_precos !== "number" || !(c.peso_nos_precos >= 0))
-      erro(`${k}.peso_nos_precos`, "precisa ser um número maior ou igual a 0");
-    if (c.reacao_civil !== undefined) {
-      const r = c.reacao_civil;
-      if (!ehObjeto(r)) erro(`${k}.reacao_civil`, "precisa ser um objeto");
-      else {
-        if (!positivo(r.escala))
-          erro(`${k}.reacao_civil.escala`, "precisa ser um número maior que 0");
-        if (typeof r.ganho !== "number" || !(r.ganho >= 0))
-          erro(
-            `${k}.reacao_civil.ganho`,
-            "precisa ser um número maior ou igual a 0",
-          );
-        if (!Array.isArray(r.efeitos))
-          erro(`${k}.reacao_civil.efeitos`, "precisa ser uma lista");
-        else
-          r.efeitos.forEach((e, j) => {
-            const p = `${k}.reacao_civil.efeitos[${j}]`;
-            if (!ehObjeto(e)) return erro(p, "precisa ser um objeto");
-            if (!ehTexto(e.indice)) erro(`${p}.indice`, "precisa ter índice");
-            if (e.sentido !== 1 && e.sentido !== -1)
-              erro(`${p}.sentido`, "precisa ser 1 ou -1");
-            if (!["fraca", "media", "forte"].includes(String(e.forca)))
-              erro(`${p}.forca`, "precisa ser fraca, media ou forte");
-          });
-      }
-    }
-    if (c.camadas !== undefined) {
-      if (!Array.isArray(c.camadas))
-        erro(`${k}.camadas`, "precisa ser uma lista");
-      else
-        c.camadas.forEach((cm, j) => {
-          const p = `${k}.camadas[${j}]`;
-          if (!ehObjeto(cm)) return erro(p, "precisa ser um objeto");
-          if (!ehTexto(cm.lei)) erro(`${p}.lei`, "precisa apontar uma lei");
-          if (!ehObjeto(cm.opcoes))
-            return erro(`${p}.opcoes`, "precisa ser um objeto");
-          for (const [id, e] of Object.entries(cm.opcoes)) {
-            const q = `${p}.opcoes.${id}`;
-            if (!ehObjeto(e)) {
-              erro(q, "precisa ser um objeto");
-              continue;
-            }
-            const pp = e.parte_privada;
-            if (
-              pp !== undefined &&
-              (typeof pp !== "number" || pp < 0 || pp > 0.9)
-            )
-              erro(`${q}.parte_privada`, "precisa estar entre 0 e 0,9");
-            for (const campo of ["ganho_capacidade", "margem_preco"])
-              if (e[campo] !== undefined && typeof e[campo] !== "number")
-                erro(`${q}.${campo}`, "precisa ser número");
-          }
-        });
-    }
-    if (!Array.isArray(c.fontes) || c.fontes.length === 0)
-      return erro(`${k}.fontes`, "precisa ter ao menos uma fonte");
-    c.fontes.forEach((f, j) => {
-      const p = `${k}.fontes[${j}]`;
-      if (!ehObjeto(f)) return erro(p, "precisa ser um objeto");
-      if (!ehKebab(f.id)) erro(`${p}.id`, "precisa ser kebab-case");
-      else if (fontesVistas.has(f.id)) erro(`${p}.id`, `"${f.id}" repetido`);
-      else fontesVistas.add(f.id);
-      if (!ehTexto(f.nome)) erro(`${p}.nome`, "precisa ter nome");
-      if (!ehTexto(f.lei)) erro(`${p}.lei`, "precisa apontar uma lei");
-      if (!Number.isInteger(f.prazo) || (f.prazo as number) < 1)
-        erro(`${p}.prazo`, "precisa ser um inteiro maior ou igual a 1");
-      if (!positivo(f.custo))
-        erro(`${p}.custo`, "precisa ser um número maior que 0");
-      if (typeof f.desgaste !== "number" || f.desgaste < 0 || f.desgaste > 1)
-        erro(`${p}.desgaste`, "precisa estar entre 0 e 1");
-    });
-  });
+  dado.forEach((c, i) =>
+    conferirCapacidade(erro, `capacidades[${i}]`, c, ids, fontesVistas),
+  );
   return erros;
 }
