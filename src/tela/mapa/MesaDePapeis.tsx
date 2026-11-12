@@ -8,6 +8,7 @@ import type { MotivoDoAviso, Papel } from "../../motor";
 import type { Partida, Pedido, VisaoPartida } from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
 import { ICONE_INTERFACE } from "./icones";
+import { trocar } from "./pedidos";
 
 const um = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
@@ -52,25 +53,20 @@ export function MesaDePapeis({
       : (lei(id)?.opcoes?.find((o) => o.id === valor)?.rotulo ?? valor);
   const carimboDe = (papel: string) =>
     extras.find((x) => x.tipo === "carimbar" && x.papel === papel);
+  const doPapel = (papel: Papel) => (x: Pedido) =>
+    x.tipo === "carimbar" && x.papel === papel.id;
   const marcar = (papel: Papel, carimbo: "assinar" | "vetar") => {
-    const sem = extras.filter(
-      (x) => !(x.tipo === "carimbar" && x.papel === papel.id),
-    );
     const obs = observacoes[papel.id]?.trim();
-    setExtras([
-      ...sem,
-      {
+    setExtras(
+      trocar(extras, doPapel(papel), {
         tipo: "carimbar",
         papel: papel.id,
         carimbo,
         ...(carimbo === "vetar" && obs ? { observacao: obs } : {}),
-      },
-    ]);
-  };
-  const tirar = (papel: Papel) =>
-    setExtras(
-      extras.filter((x) => !(x.tipo === "carimbar" && x.papel === papel.id)),
+      }),
     );
+  };
+  const tirar = (papel: Papel) => setExtras(trocar(extras, doPapel(papel)));
 
   return (
     <Documento

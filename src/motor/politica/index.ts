@@ -7,19 +7,18 @@ import type { Congresso, Partido } from "./tipos";
 export * from "./tipos";
 export {
   cenarioDe,
-  decretoAlcanca,
-  alcanceDoDecreto,
-  esfriarEEsquentar,
-  iniciarCongresso,
   placarPrevisto,
   tramitar,
-  valorCedido,
-  TERMOMETRO_AMEACA,
-  TERMOMETRO_CONVITE,
-  TERMOMETRO_SAIDA,
   type EntradaTramitar,
   type SaidaTramitar,
 } from "./tramitacao";
+export { esfriarEEsquentar, iniciarCongresso } from "./relacao";
+export { alcanceDoDecreto, decretoAlcanca, valorCedido } from "./valores";
+export {
+  TERMOMETRO_AMEACA,
+  TERMOMETRO_CONVITE,
+  TERMOMETRO_SAIDA,
+} from "./constantes";
 export {
   contaDaLei,
   INDECISO,

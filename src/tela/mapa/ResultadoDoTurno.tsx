@@ -12,6 +12,7 @@ import {
 } from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
 import { papeisParaDecidir } from "./MesaDePapeis";
+import { trocar } from "./pedidos";
 import { ICONE_INTERFACE } from "./icones";
 
 const ORIGEM: Record<string, string> = {
@@ -224,18 +225,14 @@ export function ResultadoDoTurno({
                           type="button"
                           onClick={() =>
                             setExtras(
-                              convidando
-                                ? extras.filter(
-                                    (x) =>
-                                      !(
-                                        x.tipo === "convidar" &&
-                                        x.partido === id
-                                      ),
-                                  )
-                                : [
-                                    ...extras,
-                                    { tipo: "convidar", partido: id },
-                                  ],
+                              trocar(
+                                extras,
+                                (x) =>
+                                  x.tipo === "convidar" && x.partido === id,
+                                convidando
+                                  ? undefined
+                                  : { tipo: "convidar", partido: id },
+                              ),
                             )
                           }
                         >

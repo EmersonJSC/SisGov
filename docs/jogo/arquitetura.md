@@ -10,12 +10,12 @@ conteudo  →  motor  →  partida  →  tela
 (o mundo)   (regras)   (ponte)    (o que se vê)
 ```
 
-| Camada     | Onde             | O que tem                                                          | Pode ver                  |
-| ---------- | ---------------- | ------------------------------------------------------------------ | ------------------------- |
-| Conteúdo   | `src/conteudo/`  | `mundo/` (leis, índices, pops, grupos, mercado, potências) e `paises/` (só o estado inicial) | nada: é JSON              |
-| Motor      | `src/motor/`     | as regras; funções puras; **não conhece nomes** de lei, país ou partido | só a si mesmo             |
-| Partida    | `src/partida/`   | monta as regras a partir do conteúdo, salva, carrega, prepara a visão | conteúdo e motor          |
-| Tela       | `src/tela/`      | mapa, bolhas, mercado, pregão                                      | **só** `src/partida`      |
+| Camada   | Onde            | O que tem                                                                                    | Pode ver             |
+| -------- | --------------- | -------------------------------------------------------------------------------------------- | -------------------- |
+| Conteúdo | `src/conteudo/` | `mundo/` (leis, índices, pops, grupos, mercado, potências) e `paises/` (só o estado inicial) | nada: é JSON         |
+| Motor    | `src/motor/`    | as regras; funções puras; **não conhece nomes** de lei, país ou partido                      | só a si mesmo        |
+| Partida  | `src/partida/`  | monta as regras a partir do conteúdo, salva, carrega, prepara a visão                        | conteúdo e motor     |
+| Tela     | `src/tela/`     | mapa, bolhas, mercado, pregão                                                                | **só** `src/partida` |
 
 ## 2. O turno
 
@@ -40,18 +40,18 @@ Ordem (`ETAPAS` em `src/motor/turno/index.ts`):
 
 ## 3. As peças do jogo
 
-| Peça          | O que é                                                                 | Onde                                   |
-| ------------- | ----------------------------------------------------------------------- | -------------------------------------- |
-| **Índice**    | número que o jogador vê (0–100 ou %). Tipo `estoque`, `derivado` ou `calculado` | `mundo/indicadores/variaveis.json`     |
-| **Lei**       | bolha no mapa. Um lado da bússola, de "nada" a "mais". Age por um processo ou uma rede, não direto no índice (seção 5) | `mundo/leis/*.json`, `motor/leis`      |
-| **Processo**  | índice que anda sozinho pelos turnos (**deriva**): outro índice empurra a base, medindo contra o turno 0. Sem meta nem ritmo | `mundo/indicadores/derivas.json`, `motor/deriva` |
-| **Colisão**   | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. Pares em `mundo/colisoes/colisoes.json`; é um "ou": o jogador põe uma ou outra, nunca as duas. Para trocar, revoga uma e propõe a outra no turno seguinte (`motor/leis/colisao.ts`). | —                                      |
-| **Área**      | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma. A esfera (`docs/jogo/leis.xlsx`) é a peça menor; ministério é um conjunto de esferas | `mundo/areas/areas.json`               |
-| **Órgão**     | quem executa uma regra. A verba (lei contínua, % do PIB) dá a força; verba demais vira corrupção. O jogador nunca escolhe a fazenda ou a fábrica. *(ainda sem código)* | —                                      |
-| **Destino**   | o que vira o bem que o Estado toma (comunidade, Estado, famílias). Uma lei por destino. *(a decidir, GDD §18)* | —                                      |
-| **Pop**       | fatia da população: profissão num estrato                               | `mundo/pops`, `motor/populacao`        |
-| **Grupo**     | interesse organizado que atravessa os pops; gosta ou não de uma lei pela distância na bússola           | `mundo/grupos`, `motor/grupos`         |
-| **Organização** | nasce na partida, com nome, líder e ação própria: política, de radicais de vários grupos; ou crime, do lucro ilegal *(a construir)* | `docs/jogo/leis.xlsx` |
+| Peça            | O que é                                                                                                                                                                                                                                                                                      | Onde                                             |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| **Índice**      | número que o jogador vê (0–100 ou %). Tipo `estoque`, `derivado` ou `calculado`                                                                                                                                                                                                              | `mundo/indicadores/variaveis.json`               |
+| **Lei**         | bolha no mapa. Um lado da bússola, de "nada" a "mais". Age por um processo ou uma rede, não direto no índice (seção 5)                                                                                                                                                                       | `mundo/leis/*.json`, `motor/leis`                |
+| **Processo**    | índice que anda sozinho pelos turnos (**deriva**): outro índice empurra a base, medindo contra o turno 0. Sem meta nem ritmo                                                                                                                                                                 | `mundo/indicadores/derivas.json`, `motor/deriva` |
+| **Colisão**     | duas leis que não valem juntas (ex.: teto de aluguel × aluguel livre). Fora isso, toda combinação vale. Pares em `mundo/colisoes/colisoes.json`; é um "ou": o jogador põe uma ou outra, nunca as duas. Para trocar, revoga uma e propõe a outra no turno seguinte (`motor/leis/colisao.ts`). | —                                                |
+| **Área**        | tema que junta leis no mapa (ex.: "Terra e moradia"). Toda lei tem uma. A esfera (`docs/jogo/leis.xlsx`) é a peça menor; ministério é um conjunto de esferas                                                                                                                                 | `mundo/areas/areas.json`                         |
+| **Órgão**       | quem executa uma regra. A verba (lei contínua, % do PIB) dá a força; verba demais vira corrupção. O jogador nunca escolhe a fazenda ou a fábrica. _(ainda sem código)_                                                                                                                       | —                                                |
+| **Destino**     | o que vira o bem que o Estado toma (comunidade, Estado, famílias). Uma lei por destino. _(a decidir, GDD §18)_                                                                                                                                                                               | —                                                |
+| **Pop**         | fatia da população: profissão num estrato                                                                                                                                                                                                                                                    | `mundo/pops`, `motor/populacao`                  |
+| **Grupo**       | interesse organizado que atravessa os pops; gosta ou não de uma lei pela distância na bússola                                                                                                                                                                                                | `mundo/grupos`, `motor/grupos`                   |
+| **Organização** | nasce na partida, com nome, líder e ação própria: política, de radicais de vários grupos; ou crime, do lucro ilegal _(a construir)_                                                                                                                                                          | `docs/jogo/leis.xlsx`                            |
 
 **Bússola:** `economico` (esquerda − ↔ direita +) e `social`
 (verde/libertário − ↔ tradicional/autoritário +), de −1 a +1.
@@ -61,24 +61,24 @@ extremo da bússola é um caminho: cada lei anda um pouco nele.
 
 ## 4. Módulos do motor
 
-| Módulo                                         | Uma linha                                        |
-| ---------------------------------------------- | ------------------------------------------------ |
-| [acaso](../../src/motor/acaso/acaso.md)        | sorteio com semente                              |
-| [atendimento](../../src/motor/atendimento/atendimento.md) | rede da saúde: vagas, profissionais, planos, fila |
-| [calculos](../../src/motor/calculos/calculos.md) | bases de cálculo (renda, consumo, lucro, emissões, terra; Laffer) |
-| [contas](../../src/motor/contas/contas.md)     | Tesouro: receita, gasto, juros, cofre, dívida    |
-| [deriva](../../src/motor/deriva/deriva.md)     | índice anda sozinho, empurrado por outro         |
-| [moradia](../../src/motor/moradia/moradia.md)  | estoque de casas: déficit e favela saem da conta |
-| [efeitos](../../src/motor/efeitos/efeitos.md)  | leis contribuem pontos para os índices, com atraso |
-| [eleicao](../../src/motor/eleicao/eleicao.md)  | mandato, desgaste, apuração                      |
-| [grupos](../../src/motor/grupos/grupos.md)     | satisfação e apoio pela bússola                  |
-| [leis](../../src/motor/leis/leis.md)           | formato e validador da lei                       |
-| [mercado](../../src/motor/mercado/mercado.md)  | setores, produtos, preço, emprego, construções   |
-| [mundo](../../src/motor/mundo/mundo.md)        | potências e opinião sobre o país                 |
-| [politica](../../src/motor/politica/politica.md) | Congresso e coligação                          |
-| [populacao](../../src/motor/populacao/populacao.md) | pops: renda, estrato, setor                 |
-| [saneamento](../../src/motor/saneamento/saneamento.md) | rede de água e esgoto: ligações, conta, concessão |
-| [turno](../../src/motor/turno/turno.md)        | a ordem das etapas                               |
+| Módulo                                                    | Uma linha                                                         |
+| --------------------------------------------------------- | ----------------------------------------------------------------- |
+| [acaso](../../src/motor/acaso/acaso.md)                   | sorteio com semente                                               |
+| [atendimento](../../src/motor/atendimento/atendimento.md) | rede da saúde: vagas, profissionais, planos, fila                 |
+| [calculos](../../src/motor/calculos/calculos.md)          | bases de cálculo (renda, consumo, lucro, emissões, terra; Laffer) |
+| [contas](../../src/motor/contas/contas.md)                | Tesouro: receita, gasto, juros, cofre, dívida                     |
+| [deriva](../../src/motor/deriva/deriva.md)                | índice anda sozinho, empurrado por outro                          |
+| [moradia](../../src/motor/moradia/moradia.md)             | estoque de casas: déficit e favela saem da conta                  |
+| [efeitos](../../src/motor/efeitos/efeitos.md)             | leis contribuem pontos para os índices, com atraso                |
+| [eleicao](../../src/motor/eleicao/eleicao.md)             | mandato, desgaste, apuração                                       |
+| [grupos](../../src/motor/grupos/grupos.md)                | satisfação e apoio pela bússola                                   |
+| [leis](../../src/motor/leis/leis.md)                      | formato e validador da lei                                        |
+| [mercado](../../src/motor/mercado/mercado.md)             | setores, produtos, preço, emprego, construções                    |
+| [mundo](../../src/motor/mundo/mundo.md)                   | potências e opinião sobre o país                                  |
+| [politica](../../src/motor/politica/politica.md)          | Congresso e coligação                                             |
+| [populacao](../../src/motor/populacao/populacao.md)       | pops: renda, estrato, setor                                       |
+| [saneamento](../../src/motor/saneamento/saneamento.md)    | rede de água e esgoto: ligações, conta, concessão                 |
+| [turno](../../src/motor/turno/turno.md)                   | a ordem das etapas                                                |
 
 Partida: [salvar](../../src/partida/salvar.md). Tela: [mapa](../../src/tela/mapa/mapa.md).
 
@@ -91,6 +91,19 @@ Partida: [salvar](../../src/partida/salvar.md). Tela: [mapa](../../src/tela/mapa
 - Lei é descrita pela bússola, nunca por grupo, e não cita país real.
 - Toda decisão é uma bolha no mapa; nada de painel de gestão.
 - Módulos funcionam sozinhos; as ligações vêm no JSON das leis.
+- **Mesa de fatos ≠ Mesa do jogador.** A mesa de fatos (`motor/fatos`) é a
+  memória interna que os módulos leem e escrevem. A Mesa (`motor/mesa`) são os
+  papéis que esperam o carimbo do presidente. O código usa os dois nomes; não
+  se misturam.
+- **Função pequena, uma tarefa.** O turno de um módulo é uma lista de fases,
+  cada uma uma função sobre a sessão do turno (exemplo: `motor/politica`,
+  `tramitar`). Sem função de 100 linhas; regra do módulo mora no módulo.
+- **Eficiência é medida, não suposta.** `npm run medir` mostra o custo de um
+  turno e do placar previsto. Orçamento de partida: turno abaixo de 50 ms
+  (Brasil hoje: 8 ms) e placar abaixo de 5 ms (hoje: 0,7 ms). Rodar antes e
+  depois de mexer em módulo pesado (estados, governadores, mundo leve, pops
+  por estado). O que a tela recalcula a cada movimento do jogador é o primeiro
+  a ganhar cache se passar do orçamento.
 
 ## 6. Regras da lei
 
@@ -125,11 +138,11 @@ As camadas acima já seguem Clean Architecture; o que muda é dar nome a cada
 peça e fixar as fronteiras para o jogo inteiro do GDD. Sem banco, sem rede:
 KISS, nada de interface sem duas implementações.
 
-| Camada Clean | Pasta | O que é |
-|---|---|---|
-| Domínio | `motor/` | regras puras em TS; sem React, sem JSON, sem relógio, sem `Math.random` (o acaso entra com semente) |
-| Casos de uso | `partida/` | Nova partida, Avançar turno, Propor lei, Decretar, Salvar e carregar, Prévia; dependem só do motor e de 2 portas |
-| Borda | `conteudo/`, `scripts/`, `tela/` | JSON e validadores; exportador da planilha; React, que só manda pedidos e mostra a visão |
+| Camada Clean | Pasta                            | O que é                                                                                                          |
+| ------------ | -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Domínio      | `motor/`                         | regras puras em TS; sem React, sem JSON, sem relógio, sem `Math.random` (o acaso entra com semente)              |
+| Casos de uso | `partida/`                       | Nova partida, Avançar turno, Propor lei, Decretar, Salvar e carregar, Prévia; dependem só do motor e de 2 portas |
+| Borda        | `conteudo/`, `scripts/`, `tela/` | JSON e validadores; exportador da planilha; React, que só manda pedidos e mostra a visão                         |
 
 **Portas (só as que variam):** `Armazenamento` (salvar no navegador ou em
 arquivo) e `Conteudo` (ler os JSON do mundo e do país). O acaso já é puro, com
@@ -139,21 +152,21 @@ semente, e não precisa de porta.
 ninguém importa arquivo de dentro da pasta de outro. Entre módulos, só tipos e
 funções do `index.ts`, ou os **fatos do turno** (abaixo).
 
-| Módulo | Cuida de | Já existe? |
-|---|---|---|
-| `estado`, `calculos`, `acaso` | índices, registro de cálculos, sorteio com semente (núcleo comum) | sim |
-| `leis` + `efeitos` | tipos de lei, formas, fila de efeitos com atraso | sim |
-| `programas` | formar e desfazer, lembrança e nostalgia, gerador de nomes | novo |
-| `populacao` + `grupos` | pops, satisfação, Aprovação, grupos | sim (consertos da Base do jogo) |
-| `economia` | mercado, contas, companhias, construções | sim (`mercado`, `contas`) |
-| `servicos` | redes do Estado: atendimento, saneamento, moradia | sim, espalhado em 3 pastas |
-| `governo` | ministérios (caixas), ministros e fichas, órgãos, justiça, governadores | novo |
-| `congresso` | partidos, voto com a conta da lei, moedas, paciência, duas casas, decreto | parte (`politica`) |
-| `eleicao` | campanha, promessa, dois turnos, desgaste | sim (reescrever regras) |
-| `midia` | jornal, mídias, fato e versão | novo |
-| `mesa` | papéis e prazos | novo |
-| `mundo` | países leves, IA de 3 passos | sim |
-| `turno` | só a ordem: chama cada módulo e junta os fatos | sim (hoje com regras demais dentro) |
+| Módulo                        | Cuida de                                                                  | Já existe?                          |
+| ----------------------------- | ------------------------------------------------------------------------- | ----------------------------------- |
+| `estado`, `calculos`, `acaso` | índices, registro de cálculos, sorteio com semente (núcleo comum)         | sim                                 |
+| `leis` + `efeitos`            | tipos de lei, formas, fila de efeitos com atraso                          | sim                                 |
+| `programas`                   | formar e desfazer, lembrança e nostalgia, gerador de nomes                | novo                                |
+| `populacao` + `grupos`        | pops, satisfação, Aprovação, grupos                                       | sim (consertos da Base do jogo)     |
+| `economia`                    | mercado, contas, companhias, construções                                  | sim (`mercado`, `contas`)           |
+| `servicos`                    | redes do Estado: atendimento, saneamento, moradia                         | sim, espalhado em 3 pastas          |
+| `governo`                     | ministérios (caixas), ministros e fichas, órgãos, justiça, governadores   | novo                                |
+| `congresso`                   | partidos, voto com a conta da lei, moedas, paciência, duas casas, decreto | parte (`politica`)                  |
+| `eleicao`                     | campanha, promessa, dois turnos, desgaste                                 | sim (reescrever regras)             |
+| `midia`                       | jornal, mídias, fato e versão                                             | novo                                |
+| `mesa`                        | papéis e prazos                                                           | novo                                |
+| `mundo`                       | países leves, IA de 3 passos                                              | sim                                 |
+| `turno`                       | só a ordem: chama cada módulo e junta os fatos                            | sim (hoje com regras demais dentro) |
 
 **Fatos do turno (eventos de domínio, sem barramento):** cada módulo devolve,
 junto do estado novo, uma lista de fatos ("lei aprovada", "programa formado",
