@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "compra-publica-de-comida-parte-da-sobra-comprada",
+  "nome": "Compra pública de comida: parte da sobra comprada",
+  "descricao": "Dois controles: quanto da sobra de grãos o Estado compra e quanto disso vem do pequeno.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Compra pública de comida",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "preco_da_comida",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "abastecimento",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 3
+    }
+  ]
+}

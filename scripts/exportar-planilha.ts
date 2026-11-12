@@ -204,8 +204,83 @@ const areas = JSON.parse(readFileSync(AREAS, "utf8")) as {
 for (const a of areas.areas)
   a.leis = a.leis.filter((id) => !geradasAntes.has(id));
 
-const FORMA_ESPECIAL =
-  /por setor|dois controles|divisão|prazo|meta|por país|escolha de setor/i;
+/** Escolhas de lista: dependem do mercado, do menu de país ou dos ministérios. */
+const FORMA_DE_LISTA = /por país|escolha de setor|divisão de esferas/i;
+const POR_SETOR = /\s*\(uma régua por setor\)\s*$/;
+const PONTOS = "0 a 10 pontos";
+
+/**
+ * Pedaço de uma lei da planilha que vira um JSON (12/nov, autor: "o tema vira
+ * várias leis"): dois controles viram duas leis; divisão de 100% vira uma lei
+ * de peso por fatia (a parte da fatia é o peso dela sobre a soma); régua por
+ * setor vira, por ora, uma régua geral.
+ */
+interface Pedaco {
+  nome: string;
+  degraus?: string[];
+  faixa?: string;
+  /** Fatia de divisão: sem lado na bússola e sem efeito próprio. */
+  fatia?: boolean;
+  /** Um de vários controles: o efeito da lei se reparte, força um nível abaixo. */
+  controle?: boolean;
+  nota?: string;
+}
+
+const lista = (s: string): string[] =>
+  s
+    .split(/;|,|\s+ou\s+/)
+    .map((x) => x.trim())
+    .filter(Boolean);
+
+function pedacosDe(l: Linha): Pedaco[] {
+  const nome = l["Lei"];
+  if (/divisão de 100%/i.test(l["Forma"]))
+    return l["Degraus"]
+      .split(";")
+      .map((f) => f.trim())
+      .filter(Boolean)
+      .map((f) => ({
+        nome: `${nome}: ${f}`,
+        faixa: PONTOS,
+        fatia: true,
+      }));
+  const faixa = l["Faixa"];
+  if (faixa.includes(";") || /^[^\d−-]+:\s/.test(faixa))
+    return faixa.split(";").flatMap((parte): Pedaco[] => {
+      const [rotulo, ...resto] = parte.split(":");
+      const corpo = resto.join(":").trim();
+      const sub = `${nome}: ${rotulo.trim().toLowerCase()}`;
+      if (/100% entre/.test(corpo))
+        return lista(corpo.replace(/\(.*\)/, "")).map((f) => ({
+          nome: `${sub}: ${f}`,
+          faixa: PONTOS,
+          fatia: true,
+        }));
+      if (/^\s*[−\-+]?[\d.,]+\s*a\s/.test(corpo))
+        return [{ nome: sub, faixa: corpo, controle: true }];
+      return [{ nome: sub, degraus: lista(corpo), controle: true }];
+    });
+  if (POR_SETOR.test(faixa))
+    return [
+      {
+        nome,
+        faixa: faixa.replace(POR_SETOR, ""),
+        nota: " Por ora, uma régua só para todos os setores.",
+      },
+    ];
+  return [
+    {
+      nome,
+      ...(l["Degraus"] ? { degraus: lista(l["Degraus"]) } : { faixa }),
+    },
+  ];
+}
+
+const UM_ABAIXO: Record<string, string> = {
+  forte: "media",
+  media: "fraca",
+  fraca: "fraca",
+};
 const contagem: Record<string, number> = {};
 const conta = (k: string): void => {
   contagem[k] = (contagem[k] ?? 0) + 1;
@@ -229,8 +304,18 @@ function faixaDe(texto: string):
   const min = numero(m[1].replace(/\./g, ""));
   const max = numero(m[2].replace(/\./g, ""));
   const resto = m[3].trim();
-  if (min === undefined || max === undefined || min < 0 || min >= max)
+  if (min === undefined || max === undefined || min >= max)
     return "faixa com números inválidos";
+  // abaixo de zero (meta de resultado, preço-alvo) só cabe na unidade livre
+  if (min < 0)
+    return {
+      min,
+      max,
+      unidade: "livre",
+      rotulo: resto,
+      passo: resto.startsWith("%") ? 0.5 : 1,
+      gasto: false,
+    };
   // acima de 100% não cabe em fração: vira unidade livre, de 5 em 5 pontos
   if (resto.startsWith("%") && max > 100)
     return {
@@ -277,32 +362,47 @@ for (const l of aba("Leis")) {
     continue;
   }
   const forma = l["Forma"];
-  if (FORMA_ESPECIAL.test(forma)) {
+  if (FORMA_DE_LISTA.test(forma)) {
     fora.push(`${nome}: forma "${forma}"`);
     continue;
   }
-  const forca = FORCA[l["Força"].toLowerCase()] ?? "media";
+  const pedacos = pedacosDe(l);
+  for (const p of pedacos) exportarPedaco(l, p, pedacos.length > 1);
+}
+
+function exportarPedaco(l: Linha, p: Pedaco, parte: boolean): void {
+  const nome = p.nome;
+  const id = kebab(nome);
+  const forcaDaLei = FORCA[l["Força"].toLowerCase()] ?? "media";
+  const forca = p.controle ? UM_ABAIXO[forcaDaLei] : forcaDaLei;
   const atraso = Math.max(0, Math.round(numero(l["Atraso (turnos)"]) ?? 1));
-  const lidos = efeitosDe(roteiro.get(nome)?.[COLUNA_INDICES] ?? "");
-  const [e0, e1] = eixo(l["Econômico (− esquerda, + direita)"]);
-  const [s0, s1] = eixo(l["Social (− libertário, + tradicional)"]);
+  const lidos = p.fatia
+    ? []
+    : efeitosDe(roteiro.get(l["Lei"])?.[COLUNA_INDICES] ?? "");
+  const [e0, e1] = p.fatia
+    ? [0, 0]
+    : eixo(l["Econômico (− esquerda, + direita)"]);
+  const [s0, s1] = p.fatia
+    ? [0, 0]
+    : eixo(l["Social (− libertário, + tradicional)"]);
   const base: Json = {
     versao: 1,
     id,
     nome,
-    descricao: l["O que faz"],
+    descricao:
+      l["O que faz"] +
+      (p.nota ?? "") +
+      (p.fatia ? " Peso desta fatia: a parte dela é o peso sobre a soma." : ""),
     camada: "jogabilidade",
     origem: ORIGEM,
+    ...(parte ? { parte_de: l["Lei"] } : {}),
   };
   let lei: Json;
-  if (l["Degraus"]) {
-    const degraus = l["Degraus"]
-      .split(";")
-      .map((d) => d.trim())
-      .filter(Boolean);
+  if (p.degraus) {
+    const degraus = p.degraus;
     if (degraus.length < 2) {
       fora.push(`${nome}: menos de 2 degraus`);
-      continue;
+      return;
     }
     const n = degraus.length - 1;
     const ids = new Set<string>();
@@ -328,7 +428,7 @@ for (const l of aba("Leis")) {
               ? []
               : lidos.map((e) => ({
                   ...e,
-                  forca: forcaDoDegrau,
+                  forca: p.controle ? UM_ABAIXO[forcaDoDegrau] : forcaDoDegrau,
                   atraso_turnos: atraso,
                 })),
         };
@@ -336,10 +436,10 @@ for (const l of aba("Leis")) {
     };
     conta("degraus");
   } else {
-    const faixa = faixaDe(l["Faixa"]);
+    const faixa = faixaDe(p.faixa ?? "");
     if (typeof faixa === "string") {
-      fora.push(`${nome}: ${faixa} ("${l["Faixa"]}")`);
-      continue;
+      fora.push(`${nome}: ${faixa} ("${p.faixa ?? ""}")`);
+      return;
     }
     const passoBruto = (faixa.max - faixa.min) / 20;
     const passo =
@@ -363,19 +463,19 @@ for (const l of aba("Leis")) {
   }
   if (aMao.has(String(lei.id)) || existsSync(join(PASTA_LEIS, `${id}.json`))) {
     fora.push(`${nome}: id "${id}" repetido`);
-    continue;
+    return;
   }
   const problemas = validarLei(lei, `${id}.json`, indicesJogo);
   if (problemas.length) {
     erros.push(
-      `${nome}: ${problemas.map((p) => `${p.campo} ${p.motivo}`).join("; ")}`,
+      `${nome}: ${problemas.map((e) => `${e.campo} ${e.motivo}`).join("; ")}`,
     );
-    continue;
+    return;
   }
   const area = areas.areas.find((a) => a.id === AREA_DA_ESFERA[l["Esfera"]]);
   if (!area) {
     fora.push(`${nome}: esfera "${l["Esfera"]}" sem área no mapa`);
-    continue;
+    return;
   }
   area.leis.push(id);
   writeFileSync(

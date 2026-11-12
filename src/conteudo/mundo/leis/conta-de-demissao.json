@@ -8,8 +8,8 @@
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "so-o-estado-pelo-seguro-desemprego",
-      "rotulo": "só o Estado, pelo Seguro-desemprego",
+      "id": "so-o-estado",
+      "rotulo": "só o Estado",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -17,10 +17,10 @@
       "efeitos": []
     },
     {
-      "id": "parte-numa-conta-do-trabalhador",
-      "rotulo": "parte numa conta do trabalhador",
+      "id": "pelo-seguro-desemprego",
+      "rotulo": "pelo Seguro-desemprego",
       "bussola": {
-        "economico": 0.13,
+        "economico": 0.08,
         "social": 0
       },
       "efeitos": [
@@ -39,10 +39,10 @@
       ]
     },
     {
-      "id": "tudo-na-conta-com-fundo-do-estado-para-quem-junta-pouco",
-      "rotulo": "tudo na conta, com fundo do Estado para quem junta pouco",
+      "id": "parte-numa-conta-do-trabalhador",
+      "rotulo": "parte numa conta do trabalhador",
       "bussola": {
-        "economico": 0.27,
+        "economico": 0.16,
         "social": 0
       },
       "efeitos": [
@@ -56,6 +56,50 @@
           "indice": "pobreza",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "tudo-na-conta",
+      "rotulo": "tudo na conta",
+      "bussola": {
+        "economico": 0.24,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "com-fundo-do-estado-para-quem-junta-pouco",
+      "rotulo": "com fundo do Estado para quem junta pouco",
+      "bussola": {
+        "economico": 0.32,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 6
         }
       ]

@@ -100,8 +100,9 @@ export function validarLei(
     const faixa = dado.faixa;
     if (!ehObjeto(faixa) || !ehNumero(faixa.min) || !ehNumero(faixa.max))
       erro("faixa", "precisa ter min e max numéricos");
-    else if (faixa.min < 0 || faixa.min >= faixa.max)
-      erro("faixa", "precisa ter 0 ≤ min < max");
+    else if (faixa.min >= faixa.max) erro("faixa", "precisa ter min < max");
+    else if (faixa.min < 0 && dado.unidade !== "livre")
+      erro("faixa", "abaixo de zero só na unidade livre");
     else if (fracao && faixa.max > 1)
       erro("faixa", "em fração, precisa ter max ≤ 1");
     if (!fracao && (dado.calculo !== undefined || dado.conta !== undefined))

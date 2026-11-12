@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "limite-de-poluicao-do-ar",
+  "nome": "Limite de poluição do ar",
+  "descricao": "Por setor, quanto cada companhia pode soltar de poluição no ar. Por ora, uma régua só para todos os setores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": -0.5
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "qualidade_do_ar",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

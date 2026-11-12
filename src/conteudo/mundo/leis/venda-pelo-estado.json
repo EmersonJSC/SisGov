@@ -20,7 +20,7 @@
       "id": "so-remedio-controlado-na-farmacia-do-estado",
       "rotulo": "só remédio controlado na farmácia do Estado",
       "bussola": {
-        "economico": -0.17,
+        "economico": -0.12,
         "social": 0
       },
       "efeitos": [
@@ -42,7 +42,7 @@
       "id": "remedio-e-bebida-em-lojas-do-estado",
       "rotulo": "remédio e bebida em lojas do Estado",
       "bussola": {
-        "economico": -0.33,
+        "economico": -0.25,
         "social": 0
       },
       "efeitos": [
@@ -61,8 +61,30 @@
       ]
     },
     {
-      "id": "remedio-bebida-e-cigarro-em-lojas-do-estado",
-      "rotulo": "remédio, bebida e cigarro em lojas do Estado",
+      "id": "remedio",
+      "rotulo": "remédio",
+      "bussola": {
+        "economico": -0.37,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_drogas",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mercado_ilegal",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "bebida-e-cigarro-em-lojas-do-estado",
+      "rotulo": "bebida e cigarro em lojas do Estado",
       "bussola": {
         "economico": -0.5,
         "social": 0

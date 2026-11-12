@@ -20,16 +20,25 @@
       "id": "comida-e-hotel",
       "rotulo": "comida e hotel",
       "bussola": {
-        "economico": -0.07,
+        "economico": -0.05,
         "social": 0
       },
       "efeitos": []
     },
     {
-      "id": "dinheiro-de-volta-ou-outra-viagem",
-      "rotulo": "dinheiro de volta ou outra viagem",
+      "id": "dinheiro-de-volta",
+      "rotulo": "dinheiro de volta",
       "bussola": {
-        "economico": -0.13,
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "outra-viagem",
+      "rotulo": "outra viagem",
+      "bussola": {
+        "economico": -0.15,
         "social": 0
       },
       "efeitos": []

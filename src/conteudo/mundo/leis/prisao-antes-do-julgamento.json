@@ -8,8 +8,8 @@
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "ninguem-so-casos-raros",
-      "rotulo": "ninguém, só casos raros",
+      "id": "ninguem",
+      "rotulo": "ninguém",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -17,11 +17,11 @@
       "efeitos": []
     },
     {
-      "id": "so-quem-cometeu-crime-violento",
-      "rotulo": "só quem cometeu crime violento",
+      "id": "so-casos-raros",
+      "rotulo": "só casos raros",
       "bussola": {
         "economico": 0,
-        "social": 0.17
+        "social": 0.13
       },
       "efeitos": [
         {
@@ -39,11 +39,11 @@
       ]
     },
     {
-      "id": "tambem-quem-cometeu-crime-com-pena-alta",
-      "rotulo": "também quem cometeu crime com pena alta",
+      "id": "so-quem-cometeu-crime-violento",
+      "rotulo": "só quem cometeu crime violento",
       "bussola": {
         "economico": 0,
-        "social": 0.33
+        "social": 0.25
       },
       "efeitos": [
         {
@@ -56,6 +56,28 @@
           "indice": "lotacao_presidios",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-quem-cometeu-crime-com-pena-alta",
+      "rotulo": "também quem cometeu crime com pena alta",
+      "bussola": {
+        "economico": 0,
+        "social": 0.38
+      },
+      "efeitos": [
+        {
+          "indice": "presos_sem_julgamento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 2
         }
       ]

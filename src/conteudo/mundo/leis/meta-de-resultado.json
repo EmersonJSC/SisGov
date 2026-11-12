@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "meta-de-resultado",
+  "nome": "Meta de resultado",
+  "descricao": "O governo promete fechar o ano com sobra de X% do PIB (de déficit permitido até superávit exigido). Aparece como um cofrinho com linha-alvo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "% do PIB",
+  "faixa": {
+    "min": -5,
+    "max": 4
+  },
+  "passo": 0.5,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "credibilidade_fiscal",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

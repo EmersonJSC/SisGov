@@ -21,16 +21,25 @@
       "rotulo": "cela separada no mesmo presídio",
       "bussola": {
         "economico": 0,
-        "social": 0.17
+        "social": 0.13
       },
       "efeitos": []
     },
     {
-      "id": "presidio-de-seguranca-maxima-so-para-chefes-visita-atras-do-vidro",
-      "rotulo": "presídio de segurança máxima só para chefes, visita atrás do vidro",
+      "id": "presidio-de-seguranca-maxima-so-para-chefes",
+      "rotulo": "presídio de segurança máxima só para chefes",
       "bussola": {
         "economico": 0,
-        "social": 0.33
+        "social": 0.25
+      },
+      "efeitos": []
+    },
+    {
+      "id": "visita-atras-do-vidro",
+      "rotulo": "visita atrás do vidro",
+      "bussola": {
+        "economico": 0,
+        "social": 0.38
       },
       "efeitos": []
     },

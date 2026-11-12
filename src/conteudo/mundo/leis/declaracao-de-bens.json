@@ -17,8 +17,24 @@
       "efeitos": []
     },
     {
-      "id": "so-os-bens-uma-vez-na-candidatura",
-      "rotulo": "só os bens, uma vez, na candidatura",
+      "id": "so-os-bens",
+      "rotulo": "só os bens",
+      "bussola": {
+        "economico": 0,
+        "social": -0.05
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "uma-vez",
+      "rotulo": "uma vez",
       "bussola": {
         "economico": 0,
         "social": -0.1
@@ -28,6 +44,22 @@
           "indice": "corrupcao",
           "sentido": -1,
           "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "na-candidatura",
+      "rotulo": "na candidatura",
+      "bussola": {
+        "economico": 0,
+        "social": -0.15
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]
@@ -49,8 +81,24 @@
       ]
     },
     {
-      "id": "bens-e-dividas-do-candidato-e-da-familia-conferidos-pela-receita",
-      "rotulo": "bens e dívidas do candidato e da família, conferidos pela Receita",
+      "id": "bens-e-dividas-do-candidato-e-da-familia",
+      "rotulo": "bens e dívidas do candidato e da família",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "conferidos-pela-receita",
+      "rotulo": "conferidos pela Receita",
       "bussola": {
         "economico": 0,
         "social": -0.3

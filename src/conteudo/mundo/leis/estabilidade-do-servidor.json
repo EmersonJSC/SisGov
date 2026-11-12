@@ -20,6 +20,34 @@
       "id": "sai-por-falta-grave",
       "rotulo": "sai por falta grave",
       "bussola": {
+        "economico": 0.08,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "folha_do_funcionalismo",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "avaliacao-todo-ano",
+      "rotulo": "avaliação todo ano",
+      "bussola": {
         "economico": 0.17,
         "social": 0
       },
@@ -45,8 +73,36 @@
       ]
     },
     {
-      "id": "avaliacao-todo-ano-duas-notas-ruins-e-sai",
-      "rotulo": "avaliação todo ano, duas notas ruins e sai",
+      "id": "duas-notas-ruins-e-sai",
+      "rotulo": "duas notas ruins e sai",
+      "bussola": {
+        "economico": 0.25,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "folha_do_funcionalismo",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "contrato-igual-ao-do-trabalhador-comum-fora-juiz",
+      "rotulo": "contrato igual ao do trabalhador comum (fora juiz",
       "bussola": {
         "economico": 0.33,
         "social": 0
@@ -73,8 +129,36 @@
       ]
     },
     {
-      "id": "contrato-igual-ao-do-trabalhador-comum-fora-juiz-policial-diplomata-e-auditor",
-      "rotulo": "contrato igual ao do trabalhador comum (fora juiz, policial, diplomata e auditor)",
+      "id": "policial",
+      "rotulo": "policial",
+      "bussola": {
+        "economico": 0.42,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "folha_do_funcionalismo",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "diplomata-e-auditor",
+      "rotulo": "diplomata e auditor)",
       "bussola": {
         "economico": 0.5,
         "social": 0

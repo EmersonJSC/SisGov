@@ -17,10 +17,10 @@
       "efeitos": []
     },
     {
-      "id": "empresas-cuidam-so-de-comida-limpeza-e-saude",
-      "rotulo": "empresas cuidam só de comida, limpeza e saúde",
+      "id": "empresas-cuidam-so-de-comida",
+      "rotulo": "empresas cuidam só de comida",
       "bussola": {
-        "economico": 0.13,
+        "economico": 0.1,
         "social": 0
       },
       "efeitos": [
@@ -33,10 +33,10 @@
       ]
     },
     {
-      "id": "empresas-operam-alguns-presidios-inteiros",
-      "rotulo": "empresas operam alguns presídios inteiros",
+      "id": "limpeza-e-saude",
+      "rotulo": "limpeza e saúde",
       "bussola": {
-        "economico": 0.27,
+        "economico": 0.2,
         "social": 0
       },
       "efeitos": [
@@ -44,6 +44,22 @@
           "indice": "lotacao_presidios",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "empresas-operam-alguns-presidios-inteiros",
+      "rotulo": "empresas operam alguns presídios inteiros",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 2
         }
       ]

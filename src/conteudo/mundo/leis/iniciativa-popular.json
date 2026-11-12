@@ -8,8 +8,8 @@
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhum-so-os-politicos-propoem",
-      "rotulo": "nenhum, só os políticos propõem",
+      "id": "nenhum",
+      "rotulo": "nenhum",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -17,11 +17,11 @@
       "efeitos": []
     },
     {
-      "id": "o-povo-propoe-lei-com-assinaturas-e-o-congresso-decide",
-      "rotulo": "o povo propõe lei com assinaturas e o Congresso decide",
+      "id": "so-os-politicos-propoem",
+      "rotulo": "só os políticos propõem",
       "bussola": {
         "economico": 0,
-        "social": -0.17
+        "social": -0.12
       },
       "efeitos": [
         {
@@ -33,17 +33,33 @@
       ]
     },
     {
-      "id": "lei-com-muitas-assinaturas-vai-a-plebiscito",
-      "rotulo": "lei com muitas assinaturas vai a plebiscito",
+      "id": "o-povo-propoe-lei-com-assinaturas-e-o-congresso-decide",
+      "rotulo": "o povo propõe lei com assinaturas e o Congresso decide",
       "bussola": {
         "economico": 0,
-        "social": -0.33
+        "social": -0.25
       },
       "efeitos": [
         {
           "indice": "polarizacao",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "lei-com-muitas-assinaturas-vai-a-plebiscito",
+      "rotulo": "lei com muitas assinaturas vai a plebiscito",
+      "bussola": {
+        "economico": 0,
+        "social": -0.37
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 2
         }
       ]

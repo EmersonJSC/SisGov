@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "divisao-da-verba-de-cultura-e-esporte-patrimonio",
+  "nome": "Divisão da verba de cultura e esporte: Patrimônio",
+  "descricao": "Reparte 100% da verba entre Patrimônio, Artistas e festas, Esporte no bairro, Atletas e Propaganda do turismo. Peso desta fatia: a parte dela é o peso sobre a soma.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Divisão da verba de cultura e esporte",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "pontos",
+  "faixa": {
+    "min": 0,
+    "max": 10
+  },
+  "passo": 1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

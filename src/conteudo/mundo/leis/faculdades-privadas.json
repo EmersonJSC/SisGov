@@ -17,8 +17,8 @@
       "efeitos": []
     },
     {
-      "id": "poucas-com-prova-de-qualidade-antes-de-abrir",
-      "rotulo": "poucas, com prova de qualidade antes de abrir",
+      "id": "poucas",
+      "rotulo": "poucas",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -39,8 +39,8 @@
       ]
     },
     {
-      "id": "abertura-livre-com-prova-de-qualidade-no-fim-do-curso",
-      "rotulo": "abertura livre com prova de qualidade no fim do curso",
+      "id": "com-prova-de-qualidade-antes-de-abrir",
+      "rotulo": "com prova de qualidade antes de abrir",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -56,6 +56,28 @@
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "abertura-livre-com-prova-de-qualidade-no-fim-do-curso",
+      "rotulo": "abertura livre com prova de qualidade no fim do curso",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 12
         }
       ]

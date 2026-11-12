@@ -21,7 +21,7 @@
       "rotulo": "só como funciona o corpo",
       "bussola": {
         "economico": 0,
-        "social": -0.13
+        "social": -0.08
       },
       "efeitos": [
         {
@@ -33,11 +33,11 @@
       ]
     },
     {
-      "id": "corpo-prevencao-de-doencas-e-gravidez",
-      "rotulo": "corpo, prevenção de doenças e gravidez",
+      "id": "corpo",
+      "rotulo": "corpo",
       "bussola": {
         "economico": 0,
-        "social": -0.27
+        "social": -0.16
       },
       "efeitos": [
         {
@@ -49,8 +49,40 @@
       ]
     },
     {
-      "id": "tudo-isso-mais-respeito-consentimento-e-identidade",
-      "rotulo": "tudo isso mais respeito, consentimento e identidade",
+      "id": "prevencao-de-doencas-e-gravidez",
+      "rotulo": "prevenção de doenças e gravidez",
+      "bussola": {
+        "economico": 0,
+        "social": -0.24
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "tudo-isso-mais-respeito",
+      "rotulo": "tudo isso mais respeito",
+      "bussola": {
+        "economico": 0,
+        "social": -0.32
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "consentimento-e-identidade",
+      "rotulo": "consentimento e identidade",
       "bussola": {
         "economico": 0,
         "social": -0.4

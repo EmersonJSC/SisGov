@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "credito-rural-barato-teto-por-produtor",
+  "nome": "Crédito rural barato: teto por produtor",
+  "descricao": "Dois controles: o desconto nos juros e o teto de dinheiro por produtor.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Crédito rural barato",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "x o salário médio",
+  "faixa": {
+    "min": 0,
+    "max": 50
+  },
+  "passo": 0.1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

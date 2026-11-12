@@ -17,11 +17,11 @@
       "efeitos": []
     },
     {
-      "id": "so-cacadores-atiradores-e-vigilantes",
-      "rotulo": "só caçadores, atiradores e vigilantes",
+      "id": "so-cacadores",
+      "rotulo": "só caçadores",
       "bussola": {
         "economico": 0,
-        "social": 0.23
+        "social": 0.18
       },
       "efeitos": [
         {
@@ -33,17 +33,33 @@
       ]
     },
     {
-      "id": "cidadao-sem-antecedentes-pode-ter-arma-em-casa",
-      "rotulo": "cidadão sem antecedentes pode ter arma em casa",
+      "id": "atiradores-e-vigilantes",
+      "rotulo": "atiradores e vigilantes",
       "bussola": {
         "economico": 0,
-        "social": 0.47
+        "social": 0.35
       },
       "efeitos": [
         {
           "indice": "homicidios",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "cidadao-sem-antecedentes-pode-ter-arma-em-casa",
+      "rotulo": "cidadão sem antecedentes pode ter arma em casa",
+      "bussola": {
+        "economico": 0,
+        "social": 0.52
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 2
         }
       ]

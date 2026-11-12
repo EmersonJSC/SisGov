@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "quorum-das-votacoes",
+  "nome": "Quórum das votações",
+  "descricao": "Quantos votos o Congresso precisa em cada tipo de votação. Uma aba por tipo, cada uma com a sua escada. Constituição (regras do poder): maioria absoluta; 3/5; 2/3; 3/4. Derrubar veto: maioria simples; absoluta; 3/5; 2/3. Imposto e dívida: maioria simples; absoluta; 3/5. Por ora, uma régua só para todos os setores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0.5,
+    "max": 0.75
+  },
+  "passo": 0.0125,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "confianca_na_democracia",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "confianca_do_mercado",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

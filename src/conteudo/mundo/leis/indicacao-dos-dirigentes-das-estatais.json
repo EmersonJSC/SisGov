@@ -20,7 +20,29 @@
       "id": "mista",
       "rotulo": "mista",
       "bussola": {
-        "economico": 0.15,
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "eficiencia_das_estatais",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "concurso",
+      "rotulo": "concurso",
+      "bussola": {
+        "economico": 0.2,
         "social": 0
       },
       "efeitos": [
@@ -39,8 +61,8 @@
       ]
     },
     {
-      "id": "concurso-ou-lista-tecnica",
-      "rotulo": "concurso ou lista técnica",
+      "id": "lista-tecnica",
+      "rotulo": "lista técnica",
       "bussola": {
         "economico": 0.3,
         "social": 0

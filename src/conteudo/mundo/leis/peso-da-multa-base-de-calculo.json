@@ -1,0 +1,53 @@
+{
+  "versao": 1,
+  "id": "peso-da-multa-base-de-calculo",
+  "nome": "Peso da multa: base de cálculo",
+  "descricao": "Dois controles: quanto a multa pesa, de 1 a 5 vezes, e como se calcula: igual para todos, pelo preço do carro ou pelo salário.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Peso da multa",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "igual-para-todos",
+      "rotulo": "igual para todos",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "pelo-preco-do-carro",
+      "rotulo": "pelo preço do carro",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0.15
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 1
+        }
+      ]
+    },
+    {
+      "id": "pelo-salario",
+      "rotulo": "pelo salário",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.3
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 1
+        }
+      ]
+    }
+  ]
+}

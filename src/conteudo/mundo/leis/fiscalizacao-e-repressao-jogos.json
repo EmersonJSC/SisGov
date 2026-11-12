@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "fiscalizacao-e-repressao-jogos",
+  "nome": "Fiscalização e repressão: jogos",
+  "descricao": "Verba para apreender, prender e bloquear sites e pagamentos. Dois controles na mesma lei: drogas e jogos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Fiscalização e repressão",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.002
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.5
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "mercado_ilegal",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "lotacao_presidios",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "liberdade_civil",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    }
+  ]
+}

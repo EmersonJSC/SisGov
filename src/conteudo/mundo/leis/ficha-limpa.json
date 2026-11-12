@@ -8,8 +8,8 @@
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "sem-regra-qualquer-um-pode-concorrer",
-      "rotulo": "sem regra, qualquer um pode concorrer",
+      "id": "sem-regra",
+      "rotulo": "sem regra",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -17,8 +17,30 @@
       "efeitos": []
     },
     {
-      "id": "so-condenado-em-definitivo-sem-mais-recurso",
-      "rotulo": "só condenado em definitivo, sem mais recurso",
+      "id": "qualquer-um-pode-concorrer",
+      "rotulo": "qualquer um pode concorrer",
+      "bussola": {
+        "economico": 0,
+        "social": 0.07
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "so-condenado-em-definitivo",
+      "rotulo": "só condenado em definitivo",
       "bussola": {
         "economico": 0,
         "social": 0.13
@@ -39,8 +61,30 @@
       ]
     },
     {
-      "id": "tambem-condenado-em-segunda-instancia-ainda-com-recurso",
-      "rotulo": "também condenado em segunda instância, ainda com recurso",
+      "id": "sem-mais-recurso",
+      "rotulo": "sem mais recurso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-condenado-em-segunda-instancia",
+      "rotulo": "também condenado em segunda instância",
       "bussola": {
         "economico": 0,
         "social": 0.27
@@ -56,6 +100,28 @@
           "indice": "confianca_na_democracia",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "ainda-com-recurso",
+      "rotulo": "ainda com recurso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 2
         }
       ]

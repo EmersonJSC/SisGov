@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "feriados-nacionais-divisao-do-trabalho",
+  "nome": "Feriados nacionais: divisão: do trabalho",
+  "descricao": "Quantos dias de feriado o país tem, de 5 a 20, e a divisão em 100% entre religiosos, cívicos, datas de negros e indígenas, e do trabalho. Peso desta fatia: a parte dela é o peso sobre a soma.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Feriados nacionais",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "pontos",
+  "faixa": {
+    "min": 0,
+    "max": 10
+  },
+  "passo": 1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

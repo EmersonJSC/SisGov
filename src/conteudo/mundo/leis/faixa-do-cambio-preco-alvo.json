@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "faixa-do-cambio-preco-alvo",
+  "nome": "Faixa do câmbio: preço-alvo",
+  "descricao": "Dois controles: o preço-alvo da moeda de fora (de −20% a +40% sobre o preço de início) e a largura da faixa em volta dele (de 0%, travado, até 30%, quase solto).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Faixa do câmbio",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "%",
+  "faixa": {
+    "min": -20,
+    "max": 40
+  },
+  "passo": 0.5,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "cambio",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "reservas_internacionais",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "divida_em_moeda_estrangeira",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "subsidio-aos-insumos",
+  "nome": "Subsídio aos insumos",
+  "descricao": "Por insumo, quanto o Estado paga de fertilizante, máquinas e sementes. Por ora, uma régua só para todos os setores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.8
+  },
+  "passo": 0.04,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": 0.2
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "preco_da_comida",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "concentracao_terra",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 3
+    }
+  ]
+}

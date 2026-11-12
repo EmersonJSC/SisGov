@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "tarifa-de-importacao",
+  "nome": "Tarifa de importação",
+  "descricao": "Imposto sobre o que entra no país. A lei tem uma aba por setor, cada uma com a sua tarifa de 0 a 50%, e uma aba \"Todos\" que mexe todas juntas. Por ora, uma régua só para todos os setores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0.3
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "abertura_comercial",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

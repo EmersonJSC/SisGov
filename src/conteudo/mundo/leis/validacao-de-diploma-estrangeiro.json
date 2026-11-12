@@ -61,8 +61,30 @@
       ]
     },
     {
-      "id": "aceita-direto-com-registro-no-conselho",
-      "rotulo": "aceita direto, com registro no conselho",
+      "id": "aceita-direto",
+      "rotulo": "aceita direto",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "com-registro-no-conselho",
+      "rotulo": "com registro no conselho",
       "bussola": {
         "economico": 0,
         "social": 0

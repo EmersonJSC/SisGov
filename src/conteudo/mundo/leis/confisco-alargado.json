@@ -21,7 +21,7 @@
       "rotulo": "também bens ligados ao crime antes da condenação",
       "bussola": {
         "economico": 0,
-        "social": 0.2
+        "social": 0.15
       },
       "efeitos": []
     },
@@ -30,13 +30,22 @@
       "rotulo": "também patrimônio que não bate com a renda de condenados",
       "bussola": {
         "economico": 0,
-        "social": 0.4
+        "social": 0.3
       },
       "efeitos": []
     },
     {
-      "id": "patrimonio-que-nao-bate-com-a-renda-de-qualquer-investigado-que-precisa-provar-que-e-legal",
-      "rotulo": "patrimônio que não bate com a renda de qualquer investigado, que precisa provar que é legal",
+      "id": "patrimonio-que-nao-bate-com-a-renda-de-qualquer-investigado",
+      "rotulo": "patrimônio que não bate com a renda de qualquer investigado",
+      "bussola": {
+        "economico": 0,
+        "social": 0.45
+      },
+      "efeitos": []
+    },
+    {
+      "id": "que-precisa-provar-que-e-legal",
+      "rotulo": "que precisa provar que é legal",
       "bussola": {
         "economico": 0,
         "social": 0.6

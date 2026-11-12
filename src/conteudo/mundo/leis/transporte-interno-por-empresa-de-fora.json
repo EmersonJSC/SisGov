@@ -1,0 +1,45 @@
+{
+  "versao": 1,
+  "id": "transporte-interno-por-empresa-de-fora",
+  "nome": "Transporte interno por empresa de fora",
+  "descricao": "Se navio e avião de fora podem levar carga e gente entre cidades do país. Uma aba para navio e outra para avião, cada uma com: só empresa do país; de fora quando falta; de fora com metade da tripulação daqui; livre. Por ora, uma régua só para todos os setores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": -0.2
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "custo_do_frete",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "congestionamento",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "industrializacao",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

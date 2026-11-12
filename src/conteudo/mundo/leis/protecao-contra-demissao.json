@@ -8,8 +8,8 @@
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "demissao-livre-sem-aviso",
-      "rotulo": "demissão livre, sem aviso",
+      "id": "demissao-livre",
+      "rotulo": "demissão livre",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -17,10 +17,10 @@
       "efeitos": []
     },
     {
-      "id": "aviso-de-um-mes-e-multa-pequena",
-      "rotulo": "aviso de um mês e multa pequena",
+      "id": "sem-aviso",
+      "rotulo": "sem aviso",
       "bussola": {
-        "economico": -0.13,
+        "economico": -0.1,
         "social": 0
       },
       "efeitos": [
@@ -33,10 +33,10 @@
       ]
     },
     {
-      "id": "aviso-longo-e-multa-de-varios-meses-de-salario",
-      "rotulo": "aviso longo e multa de vários meses de salário",
+      "id": "aviso-de-um-mes-e-multa-pequena",
+      "rotulo": "aviso de um mês e multa pequena",
       "bussola": {
-        "economico": -0.27,
+        "economico": -0.2,
         "social": 0
       },
       "efeitos": [
@@ -44,6 +44,22 @@
           "indice": "emprego_informal",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "aviso-longo-e-multa-de-varios-meses-de-salario",
+      "rotulo": "aviso longo e multa de vários meses de salário",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": 1,
+          "forca": "forte",
           "atraso_turnos": 12
         }
       ]

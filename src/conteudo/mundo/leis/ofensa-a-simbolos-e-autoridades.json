@@ -17,11 +17,11 @@
       "efeitos": []
     },
     {
-      "id": "punido-so-se-houver-ameaca-ou-violencia",
-      "rotulo": "punido só se houver ameaça ou violência",
+      "id": "punido-so-se-houver-ameaca",
+      "rotulo": "punido só se houver ameaça",
       "bussola": {
         "economico": 0,
-        "social": 0.15
+        "social": 0.12
       },
       "efeitos": [
         {
@@ -33,11 +33,27 @@
       ]
     },
     {
+      "id": "violencia",
+      "rotulo": "violência",
+      "bussola": {
+        "economico": 0,
+        "social": 0.24
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
       "id": "multa-por-ofender-bandeira-e-hino",
       "rotulo": "multa por ofender bandeira e hino",
       "bussola": {
         "economico": 0,
-        "social": 0.3
+        "social": 0.36
       },
       "efeitos": [
         {
@@ -53,7 +69,7 @@
       "rotulo": "multa também por ofender policiais e juízes",
       "bussola": {
         "economico": 0,
-        "social": 0.45
+        "social": 0.48
       },
       "efeitos": [
         {

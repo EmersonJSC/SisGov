@@ -60,6 +60,9 @@ describe("validarLei", () => {
       "rotulo_unidade",
     ]);
     expect(campos({ ...velocidade, conta: "gasto" })).toEqual(["unidade"]);
+    const meta = { ...velocidade, faixa: { min: -5, max: 4 } };
+    expect(campos(meta)).toEqual([]);
+    expect(campos({ ...meta, unidade: "anos" })).toEqual(["faixa"]);
   });
 
   it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {

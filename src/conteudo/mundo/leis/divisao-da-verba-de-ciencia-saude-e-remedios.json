@@ -1,0 +1,28 @@
+{
+  "versao": 1,
+  "id": "divisao-da-verba-de-ciencia-saude-e-remedios",
+  "nome": "Divisão da verba de ciência: Saúde e remédios",
+  "descricao": "Reparte 100% da verba em 7 fatias: Ciência básica, Saúde e remédios, Indústria e chips, Energia e baterias, Agro, Defesa e Espaço. Peso desta fatia: a parte dela é o peso sobre a soma.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Divisão da verba de ciência",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "pontos",
+  "faixa": {
+    "min": 0,
+    "max": 10
+  },
+  "passo": 1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

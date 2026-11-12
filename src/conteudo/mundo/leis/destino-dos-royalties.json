@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "destino-dos-royalties",
+  "nome": "Destino dos royalties",
+  "descricao": "Para onde vai o dinheiro dos royalties. Uma aba por área: educação, saúde, Fundo soberano, estados produtores, cidades da mina e caixa geral. Por ora, uma régua só para todos os setores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

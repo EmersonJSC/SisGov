@@ -17,8 +17,30 @@
       "efeitos": []
     },
     {
-      "id": "misto-metade-proporcional-metade-por-distrito",
-      "rotulo": "misto (metade proporcional, metade por distrito)",
+      "id": "misto-metade-proporcional",
+      "rotulo": "misto (metade proporcional",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "participacao_eleitoral",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "metade-por-distrito",
+      "rotulo": "metade por distrito)",
       "bussola": {
         "economico": 0,
         "social": 0

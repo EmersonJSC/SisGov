@@ -17,10 +17,26 @@
       "efeitos": []
     },
     {
-      "id": "parte-leilao-parte-reuso",
-      "rotulo": "parte leilão, parte reuso",
+      "id": "parte-leilao",
+      "rotulo": "parte leilão",
       "bussola": {
-        "economico": -0.2,
+        "economico": -0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_na_policia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "parte-reuso",
+      "rotulo": "parte reuso",
+      "bussola": {
+        "economico": -0.27,
         "social": 0
       },
       "efeitos": [

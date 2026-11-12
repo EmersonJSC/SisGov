@@ -21,7 +21,7 @@
       "rotulo": "ser membro é crime",
       "bussola": {
         "economico": 0,
-        "social": 0.23
+        "social": 0.1
       },
       "efeitos": [
         {
@@ -51,11 +51,45 @@
       ]
     },
     {
-      "id": "tambem-quem-ajuda-a-faccao-guarda-dinheiro-paga-leva-recado",
-      "rotulo": "também quem ajuda a facção (guarda dinheiro, paga, leva recado)",
+      "id": "tambem-quem-ajuda-a-faccao-guarda-dinheiro",
+      "rotulo": "também quem ajuda a facção (guarda dinheiro",
       "bussola": {
         "economico": 0,
-        "social": 0.47
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "paga",
+      "rotulo": "paga",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
       },
       "efeitos": [
         {
@@ -85,8 +119,110 @@
       ]
     },
     {
-      "id": "tambem-quem-tem-sinais-de-pertencer-tatuagem-mensagem-morar-com-o-chefe",
-      "rotulo": "também quem tem sinais de pertencer (tatuagem, mensagem, morar com o chefe)",
+      "id": "leva-recado",
+      "rotulo": "leva recado)",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-quem-tem-sinais-de-pertencer-tatuagem",
+      "rotulo": "também quem tem sinais de pertencer (tatuagem",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "mensagem",
+      "rotulo": "mensagem",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "morar-com-o-chefe",
+      "rotulo": "morar com o chefe)",
       "bussola": {
         "economico": 0,
         "social": 0.7

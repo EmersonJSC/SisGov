@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "imposto-sobre-imovel-caro-quanto-cobra",
+  "nome": "Imposto sobre imóvel caro: quanto cobra",
+  "descricao": "Imposto por ano sobre o imóvel em que se mora ou que se aluga, só acima de um valor. Dois controles: a partir de quanto cobra (em salários mínimos) e quanto cobra, de 0% a 2% ao ano.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "parte_de": "Imposto sobre imóvel caro",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.02
+  },
+  "passo": 0.001,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.5,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "desigualdade",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "saida_de_ricos",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "preco_moradia",
+      "sentido": -1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    }
+  ]
+}

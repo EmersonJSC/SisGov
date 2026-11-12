@@ -17,11 +17,20 @@
       "efeitos": []
     },
     {
-      "id": "trabalho-voluntario-dentro-do-presidio-cozinha-limpeza",
-      "rotulo": "trabalho voluntário dentro do presídio (cozinha, limpeza)",
+      "id": "trabalho-voluntario-dentro-do-presidio-cozinha",
+      "rotulo": "trabalho voluntário dentro do presídio (cozinha",
       "bussola": {
         "economico": 0,
-        "social": 0.13
+        "social": 0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "limpeza",
+      "rotulo": "limpeza)",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
       },
       "efeitos": []
     },
@@ -30,7 +39,7 @@
       "rotulo": "trabalho obrigatório dentro do presídio",
       "bussola": {
         "economico": 0,
-        "social": 0.27
+        "social": 0.3
       },
       "efeitos": []
     },
