@@ -21,26 +21,28 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 
 ## Tipos
 
-| Tipo                     | Quem escreve | Tamanho | sobre / quem / lado                             |
-| ------------------------ | ------------ | ------- | ----------------------------------------------- |
-| `lei-aprovada`           | Congresso    | médio   | lei / partidos que votaram não / posição da lei |
-| `lei-rejeitada`          | Congresso    | pequeno | lei / partidos que votaram não / —              |
-| `partido-saiu-da-base`   | Política     | grande  | — / partido / —                                 |
-| `partido-entrou-na-base` | Política     | médio   | — / partido / —                                 |
-| `eleicao-vencida`        | Política     | grande  | — / — / —                                       |
-| `eleicao-perdida`        | Política     | grande  | — / — / —                                       |
-| `emenda`                 | Congresso    | médio   | lei / — / —                                     |
-| `papel-assinado`         | Mesa         | pequeno | lei / — / —                                     |
-| `papel-vetado`           | Mesa         | médio   | lei / — / —                                     |
-| `papel-ignorado`         | Mesa         | pequeno | lei / — / —                                     |
-| `veto-derrubado`         | Congresso    | grande  | lei / partidos contra / —                       |
-| `decreto`                | Congresso    | médio   | lei / — / posição da lei                        |
-| `decreto-derrubado`      | Congresso    | grande  | lei / partidos contra / —                       |
-| `promessa-cumprida`      | Congresso    | pequeno | lei / partido / —                               |
-| `promessa-descumprida`   | Congresso    | grande  | lei / partido / —                               |
-| `partido-ameaca-sair`    | Política     | médio   | — / partido / —                                 |
-| `escandalo`              | (mídia)      | —       | só lido pelo Congresso por ora                  |
-| `manchete-contra`        | (mídia)      | —       | só lido pelo Congresso por ora                  |
-| `grupo-com-raiva`        | (grupos)     | —       | ninguém escreve nem lê ainda                    |
+| Tipo                     | Quem escreve | Tamanho                   | sobre / quem / lado                             |
+| ------------------------ | ------------ | ------------------------- | ----------------------------------------------- |
+| `lei-aprovada`           | Congresso    | médio                     | lei / partidos que votaram não / posição da lei |
+| `lei-rejeitada`          | Congresso    | pequeno                   | lei / partidos que votaram não / —              |
+| `partido-saiu-da-base`   | Política     | grande                    | — / partido / —                                 |
+| `partido-entrou-na-base` | Política     | médio                     | — / partido / —                                 |
+| `eleicao-vencida`        | Política     | grande                    | — / — / —                                       |
+| `eleicao-perdida`        | Política     | grande                    | — / — / —                                       |
+| `emenda`                 | Congresso    | médio                     | lei / — / —                                     |
+| `papel-assinado`         | Mesa         | pequeno                   | lei / — / —                                     |
+| `papel-vetado`           | Mesa         | médio                     | lei / — / —                                     |
+| `papel-ignorado`         | Mesa         | pequeno                   | lei / — / —                                     |
+| `veto-derrubado`         | Congresso    | grande                    | lei / partidos contra / —                       |
+| `decreto`                | Congresso    | médio                     | lei / — / posição da lei                        |
+| `decreto-derrubado`      | Congresso    | grande                    | lei / partidos contra / —                       |
+| `promessa-cumprida`      | Congresso    | pequeno                   | lei / partido / —                               |
+| `promessa-descumprida`   | Congresso    | grande                    | lei / partido / —                               |
+| `partido-ameaca-sair`    | Política     | médio                     | — / partido / —                                 |
+| `programa-formado`       | Programas    | grande (médio se refeito) | programa / — / —                                |
+| `programa-desfeito`      | Programas    | médio                     | programa / — / —                                |
+| `escandalo`              | (mídia)      | —                         | só lido pelo Congresso por ora                  |
+| `manchete-contra`        | (mídia)      | —                         | só lido pelo Congresso por ora                  |
+| `grupo-com-raiva`        | (grupos)     | —                         | ninguém escreve nem lê ainda                    |
 
 Tipo novo: acrescentar em `TIPOS_DE_FATO` e nesta tabela.

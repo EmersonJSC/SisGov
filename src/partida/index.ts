@@ -40,9 +40,14 @@ import {
   placarPrevisto,
   satisfacaoMedia,
   turnosMandato,
+  motivoProgramasInvalidos,
+  type Programa,
+  type RegrasProgramas,
 } from "../motor";
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
 import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
+import programasDoMundo from "../conteudo/mundo/programas/programas.json";
+import nomesDeProgramas from "../conteudo/mundo/programas/nomes.json";
 import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import moradia from "../conteudo/mundo/moradia/moradia.json";
 import saneamento from "../conteudo/mundo/saneamento/saneamento.json";
@@ -181,6 +186,24 @@ function carregarGoverno(
   const motivo = motivoGovernoInvalido(regras, declarado, partidos);
   if (motivo) throw new Error(`país "${pais}" › governo: ${motivo}`);
   return { regras, declarado };
+}
+
+/** Programas do mundo e os nomes próprios que o país deu (programas.json, opcional). */
+function carregarProgramas(
+  pais: string,
+  leis: Record<string, Lei>,
+): RegrasProgramas {
+  const doPais = arquivosPaises[`../conteudo/paises/${pais}/programas.json`]
+    ? arquivoPais<{ nomes?: Record<string, string> }>(pais, "programas")
+    : {};
+  const regras: RegrasProgramas = {
+    programas: programasDoMundo.programas as Programa[],
+    moldes: nomesDeProgramas.moldes,
+    nomesDoPais: doPais.nomes ?? {},
+  };
+  const motivo = motivoProgramasInvalidos(regras, leis);
+  if (motivo) throw new Error(`país "${pais}" › programas: ${motivo}`);
+  return regras;
 }
 
 export interface NomesDoGoverno {
@@ -372,8 +395,9 @@ export function criarPartida(
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
 
+  const leis = carregarLeis();
   const regras: Regras = {
-    leis: carregarLeis(),
+    leis,
     dominios: dominiosDosIndices(),
     pops: carregarPops(),
     grupos: carregarGrupos(),
@@ -388,6 +412,7 @@ export function criarPartida(
     saneamento,
     atendimento,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
+    programas: carregarProgramas(pais, leis),
     ...(governo ? { governo: governo.regras } : {}),
     congresso: semCongresso ? undefined : congressoDasRegras(congresso),
   };

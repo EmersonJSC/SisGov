@@ -45,6 +45,8 @@ interface Nomes {
   /** Partidos e pessoas, pelo id. */
   quem: Record<string, string>;
   governo: NomesDoGoverno;
+  /** Nome que o programa recebeu ao se formar. */
+  programa: (id: string) => string;
 }
 
 /** Manchete do fato. */
@@ -94,6 +96,10 @@ function manchete(fato: Fato, nomes: Nomes): string {
       return `Governo troca o ministro ${caixa}; ${quem} perde o cargo`;
     case "ministerio-oferecido":
       return `Governo dá o ministério ${caixa} a ${quem}`;
+    case "programa-formado":
+      return `Governo forma o programa ${nomes.programa(fato.sobre ?? "")}`;
+    case "programa-desfeito":
+      return `Programa ${nomes.programa(fato.sobre ?? "")} se desfaz`;
     case "manchete-contra":
       return "Imprensa vai contra o governo";
     case "grupo-com-raiva":
@@ -127,6 +133,7 @@ export function ResultadoDoTurno({
     lei: (id) => lei(id)?.nome ?? id,
     quem: { ...partidos, ...governo.pessoas },
     governo,
+    programa: (id) => estado.programas?.vidas[id]?.nome ?? id,
   };
   const eleicao =
     estado.eleicao?.turno === estado.turno ? estado.eleicao : null;

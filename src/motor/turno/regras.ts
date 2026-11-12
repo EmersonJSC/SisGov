@@ -11,6 +11,7 @@ import type { RegraDoSaneamento } from "../saneamento";
 import type { Potencia } from "../mundo";
 import type { PedidoNomear, RegrasGoverno } from "../governo";
 import type { PedidoCarimbar } from "../mesa";
+import type { RegrasProgramas } from "../programas";
 import type { Congresso, PedidoCongresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
 
@@ -52,6 +53,8 @@ export interface Regras {
   mercado?: MercadoDoPais;
   /** Ministros e órgãos; sem ele, as leis chegam como estão escritas (motor/governo). */
   governo?: RegrasGoverno;
+  /** Programas do mundo e nomes do país; sem eles, nada se forma (motor/programas). */
+  programas?: RegrasProgramas;
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
   /** Índices que andam sozinhos, empurrados por outros (motor/deriva). */

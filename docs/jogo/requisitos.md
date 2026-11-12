@@ -162,14 +162,14 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 **Programas** (12/nov)
 
-- ☐ **R7.18** 74 programas (aba Programas): forma-se quando a maior parte das leis anda o mínimo na direção dele dentro do mandato; desfaz-se se elas voltam.
-- ☐ **R7.19** Lembrança e nostalgia: formado, os grupos lembram (pesa no voto); desfeito, vira nostalgia; recriado, o jogo pergunta se usa o mesmo nome.
-- ☐ **R7.20** Nome: o país dá o nome próprio; senão o gerador cria pelos moldes e pelas 4 palavras; o jornal anuncia.
-- ☐ **R7.21** Programa espalhado por vários ministérios anda no passo do ministro mais fraco.
+- ✅ **R7.18** 73 programas (aba Programas; 1 espera leis que o jogo ainda não tem): forma-se quando a maior parte das leis anda o mínimo na direção dele dentro do mandato; desfaz-se se elas voltam. (12/nov)
+- ◐ **R7.19** Lembrança e nostalgia: formado, os grupos lembram (pesa no voto); desfeito, vira nostalgia; recriado, o jogo pergunta se usa o mesmo nome. (12/nov: a lembrança de cada grupo é guardada e a nostalgia fica; refeito, volta com o mesmo nome. Falta pesar no voto e perguntar o nome.)
+- ◐ **R7.20** Nome: o país dá o nome próprio; senão o gerador cria pelos moldes e pelas 4 palavras; o jornal anuncia. (12/nov: país e gerador feitos; o anúncio é uma manchete no Resultado do turno, o jornal vem no passo 7.)
+- ✅ **R7.21** Programa espalhado por vários ministérios anda no passo do ministro mais fraco. (12/nov: o programa espera o maior atraso entre as leis dele, 0 ou 1 turno.)
 
 **Construção (programas)**
 
-- Dados: abas Programas e Programas - leis → `mundo/programas.json` (lado, palavras, leis com direção e mínimo); moldes de nome em `mundo/nomes-programas.json`; país em `paises/<id>/programas.json` (nome próprio, já formados, lembrança).
+- Dados: abas Programas e Programas - leis → `mundo/programas/programas.json` (`npm run programas`); moldes de nome em `mundo/programas/nomes.json`; país em `paises/<id>/programas.json` (só `nomes`; programas já formados ficam para quando um país precisar).
 - Estado: `programas` (formados, turno em que formou, lembrança por grupo, nome dado).
 - Módulo: `programas`.
 - Turno: depois do Congresso e da mesa (lei assinada conta na hora da aprovação).

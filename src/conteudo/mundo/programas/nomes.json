@@ -1,0 +1,10 @@
+{
+  "versao": 1,
+  "moldes": [
+    "mais {bem}",
+    "{tema} para {publico}",
+    "basta de {mal}",
+    "programa {tema}",
+    "{bem} para {publico}"
+  ]
+}

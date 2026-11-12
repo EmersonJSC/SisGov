@@ -109,6 +109,8 @@ export function BarraDoTopo({
   papeis,
   onGoverno,
   temGoverno,
+  onProgramas,
+  temProgramas,
 }: {
   partida: Partida;
   pedidos: number;
@@ -124,6 +126,9 @@ export function BarraDoTopo({
   onGoverno: () => void;
   /** O país tem ministérios declarados. */
   temGoverno: boolean;
+  onProgramas: () => void;
+  /** O mundo tem programas. */
+  temProgramas: boolean;
   /** Papéis que esperam decisão do presidente. */
   papeis: number;
 }) {
@@ -270,6 +275,11 @@ export function BarraDoTopo({
         {temGoverno ? (
           <button type="button" className="aba-topo" onClick={onGoverno}>
             Governo
+          </button>
+        ) : null}
+        {temProgramas ? (
+          <button type="button" className="aba-topo" onClick={onProgramas}>
+            Programas
           </button>
         ) : null}
         <button type="button" className="aba-topo" onClick={onMesa}>

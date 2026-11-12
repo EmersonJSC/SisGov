@@ -23,6 +23,7 @@ import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
 import { Governo } from "./Governo";
+import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
 import { MesaDePapeis, papeisParaDecidir } from "./MesaDePapeis";
 import { Pregao, pregaoInicial } from "./Pregao";
@@ -83,6 +84,8 @@ export function TelaMapa({
   const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
   const [governo, setGoverno] = useState(false);
   const [desvioGoverno, setDesvioGoverno] = useState<Desvio>(CENTRO);
+  const [programas, setProgramas] = useState(false);
+  const [desvioProgramas, setDesvioProgramas] = useState<Desvio>(CENTRO);
   const [mesa, setMesa] = useState(false);
   const [desvioMesa, setDesvioMesa] = useState<Desvio>(CENTRO);
   const [mercado, setMercado] = useState(false);
@@ -185,6 +188,8 @@ export function TelaMapa({
         onMesa={() => setMesa(!mesa)}
         onGoverno={() => setGoverno(!governo)}
         temGoverno={!!partida.regras.governo}
+        onProgramas={() => setProgramas(!programas)}
+        temProgramas={!!partida.regras.programas}
         papeis={papeisParaDecidir(partida).length}
         onMercado={() => setMercado(!mercado)}
         onBolsa={() => setBolsa(!bolsa)}
@@ -265,6 +270,19 @@ export function TelaMapa({
             onFechar={() => setGoverno(false)}
             desvio={desvioGoverno}
             onDesvio={setDesvioGoverno}
+            onRetangulo={() => {}}
+            camada={4}
+            ativa
+            onFocar={() => {}}
+          />
+        ) : null}
+        {programas ? (
+          <Programas
+            partida={partida}
+            visao={visao}
+            onFechar={() => setProgramas(false)}
+            desvio={desvioProgramas}
+            onDesvio={setDesvioProgramas}
             onRetangulo={() => {}}
             camada={4}
             ativa

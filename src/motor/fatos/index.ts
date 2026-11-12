@@ -22,6 +22,8 @@ export const TIPOS_DE_FATO = [
   "ministro-nomeado",
   "ministro-demitido",
   "ministerio-oferecido",
+  "programa-formado",
+  "programa-desfeito",
   // Ninguém escreve ainda; o Congresso já lê (mídia e escândalos vêm depois).
   "escandalo",
   "manchete-contra",

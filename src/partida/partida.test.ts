@@ -369,3 +369,53 @@ describe("governo", () => {
     expect(jogar(partida, 3).estado.turno).toBe(3);
   });
 });
+
+describe("programas", () => {
+  /** O Brasil sem Congresso, com `quantas` leis do programa levadas ao extremo. */
+  function aprovando(id: string, quantas: number) {
+    const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
+    const programa = partida.regras.programas?.programas.find(
+      (p) => p.id === id,
+    ) as NonNullable<Partida["regras"]["programas"]>["programas"][number];
+    const pedidos = programa.leis
+      .map((p) => {
+        const lei = partida.regras.leis[p.lei];
+        const valor =
+          lei.forma === "continua"
+            ? lei.faixa.max
+            : (lei.opcoes.at(-1)?.id as string);
+        return { tipo: "mudar_lei" as const, lei: p.lei, valor };
+      })
+      // o que o Brasil já tem no extremo não anda
+      .filter((p) => partida.estado.leis[p.lei] !== p.valor)
+      .slice(0, quantas);
+    return jogar(partida, 1, pedidos).estado;
+  }
+
+  it("aprovar as leis do programa forma, com o nome que o país deu", () => {
+    const estado = aprovando("saude-da-familia", 3);
+    expect(estado.programas?.vidas["saude-da-familia"]).toMatchObject({
+      situacao: "formado",
+      nome: "Saúde da Família",
+    });
+    expect(estado.fatos?.map((f) => f.tipo)).toContain("programa-formado");
+  });
+
+  it("sem nome do país, o programa recebe um nome gerado", () => {
+    const vida = aprovando("escola-o-dia-todo", 3).programas?.vidas[
+      "escola-o-dia-todo"
+    ];
+    expect(vida?.situacao).toBe("formado");
+    expect(vida?.nome).toMatch(/\S/);
+    expect(vida?.nome).not.toBe("escola-o-dia-todo");
+  });
+
+  it("leis a menos do mínimo não formam nada", () => {
+    expect(aprovando("saude-da-familia", 2).programas?.vidas).toEqual({});
+  });
+
+  it("sem mexer nas leis, nenhum programa se forma sozinho", () => {
+    const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
+    expect(jogar(partida, 12).estado.programas?.vidas).toEqual({});
+  });
+});

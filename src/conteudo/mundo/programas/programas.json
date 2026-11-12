@@ -1,0 +1,2483 @@
+{
+  "versao": 1,
+  "origem": "planilha",
+  "programas": [
+    {
+      "id": "remedio-barato",
+      "nome": "Remédio barato",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "remédio",
+        "bem": "saúde",
+        "mal": "doença",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "teto-do-preco-dos-remedios",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "remedio-pago-pelo-governo-na-farmacia",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "troca-pelo-generico",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "saude-da-familia",
+      "nome": "Saúde da família",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "saúde",
+        "bem": "cuidado",
+        "mal": "doença",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "gasto-saude",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "atencao-preventiva",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "programa-vacinacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "saude-mental",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "plano-para-todos",
+      "nome": "Plano para todos",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "plano de saúde",
+        "bem": "cobertura",
+        "mal": "desamparo",
+        "publico": "trabalhador"
+      },
+      "leis": [
+        {
+          "lei": "obrigacao-de-ter-plano",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "ajuda-para-comprar-plano",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "cobertura-minima-do-plano",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "limite-planos",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "saude-livre",
+      "nome": "Saúde livre",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "saúde",
+        "bem": "escolha",
+        "mal": "fila",
+        "publico": "paciente"
+      },
+      "leis": [
+        {
+          "lei": "abertura-planos",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "deducao-plano",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "conta-saude",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "gestao-privada",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "aprovacao-de-remedio-feito-fora",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "escola-o-dia-todo",
+      "nome": "Escola o dia todo",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "escola",
+        "bem": "futuro",
+        "mal": "evasão",
+        "publico": "criança"
+      },
+      "leis": [
+        {
+          "lei": "escola-obrigatoria",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "creche-e-pre-escola",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "escola-em-tempo-integral",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "bolsa-por-frequencia",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "universidade-aberta",
+      "nome": "Universidade aberta",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "universidade",
+        "bem": "diploma",
+        "mal": "exclusão",
+        "publico": "jovem"
+      },
+      "leis": [
+        {
+          "lei": "cotas-na-universidade",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "bolsa-em-faculdade-privada",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "credito-estudantil",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "escola-por-resultado",
+      "nome": "Escola por resultado",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "escola",
+        "bem": "mérito",
+        "mal": "atraso",
+        "publico": "aluno"
+      },
+      "leis": [
+        {
+          "lei": "pagamento-por-resultado",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "repasse-so-com-meta",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "vale-escola",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "gestao-privada-de-escolas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "escola-tradicional",
+      "nome": "Escola tradicional",
+      "lado": "tradicional",
+      "minimo": 3,
+      "palavras": {
+        "tema": "escola",
+        "bem": "disciplina",
+        "mal": "desordem",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "escola-militarizada",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "ensino-religioso",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "ensino-em-casa",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "educacao-sexual",
+          "direcao": "desce",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "tarifa-social",
+      "nome": "Tarifa social",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "conta",
+        "bem": "luz",
+        "mal": "aperto",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "tarifa-social-de-luz",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "tarifa-social-de-agua",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "tarifa-social-de-gas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "renda-da-familia",
+      "nome": "Renda da família",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "renda",
+        "bem": "bolsa",
+        "mal": "fome",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "transferencia-renda",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "quem-recebe-a-transferencia",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "beneficio-por-filho",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "beneficio-com-contrapartida",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "bolsa-por-frequencia",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "porta-de-saida",
+      "nome": "Porta de saída",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "trabalho",
+        "bem": "autonomia",
+        "mal": "dependência",
+        "publico": "beneficiário"
+      },
+      "leis": [
+        {
+          "lei": "prazo-maximo-no-beneficio",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "pente-fino-nos-beneficios",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "beneficio-com-contrapartida",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "microcredito",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "reforma-da-previdencia",
+      "nome": "Reforma da previdência",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "aposentadoria",
+        "bem": "equilíbrio",
+        "mal": "rombo",
+        "publico": "futuro"
+      },
+      "leis": [
+        {
+          "lei": "idade-minima-de-aposentadoria",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "tempo-minimo-de-contribuicao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "aposentadoria-dos-servidores",
+          "direcao": "muda",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "regime-dos-militares",
+          "direcao": "muda",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "pensao-por-morte",
+          "direcao": "desce",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "previdencia-por-conta",
+      "nome": "Previdência por conta",
+      "lado": "direita",
+      "minimo": 2,
+      "palavras": {
+        "tema": "aposentadoria",
+        "bem": "poupança",
+        "mal": "rombo",
+        "publico": "trabalhador"
+      },
+      "leis": [
+        {
+          "lei": "contas-individuais",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "previdencia-privada-com-deducao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "aposentadoria-flexivel",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "valorizacao-do-trabalho",
+      "nome": "Valorização do trabalho",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "salário",
+        "bem": "dignidade",
+        "mal": "exploração",
+        "publico": "trabalhador"
+      },
+      "leis": [
+        {
+          "lei": "salario-minimo",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "negociacao-coletiva",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "protecao-contra-demissao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "jornada-maxima",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "fiscalizacao-do-trabalho",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "reforma-trabalhista",
+      "nome": "Reforma trabalhista",
+      "lado": "direita",
+      "minimo": 4,
+      "palavras": {
+        "tema": "emprego",
+        "bem": "liberdade",
+        "mal": "burocracia",
+        "publico": "empresa"
+      },
+      "leis": [
+        {
+          "lei": "contratos-flexiveis",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "livre-negociacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "contribuicao-sindical-livre",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "quem-perde-a-acao-trabalhista-paga",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "trabalho-remoto-livre",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "conta-de-demissao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "primeiro-emprego",
+      "nome": "Primeiro emprego",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "emprego",
+        "bem": "oportunidade",
+        "mal": "desemprego",
+        "publico": "jovem"
+      },
+      "leis": [
+        {
+          "lei": "subsidio-a-contratacao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "salario-de-entrada-do-jovem",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "ensino-tecnico",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "emprego-para-jovens",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "empresa-simples",
+      "nome": "Empresa simples",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "empresa",
+        "bem": "simplicidade",
+        "mal": "burocracia",
+        "publico": "empreendedor"
+      },
+      "leis": [
+        {
+          "lei": "empresa-simples",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "abertura-de-empresa",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "aviso-antes-da-multa",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "desoneracao-da-folha",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "casa-propria",
+      "nome": "Casa própria",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "casa",
+        "bem": "lar",
+        "mal": "aluguel",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "verba-habitacao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "credito-imobiliario",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "cooperativas-habitacionais",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "titulo-posse",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "bairro-digno",
+      "nome": "Bairro digno",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "bairro",
+        "bem": "dignidade",
+        "mal": "favela",
+        "publico": "morador"
+      },
+      "leis": [
+        {
+          "lei": "urbanizacao-de-favelas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "saneamento-basico",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "tratamento-esgoto",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "remocao-area-risco",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "indenizacao-da-familia-removida-por-obra",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "construir-mais",
+      "nome": "Construir mais",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "moradia",
+        "bem": "oferta",
+        "mal": "escassez",
+        "publico": "inquilino"
+      },
+      "leis": [
+        {
+          "lei": "liberacao-para-construir",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "despejo-rapido",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "aluguel-por-temporada-livre",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "venda-de-casas-publicas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "seguranca-cidada",
+      "nome": "Segurança cidadã",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "segurança",
+        "bem": "paz",
+        "mal": "violência",
+        "publico": "juventude"
+      },
+      "leis": [
+        {
+          "lei": "policia-comunitaria",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "acoes-nos-bairros",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "formacao-policial",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "emprego-para-jovens",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "mao-dura",
+      "nome": "Mão dura",
+      "lado": "direita e autoritário",
+      "minimo": 3,
+      "palavras": {
+        "tema": "segurança",
+        "bem": "ordem",
+        "mal": "crime",
+        "publico": "cidadão de bem"
+      },
+      "leis": [
+        {
+          "lei": "forca-letal-liberada",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "fazer-parte-de-faccao-e-crime",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "legitima-defesa",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "liberacao-de-armas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "militares-na-seguranca-publica",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "siga-o-dinheiro",
+      "nome": "Siga o dinheiro",
+      "lado": "meio",
+      "minimo": 4,
+      "palavras": {
+        "tema": "crime",
+        "bem": "justiça",
+        "mal": "lavagem",
+        "publico": "contribuinte"
+      },
+      "leis": [
+        {
+          "lei": "obrigacao-dos-bancos",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "bloqueio-de-bens",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "confisco-alargado",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "destino-dos-bens",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "verba-de-inteligencia",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "delacao-premiada",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "menos-presos",
+      "nome": "Menos presos",
+      "lado": "esquerda",
+      "minimo": 4,
+      "palavras": {
+        "tema": "justiça",
+        "bem": "liberdade",
+        "mal": "superlotação",
+        "publico": "preso"
+      },
+      "leis": [
+        {
+          "lei": "penas-alternativas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "tribunal-de-drogas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "prazo-para-ver-o-juiz",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "defensoria-publica",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "remicao-de-pena",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "presidio-terceirizado",
+          "direcao": "desce",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "prisao-dura",
+      "nome": "Prisão dura",
+      "lado": "direita e tradicional",
+      "minimo": 4,
+      "palavras": {
+        "tema": "pena",
+        "bem": "ordem",
+        "mal": "impunidade",
+        "publico": "vítima"
+      },
+      "leis": [
+        {
+          "lei": "maioridade-penal",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "tamanho-das-penas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "parte-da-pena-cumprida-presa",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "isolamento-de-chefes",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "pena-maior-para-quem-repete-o-crime",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "defesa-forte",
+      "nome": "Defesa forte",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "defesa",
+        "bem": "soberania",
+        "mal": "ameaça",
+        "publico": "soldado"
+      },
+      "leis": [
+        {
+          "lei": "gasto-militar",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "salario-dos-militares",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "servico-militar",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "autonomia-das-forcas-armadas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "prevencao-de-desastres",
+      "nome": "Prevenção de desastres",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "prevenção",
+        "bem": "proteção",
+        "mal": "desastre",
+        "publico": "morador"
+      },
+      "leis": [
+        {
+          "lei": "alerta-de-desastre",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "reserva-de-emergencia",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "verba-so-com-regra-de-area-de-risco",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "remocao-area-risco",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "abertura-comercial",
+      "nome": "Abertura comercial",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "comércio",
+        "bem": "abertura",
+        "mal": "isolamento",
+        "publico": "consumidor"
+      },
+      "leis": [
+        {
+          "lei": "tarifa-de-importacao",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "facilitacao-aduaneira",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "remessa-de-lucro",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "zonas-francas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "compre-nacional",
+      "nome": "Compre nacional",
+      "lado": "nacionalista",
+      "minimo": 3,
+      "palavras": {
+        "tema": "indústria",
+        "bem": "produção nacional",
+        "mal": "importado",
+        "publico": "operário"
+      },
+      "leis": [
+        {
+          "lei": "defesa-comercial",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "preferencia-a-empresas-nacionais",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "preferencia-ao-trabalhador-nacional",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "subsidio-as-exportacoes",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "fronteira-fechada",
+      "nome": "Fronteira fechada",
+      "lado": "direita e tradicional",
+      "minimo": 3,
+      "palavras": {
+        "tema": "fronteira",
+        "bem": "segurança",
+        "mal": "invasão",
+        "publico": "cidadão"
+      },
+      "leis": [
+        {
+          "lei": "verba-da-fronteira",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "deportacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "multa-a-quem-contrata-sem-documento",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "acolhida",
+      "nome": "Acolhida",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "acolhida",
+        "bem": "cidadania",
+        "mal": "clandestinidade",
+        "publico": "imigrante"
+      },
+      "leis": [
+        {
+          "lei": "regularizacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "refugio-e-asilo",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "trabalho-de-quem-pede-refugio",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "integracao-dos-imigrantes",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "imigracao-qualificada",
+      "nome": "Imigração qualificada",
+      "lado": "meio",
+      "minimo": 2,
+      "palavras": {
+        "tema": "talento",
+        "bem": "qualificação",
+        "mal": "falta de mão de obra",
+        "publico": "profissional"
+      },
+      "leis": [
+        {
+          "lei": "selecao-por-qualificacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "validacao-de-diploma-estrangeiro",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "igualdade",
+      "nome": "Igualdade",
+      "lado": "libertário",
+      "minimo": 3,
+      "palavras": {
+        "tema": "igualdade",
+        "bem": "respeito",
+        "mal": "preconceito",
+        "publico": "minorias"
+      },
+      "leis": [
+        {
+          "lei": "casamento-entre-pessoas-do-mesmo-sexo",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "lei-contra-discriminacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "cotas-em-empresas-e-concursos",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "discurso-de-odio",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "valores-tradicionais",
+      "nome": "Valores tradicionais",
+      "lado": "tradicional",
+      "minimo": 3,
+      "palavras": {
+        "tema": "família",
+        "bem": "fé",
+        "mal": "decadência",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "religiao-do-estado",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "ofensa-a-religiao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "acesso-ao-aborto",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "isencao-para-igrejas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "reforma-politica",
+      "nome": "Reforma política",
+      "lado": "qualquer lado",
+      "minimo": 4,
+      "palavras": {
+        "tema": "política",
+        "bem": "representação",
+        "mal": "crise",
+        "publico": "eleitor"
+      },
+      "leis": [
+        {
+          "lei": "duracao-mandato",
+          "direcao": "muda",
+          "minimo": 0.1
+        },
+        {
+          "lei": "mandatos-seguidos",
+          "direcao": "muda",
+          "minimo": 0.1
+        },
+        {
+          "lei": "intervalo-para-voltar",
+          "direcao": "muda",
+          "minimo": 0.1
+        },
+        {
+          "lei": "limite-total-de-mandatos",
+          "direcao": "muda",
+          "minimo": 0.1
+        },
+        {
+          "lei": "quorum-das-votacoes",
+          "direcao": "muda",
+          "minimo": 0.1
+        },
+        {
+          "lei": "sistema-eleitoral",
+          "direcao": "muda",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "clausula-de-barreira",
+          "direcao": "muda",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "faxina",
+      "nome": "Faxina",
+      "lado": "meio",
+      "minimo": 4,
+      "palavras": {
+        "tema": "ética",
+        "bem": "transparência",
+        "mal": "corrupção",
+        "publico": "contribuinte"
+      },
+      "leis": [
+        {
+          "lei": "ficha-limpa",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "declaracao-de-bens",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "acesso-a-informacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "independencia-dos-investigadores",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "pena-para-corrupcao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "foro-especial",
+          "direcao": "desce",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "estado-enxuto",
+      "nome": "Estado enxuto",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "Estado",
+        "bem": "eficiência",
+        "mal": "desperdício",
+        "publico": "contribuinte"
+      },
+      "leis": [
+        {
+          "lei": "cargos-de-livre-nomeacao",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "reposicao-de-servidores",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "estabilidade-do-servidor",
+          "direcao": "desce",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "venda-de-imoveis-parados",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "imposto-dos-ricos",
+      "nome": "Imposto dos ricos",
+      "lado": "esquerda",
+      "minimo": 4,
+      "palavras": {
+        "tema": "imposto",
+        "bem": "justiça",
+        "mal": "privilégio",
+        "publico": "super-rico"
+      },
+      "leis": [
+        {
+          "lei": "imposto-sobre-heranca",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "imposto-sobre-dividendos",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "imposto-sobre-bens-de-luxo",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "imposto-de-saida",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "corte-de-impostos",
+      "nome": "Corte de impostos",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "imposto",
+        "bem": "alívio",
+        "mal": "carga",
+        "publico": "contribuinte"
+      },
+      "leis": [
+        {
+          "lei": "imposto-renda",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "imposto-empresas",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "incentivo-ao-investimento",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "teto-da-carga-de-impostos",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        }
+      ]
+    },
+    {
+      "id": "alivio-da-classe-media",
+      "nome": "Alívio da classe média",
+      "lado": "meio",
+      "minimo": 2,
+      "palavras": {
+        "tema": "imposto",
+        "bem": "alívio",
+        "mal": "aperto",
+        "publico": "classe média"
+      },
+      "leis": [
+        {
+          "lei": "faixa-sem-imposto-de-renda",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "progressividade",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "desconto-por-filho",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "ajuste-fiscal",
+      "nome": "Ajuste fiscal",
+      "lado": "direita",
+      "minimo": 4,
+      "palavras": {
+        "tema": "contas",
+        "bem": "responsabilidade",
+        "mal": "rombo",
+        "publico": "futuro"
+      },
+      "leis": [
+        {
+          "lei": "teto-de-gasto",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "meta-de-resultado",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "limite-da-divida",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "punicao-se-descumprir",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "limite-da-folha-do-funcionalismo",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "conselho-fiscal-independente",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "tripe-da-moeda",
+      "nome": "Tripé da moeda",
+      "lado": "direita",
+      "minimo": 2,
+      "palavras": {
+        "tema": "moeda",
+        "bem": "estabilidade",
+        "mal": "inflação",
+        "publico": "poupador"
+      },
+      "leis": [
+        {
+          "lei": "autonomia-do-banco-central",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "meta-de-inflacao",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        }
+      ]
+    },
+    {
+      "id": "privatizacao",
+      "nome": "Privatização",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "estatais",
+        "bem": "eficiência",
+        "mal": "cabide",
+        "publico": "consumidor"
+      },
+      "leis": [
+        {
+          "lei": "autorizacao-para-estatizar-e-vender",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "regra-pos-venda",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "independencia-das-agencias",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "acao-de-ouro",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "estado-empresario",
+      "nome": "Estado empresário",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "estatais",
+        "bem": "desenvolvimento",
+        "mal": "entreguismo",
+        "publico": "trabalhador"
+      },
+      "leis": [
+        {
+          "lei": "politica-estatal",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "indenizacao",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "indicacao-dos-dirigentes-das-estatais",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "economia-solidaria",
+      "nome": "Economia solidária",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "cooperativa",
+        "bem": "solidariedade",
+        "mal": "exclusão",
+        "publico": "trabalhador"
+      },
+      "leis": [
+        {
+          "lei": "apoio-a-cooperativas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "participacao-dos-trabalhadores",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "agricultura-familiar",
+      "nome": "Agricultura familiar",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "campo",
+        "bem": "alimento",
+        "mal": "fome",
+        "publico": "agricultor"
+      },
+      "leis": [
+        {
+          "lei": "assistencia-tecnica-ao-produtor",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "venda-direta-do-produtor",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "seguro-de-safra",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "agronegocio",
+      "nome": "Agronegócio",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "agro",
+        "bem": "safra",
+        "mal": "atraso",
+        "publico": "produtor"
+      },
+      "leis": [
+        {
+          "lei": "subsidio-aos-insumos",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "agrotoxicos",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "sementes-transgenicas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "verba-de-irrigacao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "reforma-agraria",
+      "nome": "Reforma agrária",
+      "lado": "esquerda",
+      "minimo": 3,
+      "palavras": {
+        "tema": "terra",
+        "bem": "chão",
+        "mal": "latifúndio",
+        "publico": "sem-terra"
+      },
+      "leis": [
+        {
+          "lei": "teto-tamanho-terra",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "imposto-terra-parada",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "verba-orgao-terras",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "como-o-orgao-consegue-a-terra",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "apoio-ao-assentado",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "terra-com-dono",
+      "nome": "Terra com dono",
+      "lado": "direita",
+      "minimo": 4,
+      "palavras": {
+        "tema": "terra",
+        "bem": "título",
+        "mal": "invasão",
+        "publico": "produtor"
+      },
+      "leis": [
+        {
+          "lei": "cadastro-de-terras",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "terra-ocupada-sai-da-fila",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "prazo-de-defesa-do-dono",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "credito-compra-terra",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "reserva-compensada-em-outra-terra",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "desmatamento-zero",
+      "nome": "Desmatamento zero",
+      "lado": "verde",
+      "minimo": 3,
+      "palavras": {
+        "tema": "floresta",
+        "bem": "preservação",
+        "mal": "desmatamento",
+        "publico": "povos da floresta"
+      },
+      "leis": [
+        {
+          "lei": "policia-ambiental",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "o-que-acontece-com-quem-e-pego",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "areas-protegidas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "terras-indigenas",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "exigencia-para-o-credito-rural",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "destravar-licenca",
+      "nome": "Destravar licença",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "licença",
+        "bem": "progresso",
+        "mal": "entrave",
+        "publico": "investidor"
+      },
+      "leis": [
+        {
+          "lei": "licenciamento-ambiental",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "prazo-para-licenca-ambiental",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "areas-abertas-ao-petroleo-e-gas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "areas-abertas-a-mineracao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "energia-limpa",
+      "nome": "Energia limpa",
+      "lado": "verde",
+      "minimo": 3,
+      "palavras": {
+        "tema": "energia",
+        "bem": "sol e vento",
+        "mal": "poluição",
+        "publico": "planeta"
+      },
+      "leis": [
+        {
+          "lei": "energia-solar",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "energia-eolica",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "incentivo-a-geracao-limpa-privada",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "padroes-de-eficiencia-energetica",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "luz-no-campo",
+      "nome": "Luz no campo",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "luz",
+        "bem": "energia",
+        "mal": "escuridão",
+        "publico": "povo do campo"
+      },
+      "leis": [
+        {
+          "lei": "eletrificacao-rural",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "tarifa-social-de-luz",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "investimento-na-rede-de-transmissao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "abertura-eletrica",
+      "nome": "Abertura elétrica",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "energia",
+        "bem": "concorrência",
+        "mal": "monopólio",
+        "publico": "consumidor"
+      },
+      "leis": [
+        {
+          "lei": "abertura-a-geracao-privada",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "concessao-da-rede-de-transmissao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "independencia-das-agencias",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "autorizacao-para-estatizar-e-vender",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "o-petroleo-e-nosso",
+      "nome": "O petróleo é nosso",
+      "lado": "nacionalista",
+      "minimo": 2,
+      "palavras": {
+        "tema": "petróleo",
+        "bem": "riqueza",
+        "mal": "entreguismo",
+        "publico": "povo"
+      },
+      "leis": [
+        {
+          "lei": "parte-do-estado-no-petroleo",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "royalties-do-petroleo",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "destino-dos-royalties",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "gasolina-barata",
+      "nome": "Gasolina barata",
+      "lado": "pegadinha",
+      "minimo": 2,
+      "palavras": {
+        "tema": "combustível",
+        "bem": "preço baixo",
+        "mal": "carestia",
+        "publico": "motorista"
+      },
+      "leis": [
+        {
+          "lei": "subsidio-a-combustiveis",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "imposto-sobre-combustiveis",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "segurar-a-conta-de-luz",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        }
+      ]
+    },
+    {
+      "id": "plano-de-obras",
+      "nome": "Plano de obras",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "obras",
+        "bem": "progresso",
+        "mal": "atraso",
+        "publico": "região"
+      },
+      "leis": [
+        {
+          "lei": "verba-de-construcao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "prioridade-das-obras",
+          "direcao": "muda",
+          "minimo": 0.1
+        },
+        {
+          "lei": "verba-de-conservacao-dos-transportes",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "obra-limpa",
+      "nome": "Obra limpa",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "obras",
+        "bem": "transparência",
+        "mal": "superfaturamento",
+        "publico": "contribuinte"
+      },
+      "leis": [
+        {
+          "lei": "regra-da-licitacao",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "teto-do-aditivo",
+          "direcao": "desce",
+          "minimo": 0.1
+        },
+        {
+          "lei": "empreiteira-condenada-fora-das-obras",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "exigencia-tecnica-das-construcoes",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "carro-eletrico",
+      "nome": "Carro elétrico",
+      "lado": "verde",
+      "minimo": 3,
+      "palavras": {
+        "tema": "carro elétrico",
+        "bem": "mobilidade",
+        "mal": "poluição",
+        "publico": "motorista"
+      },
+      "leis": [
+        {
+          "lei": "subsidio-a-carros-eletricos",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "carregadores-nas-estradas-federais",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "quem-pode-vender-recarga",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "fim-dos-carros-a-combustao",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        }
+      ]
+    },
+    {
+      "id": "redes-reguladas",
+      "nome": "Redes reguladas",
+      "lado": "autoritário",
+      "minimo": 3,
+      "palavras": {
+        "tema": "internet",
+        "bem": "responsabilidade",
+        "mal": "mentira",
+        "publico": "usuário"
+      },
+      "leis": [
+        {
+          "lei": "lei-contra-noticias-falsas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "remocao-de-conteudo",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "identificacao-dos-usuarios",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "regras-de-inteligencia-artificial",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "internet-livre",
+      "nome": "Internet livre",
+      "lado": "libertário",
+      "minimo": 2,
+      "palavras": {
+        "tema": "internet",
+        "bem": "liberdade",
+        "mal": "censura",
+        "publico": "usuário"
+      },
+      "leis": [
+        {
+          "lei": "criptografia-livre",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "neutralidade-da-rede",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "bloqueio-de-internet",
+          "direcao": "desce",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "drogas-reguladas",
+      "nome": "Drogas reguladas",
+      "lado": "libertário",
+      "minimo": 3,
+      "palavras": {
+        "tema": "drogas",
+        "bem": "controle",
+        "mal": "tráfico",
+        "publico": "usuário"
+      },
+      "leis": [
+        {
+          "lei": "liberacao-das-drogas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "imposto-das-drogas",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "lojas-licenciadas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "cuidado-com-o-usuario",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "apostas-reguladas",
+      "nome": "Apostas reguladas",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "apostas",
+        "bem": "controle",
+        "mal": "vício",
+        "publico": "apostador"
+      },
+      "leis": [
+        {
+          "lei": "liberacao-dos-jogos",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "licencas-de-apostas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "imposto-dos-jogos",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "protecao-do-apostador",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "propaganda-e-embalagem",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "inovacao",
+      "nome": "Inovação",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "ciência",
+        "bem": "inovação",
+        "mal": "atraso",
+        "publico": "pesquisador"
+      },
+      "leis": [
+        {
+          "lei": "verba-de-ciencia-e-tecnologia",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "desconto-de-imposto-para-quem-pesquisa",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "bolsas-de-pesquisa",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "trazer-cientistas-de-volta",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "cultura-viva",
+      "nome": "Cultura viva",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "cultura",
+        "bem": "arte",
+        "mal": "abandono",
+        "publico": "artista"
+      },
+      "leis": [
+        {
+          "lei": "verba-de-cultura-e-esporte",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "quem-pode-pedir",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "empresa-banca-cultura-e-desconta-do-imposto",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "grandes-usinas",
+      "nome": "Grandes usinas",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "energia",
+        "bem": "força",
+        "mal": "apagão",
+        "publico": "indústria"
+      },
+      "leis": [
+        {
+          "lei": "energia-hidreletrica",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "energia-termica",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "energia-nuclear",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "reserva-de-capacidade",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "banco-seguro",
+      "nome": "Banco seguro",
+      "lado": "meio",
+      "minimo": 3,
+      "palavras": {
+        "tema": "banco",
+        "bem": "segurança",
+        "mal": "calote",
+        "publico": "correntista"
+      },
+      "leis": [
+        {
+          "lei": "exigencia-de-capital-dos-bancos",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "protecao-ao-cliente-de-banco",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "seguro-deposito",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "licenca-para-banco-novo",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "desburocratizacao",
+      "nome": "Desburocratização",
+      "lado": "direita",
+      "minimo": 3,
+      "palavras": {
+        "tema": "regras",
+        "bem": "liberdade",
+        "mal": "burocracia",
+        "publico": "empreendedor"
+      },
+      "leis": [
+        {
+          "lei": "validade-das-regras",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "profissoes-com-registro",
+          "direcao": "desce",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "comercio-aberto-no-domingo",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        },
+        {
+          "lei": "transporte-interno-por-empresa-de-fora",
+          "direcao": "sobe",
+          "minimo": "ativa"
+        }
+      ]
+    },
+    {
+      "id": "familia-grande",
+      "nome": "Família grande",
+      "lado": "tradicional",
+      "minimo": 2,
+      "palavras": {
+        "tema": "família",
+        "bem": "filhos",
+        "mal": "solidão",
+        "publico": "mãe"
+      },
+      "leis": [
+        {
+          "lei": "credito-da-casa-perdoado-por-filho",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "desconto-por-filho",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "beneficio-por-filho",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "fome-zero",
+      "nome": "Fome zero",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "comida",
+        "bem": "prato cheio",
+        "mal": "fome",
+        "publico": "família"
+      },
+      "leis": [
+        {
+          "lei": "comida-do-estado",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "parte-do-beneficio-em-comida",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "medico-onde-falta",
+      "nome": "Médico onde falta",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "médico",
+        "bem": "atendimento",
+        "mal": "abandono",
+        "publico": "interior"
+      },
+      "leis": [
+        {
+          "lei": "missoes-medicas",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "servico-obrigatorio",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "vagas-publicas-em-medicina",
+          "direcao": "sobe",
+          "minimo": 0.1
+        }
+      ]
+    },
+    {
+      "id": "industria-do-futuro",
+      "nome": "Indústria do futuro",
+      "lado": "nacionalista",
+      "minimo": 3,
+      "palavras": {
+        "tema": "indústria",
+        "bem": "tecnologia",
+        "mal": "dependência",
+        "publico": "engenheiro"
+      },
+      "leis": [
+        {
+          "lei": "incentivo-a-setores",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "desconto-de-imposto-para-quem-pesquisa",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "fabrica-de-fora",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        },
+        {
+          "lei": "quebra-de-patente",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    },
+    {
+      "id": "fundo-da-escola",
+      "nome": "Fundo da escola",
+      "lado": "esquerda",
+      "minimo": 2,
+      "palavras": {
+        "tema": "escola",
+        "bem": "verba",
+        "mal": "desigualdade",
+        "publico": "professor"
+      },
+      "leis": [
+        {
+          "lei": "gasto-educacao",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "complemento-ao-estado-pobre",
+          "direcao": "sobe",
+          "minimo": 0.1
+        },
+        {
+          "lei": "carreira-do-professor",
+          "direcao": "sobe",
+          "minimo": "degrau"
+        }
+      ]
+    }
+  ]
+}

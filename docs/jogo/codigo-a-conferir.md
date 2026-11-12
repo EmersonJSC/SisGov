@@ -222,3 +222,30 @@ testes. Os testes não cobrem tudo; conferir estes pontos:
     (102), `previaDoAtendimento` (93), `segurancaDaCesta` (65), `estadoBase`
     (63), `andarMoradia` (61), `previaDoSaneamento` (61). Quase todas montam um
     registro grande; vale decidir se dividir ajuda ou só espalha.
+
+## F. Programas (passo 6, 12/nov)
+
+29. **Direção e mínimo lidos da planilha** (`scripts/gerar-programas.ts`,
+    `motor/programas/direcao.ts`). A planilha tem 30 jeitos de dizer a direção
+    ("aberto", "mais livre", "mais punido", "mais curto"…); tudo que não começa
+    com "desce" ou "igual/muda" foi lido como `sobe`. Em lei de escada, "sobe"
+    só está certo se a escada vai no mesmo sentido do texto. Conferir as ~20
+    direções que o script lista ao rodar.
+30. **"Andou" é posição na régua** (`posicaoNaRegua`): régua contínua usa
+    `(valor − min) ÷ (max − min)`; escada usa `índice ÷ (n − 1)`, então os
+    degraus valem o mesmo mesmo em escadas de tamanhos diferentes. Mínimo
+    `degrau` = um passo da régua. Conferir em leis de faixa muito larga (a
+    verba da saúde vai de 0 a 1; 10% da régua é muito).
+31. **Mínimo "1 fatia"** (leis de divisão de 100%) foi lido como 10% da régua;
+    foi chute.
+32. **Espera do ministro mais fraco.** Li "anda no passo do ministro mais
+    fraco" como: o programa espera o maior atraso entre as leis (0 ou 1
+    turno). Pode ser que o autor quisesse outra coisa (ex.: força da
+    lembrança).
+33. **Referência por programa formado.** Programa formado guarda o valor das
+    leis do mandato em que se formou; só se desfaz se elas voltam abaixo do
+    mínimo contra esse ponto. Conferir se isso é o que se quer quando o
+    mandato muda (hoje: o programa sobrevive ao mandato novo).
+34. **Nomes do país** em `paises/brasil-2026/programas.json` (Farmácia Popular,
+    Saúde da Família, Bolsa Família): escolhi três da coluna "programas reais
+    parecidos". Nomes de programas, não de pessoas.
