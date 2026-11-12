@@ -1,85 +1,170 @@
 # SisGov — Requisitos
 
-> Lista do que o jogo pronto precisa ter, tirada do [GDD](gdd.md) (03/nov/2026).
-> Cada requisito aponta a seção do GDD. O GDD diz **o quê**; o
-> [plano](plano-de-desenvolvimento.md) diz **em que ordem**.
+> O que o jogo pronto precisa ter, tirado do [GDD](gdd.md), e **como cada
+> mecânica se constrói**. Refeito em 12/nov/2026 com as decisões de 11 e 12/nov
+> (governo, Congresso, programas, eleição, mundo leve). A ordem de construir
+> está no fim e no [plano](plano-de-desenvolvimento.md); a arquitetura, em
+> [arquitetura.md](arquitetura.md).
 >
-> **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 03/nov; base do jogo em 05/nov.
+> **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 12/nov.
 > Requisito novo só entra depois de decidido no GDD (seção 18).
+
+## Como ler a construção
+
+Cada sistema traz um bloco **Construção** com as mesmas 6 perguntas de
+desenvolvedor:
+
+1. **Dados:** de que aba da planilha vem, e para qual JSON o exportador manda.
+2. **Estado:** o que o motor guarda de turno a turno.
+3. **Módulo:** a pasta do motor que cuida disso (arquitetura, seção 4).
+4. **Turno:** em que etapa roda.
+5. **Fatos:** o que avisa aos outros e o que ouve deles.
+6. **Tela e teste:** o que o jogador vê; o que o teste confere (direção, não número).
+
+**Módulo** é uma pasta do motor com uma tarefa só e uma porta de entrada
+(`index.ts`). Serve para mexer numa mecânica sem quebrar as outras: o
+Congresso não sabe como a mídia funciona, só ouve o fato "manchete contra".
+
+**Fato do turno** é um aviso que um módulo deixa no turno ("lei aprovada",
+"decreto derrubado", "programa formado"). Quem se importa lê. É o que liga
+Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## Resumo
 
-| Sistema (GDD) | ✅ | ◐ | ☐ | Pronto |
-|---|---|---|---|---|
-| 4. Partida e turno | 2 | 2 | 6 | ~30% |
-| 5. Partido | 0 | 0 | 5 | 0% |
-| 6. Presidente, sucessão, ministros | 0 | 1 | 12 | ~4% |
-| 7. Leis | 5 | 5 | 3 | ~58% |
-| 8. Bússola | 4 | 0 | 2 | ~65% |
-| 9. Índices | 2 | 2 | 3 | ~43% |
-| 10. Contas | 3 | 1 | 2 | ~60% |
-| 11. População e grupos | 5 | 2 | 11 | ~33% |
-| 12. Congresso e coligação | 2 | 1 | 7 | ~25% |
-| 13. Eleição, campanha, mandatos | 2 | 1 | 5 | ~25% |
-| 14. Mídia | 0 | 0 | 7 | 0% |
-| 15. Mundo | 2 | 1 | 3 | ~40% |
-| 16. Economia | 4 | 4 | 31 | ~15% |
-| 17. Tela: mapa e mesa | 3 | 2 | 6 | ~35% |
-| **Total** | **34** | **22** | **103** | **~28%** |
+| Sistema (GDD) | ✅ | ◐ | ☐ |
+|---|---|---|---|
+| 4. Partida e turno | 3 | 2 | 7 |
+| 5. Partido | 0 | 0 | 5 |
+| 6. Governo | 0 | 1 | 21 |
+| 7. Leis e programas | 9 | 4 | 8 |
+| 8. Bússola | 4 | 1 | 1 |
+| 9. Índices | 3 | 2 | 3 |
+| 10. Contas | 3 | 1 | 2 |
+| 11. População e grupos | 5 | 3 | 11 |
+| 12. Congresso | 2 | 1 | 16 |
+| 13. Eleição | 2 | 1 | 8 |
+| 14. Mídia | 0 | 0 | 10 |
+| 15. Mundo | 2 | 1 | 8 |
+| 16. Economia | 4 | 4 | 31 |
+| 17. Tela e mesa | 3 | 2 | 10 |
+| **Total** | **40** | **23** | **141** |
 
 ---
 
 ## 4. Partida e turno
 
 - ✅ **R4.1** Turno de 2 meses; mandato de 4 anos = 24 turnos.
-- ✅ **R4.2** Passar o turno: efeitos chegam com atraso declarado.
-- ◐ **R4.3** Escolher o país no começo (há `teste` e `teste-pobre`; falta país de verdade).
-- ◐ **R4.4** Partida termina quando o partido deixa o poder (hoje: perder a eleição).
-- ☐ **R4.5** Criar o partido: o jogador dá nome e sigla; não escolhe lado.
-- ☐ **R4.6** Montar a chapa: presidente do partido, candidato e vice, escolhidos entre pessoas de todos os partidos do país (nasce a coligação).
+- ✅ **R4.2** Passar o turno: efeitos chegam com o atraso declarado.
+- ✅ **R4.3** Escolher o país: `brasil-2026` (12/nov; 476 leis com o valor de hoje, 19 partidos com nome e cor, companhias inventadas). Dívida: juros comem 16% do PIB e a dívida vai de 78% a 107% em 24 turnos; calibrar na Economia.
+- ◐ **R4.4** A partida acaba quando o partido perde o poder federal (hoje só pela eleição; ver R6.13).
+- ✅ **R4.11** Mundo sai da planilha: `npm run exportar` grava leis e índices (12/nov).
+- ☐ **R4.12** Fatos do turno: cada módulo devolve, junto do estado novo, a lista do que aconteceu; o turno passa a lista adiante.
+- ☐ **R4.5** Criar o partido: nome e sigla; não escolhe lado.
+- ☐ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação).
+- ☐ **R4.8** O lado do partido sai da chapa; o jogo nunca pede lado.
+- ☐ **R4.9** Começo com história: o partido que governava vira oposição (ou entra na coligação, se o jogador quiser); partido novo, poucas cadeiras, presidente popular.
+- ☐ **R4.10** Tela de início em sequência: país → partido → chapa → ministérios → iniciar.
 - ☐ **R4.7** Placar final: tempo no poder e país deixado.
-- ☐ **R4.8** O lado do partido (bússola e base) sai da chapa; o jogo nunca fala de lado ao jogador nem pede que ele escolha um.
-- ☐ **R4.9** Montar o ministério: escolher ministérios e ministros, ou sortear os ministros pela ideologia da chapa.
-- ☐ **R4.10** Tela de início de jogo em sequência: país → partido → chapa → ministério → iniciar.
+
+**Construção**
+- Dados: país em `conteudo/paises/<id>/` (estado inicial, leis vigentes, Congresso, ministérios, programas de antes, rótulos). Brasil 2026 e Brasil 2003 são países diferentes.
+- Estado: `turno`, `fatos` do último turno.
+- Módulo: `turno` só chama os módulos em ordem e junta os fatos; regra de cada coisa fica no módulo dela (hoje o `turno` tem 1.552 linhas com regra dentro: tirar aos poucos, cada vez que um módulo novo nascer).
+- Tela: menu de início em telas curtas; o turno mostra os fatos como manchetes.
+- Teste: mesma semente e mesmos pedidos, mesma partida; todo fato tem tipo conhecido.
 
 ## 5. O partido
 
-- ☐ **R5.1** Ficha do partido: bússola (vem da chapa), base, cadeiras, caixa, desgaste, coesão.
-- ☐ **R5.2** Governar longe da base derruba coesão; o partido muda de lugar devagar.
-- ☐ **R5.3** Presidente do partido (ficha) pesa na negociação e na campanha; troca custa coesão.
-- ☐ **R5.4** Caixa do partido: entra por financiamento (lei), sai na campanha; doação privada traz interesse.
-- ☐ **R5.5** Coesão: deputados do partido votam contra quando ela cai.
+- ☐ **R5.1** Ficha do partido: bússola (da chapa), base, cadeiras, caixa, desgaste, coesão.
+- ☐ **R5.2** Governar longe da base derruba a coesão; o partido muda de lugar devagar.
+- ☐ **R5.3** Presidente do partido pesa na negociação e na campanha; troca custa coesão.
+- ☐ **R5.4** Caixa: entra por financiamento (lei), sai na campanha; doação privada traz interesse.
+- ☐ **R5.5** Coesão baixa: deputados do próprio partido votam contra.
 
-## 6. Presidente, sucessão, ministros, pessoas
+**Construção**
+- Estado: `partido` (bússola, caixa, coesão, desgaste).
+- Módulo: `congresso` (o partido do jogador é um partido do Congresso com caixa e coesão).
+- Fatos: ouve "lei aprovada" (distância da base) e "escândalo"; emite "coesão caiu".
+- Teste: governar sempre longe da base derruba a coesão em poucos turnos.
 
+## 6. Governo: presidente, ministros, órgãos, justiça, estados
+
+**Pessoas e fichas**
 - ◐ **R6.1** Retratos genéricos (feito); ficha com atributos (falta).
-- ☐ **R6.2** Presidente pesa por carisma, honestidade e habilidade política.
-- ☐ **R6.3** Sucessão: morte, assassinato, renúncia, impeachment; vice e linha do país.
-- ☐ **R6.4** Sucessor de outro partido: desvantagem até a eleição.
-- ☐ **R6.5** Impeachment: oposição abre, Congresso aceita, Senado julga (se houver).
-- ☐ **R6.6** Gerador de personagens; pessoas envelhecem, se aposentam e morrem.
-- ☐ **R6.7** Ministros com ficha (competência, habilidade, carisma, honestidade, lealdade, bússola, origem).
-- ☐ **R6.8** Ficha do ministro mexe na força e no atraso das leis da área.
-- ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão, candidato) e custo de troca.
-- ☐ **R6.10** Criar, fundir e extinguir ministérios por lei; cada ministério é um conjunto de esferas.
-- ☐ **R6.11** Perfil de rede social da pessoa (posts, fotos, curtidas, lugares, opiniões), gerado da ficha; sem rótulo de lado.
-- ☐ **R6.12** Lista de pessoas por vaga (chapa, ministério) com o perfil abrindo ao clicar.
+- ☐ **R6.6** Gerador de pessoas; envelhecem, se aposentam e morrem.
+- ☐ **R6.11** Perfil de rede social da pessoa, gerado da ficha; sem rótulo de lado.
+- ☐ **R6.12** Lista de pessoas por vaga (chapa, ministério), com o perfil ao clicar.
+- ☐ **R6.2** Presidente pesa por carisma (aprovação), honestidade (escândalo) e habilidade (Congresso).
 
-## 7. Leis
+**Ministérios** (12/nov)
+- ☐ **R6.10** Ministério é uma caixa com nome e zero ou mais esferas e subesferas; cada uma numa caixa só; a sobra vai ao gabinete.
+- ☐ **R6.14** O país começa com os ministérios reais (aba Ministérios - países); o jogador muda no menu; depois só pela lei Organização dos ministérios.
+- ☐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com ele; muitas caixas dão foco e custam; superministério divide a competência.
+- ☐ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem.
+- ☐ **R6.8** A ficha muda a força e o atraso das leis das esferas da caixa e o rendimento dos órgãos dela.
+- ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão barulhenta, vira candidato) e custo de troca.
 
-- ✅ **R7.1** Duas camadas (essencial, jogabilidade) e duas formas (contínua, opções).
+**Órgãos** (11/nov)
+- ☐ **R6.16** Um órgão por esfera, sob o ministério dela; verba (da lei), necessidade, rendimento = verba ÷ necessidade, corrupção interna.
+- ☐ **R6.17** Verba de sobra vira corrupção; cargos de livre nomeação e ministro desonesto também.
+- ☐ **R6.18** Ficha do órgão só de leitura no mapa (cor do rendimento, fila, leis que mexem).
+
+**Perder o poder** (12/nov)
+- ☐ **R6.13** Caminhos: eleição, morte, assassinato, renúncia, impeachment, moção (parlamentarismo), golpe, guerra civil, ala rival; vice de outro partido assumindo acaba a partida.
+- ☐ **R6.3** Sucessão pelo vice e pela linha do país; do mesmo partido, choque de aprovação.
+- ☐ **R6.5** Impeachment: fato grave, aprovação < 30%, 2/3; Senado julga se houver.
+- ☐ **R6.19** Caminho autoritário: cada passo sobe a raiva dos contrários; sem armas leais, sobe o Risco de golpe.
+
+**Justiça e estados**
+- ☐ **R6.20** Justiça: fila de processos, independência, caso em etapas (rastro, investigação, processo, sentença).
+- ☐ **R6.21** Corrupção em cadeia: rastro nunca some; a chance de achar usa a independência de hoje.
+- ☐ **R6.22** Tribunal superior: cadeiras com lado; vaga vira papel; suspende lei que bate em direito.
+- ☐ **R6.23** Governadores: partido, bússola e termômetro; aliado faz a verba render, oposição atrasa e culpa.
+
+**Construção**
+- Dados: abas Ministérios e Ministérios - países → `mundo/ministerios.json` (moldes) e `paises/<id>/ministerios.json`; coluna Subesfera da aba Leis vai em cada lei (`esfera`, `subesfera`); órgão por esfera em `mundo/orgaos.json`.
+- Estado: `pessoas` (fichas), `ministerios` (caixa → esferas, ministro), `orgaos` (corrupção, fila), `justica` (rastros, casos).
+- Módulo: `governo` (ministérios, fichas, órgãos, sucessão); `justica` dentro de `governo` até crescer.
+- Turno: depois dos efeitos e antes dos índices (a ficha muda força e atraso; o órgão muda o rendimento da verba).
+- Fatos: emite "ministro caiu", "escândalo", "presidente morreu", "impeachment aberto"; ouve "papel assinado" (rastro), "CPI".
+- Tela: caixas no mapa com retrato do ministro; ficha por cima; órgão como prédio pequeno.
+- Teste: ministro competente faz a mesma lei chegar antes; verba acima da necessidade sobe a corrupção do órgão; vice de outro partido assumindo acaba a partida.
+
+## 7. Leis e programas
+
+**Leis**
+- ✅ **R7.1** Duas camadas e duas formas (régua e degraus).
 - ✅ **R7.2** A lei declara efeito, força, atraso, bússola e base; o motor calcula.
-- ✅ **R7.3** Validador do JSON com arquivo, campo e motivo.
+- ✅ **R7.3** Validador com arquivo, campo e motivo.
 - ✅ **R7.4** País declara as leis que tem; o resto fica "não legislada".
 - ✅ **R7.5** Texto da tela sai dos números da lei.
-- ◐ **R7.6** Temas em pacotes de leis pequenas (41 leis; faltam trabalho, armas, drogas, mídia, campanha, comércio…).
-- ◐ **R7.7** Todo dinheiro passa por lei (8 leis de propriedade ainda sem efeito).
-- ☐ **R7.8** Revogar = propor de volta a "não legislada", com voto.
-- ☐ **R7.9** Colisão: leis que colidem não valem juntas; fora isso, toda combinação vale (build).
-- ◐ **R7.10** Processo: estoque que anda sozinho pelos turnos, empurrado pelas leis em vigor (deriva feita em 04/nov; falta o estoque de casas).
-- ☐ **R7.11** Órgão responsável: o jogador não escolhe fazenda ou fábrica; a regra funciona na medida da verba do órgão; verba demais vira corrupção.
-- ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito (hoje 2 das 71 mudam a renda direto).
-- ◐ **R7.13** Toda lei e todo índice pertencem a uma esfera (feito na planilha; falta no jogo).
+- ✅ **R7.14** Leis saem da planilha (512 no jogo, 12/nov); unidade livre (km/h, mandatos, % acima de 100).
+- ✅ **R7.15** Formas especiais divididas: dois controles em duas leis, divisão de 100% em pesos, régua por setor geral.
+- ✅ **R7.9** Colisão: leis que colidem não valem juntas.
+- ✅ **R7.10** Processo: índice que anda sozinho (deriva).
+- ◐ **R7.6** Temas em pacotes de leis pequenas (planilha completa; 5 escolhas de lista fora: vistos por país, setores, verba das estatais, ministérios).
+- ◐ **R7.7** Todo dinheiro passa por lei (leis de propriedade ainda sem efeito).
+- ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito (hoje quase todas só por índice).
+- ◐ **R7.13** Toda lei e índice numa esfera (planilha sim; no jogo ainda nas 8 áreas antigas).
+- ☐ **R7.8** Revogar = propor a volta a "não legislada", com voto.
+- ☐ **R7.11** Lei age pelo órgão: a regra funciona na medida da verba do órgão (ver R6.16).
+- ☐ **R7.16** Tipos de lei: Lei com prazo (acaba sozinha), Ato, Posição por país, Operação.
+- ☐ **R7.17** Parte da divisão: a fatia vale o peso dela sobre a soma, quando a mecânica ler.
+
+**Programas** (12/nov)
+- ☐ **R7.18** 74 programas (aba Programas): forma-se quando a maior parte das leis anda o mínimo na direção dele dentro do mandato; desfaz-se se elas voltam.
+- ☐ **R7.19** Lembrança e nostalgia: formado, os grupos lembram (pesa no voto); desfeito, vira nostalgia; recriado, o jogo pergunta se usa o mesmo nome.
+- ☐ **R7.20** Nome: o país dá o nome próprio; senão o gerador cria pelos moldes e pelas 4 palavras; o jornal anuncia.
+- ☐ **R7.21** Programa espalhado por vários ministérios anda no passo do ministro mais fraco.
+
+**Construção (programas)**
+- Dados: abas Programas e Programas - leis → `mundo/programas.json` (lado, palavras, leis com direção e mínimo); moldes de nome em `mundo/nomes-programas.json`; país em `paises/<id>/programas.json` (nome próprio, já formados, lembrança).
+- Estado: `programas` (formados, turno em que formou, lembrança por grupo, nome dado).
+- Módulo: `programas`.
+- Turno: depois do Congresso e da mesa (lei assinada conta na hora da aprovação).
+- Fatos: ouve "lei aprovada"; emite "programa formado", "programa desfeito" (o jornal e os grupos leem).
+- Tela: bolha do programa na esfera, com as leis que faltam; aviso antes de uma lei desfazer.
+- Teste: aprovar 3 de 4 leis na direção forma; voltar uma desfaz e deixa nostalgia.
 
 ## 8. Bússola
 
@@ -87,93 +172,154 @@
 - ✅ **R8.2** Leis, partidos, grupos e potências têm posição.
 - ✅ **R8.3** Posição do país = média das leis com peso.
 - ✅ **R8.4** Quem gosta sai da distância.
-- ◐ **R8.5** Pops deslizam com a vida e com a mídia. Vida feita (03/nov): renda e satisfação empurram cada pop na bússola; a do grupo anda junto. Falta a mídia (não existe no código).
-- ☐ **R8.6** Jogo percebe padrões ("corte de gastos").
+- ◐ **R8.5** Pops deslizam com a vida (feito) e com a mídia (falta; R14.8).
+- ☐ **R8.6** O jogo percebe padrões ("corte de gastos").
 
 ## 9. Índices
 
 - ✅ **R9.1** Índices essenciais do motor.
-- ✅ **R9.2** Índices de jogabilidade do mundo.
-- ◐ **R9.3** Inflação que se move (hoje parada; ver R10.4).
-- ◐ **R9.4** Todo índice tem efeito além da cobrança dos grupos (14 ainda não têm).
-- ☐ **R9.5** Desemprego e ocupados se movem com a economia.
-- ☐ **R9.6** Índice da bolsa mostra o valor médio das empresas.
-- ☐ **R9.7** Confiança do mercado sai de regras, corrupção, dívida, violência e ameaças de estatizar.
+- ✅ **R9.2** Índices de jogabilidade do mundo (147, da planilha; valor de partida 50 se o país não disser).
+- ✅ **R9.8** Seis índices principais marcados (aba Índices, coluna Principal).
+- ◐ **R9.3** Inflação que se move.
+- ◐ **R9.4** Todo índice tem efeito além da cobrança dos grupos.
+- ☐ **R9.5** Desemprego e ocupados se movem com a economia (R16.27).
+- ☐ **R9.6** Índice da bolsa.
+- ☐ **R9.9** Aprovação = satisfação média dos pops pesada pelo tamanho (hoje "sem conta").
 
 ## 10. Contas do Estado
 
 - ✅ **R10.1** Receita, gasto, juros, cofre e dívida separados.
 - ✅ **R10.2** Juros sobem com dívida e inflação.
-- ✅ **R10.3** Regra fiscal por lei (déficit, superávit).
-- ◐ **R10.4** Dinheiro na moeda do país, por ano.
-- ☐ **R10.5** Emissão de moeda (cobre falta, paga em inflação).
-- ☐ **R10.6** Calote (apaga dívida, derruba reputação e juros por anos).
+- ✅ **R10.3** Regra fiscal por lei.
+- ◐ **R10.4** Dinheiro na moeda do país.
+- ☐ **R10.5** Emissão de moeda.
+- ☐ **R10.6** Calote.
 
 ## 11. População e grupos
 
-- ◐ **R11.1** Pops (profissão × estrato) com renda vinda da economia: 25 tipos no mundo, cada país declara as parcelas; a renda ainda é parte fixa do PIB (ver R16.26).
-- ✅ **R11.7** Cada pop tem bússola (economico e social); desliza com a vida (R8.5).
-- ✅ **R11.2** Grupos com bússola, tamanho e satisfação; 16 grupos no mundo, os 25 pops têm casa; país declara os fortes.
+- ◐ **R11.1** Pops com renda vinda da economia (renda ainda é parte fixa do PIB; R16.26).
+- ✅ **R11.2** Grupos com bússola, tamanho e satisfação.
 - ✅ **R11.3** Radicais e lealistas.
-- ◐ **R11.4** Satisfação lê renda e leis (falta a mídia).
-- ✅ **R11.5** Pops mudam de setor estudando (03/nov/2026): um pouco da gente de cada pop vai, todo turno, para o setor que paga mais, na velocidade da instrução. Universidade não é construção própria: a simulação é pelo índice (decisão do autor).
-- ✅ **R11.6** Pops sobem e descem de estrato (03/nov/2026): renda real acima do esperado faz gente subir, na medida da instrução; abaixo, descer. Estudar (R11.5) fica à parte.
-- ☐ **R11.8** Cada pop guarda faixas de idade, cidade ou campo, vínculo, escolaridade e patrimônio.
-- ☐ **R11.9** Gente nasce, envelhece e morre; estudantes e aposentados mudam de tamanho.
-- ☐ **R11.10** Quem está insatisfeito pode sair: informalidade, fuga de dinheiro ou emigração.
-- ☐ **R11.11** Grupo forte torna mais populares as leis perto dele, sem escolher lei.
-- ☐ **R11.12** 32 pops em 4 blocos, com crianças; números dos países de teste refeitos.
-- ☐ **R11.13** 25 grupos atravessam os pops: cada pop se divide entre vários grupos.
-- ☐ **R11.14** Organizações políticas nascem de radicais de vários grupos e têm nome, líder e ação.
-- ☐ **R11.15** Crime organizado nasce do mercado ilegal, de presídios e da falta de Estado.
-- ☐ **R11.16** Gerador de organizações: sem lista fixa, com nome, gente, dinheiro, armas, poder e nível de ameaça.
-- ☐ **R11.17** País pode ter regiões, sem ser obrigatório.
-- ☐ **R11.18** Organizações podem ter financiadores; rastro leva a investigação, escândalo e sanção.
+- ◐ **R11.4** Satisfação lê renda, índices e leis (falta mídia e programas).
+- ✅ **R11.5** Pops mudam de setor estudando.
+- ✅ **R11.6** Pops sobem e descem de estrato.
+- ✅ **R11.7** Cada pop tem bússola e desliza com a vida.
+- ◐ **R11.19** Raiva do grupo (0–100), separada da satisfação (falta: mídia mobiliza).
+- ☐ **R11.8** Pop guarda idade, cidade ou campo, vínculo, escolaridade, patrimônio.
+- ☐ **R11.9** Nascer, envelhecer, morrer.
+- ☐ **R11.10** Insatisfeito sai: informalidade, fuga de dinheiro, emigração.
+- ☐ **R11.11** Grupo forte torna mais populares as leis perto dele.
+- ☐ **R11.12** 32 pops em 4 blocos, com crianças.
+- ☐ **R11.13** 25 grupos atravessam os pops.
+- ☐ **R11.14** Organizações políticas nascem de radicais e têm líder e ação.
+- ☐ **R11.15** Crime organizado nasce do mercado ilegal e da falta de Estado.
+- ☐ **R11.16** Gerador de organizações.
+- ☐ **R11.17** Pops por estado (medido possível em 12/nov).
+- ☐ **R11.18** Financiadores de organizações e rastro.
 
-## 12. Congresso e coligação
+## 12. Congresso
 
-- ✅ **R12.1** Toda mudança de lei é votada; exorbitante (> 1/3 da faixa) cai.
+**Voto** (11–12/nov)
+- ✅ **R12.1** Toda mudança de lei é votada.
 - ✅ **R12.2** Partidos do país com cadeiras, bússola e grupos.
-- ◐ **R12.3** Coligação de governo (fixa no país; falta convidar, cobrar, sair, voltar).
-- ☐ **R12.4** Negociação: ceder proposta ou ministério para ganhar votos.
-- ☐ **R12.5** Oposição age: vota, aprova leis dela, entrevistas, protestos.
-- ☐ **R12.6** Veto do presidente e derrubada do veto.
-- ☐ **R12.7** Uma ou duas casas, declarado pelo país.
-- ☐ **R12.8** Parlamentarismo (perder a base derruba o governo).
-- ☐ **R12.9** Cadeiras mudam a cada eleição pelo voto.
-- ☐ **R12.10** Lei popular passa mais fácil, e o Congresso pode propô-la por conta própria.
+- ☐ **R12.11** Placar previsto = placar real, sem sorteio; muda só com fato do turno, que aparece.
+- ☐ **R12.12** Nota do partido: bússola, grupos, base ou oposição, apoio da população, aprovação e **conta da lei** (% do PIB, pesando mais com déficit alto); exorbitante é a lei que perde a maioria pela conta.
+- ☐ **R12.13** Fiéis e livres pela coesão; ano de eleição puxa o voto para o povo.
+- ☐ **R12.14** Quórum por classe (comum, absoluta, constitucional, mandato), mudado pela lei Quórum das votações.
+- ☐ **R12.7** Duas casas em sequência: Câmara no turno 1, Senado no turno 2; Senado muda, volta à Câmara; país de uma casa vota uma vez.
+- ☐ **R12.15** Bancadas temáticas e lobby das companhias.
 
-## 13. Eleição, campanha, mandatos
+**Moedas e relação**
+- ◐ **R12.3** Coligação (fixa no país; falta convidar, cobrar, sair, voltar pelo termômetro).
+- ☐ **R12.4** Seis moedas: ceder na régua, ministério, cargos, emenda, promessa de lei, decreto; cada compra sobe o preço do próximo voto.
+- ☐ **R12.16** Termômetro por partido (0–100): base sai abaixo de 20; oposição entra acima de 70.
+- ☐ **R12.17** Paciência por casa (0–100): abaixo de 30 a casa pune o governo.
+- ☐ **R12.18** Carga da casa: passou do limite, a lei entra na fila (sem pontos de ação).
+- ☐ **R12.19** Decreto: vale já, Congresso confirma em 2 turnos; fato consumado; alcance pela lei Poder de decreto (4 degraus).
+
+**A casa agindo**
+- ☐ **R12.6** Veto com observação e derrubada do veto.
+- ☐ **R12.5** Rejeitar, emendar, propor lei popular, travar a pauta, CPI.
+- ☐ **R12.10** Lei popular passa mais fácil; o Congresso propõe por conta própria.
+- ☐ **R12.8** Sistemas: presidencialismo, parlamentarismo (moção), semipresidencialismo (coabitação), partido único (alas, congresso do partido, expurgo).
+- ☐ **R12.9** Cadeiras mudam a cada eleição.
+
+**Construção**
+- Dados: `paises/<id>/congresso.json` (casas, partidos com nome e cor reais, cadeiras, bússola, grupos, coesão, quórum de partida, sistema); classe de cada lei (coluna nova na planilha).
+- Estado: `congresso` (por casa: paciência, carga, fila; por partido: termômetro, preço que sobe, coesão; votações em andamento com turno de cada casa; decretos vigentes).
+- Módulo: `congresso` (nasce do `politica` de hoje).
+- Turno: primeira etapa (pedidos do jogador → votações).
+- Fatos: emite "lei aprovada", "lei rejeitada", "emenda", "veto derrubado", "decreto derrubado", "partido saiu da base", "CPI aberta"; ouve "manchete contra", "escândalo", "grupo com raiva", "aprovação".
+- Tela: semicírculo, termômetro em arco, ponteiro da paciência, barra de carga, placar com linha do quórum, "até aqui passa" na régua.
+- Teste: placar previsto igual ao apurado; lei cara perde votos com déficit alto; Senado que muda devolve à Câmara; decreto derrubado deixa os grupos que ganhavam com raiva de quem derrubou.
+
+## 13. Eleição, campanha e mandatos
 
 - ✅ **R13.1** Mandato e eleição pela lei do país.
 - ✅ **R13.2** Desgaste sobe sempre.
 - ◐ **R13.3** Voto por grupo (satisfação feita; falta bússola dos candidatos, campanha e mídia).
+- ☐ **R13.9** Adversários são os partidos de oposição, que lançam chapa e podem se coligar.
+- ☐ **R13.10** Dois turnos: segundo no último turno jogável do mandato, primeiro no anterior.
+- ☐ **R13.11** Promessa: meta do mandato (principal, subíndice ou programa), prêmio pelo tamanho, cumprir em parte vale em parte, avaliada no primeiro turno; trocar é quebrar.
 - ☐ **R13.4** Limite de reeleição: o partido troca de candidato.
-- ☐ **R13.5** Chapa: candidato e vice entre fichas.
+- ☐ **R13.5** Chapa entre fichas do partido e aliados.
 - ☐ **R13.6** Coligação eleitoral (TV, caixa, eleitores; cobra lugar).
-- ☐ **R13.7** Campanha nos últimos turnos: comício, TV, redes, debate, promessa.
-- ☐ **R13.8** Jogador reduz o desgaste (nunca zera).
+- ☐ **R13.7** Campanha nos últimos turnos: ações com alvo pagas pelo caixa, rendimento cai ao repetir.
+- ☐ **R13.8** Reduzir o desgaste (nunca zera).
+
+**Construção**
+- Estado: `eleicao` (promessa com meta e base, chapas, resultado do 1º turno).
+- Módulo: `eleicao`; a Aprovação (R9.9) é conta da `populacao`/`grupos`, lida aqui.
+- Turno: última etapa, só nos turnos de eleição.
+- Fatos: ouve "programa formado" (promessa de programa), "escândalo"; emite "eleição vencida/perdida", "segundo turno".
+- Teste: promessa pequena cumprida rende pouco; perder no segundo turno acaba a partida.
 
 ## 14. Mídia
 
-- ☐ **R14.1** Mídias declaradas pelo país (dono, bússola, audiência por grupo, credibilidade).
+- ☐ **R14.1** Mídias do país (8 maiores e redes): dono, bússola, audiência por grupo, credibilidade.
+- ☐ **R14.4** Jornal do turno: a notícia de maior impacto sai dos fatos.
+- ☐ **R14.3** Pauta: cada mídia escolhe uns 3 fatos (tamanho, lado, dono, medo).
 - ☐ **R14.2** Enquadramento: o efeito da lei na opinião passa pela mídia.
-- ☐ **R14.3** Pauta e escândalos (amiga demora, inimiga corre).
-- ☐ **R14.4** Manchetes do turno saem dos dados.
-- ☐ **R14.5** Leis de mídia (publicidade, emissora estatal, regulação, concessão, censura).
+- ☐ **R14.8** A mídia muda o lado do pop devagar (bolha, redes, freio da instrução).
+- ☐ **R14.9** A mídia mobiliza a raiva (R11.19).
+- ☐ **R14.10** Fato e versão; mentira descoberta.
+- ☐ **R14.5** Leis de mídia agindo (publicidade, emissora estatal, regulação, censura).
 - ☐ **R14.6** Redes: rápidas, polarizam, boato com instrução baixa.
-- ☐ **R14.7** Mídia é empresa na bolsa.
+- ☐ **R14.11** Atos do presidente com a mídia (entrevista, pronunciamento…).
+
+**Construção**
+- Dados: `paises/<id>/midias.json` (nome inventado, dono, bússola, audiência, credibilidade); manchetes por moldes em `mundo/manchetes.json`.
+- Estado: `midias` (credibilidade, pauta do turno).
+- Módulo: `midia`.
+- Turno: depois de todos os módulos que emitem fatos.
+- Fatos: ouve todos; emite "manchete contra/a favor de X" (Congresso e grupos leem).
+- Tela: jornal do turno; a mídia no mapa; perfil da emissora.
+- Teste: o mesmo fato sai a favor na mídia perto do governo e contra na longe.
 
 ## 15. Mundo
 
-- ✅ **R15.1** Potências inventadas com bússola, peso e relações.
+- ✅ **R15.1** Potências com bússola, peso e relações (inventadas; trocar pelos 30 reais).
 - ✅ **R15.2** Reputação = média das opiniões pesada; segurança externa.
-- ◐ **R15.3** Potência reage (opinião anda; falta acordo, investimento, crédito, tarifa, fuga de capital).
-- ☐ **R15.4** Sanção pelo mercado (produto sancionado fica caro).
-- ☐ **R15.5** Ataque externo (sem revide); defesa pelas leis militares.
-- ☐ **R15.6** Potências mudam de posição ao longo das décadas.
+- ◐ **R15.3** Potência reage (opinião anda; falta o cardápio).
+- ☐ **R15.7** Países reais: os 30 maiores, vizinhos e resto do mundo; 11 jogáveis com as duas fichas.
+- ☐ **R15.8** País leve: ficha leve (economia resumida, governo, regime, poder militar, jeito).
+- ☐ **R15.9** IA em 3 passos com o cardápio (comércio, dinheiro, segurança, palavra), linhas vermelhas e um degrau por vez com aviso.
+- ☐ **R15.10** Governos que já existiram: a cada eleição o novo governo cai perto de um ponto da história.
+- ☐ **R15.11** Posições por país no menu do país (não são leis).
+- ☐ **R15.4** Sanção pelo mercado.
+- ☐ **R15.5** Ataque externo (sem revide).
+- ☐ **R15.12** Tela do Mundo: ranking com a relação e a ficha do país.
+
+**Construção**
+- Dados: abas Países e Países - governos → `mundo/paises-leves.json`.
+- Estado: `mundo` (por país leve: governo, opinião sobre cada um, posições).
+- Módulo: `mundo`.
+- Turno: depois da economia do jogador; o que toca o jogador vira papel.
+- Teste: virar ditadura derruba a opinião dos democráticos em um turno; nada vai de amigo a sanção num turno só.
 
 ## 16. Economia
+
+A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 
 **Mercado**
 - ✅ **R16.1** Produtos em setores, mercado do país e do mundo.
@@ -226,21 +372,59 @@
 - ☐ **R16.39** Câmbio, regime e reservas ligam comércio, inflação, dívida e investidores.
 - ☐ **R16.33** Caminho do lucro completo: valor adicionado, salário, encargos, desgaste, juros, imposto, reinvestimento e dividendo.
 
-## 17. Tela: mapa e mesa
+## 17. Tela e mesa
 
-- ✅ **R17.1** Mapa: leis como bolhas em áreas; índices, grupos e potências no mapa.
+- ✅ **R17.1** Mapa: leis como bolhas em áreas; índices, grupos e potências.
 - ✅ **R17.2** Votação, passar o turno, resultado do turno.
 - ✅ **R17.3** Salvar e carregar.
 - ◐ **R17.4** Fichas por cima do mapa (retrato feito; atributos faltam).
-- ◐ **R17.5** Prévia de quem ganha e quem perde antes de propor.
-- ☐ **R17.6** Mesa do presidente: carimbos assinar, vetar, recusar, encaminhar, pilha.
-- ☐ **R17.7** Papéis: lei do Congresso (prazo, silêncio = sanção ou veto), situação, pedido.
-- ☐ **R17.8** Tempo do presidente por turno; encaminhar ao ministro pela ficha.
-- ☐ **R17.9** Ignorar tem consequência; a mídia lê a mesa.
-- ☐ **R17.10** Mesa do partido (doador, filiação, expulsão, coligação).
-- ☐ **R17.11** Momentos do partido como telas curtas (ministério, chapa, coligação, campanha).
+- ◐ **R17.5** Prévia de quem ganha e perde antes de propor.
+- ☐ **R17.12** Mapa por ministério e esfera (hoje 8 áreas antigas, cheias demais).
+- ☐ **R17.6** Mesa: carimbos assinar, vetar (com observação), recusar, encaminhar, pilha.
+- ☐ **R17.7** Famílias de papel: leis, crises, pedidos, ofertas, órgãos, partido, duvidosos; conteúdo sai dos números.
+- ☐ **R17.13** Prazos: ignorar tem consequência (lei passa sozinha ou cai, crise piora, aliado se afasta).
+- ☐ **R17.14** Papéis duvidosos deixam rastro (R6.21).
+- ☐ **R17.8** Encaminhar ao ministro: ele decide pela ficha.
+- ☐ **R17.9** A mídia lê a mesa.
+- ☐ **R17.10** Mesa do partido.
+- ☐ **R17.11** Momentos do partido como telas curtas.
+- ☐ **R17.15** Causa e efeito: "o que empurra" no índice, "a conta que vem" na lei, marca da lei no gráfico.
+
+**Construção (mesa)**
+- Estado: `mesa` (papéis com tipo, prazo, opções e quem pediu).
+- Módulo: `mesa`.
+- Turno: logo depois do Congresso (lei aprovada vira papel) e depois de cada módulo que pede algo.
+- Fatos: ouve "lei aprovada", "emenda", "crise", "pedido"; emite "papel assinado/vetado/ignorado".
+- Teste: lei ignorada até o prazo segue a regra do país (sanção ou veto).
+
+---
+
+## Ordem de construir
+
+A ordem segue a dependência: primeiro o que os outros usam. Cada passo fecha
+jogável (teste ou tela) antes do próximo. Até o passo 10 é a **V1**: o Brasil
+de hoje jogado por um mandato inteiro, para mostrar a pessoas.
+
+| # | Passo | Requisitos | Por que nesta ordem |
+|---|---|---|---|
+| 1 | Brasil 2026 | R4.3 | Sem país de verdade, nada se mostra. Começa com o que o motor lê hoje; ministérios, mídias e programas de antes entram no passo de cada um. |
+| 2 | Fatos do turno | R4.12 | Congresso, mesa, programas, mídia e eleição conversam por fatos; sem eles, um chamaria o outro. |
+| 3 | Congresso novo | R12.11–R12.14, R12.7, R12.16–R12.19, R12.4, R12.6 | É o coração da jogada: toda lei passa por ele. |
+| 4 | Mesa mínima | R17.6, R17.7 (só família Leis), R17.13 | Lei aprovada, emenda e veto chegam como papel. |
+| 5 | Governo | R6.10, R6.14, R6.15, R6.7, R6.8, R6.16, R6.17 | Ministério é moeda do Congresso; ficha muda força e atraso. |
+| 6 | Programas | R7.18–R7.21 | Usa leis aprovadas (3) e ministros (5). |
+| 7 | Jornal mínimo | R14.1, R14.4 | Anuncia programa, escândalo e votação; dá sentido ao turno. |
+| 8 | Eleição nova | R9.9, R13.9–R13.11 | Aprovação, promessa e dois turnos fecham o mandato. |
+| 9 | Começo da partida | R4.5, R4.6, R4.8–R4.10 | Junta país, partido, chapa e ministérios num menu. |
+| 10 | Base do jogo e tela V1 | R16.26, R16.27, R17.12, R17.15 | O jogador sente a lei no bolso do pop e vê causa e efeito. **V1.** |
+| 11 | Perder o poder | R6.13, R6.3, R6.5, R6.19 | Sucessão, impeachment, golpe. |
+| 12 | Mídia completa | R14.2, R14.3, R14.8–R14.11 | Enquadramento, raiva, fato e versão. |
+| 13 | Mundo leve | R15.7–R15.12 | Países reais com IA. |
+| 14 | Justiça e estados | R6.20–R6.23, R17.14 | Rastro, tribunal, governadores. |
+| 15 | Partido e campanha | R5.*, R13.4–R13.8, R17.10 | Caixa, coesão, chapa, ações de campanha. |
+| 16 | Economia completa | R16.* | Construções, empresas, bolsa (plano, passo 12b). |
+| 17 | População completa | R11.8–R11.18 | Idade, saída, organizações, pops por estado. |
 
 ## Fora do jogo pronto
 
-Guerra iniciada pelo país, alianças militares, partido único jogável,
-tribunal superior, pesquisa como árvore (GDD, seção 18).
+Guerra iniciada pelo país, pesquisa como árvore (GDD, seção 18).

@@ -1,0 +1,237 @@
+{
+  "versao": 1,
+  "maioria": 0.5,
+  "governo": "pt",
+  "coligacao": [
+    "pt",
+    "psb",
+    "pdt",
+    "pcdob",
+    "pv",
+    "psol",
+    "mdb",
+    "psd",
+    "uniao",
+    "republicanos"
+  ],
+  "partidos": [
+    {
+      "id": "pl",
+      "nome": "Partido Liberal",
+      "cor": "#1f3a93",
+      "cadeiras": 92,
+      "defende": {
+        "militares": 0.4,
+        "donos-terra": 0.3,
+        "pequeno-comercio": 0.3,
+        "industria": 0.2,
+        "financas": 0.2
+      }
+    },
+    {
+      "id": "pt",
+      "nome": "Partido dos Trabalhadores",
+      "cor": "#c4161c",
+      "cadeiras": 68,
+      "defende": {
+        "operarios": 0.3,
+        "servicos": 0.3,
+        "sem-trabalho": 0.3,
+        "campo": 0.2,
+        "educacao-saude": 0.2,
+        "estudantes": 0.2,
+        "cultura-imprensa": 0.2,
+        "aposentados": 0.2
+      }
+    },
+    {
+      "id": "uniao",
+      "nome": "União Brasil",
+      "cor": "#2e6fb7",
+      "cadeiras": 59,
+      "defende": {
+        "donos-terra": 0.2,
+        "pequeno-comercio": 0.2,
+        "industria": 0.2,
+        "burocracia": 0.2,
+        "militares": 0.1
+      }
+    },
+    {
+      "id": "pp",
+      "nome": "Progressistas",
+      "cor": "#3d6eb4",
+      "cadeiras": 50,
+      "defende": {
+        "donos-terra": 0.3,
+        "pequeno-comercio": 0.2,
+        "industria": 0.2,
+        "aposentados": 0.1
+      }
+    },
+    {
+      "id": "psd",
+      "nome": "Partido Social Democrático",
+      "cor": "#f2a900",
+      "cadeiras": 45,
+      "defende": {
+        "burocracia": 0.2,
+        "pequeno-comercio": 0.2,
+        "donos-terra": 0.2,
+        "aposentados": 0.1
+      }
+    },
+    {
+      "id": "mdb",
+      "nome": "Movimento Democrático Brasileiro",
+      "cor": "#2b8a3e",
+      "cadeiras": 44,
+      "defende": {
+        "burocracia": 0.3,
+        "aposentados": 0.2,
+        "pequeno-comercio": 0.2,
+        "donos-terra": 0.1
+      }
+    },
+    {
+      "id": "republicanos",
+      "nome": "Republicanos",
+      "cor": "#1b75bb",
+      "cadeiras": 44,
+      "defende": {
+        "pequeno-comercio": 0.3,
+        "servicos": 0.2,
+        "militares": 0.2,
+        "aposentados": 0.1
+      }
+    },
+    {
+      "id": "pdt",
+      "nome": "Partido Democrático Trabalhista",
+      "cor": "#e3342f",
+      "cadeiras": 17,
+      "defende": {
+        "operarios": 0.2,
+        "servicos": 0.2,
+        "educacao-saude": 0.2,
+        "burocracia": 0.1
+      }
+    },
+    {
+      "id": "psb",
+      "nome": "Partido Socialista Brasileiro",
+      "cor": "#f7a21b",
+      "cadeiras": 15,
+      "defende": {
+        "operarios": 0.2,
+        "educacao-saude": 0.2,
+        "servicos": 0.1,
+        "burocracia": 0.1
+      }
+    },
+    {
+      "id": "podemos",
+      "nome": "Podemos",
+      "cor": "#2fb34a",
+      "cadeiras": 15,
+      "defende": {
+        "pequeno-comercio": 0.2,
+        "servicos": 0.1,
+        "operarios": 0.1
+      }
+    },
+    {
+      "id": "psol",
+      "nome": "Partido Socialismo e Liberdade",
+      "cor": "#a01e5a",
+      "cadeiras": 13,
+      "defende": {
+        "ambientalistas": 0.4,
+        "estudantes": 0.3,
+        "cultura-imprensa": 0.3,
+        "sem-trabalho": 0.2
+      }
+    },
+    {
+      "id": "psdb",
+      "nome": "Partido da Social Democracia Brasileira",
+      "cor": "#1e5aa8",
+      "cadeiras": 13,
+      "defende": {
+        "escritorio-tecnologia": 0.2,
+        "financas": 0.2,
+        "educacao-saude": 0.1
+      }
+    },
+    {
+      "id": "pcdob",
+      "nome": "Partido Comunista do Brasil",
+      "cor": "#b30000",
+      "cadeiras": 7,
+      "defende": {
+        "operarios": 0.3,
+        "estudantes": 0.2
+      }
+    },
+    {
+      "id": "avante",
+      "nome": "Avante",
+      "cor": "#ff7f00",
+      "cadeiras": 7,
+      "defende": {
+        "pequeno-comercio": 0.2,
+        "servicos": 0.1
+      }
+    },
+    {
+      "id": "pv",
+      "nome": "Partido Verde",
+      "cor": "#3fa34d",
+      "cadeiras": 5,
+      "defende": {
+        "ambientalistas": 0.5
+      }
+    },
+    {
+      "id": "novo",
+      "nome": "Partido Novo",
+      "cor": "#f26522",
+      "cadeiras": 5,
+      "defende": {
+        "financas": 0.4,
+        "escritorio-tecnologia": 0.3,
+        "industria": 0.2
+      }
+    },
+    {
+      "id": "solidariedade",
+      "nome": "Solidariedade",
+      "cor": "#f37021",
+      "cadeiras": 5,
+      "defende": {
+        "operarios": 0.2,
+        "pequeno-comercio": 0.1
+      }
+    },
+    {
+      "id": "cidadania",
+      "nome": "Cidadania",
+      "cor": "#ec008c",
+      "cadeiras": 4,
+      "defende": {
+        "escritorio-tecnologia": 0.2,
+        "educacao-saude": 0.1
+      }
+    },
+    {
+      "id": "prd",
+      "nome": "Partido Renovação Democrática",
+      "cor": "#00529b",
+      "cadeiras": 5,
+      "defende": {
+        "pequeno-comercio": 0.2,
+        "militares": 0.1
+      }
+    }
+  ]
+}

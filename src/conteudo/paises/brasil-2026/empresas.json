@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "empresas": [
+    {
+      "id": "pnac",
+      "nome": "PNAC · Petrolífera Nacional",
+      "setor": "Energia",
+      "valor": 0.04,
+      "estado": 37
+    },
+    {
+      "id": "banco-do-povo",
+      "nome": "Banco do Povo",
+      "setor": "Finanças",
+      "valor": 0.02,
+      "estado": 50
+    },
+    {
+      "id": "caixa-nacional",
+      "nome": "Caixa Nacional",
+      "setor": "Finanças",
+      "valor": 0.015,
+      "estado": 100
+    },
+    {
+      "id": "cooperativa",
+      "nome": "Cooperativa do Campo",
+      "setor": "Alimentos",
+      "valor": 0.03,
+      "estado": 0
+    }
+  ]
+}

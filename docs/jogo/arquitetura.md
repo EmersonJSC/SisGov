@@ -1,6 +1,6 @@
 # Arquitetura
 
-Mapa do jogo em uma página. Detalhe de cada módulo fica no `.md` dele.
+Mapa do jogo. Detalhe de cada módulo fica no `.md` dele; o jogo inteiro (módulos novos, fatos do turno, portas) na seção 8.
 `docs/arquitetura/` é do projeto antigo.
 
 ## 1. Camadas
@@ -118,3 +118,59 @@ desenho para as outras está em [fase-1-redes.md](fase-1-redes.md), à espera do
 - A renda das pessoas diz quem consegue pagar.
 - O país começa parado: no turno 0, nada anda sozinho.
 - Toda lei da rede tem ganho e custo, e o jogador vê o efeito na ficha e no mapa.
+
+## 8. O jogo inteiro (aprovada em 12/nov)
+
+As camadas acima já seguem Clean Architecture; o que muda é dar nome a cada
+peça e fixar as fronteiras para o jogo inteiro do GDD. Sem banco, sem rede:
+KISS, nada de interface sem duas implementações.
+
+| Camada Clean | Pasta | O que é |
+|---|---|---|
+| Domínio | `motor/` | regras puras em TS; sem React, sem JSON, sem relógio, sem `Math.random` (o acaso entra com semente) |
+| Casos de uso | `partida/` | Nova partida, Avançar turno, Propor lei, Decretar, Salvar e carregar, Prévia; dependem só do motor e de 2 portas |
+| Borda | `conteudo/`, `scripts/`, `tela/` | JSON e validadores; exportador da planilha; React, que só manda pedidos e mostra a visão |
+
+**Portas (só as que variam):** `Armazenamento` (salvar no navegador ou em
+arquivo) e `Conteudo` (ler os JSON do mundo e do país). O acaso já é puro, com
+semente, e não precisa de porta.
+
+**Módulos do motor (contextos).** Cada um é uma pasta com `index.ts` público;
+ninguém importa arquivo de dentro da pasta de outro. Entre módulos, só tipos e
+funções do `index.ts`, ou os **fatos do turno** (abaixo).
+
+| Módulo | Cuida de | Já existe? |
+|---|---|---|
+| `estado`, `calculos`, `acaso` | índices, registro de cálculos, sorteio com semente (núcleo comum) | sim |
+| `leis` + `efeitos` | tipos de lei, formas, fila de efeitos com atraso | sim |
+| `programas` | formar e desfazer, lembrança e nostalgia, gerador de nomes | novo |
+| `populacao` + `grupos` | pops, satisfação, Aprovação, grupos | sim (consertos da Base do jogo) |
+| `economia` | mercado, contas, companhias, construções | sim (`mercado`, `contas`) |
+| `servicos` | redes do Estado: atendimento, saneamento, moradia | sim, espalhado em 3 pastas |
+| `governo` | ministérios (caixas), ministros e fichas, órgãos, justiça, governadores | novo |
+| `congresso` | partidos, voto com a conta da lei, moedas, paciência, duas casas, decreto | parte (`politica`) |
+| `eleicao` | campanha, promessa, dois turnos, desgaste | sim (reescrever regras) |
+| `midia` | jornal, mídias, fato e versão | novo |
+| `mesa` | papéis e prazos | novo |
+| `mundo` | países leves, IA de 3 passos | sim |
+| `turno` | só a ordem: chama cada módulo e junta os fatos | sim (hoje com regras demais dentro) |
+
+**Fatos do turno (eventos de domínio, sem barramento):** cada módulo devolve,
+junto do estado novo, uma lista de fatos ("lei aprovada", "programa formado",
+"decreto derrubado", "ministro caiu"). O `turno` passa a lista adiante; a mídia
+vira jornal, os grupos guardam lembrança, a mesa cria papel. Ninguém chama o
+módulo do outro para avisar.
+
+**Da planilha ao motor:** `docs/jogo/leis.xlsx` é a fonte; um script em
+`scripts/` exporta as abas (Leis, roteiro, Índices, Programas, Ministérios)
+para `conteudo/mundo/*.json`, e o validador confere ao carregar. Ninguém edita
+o JSON do mundo à mão. O país (`conteudo/paises/brasil-2026/`) é escrito à
+parte: valores de partida, partidos e cadeiras, ministérios, programas de
+antes, rótulos.
+
+**Ordem de construir:** em [requisitos.md](requisitos.md), seção "Ordem de
+construir", com o que cada passo entrega e por que vem naquela posição.
+
+**Dívida conhecida:** o `turno` tem 1.552 linhas com regra dentro; ela sai aos
+poucos, cada vez que um módulo novo nascer (não é passo à parte). `atendimento`,
+`saneamento` e `moradia` viram `servicos` quando a próxima rede entrar.
