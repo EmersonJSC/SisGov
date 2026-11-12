@@ -39,7 +39,7 @@ população cresce, passa fome ou fica zangada.
   venda 120 → 20 × (1 − 0,75 × 0,2) = 17.
 - Tarifas são calculadas sobre o preço base, não sobre o de mercado.
 - **Preço local** (do estado) = `MAPI × preço do mercado + (1 − MAPI) × preço
-  do estado`; MAPI é o quanto o estado "enxerga" o mercado nacional (leis,
+do estado`; MAPI é o quanto o estado "enxerga" o mercado nacional (leis,
   tecnologia, acesso). Serviços, transporte e eletricidade só têm preço local.
 - Bens têm categorias: **de consumo básico** (grão, peixe, roupa, móveis),
   **de luxo** (carne, vinho, carro, arte), **industriais** (ferro, carvão,
@@ -114,8 +114,7 @@ população cresce, passa fome ou fica zangada.
 
 ## 8. Padrão de vida → população e política
 
-- **Mortalidade** sobe forte abaixo de padrão 5 (fome) e cai rápido entre 5 e
-  15. **Natalidade** cai entre 10 e 25 (quem enriquece tem menos filhos).
+- **Mortalidade** sobe forte abaixo de padrão 5 (fome) e cai rápido entre 5 e 15. **Natalidade** cai entre 10 e 25 (quem enriquece tem menos filhos).
   Piso: 0,60% nascimentos e 0,45% mortes ao ano. Poluição pode subir a
   mortalidade em até 50%; desemprego corta a natalidade em até 40%.
 - **Padrão esperado** (pops baixos 5, médios 10, altos 15, mais letramento).

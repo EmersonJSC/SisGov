@@ -46,15 +46,15 @@ públicas · Moeda e banco central). Cada prateleira tem título e no máximo
 
 ### 4.2 Cor e forma dizem o tipo
 
-| Tipo | Cor | Forma | Leitura rápida |
-| --- | --- | --- | --- |
-| Alíquota (imposto) | dourado | círculo com borda de moeda | "aqui entra dinheiro" |
-| Verba | verde | círculo | "aqui sai dinheiro" |
-| Regra | azul | círculo | "aqui muda como funciona" |
-| Setor (dono) | roxo | hexágono | "aqui muda quem é dono" |
-| Programa | laranja | círculo com faixa | "aqui liga uma ação" |
-| Constitucional | contorno grosso | quadrado | "difícil de mudar" |
-| Pétrea | cinza-chumbo | escudo | "quase não muda" |
+| Tipo               | Cor             | Forma                      | Leitura rápida            |
+| ------------------ | --------------- | -------------------------- | ------------------------- |
+| Alíquota (imposto) | dourado         | círculo com borda de moeda | "aqui entra dinheiro"     |
+| Verba              | verde           | círculo                    | "aqui sai dinheiro"       |
+| Regra              | azul            | círculo                    | "aqui muda como funciona" |
+| Setor (dono)       | roxo            | hexágono                   | "aqui muda quem é dono"   |
+| Programa           | laranja         | círculo com faixa          | "aqui liga uma ação"      |
+| Constitucional     | contorno grosso | quadrado                   | "difícil de mudar"        |
+| Pétrea             | cinza-chumbo    | escudo                     | "quase não muda"          |
 
 ### 4.3 Selos nas leis
 
@@ -106,6 +106,7 @@ Hoje a bolha é um disco liso com um ícone fino de traço. A bolha nova é uma
 As leis principais são visivelmente maiores que as secundárias.
 
 **Movimento, pouco e com motivo.**
+
 - Ao passar o mouse, a medalha sobe 2 px, a sombra cresce e a etiqueta
   mostra uma linha ("Cobra 26,5% em tudo o que se compra").
 - **⚡ Pede atenção:** o aro pulsa devagar em âmbar (uma vez a cada 3 s).
@@ -151,11 +152,11 @@ eu vou" do jogo inteiro.
 
 ## 7. O que precisa existir nos dados
 
-| Dado | Onde | Quando |
-| --- | --- | --- |
-| Seção (prateleira) de cada lei | desenho das leis → índice | na implementação de cada área |
-| Tipo da lei (alíquota, verba…) | desenho das leis → índice | idem |
-| Peso na indústria | desenho ("Indústria: ↑ forte") | idem |
-| 3 índices de cada área | este documento → conteúdo da área | mecânica 6 (índices) |
-| Frases do ministro por situação | conteúdo novo | mecânica de ministros |
-| Metas do mandato | conteúdo novo | mecânica 11 (eleição) |
+| Dado                            | Onde                              | Quando                        |
+| ------------------------------- | --------------------------------- | ----------------------------- |
+| Seção (prateleira) de cada lei  | desenho das leis → índice         | na implementação de cada área |
+| Tipo da lei (alíquota, verba…)  | desenho das leis → índice         | idem                          |
+| Peso na indústria               | desenho ("Indústria: ↑ forte")    | idem                          |
+| 3 índices de cada área          | este documento → conteúdo da área | mecânica 6 (índices)          |
+| Frases do ministro por situação | conteúdo novo                     | mecânica de ministros         |
+| Metas do mandato                | conteúdo novo                     | mecânica 11 (eleição)         |

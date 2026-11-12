@@ -60,14 +60,14 @@ centro.** A economia controla os pops, os pops controlam as leis, as leis
 controlam a economia e os pops, e os pops controlam a economia. O ciclo não tem
 começo nem fim: mexer numa ponta volta pela outra.
 
-| De | Para | Como controla |
-|---|---|---|
-| População | Economia | trabalha, consome e investe |
-| Economia | População | paga salário, dá emprego e define preços |
-| Economia | Governo | gera o dinheiro dos impostos |
-| Governo | Economia | cobra, gasta e regula por lei |
-| Governo | População | dá serviços, renda e direitos |
-| População | Governo | vota, apoia e protesta |
+| De        | Para      | Como controla                            |
+| --------- | --------- | ---------------------------------------- |
+| População | Economia  | trabalha, consome e investe              |
+| Economia  | População | paga salário, dá emprego e define preços |
+| Economia  | Governo   | gera o dinheiro dos impostos             |
+| Governo   | Economia  | cobra, gasta e regula por lei            |
+| Governo   | População | dá serviços, renda e direitos            |
+| População | Governo   | vota, apoia e protesta                   |
 
 - **Política não é um quarto pilar.** Partidos, grupos, Congresso e eleição são
   o caminho pelo qual a População controla o Governo.
@@ -342,15 +342,15 @@ e podem cair.
 
 Perder o poder federal acaba a partida.
 
-| Caminho | Quando | Fim? |
-|---|---|---|
-| Eleição | voto no fim do mandato | se outro partido vence |
-| Morte, assassinato, renúncia | idade, atentado, escândalo grande | se o vice é de outro partido |
-| Impeachment (presidencialismo) | fato grave, aprovação abaixo de 30%, 2/3 dos votos | se o vice é de outro partido |
-| Moção de desconfiança (parlamentarismo) | a base sai e a maioria vota contra | se a nova maioria não é sua |
-| Golpe | Risco de golpe alto, Forças Armadas pouco leais | sempre |
-| Guerra civil | grupos grandes com raiva e armas divididas | se o governo perde a capital |
-| Ala rival (partido único) | perder o congresso do partido | sempre |
+| Caminho                                 | Quando                                             | Fim?                         |
+| --------------------------------------- | -------------------------------------------------- | ---------------------------- |
+| Eleição                                 | voto no fim do mandato                             | se outro partido vence       |
+| Morte, assassinato, renúncia            | idade, atentado, escândalo grande                  | se o vice é de outro partido |
+| Impeachment (presidencialismo)          | fato grave, aprovação abaixo de 30%, 2/3 dos votos | se o vice é de outro partido |
+| Moção de desconfiança (parlamentarismo) | a base sai e a maioria vota contra                 | se a nova maioria não é sua  |
+| Golpe                                   | Risco de golpe alto, Forças Armadas pouco leais    | sempre                       |
+| Guerra civil                            | grupos grandes com raiva e armas divididas         | se o governo perde a capital |
+| Ala rival (partido único)               | perder o congresso do partido                      | sempre                       |
 
 No semipresidencialismo, perder a maioria não tira a Presidência: vira
 coabitação (seção 12) e o jogo segue.
@@ -504,10 +504,10 @@ que não cabe ao presidente fica inativa.
   - **Nome:** cada programa tem nome genérico; o JSON do país pode dar o nome
     próprio dele (como a Selic), e o país que já começa com o programa traz o
     nome. Sem nome do país, o **gerador** cria um, e o jornal anuncia
-    ("Governo lança o *Mais Escola*").
-  - **Gerador de nomes:** moldes com lacunas ("Minha ___, Minha ___", "___
+    ("Governo lança o _Mais Escola_").
+  - **Gerador de nomes:** moldes com lacunas ("Minha ___, Minha _**", "**_
     para Todos", "Mais ___", "País sem ___", "Bolsa ___", "Pacto pela ___",
-    "Programa Nacional de ___" com sigla, "Ordem e ___", "___ Livre") preenchidos
+    "Programa Nacional de ___" com sigla, "Ordem e _**", "**_ Livre") preenchidos
     com as 4 palavras do programa: tema, bem, mal e público. O lado do partido
     escolhe o molde: esquerda puxa "para Todos" e "sem ___", direita "Livre" e
     "Responsável", autoritário "Ordem e ___". Os moldes são do mundo; o motor
@@ -1179,25 +1179,25 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 
 ### Glossário (08/nov)
 
-| Termo | O que é |
-|---|---|
-| **Esfera** | Um tema de leis (Saúde, Impostos). Ministério é uma caixa de esferas e subesferas. |
-| **Subesfera** | Pedaço de uma esfera que pode ir para outro ministério (Pesca, Portos e aeroportos). |
-| **Lei** | Regra permanente. Tem bolha no mapa. |
-| **Lei com prazo** | Lei que acaba sozinha. |
-| **Ato** | Decisão do presidente que acontece uma vez (Graça, visita de Estado, suspender a regra fiscal). |
-| **Posição por país** | Nível que o presidente decide no menu de um país e que fica valendo até mudar (Sanções, Aliança). |
-| **Operação** | Decisão em etapas sobre uma companhia, com papéis na mesa (Estatização, Privatização). |
-| **Programa** | Um pacote de leis que resolve um problema (Tarifa social; Reforma política; Imposto dos ricos; Remédio barato). Forma-se quando a maior parte das leis anda na direção dele num mandato; o país ou o gerador dá o nome. Abas Programas e Programas - leis. |
-| **Companhia** | A dona. Tem ações, reserva de investimento e várias empresas. |
-| **Empresa** | A parte de uma companhia em um setor. É um conjunto de prédios. |
-| **Prédio** | A unidade que produz ou presta serviço: fábrica, fazenda, usina, hospital. (Antes aparecia como "construção".) |
-| **Obra** | O ato de construir um prédio novo. Entra na fila da construção civil. |
-| **Construção civil** | O setor que faz as obras. |
-| **Órgão** | A repartição do Estado de uma esfera (um prédio do Estado). Recebe a verba por lei e executa; sofre corrupção. O jogador dá a verba, não escolhe fábrica nem fazenda. |
-| **Ação (cota)** | Fatia de uma empresa. Dá dividendo, não dá mando. |
-| **Estatal** | Empresa cujo dono é o Estado. |
-| **Serviço do Estado** | Prédio do Estado fora do mercado (hospital, escola, delegacia). |
+| Termo                 | O que é                                                                                                                                                                                                                                                    |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Esfera**            | Um tema de leis (Saúde, Impostos). Ministério é uma caixa de esferas e subesferas.                                                                                                                                                                         |
+| **Subesfera**         | Pedaço de uma esfera que pode ir para outro ministério (Pesca, Portos e aeroportos).                                                                                                                                                                       |
+| **Lei**               | Regra permanente. Tem bolha no mapa.                                                                                                                                                                                                                       |
+| **Lei com prazo**     | Lei que acaba sozinha.                                                                                                                                                                                                                                     |
+| **Ato**               | Decisão do presidente que acontece uma vez (Graça, visita de Estado, suspender a regra fiscal).                                                                                                                                                            |
+| **Posição por país**  | Nível que o presidente decide no menu de um país e que fica valendo até mudar (Sanções, Aliança).                                                                                                                                                          |
+| **Operação**          | Decisão em etapas sobre uma companhia, com papéis na mesa (Estatização, Privatização).                                                                                                                                                                     |
+| **Programa**          | Um pacote de leis que resolve um problema (Tarifa social; Reforma política; Imposto dos ricos; Remédio barato). Forma-se quando a maior parte das leis anda na direção dele num mandato; o país ou o gerador dá o nome. Abas Programas e Programas - leis. |
+| **Companhia**         | A dona. Tem ações, reserva de investimento e várias empresas.                                                                                                                                                                                              |
+| **Empresa**           | A parte de uma companhia em um setor. É um conjunto de prédios.                                                                                                                                                                                            |
+| **Prédio**            | A unidade que produz ou presta serviço: fábrica, fazenda, usina, hospital. (Antes aparecia como "construção".)                                                                                                                                             |
+| **Obra**              | O ato de construir um prédio novo. Entra na fila da construção civil.                                                                                                                                                                                      |
+| **Construção civil**  | O setor que faz as obras.                                                                                                                                                                                                                                  |
+| **Órgão**             | A repartição do Estado de uma esfera (um prédio do Estado). Recebe a verba por lei e executa; sofre corrupção. O jogador dá a verba, não escolhe fábrica nem fazenda.                                                                                      |
+| **Ação (cota)**       | Fatia de uma empresa. Dá dividendo, não dá mando.                                                                                                                                                                                                          |
+| **Estatal**           | Empresa cujo dono é o Estado.                                                                                                                                                                                                                              |
+| **Serviço do Estado** | Prédio do Estado fora do mercado (hospital, escola, delegacia).                                                                                                                                                                                            |
 
 ### Mercado
 
@@ -1508,8 +1508,8 @@ renda dos pops, que voltam a consumir, poupar e investir.
   3. Resposta: acionistas aceitam ou recusam, ou o dono vai à Justiça e o país
      dele reage (pagar, subir o prêmio ou desistir); na privatização chegam os
      lances (aceitar ou cancelar se ficou barato).
-  Comprar cotas anda sozinha pela meta; Encomendar usina e Megaobra entram na
-  fila de obras. Nenhuma das três tem papel.
+     Comprar cotas anda sozinha pela meta; Encomendar usina e Megaobra entram na
+     fila de obras. Nenhuma das três tem papel.
 
 ### Comércio exterior e capital (08/nov)
 
@@ -1886,6 +1886,7 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
   (princípios 8 e 12). Lei assinada aparece e muda no mapa como bolha.
 
 ### Comum às duas
+
 - **Fichas** de pessoas (presidente, vice, ministros, líderes) abrem por
   cima do mapa: retrato genérico, atributos, posição na bússola.
 - **Momentos do partido** (montar ministério, chapa, coligação, campanha)
@@ -1905,10 +1906,12 @@ autoritário e Governadores na seção 6; decreto e medida provisória juntos na
 seção 12; promessa e cota na seção 13; mundo na seção 15).
 
 **Governo (12/nov)**
+
 - A fronteira do governo e como se perde o poder foram decididos (seção 6).
 - Jogar como oposição depois de perder o poder: para depois.
 
 **Base do jogo (05/nov)**
+
 - Como a renda de cada pop sai de salário e lucro sem o turno 0 mudar de valor.
 - Quanto falta de trabalhador freia a produção.
 - Regras e números de nascer, envelhecer e morrer, e como ficam nas faixas do pop.
@@ -1919,6 +1922,7 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   tipo e como o jogador as enfrenta.
 
 **Economia e terra**
+
 - Quanto do lucro privado vai aos investidores e quanto à reserva.
 - Custo e prazo de cada tipo de obra (números).
 - Se a verba da estatal é uma lei por estatal ou por setor.
@@ -1926,15 +1930,18 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
 - Números: velocidade do êxodo, custo da casa, ritmo da autoconstrução.
 
 **Bússola**
+
 - Quais eixos novos entram (talvez 3 eixos, um cubo; candidato: paz ×
   militarismo). Precisa de estudo.
 
 **Mundo**
+
 - Como um ataque acontece e como termina.
 - Jeito de cada país (pragmático, ideológico, agressivo): hoje é palpite na aba
   Países; conferir por busca rápida quando for calibrar.
 
 **Para as narrativas (depois da V1 jogável)**
+
 - Custo e duração dos atos com a mídia (entrevista, pressão, processo, notícia
   falsa) e dos atos com países.
 - Crises do dinheiro: corrida ao banco, resgate banco a banco e ataque à moeda
@@ -1944,6 +1951,7 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
 - O que vários índices batendo metas juntos significam.
 
 **Ideias guardadas**
+
 - **Programa inventado (12/nov):** o jogador junta leis livres e o jogo cria
   um programa novo, com nome do gerador. Para depois.
 - **Leis que faltam aos programas (12/nov):** ajuda para a empresa reduzir a
@@ -1991,13 +1999,13 @@ tecnologia como árvore.
 
 ## 20. Mapa dos documentos
 
-| Pergunta | Onde |
-|---|---|
-| O que é o jogo e por quê | este GDD |
-| Requisitos e status de cada um | [requisitos.md](requisitos.md) |
-| O que está feito, ordem e como construir | [plano-de-desenvolvimento.md](plano-de-desenvolvimento.md) |
-| Planilha de leis, índices, esferas, ligações, pops, grupos, organizações e economia | `docs/jogo/leis.xlsx` |
-| Onde parei | `RETOMAR.md` |
-| Como cada peça se comporta | `src/motor/<módulo>/<módulo>.md` |
-| Referência do mercado do Victoria 3 | [mercado-vic3-referencia.md](mercado-vic3-referencia.md) |
-| Escopo, experiência e bússola antigos | `docs/historico/` |
+| Pergunta                                                                            | Onde                                                       |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| O que é o jogo e por quê                                                            | este GDD                                                   |
+| Requisitos e status de cada um                                                      | [requisitos.md](requisitos.md)                             |
+| O que está feito, ordem e como construir                                            | [plano-de-desenvolvimento.md](plano-de-desenvolvimento.md) |
+| Planilha de leis, índices, esferas, ligações, pops, grupos, organizações e economia | `docs/jogo/leis.xlsx`                                      |
+| Onde parei                                                                          | `RETOMAR.md`                                               |
+| Como cada peça se comporta                                                          | `src/motor/<módulo>/<módulo>.md`                           |
+| Referência do mercado do Victoria 3                                                 | [mercado-vic3-referencia.md](mercado-vic3-referencia.md)   |
+| Escopo, experiência e bússola antigos                                               | `docs/historico/`                                          |

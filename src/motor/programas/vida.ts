@@ -47,7 +47,7 @@ export function situacaoDoPrograma(
 
 /** Quanto cada grupo gostou do que as leis andadas fizeram, de −1 a +1. */
 function lembrancaDosGrupos(
-  e: EntradaProgramas,
+  e: Pick<EntradaProgramas, "tipos" | "leis" | "valores">,
   andadas: string[],
   referencia: Record<string, ValorLei>,
 ): Record<string, number> {
@@ -163,4 +163,25 @@ export function andarPrograma(
   if (cumpre) return comecarAFormar(e, estado, programa, andadas);
   const formando = semChave(estado.formando, programa.id);
   return { estado: { ...estado, formando } };
+}
+
+/**
+ * Programa que já existe no começo da partida: formado desde sempre, com as
+ * leis de hoje contadas a partir do zero (referência vazia). A lembrança é a
+ * que o país declara; sem ela, vem do que as leis de hoje fazem aos grupos.
+ */
+export function programaDeAntes(
+  e: Pick<EntradaProgramas, "regras" | "tipos" | "leis" | "valores">,
+  programa: Programa,
+  lembranca?: Record<string, number>,
+): VidaDoPrograma {
+  const { andadas } = situacaoDoPrograma(programa, e.leis, {}, e.valores);
+  return {
+    situacao: "formado",
+    desde: 0,
+    nome: nomeDoPrograma(e.regras, programa),
+    lembranca: lembranca ?? lembrancaDosGrupos(e, andadas, {}),
+    referencia: {},
+    vezes: 1,
+  };
 }

@@ -41,6 +41,7 @@ import {
   satisfacaoMedia,
   turnosMandato,
   motivoProgramasInvalidos,
+  type FormadoDoPais,
   type Programa,
   type RegrasProgramas,
 } from "../motor";
@@ -194,12 +195,16 @@ function carregarProgramas(
   leis: Record<string, Lei>,
 ): RegrasProgramas {
   const doPais = arquivosPaises[`../conteudo/paises/${pais}/programas.json`]
-    ? arquivoPais<{ nomes?: Record<string, string> }>(pais, "programas")
+    ? arquivoPais<{
+        nomes?: Record<string, string>;
+        formados?: FormadoDoPais[];
+      }>(pais, "programas")
     : {};
   const regras: RegrasProgramas = {
     programas: programasDoMundo.programas as Programa[],
     moldes: nomesDeProgramas.moldes,
     nomesDoPais: doPais.nomes ?? {},
+    formados: doPais.formados ?? [],
   };
   const motivo = motivoProgramasInvalidos(regras, leis);
   if (motivo) throw new Error(`país "${pais}" › programas: ${motivo}`);

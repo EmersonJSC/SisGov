@@ -1,831 +1,926 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>SisGov — Tela Inicial (Austera e Institucional)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg-escuro: #060907;
-    --bg-painel: rgba(10, 15, 12, 0.88);
-    --bg-item: rgba(16, 24, 20, 0.5);
-    --bg-hover: rgba(26, 38, 32, 0.85);
-    --linha: rgba(197, 160, 89, 0.2);
-    --linha-ativa: #c5a059;
-    --ouro: #c5a059;
-    --ouro-claro: #e5c37d;
-    --ouro-apagado: #7a6337;
-    --tinta: #ede8dc;
-    --tinta-suave: #9ea8a1;
-    --tinta-fraca: #5a665f;
-    --alerta-red: #c0392b;
-  }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>SisGov — Tela Inicial (Austera e Institucional)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-escuro: #060907;
+        --bg-painel: rgba(10, 15, 12, 0.88);
+        --bg-item: rgba(16, 24, 20, 0.5);
+        --bg-hover: rgba(26, 38, 32, 0.85);
+        --linha: rgba(197, 160, 89, 0.2);
+        --linha-ativa: #c5a059;
+        --ouro: #c5a059;
+        --ouro-claro: #e5c37d;
+        --ouro-apagado: #7a6337;
+        --tinta: #ede8dc;
+        --tinta-suave: #9ea8a1;
+        --tinta-fraca: #5a665f;
+        --alerta-red: #c0392b;
+      }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: var(--bg-escuro);
-    color: var(--tinta);
-    font-family: "Spectral", Georgia, serif;
-    user-select: none;
-    -webkit-user-select: none;
-    cursor: default;
-  }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: var(--bg-escuro);
+        color: var(--tinta);
+        font-family: "Spectral", Georgia, serif;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: default;
+      }
 
-  /* Viewport cinematográfico de jogo */
-  #viewport-jogo {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #020403;
-  }
+      /* Viewport cinematográfico de jogo */
+      #viewport-jogo {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #020403;
+      }
 
-  .game-frame {
-    width: 100vw;
-    height: 100vh;
-    max-width: 1920px;
-    max-height: 1080px;
-    aspect-ratio: 16 / 9;
-    position: relative;
-    overflow: hidden;
-    background: radial-gradient(circle at 70% 30%, rgba(10, 18, 14, 0.4) 0%, rgba(4, 7, 5, 0.92) 80%),
-                url('/arte/fundos/fundacao.jpg') center/cover no-repeat,
-                #070a08;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.95);
-  }
+      .game-frame {
+        width: 100vw;
+        height: 100vh;
+        max-width: 1920px;
+        max-height: 1080px;
+        aspect-ratio: 16 / 9;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 70% 30%,
+            rgba(10, 18, 14, 0.4) 0%,
+            rgba(4, 7, 5, 0.92) 80%
+          ),
+          url("/arte/fundos/fundacao.jpg") center/cover no-repeat,
+          #070a08;
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.95);
+      }
 
-  /* Iluminação fria de gabinete e vinheta de cinema */
-  .vinheta-cinema {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at 30% 50%, transparent 40%, rgba(2, 4, 3, 0.75) 80%, rgba(1, 2, 2, 0.96) 100%);
-    z-index: 5;
-  }
+      /* Iluminação fria de gabinete e vinheta de cinema */
+      .vinheta-cinema {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 30% 50%,
+          transparent 40%,
+          rgba(2, 4, 3, 0.75) 80%,
+          rgba(1, 2, 2, 0.96) 100%
+        );
+        z-index: 5;
+      }
 
-  /* Barra discreta de testes no canto superior direito */
-  .debug-nav {
-    position: absolute;
-    top: 14px;
-    right: 20px;
-    z-index: 100;
-    display: flex;
-    gap: 6px;
-    background: rgba(6, 10, 8, 0.85);
-    border: 1px solid var(--linha);
-    padding: 4px 10px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    color: var(--tinta-suave);
-    backdrop-filter: blur(6px);
-  }
-  .debug-nav a {
-    color: var(--ouro);
-    text-decoration: none;
-    padding-right: 8px;
-    border-right: 1px solid var(--linha);
-  }
-  .debug-nav button {
-    background: transparent;
-    border: none;
-    color: var(--tinta-fraca);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 11px;
-    padding: 2px 6px;
-  }
-  .debug-nav button:hover {
-    color: #fff;
-  }
-  .debug-nav button.ativo {
-    color: var(--ouro);
-    background: rgba(197, 160, 89, 0.12);
-  }
+      /* Barra discreta de testes no canto superior direito */
+      .debug-nav {
+        position: absolute;
+        top: 14px;
+        right: 20px;
+        z-index: 100;
+        display: flex;
+        gap: 6px;
+        background: rgba(6, 10, 8, 0.85);
+        border: 1px solid var(--linha);
+        padding: 4px 10px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--tinta-suave);
+        backdrop-filter: blur(6px);
+      }
+      .debug-nav a {
+        color: var(--ouro);
+        text-decoration: none;
+        padding-right: 8px;
+        border-right: 1px solid var(--linha);
+      }
+      .debug-nav button {
+        background: transparent;
+        border: none;
+        color: var(--tinta-fraca);
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+      .debug-nav button:hover {
+        color: #fff;
+      }
+      .debug-nav button.ativo {
+        color: var(--ouro);
+        background: rgba(197, 160, 89, 0.12);
+      }
 
-  /* ============================================================
+      /* ============================================================
      1. TELA PRINCIPAL (MENU DE ABERTURA)
      ============================================================ */
-  #cena-menu {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 80px 100px;
-    z-index: 10;
-    transition: opacity 0.4s ease;
-  }
+      #cena-menu {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 80px 100px;
+        z-index: 10;
+        transition: opacity 0.4s ease;
+      }
 
-  /* Coluna da esquerda: Logotipo e Menu */
-  .coluna-esquerda {
-    width: 460px;
-    display: flex;
-    flex-direction: column;
-  }
+      /* Coluna da esquerda: Logotipo e Menu */
+      .coluna-esquerda {
+        width: 460px;
+        display: flex;
+        flex-direction: column;
+      }
 
-  /* Emblema e Título Austero */
-  .bloco-marca {
-    margin-bottom: 50px;
-  }
-  .emblema-governo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .emblema-icone {
-    width: 22px;
-    height: 22px;
-    border: 1.5px solid var(--ouro);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(45deg);
-  }
-  .emblema-icone::after {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background: var(--ouro);
-  }
-  .emblema-texto {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--ouro);
-    text-transform: uppercase;
-  }
+      /* Emblema e Título Austero */
+      .bloco-marca {
+        margin-bottom: 50px;
+      }
+      .emblema-governo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .emblema-icone {
+        width: 22px;
+        height: 22px;
+        border: 1.5px solid var(--ouro);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(45deg);
+      }
+      .emblema-icone::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: var(--ouro);
+      }
+      .emblema-texto {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        color: var(--ouro);
+        text-transform: uppercase;
+      }
 
-  .titulo-jogo {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 68px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 0.9;
-    color: #ffffff;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
-  }
-  .subtitulo-jogo {
-    font-family: "Spectral", serif;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--tinta-suave);
-    margin-top: 10px;
-    letter-spacing: 0.02em;
-  }
-  .divisa-marca {
-    width: 60px;
-    height: 1px;
-    background: var(--ouro);
-    margin-top: 18px;
-  }
+      .titulo-jogo {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 68px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        line-height: 0.9;
+        color: #ffffff;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+      }
+      .subtitulo-jogo {
+        font-family: "Spectral", serif;
+        font-size: 15px;
+        font-style: italic;
+        color: var(--tinta-suave);
+        margin-top: 10px;
+        letter-spacing: 0.02em;
+      }
+      .divisa-marca {
+        width: 60px;
+        height: 1px;
+        background: var(--ouro);
+        margin-top: 18px;
+      }
 
-  /* Menu de Botões: Disciplinado, Fino e Autoritário */
-  .menu-opcoes {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+      /* Menu de Botões: Disciplinado, Fino e Autoritário */
+      .menu-opcoes {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
 
-  .btn-menu {
-    background: transparent;
-    border: none;
-    border-left: 2px solid transparent;
-    color: var(--tinta-suave);
-    padding: 12px 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: left;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    width: 360px;
-  }
+      .btn-menu {
+        background: transparent;
+        border: none;
+        border-left: 2px solid transparent;
+        color: var(--tinta-suave);
+        padding: 12px 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        width: 360px;
+      }
 
-  .btn-menu .conteudo-btn {
-    display: flex;
-    flex-direction: column;
-  }
+      .btn-menu .conteudo-btn {
+        display: flex;
+        flex-direction: column;
+      }
 
-  .btn-menu .label-principal {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--tinta);
-    transition: color 0.2s ease;
-  }
+      .btn-menu .label-principal {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--tinta);
+        transition: color 0.2s ease;
+      }
 
-  .btn-menu .label-sub {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    color: var(--tinta-fraca);
-    margin-top: 2px;
-    letter-spacing: 0.05em;
-    transition: color 0.2s ease;
-  }
+      .btn-menu .label-sub {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        color: var(--tinta-fraca);
+        margin-top: 2px;
+        letter-spacing: 0.05em;
+        transition: color 0.2s ease;
+      }
 
-  .btn-menu .seta-hover {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    color: var(--ouro);
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: all 0.2s ease;
-  }
+      .btn-menu .seta-hover {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--ouro);
+        opacity: 0;
+        transform: translateX(-6px);
+        transition: all 0.2s ease;
+      }
 
-  .btn-menu:hover {
-    background: linear-gradient(90deg, rgba(197, 160, 89, 0.12) 0%, transparent 100%);
-    border-left-color: var(--ouro);
-    padding-left: 24px;
-  }
-  .btn-menu:hover .label-principal {
-    color: #ffffff;
-  }
-  .btn-menu:hover .label-sub {
-    color: var(--ouro-claro);
-  }
-  .btn-menu:hover .seta-hover {
-    opacity: 1;
-    transform: translateX(0);
-  }
+      .btn-menu:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(197, 160, 89, 0.12) 0%,
+          transparent 100%
+        );
+        border-left-color: var(--ouro);
+        padding-left: 24px;
+      }
+      .btn-menu:hover .label-principal {
+        color: #ffffff;
+      }
+      .btn-menu:hover .label-sub {
+        color: var(--ouro-claro);
+      }
+      .btn-menu:hover .seta-hover {
+        opacity: 1;
+        transform: translateX(0);
+      }
 
-  .btn-menu.principal {
-    background: linear-gradient(90deg, rgba(197, 160, 89, 0.08) 0%, transparent 100%);
-    border-left-color: rgba(197, 160, 89, 0.4);
-  }
+      .btn-menu.principal {
+        background: linear-gradient(
+          90deg,
+          rgba(197, 160, 89, 0.08) 0%,
+          transparent 100%
+        );
+        border-left-color: rgba(197, 160, 89, 0.4);
+      }
 
-  /* Rodapé Institucional */
-  .rodape-info {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    color: var(--tinta-fraca);
-    letter-spacing: 0.08em;
-  }
+      /* Rodapé Institucional */
+      .rodape-info {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--tinta-fraca);
+        letter-spacing: 0.08em;
+      }
 
-  /* ============================================================
+      /* ============================================================
      2. GAVETA LATERAL DE CARREGAR MANDATOS (SAVES)
      ============================================================ */
-  #gaveta-saves {
-    position: absolute;
-    inset: 0;
-    background: rgba(2, 4, 3, 0.7);
-    backdrop-filter: blur(8px);
-    z-index: 50;
-    display: flex;
-    justify-content: flex-end;
-    transition: opacity 0.3s ease;
-  }
+      #gaveta-saves {
+        position: absolute;
+        inset: 0;
+        background: rgba(2, 4, 3, 0.7);
+        backdrop-filter: blur(8px);
+        z-index: 50;
+        display: flex;
+        justify-content: flex-end;
+        transition: opacity 0.3s ease;
+      }
 
-  .painel-saves {
-    width: min(600px, 90vw);
-    height: 100%;
-    background: #090e0b;
-    border-left: 1px solid var(--linha);
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.9);
-    padding: 60px 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    animation: deslizar 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+      .painel-saves {
+        width: min(600px, 90vw);
+        height: 100%;
+        background: #090e0b;
+        border-left: 1px solid var(--linha);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.9);
+        padding: 60px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        animation: deslizar 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-  @keyframes deslizar {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-  }
+      @keyframes deslizar {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
 
-  .saves-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--linha);
-    padding-bottom: 16px;
-  }
-  .saves-topo h2 {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 22px;
-    letter-spacing: 0.08em;
-    color: #fff;
-  }
-  .btn-fechar {
-    background: none;
-    border: none;
-    color: var(--tinta-fraca);
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    cursor: pointer;
-    letter-spacing: 0.1em;
-  }
-  .btn-fechar:hover {
-    color: var(--ouro);
-  }
+      .saves-topo {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 1px solid var(--linha);
+        padding-bottom: 16px;
+      }
+      .saves-topo h2 {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 22px;
+        letter-spacing: 0.08em;
+        color: #fff;
+      }
+      .btn-fechar {
+        background: none;
+        border: none;
+        color: var(--tinta-fraca);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        cursor: pointer;
+        letter-spacing: 0.1em;
+      }
+      .btn-fechar:hover {
+        color: var(--ouro);
+      }
 
-  .lista-saves {
-    flex: 1;
-    overflow-y: auto;
-    margin: 30px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 6px;
-  }
+      .lista-saves {
+        flex: 1;
+        overflow-y: auto;
+        margin: 30px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-right: 6px;
+      }
 
-  .item-save {
-    background: var(--bg-item);
-    border: 1px solid var(--linha);
-    border-left: 3px solid transparent;
-    padding: 16px 20px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    transition: all 0.2s ease;
-  }
-  .item-save:hover {
-    background: var(--bg-hover);
-    border-color: var(--ouro);
-    border-left-color: var(--ouro);
-    transform: translateX(-4px);
-  }
-  .item-save.selecionado {
-    background: rgba(26, 38, 32, 0.95);
-    border-color: var(--ouro);
-    border-left-color: var(--ouro);
-  }
+      .item-save {
+        background: var(--bg-item);
+        border: 1px solid var(--linha);
+        border-left: 3px solid transparent;
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        transition: all 0.2s ease;
+      }
+      .item-save:hover {
+        background: var(--bg-hover);
+        border-color: var(--ouro);
+        border-left-color: var(--ouro);
+        transform: translateX(-4px);
+      }
+      .item-save.selecionado {
+        background: rgba(26, 38, 32, 0.95);
+        border-color: var(--ouro);
+        border-left-color: var(--ouro);
+      }
 
-  .save-cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .save-nome {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-  }
-  .save-tag {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    color: var(--ouro);
-    letter-spacing: 0.1em;
-  }
+      .save-cabecalho {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .save-nome {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .save-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        color: var(--ouro);
+        letter-spacing: 0.1em;
+      }
 
-  .save-dados {
-    display: flex;
-    justify-content: space-between;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    color: var(--tinta-suave);
-  }
+      .save-dados {
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--tinta-suave);
+      }
 
-  .saves-rodape {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid var(--linha);
-    padding-top: 20px;
-  }
+      .saves-rodape {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--linha);
+        padding-top: 20px;
+      }
 
-  .btn-acao-save {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    padding: 12px 28px;
-    background: var(--ouro);
-    color: #060907;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .btn-acao-save:hover {
-    background: var(--ouro-claro);
-    box-shadow: 0 4px 16px rgba(197, 160, 89, 0.35);
-  }
+      .btn-acao-save {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        padding: 12px 28px;
+        background: var(--ouro);
+        color: #060907;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .btn-acao-save:hover {
+        background: var(--ouro-claro);
+        box-shadow: 0 4px 16px rgba(197, 160, 89, 0.35);
+      }
 
-  /* ============================================================
+      /* ============================================================
      3. TELA DE CARREGAMENTO (AUSTERA E DIRETA)
      ============================================================ */
-  #cena-loading {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 60% 40%, rgba(10, 15, 12, 0.5) 0%, rgba(3, 5, 4, 0.96) 80%),
-                url('/arte/fundos/carregando.jpg') center/cover no-repeat,
-                #060907;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 90px 120px;
-    z-index: 20;
-    transition: opacity 0.4s ease;
-  }
+      #cena-loading {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 60% 40%,
+            rgba(10, 15, 12, 0.5) 0%,
+            rgba(3, 5, 4, 0.96) 80%
+          ),
+          url("/arte/fundos/carregando.jpg") center/cover no-repeat,
+          #060907;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 90px 120px;
+        z-index: 20;
+        transition: opacity 0.4s ease;
+      }
 
-  .loading-header {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--ouro);
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--linha);
-    padding-bottom: 14px;
-  }
+      .loading-header {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        color: var(--ouro);
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--linha);
+        padding-bottom: 14px;
+      }
 
-  .loading-corpo {
-    max-width: 840px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+      .loading-corpo {
+        max-width: 840px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
 
-  .loading-spinner {
-    width: 32px;
-    height: 32px;
-    border: 2px solid rgba(197, 160, 89, 0.2);
-    border-top-color: var(--ouro);
-    border-radius: 50%;
-    animation: girar 1s linear infinite;
-    margin-bottom: 12px;
-  }
-  @keyframes girar {
-    to { transform: rotate(360deg); }
-  }
+      .loading-spinner {
+        width: 32px;
+        height: 32px;
+        border: 2px solid rgba(197, 160, 89, 0.2);
+        border-top-color: var(--ouro);
+        border-radius: 50%;
+        animation: girar 1s linear infinite;
+        margin-bottom: 12px;
+      }
+      @keyframes girar {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-  .loading-frase {
-    font-family: "Spectral", Georgia, serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: #ffffff;
-    line-height: 1.35;
-  }
-  .loading-status {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    color: var(--tinta-suave);
-    letter-spacing: 0.05em;
-  }
+      .loading-frase {
+        font-family: "Spectral", Georgia, serif;
+        font-size: 32px;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 1.35;
+      }
+      .loading-status {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--tinta-suave);
+        letter-spacing: 0.05em;
+      }
 
-  .loading-barra-trilho {
-    width: 100%;
-    height: 2px;
-    background: rgba(197, 160, 89, 0.15);
-    position: relative;
-    overflow: hidden;
-  }
-  .loading-barra-preenchimento {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 65%;
-    background: var(--ouro);
-    box-shadow: 0 0 10px var(--ouro);
-    transition: width 0.3s ease;
-  }
+      .loading-barra-trilho {
+        width: 100%;
+        height: 2px;
+        background: rgba(197, 160, 89, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+      .loading-barra-preenchimento {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 65%;
+        background: var(--ouro);
+        box-shadow: 0 0 10px var(--ouro);
+        transition: width 0.3s ease;
+      }
 
-  .oculto {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
+      .oculto {
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
 
-  #aviso-toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #090e0b;
-    border: 1px solid var(--ouro);
-    color: #ffffff;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    padding: 10px 24px;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.8);
-    display: none;
-    z-index: 200;
-  }
-</style>
-</head>
-<body>
+      #aviso-toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #090e0b;
+        border: 1px solid var(--ouro);
+        color: #ffffff;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        padding: 10px 24px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+        display: none;
+        z-index: 200;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewport-jogo">
+      <div class="game-frame">
+        <div class="vinheta-cinema"></div>
 
-<div id="viewport-jogo">
-  <div class="game-frame">
+        <!-- Barra de teste de tela (discreta) -->
+        <div class="debug-nav">
+          <a href="/demos/">← Demos</a>
+          <span>Tela:</span>
+          <button id="nav-menu" class="ativo">Menu</button>
+          <button id="nav-saves">Saves</button>
+          <button id="nav-loading">Loading</button>
+          <button id="nav-som">🔊 Som: ON</button>
+        </div>
 
-    <div class="vinheta-cinema"></div>
-
-    <!-- Barra de teste de tela (discreta) -->
-    <div class="debug-nav">
-      <a href="/demos/">← Demos</a>
-      <span>Tela:</span>
-      <button id="nav-menu" class="ativo">Menu</button>
-      <button id="nav-saves">Saves</button>
-      <button id="nav-loading">Loading</button>
-      <button id="nav-som">🔊 Som: ON</button>
-    </div>
-
-    <!-- ============================================================
+        <!-- ============================================================
          1. CENA: MENU PRINCIPAL DE ABERTURA
          ============================================================ -->
-    <div id="cena-menu">
-      <div class="coluna-esquerda">
-        
-        <div class="bloco-marca">
-          <div class="emblema-governo">
-            <div class="emblema-icone"></div>
-            <span class="emblema-texto">Poder Executivo</span>
+        <div id="cena-menu">
+          <div class="coluna-esquerda">
+            <div class="bloco-marca">
+              <div class="emblema-governo">
+                <div class="emblema-icone"></div>
+                <span class="emblema-texto">Poder Executivo</span>
+              </div>
+              <h1 class="titulo-jogo">SISGOV</h1>
+              <p class="subtitulo-jogo">
+                Simulador de Governo & Estratégia de Estado
+              </p>
+              <div class="divisa-marca"></div>
+            </div>
+
+            <div class="menu-opcoes">
+              <button class="btn-menu principal" id="btn-novo-jogo">
+                <div class="conteudo-btn">
+                  <span class="label-principal">NOVO MANDATO</span>
+                  <span class="label-sub">Iniciar campanha de governo</span>
+                </div>
+                <span class="seta-hover">→</span>
+              </button>
+
+              <button class="btn-menu" id="btn-continuar">
+                <div class="conteudo-btn">
+                  <span class="label-principal">CONTINUAR</span>
+                  <span class="label-sub"
+                    >Brasil — Turno 14 (Aprovação 61%)</span
+                  >
+                </div>
+                <span class="seta-hover">→</span>
+              </button>
+
+              <button class="btn-menu" id="btn-carregar">
+                <div class="conteudo-btn">
+                  <span class="label-principal">CARREGAR MANDATO</span>
+                  <span class="label-sub">3 arquivos salvos</span>
+                </div>
+                <span class="seta-hover">→</span>
+              </button>
+
+              <button class="btn-menu" id="btn-opcoes">
+                <div class="conteudo-btn">
+                  <span class="label-principal">CONFIGURAÇÕES</span>
+                  <span class="label-sub">Áudio, gráficos e interface</span>
+                </div>
+                <span class="seta-hover">→</span>
+              </button>
+
+              <button class="btn-menu" id="btn-creditos">
+                <div class="conteudo-btn">
+                  <span class="label-principal">CRÉDITOS</span>
+                  <span class="label-sub">SisGov v0.2</span>
+                </div>
+                <span class="seta-hover">→</span>
+              </button>
+            </div>
           </div>
-          <h1 class="titulo-jogo">SISGOV</h1>
-          <p class="subtitulo-jogo">Simulador de Governo & Estratégia de Estado</p>
-          <div class="divisa-marca"></div>
+
+          <div class="rodape-info">
+            GABINETE PRESIDENCIAL · SISTEMA DE SIMULAÇÃO DE ESTADO · 2026
+          </div>
         </div>
 
-        <div class="menu-opcoes">
-          <button class="btn-menu principal" id="btn-novo-jogo">
-            <div class="conteudo-btn">
-              <span class="label-principal">NOVO MANDATO</span>
-              <span class="label-sub">Iniciar campanha de governo</span>
-            </div>
-            <span class="seta-hover">→</span>
-          </button>
-
-          <button class="btn-menu" id="btn-continuar">
-            <div class="conteudo-btn">
-              <span class="label-principal">CONTINUAR</span>
-              <span class="label-sub">Brasil — Turno 14 (Aprovação 61%)</span>
-            </div>
-            <span class="seta-hover">→</span>
-          </button>
-
-          <button class="btn-menu" id="btn-carregar">
-            <div class="conteudo-btn">
-              <span class="label-principal">CARREGAR MANDATO</span>
-              <span class="label-sub">3 arquivos salvos</span>
-            </div>
-            <span class="seta-hover">→</span>
-          </button>
-
-          <button class="btn-menu" id="btn-opcoes">
-            <div class="conteudo-btn">
-              <span class="label-principal">CONFIGURAÇÕES</span>
-              <span class="label-sub">Áudio, gráficos e interface</span>
-            </div>
-            <span class="seta-hover">→</span>
-          </button>
-
-          <button class="btn-menu" id="btn-creditos">
-            <div class="conteudo-btn">
-              <span class="label-principal">CRÉDITOS</span>
-              <span class="label-sub">SisGov v0.2</span>
-            </div>
-            <span class="seta-hover">→</span>
-          </button>
-        </div>
-
-      </div>
-
-      <div class="rodape-info">
-        GABINETE PRESIDENCIAL · SISTEMA DE SIMULAÇÃO DE ESTADO · 2026
-      </div>
-    </div>
-
-    <!-- ============================================================
+        <!-- ============================================================
          2. GAVETA DE CARREGAR MANDATOS (SAVES)
          ============================================================ -->
-    <div id="gaveta-saves" class="oculto">
-      <div class="painel-saves">
-        <div class="saves-topo">
-          <h2>CARREGAR MANDATO</h2>
-          <button class="btn-fechar" id="btn-fechar-saves">[ESC] FECHAR</button>
-        </div>
-
-        <div class="lista-saves">
-          <div class="item-save selecionado">
-            <div class="save-cabecalho">
-              <span class="save-nome">BRASIL — 2º ANO DE MANDATO</span>
-              <span class="save-tag">AUTOSALVAMENTO</span>
+        <div id="gaveta-saves" class="oculto">
+          <div class="painel-saves">
+            <div class="saves-topo">
+              <h2>CARREGAR MANDATO</h2>
+              <button class="btn-fechar" id="btn-fechar-saves">
+                [ESC] FECHAR
+              </button>
             </div>
-            <div class="save-dados">
-              <span>Turno 14 · Presidente Emerson</span>
-              <span style="color:var(--ouro);">Aprovação 61%</span>
+
+            <div class="lista-saves">
+              <div class="item-save selecionado">
+                <div class="save-cabecalho">
+                  <span class="save-nome">BRASIL — 2º ANO DE MANDATO</span>
+                  <span class="save-tag">AUTOSALVAMENTO</span>
+                </div>
+                <div class="save-dados">
+                  <span>Turno 14 · Presidente Emerson</span>
+                  <span style="color: var(--ouro)">Aprovação 61%</span>
+                </div>
+              </div>
+
+              <div class="item-save">
+                <div class="save-cabecalho">
+                  <span class="save-nome">BRASIL — CRISE PREVIDENCIÁRIA</span>
+                  <span class="save-tag">MANUAL</span>
+                </div>
+                <div class="save-dados">
+                  <span>Turno 3 · Presidente Emerson</span>
+                  <span style="color: var(--alerta-red)">Aprovação 38%</span>
+                </div>
+              </div>
+
+              <div class="item-save">
+                <div class="save-cabecalho">
+                  <span class="save-nome">RÚSSIA — AUDITORIA DE CENÁRIO</span>
+                  <span class="save-tag">MANUAL</span>
+                </div>
+                <div class="save-dados">
+                  <span>Turno 7 · Gabinete de Teste</span>
+                  <span>Aprovação 52%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="saves-rodape">
+              <button class="btn-acao-save" id="btn-confirmar-load">
+                ASSUMIR MANDATO
+              </button>
             </div>
           </div>
-
-          <div class="item-save">
-            <div class="save-cabecalho">
-              <span class="save-nome">BRASIL — CRISE PREVIDENCIÁRIA</span>
-              <span class="save-tag">MANUAL</span>
-            </div>
-            <div class="save-dados">
-              <span>Turno 3 · Presidente Emerson</span>
-              <span style="color:var(--alerta-red);">Aprovação 38%</span>
-            </div>
-          </div>
-
-          <div class="item-save">
-            <div class="save-cabecalho">
-              <span class="save-nome">RÚSSIA — AUDITORIA DE CENÁRIO</span>
-              <span class="save-tag">MANUAL</span>
-            </div>
-            <div class="save-dados">
-              <span>Turno 7 · Gabinete de Teste</span>
-              <span>Aprovação 52%</span>
-            </div>
-          </div>
         </div>
 
-        <div class="saves-rodape">
-          <button class="btn-acao-save" id="btn-confirmar-load">ASSUMIR MANDATO</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============================================================
+        <!-- ============================================================
          3. TELA DE CARREGAMENTO (LOADING)
          ============================================================ -->
-    <div id="cena-loading" class="oculto">
-      <div class="loading-header">
-        <span>GABINETE DE TRANSIÇÃO // CARREGANDO SIMULAÇÃO</span>
-        <span>SISGOV ENGINE</span>
-      </div>
+        <div id="cena-loading" class="oculto">
+          <div class="loading-header">
+            <span>GABINETE DE TRANSIÇÃO // CARREGANDO SIMULAÇÃO</span>
+            <span>SISGOV ENGINE</span>
+          </div>
 
-      <div class="loading-corpo">
-        <div class="loading-spinner"></div>
-        <h2 class="loading-frase" id="frase-loading">Toda lei é uma bolha no mapa. Uma vez assinada, ela vive por conta própria.</h2>
-        <span class="loading-status">SINCRONIZANDO VETORES DE OPINIÃO POPULAR E EQUILÍBRIO DO CONGRESSO...</span>
+          <div class="loading-corpo">
+            <div class="loading-spinner"></div>
+            <h2 class="loading-frase" id="frase-loading">
+              Toda lei é uma bolha no mapa. Uma vez assinada, ela vive por conta
+              própria.
+            </h2>
+            <span class="loading-status"
+              >SINCRONIZANDO VETORES DE OPINIÃO POPULAR E EQUILÍBRIO DO
+              CONGRESSO...</span
+            >
 
-        <div class="loading-barra-trilho">
-          <div class="loading-barra-preenchimento"></div>
+            <div class="loading-barra-trilho">
+              <div class="loading-barra-preenchimento"></div>
+            </div>
+          </div>
+
+          <div
+            style="
+              font-family: &quot;JetBrains Mono&quot;, monospace;
+              font-size: 11px;
+              color: var(--tinta-fraca);
+            "
+          >
+            NENHUMA ESCOLHA É SÓ BOA OU SÓ RUIM · O PAÍS SEMPRE COBRA O PREÇO
+          </div>
         </div>
-      </div>
-
-      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--tinta-fraca);">
-        NENHUMA ESCOLHA É SÓ BOA OU SÓ RUIM · O PAÍS SEMPRE COBRA O PREÇO
       </div>
     </div>
 
-  </div>
-</div>
+    <div id="aviso-toast"></div>
 
-<div id="aviso-toast"></div>
+    <script>
+      // Sistema de Som Físico Sóbrio (Cliques mecânicos e abafados)
+      class AudioSober {
+        constructor() {
+          this.ctx = null;
+          this.ativo = true;
+        }
+        init() {
+          if (!this.ctx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (AudioCtx) this.ctx = new AudioCtx();
+          }
+          if (this.ctx && this.ctx.state === "suspended") this.ctx.resume();
+        }
+        hover() {
+          if (!this.ativo || !this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(520, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(
+            780,
+            this.ctx.currentTime + 0.02,
+          );
+          gain.gain.setValueAtTime(0.03, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            this.ctx.currentTime + 0.02,
+          );
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.02);
+        }
+        click() {
+          if (!this.ativo || !this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(420, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(
+            80,
+            this.ctx.currentTime + 0.04,
+          );
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            this.ctx.currentTime + 0.04,
+          );
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.04);
+        }
+      }
+      const audio = new AudioSober();
 
-<script>
-// Sistema de Som Físico Sóbrio (Cliques mecânicos e abafados)
-class AudioSober {
-  constructor() {
-    this.ctx = null;
-    this.ativo = true;
-  }
-  init() {
-    if (!this.ctx) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtx) this.ctx = new AudioCtx();
-    }
-    if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
-  }
-  hover() {
-    if (!this.ativo || !this.ctx) return;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(520, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(780, this.ctx.currentTime + 0.02);
-    gain.gain.setValueAtTime(0.03, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.02);
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-    osc.start();
-    osc.stop(this.ctx.currentTime + 0.02);
-  }
-  click() {
-    if (!this.ativo || !this.ctx) return;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(420, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(80, this.ctx.currentTime + 0.04);
-    gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-    osc.start();
-    osc.stop(this.ctx.currentTime + 0.04);
-  }
-}
-const audio = new AudioSober();
+      const cenaMenu = document.getElementById("cena-menu");
+      const cenaLoading = document.getElementById("cena-loading");
+      const gavetaSaves = document.getElementById("gaveta-saves");
+      const aviso = document.getElementById("aviso-toast");
 
-const cenaMenu = document.getElementById('cena-menu');
-const cenaLoading = document.getElementById('cena-loading');
-const gavetaSaves = document.getElementById('gaveta-saves');
-const aviso = document.getElementById('aviso-toast');
+      const navMenu = document.getElementById("nav-menu");
+      const navSaves = document.getElementById("nav-saves");
+      const navLoading = document.getElementById("nav-loading");
+      const navSom = document.getElementById("nav-som");
 
-const navMenu = document.getElementById('nav-menu');
-const navSaves = document.getElementById('nav-saves');
-const navLoading = document.getElementById('nav-loading');
-const navSom = document.getElementById('nav-som');
+      function marcarNav(btn) {
+        [navMenu, navSaves, navLoading].forEach((b) =>
+          b.classList.remove("ativo"),
+        );
+        if (btn) btn.classList.add("ativo");
+      }
 
-function marcarNav(btn) {
-  [navMenu, navSaves, navLoading].forEach(b => b.classList.remove('ativo'));
-  if (btn) btn.classList.add('ativo');
-}
+      function notificar(msg) {
+        aviso.textContent = msg;
+        aviso.style.display = "block";
+        setTimeout(() => {
+          aviso.style.display = "none";
+        }, 3000);
+      }
 
-function notificar(msg) {
-  aviso.textContent = msg;
-  aviso.style.display = 'block';
-  setTimeout(() => { aviso.style.display = 'none'; }, 3000);
-}
+      function verMenu() {
+        marcarNav(navMenu);
+        cenaMenu.classList.remove("oculto");
+        cenaLoading.classList.add("oculto");
+        gavetaSaves.classList.add("oculto");
+      }
 
-function verMenu() {
-  marcarNav(navMenu);
-  cenaMenu.classList.remove('oculto');
-  cenaLoading.classList.add('oculto');
-  gavetaSaves.classList.add('oculto');
-}
+      function verSaves() {
+        marcarNav(navSaves);
+        cenaMenu.classList.remove("oculto");
+        cenaLoading.classList.add("oculto");
+        gavetaSaves.classList.remove("oculto");
+      }
 
-function verSaves() {
-  marcarNav(navSaves);
-  cenaMenu.classList.remove('oculto');
-  cenaLoading.classList.add('oculto');
-  gavetaSaves.classList.remove('oculto');
-}
+      function verLoading() {
+        marcarNav(navLoading);
+        cenaLoading.classList.remove("oculto");
+        cenaMenu.classList.add("oculto");
+        gavetaSaves.classList.add("oculto");
+      }
 
-function verLoading() {
-  marcarNav(navLoading);
-  cenaLoading.classList.remove('oculto');
-  cenaMenu.classList.add('oculto');
-  gavetaSaves.classList.add('oculto');
-}
+      navMenu.addEventListener("click", () => {
+        audio.init();
+        audio.click();
+        verMenu();
+      });
+      navSaves.addEventListener("click", () => {
+        audio.init();
+        audio.click();
+        verSaves();
+      });
+      navLoading.addEventListener("click", () => {
+        audio.init();
+        audio.click();
+        verLoading();
+      });
 
-navMenu.addEventListener('click', () => { audio.init(); audio.click(); verMenu(); });
-navSaves.addEventListener('click', () => { audio.init(); audio.click(); verSaves(); });
-navLoading.addEventListener('click', () => { audio.init(); audio.click(); verLoading(); });
+      navSom.addEventListener("click", () => {
+        audio.init();
+        audio.ativo = !audio.ativo;
+        navSom.textContent = audio.ativo ? "🔊 Som: ON" : "🔈 Som: OFF";
+      });
 
-navSom.addEventListener('click', () => {
-  audio.init();
-  audio.ativo = !audio.ativo;
-  navSom.textContent = audio.ativo ? '🔊 Som: ON' : '🔈 Som: OFF';
-});
+      // Ações dos Botões do Menu
+      document.querySelectorAll(".btn-menu").forEach((btn) => {
+        btn.addEventListener("mouseenter", () => {
+          audio.init();
+          audio.hover();
+        });
+        btn.addEventListener("click", () => {
+          audio.init();
+          audio.click();
+        });
+      });
 
-// Ações dos Botões do Menu
-document.querySelectorAll('.btn-menu').forEach(btn => {
-  btn.addEventListener('mouseenter', () => {
-    audio.init();
-    audio.hover();
-  });
-  btn.addEventListener('click', () => {
-    audio.init();
-    audio.click();
-  });
-});
+      document.getElementById("btn-novo-jogo").addEventListener("click", () => {
+        notificar(
+          "▶ Próximo passo: Tela de Nova Partida (País → Partido → Chapa → Ministérios)",
+        );
+      });
 
-document.getElementById('btn-novo-jogo').addEventListener('click', () => {
-  notificar('▶ Próximo passo: Tela de Nova Partida (País → Partido → Chapa → Ministérios)');
-});
+      document.getElementById("btn-continuar").addEventListener("click", () => {
+        notificar("▶ Retomando último mandato: Brasil (Turno 14)");
+      });
 
-document.getElementById('btn-continuar').addEventListener('click', () => {
-  notificar('▶ Retomando último mandato: Brasil (Turno 14)');
-});
+      document
+        .getElementById("btn-carregar")
+        .addEventListener("click", verSaves);
+      document
+        .getElementById("btn-fechar-saves")
+        .addEventListener("click", verMenu);
 
-document.getElementById('btn-carregar').addEventListener('click', verSaves);
-document.getElementById('btn-fechar-saves').addEventListener('click', verMenu);
+      document.getElementById("btn-opcoes").addEventListener("click", () => {
+        notificar("⚙ Configurações de exibição e áudio");
+      });
 
-document.getElementById('btn-opcoes').addEventListener('click', () => {
-  notificar('⚙ Configurações de exibição e áudio');
-});
+      document.getElementById("btn-creditos").addEventListener("click", () => {
+        notificar("📜 SisGov — Simulador de Governo v0.2");
+      });
 
-document.getElementById('btn-creditos').addEventListener('click', () => {
-  notificar('📜 SisGov — Simulador de Governo v0.2');
-});
+      // Seleção de Saves
+      document.querySelectorAll(".item-save").forEach((item) => {
+        item.addEventListener("click", () => {
+          audio.init();
+          audio.click();
+          document
+            .querySelectorAll(".item-save")
+            .forEach((i) => i.classList.remove("selecionado"));
+          item.classList.add("selecionado");
+        });
+      });
 
-// Seleção de Saves
-document.querySelectorAll('.item-save').forEach(item => {
-  item.addEventListener('click', () => {
-    audio.init();
-    audio.click();
-    document.querySelectorAll('.item-save').forEach(i => i.classList.remove('selecionado'));
-    item.classList.add('selecionado');
-  });
-});
+      document
+        .getElementById("btn-confirmar-load")
+        .addEventListener("click", () => {
+          audio.init();
+          audio.click();
+          notificar("▶ Carregando mandato selecionado...");
+          setTimeout(verMenu, 1200);
+        });
 
-document.getElementById('btn-confirmar-load').addEventListener('click', () => {
-  audio.init();
-  audio.click();
-  notificar('▶ Carregando mandato selecionado...');
-  setTimeout(verMenu, 1200);
-});
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !gavetaSaves.classList.contains("oculto")) {
+          verMenu();
+          audio.click();
+        }
+      });
 
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !gavetaSaves.classList.contains('oculto')) {
-    verMenu();
-    audio.click();
-  }
-});
-
-window.addEventListener('click', () => audio.init(), { once: true });
-</script>
-</body>
+      window.addEventListener("click", () => audio.init(), { once: true });
+    </script>
+  </body>
 </html>

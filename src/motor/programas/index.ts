@@ -4,10 +4,11 @@
 // nome próprio é do país. Comportamento em programas.md.
 import type { Fato } from "../fatos";
 import type { Lei, ValorLei } from "../leis";
-import { andarPrograma, situacaoDoPrograma } from "./vida";
+import { andarPrograma, programaDeAntes, situacaoDoPrograma } from "./vida";
 import type {
   EntradaProgramas,
   EstadoProgramas,
+  Programa,
   RegrasProgramas,
   SaidaProgramas,
   SituacaoDoPrograma,
@@ -22,10 +23,18 @@ const CHAVES_DE_NOME = ["tema", "bem", "mal", "publico"];
 
 /** Começo da partida: as leis de hoje são o ponto de partida do mandato. */
 export function iniciarProgramas(
+  e: Pick<EntradaProgramas, "regras" | "tipos" | "leis" | "valores">,
   mandato: number,
-  valores: Record<string, ValorLei>,
 ): EstadoProgramas {
-  return { mandato, referencia: valores, formando: {}, vidas: {} };
+  const vidas = Object.fromEntries(
+    e.regras.formados.map(({ programa, lembranca }) => {
+      const dele = e.regras.programas.find(
+        (p) => p.id === programa,
+      ) as Programa;
+      return [programa, programaDeAntes(e, dele, lembranca)];
+    }),
+  );
+  return { mandato, referencia: e.valores, formando: {}, vidas };
 }
 
 /** Mandato novo: as leis de hoje passam a ser o ponto de partida. */
@@ -81,6 +90,9 @@ export function motivoProgramasInvalidos(
     if (!(p.minimo >= 1 && p.minimo <= p.leis.length))
       return `${p.id}: forma-se com ${p.minimo}, mas tem ${p.leis.length} leis`;
   }
+  const semPrograma = regras.formados.find((f) => !ids.has(f.programa));
+  if (semPrograma)
+    return `formado de antes que não existe: "${semPrograma.programa}"`;
   const alheio = Object.keys(regras.nomesDoPais).find((id) => !ids.has(id));
   if (alheio) return `nome do país para programa que não existe: "${alheio}"`;
   for (const molde of regras.moldes)

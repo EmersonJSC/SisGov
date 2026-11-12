@@ -9,11 +9,11 @@ ligado ou criado e ainda não passou por avaliação entra em **Não avaliados**
 
 ## Avaliados
 
-| Índice                    | Movido por                                                                                             | Empurra                             | Cobrado por                         | Data        |
-| ------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------- | ----------- |
-| Favela (`favela`)         | contagem de casas, preço contra a renda dos pops, leis de moradia                                      | piora saúde, segurança e saneamento | sem trabalho formal                 | 04/nov/2026 |
+| Índice                    | Movido por                                                                                             | Empurra                                | Cobrado por                              | Data        |
+| ------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- | ---------------------------------------- | ----------- |
+| Favela (`favela`)         | contagem de casas, preço contra a renda dos pops, leis de moradia                                      | piora saúde, segurança e saneamento    | sem trabalho formal                      | 04/nov/2026 |
 | Saúde (`saude`)           | rede de atendimento, saneamento, favela, vacinação, saúde ambiental                                    | melhora padrão de vida e reduz pobreza | operários, educação e saúde, aposentados | 05/nov/2026 |
-| Saneamento (`saneamento`) | contagem da rede (verba, concessão, teto da tarifa, tratamento), conta contra a renda dos pops, favela | melhora saúde e meio ambiente       | sem trabalho formal, gente do campo | 04/nov/2026 |
+| Saneamento (`saneamento`) | contagem da rede (verba, concessão, teto da tarifa, tratamento), conta contra a renda dos pops, favela | melhora saúde e meio ambiente          | sem trabalho formal, gente do campo      | 04/nov/2026 |
 
 ## Não avaliados
 

@@ -37,6 +37,7 @@
 ## 1. PIB: índice ou dinheiro?
 
 ### Democracy 4
+
 - Cada indicador (PIB, desemprego, saúde…) é um número de 0 a 1. O PIB é um
   deles: "quão boa está a economia", não quantos dólares o país produz.
 - O dinheiro aparece em outro lugar: cada lei tem custo e receita em moeda,
@@ -47,6 +48,7 @@
   fontes lidas (não confirmado).
 
 ### Victoria 3
+
 - O PIB é dinheiro: a soma, em todos os prédios do país, do que foi produzido
   vezes o preço do bem no mercado.
 - O PIB cresce porque se constroem prédios, a produtividade sobe e os preços
@@ -54,6 +56,7 @@
 - A cunhagem de moeda (uma receita automática) é uma fração do PIB.
 
 ### SisGov hoje
+
 - `pib` é um índice de 0 a 100 (começa em 44,7), alimentado por dezenas de
   setas, como no Democracy 4.
 - `pib_nominal` (o PIB em reais) é um **controle constante**: não cresce, não
@@ -62,6 +65,7 @@
   isso crescimento e inflação nunca diluem a dívida.
 
 ### O que aproveitar
+
 - **Ficar com os dois números, cada um no seu papel** (híbrido):
   - **PIB em reais** vira estoque: cresce todo mês pela taxa de crescimento
     real mais a inflação. É dele que saem a dívida em %, a receita em reais e
@@ -75,6 +79,7 @@
 ## 2. Receita e gasto
 
 ### Democracy 4
+
 - Cada lei tem uma faixa de custo e uma de receita. O nível da lei escolhe o
   ponto da faixa.
 - Multiplicadores ajustam o valor pelo estado do país: impostos reagem à
@@ -84,6 +89,7 @@
   economia. Uma queda grande do PIB tira só uma fração da arrecadação.
 
 ### Victoria 3
+
 - Os impostos têm **níveis** (muito baixo a muito alto), não sliders. Subir o
   nível rende mais e custa legitimidade e radicais.
 - Cada imposto tem uma base real: salário dos trabalhadores (renda), número
@@ -93,6 +99,7 @@
   construção e juros. Cortar gasto do governo fecha empregos de verdade.
 
 ### SisGov hoje
+
 - Cada imposto tem curva de arrecadação (Laffer) pela alíquota. **Bom, e mais
   completo que os dois jogos.**
 - A curva é multiplicada pelo índice de atividade inteiro
@@ -102,6 +109,7 @@
   (seguro × desemprego, previdência × envelhecimento). **Igual ao Democracy 4.**
 
 ### O que aproveitar
+
 - **Receita em % do PIB depende só da alíquota**, mais um termo pequeno de
   ciclo (o `simular.py` usa 0,15 ponto por 1% de PIB fora da tendência). Em
   reais, a receita já acompanha o PIB, porque o PIB em reais cai junto.
@@ -114,6 +122,7 @@
 ## 3. Dívida, juros e crise
 
 ### Democracy 4
+
 - Déficit vira dívida, superávit paga dívida.
 - A cada meio ano, um **mercado de títulos** dá uma nota de crédito ao país
   olhando quatro coisas: dívida/PIB, déficit/PIB, estabilidade e inflação.
@@ -122,6 +131,7 @@
   confiança e apoio. O teto imaginado é ~250% do PIB.
 
 ### Victoria 3
+
 - Toda semana: receita − gasto vai para a **reserva de ouro** (caixa) ou, se
   ela acabou, vira **dívida**.
 - A reserva tem um teto "mole": acima dele, o superávit rende cada vez menos.
@@ -131,10 +141,11 @@
 - **Os juros são baixos e não sobem perto do teto.** Os desenvolvedores
   testaram juros que sobem e tiraram, porque viravam espirais de morte sem
   graça.
-- Não há inflação (a cunhagem é calibrada para não haver). *Segundo o diário
-  de 2021, antes do lançamento.*
+- Não há inflação (a cunhagem é calibrada para não haver). _Segundo o diário
+  de 2021, antes do lançamento._
 
 ### SisGov hoje
+
 - Déficit soma na dívida, superávit abate, e depois enche o **cofre** (fase 4).
   **Igual ao Victoria 3** (reserva + dívida), com a lei "Uso do cofre" a mais.
 - Juros = 0,7 × Selic × dívida. A Selic **não reage** à dívida nem ao
@@ -143,6 +154,7 @@
   papel da crise da dívida do Democracy 4.
 
 ### O que aproveitar
+
 - **A nota de crédito do Democracy 4**, em versão visível: risco-país sobe com
   dívida/PIB e déficit, cai com superávit e estabilidade; a Selic segue a
   inflação + prêmio do risco. É o canal que faz a austeridade funcionar.
@@ -159,18 +171,21 @@
 ## 4. Tempo e suavização
 
 ### Democracy 4
+
 - Cada efeito tem **inércia**: o valor usado é a média dos últimos N turnos.
   Uma lei nova chega devagar ao efeito cheio.
 - Leis têm **tempo de implantação** e, enquanto não estão completas, rendem
   menos. O ministro competente acelera ou freia.
 
 ### Victoria 3
+
 - Contas fechadas **toda semana**; nada é pago de uma vez (nem obras).
 - A riqueza de cada grupo anda aos poucos: um déficit pequeno leva meses para
   baixar o padrão de vida. A riqueza é guardada em passos finos para não
   oscilar.
 
 ### SisGov hoje
+
 - Bolhas andam metade do caminho por mês (D-54); efeitos têm atraso
   (`atrasoPassos`); a lei anda mês a mês até a meta e o custo anda junto.
   **Já cobre as duas ideias.**
@@ -178,12 +193,14 @@
   semanas, como o Victoria 3.
 
 ### O que aproveitar
+
 - Nada novo para o motor. Para obras e indústria, usar a **rampa** do
   `simular.py` (efeito cheio no 3º ano), que imita o "obra leva tempo".
 
 ## 5. População e padrão de vida
 
 ### Victoria 3
+
 - Cada grupo de pessoas (pop) tem **padrão de vida** de 1 a 99, com faixas
   (passando fome … opulento).
 - A base é a **riqueza**: renda líquida comparada com o custo das
@@ -196,18 +213,21 @@
   - **força política** do grupo (mais rico, mais peso).
 
 ### Democracy 4
+
 - Os eleitores pertencem a vários grupos ao mesmo tempo (pobre, aposentado,
   motorista…). A felicidade de cada um é a soma dos efeitos sobre os grupos
   dele, e decide o voto.
 - Renda das faixas (baixa, média, alta) é um indicador que as leis mexem.
 
 ### SisGov hoje
+
 - Grupos de pressão e eleição existem; a renda das famílias e a pobreza são
   índices.
 - Mecânicas 7 (população) e 8 (grupos com radicais e lealistas, opção A)
   ainda a escrever.
 
 ### O que aproveitar
+
 - **Do Victoria 3, quase tudo para as mecânicas 7 e 8:**
   - padrão de vida por grupo, vindo de renda × custo de vida;
   - radicais e lealistas pela **variação** do padrão de vida, não pelo nível;
@@ -217,6 +237,7 @@
 ## 6. Leis e política
 
 ### Victoria 3
+
 - Aprovar uma lei leva tempo: a cada etapa ela pode avançar, emperrar ou ser
   debatida, com chance que depende do apoio dos grupos de interesse.
 - Grupos de interesse têm **peso** (clout, pela riqueza e pelo voto dos seus
@@ -225,14 +246,17 @@
 - Impostos altos tiram legitimidade e criam radicais.
 
 ### Democracy 4
+
 - Cada lei custa **capital político** para criar, subir, baixar ou cancelar.
 - Leis têm pré-requisitos e opostos.
 
 ### SisGov hoje
+
 - Tramitação no Congresso existe (mecânica 3 a escrever); leis em três níveis;
   exclusões entre leis; grupos de pressão.
 
 ### O que aproveitar
+
 - Do Victoria 3, para a mecânica 3: **avançar / emperrar / debater** como
   etapas da tramitação, com chance pelo apoio dos grupos.
 - Do Victoria 3, para a mecânica 8: **peso × aprovação** dos grupos.
@@ -241,23 +265,23 @@
 
 ## 7. Tabela: o que já temos, o que falta, de onde tirar
 
-| Peça | Democracy 4 | Victoria 3 | SisGov hoje | Tirar de |
-| --- | --- | --- | --- | --- |
-| PIB em dinheiro que cresce | não (índice) | sim (produção × preço) | **não** (constante) | Victoria 3, em versão simples |
-| Ritmo da economia (índice) | sim | não | sim | já temos |
-| Imposto com curva pela alíquota | não (reta) | não (níveis) | **sim** | já temos |
-| Receita que reage ao PIB | em parte | em reais | em excesso | Democracy 4 (parte fixa) |
-| Custo que reage ao país | sim | sim | sim | já temos |
-| Cortar gasto tira emprego, na medida | não | sim | em excesso | Victoria 3 |
-| Nota de crédito → juros | sim | não | **não** | Democracy 4 |
-| Juros que não viram espiral | não | sim | sim, por ora | Victoria 3 |
-| Caixa e dívida separados | não | sim | sim (cofre) | já temos |
-| Teto de dívida / calote | não | sim | ocorrência | depois da v1 |
-| Inércia dos efeitos | sim | sim (riqueza) | sim | já temos |
-| Padrão de vida por grupo | não | sim | não | Victoria 3 (mec. 7–8) |
-| Radicais e lealistas | não | sim | não | Victoria 3 (mec. 8) |
-| Pessoa em vários grupos | sim | não | em parte | Democracy 4 (eleição) |
-| Tramitação com etapas | não | sim | sim | Victoria 3 (mec. 3) |
+| Peça                                 | Democracy 4  | Victoria 3             | SisGov hoje         | Tirar de                      |
+| ------------------------------------ | ------------ | ---------------------- | ------------------- | ----------------------------- |
+| PIB em dinheiro que cresce           | não (índice) | sim (produção × preço) | **não** (constante) | Victoria 3, em versão simples |
+| Ritmo da economia (índice)           | sim          | não                    | sim                 | já temos                      |
+| Imposto com curva pela alíquota      | não (reta)   | não (níveis)           | **sim**             | já temos                      |
+| Receita que reage ao PIB             | em parte     | em reais               | em excesso          | Democracy 4 (parte fixa)      |
+| Custo que reage ao país              | sim          | sim                    | sim                 | já temos                      |
+| Cortar gasto tira emprego, na medida | não          | sim                    | em excesso          | Victoria 3                    |
+| Nota de crédito → juros              | sim          | não                    | **não**             | Democracy 4                   |
+| Juros que não viram espiral          | não          | sim                    | sim, por ora        | Victoria 3                    |
+| Caixa e dívida separados             | não          | sim                    | sim (cofre)         | já temos                      |
+| Teto de dívida / calote              | não          | sim                    | ocorrência          | depois da v1                  |
+| Inércia dos efeitos                  | sim          | sim (riqueza)          | sim                 | já temos                      |
+| Padrão de vida por grupo             | não          | sim                    | não                 | Victoria 3 (mec. 7–8)         |
+| Radicais e lealistas                 | não          | sim                    | não                 | Victoria 3 (mec. 8)           |
+| Pessoa em vários grupos              | sim          | não                    | em parte            | Democracy 4 (eleição)         |
+| Tramitação com etapas                | não          | sim                    | sim                 | Victoria 3 (mec. 3)           |
 
 ## 8. Proposta para a mecânica 4 (orçamento), com base neste estudo
 

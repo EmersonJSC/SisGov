@@ -392,13 +392,17 @@ describe("programas", () => {
     return jogar(partida, 1, pedidos).estado;
   }
 
-  it("aprovar as leis do programa forma, com o nome que o país deu", () => {
-    const estado = aprovando("saude-da-familia", 3);
-    expect(estado.programas?.vidas["saude-da-familia"]).toMatchObject({
+  it("o Brasil já começa com os programas que declara, com o nome dele", () => {
+    const vidas = criarPartida("brasil-2026", 1).estado.programas?.vidas ?? {};
+    expect(Object.keys(vidas).sort()).toEqual([
+      "remedio-barato",
+      "renda-da-familia",
+      "saude-da-familia",
+    ]);
+    expect(vidas["renda-da-familia"] as unknown).toMatchObject({
       situacao: "formado",
-      nome: "Saúde da Família",
+      nome: "Bolsa Família",
     });
-    expect(estado.fatos?.map((f) => f.tipo)).toContain("programa-formado");
   });
 
   it("sem nome do país, o programa recebe um nome gerado", () => {
@@ -411,11 +415,14 @@ describe("programas", () => {
   });
 
   it("leis a menos do mínimo não formam nada", () => {
-    expect(aprovando("saude-da-familia", 2).programas?.vidas).toEqual({});
+    expect(
+      aprovando("escola-o-dia-todo", 2).programas?.vidas,
+    ).not.toHaveProperty("escola-o-dia-todo");
   });
 
-  it("sem mexer nas leis, nenhum programa se forma sozinho", () => {
+  it("sem mexer nas leis, nada se forma nem se desfaz sozinho", () => {
     const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
-    expect(jogar(partida, 12).estado.programas?.vidas).toEqual({});
+    const antes = partida.estado.programas?.vidas;
+    expect(jogar(partida, 12).estado.programas?.vidas).toEqual(antes);
   });
 });

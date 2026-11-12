@@ -249,3 +249,8 @@ testes. Os testes não cobrem tudo; conferir estes pontos:
 34. **Nomes do país** em `paises/brasil-2026/programas.json` (Farmácia Popular,
     Saúde da Família, Bolsa Família): escolhi três da coluna "programas reais
     parecidos". Nomes de programas, não de pessoas.
+35. **Programas que o país já tem** (`programaDeAntes`). Nascem formados com
+    referência vazia ("desde sempre") e lembrança calculada das leis de hoje
+    (Brasil: os 3 declarados). Conferir se a lembrança calculada diz o que o
+    Brasil real sentiu (quem gosta do Bolsa Família etc.); o país pode
+    declarar a sua à mão.

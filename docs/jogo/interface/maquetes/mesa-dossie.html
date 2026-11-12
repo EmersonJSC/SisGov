@@ -1,864 +1,1065 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>SisGov — Dossiê de Estado (Mesa, Papéis e Burocracia)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Special+Elite&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --couro-mesa: #0e1411;
-    --madeira-borda: #1a1510;
-    --pasta-parda: #cbb993;
-    --pasta-escura: #b3a078;
-    --pasta-borda: #9a8863;
-    --papel-oficio: #f3edd9;
-    --papel-linha: #d8ceb2;
-    --tinta-fita: #24211d;
-    --tinta-suave: #5a544c;
-    --ouro: #c5a059;
-    --ouro-polido: #e5c37d;
-    --carimbo-rubrica: #8b261d;
-    --carimbo-chancelaria: #1b3552;
-  }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>SisGov — Dossiê de Estado (Mesa, Papéis e Burocracia)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Special+Elite&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --couro-mesa: #0e1411;
+        --madeira-borda: #1a1510;
+        --pasta-parda: #cbb993;
+        --pasta-escura: #b3a078;
+        --pasta-borda: #9a8863;
+        --papel-oficio: #f3edd9;
+        --papel-linha: #d8ceb2;
+        --tinta-fita: #24211d;
+        --tinta-suave: #5a544c;
+        --ouro: #c5a059;
+        --ouro-polido: #e5c37d;
+        --carimbo-rubrica: #8b261d;
+        --carimbo-chancelaria: #1b3552;
+      }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #040605;
-    color: var(--tinta-fita);
-    font-family: "Spectral", Georgia, serif;
-    user-select: none;
-    -webkit-user-select: none;
-    cursor: default;
-  }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #040605;
+        color: var(--tinta-fita);
+        font-family: "Spectral", Georgia, serif;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: default;
+      }
 
-  /* Viewport com Proporção de Jogo 16:9 Fixo */
-  #viewport-jogo {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #020302;
-  }
+      /* Viewport com Proporção de Jogo 16:9 Fixo */
+      #viewport-jogo {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #020302;
+      }
 
-  .mesa-gabinete {
-    width: 100vw;
-    height: 100vh;
-    max-width: 1920px;
-    max-height: 1080px;
-    aspect-ratio: 16 / 9;
-    position: relative;
-    overflow: hidden;
-    /* Fundo de mesa noturna de alta definição */
-    background: #0d120f url('/arte/fundos/mesa-noite-hd.jpg') center/cover no-repeat;
-    box-shadow: 0 0 90px rgba(0, 0, 0, 0.95);
-  }
+      .mesa-gabinete {
+        width: 100vw;
+        height: 100vh;
+        max-width: 1920px;
+        max-height: 1080px;
+        aspect-ratio: 16 / 9;
+        position: relative;
+        overflow: hidden;
+        /* Fundo de mesa noturna de alta definição */
+        background: #0d120f url("/arte/fundos/mesa-noite-hd.jpg") center/cover
+          no-repeat;
+        box-shadow: 0 0 90px rgba(0, 0, 0, 0.95);
+      }
 
-  /* Luz do abajur de gabinete e penumbra nas bordas */
-  .luz-abajur {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: 
-      radial-gradient(circle at 48% 45%, rgba(240, 200, 120, 0.12) 0%, transparent 45%),
-      radial-gradient(circle at 50% 50%, transparent 40%, rgba(3, 6, 5, 0.65) 75%, rgba(1, 2, 2, 0.94) 100%);
-    z-index: 10;
-  }
+      /* Luz do abajur de gabinete e penumbra nas bordas */
+      .luz-abajur {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            circle at 48% 45%,
+            rgba(240, 200, 120, 0.12) 0%,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            transparent 40%,
+            rgba(3, 6, 5, 0.65) 75%,
+            rgba(1, 2, 2, 0.94) 100%
+          );
+        z-index: 10;
+      }
 
-  /* Barra de debug e seleção de fundo no topo */
-  .barra-debug {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    z-index: 100;
-    display: flex;
-    gap: 8px;
-    background: rgba(8, 12, 10, 0.92);
-    border: 1px solid rgba(197, 160, 89, 0.25);
-    padding: 5px 12px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    color: #9aa89d;
-    align-items: center;
-    backdrop-filter: blur(8px);
-  }
-  .barra-debug a {
-    color: var(--ouro);
-    text-decoration: none;
-    padding-right: 8px;
-    border-right: 1px solid rgba(197, 160, 89, 0.2);
-  }
-  .barra-debug select, .barra-debug button {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(197, 160, 89, 0.3);
-    color: #ede8dc;
-    font-family: inherit;
-    font-size: 11px;
-    padding: 2px 6px;
-    cursor: pointer;
-  }
+      /* Barra de debug e seleção de fundo no topo */
+      .barra-debug {
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        z-index: 100;
+        display: flex;
+        gap: 8px;
+        background: rgba(8, 12, 10, 0.92);
+        border: 1px solid rgba(197, 160, 89, 0.25);
+        padding: 5px 12px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #9aa89d;
+        align-items: center;
+        backdrop-filter: blur(8px);
+      }
+      .barra-debug a {
+        color: var(--ouro);
+        text-decoration: none;
+        padding-right: 8px;
+        border-right: 1px solid rgba(197, 160, 89, 0.2);
+      }
+      .barra-debug select,
+      .barra-debug button {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        color: #ede8dc;
+        font-family: inherit;
+        font-size: 11px;
+        padding: 2px 6px;
+        cursor: pointer;
+      }
 
-  /* ============================================================
+      /* ============================================================
      A MESA CENTRAL: DOSSIÊ E PAPEL OFICIAL DE DESPACHO
      ============================================================ */
-  .cenario-mesa {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    z-index: 15;
-  }
+      .cenario-mesa {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+        z-index: 15;
+      }
 
-  /* Base de Couro de Mesa (Desk Blotter com cantos de latão) */
-  .mata-borrao-couro {
-    width: 1220px;
-    height: 720px;
-    background: linear-gradient(135deg, #101713 0%, #090e0b 100%);
-    border: 2px solid #232b26;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(0, 0, 0, 0.8);
-    position: relative;
-    display: flex;
-    padding: 40px 50px;
-    border-radius: 2px;
-  }
+      /* Base de Couro de Mesa (Desk Blotter com cantos de latão) */
+      .mata-borrao-couro {
+        width: 1220px;
+        height: 720px;
+        background: linear-gradient(135deg, #101713 0%, #090e0b 100%);
+        border: 2px solid #232b26;
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.85),
+          inset 0 0 30px rgba(0, 0, 0, 0.8);
+        position: relative;
+        display: flex;
+        padding: 40px 50px;
+        border-radius: 2px;
+      }
 
-  /* 4 Cantoneiras de Latão do Mata-borrão */
-  .cantoneira-latao {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    border: 3px solid var(--ouro);
-    pointer-events: none;
-  }
-  .c-top-left { top: 6px; left: 6px; border-right: none; border-bottom: none; }
-  .c-top-right { top: 6px; right: 6px; border-left: none; border-bottom: none; }
-  .c-bottom-left { bottom: 6px; left: 6px; border-right: none; border-top: none; }
-  .c-bottom-right { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+      /* 4 Cantoneiras de Latão do Mata-borrão */
+      .cantoneira-latao {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        border: 3px solid var(--ouro);
+        pointer-events: none;
+      }
+      .c-top-left {
+        top: 6px;
+        left: 6px;
+        border-right: none;
+        border-bottom: none;
+      }
+      .c-top-right {
+        top: 6px;
+        right: 6px;
+        border-left: none;
+        border-bottom: none;
+      }
+      .c-bottom-left {
+        bottom: 6px;
+        left: 6px;
+        border-right: none;
+        border-top: none;
+      }
+      .c-bottom-right {
+        bottom: 6px;
+        right: 6px;
+        border-left: none;
+        border-top: none;
+      }
 
-  /* 1. Pasta Dossiê Parda (Lado Esquerdo da Mesa) */
-  .pasta-dossie-base {
-    width: 480px;
-    height: 620px;
-    background: var(--pasta-parda);
-    border: 1px solid var(--pasta-borda);
-    box-shadow: 10px 18px 40px rgba(0, 0, 0, 0.65);
-    padding: 34px 30px;
-    position: relative;
-    transform: rotate(-1.2deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+      /* 1. Pasta Dossiê Parda (Lado Esquerdo da Mesa) */
+      .pasta-dossie-base {
+        width: 480px;
+        height: 620px;
+        background: var(--pasta-parda);
+        border: 1px solid var(--pasta-borda);
+        box-shadow: 10px 18px 40px rgba(0, 0, 0, 0.65);
+        padding: 34px 30px;
+        position: relative;
+        transform: rotate(-1.2deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
-  /* Aba superior do Dossiê */
-  .aba-dossie {
-    position: absolute;
-    top: -24px;
-    left: 30px;
-    background: var(--pasta-parda);
-    border: 1px solid var(--pasta-borda);
-    border-bottom: none;
-    padding: 4px 18px;
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    font-weight: bold;
-    color: #383022;
-    border-radius: 3px 3px 0 0;
-    letter-spacing: 0.1em;
-  }
+      /* Aba superior do Dossiê */
+      .aba-dossie {
+        position: absolute;
+        top: -24px;
+        left: 30px;
+        background: var(--pasta-parda);
+        border: 1px solid var(--pasta-borda);
+        border-bottom: none;
+        padding: 4px 18px;
+        font-family: "Special Elite", monospace;
+        font-size: 11px;
+        font-weight: bold;
+        color: #383022;
+        border-radius: 3px 3px 0 0;
+        letter-spacing: 0.1em;
+      }
 
-  /* Carimbo Oval SISGOV em tinta de imprensa na capa do dossiê */
-  .selo-sisgov-capa {
-    border: 2px solid var(--tinta-fita);
-    outline: 1px solid var(--tinta-fita);
-    outline-offset: 3px;
-    padding: 10px 16px;
-    text-align: center;
-    margin-bottom: 24px;
-    transform: rotate(0.8deg);
-    background: rgba(243, 237, 217, 0.4);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-  }
-  .selo-sisgov-capa h1 {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 42px;
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    line-height: 1;
-    color: #171512;
-  }
-  .selo-sisgov-capa .sub {
-    font-family: "Special Elite", monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #3b352b;
-    margin-top: 4px;
-    display: block;
-  }
+      /* Carimbo Oval SISGOV em tinta de imprensa na capa do dossiê */
+      .selo-sisgov-capa {
+        border: 2px solid var(--tinta-fita);
+        outline: 1px solid var(--tinta-fita);
+        outline-offset: 3px;
+        padding: 10px 16px;
+        text-align: center;
+        margin-bottom: 24px;
+        transform: rotate(0.8deg);
+        background: rgba(243, 237, 217, 0.4);
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      }
+      .selo-sisgov-capa h1 {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 42px;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        line-height: 1;
+        color: #171512;
+      }
+      .selo-sisgov-capa .sub {
+        font-family: "Special Elite", monospace;
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #3b352b;
+        margin-top: 4px;
+        display: block;
+      }
 
-  /* Folha de Despacho Presidencial (Menu Datilografado) */
-  .folha-despacho {
-    background: var(--papel-oficio);
-    border: 1px solid var(--papel-linha);
-    box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.18);
-    padding: 24px 22px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+      /* Folha de Despacho Presidencial (Menu Datilografado) */
+      .folha-despacho {
+        background: var(--papel-oficio);
+        border: 1px solid var(--papel-linha);
+        box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.18);
+        padding: 24px 22px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
-  .despacho-header {
-    border-bottom: 1px dashed #8f8269;
-    padding-bottom: 8px;
-    margin-bottom: 14px;
-    font-size: 11px;
-    line-height: 1.5;
-    color: var(--tinta-suave);
-    font-family: "Special Elite", monospace;
-  }
-  .despacho-header strong {
-    color: #000;
-  }
+      .despacho-header {
+        border-bottom: 1px dashed #8f8269;
+        padding-bottom: 8px;
+        margin-bottom: 14px;
+        font-size: 11px;
+        line-height: 1.5;
+        color: var(--tinta-suave);
+        font-family: "Special Elite", monospace;
+      }
+      .despacho-header strong {
+        color: #000;
+      }
 
-  /* Menu de Ações Estatais */
-  .lista-acoes-estado {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+      /* Menu de Ações Estatais */
+      .lista-acoes-estado {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-  .item-acao {
-    border: 1px solid rgba(60, 50, 35, 0.25);
-    background: rgba(255, 255, 255, 0.55);
-    padding: 10px 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.15s ease;
-  }
-  .item-acao:hover {
-    background: #ffffff;
-    border-color: #000;
-    transform: translateX(4px);
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  .item-acao.ativo {
-    background: #ffffff;
-    border-left: 5px solid var(--carimbo-rubrica);
-  }
+      .item-acao {
+        border: 1px solid rgba(60, 50, 35, 0.25);
+        background: rgba(255, 255, 255, 0.55);
+        padding: 10px 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.15s ease;
+      }
+      .item-acao:hover {
+        background: #ffffff;
+        border-color: #000;
+        transform: translateX(4px);
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+      }
+      .item-acao.ativo {
+        background: #ffffff;
+        border-left: 5px solid var(--carimbo-rubrica);
+      }
 
-  .item-acao .tit {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #0e0d0b;
-    display: block;
-  }
-  .item-acao .det {
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    color: #595244;
-    margin-top: 2px;
-    display: block;
-  }
-  .item-acao .tag-rubrica {
-    font-family: "Special Elite", monospace;
-    font-size: 10px;
-    color: var(--carimbo-chancelaria);
-    border: 1px solid var(--carimbo-chancelaria);
-    padding: 1px 5px;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-  }
+      .item-acao .tit {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #0e0d0b;
+        display: block;
+      }
+      .item-acao .det {
+        font-family: "Special Elite", monospace;
+        font-size: 11px;
+        color: #595244;
+        margin-top: 2px;
+        display: block;
+      }
+      .item-acao .tag-rubrica {
+        font-family: "Special Elite", monospace;
+        font-size: 10px;
+        color: var(--carimbo-chancelaria);
+        border: 1px solid var(--carimbo-chancelaria);
+        padding: 1px 5px;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
 
-  .despacho-footer {
-    border-top: 1px solid #8f8269;
-    padding-top: 10px;
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    color: #635b4d;
-    display: flex;
-    justify-content: space-between;
-  }
+      .despacho-footer {
+        border-top: 1px solid #8f8269;
+        padding-top: 10px;
+        font-family: "Special Elite", monospace;
+        font-size: 11px;
+        color: #635b4d;
+        display: flex;
+        justify-content: space-between;
+      }
 
-  /* 2. O Lado Direito: A Caneta-Tinteiro e o Livro de Estado */
-  .lado-direito-mesa {
-    flex: 1;
-    margin-left: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-  }
+      /* 2. O Lado Direito: A Caneta-Tinteiro e o Livro de Estado */
+      .lado-direito-mesa {
+        flex: 1;
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+      }
 
-  /* Ilustração/Renderização de Caneta-Tinteiro Clássica (SVG de alta precisão) */
-  .caneta-tinteiro-container {
-    position: absolute;
-    top: -15px;
-    right: 20px;
-    width: 500px;
-    height: 60px;
-    transform: rotate(22deg);
-    filter: drop-shadow(6px 12px 14px rgba(0, 0, 0, 0.7));
-    pointer-events: none;
-    z-index: 20;
-  }
+      /* Ilustração/Renderização de Caneta-Tinteiro Clássica (SVG de alta precisão) */
+      .caneta-tinteiro-container {
+        position: absolute;
+        top: -15px;
+        right: 20px;
+        width: 500px;
+        height: 60px;
+        transform: rotate(22deg);
+        filter: drop-shadow(6px 12px 14px rgba(0, 0, 0, 0.7));
+        pointer-events: none;
+        z-index: 20;
+      }
 
-  /* Ficha de Transição e Contexto Político */
-  .ficha-relatorio-posse {
-    width: 520px;
-    background: var(--papel-oficio);
-    border: 1px solid var(--papel-linha);
-    box-shadow: 8px 14px 35px rgba(0, 0, 0, 0.65);
-    padding: 28px 32px;
-    position: relative;
-    transform: rotate(1deg);
-    margin-top: 40px;
-  }
+      /* Ficha de Transição e Contexto Político */
+      .ficha-relatorio-posse {
+        width: 520px;
+        background: var(--papel-oficio);
+        border: 1px solid var(--papel-linha);
+        box-shadow: 8px 14px 35px rgba(0, 0, 0, 0.65);
+        padding: 28px 32px;
+        position: relative;
+        transform: rotate(1deg);
+        margin-top: 40px;
+      }
 
-  .carimbo-chancelaria-marca {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    border: 2px dashed var(--carimbo-chancelaria);
-    color: var(--carimbo-chancelaria);
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    padding: 4px 10px;
-    transform: rotate(-3deg);
-    opacity: 0.85;
-  }
+      .carimbo-chancelaria-marca {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        border: 2px dashed var(--carimbo-chancelaria);
+        color: var(--carimbo-chancelaria);
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        padding: 4px 10px;
+        transform: rotate(-3deg);
+        opacity: 0.85;
+      }
 
-  .ficha-relatorio-posse h2 {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: #12100d;
-    border-bottom: 2px solid #8f8269;
-    padding-bottom: 6px;
-    margin-bottom: 16px;
-    letter-spacing: 0.05em;
-  }
+      .ficha-relatorio-posse h2 {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #12100d;
+        border-bottom: 2px solid #8f8269;
+        padding-bottom: 6px;
+        margin-bottom: 16px;
+        letter-spacing: 0.05em;
+      }
 
-  .ficha-relatorio-posse p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #3b362d;
-    margin-bottom: 16px;
-  }
+      .ficha-relatorio-posse p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #3b362d;
+        margin-bottom: 16px;
+      }
 
-  .quadro-telemetria {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    background: rgba(203, 185, 147, 0.35);
-    border: 1px solid #b3a078;
-    padding: 12px 16px;
-    font-family: "Special Elite", monospace;
-  }
-  .telemetria-item {
-    display: flex;
-    flex-direction: column;
-  }
-  .telemetria-label {
-    font-size: 10px;
-    color: #635b4d;
-    text-transform: uppercase;
-  }
-  .telemetria-valor {
-    font-size: 14px;
-    color: #12100d;
-    font-weight: bold;
-    margin-top: 2px;
-  }
+      .quadro-telemetria {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        background: rgba(203, 185, 147, 0.35);
+        border: 1px solid #b3a078;
+        padding: 12px 16px;
+        font-family: "Special Elite", monospace;
+      }
+      .telemetria-item {
+        display: flex;
+        flex-direction: column;
+      }
+      .telemetria-label {
+        font-size: 10px;
+        color: #635b4d;
+        text-transform: uppercase;
+      }
+      .telemetria-valor {
+        font-size: 14px;
+        color: #12100d;
+        font-weight: bold;
+        margin-top: 2px;
+      }
 
-  /* Botão Oficial: Chancelar Despacho */
-  .area-confirmar {
-    margin-top: 30px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .btn-chancelar {
-    background: #1c221e;
-    border: 2px solid var(--ouro);
-    color: #f7dfa5;
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    padding: 14px 34px;
-    cursor: pointer;
-    box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.7);
-    transition: all 0.15s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-chancelar:hover {
-    background: #2a332d;
-    border-color: #ffffff;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 6px 12px 26px rgba(0, 0, 0, 0.85);
-  }
-  .btn-chancelar:active {
-    transform: translateY(2px);
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.7);
-  }
+      /* Botão Oficial: Chancelar Despacho */
+      .area-confirmar {
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .btn-chancelar {
+        background: #1c221e;
+        border: 2px solid var(--ouro);
+        color: #f7dfa5;
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        padding: 14px 34px;
+        cursor: pointer;
+        box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.7);
+        transition: all 0.15s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn-chancelar:hover {
+        background: #2a332d;
+        border-color: #ffffff;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 6px 12px 26px rgba(0, 0, 0, 0.85);
+      }
+      .btn-chancelar:active {
+        transform: translateY(2px);
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.7);
+      }
 
-  /* ============================================================
+      /* ============================================================
      ARQUIVO MORTO DE MANDATOS (SAVES)
      ============================================================ */
-  #gaveta-arquivos {
-    position: absolute;
-    inset: 0;
-    background: rgba(4, 6, 5, 0.82);
-    backdrop-filter: blur(6px);
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-  }
+      #gaveta-arquivos {
+        position: absolute;
+        inset: 0;
+        background: rgba(4, 6, 5, 0.82);
+        backdrop-filter: blur(6px);
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease;
+      }
 
-  .pasta-arquivo-aberta {
-    width: min(720px, 92vw);
-    background: var(--pasta-parda);
-    border: 2px solid var(--pasta-borda);
-    box-shadow: 18px 26px 70px rgba(0, 0, 0, 0.9);
-    padding: 34px 40px;
-    position: relative;
-    transform: rotate(-0.5deg);
-  }
-  .pasta-arquivo-aberta::before {
-    content: "LIVRO DE ATOS SALVOS // ARQUIVO GERAL";
-    position: absolute;
-    top: -24px;
-    left: 36px;
-    background: var(--pasta-parda);
-    border: 2px solid var(--pasta-borda);
-    border-bottom: none;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 4px 16px;
-    color: #383022;
-    font-family: "Special Elite", monospace;
-  }
+      .pasta-arquivo-aberta {
+        width: min(720px, 92vw);
+        background: var(--pasta-parda);
+        border: 2px solid var(--pasta-borda);
+        box-shadow: 18px 26px 70px rgba(0, 0, 0, 0.9);
+        padding: 34px 40px;
+        position: relative;
+        transform: rotate(-0.5deg);
+      }
+      .pasta-arquivo-aberta::before {
+        content: "LIVRO DE ATOS SALVOS // ARQUIVO GERAL";
+        position: absolute;
+        top: -24px;
+        left: 36px;
+        background: var(--pasta-parda);
+        border: 2px solid var(--pasta-borda);
+        border-bottom: none;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 4px 16px;
+        color: #383022;
+        font-family: "Special Elite", monospace;
+      }
 
-  .arquivo-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 2px solid #82633e;
-    padding-bottom: 8px;
-    margin-bottom: 18px;
-  }
-  .arquivo-topo h2 {
-    font-family: "Cinzel", Georgia, serif;
-    font-size: 22px;
-    color: #171512;
-  }
-  .btn-fechar-arquivo {
-    background: none;
-    border: 1px solid #82633e;
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    color: #171512;
-    padding: 4px 12px;
-    cursor: pointer;
-  }
+      .arquivo-topo {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 2px solid #82633e;
+        padding-bottom: 8px;
+        margin-bottom: 18px;
+      }
+      .arquivo-topo h2 {
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 22px;
+        color: #171512;
+      }
+      .btn-fechar-arquivo {
+        background: none;
+        border: 1px solid #82633e;
+        font-family: "Special Elite", monospace;
+        font-size: 11px;
+        color: #171512;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
 
-  .lista-mandatos-salvos {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+      .lista-mandatos-salvos {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-  .card-mandato-salvo {
-    background: var(--papel-oficio);
-    border: 1px solid var(--papel-linha);
-    padding: 14px 18px;
-    cursor: pointer;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.15s ease;
-  }
-  .card-mandato-salvo:hover {
-    background: #ffffff;
-    border-color: #000;
-    transform: translateX(4px);
-  }
-  .card-mandato-salvo.selecionado {
-    border-left: 6px solid var(--carimbo-rubrica);
-  }
+      .card-mandato-salvo {
+        background: var(--papel-oficio);
+        border: 1px solid var(--papel-linha);
+        padding: 14px 18px;
+        cursor: pointer;
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.15s ease;
+      }
+      .card-mandato-salvo:hover {
+        background: #ffffff;
+        border-color: #000;
+        transform: translateX(4px);
+      }
+      .card-mandato-salvo.selecionado {
+        border-left: 6px solid var(--carimbo-rubrica);
+      }
 
-  .oculto {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
+      .oculto {
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
 
-  #aviso-tinteiro {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #111713;
-    border: 1px solid var(--ouro);
-    color: #ede8dc;
-    font-family: "Special Elite", monospace;
-    font-size: 13px;
-    padding: 10px 24px;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.85);
-    display: none;
-    z-index: 200;
-  }
-</style>
-</head>
-<body>
+      #aviso-tinteiro {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111713;
+        border: 1px solid var(--ouro);
+        color: #ede8dc;
+        font-family: "Special Elite", monospace;
+        font-size: 13px;
+        padding: 10px 24px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.85);
+        display: none;
+        z-index: 200;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewport-jogo">
+      <div class="mesa-gabinete" id="mesa-container">
+        <!-- Efeito de Luz e Sombra de Abajur -->
+        <div class="luz-abajur"></div>
 
-<div id="viewport-jogo">
-  <div class="mesa-gabinete" id="mesa-container">
+        <!-- Barra de Teste no Topo -->
+        <div class="barra-debug">
+          <a href="/demos/">← Demos</a>
+          <span>Fundo da Mesa:</span>
+          <select id="sel-fundo">
+            <option value="/arte/fundos/mesa-noite-hd.jpg">
+              Mesa Noturna HD (2K)
+            </option>
+            <option value="/arte/fundos/mesa-mapa-hd.jpg">
+              Mesa com Mapa e Documentos
+            </option>
+            <option value="/arte/fundos/mesa-noite.jpg">
+              Mesa Noturna Sombria
+            </option>
+            <option value="/arte/fundos/fundacao.jpg">
+              Fundação do Gabinete
+            </option>
+          </select>
+          <button id="btn-som">🔊 Som: ON</button>
+        </div>
 
-    <!-- Efeito de Luz e Sombra de Abajur -->
-    <div class="luz-abajur"></div>
-
-    <!-- Barra de Teste no Topo -->
-    <div class="barra-debug">
-      <a href="/demos/">← Demos</a>
-      <span>Fundo da Mesa:</span>
-      <select id="sel-fundo">
-        <option value="/arte/fundos/mesa-noite-hd.jpg">Mesa Noturna HD (2K)</option>
-        <option value="/arte/fundos/mesa-mapa-hd.jpg">Mesa com Mapa e Documentos</option>
-        <option value="/arte/fundos/mesa-noite.jpg">Mesa Noturna Sombria</option>
-        <option value="/arte/fundos/fundacao.jpg">Fundação do Gabinete</option>
-      </select>
-      <button id="btn-som">🔊 Som: ON</button>
-    </div>
-
-    <!-- ============================================================
+        <!-- ============================================================
          A MESA DE ESTADO: MATA-BORRÃO DE COURO + PASTA DOSSIÊ + PAPÉIS
          ============================================================ -->
-    <div class="cenario-mesa">
-      <div class="mata-borrao-couro">
-        <div class="cantoneira-latao c-top-left"></div>
-        <div class="cantoneira-latao c-top-right"></div>
-        <div class="cantoneira-latao c-bottom-left"></div>
-        <div class="cantoneira-latao c-bottom-right"></div>
+        <div class="cenario-mesa">
+          <div class="mata-borrao-couro">
+            <div class="cantoneira-latao c-top-left"></div>
+            <div class="cantoneira-latao c-top-right"></div>
+            <div class="cantoneira-latao c-bottom-left"></div>
+            <div class="cantoneira-latao c-bottom-right"></div>
 
-        <!-- 1. PASTA DOSSIÊ (MENU DE ABERTURA) -->
-        <div class="pasta-dossie-base">
-          <div class="aba-dossie">GABINETE // ATO Nº 01</div>
+            <!-- 1. PASTA DOSSIÊ (MENU DE ABERTURA) -->
+            <div class="pasta-dossie-base">
+              <div class="aba-dossie">GABINETE // ATO Nº 01</div>
 
-          <!-- Carimbo SISGOV Oval -->
-          <div class="selo-sisgov-capa">
-            <h1>SISGOV</h1>
-            <span class="sub">Simulador de Governo Presidencial</span>
-          </div>
+              <!-- Carimbo SISGOV Oval -->
+              <div class="selo-sisgov-capa">
+                <h1>SISGOV</h1>
+                <span class="sub">Simulador de Governo Presidencial</span>
+              </div>
 
-          <!-- Folha de Despacho (Menu Datilografado) -->
-          <div class="folha-despacho">
-            <div class="despacho-header">
-              <div><strong>PROTOCOLO GERAL DE GOVERNO</strong></div>
-              <div>Distrito Federal · Palácio Presidencial</div>
-              <div style="margin-top:2px; font-style:italic;">"Cada lei muda o país — e o país responde."</div>
+              <!-- Folha de Despacho (Menu Datilografado) -->
+              <div class="folha-despacho">
+                <div class="despacho-header">
+                  <div><strong>PROTOCOLO GERAL DE GOVERNO</strong></div>
+                  <div>Distrito Federal · Palácio Presidencial</div>
+                  <div style="margin-top: 2px; font-style: italic">
+                    "Cada lei muda o país — e o país responde."
+                  </div>
+                </div>
+
+                <div class="lista-acoes-estado">
+                  <div class="item-acao ativo" id="item-iniciar">
+                    <div>
+                      <span class="tit">01. INICIAR GOVERNO</span>
+                      <span class="det">Definir país, partido e chapa</span>
+                    </div>
+                    <span class="tag-rubrica">DESPACHO</span>
+                  </div>
+
+                  <div class="item-acao" id="item-continuar">
+                    <div>
+                      <span class="tit">02. CONTINUAR MANDATO</span>
+                      <span class="det">Brasil — Turno 14 (Aprovação 61%)</span>
+                    </div>
+                    <span class="tag-rubrica">RETOMAR</span>
+                  </div>
+
+                  <div class="item-acao" id="item-arquivo">
+                    <div>
+                      <span class="tit">03. ARQUIVO DE MANDATOS</span>
+                      <span class="det">Consultar 3 partidas salvas</span>
+                    </div>
+                    <span class="tag-rubrica">ARQUIVO</span>
+                  </div>
+
+                  <div class="item-acao" id="item-opcoes">
+                    <div>
+                      <span class="tit">04. DIRETRIZES DO SISTEMA</span>
+                      <span class="det">Parâmetros de tela e áudio</span>
+                    </div>
+                    <span class="tag-rubrica">AJUSTES</span>
+                  </div>
+                </div>
+
+                <div class="despacho-footer">
+                  <span>ESTADO FEDERATIVO</span>
+                  <span>LIVRO I · FOLHA 01</span>
+                </div>
+              </div>
             </div>
 
-            <div class="lista-acoes-estado">
-              <div class="item-acao ativo" id="item-iniciar">
-                <div>
-                  <span class="tit">01. INICIAR GOVERNO</span>
-                  <span class="det">Definir país, partido e chapa</span>
-                </div>
-                <span class="tag-rubrica">DESPACHO</span>
+            <!-- 2. LADO DIREITO: CANETA-TINTEIRO E FICHA DE SITUAÇÃO -->
+            <div class="lado-direito-mesa">
+              <!-- Caneta-Tinteiro de Luxo Clássica em SVG de alta fidelidade -->
+              <div class="caneta-tinteiro-container">
+                <svg viewBox="0 0 500 50" width="100%" height="100%">
+                  <!-- Corpo preto laqueado da caneta -->
+                  <path
+                    d="M40 25 L120 18 L380 18 L460 22 L490 25 L460 28 L380 32 L120 32 Z"
+                    fill="#151718"
+                    stroke="#000"
+                    stroke-width="1"
+                  />
+                  <!-- Brilho de reflexo na laca preta -->
+                  <path
+                    d="M130 20 L370 20 L450 23 L370 22 L130 22 Z"
+                    fill="rgba(255,255,255,0.22)"
+                  />
+                  <!-- Anel dourado central de latão -->
+                  <rect
+                    x="235"
+                    y="17.5"
+                    width="14"
+                    height="15"
+                    fill="#d4af37"
+                    stroke="#8a6a27"
+                    stroke-width="1"
+                  />
+                  <rect x="249" y="18" width="6" height="14" fill="#f7d358" />
+                  <!-- Tampa com clipe de ouro -->
+                  <path
+                    d="M120 18 L125 10 L220 10 L230 18 Z"
+                    fill="#c5a059"
+                    opacity="0.9"
+                  />
+                  <!-- Pena dourada da caneta (Nib) com detalhes de gravação -->
+                  <path
+                    d="M40 25 L15 22 L0 25 L15 28 Z"
+                    fill="#f7d358"
+                    stroke="#b38a22"
+                    stroke-width="1"
+                  />
+                  <line
+                    x1="8"
+                    y1="25"
+                    x2="32"
+                    y2="25"
+                    stroke="#4a360a"
+                    stroke-width="1"
+                  />
+                  <circle cx="28" cy="25" r="1.5" fill="#4a360a" />
+                </svg>
               </div>
 
-              <div class="item-acao" id="item-continuar">
-                <div>
-                  <span class="tit">02. CONTINUAR MANDATO</span>
-                  <span class="det">Brasil — Turno 14 (Aprovação 61%)</span>
+              <!-- Ficha de Inteligência do Cenário -->
+              <div class="ficha-relatorio-posse">
+                <span class="carimbo-chancelaria-marca"
+                  >CHANCELARIA DE ESTADO</span
+                >
+                <h2>Transição Governamental</h2>
+                <p>
+                  O Chefe de Governo assume o gabinete. As forças parlamentares
+                  negociam as comissões mistas e a equipe econômica monitora a
+                  taxa básica e o saldo comercial.
+                </p>
+
+                <div class="quadro-telemetria">
+                  <div class="telemetria-item">
+                    <span class="telemetria-label">Bancada Governista</span>
+                    <span class="telemetria-valor">248 / 513 Deputados</span>
+                  </div>
+                  <div class="telemetria-item">
+                    <span class="telemetria-label">Inflação Projetada</span>
+                    <span class="telemetria-valor">4.8% a.a. (Controlada)</span>
+                  </div>
+                  <div class="telemetria-item">
+                    <span class="telemetria-label">Apoio Popular Inicial</span>
+                    <span class="telemetria-valor"
+                      >50% (Neutro / Expectativa)</span
+                    >
+                  </div>
+                  <div class="telemetria-item">
+                    <span class="telemetria-label">Espaço Fiscal Imediato</span>
+                    <span class="telemetria-valor">R$ 18.4 bilhões</span>
+                  </div>
                 </div>
-                <span class="tag-rubrica">RETOMAR</span>
               </div>
 
-              <div class="item-acao" id="item-arquivo">
-                <div>
-                  <span class="tit">03. ARQUIVO DE MANDATOS</span>
-                  <span class="det">Consultar 3 partidas salvas</span>
-                </div>
-                <span class="tag-rubrica">ARQUIVO</span>
+              <!-- Botão de Ação: Chancelar Despacho -->
+              <div class="area-confirmar">
+                <button class="btn-chancelar" id="btn-iniciar-jogo">
+                  CHANCELAR DESPACHO
+                  <span>▶</span>
+                </button>
               </div>
-
-              <div class="item-acao" id="item-opcoes">
-                <div>
-                  <span class="tit">04. DIRETRIZES DO SISTEMA</span>
-                  <span class="det">Parâmetros de tela e áudio</span>
-                </div>
-                <span class="tag-rubrica">AJUSTES</span>
-              </div>
-            </div>
-
-            <div class="despacho-footer">
-              <span>ESTADO FEDERATIVO</span>
-              <span>LIVRO I · FOLHA 01</span>
             </div>
           </div>
         </div>
 
-        <!-- 2. LADO DIREITO: CANETA-TINTEIRO E FICHA DE SITUAÇÃO -->
-        <div class="lado-direito-mesa">
-          
-          <!-- Caneta-Tinteiro de Luxo Clássica em SVG de alta fidelidade -->
-          <div class="caneta-tinteiro-container">
-            <svg viewBox="0 0 500 50" width="100%" height="100%">
-              <!-- Corpo preto laqueado da caneta -->
-              <path d="M40 25 L120 18 L380 18 L460 22 L490 25 L460 28 L380 32 L120 32 Z" fill="#151718" stroke="#000" stroke-width="1"/>
-              <!-- Brilho de reflexo na laca preta -->
-              <path d="M130 20 L370 20 L450 23 L370 22 L130 22 Z" fill="rgba(255,255,255,0.22)"/>
-              <!-- Anel dourado central de latão -->
-              <rect x="235" y="17.5" width="14" height="15" fill="#d4af37" stroke="#8a6a27" stroke-width="1"/>
-              <rect x="249" y="18" width="6" height="14" fill="#f7d358"/>
-              <!-- Tampa com clipe de ouro -->
-              <path d="M120 18 L125 10 L220 10 L230 18 Z" fill="#c5a059" opacity="0.9"/>
-              <!-- Pena dourada da caneta (Nib) com detalhes de gravação -->
-              <path d="M40 25 L15 22 L0 25 L15 28 Z" fill="#f7d358" stroke="#b38a22" stroke-width="1"/>
-              <line x1="8" y1="25" x2="32" y2="25" stroke="#4a360a" stroke-width="1"/>
-              <circle cx="28" cy="25" r="1.5" fill="#4a360a"/>
-            </svg>
-          </div>
-
-          <!-- Ficha de Inteligência do Cenário -->
-          <div class="ficha-relatorio-posse">
-            <span class="carimbo-chancelaria-marca">CHANCELARIA DE ESTADO</span>
-            <h2>Transição Governamental</h2>
-            <p>O Chefe de Governo assume o gabinete. As forças parlamentares negociam as comissões mistas e a equipe econômica monitora a taxa básica e o saldo comercial.</p>
-
-            <div class="quadro-telemetria">
-              <div class="telemetria-item">
-                <span class="telemetria-label">Bancada Governista</span>
-                <span class="telemetria-valor">248 / 513 Deputados</span>
-              </div>
-              <div class="telemetria-item">
-                <span class="telemetria-label">Inflação Projetada</span>
-                <span class="telemetria-valor">4.8% a.a. (Controlada)</span>
-              </div>
-              <div class="telemetria-item">
-                <span class="telemetria-label">Apoio Popular Inicial</span>
-                <span class="telemetria-valor">50% (Neutro / Expectativa)</span>
-              </div>
-              <div class="telemetria-item">
-                <span class="telemetria-label">Espaço Fiscal Imediato</span>
-                <span class="telemetria-valor">R$ 18.4 bilhões</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botão de Ação: Chancelar Despacho -->
-          <div class="area-confirmar">
-            <button class="btn-chancelar" id="btn-iniciar-jogo">
-              CHANCELAR DESPACHO
-              <span>▶</span>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ============================================================
+        <!-- ============================================================
          3. MODAL: ARQUIVO MORTO DE MANDATOS (SAVES)
          ============================================================ -->
-    <div id="gaveta-arquivos" class="oculto">
-      <div class="pasta-arquivo-aberta">
-        <div class="arquivo-topo">
-          <h2>ARQUIVO DE MANDATOS SALVOS</h2>
-          <button class="btn-fechar-arquivo" id="btn-fechar-arquivo">[ESC] FECHAR ARQUIVO</button>
-        </div>
-
-        <div class="lista-mandatos-salvos">
-          <div class="card-mandato-salvo selecionado">
-            <div>
-              <div style="font-family:'Cinzel',serif; font-size:16px; font-weight:bold;">BRASIL — 2º ANO DE MANDATO</div>
-              <div style="font-family:'Special Elite',monospace; font-size:11px; color:#555; margin-top:2px;">Turno 14 · Presidente Emerson · Salvo há 2 dias</div>
+        <div id="gaveta-arquivos" class="oculto">
+          <div class="pasta-arquivo-aberta">
+            <div class="arquivo-topo">
+              <h2>ARQUIVO DE MANDATOS SALVOS</h2>
+              <button class="btn-fechar-arquivo" id="btn-fechar-arquivo">
+                [ESC] FECHAR ARQUIVO
+              </button>
             </div>
-            <div style="text-align:right; font-family:'Special Elite',monospace;">
-              <div style="font-weight:bold; color:#1b3552;">APROVAÇÃO: 61%</div>
-              <div style="font-size:10px; color:#2d6a4f;">SUPERÁVIT FISCAL</div>
+
+            <div class="lista-mandatos-salvos">
+              <div class="card-mandato-salvo selecionado">
+                <div>
+                  <div
+                    style="
+                      font-family: &quot;Cinzel&quot;, serif;
+                      font-size: 16px;
+                      font-weight: bold;
+                    "
+                  >
+                    BRASIL — 2º ANO DE MANDATO
+                  </div>
+                  <div
+                    style="
+                      font-family: &quot;Special Elite&quot;, monospace;
+                      font-size: 11px;
+                      color: #555;
+                      margin-top: 2px;
+                    "
+                  >
+                    Turno 14 · Presidente Emerson · Salvo há 2 dias
+                  </div>
+                </div>
+                <div
+                  style="
+                    text-align: right;
+                    font-family: &quot;Special Elite&quot;, monospace;
+                  "
+                >
+                  <div style="font-weight: bold; color: #1b3552">
+                    APROVAÇÃO: 61%
+                  </div>
+                  <div style="font-size: 10px; color: #2d6a4f">
+                    SUPERÁVIT FISCAL
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-mandato-salvo">
+                <div>
+                  <div
+                    style="
+                      font-family: &quot;Cinzel&quot;, serif;
+                      font-size: 16px;
+                      font-weight: bold;
+                    "
+                  >
+                    BRASIL — CRISE PREVIDENCIÁRIA
+                  </div>
+                  <div
+                    style="
+                      font-family: &quot;Special Elite&quot;, monospace;
+                      font-size: 11px;
+                      color: #555;
+                      margin-top: 2px;
+                    "
+                  >
+                    Turno 3 · Presidente Emerson · Salvo há 1 semana
+                  </div>
+                </div>
+                <div
+                  style="
+                    text-align: right;
+                    font-family: &quot;Special Elite&quot;, monospace;
+                  "
+                >
+                  <div style="font-weight: bold; color: #8b261d">
+                    APROVAÇÃO: 38%
+                  </div>
+                  <div style="font-size: 10px; color: #8b261d">
+                    DÉFICIT FISCAL
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-mandato-salvo">
+                <div>
+                  <div
+                    style="
+                      font-family: &quot;Cinzel&quot;, serif;
+                      font-size: 16px;
+                      font-weight: bold;
+                    "
+                  >
+                    RÚSSIA — AUDITORIA DE CENÁRIO
+                  </div>
+                  <div
+                    style="
+                      font-family: &quot;Special Elite&quot;, monospace;
+                      font-size: 11px;
+                      color: #555;
+                      margin-top: 2px;
+                    "
+                  >
+                    Turno 7 · Gabinete de Teste · Salvo há 3 semanas
+                  </div>
+                </div>
+                <div
+                  style="
+                    text-align: right;
+                    font-family: &quot;Special Elite&quot;, monospace;
+                  "
+                >
+                  <div style="font-weight: bold; color: #3b352b">
+                    APROVAÇÃO: 52%
+                  </div>
+                  <div style="font-size: 10px; color: #555">ESTÁVEL</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="margin-top: 24px; display: flex; justify-content: flex-end"
+            >
+              <button
+                class="btn-chancelar"
+                id="btn-carregar-save"
+                style="font-size: 14px; padding: 10px 24px"
+              >
+                CARREGAR MANDATO
+              </button>
             </div>
           </div>
-
-          <div class="card-mandato-salvo">
-            <div>
-              <div style="font-family:'Cinzel',serif; font-size:16px; font-weight:bold;">BRASIL — CRISE PREVIDENCIÁRIA</div>
-              <div style="font-family:'Special Elite',monospace; font-size:11px; color:#555; margin-top:2px;">Turno 3 · Presidente Emerson · Salvo há 1 semana</div>
-            </div>
-            <div style="text-align:right; font-family:'Special Elite',monospace;">
-              <div style="font-weight:bold; color:#8b261d;">APROVAÇÃO: 38%</div>
-              <div style="font-size:10px; color:#8b261d;">DÉFICIT FISCAL</div>
-            </div>
-          </div>
-
-          <div class="card-mandato-salvo">
-            <div>
-              <div style="font-family:'Cinzel',serif; font-size:16px; font-weight:bold;">RÚSSIA — AUDITORIA DE CENÁRIO</div>
-              <div style="font-family:'Special Elite',monospace; font-size:11px; color:#555; margin-top:2px;">Turno 7 · Gabinete de Teste · Salvo há 3 semanas</div>
-            </div>
-            <div style="text-align:right; font-family:'Special Elite',monospace;">
-              <div style="font-weight:bold; color:#3b352b;">APROVAÇÃO: 52%</div>
-              <div style="font-size:10px; color:#555;">ESTÁVEL</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:24px; display:flex; justify-content:flex-end;">
-          <button class="btn-chancelar" id="btn-carregar-save" style="font-size:14px; padding:10px 24px;">
-            CARREGAR MANDATO
-          </button>
         </div>
       </div>
     </div>
 
-  </div>
-</div>
+    <div id="aviso-tinteiro"></div>
 
-<div id="aviso-tinteiro"></div>
+    <script>
+      // Sistema de Som Físico via Web Audio API (Tinteiro, Carimbo e Tecla Mecânica)
+      class AudioGabinete {
+        constructor() {
+          this.ctx = null;
+          this.ativo = true;
+        }
+        init() {
+          if (!this.ctx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (AudioCtx) this.ctx = new AudioCtx();
+          }
+          if (this.ctx && this.ctx.state === "suspended") this.ctx.resume();
+        }
+        // Raspar suave de pena no papel
+        pena() {
+          if (!this.ativo || !this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(750, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(
+            1100,
+            this.ctx.currentTime + 0.025,
+          );
+          gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            this.ctx.currentTime + 0.025,
+          );
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.025);
+        }
+        // Batida firme de carimbo de estado
+        carimbo() {
+          if (!this.ativo || !this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(125, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(
+            35,
+            this.ctx.currentTime + 0.16,
+          );
+          gain.gain.setValueAtTime(0.28, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            this.ctx.currentTime + 0.16,
+          );
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.16);
+        }
+      }
+      const audio = new AudioGabinete();
 
-<script>
-// Sistema de Som Físico via Web Audio API (Tinteiro, Carimbo e Tecla Mecânica)
-class AudioGabinete {
-  constructor() {
-    this.ctx = null;
-    this.ativo = true;
-  }
-  init() {
-    if (!this.ctx) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtx) this.ctx = new AudioCtx();
-    }
-    if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
-  }
-  // Raspar suave de pena no papel
-  pena() {
-    if (!this.ativo || !this.ctx) return;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(750, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(1100, this.ctx.currentTime + 0.025);
-    gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.025);
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-    osc.start();
-    osc.stop(this.ctx.currentTime + 0.025);
-  }
-  // Batida firme de carimbo de estado
-  carimbo() {
-    if (!this.ativo || !this.ctx) return;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(125, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(35, this.ctx.currentTime + 0.16);
-    gain.gain.setValueAtTime(0.28, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.16);
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-    osc.start();
-    osc.stop(this.ctx.currentTime + 0.16);
-  }
-}
-const audio = new AudioGabinete();
+      const gavetaArquivos = document.getElementById("gaveta-arquivos");
+      const mesaContainer = document.getElementById("mesa-container");
+      const selFundo = document.getElementById("sel-fundo");
+      const btnSom = document.getElementById("btn-som");
+      const aviso = document.getElementById("aviso-tinteiro");
 
-const gavetaArquivos = document.getElementById('gaveta-arquivos');
-const mesaContainer = document.getElementById('mesa-container');
-const selFundo = document.getElementById('sel-fundo');
-const btnSom = document.getElementById('btn-som');
-const aviso = document.getElementById('aviso-tinteiro');
+      function notificar(msg) {
+        aviso.textContent = msg;
+        aviso.style.display = "block";
+        setTimeout(() => {
+          aviso.style.display = "none";
+        }, 3200);
+      }
 
-function notificar(msg) {
-  aviso.textContent = msg;
-  aviso.style.display = 'block';
-  setTimeout(() => { aviso.style.display = 'none'; }, 3200);
-}
+      // Troca de fundo de mesa em tempo real para avaliar a melhor atmosfera
+      selFundo.addEventListener("change", (e) => {
+        mesaContainer.style.backgroundImage = `url('${e.target.value}')`;
+      });
 
-// Troca de fundo de mesa em tempo real para avaliar a melhor atmosfera
-selFundo.addEventListener('change', (e) => {
-  mesaContainer.style.backgroundImage = `url('${e.target.value}')`;
-});
+      btnSom.addEventListener("click", () => {
+        audio.init();
+        audio.ativo = !audio.ativo;
+        btnSom.textContent = audio.ativo ? "🔊 Som: ON" : "🔈 Som: OFF";
+      });
 
-btnSom.addEventListener('click', () => {
-  audio.init();
-  audio.ativo = !audio.ativo;
-  btnSom.textContent = audio.ativo ? '🔊 Som: ON' : '🔈 Som: OFF';
-});
+      // Interação com itens do despacho
+      document.querySelectorAll(".item-acao").forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          audio.init();
+          audio.pena();
+        });
+        item.addEventListener("click", () => {
+          audio.init();
+          audio.pena();
+          document
+            .querySelectorAll(".item-acao")
+            .forEach((i) => i.classList.remove("ativo"));
+          item.classList.add("ativo");
 
-// Interação com itens do despacho
-document.querySelectorAll('.item-acao').forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    audio.init();
-    audio.pena();
-  });
-  item.addEventListener('click', () => {
-    audio.init();
-    audio.pena();
-    document.querySelectorAll('.item-acao').forEach(i => i.classList.remove('ativo'));
-    item.classList.add('ativo');
+          if (item.id === "item-arquivo") {
+            audio.carimbo();
+            gavetaArquivos.classList.remove("oculto");
+          } else if (item.id === "item-continuar") {
+            notificar("▶ Retomando último mandato: Brasil (Turno 14)");
+          } else if (item.id === "item-opcoes") {
+            notificar("⚙ Diretrizes do Sistema (Áudio, Ritmo e Resolução)");
+          }
+        });
+      });
 
-    if (item.id === 'item-arquivo') {
-      audio.carimbo();
-      gavetaArquivos.classList.remove('oculto');
-    } else if (item.id === 'item-continuar') {
-      notificar('▶ Retomando último mandato: Brasil (Turno 14)');
-    } else if (item.id === 'item-opcoes') {
-      notificar('⚙ Diretrizes do Sistema (Áudio, Ritmo e Resolução)');
-    }
-  });
-});
+      document
+        .getElementById("btn-fechar-arquivo")
+        .addEventListener("click", () => {
+          audio.init();
+          audio.pena();
+          gavetaArquivos.classList.add("oculto");
+        });
 
-document.getElementById('btn-fechar-arquivo').addEventListener('click', () => {
-  audio.init();
-  audio.pena();
-  gavetaArquivos.classList.add('oculto');
-});
+      document
+        .getElementById("btn-iniciar-jogo")
+        .addEventListener("click", () => {
+          audio.init();
+          audio.carimbo();
+          notificar(
+            "ATO CHANCELADO: Abrindo processo eleitoral (País → Partido → Chapa → Ministérios)",
+          );
+        });
 
-document.getElementById('btn-iniciar-jogo').addEventListener('click', () => {
-  audio.init();
-  audio.carimbo();
-  notificar('ATO CHANCELADO: Abrindo processo eleitoral (País → Partido → Chapa → Ministérios)');
-});
+      document
+        .getElementById("btn-carregar-save")
+        .addEventListener("click", () => {
+          audio.init();
+          audio.carimbo();
+          notificar("▶ Carregando mandato selecionado...");
+          setTimeout(() => {
+            gavetaArquivos.classList.add("oculto");
+          }, 1000);
+        });
 
-document.getElementById('btn-carregar-save').addEventListener('click', () => {
-  audio.init();
-  audio.carimbo();
-  notificar('▶ Carregando mandato selecionado...');
-  setTimeout(() => { gavetaArquivos.classList.add('oculto'); }, 1000);
-});
+      // Fechar com ESC
+      window.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          !gavetaArquivos.classList.contains("oculto")
+        ) {
+          gavetaArquivos.classList.add("oculto");
+          audio.pena();
+        }
+      });
 
-// Fechar com ESC
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !gavetaArquivos.classList.contains('oculto')) {
-    gavetaArquivos.classList.add('oculto');
-    audio.pena();
-  }
-});
-
-window.addEventListener('click', () => audio.init(), { once: true });
-</script>
-</body>
+      window.addEventListener("click", () => audio.init(), { once: true });
+    </script>
+  </body>
 </html>

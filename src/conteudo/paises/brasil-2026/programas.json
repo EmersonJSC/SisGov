@@ -4,5 +4,10 @@
     "remedio-barato": "Farmácia Popular",
     "saude-da-familia": "Saúde da Família",
     "renda-da-familia": "Bolsa Família"
-  }
+  },
+  "formados": [
+    { "programa": "remedio-barato" },
+    { "programa": "saude-da-familia" },
+    { "programa": "renda-da-familia" }
+  ]
 }

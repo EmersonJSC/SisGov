@@ -44,6 +44,15 @@ export interface RegrasProgramas {
   moldes: string[];
   /** Nome próprio que o país deu a um programa, por id. */
   nomesDoPais: Record<string, string>;
+  /** Programas que o país já tem no começo da partida. */
+  formados: FormadoDoPais[];
+}
+
+/** Programa que o país já tem no começo, com a lembrança dos grupos se ele quiser dizê-la. */
+export interface FormadoDoPais {
+  programa: string;
+  /** Nota de cada grupo, de −1 a +1; ausente = vem das leis de hoje. */
+  lembranca?: Record<string, number>;
 }
 
 /** Um programa que já existiu: formado agora ou desfeito (nostalgia). */

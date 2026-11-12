@@ -37,40 +37,40 @@ O autor fechou 12 leis em 05/nov/2026: a lista está em
 
 ## Drogas: leis propostas
 
-| Lei | Lado | Como funciona | Ganho | Custo | Base |
-|---|---|---|---|---|---|
-| Descriminalizar o usuário | libertário | usuário não é preso; traficante continua sendo | menos presos, mais tratamento | o tráfico continua | Portugal |
-| Redução de danos | libertário, esquerda | troca de seringas, salas de uso e, no máximo, droga receitada | menos mortes; tira gente do mercado ilegal | verba; irrita os tradicionais | Suíça, Canadá |
-| Venda pelo Estado | esquerda | só farmácias e clubes vendem | controle, pouco consumo novo | pouca oferta mantém o mercado ilegal | Uruguai |
-| Lojas licenciadas | direita | empresas vendem, com licença | muita oferta derruba o mercado ilegal | mais consumo e propaganda | Canadá |
-| Tribunal de drogas | centro, tradicional | juiz troca prisão por tratamento | menos reincidência (cerca de 12 pontos em adultos) | verba; rende pouco com jovens | EUA |
-| Pena do tráfico | tradicional | pena mais longa, até perpétua | passa dureza | presídio lotado, reputação; efeito discutido | Singapura |
-| Preço mínimo da bebida | esquerda | proíbe bebida barata demais | menos mortes (13,4% na Escócia) | pesa em quem é dependente e pobre | Escócia |
-| Embalagem e propaganda | esquerda, tradicional | limita marca e anúncio | menos gente começa | a indústria perde; efeito discutido | Austrália |
+| Lei                       | Lado                  | Como funciona                                                 | Ganho                                              | Custo                                        | Base          |
+| ------------------------- | --------------------- | ------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------- | ------------- |
+| Descriminalizar o usuário | libertário            | usuário não é preso; traficante continua sendo                | menos presos, mais tratamento                      | o tráfico continua                           | Portugal      |
+| Redução de danos          | libertário, esquerda  | troca de seringas, salas de uso e, no máximo, droga receitada | menos mortes; tira gente do mercado ilegal         | verba; irrita os tradicionais                | Suíça, Canadá |
+| Venda pelo Estado         | esquerda              | só farmácias e clubes vendem                                  | controle, pouco consumo novo                       | pouca oferta mantém o mercado ilegal         | Uruguai       |
+| Lojas licenciadas         | direita               | empresas vendem, com licença                                  | muita oferta derruba o mercado ilegal              | mais consumo e propaganda                    | Canadá        |
+| Tribunal de drogas        | centro, tradicional   | juiz troca prisão por tratamento                              | menos reincidência (cerca de 12 pontos em adultos) | verba; rende pouco com jovens                | EUA           |
+| Pena do tráfico           | tradicional           | pena mais longa, até perpétua                                 | passa dureza                                       | presídio lotado, reputação; efeito discutido | Singapura     |
+| Preço mínimo da bebida    | esquerda              | proíbe bebida barata demais                                   | menos mortes (13,4% na Escócia)                    | pesa em quem é dependente e pobre            | Escócia       |
+| Embalagem e propaganda    | esquerda, tradicional | limita marca e anúncio                                        | menos gente começa                                 | a indústria perde; efeito discutido          | Austrália     |
 
 ## Jogos: leis propostas
 
-| Lei | Lado | Como funciona | Ganho | Custo | Base |
-|---|---|---|---|---|---|
-| Monopólio do Estado | esquerda | só o Estado explora | lucro no cofre, controle | parte joga em sites de fora | Noruega |
-| Licenças privadas | direita | empresas exploram, com licença | imposto e concorrência | propaganda; o site ilegal não some | Suécia |
-| Bloqueio de sites e pagamentos | tradicional | derruba site e corta o pagamento | menos dinheiro para fora | verba, liberdade; sites reaparecem | Noruega, Brasil |
-| Proteção do apostador | esquerda | limite de depósito, lista de autoexclusão, sem cartão de crédito | menos famílias endividadas | quem foge das regras vai para o ilegal | Reino Unido, Suécia |
-| Propaganda de apostas | tradicional | limita anúncio | menos gente começa | clubes e mídia perdem dinheiro | Noruega |
-| Taxa de entrada para morador | tradicional | morador paga para entrar no cassino | turista joga, morador joga menos (de 4% para 2,7%) | irrita quem joga | Singapura |
-| Controle de lavagem | centro | identifica apostador e informa valores | cassino vira mau lugar para lavar | verba; intermediários escapam | Macau, Austrália |
-| Sem aposta para quem recebe benefício | tradicional | proíbe beneficiário de apostar | protege o dinheiro da família | difícil de cumprir; liberdade | Brasil |
+| Lei                                   | Lado        | Como funciona                                                    | Ganho                                              | Custo                                  | Base                |
+| ------------------------------------- | ----------- | ---------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------- | ------------------- |
+| Monopólio do Estado                   | esquerda    | só o Estado explora                                              | lucro no cofre, controle                           | parte joga em sites de fora            | Noruega             |
+| Licenças privadas                     | direita     | empresas exploram, com licença                                   | imposto e concorrência                             | propaganda; o site ilegal não some     | Suécia              |
+| Bloqueio de sites e pagamentos        | tradicional | derruba site e corta o pagamento                                 | menos dinheiro para fora                           | verba, liberdade; sites reaparecem     | Noruega, Brasil     |
+| Proteção do apostador                 | esquerda    | limite de depósito, lista de autoexclusão, sem cartão de crédito | menos famílias endividadas                         | quem foge das regras vai para o ilegal | Reino Unido, Suécia |
+| Propaganda de apostas                 | tradicional | limita anúncio                                                   | menos gente começa                                 | clubes e mídia perdem dinheiro         | Noruega             |
+| Taxa de entrada para morador          | tradicional | morador paga para entrar no cassino                              | turista joga, morador joga menos (de 4% para 2,7%) | irrita quem joga                       | Singapura           |
+| Controle de lavagem                   | centro      | identifica apostador e informa valores                           | cassino vira mau lugar para lavar                  | verba; intermediários escapam          | Macau, Austrália    |
+| Sem aposta para quem recebe benefício | tradicional | proíbe beneficiário de apostar                                   | protege o dinheiro da família                      | difícil de cumprir; liberdade          | Brasil              |
 
 ## Crime organizado: para quando entrar a Segurança
 
-| Lei | Lado | Como funciona | Ganho | Custo | Base |
-|---|---|---|---|---|---|
-| Aviso aos grupos violentos | centro | polícia e serviço social miram quem mata | a melhor evidência | depende de boa polícia; varia por cidade | EUA |
-| Caça aos chefes | tradicional | prende os líderes | prisões que aparecem | o grupo se parte e a violência pode subir | Colômbia, México |
-| Confisco de bens | tradicional | toma o dinheiro do crime | dinheiro para o Estado | efeito fraco no crime; abre abuso | Reino Unido, EUA |
-| Estado de exceção | tradicional | suspende direitos e prende em massa | homicídio cai rápido | liberdade, reputação, presídio cheio | El Salvador |
-| Trégua negociada | libertário | governo negocia com os grupos | violência cai rápido | frágil; o crime continua forte | El Salvador |
-| Programas nos bairros | esquerda | serviço e emprego onde o crime manda | a comunidade depende menos do crime | verba; demora | América Latina |
+| Lei                        | Lado        | Como funciona                            | Ganho                               | Custo                                     | Base             |
+| -------------------------- | ----------- | ---------------------------------------- | ----------------------------------- | ----------------------------------------- | ---------------- |
+| Aviso aos grupos violentos | centro      | polícia e serviço social miram quem mata | a melhor evidência                  | depende de boa polícia; varia por cidade  | EUA              |
+| Caça aos chefes            | tradicional | prende os líderes                        | prisões que aparecem                | o grupo se parte e a violência pode subir | Colômbia, México |
+| Confisco de bens           | tradicional | toma o dinheiro do crime                 | dinheiro para o Estado              | efeito fraco no crime; abre abuso         | Reino Unido, EUA |
+| Estado de exceção          | tradicional | suspende direitos e prende em massa      | homicídio cai rápido                | liberdade, reputação, presídio cheio      | El Salvador      |
+| Trégua negociada           | libertário  | governo negocia com os grupos            | violência cai rápido                | frágil; o crime continua forte            | El Salvador      |
+| Programas nos bairros      | esquerda    | serviço e emprego onde o crime manda     | a comunidade depende menos do crime | verba; demora                             | América Latina   |
 
 ## Limites
 

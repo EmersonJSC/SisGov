@@ -68,6 +68,7 @@ const regras: RegrasProgramas = {
   programas: [programa],
   moldes: ["mais {bem}", "{tema} para {publico}"],
   nomesDoPais: {},
+  formados: [],
 };
 
 /** Quem gosta de economia à esquerda (a lei empurra para lá). */
@@ -83,6 +84,13 @@ const direita: TipoGrupo = {
   id: "direita",
   bussola: { economico: 1 },
 };
+
+/** Começo da partida com as leis nestes valores. */
+const comecar = (
+  valores: Record<string, ValorLei>,
+  r: RegrasProgramas = regras,
+) =>
+  iniciarProgramas({ regras: r, tipos: [esquerda, direita], leis, valores }, 0);
 
 const parado: Record<string, ValorLei> = { a: 0, b: 0, c: 0, d: "nada" };
 
@@ -144,7 +152,7 @@ describe("andou: a lei andou o que o programa pede?", () => {
 });
 
 describe("forma e desfaz", () => {
-  const comeco = iniciarProgramas(0, parado);
+  const comeco = comecar(parado);
 
   it("3 de 4 leis na direção formam; 2 de 4 não", () => {
     const duas = andarProgramas(entrada({ ...parado, a: 0.2, b: 0.2 }, comeco));
@@ -209,16 +217,58 @@ describe("forma e desfaz", () => {
   });
 });
 
+describe("programa que o país já tem", () => {
+  const hoje = { ...parado, a: 0.5, b: 0.5, c: 0.5 };
+  const dele = (extra: Partial<RegrasProgramas["formados"][number]> = {}) => ({
+    ...regras,
+    formados: [{ programa: programa.id, ...extra }],
+  });
+
+  it("começa formado, com o nome do país e lembrança das leis de hoje", () => {
+    const r = { ...dele(), nomesDoPais: { [programa.id]: "Casa Nossa" } };
+    const { vidas } = comecar(hoje, r);
+    expect(vidas[programa.id]).toMatchObject({
+      situacao: "formado",
+      desde: 0,
+      nome: "Casa Nossa",
+      vezes: 1,
+    });
+    expect(vidas[programa.id].lembranca.esquerda).toBeGreaterThan(0);
+    expect(vidas[programa.id].lembranca.direita).toBeLessThan(0);
+  });
+
+  it("o país pode dizer a lembrança dos grupos", () => {
+    const lembranca = { esquerda: -0.5, direita: 0.25 };
+    const { vidas } = comecar(hoje, dele({ lembranca }));
+    expect(vidas[programa.id].lembranca).toEqual(lembranca);
+  });
+
+  it("segue formado no primeiro turno se as leis ficam, e se desfaz se voltam", () => {
+    const r = dele();
+    const estado = comecar(hoje, r);
+    const fica = andarProgramas(entrada(hoje, estado, { regras: r }));
+    expect(fica.fatos).toEqual([]);
+    const volta = andarProgramas(entrada(parado, estado, { regras: r }));
+    expect(volta.estado.vidas[programa.id].situacao).toBe("desfeito");
+  });
+
+  it("recusa programa que o mundo não tem", () => {
+    expect(
+      motivoProgramasInvalidos(dele({ programa: "fantasma" }), leis),
+    ).toMatch(/fantasma/);
+  });
+});
+
 describe("mandato", () => {
   const andadas = { ...parado, a: 0.2, b: 0.2, c: 0.2 };
 
   it("a lei que já estava alta no começo do mandato não conta", () => {
-    const comeco = iniciarProgramas(0, andadas);
+    const comeco = comecar(andadas);
     expect(andarProgramas(entrada(andadas, comeco)).fatos).toEqual([]);
   });
 
   it("mandato novo: o ponto de partida passa a ser o de hoje", () => {
-    const comeco = iniciarProgramas(0, parado);
+    const comeco = comecar(parado);
     const novo = andarProgramas(entrada(andadas, comeco, { mandato: 6 }));
     expect(novo.estado.mandato).toBe(6);
     expect(novo.estado.referencia).toEqual(andadas);
@@ -226,9 +276,7 @@ describe("mandato", () => {
   });
 
   it("programa formado segue de pé no mandato novo se as leis ficam", () => {
-    const feito = andarProgramas(
-      entrada(andadas, iniciarProgramas(0, parado)),
-    ).estado;
+    const feito = andarProgramas(entrada(andadas, comecar(parado))).estado;
     const novo = andarProgramas(
       entrada(andadas, feito, { mandato: 6, turno: 7 }),
     );
@@ -242,7 +290,7 @@ describe("ministro mais fraco", () => {
 
   it("um turno de espera: forma depois, e só se as leis ficarem", () => {
     const fraco = { atrasoDaLei: (l: Lei) => (l.id === "b" ? 1 : 0) };
-    const comeco = iniciarProgramas(0, parado);
+    const comeco = comecar(parado);
     const t1 = andarProgramas(entrada(andadas, comeco, fraco));
     expect(t1.estado.vidas[programa.id]).toBeUndefined();
     expect(t1.estado.formando[programa.id]).toBe(1);
@@ -262,7 +310,7 @@ describe("ministro mais fraco", () => {
 
   it("ministro competente (atraso −1) não adianta a formação", () => {
     const saida = andarProgramas(
-      entrada(andadas, iniciarProgramas(0, parado), { atrasoDaLei: () => -1 }),
+      entrada(andadas, comecar(parado), { atrasoDaLei: () => -1 }),
     );
     expect(saida.estado.vidas[programa.id]?.vezes).toBe(1);
   });
@@ -271,10 +319,7 @@ describe("ministro mais fraco", () => {
 describe("lembrança dos grupos", () => {
   it("quem gosta do lado da lei lembra bem, quem não gosta lembra mal", () => {
     const { vidas } = andarProgramas(
-      entrada(
-        { ...parado, a: 0.5, b: 0.5, c: 0.5 },
-        iniciarProgramas(0, parado),
-      ),
+      entrada({ ...parado, a: 0.5, b: 0.5, c: 0.5 }, comecar(parado)),
     ).estado;
     const { lembranca } = vidas[programa.id];
     expect(lembranca.esquerda).toBeGreaterThan(0);
@@ -305,12 +350,11 @@ describe("nome", () => {
 
 describe("situação para a tela", () => {
   it("diz quais leis andaram e quais faltam", () => {
-    const [s] = situacoesDosProgramas(
-      regras,
-      iniciarProgramas(0, parado),
-      leis,
-      { ...parado, a: 0.2, d: "pouco" },
-    );
+    const [s] = situacoesDosProgramas(regras, comecar(parado), leis, {
+      ...parado,
+      a: 0.2,
+      d: "pouco",
+    });
     expect(s).toEqual({
       id: programa.id,
       andadas: ["a", "d"],

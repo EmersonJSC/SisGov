@@ -47,6 +47,16 @@ nostalgia. Refeito, volta com o **mesmo nome** (`vezes` conta quantas).
    programa tem sempre o mesmo nome.
 3. Sem moldes, vale o nome da planilha.
 
+## Programas que o país já tem
+
+`paises/<id>/programas.json` pode listar `formados`: `{ "programa": "id",
+"lembranca": { "grupo": nota } }`. Eles começam **formados desde o turno 0**,
+com as leis de hoje contadas a partir do zero (referência vazia, então valem
+"desde sempre"), o nome do país e, se o país não diz a `lembranca`, a que sai do
+que as leis de hoje fazem a cada grupo (mesma conta da formação). O Brasil 2026
+traz Farmácia Popular, Saúde da Família e Bolsa Família. Se as leis voltarem,
+desfazem-se como qualquer outro.
+
 ## Estado e fatos
 
 `estado.programas = { mandato, referencia, formando, vidas }`. A etapa do turno
@@ -59,7 +69,6 @@ mesa de fatos `programa-formado` (grande; médio se refeito) e `programa-desfeit
 - A lembrança pesar no voto do Congresso e nos grupos (R7.19).
 - Perguntar ao jogador se usa o mesmo nome quando o programa é refeito, e
   rebatizar.
-- Programas já formados no começo da partida (o país declarar).
 - Direções ambíguas da planilha ("aberto", "mais livre", "mais curto"…) lidas
   como `sobe`; conferir uma a uma (`npm run programas` lista).
 - 21 ligações a leis que o jogo ainda não tem (compra pública de comida, divisão

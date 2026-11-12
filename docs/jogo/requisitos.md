@@ -169,7 +169,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 **Construção (programas)**
 
-- Dados: abas Programas e Programas - leis → `mundo/programas/programas.json` (`npm run programas`); moldes de nome em `mundo/programas/nomes.json`; país em `paises/<id>/programas.json` (só `nomes`; programas já formados ficam para quando um país precisar).
+- Dados: abas Programas e Programas - leis → `mundo/programas/programas.json` (`npm run programas`); moldes de nome em `mundo/programas/nomes.json`; país em `paises/<id>/programas.json` (`nomes` e `formados`, com a lembrança dos grupos se ele quiser dizê-la).
 - Estado: `programas` (formados, turno em que formou, lembrança por grupo, nome dado).
 - Módulo: `programas`.
 - Turno: depois do Congresso e da mesa (lei assinada conta na hora da aprovação).

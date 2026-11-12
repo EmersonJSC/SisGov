@@ -317,7 +317,17 @@ function estadoBase(
         }
       : {}),
     ...(regras.programas
-      ? { programas: iniciarProgramas(0, inicio.leis) }
+      ? {
+          programas: iniciarProgramas(
+            {
+              regras: regras.programas,
+              tipos: regras.grupos,
+              leis: regras.leis,
+              valores: inicio.leis,
+            },
+            0,
+          ),
+        }
       : {}),
   };
 }
