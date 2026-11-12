@@ -31,7 +31,7 @@ Nenhuma esfera. Toda lei viva tem roteiro e mecânica.
 
 - Vídeo de apresentação (5 min) em `arquivo/sisgov-apresentacao.mp4`, 09/nov: voz neural é rascunho; falta decidir a voz final e a chamada do fim.
 - Aba "Leis - roteiro" fica separada (autor, 11/nov).
-- Conteúdo de cada papel das Operações (último pedaço do desenho; construção civil feita em 11/nov: Regra da licitação, Teto do aditivo, Empreiteira condenada fora das obras, Exigência técnica das construções); próximo: papéis das Operações, depois revisão do Fable. (Congresso, Mesa, Órgãos e sistema judiciário desenhados em 11/nov; o tribunal superior entrou "por enquanto".)
+- Papéis das Operações feitos em 11/nov (molde de 3 papéis: autorização, proposta do órgão, resposta). DESENHO FECHADO. Construção civil feita em 11/nov: Regra da licitação, Teto do aditivo, Empreiteira condenada fora das obras, Exigência técnica das construções); próximo: revisão final pelo Fable (autor dá a palavra). (Congresso, Mesa, Órgãos e sistema judiciário desenhados em 11/nov; o tribunal superior entrou "por enquanto".)
 - Estudo final de tudo depois das últimas esferas (autor, 09/nov).
 - Aba dos 30 países e planejamento final (planilha completa + documento passo a passo).
 

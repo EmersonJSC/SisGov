@@ -1217,7 +1217,20 @@ renda dos pops, que voltam a consumir, poupar e investir.
 - **O partido** não compra nem vende: quem faz é o Estado, por lei ou decreto, e o
   Congresso pode precisar autorizar (voto). O partido ataca ou defende nas mídias e
   nas redes sociais. Doação de companhia é conflito de interesse.
-- **Papéis na mesa:** quais e com que conteúdo, a definir no planejamento final.
+- **Papéis na mesa (11/nov):** o mesmo molde de 3 papéis em Estatização,
+  Privatização e Cooperativa; cada um tem prazo, a mídia lê cada passo e papel
+  duvidoso pode surgir no meio (comprador que "apoia a campanha").
+  1. Autorização, pela lei Autorização para estatizar e vender: o presidente
+     assina sozinho, vai ao Congresso como votação ou a plebiscito.
+  2. Proposta do órgão: estatizar escolhe oferta pública (prêmio na régua) ou
+     obrigar a vender (Indenização); privatizar escolhe método e preço mínimo,
+     vendo quanto a empresa vale e quem quer comprar; cooperativa escolhe quanto
+     o Estado paga ao dono ou se os trabalhadores compram com crédito.
+  3. Resposta: acionistas aceitam ou recusam, ou o dono vai à Justiça e o país
+     dele reage (pagar, subir o prêmio ou desistir); na privatização chegam os
+     lances (aceitar ou cancelar se ficou barato).
+  Comprar cotas anda sozinha pela meta; Encomendar usina e Megaobra entram na
+  fila de obras. Nenhuma das três tem papel.
 
 ### Comércio exterior e capital (08/nov)
 
