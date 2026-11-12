@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "exigencia-de-idioma-e-cultura",
+  "nome": "Exigência de idioma e cultura",
+  "descricao": "Vai de nenhuma até prova de idioma e de valores.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "prova-de-idioma",
+      "rotulo": "prova de idioma",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": []
+    },
+    {
+      "id": "prova-de-idioma-e-de-valores",
+      "rotulo": "prova de idioma e de valores",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": []
+    }
+  ]
+}

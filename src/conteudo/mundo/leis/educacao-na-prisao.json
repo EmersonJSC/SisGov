@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "educacao-na-prisao",
+  "nome": "Educação na prisão",
+  "descricao": "Verba para aulas e cursos dentro dos presídios.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.002
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "volta_ao_crime",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

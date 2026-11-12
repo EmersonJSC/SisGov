@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "segurar-a-conta-de-luz",
+  "nome": "Segurar a conta de luz",
+  "descricao": "Quanto da alta de custo da energia o governo não deixa chegar à conta.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "preco_da_energia",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 0
+    },
+    {
+      "indice": "popularidade_governo",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 0
+    }
+  ]
+}

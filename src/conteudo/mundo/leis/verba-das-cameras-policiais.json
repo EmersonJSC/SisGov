@@ -1,0 +1,27 @@
+{
+  "versao": 1,
+  "id": "verba-das-cameras-policiais",
+  "nome": "Verba das câmeras policiais",
+  "descricao": "Quantos policiais usam câmera no uniforme.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.001
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": -0.3
+    }
+  },
+  "efeitos": []
+}

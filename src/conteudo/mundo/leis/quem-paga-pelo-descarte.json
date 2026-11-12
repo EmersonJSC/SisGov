@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "quem-paga-pelo-descarte",
+  "nome": "Quem paga pelo descarte",
+  "descricao": "Quem arca com plástico e lixo: a prefeitura, o fabricante por taxa, o fabricante recolhendo ou a proibição de descartáveis.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "a-prefeitura",
+      "rotulo": "a prefeitura",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "fabricante-paga-taxa",
+      "rotulo": "fabricante paga taxa",
+      "bussola": {
+        "economico": -0.1,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "fabricante-recolhe",
+      "rotulo": "fabricante recolhe",
+      "bussola": {
+        "economico": -0.2,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "proibicao-de-descartaveis",
+      "rotulo": "proibição de descartáveis",
+      "bussola": {
+        "economico": -0.3,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

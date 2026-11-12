@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "indicacao-dos-dirigentes-das-estatais",
+  "nome": "Indicação dos dirigentes das estatais",
+  "descricao": "Vai de política (amigos do partido), passa por mista, até técnica (concurso ou lista).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "amigos-do-partido",
+      "rotulo": "amigos do partido",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "mista",
+      "rotulo": "mista",
+      "bussola": {
+        "economico": 0.15,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "eficiencia_das_estatais",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "concurso-ou-lista-tecnica",
+      "rotulo": "concurso ou lista técnica",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "eficiencia_das_estatais",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

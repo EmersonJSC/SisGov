@@ -1,0 +1,27 @@
+{
+  "versao": 1,
+  "id": "frentes-de-trabalho",
+  "nome": "Frentes de trabalho",
+  "descricao": "O Estado emprega quem está sem trabalho.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.005
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

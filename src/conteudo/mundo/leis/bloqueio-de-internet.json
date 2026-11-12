@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "bloqueio-de-internet",
+  "nome": "Bloqueio de internet",
+  "descricao": "Escada: nenhum, bloquear um site por ordem do juiz, bloquear redes em crise declarada, ou apagão local onde há conflito. O apagão nacional só existe no Estado de exceção no nível sítio.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "bloquear-um-site-por-ordem-do-juiz",
+      "rotulo": "bloquear um site por ordem do juiz",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_de_imprensa",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 0
+        }
+      ]
+    },
+    {
+      "id": "bloquear-redes-em-crise",
+      "rotulo": "bloquear redes em crise",
+      "bussola": {
+        "economico": 0,
+        "social": 0.53
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_de_imprensa",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 0
+        }
+      ]
+    },
+    {
+      "id": "apagao-local-em-conflito",
+      "rotulo": "apagão local em conflito",
+      "bussola": {
+        "economico": 0,
+        "social": 0.8
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_de_imprensa",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 0
+        }
+      ]
+    }
+  ]
+}

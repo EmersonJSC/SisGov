@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "comercio-aberto-no-domingo",
+  "nome": "Comércio aberto no domingo",
+  "descricao": "Se lojas e serviços podem abrir no domingo e no feriado. Escada: fechado; abre com acordo do sindicato; livre, com folga em outro dia; livre, sem folga a mais.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "fechado",
+      "rotulo": "fechado",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "abre-com-acordo-do-sindicato",
+      "rotulo": "abre com acordo do sindicato",
+      "bussola": {
+        "economico": 0.1,
+        "social": -0.07
+      },
+      "efeitos": [
+        {
+          "indice": "tensao_trabalhista",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "livre-com-folga-em-outro-dia",
+      "rotulo": "livre, com folga em outro dia",
+      "bussola": {
+        "economico": 0.2,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "tensao_trabalhista",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "livre-sem-folga-a-mais",
+      "rotulo": "livre, sem folga a mais",
+      "bussola": {
+        "economico": 0.3,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "tensao_trabalhista",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

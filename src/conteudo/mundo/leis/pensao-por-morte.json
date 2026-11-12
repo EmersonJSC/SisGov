@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "pensao-por-morte",
+  "nome": "Pensão por morte",
+  "descricao": "Quanto a família recebe da aposentadoria de quem morreu. Escada: valor inteiro e para a vida toda; valor inteiro, por tempo que depende da idade de quem fica; 60% do valor, por tempo limitado; só para filhos menores e dependentes.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "valor-inteiro-e-para-a-vida-toda",
+      "rotulo": "valor inteiro e para a vida toda",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "valor-inteiro-por-tempo-que-depende-da-idade-de-quem-fica",
+      "rotulo": "valor inteiro, por tempo que depende da idade de quem fica",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "60-do-valor-por-tempo-limitado",
+      "rotulo": "60% do valor, por tempo limitado",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "so-para-filhos-menores-e-dependentes",
+      "rotulo": "só para filhos menores e dependentes",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

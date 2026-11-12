@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "limite-de-aviso-ao-mercado",
+  "nome": "Limite de aviso ao mercado",
+  "descricao": "Quanto do capital de uma empresa pode ser comprado antes de avisar o público: de 1% a 20%, ou nunca.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0.01,
+    "max": 0.2
+  },
+  "passo": 0.0095,
+  "bussola": {
+    "min": {
+      "economico": -0.1,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "confianca_do_mercado",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

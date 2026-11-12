@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "policia-sem-formato-militar",
+  "nome": "Polícia sem formato militar",
+  "descricao": "A polícia deixa o modelo militar: hierarquia, treino e justiça próprios.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "policia-militar-como-hoje",
+      "rotulo": "polícia militar como hoje",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "justica-propria-separada",
+      "rotulo": "justiça própria separada",
+      "bussola": {
+        "economico": 0,
+        "social": -0.17
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "confianca_na_policia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "treino-e-hierarquia-civis",
+      "rotulo": "treino e hierarquia civis",
+      "bussola": {
+        "economico": 0,
+        "social": -0.33
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "confianca_na_policia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "policia-totalmente-civil",
+      "rotulo": "polícia totalmente civil",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "confianca_na_policia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

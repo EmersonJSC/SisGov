@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "cadastro-de-terras",
+  "nome": "Cadastro de terras",
+  "descricao": "Como o país sabe quem é dono: cartórios locais, cadastro nacional, por satélite, público para qualquer um ver.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "cartorios-locais",
+      "rotulo": "cartórios locais",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "cadastro-nacional",
+      "rotulo": "cadastro nacional",
+      "bussola": {
+        "economico": 0,
+        "social": -0.07
+      },
+      "efeitos": []
+    },
+    {
+      "id": "por-satelite",
+      "rotulo": "por satélite",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": []
+    },
+    {
+      "id": "publico-para-qualquer-um-ver",
+      "rotulo": "público para qualquer um ver",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

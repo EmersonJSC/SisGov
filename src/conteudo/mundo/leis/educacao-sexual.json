@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "educacao-sexual",
+  "nome": "Educação sexual",
+  "descricao": "O que se ensina sobre o tema na escola. Escada: nada; só como funciona o corpo; corpo, prevenção de doenças e gravidez; tudo isso mais respeito, consentimento e identidade.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-como-funciona-o-corpo",
+      "rotulo": "só como funciona o corpo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "corpo-prevencao-de-doencas-e-gravidez",
+      "rotulo": "corpo, prevenção de doenças e gravidez",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "tudo-isso-mais-respeito-consentimento-e-identidade",
+      "rotulo": "tudo isso mais respeito, consentimento e identidade",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

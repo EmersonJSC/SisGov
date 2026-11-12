@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "cobertura-minima-do-plano",
+  "nome": "Cobertura mínima do plano",
+  "descricao": "O que todo plano de saúde tem que cobrir. Escada: o plano vende o que quiser; tem que cobrir urgência; não pode recusar quem já tem doença; pacote completo (consulta, internação, parto e remédio).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "o-plano-vende-o-que-quiser",
+      "rotulo": "o plano vende o que quiser",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "tem-que-cobrir-urgencia",
+      "rotulo": "tem que cobrir urgência",
+      "bussola": {
+        "economico": -0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "nao-pode-recusar-quem-ja-tem-doenca",
+      "rotulo": "não pode recusar quem já tem doença",
+      "bussola": {
+        "economico": -0.27,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "pacote-completo-consulta-internacao-parto-e-remedio",
+      "rotulo": "pacote completo (consulta, internação, parto e remédio)",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

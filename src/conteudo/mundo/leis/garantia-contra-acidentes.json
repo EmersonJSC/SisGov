@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "garantia-contra-acidentes",
+  "nome": "Garantia contra acidentes",
+  "descricao": "Quanto a companhia deposita antes de explorar, para pagar vazamentos e acidentes. Vale também para rompimento de barragem de minério.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
+  "passo": 0.015,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": -0.3
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    },
+    {
+      "indice": "concentracao_de_mercado",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

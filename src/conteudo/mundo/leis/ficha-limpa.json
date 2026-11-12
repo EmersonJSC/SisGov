@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "ficha-limpa",
+  "nome": "Ficha limpa",
+  "descricao": "Quais condenados ficam impedidos de ser candidatos. Escada: sem regra, qualquer um pode concorrer; só condenado em definitivo, sem mais recurso; também condenado em segunda instância, ainda com recurso; também réu em processo de corrupção aceito pela Justiça.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-regra-qualquer-um-pode-concorrer",
+      "rotulo": "sem regra, qualquer um pode concorrer",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-condenado-em-definitivo-sem-mais-recurso",
+      "rotulo": "só condenado em definitivo, sem mais recurso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-condenado-em-segunda-instancia-ainda-com-recurso",
+      "rotulo": "também condenado em segunda instância, ainda com recurso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-reu-em-processo-de-corrupcao-aceito-pela-justica",
+      "rotulo": "também réu em processo de corrupção aceito pela Justiça",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

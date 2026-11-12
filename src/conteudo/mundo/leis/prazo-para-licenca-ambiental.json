@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "prazo-para-licenca-ambiental",
+  "nome": "Prazo para licença ambiental",
+  "descricao": "Em quantos meses o órgão precisa responder. Passou do prazo, a licença está aprovada.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "meses",
+  "faixa": {
+    "min": 1,
+    "max": 36
+  },
+  "passo": 1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0.2
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "desmatamento",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

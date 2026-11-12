@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "agrotoxicos",
+  "nome": "Agrotóxicos",
+  "descricao": "Quais venenos de lavoura são permitidos: livres, proíbe os mais tóxicos, reavalia todos, quase nenhum.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "livres",
+      "rotulo": "livres",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "proibe-os-mais-toxicos",
+      "rotulo": "proíbe os mais tóxicos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preco_da_comida",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "reavalia-todos",
+      "rotulo": "reavalia todos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preco_da_comida",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "quase-nenhum",
+      "rotulo": "quase nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preco_da_comida",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

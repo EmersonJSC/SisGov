@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "cobranca-na-universidade-publica",
+  "nome": "Cobrança na universidade pública",
+  "descricao": "Quanto do custo do curso o aluno paga na universidade pública. Régua: de 0% a 50% do custo do curso pago pelo aluno.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "desigualdade",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 0
+    },
+    {
+      "indice": "instrucao",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 0
+    }
+  ]
+}

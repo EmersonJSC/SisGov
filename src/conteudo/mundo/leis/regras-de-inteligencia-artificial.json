@@ -1,0 +1,108 @@
+{
+  "versao": 1,
+  "id": "regras-de-inteligencia-artificial",
+  "nome": "Regras de inteligência artificial",
+  "descricao": "Escada: sem regra, avisar quando é IA, testes em crédito, emprego, saúde e polícia, proibir usos perigosos, ou licença para modelos grandes.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-regra",
+      "rotulo": "sem regra",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "avisar-quando-e-ia",
+      "rotulo": "avisar quando é IA",
+      "bussola": {
+        "economico": -0.12,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "testes-em-areas-sensiveis",
+      "rotulo": "testes em áreas sensíveis",
+      "bussola": {
+        "economico": -0.25,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "proibir-usos-perigosos",
+      "rotulo": "proibir usos perigosos",
+      "bussola": {
+        "economico": -0.37,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "licenca-para-modelos-grandes",
+      "rotulo": "licença para modelos grandes",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

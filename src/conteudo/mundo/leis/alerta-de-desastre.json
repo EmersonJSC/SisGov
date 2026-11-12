@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "alerta-de-desastre",
+  "nome": "Alerta de desastre",
+  "descricao": "Como o país avisa antes do desastre, cada degrau incluindo o anterior: nenhum; aviso por celular; sirenes em áreas de risco; rede nacional de monitoramento.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aviso-por-celular",
+      "rotulo": "aviso por celular",
+      "bussola": {
+        "economico": -0.07,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "sirenes-em-areas-de-risco",
+      "rotulo": "sirenes em áreas de risco",
+      "bussola": {
+        "economico": -0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "rede-nacional-de-monitoramento",
+      "rotulo": "rede nacional de monitoramento",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

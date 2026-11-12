@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "taxa-basica-de-juros",
+  "nome": "Taxa básica de juros",
+  "descricao": "Os juros básicos da economia. Você manda só se o Banco Central não for independente; se for, a régua só mostra a decisão dele.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
+  "passo": 0.015,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "credito_ao_setor_privado",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

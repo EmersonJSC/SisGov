@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "aviso-antes-da-multa",
+  "nome": "Aviso antes da multa",
+  "descricao": "O fiscal primeiro avisa e dá prazo para a empresa pequena corrigir; a multa só vem se ela não corrigir. Escada: multa direta para todos; aviso para o pequeno; aviso para todas as empresas; multa só com dano provado.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "multa-direta-para-todos",
+      "rotulo": "multa direta para todos",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aviso-para-o-pequeno",
+      "rotulo": "aviso para o pequeno",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "aviso-para-todas-as-empresas",
+      "rotulo": "aviso para todas as empresas",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "multa-so-com-dano-provado",
+      "rotulo": "multa só com dano provado",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

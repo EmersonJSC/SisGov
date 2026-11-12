@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "criptomoedas",
+  "nome": "Criptomoedas",
+  "descricao": "Vai de proibidas, passa por reguladas, até livres.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibidas",
+      "rotulo": "proibidas",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "reguladas",
+      "rotulo": "reguladas",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "dinheiro_em_cripto",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "livres",
+      "rotulo": "livres",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "dinheiro_em_cripto",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

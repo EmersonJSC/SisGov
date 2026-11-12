@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "estabilidade-do-servidor",
+  "nome": "Estabilidade do servidor",
+  "descricao": "Quando o funcionário público pode ser mandado embora. Escada: emprego para a vida toda; sai por falta grave; avaliação todo ano, duas notas ruins e sai; contrato igual ao do trabalhador comum (fora juiz, policial, diplomata e auditor).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "emprego-para-a-vida-toda",
+      "rotulo": "emprego para a vida toda",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "sai-por-falta-grave",
+      "rotulo": "sai por falta grave",
+      "bussola": {
+        "economico": 0.17,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "folha_do_funcionalismo",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "avaliacao-todo-ano-duas-notas-ruins-e-sai",
+      "rotulo": "avaliação todo ano, duas notas ruins e sai",
+      "bussola": {
+        "economico": 0.33,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "folha_do_funcionalismo",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "contrato-igual-ao-do-trabalhador-comum-fora-juiz-policial-diplomata-e-auditor",
+      "rotulo": "contrato igual ao do trabalhador comum (fora juiz, policial, diplomata e auditor)",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "folha_do_funcionalismo",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

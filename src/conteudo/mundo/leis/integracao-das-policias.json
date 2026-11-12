@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "integracao-das-policias",
+  "nome": "Integração das polícias",
+  "descricao": "Como as polícias federal, estadual e municipal trabalham: independentes, cooperando ou sob comando único.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "policias-independentes",
+      "rotulo": "polícias independentes",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "policias-cooperando",
+      "rotulo": "polícias cooperando",
+      "bussola": {
+        "economico": 0,
+        "social": 0.25
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "comando-unico",
+      "rotulo": "comando único",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "publicidade-do-governo",
+  "nome": "Publicidade do governo",
+  "descricao": "Verba de anúncios do governo na mídia.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.005
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.3
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "liberdade_de_imprensa",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

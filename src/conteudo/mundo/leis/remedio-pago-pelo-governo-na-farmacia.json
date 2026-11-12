@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "remedio-pago-pelo-governo-na-farmacia",
+  "nome": "Remédio pago pelo governo na farmácia",
+  "descricao": "A pessoa pega o remédio na farmácia comum e o governo paga. Escada: nada; desconto na lista básica; lista básica grátis; doença crônica grátis (pressão, diabetes, asma).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "desconto-na-lista-basica",
+      "rotulo": "desconto na lista básica",
+      "bussola": {
+        "economico": -0.17,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "lista-basica-gratis",
+      "rotulo": "lista básica grátis",
+      "bussola": {
+        "economico": -0.33,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "doenca-cronica-gratis-pressao-diabetes-asma",
+      "rotulo": "doença crônica grátis (pressão, diabetes, asma)",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

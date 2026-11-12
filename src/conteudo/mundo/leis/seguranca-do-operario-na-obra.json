@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "seguranca-do-operario-na-obra",
+  "nome": "Segurança do operário na obra",
+  "descricao": "O que a obra deve ao operário: nada, equipamento e fiscal, seguro por morte, meses de salário ao acabar.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "equipamento-e-fiscal",
+      "rotulo": "equipamento e fiscal",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "seguro-por-morte",
+      "rotulo": "seguro por morte",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "meses-de-salario-ao-acabar",
+      "rotulo": "meses de salário ao acabar",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "protecao-do-apostador",
+  "nome": "Proteção do apostador",
+  "descricao": "Que freios a lei põe para quem aposta. Escada: sem regra; aviso de risco e autoexclusão voluntária; limite de depósito e proibição de pagar com cartão de crédito; limite de depósito, autoexclusão em todas as casas e propaganda proibida.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-regra",
+      "rotulo": "sem regra",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aviso-de-risco-e-autoexclusao-voluntaria",
+      "rotulo": "aviso de risco e autoexclusão voluntária",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "limite-de-deposito-e-proibicao-de-pagar-com-cartao-de-credito",
+      "rotulo": "limite de depósito e proibição de pagar com cartão de crédito",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "limite-de-deposito-autoexclusao-em-todas-as-casas-e-propaganda-proibida",
+      "rotulo": "limite de depósito, autoexclusão em todas as casas e propaganda proibida",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

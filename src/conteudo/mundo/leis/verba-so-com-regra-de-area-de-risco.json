@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "verba-so-com-regra-de-area-de-risco",
+  "nome": "Verba só com regra de área de risco",
+  "descricao": "O que a cidade precisa cumprir para receber repasse federal, cada degrau incluindo o anterior: sem exigência; cidade mapeia o risco; cidade barra casa nova em área de risco.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-exigencia",
+      "rotulo": "sem exigência",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "cidade-mapeia-o-risco",
+      "rotulo": "cidade mapeia o risco",
+      "bussola": {
+        "economico": 0.15,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "cidade-barra-casa-nova-em-area-de-risco",
+      "rotulo": "cidade barra casa nova em área de risco",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

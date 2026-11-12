@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "sigilo-aberto-para-candidatos",
+  "nome": "Sigilo aberto para candidatos",
+  "descricao": "O que o candidato precisa abrir para concorrer. Escada: nada; lista de bens; sigilo fiscal (imposto de renda); sigilo fiscal e bancário.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "lista-de-bens",
+      "rotulo": "lista de bens",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "sigilo-fiscal-imposto-de-renda",
+      "rotulo": "sigilo fiscal (imposto de renda)",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "sigilo-fiscal-e-bancario",
+      "rotulo": "sigilo fiscal e bancário",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

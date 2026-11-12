@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "alcance-das-sancoes",
+  "nome": "Alcance das sanções",
+  "descricao": "Até onde o presidente pode ir com sanções: só simbólicas, até setoriais, ou até embargo total.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-simbolicas",
+      "rotulo": "só simbólicas",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "setoriais",
+      "rotulo": "setoriais",
+      "bussola": {
+        "economico": 0,
+        "social": 0.15
+      },
+      "efeitos": []
+    },
+    {
+      "id": "embargo-total",
+      "rotulo": "embargo total",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "policiamento-de-greves",
+  "nome": "Policiamento de greves",
+  "descricao": "Quanto a polícia acompanha e age nas greves: de só acompanhar até dispersar com força.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-acompanha",
+      "rotulo": "só acompanha",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "cerca-e-negocia",
+      "rotulo": "cerca e negocia",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "dispersa-sem-forca",
+      "rotulo": "dispersa sem força",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "dispersa-com-forca",
+      "rotulo": "dispersa com força",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

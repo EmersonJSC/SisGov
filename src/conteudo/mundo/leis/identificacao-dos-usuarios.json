@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "identificacao-dos-usuarios",
+  "nome": "Identificação dos usuários",
+  "descricao": "Escada: anonimato livre, cadastro nas redes, ou documento obrigatório para postar.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "anonimato-livre",
+      "rotulo": "anonimato livre",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "cadastro-nas-redes",
+      "rotulo": "cadastro nas redes",
+      "bussola": {
+        "economico": 0,
+        "social": 0.25
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "documento-para-postar",
+      "rotulo": "documento para postar",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

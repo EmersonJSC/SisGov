@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "casamento-entre-pessoas-do-mesmo-sexo",
+  "nome": "Casamento entre pessoas do mesmo sexo",
+  "descricao": "Que reconhecimento a lei dá a casais do mesmo sexo. Escada: nenhum; contrato particular entre os dois; união civil com direitos básicos; casamento igual ao de qualquer casal.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "contrato-particular-entre-os-dois",
+      "rotulo": "contrato particular entre os dois",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "discriminacao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "uniao-civil-com-direitos-basicos",
+      "rotulo": "união civil com direitos básicos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "discriminacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "casamento-igual-ao-de-qualquer-casal",
+      "rotulo": "casamento igual ao de qualquer casal",
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "discriminacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

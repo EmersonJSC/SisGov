@@ -1,0 +1,76 @@
+{
+  "versao": 1,
+  "id": "cuidado-com-o-usuario",
+  "nome": "Cuidado com o usuário",
+  "descricao": "Escada: tratamento; troca de seringas e salas de uso; usuário não é preso.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "tratamento",
+      "rotulo": "tratamento",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "troca-de-seringas-e-salas-de-uso",
+      "rotulo": "troca de seringas e salas de uso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_drogas",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "atendimento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "usuario-nao-e-preso",
+      "rotulo": "usuário não é preso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_drogas",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "atendimento",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

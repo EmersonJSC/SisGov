@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "limite-a-dono-estrangeiro",
+  "nome": "Limite a dono estrangeiro",
+  "descricao": "Quanto da mídia um estrangeiro pode ter.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.4
+    }
+  },
+  "efeitos": []
+}

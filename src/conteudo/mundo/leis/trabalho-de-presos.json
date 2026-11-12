@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "trabalho-de-presos",
+  "nome": "Trabalho de presos",
+  "descricao": "Se o preso trabalha durante a pena e para quem. Escada: não trabalha; trabalho voluntário dentro do presídio (cozinha, limpeza); trabalho obrigatório dentro do presídio; trabalho obrigatório também para empresas de fora.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nao-trabalha",
+      "rotulo": "não trabalha",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "trabalho-voluntario-dentro-do-presidio-cozinha-limpeza",
+      "rotulo": "trabalho voluntário dentro do presídio (cozinha, limpeza)",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": []
+    },
+    {
+      "id": "trabalho-obrigatorio-dentro-do-presidio",
+      "rotulo": "trabalho obrigatório dentro do presídio",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": []
+    },
+    {
+      "id": "trabalho-obrigatorio-tambem-para-empresas-de-fora",
+      "rotulo": "trabalho obrigatório também para empresas de fora",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": []
+    }
+  ]
+}

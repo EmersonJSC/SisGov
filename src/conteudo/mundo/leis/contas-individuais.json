@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "contas-individuais",
+  "nome": "Contas individuais",
+  "descricao": "Quanto da contribuição de aposentadoria vai para a conta de cada um, investida por fundos. Régua: de 0% a 50% da contribuição.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "indice_da_bolsa",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

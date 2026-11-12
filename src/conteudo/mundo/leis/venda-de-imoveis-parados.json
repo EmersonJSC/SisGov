@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "venda-de-imoveis-parados",
+  "nome": "Venda de imóveis parados",
+  "descricao": "Quanto dos prédios e terrenos sem uso do governo é vendido por ano, de 0% a 30%. Quando acabam, a régua para de render.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
+  "passo": 0.015,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

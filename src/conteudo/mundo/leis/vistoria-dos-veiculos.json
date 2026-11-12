@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "vistoria-dos-veiculos",
+  "nome": "Vistoria dos veículos",
+  "descricao": "Quais veículos passam por vistoria: caminhão e ônibus, carro velho, moto velha, todo veículo todo ano.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-caminhao-e-onibus",
+      "rotulo": "só caminhão e ônibus",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "mais-carro-velho",
+      "rotulo": "mais carro velho",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "qualidade_do_ar",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "mais-moto-velha",
+      "rotulo": "mais moto velha",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "qualidade_do_ar",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "todo-veiculo-todo-ano",
+      "rotulo": "todo veículo todo ano",
+      "bussola": {
+        "economico": 0,
+        "social": -0.3
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "qualidade_do_ar",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

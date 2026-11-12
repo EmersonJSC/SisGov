@@ -1,0 +1,76 @@
+{
+  "versao": 1,
+  "id": "controle-externo-da-policia",
+  "nome": "Controle externo da polícia",
+  "descricao": "Quem investiga a polícia: ela mesma, outra polícia ou um órgão independente.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "a-propria-policia",
+      "rotulo": "a própria polícia",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "outra-policia",
+      "rotulo": "outra polícia",
+      "bussola": {
+        "economico": 0,
+        "social": -0.3
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao_policial",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "confianca_na_policia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "orgao-independente",
+      "rotulo": "órgão independente",
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao_policial",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "confianca_na_policia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

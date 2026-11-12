@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "como-se-divide-a-pesca",
+  "nome": "Como se divide a pesca",
+  "descricao": "Quem pode pescar: reservada ao pequeno, livre, por barco, cota vendável.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "reservada-ao-pequeno",
+      "rotulo": "reservada ao pequeno",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "livre",
+      "rotulo": "livre",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "estoque_de_peixe",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "por-barco",
+      "rotulo": "por barco",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "estoque_de_peixe",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "cota-vendavel",
+      "rotulo": "cota vendável",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "estoque_de_peixe",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

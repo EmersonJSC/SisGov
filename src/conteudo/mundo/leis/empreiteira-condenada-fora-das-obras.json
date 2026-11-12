@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "empreiteira-condenada-fora-das-obras",
+  "nome": "Empreiteira condenada fora das obras",
+  "descricao": "Quem é condenado por corrupção deixa de contratar com o Estado. Escada: nada; só a condenada; também as do mesmo grupo; volta com acordo e multa.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-a-condenada",
+      "rotulo": "só a condenada",
+      "bussola": {
+        "economico": 0,
+        "social": 0.1
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "tambem-as-do-mesmo-grupo",
+      "rotulo": "também as do mesmo grupo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "volta-com-acordo-e-multa",
+      "rotulo": "volta com acordo e multa",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

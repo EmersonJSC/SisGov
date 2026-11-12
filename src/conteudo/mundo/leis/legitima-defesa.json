@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "legitima-defesa",
+  "nome": "Legítima defesa",
+  "descricao": "Quando quem se defende não responde pelo que fez. Escada: tem que provar que foi na medida; em casa a defesa já é presumida; também no comércio e no carro; em qualquer lugar, sem dever de fugir.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "tem-que-provar-que-foi-na-medida",
+      "rotulo": "tem que provar que foi na medida",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "em-casa-a-defesa-ja-e-presumida",
+      "rotulo": "em casa a defesa já é presumida",
+      "bussola": {
+        "economico": 0,
+        "social": 0.17
+      },
+      "efeitos": [
+        {
+          "indice": "crimes_contra_o_patrimonio",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "homicidios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "sensacao_de_inseguranca",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "tambem-no-comercio-e-no-carro",
+      "rotulo": "também no comércio e no carro",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": [
+        {
+          "indice": "crimes_contra_o_patrimonio",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "homicidios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "sensacao_de_inseguranca",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "em-qualquer-lugar-sem-dever-de-fugir",
+      "rotulo": "em qualquer lugar, sem dever de fugir",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "crimes_contra_o_patrimonio",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "homicidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "sensacao_de_inseguranca",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

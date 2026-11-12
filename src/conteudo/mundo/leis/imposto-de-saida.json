@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "imposto-de-saida",
+  "nome": "Imposto de saída",
+  "descricao": "Quanto paga quem muda de país levando fortuna, sobre o que ganhou aqui, de 0% a 30%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
+  "passo": 0.015,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "saida_de_ricos",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "investimento_estrangeiro",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

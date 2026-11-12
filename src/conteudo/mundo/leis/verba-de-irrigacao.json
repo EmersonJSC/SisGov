@@ -1,0 +1,27 @@
+{
+  "versao": 1,
+  "id": "verba-de-irrigacao",
+  "nome": "Verba de irrigação",
+  "descricao": "% do PIB para levar água ao campo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.1
+    }
+  },
+  "efeitos": []
+}

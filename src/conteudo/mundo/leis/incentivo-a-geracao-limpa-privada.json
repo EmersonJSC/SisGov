@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "incentivo-a-geracao-limpa-privada",
+  "nome": "Incentivo à geração limpa privada",
+  "descricao": "Subsídio para companhias construírem usinas solares e eólicas.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.005
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": -0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "matriz_limpa",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

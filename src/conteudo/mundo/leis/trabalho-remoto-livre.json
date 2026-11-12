@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "trabalho-remoto-livre",
+  "nome": "Trabalho remoto livre",
+  "descricao": "Quanto o empregado pode trabalhar de casa. Escada: só presencial; um dia por semana de casa; até três dias por semana de casa; todos os dias de casa se patrão e empregado combinarem.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-presencial",
+      "rotulo": "só presencial",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "um-dia-por-semana-de-casa",
+      "rotulo": "um dia por semana de casa",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "padrao_vida",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "desigualdade",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "ate-tres-dias-por-semana-de-casa",
+      "rotulo": "até três dias por semana de casa",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "padrao_vida",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "desigualdade",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "todos-os-dias-de-casa-se-patrao-e-empregado-combinarem",
+      "rotulo": "todos os dias de casa se patrão e empregado combinarem",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "padrao_vida",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "desigualdade",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

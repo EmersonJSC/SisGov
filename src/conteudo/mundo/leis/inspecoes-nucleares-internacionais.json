@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "inspecoes-nucleares-internacionais",
+  "nome": "Inspeções nucleares internacionais",
+  "descricao": "Deixar inspetores de fora olharem as instalações nucleares: de nenhuma até inspeção total.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "inspecao-parcial",
+      "rotulo": "inspeção parcial",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "inspecao-total",
+      "rotulo": "inspeção total",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

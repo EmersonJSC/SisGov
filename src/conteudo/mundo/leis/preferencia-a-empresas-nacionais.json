@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "preferencia-a-empresas-nacionais",
+  "nome": "Preferência a empresas nacionais",
+  "descricao": "Vai de nenhuma até forte, nas compras do governo e das estatais.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "desempate-a-favor-do-pais",
+      "rotulo": "desempate a favor do país",
+      "bussola": {
+        "economico": 0,
+        "social": 0.1
+      },
+      "efeitos": [
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "preco-ate-10-maior-aceito",
+      "rotulo": "preço até 10% maior aceito",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "so-empresa-do-pais",
+      "rotulo": "só empresa do país",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
+      "efeitos": [
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "sigilo-bancario",
+  "nome": "Sigilo bancário",
+  "descricao": "O quanto o Estado pode ver das contas das pessoas. Escada: Estado vê todas as contas sem pedir; vê só movimentos de valor alto; só com ordem de juiz; só com ordem de juiz e em crime grave.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "estado-ve-todas-as-contas-sem-pedir",
+      "rotulo": "Estado vê todas as contas sem pedir",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "ve-so-movimentos-de-valor-alto",
+      "rotulo": "vê só movimentos de valor alto",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "sonegacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "so-com-ordem-de-juiz",
+      "rotulo": "só com ordem de juiz",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "sonegacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "so-com-ordem-de-juiz-e-em-crime-grave",
+      "rotulo": "só com ordem de juiz e em crime grave",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "sonegacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

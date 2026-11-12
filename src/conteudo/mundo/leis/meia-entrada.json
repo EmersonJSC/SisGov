@@ -1,0 +1,56 @@
+{
+  "versao": 1,
+  "id": "meia-entrada",
+  "nome": "Meia-entrada",
+  "descricao": "Quem paga metade em cinema, show e jogo. Escada, somando: ninguém; estudantes; idosos e deficientes; professores; família pobre.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ninguem",
+      "rotulo": "ninguém",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "estudantes",
+      "rotulo": "estudantes",
+      "bussola": {
+        "economico": -0.07,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "idosos-e-deficientes",
+      "rotulo": "idosos e deficientes",
+      "bussola": {
+        "economico": -0.15,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "professores",
+      "rotulo": "professores",
+      "bussola": {
+        "economico": -0.22,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "familia-pobre",
+      "rotulo": "família pobre",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

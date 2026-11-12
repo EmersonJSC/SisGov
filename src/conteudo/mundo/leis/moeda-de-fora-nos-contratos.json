@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "moeda-de-fora-nos-contratos",
+  "nome": "Moeda de fora nos contratos",
+  "descricao": "Se a moeda de outro país pode ser usada aqui. Escada: proibida; em contratos grandes e aluguel; circula junto com a nossa; substitui a nossa.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibida",
+      "rotulo": "proibida",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "em-contratos-grandes-e-aluguel",
+      "rotulo": "em contratos grandes e aluguel",
+      "bussola": {
+        "economico": 0.17,
+        "social": -0.07
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_do_mercado",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reservas_internacionais",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "soberania",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "circula-junto-com-a-nossa",
+      "rotulo": "circula junto com a nossa",
+      "bussola": {
+        "economico": 0.33,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_do_mercado",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reservas_internacionais",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "soberania",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "substitui-a-nossa",
+      "rotulo": "substitui a nossa",
+      "bussola": {
+        "economico": 0.5,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_do_mercado",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reservas_internacionais",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "soberania",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

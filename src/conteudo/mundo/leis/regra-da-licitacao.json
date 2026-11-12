@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "regra-da-licitacao",
+  "nome": "Regra da licitação",
+  "descricao": "Como o governo escolhe a empreiteira da obra. Escada: menor preço; preço e qualidade; obra pronta (a empreiteira projeta e faz); contratação direta em emergência.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "menor-preco",
+      "rotulo": "menor preço",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "preco-e-qualidade",
+      "rotulo": "preço e qualidade",
+      "bussola": {
+        "economico": -0.03,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "obra-pronta-a-empreiteira-projeta-e-faz",
+      "rotulo": "obra pronta (a empreiteira projeta e faz)",
+      "bussola": {
+        "economico": 0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "contratacao-direta-em-emergencia",
+      "rotulo": "contratação direta em emergência",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

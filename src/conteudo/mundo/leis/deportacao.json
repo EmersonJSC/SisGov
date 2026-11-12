@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "deportacao",
+  "nome": "Deportação",
+  "descricao": "Vai de nenhuma até em massa.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-criminosos",
+      "rotulo": "só criminosos",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "pessoas_sem_documento",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "quem-esta-ilegal",
+      "rotulo": "quem está ilegal",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "pessoas_sem_documento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "em-massa",
+      "rotulo": "em massa",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "pessoas_sem_documento",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

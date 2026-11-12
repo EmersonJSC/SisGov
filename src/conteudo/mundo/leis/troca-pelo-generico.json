@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "troca-pelo-generico",
+  "nome": "Troca pelo genérico",
+  "descricao": "Se o farmacêutico pode trocar o remédio de marca pela cópia barata. Escada: proibida; permitida; obrigatória se o médico não vetar.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibida",
+      "rotulo": "proibida",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "permitida",
+      "rotulo": "permitida",
+      "bussola": {
+        "economico": 0.05,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "investimento_estrangeiro",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "obrigatoria-se-o-medico-nao-vetar",
+      "rotulo": "obrigatória se o médico não vetar",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "investimento_estrangeiro",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

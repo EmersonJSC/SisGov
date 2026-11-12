@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "internet-publica",
+  "nome": "Internet pública",
+  "descricao": "Verba para levar banda larga a quem não tem.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.005
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "acesso_a_internet",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

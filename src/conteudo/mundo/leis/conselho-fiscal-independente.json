@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "conselho-fiscal-independente",
+  "nome": "Conselho fiscal independente",
+  "descricao": "Vai de nenhum, passa por consultivo, até com poder de veto. Dá confiança às projeções e dificulta a contabilidade criativa.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-opina",
+      "rotulo": "só opina",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credibilidade_fiscal",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "com-poder-de-veto",
+      "rotulo": "com poder de veto",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credibilidade_fiscal",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

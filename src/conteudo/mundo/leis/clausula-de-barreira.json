@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "clausula-de-barreira",
+  "nome": "Cláusula de barreira",
+  "descricao": "Voto mínimo que o partido precisa no país para ter cadeira, de 0% a 5%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.05
+  },
+  "passo": 0.0025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "participacao_eleitoral",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "polarizacao",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "exploracao-em-floresta-e-areas-protegidas",
+  "nome": "Exploração em floresta e áreas protegidas",
+  "descricao": "Se pode explorar petróleo, gás e minério em floresta e área protegida: proibida, com exceções ou permitida.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibida",
+      "rotulo": "proibida",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "com-excecoes",
+      "rotulo": "com exceções",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0.25
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "permitida",
+      "rotulo": "permitida",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "meio_ambiente",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

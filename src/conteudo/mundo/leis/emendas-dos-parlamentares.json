@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "emendas-dos-parlamentares",
+  "nome": "Emendas dos parlamentares",
+  "descricao": "Vai de nenhuma, passa por emendas transparentes, até emendas obrigatórias e secretas.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "emendas-transparentes",
+      "rotulo": "emendas transparentes",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "emendas-obrigatorias-e-secretas",
+      "rotulo": "emendas obrigatórias e secretas",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

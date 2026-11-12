@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "ferias-subsidiadas",
+  "nome": "Férias subsidiadas",
+  "descricao": "Quanto o governo paga do pacote de viagem na baixa temporada, de 0 a 80%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.8
+  },
+  "passo": 0.04,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "participacao-dos-trabalhadores",
+  "nome": "Participação dos trabalhadores",
+  "descricao": "Vai de nenhuma, passa por participação nos lucros, até vaga no conselho.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "participacao-nos-lucros",
+      "rotulo": "participação nos lucros",
+      "bussola": {
+        "economico": -0.15,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "desigualdade",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "vaga-no-conselho",
+      "rotulo": "vaga no conselho",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "desigualdade",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

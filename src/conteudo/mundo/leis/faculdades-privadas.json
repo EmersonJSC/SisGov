@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "faculdades-privadas",
+  "nome": "Faculdades privadas",
+  "descricao": "Quanto o ensino superior privado pode formar profissionais. Escada: nenhuma faculdade privada; poucas, com prova de qualidade antes de abrir; abertura livre com prova de qualidade no fim do curso; abertura livre sem nenhum controle.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma-faculdade-privada",
+      "rotulo": "nenhuma faculdade privada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "poucas-com-prova-de-qualidade-antes-de-abrir",
+      "rotulo": "poucas, com prova de qualidade antes de abrir",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "abertura-livre-com-prova-de-qualidade-no-fim-do-curso",
+      "rotulo": "abertura livre com prova de qualidade no fim do curso",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "abertura-livre-sem-nenhum-controle",
+      "rotulo": "abertura livre sem nenhum controle",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

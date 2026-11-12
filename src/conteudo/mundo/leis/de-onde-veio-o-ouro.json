@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "de-onde-veio-o-ouro",
+  "nome": "De onde veio o ouro",
+  "descricao": "O que quem vende ouro precisa provar. Escada: nada; o vendedor declara; nota com a origem; rastreio do garimpo à loja.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "o-vendedor-declara",
+      "rotulo": "o vendedor declara",
+      "bussola": {
+        "economico": -0.07,
+        "social": -0.07
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "nota-com-a-origem",
+      "rotulo": "nota com a origem",
+      "bussola": {
+        "economico": -0.13,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "rastreio-do-garimpo-a-loja",
+      "rotulo": "rastreio do garimpo à loja",
+      "bussola": {
+        "economico": -0.2,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

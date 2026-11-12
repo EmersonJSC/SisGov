@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "reserva-da-fazenda",
+  "nome": "Reserva da fazenda",
+  "descricao": "% de cada fazenda que precisa ficar com a mata nativa, de 0 a 100%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": -0.5
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "desmatamento",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "preco_da_comida",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

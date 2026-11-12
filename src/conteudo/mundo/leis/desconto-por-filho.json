@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "desconto-por-filho",
+  "nome": "Desconto por filho",
+  "descricao": "Quanto cada filho reduz o Imposto de renda. Régua: de 0% a 20% da renda por filho.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.2
+  },
+  "passo": 0.01,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "natalidade",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

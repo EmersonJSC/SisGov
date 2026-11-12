@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "protecao-ao-cliente-de-banco",
+  "nome": "Proteção ao cliente de banco",
+  "descricao": "O que o banco deve ao cliente. Escada: nada; custo total claro no contrato; 7 dias para desistir e fim da tarifa escondida; órgão que recebe reclamação e manda devolver.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "custo-total-claro-no-contrato",
+      "rotulo": "custo total claro no contrato",
+      "bussola": {
+        "economico": -0.17,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "7-dias-para-desistir-e-fim-da-tarifa-escondida",
+      "rotulo": "7 dias para desistir e fim da tarifa escondida",
+      "bussola": {
+        "economico": -0.33,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "orgao-que-recebe-reclamacao-e-manda-devolver",
+      "rotulo": "órgão que recebe reclamação e manda devolver",
+      "bussola": {
+        "economico": -0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

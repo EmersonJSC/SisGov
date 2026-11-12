@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "isolamento-de-chefes",
+  "nome": "Isolamento de chefes",
+  "descricao": "Como os líderes de organizações criminosas ficam presos. Escada: sem tratamento especial; cela separada no mesmo presídio; presídio de segurança máxima só para chefes, visita atrás do vidro; segurança máxima com isolamento total e sem visitas.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-tratamento-especial",
+      "rotulo": "sem tratamento especial",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "cela-separada-no-mesmo-presidio",
+      "rotulo": "cela separada no mesmo presídio",
+      "bussola": {
+        "economico": 0,
+        "social": 0.17
+      },
+      "efeitos": []
+    },
+    {
+      "id": "presidio-de-seguranca-maxima-so-para-chefes-visita-atras-do-vidro",
+      "rotulo": "presídio de segurança máxima só para chefes, visita atrás do vidro",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": []
+    },
+    {
+      "id": "seguranca-maxima-com-isolamento-total-e-sem-visitas",
+      "rotulo": "segurança máxima com isolamento total e sem visitas",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": []
+    }
+  ]
+}

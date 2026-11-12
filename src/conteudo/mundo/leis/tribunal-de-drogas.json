@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "tribunal-de-drogas",
+  "nome": "Tribunal de drogas",
+  "descricao": "Quem o juiz manda para tratamento em vez de prisão. Escada: ninguém, usuário vai preso; só quem nunca foi preso; todo usuário sem outro crime; todo usuário, sem ficha criminal.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ninguem-usuario-vai-preso",
+      "rotulo": "ninguém, usuário vai preso",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-quem-nunca-foi-preso",
+      "rotulo": "só quem nunca foi preso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "todo-usuario-sem-outro-crime",
+      "rotulo": "todo usuário sem outro crime",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "todo-usuario-sem-ficha-criminal",
+      "rotulo": "todo usuário, sem ficha criminal",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

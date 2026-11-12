@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "aprovacao-de-tratados",
+  "nome": "Aprovação de tratados",
+  "descricao": "Quem aprova os tratados com outros países: só o presidente, o Congresso, ou referendo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-o-presidente",
+      "rotulo": "só o presidente",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "o-congresso",
+      "rotulo": "o Congresso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "referendo",
+      "rotulo": "referendo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

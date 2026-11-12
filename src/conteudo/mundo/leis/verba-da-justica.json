@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "verba-da-justica",
+  "nome": "Verba da Justiça",
+  "descricao": "Dinheiro para juízes, servidores e tribunais.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.02
+  },
+  "passo": 0.001,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": -0.3
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "tempo_da_justica",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "certeza_de_punicao",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

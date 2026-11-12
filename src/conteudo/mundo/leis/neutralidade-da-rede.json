@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "neutralidade-da-rede",
+  "nome": "Neutralidade da rede",
+  "descricao": "O que a operadora não pode fazer para favorecer um site. Escada, cada degrau incluindo o anterior: nada; não pode bloquear site; não pode deixar site lento; não pode dar aplicativo de graça no plano.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "nao-pode-bloquear-site",
+      "rotulo": "não pode bloquear site",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "nao-pode-deixar-site-lento",
+      "rotulo": "não pode deixar site lento",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "nao-pode-dar-aplicativo-de-graca",
+      "rotulo": "não pode dar aplicativo de graça",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

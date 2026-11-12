@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "selecao-por-qualificacao",
+  "nome": "Seleção por qualificação",
+  "descricao": "Quem pode entrar: de qualquer um, passa por ter oferta de emprego, até sistema de pontos (qualificação, idade, idioma).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "qualquer-um",
+      "rotulo": "qualquer um",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "com-oferta-de-emprego",
+      "rotulo": "com oferta de emprego",
+      "bussola": {
+        "economico": 0.15,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "imigrantes_na_populacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "sistema-de-pontos",
+      "rotulo": "sistema de pontos",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "imigrantes_na_populacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

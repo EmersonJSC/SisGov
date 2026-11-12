@@ -1,0 +1,76 @@
+{
+  "versao": 1,
+  "id": "exigencia-tecnica-das-construcoes",
+  "nome": "Exigência técnica das construções",
+  "descricao": "O que todo prédio tem que cumprir. Escada: mínima; padrão; rigorosa (incêndio, enchente, terremoto).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "minima",
+      "rotulo": "mínima",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "padrao",
+      "rotulo": "padrão",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preco_moradia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "rigorosa-incendio-enchente-terremoto",
+      "rotulo": "rigorosa (incêndio, enchente, terremoto)",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "custo_das_obras",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preco_moradia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "preparo_contra_desastres",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

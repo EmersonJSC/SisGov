@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "empresa-simples",
+  "nome": "Empresa simples",
+  "descricao": "Quanto o governo facilita registro e imposto de quem trabalha por conta própria. Escada: nenhum regime especial; registro grátis e rápido; registro rápido e imposto único simples; imposto único baixo e sem papelada para quem fatura pouco.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum-regime-especial",
+      "rotulo": "nenhum regime especial",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "registro-gratis-e-rapido",
+      "rotulo": "registro grátis e rápido",
+      "bussola": {
+        "economico": 0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "registro-rapido-e-imposto-unico-simples",
+      "rotulo": "registro rápido e imposto único simples",
+      "bussola": {
+        "economico": 0.27,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "imposto-unico-baixo-e-sem-papelada-para-quem-fatura-pouco",
+      "rotulo": "imposto único baixo e sem papelada para quem fatura pouco",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

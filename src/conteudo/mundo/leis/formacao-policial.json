@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "formacao-policial",
+  "nome": "Formação policial",
+  "descricao": "Verba para treinar a polícia a usar menos força e respeitar direitos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.005
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": -0.3
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "mortes_pela_policia",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "confianca_na_policia",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

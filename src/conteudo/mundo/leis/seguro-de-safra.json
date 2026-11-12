@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "seguro-de-safra",
+  "nome": "Seguro de safra",
+  "descricao": "Quanto do seguro da colheita o Estado paga.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.8
+  },
+  "passo": 0.04,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.2,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "abastecimento",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 3
+    }
+  ]
+}

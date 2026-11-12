@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "o-que-acontece-com-quem-e-pego",
+  "nome": "O que acontece com quem é pego",
+  "descricao": "Punição de quem desmata ou polui fora da lei: multa, embargo da área, corte de crédito público ou perda da terra.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "multa",
+      "rotulo": "multa",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "embargo-da-area",
+      "rotulo": "embargo da área",
+      "bussola": {
+        "economico": -0.1,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "corte-de-credito-publico",
+      "rotulo": "corte de crédito público",
+      "bussola": {
+        "economico": -0.2,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "perda-da-terra",
+      "rotulo": "perda da terra",
+      "bussola": {
+        "economico": -0.3,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

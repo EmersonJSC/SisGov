@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "poderes-da-agencia",
+  "nome": "Poderes da agência",
+  "descricao": "O que a agência pode fazer: só analisar informação, escutar com ordem do juiz, escutar sem juiz e infiltrar, ou fazer operações secretas.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-analisar-informacao",
+      "rotulo": "só analisar informação",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "escutar-com-ordem-do-juiz",
+      "rotulo": "escutar com ordem do juiz",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "escutar-sem-juiz-e-infiltrar",
+      "rotulo": "escutar sem juiz e infiltrar",
+      "bussola": {
+        "economico": 0,
+        "social": 0.53
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "operacoes-secretas",
+      "rotulo": "operações secretas",
+      "bussola": {
+        "economico": 0,
+        "social": 0.8
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

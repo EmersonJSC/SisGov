@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "multa-a-quem-contrata-sem-documento",
+  "nome": "Multa a quem contrata sem documento",
+  "descricao": "Vai de nenhuma até multa pesada.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "multa-leve",
+      "rotulo": "multa leve",
+      "bussola": {
+        "economico": 0,
+        "social": 0.15
+      },
+      "efeitos": [
+        {
+          "indice": "pessoas_sem_documento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "multa-pesada",
+      "rotulo": "multa pesada",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
+      "efeitos": [
+        {
+          "indice": "pessoas_sem_documento",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

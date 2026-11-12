@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "remocao-de-conteudo",
+  "nome": "Remoção de conteúdo",
+  "descricao": "Escada: só com ordem do juiz, conteúdo ilegal em 24 horas, ou também desinformação.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-com-ordem-do-juiz",
+      "rotulo": "só com ordem do juiz",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "conteudo-ilegal-em-24-horas",
+      "rotulo": "conteúdo ilegal em 24 horas",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-desinformacao",
+      "rotulo": "também desinformação",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "desinformacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

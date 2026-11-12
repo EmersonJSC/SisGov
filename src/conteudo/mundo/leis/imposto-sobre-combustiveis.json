@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "imposto-sobre-combustiveis",
+  "nome": "Imposto sobre combustíveis",
+  "descricao": "Imposto cobrado na bomba de combustível.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.6
+  },
+  "passo": 0.03,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": -0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "meio_ambiente",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 0
+    }
+  ]
+}

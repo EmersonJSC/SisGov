@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "pente-fino-nos-beneficios",
+  "nome": "Pente-fino nos benefícios",
+  "descricao": "Quanto o governo confere quem recebe benefício para cortar fraudes. Escada: nenhuma conferência; conferência uma vez por ano em um cadastro; cruzamento constante de vários cadastros; recadastro obrigatório com corte automático de quem não responde.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma-conferencia",
+      "rotulo": "nenhuma conferência",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "conferencia-uma-vez-por-ano-em-um-cadastro",
+      "rotulo": "conferência uma vez por ano em um cadastro",
+      "bussola": {
+        "economico": 0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "fraude_em_beneficios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "cruzamento-constante-de-varios-cadastros",
+      "rotulo": "cruzamento constante de vários cadastros",
+      "bussola": {
+        "economico": 0.27,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "fraude_em_beneficios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "recadastro-obrigatorio-com-corte-automatico-de-quem-nao-responde",
+      "rotulo": "recadastro obrigatório com corte automático de quem não responde",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "fraude_em_beneficios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

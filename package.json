@@ -22,7 +22,8 @@
     "congresso": "vite-node scripts/congresso.ts",
     "eleicao": "vite-node scripts/eleicao.ts",
     "mundo": "vite-node scripts/mundo.ts",
-    "construcoes": "vite-node scripts/construcoes.ts"
+    "construcoes": "vite-node scripts/construcoes.ts",
+    "exportar": "vite-node scripts/exportar-planilha.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

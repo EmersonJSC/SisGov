@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "limite-a-compradores-estrangeiros",
+  "nome": "Limite a compradores estrangeiros",
+  "descricao": "Se quem é de fora pode comprar casa no país. Escada: livre; imposto extra na compra; no máximo uma casa por pessoa e nada de terra rural; proibido comprar.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "livre",
+      "rotulo": "livre",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "imposto-extra-na-compra",
+      "rotulo": "imposto extra na compra",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_do_mercado",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "no-maximo-uma-casa-por-pessoa-e-nada-de-terra-rural",
+      "rotulo": "no máximo uma casa por pessoa e nada de terra rural",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_do_mercado",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "proibido-comprar",
+      "rotulo": "proibido comprar",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "preco_moradia",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "confianca_do_mercado",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

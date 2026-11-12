@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "enriquecimento-de-uranio",
+  "nome": "Enriquecimento de urânio",
+  "descricao": "Escada: nenhum, combustível de usina, pesquisa e medicina, nível de bomba.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "combustivel-de-usina",
+      "rotulo": "combustível de usina",
+      "bussola": {
+        "economico": 0,
+        "social": 0.17
+      },
+      "efeitos": [
+        {
+          "indice": "tensao_internacional",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 18
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 18
+        }
+      ]
+    },
+    {
+      "id": "pesquisa-e-medicina",
+      "rotulo": "pesquisa e medicina",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": [
+        {
+          "indice": "tensao_internacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 18
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 18
+        }
+      ]
+    },
+    {
+      "id": "nivel-de-bomba",
+      "rotulo": "nível de bomba",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "tensao_internacional",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 18
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 18
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "seguro-deposito",
+  "nome": "Seguro-depósito",
+  "descricao": "Vai de nenhum, passa por até um limite, até total.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "ate-um-limite",
+      "rotulo": "até um limite",
+      "bussola": {
+        "economico": -0.05,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "total",
+      "rotulo": "total",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

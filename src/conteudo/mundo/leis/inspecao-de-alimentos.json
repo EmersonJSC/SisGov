@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "inspecao-de-alimentos",
+  "nome": "Inspeção de alimentos",
+  "descricao": "Como o Estado confere a comida: nenhuma, por amostra, permanente, padrão de exportação para todos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "por-amostra",
+      "rotulo": "por amostra",
+      "bussola": {
+        "economico": -0.03,
+        "social": -0.07
+      },
+      "efeitos": []
+    },
+    {
+      "id": "permanente",
+      "rotulo": "permanente",
+      "bussola": {
+        "economico": -0.07,
+        "social": -0.13
+      },
+      "efeitos": []
+    },
+    {
+      "id": "padrao-de-exportacao",
+      "rotulo": "padrão de exportação",
+      "bussola": {
+        "economico": -0.1,
+        "social": -0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

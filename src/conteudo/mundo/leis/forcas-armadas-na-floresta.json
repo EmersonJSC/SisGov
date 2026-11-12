@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "forcas-armadas-na-floresta",
+  "nome": "Forças Armadas na floresta",
+  "descricao": "Papel dos militares contra o desmatamento: nenhum, apoio de transporte, patrulha junto com o órgão ou comando militar da região.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "apoio-de-transporte",
+      "rotulo": "apoio de transporte",
+      "bussola": {
+        "economico": 0,
+        "social": 0.17
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 1
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 1
+        }
+      ]
+    },
+    {
+      "id": "patrulha-com-o-orgao",
+      "rotulo": "patrulha com o órgão",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 1
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 1
+        }
+      ]
+    },
+    {
+      "id": "comando-militar-da-regiao",
+      "rotulo": "comando militar da região",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 1
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 1
+        }
+      ]
+    }
+  ]
+}

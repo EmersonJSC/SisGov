@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "bolsa-por-frequencia",
+  "nome": "Bolsa por frequência",
+  "descricao": "Paga a família se o filho for à escola.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "pobreza",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "instrucao",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

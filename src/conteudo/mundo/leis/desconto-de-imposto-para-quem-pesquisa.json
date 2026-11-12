@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "desconto-de-imposto-para-quem-pesquisa",
+  "nome": "Desconto de imposto para quem pesquisa",
+  "descricao": "Quanto do que a companhia gasta em pesquisa volta como desconto no imposto.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "produtividade",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "tecnologia_do_pais",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

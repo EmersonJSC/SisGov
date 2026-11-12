@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "concessao-de-radio-e-tv",
+  "nome": "Concessão de rádio e TV",
+  "descricao": "Quanto o governo manda nas licenças de rádio e TV. Escada: licença por prazo fixo e só a Justiça pode cassar; o governo cassa só com processo e defesa; o governo renova ou cassa como achar melhor; o governo escolhe quem tem licença e cassa quando quiser.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "licenca-por-prazo-fixo-e-so-a-justica-pode-cassar",
+      "rotulo": "licença por prazo fixo e só a Justiça pode cassar",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "o-governo-cassa-so-com-processo-e-defesa",
+      "rotulo": "o governo cassa só com processo e defesa",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_de_imprensa",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "o-governo-renova-ou-cassa-como-achar-melhor",
+      "rotulo": "o governo renova ou cassa como achar melhor",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_de_imprensa",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "o-governo-escolhe-quem-tem-licenca-e-cassa-quando-quiser",
+      "rotulo": "o governo escolhe quem tem licença e cassa quando quiser",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_de_imprensa",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "saude-mental",
+  "nome": "Saúde mental",
+  "descricao": "O que a rede pública oferece para a mente. Escada: nada; consulta na rede; centro de atendimento perto de casa; internação e cuidado contínuo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "consulta-na-rede",
+      "rotulo": "consulta na rede",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "saude_mental",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "moradores_de_rua",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "produtividade",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "centro-de-atendimento-perto-de-casa",
+      "rotulo": "centro de atendimento perto de casa",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "saude_mental",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "moradores_de_rua",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "produtividade",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "internacao-e-cuidado-continuo",
+      "rotulo": "internação e cuidado contínuo",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "saude_mental",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "moradores_de_rua",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "produtividade",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

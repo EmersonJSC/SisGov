@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "espionagem-no-exterior",
+  "nome": "Espionagem no exterior",
+  "descricao": "O que a agência de espionagem pode fazer em outros países. Escada: nada; só ler notícias e relatórios das embaixadas; também escutar comunicações; também infiltrar agentes.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-ler-noticias-e-relatorios-das-embaixadas",
+      "rotulo": "só ler notícias e relatórios das embaixadas",
+      "bussola": {
+        "economico": 0,
+        "social": 0.17
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-escutar-comunicacoes",
+      "rotulo": "também escutar comunicações",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-infiltrar-agentes",
+      "rotulo": "também infiltrar agentes",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

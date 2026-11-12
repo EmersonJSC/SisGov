@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "pena-maior-para-quem-repete-o-crime",
+  "nome": "Pena maior para quem repete o crime",
+  "descricao": "Quanto pesa cometer crime de novo. Escada: igual para todos; pena dobra na segunda vez; prisão perpétua no terceiro crime violento; prisão perpétua no terceiro crime de qualquer tipo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "igual-para-todos",
+      "rotulo": "igual para todos",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "pena-dobra-na-segunda-vez",
+      "rotulo": "pena dobra na segunda vez",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "prisao-perpetua-no-terceiro-crime-violento",
+      "rotulo": "prisão perpétua no terceiro crime violento",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "prisao-perpetua-no-terceiro-crime-de-qualquer-tipo",
+      "rotulo": "prisão perpétua no terceiro crime de qualquer tipo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

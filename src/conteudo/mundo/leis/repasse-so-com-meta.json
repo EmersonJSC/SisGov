@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "repasse-so-com-meta",
+  "nome": "Repasse só com meta",
+  "descricao": "O que o estado precisa cumprir para receber dinheiro federal da escola. Escada: sem exigência; plano de melhora; nota mínima; troca da direção da escola ruim.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-exigencia",
+      "rotulo": "sem exigência",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "plano-de-melhora",
+      "rotulo": "plano de melhora",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "qualidade_do_ensino",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "desigualdade",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "nota-minima",
+      "rotulo": "nota mínima",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "qualidade_do_ensino",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "desigualdade",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "troca-da-direcao-da-escola-ruim",
+      "rotulo": "troca da direção da escola ruim",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "qualidade_do_ensino",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "desigualdade",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

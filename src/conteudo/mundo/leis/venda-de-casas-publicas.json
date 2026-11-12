@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "venda-de-casas-publicas",
+  "nome": "Venda de casas públicas",
+  "descricao": "Se o morador pode comprar a casa do Estado e com que desconto. Escada: nenhuma venda; venda ao morador com pequeno desconto; venda ao morador com grande desconto; venda ao morador com grande desconto e das casas vazias a qualquer comprador.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma-venda",
+      "rotulo": "nenhuma venda",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "venda-ao-morador-com-pequeno-desconto",
+      "rotulo": "venda ao morador com pequeno desconto",
+      "bussola": {
+        "economico": 0.13,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "venda-ao-morador-com-grande-desconto",
+      "rotulo": "venda ao morador com grande desconto",
+      "bussola": {
+        "economico": 0.27,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "venda-ao-morador-com-grande-desconto-e-das-casas-vazias-a-qualquer-comprador",
+      "rotulo": "venda ao morador com grande desconto e das casas vazias a qualquer comprador",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_habitacional",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

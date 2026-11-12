@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "projeto-nuclear-militar",
+  "nome": "Projeto nuclear militar",
+  "descricao": "Construir a bomba: nenhum, público ou secreto.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "publico",
+      "rotulo": "público",
+      "bussola": {
+        "economico": 0,
+        "social": 0.45
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "secreto",
+      "rotulo": "secreto",
+      "bussola": {
+        "economico": 0,
+        "social": 0.9
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

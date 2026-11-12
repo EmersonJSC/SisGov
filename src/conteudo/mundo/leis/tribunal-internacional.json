@@ -1,0 +1,76 @@
+{
+  "versao": 1,
+  "id": "tribunal-internacional",
+  "nome": "Tribunal internacional",
+  "descricao": "Aceitar que o país seja julgado por um tribunal de fora: de não aceitar até aceitar por completo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nao-aceitar",
+      "rotulo": "não aceitar",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aceitar-em-parte",
+      "rotulo": "aceitar em parte",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "soberania",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "aceitar-por-completo",
+      "rotulo": "aceitar por completo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "soberania",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

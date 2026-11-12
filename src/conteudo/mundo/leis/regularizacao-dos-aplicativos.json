@@ -1,0 +1,84 @@
+{
+  "versao": 1,
+  "id": "regularizacao-dos-aplicativos",
+  "nome": "Regularização dos aplicativos",
+  "descricao": "Regra geral para aplicativos de transporte: nada exigido, carteira e ficha criminal conferidas, seguro do passageiro, carro de até 10 anos, curso de direção.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada-exigido",
+      "rotulo": "nada exigido",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "carteira-e-ficha-criminal",
+      "rotulo": "carteira e ficha criminal",
+      "bussola": {
+        "economico": -0.05,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "seguro-do-passageiro",
+      "rotulo": "seguro do passageiro",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "carro-de-ate-10-anos",
+      "rotulo": "carro de até 10 anos",
+      "bussola": {
+        "economico": -0.15,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "curso-de-direcao",
+      "rotulo": "curso de direção",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mortes_no_transito",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

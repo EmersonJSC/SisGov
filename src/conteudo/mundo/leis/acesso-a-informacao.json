@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "acesso-a-informacao",
+  "nome": "Acesso à informação",
+  "descricao": "Quanto o governo é obrigado a mostrar e responder. Escada: nada obrigatório; gastos publicados no site; qualquer pessoa pede dados e o governo responde em até 20 dias; todos os contratos no site em tempo real e punição para quem esconde.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada-obrigatorio",
+      "rotulo": "nada obrigatório",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "gastos-publicados-no-site",
+      "rotulo": "gastos publicados no site",
+      "bussola": {
+        "economico": 0,
+        "social": -0.17
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "qualquer-pessoa-pede-dados-e-o-governo-responde-em-ate-20-dias",
+      "rotulo": "qualquer pessoa pede dados e o governo responde em até 20 dias",
+      "bussola": {
+        "economico": 0,
+        "social": -0.33
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "todos-os-contratos-no-site-em-tempo-real-e-punicao-para-quem-esconde",
+      "rotulo": "todos os contratos no site em tempo real e punição para quem esconde",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

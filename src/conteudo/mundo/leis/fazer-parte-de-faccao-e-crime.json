@@ -1,0 +1,122 @@
+{
+  "versao": 1,
+  "id": "fazer-parte-de-faccao-e-crime",
+  "nome": "Fazer parte de facção é crime",
+  "descricao": "Quem pode ser preso por ligação com facção. Escada: só quem comete o crime; ser membro é crime; também quem ajuda a facção (guarda dinheiro, paga, leva recado); também quem tem sinais de pertencer (tatuagem, mensagem, morar com o chefe).",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-quem-comete-o-crime",
+      "rotulo": "só quem comete o crime",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "ser-membro-e-crime",
+      "rotulo": "ser membro é crime",
+      "bussola": {
+        "economico": 0,
+        "social": 0.23
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-quem-ajuda-a-faccao-guarda-dinheiro-paga-leva-recado",
+      "rotulo": "também quem ajuda a facção (guarda dinheiro, paga, leva recado)",
+      "bussola": {
+        "economico": 0,
+        "social": 0.47
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-quem-tem-sinais-de-pertencer-tatuagem-mensagem-morar-com-o-chefe",
+      "rotulo": "também quem tem sinais de pertencer (tatuagem, mensagem, morar com o chefe)",
+      "bussola": {
+        "economico": 0,
+        "social": 0.7
+      },
+      "efeitos": [
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

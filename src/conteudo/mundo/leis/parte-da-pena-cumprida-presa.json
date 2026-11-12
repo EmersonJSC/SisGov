@@ -1,0 +1,45 @@
+{
+  "versao": 1,
+  "id": "parte-da-pena-cumprida-presa",
+  "nome": "Parte da pena cumprida presa",
+  "descricao": "Quanto da pena o preso cumpre de fato antes de sair, de 15% a 100%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0.15,
+    "max": 1
+  },
+  "passo": 0.0425,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.5
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "lotacao_presidios",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "sensacao_de_inseguranca",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "crimes_contra_o_patrimonio",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

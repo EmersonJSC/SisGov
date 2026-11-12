@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "parte-do-beneficio-em-comida",
+  "nome": "Parte do benefício em comida",
+  "descricao": "Quanto da Transferência de renda só pode ser gasto em comida, de 0% a 100%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "fome",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 0
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "zonas-francas",
+  "nome": "Zonas francas",
+  "descricao": "Escada: nenhuma; só em áreas pobres; algumas áreas; muitas áreas com imposto menor e regras próprias para fábricas.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-em-areas-pobres",
+      "rotulo": "só em áreas pobres",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "investimento_estrangeiro",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "algumas-areas",
+      "rotulo": "algumas áreas",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "investimento_estrangeiro",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "muitas-areas-com-imposto-menor-e-regras-proprias-para-fabricas",
+      "rotulo": "muitas áreas com imposto menor e regras próprias para fábricas",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "investimento_estrangeiro",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "industrializacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

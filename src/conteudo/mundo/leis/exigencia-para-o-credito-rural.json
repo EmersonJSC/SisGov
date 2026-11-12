@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "exigencia-para-o-credito-rural",
+  "nome": "Exigência para o crédito rural",
+  "descricao": "O que o produtor precisa provar para pegar crédito do Estado: nada, não ter multa aberta, reserva em dia, ou conferência por satélite.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "nao-ter-multa-aberta",
+      "rotulo": "não ter multa aberta",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "reserva-em-dia",
+      "rotulo": "reserva em dia",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        }
+      ]
+    },
+    {
+      "id": "conferencia-por-satelite",
+      "rotulo": "conferência por satélite",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "desmatamento",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 3
+        }
+      ]
+    }
+  ]
+}

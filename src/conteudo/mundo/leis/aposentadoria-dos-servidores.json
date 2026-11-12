@@ -1,0 +1,76 @@
+{
+  "versao": 1,
+  "id": "aposentadoria-dos-servidores",
+  "nome": "Aposentadoria dos servidores",
+  "descricao": "Como se aposenta quem trabalha para o Estado. Escada: salário integral; o aposentado também contribui; mesmo teto do trabalhador comum.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "salario-integral",
+      "rotulo": "salário integral",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "o-aposentado-tambem-contribui",
+      "rotulo": "o aposentado também contribui",
+      "bussola": {
+        "economico": 0.25,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_da_previdencia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "gasto_obrigatorio",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "mesmo-teto-do-trabalhador-comum",
+      "rotulo": "mesmo teto do trabalhador comum",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_da_previdencia",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "gasto_obrigatorio",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

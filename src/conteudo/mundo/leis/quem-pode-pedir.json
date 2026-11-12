@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "quem-pode-pedir",
+  "nome": "Quem pode pedir",
+  "descricao": "Quem pode pôr um pedido na fila do patrimônio. Escada: só o governo; prefeitura e estado; associações; qualquer cidadão.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-o-governo",
+      "rotulo": "só o governo",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "prefeitura-e-estado",
+      "rotulo": "prefeitura e estado",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "associacoes",
+      "rotulo": "associações",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "qualquer-cidadao",
+      "rotulo": "qualquer cidadão",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

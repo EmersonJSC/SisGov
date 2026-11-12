@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "declaracao-de-bens",
+  "nome": "Declaração de bens",
+  "descricao": "Quanto o candidato precisa mostrar do que tem e do que deve. Escada: não precisa; só os bens, uma vez, na candidatura; bens e dívidas todo ano; bens e dívidas do candidato e da família, conferidos pela Receita.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nao-precisa",
+      "rotulo": "não precisa",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-os-bens-uma-vez-na-candidatura",
+      "rotulo": "só os bens, uma vez, na candidatura",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "bens-e-dividas-todo-ano",
+      "rotulo": "bens e dívidas todo ano",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "bens-e-dividas-do-candidato-e-da-familia-conferidos-pela-receita",
+      "rotulo": "bens e dívidas do candidato e da família, conferidos pela Receita",
+      "bussola": {
+        "economico": 0,
+        "social": -0.3
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

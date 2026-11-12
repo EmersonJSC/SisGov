@@ -1,0 +1,56 @@
+{
+  "versao": 1,
+  "id": "idade-para-filme-e-tv",
+  "nome": "Idade para filme e TV",
+  "descricao": "Quem decide o que a criança vê. Sem aviso; aviso que recomenda; aviso obrigatório; só com responsável; proibido para a idade.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-aviso",
+      "rotulo": "sem aviso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aviso-que-recomenda",
+      "rotulo": "aviso que recomenda",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aviso-obrigatorio",
+      "rotulo": "aviso obrigatório",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-com-responsavel",
+      "rotulo": "só com responsável",
+      "bussola": {
+        "economico": 0,
+        "social": 0.25
+      },
+      "efeitos": []
+    },
+    {
+      "id": "proibido-para-a-idade",
+      "rotulo": "proibido para a idade",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": []
+    }
+  ]
+}

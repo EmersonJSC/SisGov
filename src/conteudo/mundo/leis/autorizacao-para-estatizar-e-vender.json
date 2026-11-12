@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "autorizacao-para-estatizar-e-vender",
+  "nome": "Autorização para estatizar e vender",
+  "descricao": "Quem precisa aprovar quando o Estado estatiza ou vende uma companhia: só o presidente, o Congresso, ou plebiscito.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-o-presidente",
+      "rotulo": "só o presidente",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "o-congresso",
+      "rotulo": "o Congresso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "plebiscito",
+      "rotulo": "plebiscito",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "doacao-com-deducao",
+  "nome": "Doação com dedução",
+  "descricao": "Quanto do valor doado a entidades pode ser descontado do imposto de quem doa. Régua: de 0% a 50% da doação descontada do imposto.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "pobreza",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

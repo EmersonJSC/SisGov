@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "urbanizacao-de-favelas",
+  "nome": "Urbanização de favelas",
+  "descricao": "Verba para levar água, esgoto, rua e luz à favela.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "saneamento",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "saude",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

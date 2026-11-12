@@ -1,0 +1,45 @@
+{
+  "versao": 1,
+  "id": "cargos-de-livre-nomeacao",
+  "nome": "Cargos de livre nomeação",
+  "descricao": "Quantos cargos o presidente nomeia sem concurso, por mil servidores, de 1 a 50.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0.001,
+    "max": 0.05
+  },
+  "passo": 0.00245,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.2,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "corrupcao",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 1
+    },
+    {
+      "indice": "popularidade_governo",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 1
+    },
+    {
+      "indice": "folha_do_funcionalismo",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 1
+    }
+  ]
+}

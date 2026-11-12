@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "vale-escola",
+  "nome": "Vale-escola",
+  "descricao": "A família usa verba pública na escola privada.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "vagas_na_escola",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "instrucao",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

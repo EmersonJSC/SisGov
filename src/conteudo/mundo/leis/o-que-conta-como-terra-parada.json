@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "o-que-conta-como-terra-parada",
+  "nome": "O que conta como terra parada",
+  "descricao": "Quais fazendas podem entrar na fila da reforma: só a abandonada, a que quase nada produz, ou a que produz abaixo da média da região.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-a-abandonada",
+      "rotulo": "só a abandonada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "a-que-quase-nada-produz",
+      "rotulo": "a que quase nada produz",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "a-que-produz-abaixo-da-media",
+      "rotulo": "a que produz abaixo da média",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

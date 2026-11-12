@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "imposto-sobre-bancos",
+  "nome": "Imposto sobre bancos",
+  "descricao": "Imposto extra sobre o lucro dos bancos, de 0% a 30% acima do que as outras empresas pagam.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
+  "passo": 0.015,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.5,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "credito_ao_setor_privado",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

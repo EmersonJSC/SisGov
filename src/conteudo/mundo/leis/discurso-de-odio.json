@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "discurso-de-odio",
+  "nome": "Discurso de ódio",
+  "descricao": "Como é punido quem ataca pessoas por cor, religião, origem ou orientação. Escada: sem punição; multa e retirada do conteúdo; indenização à vítima e serviço comunitário; crime com prisão.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-punicao",
+      "rotulo": "sem punição",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "multa-e-retirada-do-conteudo",
+      "rotulo": "multa e retirada do conteúdo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.13
+      },
+      "efeitos": [
+        {
+          "indice": "discriminacao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "tensao_religiosa",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "indenizacao-a-vitima-e-servico-comunitario",
+      "rotulo": "indenização à vítima e serviço comunitário",
+      "bussola": {
+        "economico": 0,
+        "social": -0.27
+      },
+      "efeitos": [
+        {
+          "indice": "discriminacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "tensao_religiosa",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "crime-com-prisao",
+      "rotulo": "crime com prisão",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "discriminacao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "tensao_religiosa",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

@@ -94,13 +94,28 @@ const jogabilidade = variaveis.variaveis.filter(
   (v) => v.camada !== "essencial",
 );
 
+/**
+ * Valor de partida que o mundo dá aos índices exportados da planilha; o país
+ * que declarar o seu valor vence.
+ */
+const inicioDoMundo: Record<string, number> = Object.fromEntries(
+  jogabilidade.flatMap((v) =>
+    "inicial" in v && typeof v.inicial === "number" ? [[v.id, v.inicial]] : [],
+  ),
+);
+
+let leisCarregadas: Record<string, Lei> | undefined;
+
+/** Lê e valida as leis do mundo uma vez só: são as mesmas em toda partida. */
 function carregarLeis(): Record<string, Lei> {
+  if (leisCarregadas) return leisCarregadas;
   const ids = jogabilidade.map((v) => v.id);
   const leis: Record<string, Lei> = {};
   for (const [arquivo, dado] of Object.entries(arquivosLeis)) {
     const lei = lerLei(dado, arquivo, ids);
     leis[lei.id] = lei;
   }
+  leisCarregadas = leis;
   return leis;
 }
 
@@ -301,7 +316,7 @@ export function criarPartida(
   const estado = estadoInicial(regras, {
     semente,
     essenciais: inicial.essenciais,
-    jogabilidade: inicial.jogabilidade,
+    jogabilidade: { ...inicioDoMundo, ...inicial.jogabilidade },
     leis: vigentes.leis,
     coligacao: congresso.coligacao,
     opinioes: inicial.opinioes,

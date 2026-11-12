@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "parte-do-estado-no-petroleo",
+  "nome": "Parte do Estado no petróleo",
+  "descricao": "Quanto do que é extraído fica com o Estado, de 0% a 80%.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.8
+  },
+  "passo": 0.04,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.5,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

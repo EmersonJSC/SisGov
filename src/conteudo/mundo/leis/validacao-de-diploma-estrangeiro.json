@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "validacao-de-diploma-estrangeiro",
+  "nome": "Validação de diploma estrangeiro",
+  "descricao": "Se quem se formou fora pode atender aqui e com que prova. Escada: não aceita; aceita só depois de curso e prova completos; aceita com prova curta; aceita direto, com registro no conselho.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nao-aceita",
+      "rotulo": "não aceita",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aceita-so-depois-de-curso-e-prova-completos",
+      "rotulo": "aceita só depois de curso e prova completos",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "aceita-com-prova-curta",
+      "rotulo": "aceita com prova curta",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "aceita-direto-com-registro-no-conselho",
+      "rotulo": "aceita direto, com registro no conselho",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "profissionais_saude",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

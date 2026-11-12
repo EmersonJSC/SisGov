@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "imposto-sobre-heranca",
+  "nome": "Imposto sobre herança",
+  "descricao": "Cobrança sobre o que se herda.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "desigualdade",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "obrigacao-de-ter-plano",
+  "nome": "Obrigação de ter plano",
+  "descricao": "Quem é obrigado a ter plano de saúde. Escada: ninguém; multa leve; multa pesada; desconto direto no salário.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ninguem",
+      "rotulo": "ninguém",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "multa-leve",
+      "rotulo": "multa leve",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "popularidade_governo",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "multa-pesada",
+      "rotulo": "multa pesada",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "popularidade_governo",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "desconto-direto-no-salario",
+      "rotulo": "desconto direto no salário",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "popularidade_governo",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

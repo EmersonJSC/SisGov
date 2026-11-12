@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "teto-do-preco-dos-remedios",
+  "nome": "Teto do preço dos remédios",
+  "descricao": "Quanto a farmácia pode subir o preço do remédio por ano. Régua: livre; inflação mais folga; só a inflação; abaixo da inflação.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.15
+  },
+  "passo": 0.0075,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "acesso_remedios",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "saude",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

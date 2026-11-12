@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "o-que-o-assentado-recebe",
+  "nome": "O que o assentado recebe",
+  "descricao": "O que a família ganha: uso coletivo da comunidade, uso sem poder vender, título com prazo para vender, título pleno.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "uso-coletivo-da-comunidade",
+      "rotulo": "uso coletivo da comunidade",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "uso-sem-poder-vender",
+      "rotulo": "uso sem poder vender",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "titulo-com-prazo-para-vender",
+      "rotulo": "título com prazo para vender",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "titulo-pleno",
+      "rotulo": "título pleno",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "concentracao_terra",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

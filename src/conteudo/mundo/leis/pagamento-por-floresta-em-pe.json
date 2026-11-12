@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "pagamento-por-floresta-em-pe",
+  "nome": "Pagamento por floresta em pé",
+  "descricao": "Quanto o Estado paga por hectare de mata que o dono mantém de pé.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": -0.5
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "desmatamento",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

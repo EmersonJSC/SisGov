@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "exigencia-de-capital-dos-bancos",
+  "nome": "Exigência de capital dos bancos",
+  "descricao": "Quanto dinheiro próprio o banco precisa ter, de baixo a alto.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.2
+  },
+  "passo": 0.01,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "solidez_dos_bancos",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "credito_ao_setor_privado",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "iniciativa-popular",
+  "nome": "Iniciativa popular",
+  "descricao": "Quanto poder o povo tem para propor e decidir leis. Escada: nenhum, só os políticos propõem; o povo propõe lei com assinaturas e o Congresso decide; lei com muitas assinaturas vai a plebiscito; o povo também revoga leis por voto.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum-so-os-politicos-propoem",
+      "rotulo": "nenhum, só os políticos propõem",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "o-povo-propoe-lei-com-assinaturas-e-o-congresso-decide",
+      "rotulo": "o povo propõe lei com assinaturas e o Congresso decide",
+      "bussola": {
+        "economico": 0,
+        "social": -0.17
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "lei-com-muitas-assinaturas-vai-a-plebiscito",
+      "rotulo": "lei com muitas assinaturas vai a plebiscito",
+      "bussola": {
+        "economico": 0,
+        "social": -0.33
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "o-povo-tambem-revoga-leis-por-voto",
+      "rotulo": "o povo também revoga leis por voto",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

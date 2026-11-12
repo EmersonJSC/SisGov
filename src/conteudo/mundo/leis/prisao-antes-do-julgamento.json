@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "prisao-antes-do-julgamento",
+  "nome": "Prisão antes do julgamento",
+  "descricao": "Quem espera o julgamento preso. Escada: ninguém, só casos raros; só quem cometeu crime violento; também quem cometeu crime com pena alta; a maioria dos acusados de crime.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ninguem-so-casos-raros",
+      "rotulo": "ninguém, só casos raros",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-quem-cometeu-crime-violento",
+      "rotulo": "só quem cometeu crime violento",
+      "bussola": {
+        "economico": 0,
+        "social": 0.17
+      },
+      "efeitos": [
+        {
+          "indice": "presos_sem_julgamento",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-quem-cometeu-crime-com-pena-alta",
+      "rotulo": "também quem cometeu crime com pena alta",
+      "bussola": {
+        "economico": 0,
+        "social": 0.33
+      },
+      "efeitos": [
+        {
+          "indice": "presos_sem_julgamento",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "a-maioria-dos-acusados-de-crime",
+      "rotulo": "a maioria dos acusados de crime",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
+      "efeitos": [
+        {
+          "indice": "presos_sem_julgamento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

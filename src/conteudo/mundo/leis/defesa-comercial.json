@@ -1,0 +1,52 @@
+{
+  "versao": 1,
+  "id": "defesa-comercial",
+  "nome": "Defesa comercial",
+  "descricao": "Vai de nenhuma, passa por antidumping, até salvaguardas amplas contra importação barata.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "antidumping",
+      "rotulo": "antidumping",
+      "bussola": {
+        "economico": 0,
+        "social": 0.15
+      },
+      "efeitos": [
+        {
+          "indice": "abertura_comercial",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "salvaguardas-amplas",
+      "rotulo": "salvaguardas amplas",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
+      "efeitos": [
+        {
+          "indice": "abertura_comercial",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

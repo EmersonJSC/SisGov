@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "como-o-orgao-consegue-a-terra",
+  "nome": "Como o órgão consegue a terra",
+  "descricao": "De 0 a 100%, quanto da terra o órgão compra e quanto desapropria.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "conflito_no_campo",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 3
+    }
+  ]
+}

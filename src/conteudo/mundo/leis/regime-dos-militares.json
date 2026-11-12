@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "regime-dos-militares",
+  "nome": "Regime dos militares",
+  "descricao": "Como os militares se aposentam em comparação com os demais trabalhadores. Escada: mesmas regras de todo mundo; idade mínima menor que a dos civis; idade menor e salário cheio na aposentadoria; idade menor, salário cheio e pensão vitalícia para a família.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "mesmas-regras-de-todo-mundo",
+      "rotulo": "mesmas regras de todo mundo",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "idade-minima-menor-que-a-dos-civis",
+      "rotulo": "idade mínima menor que a dos civis",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_da_previdencia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "idade-menor-e-salario-cheio-na-aposentadoria",
+      "rotulo": "idade menor e salário cheio na aposentadoria",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_da_previdencia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "idade-menor-salario-cheio-e-pensao-vitalicia-para-a-familia",
+      "rotulo": "idade menor, salário cheio e pensão vitalícia para a família",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "deficit_da_previdencia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "delacao-premiada",
+  "nome": "Delação premiada",
+  "descricao": "Quanto de pena a menos ganha quem entrega a organização. Escada: não existe; redução pequena da pena; redução grande da pena e proteção ao delator; perdão total para quem entrega os chefes.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nao-existe",
+      "rotulo": "não existe",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "reducao-pequena-da-pena",
+      "rotulo": "redução pequena da pena",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "certeza_de_punicao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "reducao-grande-da-pena-e-protecao-ao-delator",
+      "rotulo": "redução grande da pena e proteção ao delator",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "certeza_de_punicao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "perdao-total-para-quem-entrega-os-chefes",
+      "rotulo": "perdão total para quem entrega os chefes",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "certeza_de_punicao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

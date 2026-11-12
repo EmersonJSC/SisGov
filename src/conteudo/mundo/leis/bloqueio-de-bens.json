@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "bloqueio-de-bens",
+  "nome": "Bloqueio de bens",
+  "descricao": "Quando os bens de um suspeito podem ser congelados. Escada: só depois da condenação; depois que a acusação é aceita; durante a investigação, com ordem do juiz; automático ao abrir a investigação.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-depois-da-condenacao",
+      "rotulo": "só depois da condenação",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "depois-que-a-acusacao-e-aceita",
+      "rotulo": "depois que a acusação é aceita",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "durante-a-investigacao-com-ordem-do-juiz",
+      "rotulo": "durante a investigação, com ordem do juiz",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "automatico-ao-abrir-a-investigacao",
+      "rotulo": "automático ao abrir a investigação",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

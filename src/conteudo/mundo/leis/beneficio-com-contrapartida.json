@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "beneficio-com-contrapartida",
+  "nome": "Benefício com contrapartida",
+  "descricao": "O que quem recebe ajuda do governo precisa fazer em troca. Escada: nada, a ajuda é livre; filhos na escola e vacina em dia; curso ou trabalho comunitário para os adultos; emprego ou curso obrigatório para quem pode trabalhar.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada-a-ajuda-e-livre",
+      "rotulo": "nada, a ajuda é livre",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "filhos-na-escola-e-vacina-em-dia",
+      "rotulo": "filhos na escola e vacina em dia",
+      "bussola": {
+        "economico": 0.13,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "curso-ou-trabalho-comunitario-para-os-adultos",
+      "rotulo": "curso ou trabalho comunitário para os adultos",
+      "bussola": {
+        "economico": 0.27,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "emprego-ou-curso-obrigatorio-para-quem-pode-trabalhar",
+      "rotulo": "emprego ou curso obrigatório para quem pode trabalhar",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

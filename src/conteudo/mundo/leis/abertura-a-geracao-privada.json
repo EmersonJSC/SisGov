@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "abertura-a-geracao-privada",
+  "nome": "Abertura à geração privada",
+  "descricao": "Quanto as companhias podem construir e vender energia nova: de fechada até leilões e contratos longos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "fechada",
+      "rotulo": "fechada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-alguns-leiloes",
+      "rotulo": "só alguns leilões",
+      "bussola": {
+        "economico": 0.25,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gerada",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "preco_da_energia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "leiloes-e-contratos-longos",
+      "rotulo": "leilões e contratos longos",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gerada",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "preco_da_energia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

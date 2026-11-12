@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "direito-de-quem-planta-em-terra-alheia",
+  "nome": "Direito de quem planta em terra alheia",
+  "descricao": "% mínimo da colheita que fica com o meeiro, e o direito de continuar na terra.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.7
+  },
+  "passo": 0.035,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "produtividade",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "conflito_no_campo",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

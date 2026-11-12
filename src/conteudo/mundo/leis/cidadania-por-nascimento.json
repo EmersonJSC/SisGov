@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "cidadania-por-nascimento",
+  "nome": "Cidadania por nascimento",
+  "descricao": "Vai de só por sangue, passa por filhos de residentes, até todo nascido aqui.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-por-sangue",
+      "rotulo": "só por sangue",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "filhos-de-residentes",
+      "rotulo": "filhos de residentes",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "integracao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "imigrantes_na_populacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "todo-nascido-aqui",
+      "rotulo": "todo nascido aqui",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "efeitos": [
+        {
+          "indice": "integracao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "imigrantes_na_populacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

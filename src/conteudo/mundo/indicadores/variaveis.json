@@ -688,6 +688,2086 @@
       "medida": {
         "unidade": "% da terra rural nas mãos dos donos grandes"
       }
+    },
+    {
+      "id": "risco_de_epidemia",
+      "tipo": "calculado",
+      "nome": "Risco de epidemia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Saúde",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Chance de um surto de doença",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "fuga_de_profissionais",
+      "tipo": "calculado",
+      "nome": "Fuga de profissionais",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Saúde",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Profissionais de saúde que deixam o país ou a rede",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "saude_mental",
+      "tipo": "calculado",
+      "nome": "Saúde mental",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Saúde",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto a população está bem da cabeça: depressão, ansiedade, suicídio",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "dependencia_de_drogas",
+      "tipo": "calculado",
+      "nome": "Dependência de drogas",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Vícios",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quem tem problema com drogas",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "dependencia_de_jogos",
+      "tipo": "calculado",
+      "nome": "Dependência de jogos",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Vícios",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quem tem problema com apostas",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "mercado_ilegal",
+      "tipo": "calculado",
+      "nome": "Mercado ilegal",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Vícios",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "O que se vende fora da lei",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "risco_de_falta_d_agua",
+      "tipo": "calculado",
+      "nome": "Risco de falta d'água",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Saneamento",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Chance de faltar água nas cidades",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "vagas_na_escola",
+      "tipo": "calculado",
+      "nome": "Vagas na escola",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Educação",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quem tem vaga na escola",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "evasao_escolar",
+      "tipo": "calculado",
+      "nome": "Evasão escolar",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Educação",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte dos jovens que larga a escola",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "qualidade_do_ensino",
+      "tipo": "calculado",
+      "nome": "Qualidade do ensino",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Educação",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto os alunos aprendem de fato",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tecnologia_do_pais",
+      "tipo": "calculado",
+      "nome": "Tecnologia do país",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Ciência e pesquisa",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Média do nível de tecnologia dos produtos; a tela mostra junto o melhor e o pior",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "fuga_de_cientistas",
+      "tipo": "calculado",
+      "nome": "Fuga de cientistas",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Ciência e pesquisa",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quantos pesquisadores e técnicos saem do país",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "bens_em_risco",
+      "tipo": "calculado",
+      "nome": "Bens em risco",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Cultura e esporte",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quantos bens protegidos estão sem o dinheiro da conservação",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "fome",
+      "tipo": "calculado",
+      "nome": "Fome",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Assistência social",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte das pessoas sem comida suficiente",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "moradores_de_rua",
+      "tipo": "calculado",
+      "nome": "Moradores de rua",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Assistência social",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Pessoas vivendo na rua",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "fraude_em_beneficios",
+      "tipo": "calculado",
+      "nome": "Fraude em benefícios",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Assistência social",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte da verba de benefícios paga a quem não deveria",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "cobertura_da_previdencia",
+      "tipo": "calculado",
+      "nome": "Cobertura da previdência",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Previdência",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Parte dos idosos que recebe aposentadoria ou pensão",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "deficit_da_previdencia",
+      "tipo": "calculado",
+      "nome": "Déficit da previdência",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Previdência",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Benefícios menos contribuições, em % do PIB",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "confianca_na_aposentadoria",
+      "tipo": "calculado",
+      "nome": "Confiança na aposentadoria",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Previdência",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto quem trabalha acredita que vai receber",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "greves",
+      "tipo": "calculado",
+      "nome": "Greves",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Trabalho",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte dos empregados parada",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tensao_trabalhista",
+      "tipo": "calculado",
+      "nome": "Tensão trabalhista",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Trabalho",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Raiva acumulada por salário, emprego e direitos",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "forca_dos_sindicatos",
+      "tipo": "calculado",
+      "nome": "Força dos sindicatos",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Trabalho",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto os sindicatos conseguem mobilizar",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "trabalho_infantil",
+      "tipo": "calculado",
+      "nome": "Trabalho infantil",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Trabalho",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte das crianças que trabalha",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "casas_vazias",
+      "tipo": "calculado",
+      "nome": "Casas vazias",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moradia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Casas construídas sem morador, por faixa",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "homicidios",
+      "tipo": "calculado",
+      "nome": "Homicídios",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Mortes por 100 mil habitantes",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "crimes_contra_o_patrimonio",
+      "tipo": "calculado",
+      "nome": "Crimes contra o patrimônio",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Roubos e furtos por mil habitantes",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "mortes_pela_policia",
+      "tipo": "calculado",
+      "nome": "Mortes pela polícia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Pessoas mortas pela polícia por ano",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "sensacao_de_inseguranca",
+      "tipo": "calculado",
+      "nome": "Sensação de insegurança",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "O medo da população",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "confianca_na_policia",
+      "tipo": "calculado",
+      "nome": "Confiança na polícia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto a população confia na polícia",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "corrupcao_policial",
+      "tipo": "calculado",
+      "nome": "Corrupção policial",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto da polícia está comprada",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "chefes_presos",
+      "tipo": "calculado",
+      "nome": "Chefes presos",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Líderes de organizações presos por ano",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "dinheiro_do_crime_apreendido",
+      "tipo": "calculado",
+      "nome": "Dinheiro do crime apreendido",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Dinheiro de organizações apreendido por ano",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "violencia_contra_a_mulher",
+      "tipo": "calculado",
+      "nome": "Violência contra a mulher",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Segurança pública",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quantas mulheres sofrem violência em casa ou do parceiro",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "certeza_de_punicao",
+      "tipo": "calculado",
+      "nome": "Certeza de punição",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Justiça e prisões",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Chance de quem comete crime ser pego e condenado",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "peso_das_penas",
+      "tipo": "calculado",
+      "nome": "Peso das penas",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Justiça e prisões",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "O quanto as penas são duras",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "presos_sem_julgamento",
+      "tipo": "calculado",
+      "nome": "Presos sem julgamento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Justiça e prisões",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte dos presos que ainda espera julgamento",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "volta_ao_crime",
+      "tipo": "calculado",
+      "nome": "Volta ao crime",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Justiça e prisões",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte de quem sai e volta a cometer crime",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tempo_da_justica",
+      "tipo": "calculado",
+      "nome": "Tempo da Justiça",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Justiça e prisões",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Meses que um processo leva",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "confianca_na_justica",
+      "tipo": "calculado",
+      "nome": "Confiança na Justiça",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Justiça e prisões",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto a população confia nos juízes",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "risco_de_golpe",
+      "tipo": "calculado",
+      "nome": "Risco de golpe",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Defesa",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Chance de os militares ou uma organização tentarem um golpe",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "preparo_contra_desastres",
+      "tipo": "calculado",
+      "nome": "Preparo contra desastres",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Defesa civil",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "O quanto o país está pronto para enfrentar enchente, deslizamento, seca e incêndio",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "soberania",
+      "tipo": "calculado",
+      "nome": "Soberania",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Relações exteriores",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = país tutelado, 100 = autônomo",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tensao_internacional",
+      "tipo": "calculado",
+      "nome": "Tensão internacional",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Relações exteriores",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = paz com todos, 100 = crise com várias potências",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "imigrantes_na_populacao",
+      "tipo": "calculado",
+      "nome": "Imigrantes na população",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Imigração",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da população nascida fora",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "pessoas_sem_documento",
+      "tipo": "calculado",
+      "nome": "Pessoas sem documento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Imigração",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% da população sem documento",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "refugiados_no_pais",
+      "tipo": "calculado",
+      "nome": "Refugiados no país",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Imigração",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Pessoas acolhidas por refúgio ou asilo",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "emigracao_de_formados",
+      "tipo": "calculado",
+      "nome": "Emigração de formados",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Imigração",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% dos formados que saem do país por ano",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tensao_com_imigrantes",
+      "tipo": "calculado",
+      "nome": "Tensão com imigrantes",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Imigração",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = convivência, 100 = conflito aberto",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "integracao",
+      "tipo": "calculado",
+      "nome": "Integração",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Imigração",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto quem veio de fora já vive como quem nasceu aqui: fala a língua, tem trabalho registrado e documento",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "discriminacao",
+      "tipo": "calculado",
+      "nome": "Discriminação",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Direitos e liberdades",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto pessoas são tratadas pior por quem são",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tensao_religiosa",
+      "tipo": "calculado",
+      "nome": "Tensão religiosa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Direitos e liberdades",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Conflito entre religiões e entre religião e Estado",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "participacao_eleitoral",
+      "tipo": "calculado",
+      "nome": "Participação eleitoral",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Estado e eleições",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Parte dos eleitores que vota",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "confianca_na_democracia",
+      "tipo": "calculado",
+      "nome": "Confiança na democracia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Estado e eleições",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto a população confia nas eleições e nas instituições",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "independencia_da_justica",
+      "tipo": "calculado",
+      "nome": "Independência da Justiça",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Estado e eleições",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto os juízes decidem sem pressão do governo",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "sonegacao",
+      "tipo": "calculado",
+      "nome": "Sonegação",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Impostos",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Parte do imposto devido que não é paga",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "saida_de_ricos",
+      "tipo": "calculado",
+      "nome": "Saída de ricos",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Impostos",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Patrimônio que deixa o país por ano",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "divida_atrasada",
+      "tipo": "calculado",
+      "nome": "Dívida atrasada",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Impostos",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Imposto devido e não pago que se acumula, em % do PIB",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "gasto_obrigatorio",
+      "tipo": "calculado",
+      "nome": "Gasto obrigatório",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Orçamento e dívida",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% do orçamento já travado por lei (pisos e vinculações)",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "prazo_medio_da_divida",
+      "tipo": "calculado",
+      "nome": "Prazo médio da dívida",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Orçamento e dívida",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Anos até a dívida vencer, em média",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "divida_em_moeda_estrangeira",
+      "tipo": "calculado",
+      "nome": "Dívida em moeda estrangeira",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Orçamento e dívida",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% da dívida em moeda de fora",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "credibilidade_fiscal",
+      "tipo": "calculado",
+      "nome": "Credibilidade fiscal",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Orçamento e dívida",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto o mercado acredita que o governo cumpre as regras",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "folha_do_funcionalismo",
+      "tipo": "calculado",
+      "nome": "Folha do funcionalismo",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Orçamento e dívida",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% da receita que vai para salários do Estado",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "indice_da_bolsa",
+      "tipo": "calculado",
+      "nome": "Índice da bolsa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Valor médio das empresas na bolsa, comparado ao início",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "confianca_do_mercado",
+      "tipo": "calculado",
+      "nome": "Confiança do mercado",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto investidores confiam nas regras e no futuro do país",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "cambio",
+      "tipo": "calculado",
+      "nome": "Câmbio",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Preço da moeda de fora na moeda do país; 100 no início",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "reservas_internacionais",
+      "tipo": "calculado",
+      "nome": "Reservas internacionais",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Moeda forte guardada pelo Banco Central, em meses de importação",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "credito_ao_setor_privado",
+      "tipo": "calculado",
+      "nome": "Crédito ao setor privado",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Crédito de bancos a pops e empresas, em % do PIB",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "solidez_dos_bancos",
+      "tipo": "calculado",
+      "nome": "Solidez dos bancos",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = bancos à beira da quebra, 100 = bancos fortes",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "expectativa_de_inflacao",
+      "tipo": "calculado",
+      "nome": "Expectativa de inflação",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto o povo e as empresas esperam de inflação",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "dinheiro_em_cripto",
+      "tipo": "calculado",
+      "nome": "Dinheiro em cripto",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Moeda e bancos",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da poupança guardada em cripto",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "estado_na_economia",
+      "tipo": "calculado",
+      "nome": "Estado na economia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Empresas e estatais",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% do PIB feito por empresas do Estado",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "concentracao_de_mercado",
+      "tipo": "calculado",
+      "nome": "Concentração de mercado",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Empresas e estatais",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = muita concorrência, 100 = monopólio",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "eficiencia_das_estatais",
+      "tipo": "calculado",
+      "nome": "Eficiência das estatais",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Empresas e estatais",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "0 = estatais pesadas e corruptas, 100 = eficientes",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tempo_para_abrir_empresa",
+      "tipo": "calculado",
+      "nome": "Tempo para abrir empresa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Empresas e estatais",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Dias para abrir uma empresa",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "trabalhadores_em_cooperativas",
+      "tipo": "calculado",
+      "nome": "Trabalhadores em cooperativas",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Empresas e estatais",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% do emprego em cooperativas",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "abertura_comercial",
+      "tipo": "calculado",
+      "nome": "Abertura comercial",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comércio exterior e capital",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Exportações mais importações, em % do PIB",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "saldo_comercial",
+      "tipo": "calculado",
+      "nome": "Saldo comercial",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comércio exterior e capital",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Exportações menos importações, em % do PIB",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "dependencia_de_importados",
+      "tipo": "calculado",
+      "nome": "Dependência de importados",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comércio exterior e capital",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "% do consumo de produtos essenciais que vem de fora",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "investimento_estrangeiro",
+      "tipo": "calculado",
+      "nome": "Investimento estrangeiro",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comércio exterior e capital",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Dinheiro de fora que entra para investir, em % do PIB",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "preco_da_comida",
+      "tipo": "calculado",
+      "nome": "Preço da comida",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Agricultura e pesca",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto a comida pesa no bolso",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "estoque_de_peixe",
+      "tipo": "calculado",
+      "nome": "Estoque de peixe",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Agricultura e pesca",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Peixe que resta, por mar compartilhado; o índice é a média dos mares do país",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "conflito_no_campo",
+      "tipo": "calculado",
+      "nome": "Conflito no campo",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Terra",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Tensão e violência pela terra",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "emissoes_de_carbono",
+      "tipo": "calculado",
+      "nome": "Emissões de carbono",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Meio ambiente",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto o país emite: soma das contas das companhias, somada ao desmatamento",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "desmatamento",
+      "tipo": "calculado",
+      "nome": "Desmatamento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Meio ambiente",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Mata derrubada no período. O mapa mostra onde; o número do estado aparece no papel",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "qualidade_do_ar",
+      "tipo": "calculado",
+      "nome": "Qualidade do ar",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Meio ambiente",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quão limpo está o ar, por estado",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "energia_gerada",
+      "tipo": "calculado",
+      "nome": "Energia gerada",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Energia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Soma do que as usinas geram no país",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "energia_gasta",
+      "tipo": "calculado",
+      "nome": "Energia gasta",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Energia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Soma do que companhias e população gastam, mais as perdas na rede",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "preco_da_energia",
+      "tipo": "calculado",
+      "nome": "Preço da energia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Energia",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Preço médio da energia no país",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "matriz_limpa",
+      "tipo": "calculado",
+      "nome": "Matriz limpa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Energia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% da energia gerada por fontes limpas",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "acesso_a_energia",
+      "tipo": "calculado",
+      "nome": "Acesso à energia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Energia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% das famílias com luz",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "mortes_no_transito",
+      "tipo": "calculado",
+      "nome": "Mortes no trânsito",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Infraestrutura e transporte",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Mortes no trânsito por 100 mil habitantes",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "custo_das_obras",
+      "tipo": "calculado",
+      "nome": "Custo das obras",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Infraestrutura e transporte",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto custa construir hoje, comparado ao normal",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "custo_do_frete",
+      "tipo": "calculado",
+      "nome": "Custo do frete",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Infraestrutura e transporte",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto custa levar carga dentro do país",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "obras_paradas",
+      "tipo": "calculado",
+      "nome": "Obras paradas",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Infraestrutura e transporte",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quantas obras não andam",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "congestionamento",
+      "tipo": "calculado",
+      "nome": "Congestionamento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Infraestrutura e transporte",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto tempo se perde parado no trânsito",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "liberdade_de_imprensa",
+      "tipo": "calculado",
+      "nome": "Liberdade de imprensa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comunicação e tecnologia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto a mídia pode noticiar sem medo",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "desinformacao",
+      "tipo": "calculado",
+      "nome": "Desinformação",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comunicação e tecnologia",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto boato e notícia falsa circula",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "credibilidade_da_imprensa",
+      "tipo": "calculado",
+      "nome": "Credibilidade da imprensa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comunicação e tecnologia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Quanto o povo acredita no que a imprensa diz",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "concentracao_da_midia",
+      "tipo": "calculado",
+      "nome": "Concentração da mídia",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comunicação e tecnologia",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto da audiência está nas mãos de poucos donos",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "violencia_contra_a_imprensa",
+      "tipo": "calculado",
+      "nome": "Violência contra a imprensa",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comunicação e tecnologia",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Jornalistas ameaçados, presos ou agredidos por ano",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "acesso_a_internet",
+      "tipo": "calculado",
+      "nome": "Acesso à internet",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Comunicação e tecnologia",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Parte da população conectada",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "natalidade",
+      "tipo": "calculado",
+      "nome": "Natalidade",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Geral do país",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Filhos por mulher",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "produtividade",
+      "tipo": "calculado",
+      "nome": "Produtividade",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Geral do país",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Média das produtividades de todas as companhias do jogo",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "preco_do_combustivel",
+      "tipo": "calculado",
+      "nome": "Preço do combustível",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 50,
+      "area": "Mineração e petróleo",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "Quanto custa encher o tanque e o botijão",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
     }
   ]
 }

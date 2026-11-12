@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "licencas-de-apostas",
+  "nome": "Licenças de apostas",
+  "descricao": "Como as empresas podem explorar os jogos de aposta. Escada: apostas proibidas; poucas licenças caras; licença aberta com imposto moderado; licença barata e aberta a qualquer empresa.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "apostas-proibidas",
+      "rotulo": "apostas proibidas",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "poucas-licencas-caras",
+      "rotulo": "poucas licenças caras",
+      "bussola": {
+        "economico": 0.17,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mercado_ilegal",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "licenca-aberta-com-imposto-moderado",
+      "rotulo": "licença aberta com imposto moderado",
+      "bussola": {
+        "economico": 0.33,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mercado_ilegal",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "licenca-barata-e-aberta-a-qualquer-empresa",
+      "rotulo": "licença barata e aberta a qualquer empresa",
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "mercado_ilegal",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

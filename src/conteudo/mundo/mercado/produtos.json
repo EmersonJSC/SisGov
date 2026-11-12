@@ -304,44 +304,7 @@
           "desgaste": 0.03
         }
       ],
-      "camadas": [
-        {
-          "lei": "energia-construcao",
-          "opcoes": {
-            "estatal": {},
-            "concessao": {
-              "parte_privada": 0.4,
-              "margem_preco": 3
-            },
-            "livre": {
-              "parte_privada": 0.7,
-              "margem_preco": 6
-            }
-          }
-        },
-        {
-          "lei": "energia-rede",
-          "opcoes": {
-            "estatal": {},
-            "concessao": {
-              "ganho_capacidade": 4,
-              "margem_preco": 3
-            }
-          }
-        },
-        {
-          "lei": "energia-venda",
-          "opcoes": {
-            "estatal": {},
-            "regulada": {
-              "margem_preco": 2
-            },
-            "privada": {
-              "margem_preco": 6
-            }
-          }
-        }
-      ]
+      "camadas": []
     }
   ]
 }

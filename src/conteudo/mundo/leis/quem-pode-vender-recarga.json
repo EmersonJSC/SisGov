@@ -1,0 +1,84 @@
+{
+  "versao": 1,
+  "id": "quem-pode-vender-recarga",
+  "nome": "Quem pode vender recarga",
+  "descricao": "Quem pode cobrar para carregar carro elétrico: só a distribuidora, postos, comércio, condomínios, qualquer casa.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "so-a-distribuidora",
+      "rotulo": "só a distribuidora",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "postos",
+      "rotulo": "postos",
+      "bussola": {
+        "economico": 0.08,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "comercio",
+      "rotulo": "comércio",
+      "bussola": {
+        "economico": 0.15,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "condominios",
+      "rotulo": "condomínios",
+      "bussola": {
+        "economico": 0.22,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "qualquer-casa",
+      "rotulo": "qualquer casa",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

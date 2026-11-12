@@ -1,0 +1,84 @@
+{
+  "versao": 1,
+  "id": "carregadores-nas-estradas-federais",
+  "nome": "Carregadores nas estradas federais",
+  "descricao": "Distância máxima entre carregadores: sem exigência, 400, 200, 100, 50 km.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-exigencia",
+      "rotulo": "sem exigência",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "a-cada-400-km",
+      "rotulo": "a cada 400 km",
+      "bussola": {
+        "economico": -0.02,
+        "social": -0.05
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "a-cada-200-km",
+      "rotulo": "a cada 200 km",
+      "bussola": {
+        "economico": -0.05,
+        "social": -0.1
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "a-cada-100-km",
+      "rotulo": "a cada 100 km",
+      "bussola": {
+        "economico": -0.08,
+        "social": -0.15
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    },
+    {
+      "id": "a-cada-50-km",
+      "rotulo": "a cada 50 km",
+      "bussola": {
+        "economico": -0.1,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "energia_gasta",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 12
+        }
+      ]
+    }
+  ]
+}

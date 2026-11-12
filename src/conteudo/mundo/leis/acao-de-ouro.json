@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "acao-de-ouro",
+  "nome": "Ação de ouro",
+  "descricao": "Vai de nenhuma, passa por veto na venda a estrangeiro, até veto amplo. O Estado vende mas mantém voz nas decisões estratégicas.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "veto-na-venda-a-estrangeiro",
+      "rotulo": "veto na venda a estrangeiro",
+      "bussola": {
+        "economico": 0,
+        "social": 0.15
+      },
+      "efeitos": []
+    },
+    {
+      "id": "veto-amplo",
+      "rotulo": "veto amplo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
+      "efeitos": []
+    }
+  ]
+}

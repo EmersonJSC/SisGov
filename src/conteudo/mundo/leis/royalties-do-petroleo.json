@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "royalties-do-petroleo",
+  "nome": "Royalties do petróleo",
+  "descricao": "Imposto sobre o petróleo e o gás extraídos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.4
+  },
+  "passo": 0.02,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

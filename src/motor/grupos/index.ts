@@ -172,9 +172,15 @@ export function pontosLeis(
   agora: Record<string, ValorLei>,
   marco: Record<string, ValorLei>,
 ): number {
+  // Só conta lei que andou desde o marco: as outras dão zero. Lei fora dos
+  // dois (não legislada antes e agora) também não andou.
   let pontos = 0;
-  for (const lei of Object.values(leis))
-    pontos += pontosLei(tipo, lei, agora[lei.id], marco[lei.id]);
+  const conta = (id: string) => {
+    if (agora[id] === marco[id] || !leis[id]) return;
+    pontos += pontosLei(tipo, leis[id], agora[id], marco[id]);
+  };
+  for (const id in agora) conta(id);
+  for (const id in marco) if (!(id in agora)) conta(id);
   return pontos;
 }
 

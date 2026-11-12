@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "estradas-com-pedagio",
+  "nome": "Estradas com pedágio",
+  "descricao": "Quanto das estradas federais fica com empresas que consertam e cobram pedágio, de 0% a 100%. O jogo escolhe os trechos sozinho.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "mortes_no_transito",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 6
+    },
+    {
+      "indice": "custo_do_frete",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

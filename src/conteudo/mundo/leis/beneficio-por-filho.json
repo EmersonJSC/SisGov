@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "beneficio-por-filho",
+  "nome": "Benefício por filho",
+  "descricao": "Quanto da transferência de renda é dividido por criança. Régua: de 0% a 50% da transferência paga por filho.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "natalidade",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "pobreza",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

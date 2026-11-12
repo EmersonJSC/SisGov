@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "pesquisa-com-virus-perigosos",
+  "nome": "Pesquisa com vírus perigosos",
+  "descricao": "Quem pode estudar vírus perigosos: proibida, só em laboratório de segurança máxima, liberada.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibida",
+      "rotulo": "proibida",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-em-laboratorio-de-seguranca-maxima",
+      "rotulo": "só em laboratório de segurança máxima",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": []
+    },
+    {
+      "id": "liberada",
+      "rotulo": "liberada",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

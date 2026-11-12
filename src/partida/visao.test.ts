@@ -10,7 +10,8 @@ describe("visão da partida para o mapa", () => {
     const areas = new Set(visao.governo.map((a) => a.id));
     for (const lei of visao.leis) {
       expect(areas.has(lei.area)).toBe(true);
-      expect(lei.nome).not.toMatch(/-/);
+      // nome de gente, não o id ("Seguro-depósito" tem hífen e é nome)
+      expect(lei.nome).not.toBe(lei.id);
     }
   });
 

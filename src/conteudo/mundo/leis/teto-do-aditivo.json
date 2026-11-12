@@ -1,0 +1,45 @@
+{
+  "versao": 1,
+  "id": "teto-do-aditivo",
+  "nome": "Teto do aditivo",
+  "descricao": "Quanto a obra pode encarecer depois de assinada, de 0 a 50% do preço.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.5
+  },
+  "passo": 0.025,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "custo_das_obras",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "corrupcao",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "obras_paradas",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

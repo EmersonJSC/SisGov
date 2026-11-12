@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "obrigacao-dos-bancos",
+  "nome": "Obrigação dos bancos",
+  "descricao": "Quanto os bancos precisam avisar o governo sobre movimentações suspeitas. Escada: nenhuma; avisar só valores muito altos; avisar valores médios e guardar os dados por cinco anos; avisar qualquer movimento fora do padrão do cliente, com multa para o banco que não avisar.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhuma",
+      "rotulo": "nenhuma",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "avisar-so-valores-muito-altos",
+      "rotulo": "avisar só valores muito altos",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "avisar-valores-medios-e-guardar-os-dados-por-cinco-anos",
+      "rotulo": "avisar valores médios e guardar os dados por cinco anos",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "avisar-qualquer-movimento-fora-do-padrao-do-cliente-com-multa-para-o-banco-que-nao-avisar",
+      "rotulo": "avisar qualquer movimento fora do padrão do cliente, com multa para o banco que não avisar",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

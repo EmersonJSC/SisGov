@@ -1,0 +1,122 @@
+{
+  "versao": 1,
+  "id": "pena-para-corrupcao",
+  "nome": "Pena para corrupção",
+  "descricao": "Quanto custa ser pego roubando dinheiro público. Escada: devolve o dinheiro e paga multa; perde o cargo e não pode ser candidato; prisão em regime fechado; prisão e perda dos bens sem origem.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "devolve-o-dinheiro-e-paga-multa",
+      "rotulo": "devolve o dinheiro e paga multa",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "perde-o-cargo-e-nao-pode-ser-candidato",
+      "rotulo": "perde o cargo e não pode ser candidato",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "prisao-em-regime-fechado",
+      "rotulo": "prisão em regime fechado",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "prisao-e-perda-dos-bens-sem-origem",
+      "rotulo": "prisão e perda dos bens sem origem",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "obras_paradas",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

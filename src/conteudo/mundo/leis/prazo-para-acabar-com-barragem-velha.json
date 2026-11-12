@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "prazo-para-acabar-com-barragem-velha",
+  "nome": "Prazo para acabar com barragem velha",
+  "descricao": "Em quanto tempo as barragens antigas precisam acabar. Sem prazo; 10, 5 ou 3 anos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-prazo",
+      "rotulo": "sem prazo",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "10-anos",
+      "rotulo": "10 anos",
+      "bussola": {
+        "economico": -0.1,
+        "social": -0.07
+      },
+      "efeitos": []
+    },
+    {
+      "id": "5-anos",
+      "rotulo": "5 anos",
+      "bussola": {
+        "economico": -0.2,
+        "social": -0.13
+      },
+      "efeitos": []
+    },
+    {
+      "id": "3-anos",
+      "rotulo": "3 anos",
+      "bussola": {
+        "economico": -0.3,
+        "social": -0.2
+      },
+      "efeitos": []
+    }
+  ]
+}

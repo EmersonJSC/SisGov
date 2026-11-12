@@ -1,0 +1,56 @@
+{
+  "versao": 1,
+  "id": "desconto-no-carro-de-quem-vive-de-dirigir",
+  "nome": "Desconto no carro de quem vive de dirigir",
+  "descricao": "Quem não paga imposto ao comprar o carro de trabalho: ninguém, taxista paga metade, taxista não paga, motorista de aplicativo paga metade, os dois não pagam.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ninguem",
+      "rotulo": "ninguém",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "taxista-paga-metade",
+      "rotulo": "taxista paga metade",
+      "bussola": {
+        "economico": -0.05,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "taxista-nao-paga",
+      "rotulo": "taxista não paga",
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aplicativo-paga-metade",
+      "rotulo": "aplicativo paga metade",
+      "bussola": {
+        "economico": -0.15,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "os-dois-nao-pagam",
+      "rotulo": "os dois não pagam",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

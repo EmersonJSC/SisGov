@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "licenca-para-banco-novo",
+  "nome": "Licença para banco novo",
+  "descricao": "Quem pode abrir banco e em quanto tempo. Escada: nenhum banco novo; análise de anos; bancos digitais e cooperativas com análise curta; licença em meses para qualquer tipo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum-banco-novo",
+      "rotulo": "nenhum banco novo",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "analise-de-anos",
+      "rotulo": "análise de anos",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "concentracao_de_mercado",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "solidez_dos_bancos",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "bancos-digitais-e-cooperativas-com-analise-curta",
+      "rotulo": "bancos digitais e cooperativas com análise curta",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "concentracao_de_mercado",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "solidez_dos_bancos",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "licenca-em-meses-para-qualquer-tipo",
+      "rotulo": "licença em meses para qualquer tipo",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "concentracao_de_mercado",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "solidez_dos_bancos",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

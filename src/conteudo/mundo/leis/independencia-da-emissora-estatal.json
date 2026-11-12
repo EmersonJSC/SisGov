@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "independencia-da-emissora-estatal",
+  "nome": "Independência da emissora estatal",
+  "descricao": "Quem escolhe o diretor da emissora: o governo, um conselho, ou mandato fixo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "governo-escolhe-o-diretor",
+      "rotulo": "governo escolhe o diretor",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "conselho-escolhe-o-diretor",
+      "rotulo": "conselho escolhe o diretor",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": []
+    },
+    {
+      "id": "diretor-com-mandato-fixo",
+      "rotulo": "diretor com mandato fixo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "versao": 1,
+  "id": "reserva-de-emergencia",
+  "nome": "Reserva de emergência",
+  "descricao": "Quanto do PIB fica guardado só para desastre.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.02
+  },
+  "passo": 0.001,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

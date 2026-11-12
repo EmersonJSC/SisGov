@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "ensino-em-casa",
+  "nome": "Ensino em casa",
+  "descricao": "Se os pais podem ensinar o filho em casa. Escada: proibido; com registro e prova todo ano; só registro, sem prova; livre.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibido",
+      "rotulo": "proibido",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "com-registro-e-prova-todo-ano",
+      "rotulo": "com registro e prova todo ano",
+      "bussola": {
+        "economico": 0.07,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "trabalho_infantil",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "so-registro-sem-prova",
+      "rotulo": "só registro, sem prova",
+      "bussola": {
+        "economico": 0.13,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "trabalho_infantil",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "livre",
+      "rotulo": "livre",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "instrucao",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        },
+        {
+          "indice": "trabalho_infantil",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

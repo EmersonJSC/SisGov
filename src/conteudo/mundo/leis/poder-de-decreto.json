@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "poder-de-decreto",
+  "nome": "Poder de decreto",
+  "descricao": "Escada do que o presidente pode mudar sozinho: 1) sem decreto; 2) só verba e preço, com prazo; 3) tudo menos impostos, regras do poder e mandato, com prazo (como a medida provisória); 4) decreto amplo: tudo, sem o Congresso confirmar. Com prazo, a lei vale já e o Congresso tem 2 turnos para confirmar, ou cai.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sem-decreto",
+      "rotulo": "sem decreto",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-verba-e-preco-com-prazo",
+      "rotulo": "só verba e preço, com prazo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.23
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 0
+        }
+      ]
+    },
+    {
+      "id": "quase-tudo-com-prazo",
+      "rotulo": "quase tudo, com prazo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.47
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 0
+        }
+      ]
+    },
+    {
+      "id": "decreto-amplo-sem-o-congresso",
+      "rotulo": "decreto amplo, sem o Congresso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.7
+      },
+      "efeitos": [
+        {
+          "indice": "confianca_na_democracia",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "penas-alternativas",
+  "nome": "Penas alternativas",
+  "descricao": "Quais crimes podem ter tornozeleira ou serviço comunitário no lugar da prisão. Escada: prisão para qualquer crime; serviço comunitário só para infrações mínimas; tornozeleira ou serviço também para crimes leves; tornozeleira ou serviço também para crimes médios sem violência.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "prisao-para-qualquer-crime",
+      "rotulo": "prisão para qualquer crime",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "servico-comunitario-so-para-infracoes-minimas",
+      "rotulo": "serviço comunitário só para infrações mínimas",
+      "bussola": {
+        "economico": 0,
+        "social": -0.17
+      },
+      "efeitos": [
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tornozeleira-ou-servico-tambem-para-crimes-leves",
+      "rotulo": "tornozeleira ou serviço também para crimes leves",
+      "bussola": {
+        "economico": 0,
+        "social": -0.33
+      },
+      "efeitos": [
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tornozeleira-ou-servico-tambem-para-crimes-medios-sem-violencia",
+      "rotulo": "tornozeleira ou serviço também para crimes médios sem violência",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "volta_ao_crime",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "restricao-a-protestos",
+  "nome": "Restrição a protestos",
+  "descricao": "Exige aviso, define locais e penas para protestos. Um dos degraus: bloquear rua ou estrada é crime, e a polícia libera sem ordem do juiz.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "livre",
+      "rotulo": "livre",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "exige-aviso",
+      "rotulo": "exige aviso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "define-locais",
+      "rotulo": "define locais",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "bloquear-rua-e-crime",
+      "rotulo": "bloquear rua é crime",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

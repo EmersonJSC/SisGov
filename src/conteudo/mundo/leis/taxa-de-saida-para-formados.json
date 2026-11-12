@@ -1,0 +1,86 @@
+{
+  "versao": 1,
+  "id": "taxa-de-saida-para-formados",
+  "nome": "Taxa de saída para formados",
+  "descricao": "O que quem estudou com dinheiro público precisa fazer antes de ir morar fora. Escada: sai livre; devolve parte do custo do estudo; devolve o custo todo; precisa ficar alguns anos no país antes de sair.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "sai-livre",
+      "rotulo": "sai livre",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "devolve-parte-do-custo-do-estudo",
+      "rotulo": "devolve parte do custo do estudo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "emigracao_de_formados",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "devolve-o-custo-todo",
+      "rotulo": "devolve o custo todo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "emigracao_de_formados",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "precisa-ficar-alguns-anos-no-pais-antes-de-sair",
+      "rotulo": "precisa ficar alguns anos no país antes de sair",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "emigracao_de_formados",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

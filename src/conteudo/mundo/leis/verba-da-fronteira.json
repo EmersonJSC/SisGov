@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "verba-da-fronteira",
+  "nome": "Verba da fronteira",
+  "descricao": "Guardas, tecnologia e controle nos portos, aeroportos e fronteiras terrestres.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.2
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "pessoas_sem_documento",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

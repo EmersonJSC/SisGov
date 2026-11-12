@@ -1,0 +1,108 @@
+{
+  "versao": 1,
+  "id": "acesso-ao-aborto",
+  "nome": "Acesso ao aborto",
+  "descricao": "Escada: proibido, só com risco de vida, também em estupro, até 12 semanas, ou livre.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibido",
+      "rotulo": "proibido",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-com-risco-de-vida",
+      "rotulo": "só com risco de vida",
+      "bussola": {
+        "economico": 0,
+        "social": -0.17
+      },
+      "efeitos": [
+        {
+          "indice": "natalidade",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "tambem-em-estupro",
+      "rotulo": "também em estupro",
+      "bussola": {
+        "economico": 0,
+        "social": -0.35
+      },
+      "efeitos": [
+        {
+          "indice": "natalidade",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "ate-12-semanas",
+      "rotulo": "até 12 semanas",
+      "bussola": {
+        "economico": 0,
+        "social": -0.52
+      },
+      "efeitos": [
+        {
+          "indice": "natalidade",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "livre",
+      "rotulo": "livre",
+      "bussola": {
+        "economico": 0,
+        "social": -0.7
+      },
+      "efeitos": [
+        {
+          "indice": "natalidade",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "polarizacao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

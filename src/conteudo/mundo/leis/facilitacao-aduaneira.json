@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "facilitacao-aduaneira",
+  "nome": "Facilitação aduaneira",
+  "descricao": "Quanto a burocracia nos portos e fronteiras atrasa e encarece o comércio: de muito lenta até rápida.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.2
+  },
+  "passo": 0.01,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "abertura_comercial",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    },
+    {
+      "indice": "corrupcao",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

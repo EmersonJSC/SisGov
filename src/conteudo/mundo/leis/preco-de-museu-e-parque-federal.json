@@ -1,0 +1,33 @@
+{
+  "versao": 1,
+  "id": "preco-de-museu-e-parque-federal",
+  "nome": "Preço de museu e parque federal",
+  "descricao": "Quanto o visitante paga, de grátis a preço cheio. O dinheiro vai para a conservação.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
+  "passo": 0.05,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "bens_em_risco",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

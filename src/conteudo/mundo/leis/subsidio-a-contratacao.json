@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "subsidio-a-contratacao",
+  "nome": "Subsídio à contratação",
+  "descricao": "O Estado paga parte do salário de quem é contratado no privado.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.6
+  },
+  "passo": 0.03,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": []
+}

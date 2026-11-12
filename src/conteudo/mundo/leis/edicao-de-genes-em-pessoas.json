@@ -1,0 +1,84 @@
+{
+  "versao": 1,
+  "id": "edicao-de-genes-em-pessoas",
+  "nome": "Edição de genes em pessoas",
+  "descricao": "Até onde a ciência pode mexer nos genes: proibida, só em laboratório, tratar adultos, embrião sem nascer, bebês editados.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibida",
+      "rotulo": "proibida",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-em-laboratorio",
+      "rotulo": "só em laboratório",
+      "bussola": {
+        "economico": 0,
+        "social": -0.12
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "tratar-adultos",
+      "rotulo": "tratar adultos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "embriao-sem-nascer",
+      "rotulo": "embrião sem nascer",
+      "bussola": {
+        "economico": 0,
+        "social": -0.37
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    },
+    {
+      "id": "bebes-editados",
+      "rotulo": "bebês editados",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "reputacao_internacional",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
+    }
+  ]
+}

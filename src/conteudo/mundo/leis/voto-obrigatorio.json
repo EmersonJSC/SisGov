@@ -1,0 +1,68 @@
+{
+  "versao": 1,
+  "id": "voto-obrigatorio",
+  "nome": "Voto obrigatório",
+  "descricao": "Se todos precisam votar e o que acontece com quem falta. Escada: voto livre; obrigatório com multa pequena; obrigatório com multa maior; obrigatório, e quem não vota não tira passaporte nem presta concurso.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "voto-livre",
+      "rotulo": "voto livre",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "obrigatorio-com-multa-pequena",
+      "rotulo": "obrigatório com multa pequena",
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
+      "efeitos": [
+        {
+          "indice": "participacao_eleitoral",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "obrigatorio-com-multa-maior",
+      "rotulo": "obrigatório com multa maior",
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
+      "efeitos": [
+        {
+          "indice": "participacao_eleitoral",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "obrigatorio-e-quem-nao-vota-nao-tira-passaporte-nem-presta-concurso",
+      "rotulo": "obrigatório, e quem não vota não tira passaporte nem presta concurso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "participacao_eleitoral",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

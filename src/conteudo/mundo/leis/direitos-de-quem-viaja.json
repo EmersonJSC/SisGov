@@ -1,0 +1,47 @@
+{
+  "versao": 1,
+  "id": "direitos-de-quem-viaja",
+  "nome": "Direitos de quem viaja",
+  "descricao": "O que a empresa deve ao passageiro de voo ou ônibus entre estados: comida, hotel, dinheiro de volta ou outra viagem, indenização.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum-direito",
+      "rotulo": "nenhum direito",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "comida-e-hotel",
+      "rotulo": "comida e hotel",
+      "bussola": {
+        "economico": -0.07,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "dinheiro-de-volta-ou-outra-viagem",
+      "rotulo": "dinheiro de volta ou outra viagem",
+      "bussola": {
+        "economico": -0.13,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "indenizacao",
+      "rotulo": "indenização",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

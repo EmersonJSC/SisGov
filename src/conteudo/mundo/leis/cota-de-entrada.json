@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "cota-de-entrada",
+  "nome": "Cota de entrada",
+  "descricao": "Quantos imigrantes entram por ano, em % da população: de fechada até aberta.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.03
+  },
+  "passo": 0.0015,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": -0.6
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "imigrantes_na_populacao",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "tensao_com_imigrantes",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

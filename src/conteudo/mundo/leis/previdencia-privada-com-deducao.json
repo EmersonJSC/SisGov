@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "id": "previdencia-privada-com-deducao",
+  "nome": "Previdência privada com dedução",
+  "descricao": "Quanto do salário guardado em plano de previdência privada pode ser descontado do imposto. Régua: de 0% a 20% da renda.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.2
+  },
+  "passo": 0.01,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "indice_da_bolsa",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "desigualdade",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

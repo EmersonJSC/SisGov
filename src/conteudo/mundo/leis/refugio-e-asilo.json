@@ -1,0 +1,64 @@
+{
+  "versao": 1,
+  "id": "refugio-e-asilo",
+  "nome": "Refúgio e asilo",
+  "descricao": "Vai de nenhum, passa por abrigo, até acolhimento pleno com direitos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nenhum",
+      "rotulo": "nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "abrigo",
+      "rotulo": "abrigo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.25
+      },
+      "efeitos": [
+        {
+          "indice": "refugiados_no_pais",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "acolhimento-pleno-com-direitos",
+      "rotulo": "acolhimento pleno com direitos",
+      "bussola": {
+        "economico": 0,
+        "social": -0.5
+      },
+      "efeitos": [
+        {
+          "indice": "refugiados_no_pais",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reputacao_internacional",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

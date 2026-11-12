@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "trazer-cientistas-de-volta",
+  "nome": "Trazer cientistas de volta",
+  "descricao": "Quanto o Estado paga por pesquisador que volta ao país.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": {
+    "min": 0,
+    "max": 0.001
+  },
+  "passo": 0.0005,
+  "conta": "gasto",
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.1,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "fuga_de_cientistas",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    }
+  ]
+}

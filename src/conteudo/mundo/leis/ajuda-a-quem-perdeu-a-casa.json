@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "ajuda-a-quem-perdeu-a-casa",
+  "nome": "Ajuda a quem perdeu a casa",
+  "descricao": "O que a família atingida por desastre recebe, cada degrau incluindo o anterior: abrigo e cesta; aluguel por meses; casa nova.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "abrigo-e-cesta",
+      "rotulo": "abrigo e cesta",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "aluguel-por-meses",
+      "rotulo": "aluguel por meses",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "casa-nova",
+      "rotulo": "casa nova",
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "efeitos": []
+    }
+  ]
+}

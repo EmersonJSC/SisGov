@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "violencia-domestica",
+  "nome": "Violência doméstica",
+  "descricao": "O que o Estado faz contra a violência em casa. Escada: nada; crime próprio com pena; afastar o agressor na hora; juizado próprio e abrigo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "nada",
+      "rotulo": "nada",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "crime-proprio-com-pena",
+      "rotulo": "crime próprio com pena",
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
+      "efeitos": [
+        {
+          "indice": "violencia_contra_a_mulher",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "tempo_da_justica",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "afastar-o-agressor-na-hora",
+      "rotulo": "afastar o agressor na hora",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": [
+        {
+          "indice": "violencia_contra_a_mulher",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "tempo_da_justica",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "juizado-proprio-e-abrigo",
+      "rotulo": "juizado próprio e abrigo",
+      "bussola": {
+        "economico": 0,
+        "social": -0.3
+      },
+      "efeitos": [
+        {
+          "indice": "violencia_contra_a_mulher",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "tempo_da_justica",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 4
+        }
+      ]
+    }
+  ]
+}

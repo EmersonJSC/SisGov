@@ -1,0 +1,108 @@
+{
+  "versao": 1,
+  "id": "autonomia-das-forcas-armadas",
+  "nome": "Autonomia das Forças Armadas",
+  "descricao": "Escada de 5 níveis: ministro civil com Congresso aprovando, ministro civil, ministro militar, militares escolhem comando e orçamento, militares acima do governo.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "ministro-civil-com-congresso-aprovando",
+      "rotulo": "ministro civil com Congresso aprovando",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "ministro-civil",
+      "rotulo": "ministro civil",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "risco_de_golpe",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "ministro-militar",
+      "rotulo": "ministro militar",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "risco_de_golpe",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "militares-escolhem-comando-e-orcamento",
+      "rotulo": "militares escolhem comando e orçamento",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "risco_de_golpe",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "militares-acima-do-governo",
+      "rotulo": "militares acima do governo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.8
+      },
+      "efeitos": [
+        {
+          "indice": "risco_de_golpe",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}

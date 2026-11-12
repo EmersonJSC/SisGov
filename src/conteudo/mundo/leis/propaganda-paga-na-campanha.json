@@ -1,0 +1,38 @@
+{
+  "versao": 1,
+  "id": "propaganda-paga-na-campanha",
+  "nome": "Propaganda paga na campanha",
+  "descricao": "Se campanha pode comprar anúncio: de proibida até liberada. Quem tem mais dinheiro aparece mais.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "proibida",
+      "rotulo": "proibida",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "liberada-com-teto-de-gasto",
+      "rotulo": "liberada com teto de gasto",
+      "bussola": {
+        "economico": 0.25,
+        "social": -0.15
+      },
+      "efeitos": []
+    },
+    {
+      "id": "liberada",
+      "rotulo": "liberada",
+      "bussola": {
+        "economico": 0.5,
+        "social": -0.3
+      },
+      "efeitos": []
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "id": "militares-na-seguranca-publica",
+  "nome": "Militares na segurança pública",
+  "descricao": "Onde o exército patrulha as ruas. Escada: em lugar nenhum; só em fronteiras e presídios; em bairros violentos por tempo limitado; permanente nas grandes cidades.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "em-lugar-nenhum",
+      "rotulo": "em lugar nenhum",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "so-em-fronteiras-e-presidios",
+      "rotulo": "só em fronteiras e presídios",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "efeitos": [
+        {
+          "indice": "certeza_de_punicao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "em-bairros-violentos-por-tempo-limitado",
+      "rotulo": "em bairros violentos por tempo limitado",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "efeitos": [
+        {
+          "indice": "certeza_de_punicao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "permanente-nas-grandes-cidades",
+      "rotulo": "permanente nas grandes cidades",
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "efeitos": [
+        {
+          "indice": "certeza_de_punicao",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mortes_pela_policia",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "homicidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2
+        }
+      ]
+    }
+  ]
+}
