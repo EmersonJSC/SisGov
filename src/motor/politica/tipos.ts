@@ -67,6 +67,8 @@ export interface PedidoOferecer {
   moeda: Moeda;
   /** Quem recebe; "ceder" vale para a lei inteira e não precisa. */
   partido?: string;
+  /** Na moeda "ministerio": a caixa (id do molde) que o partido recebe. */
+  caixa?: string;
   /** Na moeda "promessa": a lei que o governo promete ao partido. */
   promessa?: { lei: string; valor: ValorLei };
 }

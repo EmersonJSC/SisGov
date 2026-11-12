@@ -100,6 +100,16 @@ import {
   reputacao,
   segurancaExterna,
 } from "../mundo";
+import {
+  ajusteDaLei,
+  andarGoverno,
+  candidatosDoPartido,
+  fracaoDosCargos,
+  iniciarGoverno,
+  ministrosPorPartido,
+  type GovernoDoPais,
+  type PedidoNomear,
+} from "../governo";
 import { montarMesa, traduzirCarimbos } from "../mesa";
 import {
   esfriarEEsquentar,
@@ -174,7 +184,12 @@ const congresso: Etapa = (regras, estado, pedidos) => {
   const entrada = entradaDoCongresso(
     regras,
     estado,
-    traduzirCarimbos(estado.mesa ?? [], pedidos),
+    traduzirCarimbos(
+      estado.mesa ?? [],
+      pedidos.filter(
+        (p): p is Exclude<Pedido, PedidoNomear> => p.tipo !== "nomear",
+      ),
+    ),
   );
   const saida = tramitar(entrada);
   return {
@@ -209,6 +224,15 @@ export function entradaDoCongresso(
       estado.essenciais.gasto_publico - estado.essenciais.arrecadacao,
     ),
     fatos: estado.fatos ?? [],
+    ministros:
+      regras.governo && estado.governo
+        ? ministrosPorPartido(regras.governo, estado.governo.caixas)
+        : {},
+    candidato: (partido) =>
+      regras.governo && estado.governo
+        ? candidatosDoPartido(regras.governo, estado.governo.caixas, partido)
+            .length > 0
+        : false,
     turnosParaEleicao:
       mandato === null
         ? null
@@ -223,7 +247,19 @@ const leisNovas: Etapa = (regras, estado) => {
   for (const v of estado.votacoes) {
     if (!v.muda_lei) continue;
     leis = { ...leis, [v.lei]: v.valor };
-    efeitos = enfileirar(efeitos, regras.leis[v.lei], v.valor);
+    efeitos = enfileirar(
+      efeitos,
+      regras.leis[v.lei],
+      v.valor,
+      regras.governo && estado.governo
+        ? ajusteDaLei(
+            regras.governo,
+            estado.governo.caixas,
+            regras.leis,
+            regras.leis[v.lei],
+          )
+        : undefined,
+    );
   }
   return { ...estado, leis, efeitos };
 };
@@ -1128,6 +1164,29 @@ const popsEGrupos: Etapa = (regras, estado) => {
 };
 
 /**
+ * 8b. Governo: as moedas Ministério e os pedidos de nomear viram ministros e
+ * cada órgão anda um turno de corrupção (motor/governo).
+ */
+const governo: Etapa = (regras, estado, pedidos) => {
+  if (!regras.governo || !estado.governo) return estado;
+  const saida = andarGoverno({
+    regras: regras.governo,
+    estado: estado.governo,
+    leis: regras.leis,
+    valores: estado.leis,
+    turno: estado.turno,
+    fatos: estado.fatos ?? [],
+    pedidos: pedidos.filter((p): p is PedidoNomear => p.tipo === "nomear"),
+    cargos: fracaoDosCargos(regras.governo, regras.leis, estado.leis),
+  });
+  return {
+    ...estado,
+    governo: saida.estado,
+    fatos: [...(estado.fatos ?? []), ...saida.fatos],
+  };
+};
+
+/**
  * 9. Política: a base olha os seus grupos (passo 8); o desgaste sobe e, no
  * fim do mandato, há eleição (motor/eleicao).
  */
@@ -1313,6 +1372,7 @@ const ETAPAS: Etapa[] = [
   mundo,
   precosDoMundo,
   popsEGrupos,
+  governo,
   politica,
   invariantes,
 ];
@@ -1353,6 +1413,8 @@ export interface Inicio {
   coligacao?: string[];
   /** Opinião de partida de cada potência (com potências). */
   opinioes?: Record<string, number>;
+  /** Ministros de partida do país (com governo). */
+  governo?: GovernoDoPais;
 }
 
 /**
@@ -1574,6 +1636,16 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     fatos: [],
     ...(regras.congresso
       ? { congresso: iniciarCongresso(regras.congresso, [...coligacao]) }
+      : {}),
+    ...(regras.governo && inicio.governo
+      ? {
+          governo: iniciarGoverno(
+            inicio.governo,
+            regras.governo,
+            regras.leis,
+            inicio.leis,
+          ),
+        }
       : {}),
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.

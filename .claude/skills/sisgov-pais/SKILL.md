@@ -18,6 +18,7 @@ inicia (`teste-pobre`) e trocar os valores; o formato vale pelo código em
 | `empresas.json` | companhias fictícias |
 | `producao.json` | capacidade de energia por fonte |
 | `leis-vigentes.json` | valor de cada lei hoje no país |
+| `governo.json` | ministérios do país (moldes do mundo), pessoas com ficha e quem manda em cada caixa; gerado por `npm run governo -- <id> "<País na planilha>"` |
 
 ## Regras
 

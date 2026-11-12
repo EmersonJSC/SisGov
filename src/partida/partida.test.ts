@@ -1,7 +1,13 @@
 // Lei não legislada: o país não declarou, a partida abre e o jogador propõe.
 import { describe, expect, it } from "vitest";
-import { montarMesa } from "../motor";
-import { criarPartida, jogar, mesesParaEleicao, placarDaLei } from ".";
+import { montarMesa, type Ficha } from "../motor";
+import {
+  criarPartida,
+  jogar,
+  mesesParaEleicao,
+  placarDaLei,
+  type Partida,
+} from ".";
 
 describe("lei não legislada", () => {
   it("fica fora do estado e passa a arrecadar quando proposta", () => {
@@ -255,5 +261,111 @@ describe("mesa", () => {
   it("a mesa não guarda papel resolvido", () => {
     const depois = jogar(comPapel(), 2).estado;
     expect(depois.mesa).toEqual([]);
+  });
+});
+
+describe("governo", () => {
+  /** O Brasil com o ministro de uma caixa trocado por quem a gente escolhe. */
+  function comMinistro(caixa: string, escolher: (livres: Ficha[]) => Ficha) {
+    const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
+    const governo = partida.estado.governo as NonNullable<
+      typeof partida.estado.governo
+    >;
+    const ocupados = new Set(governo.caixas.map((c) => c.ministro));
+    const livres = (partida.regras.governo?.pessoas ?? []).filter(
+      (p) => !ocupados.has(p.id),
+    );
+    const ministro = escolher(livres);
+    return {
+      ministro,
+      partida: {
+        ...partida,
+        estado: {
+          ...partida.estado,
+          governo: {
+            ...governo,
+            caixas: governo.caixas.map((c) =>
+              c.molde === caixa ? { ...c, ministro: ministro.id } : c,
+            ),
+          },
+        },
+      },
+    };
+  }
+  const maisCompetente = (l: Ficha[]) =>
+    [...l].sort((a, b) => b.competencia - a.competencia)[0];
+  const menosCompetente = (l: Ficha[]) =>
+    [...l].sort((a, b) => a.competencia - b.competencia)[0];
+  const efeitosDe = (p: Partida) =>
+    jogar(p, 1, [
+      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.9 },
+    ]).estado.efeitos.filter((e) => e.lei === "areas-protegidas");
+
+  it("ministro competente faz a lei chegar antes e mais forte", () => {
+    const bom = efeitosDe(comMinistro("meio-ambiente", maisCompetente).partida);
+    const ruim = efeitosDe(
+      comMinistro("meio-ambiente", menosCompetente).partida,
+    );
+    expect(bom.length).toBeGreaterThan(0);
+    expect(bom.length).toBe(ruim.length);
+    const atraso = (l: typeof bom) => Math.max(...l.map((e) => e.atraso));
+    const forca = (l: typeof bom) =>
+      l.reduce((s, e) => s + Math.abs(e.para), 0);
+    expect(atraso(bom)).toBeLessThan(atraso(ruim));
+    expect(forca(bom)).toBeGreaterThan(forca(ruim));
+  });
+
+  it("sem decisão do governo, a corrupção dos órgãos fica onde estava", () => {
+    const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
+    const antes = partida.estado.governo?.orgaos ?? {};
+    const depois = jogar(partida, 12).estado.governo?.orgaos ?? {};
+    for (const [esfera, o] of Object.entries(antes))
+      expect(depois[esfera].corrupcao).toBeCloseTo(o.corrupcao, 6);
+  });
+
+  it("nomear troca o ministro e vira fato", () => {
+    const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
+    const livre = (partida.regras.governo?.pessoas ?? []).find(
+      (p) => !partida.estado.governo?.caixas.some((c) => c.ministro === p.id),
+    ) as Ficha;
+    const depois = jogar(partida, 1, [
+      { tipo: "nomear", caixa: "saude", ministro: livre.id },
+    ]).estado;
+    expect(
+      depois.governo?.caixas.find((c) => c.molde === "saude")?.ministro,
+    ).toBe(livre.id);
+    expect(depois.fatos?.map((f) => f.tipo)).toContain("ministro-nomeado");
+  });
+
+  it("moeda Ministério: o partido recebe a caixa e vota mais com o governo", () => {
+    const partida = criarPartida("brasil-2026", 1);
+    const pedidos = [
+      { tipo: "mudar_lei" as const, lei: "areas-protegidas", valor: 0.2 },
+      {
+        tipo: "oferecer" as const,
+        lei: "areas-protegidas",
+        moeda: "ministerio" as const,
+        partido: "pl",
+        caixa: "defesa",
+      },
+    ];
+    const depois = jogar(partida, 1, pedidos).estado;
+    const ministro = depois.governo?.caixas.find(
+      (c) => c.molde === "defesa",
+    )?.ministro;
+    expect(
+      partida.regras.governo?.pessoas.find((p) => p.id === ministro)?.origem,
+    ).toBe("pl");
+    expect(depois.congresso?.termometro.pl).toBeGreaterThan(
+      partida.estado.congresso?.termometro.pl ?? 100,
+    );
+    expect(depois.fatos?.map((f) => f.tipo)).toContain("ministerio-oferecido");
+  });
+
+  it("país sem governo.json joga como antes", () => {
+    const partida = criarPartida("teste", 42);
+    expect(partida.regras.governo).toBeUndefined();
+    expect(partida.estado.governo).toBeUndefined();
+    expect(jogar(partida, 3).estado.turno).toBe(3);
   });
 });

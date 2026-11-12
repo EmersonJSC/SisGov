@@ -82,6 +82,7 @@ const fixo = (
   fatos: [],
   turnosParaEleicao: null,
   quorumDaLei: null,
+  ministros: {},
   ...extra,
 });
 const votar = (
@@ -266,6 +267,8 @@ function mesa(
     fatos: [],
     turnosParaEleicao: null,
     pedidos,
+    ministros: {},
+    candidato: () => false,
     ...extra,
   };
 }
@@ -471,12 +474,51 @@ describe("moedas", () => {
     expect(cumprida[4].fatos.map((f) => f.tipo)).toContain("promessa-cumprida");
   });
 
-  it("ministério espera o passo Governo", () => {
+  it("ministério pede a caixa e alguém livre do partido", () => {
+    const ministerio: PedidoCongresso = {
+      tipo: "oferecer",
+      lei: "l",
+      moeda: "ministerio",
+      partido: "ped",
+    };
+    const livre = { congresso: comLeis, candidato: () => true };
+    expect(() => tramitar(mesa([pedir(0.15), ministerio], livre))).toThrow(
+      /pede a caixa/,
+    );
+    const comCaixa = { ...ministerio, caixa: "fazenda" };
     expect(() =>
-      tramitar(
-        mesa([pedir(0.15), oferta("ministerio")], { congresso: comLeis }),
-      ),
-    ).toThrow(/Governo/);
+      tramitar(mesa([pedir(0.15), comCaixa], { congresso: comLeis })),
+    ).toThrow(/não tem quem nomear/);
+    const r = tramitar(mesa([pedir(0.15), comCaixa], livre));
+    expect(r.fatos).toContainEqual(
+      expect.objectContaining({
+        tipo: "ministerio-oferecido",
+        sobre: "fazenda",
+        quem: ["ped"],
+      }),
+    );
+    expect(r.estado.termometro.ped).toBeGreaterThan(40);
+    expect(r.estado.preco.ped).toBeGreaterThan(0);
+  });
+
+  it("quem tem ministro vota mais com o governo; quem perde o ministério fica ressentido", () => {
+    const sem = votarCasa(fixo(congresso, base), lei, 0.1, 0.15);
+    const com = votarCasa(
+      fixo(congresso, base, { ministros: { ped: 1 } }),
+      lei,
+      0.1,
+      0.15,
+    );
+    expect(com.notas?.ped).toBeGreaterThan(sem.notas?.ped ?? 0);
+    const demitido: Fato = {
+      tipo: "ministro-demitido",
+      turno: 1,
+      tamanho: "medio",
+      quem: ["ped"],
+      restam: 2,
+    };
+    const r = tramitar(mesa([], { turno: 2, fatos: [demitido] }));
+    expect(r.estado.termometro.ped).toBe(40 - 8);
   });
 });
 

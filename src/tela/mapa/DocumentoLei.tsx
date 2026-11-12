@@ -524,10 +524,14 @@ export function DocumentoLei({
   partidos,
   governo,
   ofertas,
+  caixas,
+  comCandidato,
   onOferecer,
   onTirarOferta,
   ...janela
 }: JanelaProps & {
+  caixas: { id: string; nome: string }[];
+  comCandidato: Set<string>;
   /** Placar previsto do rascunho; null sem Congresso ou sem mudança. */
   placar: Votacao | null;
   partidos: Record<string, string>;
@@ -710,6 +714,8 @@ export function DocumentoLei({
               naFila={naFila}
               ofertas={ofertas}
               podeCeder={!lei.opcoes?.length}
+              caixas={caixas}
+              comCandidato={comCandidato}
               onOferecer={onOferecer}
               onTirarOferta={onTirarOferta}
             />

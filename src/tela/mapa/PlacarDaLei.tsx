@@ -3,12 +3,19 @@
  * placar que a votação vai dar (sem sorteio), com a linha do quórum.
  */
 import { INDECISO } from "../../motor";
+import { useState } from "react";
 import type { PedidoOferecer, Votacao } from "../../partida";
 
 const MOEDAS_DA_TELA = [
   ["cargos", "Cargos"],
   ["emenda", "Emenda"],
 ] as const;
+
+const ROTULO: Record<string, string> = {
+  cargos: "Cargos",
+  emenda: "Emenda",
+  ministerio: "Ministério",
+};
 
 const pct = (v: number, total: number) => (total ? (v / total) * 100 : 0);
 
@@ -19,6 +26,8 @@ export function PlacarDaLei({
   naFila,
   ofertas,
   podeCeder,
+  caixas,
+  comCandidato,
   onOferecer,
   onTirarOferta,
 }: {
@@ -29,6 +38,10 @@ export function PlacarDaLei({
   naFila: boolean;
   ofertas: PedidoOferecer[];
   podeCeder: boolean;
+  /** Caixas de ministério que dá para oferecer (vazio sem governo). */
+  caixas: { id: string; nome: string }[];
+  /** Partidos com alguém livre para nomear ministro. */
+  comCandidato: Set<string>;
   onOferecer: (p: Omit<PedidoOferecer, "tipo" | "lei">) => void;
   onTirarOferta: (i: number) => void;
 }) {
@@ -98,6 +111,8 @@ export function PlacarDaLei({
               .map(([id]) => id)
               .slice(0, 5)}
             partidos={partidos}
+            caixas={caixas}
+            comCandidato={comCandidato}
             onOferecer={onOferecer}
           />
           {ofertas.length ? (
@@ -106,7 +121,7 @@ export function PlacarDaLei({
                 <li key={`${o.moeda}-${o.partido ?? ""}-${i}`}>
                   {o.moeda === "ceder"
                     ? "Cede na régua"
-                    : `${o.moeda === "cargos" ? "Cargos" : "Emenda"} a ${partidos[o.partido ?? ""] ?? o.partido}`}{" "}
+                    : `${ROTULO[o.moeda] ?? o.moeda}${o.caixa ? ` (${caixas.find((c) => c.id === o.caixa)?.nome ?? o.caixa})` : ""} a ${partidos[o.partido ?? ""] ?? o.partido}`}{" "}
                   <button type="button" onClick={() => onTirarOferta(i)}>
                     tirar
                   </button>
@@ -123,28 +138,64 @@ export function PlacarDaLei({
 function PartidosEMoedas({
   candidatos,
   partidos,
+  caixas,
+  comCandidato,
   onOferecer,
 }: {
   candidatos: string[];
   partidos: Record<string, string>;
+  caixas: { id: string; nome: string }[];
+  comCandidato: Set<string>;
   onOferecer: (p: Omit<PedidoOferecer, "tipo" | "lei">) => void;
 }) {
+  const [caixa, setCaixa] = useState("");
   return (
-    <ul className="placar-partidos">
-      {candidatos.map((id) => (
-        <li key={id}>
-          <span>{partidos[id] ?? id}</span>
-          {MOEDAS_DA_TELA.map(([moeda, rotulo]) => (
-            <button
-              key={moeda}
-              type="button"
-              onClick={() => onOferecer({ moeda, partido: id })}
-            >
-              {rotulo}
-            </button>
-          ))}
-        </li>
-      ))}
-    </ul>
+    <>
+      {caixas.length ? (
+        <label className="placar-caixa">
+          Ministério a oferecer{" "}
+          <select value={caixa} onChange={(e) => setCaixa(e.target.value)}>
+            <option value="">(escolher)</option>
+            {caixas.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nome}
+              </option>
+            ))}
+          </select>
+        </label>
+      ) : null}
+      <ul className="placar-partidos">
+        {candidatos.map((id) => (
+          <li key={id}>
+            <span>{partidos[id] ?? id}</span>
+            {MOEDAS_DA_TELA.map(([moeda, rotulo]) => (
+              <button
+                key={moeda}
+                type="button"
+                onClick={() => onOferecer({ moeda, partido: id })}
+              >
+                {rotulo}
+              </button>
+            ))}
+            {caixas.length ? (
+              <button
+                type="button"
+                disabled={!caixa || !comCandidato.has(id)}
+                title={
+                  comCandidato.has(id)
+                    ? "Dá o ministério escolhido ao partido"
+                    : "O partido não tem ninguém para nomear"
+                }
+                onClick={() =>
+                  onOferecer({ moeda: "ministerio", partido: id, caixa })
+                }
+              >
+                Ministério
+              </button>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

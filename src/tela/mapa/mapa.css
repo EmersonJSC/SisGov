@@ -8374,16 +8374,28 @@ span.el-mini {
   color: #f0b4a4;
 }
 
-.documento:has(.resultado-turno) {
+.documento:has(.resultado-turno),
+.documento:has(.governo-janela),
+.documento:has(.mesa-papeis) {
   height: auto;
   max-height: calc(100% - 36px);
 }
 
-.resultado-turno {
+.resultado-turno,
+.governo-janela,
+.mesa-papeis {
   display: block;
 }
 
-.resultado-turno h2 {
+.governo-janela,
+.mesa-papeis {
+  overflow-y: auto;
+  padding: 0 22px 14px;
+}
+
+.resultado-turno h2,
+.governo-janela h2,
+.mesa-papeis h2 {
   margin: 12px 0 6px;
   font: 700 13px var(--serifa);
   letter-spacing: 0.08em;
@@ -9186,4 +9198,64 @@ span.el-mini {
 p.congresso-mesa {
   margin: 6px 0;
   font-weight: 600;
+}
+
+.governo-caixas,
+.governo-orgaos,
+.ficha-notas {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.caixa {
+  margin: 0 0 6px;
+  border-left: 4px solid #4a5e7a;
+  background: #ffffff0d;
+}
+
+.caixa-titulo {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 10px;
+  text-align: left;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.caixa-ficha {
+  padding: 4px 10px 10px;
+}
+
+.ficha-notas li,
+.governo-orgaos li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.ficha-notas li > span:first-child,
+.governo-orgaos li > span:first-child {
+  flex: 1;
+}
+
+.caixa-nomear select {
+  max-width: 100%;
+}
+
+.orgao-falta small:first-of-type {
+  color: #c0903a;
+}
+
+.orgao-rende small:first-of-type {
+  color: #2f7d4a;
+}
+
+.orgao-sobra small:first-of-type {
+  color: #a8402e;
 }

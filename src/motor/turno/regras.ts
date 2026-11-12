@@ -9,6 +9,7 @@ import type { RegraDaMoradia } from "../moradia";
 import type { RegraDoAtendimento } from "../atendimento";
 import type { RegraDoSaneamento } from "../saneamento";
 import type { Potencia } from "../mundo";
+import type { PedidoNomear, RegrasGoverno } from "../governo";
 import type { PedidoCarimbar } from "../mesa";
 import type { Congresso, PedidoCongresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
@@ -49,6 +50,8 @@ export interface Regras {
   indiceSegurancaExterna?: string;
   /** Produção do país e fornecedores do mundo (motor/mercado); só leitura por ora. */
   mercado?: MercadoDoPais;
+  /** Ministros e órgãos; sem ele, as leis chegam como estão escritas (motor/governo). */
+  governo?: RegrasGoverno;
   /** Congresso do país; sem ele, todo pedido passa (motor/politica). */
   congresso?: Congresso;
   /** Índices que andam sozinhos, empurrados por outros (motor/deriva). */
@@ -66,4 +69,4 @@ export interface Regras {
 export type { PedidoMudarLei } from "../politica";
 
 /** Todo pedido do jogador num turno (motor/politica). */
-export type Pedido = PedidoCongresso | PedidoCarimbar;
+export type Pedido = PedidoCongresso | PedidoCarimbar | PedidoNomear;

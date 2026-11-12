@@ -9,6 +9,7 @@ export * from "./efeitos";
 export * from "./eleicao";
 export * from "./fatos";
 export * from "./estado";
+export * from "./governo";
 export * from "./grupos";
 export * from "./leis";
 export * from "./mesa";

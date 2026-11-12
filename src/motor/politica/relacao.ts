@@ -1,6 +1,6 @@
 // Relação do governo com os partidos e com as casas: termômetro, convites,
 // paciência e preço.
-import { novoFato, type Fato } from "../fatos";
+import { consultar, novoFato, type Fato } from "../fatos";
 import {
   CANSACO_POR_LEI,
   LEIS_SEM_CANSAR,
@@ -9,6 +9,7 @@ import {
   PACIENCIA_POR_TURNO,
   PACIENCIA_SEM_LEI_NOVA,
   PRECO_ESQUECIDO,
+  RESSENTIMENTO,
   PUXAO_DOS_GRUPOS,
   TERMOMETRO_AMEACA,
   TERMOMETRO_CONVITE,
@@ -17,7 +18,7 @@ import {
   TERMOMETRO_SAIDA,
   limitar,
 } from "./constantes";
-import { falha, pedidosDo, registrar, type Sessao } from "./sessao";
+import { falha, mexer, pedidosDo, registrar, type Sessao } from "./sessao";
 import type { Congresso, EstadoCongresso } from "./tipos";
 
 export function iniciarCongresso(
@@ -42,6 +43,15 @@ export function iniciarCongresso(
     cargosUsados: 0,
     emendasUsadas: 0,
   };
+}
+
+/** Partido que perdeu um ministério no turno passado fica ressentido. */
+export function ressentidos(s: Sessao) {
+  for (const f of consultar(s.e.fatos, {
+    tipo: "ministro-demitido",
+    turno: s.e.turno - 1,
+  }))
+    for (const partido of f.quem ?? []) mexer(s, partido, -RESSENTIMENTO);
 }
 
 /** Convites: a oposição com termômetro alto entra na base. */

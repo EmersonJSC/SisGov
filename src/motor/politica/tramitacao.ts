@@ -4,7 +4,7 @@
 import type { ValorLei } from "../leis";
 import { decretar, decretosVencidos, moedas, promessas } from "./moedas";
 import { entrarNaPauta, sancao, votarPauta } from "./pauta";
-import { convites, descansar } from "./relacao";
+import { convites, descansar, ressentidos } from "./relacao";
 import {
   abrirSessao,
   cenarioDe,
@@ -19,6 +19,7 @@ import { votar } from "./voto";
 export { cenarioDe, type EntradaTramitar, type SaidaTramitar } from "./sessao";
 
 const FASES: ((s: Sessao) => void)[] = [
+  ressentidos,
   convites,
   entrarNaPauta,
   moedas,

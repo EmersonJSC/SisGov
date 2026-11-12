@@ -32,6 +32,10 @@ export interface EntradaTramitar {
   fatos: readonly Fato[];
   turnosParaEleicao: number | null;
   pedidos: PedidoCongresso[];
+  /** Ministérios que cada partido tem hoje (motor/governo). */
+  ministros: Record<string, number>;
+  /** O partido tem alguém livre para nomear ministro? */
+  candidato: (partido: string) => boolean;
 }
 
 export interface SaidaTramitar {
@@ -58,6 +62,7 @@ export function cenarioDe(e: EntradaTramitar): Cenario {
     fatos: e.fatos,
     turnosParaEleicao: e.turnosParaEleicao,
     quorumDaLei: typeof v === "number" ? v : null,
+    ministros: e.ministros,
   };
 }
 

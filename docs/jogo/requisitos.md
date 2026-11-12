@@ -101,17 +101,17 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 **Ministérios** (12/nov)
 
-- ☐ **R6.10** Ministério é uma caixa com nome e zero ou mais esferas e subesferas; cada uma numa caixa só; a sobra vai ao gabinete.
-- ☐ **R6.14** O país começa com os ministérios reais (aba Ministérios - países); o jogador muda no menu; depois só pela lei Organização dos ministérios.
-- ☐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com ele; muitas caixas dão foco e custam; superministério divide a competência.
-- ☐ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem.
-- ☐ **R6.8** A ficha muda a força e o atraso das leis das esferas da caixa e o rendimento dos órgãos dela.
+- ✅ **R6.10** Ministério é uma caixa com nome e zero ou mais esferas e subesferas; cada uma numa caixa só; a sobra vai ao gabinete. (12/nov: moldes na aba Ministérios; a lei traz `esfera` e `subesfera`.)
+- ◐ **R6.14** O país começa com os ministérios reais (aba Ministérios - países); o jogador muda no menu; depois só pela lei Organização dos ministérios. (12/nov: Brasil 2026 com 32 caixas. Faltam: os outros países, o menu de montar o governo (passo 9) e a lei Organização dos ministérios.)
+- ◐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com ele; muitas caixas dão foco e custam; superministério divide a competência. (12/nov: toda caixa tem ministro e o superministério divide a competência. Faltam: custo de estrutura, foco e agradar quem é parecido com o ministro.)
+- ✅ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem. (12/nov: cinco notas, bússola e origem. Agem competência e honestidade; habilidade, carisma e lealdade esperam Congresso, mídia e fatos do ministro.)
+- ◐ **R6.8** A ficha muda a força e o atraso das leis das esferas da caixa e o rendimento dos órgãos dela. (12/nov: competência muda força e atraso. Falta o rendimento dos órgãos, que é R7.11.)
 - ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão barulhenta, vira candidato) e custo de troca.
 
 **Órgãos** (11/nov)
 
-- ☐ **R6.16** Um órgão por esfera, sob o ministério dela; verba (da lei), necessidade, rendimento = verba ÷ necessidade, corrupção interna.
-- ☐ **R6.17** Verba de sobra vira corrupção; cargos de livre nomeação e ministro desonesto também.
+- ✅ **R6.16** Um órgão por esfera, sob o ministério dela; verba (da lei), necessidade, rendimento = verba ÷ necessidade, corrupção interna. (12/nov: verba, necessidade, rendimento e corrupção; o rendimento ainda não age sobre a lei, é R7.11.)
+- ✅ **R6.17** Verba de sobra vira corrupção; cargos de livre nomeação e ministro desonesto também. (12/nov: sobra de verba, cargos de livre nomeação e ministro desonesto; escândalo ao cruzar 60.)
 - ☐ **R6.18** Ficha do órgão só de leitura no mapa (cor do rendimento, fila, leis que mexem).
 
 **Perder o poder** (12/nov)
@@ -244,7 +244,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 **Moedas e relação**
 
 - ✅ **R12.3** Coligação: convidar (oposição acima de 70), sair (termômetro abaixo de 20), voltar pelo convite (12/nov). Falta cobrar o que o partido pediu na mesa (passo Mesa).
-- ◐ **R12.4** Seis moedas: ceder na régua, ministério, cargos, emenda, promessa de lei, decreto; cada compra sobe o preço do próximo voto. Falta: moeda Ministério (passo Governo) e botões de promessa e decreto na tela; ceder, cargos e emenda têm botão.
+- ◐ **R12.4** Seis moedas: ceder na régua, ministério, cargos, emenda, promessa de lei, decreto; cada compra sobe o preço do próximo voto. Falta: botões de promessa e decreto na tela; ceder, cargos, emenda e ministério têm botão (12/nov).
 - ✅ **R12.16** Termômetro por partido (0–100): base sai abaixo de 20; oposição entra acima de 70. (12/nov: convite pelo pedido `convidar`.)
 - ✅ **R12.17** Paciência por casa (0–100): abaixo de 30 a casa pune o governo. (12/nov.)
 - ✅ **R12.18** Carga da casa: passou do limite, a lei entra na fila (sem pontos de ação). (12/nov: carga padrão 3 por casa.)

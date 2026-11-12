@@ -82,8 +82,18 @@ const COMPRAS: Record<Moeda, Compra> = {
     });
     pagar(s, partido, "promessa");
   },
-  ministerio() {
-    falha("ministério depende do passo Governo");
+  ministerio(s, p) {
+    const partido = partidoDa(s, p);
+    if (!p.caixa) falha("ministério pede a caixa que o partido recebe");
+    if (!s.e.candidato(partido)) falha(`${partido} não tem quem nomear`);
+    registrar(s, {
+      tipo: "ministerio-oferecido",
+      turno: s.e.turno,
+      tamanho: "medio",
+      sobre: p.caixa,
+      quem: [partido],
+    });
+    pagar(s, partido, "ministerio");
   },
 };
 

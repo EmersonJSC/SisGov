@@ -22,6 +22,8 @@ export const TERMOMETRO_POR_MOEDA: Record<string, number> = {
   promessa: 4,
 };
 export const TERMOMETRO_PROMESSA_QUEBRADA = 25;
+/** O partido que perdeu um ministério perde este tanto de termômetro. */
+export const RESSENTIMENTO = 8;
 
 /** Quanto cada compra ensina o partido a cobrar, e quanto ele esquece. */
 export const PRECO_POR_COMPRA = 0.15;

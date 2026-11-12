@@ -2,6 +2,7 @@
 // jogabilidade; ao mudar a lei, a contribuição anda do valor antigo ao novo
 // em `atraso_turnos` turnos. Regras em efeitos.md.
 import type { Forca, Lei, ValorLei } from "../leis";
+import type { AjusteDeEfeito } from "../governo";
 import { efeitosDoValor } from "../leis";
 
 /** Pontos (escala 0–100) do efeito inteiro. Aprovado em 31/out/2026; 2/5/10 desde 01/nov (6d). */
@@ -60,11 +61,19 @@ export function filaInicial(
   );
 }
 
-/** Troca as entradas da lei pelas do valor novo, partindo de onde estavam. */
+/** Sem ministro que mude nada: o efeito chega como a lei escreve. */
+const SEM_AJUSTE: AjusteDeEfeito = { atraso: 0, forca: 1 };
+
+/**
+ * Troca as entradas da lei pelas do valor novo, partindo de onde estavam. O
+ * ajuste é o do ministro da caixa da lei: adianta ou atrasa e reforça ou
+ * enfraquece o efeito que ainda vem.
+ */
 export function enfileirar(
   fila: readonly EfeitoEmCurso[],
   lei: Lei,
   valor: ValorLei,
+  ajuste: AjusteDeEfeito = SEM_AJUSTE,
 ): EfeitoEmCurso[] {
   const antigas = fila.filter((e) => e.lei === lei.id);
   const novos = alvos(lei, valor);
@@ -74,14 +83,16 @@ export function enfileirar(
     const antiga = antigas.find((e) => e.indice === indice);
     const novo = novos.get(indice);
     const de = antiga ? contribuicao(antiga) : 0;
-    const para = novo?.pontos ?? 0;
+    const para = (novo?.pontos ?? 0) * ajuste.forca;
     if (de === 0 && para === 0) continue;
     trocadas.push({
       lei: lei.id,
       indice,
       de,
       para,
-      atraso: novo?.atraso ?? antiga?.atraso ?? 0,
+      atraso: novo
+        ? Math.max(0, novo.atraso + ajuste.atraso)
+        : (antiga?.atraso ?? 0),
       idade: 0,
     });
   }

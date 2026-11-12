@@ -64,7 +64,7 @@ por turno).
 - **Emenda:** reserva = 5 por degrau da lei Emendas dos parlamentares.
 - **Promessa:** vira papel com prazo de 4 turnos; cumprida, anima; quebrada,
   o termômetro cai 25 e vira fato.
-- **Ministério:** espera o passo Governo.
+- **Ministério:** dá uma caixa ao partido (`caixa`); o governo (motor/governo) nomeia o candidato mais competente dele. O partido vota mais com o governo enquanto tiver ministro (+0,3) e perde 8 de termômetro se o ministro dele for demitido.
 
 ## Decreto (pedido `decretar`)
 
@@ -93,5 +93,5 @@ Lê: escândalo e manchete contra (ninguém escreve ainda).
 
 Rejeitar por conta própria, propor lei popular, travar a pauta, CPI,
 impeachment, sistemas de governo e mudança de cadeiras na eleição (R12.5,
-R12.8–R12.10); bancadas e lobby (R12.15). A moeda Ministério e o botão de
-promessa e decreto na tela esperam o passo Governo.
+R12.8–R12.10); bancadas e lobby (R12.15). O botão de promessa e de
+decreto na tela fica para depois.

@@ -2,9 +2,11 @@
 // guarda o que está aberto e selecionado, a janela da lei (fatia 2), a barra
 // do topo e o resultado do turno (fatia 3).
 import { useEffect, useMemo, useState } from "react";
+import { candidatosDoPartido } from "../../motor";
 import {
   leiTravada,
   montarVisao,
+  nomesDoGoverno,
   nomesPartidos,
   placarDaLei,
   previaDaLei,
@@ -20,6 +22,7 @@ import { comPedido } from "../fila";
 import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
+import { Governo } from "./Governo";
 import { Mercado } from "./Mercado";
 import { MesaDePapeis, papeisParaDecidir } from "./MesaDePapeis";
 import { Pregao, pregaoInicial } from "./Pregao";
@@ -78,6 +81,8 @@ export function TelaMapa({
   const [rascunho, setRascunho] = useState(0);
   const [resultado, setResultado] = useState(() => temResultado(partida));
   const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
+  const [governo, setGoverno] = useState(false);
+  const [desvioGoverno, setDesvioGoverno] = useState<Desvio>(CENTRO);
   const [mesa, setMesa] = useState(false);
   const [desvioMesa, setDesvioMesa] = useState<Desvio>(CENTRO);
   const [mercado, setMercado] = useState(false);
@@ -135,6 +140,22 @@ export function TelaMapa({
     [partida, lei, valor, extras],
   );
   const partidos = useMemo(() => nomesPartidos(partida.pais), [partida.pais]);
+  const caixasParaOferecer = useMemo(() => {
+    const nomes = nomesDoGoverno(partida).caixas;
+    return (partida.estado.governo?.caixas ?? []).map((c) => ({
+      id: c.molde,
+      nome: nomes[c.molde] ?? c.molde,
+    }));
+  }, [partida]);
+  const comCandidato = useMemo(() => {
+    const g = partida.regras.governo;
+    const caixas = partida.estado.governo?.caixas ?? [];
+    return new Set(
+      (g?.pessoas ?? [])
+        .map((p) => p.origem)
+        .filter((o) => g && candidatosDoPartido(g, caixas, o).length > 0),
+    );
+  }, [partida]);
 
   const selecionar = (id: string | null) => {
     setSelecionado(id);
@@ -162,6 +183,8 @@ export function TelaMapa({
         onCarregar={onCarregar}
         onRecomecar={onRecomecar}
         onMesa={() => setMesa(!mesa)}
+        onGoverno={() => setGoverno(!governo)}
+        temGoverno={!!partida.regras.governo}
         papeis={papeisParaDecidir(partida).length}
         onMercado={() => setMercado(!mercado)}
         onBolsa={() => setBolsa(!bolsa)}
@@ -207,6 +230,8 @@ export function TelaMapa({
             partidos={partidos}
             governo={partida.regras.congresso?.governo ?? ""}
             ofertas={ofertasDaLei}
+            caixas={caixasParaOferecer}
+            comCandidato={comCandidato}
             onOferecer={(o) =>
               setExtras([...extras, { tipo: "oferecer", lei: lei.id, ...o }])
             }
@@ -230,6 +255,20 @@ export function TelaMapa({
             camada={0}
             ativa
             onFocar={() => setSelecionado(lei.id)}
+          />
+        ) : null}
+        {governo ? (
+          <Governo
+            partida={partida}
+            extras={extras}
+            setExtras={setExtras}
+            onFechar={() => setGoverno(false)}
+            desvio={desvioGoverno}
+            onDesvio={setDesvioGoverno}
+            onRetangulo={() => {}}
+            camada={4}
+            ativa
+            onFocar={() => {}}
           />
         ) : null}
         {mesa ? (

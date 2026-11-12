@@ -20,6 +20,7 @@ const PESO = {
   termometro: 0.4,
   aprovacao: 0.15,
   escandalo: -0.15,
+  ministerio: 0.3,
 };
 /** Conta da lei: pontos do PIB × interesse do partido nas contas × isto. */
 const PESO_DA_CONTA = 0.12;
@@ -67,6 +68,8 @@ export interface Cenario {
   turnosParaEleicao: number | null;
   /** Quórum das votações (lei do mundo); ausente = só a maioria do país. */
   quorumDaLei: number | null;
+  /** Ministérios que cada partido tem: aliado fiel enquanto o ministro ficar. */
+  ministros: Record<string, number>;
 }
 
 const limitar = (v: number, min: number, max: number) =>
@@ -184,7 +187,8 @@ function notaDoPartido(
     c.turnosParaEleicao !== null && c.turnosParaEleicao <= ANO_DE_ELEICAO
       ? PARTE_DOS_LIVRES
       : 1;
-  const comum = aprov + manchetes + conta + punicao + moedas;
+  const ministerio = (c.ministros[p.id] ?? 0) > 0 ? PESO.ministerio : 0;
+  const comum = aprov + manchetes + conta + punicao + moedas + ministerio;
   return {
     fiel: PESO.grupos * grupos + PESO.povo * povo + lado + termo + comum,
     livre:

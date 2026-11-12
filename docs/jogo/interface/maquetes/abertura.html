@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SisGov — Menu Principal e Carregamento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo-base: #060e0a;
+    --fundo-mesa: #0c1813;
+    --painel-dossie: #10211a;
+    --ouro: #d4af37;
+    --ouro-brilhante: #f7d358;
+    --ouro-apagado: #8a7327;
+    --tinta: #ede8d8;
+    --tinta-suave: #bcc8be;
+    --tinta-fraca: #687d6f;
+    --verde-militar: #1b382b;
+    --linha-grade: rgba(212, 175, 55, 0.15);
+    --vermelho-selo: #a3382c;
+    --azul-radar: #388697;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    width: 100%;
+    background: var(--fundo-base);
+    color: var(--tinta);
+    font-family: "Spectral", Georgia, serif;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Efeito de granulação de filme / textura de documento de estado */
+  .filtro-ruido {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    background-image: radial-gradient(circle at 50% 50%, transparent 60%, rgba(3, 7, 5, 0.75) 100%),
+      repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 2px);
+  }
+
+  /* Barra de depuração da Maquete (discreta no canto superior direito) */
+  .maquete-controle {
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    z-index: 1000;
+    display: flex;
+    gap: 6px;
+    background: rgba(8, 18, 14, 0.88);
+    border: 1px solid var(--linha-grade);
+    padding: 5px 10px;
+    border-radius: 4px;
+    backdrop-filter: blur(8px);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--tinta-suave);
+    align-items: center;
+  }
+  .maquete-controle a {
+    color: var(--ouro);
+    text-decoration: none;
+    margin-right: 6px;
+    padding-right: 8px;
+    border-right: 1px solid var(--linha-grade);
+  }
+  .maquete-controle button {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--tinta-fraca);
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 11px;
+    transition: all 0.15s;
+  }
+  .maquete-controle button:hover {
+    color: var(--tinta);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .maquete-controle button.ativo {
+    color: var(--ouro);
+    border-color: var(--ouro-apagado);
+    background: rgba(212, 175, 55, 0.12);
+  }
+
+  /* ============================================================
+     1. TELA DE CARREGAMENTO (ESTILO BRIEFING / RADAR ESTATAL)
+     ============================================================ */
+  #tela-carregamento {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px 70px;
+    background: radial-gradient(circle at 75% 40%, rgba(12, 24, 19, 0.55) 0%, rgba(4, 9, 7, 0.96) 80%),
+                url('/arte/fundos/carregando.jpg') center/cover no-repeat,
+                #07100b;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+  }
+
+  .carregamento-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--linha-grade);
+    padding-bottom: 16px;
+  }
+  .classificacao {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--ouro);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .classificacao::before {
+    content: "";
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--ouro);
+    box-shadow: 0 0 8px var(--ouro);
+  }
+  .codigo-sistema {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--tinta-fraca);
+    letter-spacing: 0.1em;
+  }
+
+  .carregamento-corpo {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 900px;
+  }
+
+  /* GIF / Animação de carregamento estilizada sem marca comercial */
+  .radar-container {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .radar-container .gif-carregamento {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.35));
+  }
+
+  .texto-briefing {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .badge-doutrina {
+    align-self: flex-start;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ouro);
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--ouro-apagado);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .frase-carregamento {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--tinta);
+    max-width: 24ch;
+    min-height: 2.7em;
+    transition: opacity 0.4s ease;
+  }
+  .frase-subtexto {
+    font-size: 14px;
+    color: var(--tinta-fraca);
+    font-style: italic;
+  }
+
+  .carregamento-rodape {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .status-linha {
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--tinta-suave);
+    letter-spacing: 0.08em;
+  }
+  .barra-carregamento-trilho {
+    width: 100%;
+    height: 4px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .barra-carregamento-preenchimento {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 0%;
+    background: linear-gradient(90deg, var(--ouro-apagado), var(--ouro), var(--ouro-brilhante));
+    box-shadow: 0 0 14px var(--ouro);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ============================================================
+     2. TELA DE MENU PRINCIPAL (ESTILO GRAND STRATEGY / SUZERAIN)
+     ============================================================ */
+  #tela-menu {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    background: radial-gradient(circle at 30% 60%, rgba(6, 15, 11, 0.4) 0%, rgba(3, 7, 5, 0.92) 80%),
+                url('/arte/fundos/fundacao.jpg') center/cover no-repeat,
+                #07100b;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    z-index: 5;
+  }
+
+  /* Faixa de comando lateral esquerda */
+  .coluna-menu {
+    width: min(520px, 90vw);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 0 50px 70px;
+    position: relative;
+    background: linear-gradient(90deg, rgba(4, 9, 7, 0.88) 0%, rgba(4, 9, 7, 0.6) 75%, transparent 100%);
+    backdrop-filter: blur(2px);
+  }
+
+  .cabecalho-jogo {
+    display: flex;
+    flex-direction: column;
+  }
+  .selo-estatal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .selo-estatal svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--ouro);
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
+  }
+  .selo-estatal .texto-selo {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--ouro);
+    text-transform: uppercase;
+  }
+
+  .titulo-principal {
+    font-family: "Cinzel", "Spectral", serif;
+    font-size: clamp(48px, 6vw, 68px);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 0.95;
+    color: #fff;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2);
+  }
+  .subtitulo-jogo {
+    font-family: "Spectral", serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--tinta-suave);
+    margin-top: 10px;
+    max-width: 36ch;
+    line-height: 1.35;
+  }
+  .linha-brasao {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ouro), transparent);
+    margin-top: 18px;
+  }
+
+  /* Lista de Ações do Menu Principal (estilo de menu de jogo de estratégia) */
+  .lista-acoes-jogo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .item-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 22px;
+    background: rgba(14, 28, 22, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-left: 3px solid transparent;
+    color: var(--tinta);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    text-align: left;
+    width: 380px;
+  }
+
+  .item-menu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.15) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .item-menu:hover, .item-menu:focus-visible {
+    background: rgba(22, 44, 34, 0.85);
+    border-color: rgba(212, 175, 55, 0.4);
+    border-left: 4px solid var(--ouro);
+    transform: translateX(8px);
+    box-shadow: -10px 0 25px rgba(212, 175, 55, 0.15);
+  }
+  .item-menu:hover::after {
+    opacity: 1;
+  }
+
+  .item-menu.principal {
+    background: rgba(26, 54, 42, 0.65);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+  .item-menu.principal .rotulo-menu {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  }
+
+  .item-menu .marcador {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ouro-apagado);
+    transition: color 0.2s;
+  }
+  .item-menu:hover .marcador {
+    color: var(--ouro);
+  }
+
+  .item-menu .corpo-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .item-menu .rotulo-menu {
+    font-family: "Cinzel", "Spectral", serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .item-menu .desc-menu {
+    font-family: "Spectral", serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--tinta-fraca);
+    margin-top: 1px;
+  }
+  .item-menu:hover .desc-menu {
+    color: var(--tinta-suave);
+  }
+
+  .item-menu.bloqueado {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .rodape-gabinete {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--tinta-fraca);
+  }
+  .rodape-gabinete .local-data {
+    color: var(--ouro-apagado);
+  }
+
+  /* Painel lateral direito (Informativo do País em Foco) */
+  .painel-contexto-direita {
+    position: absolute;
+    right: 70px;
+    bottom: 50px;
+    width: 320px;
+    border: 1px solid var(--linha-grade);
+    background: rgba(8, 16, 12, 0.75);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: surgimento 1s ease;
+  }
+  .painel-contexto-direita .cabecalho-dossie-rapido {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ouro);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--linha-grade);
+    padding-bottom: 6px;
+  }
+  .painel-contexto-direita h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .painel-contexto-direita p {
+    font-size: 13px;
+    color: var(--tinta-suave);
+    line-height: 1.4;
+  }
+  .indicadores-resumo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+    border-top: 1px dashed var(--linha-grade);
+    padding-top: 10px;
+  }
+  .ind-item {
+    display: flex;
+    flex-direction: column;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .ind-label {
+    font-size: 9px;
+    color: var(--tinta-fraca);
+    text-transform: uppercase;
+  }
+  .ind-valor {
+    font-size: 14px;
+    color: var(--ouro);
+    font-weight: 600;
+  }
+
+  /* ============================================================
+     3. DOSSIÊ DE MANDATOS (CARREGAR JOGO ESTILO ARQUIVO DE ESTADO)
+     ============================================================ */
+  #gaveta-carregar {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 7, 5, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+    display: flex;
+    justify-content: flex-end;
+    transition: opacity 0.35s ease;
+  }
+
+  .pasta-arquivo {
+    width: min(650px, 100vw);
+    height: 100%;
+    background: linear-gradient(135deg, #0e2017 0%, #08140f 100%);
+    border-left: 2px solid var(--ouro-apagado);
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    animation: deslizarGaveta 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes deslizarGaveta {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  .topo-arquivo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--linha-grade);
+    padding-bottom: 20px;
+  }
+  .topo-arquivo .titulos h2 {
+    font-family: "Cinzel", "Spectral", serif;
+    font-size: 26px;
+    letter-spacing: 0.05em;
+    color: var(--tinta);
+  }
+  .topo-arquivo .titulos span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ouro);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .btn-fechar-dossie {
+    background: none;
+    border: 1px solid var(--linha-grade);
+    color: var(--tinta-fraca);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-fechar-dossie:hover {
+    color: #fff;
+    border-color: var(--ouro);
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  /* Lista de fichas de mandato */
+  .corpo-arquivo {
+    flex: 1;
+    overflow-y: auto;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-right: 6px;
+  }
+
+  .ficha-mandato {
+    background: rgba(18, 36, 28, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 18px 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    border-radius: 2px;
+  }
+  .ficha-mandato:hover {
+    background: rgba(24, 48, 37, 0.9);
+    border-color: var(--ouro);
+    transform: translateX(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  .ficha-mandato.selecionada {
+    border-color: var(--ouro);
+    background: rgba(30, 60, 46, 0.95);
+    box-shadow: inset 4px 0 0 var(--ouro);
+  }
+
+  .ficha-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .ficha-pais {
+    font-family: "Cinzel", "Spectral", serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .ficha-carimbo {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .carimbo-auto {
+    color: var(--azul-radar);
+    border: 1px solid rgba(56, 134, 151, 0.4);
+    background: rgba(56, 134, 151, 0.08);
+  }
+  .carimbo-manual {
+    color: var(--ouro);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: rgba(212, 175, 55, 0.08);
+  }
+
+  .ficha-detalhes {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--tinta-suave);
+  }
+  .ficha-metricas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.15);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+  }
+  .metrica-bloco span {
+    display: block;
+  }
+  .metrica-rotulo {
+    font-size: 9px;
+    color: var(--tinta-fraca);
+    text-transform: uppercase;
+  }
+  .metrica-num {
+    font-size: 13px;
+    color: var(--ouro);
+    font-weight: 600;
+    margin-top: 1px;
+  }
+
+  .rodape-arquivo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--linha-grade);
+    padding-top: 20px;
+  }
+  .btn-assumir-mandato {
+    font-family: "Cinzel", "Spectral", serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #060e0a;
+    background: linear-gradient(135deg, var(--ouro-brilhante) 0%, var(--ouro) 100%);
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+    transition: all 0.2s;
+  }
+  .btn-assumir-mandato:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.55);
+  }
+  .btn-secundario-arquivo {
+    background: none;
+    border: 1px dashed var(--linha-grade);
+    color: var(--tinta-suave);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secundario-arquivo:hover {
+    border-color: var(--ouro);
+    color: var(--ouro);
+  }
+
+  /* Classes de controle */
+  .oculta {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.99);
+  }
+
+  /* Notificação rápida simulada */
+  #aviso-simulado {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(14, 28, 22, 0.95);
+    border: 1px solid var(--ouro);
+    padding: 12px 24px;
+    color: var(--tinta);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+    display: none;
+    z-index: 2000;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="filtro-ruido"></div>
+
+<div class="maquete-controle">
+  <a href="/demos/">← Hub de Demos</a>
+  <span>Ver tela:</span>
+  <button id="ctrl-carregamento" class="ativo">Carregamento</button>
+  <button id="ctrl-menu">Menu Principal</button>
+  <button id="ctrl-dossie">Dossiê (Saves)</button>
+  <button id="ctrl-simular">▶ Fluxo Auto</button>
+</div>
+
+<!-- 1. TELA DE CARREGAMENTO -->
+<section id="tela-carregamento">
+  <div class="carregamento-topo">
+    <div class="classificacao">Doutrina de Transição · Gabinete de Crise</div>
+    <div class="codigo-sistema">SISGOV // NÚCLEO POLÍTICO V0.2</div>
+  </div>
+
+  <div class="carregamento-corpo">
+    <div class="radar-container">
+      <img 
+        class="gif-carregamento" 
+        alt="Carregando..."
+        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='52' fill='none' stroke='%231b382b' stroke-width='2'/><circle cx='60' cy='60' r='42' fill='none' stroke='%23d4af37' stroke-width='2.5' stroke-dasharray='70 200' stroke-linecap='round'><animateTransform attributeName='transform' type='rotate' from='0 60 60' to='360 60 60' dur='1.4s' repeatCount='indefinite'/></circle><circle cx='60' cy='60' r='28' fill='none' stroke='%23388697' stroke-width='1.5' stroke-dasharray='40 120'><animateTransform attributeName='transform' type='rotate' from='360 60 60' to='0 60 60' dur='2.2s' repeatCount='indefinite'/></circle><line x1='60' y1='8' x2='60' y2='20' stroke='%23d4af37' stroke-width='2'/><line x1='60' y1='100' x2='60' y2='112' stroke='%23d4af37' stroke-width='2'/><line x1='8' y1='60' x2='20' y2='60' stroke='%23d4af37' stroke-width='2'/><line x1='100' y1='60' x2='112' y2='60' stroke='%23d4af37' stroke-width='2'/><circle cx='60' cy='60' r='5' fill='%23d4af37'><animate attributeName='opacity' values='0.3;1;0.3' dur='1.6s' repeatCount='indefinite'/></circle></svg>"
+      />
+    </div>
+
+    <div class="texto-briefing">
+      <span class="badge-doutrina">Diretriz Governamental</span>
+      <h2 class="frase-carregamento" id="frase-dinamica">Toda lei é uma bolha no mapa. Uma vez assinada, ela vive por conta própria.</h2>
+      <p class="frase-subtexto">Nenhuma escolha é só boa ou só ruim. O país sempre cobra o preço.</p>
+    </div>
+  </div>
+
+  <div class="carregamento-rodape">
+    <div class="status-linha">
+      <span id="texto-status-carregamento">SINCRONIZANDO VETORES DE OPINIÃO POPULAR...</span>
+      <span id="porcentagem-carregamento">64%</span>
+    </div>
+    <div class="barra-carregamento-trilho">
+      <div class="barra-carregamento-preenchimento" id="barra-fill"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TELA DE MENU PRINCIPAL -->
+<section id="tela-menu" class="oculta" aria-hidden="true">
+  <div class="coluna-menu">
+    <div class="cabecalho-jogo">
+      <div class="selo-estatal">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 3.18l6 3.33v4.61c0 3.9-2.55 7.55-6 8.76-3.45-1.21-6-4.86-6-8.76V8.51l6-3.33z"/>
+        </svg>
+        <span class="texto-selo">Presidência da República</span>
+      </div>
+      <h1 class="titulo-principal">SISGOV</h1>
+      <p class="subtitulo-jogo">Assuma o poder. Equilibre o Congresso, decida o orçamento e sinta o impacto de cada lei.</p>
+      <div class="linha-brasao"></div>
+    </div>
+
+    <div class="lista-acoes-jogo">
+      <button class="item-menu principal" id="btn-novo-mandato">
+        <span class="marcador">01</span>
+        <div class="corpo-menu">
+          <span class="rotulo-menu">Iniciar Governo</span>
+          <span class="desc-menu">País, partido, chapa e coalizão</span>
+        </div>
+      </button>
+
+      <button class="item-menu" id="btn-continuar-rapido">
+        <span class="marcador">02</span>
+        <div class="corpo-menu">
+          <span class="rotulo-menu">Continuar Mandato</span>
+          <span class="desc-menu">Brasil — Turno 14 (Aprovação 61%)</span>
+        </div>
+      </button>
+
+      <button class="item-menu" id="btn-abrir-dossie">
+        <span class="marcador">03</span>
+        <div class="corpo-menu">
+          <span class="rotulo-menu">Dossiê de Mandatos</span>
+          <span class="desc-menu">Carregar arquivos salvos</span>
+        </div>
+      </button>
+
+      <button class="item-menu" id="btn-opcoes">
+        <span class="marcador">04</span>
+        <div class="corpo-menu">
+          <span class="rotulo-menu">Configurações</span>
+          <span class="desc-menu">Áudio, interface e ritmo de jogo</span>
+        </div>
+      </button>
+
+      <button class="item-menu" id="btn-sair">
+        <span class="marcador">05</span>
+        <div class="corpo-menu">
+          <span class="rotulo-menu">Créditos & Registro</span>
+          <span class="desc-menu">Projeto SisGov v0.2</span>
+        </div>
+      </button>
+    </div>
+
+    <div class="rodape-gabinete">
+      <div>SISTEMA DE SIMULAÇÃO DE GOVERNO · COMPILAÇÃO 2026.11</div>
+      <div class="local-data">PALÁCIO PRESIDENCIAL · GABINETE DE TRANSIÇÃO</div>
+    </div>
+  </div>
+
+  <div class="painel-contexto-direita">
+    <span class="cabecalho-dossie-rapido">Relatório de Cenário</span>
+    <h3>República em Transição</h3>
+    <p>O Congresso recém-empossado aguarda as primeiras mensagens do Executivo. A imprensa monitora a formação ministerial.</p>
+    <div class="indicadores-resumo">
+      <div class="ind-item">
+        <span class="ind-label">Bancada Governista</span>
+        <span class="ind-valor">248 / 513</span>
+      </div>
+      <div class="ind-item">
+        <span class="ind-label">Pressão Inflacionária</span>
+        <span class="ind-valor">Moderada (4.8%)</span>
+      </div>
+      <div class="ind-item">
+        <span class="ind-label">Confiança Popular</span>
+        <span class="ind-valor">Neutro (50%)</span>
+      </div>
+      <div class="ind-item">
+        <span class="ind-label">Espaço Fiscal</span>
+        <span class="ind-valor">R$ 18.4 bi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DOSSIÊ DE MANDATOS -->
+<div id="gaveta-carregar" class="oculta" aria-hidden="true">
+  <div class="pasta-arquivo">
+    <div class="topo-arquivo">
+      <div class="titulos">
+        <span>Arquivo Central da Presidência</span>
+        <h2>Dossiê de Mandatos</h2>
+      </div>
+      <button class="btn-fechar-dossie" id="btn-fechar-gaveta">[ESC] Fechar Pasta</button>
+    </div>
+
+    <div class="corpo-arquivo">
+      <div class="ficha-mandato selecionada" tabindex="0">
+        <div class="ficha-topo">
+          <span class="ficha-pais">Brasil — 2º Ano de Mandato</span>
+          <span class="ficha-carimbo carimbo-auto">Autosalvamento</span>
+        </div>
+        <div class="ficha-detalhes">
+          <span>Turno 14 · Presidente Emerson</span>
+          <span>Salvo há 2 dias</span>
+        </div>
+        <div class="ficha-metricas">
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Aprovação</span>
+            <span class="metrica-num">61% (Alta)</span>
+          </div>
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Apoio Congresso</span>
+            <span class="metrica-num">284 Deputados</span>
+          </div>
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Orçamento</span>
+            <span class="metrica-num">Superávit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ficha-mandato" tabindex="0">
+        <div class="ficha-topo">
+          <span class="ficha-pais">Brasil — Crise Previdenciária</span>
+          <span class="ficha-carimbo carimbo-manual">Registro Manual</span>
+        </div>
+        <div class="ficha-detalhes">
+          <span>Turno 3 · Presidente Emerson</span>
+          <span>Salvo há 1 semana</span>
+        </div>
+        <div class="ficha-metricas">
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Aprovação</span>
+            <span class="metrica-num" style="color:#e06666;">38% (Crítica)</span>
+          </div>
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Apoio Congresso</span>
+            <span class="metrica-num">192 Deputados</span>
+          </div>
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Orçamento</span>
+            <span class="metrica-num" style="color:#e06666;">Déficit Fiscal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ficha-mandato" tabindex="0">
+        <div class="ficha-topo">
+          <span class="ficha-pais">Rússia — Cenário de Auditoria</span>
+          <span class="ficha-carimbo carimbo-manual">Registro Manual</span>
+        </div>
+        <div class="ficha-detalhes">
+          <span>Turno 7 · Gabinete de Testes</span>
+          <span>Salvo há 3 semanas</span>
+        </div>
+        <div class="ficha-metricas">
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Aprovação</span>
+            <span class="metrica-num">52% (Estável)</span>
+          </div>
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Duma Estatal</span>
+            <span class="metrica-num">Maioria Simples</span>
+          </div>
+          <div class="metrica-bloco">
+            <span class="metrica-rotulo">Reservas</span>
+            <span class="metrica-num">Equilibrado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rodape-arquivo">
+      <button class="btn-secundario-arquivo" id="btn-importar-sav">+ Importar Arquivo .sav</button>
+      <button class="btn-assumir-mandato" id="btn-carregar-selecionado">Assumir Governo ▶</button>
+    </div>
+  </div>
+</div>
+
+<div id="aviso-simulado"></div>
+
+<script>
+  const telaCarregamento = document.getElementById('tela-carregamento');
+  const telaMenu = document.getElementById('tela-menu');
+  const gavetaCarregar = document.getElementById('gaveta-carregar');
+  
+  const fraseDinamica = document.getElementById('frase-dinamica');
+  const barraFill = document.getElementById('barra-fill');
+  const textoStatus = document.getElementById('texto-status-carregamento');
+  const porcentagemStatus = document.getElementById('porcentagem-carregamento');
+  const aviso = document.getElementById('aviso-simulado');
+
+  const ctrlCarregamento = document.getElementById('ctrl-carregamento');
+  const ctrlMenu = document.getElementById('ctrl-menu');
+  const ctrlDossie = document.getElementById('ctrl-dossie');
+  const ctrlSimular = document.getElementById('ctrl-simular');
+
+  const frasesDoutrina = [
+    { frase: "Toda lei é uma bolha no mapa. Uma vez assinada, ela vive por conta própria.", status: "MAPEANDO REDE DE CAUSA E EFEITO..." },
+    { frase: "O Congresso tem opinião própria. Se não construir quórum, seu projeto morre na mesa.", status: "CALCULANDO PACIÊNCIA DAS BANCADAS..." },
+    { frase: "Nenhuma escolha é só boa ou só ruim. O ganho de hoje é a conta de amanhã.", status: "SIMULANDO BALANÇO FISCAL E SOCIAL..." },
+    { frase: "Cada ministério puxa um pedaço do país. A caneta presidencial equilibra a tensão.", status: "ESTABELECENDO GABINETE MINISTERIAL..." }
+  ];
+
+  function setAbaAtiva(btn) {
+    [ctrlCarregamento, ctrlMenu, ctrlDossie, ctrlSimular].forEach(b => b.classList.remove('ativo'));
+    if (btn) btn.classList.add('ativo');
+  }
+
+  function mostrar(el) {
+    el.classList.remove('oculta');
+    el.removeAttribute('aria-hidden');
+  }
+
+  function esconder(el) {
+    el.classList.add('oculta');
+    el.setAttribute('aria-hidden', 'true');
+  }
+
+  function notificar(msg) {
+    aviso.textContent = msg;
+    aviso.style.display = 'block';
+    setTimeout(() => { aviso.style.display = 'none'; }, 3200);
+  }
+
+  function verCarregamento() {
+    setAbaAtiva(ctrlCarregamento);
+    esconder(telaMenu);
+    esconder(gavetaCarregar);
+    mostrar(telaCarregamento);
+    barraFill.style.width = '75%';
+    porcentagemStatus.textContent = '75%';
+  }
+
+  function verMenu() {
+    setAbaAtiva(ctrlMenu);
+    esconder(telaCarregamento);
+    esconder(gavetaCarregar);
+    mostrar(telaMenu);
+  }
+
+  function verDossie() {
+    setAbaAtiva(ctrlDossie);
+    esconder(telaCarregamento);
+    mostrar(telaMenu);
+    mostrar(gavetaCarregar);
+  }
+
+  function simularFluxoCompleto() {
+    setAbaAtiva(ctrlSimular);
+    esconder(telaMenu);
+    esconder(gavetaCarregar);
+    mostrar(telaCarregamento);
+
+    barraFill.style.transition = 'none';
+    barraFill.style.width = '0%';
+    porcentagemStatus.textContent = '0%';
+    textoStatus.textContent = frasesDoutrina[0].status;
+    fraseDinamica.textContent = frasesDoutrina[0].frase;
+
+    let p = 0;
+    const interval = setInterval(() => {
+      p += Math.floor(Math.random() * 14) + 6;
+      if (p > 100) p = 100;
+      barraFill.style.transition = 'width 0.3s ease';
+      barraFill.style.width = p + '%';
+      porcentagemStatus.textContent = p + '%';
+
+      if (p > 30 && p < 65) {
+        textoStatus.textContent = frasesDoutrina[1].status;
+        fraseDinamica.textContent = frasesDoutrina[1].frase;
+      } else if (p >= 65 && p < 95) {
+        textoStatus.textContent = frasesDoutrina[2].status;
+        fraseDinamica.textContent = frasesDoutrina[2].frase;
+      }
+
+      if (p >= 100) {
+        clearInterval(interval);
+        setTimeout(verMenu, 700);
+      }
+    }, 280);
+  }
+
+  ctrlCarregamento.addEventListener('click', verCarregamento);
+  ctrlMenu.addEventListener('click', verMenu);
+  ctrlDossie.addEventListener('click', verDossie);
+  ctrlSimular.addEventListener('click', simularFluxoCompleto);
+
+  document.getElementById('btn-novo-mandato').addEventListener('click', () => {
+    notificar('▶ Próxima maquete: Sequência País → Partido → Chapa → Ministérios');
+  });
+
+  document.getElementById('btn-continuar-rapido').addEventListener('click', () => {
+    notificar('▶ Retomando partida mais recente: Brasil (Turno 14)');
+  });
+
+  document.getElementById('btn-abrir-dossie').addEventListener('click', verDossie);
+  document.getElementById('btn-fechar-gaveta').addEventListener('click', verMenu);
+  
+  document.getElementById('btn-opcoes').addEventListener('click', () => {
+    notificar('⚙ Painel de Configurações');
+  });
+
+  document.getElementById('btn-sair').addEventListener('click', () => {
+    notificar('📜 Créditos: SisGov — Simulador de Governo');
+  });
+
+  document.querySelectorAll('.ficha-mandato').forEach(ficha => {
+    ficha.addEventListener('click', () => {
+      document.querySelectorAll('.ficha-mandato').forEach(f => f.classList.remove('selecionada'));
+      ficha.classList.add('selecionada');
+    });
+  });
+
+  document.getElementById('btn-carregar-selecionado').addEventListener('click', () => {
+    const sel = document.querySelector('.ficha-mandato.selecionada .ficha-pais').textContent;
+    notificar('▶ Carregando mandato: ' + sel);
+  });
+
+  document.getElementById('btn-importar-sav').addEventListener('click', () => {
+    notificar('📂 Importar arquivo .sav');
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !gavetaCarregar.classList.contains('oculta')) {
+      verMenu();
+    }
+  });
+
+  simularFluxoCompleto();
+</script>
+</body>
+</html>

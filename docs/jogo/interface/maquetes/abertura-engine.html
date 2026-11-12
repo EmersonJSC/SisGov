@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>SisGov — Game Engine Canvas UI (Maquete)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #020604;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+
+  /* O container principal do jogo mantém resolução virtual fixa 1920x1080 com letterboxing cinematográfico */
+  #game-viewport {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #020604;
+  }
+
+  canvas#game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: auto;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Barra discreta de debug para navegar nos estados da engine */
+  .engine-hud-top {
+    position: fixed;
+    top: 10px;
+    right: 14px;
+    z-index: 100;
+    display: flex;
+    gap: 6px;
+    background: rgba(4, 10, 7, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #9aa89d;
+    align-items: center;
+    backdrop-filter: blur(6px);
+  }
+  .engine-hud-top a {
+    color: #d4af37;
+    text-decoration: none;
+    margin-right: 6px;
+    padding-right: 8px;
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .engine-hud-top button {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #8a9a8d;
+    cursor: pointer;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 11px;
+  }
+  .engine-hud-top button:hover {
+    color: #fff;
+  }
+  .engine-hud-top button.ativo {
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="engine-hud-top">
+  <a href="/demos/">← Demos</a>
+  <span>Engine:</span>
+  <button id="btn-estado-load">01. Loading</button>
+  <button id="btn-estado-menu" class="ativo">02. Gabinete</button>
+  <button id="btn-estado-dossie">03. Dossiê</button>
+  <button id="btn-som">🔊 Som: ON</button>
+</div>
+
+<div id="game-viewport">
+  <canvas id="game-canvas" width="1920" height="1080"></canvas>
+</div>
+
+<script>
+/**
+ * SisGov Game UI Canvas Engine
+ * Simula a renderização de uma engine de jogos dedicada (resolução virtual 1920x1080,
+ * iluminação radial dinâmica, partículas de ambiente, 9-slice procedural, sons táteis).
+ */
+
+const canvas = document.getElementById('game-canvas');
+const ctx = canvas.getContext('2d');
+
+const VIRTUAL_WIDTH = 1920;
+const VIRTUAL_HEIGHT = 1080;
+
+// Sistema de Áudio Tátil via Web Audio API (sem dependência de arquivos externos)
+class GameAudio {
+  constructor() {
+    this.ctx = null;
+    this.enabled = true;
+  }
+  init() {
+    if (!this.ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) this.ctx = new AudioCtx();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+  playClick() {
+    if (!this.enabled || !this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(120, this.ctx.currentTime + 0.04);
+    gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.04);
+  }
+  playHover() {
+    if (!this.enabled || !this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(660, this.ctx.currentTime + 0.03);
+    gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.03);
+  }
+  playSlam() {
+    if (!this.enabled || !this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(30, this.ctx.currentTime + 0.18);
+    gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.18);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.18);
+  }
+}
+const audio = new GameAudio();
+
+// Carregamento de Texturas do Jogo
+const assets = {
+  fundoMenu: new Image(),
+  fundoLoading: new Image(),
+  loaded: { menu: false, loading: false }
+};
+assets.fundoMenu.src = '/arte/fundos/fundacao.jpg';
+assets.fundoMenu.onload = () => { assets.loaded.menu = true; };
+assets.fundoLoading.src = '/arte/fundos/carregando.jpg';
+assets.fundoLoading.onload = () => { assets.loaded.loading = true; };
+
+// Partículas de poeira suspensa na luz do gabinete
+class DustParticle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * VIRTUAL_WIDTH;
+    this.y = Math.random() * VIRTUAL_HEIGHT;
+    this.size = Math.random() * 2.2 + 0.6;
+    this.alpha = Math.random() * 0.4 + 0.1;
+    this.vx = (Math.random() - 0.5) * 0.25;
+    this.vy = Math.random() * -0.35 - 0.1;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.y < 0 || this.x < 0 || this.x > VIRTUAL_WIDTH) this.reset();
+  }
+  draw(ctx) {
+    ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha * 0.6})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+const particles = Array.from({ length: 45 }, () => new DustParticle());
+
+// Estado global do Jogo
+const GameState = {
+  LOADING: 'LOADING',
+  MENU: 'MENU',
+  DOSSIER: 'DOSSIER'
+};
+
+let currentState = GameState.MENU;
+let stateTime = 0;
+let lastTime = performance.now();
+
+// Dados de entrada do Mouse no espaço virtual (1920x1080)
+const mouse = {
+  x: -1000,
+  y: -1000,
+  down: false,
+  clicked: false
+};
+
+// Frases e Telemetria da tela de carregamento
+const doutrinas = [
+  { frase: "Toda lei é uma bolha no mapa. Uma vez assinada, ela vive por conta própria.", sub: "VETORES DE INFLUÊNCIA: CALCULANDO GRAFO DE DERIVA..." },
+  { frase: "O Congresso tem opinião própria. Sem quórum, seu mandato é um gabinete vazio.", sub: "BANCADAS FEDERAIS: CONSOLIDANDO SENADO E CÂMARA..." },
+  { frase: "Nenhuma escolha é só boa ou só ruim. O país sempre cobra o preço no orçamento.", sub: "MATRIZ FISCAL: PROJETANDO INFLAÇÃO E TAXA BÁSICA..." },
+  { frase: "Cada ministério puxa um pedaço do país. A caneta presidencial equilibra a tensão.", sub: "GABINETE CIVIL: ALOCANDO MINISTÉRIOS E ÓRGÃOS..." }
+];
+let doutrinaIndex = 0;
+let loadingProgress = 72; // 0 a 100
+
+// Lista de Saves (Dossiês de Mandato)
+const listaMandatos = [
+  {
+    pais: "BRASIL — MANDATO EM CURSO",
+    tipo: "AUTOSALVAMENTO GABINETE",
+    turno: "Turno 14 (Ano 2) · Pres. Emerson",
+    tempo: "Salvo há 2 dias",
+    aprovacao: "61%",
+    congresso: "284 Deputados (Maioria)",
+    tesouro: "Superávit Primário (+1.2% PIB)",
+    corAprov: "#7bc96f"
+  },
+  {
+    pais: "BRASIL — CRISE PREVIDENCIÁRIA",
+    tipo: "REGISTRO MANUAL",
+    turno: "Turno 3 (Ano 1) · Pres. Emerson",
+    tempo: "Salvo há 1 semana",
+    aprovacao: "38%",
+    congresso: "192 Deputados (Minoria)",
+    tesouro: "Déficit Fiscal (-2.8% PIB)",
+    corAprov: "#e06666"
+  },
+  {
+    pais: "RÚSSIA — AUDITORIA DE CENÁRIO",
+    tipo: "REGISTRO MANUAL",
+    turno: "Turno 7 (Ano 2) · Teste Duma",
+    tempo: "Salvo há 3 semanas",
+    aprovacao: "52%",
+    congresso: "Maioria Simples Alinhada",
+    tesouro: "Reservas Estáveis",
+    corAprov: "#d4af37"
+  }
+];
+let mandatoSelecionado = 0;
+let gavetaAnim = 0; // 0 (fechada) a 1 (aberta)
+
+// Botões do Menu Principal
+const menuBotoes = [
+  { id: 'novo', num: '01', titulo: 'INICIAR GOVERNO', desc: 'Definir país, partido, chapa e coalizão' },
+  { id: 'continuar', num: '02', titulo: 'CONTINUAR MANDATO', desc: 'Brasil — 2º Ano (Turno 14) · Aprovação 61%' },
+  { id: 'dossie', num: '03', titulo: 'DOSSIÊ DE MANDATOS', desc: 'Consultar ou carregar arquivos salvos' },
+  { id: 'opcoes', num: '04', titulo: 'CONFIGURAÇÕES', desc: 'Parâmetros de tela, áudio e acessibilidade' },
+  { id: 'creditos', num: '05', titulo: 'CRÉDITOS & REGISTRO', desc: 'SisGov — Simulador de Governo v0.2' }
+];
+
+let hoverItemAnterior = null;
+let mensagemAlerta = "";
+let timerAlerta = 0;
+
+function dispararAlerta(msg) {
+  mensagemAlerta = msg;
+  timerAlerta = 3.0;
+  audio.playSlam();
+}
+
+// -------------------------------------------------------------
+// FUNÇÕES DE DESENHO PROCEDURAL DE INTERFACE DE JOGO (9-SLICE / PLATES)
+// -------------------------------------------------------------
+
+function desenharPlacaJogo(x, y, w, h, options = {}) {
+  const {
+    bg = 'rgba(14, 28, 20, 0.75)',
+    border = 'rgba(212, 175, 55, 0.3)',
+    chamfer = 10,
+    destaque = false,
+    hover = false
+  } = options;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x + chamfer, y);
+  ctx.lineTo(x + w - chamfer, y);
+  ctx.lineTo(x + w, y + chamfer);
+  ctx.lineTo(x + w, y + h - chamfer);
+  ctx.lineTo(x + w - chamfer, y + h);
+  ctx.lineTo(x + chamfer, y + h);
+  ctx.lineTo(x, y + h - chamfer);
+  ctx.lineTo(x, y + chamfer);
+  ctx.closePath();
+
+  // Sombra e preenchimento
+  if (hover) {
+    ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+    ctx.shadowBlur = 18;
+  } else {
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+    ctx.shadowBlur = 12;
+  }
+  ctx.fillStyle = bg;
+  ctx.fill();
+
+  // Borda
+  ctx.shadowBlur = 0;
+  ctx.lineWidth = hover ? 2 : 1;
+  ctx.strokeStyle = hover ? '#f7d358' : border;
+  ctx.stroke();
+
+  // Rebites metálicos nos 4 cantos chanfrados (estética militar/estatal)
+  ctx.fillStyle = hover ? '#f7d358' : 'rgba(212, 175, 55, 0.5)';
+  const rOffset = 6;
+  ctx.fillRect(x + rOffset, y + rOffset, 3, 3);
+  ctx.fillRect(x + w - rOffset - 3, y + rOffset, 3, 3);
+  ctx.fillRect(x + rOffset, y + h - rOffset - 3, 3, 3);
+  ctx.fillRect(x + w - rOffset - 3, y + h - rOffset - 3, 3, 3);
+
+  ctx.restore();
+}
+
+function pontoDentro(px, py, rx, ry, rw, rh) {
+  return px >= rx && px <= rx + rw && py >= ry && py <= ry + rh;
+}
+
+// -------------------------------------------------------------
+// RENDERIZAÇÃO: CENA DE CARREGAMENTO
+// -------------------------------------------------------------
+function renderCarregamento(dt) {
+  // Fundo com atmosfera de gabinete à noite
+  if (assets.loaded.loading) {
+    ctx.drawImage(assets.fundoLoading, 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+  } else {
+    ctx.fillStyle = '#06100a';
+    ctx.fillRect(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+  }
+
+  // Vinheta cinematográfica e iluminação radial
+  const vig = ctx.createRadialGradient(VIRTUAL_WIDTH * 0.7, VIRTUAL_HEIGHT * 0.4, 100, VIRTUAL_WIDTH * 0.5, VIRTUAL_HEIGHT * 0.5, VIRTUAL_WIDTH * 0.7);
+  vig.addColorStop(0, 'rgba(10, 24, 18, 0.35)');
+  vig.addColorStop(0.7, 'rgba(4, 9, 6, 0.85)');
+  vig.addColorStop(1, 'rgba(2, 4, 3, 0.98)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+
+  // Topo: Classificação de Estado
+  ctx.font = '700 13px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#d4af37';
+  ctx.fillText('■ DOUTRINA DE ESTADO // GABINETE DE TRANSIÇÃO', 90, 80);
+
+  ctx.font = '400 12px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#687d6f';
+  ctx.textAlign = 'right';
+  ctx.fillText('SISGOV PROTOCOL 2026.11 · BUILD 448', VIRTUAL_WIDTH - 90, 80);
+  ctx.textAlign = 'left';
+
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(90, 100);
+  ctx.lineTo(VIRTUAL_WIDTH - 90, 100);
+  ctx.stroke();
+
+  // Miolo: Bússola Mecânica / Radar do Estado girando (sem marca de terceiros)
+  const cx = 200;
+  const cy = VIRTUAL_HEIGHT * 0.5;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  // Trilho externo
+  ctx.strokeStyle = '#1b382b';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(0, 0, 75, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Anel dourado externo
+  ctx.rotate(stateTime * 1.5);
+  ctx.strokeStyle = '#d4af37';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(0, 0, 60, 0, Math.PI * 1.3);
+  ctx.stroke();
+
+  // Anel interno contrário
+  ctx.rotate(-stateTime * 2.8);
+  ctx.strokeStyle = '#388697';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(0, 0, 42, 0, Math.PI * 1.1);
+  ctx.stroke();
+
+  // Marcadores de mira analógica
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.6)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, -78); ctx.lineTo(0, -68);
+  ctx.moveTo(0, 78);  ctx.lineTo(0, 68);
+  ctx.moveTo(-78, 0); ctx.lineTo(-68, 0);
+  ctx.moveTo(78, 0);  ctx.lineTo(68, 0);
+  ctx.stroke();
+
+  // Miolo piscante
+  const pulse = (Math.sin(stateTime * 3) + 1) * 0.5;
+  ctx.fillStyle = `rgba(212, 175, 55, ${0.4 + pulse * 0.6})`;
+  ctx.beginPath();
+  ctx.arc(0, 0, 7, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+
+  // Textos de Doutrina à direita do radar
+  const doutrina = doutrinas[doutrinaIndex];
+  ctx.fillStyle = 'rgba(212, 175, 55, 0.15)';
+  ctx.fillRect(320, cy - 80, 190, 24);
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+  ctx.strokeRect(320, cy - 80, 190, 24);
+
+  ctx.font = '700 11px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#f7d358';
+  ctx.fillText('DIRETRIZ DE GOVERNO', 332, cy - 64);
+
+  ctx.font = '500 36px "Spectral", Georgia, serif';
+  ctx.fillStyle = '#ede8d8';
+  ctx.fillText(doutrina.frase, 320, cy - 10, 1200);
+
+  ctx.font = '400 16px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#8a9a8d';
+  ctx.fillText(doutrina.sub, 320, cy + 45);
+
+  // Barra de carregamento estilizada no rodapé
+  const barY = VIRTUAL_HEIGHT - 120;
+  ctx.font = '700 12px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#d4af37';
+  ctx.fillText(`SINCRONIZANDO SISTEMA... ${Math.floor(loadingProgress)}%`, 90, barY - 14);
+
+  ctx.fillStyle = 'rgba(212, 175, 55, 0.12)';
+  ctx.fillRect(90, barY, VIRTUAL_WIDTH - 180, 6);
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+  ctx.strokeRect(90, barY, VIRTUAL_WIDTH - 180, 6);
+
+  const fillW = (VIRTUAL_WIDTH - 180) * (loadingProgress / 100);
+  const grad = ctx.createLinearGradient(90, 0, 90 + fillW, 0);
+  grad.addColorStop(0, '#8a7327');
+  grad.addColorStop(1, '#f7d358');
+  ctx.fillStyle = grad;
+  ctx.fillRect(90, barY, fillW, 6);
+
+  // Ciclo automático de frases no loading
+  if (stateTime > 3.2 && currentState === GameState.LOADING) {
+    doutrinaIndex = (doutrinaIndex + 1) % doutrinas.length;
+    stateTime = 0;
+  }
+}
+
+// -------------------------------------------------------------
+// RENDERIZAÇÃO: CENA DO MENU PRINCIPAL (GABINETE)
+// -------------------------------------------------------------
+function renderMenuPrincipal(dt) {
+  // Fundo com a capital brutalista / palácio
+  if (assets.loaded.menu) {
+    ctx.drawImage(assets.fundoMenu, 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+  } else {
+    ctx.fillStyle = '#060e0a';
+    ctx.fillRect(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+  }
+
+  // Gradiente lateral escuro dramático que acolhe os botões de jogo
+  const barraGrad = ctx.createLinearGradient(0, 0, 950, 0);
+  barraGrad.addColorStop(0, 'rgba(2, 6, 4, 0.94)');
+  barraGrad.addColorStop(0.65, 'rgba(4, 10, 7, 0.82)');
+  barraGrad.addColorStop(1, 'rgba(2, 6, 4, 0)');
+  ctx.fillStyle = barraGrad;
+  ctx.fillRect(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+
+  // Poeira suspensa animada
+  particles.forEach(p => {
+    p.update();
+    p.draw(ctx);
+  });
+
+  // Título e Brasão Oficial da República
+  const startX = 100;
+  const topY = 110;
+
+  // Emblema geométrico oficial
+  ctx.strokeStyle = '#d4af37';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(startX, topY);
+  ctx.lineTo(startX + 18, topY - 14);
+  ctx.lineTo(startX + 36, topY);
+  ctx.lineTo(startX + 36, topY + 24);
+  ctx.lineTo(startX + 18, topY + 36);
+  ctx.lineTo(startX, topY + 24);
+  ctx.closePath();
+  ctx.stroke();
+
+  ctx.fillStyle = '#d4af37';
+  ctx.fillRect(startX + 15, topY + 8, 6, 6);
+
+  ctx.font = '700 12px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#d4af37';
+  ctx.fillText('PRESIDÊNCIA DA REPÚBLICA', startX + 50, topY + 16);
+
+  ctx.font = '900 82px "Cinzel", Georgia, serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+  ctx.shadowBlur = 30;
+  ctx.fillText('SISGOV', startX, topY + 105);
+  ctx.shadowBlur = 0;
+
+  ctx.font = '400 19px "Spectral", Georgia, serif';
+  ctx.fillStyle = '#bcc8be';
+  ctx.fillText('Assuma a Presidência. Equilibre o Congresso, decida o orçamento e sinta o impacto.', startX, topY + 145);
+
+  ctx.strokeStyle = 'linear-gradient(90deg, #d4af37, transparent)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(startX, topY + 165);
+  ctx.lineTo(startX + 500, topY + 165);
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
+  ctx.stroke();
+
+  // Desenho dos Botões em Estilo "Placas Táticas de Comando"
+  const btnW = 480;
+  const btnH = 74;
+  const btnStartY = topY + 195;
+  const btnSpacing = 16;
+
+  let hoverItemAtual = null;
+
+  menuBotoes.forEach((btn, index) => {
+    const bx = startX;
+    const by = btnStartY + index * (btnH + btnSpacing);
+    const isHover = pontoDentro(mouse.x, mouse.y, bx, by, btnW, btnH);
+
+    if (isHover) {
+      hoverItemAtual = btn.id;
+      if (hoverItemAnterior !== btn.id) {
+        audio.playHover();
+        hoverItemAnterior = btn.id;
+      }
+    }
+
+    // Offset de botão pressionado
+    const isDown = isHover && mouse.down;
+    const drawX = bx + (isHover ? 12 : 0);
+    const drawY = by + (isDown ? 2 : 0);
+
+    const isPrincipal = (index === 0);
+
+    desenharPlacaJogo(drawX, drawY, btnW, btnH, {
+      bg: isHover ? (isPrincipal ? 'rgba(38, 76, 56, 0.95)' : 'rgba(24, 48, 36, 0.95)') : (isPrincipal ? 'rgba(24, 52, 38, 0.75)' : 'rgba(12, 24, 18, 0.65)'),
+      border: isPrincipal ? 'rgba(212, 175, 55, 0.5)' : 'rgba(212, 175, 55, 0.25)',
+      hover: isHover
+    });
+
+    // Marcador numérico
+    ctx.font = '700 13px "JetBrains Mono", monospace';
+    ctx.fillStyle = isHover ? '#f7d358' : 'rgba(212, 175, 55, 0.5)';
+    ctx.fillText(btn.num, drawX + 22, drawY + 44);
+
+    // Título do Botão
+    ctx.font = '800 20px "Cinzel", Georgia, serif';
+    ctx.fillStyle = isHover ? '#ffffff' : (isPrincipal ? '#ede8d8' : '#d8d4c5');
+    ctx.fillText(btn.titulo, drawX + 62, drawY + 36);
+
+    // Descrição secundária
+    ctx.font = '400 13px "Spectral", Georgia, serif';
+    ctx.fillStyle = isHover ? '#d4af37' : '#7d8f82';
+    ctx.fillText(btn.desc, drawX + 62, drawY + 58);
+
+    // Seta chevron à direita no hover
+    if (isHover) {
+      ctx.font = '700 18px "Cinzel", monospace';
+      ctx.fillStyle = '#f7d358';
+      ctx.fillText('▶', drawX + btnW - 36, drawY + 44);
+    }
+
+    // Clique no botão
+    if (isHover && mouse.clicked) {
+      audio.playClick();
+      processarCliqueMenu(btn.id);
+    }
+  });
+
+  if (!hoverItemAtual) hoverItemAnterior = null;
+
+  // Painel Tático no canto direito (Relatório da Situação de Posse)
+  const panW = 420;
+  const panH = 290;
+  const panX = VIRTUAL_WIDTH - panW - 90;
+  const panY = VIRTUAL_HEIGHT - panH - 90;
+
+  desenharPlacaJogo(panX, panY, panW, panH, {
+    bg: 'rgba(8, 18, 14, 0.85)',
+    border: 'rgba(212, 175, 55, 0.3)'
+  });
+
+  ctx.font = '700 11px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#d4af37';
+  ctx.fillText('INTELIGÊNCIA GOVERNAMENTAL // CENÁRIO DA POSSE', panX + 26, panY + 34);
+
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+  ctx.beginPath();
+  ctx.moveTo(panX + 24, panY + 46);
+  ctx.lineTo(panX + panW - 24, panY + 46);
+  ctx.stroke();
+
+  ctx.font = '700 19px "Cinzel", Georgia, serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText('Transição da República', panX + 26, panY + 76);
+
+  ctx.font = '400 14px "Spectral", Georgia, serif';
+  ctx.fillStyle = '#bcc8be';
+  ctx.fillText('O Congresso recém-eleito aguarda os primeiros despachos.', panX + 26, panY + 102);
+  ctx.fillText('A imprensa e os mercados medem cada nome do ministério.', panX + 26, panY + 124);
+
+  // Grade de 4 indicadores táteis
+  const gridY = panY + 155;
+  desenharItemIndicador(panX + 24, gridY, 'Bancada Governista', '248 / 513', '#d4af37');
+  desenharItemIndicador(panX + 220, gridY, 'Pressão Inflacionária', '4.8% a.a.', '#7bc96f');
+  desenharItemIndicador(panX + 24, gridY + 60, 'Confiança Popular', '50% (Neutro)', '#ede8d8');
+  desenharItemIndicador(panX + 220, gridY + 60, 'Espaço Fiscal', 'R$ 18.4 bi', '#7bc96f');
+
+  // Rodapé do Gabinete
+  ctx.font = '500 12px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#4c5d51';
+  ctx.fillText('PALÁCIO PRESIDENCIAL · GABINETE DE SIMULAÇÃO DE ESTADO · 2026', startX, VIRTUAL_HEIGHT - 50);
+}
+
+function desenharItemIndicador(x, y, label, valor, corValor) {
+  ctx.font = '700 10px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#6b7d70';
+  ctx.fillText(label.toUpperCase(), x, y);
+
+  ctx.font = '700 16px "JetBrains Mono", monospace';
+  ctx.fillStyle = corValor;
+  ctx.fillText(valor, x, y + 20);
+}
+
+function processarCliqueMenu(id) {
+  if (id === 'novo') {
+    dispararAlerta('▶ Sequência de Nova Campanha: País → Partido → Chapa → Ministérios');
+  } else if (id === 'continuar') {
+    dispararAlerta('▶ Retomando último mandato: Brasil (Turno 14)');
+  } else if (id === 'dossie') {
+    currentState = GameState.DOSSIER;
+    audio.playSlam();
+  } else if (id === 'opcoes') {
+    dispararAlerta('⚙ Painel de Configurações da Engine');
+  } else if (id === 'creditos') {
+    dispararAlerta('📜 SisGov v0.2 — Desenvolvido em Parceria');
+  }
+}
+
+// -------------------------------------------------------------
+// RENDERIZAÇÃO: CENA DO DOSSIÊ DE MANDATOS (CARREGAR PARTIDA)
+// -------------------------------------------------------------
+function renderDossie(dt) {
+  // Desenha o menu ao fundo levemente escurecido
+  renderMenuPrincipal(dt);
+
+  ctx.fillStyle = 'rgba(2, 6, 4, 0.7)';
+  ctx.fillRect(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+
+  // Gaveta deslizando da direita
+  const gavetaW = 740;
+  const gx = VIRTUAL_WIDTH - gavetaW;
+  const gy = 0;
+  const gh = VIRTUAL_HEIGHT;
+
+  // Caixa de aço e mogno da pasta de arquivos
+  ctx.save();
+  ctx.fillStyle = 'linear-gradient(135deg, #0e1e17, #07130e)';
+  ctx.fillRect(gx, gy, gavetaW, gh);
+
+  // Borda lateral de latão / ouro envelhecido
+  ctx.strokeStyle = '#d4af37';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(gx, 0);
+  ctx.lineTo(gx, gh);
+  ctx.stroke();
+
+  // Topo do Dossiê
+  ctx.font = '700 12px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#d4af37';
+  ctx.fillText('ARQUIVO CENTRAL DE ESTADO // LIVRO DE MANDATOS', gx + 50, 70);
+
+  ctx.font = '900 32px "Cinzel", Georgia, serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText('Dossiê Presidencial', gx + 50, 115);
+
+  // Botão fechar [ESC]
+  const btnFecharW = 140;
+  const btnFecharH = 36;
+  const bfx = gx + gavetaW - btnFecharW - 50;
+  const bfy = 86;
+  const isHoverFechar = pontoDentro(mouse.x, mouse.y, bfx, bfy, btnFecharW, btnFecharH);
+
+  desenharPlacaJogo(bfx, bfy, btnFecharW, btnFecharH, {
+    bg: isHoverFechar ? 'rgba(40, 20, 20, 0.8)' : 'rgba(20, 10, 10, 0.6)',
+    border: isHoverFechar ? '#e06666' : 'rgba(212, 175, 55, 0.3)',
+    hover: isHoverFechar
+  });
+  ctx.font = '700 12px "JetBrains Mono", monospace';
+  ctx.fillStyle = isHoverFechar ? '#ffffff' : '#9aa89d';
+  ctx.textAlign = 'center';
+  ctx.fillText('[ESC] FECHAR', bfx + btnFecharW / 2, bfy + 23);
+  ctx.textAlign = 'left';
+
+  if (isHoverFechar && mouse.clicked) {
+    audio.playClick();
+    currentState = GameState.MENU;
+  }
+
+  // Linha divisória
+  ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(gx + 50, 140);
+  ctx.lineTo(gx + gavetaW - 50, 140);
+  ctx.stroke();
+
+  // Fichas de Mandatos
+  const cardW = gavetaW - 100;
+  const cardH = 150;
+  const cardStartY = 170;
+  const cardSpacing = 18;
+
+  listaMandatos.forEach((mandato, idx) => {
+    const cx = gx + 50;
+    const cy = cardStartY + idx * (cardH + cardSpacing);
+    const isHover = pontoDentro(mouse.x, mouse.y, cx, cy, cardW, cardH);
+    const isSelected = (mandatoSelecionado === idx);
+
+    if (isHover && mouse.clicked) {
+      mandatoSelecionado = idx;
+      audio.playClick();
+    }
+
+    desenharPlacaJogo(cx, cy, cardW, cardH, {
+      bg: isSelected ? 'rgba(30, 60, 44, 0.95)' : (isHover ? 'rgba(22, 44, 32, 0.85)' : 'rgba(12, 26, 18, 0.65)'),
+      border: isSelected ? '#f7d358' : (isHover ? 'rgba(212, 175, 55, 0.6)' : 'rgba(212, 175, 55, 0.25)'),
+      hover: isHover || isSelected
+    });
+
+    // Indicador lateral de seleção
+    if (isSelected) {
+      ctx.fillStyle = '#f7d358';
+      ctx.fillRect(cx, cy + 10, 4, cardH - 20);
+    }
+
+    // Nome e carimbo
+    ctx.font = '800 20px "Cinzel", Georgia, serif';
+    ctx.fillStyle = isSelected ? '#ffffff' : '#ede8d8';
+    ctx.fillText(mandato.pais, cx + 24, cy + 36);
+
+    // Carimbo
+    ctx.font = '700 10px "JetBrains Mono", monospace';
+    ctx.fillStyle = isSelected ? '#f7d358' : '#388697';
+    ctx.fillText(mandato.tipo, cx + cardW - 180, cy + 34);
+
+    ctx.font = '400 14px "Spectral", Georgia, serif';
+    ctx.fillStyle = '#8a9a8d';
+    ctx.fillText(`${mandato.turno} · ${mandato.tempo}`, cx + 24, cy + 62);
+
+    // Linha interna
+    ctx.strokeStyle = 'rgba(212, 175, 55, 0.15)';
+    ctx.beginPath();
+    ctx.moveTo(cx + 24, cy + 78);
+    ctx.lineTo(cx + cardW - 24, cy + 78);
+    ctx.stroke();
+
+    // 3 Métricas na ficha
+    desenharItemIndicador(cx + 24, cy + 100, 'Aprovação', mandato.aprovacao, mandato.corAprov);
+    desenharItemIndicador(cx + 200, cy + 100, 'Apoio no Congresso', mandato.congresso, '#ede8d8');
+    desenharItemIndicador(cx + 420, cy + 100, 'Saldo Fiscal', mandato.tesouro, '#7bc96f');
+  });
+
+  // Botão de Ação no Rodapé: "ASSUMIR GOVERNO"
+  const btnAssumirW = 280;
+  const btnAssumirH = 58;
+  const bax = gx + gavetaW - btnAssumirW - 50;
+  const bay = VIRTUAL_HEIGHT - btnAssumirH - 50;
+  const isHoverAssumir = pontoDentro(mouse.x, mouse.y, bax, bay, btnAssumirW, btnAssumirH);
+
+  desenharPlacaJogo(bax, bay, btnAssumirW, btnAssumirH, {
+    bg: isHoverAssumir ? 'linear-gradient(90deg, #f7d358, #d4af37)' : '#d4af37',
+    border: '#ffffff',
+    hover: isHoverAssumir
+  });
+
+  ctx.font = '900 17px "Cinzel", Georgia, serif';
+  ctx.fillStyle = '#050c08';
+  ctx.textAlign = 'center';
+  ctx.fillText('ASSUMIR GOVERNO ▶', bax + btnAssumirW / 2, bay + 36);
+  ctx.textAlign = 'left';
+
+  if (isHoverAssumir && mouse.clicked) {
+    audio.playSlam();
+    dispararAlerta(`▶ Assumindo mandato: ${listaMandatos[mandatoSelecionado].pais}`);
+  }
+
+  ctx.restore();
+}
+
+// -------------------------------------------------------------
+// RENDERIZAÇÃO: FEEDBACK E NOTIFICAÇÃO DE JOGO
+// -------------------------------------------------------------
+function renderAlertaJogo(dt) {
+  if (timerAlerta <= 0) return;
+  timerAlerta -= dt;
+
+  const aw = 640;
+  const ah = 54;
+  const ax = (VIRTUAL_WIDTH - aw) / 2;
+  const ay = VIRTUAL_HEIGHT - 100;
+
+  desenharPlacaJogo(ax, ay, aw, ah, {
+    bg: 'rgba(8, 20, 14, 0.96)',
+    border: '#f7d358',
+    hover: true
+  });
+
+  ctx.font = '700 13px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.fillText(mensagemAlerta, VIRTUAL_WIDTH / 2, ay + 33);
+  ctx.textAlign = 'left';
+}
+
+// -------------------------------------------------------------
+// LOOP PRINCIPAL DE JOGO (60 FPS)
+// -------------------------------------------------------------
+function gameLoop(now) {
+  const dt = (now - lastTime) / 1000;
+  lastTime = now;
+  stateTime += dt;
+
+  // Limpa o canvas
+  ctx.clearRect(0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+
+  // Renderiza a cena atual da Engine
+  switch (currentState) {
+    case GameState.LOADING:
+      renderCarregamento(dt);
+      break;
+    case GameState.MENU:
+      renderMenuPrincipal(dt);
+      break;
+    case GameState.DOSSIER:
+      renderDossie(dt);
+      break;
+  }
+
+  // Notificações ativas
+  renderAlertaJogo(dt);
+
+  // Reseta o estado de clique após cada frame
+  mouse.clicked = false;
+
+  requestAnimationFrame(gameLoop);
+}
+
+// -------------------------------------------------------------
+// GESTÃO DE EVENTOS DE ENTRADA (MOUSE, TECLADO E REDIMENSIONAMENTO)
+// -------------------------------------------------------------
+function atualizarCoordenadasMouse(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = VIRTUAL_WIDTH / rect.width;
+  const scaleY = VIRTUAL_HEIGHT / rect.height;
+  mouse.x = (e.clientX - rect.left) * scaleX;
+  mouse.y = (e.clientY - rect.top) * scaleY;
+}
+
+window.addEventListener('mousemove', (e) => {
+  audio.init();
+  atualizarCoordenadasMouse(e);
+});
+
+window.addEventListener('mousedown', (e) => {
+  audio.init();
+  atualizarCoordenadasMouse(e);
+  mouse.down = true;
+  mouse.clicked = true;
+});
+
+window.addEventListener('mouseup', () => {
+  mouse.down = false;
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && currentState === GameState.DOSSIER) {
+    currentState = GameState.MENU;
+    audio.playClick();
+  }
+});
+
+// Controles da barra superior de teste
+const btnLoad = document.getElementById('btn-estado-load');
+const btnMenu = document.getElementById('btn-estado-menu');
+const btnDossie = document.getElementById('btn-estado-dossie');
+const btnSom = document.getElementById('btn-som');
+
+function marcarBotaoAtivo(btn) {
+  [btnLoad, btnMenu, btnDossie].forEach(b => b.classList.remove('ativo'));
+  if (btn) btn.classList.add('ativo');
+}
+
+btnLoad.addEventListener('click', () => {
+  audio.init();
+  currentState = GameState.LOADING;
+  stateTime = 0;
+  marcarBotaoAtivo(btnLoad);
+});
+
+btnMenu.addEventListener('click', () => {
+  audio.init();
+  currentState = GameState.MENU;
+  marcarBotaoAtivo(btnMenu);
+});
+
+btnDossie.addEventListener('click', () => {
+  audio.init();
+  currentState = GameState.DOSSIER;
+  marcarBotaoAtivo(btnDossie);
+});
+
+btnSom.addEventListener('click', () => {
+  audio.init();
+  audio.enabled = !audio.enabled;
+  btnSom.textContent = audio.enabled ? '🔊 Som: ON' : '🔈 Som: OFF';
+});
+
+// Inicia o loop
+requestAnimationFrame(gameLoop);
+</script>
+</body>
+</html>

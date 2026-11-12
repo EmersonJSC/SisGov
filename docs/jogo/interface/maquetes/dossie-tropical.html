@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>SisGov — Mesa Presidencial (Dossiê Tropical)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Special+Elite&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papel: #ece1c6;
+    --papel-escuro: #dccfb0;
+    --papel-borda: #bdae8b;
+    --tinta-datilografia: #22201d;
+    --tinta-fraca: #555048;
+    --ferro-base: #181a1c;
+    --ferro-borda: #2f3338;
+    --concreto: #2a2c2b;
+    --ambar: #f0a030;
+    --ambar-ouro: #d4af37;
+    --carimbo-vermelho: #9e2a2b;
+    --carimbo-azul: #1d3557;
+    --carimbo-verde: #2d6a4f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #080a09;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: "Special Elite", "Courier Prime", monospace;
+  }
+
+  /* Viewport com Proporção de Jogo 16:9 Fixo */
+  #viewport-jogo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #080a09;
+  }
+
+  .moldura-concreto {
+    width: 100vw;
+    height: 100vh;
+    max-width: 1920px;
+    max-height: 1080px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.98), 0 0 80px rgba(0, 0, 0, 0.95);
+    border: 16px solid var(--concreto);
+    border-image: linear-gradient(135deg, #383a38, #1e201f, #111211) 30;
+    overflow: hidden;
+    background: #0e110f url('/arte/fundos/fundacao.jpg') center/cover no-repeat;
+  }
+
+  /* Granulação analógica e sombra de veneziana/luz da tarde */
+  .filtro-luz-atmosfera {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: 
+      radial-gradient(circle at 18% 28%, rgba(240, 160, 48, 0.08) 0%, transparent 55%),
+      radial-gradient(circle at 75% 70%, transparent 30%, rgba(6, 8, 7, 0.7) 80%, rgba(3, 4, 3, 0.95) 100%),
+      repeating-linear-gradient(-38deg, transparent, transparent 90px, rgba(0, 0, 0, 0.14) 90px, rgba(0, 0, 0, 0.14) 140px);
+    z-index: 10;
+  }
+
+  /* Marca de copo de café na mesa de madeira (detalhe físico do GDD) */
+  .mancha-cafe {
+    position: absolute;
+    top: 75px;
+    right: 760px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    border: 4px solid rgba(85, 50, 20, 0.22);
+    box-shadow: 0 0 10px rgba(85, 50, 20, 0.18), inset 0 0 8px rgba(85, 50, 20, 0.12);
+    pointer-events: none;
+    transform: rotate(15deg);
+    z-index: 12;
+    opacity: 0.85;
+  }
+
+  /* Abas físicas de arquivo no topo da mesa */
+  .abas-topo {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    display: flex;
+    gap: 8px;
+    z-index: 30;
+  }
+  .aba-papel {
+    background: var(--papel-escuro);
+    border: 1px solid var(--papel-borda);
+    border-top: none;
+    padding: 8px 18px 6px;
+    font-family: "Special Elite", monospace;
+    font-size: 13px;
+    color: var(--tinta-datilografia);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+    border-radius: 0 0 4px 4px;
+    transition: all 0.15s ease;
+  }
+  .aba-papel:hover {
+    background: var(--papel);
+    transform: translateY(2px);
+  }
+  .aba-papel.ativa {
+    background: var(--papel);
+    font-weight: bold;
+    color: #000;
+    border-bottom: 3px solid var(--carimbo-vermelho);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ============================================================
+     CENA 1: A MESA DO PRESIDENTE
+     ============================================================ */
+  #cena-mesa {
+    position: absolute;
+    inset: 0;
+    padding: 60px 80px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 15;
+    transition: opacity 0.4s ease;
+  }
+
+  /* 1. Folha de Protocolo do Gabinete Civil */
+  .folha-processo {
+    width: 630px;
+    background: var(--papel);
+    border: 1px solid var(--papel-borda);
+    box-shadow: 12px 18px 45px rgba(0, 0, 0, 0.75), inset 0 0 50px rgba(138, 106, 67, 0.14);
+    padding: 34px 38px 28px;
+    position: relative;
+    transform: rotate(-0.7deg);
+    border-radius: 1px;
+  }
+
+  /* Clipe de metal segurando o documento */
+  .clipe-metal {
+    position: absolute;
+    top: -10px;
+    left: 45px;
+    width: 18px;
+    height: 48px;
+    border: 3px solid #8e959c;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.45);
+    z-index: 25;
+    pointer-events: none;
+  }
+
+  /* Carimbo SISGOV com imperfeições reais de tinta de borracha */
+  .carimbo-logo {
+    display: inline-block;
+    border: 3px double var(--tinta-datilografia);
+    padding: 6px 20px;
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    color: var(--tinta-datilografia);
+    transform: rotate(-2.2deg);
+    margin-bottom: 12px;
+    opacity: 0.94;
+    text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .carimbo-sub {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    display: block;
+    font-family: "Special Elite", monospace;
+  }
+
+  /* Carimbo de Tinta Vermelha CONFIDENCIAL com porosidade e falhas */
+  .carimbo-confidencial {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    border: 3px solid var(--carimbo-vermelho);
+    color: var(--carimbo-vermelho);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    padding: 5px 14px;
+    transform: rotate(7.5deg);
+    opacity: 0.86;
+    box-shadow: inset 0 0 6px rgba(158, 42, 43, 0.25);
+  }
+
+  .cabecalho-doc {
+    margin-top: 10px;
+    border-bottom: 1px dashed var(--tinta-fraca);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .doc-linha {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--tinta-datilografia);
+  }
+  .doc-linha strong {
+    font-weight: bold;
+    color: #000;
+  }
+
+  /* Itens de ação datilografados */
+  .opcoes-mandato {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .item-protocolo {
+    border: 1px solid rgba(85, 80, 72, 0.4);
+    background: rgba(255, 255, 255, 0.38);
+    padding: 13px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  .item-protocolo:hover {
+    background: #fff;
+    border-color: #000;
+    transform: translateX(5px);
+    box-shadow: 2px 5px 12px rgba(0, 0, 0, 0.2);
+  }
+  .item-protocolo.ativo {
+    background: #fff;
+    border-left: 6px solid var(--carimbo-vermelho);
+    box-shadow: 2px 5px 14px rgba(0, 0, 0, 0.22);
+  }
+
+  .item-protocolo .titulo {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    display: block;
+  }
+  .item-protocolo .detalhe {
+    font-size: 12px;
+    color: var(--tinta-fraca);
+    margin-top: 2px;
+    display: block;
+  }
+  .item-protocolo .carimbo-status {
+    font-size: 11px;
+    padding: 2px 7px;
+    border: 1px solid var(--carimbo-azul);
+    color: var(--carimbo-azul);
+    text-transform: uppercase;
+    transform: rotate(-1.5deg);
+    font-weight: bold;
+  }
+
+  /* 2. Coluna da Direita: Dossiê de Candidatos com Polaroids Reais */
+  .dossie-direita {
+    width: 730px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dossie-pasta {
+    background: #d8cba4;
+    border: 1px solid #b3a176;
+    box-shadow: 12px 18px 45px rgba(0, 0, 0, 0.75);
+    padding: 28px 32px;
+    position: relative;
+    transform: rotate(0.6deg);
+  }
+
+  .dossie-pasta::before {
+    content: "DOSSIÊ Nº 2026/GAB-POSSE";
+    position: absolute;
+    top: -26px;
+    right: 40px;
+    background: #d8cba4;
+    border: 1px solid #b3a176;
+    border-bottom: none;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px 16px;
+    color: #423b2e;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .dossie-titulo {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #272218;
+    border-bottom: 2px solid #82633e;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .dossie-titulo span {
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    color: var(--carimbo-vermelho);
+    font-weight: bold;
+  }
+
+  /* Fileira de Polaroids */
+  .fileira-polaroids {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .polaroid {
+    width: 122px;
+    background: #fdfbf7;
+    padding: 8px 8px 18px;
+    box-shadow: 3px 6px 14px rgba(0, 0, 0, 0.4);
+    border: 1px solid #d4cbb8;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+  .polaroid:nth-child(1) { transform: rotate(-3deg); }
+  .polaroid:nth-child(2) { transform: rotate(1.5deg); }
+  .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+  .polaroid:nth-child(4) { transform: rotate(2.5deg); }
+
+  .polaroid:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+    box-shadow: 6px 14px 28px rgba(0, 0, 0, 0.6);
+    z-index: 20;
+  }
+  .polaroid.selecionada {
+    border: 2px solid var(--carimbo-vermelho);
+    box-shadow: 0 0 0 3px rgba(158, 42, 43, 0.3), 6px 14px 28px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05) rotate(0deg) !important;
+    z-index: 10;
+  }
+
+  /* Alfinete de mapa vermelho em relevo */
+  .polaroid::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ff5252, #8b0000);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: 128px;
+    object-fit: cover;
+    display: block;
+    filter: sepia(0.25) contrast(1.08) brightness(0.96);
+  }
+  .polaroid .legenda {
+    font-size: 11px;
+    text-align: center;
+    color: #2b2b2b;
+    margin-top: 6px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Ficha datilografada da biografia */
+  .ficha-bio {
+    background: var(--papel);
+    border: 1px solid var(--papel-borda);
+    padding: 16px 22px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--tinta-datilografia);
+    box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.18);
+  }
+  .ficha-bio .bio-nome {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 19px;
+    font-weight: 800;
+    color: #000;
+  }
+  .ficha-bio .bio-perfil {
+    color: var(--carimbo-vermelho);
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  /* 3. Placa de Ferro Fundido [ TOMAR POSSE ▶ ] */
+  .area-posse {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .placa-ferro {
+    background: linear-gradient(180deg, #2b2e31 0%, #151617 100%);
+    border: 3px solid #3c4046;
+    padding: 18px 48px;
+    color: var(--ambar);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    box-shadow: 8px 12px 28px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    position: relative;
+    transition: all 0.1s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .placa-ferro:hover {
+    background: linear-gradient(180deg, #373b40 0%, #1c1e20 100%);
+    border-color: var(--ambar-ouro);
+    color: #ffffff;
+    box-shadow: 10px 16px 34px rgba(0, 0, 0, 0.9);
+  }
+  .placa-ferro:active {
+    transform: translateY(3px);
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Parafusos industriais hexagonais de aço nos 4 cantos */
+  .parafuso {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #9aa0a6 30%, #4f5358 80%);
+    border-radius: 50%;
+    box-shadow: inset 0 1px 1px #fff, 0 1px 2px #000;
+  }
+  .p-top-left { top: 6px; left: 8px; }
+  .p-top-right { top: 6px; right: 8px; }
+  .p-bottom-left { bottom: 6px; left: 8px; }
+  .p-bottom-right { bottom: 6px; right: 8px; }
+
+  /* ============================================================
+     3. MODAL DE ARQUIVO (SAVES) INTEGRADO À MESA (PASTA DE ARQUIVO)
+     ============================================================ */
+  #gaveta-saves {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 10, 9, 0.78);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .pasta-arquivo-central {
+    width: min(720px, 90vw);
+    background: #d8cba4;
+    border: 2px solid #a89467;
+    box-shadow: 16px 24px 60px rgba(0, 0, 0, 0.85);
+    padding: 34px 40px;
+    position: relative;
+    transform: rotate(-0.5deg);
+  }
+  .pasta-arquivo-central::before {
+    content: "ARQUIVO MORTO // CONFIDENCIAL";
+    position: absolute;
+    top: -24px;
+    left: 40px;
+    background: #d8cba4;
+    border: 2px solid #a89467;
+    border-bottom: none;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 16px;
+    color: #423b2e;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .saves-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid #82633e;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+  .saves-topo h2 {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 22px;
+    color: #272218;
+  }
+  .btn-fechar-saves {
+    background: none;
+    border: 1px solid #82633e;
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    color: #272218;
+    padding: 4px 12px;
+    cursor: pointer;
+  }
+  .btn-fechar-saves:hover {
+    background: #fff;
+  }
+
+  .lista-saves {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+
+  .card-save {
+    background: var(--papel);
+    border: 1px solid var(--papel-borda);
+    padding: 14px 18px;
+    cursor: pointer;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.15s ease;
+  }
+  .card-save:hover {
+    background: #fff;
+    border-color: #000;
+    transform: translateX(4px);
+  }
+  .card-save.ativo {
+    border-left: 6px solid var(--carimbo-vermelho);
+  }
+  .card-save .save-pais {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+  }
+  .card-save .save-meta {
+    font-size: 12px;
+    color: var(--tinta-fraca);
+    margin-top: 2px;
+  }
+  .card-save .save-aprov {
+    font-family: "Special Elite", monospace;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--carimbo-azul);
+    text-align: right;
+  }
+
+  /* ============================================================
+     CENA 2: TELA DE CARREGAMENTO (A CAPITAL MONUMENTAL)
+     ============================================================ */
+  #cena-loading {
+    position: absolute;
+    inset: 0;
+    background: #080a09 url('/arte/fundos/carregando.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 70px 90px;
+    z-index: 20;
+    transition: opacity 0.4s ease;
+  }
+
+  .loading-tarja-topo {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--ambar);
+    padding-bottom: 12px;
+    color: var(--papel);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  .loading-corpo {
+    max-width: 900px;
+    background: rgba(12, 16, 14, 0.88);
+    border-left: 6px solid var(--ambar);
+    padding: 30px 42px;
+    box-shadow: 0 14px 45px rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+  }
+  .loading-corpo .tag {
+    color: var(--ambar);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .loading-corpo h2 {
+    font-family: "Spectral", Georgia, serif;
+    font-size: 34px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .loading-corpo p {
+    font-size: 14px;
+    color: #9aa89d;
+  }
+
+  .loading-trilho-progresso {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(240, 160, 48, 0.4);
+    position: relative;
+    margin-top: 22px;
+  }
+  .loading-barra-fill {
+    height: 100%;
+    width: 72%;
+    background: var(--ambar);
+    box-shadow: 0 0 14px var(--ambar);
+  }
+
+  .oculto {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Notificação física de carimbo */
+  #aviso-carimbo {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ferro-base);
+    border: 2px solid var(--ambar);
+    color: #fff;
+    padding: 12px 28px;
+    font-size: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.85);
+    display: none;
+    z-index: 100;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div id="viewport-jogo">
+  <div class="moldura-concreto">
+    
+    <!-- Filtro de sombra de venezianas e luz -->
+    <div class="filtro-luz-atmosfera"></div>
+
+    <!-- Marca de xícara de café na mesa -->
+    <div class="mancha-cafe"></div>
+
+    <!-- Abas de arquivo no topo da moldura -->
+    <div class="abas-topo">
+      <button class="aba-papel ativa" id="aba-mesa">MESA DO PRESIDENTE</button>
+      <button class="aba-papel" id="aba-loading">TELA DE CARREGAMENTO</button>
+      <button class="aba-papel" id="aba-som">🔊 SOM: ATIVADO</button>
+    </div>
+
+    <!-- ============================================================
+         1. CENA: A MESA DO PRESIDENTE (O DOSSIÊ DE POSSE)
+         ============================================================ -->
+    <div id="cena-mesa">
+      
+      <!-- Folha de Protocolo e Menu -->
+      <div class="folha-processo">
+        <div class="clipe-metal"></div>
+        <span class="carimbo-confidencial">CONFIDENCIAL</span>
+
+        <div class="carimbo-logo">
+          SISGOV
+          <span class="carimbo-sub">Gabinete de Transição</span>
+        </div>
+
+        <div class="cabecalho-doc">
+          <div class="doc-linha"><strong>ATO EXECUTIVO Nº 001</strong> · PROTOCOLO DE POSSE</div>
+          <div class="doc-linha">Gabinete de Transição Governamental · Distrito Federal</div>
+          <div class="doc-linha"><em>"Você assume a Presidência. Cada lei muda o país — e o país responde."</em></div>
+        </div>
+
+        <div class="opcoes-mandato">
+          <div class="item-protocolo ativo" id="item-iniciar">
+            <div>
+              <span class="titulo">01. INICIAR NOVO GOVERNO</span>
+              <span class="detalhe">Sequência: País → Partido → Chapa → Ministérios</span>
+            </div>
+            <span class="carimbo-status">NOVO</span>
+          </div>
+
+          <div class="item-protocolo" id="item-continuar">
+            <div>
+              <span class="titulo">02. CONTINUAR MANDATO</span>
+              <span class="detalhe">Brasil — 2º Ano (Turno 14) · Aprovação 61%</span>
+            </div>
+            <span class="carimbo-status">RETOMAR</span>
+          </div>
+
+          <div class="item-protocolo" id="item-arquivo">
+            <div>
+              <span class="titulo">03. ARQUIVO DE MANDATOS</span>
+              <span class="detalhe">Consultar 3 partidas salvas no arquivo</span>
+            </div>
+            <span class="carimbo-status">PASTAS</span>
+          </div>
+
+          <div class="item-protocolo" id="item-config">
+            <div>
+              <span class="titulo">04. DIRETRIZES DO SISTEMA</span>
+              <span class="detalhe">Configurações de interface, som e ritmo de jogo</span>
+            </div>
+            <span class="carimbo-status">AJUSTES</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dossiê de Candidatos com Polaroids Reais -->
+      <div class="dossie-direita">
+        <div class="dossie-pasta">
+          <div class="dossie-titulo">
+            CANDIDATOS À PRESIDÊNCIA
+            <span>SELECIONE A CHAPA</span>
+          </div>
+
+          <div class="fileira-polaroids">
+            <!-- 1. Economista -->
+            <div class="polaroid selecionada" data-nome="Dra. Helena Prado" data-perfil="Economista · Perfil Técnico / Mercado" data-bio="Doutorado internacional e passagem pelo Banco Central. Foco em responsabilidade fiscal estrita, desregulamentação comercial e controle inflacionário. Relação forte com investidores e imprensa econômica.">
+              <img src="/arte/retratos/economista-f.jpg" alt="Helena Prado">
+              <div class="legenda">Economista</div>
+            </div>
+
+            <!-- 2. Militar -->
+            <div class="polaroid" data-nome="Gen. Carlos Albuquerque" data-perfil="Militar da Reserva · Ordem & Infraestrutura" data-bio="Ex-comandante do Estado-Maior. Disciplina administrativa rigorosa, apoio sólido das forças policiais e foco em investimentos maciços em obras de logística, energia e fronteiras.">
+              <img src="/arte/retratos/militar-m.jpg" alt="Carlos Albuquerque">
+              <div class="legenda">Militar</div>
+            </div>
+
+            <!-- 3. Sindicalista -->
+            <div class="polaroid" data-nome="Marcos Silveira" data-perfil="Líder Sindical · Base Popular / Trabalhista" data-bio="Três décadas de militância de chão de fábrica. Prioridade absoluta em aumento real de salário mínimo, fortalecimento de programas sociais e defesa de empresas públicas estratégicas.">
+              <img src="/arte/retratos/sindicalista-m.jpg" alt="Marcos Silveira">
+              <div class="legenda">Sindicalista</div>
+            </div>
+
+            <!-- 4. Governador -->
+            <div class="polaroid" data-nome="Fernando Lins" data-perfil="Governador Experiente · Centrão & Coalizão" data-bio="Articulador nato de bancadas regionais. Especialista em costurar maiorias confortáveis na Câmara e no Senado, negociando emendas e ministérios com pragmatismo.">
+              <img src="/arte/retratos/governador-m.jpg" alt="Fernando Lins">
+              <div class="legenda">Governador</div>
+            </div>
+          </div>
+
+          <!-- Ficha descritiva datilografada -->
+          <div class="ficha-bio">
+            <div class="bio-nome" id="bio-nome">Dra. Helena Prado</div>
+            <div class="bio-perfil" id="bio-perfil">Economista · Perfil Técnico / Mercado</div>
+            <div id="bio-texto">Doutorado internacional e passagem pelo Banco Central. Foco em responsabilidade fiscal estrita, desregulamentação comercial e controle inflacionário. Relação forte com investidores e imprensa econômica.</div>
+          </div>
+        </div>
+
+        <!-- Botão pesado de ferro: [ TOMAR POSSE ▶ ] -->
+        <div class="area-posse">
+          <button class="placa-ferro" id="btn-tomar-posse">
+            <div class="parafuso p-top-left"></div>
+            <div class="parafuso p-top-right"></div>
+            <div class="parafuso p-bottom-left"></div>
+            <div class="parafuso p-bottom-right"></div>
+            TOMAR POSSE
+            <span>▶</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================
+         3. MODAL DE ARQUIVO DE MANDATOS (SAVES NA MESA)
+         ============================================================ -->
+    <div id="gaveta-saves" class="oculto">
+      <div class="pasta-arquivo-central">
+        <div class="saves-topo">
+          <h2>ARQUIVO DE MANDATOS SALVOS</h2>
+          <button class="btn-fechar-saves" id="btn-fechar-saves">[ESC] FECHAR PASTA</button>
+        </div>
+
+        <div class="lista-saves">
+          <div class="card-save ativo">
+            <div>
+              <div class="save-pais">BRASIL — 2º ANO DE MANDATO</div>
+              <div class="save-meta">Turno 14 · Presidente Emerson · Salvo há 2 dias</div>
+            </div>
+            <div>
+              <div class="save-aprov">APROVAÇÃO: 61%</div>
+              <div style="font-size:11px; color:#2d6a4f; text-align:right;">SUPERÁVIT</div>
+            </div>
+          </div>
+
+          <div class="card-save">
+            <div>
+              <div class="save-pais">BRASIL — CRISE PREVIDENCIÁRIA</div>
+              <div class="save-meta">Turno 3 · Presidente Emerson · Salvo há 1 semana</div>
+            </div>
+            <div>
+              <div class="save-aprov" style="color:#9e2a2b;">APROVAÇÃO: 38%</div>
+              <div style="font-size:11px; color:#9e2a2b; text-align:right;">DÉFICIT FISCAL</div>
+            </div>
+          </div>
+
+          <div class="card-save">
+            <div>
+              <div class="save-pais">RÚSSIA — AUDITORIA DE CENÁRIO</div>
+              <div class="save-meta">Turno 7 · Gabinete de Teste · Salvo há 3 semanas</div>
+            </div>
+            <div>
+              <div class="save-aprov">APROVAÇÃO: 52%</div>
+              <div style="font-size:11px; color:#555; text-align:right;">ESTÁVEL</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+          <button class="placa-ferro" id="btn-carregar-partida" style="font-size:16px; padding:12px 28px;">
+            <div class="parafuso p-top-left"></div>
+            <div class="parafuso p-top-right"></div>
+            <div class="parafuso p-bottom-left"></div>
+            <div class="parafuso p-bottom-right"></div>
+            CARREGAR MANDATO
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         4. CENA: TELA DE CARREGAMENTO (A CAPITAL MONUMENTAL)
+         ============================================================ -->
+    <div id="cena-loading" class="oculto">
+      <div class="loading-tarja-topo">
+        <span>GABINETE PRESIDENCIAL // PROTOCOLO DE TRANSIÇÃO</span>
+        <span>SISGOV v0.2.4-ALPHA</span>
+      </div>
+
+      <div class="loading-corpo">
+        <span class="tag">DOUTRINA DE ESTADO Nº 14</span>
+        <h2 id="frase-loading">Toda lei é uma bolha no mapa. Uma vez assinada, ela vive por conta própria.</h2>
+        <p>Ajustando vetores de opinião pública, pressões das bancadas e balanço orçamentário...</p>
+
+        <div class="loading-trilho-progresso">
+          <div class="loading-barra-fill" id="barra-loading"></div>
+        </div>
+      </div>
+
+      <div style="font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.1em;">
+        SEDE DO GOVERNO · DISTRITO FEDERAL
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="aviso-carimbo"></div>
+
+<script>
+// Sistema de Som Físico via Web Audio API (Sons de Carimbo, Badalo e Teclado Mecânico)
+class AudioMesa {
+  constructor() {
+    this.ctx = null;
+    this.somAtivo = true;
+  }
+  init() {
+    if (!this.ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) this.ctx = new AudioCtx();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+  }
+  // Tecla de máquina de escrever
+  tecla() {
+    if (!this.somAtivo || !this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(650, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(130, this.ctx.currentTime + 0.035);
+    gain.gain.setValueAtTime(0.14, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.035);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.035);
+  }
+  // Badalo metálico de máquina de escrever (ding de fim de linha)
+  badalo() {
+    if (!this.somAtivo || !this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(1800, this.ctx.currentTime);
+    gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.3);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.3);
+  }
+  // Batida surda de carimbo pesado
+  carimbo() {
+    if (!this.somAtivo || !this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(120, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(32, this.ctx.currentTime + 0.18);
+    gain.gain.setValueAtTime(0.35, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.18);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.18);
+  }
+}
+const audio = new AudioMesa();
+
+const cenaMesa = document.getElementById('cena-mesa');
+const cenaLoading = document.getElementById('cena-loading');
+const gavetaSaves = document.getElementById('gaveta-saves');
+const abaMesa = document.getElementById('aba-mesa');
+const abaLoading = document.getElementById('aba-loading');
+const abaSom = document.getElementById('aba-som');
+const aviso = document.getElementById('aviso-carimbo');
+
+function notificar(msg) {
+  aviso.textContent = msg;
+  aviso.style.display = 'block';
+  setTimeout(() => { aviso.style.display = 'none'; }, 3200);
+}
+
+function mostrarMesa() {
+  audio.init();
+  audio.tecla();
+  abaMesa.classList.add('ativa');
+  abaLoading.classList.remove('ativa');
+  cenaMesa.classList.remove('oculto');
+  cenaLoading.classList.add('oculto');
+  gavetaSaves.classList.add('oculto');
+}
+
+function mostrarLoading() {
+  audio.init();
+  audio.tecla();
+  abaLoading.classList.add('ativa');
+  abaMesa.classList.remove('ativa');
+  cenaLoading.classList.remove('oculto');
+  cenaMesa.classList.add('oculto');
+  gavetaSaves.classList.add('oculto');
+}
+
+abaMesa.addEventListener('click', mostrarMesa);
+abaLoading.addEventListener('click', mostrarLoading);
+
+abaSom.addEventListener('click', () => {
+  audio.init();
+  audio.somAtivo = !audio.somAtivo;
+  abaSom.textContent = audio.somAtivo ? '🔊 SOM: ATIVADO' : '🔈 SOM: MUTADO';
+});
+
+// Interação com Polaroids de Candidatos
+const polaroids = document.querySelectorAll('.polaroid');
+const bioNome = document.getElementById('bio-nome');
+const bioPerfil = document.getElementById('bio-perfil');
+const bioTexto = document.getElementById('bio-texto');
+
+polaroids.forEach(p => {
+  p.addEventListener('click', () => {
+    audio.init();
+    audio.tecla();
+    polaroids.forEach(item => item.classList.remove('selecionada'));
+    p.classList.add('selecionada');
+
+    bioNome.textContent = p.dataset.nome;
+    bioPerfil.textContent = p.dataset.perfil;
+    bioTexto.textContent = p.dataset.bio;
+  });
+});
+
+// Interação com Itens do Protocolo
+document.querySelectorAll('.item-protocolo').forEach(item => {
+  item.addEventListener('click', () => {
+    audio.init();
+    audio.tecla();
+    document.querySelectorAll('.item-protocolo').forEach(i => i.classList.remove('ativo'));
+    item.classList.add('ativo');
+
+    if (item.id === 'item-arquivo') {
+      gavetaSaves.classList.remove('oculto');
+      audio.carimbo();
+    } else if (item.id === 'item-continuar') {
+      audio.badalo();
+      notificar('▶ Retomando partida mais recente: Brasil (Turno 14)');
+    } else if (item.id === 'item-config') {
+      notificar('⚙ Diretrizes do Sistema (Áudio, Ritmo e Gráficos)');
+    }
+  });
+});
+
+// Fechar Gaveta de Saves
+document.getElementById('btn-fechar-saves').addEventListener('click', () => {
+  audio.init();
+  audio.tecla();
+  gavetaSaves.classList.add('oculto');
+});
+
+// Clique na Placa de Ferro [ TOMAR POSSE ]
+document.getElementById('btn-tomar-posse').addEventListener('click', () => {
+  audio.init();
+  audio.carimbo();
+  const nomeCandidato = bioNome.textContent;
+  notificar(`ATO OFICIAL: Posse confirmada com ${nomeCandidato}. Transição de Governo em andamento.`);
+});
+
+// Clique em Carregar Mandato dentro dos Saves
+document.getElementById('btn-carregar-partida').addEventListener('click', () => {
+  audio.init();
+  audio.carimbo();
+  notificar('▶ Carregando arquivo de mandato selecionado...');
+  setTimeout(() => {
+    gavetaSaves.classList.add('oculto');
+  }, 1200);
+});
+
+// Tecla ESC fecha modal
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !gavetaSaves.classList.contains('oculto')) {
+    gavetaSaves.classList.add('oculto');
+    audio.tecla();
+  }
+});
+
+window.addEventListener('click', () => audio.init(), { once: true });
+</script>
+</body>
+</html>

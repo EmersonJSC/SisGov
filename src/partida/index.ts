@@ -7,6 +7,7 @@ import {
   gastoDasLeis,
   INDICES_ESSENCIAIS,
   lerLei,
+  motivoGovernoInvalido,
   indiceDaReputacao,
   indicesDeDefesa,
   lerPotencias,
@@ -19,6 +20,9 @@ import {
   valoresComPedidos,
   type Colisao,
   type Deriva,
+  type GovernoDoPais,
+  type Molde,
+  type RegrasGoverno,
   type Estado,
   type IndicesEssenciais,
   type Lei,
@@ -38,6 +42,7 @@ import {
   turnosMandato,
 } from "../motor";
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
+import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
 import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import moradia from "../conteudo/mundo/moradia/moradia.json";
 import saneamento from "../conteudo/mundo/saneamento/saneamento.json";
@@ -161,6 +166,42 @@ function declaracaoDoPais(pais: string): unknown {
     : { versao: 1, cobertura: {} };
 }
 
+/** Ministros do país (governo.json), se ele declara; confere o que o país diz. */
+function carregarGoverno(
+  pais: string,
+  partidos: string[],
+): { regras: RegrasGoverno; declarado: GovernoDoPais } | null {
+  if (!arquivosPaises[`../conteudo/paises/${pais}/governo.json`]) return null;
+  const declarado = arquivoPais<GovernoDoPais>(pais, "governo");
+  const regras: RegrasGoverno = {
+    moldes: moldesDeMinisterio.moldes as Molde[],
+    pessoas: declarado.pessoas,
+    ...(declarado.leis ? { leis: declarado.leis } : {}),
+  };
+  const motivo = motivoGovernoInvalido(regras, declarado, partidos);
+  if (motivo) throw new Error(`país "${pais}" › governo: ${motivo}`);
+  return { regras, declarado };
+}
+
+export interface NomesDoGoverno {
+  /** Nome de cada caixa (id do molde). */
+  caixas: Record<string, string>;
+  /** Nome de cada esfera, que é também o nome do órgão dela. */
+  esferas: Record<string, string>;
+  /** Nome de cada pessoa. */
+  pessoas: Record<string, string>;
+}
+
+/** Nomes para a tela; o motor só guarda ids. */
+export function nomesDoGoverno(partida: Partida): NomesDoGoverno {
+  const g = partida.regras.governo;
+  return {
+    caixas: Object.fromEntries((g?.moldes ?? []).map((m) => [m.id, m.nome])),
+    esferas: moldesDeMinisterio.esferas,
+    pessoas: Object.fromEntries((g?.pessoas ?? []).map((f) => [f.id, f.nome])),
+  };
+}
+
 function carregarMercado(pais: string): Regras["mercado"] {
   const mercado = lerMercado(produtos);
   const ids = lerPotencias(potencias).map((p) => p.id);
@@ -277,6 +318,10 @@ export function criarPartida(
   };
   const vigentes = arquivoPais<LeisVigentes>(pais, "leis-vigentes");
   const congresso = arquivoPais<CongressoPais>(pais, "congresso");
+  const governo = carregarGoverno(
+    pais,
+    congresso.partidos.map((p) => p.id),
+  );
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
@@ -304,6 +349,7 @@ export function criarPartida(
     saneamento,
     atendimento,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
+    ...(governo ? { governo: governo.regras } : {}),
     congresso: semCongresso
       ? undefined
       : {
@@ -335,6 +381,7 @@ export function criarPartida(
     leis: vigentes.leis,
     coligacao: congresso.coligacao,
     opinioes: inicial.opinioes,
+    ...(governo ? { governo: governo.declarado } : {}),
   });
   return {
     pais,
@@ -406,6 +453,7 @@ export type {
   Pedido,
   PedidoCongresso,
   PedidoMudarLei,
+  PedidoNomear,
   PedidoOferecer,
   Votacao,
 } from "../motor";

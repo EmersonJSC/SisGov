@@ -5,7 +5,9 @@
 import { forcaDoFato, type Fato } from "../../motor";
 import { PACIENCIA_BAIXA, TERMOMETRO_CONVITE } from "../../motor";
 import {
+  nomesDoGoverno,
   nomesPartidos,
+  type NomesDoGoverno,
   type Partida,
   type Pedido,
   type VisaoPartida,
@@ -37,18 +39,24 @@ export function temResultado(partida: Partida): boolean {
   );
 }
 
-/** Manchete do fato; o motor só guarda ids. */
-function manchete(
-  fato: Fato,
-  nomeLei: (id: string) => string,
-  partidos: Record<string, string>,
-): string {
-  const lei = fato.sobre ? nomeLei(fato.sobre) : "";
+/** Nomes que a manchete usa; o motor só guarda ids. */
+interface Nomes {
+  lei: (id: string) => string;
+  /** Partidos e pessoas, pelo id. */
+  quem: Record<string, string>;
+  governo: NomesDoGoverno;
+}
+
+/** Manchete do fato. */
+function manchete(fato: Fato, nomes: Nomes): string {
+  const lei = fato.sobre ? nomes.lei(fato.sobre) : "";
+  const caixa = nomes.governo.caixas[fato.sobre ?? ""] ?? fato.sobre ?? "";
+  const area = nomes.governo.esferas[fato.sobre ?? ""] ?? fato.sobre ?? "";
   const ids = fato.quem ?? [];
   const quem =
     ids.length > 3
       ? `${ids.length} partidos`
-      : ids.map((p) => partidos[p] ?? p).join(", ");
+      : ids.map((p) => nomes.quem[p] ?? p).join(", ");
   switch (fato.tipo) {
     case "lei-aprovada":
       return `Congresso aprova ${lei}`;
@@ -79,7 +87,13 @@ function manchete(
     case "partido-ameaca-sair":
       return `${quem} ameaça deixar a base`;
     case "escandalo":
-      return "Escândalo no governo";
+      return `Escândalo na área ${area}${quem ? `: ${quem}` : ""}`;
+    case "ministro-nomeado":
+      return `${quem} assume o ministério ${caixa}`;
+    case "ministro-demitido":
+      return `Governo troca o ministro ${caixa}; ${quem} perde o cargo`;
+    case "ministerio-oferecido":
+      return `Governo dá o ministério ${caixa} a ${quem}`;
     case "manchete-contra":
       return "Imprensa vai contra o governo";
     case "grupo-com-raiva":
@@ -108,6 +122,12 @@ export function ResultadoDoTurno({
 }) {
   const { estado } = partida;
   const partidos = nomesPartidos(partida.pais);
+  const governo = nomesDoGoverno(partida);
+  const nomes: Nomes = {
+    lei: (id) => lei(id)?.nome ?? id,
+    quem: { ...partidos, ...governo.pessoas },
+    governo,
+  };
   const eleicao =
     estado.eleicao?.turno === estado.turno ? estado.eleicao : null;
   const lei = (id: string) => visao.leis.find((l) => l.id === id);
@@ -155,9 +175,7 @@ export function ResultadoDoTurno({
                   className={`fato-${f.tamanho}`}
                   style={{ opacity: 0.4 + 0.6 * forcaDoFato(f) }}
                 >
-                  <strong>
-                    {manchete(f, (id) => lei(id)?.nome ?? id, partidos)}
-                  </strong>
+                  <strong>{manchete(f, nomes)}</strong>
                   <small>
                     {f.turno === estado.turno
                       ? " · agora"

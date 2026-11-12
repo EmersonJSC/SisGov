@@ -48,6 +48,7 @@ export function carregarPartida(texto: string): Partida {
       choques: arquivo.estado.choques ?? {},
       fatos: arquivo.estado.fatos ?? [],
       congresso: arquivo.estado.congresso ?? nova.estado.congresso,
+      governo: arquivo.estado.governo ?? nova.estado.governo,
     },
   };
 }
