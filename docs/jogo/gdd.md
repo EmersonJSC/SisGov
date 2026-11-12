@@ -296,14 +296,24 @@ alia e o quanto ele se afasta da própria história.
   barulhenta (lealdade), ministro que vira candidato (carisma).
 - **Troca:** demitir custa um pouco (mídia e coesão); manter alguém sob
   escândalo custa mais com o tempo.
-- **Ministérios mudam:** o jogador pode criar, fundir ou extinguir
-  ministérios (por lei). Mais ministérios dão mais cargos para aliados e
-  custam verba; fundir economiza e tira cargo de alguém.
-- **Ministério é um conjunto de esferas.** A esfera é a menor peça, e toda lei
-  e todo índice pertencem a uma (seção 7). Criar um ministério é juntar
-  esferas; apagar é redistribuí-las. Infraestrutura pode ser Transporte,
-  Energia e Saneamento, e outro governo pode separar tudo. A divisão muda com
-  quem governa, como na realidade.
+- **Ministério é uma caixa com nome (12/nov).** Dentro cabem esferas e
+  **subesferas**, de zero até quantas quiser. A subesfera é um pedaço de esfera
+  que governos reais costumam separar (Pesca dentro de Agricultura e pesca;
+  Portos e aeroportos dentro de Infraestrutura; Mulheres dentro de Direitos;
+  Governo e Congresso dentro de Estado e eleições). Cada esfera ou subesfera fica
+  numa caixa só; a que sobra vai para o gabinete do chefe de governo. Planilha:
+  coluna Subesfera na aba Leis, moldes na aba Ministérios.
+- **Toda caixa** tem um ministro (cargo para aliado, a moeda Ministério do
+  Congresso), custa estrutura e agrada quem é parecido com o ministro. **Caixa
+  com esferas** também rende: a ficha do ministro muda leis e órgãos dela. Muitas
+  caixas: mais cargos e foco, mais custo. Poucas (superministério): economiza, mas
+  a competência do ministro se divide. Programa espalhado por várias caixas
+  depende de vários ministros e anda no passo do mais fraco.
+- **No começo**, o país vem com os ministérios reais dele (aba Ministérios -
+  países), e o jogador muda no menu ao montar o governo. Depois, só pela lei
+  **Organização dos ministérios** (forma Divisão de esferas, quórum absoluto).
+- **A divisão muda com quem governa,** como na realidade: o Brasil juntou a
+  economia num superministério em 2019 e separou de novo em 2023.
 
 ### A fronteira do governo (12/nov)
 
@@ -977,7 +987,8 @@ pode mexer nesse filtro, pagando por isso.
   jogáveis. O mundo tem os **30 maiores**, mais os vizinhos do país jogado e o
   resto do mundo num bloco só. Nomes e números reais ficam em arquivo de dados,
   com data e fonte; o motor continua sem conhecer nomes. Planilha: abas
-  "Países" e "Países - governos".
+  "Países" e "Países - governos". **Jogar no passado** é só outro arquivo de
+  país (Brasil-2026, Brasil-2003): para o motor, são países diferentes.
 - **Um motor, dois jeitos de rodar (12/nov):** só o país jogado roda inteiro
   (leis, pops, Congresso, mesa). Os outros são **países leves**: só simulados, sem
   leis nem pops. Cada país jogável tem as duas fichas; ao escolher um, a ficha
@@ -1076,7 +1087,8 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 
 | Termo | O que é |
 |---|---|
-| **Esfera** | Um tema de leis (Saúde, Impostos). Ministério é um conjunto de esferas. |
+| **Esfera** | Um tema de leis (Saúde, Impostos). Ministério é uma caixa de esferas e subesferas. |
+| **Subesfera** | Pedaço de uma esfera que pode ir para outro ministério (Pesca, Portos e aeroportos). |
 | **Lei** | Regra permanente. Tem bolha no mapa. |
 | **Lei com prazo** | Lei que acaba sozinha. |
 | **Ato** | Decisão do presidente que acontece uma vez (Graça, visita de Estado, suspender a regra fiscal). |
@@ -1801,7 +1813,6 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
 **Governo (12/nov)**
 - A fronteira do governo e como se perde o poder foram decididos (seção 6).
 - Jogar como oposição depois de perder o poder: para depois.
-- Quantos ministérios o país tem no começo.
 
 **Base do jogo (05/nov)**
 - Como a renda de cada pop sai de salário e lucro sem o turno 0 mudar de valor.
