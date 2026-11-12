@@ -499,6 +499,24 @@ que não cabe ao presidente fica inativa.
     escolhe o molde: esquerda puxa "para Todos" e "sem ___", direita "Livre" e
     "Responsável", autoritário "Ordem e ___". Os moldes são do mundo; o motor
     não conhece nomes.
+  - **Lembrança e nostalgia (12/nov):** o programa não mexe no país além das
+    leis; o ganho é de memória.
+    - Formado, os grupos que gostam dele guardam a **lembrança** (força pelo
+      tempo que durou e pelo que ganharam), que pesa no voto e cai devagar; o
+      jornal mostra os efeitos juntos, com o nome do programa.
+    - **Desfeito** (as leis voltam abaixo da maioria), a lembrança vira
+      **nostalgia**: quem gostava sente falta e cobra de quem desfez.
+    - **Recriado** (o mesmo programa se forma de novo, por qualquer partido), o
+      jogo pergunta se o governo quer **usar o mesmo nome**. Mesmo nome: a
+      nostalgia volta de uma vez como apoio, mas a raiva de quem odiava volta
+      junto e parte do crédito fica com o partido que criou. Nome novo: começa
+      do zero, sem bagagem, e o jornal pode dizer "é o programa antigo com
+      outro nome".
+    - **Rebatizar:** quem está no poder pode trocar o nome de um programa que
+      herdou; a lembrança do nome antigo fica com o partido que o criou.
+    - O país declara no JSON os programas que já existiam antes da partida
+      (nome, partido que criou e força da lembrança). A memória é guardada pelo
+      código do programa; o motor não conhece nomes.
   - **Programas reais:** a aba Programas lista os de governos reais parecidos
     (dos 110 citados na planilha, os que são lei caem num programa; ficam
     fora as posições por país, como reatar com um país, e leis soltas, como a
