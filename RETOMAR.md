@@ -21,6 +21,13 @@ Atraso nos efeitos: colunas criadas; Atraso preenchido, Força fica "média" por
 Sem núcleo reduzido (autor): o jogo tem centenas de caminhos; a "cota" de foco e a promessa de
 campanha ficam em GDD §18.
 
+## Revisão do Fable (próxima sessão)
+
+1. Gerar por script um resumo da planilha (por esfera: leis, forma, lado, programa; índices e ligações; contagem de lados) num arquivo do scratchpad.
+2. Um agente Fable (`model: fable`), imparcial, lê `docs/jogo/gdd.md` e o resumo, nunca as linhas da planilha.
+3. Pedido: buracos de mecânica, peças que não se ligam, contradições entre seções, lados desequilibrados, o que o jogador não sente. Lista curta, por gravidade.
+4. O autor decide cada achado; nada se muda sem a palavra dele.
+
 ## Faltam
 
 Nenhuma esfera. Toda lei viva tem roteiro e mecânica.
