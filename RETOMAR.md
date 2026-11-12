@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Fase de **desenho das leis na planilha** ([docs/jogo/leis.xlsx](docs/jogo/leis.xlsx)); código parado.
-Contagens vêm só da planilha (script), não deste texto (hoje: 520 leis, 10 delas substituídas, 146 índices, 510 roteiros).
+Contagens vêm só da planilha (script), não deste texto (hoje: 524 leis, 10 delas substituídas, 146 índices, 514 roteiros).
 **As 30 esferas estão desenhadas** (09/nov). Rodada de **arrumação** feita em 08/nov: Bússola em números
 (coluna "Bússola: origem"), glossário no GDD §16, tipos de lei (Lei, Lei com prazo, Ato,
 Posição por país, Operação), "construção" virou "prédio", "programa" reservado.
@@ -31,7 +31,7 @@ Nenhuma esfera. Toda lei viva tem roteiro e mecânica.
 
 - Vídeo de apresentação (5 min) em `arquivo/sisgov-apresentacao.mp4`, 09/nov: voz neural é rascunho; falta decidir a voz final e a chamada do fim.
 - Aba "Leis - roteiro" fica separada (autor, 11/nov).
-- Conteúdo de cada papel das Operações; construção civil; próximo: construção civil. (Congresso, Mesa, Órgãos e sistema judiciário desenhados em 11/nov; o tribunal superior entrou "por enquanto".)
+- Conteúdo de cada papel das Operações (último pedaço do desenho; construção civil feita em 11/nov: Regra da licitação, Teto do aditivo, Empreiteira condenada fora das obras, Exigência técnica das construções); próximo: papéis das Operações, depois revisão do Fable. (Congresso, Mesa, Órgãos e sistema judiciário desenhados em 11/nov; o tribunal superior entrou "por enquanto".)
 - Estudo final de tudo depois das últimas esferas (autor, 09/nov).
 - Aba dos 30 países e planejamento final (planilha completa + documento passo a passo).
 
