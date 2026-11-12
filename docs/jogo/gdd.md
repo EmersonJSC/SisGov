@@ -44,7 +44,7 @@ continuar no poder governando por leis.**
 3. **A conta sempre chega.** O que agrada hoje cobra depois, pela
    contabilidade, pela economia ou pela urna.
 4. **O país vive sozinho.** Empresas abrem e fecham, a mídia escolhe lado,
-   potências mudam de ideia. O jogador governa um país que se mexe, não um
+   os outros países mudam de ideia. O jogador governa um país que se mexe, não um
    painel parado.
 
 ### A base do jogo: um ciclo
@@ -68,7 +68,7 @@ começo nem fim: mexer numa ponta volta pela outra.
 
 - **Política não é um quarto pilar.** Partidos, grupos, Congresso e eleição são
   o caminho pelo qual a População controla o Governo.
-- **Mundo não é pilar.** Potências, comércio e preços de fora pressionam os três.
+- **Mundo não é pilar.** Outros países, comércio e preços de fora pressionam os três.
 - **Bolsa é onde o ciclo vira preço.** Lei muda lucro, lucro muda a ação, a ação
   muda o patrimônio dos pops, e os pops reagem no voto e no investimento.
 
@@ -178,7 +178,7 @@ zé-ninguém quase ninguém procura; espiar um líder, juiz ou jornalista, sim.
 ### O turno (2 meses)
 
 1. **Lê o país** no mapa: bolhas de leis e índices crescendo e encolhendo,
-   grupos satisfeitos ou não, mídias a favor ou contra, potências mais perto
+   grupos satisfeitos ou não, mídias a favor ou contra, países mais perto
    ou mais longe, manchetes do turno.
 2. **Age:** propõe leis (vendo antes quem ganha e quem perde), troca
    ministro, negocia com aliados. Em tempo de campanha, faz campanha.
@@ -238,7 +238,7 @@ alia e o quanto ele se afasta da própria história.
   escândalo, troca de líder e derrota; sobe com vitória e com a base
   satisfeita.
 
-## 6. Governo: presidente, sucessão e ministros
+## 6. Governo: presidente, ministros, órgãos, justiça e estados
 
 ### Presidente e vice
 
@@ -304,6 +304,90 @@ alia e o quanto ele se afasta da própria história.
   Energia e Saneamento, e outro governo pode separar tudo. A divisão muda com
   quem governa, como na realidade.
 
+### Órgãos (11/nov)
+
+- Um órgão por esfera (30), cada um um prédio no mapa, na área da esfera.
+- Fica sob o ministério da sua esfera.
+- O ministro não mexe na verba (é lei); a ficha dele muda o órgão:
+  competência alta, rende mais; honestidade baixa, mais corrupção. Chefe com
+  mandato (lei de independência) obedece menos ao ministro.
+- Nome de função ("Órgão ambiental", "Órgão de terras"); o país dá o rótulo local.
+- Números: verba (da lei), necessidade (o trabalho que as leis pedem),
+  rendimento (verba ÷ necessidade: pouca verba, a fila anda devagar; verba
+  demais, a sobra vira corrupção) e corrupção interna (sobe com sobra de
+  verba, cargos de livre nomeação e ministro desonesto).
+- Tela: no mapa, prédio pequeno com frase curta ("12 na fila · 2 na sua mesa")
+  e cor do rendimento (verde rende, amarelo falta verba, vermelho sobra e vira
+  corrupção). Clicar abre ficha só de leitura, sem botão: chefe e ministro,
+  verba × necessidade numa barra, corrupção interna, fila (se houver) e leis
+  que mexem no órgão (clicar abre a bolha). Mudar o órgão é sempre lei,
+  ministro ou papel na mesa.
+
+### Justiça (11/nov, "por enquanto")
+
+- A Justiça é o órgão da esfera Justiça e prisões: verba (Verba da Justiça),
+  fila de processos (pouca verba, fila lenta e o caso prescreve), corrupção
+  interna e independência (Indicação de juízes, Independência dos
+  investigadores).
+- Um caso anda: rastro, investigação, processo, sentença. Condena se a prova
+  existe de verdade, conforme a independência; Foro especial manda o político
+  ao tribunal de cima, mais lento; Delação premiada acelera. Vale para papel
+  duvidoso, líder de organização e escândalo de ministro.
+- Tribunal superior entra, simples: poucas cadeiras, cada uma com o lado do
+  juiz na bússola. A vaga abre na aposentadoria e chega como papel na mesa;
+  o presidente indica e, conforme a lei, o Congresso aprova. O lado do
+  tribunal muda juiz a juiz, em mandatos.
+- Suspender lei: quando a lei bate em direito (degrau extremo de censura,
+  pena de morte, mandato sem fim). Chance pela distância entre o tribunal e
+  a lei; chega o papel "tribunal suspendeu a lei".
+- O presidente aceita, aumenta a corte (Indicação de juízes; caro no
+  Congresso e na mídia), pressiona o juiz (papel duvidoso, rastro) ou ignora
+  a decisão (crise institucional; liberdade e reputação caem; Risco de golpe
+  sobe).
+- Tela: prédio no anel do Estado ("320 processos · 2 seus") e cadeiras do
+  tribunal superior coloridas. Impeachment segue com o Congresso.
+- **Corrupção em cadeia (12/nov):**
+  - O rastro não some: todo papel duvidoso vai para o arquivo do país. A chance
+    de ser descoberto usa a Independência dos investigadores de hoje, não a da
+    época. Se ela subir (CPI, governo seguinte), os rastros antigos aparecem de
+    uma vez: escândalo, processo, até prisão do ex-presidente.
+  - Baixar a independência contamina em cadeia: sem medo de investigação, a
+    corrupção de cada órgão sobe sozinha, o rendimento cai e o serviço piora.
+    A corrupção do presidente vira a corrupção do país.
+
+### Caminho autoritário (12/nov)
+
+O custo vem de quem tem as armas e de quem tem raiva.
+
+- Cada passo autoritário (censurar, ignorar o tribunal, governar por decreto,
+  adiar a eleição) sobe a raiva dos grupos contrários.
+- Raiva alta com satisfação baixa: protesto, atentado e, no topo, tentativa de
+  assassinato do presidente; a chance cai com a segurança do presidente. Se der
+  certo, a partida acaba.
+- Sem apoio armado (Forças Armadas pouco leais, polícia dividida, facções
+  fortes), o Risco de golpe sobe a cada turno.
+- Guerra civil: grupos grandes com raiva e armas divididas. O país racha por
+  estados, e governadores da oposição se rebelam junto.
+- Com as armas leais e o povo calmo, a ditadura funciona, mas cara: sanções,
+  investimento de fora caindo, gente estudada indo embora, generais que podem
+  trocar o presidente.
+
+### Governadores (11/nov)
+
+Quem cuida de luz, gás e água muda por país; o arquivo do país declara, e a lei
+que não cabe ao presidente fica inativa.
+
+- Cada estado tem governador com partido, lugar na bússola e termômetro com
+  o presidente, como os partidos.
+- Verba: aliado faz a verba federal render mais no estado; oposição demora a
+  gastar e culpa o presidente na mídia local.
+- Congresso: os deputados do estado puxam um pouco para o governador; bancada
+  pequena que acorda só quando a lei mexe com o estado.
+- Mesa: pede obra, socorro e polo (família Pedidos).
+- Eleição: aliado faz campanha pelo presidente no estado; oposição, contra.
+- O jogador não governa estado nem escolhe obra. Pops por estado pesam pouco no
+  motor (medido em 12/nov: possível, com cálculo uma vez por tipo de pop).
+
 ## 7. Leis
 
 **O que o jogador faz:** propõe, muda e revoga leis.
@@ -313,8 +397,9 @@ alia e o quanto ele se afasta da própria história.
   peça com que os ministérios se montam (seção 6). As esferas se interligam.
 - **Duas camadas.** _Essenciais_: estrutura do Estado (mandato, regime,
   reeleição, impostos básicos); mudam pouco. _Jogabilidade_: as políticas.
-- **Duas formas.** _Contínua_ quando tem valor (alíquota, gasto em % do PIB),
-  com faixa própria. _Opções_ quando não tem (pena de morte).
+- **Forma:** como o jogador mexe na lei (Régua, Níveis, Escolha, Régua por
+  setor, Divisão de 100% e outras; lista em "Tipos", abaixo). No motor, régua
+  é lei contínua e níveis ou escolha são lei de opções.
 - **A lei declara, o motor calcula.** A lei diz os efeitos, a força
   (fraca/média/forte), o atraso em turnos, a posição na bússola e qual
   cálculo do motor usa. Não traz fórmula própria.
@@ -364,7 +449,7 @@ alia e o quanto ele se afasta da própria história.
   Imposto sobre empresas, Liberação das drogas e dos jogos) usam o valor inicial do
   país como zero e podem cruzar o meio. Verbas e tetos têm um lado só, com pouca
   força. Quando o dono pode ser Estado ou privado (usinas, rede, venda de energia),
-  são duas leis de lados opostos que colidem; fica para a esfera Energia.
+  são duas leis de lados opostos que colidem (feito na esfera Energia).
 - **Build:** o jogador combina leis de lados diferentes como quiser. Só
   leis que **colidem** não valem juntas (teto de aluguel × aluguel livre).
 - **Processo:** estoque que anda sozinho pelos turnos (casas, favelas,
@@ -373,7 +458,7 @@ alia e o quanto ele se afasta da própria história.
 - **Órgão faz, o jogador não escolhe:** o jogador nunca escolhe a fazenda, a
   fábrica ou a obra. Lei de regra diz o quê; lei de verba dá força ao órgão
   responsável. A regra funciona na medida da verba; verba muito acima do
-  necessário vira corrupção. Obra nova é lei separada (seção 16, Construções).
+  necessário vira corrupção. Obra nova é lei separada (seção 16, Prédios e obras).
 - **Roteiro da lei:** toda lei passa pelos mesmos 8 passos: entrada (dinheiro,
   regra, preço ou direito), filtro, prédio, pop, economia, índices, política e
   conta. A lei declara a entrada e onde age; os outros passos são regras gerais
@@ -383,10 +468,11 @@ alia e o quanto ele se afasta da própria história.
   de zero a um empurrão pequeno num lado só (serviços puxam um pouco à esquerda;
   polícia e defesa, um pouco ao tradicional). O empurrão forte fica nas leis de
   "como" (público ou privado, força da polícia, quem controla). Leis de regra que
-  atravessam o meio da bússola serão corrigidas uma a uma (32 na planilha em
-  07/nov; Segurança pública já corrigida).
-- **Sem limite de leis por esfera (07/nov):** tudo bem chegar a umas 500 leis. Se
-  ficar demais, reduz-se depois; o jogo pode começar com um núcleo escolhido.
+  atravessavam o meio da bússola foram corrigidas em 08/nov (lado único ou
+  exceção escrita).
+- **Sem limite de leis por esfera (07/nov):** a planilha passa de 500 leis, e
+  não se corta um núcleo (08/nov): o jogo tem centenas de caminhos; o foco do
+  jogador vem da promessa (seção 13).
 - **Os dois lados legislam:** o lado de mais regra e o de menos regra têm leis
   próprias. Zerar uma lei de esquerda não é uma política de direita; a direita
   ganha leis como livre negociação e contratos flexíveis. Ao listar as leis de
@@ -405,7 +491,7 @@ mostra para onde as escolhas levam o país, sem decidir nada sozinha.
   (libertário/verde − ↔ autoritário/tradicional +), mais os eixos que o
   autor decidir (seção 18).
 - Têm posição: leis (um ponto por opção, ou um em cada ponta da faixa),
-  partidos, grupos, pops, mídias, ministros, potências.
+  partidos, grupos, pops, mídias, ministros, países.
 - **A posição do país** é a média das leis vigentes, com peso por lei (lei
   grande empurra mais).
 - **Quem gosta sai da distância**, nunca de uma lista de grupos escrita na
@@ -479,7 +565,7 @@ mostra para onde as escolhas levam o país, sem decidir nada sozinha.
 - **Vida:** gente nasce, envelhece e morre. Jovem vira estudante e trabalhador;
   idoso se aposenta. É daqui que saem Previdência, escola e procura por saúde.
 - **Pops mudam:** estudam e vão para o setor que paga mais (formar gente
-  leva turnos; universidades são construções); sobem ou descem de estrato.
+  leva turnos; universidades são prédios); sobem ou descem de estrato.
 - **Grupos de interesse:** 25, econômicos, de identidade e valores e de causa.
   São pops organizados pelos seus interesses, e atravessam os pops: cada pop se divide entre vários grupos, em partes
   diferentes. Cada grupo tem posição na bússola,
@@ -513,7 +599,7 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   ideia ou líder: raiva sozinha não basta, e só parte dos radicais usa violência.
 - **Várias existem, poucas preocupam.** Cada uma tem gente, dinheiro, armas, poder
   e organização, que dão a ameaça: pequena, relevante, grave ou crítica.
-- **Financiamento:** potências, empresas na bolsa e doadores podem pagar
+- **Financiamento:** outros países, empresas na bolsa e doadores podem pagar
   organizações por interesse. Todo pagamento deixa rastro.
 - **Investigação:** polícia, órgãos e imprensa podem descobrir quem paga. Isso
   prende líderes, corta dinheiro, derruba ações, gera sanção e escândalo.
@@ -548,30 +634,17 @@ agem juntas na política; a organização tem nome, líder e ação própria.
 **O que o jogador faz:** junta votos.
 
 - **Partidos do país:** nome, cadeiras, posição na bússola, grupos que
-  defendem, presidente com ficha.
-- **Toda mudança de lei é votada.** Pedir mais de 1/3 da faixa de uma vez é
-  exorbitante e cai.
-- **Lei popular anda.** Ela ganha votos mais fácil e o Congresso pode propô-la
-  por conta própria, mesmo sem o jogador pedir.
-- **Coligação de governo:** o jogador convida partidos para a base. Cada um
-  cobra: ministérios, leis perto da bússola dele, verba para os grupos
-  dele. Partido da base com os grupos insatisfeitos sai; partido que saiu
-  pode voltar se for atendido.
-- **Negociação:** por lei, o jogador pode ceder (mudar a proposta, dar
-  ministério) para ganhar votos. A habilidade política do presidente, do
-  ministro da área e do presidente do partido pesa.
-- **Oposição:** os partidos fora da base agem contra você: votam contra,
-  aprovam leis deles quando têm votos, dão entrevistas, mobilizam grupos e
-  chamam protestos.
-- **Veto:** o que o Congresso aprova chega à mesa do presidente (seção 17)
-  para assinar ou vetar; o Congresso pode derrubar o veto.
-- **Uma ou duas casas:** o país declara se tem só Câmara ou Câmara e
-  Senado.
-- **Regimes:** presidencialismo, parlamentarismo (perder a base derruba o
-  governo), semipresidencialismo e partido único. O partido único entra no
-  jogo pronto (11/nov, para a China jogável): o Congresso vota por **alas** do
-  partido, cada uma com lado na bússola e grupos, no mesmo motor do voto.
-- Cadeiras mudam a cada eleição, pelo voto.
+  defendem, presidente com ficha. Cadeiras mudam a cada eleição, pelo voto.
+- **Toda mudança de lei é votada.** O que passa sai do placar previsto (abaixo);
+  o exorbitante não tem votos e cai.
+- **Base e oposição:** o jogador convida partidos para a base; cada um cobra
+  (moedas, abaixo) e sai ou entra pelo termômetro. A oposição vota contra,
+  aprova leis dela quando tem votos, vai à mídia e mobiliza grupos.
+- **Casas e sistema:** o país declara se tem só Câmara ou Câmara e Senado, e o
+  sistema de governo: presidencialismo, parlamentarismo, semipresidencialismo
+  ou partido único (o que muda em cada um, abaixo). O sistema eleitoral
+  (proporcional, misto, distrital) é lei do jogo. Monarquia sem eleição existe
+  só nos países leves (seção 15).
 
 ### O coração do voto (11/nov)
 
@@ -589,16 +662,13 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   aceita para mudar o voto, e cada moeda cobra depois: ceder na régua,
   ministério, cargos, emenda, promessa de lei, decreto. Ao passar o dedo, o
   partido mostra os dois motivos que mais pesam no voto dele.
-- **Tipos de país:** o país declara o regime e as casas. O jogo cobre os
-  sistemas da maioria dos países; o sistema eleitoral (proporcional, misto,
-  distrital) é lei do jogo.
 - **Tempo da lei:** no máximo 2 turnos. Turno 1: o jogador propõe e negocia,
   as casas votam no fim do turno; lei do governo aprovada sem mudança vira lei
   direto, com efeito no turno seguinte. Se o Congresso aprova um valor menor, a
   lei vai à mesa no turno 2 (assinar ou vetar) e o veto pode ser derrubado no
   mesmo turno. Regra do poder e mandato votam duas vezes, nos turnos 1 e 2. Não
   há urgência: tudo já é rápido.
-- **O que muda em cada regime (11/nov):** o motor do voto, o placar e as moedas
+- **O que muda em cada sistema (11/nov):** o motor do voto, o placar e as moedas
   são iguais; muda quem vota e como o jogador cai.
   - Presidencialismo: maioria a cada lei; perder a base trava, não derruba.
     Cai por impeachment (fato grave, aprovação abaixo de 30%, 2/3 dos votos).
@@ -643,7 +713,9 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   - Promessa de lei: voto hoje, lei do aliado em até 4 turnos; vira papel com
     prazo, e descumprir enfurece o aliado e dá manchete.
   - Decreto: a lei vale já, sem voto, se a lei Poder de decreto deixar; o
-    Congresso tem 2 turnos para confirmar, e cada uso derruba mais a paciência.
+    Congresso tem 2 turnos para confirmar, ou cai; cada uso derruba mais a
+    paciência, mais a cada vez. É a "medida provisória" do Brasil: o nome é
+    rótulo do país (12/nov).
   - **Preço que sobe (12/nov):** cada compra (cargo, emenda, ministério) ensina
     o partido que o governo paga, e o preço do próximo voto dele sobe. Quem
     entrou por compra é fiel ao dinheiro: quando o caixa ou os cargos acabam,
@@ -752,8 +824,8 @@ agem juntas na política; a organização tem nome, líder e ação própria.
   com alvo (sem limite de ações por turno, 11/nov; o freio é o caixa e o
   cansaço: repetir a ação no mesmo grupo rende cada vez menos): comício (um grupo), TV (todo o público,
   pela mídia), redes (jovens e grupos mais engajados), debate (arrisca:
-  carisma contra o adversário), promessa (vira lei esperada; descumprir
-  cobra no mandato seguinte).
+  carisma contra o adversário), promessa (a meta do mandato; ver "Promessa",
+  abaixo).
 - Lei de financiamento de campanha decide de onde vem o dinheiro.
 - A campanha é nacional e mira **grupos**, com ação por estado, sempre dentro da
   eleição nacional.
@@ -868,11 +940,11 @@ pode mexer nesse filtro, pagando por isso.
 
 ## 15. Mundo
 
-- **Países reais (08/nov):** as **10 maiores economias e a Rússia** (12/nov) têm ficha
-  completa e são jogáveis; o ranking mostra os **30 maiores** (do 11º ao 30º, ficha
-  simples), mais os vizinhos do país jogado e o resto do mundo num bloco só. O
-  país jogado sai da lista dos outros. Nomes e números reais ficam em arquivo de
-  dados, com data e fonte; o motor continua sem conhecer nomes.
+- **Países reais (08/nov):** as **10 maiores economias e a Rússia** (12/nov) são
+  jogáveis. O mundo tem os **30 maiores**, mais os vizinhos do país jogado e o
+  resto do mundo num bloco só. Nomes e números reais ficam em arquivo de dados,
+  com data e fonte; o motor continua sem conhecer nomes. Planilha: abas
+  "Países" e "Países - governos".
 - **Um motor, dois jeitos de rodar (12/nov):** só o país jogado roda inteiro
   (leis, pops, Congresso, mesa). Os outros são **países leves**: só simulados, sem
   leis nem pops. Cada país jogável tem as duas fichas; ao escolher um, a ficha
@@ -907,7 +979,7 @@ pode mexer nesse filtro, pagando por isso.
     ciência por produto (quem empresta à Ciência e pesquisa), pobreza e
     violência (geram migração e refugiados); lado na bússola, força do governo
     (0–100), próxima eleição, poder militar (0–100), arma nuclear; opinião sobre
-    cada país e blocos. Os 30 usam a mesma ficha; os 10 jogáveis têm também o
+    cada país e blocos. Os 30 usam a mesma ficha; os 11 jogáveis têm também o
     estado inicial completo. Resto do mundo num bloco. Fontes públicas com data
     (FMI, Banco Mundial, SIPRI, Comtrade, V-Dem).
   - **Governos que já existiram (12/nov):** a ficha guarda os governos do país
@@ -933,35 +1005,30 @@ pode mexer nesse filtro, pagando por isso.
     direita fecham a fronteira (refugiados procuram outro país); governo mais
     autoritário gasta mais com militares e age mais (mais sanções, ameaças,
     ataques); entra ou sai de blocos e alianças.
-- **Relação entre países:** cada par é aliado, amigo, neutro, rival ou inimigo;
-  muda com o tempo e com o que você faz. Aproximar-se de A faz os rivais de A
-  desconfiarem de você.
+- **Opinião e relação:** a opinião de −100 a +100 vira a relação que a tela
+  mostra (inimigo, rival, neutro, amigo, aliado). Aproximar-se de A faz os
+  rivais de A desconfiarem de você. **Reputação internacional** = média das
+  opiniões sobre você, pesada pelo tamanho de cada país.
 - **Tela do Mundo:** ranking por PIB com a relação de cada país com você; clicar
   num país abre a ficha (dados, relação, o que está em vigor: tratados, sanções,
   bases, ajuda) e as formas de se aproximar ou se afastar dele.
-- **Cada país** tem posição na bússola, peso, opinião sobre o seu que anda pela
-  distância e interesses econômicos (compram, vendem, investem).
 - **Posições por país (Relações exteriores):** no menu do país, o jogador decide o
   nível de cada uma só para aquele país (não são leis): relações diplomáticas, acordo
   comercial, aliança militar, base estrangeira, sanções, operações no exterior,
   extradição e polícia, ajuda dada, ajuda condicionada aceita e proteção ao
   investidor. As **leis** que as controlam e valem para o país todo: Verba da
   diplomacia, Tribunal internacional, Inspeções nucleares, Aprovação de tratados
-  (presidente, Congresso ou referendo) e Alcance das sanções. Cada ação muda a opinião do país pela
-  distância na bússola e a dos aliados e rivais dele.
+  (presidente, Congresso ou referendo) e Alcance das sanções. Cada ação muda a
+  opinião do país e a dos aliados e rivais dele.
 - **Atos do presidente com países** (não são leis): visita de Estado, receber o
   líder, apoiar ou criticar em público, mediar conflito entre dois países.
   Custo e duração ficam para as narrativas.
-- **Reputação internacional** = média das opiniões, pesada pelo peso.
-- **Potência reage:** acordo, investimento, crédito mais barato quando
-  gosta; tarifa, sanção, fuga de capital quando não gosta.
-- **Sanção** passa pelo mercado: se a potência é a maior produtora de um
-  produto e sanciona o país, esse produto fica caro no seu mercado. Quanto
-  mais o país depende dele, mais dói.
-- **Segurança externa** cai quando potência forte não gosta do país. **O
-  país pode ser atacado, mas não revida nem começa guerra.** Um ataque cobra
+- **Sanção passa pelo mercado:** se o país que sanciona é o maior produtor de um
+  produto, esse produto fica caro no seu mercado. Quanto mais você depende
+  dele, mais dói.
+- **Segurança externa** cai quando país forte não gosta de você. **O país do
+  jogador pode ser atacado, mas não revida nem começa guerra.** Um ataque cobra
   economia, vidas e aprovação; a defesa vem das leis militares.
-- Potências mudam de posição ao longo das décadas.
 
 ## 16. Economia
 
@@ -1201,10 +1268,10 @@ renda dos pops, que voltam a consumir, poupar e investir.
   crédito. A quebra reduz patrimônio, consumo, investimento e emprego.
 - **Cada investidor reage de um jeito:** pequenos seguem a moda, ricos olham lucro,
   bancos usam crédito, fundos ficam mais tempo, estrangeiros saem rápido.
-- Compradores (pops ricos, fundos, multinacionais, potências) com caixa
+- Compradores (pops ricos, fundos, multinacionais, outros países) com caixa
   próprio: vender muito de uma vez derruba o preço.
 - O Estado compra e vende de verdade: o dinheiro entra e sai do cofre;
-  grupos, mídia e potências reagem.
+  grupos, mídia e outros países reagem.
 - O valor da compra da propriedade depende do valor na bolsa.
 - **Pops têm patrimônio na bolsa:** ação sobe ou cai e muda a riqueza de quem é
   dono. Dividendo vira renda, e a queda vira reação no voto e no investimento.
@@ -1419,7 +1486,7 @@ renda dos pops, que voltam a consumir, poupar e investir.
   Lua), qualquer um direto. A fatia Espaço define o ritmo, e o gráfico mostra o ano
   previsto. Mirar alto gasta em peças que só rendem ao chegar. Anunciar o ano é Ato
   opcional. Marte está fora (autor). **A Lua é corrida:** a tela mostra em que ponto cada
-  potência está, quem chega primeiro leva a maior parte da reputação, e entrar no
+  país está, quem chega primeiro leva a maior parte da reputação, e entrar no
   programa de outro país, pela Cooperação científica, sai mais barato e a glória é dele.
 
 ### Agricultura e pesca (09/nov)
@@ -1601,7 +1668,7 @@ Duas telas de jogo: o **mapa** (o que você propõe e o país como está) e a
 ### Mapa
 
 - Leis são bolhas agrupadas em áreas; índices, grupos, organizações, mídias e
-  potências aparecem no mesmo mapa.
+  países aparecem no mesmo mapa.
 
 ### Mesa (assinar e carimbar)
 
@@ -1617,7 +1684,7 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
     é veto).
   - **Situações:** saem dos dados do país (enchente pede verba de
     emergência, greve pede reajuste, empresa quebrando pede socorro,
-    potência oferece acordo). Duas ou três respostas, cada uma com ganho e
+    país oferece acordo). Duas ou três respostas, cada uma com ganho e
     custo; assinar pode virar gasto, lei proposta ou efeito direto.
   - **Pedidos:** aliado pede ministério ou verba, ministro pede demissão,
     governador pede obra.
@@ -1641,7 +1708,7 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
   - Leis (Congresso): lei aprovada, emenda, veto derrubado.
   - Crises (índices e eventos): enchente, greve, banco quebrando, apagão.
   - Pedidos (partidos, governadores, ministros): ministério, verba, obra, demissão.
-  - Ofertas (potências e companhias): acordo, compra de estatal, investimento.
+  - Ofertas (países e companhias): acordo, compra de estatal, investimento.
   - Órgãos (filas das esferas): caso disputado da fila, vistoria.
   - Partido (partido do presidente): doador, filiação, expulsar ou perdoar.
   - Duvidosos (corrupção), misturados nas outras famílias.
@@ -1662,7 +1729,7 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
     da agência.
   - Ganho: dinheiro de campanha, voto do aliado na hora, termômetro sobe.
   - Custo: corrupção do órgão sobe e o papel assinado fica como rastro; a cada
-    turno o rastro pode ser descoberto pela regra da mentira descoberta (§13).
+    turno o rastro pode ser descoberto pela regra da mentira descoberta (seção 14).
     Descoberto: escândalo, a CPI acha, honestidade do presidente cai, e conta
     como o fato do impeachment.
   - Recusar: quem pediu fica chateado. Denunciar: aprovação sobe, quem pediu
@@ -1693,23 +1760,17 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
 
 ## 18. Perguntas em aberto (requisitos a decidir)
 
-Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
+Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela. Revisada
+em 12/nov: o que estava decidido foi para o sistema (Órgãos, Justiça, Caminho
+autoritário e Governadores na seção 6; decreto e medida provisória juntos na
+seção 12; promessa e cota na seção 13; mundo na seção 15).
 
-**Partido e governo**
-- O que o presidente de outro partido pode fazer contra você e quanto dura.
+**Próxima frente: o governo (12/nov)**
+- O jogador é o partido, não o presidente (seção 1). Falta desenhar a mecânica
+  de governo a partir disso: o que o presidente (uma ficha) faz por conta
+  própria, o que o partido manda e o que acontece quando um presidente de outro
+  partido assume.
 - Quantos ministérios o país tem no começo.
-
-**Mesa**
-- Prazos decididos em 11/nov (§17), sem limite de papéis por turno.
-- Veto parcial resolvido em 11/nov: veto com observação (§17).
-- Tipos de papel: 7 famílias decididas em 11/nov (§17).
-
-**Mídia e campanha**
-- Ações de campanha: sem limite por turno, freio é caixa e cansaço (11/nov, §13).
-
-**Bússola**
-- Quais eixos novos entram (talvez 3 eixos, um cubo; candidato: paz ×
-  militarismo). Precisa de estudo.
 
 **Base do jogo (05/nov)**
 - Como a renda de cada pop sai de salário e lucro sem o turno 0 mudar de valor.
@@ -1718,198 +1779,59 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
 - Quando alguém sai: o que leva à informalidade, à fuga de dinheiro e à emigração.
 - Como medir a força de um grupo e quanto ela muda a popularidade de uma lei.
 - Quais serviços do Estado aceitam terceirização além dos já listados na planilha.
+- Organizações (seção 11): regras e números de nascer e crescer, ações de cada
+  tipo e como o jogador as enfrenta.
 
-**Economia**
+**Economia e terra**
 - Quanto do lucro privado vai aos investidores e quanto à reserva.
 - Custo e prazo de cada tipo de obra (números).
 - Se a verba da estatal é uma lei por estatal ou por setor.
-
-**Terra e moradia**
 - Se o êxodo aparece como índice ou só como gente mudando de pop.
-- Lista das leis do campo nos 6 lados e as colisões delas.
-- Se a desapropriação de terra parada é uma lei só (campo e cidade) ou duas.
 - Números: velocidade do êxodo, custo da casa, ritmo da autoconstrução.
-- **Tomar e dar destino (04/nov):** o Estado toma terra ou empresa
-  (desapropriação, estatização; a Indenização diz quanto paga) e o bem tomado
-  precisa de um destino: **comunidade** (dona coletiva, não vende; esquerda/
-  verde), **Estado** (fica dono e arrenda; autoritário) ou **famílias com
-  título** (direita). Cada destino é uma lei própria, de "nada" a "mais" no seu
-  lado, nunca uma lei de 3 opções. Falta decidir: o que acontece quando duas
-  leis de destino valem juntas (divide? colide?), se empresa e terra usam as
-  mesmas leis, e o que a comunidade produz. Substitui "Dono da terra",
-  "Terra comunal" e "Arrendamento", recusadas (cruzavam a bússola ou
-  dependiam de terra que o Estado ainda não tem).
-- **Ocupação de terra (04/nov):** "Terra invadida fica de fora" (fazenda
-  ocupada sai da fila da reforma agrária por 2/4/8 anos) foi retirada:
-  misturava ocupação, fila e prazo, e a fila (vistoria → desapropriação) ainda
-  não existe. Voltar quando a fila existir, como leis separadas nos dois lados:
-  uma que castiga a ocupação (autoritário) e uma que a acelera (esquerda), e
-  dizer quais terras entram (só improdutivas?). Entrou em 09/nov: Terra ocupada sai da fila e Terra ocupada anda na frente;
-  quem entra é definido por O que conta como terra parada.
-- **Saneamento e a bússola (04/nov):** o pacote da rede tem esquerda, direita e
-  verde. O lado tradicional/autoritário fica vazio por decisão do autor: o tema
-  não tem lei natural desse lado, e não se inventa lei só para preencher.
-- **Área da saúde (04/nov):** 19 leis aprovadas pelo autor. Feitas: Verba,
-  Abertura de planos, Limite aos planos, Atenção preventiva, Telemedicina livre
-  Serviço obrigatório (4 níveis, de quem estudou de graça até lugar sorteado),
-  Seguro na folha (4 níveis, de sem seguro até formais e família), Cobertura
-  gratuita (4 níveis, de só urgência até tudo para todos), Coparticipação, Dedução
-  do plano, Conta de saúde, Filantrópicos, Carreira exclusiva, Gestão privada,
-  Missões médicas, Saúde ambiental, Vacinação e Direito de recusar (05/nov, 4
-  níveis cada). O Imposto sobre vícios virou a parte **Vícios** da saúde, com 12
-  leis e 3 índices fechados em 05/nov: desenho em
-  [fase-1-redes.md](fase-1-redes.md). Colisões:
-  Cobertura × Coparticipação, Carreira × Gestão, Vacinação × Recusar, Limite ×
-  Dedução, Seguro × Conta, Conta × Cobertura.
-- **Redes (05/nov):** suspenso. Saúde e saneamento são parecidos, não iguais; os
-  mecanismos se decidem depois da planilha `docs/jogo/leis.xlsx`.
-- **Formação de profissionais (04/nov):** fica na área da educação, não na
-  saúde. Um profissional se forma pelo público ou pelo privado. Leis para ver
-  quando a educação for avaliada: vagas públicas, faculdades privadas e
-  validação de diploma estrangeiro. Em 07/nov entraram mais 15 ideias de lei e o
-  índice Vagas na escola na planilha; faltam conferir os roteiros. Validação de
-  diploma estrangeiro e Ensino técnico ficam no centro da Bússola: os estudos não
-  dão lado, e a reação vem do efeito nos pops.
-- **Sistema judiciário (decidido em 11/nov, "por enquanto"):**
-  - A Justiça é o órgão da esfera Justiça e prisões: verba (Verba da Justiça),
-    fila de processos (pouca verba, fila lenta e o caso prescreve), corrupção
-    interna e independência (Indicação de juízes, Independência dos
-    investigadores).
-  - Um caso anda: rastro, investigação, processo, sentença. Condena se a prova
-    existe de verdade, conforme a independência; Foro especial manda o político
-    ao tribunal de cima, mais lento; Delação premiada acelera. Vale para papel
-    duvidoso, líder de organização e escândalo de ministro.
-  - Tribunal superior entra, simples: poucas cadeiras, cada uma com o lado do
-    juiz na bússola. A vaga abre na aposentadoria e chega como papel na mesa;
-    o presidente indica e, conforme a lei, o Congresso aprova. O lado do
-    tribunal muda juiz a juiz, em mandatos.
-  - Suspender lei: quando a lei bate em direito (degrau extremo de censura,
-    pena de morte, mandato sem fim). Chance pela distância entre o tribunal e
-    a lei; chega o papel "tribunal suspendeu a lei".
-  - O presidente aceita, aumenta a corte (Indicação de juízes; caro no
-    Congresso e na mídia), pressiona o juiz (papel duvidoso, rastro) ou ignora
-    a decisão (crise institucional; liberdade e reputação caem; Risco de golpe
-    sobe).
-  - Tela: prédio no anel do Estado ("320 processos · 2 seus") e cadeiras do
-    tribunal superior coloridas. Impeachment segue com o Congresso.
-- **Corrupção em cadeia (decidido em 12/nov):**
-  - O rastro não some: todo papel duvidoso vai para o arquivo do país. A chance
-    de ser descoberto usa a Independência dos investigadores de hoje, não a da
-    época. Se ela subir (CPI, governo seguinte), os rastros antigos aparecem de
-    uma vez: escândalo, processo, até prisão do ex-presidente.
-  - Baixar a independência contamina em cadeia: sem medo de investigação, a
-    corrupção de cada órgão sobe sozinha, o rendimento cai e o serviço piora.
-    A corrupção do presidente vira a corrupção do país.
-- **Caminho autoritário (decidido em 12/nov):** o custo vem de quem tem as armas
-  e de quem tem raiva.
-  - Cada passo autoritário (censurar, ignorar o tribunal, governar por decreto,
-    adiar a eleição) sobe a raiva dos grupos contrários.
-  - Raiva alta com satisfação baixa: protesto, atentado e, no topo, tentativa de
-    assassinato do presidente; a chance cai com a segurança do presidente. Se der
-    certo, a partida acaba.
-  - Sem apoio armado (Forças Armadas pouco leais, polícia dividida, facções
-    fortes), o Risco de golpe sobe a cada turno.
-  - Guerra civil: grupos grandes com raiva e armas divididas. O país racha por
-    estados, e governadores da oposição se rebelam junto.
-  - Com as armas leais e o povo calmo, a ditadura funciona, mas cara: sanções,
-    investimento de fora caindo, gente estudada indo embora, generais que podem
-    trocar o presidente.
-- **Capital nova (09/nov):** ideia de megaobra guardada; não entrou na lista.
-- **Custo dos atos com a mídia (08/nov):** quanto cada ato (entrevista,
-  pressão, processo, notícia falsa) desgasta e por quanto tempo o efeito dura
-  fica para as narrativas, quando definirmos o que vários índices batendo
-  metas juntos significam.
-- **Crises do dinheiro (08/nov):** corrida ao banco, resgate banco a banco e
-  ataque à moeda são eventos de decisão, a escrever nas narrativas; as leis de
-  Moeda e bancos só montam o cardápio.
-- **Compra escondida por laranjas (08/nov):** o partido tentar comprar ação sem
-  avisar, virando escândalo se descoberto; ideia para depois.
-- **Caminhos sem núcleo reduzido (08/nov):** o jogo deve ter centenas de caminhos
-  possíveis, por isso não se corta um núcleo de ~40 leis. O jogador pode focar numa
-  área (ex.: segurança pública), gastando uma **cota** ali, e ganhar a eleição pela
-  promessa mesmo sem focar no resto. Decidido em 12/nov: o foco é a promessa
-  (índice principal, subíndice ou programa, §13), e a cota é a carga do
-  Congresso (§12), sem pontos: ele lota, fica lento e não vota tudo.
-- **Problema de otimização: estados × pops (08/nov):** com pops divididos por estado, o
-  Brasil passa de 32 para 32 × 27 = 864 pops. Estudar quanto isso pesa no turno do
-  motor, antes de programar. **Medido em 12/nov:** hoje o turno leva ~3 ms (25 pops,
-  71 leis). A conta mais pesada é o que cada lei faz na satisfação: 864 pops × 527
-  leis, do jeito de hoje, dá ~350 ms por turno. Dá para cair a poucos ms com duas
-  coisas: só contar a lei que mudou desde o marco (a parada não dá ponto) e
-  calcular uma vez por tipo de pop o que é igual em todos os estados. É possível.
-- **Governadores (08/nov):** com estados em tudo, falta desenhar quem governa cada um.
-  Quem cuida de luz, gás e água muda por país (no Brasil a luz é federal e o gás
-  canalizado é estadual; nos EUA a distribuição é regulada por cada estado). O arquivo
-  do país declara; lei que não cabe ao presidente fica inativa e alguém pode propô-la.
-  O jogo pode mostrar ou gerar avatar para governadores, mas eles têm pouca influência.
-  **Decidido em 11/nov** (só peças que já existem):
-  - Cada estado tem governador com partido, lugar na bússola e termômetro com
-    o presidente, como os partidos.
-  - Verba: aliado faz a verba federal render mais no estado; oposição demora a
-    gastar e culpa o presidente na mídia local.
-  - Congresso: os deputados do estado puxam um pouco para o governador; bancada
-    pequena que acorda só quando a lei mexe com o estado.
-  - Mesa: pede obra, socorro e polo (família Pedidos).
-  - Eleição: aliado faz campanha pelo presidente no estado; oposição, contra.
-  - O jogador não governa estado nem escolhe obra. O peso dos pops por estado
-    no motor segue como estudo de código.
-- **Aba dos 30 países (08/nov):** pesquisar PIB, lado na bússola, poder militar e
-  relações entre os países; deixada para o planejamento (autor).
-- **Vírus para fins militares (09/nov):** saiu de Ciência e pesquisa; decidir em Defesa
-  se vira lei ou degrau.
-- **Para as narrativas (09/nov, autor):** massacre no campo chega como papel; dono na fila
-  desmata para provar que produz; Liberação de armas sobe o Conflito no campo.
-- **Planejamento final (08/nov):** depois das esferas, montar a planilha completa
-  com tudo o que foi organizado e as mecânicas, e o documento que, junto com
-  este GDD, escreve todo o jogo e toda a mecânica, passo a passo.
-- **Medida provisória (07/nov):** caminho para aprovar qualquer lei na hora, sem
-  esperar o Congresso. Vale por um prazo; se o Congresso não votar, cai. Cada uso
-  irrita o Congresso, mais a cada vez. O nome é rótulo do país; no motor é um
-  decreto provisório. Desenhar com o Congresso (seção 12).
-- **Marcas na régua da lei (07/nov):** a lei contínua mostra, sobre a régua,
-  marcas de referência calculadas pelo motor, sem virar lei nova. Exemplo na
-  Verba das aposentadorias: quanto cada aposentado recebe em dinheiro, a marca
-  "compra o mesmo que no ano passado" (acompanha os preços) e a marca "acompanha
-  quem trabalha" (acompanha os salários). O jogador vê se está subindo ou
-  cortando de verdade. Vale para toda verba e imposto.
-- **Leis das forças armadas (07/nov):** o Regime dos militares, da Previdência,
-  abre leis na Defesa (soldo, carreira, tamanho das forças). Ver quando a Defesa
-  for avaliada.
-- **Organizações (06/nov):** fechadas na seção 11. Faltam regras e números de
-  nascer e crescer, ações de cada tipo e como o jogador as enfrenta.
-- **Programas reais (11/nov):** a coluna "Programa real (de quem)" da planilha
-  liga cada lei aos programas de governos reais que ela faz. Uso futuro: um
-  desbloqueio ("você imitou o programa tal do presidente tal") quando o jogador
-  monta as mesmas leis, e campanhas de imitar um presidente ou construir o país
-  a partir dele. Presidente real entra só na campanha e no desbloqueio, nunca no
-  texto da lei.
-- **Caminhos até a casa (04/nov):** governos de lados diferentes chegam à casa
-  por caminhos diferentes, e o setor privado tem seus ganhos e perdas por lei.
 
-**Órgãos (decidido em 11/nov)**
-- Um órgão por esfera (30), cada um um prédio no mapa, na área da esfera.
-- Fica sob o ministério da sua esfera.
-- O ministro não mexe na verba (é lei); a ficha dele muda o órgão:
-  competência alta, rende mais; honestidade baixa, mais corrupção. Chefe com
-  mandato (lei de independência) obedece menos ao ministro.
-- Nome de função ("Órgão ambiental", "Órgão de terras"); o país dá o rótulo local.
-- Números: verba (da lei), necessidade (o trabalho que as leis pedem),
-  rendimento (verba ÷ necessidade: pouca verba, a fila anda devagar; verba
-  demais, a sobra vira corrupção) e corrupção interna (sobe com sobra de
-  verba, cargos de livre nomeação e ministro desonesto).
-- Tela: no mapa, prédio pequeno com frase curta ("12 na fila · 2 na sua mesa")
-  e cor do rendimento (verde rende, amarelo falta verba, vermelho sobra e vira
-  corrupção). Clicar abre ficha só de leitura, sem botão: chefe e ministro,
-  verba × necessidade numa barra, corrupção interna, fila (se houver) e leis
-  que mexem no órgão (clicar abre a bolha). Mudar o órgão é sempre lei,
-  ministro ou papel na mesa.
+**Bússola**
+- Quais eixos novos entram (talvez 3 eixos, um cubo; candidato: paz ×
+  militarismo). Precisa de estudo.
 
 **Mundo**
 - Como um ataque acontece e como termina.
-- Mídia: como empurra a bússola dos pops e a raiva decididos em 11/nov (§14).
+- Jeito de cada país (pragmático, ideológico, agressivo): hoje é palpite na aba
+  Países; conferir por busca rápida quando for calibrar.
 
-**Fora do jogo pronto (decidido):** guerra iniciada pelo país, pesquisa e tecnologia
-como árvore.
+**Para as narrativas (depois da V1 jogável)**
+- Custo e duração dos atos com a mídia (entrevista, pressão, processo, notícia
+  falsa) e dos atos com países.
+- Crises do dinheiro: corrida ao banco, resgate banco a banco e ataque à moeda
+  são eventos de decisão; as leis de Moeda e bancos só montam o cardápio.
+- Massacre no campo chega como papel; dono na fila desmata para provar que
+  produz; Liberação de armas sobe o Conflito no campo.
+- O que vários índices batendo metas juntos significam.
+
+**Ideias guardadas**
+- **Capital nova (09/nov):** megaobra; não entrou na lista.
+- **Compra escondida por laranjas (08/nov):** o partido compra ação sem avisar;
+  escândalo se descoberto.
+- **Vírus para fins militares (09/nov):** decidir na Defesa se vira lei ou degrau.
+- **Leis das forças armadas (07/nov):** o Regime dos militares, da Previdência,
+  abre leis na Defesa (soldo, carreira, tamanho das forças).
+- **Programas reais (11/nov):** a coluna "Programa real (de quem)" da planilha
+  liga cada lei aos programas de governos reais que ela faz. Uso futuro: um
+  desbloqueio ("você imitou o programa tal do presidente tal") e campanhas de
+  imitar um presidente ou construir o país a partir dele. Presidente real entra
+  só na campanha e no desbloqueio, nunca no texto da lei.
+- **Marcas na régua da lei (07/nov):** a régua mostra marcas calculadas pelo
+  motor, sem virar lei nova (na Verba das aposentadorias: quanto cada aposentado
+  recebe, "compra o mesmo que no ano passado", "acompanha quem trabalha"). Vale
+  para toda verba e imposto.
+- **Caminhos até a casa (04/nov):** governos de lados diferentes chegam à casa
+  por caminhos diferentes, e o setor privado tem seus ganhos e perdas por lei.
+
+**Planejamento final (08/nov):** com o desenho fechado, levantar requisitos e
+arquitetura e o documento que, junto com este GDD, escreve todo o jogo passo a
+passo.
+
+**Fora do jogo pronto (decidido):** guerra iniciada pelo país, pesquisa e
+tecnologia como árvore.
 
 ## 19. Regras de conteúdo
 
