@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Fase de **desenho das leis na planilha** ([docs/jogo/leis.xlsx](docs/jogo/leis.xlsx)); código parado.
-Contagens vêm só da planilha (script), não deste texto (hoje: 524 leis, 10 delas substituídas, 146 índices, 514 roteiros).
+Contagens vêm só da planilha (script), não deste texto (hoje: 526 leis, 10 delas substituídas, 147 índices, 516 roteiros).
 **As 30 esferas estão desenhadas** (09/nov). Rodada de **arrumação** feita em 08/nov: Bússola em números
 (coluna "Bússola: origem"), glossário no GDD §16, tipos de lei (Lei, Lei com prazo, Ato,
 Posição por país, Operação), "construção" virou "prédio", "programa" reservado.
@@ -21,13 +21,10 @@ Atraso nos efeitos: colunas criadas; Atraso preenchido, Força fica "média" por
 Sem núcleo reduzido (autor): o jogo tem centenas de caminhos; a "cota" de foco e a promessa de
 campanha ficam em GDD §18.
 
-## Revisão do Fable (próxima sessão)
+## Revisão do Fable
 
-1. Gerar por script um resumo da planilha (por esfera: leis, forma, lado, programa; índices e ligações; contagem de lados) num arquivo do scratchpad.
-2. Um agente Fable (`model: fable`), imparcial, vê o jogo inteiro: `docs/jogo/gdd.md`, o resumo e, quando precisar, a planilha.
-3. Ele acha e **arruma sozinho** os buracos de mecânica e de ideia: peças que não se ligam, contradições entre seções, lados desequilibrados, o que o jogador não sente. Pode escrever leis, índices e trechos do GDD (autor, 11/nov: "ele é forte o suficiente para construir algumas coisas sozinho").
-4. Regras para ele: as do CLAUDE.md e da skill sisgov-lei-boa; marcar "Fable 11/nov" na coluna Revisão; nada do Democracy 4; sem pontos de ação; sem nome real no texto da lei.
-5. No fim, um relatório curto do que mudou e do que ficou em dúvida; o autor aprova antes do commit.
+1ª rodada (11/nov) feita, mas virou revisão de contas, não de game design, e gastou ~20% da cota (autor). Ficou: Teto da carga de impostos, Aviso antes da multa, índice Preço do combustível, Confiança na aposentadoria com leis, citações a Substituídas trocadas, 4 acertos no GDD. Desfeito: Validade das regras (mesma ideia recusada do prazo de validade), colisão Polícia sem formato militar × Força letal (errada no mundo real); Sigilo bancário × Obrigação dos bancos só nos degraus extremos.
+Próximo, se o autor quiser: 2ª rodada barata, só opinião geral de game designer de estúdio grande, lendo só o GDD, sem editar nada, resposta de 1 página.
 
 ## Faltam
 

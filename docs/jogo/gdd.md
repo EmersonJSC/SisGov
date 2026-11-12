@@ -308,7 +308,7 @@ alia e o quanto ele se afasta da própria história.
 
 **O que o jogador faz:** propõe, muda e revoga leis.
 
-- **Esferas.** São 29, a classificação do que um país faz; a lista e o que
+- **Esferas.** São 30, a classificação do que um país faz; a lista e o que
   cada uma cobre estão em `docs/jogo/leis.xlsx`. Esfera não é ministério: é a
   peça com que os ministérios se montam (seção 6). As esferas se interligam.
 - **Duas camadas.** _Essenciais_: estrutura do Estado (mandato, regime,
@@ -910,7 +910,7 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 | **Ato** | Decisão do presidente que acontece uma vez (Graça, visita de Estado, suspender a regra fiscal). |
 | **Posição por país** | Nível que o presidente decide no menu de um país e que fica valendo até mudar (Sanções, Aliança). |
 | **Operação** | Decisão em etapas sobre uma companhia, com papéis na mesa (Estatização, Privatização). |
-| **Programa** | Reservado: um pacote de leis que resolve um problema. Ainda não definido. |
+| **Programa** | Um pacote de leis que resolve um problema (Tarifa social; Reforma política; Imposto dos ricos; Remédio barato). A planilha marca na coluna Programa. |
 | **Companhia** | A dona. Tem ações, reserva de investimento e várias empresas. |
 | **Empresa** | A parte de uma companhia em um setor. É um conjunto de prédios. |
 | **Prédio** | A unidade que produz ou presta serviço: fábrica, fazenda, usina, hospital. (Antes aparecia como "construção".) |
@@ -964,8 +964,9 @@ cidade; as duas pontas se ligam pela gente que se muda.
 - **Casas descem de faixa:** todo turno parte das casas desce uma faixa (cerca
   de 2% por ano). Sem obra nova, a descida para, e a classe média disputa as
   casas dos pobres.
-- **Três índices:** déficit (famílias sem casa), preço (aluguel e compra
-  contra a renda) e favela (parte das casas que é precária).
+- **Quatro índices:** déficit (famílias sem casa), preço (aluguel e compra
+  contra a renda), favela (parte das casas que é precária) e casas vazias
+  (casas sem morador, por faixa; pouco é saudável, muito é especulação).
 - **Leis da cidade em 4 alavancas** (Construir, Terra urbana, Aluguel,
   Ocupação), cada uma com leis nos 6 lados; colisões só dentro da mesma
   alavanca.
@@ -1500,7 +1501,11 @@ renda dos pops, que voltam a consumir, poupar e investir.
 
 - **O jogador não escolhe mina.** A lei decide quem fica com o dinheiro e quem paga a conta;
   a companhia abre onde dá lucro.
-- **Sem índice próprio:** mina fechando já aparece no Desemprego e no papel.
+- **Sem índice próprio para o minério:** mina fechando já aparece no Desemprego
+  e no papel. O lado do petróleo tem um índice, o **Preço do combustível**
+  (11/nov): o Subsídio e o Imposto sobre combustíveis precisam de um número que
+  o jogador veja, e dele saem o frete, o preço da comida e o papel do
+  caminhoneiro.
 - **Quem aparece:** o garimpeiro, a cidade da mina, a aldeia e a vila abaixo da barragem, com
   o número de famílias que ganham e perdem. Quem foi ignorado em papéis anteriores cobra
   mais forte.
