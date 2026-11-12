@@ -47,6 +47,7 @@ export function carregarPartida(texto: string): Partida {
       capacidade: arquivo.estado.capacidade ?? nova.estado.capacidade,
       choques: arquivo.estado.choques ?? {},
       fatos: arquivo.estado.fatos ?? [],
+      congresso: arquivo.estado.congresso ?? nova.estado.congresso,
     },
   };
 }

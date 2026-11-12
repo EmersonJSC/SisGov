@@ -3,13 +3,13 @@
 import type { IdBase, ParametrosJuros, ParametrosRenda } from "../calculos";
 import type { Deriva } from "../deriva";
 import type { TipoGrupo } from "../grupos";
-import type { Colisao, Lei, ValorLei } from "../leis";
+import type { Colisao, Lei } from "../leis";
 import type { MercadoDoPais } from "../mercado";
 import type { RegraDaMoradia } from "../moradia";
 import type { RegraDoAtendimento } from "../atendimento";
 import type { RegraDoSaneamento } from "../saneamento";
 import type { Potencia } from "../mundo";
-import type { Congresso } from "../politica";
+import type { Congresso, PedidoCongresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
 
 export interface ParametrosBase extends ParametrosRenda {
@@ -62,10 +62,7 @@ export interface Regras {
   colisoes?: Colisao[];
 }
 
-export interface PedidoMudarLei {
-  tipo: "mudar_lei";
-  lei: string;
-  valor: ValorLei;
-}
+export type { PedidoMudarLei } from "../politica";
 
-export type Pedido = PedidoMudarLei;
+/** Todo pedido do jogador num turno (motor/politica). */
+export type Pedido = PedidoCongresso;

@@ -2,6 +2,7 @@
 // Única porta entre a tela e o motor.
 import {
   avancarTurno,
+  entradaDoCongresso,
   estadoInicial,
   gastoDasLeis,
   INDICES_ESSENCIAIS,
@@ -23,12 +24,16 @@ import {
   type Lei,
   type ParametrosPais,
   type Pedido,
+  type PedidoMudarLei,
   type Regras,
   type TipoGrupo,
   type TipoPop,
+  type Oferta,
+  type Votacao,
   motivoEscadasInvalidas,
   type ValorLei,
   ehEstrato,
+  placarPrevisto,
   satisfacaoMedia,
   turnosMandato,
 } from "../motor";
@@ -87,6 +92,9 @@ interface CongressoPais {
   maioria: number;
   governo: string;
   coligacao: string[];
+  senado?: Congresso["senado"];
+  carga?: number;
+  leis?: Congresso["leis"];
   partidos: (Congresso["partidos"][number] & { nome: string })[];
 }
 
@@ -300,10 +308,15 @@ export function criarPartida(
       : {
           maioria: congresso.maioria,
           governo: congresso.governo,
+          ...(congresso.senado ? { senado: congresso.senado } : {}),
+          ...(congresso.carga ? { carga: congresso.carga } : {}),
+          ...(congresso.leis ? { leis: congresso.leis } : {}),
           partidos: congresso.partidos.map((p) => ({
             id: p.id,
             cadeiras: p.cadeiras,
             defende: p.defende,
+            ...(p.coesao !== undefined ? { coesao: p.coesao } : {}),
+            ...(p.contas !== undefined ? { contas: p.contas } : {}),
           })),
         },
   };
@@ -331,6 +344,26 @@ export function criarPartida(
   };
 }
 
+/**
+ * Placar de hoje para uma lei no valor dado: o mesmo que a votação vai dar
+ * (sem sorteio). Nulo sem Congresso ou se o valor é o que vale.
+ */
+export function placarDaLei(
+  partida: Partida,
+  lei: string,
+  valor: ValorLei,
+  ofertas: Oferta[] = [],
+): Votacao | null {
+  const { regras, estado } = partida;
+  if (!regras.congresso || estado.leis[lei] === valor) return null;
+  return placarPrevisto(
+    entradaDoCongresso(regras, estado),
+    lei,
+    valor,
+    ofertas,
+  );
+}
+
 export function avancar(partida: Partida, pedidos: Pedido[] = []): Partida {
   return {
     ...partida,
@@ -342,7 +375,7 @@ export function avancar(partida: Partida, pedidos: Pedido[] = []): Partida {
 export function leiTravada(
   partida: Partida,
   lei: string,
-  fila: readonly Pedido[],
+  fila: readonly PedidoMudarLei[],
 ): boolean {
   const { regras, estado } = partida;
   const outros = fila.filter((p) => p.lei !== lei);
@@ -366,7 +399,14 @@ export function jogar(
 export { carregarPartida, salvarPartida } from "./salvar";
 export { montarVisao } from "./visao";
 export { previaDaLei, valorDoNivel, type PreviaLei } from "./previa";
-export type { Estado, Pedido } from "../motor";
+export type {
+  Estado,
+  Pedido,
+  PedidoCongresso,
+  PedidoMudarLei,
+  PedidoOferecer,
+  Votacao,
+} from "../motor";
 export type {
   VisaoArea,
   VisaoBolha,

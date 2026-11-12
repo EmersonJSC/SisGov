@@ -1,6 +1,6 @@
 // Lei não legislada: o país não declarou, a partida abre e o jogador propõe.
 import { describe, expect, it } from "vitest";
-import { criarPartida, jogar, mesesParaEleicao } from ".";
+import { criarPartida, jogar, mesesParaEleicao, placarDaLei } from ".";
 
 describe("lei não legislada", () => {
   it("fica fora do estado e passa a arrecadar quando proposta", () => {
@@ -19,16 +19,16 @@ describe("congresso", () => {
   it("lei só muda com voto: a que cai não muda nem enfileira efeito", () => {
     const partida = criarPartida("teste", 42);
     const caiu = jogar(partida, 1, [
-      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.2 },
+      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.3 },
     ]).estado;
     expect(caiu.votacoes[0].aprovada).toBe(false);
     expect(caiu.leis["areas-protegidas"]).toBe(0.1);
     expect(caiu.efeitos).toEqual(jogar(partida, 1).estado.efeitos);
 
     const sem = jogar(criarPartida("teste", 42, { semCongresso: true }), 1, [
-      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.2 },
+      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.3 },
     ]).estado;
-    expect(sem.leis["areas-protegidas"]).toBe(0.2);
+    expect(sem.leis["areas-protegidas"]).toBe(0.3);
   });
 });
 
@@ -131,7 +131,7 @@ describe("fatos do turno", () => {
   it("votação e eleição vão para a mesa; a mesa envelhece", () => {
     const partida = criarPartida("teste", 42);
     const um = jogar(partida, 1, [
-      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.2 },
+      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.3 },
     ]).estado;
     expect(um.fatos).toContainEqual(
       expect.objectContaining({
@@ -156,5 +156,38 @@ describe("fatos do turno", () => {
     const a = jogar(criarPartida("teste", 7), 12, pedidos).estado.fatos;
     const b = jogar(criarPartida("teste", 7), 12, pedidos).estado.fatos;
     expect(a).toEqual(b);
+  });
+});
+
+describe("congresso novo", () => {
+  it("o placar previsto é o placar da votação, sem sorteio", () => {
+    const partida = criarPartida("teste", 42);
+    const previsto = placarDaLei(partida, "areas-protegidas", 0.3);
+    const real = jogar(partida, 1, [
+      { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.3 },
+    ]).estado.votacoes[0];
+    expect(previsto?.votos).toEqual(real.votos);
+    expect([previsto?.sim, previsto?.nao]).toEqual([real.sim, real.nao]);
+    expect(placarDaLei(partida, "areas-protegidas", 0.1)).toBeNull();
+  });
+
+  it("Brasil: Câmara num turno, Senado no seguinte, e só então a lei muda", () => {
+    const partida = criarPartida("brasil-2026", 1);
+    const pedido = [
+      { tipo: "mudar_lei" as const, lei: "areas-protegidas", valor: 0.2 },
+    ];
+    const um = jogar(partida, 1, pedido).estado;
+    expect(um.votacoes.map((v) => v.casa)).toEqual(["camara"]);
+    expect(um.leis["areas-protegidas"]).toBe(0.3);
+    const dois = jogar(partida, 2, pedido).estado;
+    expect(dois.votacoes.map((v) => v.casa)).toEqual(["senado"]);
+    expect(dois.leis["areas-protegidas"]).toBe(0.2);
+  });
+
+  it("classe da lei: imposto pede quórum absoluto; mandato, mais", () => {
+    const { regras } = criarPartida("brasil-2026", 1);
+    expect(regras.leis["imposto-renda"].classe).toBe("absoluta");
+    expect(regras.leis["duracao-mandato"].classe).toBe("mandato");
+    expect(regras.leis["quorum-das-votacoes"].classe).toBe("constitucional");
   });
 });

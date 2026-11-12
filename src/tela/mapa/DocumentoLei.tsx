@@ -4,6 +4,8 @@
  * lei e o controle; à direita os efeitos diretos (prévia do motor, sem
  * cadeia). "Enviar ao Congresso" põe o pedido na fila do turno.
  */
+import { PlacarDaLei } from "./PlacarDaLei";
+import type { PedidoOferecer, Votacao } from "../../partida";
 import {
   useEffect,
   useMemo,
@@ -518,8 +520,22 @@ export function DocumentoLei({
   onEnviar,
   onTirar,
   onFechar,
+  placar,
+  partidos,
+  governo,
+  ofertas,
+  onOferecer,
+  onTirarOferta,
   ...janela
 }: JanelaProps & {
+  /** Placar previsto do rascunho; null sem Congresso ou sem mudança. */
+  placar: Votacao | null;
+  partidos: Record<string, string>;
+  governo: string;
+  /** Moedas oferecidas nesta lei neste turno. */
+  ofertas: PedidoOferecer[];
+  onOferecer: (p: Omit<PedidoOferecer, "tipo" | "lei">) => void;
+  onTirarOferta: (i: number) => void;
   lei: VisaoLei;
   visao: VisaoPartida;
   moeda: string;
@@ -686,6 +702,18 @@ export function DocumentoLei({
               pib={pib}
             />
           )}
+          {placar ? (
+            <PlacarDaLei
+              placar={placar}
+              partidos={partidos}
+              governo={governo}
+              naFila={naFila}
+              ofertas={ofertas}
+              podeCeder={!lei.opcoes?.length}
+              onOferecer={onOferecer}
+              onTirarOferta={onTirarOferta}
+            />
+          ) : null}
           {naFila ? (
             <div className="cg-envio folha-congresso">
               <p>

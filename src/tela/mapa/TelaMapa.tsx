@@ -5,10 +5,14 @@ import { useEffect, useMemo, useState } from "react";
 import {
   leiTravada,
   montarVisao,
+  nomesPartidos,
+  placarDaLei,
   previaDaLei,
   valorDoNivel,
   type Partida,
-  type Pedido,
+  type PedidoCongresso,
+  type PedidoMudarLei,
+  type PedidoOferecer,
   type VisaoLei,
   empresasDoPais,
 } from "../../partida";
@@ -29,8 +33,11 @@ const CENTRO: Desvio = { x: 0, y: 0 };
 
 interface Props {
   partida: Partida;
-  fila: Pedido[];
-  setFila: (f: Pedido[]) => void;
+  fila: PedidoMudarLei[];
+  setFila: (f: PedidoMudarLei[]) => void;
+  /** Moedas, vetos e convites do turno (motor/politica). */
+  extras: PedidoCongresso[];
+  setExtras: (f: PedidoCongresso[]) => void;
   podeCarregar: boolean;
   onPassar: () => void;
   onSalvar: () => void;
@@ -40,7 +47,7 @@ interface Props {
 }
 
 /** Nível da visão que corresponde a um valor do motor. */
-function nivelDe(lei: VisaoLei, valor: Pedido["valor"]): number {
+function nivelDe(lei: VisaoLei, valor: PedidoMudarLei["valor"]): number {
   if (typeof valor === "number") return valor * 100;
   return Math.max(0, lei.opcoes?.findIndex((o) => o.id === valor) ?? 0);
 }
@@ -49,6 +56,8 @@ export function TelaMapa({
   partida,
   fila,
   setFila,
+  extras,
+  setExtras,
   podeCarregar,
   onPassar,
   onSalvar,
@@ -107,6 +116,23 @@ export function TelaMapa({
     [partida, lei, valor],
   );
 
+  const ofertasDaLei = extras.filter(
+    (p): p is PedidoOferecer => p.tipo === "oferecer" && p.lei === janela,
+  );
+  const placar = useMemo(
+    () =>
+      lei && valor !== null
+        ? placarDaLei(
+            partida,
+            lei.id,
+            valor,
+            ofertasDaLei.map((o) => ({ moeda: o.moeda, partido: o.partido })),
+          )
+        : null,
+    [partida, lei, valor, extras],
+  );
+  const partidos = useMemo(() => nomesPartidos(partida.pais), [partida.pais]);
+
   const selecionar = (id: string | null) => {
     setSelecionado(id);
     const l = visao.leis.find((x) => x.id === id);
@@ -125,7 +151,7 @@ export function TelaMapa({
     <div className="tela">
       <BarraDoTopo
         partida={partida}
-        pedidos={fila.length}
+        pedidos={fila.length + extras.length}
         aviso={aviso}
         podeCarregar={podeCarregar}
         onPassar={onPassar}
@@ -172,7 +198,23 @@ export function TelaMapa({
             onEnviar={() =>
               valor !== null && setFila(comPedido(fila, partida, lei.id, valor))
             }
+            placar={placar}
+            partidos={partidos}
+            governo={partida.regras.congresso?.governo ?? ""}
+            ofertas={ofertasDaLei}
+            onOferecer={(o) =>
+              setExtras([...extras, { tipo: "oferecer", lei: lei.id, ...o }])
+            }
+            onTirarOferta={(i) => {
+              const alvo = ofertasDaLei[i];
+              setExtras(extras.filter((x) => x !== alvo));
+            }}
             onTirar={() => {
+              setExtras(
+                extras.filter(
+                  (x) => !(x.tipo === "oferecer" && x.lei === lei.id),
+                ),
+              );
               setFila(fila.filter((p) => p.lei !== lei.id));
               setRascunho(lei.meta);
             }}
@@ -218,6 +260,8 @@ export function TelaMapa({
           <ResultadoDoTurno
             partida={partida}
             visao={visao}
+            extras={extras}
+            setExtras={setExtras}
             onFechar={() => setResultado(false)}
             desvio={desvioResultado}
             onDesvio={setDesvioResultado}

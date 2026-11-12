@@ -8,6 +8,7 @@ import type { Eleicao } from "../eleicao";
 import type { Grupo, Marco } from "../grupos";
 import type { PontoBussola, ValorLei } from "../leis";
 import type { Fato } from "../fatos";
+import type { EstadoCongresso } from "../politica";
 import type { MoradiaNoEstado } from "../moradia";
 import type { AtendimentoNoEstado } from "../atendimento";
 import type { SaneamentoNoEstado } from "../saneamento";
@@ -114,4 +115,6 @@ export interface Estado {
    * em partida salva antes dela = mesa vazia.
    */
   fatos?: Fato[];
+  /** Termômetro, paciência, pauta e decretos (motor/politica); ausente sem Congresso. */
+  congresso?: EstadoCongresso;
 }

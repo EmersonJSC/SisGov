@@ -9012,3 +9012,120 @@ span.el-mini {
 .fatos-turno .fato-pequeno strong {
   font-weight: 500;
 }
+
+.placar-lei {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #0000001a;
+}
+
+.placar-lei h3 {
+  margin: 0 0 6px;
+  font-size: 1em;
+}
+
+.placar-lei .passa {
+  color: #2f7d4a;
+}
+
+.placar-lei .cai {
+  color: #a8402e;
+}
+
+.placar-barra {
+  position: relative;
+  height: 12px;
+  background: #a8402e55;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.placar-sim {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: #2f7d4a;
+}
+
+.placar-quorum {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--tinta, #222);
+}
+
+.placar-texto,
+.placar-aviso {
+  margin: 6px 0 0;
+  font-size: 0.9em;
+  color: var(--tinta-suave);
+}
+
+.placar-aviso {
+  color: #a8402e;
+}
+
+.placar-negociar h4 {
+  margin: 10px 0 4px;
+  font-size: 0.95em;
+}
+
+.placar-partidos,
+.placar-ofertas,
+.congresso-pauta,
+.congresso-mesa,
+.congresso-termometro {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.placar-partidos li,
+.congresso-termometro li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.placar-partidos li span,
+.congresso-termometro li > span:first-child {
+  flex: 1;
+}
+
+.placar-negociar button,
+.congresso-mesa button,
+.congresso-termometro button {
+  font-size: 0.85em;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.termometro {
+  display: inline-block;
+  width: 90px;
+  height: 8px;
+  background: #0000001f;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.termometro i {
+  display: block;
+  height: 100%;
+  background: #7a5c2e;
+}
+
+.congresso-termometro .base .termometro i {
+  background: #2f7d4a;
+}
+
+.congresso-paciencia {
+  margin: 0 0 6px;
+  color: var(--tinta-suave);
+}
+
+.congresso-mesa li,
+.congresso-pauta li {
+  padding: 4px 0;
+}

@@ -29,7 +29,6 @@ import {
   deslizarPops,
   gruposComDeslize,
   motivoGruposInvalidos,
-  posicaoDaLei,
   rendaDoGrupo,
   type Marco,
 } from "../grupos";
@@ -102,9 +101,13 @@ import {
   segurancaExterna,
 } from "../mundo";
 import {
-  coligacaoAtual,
+  esfriarEEsquentar,
+  iniciarCongresso,
+  type Partido,
   motivoCongressoInvalido,
-  votar,
+  satisfacaoDoPartido,
+  tramitar,
+  type EntradaTramitar,
   type Votacao,
 } from "../politica";
 import {
@@ -118,20 +121,27 @@ import {
 } from "../populacao";
 import type { Pedido, Regras } from "./regras";
 
-export type { ParametrosBase, ParametrosPais, Pedido, Regras } from "./regras";
+export type {
+  ParametrosBase,
+  ParametrosPais,
+  Pedido,
+  PedidoMudarLei,
+  Regras,
+} from "./regras";
 
 const TURNOS_POR_ANO = 6;
 
 type Etapa = (regras: Regras, estado: Estado, pedidos: Pedido[]) => Estado;
 
 /**
- * 1. Congresso: cada pedido que muda uma lei vai a voto (motor/politica).
- * Sem Congresso nas regras, todo pedido passa.
+ * 1. Congresso: cada pedido que muda uma lei entra na pauta, as casas votam em
+ * sequência e a lei sai no turno em que passa (motor/politica). Sem Congresso
+ * nas regras, todo pedido passa e o decreto vale na hora.
  */
 const congresso: Etapa = (regras, estado, pedidos) => {
-  const votacoes: Votacao[] = [];
-  const anteriores: Pedido[] = [];
+  const anteriores: { lei: string; valor: ValorLei }[] = [];
   for (const pedido of pedidos) {
+    if (pedido.tipo !== "mudar_lei" && pedido.tipo !== "decretar") continue;
     const lei = regras.leis[pedido.lei];
     if (!lei) throw new Error(`pedido: lei "${pedido.lei}" não existe`);
     const motivo = motivoValorInvalido(lei, pedido.valor);
@@ -143,64 +153,68 @@ const congresso: Etapa = (regras, estado, pedidos) => {
     if (colide.length)
       throw new Error(`pedido: ${lei.id} colide com ${colide.join(", ")}`);
     anteriores.push(pedido);
-    const atual = estado.leis[lei.id];
-    if (atual === pedido.valor) continue;
-    votacoes.push(
-      regras.congresso
-        ? votar(
-            regras.congresso,
-            estado.coligacao,
-            gruposComDeslize(regras.grupos, estado.pops, estado.deslize),
-            lei,
-            atual,
-            pedido.valor,
-          )
-        : {
-            lei: lei.id,
-            valor: pedido.valor,
-            exorbitante: false,
-            votos: {},
-            sim: 0,
-            nao: 0,
-            aprovada: true,
-          },
-    );
   }
+  if (!regras.congresso) {
+    const votacoes: Votacao[] = anteriores
+      .filter((p) => estado.leis[p.lei] !== p.valor)
+      .map((p) => ({
+        lei: p.lei,
+        valor: p.valor,
+        exorbitante: false,
+        votos: {},
+        sim: 0,
+        nao: 0,
+        aprovada: true,
+        muda_lei: true,
+      }));
+    return { ...estado, votacoes };
+  }
+  const entrada = entradaDoCongresso(regras, estado, pedidos);
+  const saida = tramitar(entrada);
   return {
     ...estado,
-    votacoes,
-    fatos: [
-      ...(estado.fatos ?? []),
-      ...fatosDasVotacoes(regras, estado.turno, votacoes),
-    ],
+    votacoes: saida.votacoes,
+    coligacao: saida.coligacao,
+    congresso: saida.estado,
+    fatos: [...(estado.fatos ?? []), ...saida.fatos],
   };
 };
 
-/** Cada votação vira fato; `quem` são os partidos que votaram não. */
-function fatosDasVotacoes(
+/** O que o Congresso lê do estado, no começo do turno. */
+export function entradaDoCongresso(
   regras: Regras,
-  turno: number,
-  votacoes: Votacao[],
-): Fato[] {
-  return votacoes.map((v) => {
-    const contra = Object.keys(v.votos).filter((p) => v.votos[p] === "nao");
-    const lado = v.aprovada ? posicaoDaLei(regras.leis[v.lei], v.valor) : null;
-    return novoFato({
-      tipo: v.aprovada ? "lei-aprovada" : "lei-rejeitada",
-      turno,
-      tamanho: v.aprovada ? "medio" : "pequeno",
-      sobre: v.lei,
-      ...(contra.length ? { quem: contra } : {}),
-      ...(lado ? { lado } : {}),
-    });
-  });
+  estado: Estado,
+  pedidos: Pedido[] = [],
+): EntradaTramitar {
+  const congresso = regras.congresso as NonNullable<Regras["congresso"]>;
+  const mandato = turnosMandato(regras.leis, estado.leis);
+  return {
+    congresso,
+    tipos: gruposComDeslize(regras.grupos, estado.pops, estado.deslize),
+    leis: regras.leis,
+    valores: estado.leis,
+    turno: estado.turno,
+    estado: estado.congresso ?? iniciarCongresso(congresso, estado.coligacao),
+    coligacao: estado.coligacao,
+    grupos: estado.grupos,
+    deficit: Math.max(
+      0,
+      estado.essenciais.gasto_publico - estado.essenciais.arrecadacao,
+    ),
+    fatos: estado.fatos ?? [],
+    turnosParaEleicao:
+      mandato === null
+        ? null
+        : mandato - (estado.turno - estado.inicio_mandato),
+    pedidos,
+  };
 }
 
 /** 2. Leis novas: o que passou muda de valor e os efeitos entram na fila. */
 const leisNovas: Etapa = (regras, estado) => {
   let { leis, efeitos } = estado;
   for (const v of estado.votacoes) {
-    if (!v.aprovada) continue;
+    if (!v.muda_lei) continue;
     leis = { ...leis, [v.lei]: v.valor };
     efeitos = enfileirar(efeitos, regras.leis[v.lei], v.valor);
   }
@@ -1111,15 +1125,36 @@ const popsEGrupos: Etapa = (regras, estado) => {
  * fim do mandato, há eleição (motor/eleicao).
  */
 const politica: Etapa = (regras, estado) => {
-  const coligacao = regras.congresso
-    ? coligacaoAtual(regras.congresso, estado.coligacao, estado.grupos)
-    : estado.coligacao;
+  const base = regras.congresso
+    ? esfriarEEsquentar(
+        regras.congresso,
+        estado.congresso ??
+          iniciarCongresso(regras.congresso, estado.coligacao),
+        estado.coligacao,
+        (id) =>
+          satisfacaoDoPartido(
+            (
+              regras.congresso as NonNullable<Regras["congresso"]>
+            ).partidos.find((p) => p.id === id) as Partido,
+            estado.grupos,
+          ),
+        estado.turno,
+      )
+    : null;
+  const coligacao = base ? base.coligacao : estado.coligacao;
   const desgaste = estado.desgaste + DESGASTE_POR_TURNO;
   const fatos = [
     ...(estado.fatos ?? []),
+    ...(base ? base.fatos : []),
     ...fatosDaBase(estado.turno, estado.coligacao, coligacao),
   ];
-  const comDesgaste = { ...estado, coligacao, desgaste, fatos };
+  const comDesgaste = {
+    ...estado,
+    coligacao,
+    desgaste,
+    fatos,
+    ...(base ? { congresso: base.estado } : {}),
+  };
   const mandato = turnosMandato(regras.leis, estado.leis);
   if (mandato === null || estado.turno - estado.inicio_mandato < mandato)
     return comDesgaste;
@@ -1131,6 +1166,15 @@ const politica: Etapa = (regras, estado) => {
   });
   return {
     ...comDesgaste,
+    ...(eleicao.venceu && comDesgaste.congresso
+      ? {
+          congresso: {
+            ...comDesgaste.congresso,
+            cargosUsados: 0,
+            emendasUsadas: 0,
+          },
+        }
+      : {}),
     fatos: [...fatos, resultado],
     eleicao,
     inicio_mandato: eleicao.venceu ? estado.turno : estado.inicio_mandato,
@@ -1521,6 +1565,9 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
     eleicao: null,
     encerrada: false,
     fatos: [],
+    ...(regras.congresso
+      ? { congresso: iniciarCongresso(regras.congresso, [...coligacao]) }
+      : {}),
   };
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);

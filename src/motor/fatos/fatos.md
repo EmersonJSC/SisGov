@@ -29,5 +29,16 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 | `partido-entrou-na-base` | Política     | médio   | — / partido / —                                 |
 | `eleicao-vencida`        | Política     | grande  | — / — / —                                       |
 | `eleicao-perdida`        | Política     | grande  | — / — / —                                       |
+| `emenda`                 | Congresso    | médio   | lei / — / —                                     |
+| `veto`                   | Congresso    | médio   | lei / — / —                                     |
+| `veto-derrubado`         | Congresso    | grande  | lei / partidos contra / —                       |
+| `decreto`                | Congresso    | médio   | lei / — / posição da lei                        |
+| `decreto-derrubado`      | Congresso    | grande  | lei / partidos contra / —                       |
+| `promessa-cumprida`      | Congresso    | pequeno | lei / partido / —                               |
+| `promessa-descumprida`   | Congresso    | grande  | lei / partido / —                               |
+| `partido-ameaca-sair`    | Política     | médio   | — / partido / —                                 |
+| `escandalo`              | (mídia)      | —       | só lido pelo Congresso por ora                  |
+| `manchete-contra`        | (mídia)      | —       | só lido pelo Congresso por ora                  |
+| `grupo-com-raiva`        | (grupos)     | —       | ninguém escreve nem lê ainda                    |
 
 Tipo novo: acrescentar em `TIPOS_DE_FATO` e nesta tabela.

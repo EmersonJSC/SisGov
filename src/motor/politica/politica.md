@@ -1,65 +1,98 @@
 # Política: Congresso
 
-Passo 8 (01/nov/2026). Regime da V1: presidencialismo, câmara única,
-maioria simples. Os **partidos são do país** (`paises/<id>/congresso.json`):
-cada país tem os seus, com nomes próprios. O motor só conhece "partido",
-"cadeiras", "governo" e "coligação".
+Passo 3 da ordem de construir (12/nov/2026), sobre o módulo do passo 8 de
+01/nov. Os **partidos são do país** (`paises/<id>/congresso.json`): nome, cor,
+cadeiras, `defende`, e opcionalmente `coesao` e `contas`. O motor só conhece
+"partido", "cadeiras", "governo" e "coligação". Sem Congresso nas regras, todo
+pedido passa e o decreto vale na hora.
 
-Cada partido declara:
+Código: `tipos.ts` (formas), `voto.ts` (a nota e a contagem),
+`tramitacao.ts` (o turno do Congresso), `index.ts` (validação e porta).
 
-- `cadeiras`: quantas tem no Congresso;
-- `defende`: os grupos do mundo que representa e o peso de cada um
-  (`{ "trabalhadores": 1, "ambientalistas": 0.3 }`).
+## O voto (sem sorteio)
 
-O país declara também o partido do `governo` (o do jogador), a `coligacao`
-inicial (a base, que inclui o governo) e a `maioria` (fração das cadeiras
-que precisa votar sim; 0,5 = mais da metade).
+A **nota** de cada partido para a lei vai de −1 a +1 e soma:
 
-## Votação
+- **grupos** que ele defende (distância na bússola × peso, motor/grupos);
+- **povo**: o quanto os grupos, pesados pelas pessoas, querem a mudança;
+- **lado**: base (+) ou oposição (−), e o **termômetro** do partido;
+- **aprovação** do governo (satisfação média dos grupos);
+- **conta da lei**: lei de gasto, pontos do PIB × interesse do partido nas
+  contas (`contas`, padrão 0,5) × déficit atual (dobra com 5 pontos);
+- **fatos** da mesa: escândalo e manchete contra pesam;
+- **paciência** da casa abaixo de 30: a casa pune o governo;
+- **moedas** oferecidas àquele partido, menos o preço que ele já aprendeu.
 
-Todo pedido de mudar lei vai a voto na etapa 1 do turno. Pedido derrotado
-não muda nada. Sem Congresso nas regras, todo pedido passa (scripts de
-economia).
+O governo vota sim, salvo se a lei for exorbitante. **Exorbitante** é a lei
+que passaria sem o peso da conta e cai por causa dele.
 
-- **Exorbitante:** lei contínua que anda mais de 1/3 da faixa num pedido só.
-  Todos votam não, até o governo.
-- **Opinião do partido:** soma, pelos grupos que defende, do peso × os
-  pontos que a mudança daria ao grupo pela bússola (motor/grupos: o quanto
-  a lei se aproxima dele). Lei não legislada conta como o mínimo da faixa
-  (ou nenhuma opção).
-- **Voto:** o partido do governo vota sim. Os outros: opinião > 0, sim;
-  < 0, não; = 0, a base vota sim e a oposição vota não.
-- Passa quando os votos sim passam de `maioria` × total de cadeiras.
+**Fiéis e livres:** a coesão (`coesao`, padrão 0,7) divide a bancada. Os fiéis
+seguem a nota do partido; os livres olham mais os grupos e o povo (e, a menos
+de 3 turnos da eleição, só o povo pesa mais). A conta de cadeiras é inteira.
 
-## A base reage
+**Indecisos:** partido com nota entre −0,12 e +0,12.
 
-Na etapa 9, cada partido da coligação (menos o governo) olha a satisfação
-média dos grupos que defende, pesada pelo `defende`. Abaixo de 35, ele sai
-da coligação e vira oposição. Voltar à base, fazer coligação nova e mudar
-cadeiras vêm com a eleição (passo 9).
+**Quórum por classe da lei** (`classe` na lei; a planilha tem a coluna
+Classe): comum = a maioria do país; absoluta = o valor da lei Quórum das
+votações (no mínimo a maioria); constitucional = +0,10; mandato = +0,15.
 
-## Comportamento esperado (escrito antes), país de teste, `npm run congresso`
+**Placar previsto = placar real:** `placarPrevisto` usa a mesma conta que a
+votação. O que muda o placar entre o turno e a votação é um fato, e ele
+aparece.
 
-Teste tem 200 cadeiras; base = trabalhista + verde + centro (110).
+## Duas casas e o tempo da lei
 
-- transferência de renda 2% → 4%: base vota sim (trabalhista e centro
-  defendem trabalhadores, verde é neutro e acompanha), oposição não; passa
-  com 110;
-- imposto de renda 20% → 30%: verde e centro defendem a classe média e
-  votam contra; só o governo vota sim; cai (com a bússola, passa: ver
-  abaixo);
-- transferência de renda 2% → 6% (40% da faixa): exorbitante, todos votam
-  não; cai;
-- licenciamento ambiental frouxo: o liberal (empresários) vota com o
-  governo, o verde vota contra; passa. Ao longo do mandato os
-  ambientalistas perdem satisfação; se caírem abaixo de 35, o verde sai da
-  base.
+- Pedido novo entra na pauta e a **Câmara** vota no mesmo turno.
+- Aprovada e há Senado (`senado` no país, cadeiras por partido): o **Senado**
+  vota no turno seguinte; aprovada, a lei muda.
+- Senado que reprova uma lei de régua tenta **emendar** (valor a meio caminho);
+  se a emenda passa, a lei volta à **Câmara** no turno seguinte e depois vai à
+  **mesa** (sanção).
+- Na mesa a lei emendada espera um turno: sem veto, sai como lei; com **veto**
+  (`vetar`, com observação), a Câmara vota a derrubada com o quórum absoluto.
+- País de uma casa só vota uma vez e a lei muda no turno 1.
+- Lei derrotada fica **2 turnos barrada**.
+- **Carga:** cada casa vota até `carga` leis por turno (padrão 3); as outras
+  esperam na fila. Só atrasa, nunca proíbe.
 
-Observado (01/nov): os três primeiros casos como o esperado (110 × 90,
-60 × 140, 0 × 200). O licenciamento frouxo passa com 135; os ambientalistas
-caem a 41 e voltam a 48 no fim do mandato, então o verde fica na base. Uma
-lei só não racha a base; a saída está coberta pelo teste do módulo.
+## As moedas (pedido `oferecer`)
 
-Com a bússola (01/nov): o imposto de renda 20% → 30% passa com 110 (verde e
-centro votam com o governo); o licenciamento frouxo passa com 150 e o verde
-sai da base no turno 8, quando os ambientalistas ficam abaixo de 35.
+Cada compra sobe o preço do próximo voto daquele partido (+0,15; esquece 0,05
+por turno).
+
+- **Ceder na régua:** o valor pedido anda 1/3 do caminho até o atual.
+- **Cargos:** reserva = valor da lei Cargos de livre nomeação × 400.
+- **Emenda:** reserva = 5 por degrau da lei Emendas dos parlamentares.
+- **Promessa:** vira papel com prazo de 4 turnos; cumprida, anima; quebrada,
+  o termômetro cai 25 e vira fato.
+- **Ministério:** espera o passo Governo.
+
+## Decreto (pedido `decretar`)
+
+Vale já, sem voto, se a lei Poder de decreto deixar. Alcance pelo degrau da
+lei: nenhum; só verba e preço (lei de gasto); tudo de classe comum; tudo sem
+confirmar. O Congresso confirma ou derruba em 2 turnos; derrubado, a lei volta
+ao valor de antes e vira fato. Cada decreto cansa as casas (8, mais 4 por
+decreto vigente).
+
+## Relação (termômetro e paciência)
+
+- **Termômetro** (0–100) por partido: a cada turno anda 1/4 do caminho até a
+  satisfação dos grupos dele; sobe com moedas, cai com lei contra ele
+  aprovada e promessa quebrada. Na base: abaixo de 30 vira fato "ameaça sair",
+  abaixo de 20 sai. Na oposição: acima de 70 aceita o convite (`convidar`).
+- **Paciência** (0–100) por casa: +3 por turno, +3 no turno sem lei nova do
+  governo; cai com decreto, veto e lei demais (mais de 2 no turno).
+
+## Fatos
+
+Escreve: lei aprovada/rejeitada, emenda, veto, veto derrubado, decreto,
+decreto derrubado, promessa cumprida/descumprida, partido entra/sai/ameaça sair.
+Lê: escândalo e manchete contra (ninguém escreve ainda).
+
+## Fora deste passo
+
+Rejeitar por conta própria, propor lei popular, travar a pauta, CPI,
+impeachment, sistemas de governo e mudança de cadeiras na eleição (R12.5,
+R12.8–R12.10); bancadas e lobby (R12.15). A moeda Ministério e o botão de
+promessa e decreto na tela esperam o passo Governo.

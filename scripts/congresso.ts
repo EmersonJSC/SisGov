@@ -15,14 +15,14 @@ import {
   nomesGrupos,
   nomesPartidos,
   type Estado,
-  type Pedido,
+  type PedidoMudarLei,
 } from "../src/partida";
 
 const TURNOS_MANDATO = 24;
 const PAIS = "teste";
 const partidos = nomesPartidos(PAIS);
 
-const CENARIOS: [string, Pedido][] = [
+const CENARIOS: [string, PedidoMudarLei][] = [
   [
     "transferência de renda 2% → 4%",
     { tipo: "mudar_lei", lei: "transferencia-renda", valor: 0.04 },

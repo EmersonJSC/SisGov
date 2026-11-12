@@ -9,6 +9,18 @@ export const TIPOS_DE_FATO = [
   "partido-entrou-na-base",
   "eleicao-vencida",
   "eleicao-perdida",
+  "emenda",
+  "veto",
+  "veto-derrubado",
+  "decreto",
+  "decreto-derrubado",
+  "promessa-cumprida",
+  "promessa-descumprida",
+  "partido-ameaca-sair",
+  // Ninguém escreve ainda; o Congresso já lê (mídia e escândalos vêm depois).
+  "escandalo",
+  "manchete-contra",
+  "grupo-com-raiva",
 ] as const;
 export type TipoFato = (typeof TIPOS_DE_FATO)[number];
 

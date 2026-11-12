@@ -233,5 +233,32 @@
         "militares": 0.1
       }
     }
-  ]
+  ],
+  "senado": {
+    "pl": 14,
+    "pt": 11,
+    "uniao": 9,
+    "pp": 8,
+    "psd": 7,
+    "mdb": 7,
+    "republicanos": 7,
+    "pdt": 3,
+    "psb": 2,
+    "podemos": 2,
+    "psol": 2,
+    "psdb": 2,
+    "pcdob": 1,
+    "avante": 1,
+    "pv": 1,
+    "novo": 1,
+    "solidariedade": 1,
+    "cidadania": 1,
+    "prd": 1
+  },
+  "leis": {
+    "quorum": "quorum-das-votacoes",
+    "decreto": "poder-de-decreto",
+    "cargos": "cargos-de-livre-nomeacao",
+    "emendas": "emendas-dos-parlamentares"
+  }
 }

@@ -3,9 +3,23 @@
  * eleição. Usa o papel da janela da lei.
  */
 import { forcaDoFato, type Fato } from "../../motor";
-import { nomesPartidos, type Partida, type VisaoPartida } from "../../partida";
+import { PACIENCIA_BAIXA, TERMOMETRO_CONVITE } from "../../motor";
+import {
+  nomesPartidos,
+  type Partida,
+  type PedidoCongresso,
+  type VisaoPartida,
+} from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
 import { ICONE_INTERFACE } from "./icones";
+
+const ORIGEM: Record<string, string> = {
+  emenda: "emenda do Senado",
+  volta: "volta à Câmara",
+  decreto: "decreto",
+  "decreto-derrubado": "decreto derrubado",
+  "derrubada-do-veto": "derrubada do veto",
+};
 
 const um = (v: number) =>
   v.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
@@ -16,7 +30,8 @@ export function temResultado(partida: Partida): boolean {
   return (
     estado.votacoes.length > 0 ||
     estado.eleicao?.turno === estado.turno ||
-    (estado.fatos ?? []).length > 0
+    (estado.fatos ?? []).some((f) => f.turno === estado.turno) ||
+    (estado.congresso?.sancao.length ?? 0) > 0
   );
 }
 
@@ -41,6 +56,28 @@ function manchete(
       return `${quem} deixa a base do governo`;
     case "partido-entrou-na-base":
       return `${quem} entra na base do governo`;
+    case "emenda":
+      return `Senado muda ${lei} e devolve à Câmara`;
+    case "veto":
+      return `Presidente veta ${lei}`;
+    case "veto-derrubado":
+      return `Congresso derruba o veto a ${lei}`;
+    case "decreto":
+      return `Governo decreta ${lei}`;
+    case "decreto-derrubado":
+      return `Congresso derruba o decreto sobre ${lei}`;
+    case "promessa-cumprida":
+      return `Governo cumpre a promessa de ${lei} a ${quem}`;
+    case "promessa-descumprida":
+      return `Governo quebra a promessa de ${lei} a ${quem}`;
+    case "partido-ameaca-sair":
+      return `${quem} ameaça deixar a base`;
+    case "escandalo":
+      return "Escândalo no governo";
+    case "manchete-contra":
+      return "Imprensa vai contra o governo";
+    case "grupo-com-raiva":
+      return "Grupo com raiva do governo";
     case "eleicao-vencida":
       return "Governo vence a eleição";
     case "eleicao-perdida":
@@ -52,11 +89,16 @@ export function ResultadoDoTurno({
   partida,
   visao,
   onFechar,
+  extras,
+  setExtras,
   ...janela
 }: JanelaProps & {
   partida: Partida;
   visao: VisaoPartida;
   onFechar: () => void;
+  /** Vetos e convites já marcados neste turno. */
+  extras: PedidoCongresso[];
+  setExtras: (e: PedidoCongresso[]) => void;
 }) {
   const { estado } = partida;
   const partidos = nomesPartidos(partida.pais);
@@ -120,28 +162,149 @@ export function ResultadoDoTurno({
             </ul>
           </section>
         ) : null}
+        {estado.congresso ? (
+          <section>
+            <h2>Congresso</h2>
+            <p className="congresso-paciencia">
+              Paciência: Câmara {Math.round(estado.congresso.paciencia.camara)}
+              {partida.regras.congresso?.senado
+                ? ` · Senado ${Math.round(estado.congresso.paciencia.senado)}`
+                : ""}
+              {estado.congresso.paciencia.camara < PACIENCIA_BAIXA
+                ? " — a Câmara pune o governo"
+                : ""}
+            </p>
+            {estado.congresso.pauta.length ? (
+              <ul className="congresso-pauta">
+                {estado.congresso.pauta.map((t) => (
+                  <li key={t.lei}>
+                    {lei(t.lei)?.nome ?? t.lei} → {valorPedido(t.lei, t.valor)}:{" "}
+                    {t.casa === "senado"
+                      ? "vai ao Senado"
+                      : t.casa === "camara-volta"
+                        ? "volta à Câmara"
+                        : "espera vaga na pauta"}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {estado.congresso.sancao.length ? (
+              <ul className="congresso-mesa">
+                {estado.congresso.sancao.map((t) => {
+                  const vetando = extras.some(
+                    (x) => x.tipo === "vetar" && x.lei === t.lei,
+                  );
+                  return (
+                    <li key={t.lei}>
+                      Na sua mesa: {lei(t.lei)?.nome ?? t.lei} →{" "}
+                      {valorPedido(t.lei, t.valor)}{" "}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExtras(
+                            vetando
+                              ? extras.filter(
+                                  (x) =>
+                                    !(x.tipo === "vetar" && x.lei === t.lei),
+                                )
+                              : [...extras, { tipo: "vetar", lei: t.lei }],
+                          )
+                        }
+                      >
+                        {vetando ? "Não vetar" : "Vetar"}
+                      </button>{" "}
+                      <small>
+                        {vetando
+                          ? "vai ser vetada ao passar o turno"
+                          : "sai como lei ao passar o turno"}
+                      </small>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+            <ul className="congresso-termometro">
+              {Object.entries(estado.congresso.termometro)
+                .filter(([id]) => id !== partida.regras.congresso?.governo)
+                .sort((a, b) => b[1] - a[1])
+                .map(([id, t]) => {
+                  const naBase = estado.coligacao.includes(id);
+                  const convidando = extras.some(
+                    (x) => x.tipo === "convidar" && x.partido === id,
+                  );
+                  return (
+                    <li key={id} className={naBase ? "base" : "oposicao"}>
+                      <span>{partidos[id] ?? id}</span>
+                      <span
+                        className="termometro"
+                        role="img"
+                        aria-label={`Termômetro ${Math.round(t)}`}
+                      >
+                        <i style={{ width: `${t}%` }} />
+                      </span>
+                      <small>{naBase ? "base" : "oposição"}</small>
+                      {!naBase && t > TERMOMETRO_CONVITE ? (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setExtras(
+                              convidando
+                                ? extras.filter(
+                                    (x) =>
+                                      !(
+                                        x.tipo === "convidar" &&
+                                        x.partido === id
+                                      ),
+                                  )
+                                : [
+                                    ...extras,
+                                    { tipo: "convidar", partido: id },
+                                  ],
+                            )
+                          }
+                        >
+                          {convidando ? "Desconvidar" : "Convidar"}
+                        </button>
+                      ) : null}
+                    </li>
+                  );
+                })}
+            </ul>
+          </section>
+        ) : null}
         {estado.votacoes.length ? (
           <section>
             <h2>Votações</h2>
             <ul className="votacoes-turno">
-              {estado.votacoes.map((v) => (
+              {estado.votacoes.map((v, i) => (
                 <li
-                  key={v.lei}
+                  key={`${v.lei}-${i}`}
                   className={v.aprovada ? "aprovada" : "rejeitada"}
                 >
                   <div className="votacao-linha">
                     <span>
                       <strong>{lei(v.lei)?.nome ?? v.lei}</strong>
-                      <small> → {valorPedido(v.lei, v.valor)}</small>
+                      <small>
+                        {" "}
+                        → {valorPedido(v.lei, v.valor)}
+                        {v.casa
+                          ? ` · ${v.casa === "senado" ? "Senado" : "Câmara"}`
+                          : ""}
+                        {v.origem && ORIGEM[v.origem]
+                          ? ` · ${ORIGEM[v.origem]}`
+                          : ""}
+                      </small>
                     </span>
                     <b>{v.aprovada ? "Aprovada" : "Rejeitada"}</b>
                     <span className="votacao-placar">
-                      {v.sim} sim × {v.nao} não
+                      {v.origem === "decreto"
+                        ? "sem voto"
+                        : `${v.sim} sim × ${v.nao} não`}
                     </span>
                   </div>
                   {v.exorbitante ? (
                     <small className="votacao-nota">
-                      Mudança exorbitante: grande demais para um turno.
+                      Exorbitante: a conta da lei tirou a maioria.
                     </small>
                   ) : null}
                   <div className="votacao-partidos">

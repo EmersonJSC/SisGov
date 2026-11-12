@@ -6,7 +6,8 @@ import {
   paisesDisponiveis,
   salvarPartida,
   type Partida,
-  type Pedido,
+  type PedidoCongresso,
+  type PedidoMudarLei,
 } from "../partida";
 import { TelaMapa } from "./mapa/TelaMapa";
 
@@ -22,7 +23,8 @@ function lerSalvo(): string | null {
 
 export function App() {
   const [partida, setPartida] = useState<Partida | null>(null);
-  const [fila, setFila] = useState<Pedido[]>([]);
+  const [fila, setFila] = useState<PedidoMudarLei[]>([]);
+  const [extras, setExtras] = useState<PedidoCongresso[]>([]);
   const [aviso, setAviso] = useState("");
   const [pais, setPais] = useState(paisesDisponiveis()[0]);
   const [semente, setSemente] = useState(42);
@@ -31,6 +33,7 @@ export function App() {
   const trocar = (p: Partida | null, texto = "") => {
     setPartida(p);
     setFila([]);
+    setExtras([]);
     setAviso(texto);
   };
 
@@ -65,7 +68,7 @@ export function App() {
   const passar = () => {
     if (!partida) return;
     try {
-      trocar(avancar(partida, fila));
+      trocar(avancar(partida, [...fila, ...extras]));
     } catch (e) {
       setAviso((e as Error).message);
     }
@@ -115,6 +118,8 @@ export function App() {
       partida={partida}
       fila={fila}
       setFila={setFila}
+      extras={extras}
+      setExtras={setExtras}
       podeCarregar={lerSalvo() !== null}
       onPassar={passar}
       onSalvar={salvar}
