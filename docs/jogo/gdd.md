@@ -873,6 +873,35 @@ pode mexer nesse filtro, pagando por isso.
   simples), mais os vizinhos do país jogado e o resto do mundo num bloco só. O
   país jogado sai da lista dos outros. Nomes e números reais ficam em arquivo de
   dados, com data e fonte; o motor continua sem conhecer nomes.
+- **Um motor, dois jeitos de rodar (12/nov):** só o país jogado roda inteiro
+  (leis, pops, Congresso, mesa). Os outros são **países leves**: só simulados, sem
+  leis nem pops. Cada país jogável tem as duas fichas; ao escolher um, a ficha
+  leve dele sai do mundo e a completa entra no motor. Não se roda o mundo todo.
+  - **País leve:** economia resumida (PIB, crescimento, inflação, o que produz,
+    compra e vende), governo (lado na bússola, força do governo, poder militar)
+    e relação com cada país.
+  - **IA em 3 passos por turno:** lê (distância na bússola, comércio, o que cada
+    país fez com ele), decide no mesmo cardápio do jogador (acordo, sanção,
+    aliança, ajuda, tarifa, base) e age; o que toca o jogador chega como papel
+    na mesa.
+  - Muda por dentro sem leis: eleição a cada 4 anos (economia mal tende a virar
+    o lado) e crise (força do governo baixa traz golpe ou guerra civil).
+  - **Cardápio da IA (12/nov):** a opinião de cada país sobre cada outro vai de
+    −100 a +100 e anda com a distância na bússola, o comércio e o que um fez
+    com o outro. Quatro grupos de decisão: comércio (acordo, tarifa, sanção num
+    produto), dinheiro (investe, empresta barato, ajuda; ou tira o capital e
+    corta o crédito), segurança (aliança, pede base; rival e, no fim, ataque, só
+    país forte contra inimigo de defesa fraca) e palavra (visita, apoio ou
+    crítica em público, chamar o embaixador).
+  - **Linhas vermelhas** mexem forte e rápido: virar ditadura (para os
+    democráticos), atacar ou sancionar aliado dele, calote, pegar empresa dele
+    sem pagar, fugir das inspeções nucleares.
+  - **Jeito do país:** pragmático (pesa comércio), ideológico (pesa bússola) ou
+    agressivo (pesa força); o mesmo ato irrita um e quase não mexe no outro.
+  - **Um degrau por vez, com aviso:** nada vai de amigo a sanção num turno; o
+    que toca o jogador chega como papel com prazo (proposta, ou aviso com 1
+    turno para reagir). Guerra ou sanção entre dois países leves mexe nos
+    preços do mercado do jogador.
 - **Ficha completa:** PIB e posição, lado na bússola, poder militar, o que
   compra e vende, opinião sobre você, relação com cada outro país. **Ficha
   simples:** PIB, lado, opinião e comércio com você.
@@ -1775,7 +1804,11 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela.
   Congresso (§12), sem pontos: ele lota, fica lento e não vota tudo.
 - **Problema de otimização: estados × pops (08/nov):** com pops divididos por estado, o
   Brasil passa de 32 para 32 × 27 = 864 pops. Estudar quanto isso pesa no turno do
-  motor, antes de programar.
+  motor, antes de programar. **Medido em 12/nov:** hoje o turno leva ~3 ms (25 pops,
+  71 leis). A conta mais pesada é o que cada lei faz na satisfação: 864 pops × 527
+  leis, do jeito de hoje, dá ~350 ms por turno. Dá para cair a poucos ms com duas
+  coisas: só contar a lei que mudou desde o marco (a parada não dá ponto) e
+  calcular uma vez por tipo de pop o que é igual em todos os estados. É possível.
 - **Governadores (08/nov):** com estados em tudo, falta desenhar quem governa cada um.
   Quem cuida de luz, gás e água muda por país (no Brasil a luz é federal e o gás
   canalizado é estadual; nos EUA a distribuição é regulada por cada estado). O arquivo
