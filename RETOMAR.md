@@ -8,7 +8,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 ## Onde está
 
 Fase de **desenho das leis na planilha** ([docs/jogo/leis.xlsx](docs/jogo/leis.xlsx)); código parado.
-Contagens vêm só da planilha (script), não deste texto (hoje: 526 leis, 10 delas substituídas, 147 índices, 516 roteiros).
+Contagens vêm só da planilha (script), não deste texto (hoje: 527 leis, 10 delas substituídas, 147 índices, 517 roteiros).
 **As 30 esferas estão desenhadas** (09/nov). Rodada de **arrumação** feita em 08/nov: Bússola em números
 (coluna "Bússola: origem"), glossário no GDD §16, tipos de lei (Lei, Lei com prazo, Ato,
 Posição por país, Operação), "construção" virou "prédio", "programa" reservado.
@@ -23,7 +23,7 @@ campanha ficam em GDD §18.
 
 ## Revisão do Fable
 
-1ª rodada (11/nov) feita, mas virou revisão de contas, não de game design, e gastou ~20% da cota (autor). Ficou: Teto da carga de impostos, Aviso antes da multa, índice Preço do combustível, Confiança na aposentadoria com leis, citações a Substituídas trocadas, 4 acertos no GDD. Desfeito: Validade das regras (mesma ideia recusada do prazo de validade), colisão Polícia sem formato militar × Força letal (errada no mundo real); Sigilo bancário × Obrigação dos bancos só nos degraus extremos.
+1ª rodada (11/nov) feita, mas virou revisão de contas, não de game design, e gastou ~20% da cota (autor). Mantido tudo o que ele fez (autor: "não desfaça"): Teto da carga de impostos, Validade das regras, Aviso antes da multa, índice Preço do combustível, Confiança na aposentadoria com leis, colisões Polícia sem formato militar × Força letal e Sigilo bancário × Obrigação dos bancos, citações a Substituídas trocadas, 4 acertos no GDD.
 Próximo, se o autor quiser: 2ª rodada barata, só opinião geral de game designer de estúdio grande, lendo só o GDD, sem editar nada, resposta de 1 página.
 
 ## Faltam
