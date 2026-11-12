@@ -9,7 +9,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 Construindo pela **ordem de construir** de [docs/jogo/requisitos.md](docs/jogo/requisitos.md)
 (seção "Ordem de construir"). Feitos: 1 Brasil 2026, 2 Fatos do turno, 3 Congresso novo,
-4 Mesa mínima, 5 Governo, 6 Programas, **7 Jornal mínimo** (`src/motor/midia`, `midia.md`; 9 mídias do
+4 Mesa mínima, 5 Governo, 6 Programas, 7 Jornal mínimo, **8 Eleição nova** (`src/motor/eleicao`: chapas, dois turnos, promessa; janela Eleição na barra do topo; `eleicao.md`). Antes: 7 Jornal mínimo (`src/motor/midia`, `midia.md`; 9 mídias do
 Brasil em `midias.json`; jornal com as 3 maiores notícias no Resultado do turno; manchetes em
 `mundo/jornal/manchetes.json`). Antes: 6 Programas (motor `src/motor/programas`, doc `programas.md`,
 `npm run programas`, janela Programas na barra do topo; 73 programas do mundo, nomes do
@@ -18,13 +18,13 @@ A tela inteira (MapaPolitico, janelas, CSS) será reformulada: não mexer antes.
 
 ## Próximo
 
-**Passo 8: Eleição nova** (R9.9, R13.9–R13.11): aprovação, promessa e dois turnos fecham o
-mandato. Propor curto ao autor antes de começar.
+**Passo 9: Começo da partida** (ver "Ordem de construir" em requisitos.md). Propor curto ao autor
+antes de começar.
 
 ## Pendências do autor
 
 - Conferir as direções da planilha lidas como "sobe" e as dívidas de
-  [docs/jogo/codigo-a-conferir.md](docs/jogo/codigo-a-conferir.md) (38 itens; F é do passo 6, G do passo 7).
+  [docs/jogo/codigo-a-conferir.md](docs/jogo/codigo-a-conferir.md) (43 itens; F passo 6, G passo 7, H passo 8).
 - Decidir o que "programa anda no passo do ministro mais fraco" significa (item 32): hoje é
   esperar 0 ou 1 turno.
 - Dívidas do passo 6: lembrança pesar no voto, perguntar o nome ao refazer programa,

@@ -195,7 +195,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ◐ **R9.4** Todo índice tem efeito além da cobrança dos grupos.
 - ☐ **R9.5** Desemprego e ocupados se movem com a economia (R16.27).
 - ☐ **R9.6** Índice da bolsa.
-- ☐ **R9.9** Aprovação = satisfação média dos pops pesada pelo tamanho (hoje "sem conta").
+- ✅ **R9.9** Aprovação = satisfação média dos pops pesada pelo tamanho. (12/nov: é `satisfacaoMedia`, lida pelo Congresso e pela eleição; aparece na janela Eleição.)
 
 ## 10. Contas do Estado
 
@@ -273,9 +273,9 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R13.1** Mandato e eleição pela lei do país.
 - ✅ **R13.2** Desgaste sobe sempre.
 - ◐ **R13.3** Voto por grupo (satisfação feita; falta bússola dos candidatos, campanha e mídia).
-- ☐ **R13.9** Adversários são os partidos de oposição, que lançam chapa e podem se coligar.
-- ☐ **R13.10** Dois turnos: segundo no último turno jogável do mandato, primeiro no anterior.
-- ☐ **R13.11** Promessa: meta do mandato (principal, subíndice ou programa), prêmio pelo tamanho, cumprir em parte vale em parte, avaliada no primeiro turno; trocar é quebrar.
+- ✅ **R13.9** Adversários são os partidos de oposição, que lançam chapa e podem se coligar. (12/nov)
+- ✅ **R13.10** Dois turnos: segundo no último turno jogável do mandato, primeiro no anterior. (12/nov)
+- ◐ **R13.11** Promessa: meta do mandato (principal, subíndice ou programa), prêmio pelo tamanho, cumprir em parte vale em parte, avaliada no primeiro turno; trocar é quebrar. (12/nov: tudo feito, falta descontar o que o país faria sozinho.)
 - ☐ **R13.4** Limite de reeleição: o partido troca de candidato.
 - ☐ **R13.5** Chapa entre fichas do partido e aliados.
 - ☐ **R13.6** Coligação eleitoral (TV, caixa, eleitores; cobra lugar).

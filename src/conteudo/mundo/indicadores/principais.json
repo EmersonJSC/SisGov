@@ -1,0 +1,11 @@
+{
+  "versao": 1,
+  "indices": [
+    "saude",
+    "instrucao",
+    "desemprego",
+    "seguranca",
+    "inflacao",
+    "pib"
+  ]
+}

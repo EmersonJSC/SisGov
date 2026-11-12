@@ -14,6 +14,7 @@ import {
   contas,
 } from "./etapas/economia";
 import { governo } from "./etapas/governo";
+import { eleicao } from "./etapas/eleicao";
 import { midia } from "./etapas/midia";
 import { programas } from "./etapas/programas";
 import { invariantes } from "./etapas/invariantes";
@@ -70,6 +71,7 @@ const ETAPAS: Etapa[] = [
   governo,
   programas,
   politica,
+  eleicao,
   midia,
   invariantes,
 ];

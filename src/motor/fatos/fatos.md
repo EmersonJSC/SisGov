@@ -41,6 +41,9 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 | `partido-ameaca-sair`    | Política     | médio                     | — / partido / —                                 |
 | `programa-formado`       | Programas    | grande (médio se refeito) | programa / — / —                                |
 | `programa-desfeito`      | Programas    | médio                     | programa / — / —                                |
+| `meta-cumprida`          | Eleição      | médio                     | índice ou programa / — / —                      |
+| `meta-quebrada`          | Eleição      | grande                    | índice ou programa / — / —                      |
+| `segundo-turno`          | Eleição      | grande                    | — / — / —                                       |
 | `escandalo`              | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `manchete-contra`        | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `grupo-com-raiva`        | (grupos)     | —                         | ninguém escreve nem lê ainda                    |

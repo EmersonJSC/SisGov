@@ -267,3 +267,26 @@ testes. Os testes não cobrem tudo; conferir estes pontos:
 38. **Manchetes saíram do `switch` da tela** para
     `mundo/jornal/manchetes.json` + `partida/jornal.ts`. O texto é o mesmo;
     conferir a tela do Resultado do turno com os 24 tipos de fato.
+
+## H. Eleição nova (passo 8, 12/nov)
+
+39. **Segundo turno** (`eleicao/votos.ts`): quem votou numa chapa que saiu vai
+    para o governo na proporção da semelhança entre elas, vezes 0,25
+    (`REJEICAO_AO_GOVERNO`), mais um piso de 0,1; o resto vai ao rival. Com a
+    rejeição em 1, o governo parado do país de teste vencia o segundo turno e
+    quebrava 3 testes antigos; 0,25 foi o valor que manteve "parado perde".
+    Conferir o desenho do segundo turno com o autor.
+40. **Constantes da promessa** (`eleicao/promessa.ts`): tamanho cheio com 30%
+    do domínio, efeito máximo 0,06 no voto, desgaste 1 por promessa cheia
+    quebrada, pesos 2 e 0,25 para quem se importa ou não. Tudo palpite.
+41. **Coligação da oposição** (`eleicao/chapas.ts`): semelhança (cosseno) de 0,6
+    entre o que os partidos defendem; ordem do maior para o menor. No Brasil
+    saíram 4 chapas (a pesquisa mostra "PSDB + Novo + Cidadania" etc.). A
+    coligação pode estar juntando partidos que o autor não juntaria.
+42. **Perda no último turno jogável.** Perder a eleição encerra a partida no
+    turno M (não no M−1), como o primeiro turno cai no M−1: a etapa `eleicao`
+    e o teste "governo parado perde no turno 24" conferem. Antes a eleição
+    única também era no turno M.
+43. **Etapa Política dividida**: a eleição saiu de `etapas/politica.ts` para
+    `etapas/eleicao.ts`; reiniciar o mandato (zerar cargos e emendas usados)
+    foi junto. Conferir que nada ficou para trás.

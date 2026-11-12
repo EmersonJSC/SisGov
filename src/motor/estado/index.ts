@@ -9,6 +9,7 @@ import type { Grupo, Marco } from "../grupos";
 import type { PontoBussola, ValorLei } from "../leis";
 import type { Fato } from "../fatos";
 import type { EstadoGoverno } from "../governo";
+import type { EstadoDaCampanha } from "../eleicao";
 import type { EstadoMidia } from "../midia";
 import type { EstadoProgramas } from "../programas";
 import type { Papel } from "../mesa";
@@ -123,6 +124,8 @@ export interface Estado {
   congresso?: EstadoCongresso;
   /** Ministros por caixa e corrupção dos órgãos (motor/governo); ausente sem governo. */
   governo?: EstadoGoverno;
+  /** Promessa de campanha e primeiro turno (motor/eleicao); ausente = sem promessa. */
+  campanha?: EstadoDaCampanha;
   /** Credibilidade das mídias e o jornal do último turno (motor/midia). */
   midia?: EstadoMidia;
   /** Programas formados, em formação e desfeitos (motor/programas); ausente sem programas. */

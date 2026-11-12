@@ -49,6 +49,7 @@ import {
 } from "../motor";
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
 import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
+import principais from "../conteudo/mundo/indicadores/principais.json";
 import programasDoMundo from "../conteudo/mundo/programas/programas.json";
 import nomesDeProgramas from "../conteudo/mundo/programas/nomes.json";
 import derivas from "../conteudo/mundo/indicadores/derivas.json";
@@ -433,6 +434,7 @@ export function criarPartida(
     saneamento,
     atendimento,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
+    indicesPrincipais: principais.indices,
     programas: carregarProgramas(pais, leis),
     midia: carregarMidias(pais, grupos),
     ...(governo ? { governo: governo.regras } : {}),
@@ -513,6 +515,7 @@ export function jogar(
 export { carregarPartida, salvarPartida } from "./salvar";
 export { montarVisao } from "./visao";
 export { manchete, type NomesDoJornal } from "./jornal";
+export { pesquisaDeVoto, type IntencaoDeVoto } from "./eleicao";
 export { previaDaLei, valorDoNivel, type PreviaLei } from "./previa";
 export type {
   Estado,

@@ -22,6 +22,8 @@ export interface NomesDoJornal {
   /** Nome da área (esfera), pelo id. */
   area: Record<string, string>;
   programa: (id: string) => string;
+  /** Nome do índice (ou do programa) que o governo prometeu. */
+  meta: (id: string) => string;
 }
 
 const MOLDES = moldes.manchetes as Partial<Record<TipoFato, Molde>>;
@@ -47,6 +49,7 @@ export function manchete(fato: Fato, nomes: NomesDoJornal): string {
     caixa: nomes.caixa[sobre] ?? sobre,
     area: nomes.area[sobre] ?? sobre,
     programa: nomes.programa(sobre),
+    meta: nomes.meta(sobre),
   };
   return texto.replace(
     /\{(\w+)\}/g,

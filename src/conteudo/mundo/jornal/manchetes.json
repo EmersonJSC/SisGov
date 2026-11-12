@@ -31,6 +31,9 @@
     "ministerio-oferecido": {
       "texto": "Governo dá o ministério {caixa} a {quem}"
     },
+    "meta-cumprida": { "texto": "Governo cumpre a meta prometida: {meta}" },
+    "meta-quebrada": { "texto": "Governo quebra a meta prometida: {meta}" },
+    "segundo-turno": { "texto": "Eleição vai para o segundo turno" },
     "programa-formado": { "texto": "Governo forma o programa {programa}" },
     "programa-desfeito": { "texto": "Programa {programa} se desfaz" },
     "escandalo": {

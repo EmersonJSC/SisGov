@@ -1,5 +1,5 @@
 // Etapas do turno: politica. Comportamento em turno.md.
-import { DESGASTE_POR_TURNO, turnosMandato, apurar } from "../../eleicao";
+import { DESGASTE_POR_TURNO } from "../../eleicao";
 import { novoFato, type Fato } from "../../fatos";
 import {
   esfriarEEsquentar,
@@ -11,8 +11,8 @@ import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
 
 /**
- * 9. Política: a base olha os seus grupos (passo 8); o desgaste sobe e, no
- * fim do mandato, há eleição (motor/eleicao).
+ * 9. Política: a base olha os seus grupos (passo 8) e o desgaste sobe. A
+ * eleição é a etapa seguinte.
  */
 export const politica: Etapa = (regras, estado) => {
   const base = regras.congresso
@@ -45,31 +45,7 @@ export const politica: Etapa = (regras, estado) => {
     fatos,
     ...(base ? { congresso: base.estado } : {}),
   };
-  const mandato = turnosMandato(regras.leis, estado.leis);
-  if (mandato === null || estado.turno - estado.inicio_mandato < mandato)
-    return comDesgaste;
-  const eleicao = apurar(estado.turno, estado.grupos, desgaste);
-  const resultado = novoFato({
-    tipo: eleicao.venceu ? "eleicao-vencida" : "eleicao-perdida",
-    turno: estado.turno,
-    tamanho: "grande",
-  });
-  return {
-    ...comDesgaste,
-    ...(eleicao.venceu && comDesgaste.congresso
-      ? {
-          congresso: {
-            ...comDesgaste.congresso,
-            cargosUsados: 0,
-            emendasUsadas: 0,
-          },
-        }
-      : {}),
-    fatos: [...fatos, resultado],
-    eleicao,
-    inicio_mandato: eleicao.venceu ? estado.turno : estado.inicio_mandato,
-    encerrada: !eleicao.venceu,
-  };
+  return comDesgaste;
 };
 /** Partido que saiu ou entrou na base vira fato. */
 function fatosDaBase(turno: number, antes: string[], agora: string[]): Fato[] {

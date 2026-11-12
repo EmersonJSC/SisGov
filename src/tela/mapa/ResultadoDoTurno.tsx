@@ -5,6 +5,7 @@
 import { forcaDoFato } from "../../motor";
 import { PACIENCIA_BAIXA, TERMOMETRO_CONVITE } from "../../motor";
 import {
+  indicesDoMundo,
   manchete,
   nomesDoGoverno,
   nomesPartidos,
@@ -64,6 +65,10 @@ export function ResultadoDoTurno({
     caixa: governo.caixas,
     area: governo.esferas,
     programa: (id) => estado.programas?.vidas[id]?.nome ?? id,
+    meta: (id) =>
+      estado.programas?.vidas[id]?.nome ??
+      indicesDoMundo.find((i) => i.id === id)?.nome ??
+      id,
   };
   const eleicao =
     estado.eleicao?.turno === estado.turno ? estado.eleicao : null;

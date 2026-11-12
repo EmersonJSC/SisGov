@@ -1,6 +1,6 @@
 // Etapas do turno: congresso. Comportamento em turno.md.
 import { enfileirar, envelhecer } from "../../efeitos";
-import { turnosMandato } from "../../eleicao";
+import { type PedidoPrometer, turnosMandato } from "../../eleicao";
 import type { Estado } from "../../estado";
 import {
   type PedidoNomear,
@@ -69,7 +69,8 @@ export const congresso: Etapa = (regras, estado, pedidos) => {
     traduzirCarimbos(
       estado.mesa ?? [],
       pedidos.filter(
-        (p): p is Exclude<Pedido, PedidoNomear> => p.tipo !== "nomear",
+        (p): p is Exclude<Pedido, PedidoNomear | PedidoPrometer> =>
+          p.tipo !== "nomear" && p.tipo !== "prometer",
       ),
     ),
   );

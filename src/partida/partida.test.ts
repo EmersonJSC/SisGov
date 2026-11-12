@@ -445,6 +445,7 @@ describe("jornal", () => {
       caixa: {},
       area: {},
       programa: (id: string) => id,
+      meta: (id: string) => id,
     };
     for (const tipo of TIPOS_DE_FATO)
       expect(
@@ -460,6 +461,7 @@ describe("jornal", () => {
       caixa: {},
       area: {},
       programa: (id: string) => id,
+      meta: (id: string) => id,
     };
     const f = {
       tipo: "lei-rejeitada" as const,
@@ -488,5 +490,107 @@ describe("jornal", () => {
         .midia?.jornal ?? [];
     expect(jornal.length).toBeGreaterThan(0);
     expect(jornal.every((f) => f.turno === 1)).toBe(true);
+  });
+});
+
+describe("eleição em dois turnos e promessa", () => {
+  /** Um índice de jogabilidade que o país de teste declara. */
+  const indice = (p: Partida) =>
+    Object.keys(p.estado.jogabilidade).find(
+      (id) => p.regras.dominios[id],
+    ) as string;
+  const prometendo = (p: Partida, meta: number) => [
+    {
+      tipo: "prometer" as const,
+      alvo: { tipo: "indice" as const, id: indice(p) },
+      meta,
+    },
+  ];
+
+  it("o primeiro turno vem um turno antes do fim, sem encerrar nada", () => {
+    const partida = criarPartida("teste", 42);
+    const antes = jogar(partida, 22).estado;
+    expect(antes.campanha?.primeiro).toBeUndefined();
+    const primeiro = jogar(partida, 23).estado;
+    expect(primeiro.campanha?.primeiro?.rodada.votos).toBeDefined();
+    expect(primeiro.eleicao).toBeNull();
+    expect(primeiro.encerrada).toBe(false);
+  });
+
+  it("sem maioria no primeiro turno, há segundo turno", () => {
+    const partida = criarPartida("teste", 42);
+    expect(jogar(partida, 23).estado.fatos?.map((f) => f.tipo)).toContain(
+      "segundo-turno",
+    );
+    const fim = jogar(partida, 24).estado;
+    expect(fim.eleicao?.rodadas).toBe(2);
+    expect(fim.eleicao?.chapas).toHaveLength(2);
+  });
+
+  it("governo muito popular vence no primeiro turno", () => {
+    const fim = jogar(criarPartida("teste", 42), 24, [
+      { tipo: "mudar_lei", lei: "transferencia-renda", valor: 0.04 },
+    ]).estado;
+    expect(fim.eleicao?.rodadas).toBe(1);
+    expect(fim.eleicao?.venceu).toBe(true);
+  });
+
+  it("promessa quebrada vira fato e custa voto e desgaste", () => {
+    const partida = criarPartida("teste", 42);
+    const dele = jogar(partida, 1, prometendo(partida, 99)).estado;
+    expect(dele.campanha?.promessa?.tamanho).toBeGreaterThan(0);
+    const com = jogar({ ...partida, estado: dele }, 22).estado;
+    const sem = jogar(partida, 23).estado;
+    expect(com.fatos?.map((f) => f.tipo)).toContain("meta-quebrada");
+    expect(com.desgaste).toBeGreaterThan(sem.desgaste);
+    expect(com.campanha?.primeiro?.rodada.votos.trabalhista).toBeLessThan(
+      sem.campanha?.primeiro?.rodada.votos.trabalhista as number,
+    );
+  });
+
+  it("trocar a promessa no meio do mandato conta como quebrar a antiga", () => {
+    const partida = criarPartida("teste", 42);
+    const um = jogar(partida, 1, prometendo(partida, 99)).estado;
+    const dois = jogar(
+      { ...partida, estado: um },
+      1,
+      prometendo(partida, 90),
+    ).estado;
+    expect(dois.campanha?.quebradas).toHaveLength(1);
+    const igual = jogar(
+      { ...partida, estado: um },
+      1,
+      prometendo(partida, 99),
+    ).estado;
+    expect(igual.campanha?.quebradas).toHaveLength(0);
+  });
+
+  it("promessa que não pode ser feita é recusada", () => {
+    const partida = criarPartida("teste", 42);
+    expect(() => jogar(partida, 1, prometendo(partida, 1e9))).toThrow(
+      /meta inválida/,
+    );
+    expect(() =>
+      jogar(partida, 1, [
+        { tipo: "prometer", alvo: { tipo: "indice", id: "fantasma" }, meta: 5 },
+      ]),
+    ).toThrow(/não existe/);
+    const brasil = criarPartida("brasil-2026", 1, { semCongresso: true });
+    expect(() =>
+      jogar(brasil, 1, [
+        {
+          tipo: "prometer",
+          alvo: { tipo: "programa", id: "saude-da-familia" },
+        },
+      ]),
+    ).toThrow(/já está formado/);
+  });
+
+  it("promessa de programa: cumprida quando ele se forma", () => {
+    const brasil = criarPartida("brasil-2026", 1, { semCongresso: true });
+    const estado = jogar(brasil, 1, [
+      { tipo: "prometer", alvo: { tipo: "programa", id: "escola-o-dia-todo" } },
+    ]).estado;
+    expect(estado.campanha?.promessa?.alvo.id).toBe("escola-o-dia-todo");
   });
 });

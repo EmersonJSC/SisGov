@@ -10,6 +10,7 @@ import type { RegraDoAtendimento } from "../atendimento";
 import type { RegraDoSaneamento } from "../saneamento";
 import type { Potencia } from "../mundo";
 import type { PedidoNomear, RegrasGoverno } from "../governo";
+import type { PedidoPrometer } from "../eleicao";
 import type { PedidoCarimbar } from "../mesa";
 import type { RegrasMidia } from "../midia";
 import type { RegrasProgramas } from "../programas";
@@ -54,6 +55,8 @@ export interface Regras {
   mercado?: MercadoDoPais;
   /** Ministros e órgãos; sem ele, as leis chegam como estão escritas (motor/governo). */
   governo?: RegrasGoverno;
+  /** Índices principais do mundo: a promessa neles pesa no voto de todos (motor/eleicao). */
+  indicesPrincipais?: string[];
   /** Mídias do país; sem elas o jornal sai igual (motor/midia). */
   midia?: RegrasMidia;
   /** Programas do mundo e nomes do país; sem eles, nada se forma (motor/programas). */
@@ -75,4 +78,5 @@ export interface Regras {
 export type { PedidoMudarLei } from "../politica";
 
 /** Todo pedido do jogador num turno (motor/politica). */
-export type Pedido = PedidoCongresso | PedidoCarimbar | PedidoNomear;
+export type Pedido =
+  PedidoCongresso | PedidoCarimbar | PedidoNomear | PedidoPrometer;

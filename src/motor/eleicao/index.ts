@@ -4,6 +4,24 @@
 import type { Grupo } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
 
+export * from "./tipos";
+export { montarChapas, semelhanca } from "./chapas";
+export {
+  finalistas,
+  primeiroTurno,
+  segundoTurno,
+  vencedorNoPrimeiroTurno,
+  type EntradaDoVoto,
+} from "./votos";
+export {
+  TAMANHO_DE_PROGRAMA,
+  cumprimento,
+  desgasteDaQuebra,
+  efeitoDaPromessa,
+  pesoDoGrupo,
+  tamanhoDaMeta,
+} from "./promessa";
+
 /** Desgaste de um mandato de 4 anos (24 turnos), espalhado por turno. */
 export const DESGASTE_POR_TURNO = 2.25 / 24;
 const TURNOS_POR_ANO = 6;
@@ -24,6 +42,10 @@ export interface Eleicao {
   margem: number;
   venceu: boolean;
   grupos: Record<string, VotoGrupo>;
+  /** Quantas rodadas houve (1 se alguém passou da metade no primeiro turno). */
+  rodadas: 1 | 2;
+  /** Votos das chapas na última rodada, da mais votada para a menos. */
+  chapas: { id: string; votos: number }[];
 }
 
 /** Turnos do mandato pela lei vigente, ou null se o país não tem eleição. */
@@ -71,5 +93,10 @@ export function apurar(
         { satisfacao: g.satisfacao, pessoas: g.pessoas },
       ]),
     ),
+    rodadas: 1,
+    chapas: [
+      { id: "governo", votos: apoio / 100 },
+      { id: "oposicao", votos: adversario / 100 },
+    ],
   };
 }
