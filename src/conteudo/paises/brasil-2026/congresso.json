@@ -1,6 +1,7 @@
 {
   "versao": 1,
   "maioria": 0.5,
+  "ignorar": "sancao",
   "governo": "pt",
   "coligacao": [
     "pt",

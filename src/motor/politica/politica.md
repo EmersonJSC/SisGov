@@ -48,8 +48,7 @@ aparece.
 - Senado que reprova uma lei de régua tenta **emendar** (valor a meio caminho);
   se a emenda passa, a lei volta à **Câmara** no turno seguinte e depois vai à
   **mesa** (sanção).
-- Na mesa a lei emendada espera um turno: sem veto, sai como lei; com **veto**
-  (`vetar`, com observação), a Câmara vota a derrubada com o quórum absoluto.
+- Na mesa (motor/mesa) a lei emendada espera um turno: assinada, ou ignorada com sanção tácita, sai como lei; com **veto** (`vetar`, com observação) ou ignorada com veto tácito, a Câmara vota a derrubada com o quórum absoluto. O país declara `ignorar`.
 - País de uma casa só vota uma vez e a lei muda no turno 1.
 - Lei derrotada fica **2 turnos barrada**.
 - **Carga:** cada casa vota até `carga` leis por turno (padrão 3); as outras

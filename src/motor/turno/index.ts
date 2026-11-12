@@ -100,6 +100,7 @@ import {
   reputacao,
   segurancaExterna,
 } from "../mundo";
+import { montarMesa, traduzirCarimbos } from "../mesa";
 import {
   esfriarEEsquentar,
   iniciarCongresso,
@@ -108,6 +109,7 @@ import {
   satisfacaoDoPartido,
   tramitar,
   type EntradaTramitar,
+  type PedidoCongresso,
   type Votacao,
 } from "../politica";
 import {
@@ -169,10 +171,15 @@ const congresso: Etapa = (regras, estado, pedidos) => {
       }));
     return { ...estado, votacoes };
   }
-  const entrada = entradaDoCongresso(regras, estado, pedidos);
+  const entrada = entradaDoCongresso(
+    regras,
+    estado,
+    traduzirCarimbos(estado.mesa ?? [], pedidos),
+  );
   const saida = tramitar(entrada);
   return {
     ...estado,
+    mesa: montarMesa(estado.turno, saida.estado.sancao, saida.votacoes),
     votacoes: saida.votacoes,
     coligacao: saida.coligacao,
     congresso: saida.estado,
@@ -184,7 +191,7 @@ const congresso: Etapa = (regras, estado, pedidos) => {
 export function entradaDoCongresso(
   regras: Regras,
   estado: Estado,
-  pedidos: Pedido[] = [],
+  pedidos: PedidoCongresso[] = [],
 ): EntradaTramitar {
   const congresso = regras.congresso as NonNullable<Regras["congresso"]>;
   const mandato = turnosMandato(regras.leis, estado.leis);

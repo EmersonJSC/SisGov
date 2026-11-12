@@ -10,7 +10,7 @@ import {
   previaDaLei,
   valorDoNivel,
   type Partida,
-  type PedidoCongresso,
+  type Pedido,
   type PedidoMudarLei,
   type PedidoOferecer,
   type VisaoLei,
@@ -21,6 +21,7 @@ import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase, PRESIDENCIA } from "./layout";
 import { Mercado } from "./Mercado";
+import { MesaDePapeis, papeisParaDecidir } from "./MesaDePapeis";
 import { Pregao, pregaoInicial } from "./Pregao";
 import { MapaPolitico } from "./MapaPolitico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
@@ -36,8 +37,8 @@ interface Props {
   fila: PedidoMudarLei[];
   setFila: (f: PedidoMudarLei[]) => void;
   /** Moedas, vetos e convites do turno (motor/politica). */
-  extras: PedidoCongresso[];
-  setExtras: (f: PedidoCongresso[]) => void;
+  extras: Pedido[];
+  setExtras: (f: Pedido[]) => void;
   podeCarregar: boolean;
   onPassar: () => void;
   onSalvar: () => void;
@@ -77,6 +78,8 @@ export function TelaMapa({
   const [rascunho, setRascunho] = useState(0);
   const [resultado, setResultado] = useState(() => temResultado(partida));
   const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
+  const [mesa, setMesa] = useState(false);
+  const [desvioMesa, setDesvioMesa] = useState<Desvio>(CENTRO);
   const [mercado, setMercado] = useState(false);
   const [desvioMercado, setDesvioMercado] = useState<Desvio>(CENTRO);
   const [bolsa, setBolsa] = useState(false);
@@ -158,6 +161,8 @@ export function TelaMapa({
         onSalvar={onSalvar}
         onCarregar={onCarregar}
         onRecomecar={onRecomecar}
+        onMesa={() => setMesa(!mesa)}
+        papeis={papeisParaDecidir(partida).length}
         onMercado={() => setMercado(!mercado)}
         onBolsa={() => setBolsa(!bolsa)}
       />
@@ -225,6 +230,21 @@ export function TelaMapa({
             camada={0}
             ativa
             onFocar={() => setSelecionado(lei.id)}
+          />
+        ) : null}
+        {mesa ? (
+          <MesaDePapeis
+            partida={partida}
+            visao={visao}
+            extras={extras}
+            setExtras={setExtras}
+            onFechar={() => setMesa(false)}
+            desvio={desvioMesa}
+            onDesvio={setDesvioMesa}
+            onRetangulo={() => {}}
+            camada={3}
+            ativa
+            onFocar={() => {}}
           />
         ) : null}
         {mercado ? (

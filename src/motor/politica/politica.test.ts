@@ -589,6 +589,29 @@ describe("veto", () => {
     expect(r.estado.paciencia.camara).toBe(sem.estado.paciencia.camara - 8);
   });
 
+  it("assinar explícito sanciona; ignorar vale o que o país declara", () => {
+    const entrada = ateAMesa(false);
+    const assinada = tramitar({
+      ...entrada,
+      pedidos: [{ tipo: "assinar", lei: "g" }],
+    });
+    expect(assinada.fatos.map((f) => f.tipo)).toContain("papel-assinado");
+    expect(assinada.votacoes[0]).toMatchObject({ muda_lei: true, valor: 0.16 });
+
+    const tacita = tramitar(entrada);
+    expect(tacita.fatos.map((f) => f.tipo)).toContain("papel-ignorado");
+    expect(tacita.votacoes[0].muda_lei).toBe(true);
+
+    const veto = tramitar({
+      ...entrada,
+      congresso: { ...emendavel, ignorar: "veto" },
+    });
+    expect(veto.fatos.map((f) => f.tipo)).toEqual(
+      expect.arrayContaining(["papel-ignorado"]),
+    );
+    expect(veto.votacoes[0].origem).toBe("derrubada-do-veto");
+  });
+
   it("veto que se mantém deixa a lei como estava", () => {
     const entrada = ateAMesa(true);
     const cadeiras: Record<string, number> = {
@@ -606,7 +629,7 @@ describe("veto", () => {
     };
     const r = tramitar({ ...entrada, congresso: hostil });
     expect(r.votacoes[0].muda_lei).toBe(false);
-    expect(r.fatos.map((f) => f.tipo)).toContain("veto");
+    expect(r.fatos.map((f) => f.tipo)).toContain("papel-vetado");
   });
 });
 

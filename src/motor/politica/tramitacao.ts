@@ -436,14 +436,30 @@ export function tramitar(e: EntradaTramitar): SaidaTramitar {
     return false;
   });
 
-  // 6. Sanção: a lei emendada que chegou à mesa no turno anterior.
+  // 6. Sanção: a lei emendada que chegou à mesa no turno anterior. O
+  // presidente assina, veta ou ignora; ignorar vale o que o país declara.
   const vetos = e.pedidos.filter((p) => p.tipo === "vetar");
+  const assinados = e.pedidos.filter((p) => p.tipo === "assinar");
   const pendentes = ec.sancao.filter((t) => t.desde <= turno);
   ec.sancao = ec.sancao.filter((t) => t.desde > turno);
   for (const t of pendentes) {
     const veto = vetos.find((p) => p.lei === t.lei);
+    const assinou = assinados.some((p) => p.lei === t.lei);
+    const ignorou = !veto && !assinou;
+    const vetar =
+      veto !== undefined || (ignorou && congresso.ignorar === "veto");
     const lei = leis[t.lei];
-    if (!veto) {
+    fato({
+      tipo: ignorou
+        ? "papel-ignorado"
+        : vetar
+          ? "papel-vetado"
+          : "papel-assinado",
+      turno,
+      tamanho: vetar ? "medio" : "pequeno",
+      sobre: t.lei,
+    });
+    if (!vetar) {
       votacoes.push(
         muda({
           lei: t.lei,
@@ -472,7 +488,7 @@ export function tramitar(e: EntradaTramitar): SaidaTramitar {
     const nova: Votacao = {
       ...v,
       origem: "derrubada-do-veto",
-      ...(veto.observacao ? { observacao: veto.observacao } : {}),
+      ...(veto?.observacao ? { observacao: veto.observacao } : {}),
     };
     if (v.aprovada) {
       votacoes.push(muda(nova));
@@ -485,7 +501,6 @@ export function tramitar(e: EntradaTramitar): SaidaTramitar {
       });
     } else {
       votacoes.push(nova);
-      fato({ tipo: "veto", turno, tamanho: "medio", sobre: t.lei });
     }
   }
 

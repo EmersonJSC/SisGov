@@ -404,9 +404,9 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 - ◐ **R17.4** Fichas por cima do mapa (retrato feito; atributos faltam).
 - ◐ **R17.5** Prévia de quem ganha e perde antes de propor.
 - ☐ **R17.12** Mapa por ministério e esfera (hoje 8 áreas antigas, cheias demais).
-- ☐ **R17.6** Mesa: carimbos assinar, vetar (com observação), recusar, encaminhar, pilha.
-- ☐ **R17.7** Famílias de papel: leis, crises, pedidos, ofertas, órgãos, partido, duvidosos; conteúdo sai dos números.
-- ☐ **R17.13** Prazos: ignorar tem consequência (lei passa sozinha ou cai, crise piora, aliado se afasta).
+- ◐ **R17.6** Mesa: carimbos assinar, vetar (com observação), recusar, encaminhar, pilha. (12/nov: feitos assinar e vetar com observação na janela Mesa; faltam recusar, encaminhar e pilha, que dependem de outras partes prontas: as outras famílias de papel.)
+- ◐ **R17.7** Famílias de papel: leis, crises, pedidos, ofertas, órgãos, partido, duvidosos; conteúdo sai dos números. (12/nov: só a família Leis, com papel de sanção e avisos; o texto sai da lei e do valor. Faltam crises, pedidos, ofertas, órgãos, partido e duvidosos, que dependem de outras partes prontas: o módulo de cada um.)
+- ◐ **R17.13** Prazos: ignorar tem consequência (lei passa sozinha ou cai, crise piora, aliado se afasta). (12/nov: papel de lei vale 1 turno; ignorar vira sanção tácita ou veto tácito pela regra do país, `ignorar`; falta crise e aliado se afastar, que dependem de outras partes prontas: Partido e as outras famílias.)
 - ☐ **R17.14** Papéis duvidosos deixam rastro (R6.21).
 - ☐ **R17.8** Encaminhar ao ministro: ele decide pela ficha.
 - ☐ **R17.9** A mídia lê a mesa.

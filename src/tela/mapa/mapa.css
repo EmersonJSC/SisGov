@@ -9129,3 +9129,61 @@ span.el-mini {
 .congresso-pauta li {
   padding: 4px 0;
 }
+
+.mesa-lista {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.papel {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: #ffffff0d;
+  border-left: 4px solid #7a5c2e;
+}
+
+.papel p {
+  margin: 4px 0;
+}
+
+.papel-assinar {
+  border-left-color: #2f7d4a;
+}
+
+.papel-vetar {
+  border-left-color: #a8402e;
+}
+
+.papel-aviso {
+  border-left-color: #6a6a6a;
+  font-size: 0.92em;
+}
+
+.papel-carimbos {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.papel-carimbos button {
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.papel-carimbos .ativo {
+  font-weight: 700;
+  outline: 2px solid currentColor;
+}
+
+.papel-observacao {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+p.congresso-mesa {
+  margin: 6px 0;
+  font-weight: 600;
+}

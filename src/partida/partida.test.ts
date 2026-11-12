@@ -1,5 +1,6 @@
 // Lei não legislada: o país não declarou, a partida abre e o jogador propõe.
 import { describe, expect, it } from "vitest";
+import { montarMesa } from "../motor";
 import { criarPartida, jogar, mesesParaEleicao, placarDaLei } from ".";
 
 describe("lei não legislada", () => {
@@ -189,5 +190,70 @@ describe("congresso novo", () => {
     expect(regras.leis["imposto-renda"].classe).toBe("absoluta");
     expect(regras.leis["duracao-mandato"].classe).toBe("mandato");
     expect(regras.leis["quorum-das-votacoes"].classe).toBe("constitucional");
+  });
+});
+
+describe("mesa", () => {
+  /** Uma lei emendada esperando carimbo, como o Congresso a deixa. */
+  function comPapel() {
+    const partida = criarPartida("brasil-2026", 1);
+    const espera = {
+      lei: "areas-protegidas",
+      valor: 0.2,
+      casa: "camara-volta" as const,
+      desde: 1,
+      ofertas: [],
+    };
+    const congresso = {
+      ...(partida.estado.congresso as NonNullable<
+        typeof partida.estado.congresso
+      >),
+      sancao: [espera],
+    };
+    return {
+      ...partida,
+      estado: {
+        ...partida.estado,
+        congresso,
+        mesa: montarMesa(0, [espera], []),
+      },
+    };
+  }
+
+  it("papel assinado vira lei e deixa um aviso na mesa", () => {
+    const partida = comPapel();
+    const id = partida.estado.mesa?.[0].id as string;
+    const depois = jogar(partida, 1, [
+      { tipo: "carimbar", papel: id, carimbo: "assinar" },
+    ]).estado;
+    expect(depois.leis["areas-protegidas"]).toBe(0.2);
+    expect(depois.fatos?.map((f) => f.tipo)).toContain("papel-assinado");
+    expect(depois.mesa?.map((p) => [p.tipo, p.motivo])).toEqual([
+      ["aviso", "lei-aprovada"],
+    ]);
+  });
+
+  it("papel vetado vai à derrubada do veto, com a observação", () => {
+    const partida = comPapel();
+    const id = partida.estado.mesa?.[0].id as string;
+    const depois = jogar(partida, 1, [
+      { tipo: "carimbar", papel: id, carimbo: "vetar", observacao: "caro" },
+    ]).estado;
+    expect(depois.fatos?.map((f) => f.tipo)).toContain("papel-vetado");
+    expect(depois.votacoes[0]).toMatchObject({
+      origem: "derrubada-do-veto",
+      observacao: "caro",
+    });
+  });
+
+  it("papel ignorado segue a regra do país: sanção tácita no Brasil", () => {
+    const depois = jogar(comPapel(), 1).estado;
+    expect(depois.fatos?.map((f) => f.tipo)).toContain("papel-ignorado");
+    expect(depois.leis["areas-protegidas"]).toBe(0.2);
+  });
+
+  it("a mesa não guarda papel resolvido", () => {
+    const depois = jogar(comPapel(), 2).estado;
+    expect(depois.mesa).toEqual([]);
   });
 });

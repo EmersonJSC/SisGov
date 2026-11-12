@@ -6,7 +6,7 @@ import {
   paisesDisponiveis,
   salvarPartida,
   type Partida,
-  type PedidoCongresso,
+  type Pedido,
   type PedidoMudarLei,
 } from "../partida";
 import { TelaMapa } from "./mapa/TelaMapa";
@@ -24,7 +24,7 @@ function lerSalvo(): string | null {
 export function App() {
   const [partida, setPartida] = useState<Partida | null>(null);
   const [fila, setFila] = useState<PedidoMudarLei[]>([]);
-  const [extras, setExtras] = useState<PedidoCongresso[]>([]);
+  const [extras, setExtras] = useState<Pedido[]>([]);
   const [aviso, setAviso] = useState("");
   const [pais, setPais] = useState(paisesDisponiveis()[0]);
   const [semente, setSemente] = useState(42);

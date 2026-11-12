@@ -11,6 +11,7 @@ export * from "./fatos";
 export * from "./estado";
 export * from "./grupos";
 export * from "./leis";
+export * from "./mesa";
 export * from "./mundo";
 export * from "./politica";
 export * from "./populacao";

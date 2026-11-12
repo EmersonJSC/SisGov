@@ -95,6 +95,7 @@ interface CongressoPais {
   senado?: Congresso["senado"];
   carga?: number;
   leis?: Congresso["leis"];
+  ignorar?: Congresso["ignorar"];
   partidos: (Congresso["partidos"][number] & { nome: string })[];
 }
 
@@ -311,6 +312,7 @@ export function criarPartida(
           ...(congresso.senado ? { senado: congresso.senado } : {}),
           ...(congresso.carga ? { carga: congresso.carga } : {}),
           ...(congresso.leis ? { leis: congresso.leis } : {}),
+          ...(congresso.ignorar ? { ignorar: congresso.ignorar } : {}),
           partidos: congresso.partidos.map((p) => ({
             id: p.id,
             cadeiras: p.cadeiras,

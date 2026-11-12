@@ -35,6 +35,11 @@ export interface Congresso {
   /** Leis que cada casa vota por turno; as demais esperam na fila. */
   carga?: number;
   leis?: LeisDoCongresso;
+  /**
+   * O que vale para o papel de lei que o presidente ignora até o prazo:
+   * sanção tácita (padrão) ou veto tácito.
+   */
+  ignorar?: "sancao" | "veto";
 }
 
 export type Voto = "sim" | "nao";
@@ -79,6 +84,12 @@ export interface PedidoVetar {
   observacao?: string;
 }
 
+/** Assina a lei emendada que está na mesa. */
+export interface PedidoAssinar {
+  tipo: "assinar";
+  lei: string;
+}
+
 /** Convida um partido da oposição para a base. */
 export interface PedidoConvidar {
   tipo: "convidar";
@@ -90,6 +101,7 @@ export type PedidoCongresso =
   | PedidoOferecer
   | PedidoDecretar
   | PedidoVetar
+  | PedidoAssinar
   | PedidoConvidar;
 
 export interface Oferta {

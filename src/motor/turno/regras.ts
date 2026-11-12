@@ -9,6 +9,7 @@ import type { RegraDaMoradia } from "../moradia";
 import type { RegraDoAtendimento } from "../atendimento";
 import type { RegraDoSaneamento } from "../saneamento";
 import type { Potencia } from "../mundo";
+import type { PedidoCarimbar } from "../mesa";
 import type { Congresso, PedidoCongresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
 
@@ -65,4 +66,4 @@ export interface Regras {
 export type { PedidoMudarLei } from "../politica";
 
 /** Todo pedido do jogador num turno (motor/politica). */
-export type Pedido = PedidoCongresso;
+export type Pedido = PedidoCongresso | PedidoCarimbar;

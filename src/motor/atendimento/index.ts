@@ -473,11 +473,8 @@ export function desigualdadeDaRede(
  * Parte das pessoas vacinadas com estas leis. Quem vacina é a rede: o programa só
  * alcança quem ela atende, e quem recusa fica de fora.
  */
-const vacinaAlvo = (
-  leis: LeisDoAtendimento,
-  fora: number,
-  atendidos: number,
-) => (fora + leis.programa * (1 - fora) * atendidos) * (1 - leis.recusa);
+const vacinaAlvo = (leis: LeisDoAtendimento, fora: number, atendidos: number) =>
+  (fora + leis.programa * (1 - fora) * atendidos) * (1 - leis.recusa);
 
 /** Pontos do índice de liberdade com estas leis. */
 const liberdadeAlvo = (regra: RegraDoAtendimento, leis: LeisDoAtendimento) =>

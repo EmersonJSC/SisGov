@@ -105,6 +105,8 @@ export function BarraDoTopo({
   onRecomecar,
   onMercado,
   onBolsa,
+  onMesa,
+  papeis,
 }: {
   partida: Partida;
   pedidos: number;
@@ -116,6 +118,9 @@ export function BarraDoTopo({
   onRecomecar: () => void;
   onMercado: () => void;
   onBolsa: () => void;
+  onMesa: () => void;
+  /** Papéis que esperam decisão do presidente. */
+  papeis: number;
 }) {
   const { estado } = partida;
   const e = estado.essenciais;
@@ -257,6 +262,9 @@ export function BarraDoTopo({
       </div>
       {aviso ? <span className="aviso-barra">{aviso}</span> : null}
       <nav className="abas-topo" aria-label="Partida">
+        <button type="button" className="aba-topo" onClick={onMesa}>
+          Mesa{papeis ? ` (${papeis})` : ""}
+        </button>
         <button type="button" className="aba-topo" onClick={onMercado}>
           Mercado
         </button>

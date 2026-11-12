@@ -30,7 +30,9 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 | `eleicao-vencida`        | Política     | grande  | — / — / —                                       |
 | `eleicao-perdida`        | Política     | grande  | — / — / —                                       |
 | `emenda`                 | Congresso    | médio   | lei / — / —                                     |
-| `veto`                   | Congresso    | médio   | lei / — / —                                     |
+| `papel-assinado`         | Mesa         | pequeno | lei / — / —                                     |
+| `papel-vetado`           | Mesa         | médio   | lei / — / —                                     |
+| `papel-ignorado`         | Mesa         | pequeno | lei / — / —                                     |
 | `veto-derrubado`         | Congresso    | grande  | lei / partidos contra / —                       |
 | `decreto`                | Congresso    | médio   | lei / — / posição da lei                        |
 | `decreto-derrubado`      | Congresso    | grande  | lei / partidos contra / —                       |

@@ -7,10 +7,11 @@ import { PACIENCIA_BAIXA, TERMOMETRO_CONVITE } from "../../motor";
 import {
   nomesPartidos,
   type Partida,
-  type PedidoCongresso,
+  type Pedido,
   type VisaoPartida,
 } from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
+import { papeisParaDecidir } from "./MesaDePapeis";
 import { ICONE_INTERFACE } from "./icones";
 
 const ORIGEM: Record<string, string> = {
@@ -58,8 +59,12 @@ function manchete(
       return `${quem} entra na base do governo`;
     case "emenda":
       return `Senado muda ${lei} e devolve à Câmara`;
-    case "veto":
+    case "papel-assinado":
+      return `Presidente assina ${lei}`;
+    case "papel-vetado":
       return `Presidente veta ${lei}`;
+    case "papel-ignorado":
+      return `Presidente deixa ${lei} sem resposta`;
     case "veto-derrubado":
       return `Congresso derruba o veto a ${lei}`;
     case "decreto":
@@ -97,8 +102,8 @@ export function ResultadoDoTurno({
   visao: VisaoPartida;
   onFechar: () => void;
   /** Vetos e convites já marcados neste turno. */
-  extras: PedidoCongresso[];
-  setExtras: (e: PedidoCongresso[]) => void;
+  extras: Pedido[];
+  setExtras: (e: Pedido[]) => void;
 }) {
   const { estado } = partida;
   const partidos = nomesPartidos(partida.pais);
@@ -141,7 +146,7 @@ export function ResultadoDoTurno({
         ) : null}
         {fatos.length ? (
           <section>
-            <h2>Fatos na mesa</h2>
+            <h2>Fatos do turno</h2>
             <ul className="fatos-turno">
               {fatos.map((f, i) => (
                 <li
@@ -188,40 +193,11 @@ export function ResultadoDoTurno({
                 ))}
               </ul>
             ) : null}
-            {estado.congresso.sancao.length ? (
-              <ul className="congresso-mesa">
-                {estado.congresso.sancao.map((t) => {
-                  const vetando = extras.some(
-                    (x) => x.tipo === "vetar" && x.lei === t.lei,
-                  );
-                  return (
-                    <li key={t.lei}>
-                      Na sua mesa: {lei(t.lei)?.nome ?? t.lei} →{" "}
-                      {valorPedido(t.lei, t.valor)}{" "}
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setExtras(
-                            vetando
-                              ? extras.filter(
-                                  (x) =>
-                                    !(x.tipo === "vetar" && x.lei === t.lei),
-                                )
-                              : [...extras, { tipo: "vetar", lei: t.lei }],
-                          )
-                        }
-                      >
-                        {vetando ? "Não vetar" : "Vetar"}
-                      </button>{" "}
-                      <small>
-                        {vetando
-                          ? "vai ser vetada ao passar o turno"
-                          : "sai como lei ao passar o turno"}
-                      </small>
-                    </li>
-                  );
-                })}
-              </ul>
+            {papeisParaDecidir(partida).length ? (
+              <p className="congresso-mesa">
+                Há {papeisParaDecidir(partida).length} papel(éis) na sua mesa
+                esperando carimbo.
+              </p>
             ) : null}
             <ul className="congresso-termometro">
               {Object.entries(estado.congresso.termometro)
