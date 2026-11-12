@@ -85,8 +85,18 @@ export function validarLei(
 
   if (dado.forma === "continua") {
     const fracao = dado.unidade === "fracao";
-    if (!fracao && dado.unidade !== "meses" && dado.unidade !== "anos")
-      erro("unidade", 'precisa ser "fracao", "meses" ou "anos"');
+    if (
+      !fracao &&
+      dado.unidade !== "meses" &&
+      dado.unidade !== "anos" &&
+      dado.unidade !== "livre"
+    )
+      erro("unidade", 'precisa ser "fracao", "meses", "anos" ou "livre"');
+    if (
+      dado.unidade === "livre" &&
+      (typeof dado.rotulo_unidade !== "string" || !dado.rotulo_unidade.trim())
+    )
+      erro("rotulo_unidade", 'unidade "livre" precisa do nome da unidade');
     const faixa = dado.faixa;
     if (!ehObjeto(faixa) || !ehNumero(faixa.min) || !ehNumero(faixa.max))
       erro("faixa", "precisa ter min e max numéricos");

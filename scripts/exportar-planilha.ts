@@ -214,9 +214,16 @@ const fora: string[] = [];
 const erros: string[] = [];
 
 /** "0 a 12 % do PIB" → faixa e unidade do motor, ou o motivo de não caber. */
-function faixaDe(
-  texto: string,
-): { min: number; max: number; unidade: string; gasto: boolean } | string {
+function faixaDe(texto: string):
+  | {
+      min: number;
+      max: number;
+      unidade: string;
+      rotulo?: string;
+      passo?: number;
+      gasto: boolean;
+    }
+  | string {
   const m = /^\s*([−\-+]?[\d.,]+)\s*a\s*([−\-+]?[\d.,]+)\s*(.*)$/.exec(texto);
   if (!m || texto.includes(";")) return "faixa sem formato simples";
   const min = numero(m[1].replace(/\./g, ""));
@@ -224,8 +231,16 @@ function faixaDe(
   const resto = m[3].trim();
   if (min === undefined || max === undefined || min < 0 || min >= max)
     return "faixa com números inválidos";
+  // acima de 100% não cabe em fração: vira unidade livre, de 5 em 5 pontos
   if (resto.startsWith("%") && max > 100)
-    return "acima de 100% ainda não existe no motor";
+    return {
+      min,
+      max,
+      unidade: "livre",
+      rotulo: resto,
+      passo: 5,
+      gasto: false,
+    };
   if (resto.startsWith("%"))
     return {
       min: min / 100,
@@ -236,7 +251,16 @@ function faixaDe(
   if (/^anos\b/.test(resto)) return { min, max, unidade: "anos", gasto: false };
   if (/^meses\b/.test(resto))
     return { min, max, unidade: "meses", gasto: false };
-  return `unidade "${resto}" ainda não existe no motor`;
+  if (!resto) return "faixa sem unidade";
+  // "x o salário médio" anda de 0,1 em 0,1; contagens (dias, mandatos, km/h) de 1 em 1
+  return {
+    min,
+    max,
+    unidade: "livre",
+    rotulo: resto,
+    passo: resto.startsWith("x ") ? 0.1 : 1,
+    gasto: false,
+  };
 }
 
 for (const l of aba("Leis")) {
@@ -318,11 +342,14 @@ for (const l of aba("Leis")) {
       continue;
     }
     const passoBruto = (faixa.max - faixa.min) / 20;
-    const passo = faixa.unidade === "fracao" ? Math.max(0.0005, passoBruto) : 1;
+    const passo =
+      faixa.passo ??
+      (faixa.unidade === "fracao" ? Math.max(0.0005, passoBruto) : 1);
     lei = {
       ...base,
       forma: "continua",
       unidade: faixa.unidade,
+      ...(faixa.rotulo ? { rotulo_unidade: faixa.rotulo } : {}),
       faixa: { min: faixa.min, max: faixa.max },
       passo: arred(passo * 10000) / 10000,
       ...(faixa.gasto ? { conta: "gasto" } : {}),

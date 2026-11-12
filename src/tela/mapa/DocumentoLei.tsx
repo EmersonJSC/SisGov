@@ -432,7 +432,7 @@ function ControleNumerico({
       <div className="regua-marcas" aria-hidden="true">
         {MARCAS_DA_REGUA.map((m) => (
           <span key={m} style={{ left: `${m * 100}%` }}>
-            {nivelDaLei(min + m * (max - min), lei.unidade)}
+            {nivelDaLei(min + m * (max - min), lei.unidade, lei.rotuloUnidade)}
           </span>
         ))}
       </div>
@@ -443,7 +443,7 @@ function ControleNumerico({
           <i className="regua-vigente" title="Em vigor" />
         </div>
         <output className="regua-pino" aria-live="polite">
-          {nivelDaLei(valor, lei.unidade)}
+          {nivelDaLei(valor, lei.unidade, lei.rotuloUnidade)}
         </output>
         <input
           type="range"
@@ -453,7 +453,7 @@ function ControleNumerico({
           value={valor}
           onChange={(e) => onValor(Number(e.target.value))}
           aria-label={`Nível de ${lei.nome}`}
-          aria-valuetext={nivelDaLei(valor, lei.unidade)}
+          aria-valuetext={nivelDaLei(valor, lei.unidade, lei.rotuloUnidade)}
         />
       </div>
       <p className="regua-aviso" aria-live="polite">

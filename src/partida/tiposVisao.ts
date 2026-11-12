@@ -86,6 +86,8 @@ export type VisaoLei = Readonly<{
     { tipo: "verba" } | { tipo: "imposto"; curva: readonly number[] }
   >;
   unidade: string;
+  /** Nome da unidade quando `unidade` é "livre" ("km/h", "mandatos"). */
+  rotuloUnidade?: string;
   opcoes?: readonly VisaoOpcao[];
   /** Opção mais próxima do nível em funcionamento. */
   opcaoAtual?: string;

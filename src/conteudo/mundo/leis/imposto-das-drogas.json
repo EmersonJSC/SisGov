@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "imposto-das-drogas",
+  "nome": "Imposto das drogas",
+  "descricao": "Imposto sobre o que é legal: bebida, cigarro e o que mais for liberado.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "% do preço",
+  "faixa": {
+    "min": 0,
+    "max": 200
+  },
+  "passo": 5,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "dependencia_de_drogas",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 0
+    },
+    {
+      "indice": "mercado_ilegal",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 0
+    }
+  ]
+}

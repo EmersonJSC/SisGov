@@ -8556,7 +8556,8 @@ span.el-mini {
   position: absolute;
   bottom: 38px;
   left: calc(var(--pino) / 2 + var(--p) * (100% - var(--pino)));
-  transform: translateX(-50%);
+  /* nas pontas o balão encosta na borda em vez de sair da régua */
+  transform: translateX(calc(var(--p) * -100%));
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--cor-zona);
@@ -8572,7 +8573,7 @@ span.el-mini {
 .regua-pino::after {
   content: "";
   position: absolute;
-  left: 50%;
+  left: clamp(12px, calc(var(--p) * 100%), calc(100% - 12px));
   bottom: -5px;
   margin-left: -5px;
   border: 5px solid transparent;

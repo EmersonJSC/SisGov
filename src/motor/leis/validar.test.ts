@@ -43,6 +43,25 @@ describe("validarLei", () => {
     ]);
   });
 
+  it("unidade livre: faixa em qualquer unidade, com o nome dela", () => {
+    const velocidade = {
+      ...valida,
+      calculo: undefined,
+      unidade: "livre",
+      rotulo_unidade: "km/h",
+      faixa: { min: 80, max: 140 },
+      passo: 1,
+    };
+    expect(campos(velocidade)).toEqual([]);
+    expect(campos({ ...velocidade, rotulo_unidade: undefined })).toEqual([
+      "rotulo_unidade",
+    ]);
+    expect(campos({ ...velocidade, rotulo_unidade: " " })).toEqual([
+      "rotulo_unidade",
+    ]);
+    expect(campos({ ...velocidade, conta: "gasto" })).toEqual(["unidade"]);
+  });
+
   it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {
     const gasto = { ...valida, calculo: undefined };
     expect(campos({ ...gasto, conta: "gasto" })).toEqual([]);

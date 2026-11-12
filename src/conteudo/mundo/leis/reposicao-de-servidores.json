@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "reposicao-de-servidores",
+  "nome": "Reposição de servidores",
+  "descricao": "Para cada servidor que se aposenta ou sai, quantos entram no lugar, de 0 a 1,5. Marca em 1 = repõe todos.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "% dos servidores que saem",
+  "faixa": {
+    "min": 0,
+    "max": 150
+  },
+  "passo": 5,
+  "bussola": {
+    "min": {
+      "economico": -0.3,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "folha_do_funcionalismo",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "atendimento",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 3
+    },
+    {
+      "indice": "qualidade_do_ensino",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 3
+    }
+  ]
+}

@@ -111,7 +111,12 @@ export function diferenca(valor: number, unidade: string): string {
   return `${valor < 0 ? "−" : "+"}${texto}${sufixo}`;
 }
 
-export function nivelDaLei(valor: number, unidade: string): string {
+export function nivelDaLei(
+  valor: number,
+  unidade: string,
+  rotulo?: string,
+): string {
+  if (unidade === "livre") return `${valorReal(valor)} ${rotulo ?? ""}`.trim();
   // vinculação (SG137): parte da receita que vai para a área
   if (unidade === "percentual_receita")
     return `${numero(valor, 2)}% da receita`;

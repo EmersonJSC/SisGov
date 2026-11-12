@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "salario-dos-militares",
+  "nome": "Salário dos militares",
+  "descricao": "Quanto um militar ganha. A régua marca \"igual a um civil do mesmo nível\".",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "% do salário civil do mesmo nível",
+  "faixa": {
+    "min": 50,
+    "max": 150
+  },
+  "passo": 5,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0.2
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "risco_de_golpe",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "poder_defensivo",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

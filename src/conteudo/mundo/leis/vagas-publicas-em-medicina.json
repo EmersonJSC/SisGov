@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "vagas-publicas-em-medicina",
+  "nome": "Vagas públicas em medicina",
+  "descricao": "Quantas vagas novas por ano o Estado abre nos cursos de medicina, enfermagem e outros de saúde. Régua: de 0 a 20 mil vagas novas por ano.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "mil vagas novas por ano",
+  "faixa": {
+    "min": 0,
+    "max": 20
+  },
+  "passo": 1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "profissionais_saude",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    },
+    {
+      "indice": "atendimento",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12
+    }
+  ]
+}

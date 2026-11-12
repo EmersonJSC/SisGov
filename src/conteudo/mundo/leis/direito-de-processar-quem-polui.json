@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "direito-de-processar-quem-polui",
+  "nome": "Direito de processar quem polui",
+  "descricao": "Até quanto o vizinho prejudicado pode cobrar na Justiça de quem poluiu.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "% do dano",
+  "faixa": {
+    "min": 0,
+    "max": 200
+  },
+  "passo": 5,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0,
+      "social": -0.4
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "qualidade_do_ar",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 6
+    }
+  ]
+}

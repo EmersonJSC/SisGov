@@ -197,6 +197,7 @@ function visaoDaLei(
       passo: lei.passo * escala,
       ...(alerta ? { alerta } : {}),
       unidade: lei.unidade === "fracao" ? "percentual_0_100" : lei.unidade,
+      ...(lei.rotulo_unidade ? { rotuloUnidade: lei.rotulo_unidade } : {}),
     };
   }
   // opção vale a posição dela na lista; a mandato é da Constituição

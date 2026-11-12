@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "id": "salario-minimo",
+  "nome": "Salário mínimo",
+  "descricao": "Piso do salário formal, medido pela renda média do país.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "x o salário médio",
+  "faixa": {
+    "min": 0,
+    "max": 3
+  },
+  "passo": 0.1,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "padrao_vida",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 0
+    },
+    {
+      "indice": "desigualdade",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 0
+    },
+    {
+      "indice": "emprego_informal",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 0
+    }
+  ]
+}

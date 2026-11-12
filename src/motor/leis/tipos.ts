@@ -39,8 +39,14 @@ interface LeiBase {
 
 export interface LeiContinua extends LeiBase {
   forma: "continua";
-  /** "fracao": faixa entre 0 e 1. "meses"/"anos": faixa na unidade real. */
-  unidade: "fracao" | "meses" | "anos";
+  /**
+   * "fracao": faixa entre 0 e 1. "meses"/"anos": faixa na unidade real.
+   * "livre": faixa na unidade de `rotulo_unidade` ("km/h", "mandatos",
+   * "% das penas atuais"); o motor só usa a posição na faixa.
+   */
+  unidade: "fracao" | "meses" | "anos" | "livre";
+  /** Nome da unidade na tela; obrigatório na unidade "livre". */
+  rotulo_unidade?: string;
   faixa: { min: number; max: number };
   passo: number;
   calculo?: { base: IdBase; modelo: "laffer" };

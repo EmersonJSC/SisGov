@@ -1,0 +1,40 @@
+{
+  "versao": 1,
+  "id": "piso-do-frete",
+  "nome": "Piso do frete",
+  "descricao": "Quem contrata não pode pagar menos do que uma % do custo da viagem do caminhoneiro.",
+  "camada": "jogabilidade",
+  "origem": "planilha",
+  "forma": "continua",
+  "unidade": "livre",
+  "rotulo_unidade": "% do custo da viagem",
+  "faixa": {
+    "min": 0,
+    "max": 150
+  },
+  "passo": 5,
+  "bussola": {
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.3,
+      "social": 0
+    }
+  },
+  "efeitos": [
+    {
+      "indice": "custo_do_frete",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    },
+    {
+      "indice": "preco_da_comida",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}
