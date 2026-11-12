@@ -902,9 +902,37 @@ pode mexer nesse filtro, pagando por isso.
     que toca o jogador chega como papel com prazo (proposta, ou aviso com 1
     turno para reagir). Guerra ou sanção entre dois países leves mexe nos
     preços do mercado do jogador.
-- **Ficha completa:** PIB e posição, lado na bússola, poder militar, o que
-  compra e vende, opinião sobre você, relação com cada outro país. **Ficha
-  simples:** PIB, lado, opinião e comércio com você.
+  - **Ficha leve (12/nov):** sistema de governo, regime (V-Dem), jeito, vizinhos; PIB, população, crescimento de tendência,
+    inflação, dívida e reservas, o que vende e compra (3 a 5 produtos), nível de
+    ciência por produto (quem empresta à Ciência e pesquisa), pobreza e
+    violência (geram migração e refugiados); lado na bússola, força do governo
+    (0–100), próxima eleição, poder militar (0–100), arma nuclear; opinião sobre
+    cada país e blocos. Os 30 usam a mesma ficha; os 10 jogáveis têm também o
+    estado inicial completo. Resto do mundo num bloco. Fontes públicas com data
+    (FMI, Banco Mundial, SIPRI, Comtrade, V-Dem).
+  - **Governos que já existiram (12/nov):** a ficha guarda os governos do país
+    nas últimas décadas como pontos na bússola, por período, sem nome de pessoa.
+    A cada eleição (no partido único, troca de ala) o novo governo cai perto de
+    um desses pontos, com pouca sorte: os EUA andam entre um governo como o de
+    2009–2017 e um como o de 2017–2021, sem sair disso. Crise econômica puxa
+    para pontos do lado oposto ao governo de hoje; muito imigrante chegando
+    puxa para os mais tradicionais.
+  - **Pontos dos estudos (12/nov):** o ponto de cada governo é a posição do
+    partido de quem governa: econômico do V-Party (V-Dem); costumes de 6 medidas
+    do V-Party ajustadas à escala GAL-TAN do Global Party Survey; Europa depois
+    de 2019 pelo CHES 2024. Aba "Países - governos". Dados baixados ficam em
+    `~/Documentos/SisGov-dados/`, fora do jogo, só para regular e montar a
+    história dos países.
+  - **Regime separado da bússola (12/nov):** a bússola diz o que o governo quer;
+    o regime (os 4 do V-Dem: democracia liberal, democracia eleitoral,
+    autocracia eleitoral, autocracia fechada) diz como ele segura o poder. Não
+    se somam; os dois pesam na opinião entre países. O sistema de governo (§12)
+    é uma terceira coluna.
+  - **A virada muda o país:** a opinião sobre todos é recalculada pela nova
+    distância; o lado econômico muda tarifa e vontade de acordo; costumes à
+    direita fecham a fronteira (refugiados procuram outro país); governo mais
+    autoritário gasta mais com militares e age mais (mais sanções, ameaças,
+    ataques); entra ou sai de blocos e alianças.
 - **Relação entre países:** cada par é aliado, amigo, neutro, rival ou inimigo;
   muda com o tempo e com o que você faz. Aproximar-se de A faz os rivais de A
   desconfiarem de você.
