@@ -31,6 +31,7 @@ import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
+import { arquivoPais } from "./paises";
 import { mesesDaObra, mesesDaRede, mesesDaSaude } from "./previa";
 import type {
   VisaoArea,
@@ -164,10 +165,11 @@ function visaoComumDaLei(
   valor: number | string,
   area: Area,
   t: TextosDaLei,
+  nomeLocal: string | undefined,
 ) {
   return {
     id: lei.id,
-    nome: t.nome ?? nomeDoId(lei.id),
+    nome: nomeLocal ?? t.nome ?? nomeDoId(lei.id),
     descricao: t.descricao ?? "",
     area: area.id,
     ministerios: [area.titulo],
@@ -241,9 +243,10 @@ function visaoDaLei(
   valor: number | string,
   area: Area,
   alerta: VisaoLei["alerta"],
+  nomeLocal?: string,
 ): VisaoLei {
   const t = textos.get(lei.id) ?? {};
-  const comum = visaoComumDaLei(lei, valor, area, t);
+  const comum = visaoComumDaLei(lei, valor, area, t, nomeLocal);
   return {
     ...comum,
     ...(lei.forma === "continua"
@@ -503,6 +506,12 @@ function ligacoesDaPartida(partida: Partida): VisaoLigacao[] {
 export function montarVisao(partida: Partida): VisaoPartida {
   const { regras, estado } = partida;
   const areaDa = areaDaLei();
+  // nome que o país dá à lei (Selic, Bolsa Família), em leis-vigentes.json
+  const nomesLocais =
+    arquivoPais<{ nomes?: Record<string, string> }>(
+      partida.pais,
+      "leis-vigentes",
+    ).nomes ?? {};
   for (const lei of Object.values(regras.leis))
     if (!areaDa.has(lei.id))
       throw new Error(`mundo/areas/areas.json › lei "${lei.id}" sem área`);
@@ -519,6 +528,7 @@ export function montarVisao(partida: Partida): VisaoPartida {
             estado.leis[id],
             areaDa.get(id)!,
             alertaDaLei(regras.leis[id], regras, estado),
+            nomesLocais[id],
           ),
           regras.leis[id],
           regras,

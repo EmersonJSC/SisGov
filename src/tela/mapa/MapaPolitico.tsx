@@ -54,7 +54,7 @@ import {
 } from "./intensidade";
 import { Icone, IconeSvg } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
-import { iconeLei } from "./iconesPersonalizados";
+import { iconeIndice, iconeLei } from "./iconesPersonalizados";
 import { familiaDaLei } from "./familia";
 import {
   PRESIDENCIA,
@@ -864,7 +864,10 @@ const NoBolha = memo(function NoBolha({
               />
             ) : null}
             <IconeSvg
-              nome={ICONE_BOLHA[bolha.id] ?? "chart-line"}
+              nome={iconeIndice(
+                bolha.id,
+                ICONE_BOLHA[bolha.id] ?? "chart-line",
+              )}
               tamanho={r * 1.05}
               cor="var(--icone)"
             />

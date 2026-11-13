@@ -1,0 +1,21 @@
+// Ícones das leis de justica-e-prisoes: nome no game-icons.net (jogo.ts).
+export const JUSTICA: Record<string, string> = {
+  "defensoria-publica": "teacher",
+  "delacao-premiada": "hand",
+  "educacao-na-prisao": "open-book",
+  "isolamento-de-chefes": "prisoner",
+  "maioridade-penal": "baby-face",
+  "parte-da-pena-cumprida-presa": "empty-hourglass",
+  "pena-de-morte": "coffin",
+  "pena-maior-para-quem-repete-o-crime": "recycle",
+  "penas-alternativas": "hammer-nails",
+  "prazo-para-ver-o-juiz": "alarm-clock",
+  "presidio-terceirizado": "briefcase",
+  "prisao-antes-do-julgamento": "imprisoned",
+  "remicao-de-pena": "scissors",
+  "separacao-de-presos": "duality-mask",
+  "tamanho-das-penas": "weight",
+  "tribunal-de-drogas": "pill",
+  "verba-da-justica": "banging-gavel",
+  "verba-dos-presidios": "handcuffs",
+};

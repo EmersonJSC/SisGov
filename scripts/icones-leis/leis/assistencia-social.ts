@@ -1,0 +1,21 @@
+// Ícones das leis de assistencia-social: nome no game-icons.net (jogo.ts).
+export const ASSISTENCIA: Record<string, string> = {
+  "abrigos-para-quem-vive-na-rua": "camping-tent",
+  "auxilio-para-pessoas-com-deficiencia": "heart-plus",
+  "beneficio-com-contrapartida": "contract",
+  "beneficio-por-filho": "baby-face",
+  "comida-do-estado": "bread",
+  "credito-para-quem-trabalha": "hammer-nails",
+  "doacao-com-deducao": "take-my-money",
+  "microcredito": "coins",
+  "parte-do-beneficio-em-comida": "bread-slice",
+  "pente-fino-nos-beneficios": "magnifying-glass",
+  "prazo-maximo-no-beneficio": "hourglass",
+  "quem-recebe-a-transferencia": "meeple",
+  "renda-basica-para-todos": "meeple-group",
+  "repasse-a-entidades-religiosas": "church",
+  "tarifa-social-de-agua": "water-drop",
+  "tarifa-social-de-gas": "gas-stove",
+  "tarifa-social-de-luz": "light-bulb",
+  "transferencia-renda": "receive-money",
+};

@@ -19,6 +19,9 @@
     "contas": "vite-node scripts/contas.ts",
     "gasto": "vite-node scripts/gasto.ts",
     "impostos": "vite-node scripts/impostos.ts",
+    "icones": "vite-node scripts/icones-leis/gerar.ts",
+    "icones:faltam": "vite-node scripts/icones-leis/faltam.ts",
+    "icones:buscar": "vite-node scripts/icones-leis/buscar.ts --",
     "ambiente": "vite-node scripts/ambiente.ts",
     "paises": "vite-node scripts/paises.ts",
     "pops": "vite-node scripts/pops.ts",
@@ -36,6 +39,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@iconify-json/game-icons": "^1.2.4",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.4.1",

@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "base": "src/assets/svg",
+  "icons": {
+    "agricultura-e-pesca": {
+      "area": "agricultura-e-pesca",
+      "name": "Agricultura e pesca",
+      "path": "esferas/agricultura-e-pesca.svg"
+    },
+    "assistencia-social": {
+      "area": "assistencia-social",
+      "name": "Assistência social",
+      "path": "esferas/assistencia-social.svg"
+    },
+    "ciencia-e-pesquisa": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Ciência e pesquisa",
+      "path": "esferas/ciencia-e-pesquisa.svg"
+    },
+    "comercio-exterior-e-capital": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Comércio exterior e capital",
+      "path": "esferas/comercio-exterior-e-capital.svg"
+    },
+    "comunicacao-e-tecnologia": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Comunicação e tecnologia",
+      "path": "esferas/comunicacao-e-tecnologia.svg"
+    },
+    "cultura-e-esporte": {
+      "area": "cultura-e-esporte",
+      "name": "Cultura e esporte",
+      "path": "esferas/cultura-e-esporte.svg"
+    },
+    "defesa": {
+      "area": "defesa",
+      "name": "Defesa",
+      "path": "esferas/defesa.svg"
+    },
+    "defesa-civil": {
+      "area": "defesa-civil",
+      "name": "Defesa civil",
+      "path": "esferas/defesa-civil.svg"
+    },
+    "direitos-e-liberdades": {
+      "area": "direitos-e-liberdades",
+      "name": "Direitos e liberdades",
+      "path": "esferas/direitos-e-liberdades.svg"
+    },
+    "educacao": {
+      "area": "educacao",
+      "name": "Educação",
+      "path": "esferas/educacao.svg"
+    },
+    "empresas-e-estatais": {
+      "area": "empresas-e-estatais",
+      "name": "Empresas e estatais",
+      "path": "esferas/empresas-e-estatais.svg"
+    },
+    "energia": {
+      "area": "energia",
+      "name": "Energia",
+      "path": "esferas/energia.svg"
+    },
+    "estado-e-eleicoes": {
+      "area": "estado-e-eleicoes",
+      "name": "Estado e eleições",
+      "path": "esferas/estado-e-eleicoes.svg"
+    },
+    "imigracao": {
+      "area": "imigracao",
+      "name": "Imigração",
+      "path": "esferas/imigracao.svg"
+    },
+    "impostos": {
+      "area": "impostos",
+      "name": "Impostos",
+      "path": "esferas/impostos.svg"
+    },
+    "infraestrutura-e-transporte": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Infraestrutura e transporte",
+      "path": "esferas/infraestrutura-e-transporte.svg"
+    },
+    "justica-e-prisoes": {
+      "area": "justica-e-prisoes",
+      "name": "Justiça e prisões",
+      "path": "esferas/justica-e-prisoes.svg"
+    },
+    "meio-ambiente": {
+      "area": "meio-ambiente",
+      "name": "Meio ambiente",
+      "path": "esferas/meio-ambiente.svg"
+    },
+    "mineracao-e-petroleo": {
+      "area": "mineracao-e-petroleo",
+      "name": "Mineração e petróleo",
+      "path": "esferas/mineracao-e-petroleo.svg"
+    },
+    "moeda-e-bancos": {
+      "area": "moeda-e-bancos",
+      "name": "Moeda e bancos",
+      "path": "esferas/moeda-e-bancos.svg"
+    },
+    "moradia": {
+      "area": "moradia",
+      "name": "Moradia",
+      "path": "esferas/moradia.svg"
+    },
+    "orcamento-e-divida": {
+      "area": "orcamento-e-divida",
+      "name": "Orçamento e dívida",
+      "path": "esferas/orcamento-e-divida.svg"
+    },
+    "previdencia": {
+      "area": "previdencia",
+      "name": "Previdência",
+      "path": "esferas/previdencia.svg"
+    },
+    "relacoes-exteriores": {
+      "area": "relacoes-exteriores",
+      "name": "Relações exteriores",
+      "path": "esferas/relacoes-exteriores.svg"
+    },
+    "saneamento": {
+      "area": "saneamento",
+      "name": "Saneamento",
+      "path": "esferas/saneamento.svg"
+    },
+    "saude": {
+      "area": "saude",
+      "name": "Saúde",
+      "path": "esferas/saude.svg"
+    },
+    "seguranca-publica": {
+      "area": "seguranca-publica",
+      "name": "Segurança pública",
+      "path": "esferas/seguranca-publica.svg"
+    },
+    "terra": {
+      "area": "terra",
+      "name": "Terra",
+      "path": "esferas/terra.svg"
+    },
+    "trabalho": {
+      "area": "trabalho",
+      "name": "Trabalho",
+      "path": "esferas/trabalho.svg"
+    },
+    "vicios": {
+      "area": "vicios",
+      "name": "Vícios",
+      "path": "esferas/vicios.svg"
+    }
+  }
+}

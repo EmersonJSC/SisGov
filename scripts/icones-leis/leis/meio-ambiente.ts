@@ -1,0 +1,20 @@
+// Ícones das leis de meio-ambiente: nome no game-icons.net (jogo.ts).
+export const MEIO_AMBIENTE: Record<string, string> = {
+  "areas-protegidas": "forest",
+  "compromisso-climatico-corte": "poison-cloud",
+  "compromisso-climatico-prazo": "calendar",
+  "direito-de-processar-quem-polui": "gavel",
+  "forcas-armadas-na-floresta": "military-fort",
+  "imposto-poluicao": "smoke-bomb",
+  "independencia-do-orgao-ambiental": "freedom-dove",
+  "licenciamento-ambiental": "stamper",
+  "limite-de-poluicao-do-ar": "gas-mask",
+  "mercado-de-carbono-cotas-de-graca": "ticket",
+  "mercado-de-carbono-teto-de-emissoes": "barrier",
+  "o-que-acontece-com-quem-e-pego": "handcuffs",
+  "pagamento-por-floresta-em-pe": "tree-growth",
+  "policia-ambiental": "police-badge",
+  "prazo-para-licenca-ambiental": "hourglass",
+  "quem-paga-pelo-descarte": "trash-can",
+  "terras-indigenas": "totem",
+};

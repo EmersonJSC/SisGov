@@ -107,6 +107,9 @@ interface EstadoInicialPais {
 
 interface LeisVigentes {
   versao: 1;
+  /** Nome local de algumas leis (ex.: "Selic"); a tela usa no lugar do nome do mundo. */
+  nomes?: Record<string, string>;
+  /** Só as leis que o país tem; a que falta começa não promulgada. */
   leis: Record<string, ValorLei>;
 }
 
@@ -537,6 +540,11 @@ export function criarPartida(
       : congressoDasRegras(semSenado ? semOSenado(congresso) : congresso),
   };
   conferirGasto(pais, regras, vigentes, inicial.essenciais.gasto_publico);
+  for (const id of Object.keys(vigentes.nomes ?? {}))
+    if (!leis[id])
+      throw new Error(
+        `país "${pais}" › leis-vigentes.nomes: lei "${id}" não existe`,
+      );
   const estado = estadoInicial(regras, {
     semente,
     essenciais: inicial.essenciais,

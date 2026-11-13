@@ -27,6 +27,7 @@ import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
 import { MesaDePapeis } from "./MesaDePapeis";
+import { NaoPromulgadas, naoPromulgadas } from "./NaoPromulgadas";
 import { Pregao, pregaoInicial } from "./Pregao";
 import { MapaPolitico } from "./MapaPolitico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
@@ -64,9 +65,14 @@ export function TelaMapa({
   aviso,
 }: Props) {
   const visao = useMemo(() => montarVisao(partida), [partida]);
-  const base = useMemo(() => montarBase(visao), [visao]);
-  const indice = useMemo(() => indexarRelacoes(visao), [visao]);
-  const fundo = useMemo(() => ligacoesDeFundo(visao), [visao]);
+  // o mapa só tem as leis promulgadas; as outras vêm pela janela do botão
+  const visaoDoMapa = useMemo(
+    () => ({ ...visao, leis: visao.leis.filter((l) => !l.naoLegislada) }),
+    [visao],
+  );
+  const base = useMemo(() => montarBase(visaoDoMapa), [visaoDoMapa]);
+  const indice = useMemo(() => indexarRelacoes(visaoDoMapa), [visaoDoMapa]);
+  const fundo = useMemo(() => ligacoesDeFundo(visaoDoMapa), [visaoDoMapa]);
   const [aberta, setAberta] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string | null>(null);
   const [janela, setJanela] = useState<string | null>(null);
@@ -81,6 +87,8 @@ export function TelaMapa({
   const [desvioEleicao, setDesvioEleicao] = useState<Desvio>(CENTRO);
   const [programas, setProgramas] = useState(false);
   const [desvioProgramas, setDesvioProgramas] = useState<Desvio>(CENTRO);
+  const [naoProm, setNaoProm] = useState(false);
+  const [desvioNaoProm, setDesvioNaoProm] = useState<Desvio>(CENTRO);
   const [mesa, setMesa] = useState(false);
   const [desvioMesa, setDesvioMesa] = useState<Desvio>(CENTRO);
   const [mercado, setMercado] = useState(false);
@@ -182,7 +190,7 @@ export function TelaMapa({
       />
       <main className="area-mapa">
         <MapaPolitico
-          visao={visao}
+          visao={visaoDoMapa}
           base={base}
           indice={indice}
           fundo={fundo}
@@ -246,6 +254,26 @@ export function TelaMapa({
             camada={0}
             ativa
             onFocar={() => setSelecionado(lei.id)}
+          />
+        ) : null}
+        <button
+          type="button"
+          className="np-botao"
+          onClick={() => setNaoProm(!naoProm)}
+        >
+          Leis não promulgadas ({naoPromulgadas(visao).length})
+        </button>
+        {naoProm ? (
+          <NaoPromulgadas
+            visao={visao}
+            onEscolher={selecionar}
+            onFechar={() => setNaoProm(false)}
+            desvio={desvioNaoProm}
+            onDesvio={setDesvioNaoProm}
+            onRetangulo={() => {}}
+            camada={5}
+            ativa
+            onFocar={() => {}}
           />
         ) : null}
         {governo ? (

@@ -9,7 +9,7 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 Construindo pela **ordem de construir** de [docs/jogo/requisitos.md](docs/jogo/requisitos.md).
 Feitos: 1 a 9 (9 = Começo da partida, commit 6a1ccf4d). Agora o **passo 10: padronizar o visual**,
-começando pela barra do topo (NÃO commitado):
+barra do topo commitada (0963da58); **ícones das leis NÃO commitados**:
 
 - `src/tela/estilo/mesa.css`: cores, fontes e a placa de ferro (`.placa-ferro`) da Art Bible,
   comuns à tela inicial e à barra. Tokens em `:root`.
@@ -26,10 +26,23 @@ começando pela barra do topo (NÃO commitado):
 - Retrato das pessoas: DiceBear Notionists, provisório (o autor não gostou: "todos parecem a mesma
   pessoa"). Trocar só `src/tela/inicio/aparencia.ts` e `Foto.tsx`.
 
+- **Ícones (NÃO commitados):** o autor escolheu o **game-icons.net** (CC BY 3.0, crédito no jogo) para
+  as **512 leis** (selo + bolinha da esfera no pé) e os **147 índices** (sem bolinha); as 30 esferas
+  seguem desenhadas à mão. Pacote `@iconify-json/game-icons` (dev). Receita: skill `sisgov-icones`;
+  `npm run icones` gera SVGs, manifests e `docs/arte/folha-de-icones.html`; `npm run icones:buscar -- <palavra>`
+  acha o nome do ícone. Conferidos só na folha, **não vistos dentro do jogo**; alguns nomes são
+  chute (ex.: `contract` vira setas, não papel) e o autor vai apontar os que não leem.
+
+- **Mapa só com leis promulgadas (NÃO commitado):** as que o país não tem saem do mapa e ficam no botão
+  "Leis não promulgadas" (canto do mapa, `src/tela/mapa/NaoPromulgadas.tsx`); escolher uma abre a folha
+  para promulgar. **Brasil montado** em `leis-vigentes.json`: só as leis que o Brasil tem (436; 76 não
+  promulgadas) e `nomes` com o nome local de 34 leis (Selic, Bolsa Família, Lei Maria da Penha...),
+  lido em `src/partida/visao.ts`. Critério: lei no "nada" da régua ou da escada saiu.
+
 ## Próximo
 
-Esperar o autor dizer onde fica cada coisa que saiu da barra; depois seguir padronizando o visual
-(`mapa.css` ainda tem regras velhas da barra, `.chip-dica` e `.aba-topo` são usadas por outras telas).
+Autor olhar a folha de ícones e apontar os que não leem bem (trocar só o nome no arquivo da esfera). Depois: o mapa (bolhas como selos de papel, ícones de área). Onde fica cada coisa
+que saiu da barra: o autor vai dizer.
 
 ## Pendências do autor
 
@@ -40,6 +53,8 @@ Esperar o autor dizer onde fica cada coisa que saiu da barra; depois seguir padr
   alta no começo (R4.9); pessoas envelhecerem e morrerem (R6.6).
 
 ## Armadilhas
+
+- `manifest-leis.json` tem 220 ids de leis antigas que não existem mais (e 14 SVGs soltos em `src/assets/svg/leis/`); limpar é um pedido à parte.
 
 - Não abrir docs/v1/desenho, docs/referencia, docs/arte/PROMPTS.md, docs/conteudo/rede.md, docs/Exemplos.
 - Nada é commitado sem a palavra do autor; `arquivo/`, `public/arte`, `public/demos`,

@@ -1,0 +1,41 @@
+/* Botão e janela das leis não promulgadas (classes np-). */
+.np-botao {
+  position: absolute;
+  left: 16px;
+  bottom: 64px;
+  z-index: 20;
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+  color: var(--tinta, #2a2118);
+  background: var(--papel, #efe4cc);
+  border: 2px solid var(--tinta, #2a2118);
+  border-radius: 4px;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 0.35);
+}
+
+.np-botao:hover {
+  filter: brightness(1.06);
+}
+
+.np-lista {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.np-lista button {
+  width: 100%;
+  padding: 6px 4px;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.15);
+}
+
+.np-lista button:hover {
+  background: rgb(0 0 0 / 0.06);
+}

@@ -148,9 +148,9 @@
       "path": "leis/educacao/concessoes-de-radio-e-tv.svg"
     },
     "conselho-fiscal-independente": {
-      "area": "economia",
+      "area": "orcamento-e-divida",
       "name": "Conselho fiscal independente",
-      "path": "leis/economia/conselho-fiscal-independente.svg"
+      "path": "leis/orcamento-e-divida/conselho-fiscal-independente.svg"
     },
     "conteudo-local": {
       "area": "empresas",
@@ -218,9 +218,9 @@
       "path": "leis/trabalho/custo-de-processar-na-justica-do-trabalho.svg"
     },
     "defesa-comercial": {
-      "area": "empresas",
+      "area": "comercio-exterior-e-capital",
       "name": "Defesa comercial",
-      "path": "leis/empresas/defesa-comercial.svg"
+      "path": "leis/comercio-exterior-e-capital/defesa-comercial.svg"
     },
     "defesa-da-concorrencia": {
       "area": "empresas",
@@ -228,9 +228,9 @@
       "path": "leis/empresas/defesa-da-concorrencia.svg"
     },
     "delacao-premiada": {
-      "area": "seguranca",
+      "area": "justica-e-prisoes",
       "name": "Delação premiada",
-      "path": "leis/seguranca/delacao-premiada.svg"
+      "path": "leis/justica-e-prisoes/delacao-premiada.svg"
     },
     "destino-do-resultado-fiscal": {
       "area": "economia",
@@ -263,9 +263,9 @@
       "path": "leis/educacao/educacao-domiciliar.svg"
     },
     "energia-nuclear": {
-      "area": "infraestrutura",
-      "name": "Energia nuclear",
-      "path": "leis/infraestrutura/energia-nuclear.svg"
+      "area": "energia",
+      "name": "Investimento em usinas nucleares",
+      "path": "leis/energia/energia-nuclear.svg"
     },
     "ensino-obrigatorio": {
       "area": "educacao",
@@ -373,9 +373,9 @@
       "path": "leis/seguranca/fundo-seguranca-publica.svg"
     },
     "fundo-soberano": {
-      "area": "economia",
+      "area": "orcamento-e-divida",
       "name": "Fundo soberano",
-      "path": "leis/economia/fundo-soberano.svg"
+      "path": "leis/orcamento-e-divida/fundo-soberano.svg"
     },
     "garantia-de-comida": {
       "area": "previdencia",
@@ -608,9 +608,9 @@
       "path": "leis/trabalho/licenca-parental.svg"
     },
     "licenciamento-ambiental": {
-      "area": "ambiente",
+      "area": "meio-ambiente",
       "name": "Licenciamento ambiental",
-      "path": "leis/ambiente/licenciamento-ambiental.svg"
+      "path": "leis/meio-ambiente/licenciamento-ambiental.svg"
     },
     "licenciamento-de-obras-e-empresas": {
       "area": "infraestrutura",
@@ -623,9 +623,9 @@
       "path": "leis/saude/lista-de-remedios-e-incorporacao.svg"
     },
     "maioridade-penal": {
-      "area": "seguranca",
+      "area": "justica-e-prisoes",
       "name": "Maioridade penal",
-      "path": "leis/seguranca/maioridade-penal.svg"
+      "path": "leis/justica-e-prisoes/maioridade-penal.svg"
     },
     "mandato-do-banco-central": {
       "area": "economia",
@@ -643,9 +643,9 @@
       "path": "leis/economia/meta-de-resultado-primario.svg"
     },
     "missoes-de-paz": {
-      "area": "seguranca",
+      "area": "defesa",
       "name": "Missões de paz",
-      "path": "leis/seguranca/missoes-de-paz.svg"
+      "path": "leis/defesa/missoes-de-paz.svg"
     },
     "modelo-do-sistema-de-saude": {
       "area": "saude",
@@ -713,9 +713,9 @@
       "path": "leis/governo/partidos.svg"
     },
     "pena-de-morte": {
-      "area": "seguranca",
+      "area": "justica-e-prisoes",
       "name": "Pena de morte",
-      "path": "leis/seguranca/pena-de-morte.svg"
+      "path": "leis/justica-e-prisoes/pena-de-morte.svg"
     },
     "penas-e-progressao": {
       "area": "seguranca",
@@ -918,9 +918,9 @@
       "path": "leis/governo/reeleicao.svg"
     },
     "refugio-e-asilo": {
-      "area": "direitos",
+      "area": "imigracao",
       "name": "Refúgio e asilo",
-      "path": "leis/direitos/refugio-e-asilo.svg"
+      "path": "leis/imigracao/refugio-e-asilo.svg"
     },
     "regime-cambial": {
       "area": "economia",
@@ -1004,7 +1004,7 @@
     },
     "salario-minimo": {
       "area": "trabalho",
-      "name": "Valor do salário mínimo",
+      "name": "Salário mínimo",
       "path": "leis/trabalho/salario-minimo.svg"
     },
     "saude-mental": {
@@ -1018,9 +1018,9 @@
       "path": "leis/trabalho/seguro-desemprego.svg"
     },
     "servico-militar": {
-      "area": "seguranca",
-      "name": "Serviço militar",
-      "path": "leis/seguranca/servico-militar.svg"
+      "area": "defesa",
+      "name": "Serviço militar obrigatório",
+      "path": "leis/defesa/servico-militar.svg"
     },
     "sistema-de-governo": {
       "area": "governo",
@@ -1038,9 +1038,9 @@
       "path": "leis/empresas/tarifas-de-importacao.svg"
     },
     "taxa-basica-de-juros": {
-      "area": "empresas",
-      "name": "Juros básicos",
-      "path": "leis/empresas/taxa-basica-de-juros.svg"
+      "area": "moeda-e-bancos",
+      "name": "Taxa básica de juros",
+      "path": "leis/moeda-e-bancos/taxa-basica-de-juros.svg"
     },
     "terceirizacao": {
       "area": "trabalho",
@@ -1048,9 +1048,9 @@
       "path": "leis/trabalho/terceirizacao.svg"
     },
     "terras-indigenas": {
-      "area": "ambiente",
+      "area": "meio-ambiente",
       "name": "Terras indígenas",
-      "path": "leis/ambiente/terras-indigenas.svg"
+      "path": "leis/meio-ambiente/terras-indigenas.svg"
     },
     "trabalho-infantil-e-aprendizagem": {
       "area": "trabalho",
@@ -1203,14 +1203,2464 @@
       "path": "leis/empresas/volume-de-incentivo-a-industria.svg"
     },
     "voto-obrigatorio": {
-      "area": "governo",
+      "area": "estado-e-eleicoes",
       "name": "Voto obrigatório",
-      "path": "leis/governo/voto-obrigatorio.svg"
+      "path": "leis/estado-e-eleicoes/voto-obrigatorio.svg"
     },
     "vouchers-escolares": {
       "area": "educacao",
       "name": "Vouchers escolares",
       "path": "leis/educacao/vouchers-escolares.svg"
+    },
+    "desconto-por-filho": {
+      "area": "impostos",
+      "name": "Desconto por filho",
+      "path": "leis/impostos/desconto-por-filho.svg"
+    },
+    "faixa-sem-imposto-de-renda": {
+      "area": "impostos",
+      "name": "Faixa sem Imposto de renda",
+      "path": "leis/impostos/faixa-sem-imposto-de-renda.svg"
+    },
+    "fiscalizacao-da-receita": {
+      "area": "impostos",
+      "name": "Fiscalização da Receita",
+      "path": "leis/impostos/fiscalizacao-da-receita.svg"
+    },
+    "imposto-consumo": {
+      "area": "impostos",
+      "name": "Imposto sobre consumo",
+      "path": "leis/impostos/imposto-consumo.svg"
+    },
+    "imposto-de-saida": {
+      "area": "impostos",
+      "name": "Imposto de saída",
+      "path": "leis/impostos/imposto-de-saida.svg"
+    },
+    "imposto-empresas": {
+      "area": "impostos",
+      "name": "Imposto sobre empresas",
+      "path": "leis/impostos/imposto-empresas.svg"
+    },
+    "imposto-renda": {
+      "area": "impostos",
+      "name": "Imposto de renda",
+      "path": "leis/impostos/imposto-renda.svg"
+    },
+    "imposto-sobre-aplicacoes-grandes-quanto-cobra": {
+      "area": "impostos",
+      "name": "Imposto sobre aplicações grandes: quanto cobra",
+      "path": "leis/impostos/imposto-sobre-aplicacoes-grandes-quanto-cobra.svg"
+    },
+    "imposto-sobre-aplicacoes-grandes-a-partir-de-quanto-cobra": {
+      "area": "impostos",
+      "name": "Imposto sobre aplicações grandes: a partir de quanto cobra",
+      "path": "leis/impostos/imposto-sobre-aplicacoes-grandes-a-partir-de-quanto-cobra.svg"
+    },
+    "imposto-sobre-bancos": {
+      "area": "impostos",
+      "name": "Imposto sobre bancos",
+      "path": "leis/impostos/imposto-sobre-bancos.svg"
+    },
+    "imposto-sobre-bens-de-luxo": {
+      "area": "impostos",
+      "name": "Imposto sobre bens de luxo",
+      "path": "leis/impostos/imposto-sobre-bens-de-luxo.svg"
+    },
+    "imposto-sobre-dividendos": {
+      "area": "impostos",
+      "name": "Imposto sobre dividendos",
+      "path": "leis/impostos/imposto-sobre-dividendos.svg"
+    },
+    "imposto-sobre-heranca": {
+      "area": "impostos",
+      "name": "Imposto sobre herança",
+      "path": "leis/impostos/imposto-sobre-heranca.svg"
+    },
+    "imposto-sobre-imovel-caro-quanto-cobra": {
+      "area": "impostos",
+      "name": "Imposto sobre imóvel caro: quanto cobra",
+      "path": "leis/impostos/imposto-sobre-imovel-caro-quanto-cobra.svg"
+    },
+    "imposto-sobre-imovel-caro-a-partir-de-quanto-cobra": {
+      "area": "impostos",
+      "name": "Imposto sobre imóvel caro: a partir de quanto cobra",
+      "path": "leis/impostos/imposto-sobre-imovel-caro-a-partir-de-quanto-cobra.svg"
+    },
+    "imposto-sobre-movimentacao-financeira": {
+      "area": "impostos",
+      "name": "Imposto sobre movimentação financeira",
+      "path": "leis/impostos/imposto-sobre-movimentacao-financeira.svg"
+    },
+    "incentivo-a-setores": {
+      "area": "impostos",
+      "name": "Incentivo a setores",
+      "path": "leis/impostos/incentivo-a-setores.svg"
+    },
+    "incentivo-ao-investimento": {
+      "area": "impostos",
+      "name": "Incentivo ao investimento",
+      "path": "leis/impostos/incentivo-ao-investimento.svg"
+    },
+    "isencao-para-igrejas": {
+      "area": "impostos",
+      "name": "Isenção para igrejas",
+      "path": "leis/impostos/isencao-para-igrejas.svg"
+    },
+    "progressividade": {
+      "area": "impostos",
+      "name": "Progressividade",
+      "path": "leis/impostos/progressividade.svg"
+    },
+    "sigilo-bancario": {
+      "area": "impostos",
+      "name": "Sigilo bancário",
+      "path": "leis/impostos/sigilo-bancario.svg"
+    },
+    "teto-da-carga-de-impostos": {
+      "area": "impostos",
+      "name": "Teto da carga de impostos",
+      "path": "leis/impostos/teto-da-carga-de-impostos.svg"
+    },
+    "abertura-planos": {
+      "area": "saude",
+      "name": "Abertura de planos",
+      "path": "leis/saude/abertura-planos.svg"
+    },
+    "ajuda-para-comprar-plano": {
+      "area": "saude",
+      "name": "Ajuda para comprar plano",
+      "path": "leis/saude/ajuda-para-comprar-plano.svg"
+    },
+    "aprovacao-de-remedio-feito-fora": {
+      "area": "saude",
+      "name": "Aprovação de remédio feito fora",
+      "path": "leis/saude/aprovacao-de-remedio-feito-fora.svg"
+    },
+    "atencao-preventiva": {
+      "area": "saude",
+      "name": "Atenção preventiva",
+      "path": "leis/saude/atencao-preventiva.svg"
+    },
+    "carreira-exclusiva": {
+      "area": "saude",
+      "name": "Carreira exclusiva",
+      "path": "leis/saude/carreira-exclusiva.svg"
+    },
+    "cobertura-gratuita": {
+      "area": "saude",
+      "name": "Cobertura gratuita",
+      "path": "leis/saude/cobertura-gratuita.svg"
+    },
+    "cobertura-minima-do-plano": {
+      "area": "saude",
+      "name": "Cobertura mínima do plano",
+      "path": "leis/saude/cobertura-minima-do-plano.svg"
+    },
+    "conta-saude": {
+      "area": "saude",
+      "name": "Conta de saúde",
+      "path": "leis/saude/conta-saude.svg"
+    },
+    "coparticipacao": {
+      "area": "saude",
+      "name": "Coparticipação",
+      "path": "leis/saude/coparticipacao.svg"
+    },
+    "deducao-plano": {
+      "area": "saude",
+      "name": "Dedução do plano",
+      "path": "leis/saude/deducao-plano.svg"
+    },
+    "direito-recusar": {
+      "area": "saude",
+      "name": "Direito de recusar",
+      "path": "leis/saude/direito-recusar.svg"
+    },
+    "filantropicos": {
+      "area": "saude",
+      "name": "Filantrópicos",
+      "path": "leis/saude/filantropicos.svg"
+    },
+    "gasto-saude": {
+      "area": "saude",
+      "name": "Verba da saúde",
+      "path": "leis/saude/gasto-saude.svg"
+    },
+    "gestao-privada": {
+      "area": "saude",
+      "name": "Gestão privada",
+      "path": "leis/saude/gestao-privada.svg"
+    },
+    "imposto-sobre-remedio": {
+      "area": "saude",
+      "name": "Imposto sobre remédio",
+      "path": "leis/saude/imposto-sobre-remedio.svg"
+    },
+    "limite-planos": {
+      "area": "saude",
+      "name": "Limite aos planos",
+      "path": "leis/saude/limite-planos.svg"
+    },
+    "missoes-medicas": {
+      "area": "saude",
+      "name": "Missões médicas",
+      "path": "leis/saude/missoes-medicas.svg"
+    },
+    "obrigacao-de-ter-plano": {
+      "area": "saude",
+      "name": "Obrigação de ter plano",
+      "path": "leis/saude/obrigacao-de-ter-plano.svg"
+    },
+    "onde-se-vende-remedio": {
+      "area": "saude",
+      "name": "Onde se vende remédio",
+      "path": "leis/saude/onde-se-vende-remedio.svg"
+    },
+    "programa-vacinacao": {
+      "area": "saude",
+      "name": "Vacinação",
+      "path": "leis/saude/programa-vacinacao.svg"
+    },
+    "remedio-pago-pelo-governo-na-farmacia": {
+      "area": "saude",
+      "name": "Remédio pago pelo governo na farmácia",
+      "path": "leis/saude/remedio-pago-pelo-governo-na-farmacia.svg"
+    },
+    "saude-ambiental": {
+      "area": "saude",
+      "name": "Saúde ambiental",
+      "path": "leis/saude/saude-ambiental.svg"
+    },
+    "seguro-folha": {
+      "area": "saude",
+      "name": "Seguro na folha",
+      "path": "leis/saude/seguro-folha.svg"
+    },
+    "servico-obrigatorio": {
+      "area": "saude",
+      "name": "Serviço obrigatório",
+      "path": "leis/saude/servico-obrigatorio.svg"
+    },
+    "telemedicina-livre": {
+      "area": "saude",
+      "name": "Telemedicina livre",
+      "path": "leis/saude/telemedicina-livre.svg"
+    },
+    "teto-do-preco-dos-remedios": {
+      "area": "saude",
+      "name": "Teto do preço dos remédios",
+      "path": "leis/saude/teto-do-preco-dos-remedios.svg"
+    },
+    "troca-pelo-generico": {
+      "area": "saude",
+      "name": "Troca pelo genérico",
+      "path": "leis/saude/troca-pelo-generico.svg"
+    },
+    "bolsa-em-faculdade-privada": {
+      "area": "educacao",
+      "name": "Bolsa em faculdade privada",
+      "path": "leis/educacao/bolsa-em-faculdade-privada.svg"
+    },
+    "bolsa-por-frequencia": {
+      "area": "educacao",
+      "name": "Bolsa por frequência",
+      "path": "leis/educacao/bolsa-por-frequencia.svg"
+    },
+    "carreira-do-professor": {
+      "area": "educacao",
+      "name": "Carreira do professor",
+      "path": "leis/educacao/carreira-do-professor.svg"
+    },
+    "cobranca-na-universidade-publica": {
+      "area": "educacao",
+      "name": "Cobrança na universidade pública",
+      "path": "leis/educacao/cobranca-na-universidade-publica.svg"
+    },
+    "complemento-ao-estado-pobre": {
+      "area": "educacao",
+      "name": "Complemento ao estado pobre",
+      "path": "leis/educacao/complemento-ao-estado-pobre.svg"
+    },
+    "cotas-na-universidade": {
+      "area": "educacao",
+      "name": "Cotas na universidade",
+      "path": "leis/educacao/cotas-na-universidade.svg"
+    },
+    "creche-e-pre-escola": {
+      "area": "educacao",
+      "name": "Creche e pré-escola",
+      "path": "leis/educacao/creche-e-pre-escola.svg"
+    },
+    "educacao-sexual": {
+      "area": "educacao",
+      "name": "Educação sexual",
+      "path": "leis/educacao/educacao-sexual.svg"
+    },
+    "ensino-em-casa": {
+      "area": "educacao",
+      "name": "Ensino em casa",
+      "path": "leis/educacao/ensino-em-casa.svg"
+    },
+    "ensino-tecnico": {
+      "area": "educacao",
+      "name": "Ensino técnico",
+      "path": "leis/educacao/ensino-tecnico.svg"
+    },
+    "escola-militarizada": {
+      "area": "educacao",
+      "name": "Escola militarizada",
+      "path": "leis/educacao/escola-militarizada.svg"
+    },
+    "escola-obrigatoria": {
+      "area": "educacao",
+      "name": "Escola obrigatória",
+      "path": "leis/educacao/escola-obrigatoria.svg"
+    },
+    "faculdades-privadas": {
+      "area": "educacao",
+      "name": "Faculdades privadas",
+      "path": "leis/educacao/faculdades-privadas.svg"
+    },
+    "gasto-educacao": {
+      "area": "educacao",
+      "name": "Verba da educação",
+      "path": "leis/educacao/gasto-educacao.svg"
+    },
+    "gestao-privada-de-escolas": {
+      "area": "educacao",
+      "name": "Gestão privada de escolas",
+      "path": "leis/educacao/gestao-privada-de-escolas.svg"
+    },
+    "pagamento-por-resultado": {
+      "area": "educacao",
+      "name": "Pagamento por resultado",
+      "path": "leis/educacao/pagamento-por-resultado.svg"
+    },
+    "repasse-so-com-meta": {
+      "area": "educacao",
+      "name": "Repasse só com meta",
+      "path": "leis/educacao/repasse-so-com-meta.svg"
+    },
+    "vagas-publicas-em-medicina": {
+      "area": "educacao",
+      "name": "Vagas públicas em medicina",
+      "path": "leis/educacao/vagas-publicas-em-medicina.svg"
+    },
+    "vale-escola": {
+      "area": "educacao",
+      "name": "Vale-escola",
+      "path": "leis/educacao/vale-escola.svg"
+    },
+    "validacao-de-diploma-estrangeiro": {
+      "area": "educacao",
+      "name": "Validação de diploma estrangeiro",
+      "path": "leis/educacao/validacao-de-diploma-estrangeiro.svg"
+    },
+    "aviso-antes-da-multa": {
+      "area": "trabalho",
+      "name": "Aviso antes da multa",
+      "path": "leis/trabalho/aviso-antes-da-multa.svg"
+    },
+    "comercio-aberto-no-domingo": {
+      "area": "trabalho",
+      "name": "Comércio aberto no domingo",
+      "path": "leis/trabalho/comercio-aberto-no-domingo.svg"
+    },
+    "conta-de-demissao": {
+      "area": "trabalho",
+      "name": "Conta de demissão",
+      "path": "leis/trabalho/conta-de-demissao.svg"
+    },
+    "contratos-flexiveis": {
+      "area": "trabalho",
+      "name": "Contratos flexíveis",
+      "path": "leis/trabalho/contratos-flexiveis.svg"
+    },
+    "contribuicao-sindical-livre": {
+      "area": "trabalho",
+      "name": "Contribuição sindical livre",
+      "path": "leis/trabalho/contribuicao-sindical-livre.svg"
+    },
+    "desoneracao-da-folha": {
+      "area": "trabalho",
+      "name": "Desoneração da folha",
+      "path": "leis/trabalho/desoneracao-da-folha.svg"
+    },
+    "empresa-simples": {
+      "area": "trabalho",
+      "name": "Empresa simples",
+      "path": "leis/trabalho/empresa-simples.svg"
+    },
+    "feriados-nacionais-dias-de-feriado": {
+      "area": "trabalho",
+      "name": "Feriados nacionais: dias de feriado",
+      "path": "leis/trabalho/feriados-nacionais-dias-de-feriado.svg"
+    },
+    "feriados-nacionais-divisao-civicos": {
+      "area": "trabalho",
+      "name": "Feriados nacionais: divisão: cívicos",
+      "path": "leis/trabalho/feriados-nacionais-divisao-civicos.svg"
+    },
+    "feriados-nacionais-divisao-datas-de-negros-e-indigenas": {
+      "area": "trabalho",
+      "name": "Feriados nacionais: divisão: datas de negros e indígenas",
+      "path": "leis/trabalho/feriados-nacionais-divisao-datas-de-negros-e-indigenas.svg"
+    },
+    "feriados-nacionais-divisao-do-trabalho": {
+      "area": "trabalho",
+      "name": "Feriados nacionais: divisão: do trabalho",
+      "path": "leis/trabalho/feriados-nacionais-divisao-do-trabalho.svg"
+    },
+    "feriados-nacionais-divisao-religiosos": {
+      "area": "trabalho",
+      "name": "Feriados nacionais: divisão: religiosos",
+      "path": "leis/trabalho/feriados-nacionais-divisao-religiosos.svg"
+    },
+    "ferias-subsidiadas": {
+      "area": "trabalho",
+      "name": "Férias subsidiadas",
+      "path": "leis/trabalho/ferias-subsidiadas.svg"
+    },
+    "frentes-de-trabalho": {
+      "area": "trabalho",
+      "name": "Frentes de trabalho",
+      "path": "leis/trabalho/frentes-de-trabalho.svg"
+    },
+    "idade-minima-para-trabalhar": {
+      "area": "trabalho",
+      "name": "Idade mínima para trabalhar",
+      "path": "leis/trabalho/idade-minima-para-trabalhar.svg"
+    },
+    "jornada-maxima": {
+      "area": "trabalho",
+      "name": "Jornada máxima",
+      "path": "leis/trabalho/jornada-maxima.svg"
+    },
+    "livre-negociacao": {
+      "area": "trabalho",
+      "name": "Livre negociação",
+      "path": "leis/trabalho/livre-negociacao.svg"
+    },
+    "negociacao-coletiva": {
+      "area": "trabalho",
+      "name": "Negociação coletiva",
+      "path": "leis/trabalho/negociacao-coletiva.svg"
+    },
+    "policiamento-de-greves": {
+      "area": "trabalho",
+      "name": "Policiamento de greves",
+      "path": "leis/trabalho/policiamento-de-greves.svg"
+    },
+    "preferencia-ao-trabalhador-nacional": {
+      "area": "trabalho",
+      "name": "Preferência ao trabalhador nacional",
+      "path": "leis/trabalho/preferencia-ao-trabalhador-nacional.svg"
+    },
+    "profissoes-com-registro": {
+      "area": "trabalho",
+      "name": "Profissões com registro",
+      "path": "leis/trabalho/profissoes-com-registro.svg"
+    },
+    "protecao-contra-demissao": {
+      "area": "trabalho",
+      "name": "Proteção contra demissão",
+      "path": "leis/trabalho/protecao-contra-demissao.svg"
+    },
+    "quem-paga-a-ida-ao-trabalho-o-empregado": {
+      "area": "trabalho",
+      "name": "Quem paga a ida ao trabalho: o empregado",
+      "path": "leis/trabalho/quem-paga-a-ida-ao-trabalho-o-empregado.svg"
+    },
+    "quem-paga-a-ida-ao-trabalho-o-governo": {
+      "area": "trabalho",
+      "name": "Quem paga a ida ao trabalho: o governo",
+      "path": "leis/trabalho/quem-paga-a-ida-ao-trabalho-o-governo.svg"
+    },
+    "quem-paga-a-ida-ao-trabalho-o-patrao": {
+      "area": "trabalho",
+      "name": "Quem paga a ida ao trabalho: o patrão",
+      "path": "leis/trabalho/quem-paga-a-ida-ao-trabalho-o-patrao.svg"
+    },
+    "quem-perde-a-acao-trabalhista-paga": {
+      "area": "trabalho",
+      "name": "Quem perde a ação trabalhista paga",
+      "path": "leis/trabalho/quem-perde-a-acao-trabalhista-paga.svg"
+    },
+    "salario-de-entrada-do-jovem": {
+      "area": "trabalho",
+      "name": "Salário de entrada do jovem",
+      "path": "leis/trabalho/salario-de-entrada-do-jovem.svg"
+    },
+    "seguranca-do-operario-na-obra": {
+      "area": "trabalho",
+      "name": "Segurança do operário na obra",
+      "path": "leis/trabalho/seguranca-do-operario-na-obra.svg"
+    },
+    "seguro-desemprego-duracao": {
+      "area": "trabalho",
+      "name": "Seguro-desemprego: duração",
+      "path": "leis/trabalho/seguro-desemprego-duracao.svg"
+    },
+    "seguro-desemprego-valor": {
+      "area": "trabalho",
+      "name": "Seguro-desemprego: valor",
+      "path": "leis/trabalho/seguro-desemprego-valor.svg"
+    },
+    "subsidio-a-contratacao": {
+      "area": "trabalho",
+      "name": "Subsídio à contratação",
+      "path": "leis/trabalho/subsidio-a-contratacao.svg"
+    },
+    "trabalhador-de-aplicativo": {
+      "area": "trabalho",
+      "name": "Trabalhador de aplicativo",
+      "path": "leis/trabalho/trabalhador-de-aplicativo.svg"
+    },
+    "trabalho-de-presos": {
+      "area": "trabalho",
+      "name": "Trabalho de presos",
+      "path": "leis/trabalho/trabalho-de-presos.svg"
+    },
+    "trabalho-remoto-livre": {
+      "area": "trabalho",
+      "name": "Trabalho remoto livre",
+      "path": "leis/trabalho/trabalho-remoto-livre.svg"
+    },
+    "acesso-a-informacao": {
+      "area": "estado-e-eleicoes",
+      "name": "Acesso à informação",
+      "path": "leis/estado-e-eleicoes/acesso-a-informacao.svg"
+    },
+    "cargos-de-livre-nomeacao": {
+      "area": "estado-e-eleicoes",
+      "name": "Cargos de livre nomeação",
+      "path": "leis/estado-e-eleicoes/cargos-de-livre-nomeacao.svg"
+    },
+    "clausula-de-barreira": {
+      "area": "estado-e-eleicoes",
+      "name": "Cláusula de barreira",
+      "path": "leis/estado-e-eleicoes/clausula-de-barreira.svg"
+    },
+    "declaracao-de-bens": {
+      "area": "estado-e-eleicoes",
+      "name": "Declaração de bens",
+      "path": "leis/estado-e-eleicoes/declaracao-de-bens.svg"
+    },
+    "doacao-de-empresas": {
+      "area": "estado-e-eleicoes",
+      "name": "Doação de empresas",
+      "path": "leis/estado-e-eleicoes/doacao-de-empresas.svg"
+    },
+    "duracao-mandato": {
+      "area": "estado-e-eleicoes",
+      "name": "Duração do mandato",
+      "path": "leis/estado-e-eleicoes/duracao-mandato.svg"
+    },
+    "ficha-limpa": {
+      "area": "estado-e-eleicoes",
+      "name": "Ficha limpa",
+      "path": "leis/estado-e-eleicoes/ficha-limpa.svg"
+    },
+    "foro-especial": {
+      "area": "estado-e-eleicoes",
+      "name": "Foro especial",
+      "path": "leis/estado-e-eleicoes/foro-especial.svg"
+    },
+    "fundo-publico-de-campanha": {
+      "area": "estado-e-eleicoes",
+      "name": "Fundo público de campanha",
+      "path": "leis/estado-e-eleicoes/fundo-publico-de-campanha.svg"
+    },
+    "horario-eleitoral-gratuito": {
+      "area": "estado-e-eleicoes",
+      "name": "Horário eleitoral gratuito",
+      "path": "leis/estado-e-eleicoes/horario-eleitoral-gratuito.svg"
+    },
+    "idade-para-votar": {
+      "area": "estado-e-eleicoes",
+      "name": "Idade para votar",
+      "path": "leis/estado-e-eleicoes/idade-para-votar.svg"
+    },
+    "independencia-dos-investigadores": {
+      "area": "estado-e-eleicoes",
+      "name": "Independência dos investigadores",
+      "path": "leis/estado-e-eleicoes/independencia-dos-investigadores.svg"
+    },
+    "indicacao-de-juizes": {
+      "area": "estado-e-eleicoes",
+      "name": "Indicação de juízes",
+      "path": "leis/estado-e-eleicoes/indicacao-de-juizes.svg"
+    },
+    "iniciativa-popular": {
+      "area": "estado-e-eleicoes",
+      "name": "Iniciativa popular",
+      "path": "leis/estado-e-eleicoes/iniciativa-popular.svg"
+    },
+    "intervalo-para-voltar": {
+      "area": "estado-e-eleicoes",
+      "name": "Intervalo para voltar",
+      "path": "leis/estado-e-eleicoes/intervalo-para-voltar.svg"
+    },
+    "limite-total-de-mandatos": {
+      "area": "estado-e-eleicoes",
+      "name": "Limite total de mandatos",
+      "path": "leis/estado-e-eleicoes/limite-total-de-mandatos.svg"
+    },
+    "mandatos-seguidos": {
+      "area": "estado-e-eleicoes",
+      "name": "Mandatos seguidos",
+      "path": "leis/estado-e-eleicoes/mandatos-seguidos.svg"
+    },
+    "pena-para-corrupcao": {
+      "area": "estado-e-eleicoes",
+      "name": "Pena para corrupção",
+      "path": "leis/estado-e-eleicoes/pena-para-corrupcao.svg"
+    },
+    "poder-de-decreto": {
+      "area": "estado-e-eleicoes",
+      "name": "Poder de decreto",
+      "path": "leis/estado-e-eleicoes/poder-de-decreto.svg"
+    },
+    "propaganda-paga-na-campanha": {
+      "area": "estado-e-eleicoes",
+      "name": "Propaganda paga na campanha",
+      "path": "leis/estado-e-eleicoes/propaganda-paga-na-campanha.svg"
+    },
+    "quorum-das-votacoes": {
+      "area": "estado-e-eleicoes",
+      "name": "Quórum das votações",
+      "path": "leis/estado-e-eleicoes/quorum-das-votacoes.svg"
+    },
+    "sigilo-aberto-para-candidatos": {
+      "area": "estado-e-eleicoes",
+      "name": "Sigilo aberto para candidatos",
+      "path": "leis/estado-e-eleicoes/sigilo-aberto-para-candidatos.svg"
+    },
+    "sistema-eleitoral": {
+      "area": "estado-e-eleicoes",
+      "name": "Sistema eleitoral",
+      "path": "leis/estado-e-eleicoes/sistema-eleitoral.svg"
+    },
+    "caminhao-parado-aos-domingos": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Caminhão parado aos domingos",
+      "path": "leis/infraestrutura-e-transporte/caminhao-parado-aos-domingos.svg"
+    },
+    "carregadores-nas-estradas-federais": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Carregadores nas estradas federais",
+      "path": "leis/infraestrutura-e-transporte/carregadores-nas-estradas-federais.svg"
+    },
+    "concorrencia-entre-taxi-e-aplicativo": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Concorrência entre táxi e aplicativo",
+      "path": "leis/infraestrutura-e-transporte/concorrencia-entre-taxi-e-aplicativo.svg"
+    },
+    "desconto-no-carro-de-quem-vive-de-dirigir": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Desconto no carro de quem vive de dirigir",
+      "path": "leis/infraestrutura-e-transporte/desconto-no-carro-de-quem-vive-de-dirigir.svg"
+    },
+    "direitos-de-quem-viaja": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Direitos de quem viaja",
+      "path": "leis/infraestrutura-e-transporte/direitos-de-quem-viaja.svg"
+    },
+    "divisao-da-verba-de-construcao-delegacias": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: delegacias",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-delegacias.svg"
+    },
+    "divisao-da-verba-de-construcao-escolas": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: escolas",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-escolas.svg"
+    },
+    "divisao-da-verba-de-construcao-estatais": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: estatais",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-estatais.svg"
+    },
+    "divisao-da-verba-de-construcao-hospitais": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: hospitais",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-hospitais.svg"
+    },
+    "divisao-da-verba-de-construcao-presidios": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: presídios",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-presidios.svg"
+    },
+    "divisao-da-verba-de-construcao-transportes": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: transportes",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-transportes.svg"
+    },
+    "divisao-da-verba-de-construcao-universidades": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Divisão da verba de construção: universidades",
+      "path": "leis/infraestrutura-e-transporte/divisao-da-verba-de-construcao-universidades.svg"
+    },
+    "eletrico-paga-a-estrada": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Elétrico paga a estrada",
+      "path": "leis/infraestrutura-e-transporte/eletrico-paga-a-estrada.svg"
+    },
+    "empreiteira-condenada-fora-das-obras": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Empreiteira condenada fora das obras",
+      "path": "leis/infraestrutura-e-transporte/empreiteira-condenada-fora-das-obras.svg"
+    },
+    "estradas-com-pedagio": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Estradas com pedágio",
+      "path": "leis/infraestrutura-e-transporte/estradas-com-pedagio.svg"
+    },
+    "exigencia-tecnica-das-construcoes": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Exigência técnica das construções",
+      "path": "leis/infraestrutura-e-transporte/exigencia-tecnica-das-construcoes.svg"
+    },
+    "exigencias-para-tirar-carteira": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Exigências para tirar carteira",
+      "path": "leis/infraestrutura-e-transporte/exigencias-para-tirar-carteira.svg"
+    },
+    "fim-dos-carros-a-combustao": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Fim dos carros a combustão",
+      "path": "leis/infraestrutura-e-transporte/fim-dos-carros-a-combustao.svg"
+    },
+    "onibus-gratis": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Ônibus grátis",
+      "path": "leis/infraestrutura-e-transporte/onibus-gratis.svg"
+    },
+    "peso-da-multa-base-de-calculo": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Peso da multa: base de cálculo",
+      "path": "leis/infraestrutura-e-transporte/peso-da-multa-base-de-calculo.svg"
+    },
+    "peso-da-multa-peso-da-multa": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Peso da multa: peso da multa",
+      "path": "leis/infraestrutura-e-transporte/peso-da-multa-peso-da-multa.svg"
+    },
+    "peso-maximo-do-caminhao": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Peso máximo do caminhão",
+      "path": "leis/infraestrutura-e-transporte/peso-maximo-do-caminhao.svg"
+    },
+    "piso-do-frete": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Piso do frete",
+      "path": "leis/infraestrutura-e-transporte/piso-do-frete.svg"
+    },
+    "prioridade-das-obras": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Prioridade das obras",
+      "path": "leis/infraestrutura-e-transporte/prioridade-das-obras.svg"
+    },
+    "quem-pode-vender-recarga": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Quem pode vender recarga",
+      "path": "leis/infraestrutura-e-transporte/quem-pode-vender-recarga.svg"
+    },
+    "regra-da-licitacao": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Regra da licitação",
+      "path": "leis/infraestrutura-e-transporte/regra-da-licitacao.svg"
+    },
+    "regularizacao-dos-aplicativos": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Regularização dos aplicativos",
+      "path": "leis/infraestrutura-e-transporte/regularizacao-dos-aplicativos.svg"
+    },
+    "subsidio-a-carros-eletricos": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Subsídio a carros elétricos",
+      "path": "leis/infraestrutura-e-transporte/subsidio-a-carros-eletricos.svg"
+    },
+    "teto-do-aditivo": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Teto do aditivo",
+      "path": "leis/infraestrutura-e-transporte/teto-do-aditivo.svg"
+    },
+    "transporte-interno-por-empresa-de-fora": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Transporte interno por empresa de fora",
+      "path": "leis/infraestrutura-e-transporte/transporte-interno-por-empresa-de-fora.svg"
+    },
+    "velocidade-maxima-nas-estradas-federais": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Velocidade máxima nas estradas federais",
+      "path": "leis/infraestrutura-e-transporte/velocidade-maxima-nas-estradas-federais.svg"
+    },
+    "verba-de-conservacao-dos-transportes": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Verba de conservação dos transportes",
+      "path": "leis/infraestrutura-e-transporte/verba-de-conservacao-dos-transportes.svg"
+    },
+    "verba-de-construcao": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Verba de construção",
+      "path": "leis/infraestrutura-e-transporte/verba-de-construcao.svg"
+    },
+    "vistoria-dos-veiculos": {
+      "area": "infraestrutura-e-transporte",
+      "name": "Vistoria dos veículos",
+      "path": "leis/infraestrutura-e-transporte/vistoria-dos-veiculos.svg"
+    },
+    "acoes-nos-bairros": {
+      "area": "seguranca-publica",
+      "name": "Ações nos bairros",
+      "path": "leis/seguranca-publica/acoes-nos-bairros.svg"
+    },
+    "alvos-da-agencia": {
+      "area": "seguranca-publica",
+      "name": "Alvos da agência",
+      "path": "leis/seguranca-publica/alvos-da-agencia.svg"
+    },
+    "bloqueio-de-bens": {
+      "area": "seguranca-publica",
+      "name": "Bloqueio de bens",
+      "path": "leis/seguranca-publica/bloqueio-de-bens.svg"
+    },
+    "ciclo-completo": {
+      "area": "seguranca-publica",
+      "name": "Ciclo completo",
+      "path": "leis/seguranca-publica/ciclo-completo.svg"
+    },
+    "confisco-alargado": {
+      "area": "seguranca-publica",
+      "name": "Confisco alargado",
+      "path": "leis/seguranca-publica/confisco-alargado.svg"
+    },
+    "controle-da-agencia": {
+      "area": "seguranca-publica",
+      "name": "Controle da agência",
+      "path": "leis/seguranca-publica/controle-da-agencia.svg"
+    },
+    "controle-de-armas": {
+      "area": "seguranca-publica",
+      "name": "Controle de armas",
+      "path": "leis/seguranca-publica/controle-de-armas.svg"
+    },
+    "controle-externo-da-policia": {
+      "area": "seguranca-publica",
+      "name": "Controle externo da polícia",
+      "path": "leis/seguranca-publica/controle-externo-da-policia.svg"
+    },
+    "destino-dos-bens": {
+      "area": "seguranca-publica",
+      "name": "Destino dos bens",
+      "path": "leis/seguranca-publica/destino-dos-bens.svg"
+    },
+    "emprego-para-jovens": {
+      "area": "seguranca-publica",
+      "name": "Emprego para jovens",
+      "path": "leis/seguranca-publica/emprego-para-jovens.svg"
+    },
+    "espionagem-no-exterior": {
+      "area": "seguranca-publica",
+      "name": "Espionagem no exterior",
+      "path": "leis/seguranca-publica/espionagem-no-exterior.svg"
+    },
+    "fazer-parte-de-faccao-e-crime": {
+      "area": "seguranca-publica",
+      "name": "Fazer parte de facção é crime",
+      "path": "leis/seguranca-publica/fazer-parte-de-faccao-e-crime.svg"
+    },
+    "forca-letal-liberada": {
+      "area": "seguranca-publica",
+      "name": "Força letal liberada",
+      "path": "leis/seguranca-publica/forca-letal-liberada.svg"
+    },
+    "formacao-policial": {
+      "area": "seguranca-publica",
+      "name": "Formação policial",
+      "path": "leis/seguranca-publica/formacao-policial.svg"
+    },
+    "gasto-cameras": {
+      "area": "seguranca-publica",
+      "name": "Verba das câmeras",
+      "path": "leis/seguranca-publica/gasto-cameras.svg"
+    },
+    "gasto-policia": {
+      "area": "seguranca-publica",
+      "name": "Verba da polícia",
+      "path": "leis/seguranca-publica/gasto-policia.svg"
+    },
+    "integracao-das-policias": {
+      "area": "seguranca-publica",
+      "name": "Integração das polícias",
+      "path": "leis/seguranca-publica/integracao-das-policias.svg"
+    },
+    "legitima-defesa": {
+      "area": "seguranca-publica",
+      "name": "Legítima defesa",
+      "path": "leis/seguranca-publica/legitima-defesa.svg"
+    },
+    "liberacao-de-armas": {
+      "area": "seguranca-publica",
+      "name": "Liberação de armas",
+      "path": "leis/seguranca-publica/liberacao-de-armas.svg"
+    },
+    "obrigacao-dos-bancos": {
+      "area": "seguranca-publica",
+      "name": "Obrigação dos bancos",
+      "path": "leis/seguranca-publica/obrigacao-dos-bancos.svg"
+    },
+    "poderes-da-agencia": {
+      "area": "seguranca-publica",
+      "name": "Poderes da agência",
+      "path": "leis/seguranca-publica/poderes-da-agencia.svg"
+    },
+    "policia-comunitaria": {
+      "area": "seguranca-publica",
+      "name": "Polícia comunitária",
+      "path": "leis/seguranca-publica/policia-comunitaria.svg"
+    },
+    "policia-sem-formato-militar": {
+      "area": "seguranca-publica",
+      "name": "Polícia sem formato militar",
+      "path": "leis/seguranca-publica/policia-sem-formato-militar.svg"
+    },
+    "regra-cameras": {
+      "area": "seguranca-publica",
+      "name": "Regra de uso das imagens",
+      "path": "leis/seguranca-publica/regra-cameras.svg"
+    },
+    "regra-das-cameras-policiais": {
+      "area": "seguranca-publica",
+      "name": "Regra das câmeras policiais",
+      "path": "leis/seguranca-publica/regra-das-cameras-policiais.svg"
+    },
+    "seguranca-terceirizada": {
+      "area": "seguranca-publica",
+      "name": "Segurança terceirizada",
+      "path": "leis/seguranca-publica/seguranca-terceirizada.svg"
+    },
+    "verba-das-cameras-policiais": {
+      "area": "seguranca-publica",
+      "name": "Verba das câmeras policiais",
+      "path": "leis/seguranca-publica/verba-das-cameras-policiais.svg"
+    },
+    "verba-de-inteligencia": {
+      "area": "seguranca-publica",
+      "name": "Verba de inteligência",
+      "path": "leis/seguranca-publica/verba-de-inteligencia.svg"
+    },
+    "violencia-domestica": {
+      "area": "seguranca-publica",
+      "name": "Violência doméstica",
+      "path": "leis/seguranca-publica/violencia-domestica.svg"
+    },
+    "areas-protegidas": {
+      "area": "meio-ambiente",
+      "name": "Áreas protegidas",
+      "path": "leis/meio-ambiente/areas-protegidas.svg"
+    },
+    "compromisso-climatico-corte": {
+      "area": "meio-ambiente",
+      "name": "Compromisso climático: corte",
+      "path": "leis/meio-ambiente/compromisso-climatico-corte.svg"
+    },
+    "compromisso-climatico-prazo": {
+      "area": "meio-ambiente",
+      "name": "Compromisso climático: prazo",
+      "path": "leis/meio-ambiente/compromisso-climatico-prazo.svg"
+    },
+    "direito-de-processar-quem-polui": {
+      "area": "meio-ambiente",
+      "name": "Direito de processar quem polui",
+      "path": "leis/meio-ambiente/direito-de-processar-quem-polui.svg"
+    },
+    "forcas-armadas-na-floresta": {
+      "area": "meio-ambiente",
+      "name": "Forças Armadas na floresta",
+      "path": "leis/meio-ambiente/forcas-armadas-na-floresta.svg"
+    },
+    "imposto-poluicao": {
+      "area": "meio-ambiente",
+      "name": "Imposto sobre poluição",
+      "path": "leis/meio-ambiente/imposto-poluicao.svg"
+    },
+    "independencia-do-orgao-ambiental": {
+      "area": "meio-ambiente",
+      "name": "Independência do órgão ambiental",
+      "path": "leis/meio-ambiente/independencia-do-orgao-ambiental.svg"
+    },
+    "limite-de-poluicao-do-ar": {
+      "area": "meio-ambiente",
+      "name": "Limite de poluição do ar",
+      "path": "leis/meio-ambiente/limite-de-poluicao-do-ar.svg"
+    },
+    "mercado-de-carbono-cotas-de-graca": {
+      "area": "meio-ambiente",
+      "name": "Mercado de carbono: cotas de graça",
+      "path": "leis/meio-ambiente/mercado-de-carbono-cotas-de-graca.svg"
+    },
+    "mercado-de-carbono-teto-de-emissoes": {
+      "area": "meio-ambiente",
+      "name": "Mercado de carbono: teto de emissões",
+      "path": "leis/meio-ambiente/mercado-de-carbono-teto-de-emissoes.svg"
+    },
+    "o-que-acontece-com-quem-e-pego": {
+      "area": "meio-ambiente",
+      "name": "O que acontece com quem é pego",
+      "path": "leis/meio-ambiente/o-que-acontece-com-quem-e-pego.svg"
+    },
+    "pagamento-por-floresta-em-pe": {
+      "area": "meio-ambiente",
+      "name": "Pagamento por floresta em pé",
+      "path": "leis/meio-ambiente/pagamento-por-floresta-em-pe.svg"
+    },
+    "policia-ambiental": {
+      "area": "meio-ambiente",
+      "name": "Fiscalização ambiental",
+      "path": "leis/meio-ambiente/policia-ambiental.svg"
+    },
+    "prazo-para-licenca-ambiental": {
+      "area": "meio-ambiente",
+      "name": "Prazo para licença ambiental",
+      "path": "leis/meio-ambiente/prazo-para-licenca-ambiental.svg"
+    },
+    "quem-paga-pelo-descarte": {
+      "area": "meio-ambiente",
+      "name": "Quem paga pelo descarte",
+      "path": "leis/meio-ambiente/quem-paga-pelo-descarte.svg"
+    },
+    "abrigos-para-quem-vive-na-rua": {
+      "area": "assistencia-social",
+      "name": "Abrigos para quem vive na rua",
+      "path": "leis/assistencia-social/abrigos-para-quem-vive-na-rua.svg"
+    },
+    "auxilio-para-pessoas-com-deficiencia": {
+      "area": "assistencia-social",
+      "name": "Auxílio para pessoas com deficiência",
+      "path": "leis/assistencia-social/auxilio-para-pessoas-com-deficiencia.svg"
+    },
+    "beneficio-com-contrapartida": {
+      "area": "assistencia-social",
+      "name": "Benefício com contrapartida",
+      "path": "leis/assistencia-social/beneficio-com-contrapartida.svg"
+    },
+    "beneficio-por-filho": {
+      "area": "assistencia-social",
+      "name": "Benefício por filho",
+      "path": "leis/assistencia-social/beneficio-por-filho.svg"
+    },
+    "comida-do-estado": {
+      "area": "assistencia-social",
+      "name": "Comida do Estado",
+      "path": "leis/assistencia-social/comida-do-estado.svg"
+    },
+    "credito-para-quem-trabalha": {
+      "area": "assistencia-social",
+      "name": "Crédito para quem trabalha",
+      "path": "leis/assistencia-social/credito-para-quem-trabalha.svg"
+    },
+    "doacao-com-deducao": {
+      "area": "assistencia-social",
+      "name": "Doação com dedução",
+      "path": "leis/assistencia-social/doacao-com-deducao.svg"
+    },
+    "microcredito": {
+      "area": "assistencia-social",
+      "name": "Microcrédito",
+      "path": "leis/assistencia-social/microcredito.svg"
+    },
+    "parte-do-beneficio-em-comida": {
+      "area": "assistencia-social",
+      "name": "Parte do benefício em comida",
+      "path": "leis/assistencia-social/parte-do-beneficio-em-comida.svg"
+    },
+    "pente-fino-nos-beneficios": {
+      "area": "assistencia-social",
+      "name": "Pente-fino nos benefícios",
+      "path": "leis/assistencia-social/pente-fino-nos-beneficios.svg"
+    },
+    "prazo-maximo-no-beneficio": {
+      "area": "assistencia-social",
+      "name": "Prazo máximo no benefício",
+      "path": "leis/assistencia-social/prazo-maximo-no-beneficio.svg"
+    },
+    "quem-recebe-a-transferencia": {
+      "area": "assistencia-social",
+      "name": "Quem recebe a Transferência",
+      "path": "leis/assistencia-social/quem-recebe-a-transferencia.svg"
+    },
+    "renda-basica-para-todos": {
+      "area": "assistencia-social",
+      "name": "Renda básica para todos",
+      "path": "leis/assistencia-social/renda-basica-para-todos.svg"
+    },
+    "repasse-a-entidades-religiosas": {
+      "area": "assistencia-social",
+      "name": "Repasse a entidades religiosas",
+      "path": "leis/assistencia-social/repasse-a-entidades-religiosas.svg"
+    },
+    "tarifa-social-de-agua": {
+      "area": "assistencia-social",
+      "name": "Tarifa social de água",
+      "path": "leis/assistencia-social/tarifa-social-de-agua.svg"
+    },
+    "tarifa-social-de-gas": {
+      "area": "assistencia-social",
+      "name": "Tarifa social de gás",
+      "path": "leis/assistencia-social/tarifa-social-de-gas.svg"
+    },
+    "tarifa-social-de-luz": {
+      "area": "assistencia-social",
+      "name": "Tarifa social de luz",
+      "path": "leis/assistencia-social/tarifa-social-de-luz.svg"
+    },
+    "transferencia-renda": {
+      "area": "assistencia-social",
+      "name": "Transferência de renda",
+      "path": "leis/assistencia-social/transferencia-renda.svg"
+    },
+    "bolsas-de-pesquisa": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Bolsas de pesquisa",
+      "path": "leis/ciencia-e-pesquisa/bolsas-de-pesquisa.svg"
+    },
+    "de-quem-e-a-invencao-paga-pelo-estado": {
+      "area": "ciencia-e-pesquisa",
+      "name": "De quem é a invenção paga pelo Estado",
+      "path": "leis/ciencia-e-pesquisa/de-quem-e-a-invencao-paga-pelo-estado.svg"
+    },
+    "desconto-de-imposto-para-quem-pesquisa": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Desconto de imposto para quem pesquisa",
+      "path": "leis/ciencia-e-pesquisa/desconto-de-imposto-para-quem-pesquisa.svg"
+    },
+    "divisao-da-verba-de-ciencia-agro": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Agro",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-agro.svg"
+    },
+    "divisao-da-verba-de-ciencia-ciencia-basica": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Ciência básica",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-ciencia-basica.svg"
+    },
+    "divisao-da-verba-de-ciencia-defesa": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Defesa",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-defesa.svg"
+    },
+    "divisao-da-verba-de-ciencia-energia-e-baterias": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Energia e baterias",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-energia-e-baterias.svg"
+    },
+    "divisao-da-verba-de-ciencia-espaco": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Espaço",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-espaco.svg"
+    },
+    "divisao-da-verba-de-ciencia-industria-e-chips": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Indústria e chips",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-industria-e-chips.svg"
+    },
+    "divisao-da-verba-de-ciencia-saude-e-remedios": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Divisão da verba de ciência: Saúde e remédios",
+      "path": "leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-saude-e-remedios.svg"
+    },
+    "duracao-da-patente": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Duração da patente",
+      "path": "leis/ciencia-e-pesquisa/duracao-da-patente.svg"
+    },
+    "edicao-de-genes-em-pessoas": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Edição de genes em pessoas",
+      "path": "leis/ciencia-e-pesquisa/edicao-de-genes-em-pessoas.svg"
+    },
+    "pesquisa-com-virus-perigosos": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Pesquisa com vírus perigosos",
+      "path": "leis/ciencia-e-pesquisa/pesquisa-com-virus-perigosos.svg"
+    },
+    "programa-espacial": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Programa espacial",
+      "path": "leis/ciencia-e-pesquisa/programa-espacial.svg"
+    },
+    "quebra-de-patente": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Quebra de patente",
+      "path": "leis/ciencia-e-pesquisa/quebra-de-patente.svg"
+    },
+    "testes-em-animais": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Testes em animais",
+      "path": "leis/ciencia-e-pesquisa/testes-em-animais.svg"
+    },
+    "trazer-cientistas-de-volta": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Trazer cientistas de volta",
+      "path": "leis/ciencia-e-pesquisa/trazer-cientistas-de-volta.svg"
+    },
+    "verba-de-ciencia-e-tecnologia": {
+      "area": "ciencia-e-pesquisa",
+      "name": "Verba de ciência e tecnologia",
+      "path": "leis/ciencia-e-pesquisa/verba-de-ciencia-e-tecnologia.svg"
+    },
+    "defensoria-publica": {
+      "area": "justica-e-prisoes",
+      "name": "Defensoria pública",
+      "path": "leis/justica-e-prisoes/defensoria-publica.svg"
+    },
+    "educacao-na-prisao": {
+      "area": "justica-e-prisoes",
+      "name": "Educação na prisão",
+      "path": "leis/justica-e-prisoes/educacao-na-prisao.svg"
+    },
+    "isolamento-de-chefes": {
+      "area": "justica-e-prisoes",
+      "name": "Isolamento de chefes",
+      "path": "leis/justica-e-prisoes/isolamento-de-chefes.svg"
+    },
+    "parte-da-pena-cumprida-presa": {
+      "area": "justica-e-prisoes",
+      "name": "Parte da pena cumprida presa",
+      "path": "leis/justica-e-prisoes/parte-da-pena-cumprida-presa.svg"
+    },
+    "pena-maior-para-quem-repete-o-crime": {
+      "area": "justica-e-prisoes",
+      "name": "Pena maior para quem repete o crime",
+      "path": "leis/justica-e-prisoes/pena-maior-para-quem-repete-o-crime.svg"
+    },
+    "penas-alternativas": {
+      "area": "justica-e-prisoes",
+      "name": "Penas alternativas",
+      "path": "leis/justica-e-prisoes/penas-alternativas.svg"
+    },
+    "prazo-para-ver-o-juiz": {
+      "area": "justica-e-prisoes",
+      "name": "Prazo para ver o juiz",
+      "path": "leis/justica-e-prisoes/prazo-para-ver-o-juiz.svg"
+    },
+    "presidio-terceirizado": {
+      "area": "justica-e-prisoes",
+      "name": "Presídio terceirizado",
+      "path": "leis/justica-e-prisoes/presidio-terceirizado.svg"
+    },
+    "prisao-antes-do-julgamento": {
+      "area": "justica-e-prisoes",
+      "name": "Prisão antes do julgamento",
+      "path": "leis/justica-e-prisoes/prisao-antes-do-julgamento.svg"
+    },
+    "remicao-de-pena": {
+      "area": "justica-e-prisoes",
+      "name": "Remição de pena",
+      "path": "leis/justica-e-prisoes/remicao-de-pena.svg"
+    },
+    "separacao-de-presos": {
+      "area": "justica-e-prisoes",
+      "name": "Separação de presos",
+      "path": "leis/justica-e-prisoes/separacao-de-presos.svg"
+    },
+    "tamanho-das-penas": {
+      "area": "justica-e-prisoes",
+      "name": "Tamanho das penas",
+      "path": "leis/justica-e-prisoes/tamanho-das-penas.svg"
+    },
+    "tribunal-de-drogas": {
+      "area": "justica-e-prisoes",
+      "name": "Tribunal de drogas",
+      "path": "leis/justica-e-prisoes/tribunal-de-drogas.svg"
+    },
+    "verba-da-justica": {
+      "area": "justica-e-prisoes",
+      "name": "Verba da Justiça",
+      "path": "leis/justica-e-prisoes/verba-da-justica.svg"
+    },
+    "verba-dos-presidios": {
+      "area": "justica-e-prisoes",
+      "name": "Verba dos presídios",
+      "path": "leis/justica-e-prisoes/verba-dos-presidios.svg"
+    },
+    "deficit": {
+      "area": "orcamento-e-divida",
+      "name": "Déficit",
+      "path": "leis/orcamento-e-divida/deficit.svg"
+    },
+    "divida-em-moeda-estrangeira": {
+      "area": "orcamento-e-divida",
+      "name": "Dívida em moeda estrangeira",
+      "path": "leis/orcamento-e-divida/divida-em-moeda-estrangeira.svg"
+    },
+    "emendas-dos-parlamentares": {
+      "area": "orcamento-e-divida",
+      "name": "Emendas dos parlamentares",
+      "path": "leis/orcamento-e-divida/emendas-dos-parlamentares.svg"
+    },
+    "estabilidade-do-servidor": {
+      "area": "orcamento-e-divida",
+      "name": "Estabilidade do servidor",
+      "path": "leis/orcamento-e-divida/estabilidade-do-servidor.svg"
+    },
+    "gasto-minimo-obrigatorio": {
+      "area": "orcamento-e-divida",
+      "name": "Gasto mínimo obrigatório",
+      "path": "leis/orcamento-e-divida/gasto-minimo-obrigatorio.svg"
+    },
+    "limite-da-divida": {
+      "area": "orcamento-e-divida",
+      "name": "Limite da dívida",
+      "path": "leis/orcamento-e-divida/limite-da-divida.svg"
+    },
+    "limite-da-folha-do-funcionalismo": {
+      "area": "orcamento-e-divida",
+      "name": "Limite da folha do funcionalismo",
+      "path": "leis/orcamento-e-divida/limite-da-folha-do-funcionalismo.svg"
+    },
+    "meta-de-resultado": {
+      "area": "orcamento-e-divida",
+      "name": "Meta de resultado",
+      "path": "leis/orcamento-e-divida/meta-de-resultado.svg"
+    },
+    "prazo-da-divida": {
+      "area": "orcamento-e-divida",
+      "name": "Prazo da dívida",
+      "path": "leis/orcamento-e-divida/prazo-da-divida.svg"
+    },
+    "punicao-se-descumprir": {
+      "area": "orcamento-e-divida",
+      "name": "Punição se descumprir",
+      "path": "leis/orcamento-e-divida/punicao-se-descumprir.svg"
+    },
+    "renegociacao-da-divida": {
+      "area": "orcamento-e-divida",
+      "name": "Renegociação da dívida",
+      "path": "leis/orcamento-e-divida/renegociacao-da-divida.svg"
+    },
+    "reposicao-de-servidores": {
+      "area": "orcamento-e-divida",
+      "name": "Reposição de servidores",
+      "path": "leis/orcamento-e-divida/reposicao-de-servidores.svg"
+    },
+    "revisao-periodica-de-gastos": {
+      "area": "orcamento-e-divida",
+      "name": "Revisão periódica de gastos",
+      "path": "leis/orcamento-e-divida/revisao-periodica-de-gastos.svg"
+    },
+    "superavit": {
+      "area": "orcamento-e-divida",
+      "name": "Superávit",
+      "path": "leis/orcamento-e-divida/superavit.svg"
+    },
+    "teto-de-gasto": {
+      "area": "orcamento-e-divida",
+      "name": "Teto de gasto",
+      "path": "leis/orcamento-e-divida/teto-de-gasto.svg"
+    },
+    "venda-de-imoveis-parados": {
+      "area": "orcamento-e-divida",
+      "name": "Venda de imóveis parados",
+      "path": "leis/orcamento-e-divida/venda-de-imoveis-parados.svg"
+    },
+    "areas-abertas-a-mineracao": {
+      "area": "mineracao-e-petroleo",
+      "name": "Áreas abertas à mineração",
+      "path": "leis/mineracao-e-petroleo/areas-abertas-a-mineracao.svg"
+    },
+    "areas-abertas-ao-petroleo-e-gas": {
+      "area": "mineracao-e-petroleo",
+      "name": "Áreas abertas ao petróleo e gás",
+      "path": "leis/mineracao-e-petroleo/areas-abertas-ao-petroleo-e-gas.svg"
+    },
+    "de-onde-veio-o-ouro": {
+      "area": "mineracao-e-petroleo",
+      "name": "De onde veio o ouro",
+      "path": "leis/mineracao-e-petroleo/de-onde-veio-o-ouro.svg"
+    },
+    "destino-dos-royalties": {
+      "area": "mineracao-e-petroleo",
+      "name": "Destino dos royalties",
+      "path": "leis/mineracao-e-petroleo/destino-dos-royalties.svg"
+    },
+    "exploracao-em-floresta-e-areas-protegidas": {
+      "area": "mineracao-e-petroleo",
+      "name": "Exploração em floresta e áreas protegidas",
+      "path": "leis/mineracao-e-petroleo/exploracao-em-floresta-e-areas-protegidas.svg"
+    },
+    "garantia-contra-acidentes": {
+      "area": "mineracao-e-petroleo",
+      "name": "Garantia contra acidentes",
+      "path": "leis/mineracao-e-petroleo/garantia-contra-acidentes.svg"
+    },
+    "garimpo": {
+      "area": "mineracao-e-petroleo",
+      "name": "Garimpo",
+      "path": "leis/mineracao-e-petroleo/garimpo.svg"
+    },
+    "imposto-sobre-combustiveis": {
+      "area": "mineracao-e-petroleo",
+      "name": "Imposto sobre combustíveis",
+      "path": "leis/mineracao-e-petroleo/imposto-sobre-combustiveis.svg"
+    },
+    "imposto-sobre-o-minerio": {
+      "area": "mineracao-e-petroleo",
+      "name": "Imposto sobre o minério",
+      "path": "leis/mineracao-e-petroleo/imposto-sobre-o-minerio.svg"
+    },
+    "o-que-a-mina-deixa-quando-fecha": {
+      "area": "mineracao-e-petroleo",
+      "name": "O que a mina deixa quando fecha",
+      "path": "leis/mineracao-e-petroleo/o-que-a-mina-deixa-quando-fecha.svg"
+    },
+    "parte-do-dono-da-terra": {
+      "area": "mineracao-e-petroleo",
+      "name": "Parte do dono da terra",
+      "path": "leis/mineracao-e-petroleo/parte-do-dono-da-terra.svg"
+    },
+    "parte-do-estado-no-petroleo": {
+      "area": "mineracao-e-petroleo",
+      "name": "Parte do Estado no petróleo",
+      "path": "leis/mineracao-e-petroleo/parte-do-estado-no-petroleo.svg"
+    },
+    "prazo-para-acabar-com-barragem-velha": {
+      "area": "mineracao-e-petroleo",
+      "name": "Prazo para acabar com barragem velha",
+      "path": "leis/mineracao-e-petroleo/prazo-para-acabar-com-barragem-velha.svg"
+    },
+    "royalties-do-petroleo": {
+      "area": "mineracao-e-petroleo",
+      "name": "Royalties do petróleo",
+      "path": "leis/mineracao-e-petroleo/royalties-do-petroleo.svg"
+    },
+    "subsidio-a-combustiveis": {
+      "area": "mineracao-e-petroleo",
+      "name": "Subsídio a combustíveis",
+      "path": "leis/mineracao-e-petroleo/subsidio-a-combustiveis.svg"
+    },
+    "aluguel-por-temporada-livre": {
+      "area": "moradia",
+      "name": "Aluguel por temporada livre",
+      "path": "leis/moradia/aluguel-por-temporada-livre.svg"
+    },
+    "aluguel-social": {
+      "area": "moradia",
+      "name": "Aluguel social",
+      "path": "leis/moradia/aluguel-social.svg"
+    },
+    "cooperativas-habitacionais": {
+      "area": "moradia",
+      "name": "Cooperativas habitacionais",
+      "path": "leis/moradia/cooperativas-habitacionais.svg"
+    },
+    "credito-da-casa-perdoado-por-filho": {
+      "area": "moradia",
+      "name": "Crédito da casa perdoado por filho",
+      "path": "leis/moradia/credito-da-casa-perdoado-por-filho.svg"
+    },
+    "credito-imobiliario": {
+      "area": "moradia",
+      "name": "Crédito imobiliário",
+      "path": "leis/moradia/credito-imobiliario.svg"
+    },
+    "despejo-rapido": {
+      "area": "moradia",
+      "name": "Despejo rápido",
+      "path": "leis/moradia/despejo-rapido.svg"
+    },
+    "indenizacao-da-familia-removida-por-obra": {
+      "area": "moradia",
+      "name": "Indenização da família removida por obra",
+      "path": "leis/moradia/indenizacao-da-familia-removida-por-obra.svg"
+    },
+    "liberacao-para-construir": {
+      "area": "moradia",
+      "name": "Liberação para construir",
+      "path": "leis/moradia/liberacao-para-construir.svg"
+    },
+    "limite-a-compradores-estrangeiros": {
+      "area": "moradia",
+      "name": "Limite a compradores estrangeiros",
+      "path": "leis/moradia/limite-a-compradores-estrangeiros.svg"
+    },
+    "remocao-area-risco": {
+      "area": "moradia",
+      "name": "Remoção de área de risco",
+      "path": "leis/moradia/remocao-area-risco.svg"
+    },
+    "teto-aluguel": {
+      "area": "moradia",
+      "name": "Teto de aluguel",
+      "path": "leis/moradia/teto-aluguel.svg"
+    },
+    "titulo-posse": {
+      "area": "moradia",
+      "name": "Título de posse",
+      "path": "leis/moradia/titulo-posse.svg"
+    },
+    "urbanizacao-de-favelas": {
+      "area": "moradia",
+      "name": "Urbanização de favelas",
+      "path": "leis/moradia/urbanizacao-de-favelas.svg"
+    },
+    "venda-de-casas-publicas": {
+      "area": "moradia",
+      "name": "Venda de casas públicas",
+      "path": "leis/moradia/venda-de-casas-publicas.svg"
+    },
+    "verba-habitacao": {
+      "area": "moradia",
+      "name": "Verba de habitação",
+      "path": "leis/moradia/verba-habitacao.svg"
+    },
+    "agrotoxicos": {
+      "area": "agricultura-e-pesca",
+      "name": "Agrotóxicos",
+      "path": "leis/agricultura-e-pesca/agrotoxicos.svg"
+    },
+    "assistencia-tecnica-ao-produtor": {
+      "area": "agricultura-e-pesca",
+      "name": "Assistência técnica ao produtor",
+      "path": "leis/agricultura-e-pesca/assistencia-tecnica-ao-produtor.svg"
+    },
+    "como-se-divide-a-pesca": {
+      "area": "agricultura-e-pesca",
+      "name": "Como se divide a pesca",
+      "path": "leis/agricultura-e-pesca/como-se-divide-a-pesca.svg"
+    },
+    "compra-publica-de-comida-parte-da-sobra-comprada": {
+      "area": "agricultura-e-pesca",
+      "name": "Compra pública de comida: parte da sobra comprada",
+      "path": "leis/agricultura-e-pesca/compra-publica-de-comida-parte-da-sobra-comprada.svg"
+    },
+    "compra-publica-de-comida-parte-vinda-do-pequeno": {
+      "area": "agricultura-e-pesca",
+      "name": "Compra pública de comida: parte vinda do pequeno",
+      "path": "leis/agricultura-e-pesca/compra-publica-de-comida-parte-vinda-do-pequeno.svg"
+    },
+    "credito-rural-barato-desconto-nos-juros": {
+      "area": "agricultura-e-pesca",
+      "name": "Crédito rural barato: desconto nos juros",
+      "path": "leis/agricultura-e-pesca/credito-rural-barato-desconto-nos-juros.svg"
+    },
+    "credito-rural-barato-teto-por-produtor": {
+      "area": "agricultura-e-pesca",
+      "name": "Crédito rural barato: teto por produtor",
+      "path": "leis/agricultura-e-pesca/credito-rural-barato-teto-por-produtor.svg"
+    },
+    "exigencia-para-o-credito-rural": {
+      "area": "agricultura-e-pesca",
+      "name": "Exigência para o crédito rural",
+      "path": "leis/agricultura-e-pesca/exigencia-para-o-credito-rural.svg"
+    },
+    "inspecao-de-alimentos": {
+      "area": "agricultura-e-pesca",
+      "name": "Inspeção de alimentos",
+      "path": "leis/agricultura-e-pesca/inspecao-de-alimentos.svg"
+    },
+    "seguro-de-safra": {
+      "area": "agricultura-e-pesca",
+      "name": "Seguro de safra",
+      "path": "leis/agricultura-e-pesca/seguro-de-safra.svg"
+    },
+    "sementes-transgenicas": {
+      "area": "agricultura-e-pesca",
+      "name": "Sementes transgênicas",
+      "path": "leis/agricultura-e-pesca/sementes-transgenicas.svg"
+    },
+    "subsidio-a-barcos": {
+      "area": "agricultura-e-pesca",
+      "name": "Subsídio a barcos",
+      "path": "leis/agricultura-e-pesca/subsidio-a-barcos.svg"
+    },
+    "subsidio-aos-insumos": {
+      "area": "agricultura-e-pesca",
+      "name": "Subsídio aos insumos",
+      "path": "leis/agricultura-e-pesca/subsidio-aos-insumos.svg"
+    },
+    "teto-de-pesca": {
+      "area": "agricultura-e-pesca",
+      "name": "Teto de pesca",
+      "path": "leis/agricultura-e-pesca/teto-de-pesca.svg"
+    },
+    "venda-direta-do-produtor": {
+      "area": "agricultura-e-pesca",
+      "name": "Venda direta do produtor",
+      "path": "leis/agricultura-e-pesca/venda-direta-do-produtor.svg"
+    },
+    "verba-de-irrigacao": {
+      "area": "agricultura-e-pesca",
+      "name": "Verba de irrigação",
+      "path": "leis/agricultura-e-pesca/verba-de-irrigacao.svg"
+    },
+    "abertura-de-empresa": {
+      "area": "empresas-e-estatais",
+      "name": "Abertura de empresa",
+      "path": "leis/empresas-e-estatais/abertura-de-empresa.svg"
+    },
+    "acao-de-ouro": {
+      "area": "empresas-e-estatais",
+      "name": "Ação de ouro",
+      "path": "leis/empresas-e-estatais/acao-de-ouro.svg"
+    },
+    "apoio-a-cooperativas": {
+      "area": "empresas-e-estatais",
+      "name": "Apoio a cooperativas",
+      "path": "leis/empresas-e-estatais/apoio-a-cooperativas.svg"
+    },
+    "autorizacao-para-estatizar-e-vender": {
+      "area": "empresas-e-estatais",
+      "name": "Autorização para estatizar e vender",
+      "path": "leis/empresas-e-estatais/autorizacao-para-estatizar-e-vender.svg"
+    },
+    "concorrencia": {
+      "area": "empresas-e-estatais",
+      "name": "Concorrência (antitruste)",
+      "path": "leis/empresas-e-estatais/concorrencia.svg"
+    },
+    "indenizacao": {
+      "area": "empresas-e-estatais",
+      "name": "Indenização na estatização",
+      "path": "leis/empresas-e-estatais/indenizacao.svg"
+    },
+    "independencia-das-agencias": {
+      "area": "empresas-e-estatais",
+      "name": "Independência das agências",
+      "path": "leis/empresas-e-estatais/independencia-das-agencias.svg"
+    },
+    "indicacao-dos-dirigentes-das-estatais": {
+      "area": "empresas-e-estatais",
+      "name": "Indicação dos dirigentes das estatais",
+      "path": "leis/empresas-e-estatais/indicacao-dos-dirigentes-das-estatais.svg"
+    },
+    "limite-de-aviso-ao-mercado": {
+      "area": "empresas-e-estatais",
+      "name": "Limite de aviso ao mercado",
+      "path": "leis/empresas-e-estatais/limite-de-aviso-ao-mercado.svg"
+    },
+    "participacao-dos-trabalhadores": {
+      "area": "empresas-e-estatais",
+      "name": "Participação dos trabalhadores",
+      "path": "leis/empresas-e-estatais/participacao-dos-trabalhadores.svg"
+    },
+    "politica-estatal": {
+      "area": "empresas-e-estatais",
+      "name": "Política da empresa estatal",
+      "path": "leis/empresas-e-estatais/politica-estatal.svg"
+    },
+    "prazo-pagamento": {
+      "area": "empresas-e-estatais",
+      "name": "Prazo de pagamento",
+      "path": "leis/empresas-e-estatais/prazo-pagamento.svg"
+    },
+    "preco-maximo-ao-governo": {
+      "area": "empresas-e-estatais",
+      "name": "Preço máximo ao governo",
+      "path": "leis/empresas-e-estatais/preco-maximo-ao-governo.svg"
+    },
+    "preferencia-a-empresas-nacionais": {
+      "area": "empresas-e-estatais",
+      "name": "Preferência a empresas nacionais",
+      "path": "leis/empresas-e-estatais/preferencia-a-empresas-nacionais.svg"
+    },
+    "regra-pos-venda": {
+      "area": "empresas-e-estatais",
+      "name": "Regra depois da venda",
+      "path": "leis/empresas-e-estatais/regra-pos-venda.svg"
+    },
+    "validade-das-regras": {
+      "area": "empresas-e-estatais",
+      "name": "Validade das regras",
+      "path": "leis/empresas-e-estatais/validade-das-regras.svg"
+    },
+    "apoio-ao-assentado": {
+      "area": "terra",
+      "name": "Apoio ao assentado",
+      "path": "leis/terra/apoio-ao-assentado.svg"
+    },
+    "cadastro-de-terras": {
+      "area": "terra",
+      "name": "Cadastro de terras",
+      "path": "leis/terra/cadastro-de-terras.svg"
+    },
+    "como-o-orgao-consegue-a-terra": {
+      "area": "terra",
+      "name": "Como o órgão consegue a terra",
+      "path": "leis/terra/como-o-orgao-consegue-a-terra.svg"
+    },
+    "credito-compra-terra": {
+      "area": "terra",
+      "name": "Crédito para comprar terra",
+      "path": "leis/terra/credito-compra-terra.svg"
+    },
+    "direito-de-quem-planta-em-terra-alheia": {
+      "area": "terra",
+      "name": "Direito de quem planta em terra alheia",
+      "path": "leis/terra/direito-de-quem-planta-em-terra-alheia.svg"
+    },
+    "imposto-terra-parada": {
+      "area": "terra",
+      "name": "Imposto sobre terra e imóvel parado",
+      "path": "leis/terra/imposto-terra-parada.svg"
+    },
+    "limite-a-estrangeiro-na-terra": {
+      "area": "terra",
+      "name": "Limite a estrangeiro na terra",
+      "path": "leis/terra/limite-a-estrangeiro-na-terra.svg"
+    },
+    "o-que-conta-como-terra-parada": {
+      "area": "terra",
+      "name": "O que conta como terra parada",
+      "path": "leis/terra/o-que-conta-como-terra-parada.svg"
+    },
+    "o-que-o-assentado-recebe": {
+      "area": "terra",
+      "name": "O que o assentado recebe",
+      "path": "leis/terra/o-que-o-assentado-recebe.svg"
+    },
+    "prazo-de-defesa-do-dono": {
+      "area": "terra",
+      "name": "Prazo de defesa do dono",
+      "path": "leis/terra/prazo-de-defesa-do-dono.svg"
+    },
+    "reserva-compensada-em-outra-terra": {
+      "area": "terra",
+      "name": "Reserva compensada em outra terra",
+      "path": "leis/terra/reserva-compensada-em-outra-terra.svg"
+    },
+    "reserva-da-fazenda": {
+      "area": "terra",
+      "name": "Reserva da fazenda",
+      "path": "leis/terra/reserva-da-fazenda.svg"
+    },
+    "terra-ocupada-anda-na-frente": {
+      "area": "terra",
+      "name": "Terra ocupada anda na frente",
+      "path": "leis/terra/terra-ocupada-anda-na-frente.svg"
+    },
+    "terra-ocupada-sai-da-fila": {
+      "area": "terra",
+      "name": "Terra ocupada sai da fila",
+      "path": "leis/terra/terra-ocupada-sai-da-fila.svg"
+    },
+    "teto-tamanho-terra": {
+      "area": "terra",
+      "name": "Teto de tamanho da terra",
+      "path": "leis/terra/teto-tamanho-terra.svg"
+    },
+    "verba-orgao-terras": {
+      "area": "terra",
+      "name": "Verba do órgão de terras",
+      "path": "leis/terra/verba-orgao-terras.svg"
+    },
+    "alcool-ao-volante": {
+      "area": "vicios",
+      "name": "Álcool ao volante",
+      "path": "leis/vicios/alcool-ao-volante.svg"
+    },
+    "cuidado-com-o-usuario": {
+      "area": "vicios",
+      "name": "Cuidado com o usuário",
+      "path": "leis/vicios/cuidado-com-o-usuario.svg"
+    },
+    "fiscalizacao-e-repressao-drogas": {
+      "area": "vicios",
+      "name": "Fiscalização e repressão: drogas",
+      "path": "leis/vicios/fiscalizacao-e-repressao-drogas.svg"
+    },
+    "fiscalizacao-e-repressao-jogos": {
+      "area": "vicios",
+      "name": "Fiscalização e repressão: jogos",
+      "path": "leis/vicios/fiscalizacao-e-repressao-jogos.svg"
+    },
+    "idade-minima-para-comprar-drogas": {
+      "area": "vicios",
+      "name": "Idade mínima para comprar: drogas",
+      "path": "leis/vicios/idade-minima-para-comprar-drogas.svg"
+    },
+    "idade-minima-para-comprar-jogos": {
+      "area": "vicios",
+      "name": "Idade mínima para comprar: jogos",
+      "path": "leis/vicios/idade-minima-para-comprar-jogos.svg"
+    },
+    "imposto-das-drogas": {
+      "area": "vicios",
+      "name": "Imposto das drogas",
+      "path": "leis/vicios/imposto-das-drogas.svg"
+    },
+    "imposto-dos-jogos": {
+      "area": "vicios",
+      "name": "Imposto dos jogos",
+      "path": "leis/vicios/imposto-dos-jogos.svg"
+    },
+    "liberacao-das-drogas": {
+      "area": "vicios",
+      "name": "Liberação das drogas",
+      "path": "leis/vicios/liberacao-das-drogas.svg"
+    },
+    "liberacao-dos-jogos": {
+      "area": "vicios",
+      "name": "Liberação dos jogos",
+      "path": "leis/vicios/liberacao-dos-jogos.svg"
+    },
+    "licencas-de-apostas": {
+      "area": "vicios",
+      "name": "Licenças de apostas",
+      "path": "leis/vicios/licencas-de-apostas.svg"
+    },
+    "lojas-licenciadas": {
+      "area": "vicios",
+      "name": "Lojas licenciadas",
+      "path": "leis/vicios/lojas-licenciadas.svg"
+    },
+    "monopolio-do-estado": {
+      "area": "vicios",
+      "name": "Monopólio do Estado",
+      "path": "leis/vicios/monopolio-do-estado.svg"
+    },
+    "propaganda-e-embalagem": {
+      "area": "vicios",
+      "name": "Propaganda e embalagem",
+      "path": "leis/vicios/propaganda-e-embalagem.svg"
+    },
+    "protecao-do-apostador": {
+      "area": "vicios",
+      "name": "Proteção do apostador",
+      "path": "leis/vicios/protecao-do-apostador.svg"
+    },
+    "venda-pelo-estado": {
+      "area": "vicios",
+      "name": "Venda pelo Estado",
+      "path": "leis/vicios/venda-pelo-estado.svg"
+    },
+    "concessao-rede": {
+      "area": "saneamento",
+      "name": "Concessão da rede",
+      "path": "leis/saneamento/concessao-rede.svg"
+    },
+    "saneamento-basico": {
+      "area": "saneamento",
+      "name": "Verba de saneamento",
+      "path": "leis/saneamento/saneamento-basico.svg"
+    },
+    "teto-tarifa": {
+      "area": "saneamento",
+      "name": "Teto da tarifa de água",
+      "path": "leis/saneamento/teto-tarifa.svg"
+    },
+    "tratamento-esgoto": {
+      "area": "saneamento",
+      "name": "Tratamento de esgoto",
+      "path": "leis/saneamento/tratamento-esgoto.svg"
+    },
+    "alcance-das-sancoes": {
+      "area": "relacoes-exteriores",
+      "name": "Alcance das sanções",
+      "path": "leis/relacoes-exteriores/alcance-das-sancoes.svg"
+    },
+    "aprovacao-de-tratados": {
+      "area": "relacoes-exteriores",
+      "name": "Aprovação de tratados",
+      "path": "leis/relacoes-exteriores/aprovacao-de-tratados.svg"
+    },
+    "inspecoes-nucleares-internacionais": {
+      "area": "relacoes-exteriores",
+      "name": "Inspeções nucleares internacionais",
+      "path": "leis/relacoes-exteriores/inspecoes-nucleares-internacionais.svg"
+    },
+    "tribunal-internacional": {
+      "area": "relacoes-exteriores",
+      "name": "Tribunal internacional",
+      "path": "leis/relacoes-exteriores/tribunal-internacional.svg"
+    },
+    "verba-da-diplomacia": {
+      "area": "relacoes-exteriores",
+      "name": "Verba da diplomacia",
+      "path": "leis/relacoes-exteriores/verba-da-diplomacia.svg"
+    },
+    "ajuda-a-quem-perdeu-a-casa": {
+      "area": "defesa-civil",
+      "name": "Ajuda a quem perdeu a casa",
+      "path": "leis/defesa-civil/ajuda-a-quem-perdeu-a-casa.svg"
+    },
+    "alerta-de-desastre": {
+      "area": "defesa-civil",
+      "name": "Alerta de desastre",
+      "path": "leis/defesa-civil/alerta-de-desastre.svg"
+    },
+    "divisao-da-verba-da-defesa-civil-prevencao": {
+      "area": "defesa-civil",
+      "name": "Divisão da verba da defesa civil: Prevenção",
+      "path": "leis/defesa-civil/divisao-da-verba-da-defesa-civil-prevencao.svg"
+    },
+    "divisao-da-verba-da-defesa-civil-reconstrucao": {
+      "area": "defesa-civil",
+      "name": "Divisão da verba da defesa civil: Reconstrução",
+      "path": "leis/defesa-civil/divisao-da-verba-da-defesa-civil-reconstrucao.svg"
+    },
+    "divisao-da-verba-da-defesa-civil-resposta": {
+      "area": "defesa-civil",
+      "name": "Divisão da verba da defesa civil: Resposta",
+      "path": "leis/defesa-civil/divisao-da-verba-da-defesa-civil-resposta.svg"
+    },
+    "reserva-de-emergencia": {
+      "area": "defesa-civil",
+      "name": "Reserva de emergência",
+      "path": "leis/defesa-civil/reserva-de-emergencia.svg"
+    },
+    "verba-da-defesa-civil": {
+      "area": "defesa-civil",
+      "name": "Verba da defesa civil",
+      "path": "leis/defesa-civil/verba-da-defesa-civil.svg"
+    },
+    "verba-so-com-regra-de-area-de-risco": {
+      "area": "defesa-civil",
+      "name": "Verba só com regra de área de risco",
+      "path": "leis/defesa-civil/verba-so-com-regra-de-area-de-risco.svg"
+    },
+    "autonomia-das-forcas-armadas": {
+      "area": "defesa",
+      "name": "Autonomia das Forças Armadas",
+      "path": "leis/defesa/autonomia-das-forcas-armadas.svg"
+    },
+    "gasto-militar": {
+      "area": "defesa",
+      "name": "Verba militar",
+      "path": "leis/defesa/gasto-militar.svg"
+    },
+    "idade-voluntario": {
+      "area": "defesa",
+      "name": "Idade mínima do voluntário",
+      "path": "leis/defesa/idade-voluntario.svg"
+    },
+    "militares-na-seguranca-publica": {
+      "area": "defesa",
+      "name": "Militares na segurança pública",
+      "path": "leis/defesa/militares-na-seguranca-publica.svg"
+    },
+    "projeto-nuclear-militar": {
+      "area": "defesa",
+      "name": "Projeto nuclear militar",
+      "path": "leis/defesa/projeto-nuclear-militar.svg"
+    },
+    "salario-dos-militares": {
+      "area": "defesa",
+      "name": "Salário dos militares",
+      "path": "leis/defesa/salario-dos-militares.svg"
+    },
+    "transparencia-militar": {
+      "area": "defesa",
+      "name": "Transparência dos contratos militares",
+      "path": "leis/defesa/transparencia-militar.svg"
+    },
+    "fabrica-de-fora": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Fábrica estrangeira no país",
+      "path": "leis/comercio-exterior-e-capital/fabrica-de-fora.svg"
+    },
+    "facilitacao-aduaneira": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Facilitação aduaneira",
+      "path": "leis/comercio-exterior-e-capital/facilitacao-aduaneira.svg"
+    },
+    "imposto-sobre-exportacao": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Imposto sobre exportação",
+      "path": "leis/comercio-exterior-e-capital/imposto-sobre-exportacao.svg"
+    },
+    "remessa-de-lucro": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Remessa de lucro ao exterior",
+      "path": "leis/comercio-exterior-e-capital/remessa-de-lucro.svg"
+    },
+    "subsidio-as-exportacoes": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Subsídio às exportações",
+      "path": "leis/comercio-exterior-e-capital/subsidio-as-exportacoes.svg"
+    },
+    "tarifa-de-importacao": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Tarifa de importação",
+      "path": "leis/comercio-exterior-e-capital/tarifa-de-importacao.svg"
+    },
+    "triagem-estrangeira": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Triagem de compra estrangeira",
+      "path": "leis/comercio-exterior-e-capital/triagem-estrangeira.svg"
+    },
+    "venda-de-armas-ao-exterior": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Venda de armas ao exterior",
+      "path": "leis/comercio-exterior-e-capital/venda-de-armas-ao-exterior.svg"
+    },
+    "zonas-francas": {
+      "area": "comercio-exterior-e-capital",
+      "name": "Zonas francas",
+      "path": "leis/comercio-exterior-e-capital/zonas-francas.svg"
+    },
+    "aposentadoria-dos-servidores": {
+      "area": "previdencia",
+      "name": "Aposentadoria dos servidores",
+      "path": "leis/previdencia/aposentadoria-dos-servidores.svg"
+    },
+    "aposentadoria-especial": {
+      "area": "previdencia",
+      "name": "Aposentadoria especial",
+      "path": "leis/previdencia/aposentadoria-especial.svg"
+    },
+    "aposentadoria-flexivel": {
+      "area": "previdencia",
+      "name": "Aposentadoria flexível",
+      "path": "leis/previdencia/aposentadoria-flexivel.svg"
+    },
+    "contas-individuais": {
+      "area": "previdencia",
+      "name": "Contas individuais",
+      "path": "leis/previdencia/contas-individuais.svg"
+    },
+    "contribuicao-previdenciaria": {
+      "area": "previdencia",
+      "name": "Contribuição previdenciária",
+      "path": "leis/previdencia/contribuicao-previdenciaria.svg"
+    },
+    "idade-minima-de-aposentadoria": {
+      "area": "previdencia",
+      "name": "Idade mínima de aposentadoria",
+      "path": "leis/previdencia/idade-minima-de-aposentadoria.svg"
+    },
+    "pensao-para-idosos-pobres": {
+      "area": "previdencia",
+      "name": "Pensão para idosos pobres",
+      "path": "leis/previdencia/pensao-para-idosos-pobres.svg"
+    },
+    "previdencia-privada-com-deducao": {
+      "area": "previdencia",
+      "name": "Previdência privada com dedução",
+      "path": "leis/previdencia/previdencia-privada-com-deducao.svg"
+    },
+    "regime-dos-militares": {
+      "area": "previdencia",
+      "name": "Regime dos militares",
+      "path": "leis/previdencia/regime-dos-militares.svg"
+    },
+    "tempo-minimo-de-contribuicao": {
+      "area": "previdencia",
+      "name": "Tempo mínimo de contribuição",
+      "path": "leis/previdencia/tempo-minimo-de-contribuicao.svg"
+    },
+    "verba-das-aposentadorias": {
+      "area": "previdencia",
+      "name": "Verba das aposentadorias",
+      "path": "leis/previdencia/verba-das-aposentadorias.svg"
+    },
+    "acesso-ao-aborto": {
+      "area": "direitos-e-liberdades",
+      "name": "Acesso ao aborto",
+      "path": "leis/direitos-e-liberdades/acesso-ao-aborto.svg"
+    },
+    "casamento-entre-pessoas-do-mesmo-sexo": {
+      "area": "direitos-e-liberdades",
+      "name": "Casamento entre pessoas do mesmo sexo",
+      "path": "leis/direitos-e-liberdades/casamento-entre-pessoas-do-mesmo-sexo.svg"
+    },
+    "censura-politica": {
+      "area": "direitos-e-liberdades",
+      "name": "Censura política",
+      "path": "leis/direitos-e-liberdades/censura-politica.svg"
+    },
+    "cotas-em-empresas-e-concursos": {
+      "area": "direitos-e-liberdades",
+      "name": "Cotas em empresas e concursos",
+      "path": "leis/direitos-e-liberdades/cotas-em-empresas-e-concursos.svg"
+    },
+    "discurso-de-odio": {
+      "area": "direitos-e-liberdades",
+      "name": "Discurso de ódio",
+      "path": "leis/direitos-e-liberdades/discurso-de-odio.svg"
+    },
+    "lei-contra-discriminacao": {
+      "area": "direitos-e-liberdades",
+      "name": "Lei contra discriminação",
+      "path": "leis/direitos-e-liberdades/lei-contra-discriminacao.svg"
+    },
+    "liberdade-de-recusa-das-empresas": {
+      "area": "direitos-e-liberdades",
+      "name": "Liberdade de recusa das empresas",
+      "path": "leis/direitos-e-liberdades/liberdade-de-recusa-das-empresas.svg"
+    },
+    "morte-assistida": {
+      "area": "direitos-e-liberdades",
+      "name": "Morte assistida",
+      "path": "leis/direitos-e-liberdades/morte-assistida.svg"
+    },
+    "ofensa-a-religiao": {
+      "area": "direitos-e-liberdades",
+      "name": "Ofensa à religião",
+      "path": "leis/direitos-e-liberdades/ofensa-a-religiao.svg"
+    },
+    "ofensa-a-simbolos-e-autoridades": {
+      "area": "direitos-e-liberdades",
+      "name": "Ofensa a símbolos e autoridades",
+      "path": "leis/direitos-e-liberdades/ofensa-a-simbolos-e-autoridades.svg"
+    },
+    "protecao-digital": {
+      "area": "direitos-e-liberdades",
+      "name": "Proteção de dados pessoais",
+      "path": "leis/direitos-e-liberdades/protecao-digital.svg"
+    },
+    "religiao-do-estado": {
+      "area": "direitos-e-liberdades",
+      "name": "Religião do Estado",
+      "path": "leis/direitos-e-liberdades/religiao-do-estado.svg"
+    },
+    "restricao-a-protestos": {
+      "area": "direitos-e-liberdades",
+      "name": "Restrição a protestos",
+      "path": "leis/direitos-e-liberdades/restricao-a-protestos.svg"
+    },
+    "conteudo-nacional": {
+      "area": "cultura-e-esporte",
+      "name": "Conteúdo nacional",
+      "path": "leis/cultura-e-esporte/conteudo-nacional.svg"
+    },
+    "direito-do-dono": {
+      "area": "cultura-e-esporte",
+      "name": "Direito do dono",
+      "path": "leis/cultura-e-esporte/direito-do-dono.svg"
+    },
+    "divisao-da-verba-de-cultura-e-esporte-artistas-e-festas": {
+      "area": "cultura-e-esporte",
+      "name": "Divisão da verba de cultura e esporte: Artistas e festas",
+      "path": "leis/cultura-e-esporte/divisao-da-verba-de-cultura-e-esporte-artistas-e-festas.svg"
+    },
+    "divisao-da-verba-de-cultura-e-esporte-atletas": {
+      "area": "cultura-e-esporte",
+      "name": "Divisão da verba de cultura e esporte: Atletas",
+      "path": "leis/cultura-e-esporte/divisao-da-verba-de-cultura-e-esporte-atletas.svg"
+    },
+    "divisao-da-verba-de-cultura-e-esporte-esporte-no-bairro": {
+      "area": "cultura-e-esporte",
+      "name": "Divisão da verba de cultura e esporte: Esporte no bairro",
+      "path": "leis/cultura-e-esporte/divisao-da-verba-de-cultura-e-esporte-esporte-no-bairro.svg"
+    },
+    "divisao-da-verba-de-cultura-e-esporte-patrimonio": {
+      "area": "cultura-e-esporte",
+      "name": "Divisão da verba de cultura e esporte: Patrimônio",
+      "path": "leis/cultura-e-esporte/divisao-da-verba-de-cultura-e-esporte-patrimonio.svg"
+    },
+    "divisao-da-verba-de-cultura-e-esporte-propaganda-do-turismo": {
+      "area": "cultura-e-esporte",
+      "name": "Divisão da verba de cultura e esporte: Propaganda do turismo",
+      "path": "leis/cultura-e-esporte/divisao-da-verba-de-cultura-e-esporte-propaganda-do-turismo.svg"
+    },
+    "empresa-banca-cultura-e-desconta-do-imposto": {
+      "area": "cultura-e-esporte",
+      "name": "Empresa banca cultura e desconta do imposto",
+      "path": "leis/cultura-e-esporte/empresa-banca-cultura-e-desconta-do-imposto.svg"
+    },
+    "idade-para-filme-e-tv": {
+      "area": "cultura-e-esporte",
+      "name": "Idade para filme e TV",
+      "path": "leis/cultura-e-esporte/idade-para-filme-e-tv.svg"
+    },
+    "meia-entrada": {
+      "area": "cultura-e-esporte",
+      "name": "Meia-entrada",
+      "path": "leis/cultura-e-esporte/meia-entrada.svg"
+    },
+    "o-que-pode-ser-protegido": {
+      "area": "cultura-e-esporte",
+      "name": "O que pode ser protegido",
+      "path": "leis/cultura-e-esporte/o-que-pode-ser-protegido.svg"
+    },
+    "preco-de-museu-e-parque-federal": {
+      "area": "cultura-e-esporte",
+      "name": "Preço de museu e parque federal",
+      "path": "leis/cultura-e-esporte/preco-de-museu-e-parque-federal.svg"
+    },
+    "quem-pode-pedir": {
+      "area": "cultura-e-esporte",
+      "name": "Quem pode pedir",
+      "path": "leis/cultura-e-esporte/quem-pode-pedir.svg"
+    },
+    "verba-de-cultura-e-esporte": {
+      "area": "cultura-e-esporte",
+      "name": "Verba de cultura e esporte",
+      "path": "leis/cultura-e-esporte/verba-de-cultura-e-esporte.svg"
+    },
+    "abertura-a-geracao-privada": {
+      "area": "energia",
+      "name": "Abertura à geração privada",
+      "path": "leis/energia/abertura-a-geracao-privada.svg"
+    },
+    "concessao-da-rede-de-transmissao": {
+      "area": "energia",
+      "name": "Concessão da rede de transmissão",
+      "path": "leis/energia/concessao-da-rede-de-transmissao.svg"
+    },
+    "eletrificacao-rural": {
+      "area": "energia",
+      "name": "Eletrificação rural",
+      "path": "leis/energia/eletrificacao-rural.svg"
+    },
+    "energia-eolica": {
+      "area": "energia",
+      "name": "Investimento em energia eólica",
+      "path": "leis/energia/energia-eolica.svg"
+    },
+    "energia-hidreletrica": {
+      "area": "energia",
+      "name": "Investimento em hidrelétricas",
+      "path": "leis/energia/energia-hidreletrica.svg"
+    },
+    "energia-solar": {
+      "area": "energia",
+      "name": "Investimento em energia solar",
+      "path": "leis/energia/energia-solar.svg"
+    },
+    "energia-termica": {
+      "area": "energia",
+      "name": "Investimento em térmicas fósseis",
+      "path": "leis/energia/energia-termica.svg"
+    },
+    "enriquecimento-de-uranio": {
+      "area": "energia",
+      "name": "Enriquecimento de urânio",
+      "path": "leis/energia/enriquecimento-de-uranio.svg"
+    },
+    "incentivo-a-geracao-limpa-privada": {
+      "area": "energia",
+      "name": "Incentivo à geração limpa privada",
+      "path": "leis/energia/incentivo-a-geracao-limpa-privada.svg"
+    },
+    "investimento-na-rede-de-transmissao": {
+      "area": "energia",
+      "name": "Investimento na rede de transmissão",
+      "path": "leis/energia/investimento-na-rede-de-transmissao.svg"
+    },
+    "padroes-de-eficiencia-energetica": {
+      "area": "energia",
+      "name": "Padrões de eficiência energética",
+      "path": "leis/energia/padroes-de-eficiencia-energetica.svg"
+    },
+    "reserva-de-capacidade": {
+      "area": "energia",
+      "name": "Reserva de capacidade",
+      "path": "leis/energia/reserva-de-capacidade.svg"
+    },
+    "segurar-a-conta-de-luz": {
+      "area": "energia",
+      "name": "Segurar a conta de luz",
+      "path": "leis/energia/segurar-a-conta-de-luz.svg"
+    },
+    "cidadania-por-nascimento": {
+      "area": "imigracao",
+      "name": "Cidadania por nascimento",
+      "path": "leis/imigracao/cidadania-por-nascimento.svg"
+    },
+    "cota-de-entrada": {
+      "area": "imigracao",
+      "name": "Cota de entrada",
+      "path": "leis/imigracao/cota-de-entrada.svg"
+    },
+    "deportacao": {
+      "area": "imigracao",
+      "name": "Deportação",
+      "path": "leis/imigracao/deportacao.svg"
+    },
+    "exigencia-de-idioma-e-cultura": {
+      "area": "imigracao",
+      "name": "Exigência de idioma e cultura",
+      "path": "leis/imigracao/exigencia-de-idioma-e-cultura.svg"
+    },
+    "integracao-dos-imigrantes": {
+      "area": "imigracao",
+      "name": "Integração dos imigrantes",
+      "path": "leis/imigracao/integracao-dos-imigrantes.svg"
+    },
+    "multa-a-quem-contrata-sem-documento": {
+      "area": "imigracao",
+      "name": "Multa a quem contrata sem documento",
+      "path": "leis/imigracao/multa-a-quem-contrata-sem-documento.svg"
+    },
+    "prazo-para-naturalizacao": {
+      "area": "imigracao",
+      "name": "Prazo para naturalização",
+      "path": "leis/imigracao/prazo-para-naturalizacao.svg"
+    },
+    "regularizacao": {
+      "area": "imigracao",
+      "name": "Regularização",
+      "path": "leis/imigracao/regularizacao.svg"
+    },
+    "selecao-por-qualificacao": {
+      "area": "imigracao",
+      "name": "Seleção por qualificação",
+      "path": "leis/imigracao/selecao-por-qualificacao.svg"
+    },
+    "servicos-para-imigrante-sem-documento": {
+      "area": "imigracao",
+      "name": "Serviços para imigrante sem documento",
+      "path": "leis/imigracao/servicos-para-imigrante-sem-documento.svg"
+    },
+    "taxa-de-saida-para-formados": {
+      "area": "imigracao",
+      "name": "Taxa de saída para formados",
+      "path": "leis/imigracao/taxa-de-saida-para-formados.svg"
+    },
+    "trabalho-de-quem-pede-refugio": {
+      "area": "imigracao",
+      "name": "Trabalho de quem pede refúgio",
+      "path": "leis/imigracao/trabalho-de-quem-pede-refugio.svg"
+    },
+    "verba-da-fronteira": {
+      "area": "imigracao",
+      "name": "Verba da fronteira",
+      "path": "leis/imigracao/verba-da-fronteira.svg"
+    },
+    "autonomia-do-banco-central": {
+      "area": "moeda-e-bancos",
+      "name": "Autonomia do Banco Central",
+      "path": "leis/moeda-e-bancos/autonomia-do-banco-central.svg"
+    },
+    "congelamento-de-precos": {
+      "area": "moeda-e-bancos",
+      "name": "Congelamento de preços",
+      "path": "leis/moeda-e-bancos/congelamento-de-precos.svg"
+    },
+    "controle-de-capital": {
+      "area": "moeda-e-bancos",
+      "name": "Controle de capital",
+      "path": "leis/moeda-e-bancos/controle-de-capital.svg"
+    },
+    "criptomoedas": {
+      "area": "moeda-e-bancos",
+      "name": "Criptomoedas",
+      "path": "leis/moeda-e-bancos/criptomoedas.svg"
+    },
+    "exigencia-de-capital-dos-bancos": {
+      "area": "moeda-e-bancos",
+      "name": "Exigência de capital dos bancos",
+      "path": "leis/moeda-e-bancos/exigencia-de-capital-dos-bancos.svg"
+    },
+    "faixa-do-cambio-largura-da-faixa": {
+      "area": "moeda-e-bancos",
+      "name": "Faixa do câmbio: largura da faixa",
+      "path": "leis/moeda-e-bancos/faixa-do-cambio-largura-da-faixa.svg"
+    },
+    "faixa-do-cambio-preco-alvo": {
+      "area": "moeda-e-bancos",
+      "name": "Faixa do câmbio: preço-alvo",
+      "path": "leis/moeda-e-bancos/faixa-do-cambio-preco-alvo.svg"
+    },
+    "licenca-para-banco-novo": {
+      "area": "moeda-e-bancos",
+      "name": "Licença para banco novo",
+      "path": "leis/moeda-e-bancos/licenca-para-banco-novo.svg"
+    },
+    "meta-de-inflacao": {
+      "area": "moeda-e-bancos",
+      "name": "Meta de inflação",
+      "path": "leis/moeda-e-bancos/meta-de-inflacao.svg"
+    },
+    "moeda-de-fora-nos-contratos": {
+      "area": "moeda-e-bancos",
+      "name": "Moeda de fora nos contratos",
+      "path": "leis/moeda-e-bancos/moeda-de-fora-nos-contratos.svg"
+    },
+    "protecao-ao-cliente-de-banco": {
+      "area": "moeda-e-bancos",
+      "name": "Proteção ao cliente de banco",
+      "path": "leis/moeda-e-bancos/protecao-ao-cliente-de-banco.svg"
+    },
+    "seguro-deposito": {
+      "area": "moeda-e-bancos",
+      "name": "Seguro-depósito",
+      "path": "leis/moeda-e-bancos/seguro-deposito.svg"
+    },
+    "teto-de-juros": {
+      "area": "moeda-e-bancos",
+      "name": "Teto de juros",
+      "path": "leis/moeda-e-bancos/teto-de-juros.svg"
+    },
+    "abertura-das-telecomunicacoes": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Abertura das telecomunicações",
+      "path": "leis/comunicacao-e-tecnologia/abertura-das-telecomunicacoes.svg"
+    },
+    "bloqueio-de-internet": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Bloqueio de internet",
+      "path": "leis/comunicacao-e-tecnologia/bloqueio-de-internet.svg"
+    },
+    "concessao-de-radio-e-tv": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Concessão de rádio e TV",
+      "path": "leis/comunicacao-e-tecnologia/concessao-de-radio-e-tv.svg"
+    },
+    "criptografia-livre": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Criptografia livre",
+      "path": "leis/comunicacao-e-tecnologia/criptografia-livre.svg"
+    },
+    "emissora-estatal": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Emissora estatal",
+      "path": "leis/comunicacao-e-tecnologia/emissora-estatal.svg"
+    },
+    "identificacao-dos-usuarios": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Identificação dos usuários",
+      "path": "leis/comunicacao-e-tecnologia/identificacao-dos-usuarios.svg"
+    },
+    "independencia-da-emissora-estatal": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Independência da emissora estatal",
+      "path": "leis/comunicacao-e-tecnologia/independencia-da-emissora-estatal.svg"
+    },
+    "internet-publica": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Internet pública",
+      "path": "leis/comunicacao-e-tecnologia/internet-publica.svg"
+    },
+    "lei-contra-noticias-falsas": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Lei contra notícias falsas",
+      "path": "leis/comunicacao-e-tecnologia/lei-contra-noticias-falsas.svg"
+    },
+    "limite-a-dono-estrangeiro": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Limite a dono estrangeiro",
+      "path": "leis/comunicacao-e-tecnologia/limite-a-dono-estrangeiro.svg"
+    },
+    "limite-de-dono-de-midia": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Limite de dono de mídia",
+      "path": "leis/comunicacao-e-tecnologia/limite-de-dono-de-midia.svg"
+    },
+    "neutralidade-da-rede": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Neutralidade da rede",
+      "path": "leis/comunicacao-e-tecnologia/neutralidade-da-rede.svg"
+    },
+    "publicidade-do-governo": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Publicidade do governo",
+      "path": "leis/comunicacao-e-tecnologia/publicidade-do-governo.svg"
+    },
+    "regras-de-inteligencia-artificial": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Regras de inteligência artificial",
+      "path": "leis/comunicacao-e-tecnologia/regras-de-inteligencia-artificial.svg"
+    },
+    "remocao-de-conteudo": {
+      "area": "comunicacao-e-tecnologia",
+      "name": "Remoção de conteúdo",
+      "path": "leis/comunicacao-e-tecnologia/remocao-de-conteudo.svg"
     }
   }
 }

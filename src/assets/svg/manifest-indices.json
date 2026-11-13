@@ -1,0 +1,741 @@
+{
+  "version": 1,
+  "base": "src/assets/svg",
+  "icons": {
+    "populacao": {
+      "area": "População",
+      "name": "População",
+      "path": "indices/populacao.svg"
+    },
+    "ocupados": {
+      "area": "Trabalho",
+      "name": "Ocupados",
+      "path": "indices/ocupados.svg"
+    },
+    "desemprego": {
+      "area": "Trabalho",
+      "name": "Desemprego",
+      "path": "indices/desemprego.svg"
+    },
+    "emprego_informal": {
+      "area": "Trabalho",
+      "name": "Emprego informal",
+      "path": "indices/emprego_informal.svg"
+    },
+    "pib": {
+      "area": "Economia",
+      "name": "PIB real",
+      "path": "indices/pib.svg"
+    },
+    "crescimento_real": {
+      "area": "Economia",
+      "name": "Crescimento",
+      "path": "indices/crescimento_real.svg"
+    },
+    "indice_precos": {
+      "area": "Economia",
+      "name": "Nível de preços",
+      "path": "indices/indice_precos.svg"
+    },
+    "inflacao": {
+      "area": "Economia",
+      "name": "Inflação",
+      "path": "indices/inflacao.svg"
+    },
+    "pib_nominal": {
+      "area": "Economia",
+      "name": "PIB nominal",
+      "path": "indices/pib_nominal.svg"
+    },
+    "arrecadacao": {
+      "area": "Contas",
+      "name": "Receita",
+      "path": "indices/arrecadacao.svg"
+    },
+    "gasto_publico": {
+      "area": "Contas",
+      "name": "Gasto",
+      "path": "indices/gasto_publico.svg"
+    },
+    "juros_pagos": {
+      "area": "Contas",
+      "name": "Juros pagos",
+      "path": "indices/juros_pagos.svg"
+    },
+    "resultado_primario": {
+      "area": "Contas",
+      "name": "Resultado primário",
+      "path": "indices/resultado_primario.svg"
+    },
+    "resultado_fiscal": {
+      "area": "Contas",
+      "name": "Resultado nominal",
+      "path": "indices/resultado_fiscal.svg"
+    },
+    "cofre": {
+      "area": "Contas",
+      "name": "Cofre",
+      "path": "indices/cofre.svg"
+    },
+    "divida_publica": {
+      "area": "Contas",
+      "name": "Dívida",
+      "path": "indices/divida_publica.svg"
+    },
+    "taxa_juros": {
+      "area": "Contas",
+      "name": "Juros",
+      "path": "indices/taxa_juros.svg"
+    },
+    "padrao_vida": {
+      "area": "Sociedade",
+      "name": "Padrão de vida",
+      "path": "indices/padrao_vida.svg"
+    },
+    "instrucao": {
+      "area": "Sociedade",
+      "name": "Instrução",
+      "path": "indices/instrucao.svg"
+    },
+    "industrializacao": {
+      "area": "Economia",
+      "name": "Industrialização",
+      "path": "indices/industrializacao.svg"
+    },
+    "saude": {
+      "area": "Sociedade",
+      "name": "Saúde",
+      "path": "indices/saude.svg"
+    },
+    "atendimento": {
+      "area": "Sociedade",
+      "name": "Atendimento",
+      "path": "indices/atendimento.svg"
+    },
+    "vacinacao": {
+      "area": "Sociedade",
+      "name": "Vacinação",
+      "path": "indices/vacinacao.svg"
+    },
+    "profissionais_saude": {
+      "area": "Sociedade",
+      "name": "Profissionais de saúde",
+      "path": "indices/profissionais_saude.svg"
+    },
+    "abastecimento": {
+      "area": "Sociedade",
+      "name": "Abastecimento",
+      "path": "indices/abastecimento.svg"
+    },
+    "acesso_remedios": {
+      "area": "Sociedade",
+      "name": "Acesso a remédios",
+      "path": "indices/acesso_remedios.svg"
+    },
+    "seguranca": {
+      "area": "Sociedade",
+      "name": "Segurança pública",
+      "path": "indices/seguranca.svg"
+    },
+    "lotacao_presidios": {
+      "area": "Sociedade",
+      "name": "Lotação dos presídios",
+      "path": "indices/lotacao_presidios.svg"
+    },
+    "poder_defensivo": {
+      "area": "Sociedade",
+      "name": "Poder defensivo",
+      "path": "indices/poder_defensivo.svg"
+    },
+    "seguranca_externa": {
+      "area": "Sociedade",
+      "name": "Segurança externa",
+      "path": "indices/seguranca_externa.svg"
+    },
+    "pobreza": {
+      "area": "Sociedade",
+      "name": "Pobreza",
+      "path": "indices/pobreza.svg"
+    },
+    "desigualdade": {
+      "area": "Sociedade",
+      "name": "Desigualdade",
+      "path": "indices/desigualdade.svg"
+    },
+    "corrupcao": {
+      "area": "Política",
+      "name": "Corrupção",
+      "path": "indices/corrupcao.svg"
+    },
+    "liberdade_civil": {
+      "area": "Política",
+      "name": "Liberdades",
+      "path": "indices/liberdade_civil.svg"
+    },
+    "polarizacao": {
+      "area": "Política",
+      "name": "Polarização",
+      "path": "indices/polarizacao.svg"
+    },
+    "meio_ambiente": {
+      "area": "Sociedade",
+      "name": "Meio ambiente",
+      "path": "indices/meio_ambiente.svg"
+    },
+    "reputacao_internacional": {
+      "area": "Política",
+      "name": "Reputação internacional",
+      "path": "indices/reputacao_internacional.svg"
+    },
+    "popularidade_governo": {
+      "area": "Política",
+      "name": "Aprovação",
+      "path": "indices/popularidade_governo.svg"
+    },
+    "deficit_habitacional": {
+      "area": "Sociedade",
+      "name": "Déficit habitacional",
+      "path": "indices/deficit_habitacional.svg"
+    },
+    "preco_moradia": {
+      "area": "Sociedade",
+      "name": "Preço da moradia",
+      "path": "indices/preco_moradia.svg"
+    },
+    "favela": {
+      "area": "Sociedade",
+      "name": "Favela",
+      "path": "indices/favela.svg"
+    },
+    "saneamento": {
+      "area": "Sociedade",
+      "name": "Saneamento",
+      "path": "indices/saneamento.svg"
+    },
+    "concentracao_terra": {
+      "area": "Sociedade",
+      "name": "Concentração de terra",
+      "path": "indices/concentracao_terra.svg"
+    },
+    "risco_de_epidemia": {
+      "area": "Saúde",
+      "name": "Risco de epidemia",
+      "path": "indices/risco_de_epidemia.svg"
+    },
+    "fuga_de_profissionais": {
+      "area": "Saúde",
+      "name": "Fuga de profissionais",
+      "path": "indices/fuga_de_profissionais.svg"
+    },
+    "saude_mental": {
+      "area": "Saúde",
+      "name": "Saúde mental",
+      "path": "indices/saude_mental.svg"
+    },
+    "dependencia_de_drogas": {
+      "area": "Vícios",
+      "name": "Dependência de drogas",
+      "path": "indices/dependencia_de_drogas.svg"
+    },
+    "dependencia_de_jogos": {
+      "area": "Vícios",
+      "name": "Dependência de jogos",
+      "path": "indices/dependencia_de_jogos.svg"
+    },
+    "mercado_ilegal": {
+      "area": "Vícios",
+      "name": "Mercado ilegal",
+      "path": "indices/mercado_ilegal.svg"
+    },
+    "risco_de_falta_d_agua": {
+      "area": "Saneamento",
+      "name": "Risco de falta d'água",
+      "path": "indices/risco_de_falta_d_agua.svg"
+    },
+    "vagas_na_escola": {
+      "area": "Educação",
+      "name": "Vagas na escola",
+      "path": "indices/vagas_na_escola.svg"
+    },
+    "evasao_escolar": {
+      "area": "Educação",
+      "name": "Evasão escolar",
+      "path": "indices/evasao_escolar.svg"
+    },
+    "qualidade_do_ensino": {
+      "area": "Educação",
+      "name": "Qualidade do ensino",
+      "path": "indices/qualidade_do_ensino.svg"
+    },
+    "tecnologia_do_pais": {
+      "area": "Ciência e pesquisa",
+      "name": "Tecnologia do país",
+      "path": "indices/tecnologia_do_pais.svg"
+    },
+    "fuga_de_cientistas": {
+      "area": "Ciência e pesquisa",
+      "name": "Fuga de cientistas",
+      "path": "indices/fuga_de_cientistas.svg"
+    },
+    "bens_em_risco": {
+      "area": "Cultura e esporte",
+      "name": "Bens em risco",
+      "path": "indices/bens_em_risco.svg"
+    },
+    "fome": {
+      "area": "Assistência social",
+      "name": "Fome",
+      "path": "indices/fome.svg"
+    },
+    "moradores_de_rua": {
+      "area": "Assistência social",
+      "name": "Moradores de rua",
+      "path": "indices/moradores_de_rua.svg"
+    },
+    "fraude_em_beneficios": {
+      "area": "Assistência social",
+      "name": "Fraude em benefícios",
+      "path": "indices/fraude_em_beneficios.svg"
+    },
+    "cobertura_da_previdencia": {
+      "area": "Previdência",
+      "name": "Cobertura da previdência",
+      "path": "indices/cobertura_da_previdencia.svg"
+    },
+    "deficit_da_previdencia": {
+      "area": "Previdência",
+      "name": "Déficit da previdência",
+      "path": "indices/deficit_da_previdencia.svg"
+    },
+    "confianca_na_aposentadoria": {
+      "area": "Previdência",
+      "name": "Confiança na aposentadoria",
+      "path": "indices/confianca_na_aposentadoria.svg"
+    },
+    "greves": {
+      "area": "Trabalho",
+      "name": "Greves",
+      "path": "indices/greves.svg"
+    },
+    "tensao_trabalhista": {
+      "area": "Trabalho",
+      "name": "Tensão trabalhista",
+      "path": "indices/tensao_trabalhista.svg"
+    },
+    "forca_dos_sindicatos": {
+      "area": "Trabalho",
+      "name": "Força dos sindicatos",
+      "path": "indices/forca_dos_sindicatos.svg"
+    },
+    "trabalho_infantil": {
+      "area": "Trabalho",
+      "name": "Trabalho infantil",
+      "path": "indices/trabalho_infantil.svg"
+    },
+    "casas_vazias": {
+      "area": "Moradia",
+      "name": "Casas vazias",
+      "path": "indices/casas_vazias.svg"
+    },
+    "homicidios": {
+      "area": "Segurança pública",
+      "name": "Homicídios",
+      "path": "indices/homicidios.svg"
+    },
+    "crimes_contra_o_patrimonio": {
+      "area": "Segurança pública",
+      "name": "Crimes contra o patrimônio",
+      "path": "indices/crimes_contra_o_patrimonio.svg"
+    },
+    "mortes_pela_policia": {
+      "area": "Segurança pública",
+      "name": "Mortes pela polícia",
+      "path": "indices/mortes_pela_policia.svg"
+    },
+    "sensacao_de_inseguranca": {
+      "area": "Segurança pública",
+      "name": "Sensação de insegurança",
+      "path": "indices/sensacao_de_inseguranca.svg"
+    },
+    "confianca_na_policia": {
+      "area": "Segurança pública",
+      "name": "Confiança na polícia",
+      "path": "indices/confianca_na_policia.svg"
+    },
+    "corrupcao_policial": {
+      "area": "Segurança pública",
+      "name": "Corrupção policial",
+      "path": "indices/corrupcao_policial.svg"
+    },
+    "chefes_presos": {
+      "area": "Segurança pública",
+      "name": "Chefes presos",
+      "path": "indices/chefes_presos.svg"
+    },
+    "dinheiro_do_crime_apreendido": {
+      "area": "Segurança pública",
+      "name": "Dinheiro do crime apreendido",
+      "path": "indices/dinheiro_do_crime_apreendido.svg"
+    },
+    "violencia_contra_a_mulher": {
+      "area": "Segurança pública",
+      "name": "Violência contra a mulher",
+      "path": "indices/violencia_contra_a_mulher.svg"
+    },
+    "certeza_de_punicao": {
+      "area": "Justiça e prisões",
+      "name": "Certeza de punição",
+      "path": "indices/certeza_de_punicao.svg"
+    },
+    "peso_das_penas": {
+      "area": "Justiça e prisões",
+      "name": "Peso das penas",
+      "path": "indices/peso_das_penas.svg"
+    },
+    "presos_sem_julgamento": {
+      "area": "Justiça e prisões",
+      "name": "Presos sem julgamento",
+      "path": "indices/presos_sem_julgamento.svg"
+    },
+    "volta_ao_crime": {
+      "area": "Justiça e prisões",
+      "name": "Volta ao crime",
+      "path": "indices/volta_ao_crime.svg"
+    },
+    "tempo_da_justica": {
+      "area": "Justiça e prisões",
+      "name": "Tempo da Justiça",
+      "path": "indices/tempo_da_justica.svg"
+    },
+    "confianca_na_justica": {
+      "area": "Justiça e prisões",
+      "name": "Confiança na Justiça",
+      "path": "indices/confianca_na_justica.svg"
+    },
+    "risco_de_golpe": {
+      "area": "Defesa",
+      "name": "Risco de golpe",
+      "path": "indices/risco_de_golpe.svg"
+    },
+    "preparo_contra_desastres": {
+      "area": "Defesa civil",
+      "name": "Preparo contra desastres",
+      "path": "indices/preparo_contra_desastres.svg"
+    },
+    "soberania": {
+      "area": "Relações exteriores",
+      "name": "Soberania",
+      "path": "indices/soberania.svg"
+    },
+    "tensao_internacional": {
+      "area": "Relações exteriores",
+      "name": "Tensão internacional",
+      "path": "indices/tensao_internacional.svg"
+    },
+    "imigrantes_na_populacao": {
+      "area": "Imigração",
+      "name": "Imigrantes na população",
+      "path": "indices/imigrantes_na_populacao.svg"
+    },
+    "pessoas_sem_documento": {
+      "area": "Imigração",
+      "name": "Pessoas sem documento",
+      "path": "indices/pessoas_sem_documento.svg"
+    },
+    "refugiados_no_pais": {
+      "area": "Imigração",
+      "name": "Refugiados no país",
+      "path": "indices/refugiados_no_pais.svg"
+    },
+    "emigracao_de_formados": {
+      "area": "Imigração",
+      "name": "Emigração de formados",
+      "path": "indices/emigracao_de_formados.svg"
+    },
+    "tensao_com_imigrantes": {
+      "area": "Imigração",
+      "name": "Tensão com imigrantes",
+      "path": "indices/tensao_com_imigrantes.svg"
+    },
+    "integracao": {
+      "area": "Imigração",
+      "name": "Integração",
+      "path": "indices/integracao.svg"
+    },
+    "discriminacao": {
+      "area": "Direitos e liberdades",
+      "name": "Discriminação",
+      "path": "indices/discriminacao.svg"
+    },
+    "tensao_religiosa": {
+      "area": "Direitos e liberdades",
+      "name": "Tensão religiosa",
+      "path": "indices/tensao_religiosa.svg"
+    },
+    "participacao_eleitoral": {
+      "area": "Estado e eleições",
+      "name": "Participação eleitoral",
+      "path": "indices/participacao_eleitoral.svg"
+    },
+    "confianca_na_democracia": {
+      "area": "Estado e eleições",
+      "name": "Confiança na democracia",
+      "path": "indices/confianca_na_democracia.svg"
+    },
+    "independencia_da_justica": {
+      "area": "Estado e eleições",
+      "name": "Independência da Justiça",
+      "path": "indices/independencia_da_justica.svg"
+    },
+    "sonegacao": {
+      "area": "Impostos",
+      "name": "Sonegação",
+      "path": "indices/sonegacao.svg"
+    },
+    "saida_de_ricos": {
+      "area": "Impostos",
+      "name": "Saída de ricos",
+      "path": "indices/saida_de_ricos.svg"
+    },
+    "divida_atrasada": {
+      "area": "Impostos",
+      "name": "Dívida atrasada",
+      "path": "indices/divida_atrasada.svg"
+    },
+    "gasto_obrigatorio": {
+      "area": "Orçamento e dívida",
+      "name": "Gasto obrigatório",
+      "path": "indices/gasto_obrigatorio.svg"
+    },
+    "prazo_medio_da_divida": {
+      "area": "Orçamento e dívida",
+      "name": "Prazo médio da dívida",
+      "path": "indices/prazo_medio_da_divida.svg"
+    },
+    "divida_em_moeda_estrangeira": {
+      "area": "Orçamento e dívida",
+      "name": "Dívida em moeda estrangeira",
+      "path": "indices/divida_em_moeda_estrangeira.svg"
+    },
+    "credibilidade_fiscal": {
+      "area": "Orçamento e dívida",
+      "name": "Credibilidade fiscal",
+      "path": "indices/credibilidade_fiscal.svg"
+    },
+    "folha_do_funcionalismo": {
+      "area": "Orçamento e dívida",
+      "name": "Folha do funcionalismo",
+      "path": "indices/folha_do_funcionalismo.svg"
+    },
+    "indice_da_bolsa": {
+      "area": "Moeda e bancos",
+      "name": "Índice da bolsa",
+      "path": "indices/indice_da_bolsa.svg"
+    },
+    "confianca_do_mercado": {
+      "area": "Moeda e bancos",
+      "name": "Confiança do mercado",
+      "path": "indices/confianca_do_mercado.svg"
+    },
+    "cambio": {
+      "area": "Moeda e bancos",
+      "name": "Câmbio",
+      "path": "indices/cambio.svg"
+    },
+    "reservas_internacionais": {
+      "area": "Moeda e bancos",
+      "name": "Reservas internacionais",
+      "path": "indices/reservas_internacionais.svg"
+    },
+    "credito_ao_setor_privado": {
+      "area": "Moeda e bancos",
+      "name": "Crédito ao setor privado",
+      "path": "indices/credito_ao_setor_privado.svg"
+    },
+    "solidez_dos_bancos": {
+      "area": "Moeda e bancos",
+      "name": "Solidez dos bancos",
+      "path": "indices/solidez_dos_bancos.svg"
+    },
+    "expectativa_de_inflacao": {
+      "area": "Moeda e bancos",
+      "name": "Expectativa de inflação",
+      "path": "indices/expectativa_de_inflacao.svg"
+    },
+    "dinheiro_em_cripto": {
+      "area": "Moeda e bancos",
+      "name": "Dinheiro em cripto",
+      "path": "indices/dinheiro_em_cripto.svg"
+    },
+    "estado_na_economia": {
+      "area": "Empresas e estatais",
+      "name": "Estado na economia",
+      "path": "indices/estado_na_economia.svg"
+    },
+    "concentracao_de_mercado": {
+      "area": "Empresas e estatais",
+      "name": "Concentração de mercado",
+      "path": "indices/concentracao_de_mercado.svg"
+    },
+    "eficiencia_das_estatais": {
+      "area": "Empresas e estatais",
+      "name": "Eficiência das estatais",
+      "path": "indices/eficiencia_das_estatais.svg"
+    },
+    "tempo_para_abrir_empresa": {
+      "area": "Empresas e estatais",
+      "name": "Tempo para abrir empresa",
+      "path": "indices/tempo_para_abrir_empresa.svg"
+    },
+    "trabalhadores_em_cooperativas": {
+      "area": "Empresas e estatais",
+      "name": "Trabalhadores em cooperativas",
+      "path": "indices/trabalhadores_em_cooperativas.svg"
+    },
+    "abertura_comercial": {
+      "area": "Comércio exterior e capital",
+      "name": "Abertura comercial",
+      "path": "indices/abertura_comercial.svg"
+    },
+    "saldo_comercial": {
+      "area": "Comércio exterior e capital",
+      "name": "Saldo comercial",
+      "path": "indices/saldo_comercial.svg"
+    },
+    "dependencia_de_importados": {
+      "area": "Comércio exterior e capital",
+      "name": "Dependência de importados",
+      "path": "indices/dependencia_de_importados.svg"
+    },
+    "investimento_estrangeiro": {
+      "area": "Comércio exterior e capital",
+      "name": "Investimento estrangeiro",
+      "path": "indices/investimento_estrangeiro.svg"
+    },
+    "preco_da_comida": {
+      "area": "Agricultura e pesca",
+      "name": "Preço da comida",
+      "path": "indices/preco_da_comida.svg"
+    },
+    "estoque_de_peixe": {
+      "area": "Agricultura e pesca",
+      "name": "Estoque de peixe",
+      "path": "indices/estoque_de_peixe.svg"
+    },
+    "conflito_no_campo": {
+      "area": "Terra",
+      "name": "Conflito no campo",
+      "path": "indices/conflito_no_campo.svg"
+    },
+    "emissoes_de_carbono": {
+      "area": "Meio ambiente",
+      "name": "Emissões de carbono",
+      "path": "indices/emissoes_de_carbono.svg"
+    },
+    "desmatamento": {
+      "area": "Meio ambiente",
+      "name": "Desmatamento",
+      "path": "indices/desmatamento.svg"
+    },
+    "qualidade_do_ar": {
+      "area": "Meio ambiente",
+      "name": "Qualidade do ar",
+      "path": "indices/qualidade_do_ar.svg"
+    },
+    "energia_gerada": {
+      "area": "Energia",
+      "name": "Energia gerada",
+      "path": "indices/energia_gerada.svg"
+    },
+    "energia_gasta": {
+      "area": "Energia",
+      "name": "Energia gasta",
+      "path": "indices/energia_gasta.svg"
+    },
+    "preco_da_energia": {
+      "area": "Energia",
+      "name": "Preço da energia",
+      "path": "indices/preco_da_energia.svg"
+    },
+    "matriz_limpa": {
+      "area": "Energia",
+      "name": "Matriz limpa",
+      "path": "indices/matriz_limpa.svg"
+    },
+    "acesso_a_energia": {
+      "area": "Energia",
+      "name": "Acesso à energia",
+      "path": "indices/acesso_a_energia.svg"
+    },
+    "mortes_no_transito": {
+      "area": "Infraestrutura e transporte",
+      "name": "Mortes no trânsito",
+      "path": "indices/mortes_no_transito.svg"
+    },
+    "custo_das_obras": {
+      "area": "Infraestrutura e transporte",
+      "name": "Custo das obras",
+      "path": "indices/custo_das_obras.svg"
+    },
+    "custo_do_frete": {
+      "area": "Infraestrutura e transporte",
+      "name": "Custo do frete",
+      "path": "indices/custo_do_frete.svg"
+    },
+    "obras_paradas": {
+      "area": "Infraestrutura e transporte",
+      "name": "Obras paradas",
+      "path": "indices/obras_paradas.svg"
+    },
+    "congestionamento": {
+      "area": "Infraestrutura e transporte",
+      "name": "Congestionamento",
+      "path": "indices/congestionamento.svg"
+    },
+    "liberdade_de_imprensa": {
+      "area": "Comunicação e tecnologia",
+      "name": "Liberdade de imprensa",
+      "path": "indices/liberdade_de_imprensa.svg"
+    },
+    "desinformacao": {
+      "area": "Comunicação e tecnologia",
+      "name": "Desinformação",
+      "path": "indices/desinformacao.svg"
+    },
+    "credibilidade_da_imprensa": {
+      "area": "Comunicação e tecnologia",
+      "name": "Credibilidade da imprensa",
+      "path": "indices/credibilidade_da_imprensa.svg"
+    },
+    "concentracao_da_midia": {
+      "area": "Comunicação e tecnologia",
+      "name": "Concentração da mídia",
+      "path": "indices/concentracao_da_midia.svg"
+    },
+    "violencia_contra_a_imprensa": {
+      "area": "Comunicação e tecnologia",
+      "name": "Violência contra a imprensa",
+      "path": "indices/violencia_contra_a_imprensa.svg"
+    },
+    "acesso_a_internet": {
+      "area": "Comunicação e tecnologia",
+      "name": "Acesso à internet",
+      "path": "indices/acesso_a_internet.svg"
+    },
+    "natalidade": {
+      "area": "Geral do país",
+      "name": "Natalidade",
+      "path": "indices/natalidade.svg"
+    },
+    "produtividade": {
+      "area": "Geral do país",
+      "name": "Produtividade",
+      "path": "indices/produtividade.svg"
+    },
+    "preco_do_combustivel": {
+      "area": "Mineração e petróleo",
+      "name": "Preço do combustível",
+      "path": "indices/preco_do_combustivel.svg"
+    }
+  }
+}

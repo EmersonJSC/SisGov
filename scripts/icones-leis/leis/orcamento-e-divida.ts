@@ -1,0 +1,21 @@
+// Ícones das leis de orcamento-e-divida: nome no game-icons.net (jogo.ts).
+export const ORCAMENTO: Record<string, string> = {
+  "conselho-fiscal-independente": "magnifying-glass",
+  "deficit": "health-decrease",
+  "divida-em-moeda-estrangeira": "credits-currency",
+  "emendas-dos-parlamentares": "greek-temple",
+  "estabilidade-do-servidor": "anchor",
+  "fundo-soberano": "open-treasure-chest",
+  "gasto-minimo-obrigatorio": "padlock",
+  "limite-da-divida": "barrier",
+  "limite-da-folha-do-funcionalismo": "scroll-quill",
+  "meta-de-resultado": "bullseye",
+  "prazo-da-divida": "calendar",
+  "punicao-se-descumprir": "gavel",
+  "renegociacao-da-divida": "breaking-chain",
+  "reposicao-de-servidores": "recycle",
+  "revisao-periodica-de-gastos": "abacus",
+  "superavit": "health-increase",
+  "teto-de-gasto": "scales",
+  "venda-de-imoveis-parados": "house",
+};

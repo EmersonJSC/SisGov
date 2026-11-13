@@ -26,7 +26,7 @@ import {
 } from "./formatos";
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
-import { iconeLei } from "./iconesPersonalizados";
+import { iconeIndice, iconeLei } from "./iconesPersonalizados";
 import { ficaNaPresidencia, type BaseMapa } from "./layout";
 import { efeitoDe, type Efeito, type IndiceRelacoes } from "./relacoes";
 import { COR_EFEITO } from "./tema";
@@ -592,7 +592,7 @@ export function DocumentoLei({
           return {
             id: e.id,
             nome: b?.nome ?? e.id,
-            icone: ICONE_BOLHA[e.id] ?? "chart-line",
+            icone: iconeIndice(e.id, ICONE_BOLHA[e.id] ?? "chart-line"),
             secao: "indice" as const,
             efeito: efeitoDe(Math.sign(e.pontos), b?.avaliacao),
             texto: pontos(e.pontos),
@@ -618,7 +618,7 @@ export function DocumentoLei({
         .map((r) => ({
           id: r.para,
           nome: bolhas.get(r.para)?.nome ?? r.para,
-          icone: ICONE_BOLHA[r.para] ?? "chart-line",
+          icone: iconeIndice(r.para, ICONE_BOLHA[r.para] ?? "chart-line"),
           secao: secaoDe(r.para),
           efeito: r.efeito,
           texto: "",

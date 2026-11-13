@@ -46,6 +46,13 @@ describe("visão da partida para o mapa", () => {
     expect(g.valor).toBe(jogar(partida, 3).estado.grupos[g.id].satisfacao);
   });
 
+  it("a lei usa o nome que o país dá a ela; a que ele não tem fica não promulgada", () => {
+    const brasil = montarVisao(criarPartida("brasil-2026", 1));
+    const lei = (id: string) => brasil.leis.find((l) => l.id === id)!;
+    expect(lei("taxa-basica-de-juros").nome).toBe("Selic");
+    expect(lei("pena-de-morte").naoLegislada).toBe(true);
+  });
+
   it("lei que o país não legislou fica no mínimo da faixa, sem NaN", () => {
     const pobre = montarVisao(criarPartida("teste-pobre", 7));
     const areas = pobre.leis.find((l) => l.id === "areas-protegidas")!;

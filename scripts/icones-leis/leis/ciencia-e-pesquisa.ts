@@ -1,0 +1,21 @@
+// Ícones das leis de ciencia-e-pesquisa: nome no game-icons.net (jogo.ts).
+export const CIENCIA: Record<string, string> = {
+  "bolsas-de-pesquisa": "bubbling-flask",
+  "de-quem-e-a-invencao-paga-pelo-estado": "contract",
+  "desconto-de-imposto-para-quem-pesquisa": "banknote",
+  "divisao-da-verba-de-ciencia-agro": "sprout",
+  "divisao-da-verba-de-ciencia-ciencia-basica": "atom",
+  "divisao-da-verba-de-ciencia-defesa": "missile-launcher",
+  "divisao-da-verba-de-ciencia-energia-e-baterias": "battery-100",
+  "divisao-da-verba-de-ciencia-espaco": "rocket",
+  "divisao-da-verba-de-ciencia-industria-e-chips": "microchip",
+  "divisao-da-verba-de-ciencia-saude-e-remedios": "pill",
+  "duracao-da-patente": "hourglass",
+  "edicao-de-genes-em-pessoas": "dna1",
+  "pesquisa-com-virus-perigosos": "virus",
+  "programa-espacial": "space-shuttle",
+  "quebra-de-patente": "broken-bone",
+  "testes-em-animais": "mouse",
+  "trazer-cientistas-de-volta": "airplane-arrival",
+  "verba-de-ciencia-e-tecnologia": "microscope",
+};
