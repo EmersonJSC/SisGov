@@ -21,7 +21,7 @@ import {
 import { comPedido } from "../fila";
 import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
-import { montarBase, PRESIDENCIA } from "./layout";
+import { montarBase } from "./layout";
 import { Governo } from "./Governo";
 import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
@@ -29,13 +29,11 @@ import { Mercado } from "./Mercado";
 import { MesaDePapeis } from "./MesaDePapeis";
 import { NaoPromulgadas, naoPromulgadas } from "./NaoPromulgadas";
 import { Pregao, pregaoInicial } from "./Pregao";
-import { MapaPolitico } from "./MapaPolitico";
+import { MapaOrganico } from "./MapaOrganico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
-import { indexarRelacoes, ligacoesDeFundo } from "./relacoes";
+import { indexarRelacoes } from "./relacoes";
 import "./mapa.css";
 
-const VAZIO_MAPA = new Map();
-const VAZIO_SET = new Set<string>();
 const CENTRO: Desvio = { x: 0, y: 0 };
 
 interface Props {
@@ -72,12 +70,10 @@ export function TelaMapa({
   );
   const base = useMemo(() => montarBase(visaoDoMapa), [visaoDoMapa]);
   const indice = useMemo(() => indexarRelacoes(visaoDoMapa), [visaoDoMapa]);
-  const fundo = useMemo(() => ligacoesDeFundo(visaoDoMapa), [visaoDoMapa]);
-  const [aberta, setAberta] = useState<string | null>(null);
   const [selecionado, setSelecionado] = useState<string | null>(null);
   const [janela, setJanela] = useState<string | null>(null);
   const [desvio, setDesvio] = useState<Desvio>(CENTRO);
-  const [retangulo, setRetangulo] = useState<Retangulo | null>(null);
+  const [, setRetangulo] = useState<Retangulo | null>(null);
   const [rascunho, setRascunho] = useState(0);
   const [resultado, setResultado] = useState(() => temResultado(partida));
   const [desvioResultado, setDesvioResultado] = useState<Desvio>(CENTRO);
@@ -189,23 +185,10 @@ export function TelaMapa({
         onPassar={onPassar}
       />
       <main className="area-mapa">
-        <MapaPolitico
+        <MapaOrganico
           visao={visaoDoMapa}
-          base={base}
-          indice={indice}
-          fundo={fundo}
-          aberta={aberta}
-          onAbrir={(id) => setAberta(id === PRESIDENCIA ? null : id)}
           selecionado={selecionado}
           onSelecionar={selecionar}
-          marcas={VAZIO_MAPA}
-          pulsos={VAZIO_SET}
-          variacoes={VAZIO_MAPA}
-          variacoesVoce={VAZIO_MAPA}
-          mostrarVariacoes={false}
-          onAlternarVariacoes={() => {}}
-          painel={0}
-          cobertura={selecionado === janela ? retangulo : null}
         />
         {lei && !partida.estado.encerrada ? (
           <DocumentoLei

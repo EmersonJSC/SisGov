@@ -39,6 +39,25 @@ barra do topo commitada (0963da58); **ícones das leis NÃO commitados**:
   promulgadas) e `nomes` com o nome local de 34 leis (Selic, Bolsa Família, Lei Maria da Penha...),
   lido em `src/partida/visao.ts`. Critério: lei no "nada" da régua ou da escada saiu.
 
+- **Mapa orgânico, vivo (NÃO commitado; autor aprovou a ideia em 13/nov).** Estilo Democracy 4: bolhas soltas,
+  índices como centros grandes, leis penduradas, fios verde (+) e vermelho (−) com um raio que corre por eles.
+  Peças em `src/tela/mapa/`: `organico.ts` (simulação `d3-force`, bolha = objeto com raio/peso), `useMapaVivo.ts`
+  (anda a simulação quadro a quadro e escreve direto no SVG), `MapaOrganico.tsx` (câmera, mouse, arrastar bolha,
+  hover com anel de alcance, bilhete, pulso quando o valor muda no turno), `BolhaDoMapa.tsx`, `ControlesDoMapa.tsx`
+  (visões, busca, enquadrar, miniatura), `visoes.ts` (o que dá peso), `vistaDoMapa.ts` (câmera pura), `fundoDoMapa.ts`
+  (canvas de fundo: manchas, fios e raios), `organico.css`. **Desempenho (13/nov):** fios em SVG custavam ~5 mil escritas
+  por quadro (6 fps); passaram para o canvas, a câmera escreve o `viewBox` direto e a bolha só reescreve a posição se
+  mudou. JS por quadro: ~1 ms parado, ~6 ms simulando/zoom (o painel do navegador é minúsculo e limita os quadros:
+  pintura não foi medida; o autor confere na tela dele). Zoom/arrasto: ícones somem em movimento (classe
+  `movendo`, volta 150 ms depois) e a roda é somada por quadro. Se ainda lagar: bolhas no canvas com ícones
+  pré-desenhados (demo em `public/demos/bolhas-canvas.html`, fora dos commits; abrir em localhost:5199/demos/bolhas-canvas.html).
+  **Visões:** Ligações (padrão), Nível (funciona), Dinheiro (75 leis com `fluxo`: imposto verde, verba vermelha),
+  Popularidade (**sem dado: o motor não calcula popularidade por lei; `saldoAnual` vale 0 em todas**; o botão avisa).
+  Falta: popularidade por lei, instituições do jogador (junto dos índices, outro destaque; não existem na
+  `VisaoPartida`), mídia, missão (administrar um setor público; GDD §18), crédito do game-icons na tela,
+  `MapaPolitico.tsx`/`layout.ts` sem uso (apagar é pedido à parte).
+- **Lista do Brasil:** `docs/jogo/leis-do-brasil.md` para o autor conferir (435 promulgadas, 77 não).
+
 ## Próximo
 
 Autor olhar a folha de ícones e apontar os que não leem bem (trocar só o nome no arquivo da esfera). Depois: o mapa (bolhas como selos de papel, ícones de área). Onde fica cada coisa

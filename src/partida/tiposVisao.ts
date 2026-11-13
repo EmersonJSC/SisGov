@@ -34,6 +34,8 @@ export type VisaoLei = Readonly<{
   descricao: string;
   grupo: "orcamentaria" | "regulatoria" | "tributaria" | "institucional";
   area: string;
+  /** Esfera da lei (a menor peça: 30 no mundo); o mapa agrupa por ela. */
+  esfera?: string;
   /** Ministérios (nome real) a que esta lei pertence; hoje um só. */
   ministerios: readonly string[];
   ministerio: string;

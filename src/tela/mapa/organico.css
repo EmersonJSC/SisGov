@@ -1,0 +1,264 @@
+/* Mapa orgânico (classes org-, bolha, fio). Escuro, de jogo. */
+.org-mapa {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, #1d2230 0%, #12141b 70%, #0b0c11 100%);
+}
+
+.org-fundo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.org-svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.org-svg:active {
+  cursor: grabbing;
+}
+
+/* ---------------------------------------------------------------- bolhas -- */
+
+.bolha {
+  cursor: pointer;
+}
+
+.bolha-corpo {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.18s ease-out;
+}
+
+.bolha:hover .bolha-corpo,
+.bolha.foco .bolha-corpo {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 10px rgb(255 255 255 / 0.55));
+}
+
+.bolha.selecionada .bolha-corpo {
+  filter: drop-shadow(0 0 12px rgb(255 214 120 / 0.9));
+}
+
+.bolha.fraca {
+  opacity: 0.5;
+}
+
+.bolha-nome {
+  fill: #efe4cc;
+  paint-order: stroke;
+  stroke: #0b0c11;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.bolha-alcance {
+  opacity: 0.12;
+  stroke: #fff;
+  stroke-width: 1.5;
+  stroke-dasharray: 7 7;
+  pointer-events: none;
+  animation: org-alcance 3s linear infinite;
+}
+
+@keyframes org-alcance {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+.bolha-pulso {
+  fill: none;
+  stroke-width: 4;
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: org-pulso 1.5s ease-out 2;
+}
+
+@keyframes org-pulso {
+  from {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* em movimento (zoom, arrasto) só o círculo: sem ícone nem nome */
+.org-svg.movendo .bolha-icone,
+.org-svg.movendo .bolha-nome {
+  display: none;
+}
+
+/* com uma bolha em foco, o resto recua */
+.org-svg.com-foco .bolha:not(.destaque) {
+  opacity: 0.3;
+}
+
+/* ------------------------------------------------------------ controles -- */
+
+.org-controles {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  display: grid;
+  gap: 6px;
+  width: 270px;
+  padding: 10px;
+  color: #efe4cc;
+  background: rgb(14 16 22 / 0.82);
+  border: 1px solid rgb(239 228 204 / 0.25);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.org-visoes {
+  display: flex;
+  gap: 4px;
+}
+
+.org-visoes button,
+.org-busca button {
+  flex: 1;
+  padding: 6px 4px;
+  font: inherit;
+  font-size: 12px;
+  color: inherit;
+  cursor: pointer;
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(239 228 204 / 0.25);
+  border-radius: 5px;
+}
+
+.org-visoes button:hover,
+.org-busca button:hover {
+  background: rgb(255 255 255 / 0.14);
+}
+
+.org-visoes button.sem-dado {
+  opacity: 0.5;
+  border-style: dashed;
+}
+
+.org-visoes button.ativa {
+  color: #1b1408;
+  background: #e8c872;
+  border-color: #e8c872;
+}
+
+.org-dica-da-visao {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.org-busca {
+  display: flex;
+  gap: 4px;
+}
+
+.org-busca input {
+  flex: 3;
+  min-width: 0;
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 13px;
+  color: inherit;
+  background: rgb(0 0 0 / 0.35);
+  border: 1px solid rgb(239 228 204 / 0.25);
+  border-radius: 5px;
+}
+
+.org-achados {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.org-achados button {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 4px;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+}
+
+.org-achados button:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+
+.org-tipo {
+  flex: none;
+  width: 44px;
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.org-miniatura {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  cursor: crosshair;
+  background: rgb(14 16 22 / 0.82);
+  border: 1px solid rgb(239 228 204 / 0.25);
+  border-radius: 8px;
+}
+
+/* ---------------------------------------------------------------- bilhete -- */
+
+.org-bilhete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  max-width: 260px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #efe4cc;
+  pointer-events: none;
+  background: rgb(14 16 22 / 0.94);
+  border: 1px solid rgb(239 228 204 / 0.35);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.5);
+}
+
+.org-bilhete b {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.org-bilhete span {
+  display: block;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bolha-alcance,
+  .bolha-pulso {
+    animation: none;
+  }
+}

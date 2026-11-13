@@ -171,6 +171,12 @@ function visaoComumDaLei(
     id: lei.id,
     nome: nomeLocal ?? t.nome ?? nomeDoId(lei.id),
     descricao: t.descricao ?? "",
+    esfera: lei.esfera,
+    // pétrea ainda não tem dado; constitucional vem da classe de quórum
+    nivelLegal:
+      lei.classe === "constitucional"
+        ? ("constitucional" as const)
+        : ("derivada" as const),
     area: area.id,
     ministerios: [area.titulo],
     ministerio: area.titulo,
