@@ -92,8 +92,9 @@ barra do topo commitada (0963da58); **ícones das leis NÃO commitados**:
 
 ## Próximo
 
-Autor olhar a folha de ícones e apontar os que não leem bem (trocar só o nome no arquivo da esfera). Depois: o mapa (bolhas como selos de papel, ícones de área). Onde fica cada coisa
-que saiu da barra: o autor vai dizer.
+Ministros terminados (commit 46c0b3ce, 13/nov). Agora o **mapa, da raiz às pontas** (corrigir mapa e mecânicas):
+começar levantando os requisitos do mapa (GDD §17 × R11, R12, R14) para o autor aprovar. Depois: padronizar as
+leis; depois o caminho do dinheiro (GDD §18).
 
 ## Pendências do autor
 
