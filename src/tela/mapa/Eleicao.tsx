@@ -36,7 +36,7 @@ export function Eleicao({
   onFechar: () => void;
 }) {
   const { regras, estado } = partida;
-  const partidos = nomesPartidos(partida.pais);
+  const partidos = nomesPartidos(partida.pais, partida.opcoes.comeco);
   const principais = regras.indicesPrincipais ?? [];
   const [tipo, setTipo] = useState<Alvo>("indice");
   const [alvo, setAlvo] = useState(principais[0] ?? "");

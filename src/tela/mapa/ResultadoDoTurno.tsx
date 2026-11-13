@@ -57,7 +57,7 @@ export function ResultadoDoTurno({
   setExtras: (e: Pedido[]) => void;
 }) {
   const { estado } = partida;
-  const partidos = nomesPartidos(partida.pais);
+  const partidos = nomesPartidos(partida.pais, partida.opcoes.comeco);
   const governo = nomesDoGoverno(partida);
   const nomes: NomesDoJornal = {
     lei: (id) => lei(id)?.nome ?? id,

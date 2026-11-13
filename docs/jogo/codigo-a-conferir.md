@@ -290,3 +290,19 @@ testes. Os testes não cobrem tudo; conferir estes pontos:
 43. **Etapa Política dividida**: a eleição saiu de `etapas/politica.ts` para
     `etapas/eleicao.ts`; reiniciar o mandato (zerar cargos e emendas usados)
     foi junto. Conferir que nada ficou para trás.
+
+## I. Passo 9 (começo da partida)
+
+44. **Elenco sorteado** (`motor/pessoas/gerar.ts`): notas normais em torno de 55 com
+    desvio 18; bússola em torno do partido de origem (0,25) e dos técnicos (0,45);
+    30% de técnicos; 160 pessoas no Brasil. Tudo palpite; o jogo fica bom ou ruim
+    conforme o elenco que sai.
+45. **Partido do jogador** (`motor/pessoas/partido.ts`): 6% das cadeiras, tiradas dos
+    partidos da chapa; defende os 5 grupos mais perto da bússola da chapa, peso
+    total 1,2. A "Aprovação alta" do R4.9 não foi feita.
+46. **Ministros sorteados** (`motor/pessoas/ministros.ts`): nota = competência +
+    0,8 × afinidade com a chapa + 0,3 × acaso, caixa por caixa na ordem do país
+    (guloso: as primeiras caixas ficam com os melhores).
+47. **Perfil de rede** (`mundo/pessoas/perfil.json`): 3 frases por eixo e tom, escritas
+    pelo Claude; "segue" são as 3 pessoas mais próximas na bússola. Conferir o tom
+    dos textos e se algum denuncia o lado.

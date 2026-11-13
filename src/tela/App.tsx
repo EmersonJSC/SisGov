@@ -3,12 +3,13 @@ import {
   avancar,
   carregarPartida,
   criarPartida,
-  paisesDisponiveis,
   salvarPartida,
+  type ComecoDoJogador,
   type Partida,
   type Pedido,
   type PedidoMudarLei,
 } from "../partida";
+import { TelaInicio } from "./inicio/TelaInicio";
 import { TelaMapa } from "./mapa/TelaMapa";
 
 const CHAVE = "sisgov-partida";
@@ -26,9 +27,6 @@ export function App() {
   const [fila, setFila] = useState<PedidoMudarLei[]>([]);
   const [extras, setExtras] = useState<Pedido[]>([]);
   const [aviso, setAviso] = useState("");
-  const [pais, setPais] = useState(paisesDisponiveis()[0]);
-  const [semente, setSemente] = useState(42);
-  const [semCongresso, setSemCongresso] = useState(false);
 
   const trocar = (p: Partida | null, texto = "") => {
     setPartida(p);
@@ -37,9 +35,14 @@ export function App() {
     setAviso(texto);
   };
 
-  const comecar = () => {
+  const comecar = (
+    pais: string,
+    semente: number,
+    comeco: ComecoDoJogador,
+    semCongresso: boolean,
+  ) => {
     try {
-      trocar(criarPartida(pais, semente, { semCongresso }));
+      trocar(criarPartida(pais, semente, { semCongresso, comeco }));
     } catch (e) {
       setAviso((e as Error).message);
     }
@@ -76,41 +79,12 @@ export function App() {
 
   if (!partida)
     return (
-      <main>
-        <h1>SisGov</h1>
-        <p>Governe um país e responda nas urnas.</p>
-        <label>
-          País{" "}
-          <select value={pais} onChange={(e) => setPais(e.target.value)}>
-            {paisesDisponiveis().map((p) => (
-              <option key={p}>{p}</option>
-            ))}
-          </select>
-        </label>{" "}
-        <label>
-          Semente{" "}
-          <input
-            type="number"
-            value={semente}
-            onChange={(e) => setSemente(Number(e.target.value))}
-          />
-        </label>{" "}
-        <label>
-          <input
-            type="checkbox"
-            checked={semCongresso}
-            onChange={(e) => setSemCongresso(e.target.checked)}
-          />{" "}
-          Sem Congresso (teste: toda lei passa)
-        </label>
-        <p>
-          <button onClick={comecar}>Começar</button>{" "}
-          <button onClick={carregar} disabled={!lerSalvo()}>
-            Carregar partida salva
-          </button>
-        </p>
-        {aviso && <p className="aviso">{aviso}</p>}
-      </main>
+      <TelaInicio
+        podeCarregar={lerSalvo() !== null}
+        aviso={aviso}
+        onCarregar={carregar}
+        onComecar={comecar}
+      />
     );
 
   return (

@@ -52,7 +52,7 @@ export function Governo({
   const governo = estado.governo;
   const rg = regras.governo;
   const nomes = nomesDoGoverno(partida);
-  const partidos = nomesPartidos(partida.pais);
+  const partidos = nomesPartidos(partida.pais, partida.opcoes.comeco);
   const [aberta, setAberta] = useState<string | null>(null);
   if (!governo || !rg) return null;
 

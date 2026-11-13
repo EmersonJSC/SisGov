@@ -46,7 +46,21 @@ import {
   type Programa,
   type RegrasMidia,
   type RegrasProgramas,
+  type Ficha,
+  type ModeloDePessoas,
+  bussolaDoPartido,
+  gerarPessoas,
+  motivoModeloInvalido,
+  sortearMinistros,
 } from "../motor";
+import { arquivoPais, temArquivoDoPais } from "./paises";
+import {
+  centroDoGoverno,
+  comPartidoDoJogador,
+  idDoPartidoDoJogador,
+  motivoComecoInvalido,
+  type ComecoDoJogador,
+} from "./comeco";
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
 import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
 import principais from "../conteudo/mundo/indicadores/principais.json";
@@ -64,10 +78,6 @@ import produtos from "../conteudo/mundo/mercado/produtos.json";
 import produtores from "../conteudo/mundo/mercado/produtores.json";
 
 const arquivosLeis = import.meta.glob("../conteudo/mundo/leis/*.json", {
-  eager: true,
-  import: "default",
-});
-const arquivosPaises = import.meta.glob("../conteudo/paises/*/*.json", {
   eager: true,
   import: "default",
 });
@@ -101,7 +111,7 @@ interface LeisVigentes {
 }
 
 /** Partidos do país: nomes, cadeiras e quem é a base. */
-interface CongressoPais {
+export interface CongressoPais {
   versao: 1;
   maioria: number;
   governo: string;
@@ -110,7 +120,7 @@ interface CongressoPais {
   carga?: number;
   leis?: Congresso["leis"];
   ignorar?: Congresso["ignorar"];
-  partidos: (Congresso["partidos"][number] & { nome: string })[];
+  partidos: (Congresso["partidos"][number] & { nome: string; cor?: string })[];
 }
 
 const jogabilidade = variaveis.variaveis.filter(
@@ -169,22 +179,61 @@ export const nomesPops: Record<string, string> = Object.fromEntries(
 
 /** Produção declarada pelo país; sem arquivo, ele compra tudo do mundo. */
 function declaracaoDoPais(pais: string): unknown {
-  const caminho = `../conteudo/paises/${pais}/producao.json`;
-  return arquivosPaises[caminho]
+  return temArquivoDoPais(pais, "producao")
     ? arquivoPais(pais, "producao")
     : { versao: 1, cobertura: {} };
+}
+
+/** O que governo.json declara: caixas (o ministro é opcional) e, se quiser, pessoas à mão. */
+interface GovernoNoArquivo {
+  ministerios: { molde: string; ministro?: string }[];
+  pessoas?: GovernoDoPais["pessoas"];
+  leis?: GovernoDoPais["leis"];
+}
+
+/** Elenco do país: o que ele declara à mão, ou o que o gerador sorteia (pessoas.json). */
+export function elencoDoPais(
+  pais: string,
+  semente: number,
+  congresso: CongressoPais,
+  grupos: TipoGrupo[],
+): Ficha[] {
+  if (!temArquivoDoPais(pais, "pessoas")) return [];
+  const modelo = arquivoPais<ModeloDePessoas>(pais, "pessoas");
+  const motivo = motivoModeloInvalido(modelo);
+  if (motivo) throw new Error(`país "${pais}" › pessoas: ${motivo}`);
+  return gerarPessoas(
+    semente,
+    modelo,
+    congresso.partidos.map((p) => ({
+      id: p.id,
+      cadeiras: p.cadeiras,
+      bussola: bussolaDoPartido(p.defende, grupos),
+    })),
+  );
 }
 
 /** Ministros do país (governo.json), se ele declara; confere o que o país diz. */
 function carregarGoverno(
   pais: string,
   partidos: string[],
+  pessoasGeradas: Ficha[],
+  ministros: Record<string, string>,
 ): { regras: RegrasGoverno; declarado: GovernoDoPais } | null {
-  if (!arquivosPaises[`../conteudo/paises/${pais}/governo.json`]) return null;
-  const declarado = arquivoPais<GovernoDoPais>(pais, "governo");
+  if (!temArquivoDoPais(pais, "governo")) return null;
+  const arquivo = arquivoPais<GovernoNoArquivo>(pais, "governo");
+  const pessoas = arquivo.pessoas ?? pessoasGeradas;
+  const declarado: GovernoDoPais = {
+    pessoas,
+    ...(arquivo.leis ? { leis: arquivo.leis } : {}),
+    ministerios: arquivo.ministerios.map(({ molde, ministro }) => ({
+      molde,
+      ministro: ministros[molde] ?? ministro ?? "",
+    })),
+  };
   const regras: RegrasGoverno = {
     moldes: moldesDeMinisterio.moldes as Molde[],
-    pessoas: declarado.pessoas,
+    pessoas,
     ...(declarado.leis ? { leis: declarado.leis } : {}),
   };
   const motivo = motivoGovernoInvalido(regras, declarado, partidos);
@@ -192,12 +241,36 @@ function carregarGoverno(
   return { regras, declarado };
 }
 
+/** Quem ocupa cada caixa: o que o país ou o jogador pôs, e o resto sorteado pela chapa. */
+export function ministrosDoComeco(
+  semente: number,
+  pais: string,
+  elenco: Ficha[],
+  congresso: CongressoPais,
+  grupos: TipoGrupo[],
+  comeco: ComecoDoJogador | undefined,
+): Record<string, string> {
+  if (!temArquivoDoPais(pais, "governo") || elenco.length === 0) return {};
+  const { ministerios } = arquivoPais<GovernoNoArquivo>(pais, "governo");
+  const declarados = Object.fromEntries(
+    ministerios.flatMap((m) => (m.ministro ? [[m.molde, m.ministro]] : [])),
+  );
+  return sortearMinistros(
+    semente + 1,
+    ministerios,
+    elenco,
+    centroDoGoverno(comeco, elenco, congresso, grupos),
+    { ...declarados, ...comeco?.ministros },
+    comeco ? Object.values(comeco.chapa) : [],
+  );
+}
+
 /** Programas do mundo e os nomes próprios que o país deu (programas.json, opcional). */
 function carregarProgramas(
   pais: string,
   leis: Record<string, Lei>,
 ): RegrasProgramas {
-  const doPais = arquivosPaises[`../conteudo/paises/${pais}/programas.json`]
+  const doPais = temArquivoDoPais(pais, "programas")
     ? arquivoPais<{
         nomes?: Record<string, string>;
         formados?: FormadoDoPais[];
@@ -216,8 +289,7 @@ function carregarProgramas(
 
 /** Mídias do país (midias.json, opcional); sem o arquivo o jornal sai sem mídias. */
 function carregarMidias(pais: string, grupos: TipoGrupo[]): RegrasMidia {
-  if (!arquivosPaises[`../conteudo/paises/${pais}/midias.json`])
-    return { midias: [] };
+  if (!temArquivoDoPais(pais, "midias")) return { midias: [] };
   const regras = arquivoPais<RegrasMidia>(pais, "midias");
   const motivo = motivoMidiasInvalidas(
     regras,
@@ -265,7 +337,7 @@ function carregarMercado(pais: string): Regras["mercado"] {
   };
 }
 
-function carregarGrupos(): TipoGrupo[] {
+export function carregarGrupos(): TipoGrupo[] {
   if (tiposGrupos.versao !== 1)
     throw new Error("mundo/grupos/grupos.json › versao: precisa ser 1");
   return tiposGrupos.grupos.map((g) => {
@@ -320,26 +392,18 @@ export function mesesParaEleicao(partida: Partida): number | null {
   return (estado.inicio_mandato + mandato - estado.turno) * 2;
 }
 
-function arquivoPais<T>(pais: string, nome: string): T {
-  const caminho = `../conteudo/paises/${pais}/${nome}.json`;
-  const dado = arquivosPaises[caminho] as { versao?: unknown } | undefined;
-  if (!dado) throw new Error(`país "${pais}": falta ${nome}.json`);
-  if (dado.versao !== 1) throw new Error(`${caminho} › versao: precisa ser 1`);
-  return dado as T;
-}
-
-export function paisesDisponiveis(): string[] {
-  return [
-    ...new Set(
-      Object.keys(arquivosPaises).map((c) => c.split("/").at(-2) as string),
-    ),
-  ];
-}
-
 /** Nome de cada partido do país, para scripts e tela. */
-export function nomesPartidos(pais: string): Record<string, string> {
+export function nomesPartidos(
+  pais: string,
+  comeco?: ComecoDoJogador,
+): Record<string, string> {
   const { partidos } = arquivoPais<CongressoPais>(pais, "congresso");
-  return Object.fromEntries(partidos.map((p) => [p.id, p.nome]));
+  return {
+    ...Object.fromEntries(partidos.map((p) => [p.id, p.nome])),
+    ...(comeco
+      ? { [idDoPartidoDoJogador(comeco.partido.sigla)]: comeco.partido.nome }
+      : {}),
+  };
 }
 
 export interface OpcoesPartida {
@@ -347,6 +411,8 @@ export interface OpcoesPartida {
   ajustes?: Partial<IndicesEssenciais>;
   /** Todo pedido passa sem voto (scripts que medem a economia). */
   semCongresso?: boolean;
+  /** Partido, chapa e ministros do jogador; sem isto o partido do país governa. */
+  comeco?: ComecoDoJogador;
 }
 
 /** Faixa de cada índice de jogabilidade. */
@@ -400,24 +466,38 @@ export function criarPartida(
   semente: number,
   opcoes: OpcoesPartida = {},
 ): Partida {
-  const { ajustes = {}, semCongresso = false } = opcoes;
+  const { ajustes = {}, semCongresso = false, comeco } = opcoes;
   const declarado = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
   const inicial = {
     ...declarado,
     essenciais: { ...declarado.essenciais, ...ajustes },
   };
   const vigentes = arquivoPais<LeisVigentes>(pais, "leis-vigentes");
-  const congresso = arquivoPais<CongressoPais>(pais, "congresso");
+  const doPais = arquivoPais<CongressoPais>(pais, "congresso");
+  const grupos = carregarGrupos();
+  const elenco = elencoDoPais(pais, semente, doPais, grupos);
+  if (comeco) {
+    const motivo = motivoComecoInvalido(
+      comeco,
+      elenco,
+      doPais.partidos.map((p) => p.id),
+    );
+    if (motivo) throw new Error(`começo da partida: ${motivo}`);
+  }
+  const congresso = comeco
+    ? comPartidoDoJogador(doPais, comeco, elenco, grupos)
+    : doPais;
   const governo = carregarGoverno(
     pais,
     congresso.partidos.map((p) => p.id),
+    elenco,
+    ministrosDoComeco(semente, pais, elenco, congresso, grupos, comeco),
   );
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
 
   const leis = carregarLeis();
-  const grupos = carregarGrupos();
   const regras: Regras = {
     leis,
     dominios: dominiosDosIndices(),
@@ -512,6 +592,17 @@ export function jogar(
   return p;
 }
 
+export { paisesDisponiveis, paisesJogaveis } from "./paises";
+export {
+  chapaSugerida,
+  ministrosSugeridos,
+  perfilDeUmaPessoa,
+  prepararComeco,
+  type PessoaDaLista,
+  type PreparoDoComeco,
+} from "./inicio";
+export { idDoPartidoDoJogador, type ComecoDoJogador } from "./comeco";
+export type { PerfilDePessoa } from "./perfil";
 export { carregarPartida, salvarPartida } from "./salvar";
 export { montarVisao } from "./visao";
 export { manchete, type NomesDoJornal } from "./jornal";
@@ -555,7 +646,6 @@ export interface EmpresaDoPais {
 }
 
 export function empresasDoPais(pais: string): EmpresaDoPais[] {
-  const caminho = `../conteudo/paises/${pais}/empresas.json`;
-  if (!arquivosPaises[caminho]) return [];
+  if (!temArquivoDoPais(pais, "empresas")) return [];
   return arquivoPais<{ empresas: EmpresaDoPais[] }>(pais, "empresas").empresas;
 }

@@ -145,7 +145,10 @@ export function TelaMapa({
         : null,
     [partida, lei, valor, extras],
   );
-  const partidos = useMemo(() => nomesPartidos(partida.pais), [partida.pais]);
+  const partidos = useMemo(
+    () => nomesPartidos(partida.pais, partida.opcoes.comeco),
+    [partida.pais, partida.opcoes.comeco],
+  );
   const caixasParaOferecer = useMemo(() => {
     const nomes = nomesDoGoverno(partida).caixas;
     return (partida.estado.governo?.caixas ?? []).map((c) => ({

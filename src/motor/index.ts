@@ -13,6 +13,7 @@ export * from "./governo";
 export * from "./grupos";
 export * from "./leis";
 export * from "./mesa";
+export * from "./pessoas";
 export * from "./midia";
 export * from "./mundo";
 export * from "./politica";

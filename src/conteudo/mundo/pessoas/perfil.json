@@ -1,0 +1,95 @@
+{
+  "versao": 1,
+  "posts": {
+    "economico": {
+      "menos": [
+        "Quem paga a conta do país é quem trabalha. Quem tem mais pode contribuir mais.",
+        "Escola e hospital não são mercadoria. Ponto.",
+        "Salário que não acompanha o preço do arroz não é salário, é esmola.",
+        "Privatizaram a água e a conta dobrou. Alguém explica?"
+      ],
+      "meio": [
+        "Fiz as contas da casa de novo. Nada fecha, mas seguimos.",
+        "Dia de ler o orçamento antes de opinar. Recomendo.",
+        "Vi o que cada lado propõe. Cada um tem uma parte da razão."
+      ],
+      "mais": [
+        "Imposto alto não é justiça, é o governo no seu bolso.",
+        "Quem abre uma empresa merece medalha, não formulário.",
+        "Dinheiro público é de quem paga imposto. Pergunte antes de gastar.",
+        "Cortar desperdício não é cruel. Cruel é a conta que chega depois."
+      ]
+    },
+    "social": {
+      "menos": [
+        "Cada um sabe de si. O Estado não cabe no quarto de ninguém.",
+        "Plantei mais três árvores hoje. O futuro agradece.",
+        "Respeito não é favor, é regra mínima.",
+        "Quem manda no meu corpo e na minha casa sou eu."
+      ],
+      "meio": [
+        "Bom dia. Café, jornal e paciência.",
+        "Domingo de almoço longo e conversa sem pressa.",
+        "Nem tudo cabe numa frase de rede social."
+      ],
+      "mais": [
+        "Família, ordem e respeito: o resto a gente discute depois.",
+        "Sem segurança não existe liberdade. Quem trabalha quer voltar vivo para casa.",
+        "Tradição não é atraso. É o que segurou o país até aqui.",
+        "Lei é lei. Para todos, sem exceção."
+      ]
+    }
+  },
+  "conduta": {
+    "honestidade": {
+      "baixa": [
+        "Quem apoia agora lembra de mim depois.",
+        "Cada favor tem seu preço, e eu anoto todos."
+      ],
+      "alta": [
+        "Prestação de contas é o mínimo. Publiquei todas as minhas despesas.",
+        "Prefiro perder uma votação a ganhar na troca de favor."
+      ]
+    },
+    "lealdade": {
+      "baixa": ["Aliança boa é a que dura até a próxima oferta."],
+      "alta": ["Palavra dada é palavra cumprida, mesmo quando custa."]
+    }
+  },
+  "lugares": {
+    "economico": {
+      "menos": [
+        "Assembleia do sindicato",
+        "Mutirão da cooperativa",
+        "Feira da agricultura familiar"
+      ],
+      "meio": [
+        "Padaria da esquina",
+        "Biblioteca municipal",
+        "Estádio no fim de semana"
+      ],
+      "mais": [
+        "Jantar da associação comercial",
+        "Feira de negócios",
+        "Clube de investimentos"
+      ]
+    },
+    "social": {
+      "menos": [
+        "Festival de música independente",
+        "Cineclube do bairro",
+        "Ciclovia da beira do rio"
+      ],
+      "meio": [
+        "Praça do bairro",
+        "Café perto do trabalho",
+        "Cinema de shopping"
+      ],
+      "mais": [
+        "Missa ou culto de domingo",
+        "Desfile cívico",
+        "Associação de moradores"
+      ]
+    }
+  }
+}

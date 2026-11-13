@@ -59,11 +59,11 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ◐ **R4.4** A partida acaba quando o partido perde o poder federal (hoje só pela eleição; ver R6.13).
 - ✅ **R4.11** Mundo sai da planilha: `npm run exportar` grava leis e índices (12/nov).
 - ✅ **R4.12** Fatos do turno: mesa de fatos (memória curta, como RAM) em `motor/fatos`; cada etapa escreve, cada módulo pergunta o que precisa; fato gera fato; some em 1–3 turnos pelo tamanho. Hoje escrevem Congresso (lei aprovada/derrubada) e Política (base, eleição); a tela mostra como manchete no Resultado do turno (12/nov).
-- ☐ **R4.5** Criar o partido: nome e sigla; não escolhe lado.
-- ☐ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação).
-- ☐ **R4.8** O lado do partido sai da chapa; o jogo nunca pede lado.
-- ☐ **R4.9** Começo com história: o partido que governava vira oposição (ou entra na coligação, se o jogador quiser); partido novo, poucas cadeiras, presidente popular.
-- ☐ **R4.10** Tela de início em sequência: país → partido → chapa → ministérios → iniciar.
+- ✅ **R4.5** Criar o partido: nome e sigla; não escolhe lado. (12/nov; a sigla vira o id e não pode repetir a de outro partido.)
+- ✅ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação). (12/nov)
+- ✅ **R4.8** O lado do partido sai da chapa; o jogo nunca pede lado. (12/nov: média da bússola da chapa → 5 grupos que ele defende.)
+- ◐ **R4.9** (12/nov: feito o partido novo com 6% das cadeiras e o antigo governo na oposição ou na coligação. Falta a Aprovação começar alta.) Começo com história: o partido que governava vira oposição (ou entra na coligação, se o jogador quiser); partido novo, poucas cadeiras, presidente popular.
+- ✅ **R4.10** Tela de início em sequência: país → partido → chapa → ministérios → iniciar. (12/nov, no estilo da Art Bible.)
 - ☐ **R4.7** Placar final: tempo no poder e país deixado.
 
 **Construção**
@@ -94,15 +94,15 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 **Pessoas e fichas**
 
 - ◐ **R6.1** Retratos genéricos (feito); ficha com atributos (falta).
-- ☐ **R6.6** Gerador de pessoas; envelhecem, se aposentam e morrem.
-- ☐ **R6.11** Perfil de rede social da pessoa, gerado da ficha; sem rótulo de lado.
-- ☐ **R6.12** Lista de pessoas por vaga (chapa, ministério), com o perfil ao clicar.
+- ◐ **R6.6** Gerador de pessoas; envelhecem, se aposentam e morrem. (12/nov: o gerador existe e o país declara só os nomes. Falta envelhecer, aposentar e morrer.)
+- ◐ **R6.11** Perfil de rede social da pessoa, gerado da ficha; sem rótulo de lado. (12/nov: posts, lugares e quem segue; falta a "Informações pessoais descobertas" e o Espiar.)
+- ✅ **R6.12** Lista de pessoas por vaga (chapa, ministério), com o perfil ao clicar. (12/nov)
 - ☐ **R6.2** Presidente pesa por carisma (aprovação), honestidade (escândalo) e habilidade (Congresso).
 
 **Ministérios** (12/nov)
 
 - ✅ **R6.10** Ministério é uma caixa com nome e zero ou mais esferas e subesferas; cada uma numa caixa só; a sobra vai ao gabinete. (12/nov: moldes na aba Ministérios; a lei traz `esfera` e `subesfera`.)
-- ◐ **R6.14** O país começa com os ministérios reais (aba Ministérios - países); o jogador muda no menu; depois só pela lei Organização dos ministérios. (12/nov: Brasil 2026 com 32 caixas. Faltam: os outros países, o menu de montar o governo (passo 9) e a lei Organização dos ministérios.)
+- ◐ **R6.14** O país começa com os ministérios reais (aba Ministérios - países); o jogador muda no menu; depois só pela lei Organização dos ministérios. (12/nov: Brasil 2026 com 32 caixas. Feito o menu de montar o governo (passo 9). Faltam os outros países e a lei Organização dos ministérios.)
 - ◐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com ele; muitas caixas dão foco e custam; superministério divide a competência. (12/nov: toda caixa tem ministro e o superministério divide a competência. Faltam: custo de estrutura, foco e agradar quem é parecido com o ministro.)
 - ✅ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem. (12/nov: cinco notas, bússola e origem. Agem competência e honestidade; habilidade, carisma e lealdade esperam Congresso, mídia e fatos do ministro.)
 - ◐ **R6.8** A ficha muda a força e o atraso das leis das esferas da caixa e o rendimento dos órgãos dela. (12/nov: competência muda força e atraso. Falta o rendimento dos órgãos, que é R7.11.)

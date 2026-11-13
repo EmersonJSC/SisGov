@@ -1,0 +1,687 @@
+/* Tela inicial: a mesa do governante (docs/arte/direcao-de-arte.md).
+   Papel, ferro e latão; nada de botão de site, canto de app ou alinhamento perfeito. */
+.inicio {
+  --papel: #efe4cc;
+  --papel-velho: #dfd2b5;
+  --tinta: #252320;
+  --ferro: #1c1e21;
+  --ferro-claro: #2c2f33;
+  --latao: #d4af37;
+  --ambar: #f0a030;
+  --carimbo-vermelho: #9e2a2b;
+  --selo-azul: #1d3557;
+  --concreto: #303331;
+  --datilografia:
+    "Courier Prime", "American Typewriter", "Courier New", Courier, monospace;
+  --titulo:
+    "Cinzel", "Trajan Pro", "Palatino Linotype", Palatino, "Book Antiqua", serif;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e0f0f;
+  color: var(--tinta);
+  font-family: var(--datilografia);
+}
+.inicio *,
+.inicio *::before,
+.inicio *::after {
+  box-sizing: border-box;
+}
+
+/* Quadro fixo 16:9: a composição não vira texto de blog. */
+.inicio .ini-quadro {
+  --u: calc(min(100vw, 177.78vh) / 100);
+  width: calc(var(--u) * 100);
+  height: calc(var(--u) * 56.25);
+  font-size: calc(var(--u) * 1.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(
+      ellipse at 28% 18%,
+      rgba(240, 160, 48, 0.2),
+      transparent 55%
+    ),
+    radial-gradient(ellipse at 50% 120%, rgba(0, 0, 0, 0.7), transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.18 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>"),
+    var(--concreto);
+  box-shadow: 0 0 6em rgba(0, 0, 0, 0.9);
+}
+
+/* ---------- placa de ferro com rebites e letras de latão ---------- */
+.inicio .ini-placa {
+  position: relative;
+  font-family: var(--titulo);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 1.15em;
+  color: var(--latao);
+  text-shadow:
+    0 -1px 0 #000,
+    0 1px 0 rgba(255, 230, 150, 0.25);
+  padding: 0.75em 2em;
+  border: 0.15em solid #0b0c0d;
+  border-radius: 0.15em;
+  background:
+    radial-gradient(
+      circle at 0.55em 0.55em,
+      #8c8366 0.17em,
+      #2c2a22 0.22em,
+      transparent 0.26em
+    ),
+    radial-gradient(
+      circle at calc(100% - 0.55em) 0.55em,
+      #8c8366 0.17em,
+      #2c2a22 0.22em,
+      transparent 0.26em
+    ),
+    radial-gradient(
+      circle at 0.55em calc(100% - 0.55em),
+      #8c8366 0.17em,
+      #2c2a22 0.22em,
+      transparent 0.26em
+    ),
+    radial-gradient(
+      circle at calc(100% - 0.55em) calc(100% - 0.55em),
+      #8c8366 0.17em,
+      #2c2a22 0.22em,
+      transparent 0.26em
+    ),
+    linear-gradient(#3a3d41, #1c1e21 60%, #15171a);
+  box-shadow:
+    inset 0 0.1em 0 rgba(255, 255, 255, 0.14),
+    inset 0 -0.2em 0.3em rgba(0, 0, 0, 0.6),
+    0 0.3em 0.5em rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition:
+    transform 0.08s,
+    filter 0.15s;
+}
+.inicio .ini-placa:hover:not(:disabled) {
+  filter: brightness(1.25);
+}
+.inicio .ini-placa:active:not(:disabled) {
+  transform: translateY(0.18em);
+  box-shadow:
+    inset 0 0.2em 0.4em rgba(0, 0, 0, 0.7),
+    0 0.1em 0.2em rgba(0, 0, 0, 0.7);
+}
+.inicio .ini-placa:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: #8a7a3a;
+}
+.inicio .ini-placa.ini-grande {
+  font-size: 1.45em;
+  padding: 0.8em 2.6em;
+}
+.inicio .ini-placa.ini-pequena {
+  font-size: 0.85em;
+  padding: 0.5em 1.2em;
+}
+.inicio .ini-fechar {
+  font-family: var(--datilografia);
+  background: transparent;
+  border: 0.12em solid var(--tinta);
+  border-radius: 0.1em;
+  color: var(--tinta);
+  padding: 0.25em 0.8em;
+  cursor: pointer;
+}
+.inicio .ini-fechar:hover {
+  background: rgba(37, 35, 32, 0.12);
+}
+
+/* ---------- carimbos de borracha: tinta irregular, rotação torta ---------- */
+.inicio .ini-selo {
+  display: inline-block;
+  font-family: var(--titulo);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--carimbo-vermelho);
+  border: 0.18em solid var(--carimbo-vermelho);
+  border-width: 0.2em 0.17em 0.14em 0.19em;
+  border-radius: 0.2em 0.1em 0.18em 0.08em;
+  padding: 0.35em 0.9em;
+  transform: rotate(-5deg);
+  opacity: 0.88;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(circle at 88% 96%, transparent 0.2em, #000 0.9em);
+}
+.inicio .ini-selo-azul {
+  color: var(--selo-azul);
+  border-color: var(--selo-azul);
+  transform: rotate(3deg);
+}
+.inicio .ini-selo-titulo {
+  font-size: 4.2em;
+  letter-spacing: 0.3em;
+  padding: 0.15em 0.6em 0.15em 0.9em;
+  color: #c9423f;
+  border-color: #c9423f;
+  mix-blend-mode: normal;
+  text-shadow: 0 0.04em 0 rgba(0, 0, 0, 0.5);
+  margin-bottom: 2.4em;
+  transform: rotate(-2.5deg);
+}
+
+/* ---------- abertura ---------- */
+.inicio .ini-abertura {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6em;
+}
+.inicio .ini-lema {
+  font-size: 1.4em;
+  color: #d8cdb0;
+  margin: 0 0 1em;
+  letter-spacing: 0.05em;
+}
+.inicio .ini-aviso-da-mesa {
+  color: var(--ambar);
+  margin: 0;
+}
+
+/* ---------- fita de etapas: etiqueta de latão ---------- */
+.inicio .ini-fita {
+  padding: 1.6em 4em 0;
+}
+.inicio .ini-fita ol {
+  display: inline-flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: linear-gradient(#e6c65a, #b8932a);
+  border: 0.12em solid #5c4a14;
+  border-radius: 0.1em;
+  box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.6);
+  transform: rotate(-0.4deg);
+}
+.inicio .ini-fita li {
+  padding: 0.5em 1.4em;
+  font-family: var(--titulo);
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b5518;
+  border-right: 0.1em solid rgba(92, 74, 20, 0.5);
+}
+.inicio .ini-fita li:last-child {
+  border-right: 0;
+}
+.inicio .ini-fita li.feita {
+  color: #3a2f0a;
+}
+.inicio .ini-fita li.atual {
+  color: #1c1e21;
+  background: rgba(255, 245, 200, 0.45);
+  box-shadow: inset 0 0 0.5em rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- mesa e papéis ---------- */
+.inicio .ini-mesa-inicial {
+  flex: 1;
+  min-height: 0;
+  padding: 1.6em 4em 0.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4em;
+  position: relative;
+}
+.inicio .ini-dossie,
+.inicio .ini-papel-solto {
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.15  0 0 0 0.22 0'/></filter><rect width='200' height='200' filter='url(%23p)'/></svg>"),
+    linear-gradient(170deg, var(--papel), var(--papel-velho));
+  color: var(--tinta);
+  padding: 1.8em 2.4em;
+  border-radius: 0.1em 0.3em 0.1em 0.2em;
+  box-shadow:
+    0 0.1em 0 rgba(255, 255, 255, 0.4) inset,
+    0.15em 0.5em 1em rgba(0, 0, 0, 0.65),
+    0 0 0 0.05em rgba(60, 45, 20, 0.5);
+  transform: rotate(-0.5deg);
+}
+.inicio .ini-papel-solto {
+  padding: 1em 1.6em;
+  transform: rotate(0.9deg);
+  max-width: 44em;
+}
+.inicio .ini-dossie h2,
+.inicio .ini-papel-solto h3 {
+  font-family: var(--titulo);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.8em;
+  border-bottom: 0.1em solid var(--tinta);
+  padding-bottom: 0.3em;
+}
+.inicio .ini-dossie h2 {
+  font-size: 1.6em;
+}
+.inicio .ini-dossie header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1em;
+}
+.inicio .ini-observacao {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* campo datilografado: linha embaixo, sem caixa de formulário */
+.inicio input:not([type="checkbox"]),
+.inicio select {
+  font-family: var(--datilografia);
+  font-size: 1em;
+  color: var(--tinta);
+  background: transparent;
+  border: 0;
+  border-bottom: 0.12em solid var(--tinta);
+  padding: 0.3em 0.2em;
+  outline: none;
+}
+.inicio input:focus,
+.inicio select:focus {
+  background: rgba(240, 160, 48, 0.18);
+}
+.inicio .ini-ficha-de-registro {
+  width: 38em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  position: relative;
+}
+.inicio .ini-ficha-de-registro label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  font-weight: 700;
+}
+.inicio .ini-ficha-de-registro input {
+  font-size: 1.4em;
+}
+.inicio .ini-ficha-de-registro input.curto {
+  width: 9em;
+  letter-spacing: 0.2em;
+}
+.inicio .ini-ficha-de-registro .ini-selo {
+  position: absolute;
+  right: 2em;
+  top: 1.2em;
+  font-size: 1.1em;
+}
+.inicio .ini-aviso-da-ficha {
+  color: var(--carimbo-vermelho);
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ---------- pastas dos países ---------- */
+.inicio .ini-mesa-inicial-dossies {
+  display: flex;
+  gap: 2.4em;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.inicio .ini-pasta {
+  position: relative;
+  width: 19em;
+  min-height: 14em;
+  padding: 2.2em 1.6em 1.4em;
+  text-align: left;
+  font-family: var(--datilografia);
+  font-size: 1em;
+  color: var(--tinta);
+  background: linear-gradient(165deg, #c9a96a, #a98a50);
+  border: 0.1em solid #5e4a24;
+  border-radius: 0.1em 0.5em 0.1em 0.1em;
+  box-shadow: 0.2em 0.6em 1em rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+.inicio .ini-pasta b {
+  font-family: var(--titulo);
+  font-size: 1.7em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.inicio .ini-pasta-aba {
+  position: absolute;
+  top: -1.5em;
+  left: 1em;
+  background: #b8975a;
+  border: 0.1em solid #5e4a24;
+  border-bottom: 0;
+  padding: 0.2em 1.2em;
+  border-radius: 0.3em 0.3em 0 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+.inicio .ini-pasta-aberta {
+  filter: brightness(1.12);
+}
+.inicio .ini-pasta .ini-selo {
+  position: absolute;
+  right: 0.8em;
+  bottom: 0.8em;
+  font-size: 0.9em;
+}
+.inicio .ini-papel-solto label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+/* ---------- chapa: fotos 3x4 presas com clipe ---------- */
+.inicio .ini-chapa {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+}
+.inicio .ini-vaga {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35em;
+  width: 15em;
+  font-family: var(--datilografia);
+  font-size: 1em;
+  color: #efe4cc;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-shadow: 0 0.1em 0.2em #000;
+}
+.inicio .ini-vaga b {
+  font-size: 1.15em;
+}
+.inicio .ini-vaga-cargo {
+  font-family: var(--titulo);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  color: var(--latao);
+}
+.inicio .ini-vaga:hover .ini-foto {
+  filter: brightness(1.1);
+}
+.inicio .ini-foto {
+  position: relative;
+  display: block;
+  width: 9em;
+  padding: 0.5em 0.5em 1.6em;
+  background: #e8dfcc;
+  box-shadow: 0.1em 0.4em 0.7em rgba(0, 0, 0, 0.7);
+}
+.inicio .ini-foto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  filter: sepia(0.25) saturate(0.85) contrast(0.95);
+}
+.inicio .ini-foto-interrogacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: #8d8068;
+  font-family: var(--titulo);
+  font-size: 4em;
+  color: #d8cdb0;
+}
+.inicio .ini-clipe {
+  position: absolute;
+  top: -0.9em;
+  left: 50%;
+  width: 1.1em;
+  height: 2.2em;
+  margin-left: -0.55em;
+  border: 0.18em solid #c9a43a;
+  border-radius: 0.6em;
+  box-shadow: 0.05em 0.1em 0.2em rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+.inicio .ini-chapa-pequena .ini-foto {
+  width: 6em;
+}
+.inicio .ini-chapa-pequena .ini-vaga {
+  color: var(--tinta);
+  text-shadow: none;
+  width: 11em;
+  cursor: default;
+}
+.inicio .ini-chapa-pequena .ini-vaga-cargo {
+  color: #6b5518;
+}
+.inicio .ini-aliados {
+  width: 46em;
+}
+.inicio .ini-marcar {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.6em !important;
+  margin-top: 0.4em;
+}
+.inicio .ini-sugerir {
+  position: absolute;
+  right: 4em;
+  top: 1.2em;
+}
+
+/* ---------- tabela de ministérios ---------- */
+.inicio .ini-ministerios {
+  width: 78em;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.inicio .ini-tabela-rolante {
+  overflow-y: auto;
+  min-height: 0;
+  flex: 1;
+}
+.inicio .ini-ministerios table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.inicio .ini-ministerios th,
+.inicio .ini-ministerios td {
+  text-align: left;
+  padding: 0.28em 0.6em;
+  border-bottom: 0.06em dotted rgba(37, 35, 32, 0.5);
+}
+.inicio .ini-ministerios thead th {
+  position: sticky;
+  top: 0;
+  background: var(--papel-velho);
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+.inicio .ini-ministerios .ini-num {
+  text-align: right;
+}
+.inicio .ini-ministerios td .ini-fechar {
+  padding: 0.05em 0.6em;
+  font-size: 0.9em;
+}
+
+/* ---------- janela das pessoas ---------- */
+.inicio .ini-cortina {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 6, 6, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.inicio .ini-dossie.ini-lista {
+  width: 86em;
+  height: 46em;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(0.3deg);
+}
+.inicio .ini-lista-corpo {
+  display: flex;
+  gap: 2em;
+  min-height: 0;
+  flex: 1;
+}
+.inicio .ini-lista-esquerda {
+  width: 32em;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.inicio .ini-filtros {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 0.6em;
+}
+.inicio .ini-filtros input {
+  flex: 1;
+}
+.inicio .ini-pessoas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+.inicio .ini-pessoas button {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--datilografia);
+  font-size: 1em;
+  color: var(--tinta);
+  background: transparent;
+  border: 0;
+  border-bottom: 0.06em dotted rgba(37, 35, 32, 0.5);
+  padding: 0.4em 0.5em;
+  cursor: pointer;
+}
+.inicio .ini-pessoas button:hover {
+  background: rgba(240, 160, 48, 0.2);
+}
+.inicio .ini-pessoas button.aberta {
+  background: rgba(37, 35, 32, 0.15);
+}
+.inicio .ini-pessoas span {
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+.inicio .ini-lista-direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  overflow-y: auto;
+}
+.inicio .ini-perfil-topo {
+  display: flex;
+  gap: 1.4em;
+  align-items: center;
+}
+.inicio .ini-perfil-topo .ini-foto {
+  width: 6em;
+}
+.inicio .ini-perfil h3 {
+  font-family: var(--titulo);
+  margin: 0;
+  font-size: 1.3em;
+}
+.inicio .ini-perfil h4 {
+  margin: 0.9em 0 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.15em;
+  border-bottom: 0.06em solid rgba(37, 35, 32, 0.5);
+}
+.inicio .ini-perfil p {
+  margin: 0.2em 0;
+}
+.inicio .ini-usuario {
+  color: var(--selo-azul);
+}
+.inicio .ini-posts {
+  margin: 0;
+  padding-left: 1.2em;
+  font-style: italic;
+}
+.inicio .ini-posts li {
+  margin: 0.3em 0;
+}
+.inicio .ini-notas-da-ficha {
+  margin: 0;
+  display: grid;
+  gap: 0.2em;
+}
+.inicio .ini-notas-da-ficha div {
+  display: grid;
+  grid-template-columns: 11em 1fr;
+  align-items: center;
+}
+.inicio .ini-notas-da-ficha dt {
+  font-size: 0.85em;
+}
+.inicio .ini-notas-da-ficha dd {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.inicio .ini-notas-da-ficha .ini-nivel {
+  display: block;
+  height: 0.6em;
+  background: var(--ferro-claro);
+  max-width: 14em;
+}
+.inicio .ini-dica {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ---------- termo de posse ---------- */
+.inicio .ini-resumo {
+  width: 56em;
+}
+.inicio .ini-resumo p {
+  margin: 0.4em 0;
+}
+.inicio .ini-testes {
+  margin-top: 1em;
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+/* ---------- rodapé ---------- */
+.inicio .ini-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 4em 1.8em;
+}

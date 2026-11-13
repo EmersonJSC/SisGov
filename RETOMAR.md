@@ -9,33 +9,41 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 Construindo pela **ordem de construir** de [docs/jogo/requisitos.md](docs/jogo/requisitos.md)
 (seção "Ordem de construir"). Feitos: 1 Brasil 2026, 2 Fatos do turno, 3 Congresso novo,
-4 Mesa mínima, 5 Governo, 6 Programas, 7 Jornal mínimo, **8 Eleição nova** (`src/motor/eleicao`: chapas, dois turnos, promessa; janela Eleição na barra do topo; `eleicao.md`). Antes: 7 Jornal mínimo (`src/motor/midia`, `midia.md`; 9 mídias do
-Brasil em `midias.json`; jornal com as 3 maiores notícias no Resultado do turno; manchetes em
-`mundo/jornal/manchetes.json`). Antes: 6 Programas (motor `src/motor/programas`, doc `programas.md`,
-`npm run programas`, janela Programas na barra do topo; 73 programas do mundo, nomes do
-Brasil em `paises/brasil-2026/programas.json`). Limpeza do código feita (turno em etapas).
-A tela inteira (MapaPolitico, janelas, CSS) será reformulada: não mexer antes.
+4 Mesa mínima, 5 Governo, 6 Programas, 7 Jornal mínimo, 8 Eleição nova (commit b8f24c59) e
+**9 Começo da partida** (NÃO commitado):
+
+- `src/motor/pessoas` (`pessoas.md`): gerador de pessoas pela semente (o país declara só nomes em
+  `paises/brasil-2026/pessoas.json`; as 81 fichas fixas de `governo.json` saíram), ministros
+  sorteados pela chapa, partido do jogador (lado pela bússola da chapa, 6% das cadeiras).
+- `src/partida/comeco.ts` (`ComecoDoJogador` em `opcoes.comeco`), `inicio.ts` (dados da tela),
+  `perfil.ts` + `mundo/pessoas/perfil.json` (perfil de rede), `paises.ts` (leitura dos arquivos).
+  `criarPartida` sem `comeco` continua como antes (o partido do país governa).
+- Tela inicial no estilo da Art Bible (`src/tela/inicio/`): abertura, país, partido, chapa com
+  fotos 3x4 desenhadas pelo DiceBear (Notionists, sem tom de pele, `tela/inicio/aparencia.ts`), ministérios, termo de posse; lista de pessoas com perfil. Só países com `pessoas.json`
+  e `governo.json` aparecem (os de teste ficam de fora).
+  A tela do mapa (MapaPolitico, janelas, CSS) será reformulada: não mexer antes.
 
 ## Próximo
 
-**Passo 9: Começo da partida** (ver "Ordem de construir" em requisitos.md). Propor curto ao autor
-antes de começar.
+Commitar o passo 9 (com a palavra do autor), depois o **passo 10** da ordem de construir
+(ver requisitos.md). Propor curto ao autor antes de começar.
 
 ## Pendências do autor
 
-- Conferir as direções da planilha lidas como "sobe" e as dívidas de
-  [docs/jogo/codigo-a-conferir.md](docs/jogo/codigo-a-conferir.md) (43 itens; F passo 6, G passo 7, H passo 8).
+- Conferir [docs/jogo/codigo-a-conferir.md](docs/jogo/codigo-a-conferir.md) (47 itens; I é o passo 9).
 - Decidir o que "programa anda no passo do ministro mais fraco" significa (item 32): hoje é
   esperar 0 ou 1 turno.
-- Dívidas do passo 6: lembrança pesar no voto, perguntar o nome ao refazer programa,
-  programas já formados no começo da partida.
+- Dívidas: lembrança pesar no voto; perguntar o nome ao refazer programa; Aprovação começar
+  alta no começo (R4.9); pessoas envelhecerem e morrerem (R6.6).
 
 ## Armadilhas
 
 - Não abrir docs/v1/desenho, docs/referencia, docs/arte/PROMPTS.md, docs/conteudo/rede.md, docs/Exemplos.
 - Nada é commitado sem a palavra do autor; `arquivo/`, `public/arte`, `public/demos`,
-  `docs/arte/direcao-de-arte.md` e `docs/jogo/interface/*` ficam fora dos commits.
+  `docs/arte/*` e `docs/jogo/interface/*` ficam fora dos commits do passo (a Art Bible
+  `docs/arte/direcao-de-arte.md` segue a tela inicial; commitar à parte se o autor quiser).
+- Classes CSS da tela inicial levam prefixo `ini-`: o `mapa.css` já tem `.carimbo`, `.selo`, `.nota`
+  e outras, e as regras dele vazam.
+- Não usar `<main>` fora do mapa: `tela.css` põe largura e margem em `main:not(.area-mapa)`.
 - O servidor do Vite pode servir arquivo novo vazio ou módulo velho: `touch` nos arquivos e recarregar.
-- Para ver um programa formado na tela: Salvar, editar `localStorage["sisgov-partida"]` (valores em
-  `estado.leis`), Carregar e passar o turno.
 - `tsx` não roda scripts com `import.meta.glob`; usar `vite-node`.

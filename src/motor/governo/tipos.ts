@@ -18,6 +18,9 @@ export interface Ficha {
   bussola: PontoBussola;
   /** Id do partido ou "tecnico". */
   origem: string;
+  /** Aparência e idade, para os retratos e o perfil; fichas escritas à mão podem não ter. */
+  sexo?: "f" | "m";
+  idade?: number;
 }
 
 /** Esfera, ou subesfera dela, que uma caixa cuida. */
