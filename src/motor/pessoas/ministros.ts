@@ -50,8 +50,8 @@ export function sortearMinistros(
   const s = fonteDeSorteio(semente);
   const ocupados = new Set([...fora, ...Object.values(escolhidos)]);
   return vagas.reduce<Record<string, string>>((resultado, vaga) => {
-    if (escolhidos[vaga.molde])
-      return { ...resultado, ...{ [vaga.molde]: escolhidos[vaga.molde] } };
+    if (escolhidos[vaga.id])
+      return { ...resultado, ...{ [vaga.id]: escolhidos[vaga.id] } };
     const nota = (f: Ficha) =>
       f.competencia / 100 +
       PESO_DA_AFINIDADE * (1 - distanciaNaBussola(f.bussola, centro)) +
@@ -59,6 +59,6 @@ export function sortearMinistros(
     const livres = pessoas.filter((f) => !ocupados.has(f.id));
     const melhor = livres.reduce((a, b) => (nota(b) > nota(a) ? b : a));
     ocupados.add(melhor.id);
-    return { ...resultado, [vaga.molde]: melhor.id };
+    return { ...resultado, [vaga.id]: melhor.id };
   }, {});
 }

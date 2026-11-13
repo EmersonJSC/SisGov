@@ -1,0 +1,156 @@
+{
+  "versao": 1,
+  "origem": "docs/jogo/gdd-remontagem.xlsx (13/nov)",
+  "instituicoes": [
+    {
+      "id": "agricultura-e-pesca",
+      "nome": "Agricultura e pesca"
+    },
+    {
+      "id": "agua-e-saneamento",
+      "nome": "Água e saneamento"
+    },
+    {
+      "id": "assistencia-social",
+      "nome": "Assistência social"
+    },
+    {
+      "id": "ciencia-e-pesquisa",
+      "nome": "Ciência e pesquisa"
+    },
+    {
+      "id": "comercio-exterior-e-capital",
+      "nome": "Comércio exterior e capital"
+    },
+    {
+      "id": "comunicacao-e-tecnologia",
+      "nome": "Comunicação e tecnologia"
+    },
+    {
+      "id": "concorrencia-e-consumidor",
+      "nome": "Concorrência e consumidor"
+    },
+    {
+      "id": "controle-e-transparencia",
+      "nome": "Controle e transparência"
+    },
+    {
+      "id": "cultura",
+      "nome": "Cultura"
+    },
+    {
+      "id": "defesa",
+      "nome": "Defesa"
+    },
+    {
+      "id": "defesa-civil",
+      "nome": "Defesa civil"
+    },
+    {
+      "id": "educacao",
+      "nome": "Educação"
+    },
+    {
+      "id": "eleicoes",
+      "nome": "Eleições",
+      "semMinistro": true
+    },
+    {
+      "id": "energia",
+      "nome": "Energia"
+    },
+    {
+      "id": "esporte",
+      "nome": "Esporte"
+    },
+    {
+      "id": "estados-e-municipios",
+      "nome": "Estados e municípios"
+    },
+    {
+      "id": "estatais",
+      "nome": "Estatais"
+    },
+    {
+      "id": "funcionalismo",
+      "nome": "Funcionalismo"
+    },
+    {
+      "id": "imigracao",
+      "nome": "Imigração"
+    },
+    {
+      "id": "impostos",
+      "nome": "Impostos"
+    },
+    {
+      "id": "industria",
+      "nome": "Indústria"
+    },
+    {
+      "id": "infraestrutura-e-transporte",
+      "nome": "Infraestrutura e transporte"
+    },
+    {
+      "id": "justica-e-prisoes",
+      "nome": "Justiça e prisões"
+    },
+    {
+      "id": "meio-ambiente",
+      "nome": "Meio ambiente"
+    },
+    {
+      "id": "mineracao-e-petroleo",
+      "nome": "Mineração e petróleo"
+    },
+    {
+      "id": "moeda-e-bancos",
+      "nome": "Moeda e bancos"
+    },
+    {
+      "id": "moradia",
+      "nome": "Moradia"
+    },
+    {
+      "id": "orcamento-e-divida",
+      "nome": "Orçamento e dívida"
+    },
+    {
+      "id": "previdencia",
+      "nome": "Previdência"
+    },
+    {
+      "id": "relacoes-exteriores",
+      "nome": "Relações exteriores"
+    },
+    {
+      "id": "religiao",
+      "nome": "Religião"
+    },
+    {
+      "id": "saude",
+      "nome": "Saúde"
+    },
+    {
+      "id": "seguranca-publica",
+      "nome": "Segurança pública"
+    },
+    {
+      "id": "terra",
+      "nome": "Terra"
+    },
+    {
+      "id": "trabalho",
+      "nome": "Trabalho"
+    },
+    {
+      "id": "turismo",
+      "nome": "Turismo"
+    },
+    {
+      "id": "regras-dos-poderes",
+      "nome": "Regras dos poderes",
+      "semMinistro": true
+    }
+  ]
+}

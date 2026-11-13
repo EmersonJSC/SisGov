@@ -5,8 +5,7 @@
   "descricao": "O Estado paga as campanhas.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "estado-e-eleicoes",
-  "subesfera": "eleicoes",
+  "esfera": "eleicoes",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

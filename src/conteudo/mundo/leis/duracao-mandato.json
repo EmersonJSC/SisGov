@@ -4,8 +4,7 @@
   "nome": "Duração do mandato",
   "descricao": "Quantos anos o governo fica até a próxima eleição.",
   "camada": "essencial",
-  "esfera": "estado-e-eleicoes",
-  "subesfera": "eleicoes",
+  "esfera": "eleicoes",
   "classe": "mandato",
   "forma": "opcoes",
   "opcoes": [

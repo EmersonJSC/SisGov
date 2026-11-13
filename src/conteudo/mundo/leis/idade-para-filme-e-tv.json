@@ -5,8 +5,7 @@
   "descricao": "Quem decide o que a criança vê. Sem aviso; aviso que recomenda; aviso obrigatório; só com responsável; proibido para a idade.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "cultura-e-esporte",
-  "subesfera": "cultura",
+  "esfera": "cultura",
   "forma": "opcoes",
   "opcoes": [
     {

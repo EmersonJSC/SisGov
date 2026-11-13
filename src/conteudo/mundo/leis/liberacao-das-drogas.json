@@ -5,7 +5,7 @@
   "descricao": "Escada do que é permitido: nada, bebida, cigarro, cannabis, cocaína e sintéticas, crack e opioides.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "vicios",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

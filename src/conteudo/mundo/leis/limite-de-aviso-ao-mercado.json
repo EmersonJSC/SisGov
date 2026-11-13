@@ -5,8 +5,7 @@
   "descricao": "Quanto do capital de uma empresa pode ser comprado antes de avisar o público: de 1% a 20%, ou nunca.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "concorrencia-e-consumidor",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

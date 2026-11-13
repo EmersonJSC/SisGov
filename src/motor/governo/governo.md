@@ -1,10 +1,12 @@
 # Governo
 
 Passo 5 da ordem de construir (12/nov/2026): ministérios com fichas, órgãos
-por esfera e corrupção. O motor não conhece nome de ministério nem de pessoa:
-**moldes** de ministério são do mundo (aba Ministérios da planilha, exportados
-para `mundo/ministerios/moldes.json`); **pessoas** e **quem manda em cada
-caixa** são do país (`paises/<id>/governo.json`). País sem `governo.json`
+por instituição e corrupção (instituições desde 13/nov). O motor não conhece
+nome de ministério nem de pessoa: **instituições** e **moldes** (caixas
+sugeridas) são do mundo (`mundo/ministerios/instituicoes.json` e
+`moldes.json`, da `docs/jogo/gdd-remontagem.xlsx`); **os ministérios do
+começo, pessoas e quem manda em cada caixa** são do país
+(`paises/<id>/governo.json`), e o jogador pode trocar as caixas no começo. País sem `governo.json`
 joga como antes: as leis chegam como estão escritas.
 
 Código: `tipos.ts`, `ministerios.ts` (caixas, ficha e ajuste), `orgaos.ts`
@@ -13,16 +15,18 @@ validação e a fase do turno).
 
 ## Ministério = caixa
 
-- Uma caixa guarda **esferas e subesferas** de zero em diante (R6.10). A lei
-  diz a sua esfera e subesfera (`esfera`, `subesfera` no JSON; vêm da planilha).
-- A lei vai para a caixa que cita a **subesfera** dela; senão a que cita a
-  **esfera inteira**; senão a **sobra**, que é o gabinete.
-- O país escolhe quais moldes usa (R6.14). Cada esfera fica numa caixa só: o
-  motor confere ao iniciar e recusa duas caixas com a mesma esfera, ou país
-  sem gabinete, ou a mesma pessoa em dois cargos.
+- Uma caixa tem id, nome e uma lista de **instituições**, de zero em diante
+  (R6.10). A lei mora numa instituição (o campo `esfera` do JSON da lei).
+- A lei vai para a caixa que leva a instituição dela; senão para a **sobra**,
+  que é o gabinete. Instituição **sem ministro** (Eleições, Regras dos poderes)
+  não vai a caixa nenhuma: a lei anda como com um ministro de competência 50, e
+  o órgão como com um chefe de honestidade 70.
+- Cada instituição fica numa caixa só: o motor confere ao iniciar e recusa
+  instituição em duas caixas, instituição sem ministro numa caixa, falta de
+  gabinete ou a mesma pessoa em dois cargos.
 - Toda caixa tem ministro (R6.15). O superministério divide a competência: o
-  ministro que cuida de mais de 3 esferas rende `√(3 ÷ esferas)` do que a
-  ficha diz (a sobra do gabinete conta como 3 esferas a mais).
+  ministro que cuida de mais de 3 instituições rende `√(3 ÷ instituições)` do
+  que a ficha diz (a sobra do gabinete conta as soltas e mais 3).
 
 ## Ficha (R6.7)
 
@@ -45,10 +49,10 @@ rendimento dos órgãos espera R7.11 (lei age pelo órgão).
 
 ## Órgãos (R6.16) e corrupção (R6.17)
 
-Um órgão por esfera, sob a caixa dela.
+Um órgão por instituição, sob a caixa que a leva.
 
-- **Verba**: soma das leis de gasto da esfera, em % do PIB.
-- **Necessidade**: a verba do começo, mais 5% a cada lei ativa a mais na esfera
+- **Verba**: soma das leis de gasto da instituição, em % do PIB.
+- **Necessidade**: a verba do começo, mais 5% a cada lei ativa a mais na instituição
   (nunca abaixo de 20%).
 - **Rendimento** = verba ÷ necessidade (1 sem verba em lei).
 - **Corrupção** (0–100). A cada turno desfaz 8% e soma: `12 × (rendimento − 1)`
@@ -56,7 +60,7 @@ Um órgão por esfera, sob a caixa dela.
   faixa) e `1,6 × (100 − honestidade) ÷ 100` do ministro.
 - **Começa no equilíbrio** do governo de hoje, então nada anda sozinho; só
   mudam nomear, cargos e verba.
-- Cruzar **60** vira o fato `escandalo` (grande), com a esfera e o ministro; o
+- Cruzar **60** vira o fato `escandalo` (grande), com a instituição e o ministro; o
   Congresso já lê esse fato.
 
 Os pesos são de partida; calibrar com o jogo inteiro.

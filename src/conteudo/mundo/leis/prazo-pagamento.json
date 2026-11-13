@@ -4,8 +4,7 @@
   "nome": "Prazo de pagamento",
   "descricao": "Quando o Estado paga a indenização.",
   "camada": "jogabilidade",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

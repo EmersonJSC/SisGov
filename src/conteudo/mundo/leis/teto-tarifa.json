@@ -4,7 +4,7 @@
   "nome": "Teto da tarifa de água",
   "descricao": "Quanto a conta de água e esgoto pode subir por ano, além da inflação.",
   "camada": "jogabilidade",
-  "esfera": "saneamento",
+  "esfera": "agua-e-saneamento",
   "forma": "opcoes",
   "opcoes": [
     {

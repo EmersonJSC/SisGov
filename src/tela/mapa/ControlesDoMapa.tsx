@@ -7,6 +7,9 @@ import type { NoVivo, TipoDoNo } from "./organico";
 import { VISOES, type IdDaVisao } from "./visoes";
 
 const MAXIMO_DE_RESULTADOS = 8;
+/** Zoom de um toque nos botões: o mesmo passo do teclado. */
+const FATOR_DO_BOTAO_MAIS = 1 / 1.4;
+const FATOR_DO_BOTAO_MENOS = 1.4;
 const LADO_DA_MINIATURA = 168;
 const METADE = 0.5;
 const ESPESSURA_DO_QUADRO = 0.012;
@@ -37,6 +40,7 @@ export function ControlesDoMapa({
   itens,
   onEscolher,
   onEnquadrar,
+  onZoom,
 }: {
   visao: IdDaVisao;
   /** Visões sem dado no motor ainda: o botão avisa. */
@@ -45,6 +49,8 @@ export function ControlesDoMapa({
   itens: readonly ItemDeBusca[];
   onEscolher: (id: string) => void;
   onEnquadrar: () => void;
+  /** Aproxima (fator < 1) ou afasta (> 1) o mapa. */
+  onZoom: (fator: number) => void;
 }) {
   const [busca, setBusca] = useState("");
   const achados = useMemo(() => {
@@ -82,10 +88,28 @@ export function ControlesDoMapa({
           onChange={(e) => setBusca(e.target.value)}
           aria-label="Buscar no mapa"
         />
+      </div>
+      <div className="org-zoom" role="group" aria-label="Zoom do mapa">
+        <button
+          type="button"
+          onClick={() => onZoom(FATOR_DO_BOTAO_MAIS)}
+          title="Aproximar (tecla +)"
+          aria-label="Aproximar"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          onClick={() => onZoom(FATOR_DO_BOTAO_MENOS)}
+          title="Afastar (tecla −)"
+          aria-label="Afastar"
+        >
+          −
+        </button>
         <button
           type="button"
           onClick={onEnquadrar}
-          title="Mostrar todas as bolhas"
+          title="Mostrar todas as bolhas (tecla 0)"
         >
           Enquadrar
         </button>

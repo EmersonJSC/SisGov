@@ -9,13 +9,15 @@ import {
   candidatosDoPartido,
   competenciaEfetiva,
   corrupcaoDeEquilibrio,
-  esferasDaCaixa,
   iniciarGoverno,
+  instituicoesDaCaixa,
+  instituicoesSoltas,
   ministrosPorPartido,
   motivoGovernoInvalido,
   situacaoDoOrgao,
   type Ficha,
   type GovernoDoPais,
+  type Instituicao,
   type Molde,
   type RegrasGoverno,
 } from ".";
@@ -39,11 +41,11 @@ const leis: Record<string, Lei> = Object.fromEntries(
     lei("verba-saude", "saude", { conta: "gasto" }),
     lei("vacina", "saude"),
     lei("verba-defesa", "defesa", { conta: "gasto" }),
-    lei("museus", "cultura", { subesfera: "museus" }),
-    lei("esporte", "cultura", { subesfera: "esporte" }),
-    lei("pesca", "agro", { subesfera: "pesca" }),
+    lei("museus", "cultura"),
+    lei("esporte", "esporte"),
+    lei("pesca", "agro"),
     lei("cargos", "estado"),
-    lei("eleicao", "estado", { subesfera: "eleicoes" }),
+    lei("eleicao", "eleicoes"),
   ].map((l) => [l.id, l]),
 );
 const valores: Record<string, ValorLei> = {
@@ -57,49 +59,21 @@ const valores: Record<string, ValorLei> = {
   eleicao: 0.01,
 };
 
+const instituicoes: Instituicao[] = [
+  { id: "saude", nome: "Saúde" },
+  { id: "defesa", nome: "Defesa" },
+  { id: "cultura", nome: "Cultura" },
+  { id: "esporte", nome: "Esporte" },
+  { id: "agro", nome: "Agro" },
+  { id: "estado", nome: "Estado" },
+  { id: "eleicoes", nome: "Eleições", semMinistro: true },
+];
 const moldes: Molde[] = [
   {
-    id: "gabinete",
-    nome: "Gabinete",
-    tipo: "básico",
-    esferas: [{ esfera: "estado", subesfera: "eleicoes" }],
-    sobra: true,
-  },
-  {
-    id: "saude",
-    nome: "Saúde",
-    tipo: "básico",
-    esferas: [{ esfera: "saude" }],
-  },
-  {
-    id: "defesa",
-    nome: "Defesa",
-    tipo: "básico",
-    esferas: [{ esfera: "defesa" }],
-  },
-  {
-    id: "cultura",
-    nome: "Cultura",
-    tipo: "comum",
-    esferas: [{ esfera: "cultura", subesfera: "museus" }],
-  },
-  {
-    id: "esporte",
-    nome: "Esporte",
-    tipo: "de causa",
-    esferas: [{ esfera: "cultura", subesfera: "esporte" }],
-  },
-  {
-    id: "tudo",
-    nome: "Superministério",
+    id: "economia",
+    nome: "Economia",
     tipo: "superministério",
-    esferas: [
-      { esfera: "saude" },
-      { esfera: "defesa" },
-      { esfera: "cultura" },
-      { esfera: "agro" },
-      { esfera: "estado" },
-    ],
+    instituicoes: ["saude", "defesa"],
   },
 ];
 
@@ -123,17 +97,29 @@ const pessoas = [
   ficha("e", { origem: "p1", competencia: 75 }),
   ficha("f", { origem: "p2" }),
 ];
-const regras: RegrasGoverno = { moldes, pessoas, leis: { cargos: "cargos" } };
-const pais = (...pares: [string, string][]): GovernoDoPais => ({
-  ministerios: pares.map(([molde, ministro]) => ({ molde, ministro })),
+const regras: RegrasGoverno = {
+  instituicoes,
+  moldes,
+  pessoas,
+  leis: { cargos: "cargos" },
+};
+/** Caixa: id, ministro e instituições; a do id "gabinete" é a sobra. */
+const pais = (...caixas: [string, string, string[]][]): GovernoDoPais => ({
+  ministerios: caixas.map(([id, ministro, inst]) => ({
+    id,
+    nome: id,
+    ministro,
+    instituicoes: inst,
+    ...(id === "gabinete" ? { sobra: true } : {}),
+  })),
   pessoas,
 });
 const medio = pais(
-  ["gabinete", "a"],
-  ["saude", "b"],
-  ["defesa", "c"],
-  ["cultura", "d"],
-  ["esporte", "f"],
+  ["gabinete", "a", []],
+  ["saude", "b", ["saude"]],
+  ["defesa", "c", ["defesa"]],
+  ["cultura", "d", ["cultura"]],
+  ["esporte", "f", ["esporte"]],
 );
 
 describe("ministério e ficha", () => {
@@ -151,31 +137,41 @@ describe("ministério e ficha", () => {
     expect(competenciaEfetiva(80, 12)).toBeCloseTo(40);
   });
 
-  it("a lei vai à caixa da subesfera, da esfera ou à sobra do gabinete", () => {
+  it("a lei vai à caixa da instituição dela, à sobra do gabinete ou a ninguém", () => {
     const g = iniciarGoverno(medio, regras, leis, valores);
-    const caixa = (id: string) => caixaDaLei(regras, g.caixas, leis[id]).molde;
+    const caixa = (id: string) => caixaDaLei(regras, g.caixas, leis[id])?.id;
     expect(caixa("museus")).toBe("cultura");
     expect(caixa("esporte")).toBe("esporte");
     expect(caixa("vacina")).toBe("saude");
-    expect(caixa("eleicao")).toBe("gabinete");
-    // ninguém cuida de pesca nem do resto do Estado: sobra do gabinete
+    // ninguém leva agro nem estado: sobra do gabinete
     expect(caixa("pesca")).toBe("gabinete");
     expect(caixa("cargos")).toBe("gabinete");
+    // eleições fica com um dos poderes, sem ministro
+    expect(caixa("eleicao")).toBeUndefined();
   });
 
-  it("conta as esferas da caixa; a sobra leva o que ninguém cuida", () => {
+  it("conta as instituições da caixa; a sobra leva as soltas e conta mais", () => {
     const g = iniciarGoverno(medio, regras, leis, valores);
-    expect(esferasDaCaixa(regras, g.caixas, leis, "saude")).toBe(1);
-    expect(esferasDaCaixa(regras, g.caixas, leis, "cultura")).toBe(1);
-    // eleicao, pesca e cargos (3 esferas) mais as 3 da sobra
-    expect(esferasDaCaixa(regras, g.caixas, leis, "gabinete")).toBe(6);
+    const conta = (id: string) =>
+      instituicoesDaCaixa(
+        regras,
+        g.caixas,
+        g.caixas.find((c) => c.id === id)!,
+      );
+    expect(conta("saude")).toBe(1);
+    expect(instituicoesSoltas(regras, g.caixas)).toEqual(["agro", "estado"]);
+    // agro e estado mais as 3 da sobra
+    expect(conta("gabinete")).toBe(5);
   });
 
   it("o ajuste de uma lei é o do ministro da caixa dela", () => {
     const g = iniciarGoverno(medio, regras, leis, valores);
-    // ministro ruim da saúde atrasa; competente do gabinete adianta
-    expect(ajusteDaLei(regras, g.caixas, leis, leis.vacina).atraso).toBe(1);
-    expect(ajusteDaLei(regras, g.caixas, leis, leis.eleicao).atraso).toBe(0);
+    // ministro ruim da saúde atrasa; sem ministro anda como um mediano
+    expect(ajusteDaLei(regras, g.caixas, leis.vacina).atraso).toBe(1);
+    expect(ajusteDaLei(regras, g.caixas, leis.eleicao)).toEqual({
+      atraso: 0,
+      forca: 1,
+    });
   });
 
   it("conta ministérios por partido (técnico não conta) e candidatos livres", () => {
@@ -207,8 +203,8 @@ describe("órgãos e corrupção", () => {
   it("começa em equilíbrio: sem decisão, a corrupção não anda", () => {
     const g = iniciarGoverno(medio, regras, leis, valores);
     const depois = andarGoverno(entrada(g)).estado;
-    for (const [esfera, o] of Object.entries(g.orgaos))
-      expect(depois.orgaos[esfera].corrupcao).toBeCloseTo(o.corrupcao, 6);
+    for (const [instituicao, o] of Object.entries(g.orgaos))
+      expect(depois.orgaos[instituicao].corrupcao).toBeCloseTo(o.corrupcao, 6);
     expect(g.orgaos.saude.corrupcao).toBeGreaterThan(g.orgaos.defesa.corrupcao);
     expect(g.orgaos.defesa.corrupcao).toBeCloseTo(
       corrupcaoDeEquilibrio(0.5, 95),
@@ -243,11 +239,11 @@ describe("órgãos e corrupção", () => {
     // ministro honesto (c) segura; desonesto (b) é pior
     const desonesto = iniciarGoverno(
       pais(
-        ["gabinete", "a"],
-        ["saude", "c"],
-        ["defesa", "b"],
-        ["cultura", "d"],
-        ["esporte", "f"],
+        ["gabinete", "a", []],
+        ["saude", "c", ["saude"]],
+        ["defesa", "b", ["defesa"]],
+        ["cultura", "d", ["cultura"]],
+        ["esporte", "f", ["esporte"]],
       ),
       regras,
       leis,
@@ -291,7 +287,7 @@ describe("nomear e moeda Ministério", () => {
       fatos: [],
       pedidos: [{ tipo: "nomear", caixa: "gabinete", ministro: "e" }],
     });
-    expect(r.estado.caixas.find((c) => c.molde === "gabinete")?.ministro).toBe(
+    expect(r.estado.caixas.find((c) => c.id === "gabinete")?.ministro).toBe(
       "e",
     );
     expect(r.fatos.map((f) => f.tipo)).toEqual(
@@ -333,18 +329,16 @@ describe("nomear e moeda Ministério", () => {
       restam: 2,
     };
     const r = andarGoverno({ ...base, fatos: [oferta], pedidos: [] });
-    expect(r.estado.caixas.find((c) => c.molde === "defesa")?.ministro).toBe(
-      "e",
-    );
+    expect(r.estado.caixas.find((c) => c.id === "defesa")?.ministro).toBe("e");
     // oferta de outro turno já foi cumprida
     const velha = andarGoverno({
       ...base,
       fatos: [{ ...oferta, turno: 2 }],
       pedidos: [],
     });
-    expect(
-      velha.estado.caixas.find((c) => c.molde === "defesa")?.ministro,
-    ).toBe("c");
+    expect(velha.estado.caixas.find((c) => c.id === "defesa")?.ministro).toBe(
+      "c",
+    );
   });
 });
 
@@ -357,19 +351,24 @@ describe("o governo do país", () => {
     expect(checar(medio)).toBeNull();
   });
 
-  it("recusa esfera em duas caixas, falta de gabinete e ministro repetido", () => {
-    expect(
-      checar(pais(["gabinete", "a"], ["saude", "b"], ["tudo", "c"])),
-    ).toMatch(/duas caixas/);
-    expect(checar(pais(["saude", "b"], ["defesa", "c"]))).toMatch(/sobra/);
-    expect(checar(pais(["gabinete", "a"], ["saude", "a"]))).toMatch(
+  it("recusa instituição em duas caixas, falta de gabinete e ministro repetido", () => {
+    const base: [string, string, string[]][] = [
+      ["gabinete", "a", []],
+      ["saude", "b", ["saude"]],
+    ];
+    expect(checar(pais(...base, ["economia", "c", ["saude"]]))).toMatch(
       /duas caixas/,
     );
-    expect(checar(pais(["gabinete", "a"], ["saude", "zzz"]))).toMatch(
+    expect(checar(pais(["saude", "b", ["saude"]]))).toMatch(/sobra/);
+    expect(checar(pais(["gabinete", "a", []], ["saude", "a", []]))).toMatch(
+      /duas caixas/,
+    );
+    expect(checar(pais(["gabinete", "a", []], ["saude", "zzz", []]))).toMatch(
       /não existe/,
     );
-    expect(checar(pais(["gabinete", "a"], ["molde-falso", "b"]))).toMatch(
-      /molde/,
+    expect(checar(pais(...base, ["x", "c", ["falsa"]]))).toMatch(/não existe/);
+    expect(checar(pais(...base, ["x", "c", ["eleicoes"]]))).toMatch(
+      /não tem ministro/,
     );
   });
 

@@ -2,7 +2,9 @@
 // → ministérios → iniciar. A partida só nasce no último carimbo.
 import { useMemo, useState } from "react";
 import {
+  TAMANHOS,
   chapaSugerida,
+  governoPronto,
   ministrosSugeridos,
   paisesJogaveis,
   prepararComeco,
@@ -10,6 +12,7 @@ import {
   type OpcoesPartida,
 } from "../../partida";
 import { EtapaChapa } from "./EtapaChapa";
+import { EtapaGoverno } from "./EtapaGoverno";
 import { EtapaIniciar } from "./EtapaIniciar";
 import { EtapaMinisterios } from "./EtapaMinisterios";
 import { EtapaPais } from "./EtapaPais";
@@ -26,7 +29,14 @@ import "./inicio.css";
 
 const PARTIDO_DE_TESTE = { nome: "Partido de Teste", sigla: "PTE" };
 const AVISO_DE_TESTE_MS = 2500;
-const ETAPAS = ["País", "Partido", "Chapa", "Ministérios", "Iniciar"] as const;
+const ETAPAS = [
+  "País",
+  "Partido",
+  "Chapa",
+  "Governo",
+  "Ministros",
+  "Iniciar",
+] as const;
 
 interface Props {
   podeCarregar: boolean;
@@ -63,16 +73,33 @@ export function TelaInicio({
     [e.pais, e.semente],
   );
   const chapa = chapaCompleta(e);
-  const sorteados = useMemo(
-    () => (chapa ? ministrosSugeridos(e.pais, e.semente, chapa, e.rodada) : {}),
-    [e.pais, e.semente, e.rodada, JSON.stringify(chapa)],
+  const caixas = e.caixas ?? governoPronto(e.tamanho, preparo.caixas);
+  const contagem = TAMANHOS.map(
+    (t) => governoPronto(t.id, preparo.caixas).length,
   );
-  const ministros = { ...sorteados, ...e.trocas };
+  const trocas = Object.fromEntries(
+    Object.entries(e.trocas).filter(([c]) => caixas.some((x) => x.id === c)),
+  );
+  const ministros = useMemo(
+    () =>
+      chapa
+        ? ministrosSugeridos(e.pais, e.semente, chapa, e.rodada, caixas, trocas)
+        : {},
+    [
+      e.pais,
+      e.semente,
+      e.rodada,
+      JSON.stringify(chapa),
+      JSON.stringify(caixas),
+      JSON.stringify(trocas),
+    ],
+  );
 
   const podeSeguir = [
     true,
     motivoDoPartido(e, preparo.partidos) === null,
     chapa !== null,
+    true,
     true,
     true,
   ][passo];
@@ -86,6 +113,7 @@ export function TelaInicio({
         partido: { nome: e.nome.trim(), sigla: e.sigla },
         chapa,
         coligarGoverno: e.coligarGoverno,
+        caixas,
         ministros,
       },
       { semCongresso: e.semCongresso, semSenado },
@@ -176,17 +204,26 @@ export function TelaInicio({
                 </>
               )}
               {passo === 3 && (
+                <EtapaGoverno
+                  e={e}
+                  mudar={mudar}
+                  caixas={caixas}
+                  contagem={contagem}
+                />
+              )}
+              {passo === 4 && (
                 <EtapaMinisterios
                   e={e}
                   mudar={mudar}
                   preparo={preparo}
+                  caixas={caixas}
                   ministros={ministros}
                   onTrocar={(caixa, pessoa) =>
                     mudar({ trocas: trocarMinistro(ministros, caixa, pessoa) })
                   }
                 />
               )}
-              {passo === 4 && (
+              {passo === 5 && (
                 <EtapaIniciar e={e} mudar={mudar} preparo={preparo} />
               )}
             </div>

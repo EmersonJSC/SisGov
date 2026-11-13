@@ -286,7 +286,7 @@ describe("governo", () => {
           governo: {
             ...governo,
             caixas: governo.caixas.map((c) =>
-              c.molde === caixa ? { ...c, ministro: ministro.id } : c,
+              c.id === caixa ? { ...c, ministro: ministro.id } : c,
             ),
           },
         },
@@ -333,7 +333,7 @@ describe("governo", () => {
       { tipo: "nomear", caixa: "saude", ministro: livre.id },
     ]).estado;
     expect(
-      depois.governo?.caixas.find((c) => c.molde === "saude")?.ministro,
+      depois.governo?.caixas.find((c) => c.id === "saude")?.ministro,
     ).toBe(livre.id);
     expect(depois.fatos?.map((f) => f.tipo)).toContain("ministro-nomeado");
   });
@@ -352,7 +352,7 @@ describe("governo", () => {
     ];
     const depois = jogar(partida, 1, pedidos).estado;
     const ministro = depois.governo?.caixas.find(
-      (c) => c.molde === "defesa",
+      (c) => c.id === "defesa",
     )?.ministro;
     expect(
       partida.regras.governo?.pessoas.find((p) => p.id === ministro)?.origem,
@@ -484,7 +484,7 @@ describe("jornal", () => {
     const livre = (partida.regras.governo?.pessoas ?? []).find(
       (p) => !partida.estado.governo?.caixas.some((c) => c.ministro === p.id),
     ) as Ficha;
-    const caixa = partida.estado.governo?.caixas[0].molde as string;
+    const caixa = partida.estado.governo?.caixas[0].id as string;
     const jornal =
       jogar(partida, 1, [{ tipo: "nomear", caixa, ministro: livre.id }]).estado
         .midia?.jornal ?? [];

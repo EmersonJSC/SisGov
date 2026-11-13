@@ -168,6 +168,10 @@ export type VisaoFilha = Readonly<{
   ativa: boolean;
 }>;
 
+/** Como vai um índice: junta o nível (saúde) e a tendência desde o turno anterior. */
+export type AlertaDoIndice = "critico" | "preocupante" | "normal" | "bom";
+export type TendenciaDoIndice = "piorando" | "estavel" | "melhorando";
+
 export type VisaoBolha = Readonly<{
   id: string;
   nome: string;
@@ -216,6 +220,12 @@ export type VisaoBolha = Readonly<{
    * piloto automático). Só existe depois que o jogador muda alguma lei.
    */
   semVoce?: number;
+  /** Saúde do índice, de 0 (péssimo) a 100 (ótimo), no sentido que o índice declara. */
+  saude?: number;
+  alerta?: AlertaDoIndice;
+  tendencia?: TendenciaDoIndice;
+  /** Quanto a saúde mudou desde o turno anterior, em pontos (negativo piorou). */
+  mudancaDaSaude?: number;
 }>;
 
 export type VisaoLigacao = Readonly<{
@@ -306,21 +316,24 @@ export type VisaoTrindade = Readonly<{
 
 /** Um ministério (caixa) e quem o chefia; cuida de algumas instituições. */
 export type VisaoMinistro = Readonly<{
-  /** Id do molde do ministério. */
+  /** Id da caixa do ministério. */
   id: string;
   nome: string;
   pessoa: VisaoPessoa | null;
-  /** Ids das instituições (esferas) que ele cuida. */
+  /** Ids das instituições que ele cuida. */
   instituicoes: readonly string[];
+  /** Verba que as instituições dele recebem das leis de gasto, em % do PIB. */
+  verba: number;
 }>;
 
-/** Uma instituição: o órgão de uma esfera, sob um ministério. */
+/** Uma instituição: o órgão que executa as leis dela, sob um ministério. */
 export type VisaoInstituicao = Readonly<{
-  /** Id da esfera. */
   id: string;
   nome: string;
-  /** Id do ministério (molde) responsável. */
-  ministro: string;
+  /** Id da caixa responsável; null se fica com um dos poderes, sem ministro. */
+  ministro: string | null;
+  /** Verba que a instituição recebe das leis de gasto, em % do PIB. */
+  verba: number;
 }>;
 
 /** Quem manda em quem: trindade, ministros, instituições e as leis de cada uma. */

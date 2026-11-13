@@ -1,6 +1,5 @@
 // Dados da tela inicial: o que o jogador vê antes de a partida existir (partidos,
 // pessoas, caixas dos ministérios e perfis). Só leitura; nada aqui cria partida.
-import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
 import {
   carregarGrupos,
   elencoDoPais,
@@ -10,7 +9,7 @@ import {
 import { type ComecoDoJogador } from "./comeco";
 import { arquivoPais } from "./paises";
 import { perfilDaPessoa, type PerfilDePessoa } from "./perfil";
-import type { Ficha } from "../motor";
+import type { Caixa, Ficha } from "../motor";
 
 /** Uma pessoa como a tela a mostra: ficha com o nome do partido de origem. */
 export interface PessoaDaLista {
@@ -32,14 +31,12 @@ export interface PreparoDoComeco {
   /** Partido que governava o país até agora. */
   governava: string;
   pessoas: PessoaDaLista[];
-  caixas: { molde: string; nome: string }[];
+  /** Os ministérios do país, como ele os declara. */
+  caixas: Omit<Caixa, "ministro">[];
 }
 
 const COR_PADRAO = "#8a8a8a";
 const SEM_PARTIDO = "Sem partido";
-const nomesDosMoldes = new Map(
-  moldesDeMinisterio.moldes.map((m) => [m.id, m.nome]),
-);
 
 const congressoDe = (pais: string) =>
   arquivoPais<CongressoPais>(pais, "congresso");
@@ -51,10 +48,9 @@ function elencoDe(pais: string, semente: number): Ficha[] {
 export function prepararComeco(pais: string, semente: number): PreparoDoComeco {
   const congresso = congressoDe(pais);
   const nomes = new Map(congresso.partidos.map((p) => [p.id, p.nome]));
-  const { ministerios } = arquivoPais<{ ministerios: { molde: string }[] }>(
-    pais,
-    "governo",
-  );
+  const { ministerios } = arquivoPais<{
+    ministerios: (Omit<Caixa, "ministro"> & { ministro?: string })[];
+  }>(pais, "governo");
   return {
     partidos: congresso.partidos.map((p) => ({
       id: p.id,
@@ -76,9 +72,11 @@ export function prepararComeco(pais: string, semente: number): PreparoDoComeco {
       honestidade: f.honestidade,
       lealdade: f.lealdade,
     })),
-    caixas: ministerios.map(({ molde }) => ({
-      molde,
-      nome: nomesDosMoldes.get(molde) ?? molde,
+    caixas: ministerios.map((c) => ({
+      id: c.id,
+      nome: c.nome,
+      instituicoes: c.instituicoes,
+      ...(c.sobra ? { sobra: true } : {}),
     })),
   };
 }
@@ -102,6 +100,8 @@ export function ministrosSugeridos(
   semente: number,
   chapa: ComecoDoJogador["chapa"],
   rodada = 0,
+  caixas?: ComecoDoJogador["caixas"],
+  escolhidos: Record<string, string> = {},
 ): Record<string, string> {
   return ministrosDoComeco(
     semente + rodada * 7919,
@@ -109,7 +109,12 @@ export function ministrosSugeridos(
     elencoDe(pais, semente),
     congressoDe(pais),
     carregarGrupos(),
-    { partido: PARTIDO_DE_PASSAGEM, chapa },
+    {
+      partido: PARTIDO_DE_PASSAGEM,
+      chapa,
+      ...(caixas ? { caixas } : {}),
+      ministros: escolhidos,
+    },
   );
 }
 

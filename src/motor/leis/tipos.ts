@@ -50,9 +50,8 @@ interface LeiBase {
   camada: Camada;
   /** Ausente = comum. */
   classe?: ClasseLei;
-  /** Esfera da lei e, se houver, a subesfera (motor/governo decide o ministério). */
+  /** Instituição onde a lei mora (13/nov; o campo ainda se chama esfera). O ministério sai da caixa que leva a instituição. */
   esfera?: string;
-  subesfera?: string;
 }
 
 export interface LeiContinua extends LeiBase {

@@ -21,7 +21,7 @@ export const programas: Etapa = (regras, estado) => {
     mandato: estado.inicio_mandato,
     atrasoDaLei: (lei) =>
       governo && caixas
-        ? ajusteDaLei(governo, caixas, regras.leis, lei).atraso
+        ? ajusteDaLei(governo, caixas, lei).atraso
         : 0,
   });
   return {

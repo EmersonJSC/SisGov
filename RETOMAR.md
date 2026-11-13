@@ -73,6 +73,18 @@ barra do topo commitada (0963da58); **ícones das leis NÃO commitados**:
   (`FAIXA_DO_RAIO`). A câmera se reenquadra sozinha quando o mapa assenta, se o autor não mexeu.
   **Autor pediu (13/nov):** levantar os requisitos do mapa cruzando GDD §17 com R11, R12 e R14 antes de mexer em mais
   código; requisitos.md está defasado (mapa mudou; o jornal mínimo da mídia existe, commit e37a665b).
+  **Alerta de índice e pulsos (13/nov, NÃO commitados):** `saudeDosIndices.ts` (saúde 0–100; crítico, preocupante, normal,
+  bom por nível + tendência; o motor guarda `estado.anterior`, os valores do turno anterior). Nível = cor do anel (vermelho/
+  verde) e brilho; tendência = seta ▼▲ no canto. **ACHADO:** a tendência com corte de 5 pontos por turno NUNCA dispara (mesmo
+  mudando o imposto de renda de 27,5% para 45%, nenhum índice mexe mais de 0,65 ponto por turno): decidir outra janela (ex.:
+  comparar com 4 turnos atrás) ou outro corte. Pulso dourado = recurso saindo do centro (`fluxos.ts`: força pela verba que
+  cada ministério, instituição e lei de gasto recebe; vários neons pequenos por fio, cada um no seu tempo; instituição e
+  ministro mostram "Recebe X% do PIB"); alerta vermelho/verde pelo caminho trindade → ministro → índice. Fios de efeito só
+  correm com a bolha em foco. **Desempenho do fundo:** `prepararFundo` monta uma vez; por quadro ~1 ms de JS e ~15 traços
+  agrupados, descarta o que está fora da tela, reduz em gesto e desenha a meia taxa parado. **Navegação:** pinça e roda dão
+  zoom, dois dedos arrastam (`gestos.ts`), setas, + − e 0 no teclado, botões + − Enquadrar, duplo clique. **Espalhar:** ministro
+  repele ministro, instituição repele instituição, índice repele índice (folga maior por degrau). O painel do navegador do
+  Claude parou de gerar quadros no fim: pintura, pinça de verdade e o espalhamento final não foram vistos em movimento.
   Falta: popularidade por lei, instituições do jogador (junto dos índices, outro destaque; não existem na
   `VisaoPartida`), mídia, missão (administrar um setor público; GDD §18), crédito do game-icons na tela,
   `MapaPolitico.tsx`/`layout.ts` sem uso (apagar é pedido à parte).
@@ -92,6 +104,7 @@ que saiu da barra: o autor vai dizer.
   alta no começo (R4.9); pessoas envelhecerem e morrerem (R6.6).
 
 ## Armadilhas
+- Vite às vezes guarda um módulo vazio quando o arquivo muda no meio da escrita ("does not provide an export"): `touch` no arquivo e recarregar.
 
 - `manifest-leis.json` tem 220 ids de leis antigas que não existem mais (e 14 SVGs soltos em `src/assets/svg/leis/`); limpar é um pedido à parte.
 
@@ -105,3 +118,8 @@ que saiu da barra: o autor vai dizer.
 - Pacote novo no `package.json` deixa o `npm run dev` aberto com "Outdated Optimize Dep" (página em branco): reiniciar o servidor.
 - O servidor do Vite pode servir arquivo novo vazio ou módulo velho: `touch` nos arquivos e recarregar.
 - `tsx` não roda scripts com `import.meta.glob`; usar `vite-node`.
+
+**Remontagem (13/nov), da base para as pontas.** Planilha `docs/jogo/gdd-remontagem.xlsx` (montada junto com o autor; gerada com `uv run --with openpyxl`, openpyxl não está instalado); molde do Brasil à parte em `docs/jogo/molde-brasil.xlsx`. Decidido e no GDD (seção 6, Instituições): lei mora na instituição; jogador distribui instituições entre ministros; instituição é órgão, não tema; lista de 36 (+ Regras dos poderes), todas em todo país; Eleições sem ministro; Organização dos ministérios vira escada de 4 degraus. Maquete aprovada: `docs/jogo/interface/maquetes/gabinete.html` (passo 1 régua do tamanho + "Ajustar caixas"; passo 2 cadeiras com rosto e 3 cartas: técnico, aliado, do partido).
+**Etapa A feita (não commitada):** motor com instituições (`mundo/ministerios/instituicoes.json`) e caixas livres ({id, nome, instituicoes, ministro, sobra}); 157 leis mudaram o campo `esfera` para a instituição nova, `subesfera` saiu; moldes viraram caixas sugeridas genéricas; Brasil declara 34 caixas (as de causa sem instituição: Pesca, Mulheres…); `ComecoDoJogador.caixas` já existe; mapa mostra as 37. `scripts/gerar-governo.ts` apagado (lia a planilha antiga). **Etapa B feita (não commitada):** tela inicial com os passos Governo (régua Enxuto 9 / Clássico 19 / Do país / Inchado, "Ajustar caixas" arrastando escudos, nome automático pelo molde parecido) e Ministros (cadeiras com retrato e "rende", três cartas: técnico, aliado, do seu partido; "Ver todos" abre a lista). Governos prontos em `mundo/ministerios/tamanhos.json`; regras em `partida/gabinete.ts`. Efeitos mostrados só os que existem no motor (atenção, sobra, sem pasta, partidos com ministro). **Ordem do autor (13/nov):** terminar os ministros → mapa da raiz às pontas (corrigir mapa e mecânicas) → padronizar as leis → caminho do dinheiro (custo da máquina por ministério, corrupção tirando dinheiro de verdade). Anotado no GDD §18 "Caminho do dinheiro"; não adiantar.
+
+**Leis: enxugar (13/nov, começou).** Passo 1 feito: `npm run inventario` gera `docs/jogo/leis-inventario.md` (512 leis; 78 sem ligação, 31 só grupos, 198 com nome parecido (famílias), 67 com mesmo efeito, 77 que o país não declara). Próximo: rascunho das regras da lei (uma página) para o autor corrigir; depois cortar por esfera, uma por vez. Também nesta rodada (não commitado): pulsação da verba removida; alerta e foco vibram; flash de mudança testado e removido (autor não gostou; repensar depois); lei com tamanho por dinheiro + importância na visão Padrão; espaço pessoal e miolo reservado no mapa; títulos de lei só no mouse; botão ao lado de ministro/instituição/índice abre o painel "Atrapalham / Ajudam" (`afetadas.ts`, `PainelDeAfetadas`); tecla F mede fps.

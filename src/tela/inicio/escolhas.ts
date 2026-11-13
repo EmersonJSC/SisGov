@@ -1,8 +1,10 @@
 // O que o jogador já escolheu na tela inicial e as regras de cada passo.
 import {
   idDoPartidoDoJogador,
+  type CaixaDoGabinete,
   type ComecoDoJogador,
   type PreparoDoComeco,
+  type Tamanho,
 } from "../../partida";
 
 export const VAGAS = [
@@ -21,6 +23,12 @@ export interface Escolhas {
   coligarGoverno: boolean;
   /** Quantas vezes o jogador pediu para sortear os ministros de novo. */
   rodada: number;
+  /** Parada da régua do tamanho do governo. */
+  tamanho: Tamanho;
+  /** Ministérios que o jogador ajustou à mão; nulo: os da parada da régua. */
+  caixas: CaixaDoGabinete[] | null;
+  /** Caixas a que o jogador deu nome: não mudam de nome ao ganhar instituição. */
+  renomeadas: string[];
   /** Ministros que o jogador pôs à mão, por caixa. */
   trocas: Record<string, string>;
   semCongresso: boolean;
@@ -34,6 +42,9 @@ export const ESCOLHAS_INICIAIS = (pais: string): Escolhas => ({
   chapa: { presidente: null, candidato: null, vice: null },
   coligarGoverno: false,
   rodada: 0,
+  tamanho: "pais",
+  caixas: null,
+  renomeadas: [],
   trocas: {},
   semCongresso: false,
 });

@@ -1,11 +1,12 @@
-// Governo: ministérios com fichas, órgãos por esfera e corrupção. O motor não
-// conhece nomes de ministério nem de pessoa: moldes são do mundo, pessoas e
-// escolhas são do país. Comportamento em governo.md.
+// Governo: ministérios com fichas, órgãos por instituição e corrupção. O motor
+// não conhece nomes de ministério nem de pessoa: instituições e moldes são do
+// mundo; pessoas e caixas, do país e do jogador. Comportamento em governo.md.
 import { novoFato, type Fato } from "../fatos";
 import type { Lei, ValorLei } from "../leis";
 import { candidatosDoPartido, fichaDe } from "./ministerios";
 import { andarOrgaos, iniciarOrgaos } from "./orgaos";
 import type {
+  Caixa,
   EstadoGoverno,
   GovernoDoPais,
   PedidoNomear,
@@ -16,21 +17,23 @@ export * from "./tipos";
 export {
   ajusteDaCompetencia,
   ajusteDaLei,
+  caixaDaInstituicao,
   caixaDaLei,
   candidatosDoPartido,
   competenciaEfetiva,
-  esferasDaCaixa,
   fichaDe,
+  instituicoesDaCaixa,
+  instituicoesSoltas,
   ministrosPorPartido,
+  semMinistro,
 } from "./ministerios";
 export {
   LIMITE_DO_ESCANDALO,
   corrupcaoDeEquilibrio,
   corrupcaoSeguinte,
-  esferasDoMundo,
   rendimentoDoOrgao,
   situacaoDoOrgao,
-  verbaDaEsfera,
+  verbaDaInstituicao,
   type SituacaoDoOrgao,
 } from "./orgaos";
 
@@ -57,12 +60,38 @@ export function iniciarGoverno(
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
 ): EstadoGoverno {
-  const caixas = pais.ministerios.map(({ molde, ministro }) => ({
-    molde,
-    ministro,
+  const caixas = pais.ministerios.map((c) => ({
+    ...c,
+    instituicoes: [...c.instituicoes],
   }));
   const cargos = fracaoDosCargos(r, leis, valores);
   return { caixas, orgaos: iniciarOrgaos(r, caixas, leis, valores, cargos) };
+}
+
+/** Motivo de as caixas não fecharem (do país ou do jogador), ou null. */
+export function motivoCaixasInvalidas(
+  r: RegrasGoverno,
+  caixas: readonly Caixa[],
+  pessoas: readonly string[],
+): string | null {
+  const ids = caixas.map((c) => c.id);
+  if (new Set(ids).size !== ids.length) return "caixa repetida";
+  const ministros = caixas.map((c) => c.ministro);
+  const faltando = ministros.find((id) => !pessoas.includes(id));
+  if (faltando !== undefined) return `ministro "${faltando}" não existe`;
+  if (new Set(ministros).size !== ministros.length)
+    return "a mesma pessoa em duas caixas";
+  if (caixas.filter((c) => c.sobra).length !== 1)
+    return "precisa de uma caixa para a sobra (o gabinete)";
+  const levadas = caixas.flatMap((c) => c.instituicoes);
+  const estranha = levadas.find(
+    (i) => !r.instituicoes.some((x) => x.id === i && !x.semMinistro),
+  );
+  if (estranha !== undefined)
+    return `instituição "${estranha}" não existe ou não tem ministro`;
+  const dobrada = levadas.find((i, n) => levadas.indexOf(i) !== n);
+  if (dobrada !== undefined) return `${dobrada} está em duas caixas`;
+  return null;
 }
 
 /** Motivo de o governo do país não fechar, ou null. */
@@ -86,32 +115,7 @@ export function motivoGovernoInvalido(
     if (p.origem !== TECNICO && !partidos.includes(p.origem))
       return `pessoa ${p.id}: origem "${p.origem}" não é partido nem técnico`;
   }
-  const usados = pais.ministerios.map((c) => c.molde);
-  for (const id of usados)
-    if (!r.moldes.some((m) => m.id === id)) return `molde "${id}" não existe`;
-  if (new Set(usados).size !== usados.length) return "molde repetido";
-  const ministros = pais.ministerios.map((c) => c.ministro);
-  for (const id of ministros)
-    if (!ids.includes(id)) return `ministro "${id}" não existe`;
-  if (new Set(ministros).size !== ministros.length)
-    return "a mesma pessoa em duas caixas";
-  const caixas = r.moldes.filter((m) => usados.includes(m.id));
-  if (caixas.filter((m) => m.sobra).length !== 1)
-    return "precisa de uma caixa para a sobra (o gabinete)";
-  const refs = caixas.flatMap((m) =>
-    m.esferas.map((e) => ({ molde: m.id, ...e })),
-  );
-  for (const [i, a] of refs.entries())
-    for (const b of refs.slice(i + 1))
-      if (
-        a.molde !== b.molde &&
-        a.esfera === b.esfera &&
-        (a.subesfera === undefined ||
-          b.subesfera === undefined ||
-          a.subesfera === b.subesfera)
-      )
-        return `${a.esfera}${a.subesfera ? `: ${a.subesfera}` : ""} está em duas caixas (${a.molde} e ${b.molde})`;
-  return null;
+  return motivoCaixasInvalidas(r, pais.ministerios, ids);
 }
 
 export interface EntradaGoverno {
@@ -137,11 +141,11 @@ function nomear(
   r: RegrasGoverno,
   e: EstadoGoverno,
   turno: number,
-  molde: string,
+  idDaCaixa: string,
   ministro: string,
 ): SaidaGoverno {
-  const caixa = e.caixas.find((c) => c.molde === molde);
-  if (!caixa) throw new Error(`pedido: a caixa "${molde}" não existe`);
+  const caixa = e.caixas.find((c) => c.id === idDaCaixa);
+  if (!caixa) throw new Error(`pedido: a caixa "${idDaCaixa}" não existe`);
   fichaDe(r, ministro);
   if (e.caixas.some((c) => c.ministro === ministro))
     throw new Error(`pedido: ${ministro} já é ministro`);
@@ -151,7 +155,7 @@ function nomear(
       tipo: "ministro-nomeado",
       turno,
       tamanho: "pequeno",
-      sobre: molde,
+      sobre: idDaCaixa,
       quem: [ministro],
     }),
     ...(saiu.origem === TECNICO
@@ -161,7 +165,7 @@ function nomear(
             tipo: "ministro-demitido",
             turno,
             tamanho: "medio",
-            sobre: molde,
+            sobre: idDaCaixa,
             quem: [saiu.origem],
           }),
         ]),
@@ -192,10 +196,10 @@ export function andarGoverno(e: EntradaGoverno): SaidaGoverno {
   ];
   let { estado } = e;
   const fatos: Fato[] = [];
-  for (const [molde, partido] of nomeacoes) {
+  for (const [idDaCaixa, partido] of nomeacoes) {
     const [melhor] = candidatosDoPartido(e.regras, estado.caixas, partido);
     if (!melhor) continue;
-    const r = nomear(e.regras, estado, e.turno, molde, melhor.id);
+    const r = nomear(e.regras, estado, e.turno, idDaCaixa, melhor.id);
     estado = r.estado;
     fatos.push(...r.fatos);
   }
@@ -218,8 +222,8 @@ export function andarGoverno(e: EntradaGoverno): SaidaGoverno {
         tipo: "escandalo",
         turno: e.turno,
         tamanho: "grande",
-        sobre: s.esfera,
-        quem: [s.ministro],
+        sobre: s.instituicao,
+        quem: s.ministro ? [s.ministro] : [],
       }),
     );
   return { estado: { ...estado, orgaos }, fatos };

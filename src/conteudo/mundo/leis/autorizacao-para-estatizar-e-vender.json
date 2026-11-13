@@ -5,8 +5,7 @@
   "descricao": "Quem precisa aprovar quando o Estado estatiza ou vende uma companhia: só o presidente, o Congresso, ou plebiscito.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,8 +5,7 @@
   "descricao": "Se campanha pode comprar anúncio: de proibida até liberada. Quem tem mais dinheiro aparece mais.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "estado-e-eleicoes",
-  "subesfera": "eleicoes",
+  "esfera": "eleicoes",
   "forma": "opcoes",
   "opcoes": [
     {

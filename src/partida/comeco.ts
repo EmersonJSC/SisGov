@@ -8,6 +8,7 @@ import {
   defendeDaBussola,
   tomarCadeiras,
   FRACAO_DE_ESTREIA,
+  type Caixa,
   type Ficha,
   type Partido,
   type TipoGrupo,
@@ -24,7 +25,9 @@ export interface ComecoDoJogador {
   chapa: { presidente: string; candidato: string; vice: string };
   /** O partido que governava entra na coligação em vez de ficar na oposição. */
   coligarGoverno?: boolean;
-  /** Quem ocupa cada caixa (id do molde → pessoa); o que faltar é sorteado. */
+  /** Os ministérios que o jogador montou; sem isto, ficam os do país. */
+  caixas?: Omit<Caixa, "ministro">[];
+  /** Quem ocupa cada caixa (id da caixa → pessoa); o que faltar é sorteado. */
   ministros?: Record<string, string>;
 }
 

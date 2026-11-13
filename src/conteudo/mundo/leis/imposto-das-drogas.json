@@ -5,7 +5,7 @@
   "descricao": "Imposto sobre o que é legal: bebida, cigarro e o que mais for liberado.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "vicios",
+  "esfera": "impostos",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do preço",

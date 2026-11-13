@@ -20,7 +20,7 @@ export const VISOES: readonly Visao[] = [
   {
     id: "prioridade",
     rotulo: "Padrão",
-    dica: "Ministro, instituição, índice, lei: quem manda aparece mais.",
+    dica: "Ministro, instituição, índice, lei: quem manda aparece mais. A lei cresce com o dinheiro que move e com o quanto mexe no país.",
   },
   {
     id: "ligacoes",
@@ -45,6 +45,8 @@ export const VISOES: readonly Visao[] = [
 ];
 
 const NEUTRO = 0.2;
+/** Na visão padrão, o tamanho da lei: parte vem do dinheiro, o resto da importância. */
+const PARTE_DO_DINHEIRO = 0.55;
 const FIM_DA_ESCALA = 100;
 /** Fração do peso abaixo da qual a bolha esmaece. */
 export const PESO_DO_ESMAECER = 0.25;
@@ -80,14 +82,13 @@ function pesoDoNivel(lei: VisaoLei): number {
 }
 
 /**
- * Peso de cada bolha de 0 a 1 na visão escolhida; `null` na visão das ligações
- * (o tamanho vem só das ligações).
+ * Peso de cada bolha de 0 a 1 na visão escolhida. Na visão padrão só as leis
+ * ganham peso (dinheiro que movem e quanto mexem no país); índices ficam como são.
  */
 export function pesosDaVisao(
   visao: VisaoPartida,
   id: IdDaVisao,
 ): ReadonlyMap<string, number> | null {
-  if (id === "prioridade") return null;
   const leis = visao.leis;
   const indices = visao.bolhas.filter((b) => b.tipo !== "grupo");
   const maiorValor = Math.max(
@@ -115,14 +116,23 @@ export function pesosDaVisao(
     const faixa = i.maximo - i.minimo;
     return faixa > 0 ? ate1((i.valor - i.minimo) / faixa) : NEUTRO;
   };
+  const dinheiro = (l: VisaoLei) =>
+    Math.sqrt(Math.abs(dinheiroDaLei(l)) / maiorValor);
+  if (id === "prioridade")
+    return new Map(
+      leis.map((l) => [
+        l.id,
+        PARTE_DO_DINHEIRO * dinheiro(l) +
+          (1 - PARTE_DO_DINHEIRO) * dasLigacoes(l.id),
+      ]),
+    );
   const daLei = (l: VisaoLei) => {
     if (id === "ligacoes") return dasLigacoes(l.id);
     if (id === "popularidade")
       return l.popularidade
         ? ate1(l.popularidade.pais / FIM_DA_ESCALA)
         : NEUTRO;
-    if (id === "dinheiro")
-      return Math.sqrt(Math.abs(dinheiroDaLei(l)) / maiorValor);
+    if (id === "dinheiro") return dinheiro(l);
     return pesoDoNivel(l);
   };
   return new Map([

@@ -4,8 +4,7 @@
   "nome": "Política da empresa estatal",
   "descricao": "Como a empresa do Estado fixa preço e lucro.",
   "camada": "jogabilidade",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

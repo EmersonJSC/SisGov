@@ -5,8 +5,7 @@
   "descricao": "Vai de política (amigos do partido), passa por mista, até técnica (concurso ou lista).",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

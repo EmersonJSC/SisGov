@@ -26,6 +26,10 @@ continuar no poder governando por leis.**
   mãos: ele aprova leis que cobram, gastam, regulam, compram, vendem e
   patrocinam. O Estado pode comprar empresas e ações e financiar obras, mas
   quem constrói é a economia.
+- **O jogo é administração pública** (13/nov): governar é administrar a
+  máquina pública (instituições, ministros, verbas e leis), seja de esquerda
+  ou de direita. Os dois lados administram a mesma máquina; muda o caminho
+  que escolhem, não a máquina.
 - **Não há meta pronta.** O jogador leva o país para onde quiser. Quem joga
   bem tende a enriquecer e industrializar o país, mas o jogo não cobra isso.
 - **O jogador é o governo** (12/nov): controla tudo o que um governo controla
@@ -303,22 +307,24 @@ alia e o quanto ele se afasta da própria história.
   barulhenta (lealdade), ministro que vira candidato (carisma).
 - **Troca:** demitir custa um pouco (mídia e coesão); manter alguém sob
   escândalo custa mais com o tempo.
-- **Ministério é uma caixa com nome (12/nov).** Dentro cabem esferas e
-  **subesferas**, de zero até quantas quiser. A subesfera é um pedaço de esfera
-  que governos reais costumam separar (Pesca dentro de Agricultura e pesca;
-  Portos e aeroportos dentro de Infraestrutura; Mulheres dentro de Direitos;
-  Governo e Congresso dentro de Estado e eleições). Cada esfera ou subesfera fica
-  numa caixa só; a que sobra vai para o gabinete do chefe de governo. Planilha:
-  coluna Subesfera na aba Leis, moldes na aba Ministérios.
+- **Ministério é uma caixa com nome (12/nov; instituições em 13/nov).** Dentro
+  cabem **instituições** (ver Instituições, abaixo), de zero até quantas
+  quiser, e pedaços delas que governos reais costumam separar (Pesca dentro de
+  Agricultura e pesca; Portos e aeroportos dentro de Infraestrutura). Cada
+  instituição ou pedaço fica numa caixa só; a que sobra vai para o gabinete do
+  chefe de governo. Planilha: moldes na aba Ministérios.
 - **Toda caixa** tem um ministro (cargo para aliado, a moeda Ministério do
   Congresso), custa estrutura e agrada quem é parecido com o ministro. **Caixa
-  com esferas** também rende: a ficha do ministro muda leis e órgãos dela. Muitas
+  com instituições** também rende: a ficha do ministro muda leis e órgãos dela. Muitas
   caixas: mais cargos e foco, mais custo. Poucas (superministério): economiza, mas
   a competência do ministro se divide. Programa espalhado por várias caixas
   depende de vários ministros e anda no passo do mais fraco.
-- **No começo**, o país vem com os ministérios reais dele (aba Ministérios -
-  países), e o jogador muda no menu ao montar o governo. Depois, só pela lei
-  **Organização dos ministérios** (forma Divisão de esferas, quórum absoluto).
+- **No começo**, o país vem com os ministérios reais dele, e o jogador muda no
+  menu ao montar o governo. Depois, pela lei **Organização dos ministérios**,
+  uma escada de quem pode mexer nas caixas (13/nov): 1) livre, por decreto;
+  2) por medida provisória, o Congresso confirma; 3) só por lei; 4) algumas
+  caixas fixas na Constituição. O país declara o degrau inicial. Caixas
+  genéricas, sem país: aba Ministérios (geral) da `gdd-remontagem.xlsx`.
 - **A divisão muda com quem governa,** como na realidade: o Brasil juntou a
   economia num superministério em 2019 e separou de novo em 2023.
 
@@ -355,11 +361,50 @@ Perder o poder federal acaba a partida.
 No semipresidencialismo, perder a maioria não tira a Presidência: vira
 coabitação (seção 12) e o jogo segue.
 
-### Órgãos (11/nov)
+### Instituições (13/nov)
 
-- Um órgão por esfera (30), cada um um prédio no mapa, na área da esfera.
-- Fica sob o ministério da sua esfera.
-- O ministro não mexe na verba (é lei); a ficha dele muda o órgão:
+Substitui a divisão por esfera. Planilha: `docs/jogo/gdd-remontagem.xlsx`,
+aba Instituições novas.
+
+- **Lei** é a regra do país (o Congresso aprova). **Instituição** é o órgão
+  que executa a lei. **Ministro** é o chefe das instituições que o jogador der
+  a ele; a competência dele mexe no efeito das leis delas.
+- **A lei mora numa instituição**, nunca num ministério. O jogador distribui
+  as instituições entre os ministros; os ministérios reais do país são só o
+  ponto de partida. Cada instituição tem um dono só por vez.
+- **Instituição é órgão, não tema.** A pergunta é "quem executa?": cobrar é
+  Impostos, prender é Segurança pública, tratar é Saúde. Um tema com naturezas
+  diferentes (drogas e apostas) se divide pela função; a licença segue o
+  produto (apostas na Fazenda, drogas na Saúde).
+- **Todo país tem todas as instituições**, mesmo pequenas. A pequena é um
+  caminho que o jogador pode crescer (um Brasil religioso faz Religião
+  crescer).
+- **Eleições não tem ministro** no começo: fica ligada à Justiça. Quem
+  organiza a eleição muda por país (França e Alemanha: ministério do
+  Interior; Índia, México, Reino Unido: órgão independente; Brasil: Justiça
+  eleitoral).
+- **As regras dos poderes** (medida provisória, indicação de juízes, quórum,
+  foro privilegiado, iniciativa popular) não são de instituição: ficam no
+  miolo, com Presidente, Congresso e Justiça.
+- **As 36** (conferidas com a lista de funções de governo da ONU, aba
+  Conferência ONU): Agricultura e pesca, Água e saneamento, Assistência social,
+  Ciência e pesquisa, Comércio exterior e capital, Comunicação e tecnologia,
+  Concorrência e consumidor, Controle e transparência, Cultura, Defesa, Defesa
+  civil, Educação, Eleições, Energia, Esporte, Estados e municípios, Estatais,
+  Funcionalismo, Imigração, Impostos, Indústria (com construção civil), Infraestrutura e transporte, Justiça e
+  prisões, Meio ambiente, Mineração e petróleo, Moeda e bancos, Moradia (com urbanismo),
+  Orçamento e dívida (com estatística), Previdência, Relações exteriores, Religião, Saúde,
+  Segurança pública, Terra, Trabalho, Turismo.
+- Saíram: Vícios, Direitos e liberdades, Estado e eleições, Empresas e
+  estatais (divididas), Saneamento e Cultura e esporte (juntadas ou
+  separadas). As leis delas serão refeitas instituição por instituição.
+
+### Como a instituição funciona (11/nov)
+
+Instituição e órgão são a mesma coisa (13/nov); o jogo usa só "instituição".
+
+- Cada instituição é um prédio no mapa, na área dela, sob o ministro que a leva.
+- O ministro não mexe na verba (é lei); a ficha dele muda a instituição:
   competência alta, rende mais; honestidade baixa, mais corrupção. Chefe com
   mandato (lei de independência) obedece menos ao ministro.
 - Nome de função ("Órgão ambiental", "Órgão de terras"); o país dá o rótulo local.
@@ -371,7 +416,7 @@ coabitação (seção 12) e o jogo segue.
   e cor do rendimento (verde rende, amarelo falta verba, vermelho sobra e vira
   corrupção). Clicar abre ficha só de leitura, sem botão: chefe e ministro,
   verba × necessidade numa barra, corrupção interna, fila (se houver) e leis
-  que mexem no órgão (clicar abre a bolha). Mudar o órgão é sempre lei,
+  que mexem nela (clicar abre a bolha). Mudar a instituição é sempre lei,
   ministro ou papel na mesa.
 
 ### Justiça (11/nov, "por enquanto")
@@ -1181,7 +1226,7 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 
 | Termo                 | O que é                                                                                                                                                                                                                                                    |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Esfera**            | Um tema de leis (Saúde, Impostos). Ministério é uma caixa de esferas e subesferas.                                                                                                                                                                         |
+| **Esfera**            | Antigo: tema de leis. Desde 13/nov a lei mora numa instituição (seção 6).                                                                                                                                                                                   |
 | **Subesfera**         | Pedaço de uma esfera que pode ir para outro ministério (Pesca, Portos e aeroportos).                                                                                                                                                                       |
 | **Lei**               | Regra permanente. Tem bolha no mapa.                                                                                                                                                                                                                       |
 | **Lei com prazo**     | Lei que acaba sozinha.                                                                                                                                                                                                                                     |
@@ -1904,6 +1949,30 @@ Ideia nova entra aqui. Decidida pelo autor, vai para o sistema dela. Revisada
 em 12/nov: o que estava decidido foi para o sistema (Órgãos, Justiça, Caminho
 autoritário e Governadores na seção 6; decreto e medida provisória juntos na
 seção 12; promessa e cota na seção 13; mundo na seção 15).
+
+**Instituições (13/nov)**
+
+- Ministério é gente para dar atenção a mais a uma instituição. Grupo
+  descontente fala com o ministro da instituição dele; sem ministro, vai direto
+  ao presidente ou pressiona pelo Congresso (no Brasil, igrejas falam com o
+  Palácio e com a bancada religiosa).
+- Estatística: o presidente pode parar de medir, esconder os números da mídia
+  ou mentir neles (Argentina maquiou a inflação de 2007 a 2015). O jogador vê o
+  índice real; a mídia vê com atraso e desconfiança.
+
+**Caminho do dinheiro (13/nov, pensar com calma depois das leis)**
+
+- Hoje: impostos (leis) + receita "fora das leis" → Tesouro (cofre ou
+  dívida) → leis de verba + gasto "fora das leis" → instituição (rende verba ÷
+  trabalho; verba demais vira pontos de corrupção, mas nenhum dinheiro some).
+- Proposta a pensar: impostos → Tesouro → verba por lei para a instituição →
+  máquina do ministério (custo fixo por ministério e cargos) → filtro da
+  corrupção (parte do dinheiro some de verdade) → instituição rende com o que
+  chegou → população.
+- Sem custo de máquina, o governo Inchado não tem desvantagem.
+- Ordem do autor: terminar os ministros, depois o mapa da raiz às pontas
+  (corrigir mapa e mecânicas), depois padronizar as leis e só então o caminho
+  do dinheiro.
 
 **Mapa (13/nov)**
 

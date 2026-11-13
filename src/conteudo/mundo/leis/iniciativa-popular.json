@@ -6,8 +6,7 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "classe": "constitucional",
-  "esfera": "estado-e-eleicoes",
-  "subesfera": "congresso",
+  "esfera": "regras-dos-poderes",
   "forma": "opcoes",
   "opcoes": [
     {

@@ -5,7 +5,7 @@
   "descricao": "O que as lojas e farmácias do Estado podem vender de legal. Escada: nada; só remédio controlado na farmácia do Estado; remédio e bebida em lojas do Estado; remédio, bebida e cigarro em lojas do Estado.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "vicios",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

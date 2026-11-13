@@ -23,47 +23,54 @@ export interface Ficha {
   idade?: number;
 }
 
-/** Esfera, ou subesfera dela, que uma caixa cuida. */
-export interface RefEsfera {
-  esfera: string;
-  subesfera?: string;
+/** Instituição do mundo: o órgão que executa as leis que moram nela. */
+export interface Instituicao {
+  id: string;
+  nome: string;
+  /** Fica com um dos poderes, sem ministro (eleições, regras dos poderes). */
+  semMinistro?: boolean;
 }
 
-/** Molde de ministério do mundo (aba Ministérios). */
+/** Caixa sugerida do mundo (aba Ministérios geral): o que costuma levar. */
 export interface Molde {
   id: string;
   nome: string;
   tipo: string;
-  esferas: RefEsfera[];
-  /** Recebe o que nenhuma outra caixa cuida (o gabinete). */
+  instituicoes: string[];
   sobra?: boolean;
 }
 
-/** O que o país declara: quais moldes usa, quem manda em cada um e quem existe. */
+/** Um ministério: nome, as instituições dentro e quem o chefia. */
+export interface Caixa {
+  id: string;
+  nome: string;
+  instituicoes: string[];
+  ministro: string;
+  /** Recebe as instituições que nenhuma outra caixa leva (o gabinete). */
+  sobra?: boolean;
+}
+
+/** O que o país declara: os ministérios do começo e quem existe. */
 export interface GovernoDoPais {
-  ministerios: { molde: string; ministro: string }[];
+  ministerios: Caixa[];
   pessoas: Ficha[];
   /** Leis do mundo que o governo lê; o país diz o id. */
   leis?: { cargos?: string };
 }
 
-/** Regras fixas na partida: moldes do mundo, pessoas e leis lidas. */
+/** Regras fixas na partida: instituições e moldes do mundo, pessoas e leis lidas. */
 export interface RegrasGoverno {
+  instituicoes: Instituicao[];
   moldes: Molde[];
   pessoas: Ficha[];
   leis?: GovernoDoPais["leis"];
 }
 
-export interface Caixa {
-  molde: string;
-  ministro: string;
-}
-
-/** Um órgão por esfera: verba da lei, necessidade do trabalho e corrupção. */
+/** Um órgão por instituição: verba da lei, necessidade do trabalho e corrupção. */
 export interface Orgao {
   /** Verba que o trabalho pedia no começo, em % do PIB (0 = sem verba em lei). */
   necessidade: number;
-  /** Leis ativas da esfera no começo; cada uma a mais pede mais trabalho. */
+  /** Leis ativas da instituição no começo; cada uma a mais pede mais trabalho. */
   leisBase: number;
   /** 0 a 100. */
   corrupcao: number;

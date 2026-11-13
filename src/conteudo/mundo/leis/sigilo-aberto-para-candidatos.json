@@ -5,8 +5,7 @@
   "descricao": "O que o candidato precisa abrir para concorrer. Escada: nada; lista de bens; sigilo fiscal (imposto de renda); sigilo fiscal e bancário.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "estado-e-eleicoes",
-  "subesfera": "eleicoes",
+  "esfera": "eleicoes",
   "forma": "opcoes",
   "opcoes": [
     {

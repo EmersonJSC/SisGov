@@ -37,9 +37,8 @@ function conferirCabecalho(c: Contexto, dado: Objeto, arquivo: string) {
     c.erro("camada", `precisa ser ${CAMADAS.join(" ou ")}`);
   if (dado.classe !== undefined && !CLASSES.includes(dado.classe as never))
     c.erro("classe", `precisa ser ${CLASSES.join(", ")}`);
-  for (const campo of ["esfera", "subesfera"] as const)
-    if (dado[campo] !== undefined && !ehKebab(dado[campo]))
-      c.erro(campo, "precisa ser kebab-case");
+  if (dado.esfera !== undefined && !ehKebab(dado.esfera))
+    c.erro("esfera", "precisa ser kebab-case");
 }
 
 /** Posição na bússola: eixos conhecidos, cada um de −1 a +1. */

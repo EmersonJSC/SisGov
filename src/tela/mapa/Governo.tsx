@@ -4,7 +4,7 @@
  */
 import { useState } from "react";
 import {
-  caixaDaLei,
+  caixaDaInstituicao,
   candidatosDoPartido,
   fichaDe,
   situacaoDoOrgao,
@@ -64,10 +64,10 @@ export function Governo({
   const nomeacao = (caixa: string) =>
     extras.find((x) => x.tipo === "nomear" && x.caixa === caixa);
   const orgaos = Object.entries(governo.orgaos)
-    .map(([esfera, o]) => ({
-      esfera,
-      ministro: caixaDaLei(rg, governo.caixas, { id: esfera, esfera }).molde,
-      ...situacaoDoOrgao(o, regras.leis, estado.leis, esfera),
+    .map(([instituicao, o]) => ({
+      instituicao,
+      ministro: caixaDaInstituicao(rg, governo.caixas, instituicao)?.id ?? null,
+      ...situacaoDoOrgao(o, regras.leis, estado.leis, instituicao),
     }))
     .sort((a, b) => b.corrupcao - a.corrupcao);
   const doMinisterio = (caixa: string) =>
@@ -90,24 +90,22 @@ export function Governo({
           <ul className="governo-caixas">
             {governo.caixas.map((c) => {
               const f = fichaDe(rg, c.ministro);
-              const nova = nomeacao(c.molde);
-              const dela = doMinisterio(c.molde);
+              const nova = nomeacao(c.id);
+              const dela = doMinisterio(c.id);
               return (
-                <li key={c.molde} className="caixa">
+                <li key={c.id} className="caixa">
                   <button
                     type="button"
                     className="caixa-titulo"
-                    onClick={() =>
-                      setAberta(aberta === c.molde ? null : c.molde)
-                    }
+                    onClick={() => setAberta(aberta === c.id ? null : c.id)}
                   >
-                    <strong>{nomes.caixas[c.molde] ?? c.molde}</strong>
+                    <strong>{c.nome}</strong>
                     <span>
                       {f.nome} · {origem(f)}
                     </span>
                     <small>competência {f.competencia}</small>
                   </button>
-                  {aberta === c.molde ? (
+                  {aberta === c.id ? (
                     <div className="caixa-ficha">
                       <ul className="ficha-notas">
                         {FICHA.map(([campo, rotulo]) => (
@@ -130,7 +128,7 @@ export function Governo({
                           {dela
                             .map(
                               (o) =>
-                                `${nomes.esferas[o.esfera] ?? o.esfera} (corrupção ${um(o.corrupcao)})`,
+                                `${nomes.instituicoes[o.instituicao] ?? o.instituicao} (corrupção ${um(o.corrupcao)})`,
                             )
                             .join(", ")}
                         </p>
@@ -143,12 +141,11 @@ export function Governo({
                             setExtras(
                               trocar(
                                 extras,
-                                (x) =>
-                                  x.tipo === "nomear" && x.caixa === c.molde,
+                                (x) => x.tipo === "nomear" && x.caixa === c.id,
                                 e.target.value
                                   ? {
                                       tipo: "nomear",
-                                      caixa: c.molde,
+                                      caixa: c.id,
                                       ministro: e.target.value,
                                     }
                                   : undefined,
@@ -188,10 +185,12 @@ export function Governo({
           <ul className="governo-orgaos">
             {orgaos.map((o) => (
               <li
-                key={o.esfera}
+                key={o.instituicao}
                 className={`orgao orgao-${estadoDoOrgao(o.rendimento)}`}
               >
-                <span>{nomes.esferas[o.esfera] ?? o.esfera}</span>
+                <span>
+                  {nomes.instituicoes[o.instituicao] ?? o.instituicao}
+                </span>
                 <small>rende {um(o.rendimento * 100)}%</small>
                 <span
                   className="termometro"

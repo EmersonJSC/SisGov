@@ -1,0 +1,130 @@
+.afetadas {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  width: min(560px, calc(100% - 24px));
+  padding: 14px 16px;
+  border: 1px solid rgba(232, 200, 114, 0.5);
+  border-radius: 10px;
+  background: rgba(20, 24, 36, 0.96);
+  color: #e9e6dc;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+}
+.afetadas header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.afetadas h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+.afetadas-tipo {
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8c872;
+}
+.afetadas-fechar {
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 1.6em;
+  line-height: 1;
+  cursor: pointer;
+}
+.afetadas-explicacao {
+  margin: 6px 0 12px;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+.afetadas-colunas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+.afetadas-lado {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-radius: 8px;
+  padding: 8px;
+}
+.afetadas-atrapalham {
+  background: rgba(235, 87, 87, 0.1);
+  color: #eb5757;
+}
+.afetadas-ajudam {
+  background: rgba(111, 207, 151, 0.1);
+  color: #6fcf97;
+}
+.afetadas-lado h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid currentColor;
+  font-size: 1em;
+}
+.afetadas-conta {
+  margin-left: auto;
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+.afetadas-lado ul {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+.afetadas-lado li button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 5px 4px 9px;
+  border: 0;
+  background: none;
+  color: #e9e6dc;
+  text-align: left;
+  cursor: pointer;
+}
+.afetadas-lado li button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.afetadas-nome {
+  flex: 1;
+  font-size: 0.82em;
+}
+.afetadas-barra {
+  position: absolute;
+  left: 4px;
+  bottom: 3px;
+  height: 3px;
+  max-width: calc(100% - 8px);
+  border-radius: 2px;
+  background: currentColor;
+}
+.afetadas-lado li button .afetadas-barra {
+  color: inherit;
+}
+.afetadas-atrapalham .afetadas-barra {
+  background: #eb5757;
+}
+.afetadas-ajudam .afetadas-barra {
+  background: #6fcf97;
+}
+.afetadas-vazio {
+  font-style: italic;
+  opacity: 0.6;
+}

@@ -45,6 +45,21 @@ describe("mapa orgânico", () => {
     expect(FAIXA_DO_RAIO.indice.maximo).toBeLessThan(RAIO_DA_INSTITUICAO);
   });
 
+  it("os iguais de cima não ficam colados: ministro com ministro, instituição com instituição", () => {
+    const menorDistancia = (tipo: string) => {
+      const dele = mapa.nos.filter((n) => n.tipo === tipo);
+      return Math.min(
+        ...dele.flatMap((a, i) =>
+          dele
+            .slice(i + 1)
+            .map((b) => Math.hypot(a.x - b.x, a.y - b.y) - a.raio - b.raio),
+        ),
+      );
+    };
+    expect(menorDistancia("ministro")).toBeGreaterThan(30);
+    expect(menorDistancia("instituicao")).toBeGreaterThan(15);
+  });
+
   it("nenhuma bolha encosta em outra", () => {
     const sobrepostas = mapa.nos.flatMap((a, i) =>
       mapa.nos
@@ -62,7 +77,8 @@ describe("mapa orgânico", () => {
       expect(Math.hypot(p.x, p.y)).toBeGreaterThan(maior);
   });
 
-  it("dá o mesmo resultado sempre", () => {
+  // monta o mapa inteiro de novo: leva uns 4 s, e mais com a máquina ocupada
+  it("dá o mesmo resultado sempre", { timeout: 20_000 }, () => {
     const outro = montarOrganico(doMapa, PASSOS_DO_TESTE);
     expect(outro.nos.map((n) => [n.x, n.y])).toEqual(
       mapa.nos.map((n) => [n.x, n.y]),

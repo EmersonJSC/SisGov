@@ -20,5 +20,6 @@ export interface PartidoParaPessoas {
 
 /** Uma caixa de ministério à espera de ministro. */
 export interface VagaDeMinistro {
-  molde: string;
+  /** Id da caixa. */
+  id: string;
 }

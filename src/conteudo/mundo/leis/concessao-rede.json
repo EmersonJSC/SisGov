@@ -4,7 +4,7 @@
   "nome": "Concessão da rede",
   "descricao": "Quantas cidades têm a rede de água e esgoto entregue a empresas, que fazem as obras e cobram tarifa.",
   "camada": "jogabilidade",
-  "esfera": "saneamento",
+  "esfera": "agua-e-saneamento",
   "forma": "opcoes",
   "opcoes": [
     {

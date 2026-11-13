@@ -4,7 +4,7 @@
   "nome": "Tratamento de esgoto",
   "descricao": "Quanto do esgoto coletado precisa ser tratado antes de voltar ao rio.",
   "camada": "jogabilidade",
-  "esfera": "saneamento",
+  "esfera": "agua-e-saneamento",
   "forma": "opcoes",
   "opcoes": [
     {

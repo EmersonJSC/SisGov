@@ -133,12 +133,7 @@ export const leisNovas: Etapa = (regras, estado) => {
       regras.leis[v.lei],
       v.valor,
       regras.governo && estado.governo
-        ? ajusteDaLei(
-            regras.governo,
-            estado.governo.caixas,
-            regras.leis,
-            regras.leis[v.lei],
-          )
+        ? ajusteDaLei(regras.governo, estado.governo.caixas, regras.leis[v.lei])
         : undefined,
     );
   }

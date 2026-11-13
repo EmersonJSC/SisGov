@@ -63,7 +63,7 @@ export function ResultadoDoTurno({
     lei: (id) => lei(id)?.nome ?? id,
     quem: { ...partidos, ...governo.pessoas },
     caixa: governo.caixas,
-    area: governo.esferas,
+    area: governo.instituicoes,
     programa: (id) => estado.programas?.vidas[id]?.nome ?? id,
     meta: (id) =>
       estado.programas?.vidas[id]?.nome ??

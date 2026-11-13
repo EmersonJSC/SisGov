@@ -4,8 +4,7 @@
   "nome": "Regra depois da venda",
   "descricao": "O que vale para a empresa vendida.",
   "camada": "jogabilidade",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

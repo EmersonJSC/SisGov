@@ -11,8 +11,12 @@ import {
 describe("visões do mapa", () => {
   const visao = montarVisao(criarPartida("brasil-2026", 1));
 
-  it("a visão padrão não muda o tamanho", () => {
-    expect(pesosDaVisao(visao, "prioridade")).toBeNull();
+  it("na visão padrão só as leis ganham peso, e não são todas do mesmo tamanho", () => {
+    const pesos = pesosDaVisao(visao, "prioridade")!;
+    expect(
+      [...pesos.keys()].every((id) => visao.leis.some((l) => l.id === id)),
+    ).toBe(true);
+    expect(new Set(pesos.values()).size).toBeGreaterThan(10);
   });
 
   it("a visão das ligações pesa mais quem mexe com mais coisa", () => {

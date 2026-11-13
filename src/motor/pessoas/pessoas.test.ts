@@ -75,7 +75,7 @@ describe("gerador de pessoas", () => {
 
 describe("ministros sorteados", () => {
   const gente = gerarPessoas(2, modelo, partidos);
-  const vagas = [{ molde: "x" }, { molde: "y" }, { molde: "z" }];
+  const vagas = [{ id: "x" }, { id: "y" }, { id: "z" }];
   const centro = { economico: 0, social: 0 };
 
   it("cada caixa tem uma pessoa diferente e quem é da chapa fica de fora", () => {

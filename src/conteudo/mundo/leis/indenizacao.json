@@ -4,8 +4,7 @@
   "nome": "Indenização na estatização",
   "descricao": "Quanto o Estado paga ao dono quando toma uma empresa ou uma terra.",
   "camada": "jogabilidade",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

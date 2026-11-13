@@ -1,37 +1,21 @@
-// Ministérios: a caixa de cada lei, a ficha do ministro e o quanto ela muda o
-// efeito das leis da caixa.
+// Ministérios: a caixa de cada instituição, a ficha do ministro e o quanto ela
+// muda o efeito das leis da caixa.
 import type { Lei } from "../leis";
-import { chavesDeEsfera, moldePorId } from "./indices";
-import type {
-  AjusteDeEfeito,
-  Caixa,
-  Ficha,
-  Molde,
-  RefEsfera,
-  RegrasGoverno,
-} from "./tipos";
+import { instituicaoPorId } from "./indices";
+import type { AjusteDeEfeito, Caixa, Ficha, RegrasGoverno } from "./tipos";
 
-/** Esferas que a sobra do gabinete conta ao dividir a competência. */
-const ESFERAS_SEM_DIVISAO = 3;
+/** Instituições que um ministro cuida sem dividir a atenção; a sobra do gabinete conta estas a mais. */
+const SEM_DIVISAO = 3;
 /** Competência acima da qual o ministro adianta a lei, e abaixo da qual atrasa. */
 const COMPETENTE = 70;
 const FRACO = 30;
 /** Força da lei: 1 com competência 50; 0,6 com zero e 1,4 com cem. */
 const FORCA_BASE = 0.6;
 const FORCA_POR_PONTO = 0.008;
+/** Lei de instituição sem ministro anda como com um ministro mediano. */
+const COMPETENCIA_SEM_MINISTRO = 50;
 
 const TECNICO = "tecnico";
-
-/** A caixa (ou o gabinete) responde por esta esfera e subesfera? */
-const cobre = (ref: RefEsfera, esfera?: string, sub?: string) =>
-  ref.esfera === esfera &&
-  (ref.subesfera === undefined || ref.subesfera === sub);
-
-const molde = (r: RegrasGoverno, id: string): Molde => {
-  const m = moldePorId(r, id);
-  if (!m) throw new Error(`governo: molde "${id}" não existe`);
-  return m;
-};
 
 export const fichaDe = (r: RegrasGoverno, id: string): Ficha => {
   const f = r.pessoas.find((x) => x.id === id);
@@ -39,90 +23,94 @@ export const fichaDe = (r: RegrasGoverno, id: string): Ficha => {
   return f;
 };
 
-/** O que basta saber de uma lei para achar a caixa dela. */
-type DaEsfera = Pick<Lei, "id" | "esfera" | "subesfera">;
+/** A instituição fica com um dos poderes, sem ministro? */
+export const semMinistro = (r: RegrasGoverno, instituicao: string) =>
+  instituicaoPorId(r, instituicao)?.semMinistro === true;
 
-/** Caixa que cuida da lei: a que cita a subesfera, senão a esfera, senão a sobra. */
-export function caixaDaLei(
+/** Caixa que leva a instituição: a que a cita, senão a sobra; null se ela não tem ministro. */
+export function caixaDaInstituicao(
   r: RegrasGoverno,
-  caixas: Caixa[],
-  lei: DaEsfera,
-): Caixa {
-  const moldes = caixas.map((c) => ({ c, m: molde(r, c.molde) }));
-  const acha = (exato: boolean) =>
-    moldes.find(({ m }) =>
-      m.esferas.some((ref) =>
-        exato
-          ? ref.subesfera !== undefined && cobre(ref, lei.esfera, lei.subesfera)
-          : ref.subesfera === undefined && ref.esfera === lei.esfera,
-      ),
-    );
-  // lei de esfera inteira (sem subesfera) vai a quem cuida de qualquer pedaço dela
-  const dePedaco = () =>
-    lei.subesfera === undefined
-      ? moldes.find(({ m }) =>
-          m.esferas.some((ref) => ref.esfera === lei.esfera),
-        )
-      : undefined;
+  caixas: readonly Caixa[],
+  instituicao: string,
+): Caixa | null {
+  if (semMinistro(r, instituicao)) return null;
   const dona =
-    acha(true) ?? acha(false) ?? dePedaco() ?? moldes.find(({ m }) => m.sobra);
-  if (!dona) throw new Error(`governo: nenhuma caixa cuida da lei "${lei.id}"`);
-  return dona.c;
+    caixas.find((c) => c.instituicoes.includes(instituicao)) ??
+    caixas.find((c) => c.sobra);
+  if (!dona) throw new Error(`governo: nenhuma caixa leva "${instituicao}"`);
+  return dona;
 }
 
-/** Quantas esferas a caixa cuida; a sobra leva o que ninguém mais cuida. */
-export function esferasDaCaixa(
+/** O que basta saber de uma lei para achar a caixa dela. */
+type DaInstituicao = Pick<Lei, "id" | "esfera">;
+
+/** Caixa que cuida da lei: a da instituição onde ela mora (null sem ministro). */
+export const caixaDaLei = (
   r: RegrasGoverno,
-  caixas: Caixa[],
-  leis: Record<string, Lei>,
-  idDoMolde: string,
+  caixas: readonly Caixa[],
+  lei: DaInstituicao,
+): Caixa | null => caixaDaInstituicao(r, caixas, lei.esfera ?? "");
+
+/** Instituições com ministro que nenhuma caixa cita: vão para a sobra. */
+export const instituicoesSoltas = (
+  r: RegrasGoverno,
+  caixas: readonly Caixa[],
+): string[] =>
+  r.instituicoes
+    .filter((i) => !i.semMinistro)
+    .filter((i) => !caixas.some((c) => c.instituicoes.includes(i.id)))
+    .map((i) => i.id);
+
+/** Quantas instituições a caixa cuida; a sobra leva também as soltas e conta mais. */
+export function instituicoesDaCaixa(
+  r: RegrasGoverno,
+  caixas: readonly Caixa[],
+  caixa: Caixa,
 ): number {
-  const dela = molde(r, idDoMolde);
-  const minhas = chavesDeEsfera(leis).filter((k) => {
-    const [esfera, sub] = k.split(":");
-    return (
-      caixaDaLei(r, caixas, { id: k, esfera, subesfera: sub || undefined })
-        .molde === idDoMolde
-    );
-  });
-  return dela.sobra ? minhas.length + ESFERAS_SEM_DIVISAO : minhas.length;
+  return caixa.sobra
+    ? caixa.instituicoes.length +
+        instituicoesSoltas(r, caixas).length +
+        SEM_DIVISAO
+    : caixa.instituicoes.length;
 }
 
-/** Competência que sobra quando o ministro cuida de muitas esferas. */
-export const competenciaEfetiva = (competencia: number, esferas: number) =>
-  competencia *
-  Math.sqrt(Math.min(1, ESFERAS_SEM_DIVISAO / Math.max(1, esferas)));
+/** Competência que sobra quando o ministro cuida de muitas instituições. */
+export const competenciaEfetiva = (competencia: number, instituicoes: number) =>
+  competencia * Math.sqrt(Math.min(1, SEM_DIVISAO / Math.max(1, instituicoes)));
 
 /** Atraso e força que a competência dá às leis da caixa. */
 export function ajusteDaCompetencia(competencia: number): AjusteDeEfeito {
-  const atraso = competencia > COMPETENTE ? -1 : competencia < FRACO ? 1 : 0;
+  const adianta = competencia > COMPETENTE ? -1 : 0;
+  const atraso = competencia < FRACO ? 1 : adianta;
   return { atraso, forca: FORCA_BASE + FORCA_POR_PONTO * competencia };
 }
 
 /** O ajuste do ministro da caixa que cuida da lei. */
 export function ajusteDaLei(
   r: RegrasGoverno,
-  caixas: Caixa[],
-  leis: Record<string, Lei>,
+  caixas: readonly Caixa[],
   lei: Lei,
 ): AjusteDeEfeito {
   const caixa = caixaDaLei(r, caixas, lei);
+  if (!caixa) return ajusteDaCompetencia(COMPETENCIA_SEM_MINISTRO);
   const ficha = fichaDe(r, caixa.ministro);
-  const efetiva = competenciaEfetiva(
-    ficha.competencia,
-    esferasDaCaixa(r, caixas, leis, caixa.molde),
+  return ajusteDaCompetencia(
+    competenciaEfetiva(
+      ficha.competencia,
+      instituicoesDaCaixa(r, caixas, caixa),
+    ),
   );
-  return ajusteDaCompetencia(efetiva);
 }
 
 /** Ministro de cada partido (origem) por contagem; técnico não conta. */
 export function ministrosPorPartido(r: RegrasGoverno, caixas: Caixa[]) {
-  const conta: Record<string, number> = {};
-  for (const c of caixas) {
-    const origem = fichaDe(r, c.ministro).origem;
-    if (origem !== TECNICO) conta[origem] = (conta[origem] ?? 0) + 1;
-  }
-  return conta;
+  return caixas
+    .map((c) => fichaDe(r, c.ministro).origem)
+    .filter((origem) => origem !== TECNICO)
+    .reduce<Record<string, number>>(
+      (conta, origem) => ({ ...conta, [origem]: (conta[origem] ?? 0) + 1 }),
+      {},
+    );
 }
 
 /** Pessoas livres do partido, a mais competente primeiro. */

@@ -1,501 +1,276 @@
 {
-  "versao": 1,
-  "origem": "planilha",
-  "esferas": {
-    "saude": "Saúde",
-    "vicios": "Vícios",
-    "saneamento": "Saneamento",
-    "educacao": "Educação",
-    "ciencia-e-pesquisa": "Ciência e pesquisa",
-    "cultura-e-esporte": "Cultura e esporte",
-    "assistencia-social": "Assistência social",
-    "previdencia": "Previdência",
-    "trabalho": "Trabalho",
-    "moradia": "Moradia",
-    "seguranca-publica": "Segurança pública",
-    "justica-e-prisoes": "Justiça e prisões",
-    "defesa": "Defesa",
-    "defesa-civil": "Defesa civil",
-    "relacoes-exteriores": "Relações exteriores",
-    "imigracao": "Imigração",
-    "direitos-e-liberdades": "Direitos e liberdades",
-    "estado-e-eleicoes": "Estado e eleições",
-    "impostos": "Impostos",
-    "orcamento-e-divida": "Orçamento e dívida",
-    "moeda-e-bancos": "Moeda e bancos",
-    "empresas-e-estatais": "Empresas e estatais",
-    "comercio-exterior-e-capital": "Comércio exterior e capital",
-    "agricultura-e-pesca": "Agricultura e pesca",
-    "terra": "Terra",
-    "meio-ambiente": "Meio ambiente",
-    "energia": "Energia",
-    "mineracao-e-petroleo": "Mineração e petróleo",
-    "infraestrutura-e-transporte": "Infraestrutura e transporte",
-    "comunicacao-e-tecnologia": "Comunicação e tecnologia"
-  },
+  "versao": 2,
+  "origem": "docs/jogo/gdd-remontagem.xlsx, aba Ministérios (geral), 13/nov",
+  "nota": "Caixas sugeridas, sem país: o jogador e o país montam as suas.",
   "moldes": [
     {
       "id": "gabinete-do-chefe-de-governo",
       "nome": "Gabinete do chefe de governo",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "estado-e-eleicoes",
-          "subesfera": "governo"
-        },
-        {
-          "esfera": "estado-e-eleicoes",
-          "subesfera": "eleicoes"
-        }
-      ],
+      "instituicoes": [],
       "sobra": true
-    },
-    {
-      "id": "relacoes-institucionais",
-      "nome": "Relações institucionais",
-      "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "estado-e-eleicoes",
-          "subesfera": "congresso"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "controle-e-transparencia",
-      "nome": "Controle e transparência",
-      "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "estado-e-eleicoes",
-          "subesfera": "controle-e-transparencia"
-        }
-      ],
-      "sobra": false
     },
     {
       "id": "fazenda",
       "nome": "Fazenda",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "impostos"
-        },
-        {
-          "esfera": "moeda-e-bancos"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "impostos",
+        "moeda-e-bancos"
+      ]
     },
     {
       "id": "planejamento-e-orcamento",
       "nome": "Planejamento e orçamento",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "orcamento-e-divida"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "orcamento-e-divida"
+      ]
     },
     {
       "id": "economia",
       "nome": "Economia",
       "tipo": "superministério",
-      "esferas": [
-        {
-          "esfera": "impostos"
-        },
-        {
-          "esfera": "moeda-e-bancos"
-        },
-        {
-          "esfera": "orcamento-e-divida"
-        },
-        {
-          "esfera": "comercio-exterior-e-capital"
-        },
-        {
-          "esfera": "empresas-e-estatais",
-          "subesfera": "estatais-e-regras"
-        },
-        {
-          "esfera": "trabalho"
-        },
-        {
-          "esfera": "previdencia"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "impostos",
+        "moeda-e-bancos",
+        "orcamento-e-divida",
+        "industria",
+        "comercio-exterior-e-capital",
+        "trabalho",
+        "previdencia"
+      ]
     },
     {
       "id": "industria-e-comercio",
       "nome": "Indústria e comércio",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "empresas-e-estatais",
-          "subesfera": "estatais-e-regras"
-        },
-        {
-          "esfera": "comercio-exterior-e-capital"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "industria",
+        "comercio-exterior-e-capital",
+        "concorrencia-e-consumidor"
+      ]
     },
     {
-      "id": "pequenas-empresas-e-cooperativas",
-      "nome": "Pequenas empresas e cooperativas",
-      "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "empresas-e-estatais",
-          "subesfera": "pequenas-empresas-e-cooperativas"
-        }
-      ],
-      "sobra": false
+      "id": "gestao",
+      "nome": "Gestão",
+      "tipo": "comum",
+      "instituicoes": [
+        "funcionalismo",
+        "estatais"
+      ]
     },
     {
       "id": "trabalho",
       "nome": "Trabalho",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "trabalho"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "trabalho"
+      ]
     },
     {
       "id": "previdencia",
       "nome": "Previdência",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "previdencia"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "previdencia"
+      ]
     },
     {
       "id": "desenvolvimento-social",
       "nome": "Desenvolvimento social",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "assistencia-social"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "assistencia-social"
+      ]
     },
     {
       "id": "saude",
       "nome": "Saúde",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "saude"
-        },
-        {
-          "esfera": "vicios"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "saude"
+      ]
     },
     {
       "id": "educacao",
       "nome": "Educação",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "educacao"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "educacao"
+      ]
     },
     {
       "id": "ciencia-e-tecnologia",
       "nome": "Ciência e tecnologia",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "ciencia-e-pesquisa"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "ciencia-e-pesquisa"
+      ]
     },
     {
       "id": "comunicacoes",
       "nome": "Comunicações",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "comunicacao-e-tecnologia"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "comunicacao-e-tecnologia"
+      ]
     },
     {
       "id": "cultura",
       "nome": "Cultura",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "cultura-e-esporte",
-          "subesfera": "cultura"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "cultura"
+      ]
     },
     {
-      "id": "esporte-e-turismo",
-      "nome": "Esporte e turismo",
+      "id": "esporte",
+      "nome": "Esporte",
       "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "cultura-e-esporte",
-          "subesfera": "esporte-e-turismo"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "esporte"
+      ]
     },
     {
-      "id": "justica-e-seguranca",
-      "nome": "Justiça e segurança",
-      "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "justica-e-prisoes"
-        },
-        {
-          "esfera": "seguranca-publica"
-        },
-        {
-          "esfera": "imigracao"
-        }
-      ],
-      "sobra": false
+      "id": "turismo",
+      "nome": "Turismo",
+      "tipo": "de causa",
+      "instituicoes": [
+        "turismo"
+      ]
+    },
+    {
+      "id": "assuntos-religiosos",
+      "nome": "Assuntos religiosos",
+      "tipo": "de causa",
+      "instituicoes": [
+        "religiao"
+      ]
+    },
+    {
+      "id": "interior",
+      "nome": "Interior",
+      "tipo": "comum",
+      "instituicoes": [
+        "seguranca-publica",
+        "imigracao",
+        "defesa-civil",
+        "estados-e-municipios"
+      ]
     },
     {
       "id": "justica",
       "nome": "Justiça",
-      "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "justica-e-prisoes"
-        }
-      ],
-      "sobra": false
+      "tipo": "básico",
+      "instituicoes": [
+        "justica-e-prisoes"
+      ]
     },
     {
-      "id": "interior-e-seguranca",
-      "nome": "Interior e segurança",
+      "id": "seguranca-publica",
+      "nome": "Segurança pública",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "seguranca-publica"
-        },
-        {
-          "esfera": "imigracao"
-        },
-        {
-          "esfera": "defesa-civil"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "seguranca-publica"
+      ]
     },
     {
       "id": "defesa",
       "nome": "Defesa",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "defesa"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "defesa"
+      ]
     },
     {
       "id": "relacoes-exteriores",
       "nome": "Relações exteriores",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "relacoes-exteriores"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "relacoes-exteriores"
+      ]
     },
     {
       "id": "meio-ambiente",
       "nome": "Meio ambiente",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "meio-ambiente",
-          "subesfera": "meio-ambiente"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "povos-indigenas",
-      "nome": "Povos indígenas",
-      "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "meio-ambiente",
-          "subesfera": "povos-indigenas"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "meio-ambiente"
+      ]
     },
     {
       "id": "agricultura",
       "nome": "Agricultura",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "agricultura-e-pesca",
-          "subesfera": "agricultura"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "agricultura-e-pesca"
+      ]
     },
     {
       "id": "desenvolvimento-agrario",
       "nome": "Desenvolvimento agrário",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "terra"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "pesca",
-      "nome": "Pesca",
-      "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "agricultura-e-pesca",
-          "subesfera": "pesca"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "terra"
+      ]
     },
     {
       "id": "minas-e-energia",
       "nome": "Minas e energia",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "energia"
-        },
-        {
-          "esfera": "mineracao-e-petroleo"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "energia",
+        "mineracao-e-petroleo"
+      ]
     },
     {
       "id": "transportes",
       "nome": "Transportes",
       "tipo": "básico",
-      "esferas": [
-        {
-          "esfera": "infraestrutura-e-transporte",
-          "subesfera": "estradas-e-veiculos"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "portos-e-aeroportos",
-      "nome": "Portos e aeroportos",
-      "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "infraestrutura-e-transporte",
-          "subesfera": "portos-e-aeroportos"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "obras-e-infraestrutura",
-      "nome": "Obras e infraestrutura",
-      "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "infraestrutura-e-transporte",
-          "subesfera": "obras"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "infraestrutura-e-transporte"
+      ]
     },
     {
       "id": "cidades",
       "nome": "Cidades",
       "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "moradia"
-        },
-        {
-          "esfera": "saneamento"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "moradia",
+        "agua-e-saneamento"
+      ]
     },
     {
-      "id": "integracao-regional",
-      "nome": "Integração regional",
-      "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "defesa-civil"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "direitos-humanos",
-      "nome": "Direitos humanos",
-      "tipo": "comum",
-      "esferas": [
-        {
-          "esfera": "direitos-e-liberdades",
-          "subesfera": "liberdades"
-        }
-      ],
-      "sobra": false
-    },
-    {
-      "id": "igualdade-e-minorias",
-      "nome": "Igualdade e minorias",
+      "id": "recursos-hidricos",
+      "nome": "Recursos hídricos",
       "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "direitos-e-liberdades",
-          "subesfera": "igualdade-e-minorias"
-        }
-      ],
-      "sobra": false
+      "instituicoes": [
+        "agua-e-saneamento"
+      ]
     },
     {
-      "id": "mulheres",
-      "nome": "Mulheres",
+      "id": "governo-local",
+      "nome": "Governo local",
+      "tipo": "comum",
+      "instituicoes": [
+        "estados-e-municipios",
+        "defesa-civil"
+      ]
+    },
+    {
+      "id": "controle-e-transparencia",
+      "nome": "Controle e transparência",
+      "tipo": "comum",
+      "instituicoes": [
+        "controle-e-transparencia"
+      ]
+    },
+    {
+      "id": "sem-pasta",
+      "nome": "Ministério sem pasta",
       "tipo": "de causa",
-      "esferas": [
-        {
-          "esfera": "direitos-e-liberdades",
-          "subesfera": "mulheres"
-        }
-      ],
-      "sobra": false
+      "instituicoes": []
     }
   ]
 }

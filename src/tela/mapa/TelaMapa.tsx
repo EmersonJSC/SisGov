@@ -6,7 +6,6 @@ import { candidatosDoPartido } from "../../motor";
 import {
   leiTravada,
   montarVisao,
-  nomesDoGoverno,
   nomesPartidos,
   placarDaLei,
   previaDaLei,
@@ -28,6 +27,8 @@ import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
 import { MesaDePapeis } from "./MesaDePapeis";
 import { NaoPromulgadas, naoPromulgadas } from "./NaoPromulgadas";
+import { afetadasDe } from "./afetadas";
+import { PainelDeAfetadas } from "./PainelDeAfetadas";
 import { Pregao, pregaoInicial } from "./Pregao";
 import { MapaOrganico } from "./MapaOrganico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
@@ -72,6 +73,12 @@ export function TelaMapa({
   const indice = useMemo(() => indexarRelacoes(visaoDoMapa), [visaoDoMapa]);
   const [selecionado, setSelecionado] = useState<string | null>(null);
   const [janela, setJanela] = useState<string | null>(null);
+  // índice, ministério ou instituição clicado: o papel das leis que ajudam e atrapalham
+  const [painel, setPainel] = useState<string | null>(null);
+  const afetadas = useMemo(
+    () => (painel ? afetadasDe(visao, painel) : null),
+    [visao, painel],
+  );
   const [desvio, setDesvio] = useState<Desvio>(CENTRO);
   const [, setRetangulo] = useState<Retangulo | null>(null);
   const [rascunho, setRascunho] = useState(0);
@@ -146,10 +153,9 @@ export function TelaMapa({
     [partida.pais, partida.opcoes.comeco],
   );
   const caixasParaOferecer = useMemo(() => {
-    const nomes = nomesDoGoverno(partida).caixas;
     return (partida.estado.governo?.caixas ?? []).map((c) => ({
-      id: c.molde,
-      nome: nomes[c.molde] ?? c.molde,
+      id: c.id,
+      nome: c.nome,
     }));
   }, [partida]);
   const comCandidato = useMemo(() => {
@@ -165,13 +171,25 @@ export function TelaMapa({
   const selecionar = (id: string | null) => {
     setSelecionado(id);
     const l = visao.leis.find((x) => x.id === id);
-    if (!l) return;
+    if (!l) {
+      setPainel(null);
+      return;
+    }
     if (l.id !== janela) setRascunho(inicial(l));
+    setPainel(null);
     setJanela(l.id);
+  };
+
+  const abrirPainel = (id: string) => {
+    if (!afetadasDe(visao, id)) return;
+    setSelecionado(id);
+    setPainel(id);
+    setJanela(null);
   };
 
   const fechar = () => {
     setJanela(null);
+    setPainel(null);
     setRetangulo(null);
     setSelecionado(null);
   };
@@ -189,7 +207,16 @@ export function TelaMapa({
           visao={visaoDoMapa}
           selecionado={selecionado}
           onSelecionar={selecionar}
+          onAbrirPainel={abrirPainel}
         />
+        {afetadas && !lei && !partida.estado.encerrada ? (
+          <PainelDeAfetadas
+            key={afetadas.id}
+            afetadas={afetadas}
+            onFechar={fechar}
+            onAbrirLei={selecionar}
+          />
+        ) : null}
         {lei && !partida.estado.encerrada ? (
           <DocumentoLei
             key={lei.id}

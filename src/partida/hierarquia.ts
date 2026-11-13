@@ -1,17 +1,18 @@
 /**
  * A hierarquia do governo para a tela: a trindade (presidente do partido,
  * candidato eleito e vice), os ministérios com quem os chefia, as instituições
- * (um órgão por esfera) e o ministério responsável por cada lei. Só leitura:
+ * e o ministério responsável por cada lei. Só leitura:
  * o motor já guarda tudo isto; aqui só se junta num formato que a tela lê.
  */
-import { caixaDaLei, esferasDoMundo, type Ficha } from "../motor";
-import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
+import {
+  caixaDaInstituicao,
+  caixaDaLei,
+  verbaDaInstituicao,
+  type Ficha,
+} from "../motor";
 import type { Partida } from ".";
 import { COR_DO_JOGADOR } from "./comeco";
 import type { VisaoHierarquia, VisaoPessoa, VisaoTrindade } from "./tiposVisao";
-
-const nomesDasEsferas: Readonly<Record<string, string>> =
-  moldesDeMinisterio.esferas;
 
 const pessoa = (f: Ficha): VisaoPessoa => ({
   id: f.id,
@@ -47,29 +48,29 @@ export function hierarquiaDaPartida(
   const estado = partida.estado.governo;
   if (!governo || !estado) return undefined;
   const { caixas } = estado;
-  const nomesDosMoldes = new Map(governo.moldes.map((m) => [m.id, m.nome]));
 
-  const instituicoes = esferasDoMundo(partida.regras.leis).map((esfera) => ({
-    id: esfera,
-    nome: nomesDasEsferas[esfera] ?? esfera,
-    ministro: caixaDaLei(governo, caixas, { id: esfera, esfera }).molde,
+  const instituicoes = governo.instituicoes.map((i) => ({
+    id: i.id,
+    nome: i.nome,
+    ministro: caixaDaInstituicao(governo, caixas, i.id)?.id ?? null,
+    verba: verbaDaInstituicao(partida.regras.leis, partida.estado.leis, i.id),
   }));
   const ministros = caixas.map((c) => {
     const ficha = governo.pessoas.find((f) => f.id === c.ministro);
+    const dele = instituicoes.filter((i) => i.ministro === c.id);
     return {
-      id: c.molde,
-      nome: nomesDosMoldes.get(c.molde) ?? c.molde,
+      id: c.id,
+      nome: c.nome,
       pessoa: ficha ? pessoa(ficha) : null,
-      instituicoes: instituicoes
-        .filter((i) => i.ministro === c.molde)
-        .map((i) => i.id),
+      instituicoes: dele.map((i) => i.id),
+      verba: dele.reduce((soma, i) => soma + i.verba, 0),
     };
   });
   const ministroDaLei = Object.fromEntries(
-    Object.values(partida.regras.leis).map((l) => [
-      l.id,
-      caixaDaLei(governo, caixas, l).molde,
-    ]),
+    Object.values(partida.regras.leis).flatMap((l) => {
+      const caixa = caixaDaLei(governo, caixas, l);
+      return caixa ? [[l.id, caixa.id]] : [];
+    }),
   );
   return {
     trindade: trindadeDa(partida, governo.pessoas),

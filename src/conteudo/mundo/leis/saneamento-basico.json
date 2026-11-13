@@ -4,7 +4,7 @@
   "nome": "Verba de saneamento",
   "descricao": "Dinheiro do governo para levar água tratada e esgoto às famílias.",
   "camada": "jogabilidade",
-  "esfera": "saneamento",
+  "esfera": "agua-e-saneamento",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

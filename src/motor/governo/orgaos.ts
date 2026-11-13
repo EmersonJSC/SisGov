@@ -1,14 +1,14 @@
-// Órgãos: um por esfera, sob a caixa dela. A verba vem da lei; a necessidade
+// Órgãos: um por instituição, sob a caixa que a leva. A verba vem da lei; a necessidade
 // é o trabalho que as leis pedem; verba demais, cargos e ministro desonesto
 // viram corrupção interna.
 import type { Lei, ValorLei } from "../leis";
 import { leiAtiva } from "../leis";
-import { leisPorEsfera } from "./indices";
-import { fichaDe, caixaDaLei } from "./ministerios";
+import { leisPorInstituicao } from "./indices";
+import { caixaDaInstituicao, fichaDe } from "./ministerios";
 import type { Caixa, Orgao, RegrasGoverno } from "./tipos";
 
 const MAXIMO = 100;
-/** Cada lei ativa a mais na esfera pede esta fração a mais de trabalho. */
+/** Cada lei ativa a mais na instituição pede esta fração a mais de trabalho. */
 const TRABALHO_POR_LEI = 0.05;
 /** A necessidade não cai abaixo desta fração da do começo. */
 const NECESSIDADE_MINIMA = 0.2;
@@ -23,21 +23,34 @@ export const LIMITE_DO_ESCANDALO = 60;
 
 const limitar = (v: number) => Math.max(0, Math.min(MAXIMO, v));
 
-/** Esferas do mundo, na ordem em que aparecem nas leis. */
-export const esferasDoMundo = (leis: Record<string, Lei>): string[] => [
-  ...leisPorEsfera(leis).keys(),
-];
+/** Instituição sem ministro (independente) se comporta como com um ministro honesto assim. */
+const HONESTIDADE_SEM_MINISTRO = 70;
 
-const daEsfera = (leis: Record<string, Lei>, esfera: string) =>
-  leisPorEsfera(leis).get(esfera) ?? [];
+const daInstituicao = (leis: Record<string, Lei>, instituicao: string) =>
+  leisPorInstituicao(leis).get(instituicao) ?? [];
 
-/** Verba da esfera hoje: soma das leis de gasto, em % do PIB. */
-export function verbaDaEsfera(
+/** Honestidade de quem chefia a instituição. */
+const honestidadeDoChefe = (
+  r: RegrasGoverno,
+  caixas: readonly Caixa[],
+  instituicao: string,
+): { honestidade: number; ministro: string | null } => {
+  const caixa = caixaDaInstituicao(r, caixas, instituicao);
+  return caixa
+    ? {
+        honestidade: fichaDe(r, caixa.ministro).honestidade,
+        ministro: caixa.ministro,
+      }
+    : { honestidade: HONESTIDADE_SEM_MINISTRO, ministro: null };
+};
+
+/** Verba da instituição hoje: soma das leis de gasto, em % do PIB. */
+export function verbaDaInstituicao(
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
-  esfera: string,
+  instituicao: string,
 ): number {
-  return daEsfera(leis, esfera).reduce(
+  return daInstituicao(leis, instituicao).reduce(
     (soma, l) =>
       l.forma === "continua" && l.conta === "gasto"
         ? soma + ((valores[l.id] as number | undefined) ?? 0) * 100
@@ -46,13 +59,13 @@ export function verbaDaEsfera(
   );
 }
 
-/** Leis ativas da esfera (valor diferente do mínimo ou do primeiro degrau). */
+/** Leis ativas da instituição (valor diferente do mínimo ou do primeiro degrau). */
 const leisAtivas = (
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
-  esfera: string,
+  instituicao: string,
 ) =>
-  daEsfera(leis, esfera).filter(
+  daInstituicao(leis, instituicao).filter(
     (l) => valores[l.id] !== undefined && leiAtiva(l, valores[l.id]),
   ).length;
 
@@ -71,37 +84,34 @@ export const corrupcaoDeEquilibrio = (cargos: number, honestidade: number) =>
  */
 export function iniciarOrgaos(
   r: RegrasGoverno,
-  caixas: Caixa[],
+  caixas: readonly Caixa[],
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
   cargos: number,
 ): Record<string, Orgao> {
   return Object.fromEntries(
-    esferasDoMundo(leis).map((esfera) => {
-      const { ministro } = caixaDaLei(r, caixas, { id: esfera, esfera });
-      return [
-        esfera,
-        {
-          necessidade: verbaDaEsfera(leis, valores, esfera),
-          leisBase: leisAtivas(leis, valores, esfera),
-          corrupcao: corrupcaoDeEquilibrio(
-            cargos,
-            fichaDe(r, ministro).honestidade,
-          ),
-        },
-      ];
-    }),
+    r.instituicoes.map(({ id }) => [
+      id,
+      {
+        necessidade: verbaDaInstituicao(leis, valores, id),
+        leisBase: leisAtivas(leis, valores, id),
+        corrupcao: corrupcaoDeEquilibrio(
+          cargos,
+          honestidadeDoChefe(r, caixas, id).honestidade,
+        ),
+      },
+    ]),
   );
 }
 
-/** Trabalho que as leis pedem à esfera hoje, na mesma unidade da verba. */
+/** Trabalho que as leis pedem à instituição hoje, na mesma unidade da verba. */
 export function necessidadeAgora(
   o: Orgao,
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
-  esfera: string,
+  instituicao: string,
 ): number {
-  const a_mais = leisAtivas(leis, valores, esfera) - o.leisBase;
+  const a_mais = leisAtivas(leis, valores, instituicao) - o.leisBase;
   return (
     o.necessidade * Math.max(NECESSIDADE_MINIMA, 1 + TRABALHO_POR_LEI * a_mais)
   );
@@ -123,10 +133,10 @@ export function situacaoDoOrgao(
   o: Orgao,
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
-  esfera: string,
+  instituicao: string,
 ): SituacaoDoOrgao {
-  const verba = verbaDaEsfera(leis, valores, esfera);
-  const necessidade = necessidadeAgora(o, leis, valores, esfera);
+  const verba = verbaDaInstituicao(leis, valores, instituicao);
+  const necessidade = necessidadeAgora(o, leis, valores, instituicao);
   return {
     verba,
     necessidade,
@@ -151,8 +161,8 @@ export function corrupcaoSeguinte(
 
 export interface ResultadoDosOrgaos {
   orgaos: Record<string, Orgao>;
-  /** Órgãos que cruzaram o limite do escândalo neste turno, com o ministro. */
-  escandalos: { esfera: string; ministro: string }[];
+  /** Órgãos que cruzaram o limite do escândalo neste turno, com o ministro (null sem ministro). */
+  escandalos: { instituicao: string; ministro: string | null }[];
 }
 
 /**
@@ -161,30 +171,29 @@ export interface ResultadoDosOrgaos {
  */
 export function andarOrgaos(
   r: RegrasGoverno,
-  caixas: Caixa[],
+  caixas: readonly Caixa[],
   leis: Record<string, Lei>,
   valores: Record<string, ValorLei>,
   orgaos: Record<string, Orgao>,
   cargos: number,
 ): ResultadoDosOrgaos {
-  const escandalos: ResultadoDosOrgaos["escandalos"] = [];
-  const novos = Object.fromEntries(
-    Object.entries(orgaos).map(([esfera, o]) => {
-      const ministro = fichaDe(
-        r,
-        caixaDaLei(r, caixas, { id: esfera, esfera }).ministro,
-      );
-      const { rendimento } = situacaoDoOrgao(o, leis, valores, esfera);
-      const corrupcao = corrupcaoSeguinte(
-        o.corrupcao,
-        rendimento,
-        cargos,
-        ministro.honestidade,
-      );
-      if (o.corrupcao < LIMITE_DO_ESCANDALO && corrupcao >= LIMITE_DO_ESCANDALO)
-        escandalos.push({ esfera, ministro: ministro.id });
-      return [esfera, { ...o, corrupcao }];
-    }),
-  );
-  return { orgaos: novos, escandalos };
+  const andados = Object.entries(orgaos).map(([instituicao, o]) => {
+    const chefe = honestidadeDoChefe(r, caixas, instituicao);
+    const { rendimento } = situacaoDoOrgao(o, leis, valores, instituicao);
+    const corrupcao = corrupcaoSeguinte(
+      o.corrupcao,
+      rendimento,
+      cargos,
+      chefe.honestidade,
+    );
+    const cruzou =
+      o.corrupcao < LIMITE_DO_ESCANDALO && corrupcao >= LIMITE_DO_ESCANDALO;
+    return { instituicao, orgao: { ...o, corrupcao }, cruzou, chefe };
+  });
+  return {
+    orgaos: Object.fromEntries(andados.map((a) => [a.instituicao, a.orgao])),
+    escandalos: andados
+      .filter((a) => a.cruzou)
+      .map((a) => ({ instituicao: a.instituicao, ministro: a.chefe.ministro })),
+  };
 }

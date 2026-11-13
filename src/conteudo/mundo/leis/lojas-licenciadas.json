@@ -5,7 +5,7 @@
   "descricao": "O que pode ser vendido legalmente em loja com licença. Escada: nenhuma venda legal de droga; só bebida alcoólica; bebida e cigarro; bebida, cigarro e cannabis.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "vicios",
+  "esfera": "saude",
   "forma": "opcoes",
   "opcoes": [
     {

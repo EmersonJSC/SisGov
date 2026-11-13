@@ -5,8 +5,7 @@
   "descricao": "Quantos cargos o presidente nomeia sem concurso, por mil servidores, de 1 a 50.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "estado-e-eleicoes",
-  "subesfera": "governo",
+  "esfera": "funcionalismo",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {

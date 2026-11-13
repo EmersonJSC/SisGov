@@ -5,8 +5,7 @@
   "descricao": "Vai de nenhuma, passa por participação nos lucros, até vaga no conselho.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "empresas-e-estatais",
-  "subesfera": "estatais-e-regras",
+  "esfera": "estatais",
   "forma": "opcoes",
   "opcoes": [
     {

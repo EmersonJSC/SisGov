@@ -5,8 +5,7 @@
   "descricao": "Quem pode pôr um pedido na fila do patrimônio. Escada: só o governo; prefeitura e estado; associações; qualquer cidadão.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "cultura-e-esporte",
-  "subesfera": "cultura",
+  "esfera": "cultura",
   "forma": "opcoes",
   "opcoes": [
     {

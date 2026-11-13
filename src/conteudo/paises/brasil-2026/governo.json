@@ -5,100 +5,235 @@
   },
   "ministerios": [
     {
-      "molde": "gabinete-do-chefe-de-governo"
+      "id": "gabinete-do-chefe-de-governo",
+      "nome": "Casa Civil",
+      "instituicoes": [],
+      "sobra": true
     },
     {
-      "molde": "relacoes-institucionais"
+      "id": "relacoes-institucionais",
+      "nome": "Relações institucionais",
+      "instituicoes": [
+        "estados-e-municipios"
+      ]
     },
     {
-      "molde": "controle-e-transparencia"
+      "id": "controle-e-transparencia",
+      "nome": "Controle e transparência",
+      "instituicoes": [
+        "controle-e-transparencia"
+      ]
     },
     {
-      "molde": "fazenda"
+      "id": "fazenda",
+      "nome": "Fazenda",
+      "instituicoes": [
+        "impostos",
+        "moeda-e-bancos"
+      ]
     },
     {
-      "molde": "planejamento-e-orcamento"
+      "id": "planejamento-e-orcamento",
+      "nome": "Planejamento e orçamento",
+      "instituicoes": [
+        "orcamento-e-divida"
+      ]
     },
     {
-      "molde": "industria-e-comercio"
+      "id": "industria-e-comercio",
+      "nome": "Indústria e comércio",
+      "instituicoes": [
+        "industria",
+        "comercio-exterior-e-capital"
+      ]
     },
     {
-      "molde": "pequenas-empresas-e-cooperativas"
+      "id": "gestao",
+      "nome": "Gestão",
+      "instituicoes": [
+        "funcionalismo",
+        "estatais"
+      ]
     },
     {
-      "molde": "trabalho"
+      "id": "pequenas-empresas-e-cooperativas",
+      "nome": "Pequenas empresas e cooperativas",
+      "instituicoes": []
     },
     {
-      "molde": "previdencia"
+      "id": "trabalho",
+      "nome": "Trabalho",
+      "instituicoes": [
+        "trabalho"
+      ]
     },
     {
-      "molde": "desenvolvimento-social"
+      "id": "previdencia",
+      "nome": "Previdência",
+      "instituicoes": [
+        "previdencia"
+      ]
     },
     {
-      "molde": "saude"
+      "id": "desenvolvimento-social",
+      "nome": "Desenvolvimento social",
+      "instituicoes": [
+        "assistencia-social"
+      ]
     },
     {
-      "molde": "educacao"
+      "id": "saude",
+      "nome": "Saúde",
+      "instituicoes": [
+        "saude"
+      ]
     },
     {
-      "molde": "ciencia-e-tecnologia"
+      "id": "educacao",
+      "nome": "Educação",
+      "instituicoes": [
+        "educacao"
+      ]
     },
     {
-      "molde": "comunicacoes"
+      "id": "ciencia-e-tecnologia",
+      "nome": "Ciência e tecnologia",
+      "instituicoes": [
+        "ciencia-e-pesquisa"
+      ]
     },
     {
-      "molde": "cultura"
+      "id": "comunicacoes",
+      "nome": "Comunicações",
+      "instituicoes": [
+        "comunicacao-e-tecnologia"
+      ]
     },
     {
-      "molde": "esporte-e-turismo"
+      "id": "cultura",
+      "nome": "Cultura",
+      "instituicoes": [
+        "cultura"
+      ]
     },
     {
-      "molde": "justica-e-seguranca"
+      "id": "esporte",
+      "nome": "Esporte",
+      "instituicoes": [
+        "esporte"
+      ]
     },
     {
-      "molde": "defesa"
+      "id": "turismo",
+      "nome": "Turismo",
+      "instituicoes": [
+        "turismo"
+      ]
     },
     {
-      "molde": "relacoes-exteriores"
+      "id": "justica-e-seguranca",
+      "nome": "Justiça e segurança",
+      "instituicoes": [
+        "justica-e-prisoes",
+        "seguranca-publica",
+        "imigracao",
+        "concorrencia-e-consumidor"
+      ]
     },
     {
-      "molde": "meio-ambiente"
+      "id": "defesa",
+      "nome": "Defesa",
+      "instituicoes": [
+        "defesa"
+      ]
     },
     {
-      "molde": "povos-indigenas"
+      "id": "relacoes-exteriores",
+      "nome": "Relações exteriores",
+      "instituicoes": [
+        "relacoes-exteriores"
+      ]
     },
     {
-      "molde": "agricultura"
+      "id": "meio-ambiente",
+      "nome": "Meio ambiente",
+      "instituicoes": [
+        "meio-ambiente"
+      ]
     },
     {
-      "molde": "desenvolvimento-agrario"
+      "id": "povos-indigenas",
+      "nome": "Povos indígenas",
+      "instituicoes": []
     },
     {
-      "molde": "pesca"
+      "id": "agricultura",
+      "nome": "Agricultura",
+      "instituicoes": [
+        "agricultura-e-pesca"
+      ]
     },
     {
-      "molde": "minas-e-energia"
+      "id": "desenvolvimento-agrario",
+      "nome": "Desenvolvimento agrário",
+      "instituicoes": [
+        "terra"
+      ]
     },
     {
-      "molde": "transportes"
+      "id": "pesca",
+      "nome": "Pesca",
+      "instituicoes": []
     },
     {
-      "molde": "portos-e-aeroportos"
+      "id": "minas-e-energia",
+      "nome": "Minas e energia",
+      "instituicoes": [
+        "energia",
+        "mineracao-e-petroleo"
+      ]
     },
     {
-      "molde": "cidades"
+      "id": "transportes",
+      "nome": "Transportes",
+      "instituicoes": [
+        "infraestrutura-e-transporte"
+      ]
     },
     {
-      "molde": "integracao-regional"
+      "id": "portos-e-aeroportos",
+      "nome": "Portos e aeroportos",
+      "instituicoes": []
     },
     {
-      "molde": "direitos-humanos"
+      "id": "cidades",
+      "nome": "Cidades",
+      "instituicoes": [
+        "moradia",
+        "agua-e-saneamento"
+      ]
     },
     {
-      "molde": "igualdade-e-minorias"
+      "id": "integracao-regional",
+      "nome": "Integração regional",
+      "instituicoes": [
+        "defesa-civil"
+      ]
     },
     {
-      "molde": "mulheres"
+      "id": "direitos-humanos",
+      "nome": "Direitos humanos",
+      "instituicoes": []
+    },
+    {
+      "id": "igualdade-racial",
+      "nome": "Igualdade racial",
+      "instituicoes": []
+    },
+    {
+      "id": "mulheres",
+      "nome": "Mulheres",
+      "instituicoes": []
     }
   ]
 }

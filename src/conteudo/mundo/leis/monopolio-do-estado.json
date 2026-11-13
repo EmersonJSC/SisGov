@@ -5,7 +5,7 @@
   "descricao": "Quais jogos só o Estado pode explorar. Escada: nenhum; loteria; loteria e bingo; todos os jogos.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "vicios",
+  "esfera": "impostos",
   "forma": "opcoes",
   "opcoes": [
     {

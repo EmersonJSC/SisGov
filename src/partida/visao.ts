@@ -32,6 +32,7 @@ import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
 import { hierarquiaDaPartida } from "./hierarquia";
+import { situacaoDoIndice } from "./saudeDosIndices";
 import { poderesDaPartida } from "./poderes";
 import { arquivoPais } from "./paises";
 import { mesesDaObra, mesesDaRede, mesesDaSaude } from "./previa";
@@ -465,6 +466,13 @@ function bolhasDaPartida(estado: Partida["estado"]): VisaoBolha[] {
       minimo: v.dominio.minimo ?? 0,
       maximo: v.dominio.maximo ?? 100,
       medida: medidaReal(v.medida, estado.jogabilidade[v.id] ?? 0),
+      ...situacaoDoIndice({
+        avaliacao: v.avaliacao,
+        valor: estado.jogabilidade[v.id] ?? 0,
+        anterior: estado.anterior?.[v.id],
+        minimo: v.dominio.minimo ?? 0,
+        maximo: v.dominio.maximo ?? 100,
+      }),
     })),
     ...tiposGrupos.grupos.map((g) => ({
       id: g.id,

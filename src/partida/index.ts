@@ -21,6 +21,8 @@ import {
   type Colisao,
   type Deriva,
   type GovernoDoPais,
+  type Caixa,
+  type Instituicao,
   type Molde,
   type RegrasGoverno,
   type Estado,
@@ -63,6 +65,7 @@ import {
 } from "./comeco";
 import colisoes from "../conteudo/mundo/colisoes/colisoes.json";
 import moldesDeMinisterio from "../conteudo/mundo/ministerios/moldes.json";
+import instituicoesDoMundo from "../conteudo/mundo/ministerios/instituicoes.json";
 import principais from "../conteudo/mundo/indicadores/principais.json";
 import programasDoMundo from "../conteudo/mundo/programas/programas.json";
 import nomesDeProgramas from "../conteudo/mundo/programas/nomes.json";
@@ -187,9 +190,12 @@ function declaracaoDoPais(pais: string): unknown {
     : { versao: 1, cobertura: {} };
 }
 
-/** O que governo.json declara: caixas (o ministro é opcional) e, se quiser, pessoas à mão. */
+/** Uma caixa como o país a declara: o ministro é opcional (o resto é sorteado). */
+type CaixaNoArquivo = Omit<Caixa, "ministro"> & { ministro?: string };
+
+/** O que governo.json declara: caixas e, se quiser, pessoas à mão. */
 interface GovernoNoArquivo {
-  ministerios: { molde: string; ministro?: string }[];
+  ministerios: CaixaNoArquivo[];
   pessoas?: GovernoDoPais["pessoas"];
   leis?: GovernoDoPais["leis"];
 }
@@ -222,6 +228,7 @@ function carregarGoverno(
   partidos: string[],
   pessoasGeradas: Ficha[],
   ministros: Record<string, string>,
+  caixas: readonly CaixaNoArquivo[] | undefined,
 ): { regras: RegrasGoverno; declarado: GovernoDoPais } | null {
   if (!temArquivoDoPais(pais, "governo")) return null;
   const arquivo = arquivoPais<GovernoNoArquivo>(pais, "governo");
@@ -229,12 +236,13 @@ function carregarGoverno(
   const declarado: GovernoDoPais = {
     pessoas,
     ...(arquivo.leis ? { leis: arquivo.leis } : {}),
-    ministerios: arquivo.ministerios.map(({ molde, ministro }) => ({
-      molde,
-      ministro: ministros[molde] ?? ministro ?? "",
+    ministerios: (caixas ?? arquivo.ministerios).map((c) => ({
+      ...c,
+      ministro: ministros[c.id] ?? c.ministro ?? "",
     })),
   };
   const regras: RegrasGoverno = {
+    instituicoes: instituicoesDoMundo.instituicoes as Instituicao[],
     moldes: moldesDeMinisterio.moldes as Molde[],
     pessoas,
     ...(declarado.leis ? { leis: declarado.leis } : {}),
@@ -254,9 +262,10 @@ export function ministrosDoComeco(
   comeco: ComecoDoJogador | undefined,
 ): Record<string, string> {
   if (!temArquivoDoPais(pais, "governo") || elenco.length === 0) return {};
-  const { ministerios } = arquivoPais<GovernoNoArquivo>(pais, "governo");
+  const doPais = arquivoPais<GovernoNoArquivo>(pais, "governo").ministerios;
+  const ministerios = comeco?.caixas ?? doPais;
   const declarados = Object.fromEntries(
-    ministerios.flatMap((m) => (m.ministro ? [[m.molde, m.ministro]] : [])),
+    doPais.flatMap((m) => (m.ministro ? [[m.id, m.ministro]] : [])),
   );
   return sortearMinistros(
     semente + 1,
@@ -303,10 +312,10 @@ function carregarMidias(pais: string, grupos: TipoGrupo[]): RegrasMidia {
 }
 
 export interface NomesDoGoverno {
-  /** Nome de cada caixa (id do molde). */
+  /** Nome de cada caixa (pelo id). */
   caixas: Record<string, string>;
-  /** Nome de cada esfera, que é também o nome do órgão dela. */
-  esferas: Record<string, string>;
+  /** Nome de cada instituição, que é também o nome do órgão dela. */
+  instituicoes: Record<string, string>;
   /** Nome de cada pessoa. */
   pessoas: Record<string, string>;
 }
@@ -315,8 +324,12 @@ export interface NomesDoGoverno {
 export function nomesDoGoverno(partida: Partida): NomesDoGoverno {
   const g = partida.regras.governo;
   return {
-    caixas: Object.fromEntries((g?.moldes ?? []).map((m) => [m.id, m.nome])),
-    esferas: moldesDeMinisterio.esferas,
+    caixas: Object.fromEntries(
+      (partida.estado.governo?.caixas ?? []).map((c) => [c.id, c.nome]),
+    ),
+    instituicoes: Object.fromEntries(
+      instituicoesDoMundo.instituicoes.map((i) => [i.id, i.nome]),
+    ),
     pessoas: Object.fromEntries((g?.pessoas ?? []).map((f) => [f.id, f.nome])),
   };
 }
@@ -509,6 +522,7 @@ export function criarPartida(
     congresso.partidos.map((p) => p.id),
     elenco,
     ministrosDoComeco(semente, pais, elenco, congresso, grupos, comeco),
+    comeco?.caixas,
   );
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")
@@ -626,6 +640,19 @@ export {
   type PreparoDoComeco,
 } from "./inicio";
 export { idDoPartidoDoJogador, type ComecoDoJogador } from "./comeco";
+export {
+  TAMANHOS,
+  atencaoDaCaixa,
+  caixaNova,
+  governoPronto,
+  instituicoesDoGabinete,
+  moverInstituicao,
+  nomeAutomatico,
+  rendeNaCaixa,
+  soltasDoGabinete,
+  type CaixaDoGabinete,
+  type Tamanho,
+} from "./gabinete";
 export type { PerfilDePessoa } from "./perfil";
 export { carregarPartida, salvarPartida } from "./salvar";
 export { montarVisao } from "./visao";
@@ -660,6 +687,8 @@ export type {
   VisaoInstituicao,
   VisaoMinistro,
   VisaoPessoa,
+  AlertaDoIndice,
+  TendenciaDoIndice,
   VisaoCasa,
   VisaoPartidoNaCasa,
   VisaoPoderes,

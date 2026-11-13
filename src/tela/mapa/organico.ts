@@ -23,6 +23,7 @@ import {
   forceSimulation,
   forceX,
   forceY,
+  type Force,
   type Simulation,
   type SimulationLinkDatum,
   type SimulationNodeDatum,
@@ -77,18 +78,44 @@ export const ANEL_DO_CONGRESSO_DE = 335;
 export const ANEL_DO_CONGRESSO_ATE = 395;
 const AURA_DO_EXECUTIVO = 175;
 const AURA_DO_LEGISLATIVO = 440;
+/** Daqui para dentro só o miolo: o resto fica fora da aura do Legislativo, com folga. */
+const RAIO_DO_MIOLO = AURA_DO_LEGISLATIVO + 30;
 const COR_DO_LEGISLATIVO = "#78bef8";
 const COR_SEM_PARTIDO = "#efe4cc";
 export const RAIO_DO_GRUPO = 44;
 export const RAIO_DA_POTENCIA = 60;
 /** Distância do emblema aos três rostos da trindade. */
 const DISTANCIA_DO_TRIANGULO = 90;
-const FOLGA = 12;
+/** Folga mínima entre duas bolhas: quanto mais alto o degrau, mais ar em volta. */
+const FOLGA_POR_TIPO: Readonly<
+  Record<"lei" | "indice" | "instituicao" | "ministro", number>
+> = {
+  lei: 26,
+  indice: 34,
+  instituicao: 30,
+  ministro: 44,
+};
+/**
+ * Cada degrau se repele entre iguais (ministro com ministro, instituição com
+ * instituição, índice com índice), além da repulsão de todas as bolhas: assim
+ * os de cima se espalham e não ficam colados. Lei também se repele entre leis, mais de leve.
+ */
+const REPULSAO_ENTRE_IGUAIS: Readonly<
+  Record<
+    "lei" | "indice" | "instituicao" | "ministro",
+    Readonly<{ forca: number; alcance: number }>
+  >
+> = {
+  ministro: { forca: -1400, alcance: 700 },
+  instituicao: { forca: -520, alcance: 420 },
+  indice: { forca: -320, alcance: 340 },
+  lei: { forca: -220, alcance: 260 },
+};
 /** Em que raio os ministros se alinham, em volta da trindade. */
-const RAIO_DO_ANEL_DOS_MINISTROS = 840;
+const RAIO_DO_ANEL_DOS_MINISTROS = 1000;
 /** As leis e índices de um ministro se abrem para fora do anel, em pétala. */
-const RAIO_DA_PETALA_ALEM = 260;
-const FORCA_DA_PETALA = 0.05;
+const RAIO_DA_PETALA_ALEM = 360;
+const FORCA_DA_PETALA = 0.04;
 /** Cada ministério pesa isto mais as bolhas dele ao dividir o anel. */
 const PESO_BASE_DO_MINISTRO = 6;
 const PESO_DA_INSTITUICAO = 3;
@@ -101,7 +128,7 @@ const REPULSAO_POR_RAIO = -7;
 /** A hierarquia puxa forte; o efeito entre leis e índices só de leve. */
 const FORCA_DA_HIERARQUIA = 0.8;
 const FORCA_DO_EFEITO = 0.035;
-const DISTANCIA_DA_HIERARQUIA = 46;
+const DISTANCIA_DA_HIERARQUIA = 70;
 const DISTANCIA_DO_EFEITO = 260;
 const PASSOS = 500;
 const CASAS = 1;
@@ -111,6 +138,10 @@ const CASAS_DA_ESCALA = 3;
 const DECAIMENTO = 0.045;
 /** A repulsão só vale entre bolhas até esta distância: o resto não pesa. */
 const ALCANCE_DA_REPULSAO = 420;
+/** Espaço pessoal de toda bolha: força e distância (do centro) em que ela empurra as vizinhas. */
+const ITERACOES_DA_COLISAO = 3;
+const ESPACO_PESSOAL = -420;
+const ALCANCE_DO_ESPACO_PESSOAL = 130;
 /** Maior = cálculo mais grosso e mais rápido (Barnes-Hut). */
 const ABERTURA_DA_ARVORE = 1.2;
 /** Passos dados antes da primeira imagem; o resto o mapa assenta à vista. */
@@ -124,8 +155,9 @@ const COR_SEM_AREA = "#777777";
 
 export type TipoDeLei = "petrea" | "constitucional" | "regra";
 export type TipoDoNo = "lei" | "indice" | "ministro" | "instituicao";
+/** `hierarquia` desce do centro (trindade → ministro → instituição, índice ou lei); `lateral` liga iguais (o gabinete). */
 /** `poder`: o que a casa ou o Judiciário alcança; só existe com ele em foco (desenhado no fundo). */
-export type TipoDoFio = "efeito" | "hierarquia" | "poder";
+export type TipoDoFio = "efeito" | "hierarquia" | "lateral" | "poder";
 
 /** Uma bolha. `x`, `y` e `raio` mudam enquanto a simulação anda. */
 export type NoVivo = SimulationNodeDatum & {
@@ -211,6 +243,8 @@ export type Preparo = Readonly<{
   vizinhos: ReadonlyMap<string, readonly string[]>;
   /** Id da bolha → ids das ligadas por efeito (o que dá tamanho). */
   vizinhosDeEfeito: ReadonlyMap<string, readonly string[]>;
+  /** Id do índice → id do ministério (molde) responsável por ele. */
+  ministroDoIndice: ReadonlyMap<string, string>;
   /** Raio que contém tudo, para a vista inicial. */
   alcance: number;
   simulacao: Simulation<NoVivo, undefined>;
@@ -289,6 +323,66 @@ export function manchasDe(
   });
 }
 
+/** Repulsão só entre bolhas do mesmo degrau: a força enxerga apenas esse subconjunto. */
+function repulsaoEntreIguais(
+  tipo: keyof typeof REPULSAO_ENTRE_IGUAIS,
+): Force<NoVivo, undefined> {
+  const { forca, alcance } = REPULSAO_ENTRE_IGUAIS[tipo];
+  const interno = forceManyBody<NoVivo>()
+    .strength(forca)
+    .distanceMax(alcance)
+    .theta(ABERTURA_DA_ARVORE);
+  const f = ((alpha: number) => interno(alpha)) as Force<NoVivo, undefined>;
+  f.initialize = (todos, random) =>
+    // as auras (peças paradas) ficam de fora: só os que andam se repelem
+    interno.initialize?.(
+      todos.filter((n) => n.tipo === tipo && n.fx == null),
+      random,
+    );
+  return f;
+}
+
+/**
+ * Espaço pessoal: toda bolha que anda (de qualquer degrau) repele todas as outras
+ * quando chega perto demais. Curto alcance e forte, para ninguém ficar em cima.
+ */
+function espacoPessoal(): Force<NoVivo, undefined> {
+  const interno = forceManyBody<NoVivo>()
+    .strength(ESPACO_PESSOAL)
+    .distanceMax(ALCANCE_DO_ESPACO_PESSOAL)
+    .theta(ABERTURA_DA_ARVORE);
+  const f = ((alpha: number) => interno(alpha)) as Force<NoVivo, undefined>;
+  f.initialize = (todos, random) =>
+    interno.initialize?.(
+      todos.filter((n) => n.fx == null),
+      random,
+    );
+  return f;
+}
+
+/**
+ * O miolo (trindade, juízes e Congresso) é reservado: nenhuma bolha que anda entra
+ * nele. É um limite duro, não uma repulsão, porque as repulsões somadas empurravam
+ * leis e índices para dentro.
+ */
+function foraDoMiolo(): Force<NoVivo, undefined> {
+  let moveis: readonly NoVivo[] = [];
+  const f = (() => {
+    moveis.forEach((n) => {
+      const limite = RAIO_DO_MIOLO + n.raio;
+      const d = Math.hypot(n.x, n.y);
+      if (d >= limite) return;
+      const escala = d > 0 ? limite / d : 0;
+      n.x = d > 0 ? n.x * escala : limite;
+      n.y = d > 0 ? n.y * escala : 0;
+    });
+  }) as Force<NoVivo, undefined>;
+  f.initialize = (todos) => {
+    moveis = todos.filter((n) => n.fx == null);
+  };
+  return f;
+}
+
 type LigacaoDaSimulacao = SimulationLinkDatum<NoVivo> & {
   forca: number;
   distancia: number;
@@ -362,7 +456,9 @@ export function prepararOrganico(
       (vizinhosDeEfeito.get(id) ?? [])
         .map((v) => ministroDaLei[v])
         .filter((m): m is string => Boolean(m)),
-    ) ?? ministroDoTema.get(semAcento(tema));
+    ) ??
+    ministroDoTema.get(semAcento(tema)) ??
+    undefined;
 
   // ------------------------------------------------------------- posições --
   const ministrosOrdenados = [...(hierarquia?.ministros ?? [])]
@@ -410,7 +506,7 @@ export function prepararOrganico(
       maisComum(
         visao.leis.filter((l) => l.esfera === i.id).map((l) => l.area),
       ) ??
-        areaDoMinistro.get(i.ministro) ??
+        areaDoMinistro.get(i.ministro ?? "") ??
         "",
     ]),
   );
@@ -474,7 +570,7 @@ export function prepararOrganico(
         raioBase: RAIO_DA_INSTITUICAO,
         area,
         cor: corDaAreaId.get(area) ?? COR_SEM_AREA,
-        ...partida(id, inst.ministro),
+        ...partida(id, inst.ministro ?? undefined),
       };
     },
   );
@@ -640,7 +736,7 @@ export function prepararOrganico(
     id: `h:${de}>${para}`,
     de,
     para,
-    tipo: "hierarquia",
+    tipo: "lateral",
     sinal: 1,
   });
   // os ministros também se relacionam: cada um com o do lado, fechando o anel
@@ -688,9 +784,17 @@ export function prepararOrganico(
         .distanceMax(ALCANCE_DA_REPULSAO)
         .theta(ABERTURA_DA_ARVORE),
     )
+    .force("repulsao-ministros", repulsaoEntreIguais("ministro"))
+    .force("repulsao-instituicoes", repulsaoEntreIguais("instituicao"))
+    .force("repulsao-indices", repulsaoEntreIguais("indice"))
+    .force("repulsao-leis", repulsaoEntreIguais("lei"))
+    .force("espaco-pessoal", espacoPessoal())
+    .force("fora-do-miolo", foraDoMiolo())
     .force(
       "colisao",
-      forceCollide<NoVivo>((n) => n.raio + FOLGA),
+      forceCollide<NoVivo>((n) => n.raio + FOLGA_POR_TIPO[n.tipo]).iterations(
+        ITERACOES_DA_COLISAO,
+      ),
     )
     .force(
       "ligacoes",
@@ -750,6 +854,12 @@ export function prepararOrganico(
     potencias,
     vizinhos,
     vizinhosDeEfeito,
+    ministroDoIndice: new Map(
+      indicesVisao.flatMap((b) => {
+        const m = ministroDoIndice(b.id, b.area);
+        return m ? [[b.id, m] as const] : [];
+      }),
+    ),
     alcance: raioDasPotencias + RAIO_DA_POTENCIA,
     simulacao,
   };

@@ -94,6 +94,7 @@ export function avancarTurno(
   if (motivo) throw new Error(`invariante no turno ${novo.turno}: ${motivo}`);
   return {
     ...novo,
+    anterior: estado.jogabilidade,
     mudanca: {
       pib: novo.essenciais.pib_nominal - estado.essenciais.pib_nominal,
       divida: novo.tesouro.divida - estado.tesouro.divida,

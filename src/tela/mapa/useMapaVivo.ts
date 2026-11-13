@@ -138,10 +138,13 @@ export function useMapaVivo(visao: VisaoPartida, id: IdDaVisao): MapaVivo {
   useEffect(() => {
     const pesos = pesosDaVisao(visao, id);
     preparo.nos.forEach((n) => {
-      // ministros e instituições têm tamanho fixo: a visão só pesa leis e índices
+      // ministros e instituições têm tamanho fixo: a visão só pesa leis e índices;
+      // na visão padrão, quem não tem peso (o índice) fica do tamanho dele
+      const peso = pesos?.get(n.id);
+      const semPeso = peso === undefined && id === "prioridade";
       n.raioAlvo =
-        pesos && (n.tipo === "lei" || n.tipo === "indice")
-          ? raioDoPeso(pesos.get(n.id) ?? PESO_SEM_DADO, n.tipo)
+        pesos && !semPeso && (n.tipo === "lei" || n.tipo === "indice")
+          ? raioDoPeso(peso ?? PESO_SEM_DADO, n.tipo)
           : n.raioBase;
     });
     acordar(ENERGIA_AO_ACORDAR);

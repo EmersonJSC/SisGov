@@ -15,9 +15,10 @@ import {
   useMemo,
   useRef,
   useState,
+  type KeyboardEvent,
+  type MouseEvent,
   type PointerEvent,
   type RefObject,
-  type WheelEvent,
 } from "react";
 import type {
   VisaoInstituicao,
@@ -25,17 +26,20 @@ import type {
   VisaoPartida,
 } from "../../partida";
 import { assentosDaCasa } from "./assentos";
+import { interpretarRolagem } from "./gestos";
 import { BolhaDoMapa, RECORTE_DO_ROSTO } from "./BolhaDoMapa";
 import {
   ControlesDoMapa,
   Miniatura,
   type ItemDeBusca,
 } from "./ControlesDoMapa";
-import { desenharFundo } from "./fundoDoMapa";
+import { criarMedidor } from "./medidorDeQuadros";
+import { desenharFundo, prepararFundo, type AlertaAceso } from "./fundoDoMapa";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { retratoDaPessoa } from "../inicio/aparencia";
 import { iconeEsfera, iconeIndice, iconeLei } from "./iconesPersonalizados";
 import {
+  CENTRO_DA_TRINDADE,
   ANEL_DO_CONGRESSO_ATE,
   ANEL_DO_CONGRESSO_DE,
   PODER_JUDICIARIO,
@@ -69,12 +73,19 @@ import {
 } from "./visoes";
 import "./organico.css";
 
-const FATOR_DO_ZOOM = 1.15;
+/** Zoom de um toque nos botões, no teclado e no duplo clique. */
+const FATOR_DO_TOQUE = 1.4;
+const FATOR_DO_DUPLO_CLIQUE = 0.55;
+/** Quanto uma seta do teclado move o mapa, em fração da largura da vista. */
+const PASSO_DAS_SETAS = 0.18;
+const ESPERA_DO_DUPLO_CLIQUE = 500;
 const LARGURA_MINIMA = 260;
 const FOLGA_DO_ALCANCE = 1.6;
 const DOBRO_DO_ALCANCE = 2.4;
 /** Largura da vista ao ir até uma bolha clicada. */
 const LARGURA_NO_FOCO = 1100;
+/** Ministro, instituição e índice: aproxima pouco, só o bastante para centrar. */
+const LARGURA_NO_FOCO_DOS_GRANDES = 2600;
 /** Daqui para perto (pixels por unidade do mundo) os nomes aparecem. */
 const ESCALA_DOS_NOMES = 0.6;
 const LIMIAR_DO_ARRASTO = 5;
@@ -92,6 +103,10 @@ const PAPEL = "#efe4cc";
 const LETRA_DO_GRUPO = 20;
 const DESLOCAMENTO_DO_BILHETE = 16;
 const DPR_MAXIMO = 2;
+/** Com o mapa parado, o fundo é redesenhado a cada tantos quadros. */
+const QUADROS_ENTRE_DESENHOS_PARADO = 2;
+/** De quanto em quanto tempo o placar de quadros se atualiza. */
+const INTERVALO_DO_PLACAR = 500;
 /** O Senado é pequeno: duas filas de bolinhas mais encorpadas, coladas. */
 const FILAS_DO_SENADO = 2;
 const RAIO_DA_CADEIRA_DO_SENADO = 5.5;
@@ -137,10 +152,13 @@ export function MapaOrganico({
   visao,
   selecionado,
   onSelecionar,
+  onAbrirPainel,
 }: {
   visao: VisaoPartida;
   selecionado: string | null;
   onSelecionar: (id: string | null) => void;
+  /** Botão ao lado da bolha: abre o painel do que atrapalha e ajuda. */
+  onAbrirPainel: (id: string) => void;
 }) {
   const [visaoId, setVisaoId] = useState<IdDaVisao>("prioridade");
   const { preparo, registro, assentada, arrastar, soltar } = useMapaVivo(
@@ -158,15 +176,22 @@ export function MapaOrganico({
   const vistaAtual = useRef<Vista>(VISTA_VAZIA);
   const viagem = useRef<number | null>(null);
   const parouDeMexer = useRef<number | null>(null);
-  /** Voltas da roda acumuladas e ainda não aplicadas à câmera. */
+  /** O que a roda e o trackpad pediram e ainda não foi aplicado à câmera: uma vez por quadro. */
   const rolagem = useRef<{
-    passos: number;
+    zoom: number;
+    dx: number;
+    dy: number;
     x: number;
     y: number;
     quadro: number | null;
-  }>({ passos: 0, x: 0, y: 0, quadro: null });
+  }>({ zoom: 0, dx: 0, dy: 0, x: 0, y: 0, quadro: null });
+  /** Quando foi o último aperto numa bolha (o duplo clique nela não é zoom). */
+  const ultimoNaBolha = useRef(0);
   const [comNome, setComNome] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
+  // tecla F: mostra quadros por segundo e o custo do desenho do fundo
+  const [medindo, setMedindo] = useState(false);
+  const placar = useRef<HTMLDivElement>(null);
   const apertada = useRef<{
     id: string;
     x: number;
@@ -176,6 +201,12 @@ export function MapaOrganico({
   const movendo = useRef<{ x: number; y: number; moveu: boolean } | null>(null);
   const aoSelecionar = useRef(onSelecionar);
   aoSelecionar.current = onSelecionar;
+  const aoAbrirPainel = useRef(onAbrirPainel);
+  aoAbrirPainel.current = onAbrirPainel;
+  const abrirPainel = useCallback(
+    (id: string) => aoAbrirPainel.current(id),
+    [],
+  );
 
   const leis = useMemo(
     () => new Map(visao.leis.map((l) => [l.id, l])),
@@ -384,6 +415,26 @@ export function MapaOrganico({
         ]
       : [];
   }, [visao.poderes]);
+  // o caminho de cada índice em alerta, do centro até ele: o pior alerta vence em fio compartilhado
+  const alertas = useMemo(() => {
+    const gravidade: Readonly<Record<AlertaAceso, number>> = {
+      bom: 1,
+      preocupante: 2,
+      critico: 3,
+    };
+    const caminhos = new Map<string, AlertaAceso>();
+    visao.bolhas.forEach((b) => {
+      const ministro = preparo.ministroDoIndice.get(b.id);
+      if (!b.alerta || b.alerta === "normal" || !ministro) return;
+      const de = `${PREFIXO_MINISTRO}${ministro}`;
+      [`h:${CENTRO_DA_TRINDADE}>${de}`, `h:${de}>${b.id}`].forEach((fio) => {
+        const antes = caminhos.get(fio);
+        if (!antes || gravidade[b.alerta as AlertaAceso] > gravidade[antes])
+          caminhos.set(fio, b.alerta as AlertaAceso);
+      });
+    });
+    return caminhos;
+  }, [visao.bolhas, preparo]);
   const estadoDoFoco = useRef({ foco, vizinhos });
   estadoDoFoco.current = { foco, vizinhos };
 
@@ -395,34 +446,73 @@ export function MapaOrganico({
     cv.height = Math.round(caixa.h * dpr);
   }, [caixa]);
 
+  // o que não muda entre quadros (quem liga a quem, ritmos, cadeiras por cor) fica pronto
+  const preparado = useMemo(
+    () =>
+      prepararFundo({
+        nos: preparo.nos,
+        fixos: preparo.fixos,
+        fios: preparo.fios,
+        assentos,
+        alertas,
+      }),
+    [preparo, assentos, alertas],
+  );
+  const preparadoAtual = useRef(preparado);
+  preparadoAtual.current = preparado;
+
   useEffect(() => {
     const ctx = fundo.current?.getContext("2d");
     if (!ctx) return;
     const animar = !window.matchMedia("(prefers-reduced-motion: reduce)")
       .matches;
+    const medidor = criarMedidor();
+    let ultimaLeitura = 0;
     let id = 0;
+    let quadros = 0;
+    let ultimaVista: Vista | null = null;
+    let ultimoFoco: string | null | undefined;
     const passo = (tempo: number) => {
+      id = requestAnimationFrame(passo);
       const c = caixaAtual.current;
-      desenharFundo(ctx, {
+      const { foco: focoDeAgora, vizinhos: vizinhosDeAgora } =
+        estadoDoFoco.current;
+      const sim = preparo.simulacao;
+      const mudou =
+        vistaAtual.current !== ultimaVista ||
+        focoDeAgora !== ultimoFoco ||
+        sim.alpha() >= sim.alphaMin();
+      ultimaVista = vistaAtual.current;
+      ultimoFoco = focoDeAgora;
+      quadros += 1;
+      medidor.quadro(tempo);
+      if (tempo - ultimaLeitura >= INTERVALO_DO_PLACAR) {
+        ultimaLeitura = tempo;
+        const m = medidor.ler();
+        if (placar.current)
+          placar.current.textContent = `${m.fps.toFixed(0)} fps · pior quadro ${m.piorQuadroMs.toFixed(0)} ms · fundo ${m.fundoMs.toFixed(1)} ms`;
+      }
+      // parado, os pulsos andam devagar: metade dos quadros basta
+      if (!mudou && quadros % QUADROS_ENTRE_DESENHOS_PARADO !== 0) return;
+      const inicio = performance.now();
+      desenharFundo(ctx, preparadoAtual.current, {
         nos: preparo.nos,
-        fixos: preparo.fixos,
         auras: preparo.auras,
-        assentos,
-        fios: preparo.fios,
         areas: preparo.areas,
         vista: vistaAtual.current,
         caixa: c,
         dpr: c.w > 0 ? ctx.canvas.width / c.w : 1,
-        foco: estadoDoFoco.current.foco,
-        vizinhos: estadoDoFoco.current.vizinhos,
+        foco: focoDeAgora,
+        vizinhos: vizinhosDeAgora,
         tempo,
         animar,
+        reduzido: svg.current?.classList.contains("movendo") ?? false,
       });
-      id = requestAnimationFrame(passo);
+      medidor.fundo(performance.now() - inicio);
     };
     id = requestAnimationFrame(passo);
     return () => cancelAnimationFrame(id);
-  }, [preparo, assentos]);
+  }, [preparo]);
 
   // ------------------------------------------------------------------ mouse --
   const mundoDoMouse = (e: { clientX: number; clientY: number }) => {
@@ -441,7 +531,10 @@ export function MapaOrganico({
       irPara({
         cx: n.x,
         cy: n.y,
-        w: Math.min(vistaAtual.current.w, LARGURA_NO_FOCO),
+        w: Math.min(
+          vistaAtual.current.w,
+          n.tipo === "lei" ? LARGURA_NO_FOCO : LARGURA_NO_FOCO_DOS_GRANDES,
+        ),
       });
     },
     [irPara, preparo],
@@ -457,6 +550,8 @@ export function MapaOrganico({
 
   const aoApertarBolha = useCallback((id: string, e: PointerEvent) => {
     e.stopPropagation();
+    ultimoNaBolha.current = performance.now();
+    quadro.current?.focus({ preventScroll: true });
     apertada.current = { id, x: e.clientX, y: e.clientY, moveu: false };
     svg.current?.setPointerCapture(e.pointerId);
   }, []);
@@ -469,6 +564,7 @@ export function MapaOrganico({
   }, []);
 
   const aoApertarFundo = (e: PointerEvent) => {
+    quadro.current?.focus({ preventScroll: true });
     movendo.current = { x: e.clientX, y: e.clientY, moveu: false };
     svg.current?.setPointerCapture(e.pointerId);
   };
@@ -522,33 +618,120 @@ export function MapaOrganico({
     if (m && !m.moveu) aoSelecionar.current(null);
   };
 
-  // a roda manda vários eventos por quadro: soma tudo e muda a câmera uma vez só
-  const aoRolar = (e: WheelEvent) => {
-    mexeu.current = true;
-    cancelarViagem();
-    const pendente = rolagem.current;
-    pendente.passos += e.deltaY > 0 ? 1 : -1;
-    pendente.x = e.clientX;
-    pendente.y = e.clientY;
-    if (pendente.quadro !== null) return;
-    pendente.quadro = requestAnimationFrame(() => {
-      const r = svg.current?.getBoundingClientRect();
-      if (r)
+  const limitesDoZoom = useMemo(
+    () => ({
+      minimo: LARGURA_MINIMA,
+      maximo: preparo.alcance * DOBRO_DO_ALCANCE,
+    }),
+    [preparo.alcance],
+  );
+
+  /** Aproxima (fator < 1) ou afasta (> 1) com animação, em volta de um ponto da tela. */
+  const zoomPor = useCallback(
+    (fator: number, tela?: { x: number; y: number }) => {
+      mexeu.current = true;
+      const c = caixaAtual.current;
+      irPara(
+        zoomEm(
+          vistaAtual.current,
+          c,
+          tela ?? { x: c.w * METADE, y: c.h * METADE },
+          fator,
+          limitesDoZoom,
+        ),
+      );
+    },
+    [irPara, limitesDoZoom],
+  );
+
+  // A roda e o trackpad chegam por ouvinte nativo (não passivo): na pinça é preciso
+  // impedir o zoom da página. Tudo o que chega num quadro é somado e aplicado uma vez.
+  useEffect(() => {
+    const el = svg.current;
+    if (!el) return;
+    const aoRolarNativo = (e: globalThis.WheelEvent) => {
+      e.preventDefault();
+      mexeu.current = true;
+      cancelarViagem();
+      const gesto = interpretarRolagem(e);
+      const pendente = rolagem.current;
+      if (gesto.tipo === "zoom") {
+        pendente.zoom += gesto.expoente;
+        pendente.x = e.clientX;
+        pendente.y = e.clientY;
+      } else {
+        pendente.dx += gesto.dx;
+        pendente.dy += gesto.dy;
+      }
+      if (pendente.quadro !== null) return;
+      pendente.quadro = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        const caixaDoSvg = { w: r.width, h: r.height };
+        const porPixel = vistaAtual.current.w / r.width;
+        const movida = {
+          ...vistaAtual.current,
+          cx: vistaAtual.current.cx + pendente.dx * porPixel,
+          cy: vistaAtual.current.cy + pendente.dy * porPixel,
+        };
         definirVista(
-          zoomEm(
-            vistaAtual.current,
-            { w: r.width, h: r.height },
-            { x: pendente.x - r.left, y: pendente.y - r.top },
-            FATOR_DO_ZOOM ** pendente.passos,
-            {
-              minimo: LARGURA_MINIMA,
-              maximo: preparo.alcance * DOBRO_DO_ALCANCE,
-            },
-          ),
+          pendente.zoom === 0
+            ? movida
+            : zoomEm(
+                movida,
+                caixaDoSvg,
+                { x: pendente.x - r.left, y: pendente.y - r.top },
+                Math.exp(pendente.zoom),
+                limitesDoZoom,
+              ),
         );
-      pendente.passos = 0;
-      pendente.quadro = null;
+        pendente.zoom = 0;
+        pendente.dx = 0;
+        pendente.dy = 0;
+        pendente.quadro = null;
+      });
+    };
+    el.addEventListener("wheel", aoRolarNativo, { passive: false });
+    return () => el.removeEventListener("wheel", aoRolarNativo);
+  }, [definirVista, limitesDoZoom]);
+
+  /** Duplo clique no fundo aproxima ali; numa bolha não faz zoom. */
+  const aoDuploClique = (e: MouseEvent) => {
+    if (performance.now() - ultimoNaBolha.current < ESPERA_DO_DUPLO_CLIQUE)
+      return;
+    const r = svg.current!.getBoundingClientRect();
+    zoomPor(FATOR_DO_DUPLO_CLIQUE, {
+      x: e.clientX - r.left,
+      y: e.clientY - r.top,
     });
+  };
+
+  /** Teclado: + e − aproximam e afastam, setas movem, 0 enquadra tudo. */
+  const aoTeclar = (e: KeyboardEvent) => {
+    if (e.target instanceof HTMLInputElement) return;
+    const v = vistaAtual.current;
+    const passo = v.w * PASSO_DAS_SETAS;
+    const mover = (dx: number, dy: number) => {
+      mexeu.current = true;
+      irPara({ ...v, cx: v.cx + dx, cy: v.cy + dy });
+    };
+    const teclas: Readonly<Record<string, () => void>> = {
+      "+": () => zoomPor(1 / FATOR_DO_TOQUE),
+      "=": () => zoomPor(1 / FATOR_DO_TOQUE),
+      "-": () => zoomPor(FATOR_DO_TOQUE),
+      _: () => zoomPor(FATOR_DO_TOQUE),
+      f: () => setMedindo((m) => !m),
+      F: () => setMedindo((m) => !m),
+      "0": enquadrar,
+      Home: enquadrar,
+      ArrowLeft: () => mover(-passo, 0),
+      ArrowRight: () => mover(passo, 0),
+      ArrowUp: () => mover(0, -passo),
+      ArrowDown: () => mover(0, passo),
+    };
+    const acao = teclas[e.key];
+    if (!acao) return;
+    e.preventDefault();
+    acao();
   };
 
   // ---------------------------------------------------------------- desenho --
@@ -577,12 +760,23 @@ export function MapaOrganico({
     : null;
 
   return (
-    <div className="org-mapa" ref={quadro}>
+    <div
+      className="org-mapa"
+      ref={quadro}
+      tabIndex={0}
+      onKeyDown={aoTeclar}
+      aria-label="Mapa do governo. Use as setas para mover, mais e menos para o zoom, zero para ver tudo."
+    >
       <canvas ref={fundo} className="org-fundo" />
+      {medindo ? (
+        <div className="org-placar-caixa">
+          <div ref={placar} className="org-placar" />
+        </div>
+      ) : null}
       <svg
         ref={svg}
         className={`org-svg${foco ? " com-foco" : ""}`}
-        onWheel={aoRolar}
+        onDoubleClick={aoDuploClique}
         onPointerDown={aoApertarFundo}
         onPointerMove={aoMover}
         onPointerUp={aoSoltar}
@@ -610,6 +804,7 @@ export function MapaOrganico({
           const dado = info.get(n.id);
           const lei = leis.get(n.id);
           const peso = pesos?.get(n.id);
+          const bolhaDeIndice = indices.get(n.id);
           return (
             <BolhaDoMapa
               key={n.id}
@@ -630,11 +825,14 @@ export function MapaOrganico({
                   ? contornoDoDinheiro(lei)
                   : undefined
               }
+              alerta={bolhaDeIndice?.alerta}
+              tendencia={bolhaDeIndice?.tendencia}
               alcance={foco === n.id ? alcanceDoFoco : null}
               registrar={registro.no(n.id)}
               aoApertar={aoApertarBolha}
               aoEntrar={aoEntrar}
               aoSair={aoSair}
+              aoAbrirPainel={abrirPainel}
             />
           );
         })}
@@ -706,6 +904,7 @@ export function MapaOrganico({
         itens={itens}
         onEscolher={escolher}
         onEnquadrar={enquadrar}
+        onZoom={(fator) => zoomPor(fator)}
       />
       <Miniatura
         nos={preparo.nos}
@@ -747,6 +946,13 @@ function vizinhosDe(
       .map((l) => l.id);
   return preparo.vizinhos.get(id) ?? [];
 }
+
+const ROTULO_DO_ALERTA: Readonly<Record<string, string>> = {
+  critico: "crítico",
+  preocupante: "preocupante",
+  normal: "normal",
+  bom: "bom",
+};
 
 function destaqueDe(
   id: string,
@@ -810,6 +1016,7 @@ function textoDoBilhete(
           linhas: [
             `Ministro: ${x.pessoa?.nome ?? "vago"}`,
             `Cuida de ${x.instituicoes.length} instituições`,
+            `Recebe ${x.verba.toFixed(1)}% do PIB em verbas`,
           ],
         }
       : null;
@@ -820,7 +1027,10 @@ function textoDoBilhete(
       ? {
           titulo: x.nome,
           linhas: [
-            `Instituição sob ${ministros.get(x.ministro)?.nome ?? x.ministro}`,
+            x.ministro
+              ? `Instituição sob ${ministros.get(x.ministro)?.nome ?? x.ministro}`
+              : "Instituição sem ministro: fica com um dos poderes",
+            `Recebe ${x.verba.toFixed(1)}% do PIB em verbas`,
             `${preparo.vizinhos.get(id)?.length ?? 0} leis e índices`,
           ],
         }
@@ -850,6 +1060,16 @@ function textoDoBilhete(
         titulo: indice.nome,
         linhas: [
           indice.frase ?? `Valor ${Math.round(indice.valor)}`,
+          ...(indice.saude === undefined
+            ? []
+            : [
+                `Saúde ${Math.round(indice.saude)} de 100: ${ROTULO_DO_ALERTA[indice.alerta ?? "normal"]}`,
+              ]),
+          ...(indice.tendencia && indice.tendencia !== "estavel"
+            ? [
+                `${indice.tendencia === "piorando" ? "Piorando" : "Melhorando"} ${Math.abs(Math.round(indice.mudancaDaSaude ?? 0))} pontos desde o turno anterior`,
+              ]
+            : []),
           ligacoes,
           ...semEfeito,
         ],

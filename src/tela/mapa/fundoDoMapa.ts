@@ -1,9 +1,15 @@
 /**
  * Fundo do mapa, desenhado num canvas por trás das bolhas: as manchas e os nomes
- * das áreas, os fios entre as bolhas e os raios que correm por eles. Um canvas
- * desenha centenas de linhas por quadro sem custo; em SVG, cada linha movida era
- * uma escrita no documento. Só da tela.
+ * das áreas, as auras, as cadeiras do Congresso, os fios entre as bolhas e os
+ * pulsos que correm por eles. Só da tela.
+ *
+ * O que não muda entre um quadro e outro (quem liga a quem, o ritmo de cada
+ * pulso, as cadeiras por cor) é montado uma vez em `prepararFundo`; cada quadro
+ * só calcula onde está cada pulso e desenha em poucos traços agrupados. Fora da
+ * tela, nada é riscado; durante o gesto e longe demais, só o que mais importa.
  */
+import type { AlertaDoIndice } from "../../partida";
+import type { Assento } from "./assentos";
 import {
   manchasDe,
   PREFIXO_PODER,
@@ -13,10 +19,10 @@ import {
   type FixoDoMapa,
   type NoVivo,
 } from "./organico";
-import type { Assento } from "./assentos";
 import { alturaDaVista, type Caixa, type Vista } from "./vistaDoMapa";
 
 const METADE = 0.5;
+const GIRO = Math.PI * 2;
 const OPACIDADE_DA_MANCHA = 0.22;
 const RAIO_DA_MANCHA = 1.25;
 const LETRA_DA_AREA = 72;
@@ -26,41 +32,188 @@ const ESPESSURA_DO_FIO_EM_FOCO = 3;
 const OPACIDADE_DO_FIO = 0.32;
 const OPACIDADE_DO_FIO_EM_FOCO = 0.95;
 const OPACIDADE_DO_FIO_APAGADO = 0.1;
-const ESPESSURA_DO_RAIO = 3.5;
-const BRILHO_DO_RAIO = 8;
-const TRECHO_DO_RAIO = 0.05;
-/** A cada quantos fios um tem raio correndo mesmo sem foco. */
-const FIO_AMBIENTE = 11;
-const VARIACOES_DO_ATRASO = 7;
-const PASSO_DO_ATRASO = 0.35;
-const PERIODO_DO_RAIO = 2400;
-const PERIODO_DO_RAIO_EM_FOCO = 1200;
-const MIL = 1000;
+/** Os fios de efeito da bolha em foco vibram: espessura e opacidade oscilam. */
+const ESPESSURA_DO_FOCO = 4;
+const OPACIDADE_DO_FOCO = 0.55;
+const VIBRACAO_DO_FOCO = 0.35;
+const PERIODO_DO_FOCO = 700;
 const OURO = "232, 200, 114";
+const AZUL = "120, 190, 255";
+const VERDE = "111, 207, 151";
+const VERMELHO = "235, 87, 87";
 const CONTORNO_DO_GOVERNO = "#e8c872";
 const ESPESSURA_DO_GOVERNO = 1.2;
 const OPACIDADE_DA_AURA = 0.2;
 const MIOLO_DA_AURA = 0.6;
 const OPACIDADE_DO_CONTORNO_DA_AURA = 0.35;
 const ESPESSURA_DO_CONTORNO_DA_AURA = 1.5;
-const AZUL = "120, 190, 255";
 const OPACIDADE_DA_HIERARQUIA = 0.2;
 const OPACIDADE_DA_HIERARQUIA_APAGADA = 0.07;
 const ESPESSURA_DA_HIERARQUIA = 1.2;
-const VERDE = "111, 207, 151";
-const VERMELHO = "235, 87, 87";
-const CLARO_VERDE = "200, 255, 217";
-const CLARO_VERMELHO = "255, 190, 190";
 const BASE_HEX = 16;
 const DIGITOS_DA_COR = 2;
+/** Margem, no mundo, em volta da tela onde ainda se desenha (os pulsos entram sem pular). */
+const MARGEM_DA_TELA = 120;
+
+const BASE_DO_HASH = 31;
+const MODULO_DO_HASH = 1000003;
+const SEMENTE_DO_HASH = 7;
+const VARIACAO_DO_RITMO = 0.5;
+
+export type AlertaAceso = Exclude<AlertaDoIndice, "normal">;
+/**
+ * O alerta de um índice faz o caminho dele, do centro ao índice, vibrar na cor do
+ * estado: a espessura e a opacidade oscilam, mais rápido e mais forte quanto pior.
+ */
+const ESTILO_DO_ALERTA: Readonly<
+  Record<
+    AlertaAceso,
+    Readonly<{
+      periodo: number;
+      cor: string;
+      base: number;
+      espessura: number;
+      vibracao: number;
+      halo: number;
+    }>
+  >
+> = {
+  critico: {
+    periodo: 450,
+    cor: VERMELHO,
+    base: 0.8,
+    espessura: 3,
+    vibracao: 0.6,
+    halo: 3,
+  },
+  preocupante: {
+    periodo: 800,
+    cor: VERMELHO,
+    base: 0.65,
+    espessura: 2.6,
+    vibracao: 0.45,
+    halo: 2.4,
+  },
+  bom: {
+    periodo: 2400,
+    cor: VERDE,
+    base: 0.55,
+    espessura: 2.2,
+    vibracao: 0.3,
+    halo: 0,
+  },
+};
+const OPACIDADE_DO_HALO_DO_ALERTA = 0.25;
+
+type Ponto = Readonly<{ x: number; y: number }>;
+/** Um fio já resolvido: as duas pontas são as próprias bolhas (a posição é a de agora). */
+type Seg = Readonly<{
+  a: Ponto;
+  b: Ponto;
+  tipo: FioDoMapa["tipo"];
+  sinal: 1 | -1;
+}>;
+type Alertado = Readonly<{
+  seg: Seg;
+  estado: AlertaAceso;
+  ritmo: number;
+  fase: number;
+}>;
+
+export type FundoPreparado = Readonly<{
+  porId: ReadonlyMap<string, Ponto>;
+  esqueleto: readonly Seg[];
+  positivos: readonly Seg[];
+  negativos: readonly Seg[];
+  /** Id da bolha → os fios que chegam nela ou saem dela. */
+  incidentes: ReadonlyMap<string, readonly Seg[]>;
+  alertados: readonly Alertado[];
+  /** Cadeiras agrupadas por cor: cada cor é riscada num traço só. */
+  cadeiras: readonly (readonly [string, readonly Assento[]])[];
+  cadeirasDoGoverno: readonly Assento[];
+}>;
+
+/** Número de 0 a 1 que depende só do texto: o mesmo fio sempre cai no mesmo tempo. */
+function semente(texto: string): number {
+  const h = [...texto].reduce(
+    (acc, c) => (acc * BASE_DO_HASH + c.charCodeAt(0)) % MODULO_DO_HASH,
+    SEMENTE_DO_HASH,
+  );
+  return h / MODULO_DO_HASH;
+}
+
+function rgb(hex: string): string {
+  const n = (i: number) =>
+    parseInt(hex.slice(i, i + DIGITOS_DA_COR), BASE_HEX) || 0;
+  return `${n(1)}, ${n(3)}, ${n(5)}`;
+}
+
+/** Monta uma vez o que não muda a cada quadro. */
+export function prepararFundo(
+  entrada: Readonly<{
+    nos: readonly NoVivo[];
+    fixos: readonly FixoDoMapa[];
+    fios: readonly FioDoMapa[];
+    assentos: readonly Assento[];
+    alertas: ReadonlyMap<string, AlertaAceso>;
+  }>,
+): FundoPreparado {
+  const porId = new Map<string, Ponto>([
+    ...entrada.nos.map((n) => [n.id, n] as const),
+    ...entrada.fixos.map((x) => [x.id, x] as const),
+  ]);
+  const segmentos = entrada.fios.flatMap((f) => {
+    const a = porId.get(f.de);
+    const b = porId.get(f.para);
+    return a && b
+      ? [{ f, seg: { a, b, tipo: f.tipo, sinal: f.sinal } as Seg }]
+      : [];
+  });
+  const incidentes = new Map<string, Seg[]>();
+  segmentos.forEach(({ f, seg }) => {
+    [f.de, f.para].forEach((id) =>
+      incidentes.set(id, [...(incidentes.get(id) ?? []), seg]),
+    );
+  });
+
+  const alertados: Alertado[] = segmentos
+    .filter(({ f }) => entrada.alertas.has(f.id))
+    .map(({ f, seg }) => ({
+      seg,
+      estado: entrada.alertas.get(f.id) as AlertaAceso,
+      ritmo:
+        1 -
+        VARIACAO_DO_RITMO * METADE +
+        VARIACAO_DO_RITMO * semente(`${f.id}a`),
+      fase: semente(`${f.id}b`),
+    }));
+
+  const porCor = new Map<string, Assento[]>();
+  entrada.assentos.forEach((c) =>
+    porCor.set(c.cor, [...(porCor.get(c.cor) ?? []), c]),
+  );
+
+  return {
+    porId,
+    esqueleto: segmentos
+      .filter(({ f }) => f.tipo === "hierarquia" || f.tipo === "lateral")
+      .map(({ seg }) => seg),
+    positivos: segmentos
+      .filter(({ f }) => f.tipo === "efeito" && f.sinal > 0)
+      .map(({ seg }) => seg),
+    negativos: segmentos
+      .filter(({ f }) => f.tipo === "efeito" && f.sinal < 0)
+      .map(({ seg }) => seg),
+    incidentes,
+    alertados,
+    cadeiras: [...porCor],
+    cadeirasDoGoverno: entrada.assentos.filter((c) => c.governo),
+  };
+}
 
 export type EstadoDoFundo = Readonly<{
   nos: readonly NoVivo[];
-  fixos: readonly FixoDoMapa[];
   auras: readonly AuraDoMapa[];
-  /** As cadeiras do Congresso, uma bolinha cada. */
-  assentos: readonly Assento[];
-  fios: readonly FioDoMapa[];
   areas: readonly AreaDoMapa[];
   vista: Vista;
   caixa: Caixa;
@@ -72,16 +225,13 @@ export type EstadoDoFundo = Readonly<{
   /** Milissegundos desde que a página abriu. */
   tempo: number;
   animar: boolean;
+  /** Zoom ou arrasto em curso: só o que mais importa é desenhado. */
+  reduzido: boolean;
 }>;
-
-function rgb(hex: string): string {
-  const n = (i: number) =>
-    parseInt(hex.slice(i, i + DIGITOS_DA_COR), BASE_HEX) || 0;
-  return `${n(1)}, ${n(3)}, ${n(5)}`;
-}
 
 export function desenharFundo(
   ctx: CanvasRenderingContext2D,
+  p: FundoPreparado,
   e: EstadoDoFundo,
 ): void {
   const { vista, caixa, dpr } = e;
@@ -99,13 +249,18 @@ export function desenharFundo(
     -(vista.cx - vista.w * METADE) * k * dpr,
     -(vista.cy - h * METADE) * k * dpr,
   );
+  const x0 = vista.cx - vista.w * METADE - MARGEM_DA_TELA;
+  const x1 = vista.cx + vista.w * METADE + MARGEM_DA_TELA;
+  const y0 = vista.cy - h * METADE - MARGEM_DA_TELA;
+  const y1 = vista.cy + h * METADE + MARGEM_DA_TELA;
+  /** O fio, ao menos em parte, cai na tela? */
+  const naTela = (s: Pick<Seg, "a" | "b">) =>
+    Math.max(s.a.x, s.b.x) >= x0 &&
+    Math.min(s.a.x, s.b.x) <= x1 &&
+    Math.max(s.a.y, s.b.y) >= y0 &&
+    Math.min(s.a.y, s.b.y) <= y1;
 
-  const porId = new Map<string, { x: number; y: number }>([
-    ...e.nos.map((n) => [n.id, n] as const),
-    ...e.fixos.map((x) => [x.id, x] as const),
-  ]);
   const cor = new Map(e.areas.map((a) => [a.id, a.cor]));
-
   manchasDe(e.nos, e.areas).forEach((m) => {
     const c = cor.get(m.id) ?? "#777777";
     const raio = m.raio * RAIO_DA_MANCHA;
@@ -135,128 +290,132 @@ export function desenharFundo(
     g.addColorStop(1, `rgba(${rgb(a.cor)}, ${OPACIDADE_DA_AURA})`);
     ctx.fillStyle = g;
     ctx.beginPath();
-    ctx.arc(a.x, a.y, a.raio, 0, Math.PI * 2);
+    ctx.arc(a.x, a.y, a.raio, 0, GIRO);
     ctx.fill();
     ctx.lineWidth = ESPESSURA_DO_CONTORNO_DA_AURA * px;
     ctx.strokeStyle = `rgba(${rgb(a.cor)}, ${OPACIDADE_DO_CONTORNO_DA_AURA})`;
     ctx.stroke();
   });
 
-  // as cadeiras do Congresso, voltadas para o centro
-  e.assentos.forEach((c) => {
+  // as cadeiras do Congresso, voltadas para o centro: uma passada por cor
+  p.cadeiras.forEach(([c, lista]) => {
     ctx.beginPath();
-    ctx.arc(c.x, c.y, c.raio, 0, Math.PI * 2);
-    ctx.fillStyle = c.cor;
+    lista.forEach((a) => {
+      ctx.moveTo(a.x + a.raio, a.y);
+      ctx.arc(a.x, a.y, a.raio, 0, GIRO);
+    });
+    ctx.fillStyle = c;
     ctx.fill();
-    if (c.governo) {
-      ctx.lineWidth = ESPESSURA_DO_GOVERNO * px;
-      ctx.strokeStyle = CONTORNO_DO_GOVERNO;
-      ctx.stroke();
-    }
   });
+  if (p.cadeirasDoGoverno.length) {
+    ctx.beginPath();
+    p.cadeirasDoGoverno.forEach((a) => {
+      ctx.moveTo(a.x + a.raio, a.y);
+      ctx.arc(a.x, a.y, a.raio, 0, GIRO);
+    });
+    ctx.lineWidth = ESPESSURA_DO_GOVERNO * px;
+    ctx.strokeStyle = CONTORNO_DO_GOVERNO;
+    ctx.stroke();
+  }
 
-  const emFoco = (f: FioDoMapa) => e.foco === f.de || e.foco === f.para;
+  /** Risca uma lista de fios num traço só. */
   const tracar = (
-    lista: readonly FioDoMapa[],
+    lista: readonly Seg[],
     rgbDaCor: string,
     espessura: number,
     opacidade: number,
   ) => {
     ctx.beginPath();
-    lista.forEach((f) => {
-      const a = porId.get(f.de);
-      const b = porId.get(f.para);
-      if (!a || !b) return;
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
+    lista.forEach((s) => {
+      if (!naTela(s)) return;
+      ctx.moveTo(s.a.x, s.a.y);
+      ctx.lineTo(s.b.x, s.b.y);
     });
     ctx.lineWidth = espessura * px;
     ctx.strokeStyle = `rgba(${rgbDaCor}, ${opacidade})`;
     ctx.stroke();
   };
   const temFoco = e.foco !== null;
-  const hierarquicos = e.fios.filter((f) => f.tipo === "hierarquia");
-  const efeitos = e.fios.filter((f) => f.tipo === "efeito");
-  // a hierarquia vai por baixo, em ouro e fina: é o esqueleto
   tracar(
-    hierarquicos.filter((f) => !temFoco || !emFoco(f)),
+    p.esqueleto,
     OURO,
     ESPESSURA_DA_HIERARQUIA,
     temFoco ? OPACIDADE_DA_HIERARQUIA_APAGADA : OPACIDADE_DA_HIERARQUIA,
   );
-  const positivos = efeitos.filter((f) => f.sinal > 0);
-  const negativos = efeitos.filter((f) => f.sinal < 0);
   const fundo = temFoco ? OPACIDADE_DO_FIO_APAGADO : OPACIDADE_DO_FIO;
-  tracar(
-    positivos.filter((f) => !temFoco || !emFoco(f)),
-    VERDE,
-    ESPESSURA_DO_FIO,
-    fundo,
-  );
-  tracar(
-    negativos.filter((f) => !temFoco || !emFoco(f)),
-    VERMELHO,
-    ESPESSURA_DO_FIO,
-    fundo,
-  );
+  tracar(p.positivos, VERDE, ESPESSURA_DO_FIO, fundo);
+  tracar(p.negativos, VERMELHO, ESPESSURA_DO_FIO, fundo);
+
+  const focais = temFoco ? (p.incidentes.get(e.foco as string) ?? []) : [];
   if (temFoco) {
-    const focais = e.fios.filter(emFoco);
     // um poder em foco: linhas azuis até tudo o que ele alcança agora
-    if (e.foco?.startsWith(PREFIXO_PODER))
+    const origem = p.porId.get(e.foco as string);
+    if (origem && (e.foco as string).startsWith(PREFIXO_PODER))
       tracar(
-        [...e.vizinhos].map((v) => ({
-          id: `${e.foco}>${v}`,
-          de: e.foco as string,
-          para: v,
-          tipo: "poder",
-          sinal: 1,
-        })),
+        [...e.vizinhos].flatMap((v) => {
+          const b = p.porId.get(v);
+          return b ? [{ a: origem, b, tipo: "poder", sinal: 1 } as Seg] : [];
+        }),
         AZUL,
         ESPESSURA_DO_FIO_EM_FOCO,
         OPACIDADE_DO_FIO_EM_FOCO,
       );
     tracar(
-      focais.filter((f) => f.tipo === "hierarquia"),
+      focais.filter((s) => s.tipo === "hierarquia" || s.tipo === "lateral"),
       OURO,
       ESPESSURA_DO_FIO_EM_FOCO,
       OPACIDADE_DO_FIO_EM_FOCO,
     );
     tracar(
-      focais.filter((f) => f.tipo === "efeito" && f.sinal > 0),
+      focais.filter((s) => s.tipo === "efeito" && s.sinal > 0),
       VERDE,
       ESPESSURA_DO_FIO_EM_FOCO,
       OPACIDADE_DO_FIO_EM_FOCO,
     );
     tracar(
-      focais.filter((f) => f.tipo === "efeito" && f.sinal < 0),
+      focais.filter((s) => s.tipo === "efeito" && s.sinal < 0),
       VERMELHO,
       ESPESSURA_DO_FIO_EM_FOCO,
       OPACIDADE_DO_FIO_EM_FOCO,
     );
   }
-  if (!e.animar) return;
 
-  // o raio: um trecho brilhante que corre da origem ao alvo
-  ctx.lineCap = "round";
-  ctx.lineWidth = ESPESSURA_DO_RAIO * px;
-  efeitos.forEach((f, i) => {
-    const focal = temFoco && emFoco(f);
-    if (!focal && (temFoco || i % FIO_AMBIENTE !== 0)) return;
-    const a = porId.get(f.de);
-    const b = porId.get(f.para);
-    if (!a || !b) return;
-    const periodo = focal ? PERIODO_DO_RAIO_EM_FOCO : PERIODO_DO_RAIO;
-    const atraso =
-      ((i % VARIACOES_DO_ATRASO) * PASSO_DO_ATRASO * MIL) / periodo;
-    const t = (e.tempo / periodo + atraso) % 1;
-    const de = Math.max(0, t - TRECHO_DO_RAIO);
+  // o caminho de um índice em alerta vibra na cor do estado, do centro até ele
+  p.alertados.forEach((al) => {
+    if (!naTela(al.seg)) return;
+    const estilo = ESTILO_DO_ALERTA[al.estado];
+    const onda = e.animar
+      ? Math.sin((e.tempo / (estilo.periodo * al.ritmo) + al.fase) * GIRO)
+      : 0;
+    const forca = 1 + estilo.vibracao * onda;
     ctx.beginPath();
-    ctx.moveTo(a.x + (b.x - a.x) * de, a.y + (b.y - a.y) * de);
-    ctx.lineTo(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
-    ctx.strokeStyle = `rgb(${f.sinal > 0 ? CLARO_VERDE : CLARO_VERMELHO})`;
-    ctx.shadowColor = `rgb(${f.sinal > 0 ? VERDE : VERMELHO})`;
-    ctx.shadowBlur = BRILHO_DO_RAIO;
+    ctx.moveTo(al.seg.a.x, al.seg.a.y);
+    ctx.lineTo(al.seg.b.x, al.seg.b.y);
+    if (estilo.halo > 0 && !e.reduzido) {
+      ctx.lineWidth = estilo.espessura * estilo.halo * forca * px;
+      ctx.strokeStyle = `rgba(${estilo.cor}, ${OPACIDADE_DO_HALO_DO_ALERTA * forca})`;
+      ctx.stroke();
+    }
+    ctx.lineWidth = estilo.espessura * forca * px;
+    ctx.strokeStyle = `rgba(${estilo.cor}, ${Math.min(1, estilo.base * forca)})`;
     ctx.stroke();
   });
-  ctx.shadowBlur = 0;
+  if (!e.animar) return;
+
+  // com uma bolha em foco, os fios de efeito dela vibram (nada corre pelos fios)
+  if (!temFoco) return;
+  const onda =
+    1 + VIBRACAO_DO_FOCO * Math.sin((e.tempo / PERIODO_DO_FOCO) * GIRO);
+  [1, -1].forEach((sinal) => {
+    ctx.beginPath();
+    focais
+      .filter((s) => s.tipo === "efeito" && s.sinal === sinal)
+      .forEach((s) => {
+        ctx.moveTo(s.a.x, s.a.y);
+        ctx.lineTo(s.b.x, s.b.y);
+      });
+    ctx.lineWidth = ESPESSURA_DO_FOCO * onda * px;
+    ctx.strokeStyle = `rgba(${sinal > 0 ? VERDE : VERMELHO}, ${OPACIDADE_DO_FOCO * onda})`;
+    ctx.stroke();
+  });
 }

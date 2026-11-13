@@ -1,0 +1,158 @@
+{
+  "versao": 1,
+  "nota": "Governos prontos para a régua da tela inicial, sem país. 'Do país' é o governo.json do país; 'Inchado' é o do país com ministérios sem pasta a mais.",
+  "enxuto": [
+    {
+      "id": "gabinete-do-chefe-de-governo",
+      "nome": "Gabinete do chefe de governo",
+      "instituicoes": [],
+      "sobra": true
+    },
+    {
+      "id": "economia",
+      "nome": "Economia",
+      "instituicoes": [
+        "impostos",
+        "moeda-e-bancos",
+        "orcamento-e-divida",
+        "industria",
+        "comercio-exterior-e-capital",
+        "trabalho",
+        "previdencia"
+      ]
+    },
+    {
+      "id": "saude-e-assistencia",
+      "nome": "Saúde e assistência",
+      "instituicoes": ["saude", "assistencia-social"]
+    },
+    {
+      "id": "educacao-e-ciencia",
+      "nome": "Educação, ciência e cultura",
+      "instituicoes": ["educacao", "ciencia-e-pesquisa", "cultura"]
+    },
+    {
+      "id": "justica-e-seguranca",
+      "nome": "Justiça e segurança",
+      "instituicoes": [
+        "justica-e-prisoes",
+        "seguranca-publica",
+        "imigracao",
+        "defesa-civil"
+      ]
+    },
+    { "id": "defesa", "nome": "Defesa", "instituicoes": ["defesa"] },
+    {
+      "id": "relacoes-exteriores",
+      "nome": "Relações exteriores",
+      "instituicoes": ["relacoes-exteriores"]
+    },
+    {
+      "id": "infraestrutura",
+      "nome": "Infraestrutura",
+      "instituicoes": [
+        "infraestrutura-e-transporte",
+        "energia",
+        "mineracao-e-petroleo",
+        "moradia",
+        "agua-e-saneamento"
+      ]
+    },
+    {
+      "id": "agricultura-e-ambiente",
+      "nome": "Agricultura e meio ambiente",
+      "instituicoes": ["agricultura-e-pesca", "terra", "meio-ambiente"]
+    }
+  ],
+  "classico": [
+    {
+      "id": "gabinete-do-chefe-de-governo",
+      "nome": "Gabinete do chefe de governo",
+      "instituicoes": [],
+      "sobra": true
+    },
+    {
+      "id": "fazenda",
+      "nome": "Fazenda",
+      "instituicoes": ["impostos", "moeda-e-bancos"]
+    },
+    {
+      "id": "planejamento-e-orcamento",
+      "nome": "Planejamento e orçamento",
+      "instituicoes": ["orcamento-e-divida"]
+    },
+    {
+      "id": "industria-e-comercio",
+      "nome": "Indústria e comércio",
+      "instituicoes": [
+        "industria",
+        "comercio-exterior-e-capital",
+        "concorrencia-e-consumidor"
+      ]
+    },
+    { "id": "trabalho", "nome": "Trabalho", "instituicoes": ["trabalho"] },
+    {
+      "id": "seguridade-social",
+      "nome": "Seguridade social",
+      "instituicoes": ["previdencia", "assistencia-social"]
+    },
+    { "id": "saude", "nome": "Saúde", "instituicoes": ["saude"] },
+    { "id": "educacao", "nome": "Educação", "instituicoes": ["educacao"] },
+    {
+      "id": "ciencia-e-tecnologia",
+      "nome": "Ciência e tecnologia",
+      "instituicoes": ["ciencia-e-pesquisa", "comunicacao-e-tecnologia"]
+    },
+    {
+      "id": "cultura-esporte-e-turismo",
+      "nome": "Cultura, esporte e turismo",
+      "instituicoes": ["cultura", "esporte", "turismo"]
+    },
+    {
+      "id": "interior",
+      "nome": "Interior",
+      "instituicoes": [
+        "seguranca-publica",
+        "imigracao",
+        "defesa-civil",
+        "estados-e-municipios"
+      ]
+    },
+    {
+      "id": "justica",
+      "nome": "Justiça",
+      "instituicoes": ["justica-e-prisoes"]
+    },
+    { "id": "defesa", "nome": "Defesa", "instituicoes": ["defesa"] },
+    {
+      "id": "relacoes-exteriores",
+      "nome": "Relações exteriores",
+      "instituicoes": ["relacoes-exteriores"]
+    },
+    {
+      "id": "meio-ambiente",
+      "nome": "Meio ambiente e água",
+      "instituicoes": ["meio-ambiente", "agua-e-saneamento"]
+    },
+    {
+      "id": "agricultura",
+      "nome": "Agricultura",
+      "instituicoes": ["agricultura-e-pesca", "terra"]
+    },
+    {
+      "id": "minas-e-energia",
+      "nome": "Minas e energia",
+      "instituicoes": ["energia", "mineracao-e-petroleo"]
+    },
+    {
+      "id": "infraestrutura-e-cidades",
+      "nome": "Infraestrutura e cidades",
+      "instituicoes": ["infraestrutura-e-transporte", "moradia"]
+    },
+    {
+      "id": "gestao-e-controle",
+      "nome": "Gestão e controle",
+      "instituicoes": ["funcionalismo", "estatais", "controle-e-transparencia"]
+    }
+  ]
+}
