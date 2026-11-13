@@ -3,6 +3,7 @@
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import "./tela.css";
+import "./estilo/mesa.css";
 
 export function montarTela(raiz: HTMLElement): void {
   createRoot(raiz).render(<App />);

@@ -52,7 +52,7 @@ export function EtapaMinisterios({
       <header>
         <h2>Ministérios</h2>
         <button
-          className="ini-placa ini-pequena"
+          className="placa-ferro placa-ferro-pequena"
           onClick={() => mudar({ rodada: e.rodada + 1, trocas: {} })}
         >
           Sortear de novo

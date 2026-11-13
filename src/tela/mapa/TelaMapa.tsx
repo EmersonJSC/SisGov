@@ -26,7 +26,7 @@ import { Governo } from "./Governo";
 import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
-import { MesaDePapeis, papeisParaDecidir } from "./MesaDePapeis";
+import { MesaDePapeis } from "./MesaDePapeis";
 import { Pregao, pregaoInicial } from "./Pregao";
 import { MapaPolitico } from "./MapaPolitico";
 import { ResultadoDoTurno, temResultado } from "./ResultadoDoTurno";
@@ -44,11 +44,7 @@ interface Props {
   /** Moedas, vetos e convites do turno (motor/politica). */
   extras: Pedido[];
   setExtras: (f: Pedido[]) => void;
-  podeCarregar: boolean;
   onPassar: () => void;
-  onSalvar: () => void;
-  onCarregar: () => void;
-  onRecomecar: () => void;
   aviso: string;
 }
 
@@ -64,11 +60,7 @@ export function TelaMapa({
   setFila,
   extras,
   setExtras,
-  podeCarregar,
   onPassar,
-  onSalvar,
-  onCarregar,
-  onRecomecar,
   aviso,
 }: Props) {
   const visao = useMemo(() => montarVisao(partida), [partida]);
@@ -186,20 +178,7 @@ export function TelaMapa({
         partida={partida}
         pedidos={fila.length + extras.length}
         aviso={aviso}
-        podeCarregar={podeCarregar}
         onPassar={onPassar}
-        onSalvar={onSalvar}
-        onCarregar={onCarregar}
-        onRecomecar={onRecomecar}
-        onMesa={() => setMesa(!mesa)}
-        onGoverno={() => setGoverno(!governo)}
-        temGoverno={!!partida.regras.governo}
-        onProgramas={() => setProgramas(!programas)}
-        onEleicao={() => setEleicao(!eleicao)}
-        temProgramas={!!partida.regras.programas}
-        papeis={papeisParaDecidir(partida).length}
-        onMercado={() => setMercado(!mercado)}
-        onBolsa={() => setBolsa(!bolsa)}
       />
       <main className="area-mapa">
         <MapaPolitico

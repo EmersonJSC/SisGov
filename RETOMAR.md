@@ -7,26 +7,29 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Construindo pela **ordem de construir** de [docs/jogo/requisitos.md](docs/jogo/requisitos.md)
-(seção "Ordem de construir"). Feitos: 1 Brasil 2026, 2 Fatos do turno, 3 Congresso novo,
-4 Mesa mínima, 5 Governo, 6 Programas, 7 Jornal mínimo, 8 Eleição nova (commit b8f24c59) e
-**9 Começo da partida** (NÃO commitado):
+Construindo pela **ordem de construir** de [docs/jogo/requisitos.md](docs/jogo/requisitos.md).
+Feitos: 1 a 9 (9 = Começo da partida, commit 6a1ccf4d). Agora o **passo 10: padronizar o visual**,
+começando pela barra do topo (NÃO commitado):
 
-- `src/motor/pessoas` (`pessoas.md`): gerador de pessoas pela semente (o país declara só nomes em
-  `paises/brasil-2026/pessoas.json`; as 81 fichas fixas de `governo.json` saíram), ministros
-  sorteados pela chapa, partido do jogador (lado pela bússola da chapa, 6% das cadeiras).
-- `src/partida/comeco.ts` (`ComecoDoJogador` em `opcoes.comeco`), `inicio.ts` (dados da tela),
-  `perfil.ts` + `mundo/pessoas/perfil.json` (perfil de rede), `paises.ts` (leitura dos arquivos).
-  `criarPartida` sem `comeco` continua como antes (o partido do país governa).
-- Tela inicial no estilo da Art Bible (`src/tela/inicio/`): abertura, país, partido, chapa com
-  fotos 3x4 desenhadas pelo DiceBear (Notionists, sem tom de pele, `tela/inicio/aparencia.ts`), ministérios, termo de posse; lista de pessoas com perfil. Só países com `pessoas.json`
-  e `governo.json` aparecem (os de teste ficam de fora).
-  A tela do mapa (MapaPolitico, janelas, CSS) será reformulada: não mexer antes.
+- `src/tela/estilo/mesa.css`: cores, fontes e a placa de ferro (`.placa-ferro`) da Art Bible,
+  comuns à tela inicial e à barra. Tokens em `:root`.
+- `src/tela/mapa/BarraDoTopo.tsx` + `.css` (refeita do zero, 2ª versão, inspirada em Victoria 3 e
+  Frostpunk: ícone + número + barra, detalhe em bilhete ao passar o mouse): brasão e país à
+  esquerda; medidores no centro (caixa, dívida, PIB, apoio, eleição); data e placa de passar o turno
+  à direita. Classes `topo-*`. Aprovada pelo autor ("vamos manter assim").
+- Cheats de teste (`src/tela/cheats.ts`, `useCheats.ts`), valem na tela inicial: `senado` liga e
+  desliga o Senado (`opcoes.semSenado`); `pular` começa direto (Partido de Teste, chapa sugerida).
+- **Os menus saíram a pedido do autor** (Governo, Programas, Eleição, Mesa, Mercado, Bolsa, Salvar,
+  Carregar, Recomeçar): as janelas existem no `TelaMapa`, mas nada as abre; Salvar e Recomeçar
+  também ficaram sem botão. O autor vai dizer onde cada coisa mora.
+- A rede social (do presidente, das mídias) não tem lugar na tela; o autor vai pensar com outro modelo.
+- Retrato das pessoas: DiceBear Notionists, provisório (o autor não gostou: "todos parecem a mesma
+  pessoa"). Trocar só `src/tela/inicio/aparencia.ts` e `Foto.tsx`.
 
 ## Próximo
 
-Commitar o passo 9 (com a palavra do autor), depois o **passo 10** da ordem de construir
-(ver requisitos.md). Propor curto ao autor antes de começar.
+Esperar o autor dizer onde fica cada coisa que saiu da barra; depois seguir padronizando o visual
+(`mapa.css` ainda tem regras velhas da barra, `.chip-dica` e `.aba-topo` são usadas por outras telas).
 
 ## Pendências do autor
 
@@ -42,8 +45,9 @@ Commitar o passo 9 (com a palavra do autor), depois o **passo 10** da ordem de c
 - Nada é commitado sem a palavra do autor; `arquivo/`, `public/arte`, `public/demos`,
   `docs/arte/*` e `docs/jogo/interface/*` ficam fora dos commits do passo (a Art Bible
   `docs/arte/direcao-de-arte.md` segue a tela inicial; commitar à parte se o autor quiser).
-- Classes CSS da tela inicial levam prefixo `ini-`: o `mapa.css` já tem `.carimbo`, `.selo`, `.nota`
+- Classes CSS da tela inicial levam prefixo `ini-` e as da barra `topo-`: o `mapa.css` já tem `.carimbo`, `.selo`, `.nota`
   e outras, e as regras dele vazam.
 - Não usar `<main>` fora do mapa: `tela.css` põe largura e margem em `main:not(.area-mapa)`.
+- Pacote novo no `package.json` deixa o `npm run dev` aberto com "Outdated Optimize Dep" (página em branco): reiniciar o servidor.
 - O servidor do Vite pode servir arquivo novo vazio ou módulo velho: `touch` nos arquivos e recarregar.
 - `tsx` não roda scripts com `import.meta.glob`; usar `vite-node`.

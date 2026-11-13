@@ -411,6 +411,8 @@ export interface OpcoesPartida {
   ajustes?: Partial<IndicesEssenciais>;
   /** Todo pedido passa sem voto (scripts que medem a economia). */
   semCongresso?: boolean;
+  /** O país joga só com a Câmara, mesmo que declare Senado (teste). */
+  semSenado?: boolean;
   /** Partido, chapa e ministros do jogador; sem isto o partido do país governa. */
   comeco?: ComecoDoJogador;
 }
@@ -446,6 +448,13 @@ function congressoDasRegras(
   };
 }
 
+/** O Congresso do país sem o Senado: só a Câmara vota. */
+function semOSenado(c: CongressoPais): CongressoPais {
+  return Object.fromEntries(
+    Object.entries(c).filter(([chave]) => chave !== "senado"),
+  ) as unknown as CongressoPais;
+}
+
 /** O gasto que o país declara fecha com as leis de gasto mais o que ainda não virou lei. */
 function conferirGasto(
   pais: string,
@@ -466,7 +475,12 @@ export function criarPartida(
   semente: number,
   opcoes: OpcoesPartida = {},
 ): Partida {
-  const { ajustes = {}, semCongresso = false, comeco } = opcoes;
+  const {
+    ajustes = {},
+    semCongresso = false,
+    semSenado = false,
+    comeco,
+  } = opcoes;
   const declarado = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
   const inicial = {
     ...declarado,
@@ -518,7 +532,9 @@ export function criarPartida(
     programas: carregarProgramas(pais, leis),
     midia: carregarMidias(pais, grupos),
     ...(governo ? { governo: governo.regras } : {}),
-    congresso: semCongresso ? undefined : congressoDasRegras(congresso),
+    congresso: semCongresso
+      ? undefined
+      : congressoDasRegras(semSenado ? semOSenado(congresso) : congresso),
   };
   conferirGasto(pais, regras, vigentes, inicial.essenciais.gasto_publico);
   const estado = estadoInicial(regras, {

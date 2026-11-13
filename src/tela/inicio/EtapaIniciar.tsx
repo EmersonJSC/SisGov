@@ -1,7 +1,7 @@
 import type { PreparoDoComeco } from "../../partida";
 import { Foto } from "./Foto";
 import { VAGAS, type Escolhas } from "./escolhas";
-import { nomeDoPais } from "./EtapaPais";
+import { nomeDoPais } from "../mapa/formatos";
 
 export function EtapaIniciar({
   e,

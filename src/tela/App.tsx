@@ -3,8 +3,8 @@ import {
   avancar,
   carregarPartida,
   criarPartida,
-  salvarPartida,
   type ComecoDoJogador,
+  type OpcoesPartida,
   type Partida,
   type Pedido,
   type PedidoMudarLei,
@@ -39,22 +39,12 @@ export function App() {
     pais: string,
     semente: number,
     comeco: ComecoDoJogador,
-    semCongresso: boolean,
+    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado">,
   ) => {
     try {
-      trocar(criarPartida(pais, semente, { semCongresso, comeco }));
+      trocar(criarPartida(pais, semente, { ...teste, comeco }));
     } catch (e) {
       setAviso((e as Error).message);
-    }
-  };
-
-  const salvar = () => {
-    if (!partida) return;
-    try {
-      localStorage.setItem(CHAVE, salvarPartida(partida));
-      setAviso("Partida salva.");
-    } catch {
-      setAviso("Não foi possível salvar neste navegador.");
     }
   };
 
@@ -94,11 +84,7 @@ export function App() {
       setFila={setFila}
       extras={extras}
       setExtras={setExtras}
-      podeCarregar={lerSalvo() !== null}
       onPassar={passar}
-      onSalvar={salvar}
-      onCarregar={carregar}
-      onRecomecar={() => trocar(null)}
       aviso={aviso}
     />
   );

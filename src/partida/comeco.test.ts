@@ -113,3 +113,13 @@ describe("perfil de rede", () => {
     expect(JSON.stringify(perfil)).not.toMatch(/esquerda|direita/i);
   });
 });
+
+describe("cheat sem Senado", () => {
+  it("o país joga só com a Câmara e a partida continua rodando", () => {
+    const com = criarPartida(PAIS, SEMENTE);
+    const sem = criarPartida(PAIS, SEMENTE, { semSenado: true });
+    expect(com.regras.congresso?.senado).toBeDefined();
+    expect(sem.regras.congresso?.senado).toBeUndefined();
+    expect(jogar(sem, 2).estado.turno).toBe(2);
+  });
+});

@@ -1,12 +1,6 @@
 import { paisesJogaveis } from "../../partida";
+import { nomeDoPais } from "../mapa/formatos";
 import type { Escolhas } from "./escolhas";
-
-/** "brasil-2026" vira "Brasil 2026". */
-export const nomeDoPais = (id: string) =>
-  id
-    .split("-")
-    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
-    .join(" ");
 
 export function EtapaPais({
   e,

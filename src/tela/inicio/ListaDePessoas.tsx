@@ -151,7 +151,7 @@ export function ListaDePessoas(p: Props) {
               <>
                 <Perfil pais={p.pais} semente={p.semente} pessoa={aberto} />
                 <button
-                  className="ini-placa"
+                  className="placa-ferro"
                   onClick={() => p.onEscolher(aberto.id)}
                 >
                   Escolher {aberto.nome.split(" ")[0]}

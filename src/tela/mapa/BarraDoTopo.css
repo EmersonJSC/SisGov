@@ -1,0 +1,228 @@
+/* Barra do topo (docs/arte/direcao-de-arte.md): painel de ferro com brasão de
+   latão, medidores e a placa de passar o turno. Peças comuns: estilo/mesa.css. */
+.tela:has(> .topo) {
+  grid-template-rows: 56px minmax(0, 1fr);
+}
+
+.topo {
+  position: relative;
+  z-index: 5;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 16px;
+  color: var(--papel);
+  font-family: var(--datilografia);
+  background: var(--grao), linear-gradient(180deg, #2f3236, var(--ferro));
+  border-bottom: 2px solid #0a0b0c;
+  box-shadow:
+    inset 0 -1px 0 var(--latao),
+    0 5px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* esquerda: brasão e país */
+.topo-pais {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topo-pais strong {
+  font-family: var(--titulo);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--latao);
+}
+.topo-brasao {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #2a2208;
+  background: radial-gradient(circle at 35% 30%, #f0d77a, #b8932a 70%);
+  border: 2px solid #5c4a14;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* centro: medidores */
+.topo-medidores {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  gap: clamp(6px, 1.5vw, 22px);
+  overflow: hidden;
+}
+.topo-medidor {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 4px;
+  color: var(--papel);
+  font-family: var(--datilografia);
+  background: none;
+  border: 0;
+  cursor: help;
+}
+.topo-medidor:focus-visible {
+  outline: 1px solid var(--latao);
+}
+.topo-rebite {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: var(--latao);
+  background: radial-gradient(circle at 35% 30%, #3b3f44, #131517);
+  border: 1px solid #060707;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.7);
+}
+.topo-leitura {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 4.5em;
+}
+.topo-leitura strong {
+  font-size: 15px;
+  line-height: 1;
+  color: var(--papel);
+}
+.topo-boa .topo-leitura strong {
+  color: #9fd08a;
+}
+.topo-ruim .topo-leitura strong {
+  color: #ee6b5f;
+}
+
+/* barra que enche, com marca opcional */
+.topo-barra {
+  position: relative;
+  display: block;
+  height: 5px;
+  background: #0b0c0d;
+  border: 1px solid #000;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+.topo-barra span {
+  display: block;
+  height: 100%;
+  background: var(--latao);
+}
+.topo-boa .topo-barra span {
+  background: #7fb069;
+}
+.topo-ruim .topo-barra span {
+  background: #c0392b;
+}
+.topo-barra i {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--papel);
+}
+
+.topo-aviso {
+  flex: none;
+  max-width: 22em;
+  font-size: 12px;
+  color: var(--ambar);
+}
+
+/* direita: data e placa de passar o turno */
+.topo-data {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.15;
+}
+.topo-data small {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b89a3a;
+}
+.topo-data strong {
+  font-size: 15px;
+}
+.topo .topo-turno {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  font-size: 0.9em;
+  padding: 0.35em 1.6em;
+  line-height: 1.15;
+}
+.topo .topo-turno small {
+  font-family: var(--datilografia);
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: #b89a3a;
+  text-shadow: none;
+}
+
+/* a dica é um bilhete de papel sobre a mesa */
+.topo-dica {
+  position: fixed;
+  z-index: 50;
+  width: 280px;
+  padding: 10px 14px 12px;
+  color: var(--tinta);
+  font-family: var(--datilografia);
+  font-size: 12.5px;
+  background: linear-gradient(170deg, var(--papel), var(--papel-velho));
+  border-radius: 1px 4px 1px 3px;
+  box-shadow:
+    0.15em 0.5em 1em rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(60, 45, 20, 0.5);
+  transform: rotate(0.5deg);
+  pointer-events: none;
+}
+.topo-dica h4 {
+  margin: 0 0 6px;
+  font-family: var(--titulo);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--tinta);
+  padding-bottom: 3px;
+}
+.topo-dica-linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 1px 0;
+  border-bottom: 1px dotted rgba(37, 35, 32, 0.45);
+}
+.topo-dica p {
+  margin: 8px 0 0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* telas estreitas: o nome do país cede lugar aos medidores */
+@media (max-width: 1180px) {
+  .topo {
+    gap: 10px;
+  }
+  .topo-pais strong {
+    display: none;
+  }
+  .topo-leitura {
+    min-width: 3.6em;
+  }
+}

@@ -7,6 +7,7 @@ import {
   paisesJogaveis,
   prepararComeco,
   type ComecoDoJogador,
+  type OpcoesPartida,
 } from "../../partida";
 import { EtapaChapa } from "./EtapaChapa";
 import { EtapaIniciar } from "./EtapaIniciar";
@@ -20,8 +21,11 @@ import {
   trocarMinistro,
   type Escolhas,
 } from "./escolhas";
+import { useCheats } from "../useCheats";
 import "./inicio.css";
 
+const PARTIDO_DE_TESTE = { nome: "Partido de Teste", sigla: "PTE" };
+const AVISO_DE_TESTE_MS = 2500;
 const ETAPAS = ["País", "Partido", "Chapa", "Ministérios", "Iniciar"] as const;
 
 interface Props {
@@ -32,7 +36,7 @@ interface Props {
     pais: string,
     semente: number,
     comeco: ComecoDoJogador,
-    semCongresso: boolean,
+    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado">,
   ) => void;
 }
 
@@ -43,6 +47,12 @@ export function TelaInicio({
   onComecar,
 }: Props) {
   const [passo, setPasso] = useState(-1);
+  const [semSenado, setSemSenado] = useState(false);
+  const [avisoDeTeste, setAvisoDeTeste] = useState("");
+  const avisarDoTeste = (texto: string) => {
+    setAvisoDeTeste(texto);
+    setTimeout(() => setAvisoDeTeste(""), AVISO_DE_TESTE_MS);
+  };
   const [e, setE] = useState<Escolhas>(() =>
     ESCOLHAS_INICIAIS(paisesJogaveis()[0]),
   );
@@ -78,9 +88,30 @@ export function TelaInicio({
         coligarGoverno: e.coligarGoverno,
         ministros,
       },
-      e.semCongresso,
+      { semCongresso: e.semCongresso, semSenado },
     );
   };
+
+  /** Cheat "pular": começa já, com partido de teste e a chapa sugerida. */
+  const pular = () => {
+    const sugerida = chapaSugerida(e.pais, e.semente);
+    onComecar(
+      e.pais,
+      e.semente,
+      {
+        partido: PARTIDO_DE_TESTE,
+        chapa: sugerida,
+        ministros: ministrosSugeridos(e.pais, e.semente, sugerida),
+      },
+      { semCongresso: e.semCongresso, semSenado },
+    );
+  };
+
+  useCheats((cheat) => {
+    if (cheat === "pular") return pular();
+    setSemSenado(!semSenado);
+    avisarDoTeste(semSenado ? "Senado ligado" : "Senado desligado (teste)");
+  });
 
   const sugerirChapa = () => {
     const s = chapaSugerida(e.pais, e.semente);
@@ -90,18 +121,23 @@ export function TelaInicio({
   return (
     <div className="inicio">
       <div className="ini-quadro">
+        {(semSenado || avisoDeTeste) && (
+          <span className="ini-teste-aviso">
+            {avisoDeTeste || "Teste: sem Senado"}
+          </span>
+        )}
         {passo < 0 ? (
           <div className="ini-abertura">
             <span className="ini-selo ini-selo-titulo">SisGov</span>
             <p className="ini-lema">Governe um país e responda nas urnas.</p>
             <button
-              className="ini-placa ini-grande"
+              className="placa-ferro placa-ferro-grande"
               onClick={() => setPasso(0)}
             >
               Novo mandato
             </button>
             <button
-              className="ini-placa"
+              className="placa-ferro"
               onClick={onCarregar}
               disabled={!podeCarregar}
             >
@@ -132,7 +168,7 @@ export function TelaInicio({
                 <>
                   <EtapaChapa e={e} mudar={mudar} preparo={preparo} />
                   <button
-                    className="ini-placa ini-pequena ini-sugerir"
+                    className="placa-ferro placa-ferro-pequena ini-sugerir"
                     onClick={sugerirChapa}
                   >
                     Sugerir uma chapa
@@ -156,7 +192,7 @@ export function TelaInicio({
             </div>
             <footer className="ini-rodape">
               <button
-                className="ini-placa"
+                className="placa-ferro"
                 onClick={() => setPasso(passo === 0 ? -1 : passo - 1)}
               >
                 Voltar
@@ -164,14 +200,17 @@ export function TelaInicio({
               {aviso && <span className="ini-aviso-da-mesa">{aviso}</span>}
               {passo < ETAPAS.length - 1 ? (
                 <button
-                  className="ini-placa ini-grande"
+                  className="placa-ferro placa-ferro-grande"
                   disabled={!podeSeguir}
                   onClick={() => setPasso(passo + 1)}
                 >
                   Seguir
                 </button>
               ) : (
-                <button className="ini-placa ini-grande" onClick={comecar}>
+                <button
+                  className="placa-ferro placa-ferro-grande"
+                  onClick={comecar}
+                >
                   Iniciar mandato
                 </button>
               )}

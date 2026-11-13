@@ -154,3 +154,10 @@ export const NOME_PROCESSO: Readonly<Record<string, string>> = {
 /** "1 lei", "3 leis". */
 export const contarLeis = (n: number): string =>
   `${n} ${n === 1 ? "lei" : "leis"}`;
+
+/** "brasil-2026" vira "Brasil 2026". */
+export const nomeDoPais = (id: string): string =>
+  id
+    .split("-")
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join(" ");
