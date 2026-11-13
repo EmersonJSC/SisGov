@@ -1,12 +1,16 @@
 # SisGov — Requisitos
 
 > O que o jogo pronto precisa ter, tirado do [GDD](gdd.md), e **como cada
-> mecânica se constrói**. Refeito em 12/nov/2026 com as decisões de 11 e 12/nov
-> (governo, Congresso, programas, eleição, mundo leve). A ordem de construir
+> mecânica se constrói**. Refeito em 12/nov/2026 e atualizado em 13/nov com a
+> remontagem (instituições no lugar das esferas, caixas livres, tela inicial em
+> passos, mapa orgânico) e as decisões do autor do mesmo dia. A ordem de construir
 > está no fim e no [plano](plano-de-desenvolvimento.md); a arquitetura, em
 > [arquitetura.md](arquitetura.md).
 >
-> **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 12/nov.
+> **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 13/nov.
+>
+> **Planilhas:** `docs/jogo/leis.xlsx` é o acervo; `docs/jogo/gdd.xlsx` é o que
+> estamos construindo, já com mecânica (GDD, cabeçalho).
 > Requisito novo só entra depois de decidido no GDD (seção 18).
 
 ## Como ler a construção
@@ -33,21 +37,21 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 | Sistema (GDD)          | ✅     | ◐      | ☐       |
 | ---------------------- | ------ | ------ | ------- |
-| 4. Partida e turno     | 3      | 2      | 7       |
+| 4. Partida e turno     | 8      | 2      | 2       |
 | 5. Partido             | 0      | 0      | 5       |
-| 6. Governo             | 0      | 1      | 21      |
-| 7. Leis e programas    | 9      | 4      | 8       |
+| 6. Governo             | 7      | 7      | 12      |
+| 7. Leis e programas    | 11     | 5      | 5       |
 | 8. Bússola             | 4      | 1      | 1       |
-| 9. Índices             | 3      | 2      | 3       |
-| 10. Contas             | 3      | 1      | 2       |
+| 9. Índices             | 4      | 2      | 2       |
+| 10. Contas             | 3      | 1      | 3       |
 | 11. População e grupos | 5      | 3      | 11      |
-| 12. Congresso          | 2      | 1      | 16      |
-| 13. Eleição            | 2      | 1      | 8       |
-| 14. Mídia              | 0      | 0      | 10      |
+| 12. Congresso          | 12     | 2      | 5       |
+| 13. Eleição            | 4      | 2      | 5       |
+| 14. Mídia              | 1      | 1      | 8       |
 | 15. Mundo              | 2      | 1      | 8       |
 | 16. Economia           | 4      | 4      | 31      |
-| 17. Tela e mesa        | 3      | 2      | 10      |
-| **Total**              | **40** | **23** | **141** |
+| 17. Tela e mesa        | 7      | 10     | 7       |
+| **Total**              | **72** | **41** | **105** |
 
 ---
 
@@ -57,20 +61,20 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R4.2** Passar o turno: efeitos chegam com o atraso declarado.
 - ✅ **R4.3** Escolher o país: `brasil-2026` (12/nov; 476 leis com o valor de hoje, 19 partidos com nome e cor, companhias inventadas). Dívida: juros comem 16% do PIB e a dívida vai de 78% a 107% em 24 turnos; calibrar na Economia.
 - ◐ **R4.4** A partida acaba quando o partido perde o poder federal (hoje só pela eleição; ver R6.13).
-- ✅ **R4.11** Mundo sai da planilha: `npm run exportar` grava leis e índices (12/nov).
+- ☐ **R4.11** Mundo sai da planilha: o exportador antigo (da `leis.xlsx`) foi apagado em 13/nov; um novo, da `gdd.xlsx`, nasce com as leis padronizadas (R7.22).
 - ✅ **R4.12** Fatos do turno: mesa de fatos (memória curta, como RAM) em `motor/fatos`; cada etapa escreve, cada módulo pergunta o que precisa; fato gera fato; some em 1–3 turnos pelo tamanho. Hoje escrevem Congresso (lei aprovada/derrubada) e Política (base, eleição); a tela mostra como manchete no Resultado do turno (12/nov).
 - ✅ **R4.5** Criar o partido: nome e sigla; não escolhe lado. (12/nov; a sigla vira o id e não pode repetir a de outro partido.)
 - ✅ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação). (12/nov)
 - ✅ **R4.8** O lado do partido sai da chapa; o jogo nunca pede lado. (12/nov: média da bússola da chapa → 5 grupos que ele defende.)
 - ◐ **R4.9** (12/nov: feito o partido novo com 6% das cadeiras e o antigo governo na oposição ou na coligação. Falta a Aprovação começar alta.) Começo com história: o partido que governava vira oposição (ou entra na coligação, se o jogador quiser); partido novo, poucas cadeiras, presidente popular.
-- ✅ **R4.10** Tela de início em sequência: país → partido → chapa → ministérios → iniciar. (12/nov, no estilo da Art Bible.)
+- ✅ **R4.10** Tela de início em sequência: país → partido → chapa → governo → ministros → iniciar. (13/nov, no estilo da Art Bible.)
 - ☐ **R4.7** Placar final: tempo no poder e país deixado.
 
 **Construção**
 
 - Dados: país em `conteudo/paises/<id>/` (estado inicial, leis vigentes, Congresso, ministérios, programas de antes, rótulos). Brasil 2026 e Brasil 2003 são países diferentes.
 - Estado: `turno`, `fatos` do último turno.
-- Módulo: `turno` só chama os módulos em ordem e junta os fatos; regra de cada coisa fica no módulo dela (hoje o `turno` tem 1.552 linhas com regra dentro: tirar aos poucos, cada vez que um módulo novo nascer).
+- Módulo: `turno` só chama os módulos em ordem e junta os fatos; regra de cada coisa fica no módulo dela (hoje o `turno` tem ~2.500 linhas com regra dentro: tirar aos poucos, cada vez que um módulo novo nascer).
 - Tela: menu de início em telas curtas; o turno mostra os fatos como manchetes.
 - Teste: mesma semente e mesmos pedidos, mesma partida; todo fato tem tipo conhecido.
 
@@ -89,30 +93,33 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - Fatos: ouve "lei aprovada" (distância da base) e "escândalo"; emite "coesão caiu".
 - Teste: governar sempre longe da base derruba a coesão em poucos turnos.
 
-## 6. Governo: presidente, ministros, órgãos, justiça, estados
+## 6. Governo: presidente, ministros, instituições, Judiciário, estados
 
 **Pessoas e fichas**
 
-- ◐ **R6.1** Retratos genéricos (feito); ficha com atributos (falta).
+- ◐ **R6.1** Retratos genéricos (feito, provisório: o autor não gostou); ficha com atributos (falta).
 - ◐ **R6.6** Gerador de pessoas; envelhecem, se aposentam e morrem. (12/nov: o gerador existe e o país declara só os nomes. Falta envelhecer, aposentar e morrer.)
 - ◐ **R6.11** Perfil de rede social da pessoa, gerado da ficha; sem rótulo de lado. (12/nov: posts, lugares e quem segue; falta a "Informações pessoais descobertas" e o Espiar.)
 - ✅ **R6.12** Lista de pessoas por vaga (chapa, ministério), com o perfil ao clicar. (12/nov)
 - ☐ **R6.2** Presidente pesa por carisma (aprovação), honestidade (escândalo) e habilidade (Congresso).
 
-**Ministérios** (12/nov)
+**Instituições e ministérios** (13/nov)
 
-- ✅ **R6.10** Ministério é uma caixa com nome e zero ou mais esferas e subesferas; cada uma numa caixa só; a sobra vai ao gabinete. (12/nov: moldes na aba Ministérios; a lei traz `esfera` e `subesfera`.)
-- ◐ **R6.14** O país começa com os ministérios reais (aba Ministérios - países); o jogador muda no menu; depois só pela lei Organização dos ministérios. (12/nov: Brasil 2026 com 32 caixas. Feito o menu de montar o governo (passo 9). Faltam os outros países e a lei Organização dos ministérios.)
-- ◐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com ele; muitas caixas dão foco e custam; superministério divide a competência. (12/nov: toda caixa tem ministro e o superministério divide a competência. Faltam: custo de estrutura, foco e agradar quem é parecido com o ministro.)
-- ✅ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem. (12/nov: cinco notas, bússola e origem. Agem competência e honestidade; habilidade, carisma e lealdade esperam Congresso, mídia e fatos do ministro.)
-- ◐ **R6.8** A ficha muda a força e o atraso das leis das esferas da caixa e o rendimento dos órgãos dela. (12/nov: competência muda força e atraso. Falta o rendimento dos órgãos, que é R7.11.)
-- ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão barulhenta, vira candidato) e custo de troca.
+- ✅ **R6.10** 36 instituições (+ regras dos poderes, no miolo), todas em todo país; toda lei mora numa delas. Ministério é uma caixa com nome e zero ou mais instituições inteiras; cada instituição numa caixa só; a que nenhuma cita vai para a caixa da sobra (o gabinete), que pesa 3 a mais. (13/nov: as 512 leis já apontam uma instituição.)
+- ✅ **R6.25** Tamanho do governo numa régua: Enxuto (9), Clássico (19), Do país, Inchado (do país + 5 sem pasta); "Ajustar caixas" arrasta instituições, cria e tira ministério; nome automático pela caixa sugerida mais parecida. (13/nov)
+- ✅ **R6.26** Ministros no começo: sorteio pela chapa; cada cadeira mostra quanto o ministro rende ali e troca por três cartas (técnico, aliado, do seu partido) ou pela lista. (13/nov)
+- ◐ **R6.14** O país começa com os ministérios dele; o jogador muda no começo; depois só pela lei Organização dos ministérios (escada de 4 degraus). (13/nov: Brasil com 34 caixas. Faltam os outros países e a lei.)
+- ◐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com o ministro; superministério divide a competência. (13/nov: ministro e divisão feitos. Faltam o custo de estrutura, que é do caminho do dinheiro, e agradar quem é parecido.)
+- ✅ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem. (12/nov: agem competência e honestidade; habilidade, carisma e lealdade esperam Congresso, mídia e fatos do ministro.)
+- ◐ **R6.8** A ficha muda a força e o atraso das leis das instituições da caixa e o rendimento delas. (Competência muda força e atraso. Falta o rendimento agir na lei, que é R7.11.)
+- ☐ **R6.24** Trocar ministro a qualquer momento, sem esperar turno nem lei; toda troca causa revolta e polêmica (o demitido reage pela lealdade, o partido dele se irrita no Congresso, a mídia cobra). (13/nov)
+- ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão barulhenta, vira candidato).
 
-**Órgãos** (11/nov)
+**Instituição por dentro** (11 e 13/nov)
 
-- ✅ **R6.16** Um órgão por esfera, sob o ministério dela; verba (da lei), necessidade, rendimento = verba ÷ necessidade, corrupção interna. (12/nov: verba, necessidade, rendimento e corrupção; o rendimento ainda não age sobre a lei, é R7.11.)
-- ✅ **R6.17** Verba de sobra vira corrupção; cargos de livre nomeação e ministro desonesto também. (12/nov: sobra de verba, cargos de livre nomeação e ministro desonesto; escândalo ao cruzar 60.)
-- ☐ **R6.18** Ficha do órgão só de leitura no mapa (cor do rendimento, fila, leis que mexem).
+- ✅ **R6.16** Cada instituição tem verba (das leis de gasto dela), necessidade, rendimento = verba ÷ necessidade e corrupção interna. Não tem chefe próprio: quem manda é o ministro. (O rendimento ainda não age sobre a lei, é R7.11.)
+- ✅ **R6.17** Verba de sobra vira corrupção; cargos de livre nomeação e ministro desonesto também; escândalo ao cruzar 60.
+- ◐ **R6.18** Ficha da instituição no mapa, só de leitura (cor do rendimento, fila, leis que mexem). (13/nov: escudo sob o ministro, "Recebe X% do PIB" e o painel Atrapalham / Ajudam. Falta a ficha com rendimento, corrupção e fila.)
 
 **Perder o poder** (12/nov)
 
@@ -121,22 +128,23 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ☐ **R6.5** Impeachment: fato grave, aprovação < 30%, 2/3; Senado julga se houver.
 - ☐ **R6.19** Caminho autoritário: cada passo sobe a raiva dos contrários; sem armas leais, sobe o Risco de golpe.
 
-**Justiça e estados**
+**Judiciário, Justiça e prisões e estados** (13/nov: Judiciário é poder, Justiça e prisões é instituição)
 
-- ☐ **R6.20** Justiça: fila de processos, independência, caso em etapas (rastro, investigação, processo, sentença).
+- ☐ **R6.20** Judiciário (poder, no miolo, sem ministro): fila de processos, independência, caso em etapas (rastro, investigação, processo, sentença). Hoje os juízes do mapa são de mentira.
+- ☐ **R6.27** Eleições sem ministro: por padrão com o Judiciário; o país declara quem organiza (Judiciário, órgão independente ou Executivo, e só aí entra numa caixa). (Hoje fica sem ministro, com competência média.)
 - ☐ **R6.21** Corrupção em cadeia: rastro nunca some; a chance de achar usa a independência de hoje.
 - ☐ **R6.22** Tribunal superior: cadeiras com lado; vaga vira papel; suspende lei que bate em direito.
-- ☐ **R6.23** Governadores: partido, bússola e termômetro; aliado faz a verba render, oposição atrasa e culpa.
+- ☐ **R6.23** Governadores: partido, bússola e termômetro; falam com o governo pela instituição Estados e municípios (repasses e dívida dos estados); o ministro dela faz a verba render e esquenta o termômetro; oposição atrasa e culpa.
 
 **Construção**
 
-- Dados: abas Ministérios e Ministérios - países → `mundo/ministerios.json` (moldes) e `paises/<id>/ministerios.json`; coluna Subesfera da aba Leis vai em cada lei (`esfera`, `subesfera`); órgão por esfera em `mundo/orgaos.json`.
-- Estado: `pessoas` (fichas), `ministerios` (caixa → esferas, ministro), `orgaos` (corrupção, fila), `justica` (rastros, casos).
-- Módulo: `governo` (ministérios, fichas, órgãos, sucessão); `justica` dentro de `governo` até crescer.
-- Turno: depois dos efeitos e antes dos índices (a ficha muda força e atraso; o órgão muda o rendimento da verba).
+- Dados: `mundo/ministerios/instituicoes.json`, `moldes.json` (caixas sugeridas) e `tamanhos.json`, da `gdd.xlsx`; cada lei traz a instituição no campo `esfera` (renomear é pedido à parte); país em `paises/<id>/governo.json` (caixas, quem manda) e `pessoas.json`.
+- Estado: `governo` (caixas com ministro, órgão por instituição: corrupção), `pessoas` (fichas); depois `justica` (rastros, casos).
+- Módulo: `governo` (instituições, caixas, fichas, órgãos); `pessoas` (gerador); `justica` nasce dentro de `governo` até crescer.
+- Turno: etapa Governo, depois de pops e grupos (o órgão muda o rendimento e a corrupção); a ficha entra na força e no atraso das leis novas.
 - Fatos: emite "ministro caiu", "escândalo", "presidente morreu", "impeachment aberto"; ouve "papel assinado" (rastro), "CPI".
-- Tela: caixas no mapa com retrato do ministro; ficha por cima; órgão como prédio pequeno.
-- Teste: ministro competente faz a mesma lei chegar antes; verba acima da necessidade sobe a corrupção do órgão; vice de outro partido assumindo acaba a partida.
+- Tela: começo com Governo (régua e caixas) e Ministros (cadeiras e cartas); no mapa, ministros no anel e instituições como escudos; juízes no miolo.
+- Teste: ministro competente faz a mesma lei chegar antes; verba acima da necessidade sobe a corrupção; mais instituições na caixa, menos rendimento; governo pronto sem instituição repetida.
 
 ## 7. Leis e programas
 
@@ -147,14 +155,14 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R7.3** Validador com arquivo, campo e motivo.
 - ✅ **R7.4** País declara as leis que tem; o resto fica "não legislada".
 - ✅ **R7.5** Texto da tela sai dos números da lei.
-- ✅ **R7.14** Leis saem da planilha (512 no jogo, 12/nov); unidade livre (km/h, mandatos, % acima de 100).
+- ✅ **R7.14** Leis saíram da `leis.xlsx` (512 no jogo, 12/nov; ver R4.11); unidade livre (km/h, mandatos, % acima de 100).
 - ✅ **R7.15** Formas especiais divididas: dois controles em duas leis, divisão de 100% em pesos, régua por setor geral.
 - ✅ **R7.9** Colisão: leis que colidem não valem juntas.
 - ✅ **R7.10** Processo: índice que anda sozinho (deriva).
 - ◐ **R7.6** Temas em pacotes de leis pequenas (planilha completa; 5 escolhas de lista fora: vistos por país, setores, verba das estatais, ministérios).
-- ◐ **R7.7** Todo dinheiro passa por lei (leis de propriedade ainda sem efeito).
 - ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito (hoje quase todas só por índice).
-- ◐ **R7.13** Toda lei e índice numa esfera (planilha sim; no jogo ainda nas 8 áreas antigas).
+- ◐ **R7.13** Toda lei numa instituição (13/nov: as 512; serão refeitas instituição por instituição) e índice preso ao ministro responsável (no mapa). As 8 áreas antigas saem (autor, 13/nov); o código ainda as usa.
+- ☐ **R7.22** Leis padronizadas por instituição, a partir da `gdd.xlsx`; o dinheiro que entra e sai "fora das leis" se resolve aí. (Próxima frente depois do mapa.)
 - ☐ **R7.8** Revogar = propor a volta a "não legislada", com voto.
 - ☐ **R7.11** Lei age pelo órgão: a regra funciona na medida da verba do órgão (ver R6.16).
 - ☐ **R7.16** Tipos de lei: Lei com prazo (acaba sozinha), Ato, Posição por país, Operação.
@@ -174,7 +182,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - Módulo: `programas`.
 - Turno: depois do Congresso e da mesa (lei assinada conta na hora da aprovação).
 - Fatos: ouve "lei aprovada"; emite "programa formado", "programa desfeito" (o jornal e os grupos leem).
-- Tela: bolha do programa na esfera, com as leis que faltam; aviso antes de uma lei desfazer.
+- Tela: bolha do programa no mapa, com as leis que faltam; aviso antes de uma lei desfazer.
 - Teste: aprovar 3 de 4 leis na direção forma; voltar uma desfaz e deixa nostalgia.
 
 ## 8. Bússola
@@ -200,6 +208,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 ## 10. Contas do Estado
 
 - ✅ **R10.1** Receita, gasto, juros, cofre e dívida separados.
+- ☐ **R10.7** Caminho do dinheiro: impostos → Tesouro → verba por lei → máquina do ministério → filtro da corrupção (dinheiro some de verdade) → instituição. A pensar depois das leis (GDD §18).
 - ✅ **R10.2** Juros sobem com dívida e inflação.
 - ✅ **R10.3** Regra fiscal por lei.
 - ◐ **R10.4** Dinheiro na moeda do país.
@@ -255,7 +264,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R12.6** Veto com observação e derrubada do veto. (12/nov: só vale para lei emendada; observação guardada na votação.)
 - ☐ **R12.5** Rejeitar, emendar, propor lei popular, travar a pauta, CPI.
 - ☐ **R12.10** Lei popular passa mais fácil; o Congresso propõe por conta própria.
-- ☐ **R12.8** Sistemas: presidencialismo, parlamentarismo (moção), semipresidencialismo (coabitação), partido único (alas, congresso do partido, expurgo).
+- ☐ **R12.8** Sistemas: presidencialismo, parlamentarismo (moção), semipresidencialismo (coabitação), partido único (alas, congresso do partido, expurgo). (13/nov: reformular os tipos de parlamento com as caixas livres; GDD §18.)
 - ☐ **R12.9** Cadeiras mudam a cada eleição.
 
 **Construção**
@@ -265,7 +274,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - Módulo: `congresso` (nasce do `politica` de hoje).
 - Turno: primeira etapa (pedidos do jogador → votações).
 - Fatos: emite "lei aprovada", "lei rejeitada", "emenda", "veto derrubado", "decreto derrubado", "partido saiu da base", "CPI aberta"; ouve "manchete contra", "escândalo", "grupo com raiva", "aprovação".
-- Tela: semicírculo, termômetro em arco, ponteiro da paciência, barra de carga, placar com linha do quórum, "até aqui passa" na régua.
+- Tela: anel de cadeiras no miolo do mapa (feito, 13/nov), termômetro em arco, ponteiro da paciência, barra de carga, placar com linha do quórum, "até aqui passa" na régua.
 - Teste: placar previsto igual ao apurado; lei cara perde votos com déficit alto; Senado que muda devolve à Câmara; decreto derrubado deixa os grupos que ganhavam com raiva de quem derrubou.
 
 ## 13. Eleição, campanha e mandatos
@@ -398,21 +407,38 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 
 ## 17. Tela e mesa
 
-- ✅ **R17.1** Mapa: leis como bolhas em áreas; índices, grupos e potências.
+**Mapa** (13/nov)
+
+- ✅ **R17.1** Mapa orgânico: bolhas soltas sobre uma hierarquia (trindade → ministros → instituições → leis em pétalas); índices presos ao ministro; grupos num anel de fora, potências mais longe.
+- ◐ **R17.12** Mapa por ministério e instituição, sem as 8 áreas antigas. (Hierarquia feita; as áreas ainda dão cor e ordem às pétalas: tirar.)
+- ◐ **R17.16** Três Poderes no miolo: trindade (Executivo), juízes em volta (Judiciário), anel de cadeiras (Câmara em cima, Senado embaixo). (Judiciário de mentira até R6.20; em aberto se cada instituição e lei responde a um poder.)
+- ✅ **R17.17** Prioridade visual Ministro > Instituição > Índice > Lei; visões Padrão, Ligações, Nível, Dinheiro e Popularidade como filtros dentro do degrau. (Popularidade sem dado: o motor não calcula popularidade por lei.)
+- ◐ **R17.18** Alerta do índice: cor do anel pelo nível, seta pela tendência. (A tendência com corte de 5 pontos por turno nunca dispara: decidir janela ou corte.)
+- ✅ **R17.19** Só leis promulgadas no mapa; as outras num botão no canto, com a folha para promulgar.
+- ✅ **R17.20** Painel Atrapalham / Ajudam de ministro, instituição e índice.
+- ✅ **R17.21** Barra do topo: caixa, dívida, PIB, apoio, eleição e passar o turno.
+- ✅ **R17.22** Navegação: busca, enquadrar, miniatura, pinça, roda, setas e teclado.
+- ☐ **R17.23** Onde moram as janelas que saíram da barra (Governo, Programas, Eleição, Mesa, Mercado, Pregão, Salvar, Carregar, Recomeçar): existem, mas nada as abre. O autor vai dizer.
+- ☐ **R17.24** Trocar ministro pelo mapa (R6.24).
+- ◐ **R17.15** Causa e efeito: "o que empurra" no índice, "a conta que vem" na lei, marca da lei no gráfico. (Fios de efeito e o painel Atrapalham / Ajudam; faltam a conta que vem e o gráfico.)
+
+**Turno e fichas**
+
 - ✅ **R17.2** Votação, passar o turno, resultado do turno.
-- ✅ **R17.3** Salvar e carregar.
+- ◐ **R17.3** Salvar e carregar. (Funciona; ficou sem botão, R17.23.)
 - ◐ **R17.4** Fichas por cima do mapa (retrato feito; atributos faltam).
 - ◐ **R17.5** Prévia de quem ganha e perde antes de propor.
-- ☐ **R17.12** Mapa por ministério e esfera (hoje 8 áreas antigas, cheias demais).
-- ◐ **R17.6** Mesa: carimbos assinar, vetar (com observação), recusar, encaminhar, pilha. (12/nov: feitos assinar e vetar com observação na janela Mesa; faltam recusar, encaminhar e pilha, que dependem de outras partes prontas: as outras famílias de papel.)
-- ◐ **R17.7** Famílias de papel: leis, crises, pedidos, ofertas, órgãos, partido, duvidosos; conteúdo sai dos números. (12/nov: só a família Leis, com papel de sanção e avisos; o texto sai da lei e do valor. Faltam crises, pedidos, ofertas, órgãos, partido e duvidosos, que dependem de outras partes prontas: o módulo de cada um.)
-- ◐ **R17.13** Prazos: ignorar tem consequência (lei passa sozinha ou cai, crise piora, aliado se afasta). (12/nov: papel de lei vale 1 turno; ignorar vira sanção tácita ou veto tácito pela regra do país, `ignorar`; falta crise e aliado se afastar, que dependem de outras partes prontas: Partido e as outras famílias.)
+
+**Mesa**
+
+- ◐ **R17.6** Mesa: carimbos assinar, vetar (com observação), recusar, encaminhar, pilha. (12/nov: feitos assinar e vetar com observação na janela Mesa, hoje sem botão; faltam recusar, encaminhar e pilha.)
+- ◐ **R17.7** Famílias de papel: leis, crises, pedidos, ofertas, instituições, partido, duvidosos; conteúdo sai dos números. (Só a família Leis.)
+- ◐ **R17.13** Prazos: ignorar tem consequência. (Papel de lei vale 1 turno; falta crise e aliado se afastar.)
 - ☐ **R17.14** Papéis duvidosos deixam rastro (R6.21).
 - ☐ **R17.8** Encaminhar ao ministro: ele decide pela ficha.
 - ☐ **R17.9** A mídia lê a mesa.
 - ☐ **R17.10** Mesa do partido.
 - ☐ **R17.11** Momentos do partido como telas curtas.
-- ☐ **R17.15** Causa e efeito: "o que empurra" no índice, "a conta que vem" na lei, marca da lei no gráfico.
 
 **Construção (mesa)**
 
@@ -427,7 +453,7 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 ## Ordem de construir
 
 A ordem segue a dependência: primeiro o que os outros usam. Cada passo fecha
-jogável (teste ou tela) antes do próximo. Até o passo 10 é a **V1**: o Brasil
+jogável (teste ou tela) antes do próximo. Até o passo 10c é a **V1**: o Brasil
 de hoje jogado por um mandato inteiro, para mostrar a pessoas.
 
 | #   | Passo                  | Requisitos                                        | Por que nesta ordem                                                                                                                         |
@@ -440,8 +466,11 @@ de hoje jogado por um mandato inteiro, para mostrar a pessoas.
 | 6   | Programas              | R7.18–R7.21                                       | Usa leis aprovadas (3) e ministros (5).                                                                                                     |
 | 7   | Jornal mínimo          | R14.1, R14.4                                      | Anuncia programa, escândalo e votação; dá sentido ao turno.                                                                                 |
 | 8   | Eleição nova           | R9.9, R13.9–R13.11                                | Aprovação, promessa e dois turnos fecham o mandato.                                                                                         |
-| 9   | Começo da partida      | R4.5, R4.6, R4.8–R4.10                            | Junta país, partido, chapa e ministérios num menu.                                                                                          |
+| 9   | Começo da partida      | R4.5, R4.6, R4.8–R4.10, R6.25, R6.26              | Junta país, partido, chapa e ministérios num menu.                                                                                          |
 | 10  | Base do jogo e tela V1 | R16.26, R16.27, R17.12, R17.15                    | O jogador sente a lei no bolso do pop e vê causa e efeito. **V1.**                                                                          |
+| 10a | Mapa da raiz às pontas | R17.12, R17.16, R17.18, R17.23, R17.24, R6.24     | Ordem do autor (13/nov): com os ministros prontos, corrigir o mapa e as mecânicas do miolo até as leis antes de mexer nas leis.             |
+| 10b | Leis padronizadas      | R7.22, R7.13, R4.11                               | As leis refeitas instituição por instituição, na `gdd.xlsx`.                                                                                |
+| 10c | Caminho do dinheiro    | R10.7, R6.15                                      | Depende das leis padronizadas; dá custo ao tamanho do governo.                                                                              |
 | 11  | Perder o poder         | R6.13, R6.3, R6.5, R6.19                          | Sucessão, impeachment, golpe.                                                                                                               |
 | 12  | Mídia completa         | R14.2, R14.3, R14.8–R14.11                        | Enquadramento, raiva, fato e versão.                                                                                                        |
 | 13  | Mundo leve             | R15.7–R15.12                                      | Países reais com IA.                                                                                                                        |

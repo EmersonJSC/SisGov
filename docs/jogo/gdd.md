@@ -8,6 +8,10 @@
 > - **Onde parei:** `RETOMAR.md`.
 > - **Comportamento exato de cada peça:** `src/motor/<módulo>/<módulo>.md`.
 >
+> **Planilhas (13/nov):** `docs/jogo/leis.xlsx` é o acervo, o que se pensou e
+> criou por semanas. `docs/jogo/gdd.xlsx` é o que estamos construindo: o que já
+> saiu do acervo e deste GDD e tem mecânica, pronto para virar código.
+>
 > Quando o código e o GDD discordam, o GDD diz para onde ir. Ideia nova entra
 > na seção 18 (Perguntas em aberto) até o autor decidir; decidida, passa
 > para o sistema dela.
@@ -146,9 +150,11 @@ começo nem fim: mexer numa ponta volta pela outra.
      tem que ser construída com coligação. No começo, o jogador pode pôr o
      partido que governava na coligação, em vez de deixá-lo na oposição. A lembrança dos programas que já
      existem fica com quem o arquivo do país disser (se disser).
-4. **Monta o ministério:** escolhe os ministérios e os ministros. Pode
-   deixar o jogo sortear os ministros (pela ideologia da chapa) ou escolher
-   cada um.
+4. **Monta o governo (13/nov):** primeiro o tamanho, numa régua (Enxuto,
+   Clássico, Do país, Inchado), e, se quiser, ajusta as caixas arrastando as
+   instituições entre os ministérios. Depois os ministros: o jogo sorteia pela
+   chapa, e cada cadeira pode ser trocada por uma de três cartas (o técnico, o
+   aliado, o do seu partido) ou por qualquer pessoa da lista.
 5. Inicia o jogo e governa.
 
 **Histórico do país (07/nov):** cada país declara dados históricos (golpes,
@@ -305,14 +311,20 @@ alia e o quanto ele se afasta da própria história.
   grupo.
 - **Fatos:** escândalo (honestidade), crise na área (competência), demissão
   barulhenta (lealdade), ministro que vira candidato (carisma).
-- **Troca:** demitir custa um pouco (mídia e coesão); manter alguém sob
-  escândalo custa mais com o tempo.
+- **Troca a qualquer momento (13/nov):** o jogador troca ministro quando
+  quiser, sem esperar turno nem lei, mas toda troca causa revolta e polêmica: o
+  demitido reage pela lealdade dele, o partido dele se irrita no Congresso e a
+  mídia cobra. Manter alguém sob escândalo custa mais com o tempo.
 - **Ministério é uma caixa com nome (12/nov; instituições em 13/nov).** Dentro
-  cabem **instituições** (ver Instituições, abaixo), de zero até quantas
-  quiser, e pedaços delas que governos reais costumam separar (Pesca dentro de
-  Agricultura e pesca; Portos e aeroportos dentro de Infraestrutura). Cada
-  instituição ou pedaço fica numa caixa só; a que sobra vai para o gabinete do
-  chefe de governo. Planilha: moldes na aba Ministérios.
+  cabem **instituições** inteiras (ver Instituições, abaixo), de zero até
+  quantas quiser; não há mais pedaço de instituição (a subesfera saiu em
+  13/nov). Cada instituição fica numa caixa só; a que sobra vai para o gabinete
+  do chefe de governo, que conta peso a mais. Caixa sem instituição é
+  **ministério sem pasta**: só cargo para aliado (os "de causa", como Mulheres
+  ou Pesca, começam assim). Caixas sugeridas: aba Ministérios (geral) da
+  `gdd.xlsx`.
+- **Competência se divide:** até 3 instituições o ministro rende inteiro; com
+  mais, rende menos (raiz de 3 ÷ instituições).
 - **Toda caixa** tem um ministro (cargo para aliado, a moeda Ministério do
   Congresso), custa estrutura e agrada quem é parecido com o ministro. **Caixa
   com instituições** também rende: a ficha do ministro muda leis e órgãos dela. Muitas
@@ -321,10 +333,9 @@ alia e o quanto ele se afasta da própria história.
   depende de vários ministros e anda no passo do mais fraco.
 - **No começo**, o país vem com os ministérios reais dele, e o jogador muda no
   menu ao montar o governo. Depois, pela lei **Organização dos ministérios**,
-  uma escada de quem pode mexer nas caixas (13/nov): 1) livre, por decreto;
-  2) por medida provisória, o Congresso confirma; 3) só por lei; 4) algumas
+  uma escada de quem pode mexer nas caixas (13/nov): 1) livre, por decreto; 2) por medida provisória, o Congresso confirma; 3) só por lei; 4) algumas
   caixas fixas na Constituição. O país declara o degrau inicial. Caixas
-  genéricas, sem país: aba Ministérios (geral) da `gdd-remontagem.xlsx`.
+  genéricas, sem país: aba Ministérios (geral) da `gdd.xlsx`.
 - **A divisão muda com quem governa,** como na realidade: o Brasil juntou a
   economia num superministério em 2019 e separou de novo em 2023.
 
@@ -335,7 +346,7 @@ ele: mudam o quanto ele consegue (carisma, competência, honestidade, lealdade)
 e podem cair.
 
 - **Controla:** leis (propor, assinar, vetar, decretar se a lei deixar);
-  pessoas (nomear e demitir ministros e chefes de órgão, indicar juiz na vaga);
+  pessoas (nomear e demitir ministros, indicar juiz na vaga);
   verbas, sempre por lei; estatais (Operações); exterior (posições por país e
   atos); polícia federal e Forças Armadas, dentro da lei de autonomia delas;
   emissora estatal e inteligência; a mesa inteira.
@@ -363,7 +374,7 @@ coabitação (seção 12) e o jogo segue.
 
 ### Instituições (13/nov)
 
-Substitui a divisão por esfera. Planilha: `docs/jogo/gdd-remontagem.xlsx`,
+Substitui a divisão por esfera. Planilha: `docs/jogo/gdd.xlsx`,
 aba Instituições novas.
 
 - **Lei** é a regra do país (o Congresso aprova). **Instituição** é o órgão
@@ -379,10 +390,12 @@ aba Instituições novas.
 - **Todo país tem todas as instituições**, mesmo pequenas. A pequena é um
   caminho que o jogador pode crescer (um Brasil religioso faz Religião
   crescer).
-- **Eleições não tem ministro** no começo: fica ligada à Justiça. Quem
-  organiza a eleição muda por país (França e Alemanha: ministério do
-  Interior; Índia, México, Reino Unido: órgão independente; Brasil: Justiça
-  eleitoral).
+- **Eleições não tem ministro (13/nov).** Por padrão fica com o
+  **Judiciário**, no miolo (como a Justiça eleitoral do Brasil), e não com a
+  instituição Justiça e prisões. O país declara quem organiza: o Judiciário,
+  um órgão independente (Índia, México, Reino Unido) ou o Executivo (França e
+  Alemanha, pelo Interior); só no último caso ela entra numa caixa, como as
+  outras instituições.
 - **As regras dos poderes** (medida provisória, indicação de juízes, quórum,
   foro privilegiado, iniciativa popular) não são de instituição: ficam no
   miolo, com Presidente, Congresso e Justiça.
@@ -403,28 +416,36 @@ aba Instituições novas.
 
 Instituição e órgão são a mesma coisa (13/nov); o jogo usa só "instituição".
 
-- Cada instituição é um prédio no mapa, na área dela, sob o ministro que a leva.
+- Cada instituição é um escudo no mapa, preso ao ministro que a leva (seção 17).
 - O ministro não mexe na verba (é lei); a ficha dele muda a instituição:
-  competência alta, rende mais; honestidade baixa, mais corrupção. Chefe com
-  mandato (lei de independência) obedece menos ao ministro.
+  competência alta, rende mais; honestidade baixa, mais corrupção. A
+  instituição não tem chefe próprio (13/nov): quem manda é o ministro.
 - Nome de função ("Órgão ambiental", "Órgão de terras"); o país dá o rótulo local.
 - Números: verba (da lei), necessidade (o trabalho que as leis pedem),
   rendimento (verba ÷ necessidade: pouca verba, a fila anda devagar; verba
   demais, a sobra vira corrupção) e corrupção interna (sobe com sobra de
   verba, cargos de livre nomeação e ministro desonesto).
-- Tela: no mapa, prédio pequeno com frase curta ("12 na fila · 2 na sua mesa")
+- Tela: no mapa, escudo com frase curta ("12 na fila · 2 na sua mesa")
   e cor do rendimento (verde rende, amarelo falta verba, vermelho sobra e vira
-  corrupção). Clicar abre ficha só de leitura, sem botão: chefe e ministro,
+  corrupção). Clicar abre ficha só de leitura, sem botão: o ministro,
   verba × necessidade numa barra, corrupção interna, fila (se houver) e leis
   que mexem nela (clicar abre a bolha). Mudar a instituição é sempre lei,
   ministro ou papel na mesa.
 
-### Justiça (11/nov, "por enquanto")
+### Judiciário e Justiça e prisões (13/nov)
 
-- A Justiça é o órgão da esfera Justiça e prisões: verba (Verba da Justiça),
-  fila de processos (pouca verba, fila lenta e o caso prescreve), corrupção
-  interna e independência (Indicação de juízes, Independência dos
-  investigadores).
+São duas coisas diferentes, que o texto de 11/nov misturava:
+
+- **Judiciário (um dos Três Poderes, no miolo do mapa):** juízes e
+  tribunais. Julga: fila de processos, caso em etapas, tribunal superior,
+  suspender lei, e organiza a eleição onde o país mandar. Não tem ministro e
+  não entra em caixa; o presidente só influencia (indica juiz na vaga,
+  pressiona com rastro, aumenta a corte). Fila de processos: pouca verba, fila
+  lenta e o caso prescreve. Independência pelas leis Indicação de juízes e
+  Independência dos investigadores.
+- **Justiça e prisões (instituição do Executivo, sob um ministro):** prisões,
+  penas e a política de justiça do governo. O ministro faz as leis dela
+  andarem; não julga ninguém.
 - Um caso anda: rastro, investigação, processo, sentença. Condena se a prova
   existe de verdade, conforme a independência; Foro especial manda o político
   ao tribunal de cima, mais lento; Delação premiada acelera. Vale para papel
@@ -440,8 +461,9 @@ Instituição e órgão são a mesma coisa (13/nov); o jogo usa só "instituiç�
   Congresso e na mídia), pressiona o juiz (papel duvidoso, rastro) ou ignora
   a decisão (crise institucional; liberdade e reputação caem; Risco de golpe
   sobe).
-- Tela: prédio no anel do Estado ("320 processos · 2 seus") e cadeiras do
-  tribunal superior coloridas. Impeachment segue com o Congresso.
+- Tela: os juízes no miolo, coloridos pelo lado; passar o mouse mostra a
+  fila ("320 processos · 2 seus"). Justiça e prisões é um escudo sob o
+  ministro. Impeachment segue com o Congresso.
 - **Corrupção em cadeia (12/nov):**
   - O rastro não some: todo papel duvidoso vai para o arquivo do país. A chance
     de ser descoberto usa a Independência dos investigadores de hoje, não a da
@@ -481,6 +503,10 @@ que não cabe ao presidente fica inativa.
   pequena que acorda só quando a lei mexe com o estado.
 - Mesa: pede obra, socorro e polo (família Pedidos).
 - Eleição: aliado faz campanha pelo presidente no estado; oposição, contra.
+- **Estados e municípios (13/nov):** é a instituição por onde o governo
+  federal fala com os governadores. As leis de repasse e de dívida dos estados
+  moram nela; o ministro que a leva negocia: competência faz a verba federal
+  render no estado, habilidade esquenta o termômetro dos governadores.
 - O jogador não governa estado nem escolhe obra. Pops por estado pesam pouco no
   motor (medido em 12/nov: possível, com cálculo uma vez por tipo de pop).
 
@@ -488,9 +514,10 @@ que não cabe ao presidente fica inativa.
 
 **O que o jogador faz:** propõe, muda e revoga leis.
 
-- **Esferas.** São 30, a classificação do que um país faz; a lista e o que
-  cada uma cobre estão em `docs/jogo/leis.xlsx`. Esfera não é ministério: é a
-  peça com que os ministérios se montam (seção 6). As esferas se interligam.
+- **Instituições (13/nov, no lugar das esferas).** Toda lei mora numa das 36
+  instituições (seção 6), ou nas regras dos poderes, no miolo. Instituição não é
+  ministério: é a peça com que os ministérios se montam. As leis serão refeitas
+  instituição por instituição.
 - **Duas camadas.** _Essenciais_: estrutura do Estado (mandato, regime,
   reeleição, impostos básicos); mudam pouco. _Jogabilidade_: as políticas.
 - **Forma:** como o jogador mexe na lei (Régua, Níveis, Escolha, Régua por
@@ -511,8 +538,6 @@ que não cabe ao presidente fica inativa.
   Cada um é de um de três tipos: **estudo** (tem fonte), **ordem de grandeza** ou
   **chute de jogo**. A calibração fica para o motor. Valores convertidos de uma
   palavra (esquerda, direita) usam 0,4 e estão marcados na coluna "Bússola: origem".
-- **Todo dinheiro passa por lei** (princípio 5). Não existe receita ou gasto
-  "fora das leis": o que o país já gasta no começo está nas leis de partida.
 - O texto da tela sai dos números da lei: texto e motor nunca discordam.
 - O país declara as leis que tem; a que falta fica "não legislada" e pode
   ser proposta. Lei que não faz sentido no país não aparece. Lei que não cabe ao presidente
@@ -532,13 +557,13 @@ que não cabe ao presidente fica inativa.
   equilibrados (22 de esquerda, 22 de direita, 3 deles também tradicionais ou
   autoritários, 14 do meio, 4 verdes e o resto tradicional, libertário,
   nacionalista, autoritário, pegadinha ou de qualquer lado). A aba Programas diz
-  o lado, as esferas e as palavras do nome; a aba Programas - leis diz, para
+  o lado, as instituições e as palavras do nome; a aba Programas - leis diz, para
   cada lei, a **direção** (sobe, desce, liga, mais fechado…) e o **mínimo** que
   conta (1 degrau, 10% da régua, 1 fatia da divisão).
   - **Forma-se** quando a maior parte das leis da lista (3 de 4, 2 de 3) anda
     pelo menos o mínimo na direção do programa dentro de um mandato. Só entra
     lei de verdade: Operação, Ato e Posição por país ficam fora da lista.
-  - **Vários ministérios:** programa com leis de mais de uma esfera anda no
+  - **Vários ministérios:** programa com leis em mais de uma caixa anda no
     passo do ministro mais fraco (seção 6): as leis dele usam o atraso e a
     força desse ministro.
   - **Miúdos (12/nov):** conta quando a lei é aprovada, não quando o efeito
@@ -597,7 +622,7 @@ que não cabe ao presidente fica inativa.
   Imposto sobre empresas, Liberação das drogas e dos jogos) usam o valor inicial do
   país como zero e podem cruzar o meio. Verbas e tetos têm um lado só, com pouca
   força. Quando o dono pode ser Estado ou privado (usinas, rede, venda de energia),
-  são duas leis de lados opostos que colidem (feito na esfera Energia).
+  são duas leis de lados opostos que colidem (feito em Energia).
 - **Build:** o jogador combina leis de lados diferentes como quiser. Só
   leis que **colidem** não valem juntas (teto de aluguel × aluguel livre).
 - **Processo:** estoque que anda sozinho pelos turnos (casas, favelas,
@@ -618,13 +643,13 @@ que não cabe ao presidente fica inativa.
   "como" (público ou privado, força da polícia, quem controla). Leis de regra que
   atravessavam o meio da bússola foram corrigidas em 08/nov (lado único ou
   exceção escrita).
-- **Sem limite de leis por esfera (07/nov):** a planilha passa de 500 leis, e
+- **Sem limite de leis por instituição (07/nov):** a planilha passa de 500 leis, e
   não se corta um núcleo (08/nov): o jogo tem centenas de caminhos; o foco do
   jogador vem da promessa (seção 13).
 - **Os dois lados legislam:** o lado de mais regra e o de menos regra têm leis
   próprias. Zerar uma lei de esquerda não é uma política de direita; a direita
   ganha leis como livre negociação e contratos flexíveis. Ao listar as leis de
-  uma esfera, conferir o equilíbrio entre os lados.
+  uma instituição, conferir o equilíbrio entre os lados.
 - **Filtro da verba:** a corrupção desvia parte de toda verba, conforme o índice,
   e o desvio deixa rastro. O que chega ao prédio vira salário e insumos, e parte
   dos insumos pode ser importada. Vaga é por pop: sem gente formada, fica vazia e
@@ -666,12 +691,15 @@ mostra para onde as escolhas levam o país, sem decidir nada sozinha.
   Principal na aba Índices.
 - Índice novo só com decisão do autor.
 - **Todo índice tem efeito.** Ele muda algo no país, além de ser cobrado pelos
-  grupos. Efeito de cada índice e esfera dele: `docs/jogo/leis.xlsx`.
+  grupos. Efeito de cada índice: `docs/jogo/leis.xlsx`; as instituições que
+  mexem nele: aba Instituições da `gdd.xlsx`.
+- **Índice tem dono (13/nov):** fica preso, no mapa, ao ministro que leva a
+  maior parte das leis ligadas a ele.
 - **Visível e invisível (07/nov):** o visível aparece na tela. O invisível o
   motor calcula, e o jogador só o sente pelo que acontece (greve, surto, notícia).
 - **Índice é gatilho:** as narrativas futuras disparam quando um índice sobe ou
   passa de um limite ("os sindicatos estão crescendo no país"). Por isso, cada
-  esfera ganha quantos índices fizerem sentido (aba Índices, coluna Na tela). Os
+  instituição ganha quantos índices fizerem sentido (aba Índices, coluna Na tela). Os
   gatilhos só se escrevem com as narrativas, depois do motor e dos índices
   prontos.
 
@@ -938,7 +966,8 @@ agem juntas na política; a organização tem nome, líder e ação própria.
     é proibido: o jogador ainda envia leis e faz negócios, mas eles entram na
     fila e não são votados naquele turno.
 - **Tela do Congresso (11/nov):** sem painel, tudo no mapa.
-  - Semicírculo no anel do Estado, uma cadeira por deputado na cor do partido.
+  - Anel de cadeiras no miolo do mapa (seção 17), uma por deputado na cor do
+    partido; Câmara em cima, Senado embaixo.
   - Termômetro: arco fino em volta de cada partido, do frio ao quente.
   - Paciência: ponteiro no alto do semicírculo.
   - Carga: barra embaixo do semicírculo, com o limite marcado.
@@ -1226,8 +1255,8 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 
 | Termo                 | O que é                                                                                                                                                                                                                                                    |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Esfera**            | Antigo: tema de leis. Desde 13/nov a lei mora numa instituição (seção 6).                                                                                                                                                                                   |
-| **Subesfera**         | Pedaço de uma esfera que pode ir para outro ministério (Pesca, Portos e aeroportos).                                                                                                                                                                       |
+| **Esfera**            | Antigo: tema de leis. Desde 13/nov a lei mora numa instituição (seção 6).                                                                                                                                                                                  |
+| **Subesfera**         | Antigo: pedaço de esfera que ia para outro ministério. Saiu em 13/nov; a caixa leva instituições inteiras.                                                                                                                                                 |
 | **Lei**               | Regra permanente. Tem bolha no mapa.                                                                                                                                                                                                                       |
 | **Lei com prazo**     | Lei que acaba sozinha.                                                                                                                                                                                                                                     |
 | **Ato**               | Decisão do presidente que acontece uma vez (Graça, visita de Estado, suspender a regra fiscal).                                                                                                                                                            |
@@ -1239,7 +1268,7 @@ Governo: ela paga os pops e o Estado, e é controlada pelos dois.
 | **Prédio**            | A unidade que produz ou presta serviço: fábrica, fazenda, usina, hospital. (Antes aparecia como "construção".)                                                                                                                                             |
 | **Obra**              | O ato de construir um prédio novo. Entra na fila da construção civil.                                                                                                                                                                                      |
 | **Construção civil**  | O setor que faz as obras.                                                                                                                                                                                                                                  |
-| **Órgão**             | A repartição do Estado de uma esfera (um prédio do Estado). Recebe a verba por lei e executa; sofre corrupção. O jogador dá a verba, não escolhe fábrica nem fazenda.                                                                                      |
+| **Órgão**             | O mesmo que instituição (13/nov): a repartição do Estado que executa as leis dela. Recebe a verba por lei e executa; sofre corrupção. O jogador dá a verba, não escolhe fábrica nem fazenda.                                                               |
 | **Ação (cota)**       | Fatia de uma empresa. Dá dividendo, não dá mando.                                                                                                                                                                                                          |
 | **Estatal**           | Empresa cujo dono é o Estado.                                                                                                                                                                                                                              |
 | **Serviço do Estado** | Prédio do Estado fora do mercado (hospital, escola, delegacia).                                                                                                                                                                                            |
@@ -1333,7 +1362,7 @@ cidade; as duas pontas se ligam pela gente que se muda.
 - **Corrupção** atrasa e encarece obras.
 - **Verba de obra é separada (07/nov):** a verba de cada área (saúde, educação,
   presídios) mantém o que existe: salários e insumos. Construir prédio novo é a Verba de
-  construção, dividida em 100% entre as áreas, na esfera Infraestrutura e transporte. A obra entra na fila da construção civil
+  construção, dividida em 100% entre as áreas, na instituição Infraestrutura e transporte. A obra entra na fila da construção civil
   e disputa operários e cimento com o privado. Prédio pronto sem verba da área
   fica vazio.
 - **Serviços do Estado** são prédios fora do mercado: hospital, escola, delegacia,
@@ -1607,7 +1636,7 @@ renda dos pops, que voltam a consumir, poupar e investir.
   países, e o nível de bomba destrava o Projeto nuclear militar. **Vender urânio em
   segredo** é Ato: fica num registro que pode vazar, como o Espiar, e vira escândalo
   e sanções. Quanto mais perigoso o comprador, maior o dinheiro e o risco.
-- **Mineração e petróleo** é esfera própria: petróleo, gás, combustíveis e minério (ver
+- **Mineração e petróleo** é instituição própria: petróleo, gás, combustíveis e minério (ver
   Minério, adiante).
 
 ### Meio ambiente (09/nov)
@@ -1618,17 +1647,17 @@ renda dos pops, que voltam a consumir, poupar e investir.
   pode vazar.
 - **De onde vem o desmatamento:** do lucro do agro contra o risco de punição. Carne e
   soja caras avançam sobre a mata, sem nenhuma lei escrever isso. A Reserva da fazenda
-  (esfera Terra) define o que é ilegal; baixá-la é uma anistia disfarçada.
+  (instituição Terra) define o que é ilegal; baixá-la é uma anistia disfarçada.
 - **O que o partido faz:** o jogador é o partido. O presidente assina as leis e responde
   aos papéis. Lei dura racha os deputados conforme o estado de cada um, e chega o papel
   "expulsar ou perdoar". O governador pede alívio por papel: atendeu, fica no registro;
   negou, ele fala mal do partido. A companhia poluidora oferece dinheiro em troca de
-  voto. Sem a Presidência, os deputados propõem leis e convocam o chefe do órgão, e o
+  voto. Sem a Presidência, os deputados propõem leis e convocam o ministro, e o
   partido ataca nas mídias.
 - **Independência do órgão:** com o presidente mandando, a licença nunca é negada e o
-  órgão fica mais corrupto. Com chefe com mandato, chega o papel: assinar por cima, com
+  órgão fica mais corrupto. Meio independente, chega o papel: assinar por cima, com
   escândalo, ou atrasar e arriscar o apagão. Independente, você não assina: espera ou
-  muda a lei. Trocar o chefe é um Ato que só existe nos dois primeiros degraus.
+  muda a lei.
 - **Licença:** toda licença que passa sem exame sobe na hora o Desmatamento ou as
   Emissões, e os países compram menos do agro. Obra do Estado sempre passa pelo órgão; a
   certificadora privada vale só para obras privadas.
@@ -1851,8 +1880,28 @@ Duas telas de jogo: o **mapa** (o que você propõe e o país como está) e a
 
 ### Mapa
 
-- Leis são bolhas agrupadas em áreas; índices, grupos, organizações, mídias e
-  países aparecem no mesmo mapa.
+- **Mapa orgânico (13/nov):** bolhas soltas, puxadas por uma hierarquia por
+  baixo. Do centro para fora:
+  - **Miolo, os Três Poderes em camadas:** o Executivo é a trindade do partido
+    (presidente do partido, presidente eleito e vice, na cor do partido, sigla
+    no meio); os juízes do Judiciário em volta dela (de mentira até o motor
+    tê-lo); o Congresso é um anel de cadeiras por fora, Câmara em cima e Senado
+    embaixo, voltadas para dentro.
+  - **Anel de ministros** (com rosto), cada um com uma fatia pelo que cuida;
+    sob cada um, as **instituições** (escudo); das instituições saem as
+    **leis**, em pétalas para fora. Só as leis promulgadas ficam no mapa; as
+    outras, num botão no canto.
+  - **Índices** presos ao ministro responsável; **grupos** num anel de fora;
+    **potências** mais longe.
+- **As 8 áreas antigas saem (13/nov):** o mapa se organiza só pela hierarquia.
+- **Prioridade visual:** Ministro > Instituição > Índice > Lei. Ministros e
+  instituições sempre com nome e destaque; a lei aparece pequena e recuada.
+  "Ligações", "Nível", "Dinheiro" e "Popularidade" são filtros que pesam as
+  bolhas dentro do degrau de cada uma, sem passar para o de cima.
+- **Fios:** hierarquia em ouro; efeito verde (melhora) e vermelho (piora), que
+  só correm com a bolha em foco. Bolha sem ligação nenhuma tem anel tracejado.
+- **Alerta do índice:** a cor do anel diz o nível (crítico a bom); a seta, se
+  subiu ou desceu.
 
 ### Mesa (assinar e carimbar)
 
@@ -1893,7 +1942,7 @@ carimbo. Há a **mesa do presidente** (governo) e a **mesa do partido**.
   - Crises (índices e eventos): enchente, greve, banco quebrando, apagão.
   - Pedidos (partidos, governadores, ministros): ministério, verba, obra, demissão.
   - Ofertas (países e companhias): acordo, compra de estatal, investimento.
-  - Órgãos (filas das esferas): caso disputado da fila, vistoria.
+  - Instituições (filas delas): caso disputado da fila, vistoria.
   - Partido (partido do presidente): doador, filiação, expulsar ou perdoar.
   - Duvidosos (corrupção), misturados nas outras famílias.
 - **Veto com observação (11/nov):** em qualquer lei, o presidente veta e diz o
@@ -1960,6 +2009,22 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   ou mentir neles (Argentina maquiou a inflação de 2007 a 2015). O jogador vê o
   índice real; a mídia vê com atraso e desconfiança.
 
+**Pendências da remontagem (13/nov)**
+
+- **Ministério sem pasta:** hoje só dá cadeira para o Congresso. O GDD (seção
+  6, Opinião) quer que nomear alguém agrade os grupos parecidos com ele; isso
+  ainda não existe no código.
+- **Instituições sem jogo:** Estados e municípios, Religião, Turismo e
+  Indústria não têm lei; Funcionalismo tem uma. Entram quando as leis forem
+  refeitas instituição por instituição.
+- **Mexer nas caixas durante a partida:** a lei Organização dos ministérios
+  (escada de 4 degraus, seção 6) ainda não existe.
+- **Tipos de parlamento:** reformular presidencialismo, parlamentarismo,
+  semipresidencialismo e partido único com as caixas livres (quem controla o
+  quê na coabitação).
+- **Leis a reestruturar:** padronizar o formato; o dinheiro que ainda entra e
+  sai "fora das leis" se resolve aí.
+
 **Caminho do dinheiro (13/nov, pensar com calma depois das leis)**
 
 - Hoje: impostos (leis) + receita "fora das leis" → Tesouro (cofre ou
@@ -1976,19 +2041,8 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
 
 **Mapa (13/nov)**
 
-- Hierarquia no mapa decidida: trindade (presidente do partido, presidente eleito
-  e vice, na cor do partido, sigla no meio) → ministros (com rosto) → instituições
-  (escudo) → leis; os índices ficam presos ao ministro responsável.
-- Prioridade visual no mapa, decidida em 13/nov: **Ministro > Instituição > Índice
-  > Lei**. Ministros e instituições sempre com nome e destaque; a lei aparece
-  pequena e recuada. O padrão ao abrir é essa hierarquia; "Ligações", "Nível",
-  "Dinheiro" e "Popularidade" são filtros opcionais que pesam as bolhas dentro do
-  degrau de cada uma, sem passar para o de cima.
-- Os Três Poderes no mapa, decididos em 13/nov, em camadas no meio: o Executivo é a
-  trindade do partido (centro); os juízes do Judiciário giram em volta dela; o
-  Congresso é um anel de cadeiras por fora, a Câmara em cima e o Senado embaixo,
-  voltadas para dentro, como quem assiste ao partido e ao Judiciário. O Judiciário é
-  de mentira até o motor tê-lo. Em aberto: se cada instituição e cada lei responde a
+- Hierarquia, prioridade visual e Três Poderes foram decididos (seção 17).
+- Em aberto: se cada instituição e cada lei responde a
   um dos poderes.
 
 **Governo (12/nov)**
@@ -2085,13 +2139,15 @@ tecnologia como árvore.
 
 ## 20. Mapa dos documentos
 
-| Pergunta                                                                            | Onde                                                       |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| O que é o jogo e por quê                                                            | este GDD                                                   |
-| Requisitos e status de cada um                                                      | [requisitos.md](requisitos.md)                             |
-| O que está feito, ordem e como construir                                            | [plano-de-desenvolvimento.md](plano-de-desenvolvimento.md) |
-| Planilha de leis, índices, esferas, ligações, pops, grupos, organizações e economia | `docs/jogo/leis.xlsx`                                      |
-| Onde parei                                                                          | `RETOMAR.md`                                               |
-| Como cada peça se comporta                                                          | `src/motor/<módulo>/<módulo>.md`                           |
-| Referência do mercado do Victoria 3                                                 | [mercado-vic3-referencia.md](mercado-vic3-referencia.md)   |
-| Escopo, experiência e bússola antigos                                               | `docs/historico/`                                          |
+| Pergunta                                                                     | Onde                                                       |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| O que é o jogo e por quê                                                     | este GDD                                                   |
+| Requisitos e status de cada um                                               | [requisitos.md](requisitos.md)                             |
+| O que está feito, ordem e como construir                                     | [plano-de-desenvolvimento.md](plano-de-desenvolvimento.md) |
+| Acervo: o que se pensou de leis, índices, ligações, pops, grupos e economia  | `docs/jogo/leis.xlsx`                                      |
+| O que estamos construindo, já com mecânica (instituições, ministérios, leis) | `docs/jogo/gdd.xlsx`                                       |
+| Como o código está montado (camadas, turno, mapa)                            | [arquitetura.md](arquitetura.md)                           |
+| Onde parei                                                                   | `RETOMAR.md`                                               |
+| Como cada peça se comporta                                                   | `src/motor/<módulo>/<módulo>.md`                           |
+| Referência do mercado do Victoria 3                                          | [mercado-vic3-referencia.md](mercado-vic3-referencia.md)   |
+| Escopo, experiência e bússola antigos                                        | `docs/historico/`                                          |

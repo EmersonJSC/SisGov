@@ -92,9 +92,14 @@ barra do topo commitada (0963da58); **ícones das leis NÃO commitados**:
 
 ## Próximo
 
-Ministros terminados (commit 46c0b3ce, 13/nov). Agora o **mapa, da raiz às pontas** (corrigir mapa e mecânicas):
-começar levantando os requisitos do mapa (GDD §17 × R11, R12, R14) para o autor aprovar. Depois: padronizar as
-leis; depois o caminho do dinheiro (GDD §18).
+Ministros terminados (commit 46c0b3ce). **13/nov, não commitado:** `arquitetura.md` refeita do código;
+GDD atualizado com a remontagem e com as decisões do autor (Judiciário × Justiça e prisões; Eleições
+com o Judiciário por padrão; ministro troca a qualquer momento com polêmica; instituição sem chefe;
+áreas saem; Estados e municípios fala com os governadores). Planilha renomeada: `gdd-remontagem.xlsx`
+→ `docs/jogo/gdd.xlsx` (o que se constrói); `leis.xlsx` é o acervo. Pendências no GDD §18 "Pendências
+da remontagem". `requisitos.md` atualizado (13/nov: 72 feitos, 41 parciais, 105 faltam; passos 10a mapa, 10b leis,
+10c dinheiro na ordem de construir). Depois: o mapa da raiz às pontas
+(tirar as áreas do código); depois padronizar as leis; depois o caminho do dinheiro.
 
 ## Pendências do autor
 
@@ -120,7 +125,7 @@ leis; depois o caminho do dinheiro (GDD §18).
 - O servidor do Vite pode servir arquivo novo vazio ou módulo velho: `touch` nos arquivos e recarregar.
 - `tsx` não roda scripts com `import.meta.glob`; usar `vite-node`.
 
-**Remontagem (13/nov), da base para as pontas.** Planilha `docs/jogo/gdd-remontagem.xlsx` (montada junto com o autor; gerada com `uv run --with openpyxl`, openpyxl não está instalado); molde do Brasil à parte em `docs/jogo/molde-brasil.xlsx`. Decidido e no GDD (seção 6, Instituições): lei mora na instituição; jogador distribui instituições entre ministros; instituição é órgão, não tema; lista de 36 (+ Regras dos poderes), todas em todo país; Eleições sem ministro; Organização dos ministérios vira escada de 4 degraus. Maquete aprovada: `docs/jogo/interface/maquetes/gabinete.html` (passo 1 régua do tamanho + "Ajustar caixas"; passo 2 cadeiras com rosto e 3 cartas: técnico, aliado, do partido).
+**Remontagem (13/nov), da base para as pontas.** Planilha `docs/jogo/gdd.xlsx` (montada junto com o autor; gerada com `uv run --with openpyxl`, openpyxl não está instalado); molde do Brasil à parte em `docs/jogo/molde-brasil.xlsx`. Decidido e no GDD (seção 6, Instituições): lei mora na instituição; jogador distribui instituições entre ministros; instituição é órgão, não tema; lista de 36 (+ Regras dos poderes), todas em todo país; Eleições sem ministro; Organização dos ministérios vira escada de 4 degraus. Maquete aprovada: `docs/jogo/interface/maquetes/gabinete.html` (passo 1 régua do tamanho + "Ajustar caixas"; passo 2 cadeiras com rosto e 3 cartas: técnico, aliado, do partido).
 **Etapa A feita (não commitada):** motor com instituições (`mundo/ministerios/instituicoes.json`) e caixas livres ({id, nome, instituicoes, ministro, sobra}); 157 leis mudaram o campo `esfera` para a instituição nova, `subesfera` saiu; moldes viraram caixas sugeridas genéricas; Brasil declara 34 caixas (as de causa sem instituição: Pesca, Mulheres…); `ComecoDoJogador.caixas` já existe; mapa mostra as 37. `scripts/gerar-governo.ts` apagado (lia a planilha antiga). **Etapa B feita (não commitada):** tela inicial com os passos Governo (régua Enxuto 9 / Clássico 19 / Do país / Inchado, "Ajustar caixas" arrastando escudos, nome automático pelo molde parecido) e Ministros (cadeiras com retrato e "rende", três cartas: técnico, aliado, do seu partido; "Ver todos" abre a lista). Governos prontos em `mundo/ministerios/tamanhos.json`; regras em `partida/gabinete.ts`. Efeitos mostrados só os que existem no motor (atenção, sobra, sem pasta, partidos com ministro). **Ordem do autor (13/nov):** terminar os ministros → mapa da raiz às pontas (corrigir mapa e mecânicas) → padronizar as leis → caminho do dinheiro (custo da máquina por ministério, corrupção tirando dinheiro de verdade). Anotado no GDD §18 "Caminho do dinheiro"; não adiantar.
 
 **Leis: enxugar (13/nov, começou).** Passo 1 feito: `npm run inventario` gera `docs/jogo/leis-inventario.md` (512 leis; 78 sem ligação, 31 só grupos, 198 com nome parecido (famílias), 67 com mesmo efeito, 77 que o país não declara). Próximo: rascunho das regras da lei (uma página) para o autor corrigir; depois cortar por esfera, uma por vez. Também nesta rodada (não commitado): pulsação da verba removida; alerta e foco vibram; flash de mudança testado e removido (autor não gostou; repensar depois); lei com tamanho por dinheiro + importância na visão Padrão; espaço pessoal e miolo reservado no mapa; títulos de lei só no mouse; botão ao lado de ministro/instituição/índice abre o painel "Atrapalham / Ajudam" (`afetadas.ts`, `PainelDeAfetadas`); tecla F mede fps.

@@ -4,7 +4,7 @@ Passo 5 da ordem de construir (12/nov/2026): ministérios com fichas, órgãos
 por instituição e corrupção (instituições desde 13/nov). O motor não conhece
 nome de ministério nem de pessoa: **instituições** e **moldes** (caixas
 sugeridas) são do mundo (`mundo/ministerios/instituicoes.json` e
-`moldes.json`, da `docs/jogo/gdd-remontagem.xlsx`); **os ministérios do
+`moldes.json`, da `docs/jogo/gdd.xlsx`); **os ministérios do
 começo, pessoas e quem manda em cada caixa** são do país
 (`paises/<id>/governo.json`), e o jogador pode trocar as caixas no começo. País sem `governo.json`
 joga como antes: as leis chegam como estão escritas.
