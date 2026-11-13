@@ -5,9 +5,10 @@
  * e esmaece, mas não some. Só da tela: nenhum cálculo do motor muda.
  */
 import type { VisaoLei, VisaoPartida } from "../../partida";
-import { RAIO_MAXIMO, RAIO_MINIMO } from "./organico";
+import { FAIXA_DO_RAIO } from "./organico";
 
-export type IdDaVisao = "ligacoes" | "popularidade" | "dinheiro" | "nivel";
+export type IdDaVisao =
+  "prioridade" | "ligacoes" | "popularidade" | "dinheiro" | "nivel";
 
 export type Visao = Readonly<{
   id: IdDaVisao;
@@ -16,6 +17,11 @@ export type Visao = Readonly<{
 }>;
 
 export const VISOES: readonly Visao[] = [
+  {
+    id: "prioridade",
+    rotulo: "Padrão",
+    dica: "Ministro, instituição, índice, lei: quem manda aparece mais.",
+  },
   {
     id: "ligacoes",
     rotulo: "Ligações",
@@ -81,19 +87,36 @@ export function pesosDaVisao(
   visao: VisaoPartida,
   id: IdDaVisao,
 ): ReadonlyMap<string, number> | null {
-  if (id === "ligacoes") return null;
+  if (id === "prioridade") return null;
   const leis = visao.leis;
   const indices = visao.bolhas.filter((b) => b.tipo !== "grupo");
   const maiorValor = Math.max(
     Number.EPSILON,
     ...leis.map((l) => Math.abs(dinheiroDaLei(l))),
   );
+  // quantas ligações cada bolha tem (leis, índices e grupos): o peso da visão Ligações
+  const grau = new Map<string, number>();
+  visao.ligacoes.forEach((l) => {
+    grau.set(l.origem, (grau.get(l.origem) ?? 0) + 1);
+    grau.set(l.alvo, (grau.get(l.alvo) ?? 0) + 1);
+  });
+  // o maior só entre as bolhas de lei e índice: os grupos têm mais ligações e distorceriam
+  const maiorGrau = Math.max(
+    1,
+    ...[...leis.map((l) => l.id), ...indices.map((i) => i.id)].map(
+      (idDaBolha) => grau.get(idDaBolha) ?? 0,
+    ),
+  );
+  const dasLigacoes = (idDaBolha: string) =>
+    Math.sqrt((grau.get(idDaBolha) ?? 0) / maiorGrau);
   const doIndice = (i: (typeof indices)[number]) => {
+    if (id === "ligacoes") return dasLigacoes(i.id);
     if (id !== "nivel") return NEUTRO;
     const faixa = i.maximo - i.minimo;
     return faixa > 0 ? ate1((i.valor - i.minimo) / faixa) : NEUTRO;
   };
   const daLei = (l: VisaoLei) => {
+    if (id === "ligacoes") return dasLigacoes(l.id);
     if (id === "popularidade")
       return l.popularidade
         ? ate1(l.popularidade.pais / FIM_DA_ESCALA)
@@ -108,7 +131,8 @@ export function pesosDaVisao(
   ]);
 }
 
-/** Raio da bolha para um peso de 0 a 1. */
-export function raioDoPeso(peso: number): number {
-  return RAIO_MINIMO + peso * (RAIO_MAXIMO - RAIO_MINIMO);
+/** Raio da bolha para um peso de 0 a 1, dentro da faixa do degrau dela. */
+export function raioDoPeso(peso: number, tipo: "lei" | "indice"): number {
+  const { minimo, maximo } = FAIXA_DO_RAIO[tipo];
+  return minimo + peso * (maximo - minimo);
 }

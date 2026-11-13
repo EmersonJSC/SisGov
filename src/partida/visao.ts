@@ -31,6 +31,8 @@ import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
+import { hierarquiaDaPartida } from "./hierarquia";
+import { poderesDaPartida } from "./poderes";
 import { arquivoPais } from "./paises";
 import { mesesDaObra, mesesDaRede, mesesDaSaude } from "./previa";
 import type {
@@ -525,6 +527,8 @@ export function montarVisao(partida: Partida): VisaoPartida {
   return {
     pais: partida.pais,
     cenario: partida.pais,
+    hierarquia: hierarquiaDaPartida(partida),
+    poderes: poderesDaPartida(partida),
     turno: estado.turno,
     leis: areas.areas.flatMap((a) =>
       a.leis.map((id) =>

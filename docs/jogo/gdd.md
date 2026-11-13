@@ -1905,6 +1905,23 @@ em 12/nov: o que estava decidido foi para o sistema (Órgãos, Justiça, Caminho
 autoritário e Governadores na seção 6; decreto e medida provisória juntos na
 seção 12; promessa e cota na seção 13; mundo na seção 15).
 
+**Mapa (13/nov)**
+
+- Hierarquia no mapa decidida: trindade (presidente do partido, presidente eleito
+  e vice, na cor do partido, sigla no meio) → ministros (com rosto) → instituições
+  (escudo) → leis; os índices ficam presos ao ministro responsável.
+- Prioridade visual no mapa, decidida em 13/nov: **Ministro > Instituição > Índice
+  > Lei**. Ministros e instituições sempre com nome e destaque; a lei aparece
+  pequena e recuada. O padrão ao abrir é essa hierarquia; "Ligações", "Nível",
+  "Dinheiro" e "Popularidade" são filtros opcionais que pesam as bolhas dentro do
+  degrau de cada uma, sem passar para o de cima.
+- Os Três Poderes no mapa, decididos em 13/nov, em camadas no meio: o Executivo é a
+  trindade do partido (centro); os juízes do Judiciário giram em volta dela; o
+  Congresso é um anel de cadeiras por fora, a Câmara em cima e o Senado embaixo,
+  voltadas para dentro, como quem assiste ao partido e ao Judiciário. O Judiciário é
+  de mentira até o motor tê-lo. Em aberto: se cada instituição e cada lei responde a
+  um dos poderes.
+
 **Governo (12/nov)**
 
 - A fronteira do governo e como se perde o poder foram decididos (seção 6).

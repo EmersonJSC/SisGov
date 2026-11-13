@@ -656,6 +656,14 @@ export type {
   VisaoOpcao,
   VisaoPartida,
   VisaoPotencia,
+  VisaoHierarquia,
+  VisaoInstituicao,
+  VisaoMinistro,
+  VisaoPessoa,
+  VisaoCasa,
+  VisaoPartidoNaCasa,
+  VisaoPoderes,
+  VisaoTrindade,
 } from "./tiposVisao";
 
 /** Empresa do país que entra na bolsa (nomes inventados; blocos de 2%, soma 50). */

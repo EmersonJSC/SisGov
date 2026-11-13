@@ -5,6 +5,7 @@
  */
 import manifest from "../../assets/svg/manifest-leis.json";
 import manifestoIndices from "../../assets/svg/manifest-indices.json";
+import manifestoEsferas from "../../assets/svg/manifest-esferas.json";
 
 const arquivos = import.meta.glob<string>(
   "../../assets/svg/leis/**/*.{png,webp}",
@@ -13,7 +14,7 @@ const arquivos = import.meta.glob<string>(
 
 /** SVGs entram como texto: desenhados na tela, herdam a cor da bolha. */
 const desenhos = import.meta.glob<string>(
-  "../../assets/svg/{leis,indices}/**/*.svg",
+  "../../assets/svg/{leis,indices,esferas}/**/*.svg",
   {
     eager: true,
     import: "default",
@@ -45,12 +46,25 @@ const desenhosPorIndice = new Map(
   }),
 );
 
+const desenhosPorEsfera = new Map(
+  Object.entries(manifestoEsferas.icons).flatMap(([id, item]) => {
+    const svg = desenhos[`../../assets/svg/${item.path}`];
+    return svg ? [[id, miolo(svg)] as const] : [];
+  }),
+);
+
 const PREFIXO = "sisgov-law:";
+const PREFIXO_ESFERA = "sisgov-sphere:";
 const PREFIXO_INDICE = "sisgov-index:";
 
 /** Ícone do índice (game-icons.net); sem ele, usa o desenho reserva. */
 export function iconeIndice(id: string, reserva: string): string {
   return desenhosPorIndice.has(id) ? `${PREFIXO_INDICE}${id}` : reserva;
+}
+
+/** Ícone da esfera (a instituição dela); sem ele, usa o desenho reserva. */
+export function iconeEsfera(id: string, reserva: string): string {
+  return desenhosPorEsfera.has(id) ? `${PREFIXO_ESFERA}${id}` : reserva;
 }
 
 export function iconeLei(id: string, reserva: string): string {
@@ -63,6 +77,8 @@ export function iconeLei(id: string, reserva: string): string {
 export function desenhoIconePersonalizado(
   nome: string | undefined,
 ): string | undefined {
+  if (nome?.startsWith(PREFIXO_ESFERA))
+    return desenhosPorEsfera.get(nome.slice(PREFIXO_ESFERA.length));
   if (nome?.startsWith(PREFIXO_INDICE))
     return desenhosPorIndice.get(nome.slice(PREFIXO_INDICE.length));
   return nome?.startsWith(PREFIXO)

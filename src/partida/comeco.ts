@@ -15,7 +15,7 @@ import {
 
 const TECNICO = "tecnico";
 /** Cor do partido do jogador: o latão da mesa. */
-const COR_DO_JOGADOR = "#d4af37";
+export const COR_DO_JOGADOR = "#d4af37";
 
 /** O que o jogador decide na tela inicial. */
 export interface ComecoDoJogador {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { criarPartida, montarVisao } from "../../partida";
-import { RAIO_MAXIMO, RAIO_MINIMO } from "./organico";
+import { FAIXA_DO_RAIO } from "./organico";
 import {
   dinheiroDaLei,
   pesosDaVisao,
@@ -11,13 +11,21 @@ import {
 describe("visões do mapa", () => {
   const visao = montarVisao(criarPartida("brasil-2026", 1));
 
-  it("a visão das ligações não muda o tamanho", () => {
-    expect(pesosDaVisao(visao, "ligacoes")).toBeNull();
+  it("a visão padrão não muda o tamanho", () => {
+    expect(pesosDaVisao(visao, "prioridade")).toBeNull();
   });
 
-  it("o raio vai do mínimo ao máximo", () => {
-    expect(raioDoPeso(0)).toBe(RAIO_MINIMO);
-    expect(raioDoPeso(1)).toBe(RAIO_MAXIMO);
+  it("a visão das ligações pesa mais quem mexe com mais coisa", () => {
+    const pesos = pesosDaVisao(visao, "ligacoes")!;
+    const valores = [...pesos.values()];
+    expect(Math.max(...valores)).toBe(1);
+    expect(Math.min(...valores)).toBe(0);
+  });
+
+  it("o raio vai do mínimo ao máximo da faixa de cada degrau", () => {
+    expect(raioDoPeso(0, "lei")).toBe(FAIXA_DO_RAIO.lei.minimo);
+    expect(raioDoPeso(1, "lei")).toBe(FAIXA_DO_RAIO.lei.maximo);
+    expect(raioDoPeso(1, "indice")).toBe(FAIXA_DO_RAIO.indice.maximo);
   });
 
   it("dinheiro: imposto arrecada, verba gasta, as outras ficam em zero", () => {
@@ -38,7 +46,7 @@ describe("visões do mapa", () => {
   });
 
   it("todo peso fica entre 0 e 1", () => {
-    for (const id of ["popularidade", "dinheiro", "nivel"] as const)
+    for (const id of ["ligacoes", "popularidade", "dinheiro", "nivel"] as const)
       for (const p of pesosDaVisao(visao, id)!.values()) {
         expect(p).toBeGreaterThanOrEqual(0);
         expect(p).toBeLessThanOrEqual(1);

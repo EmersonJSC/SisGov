@@ -19,8 +19,13 @@ import {
   type RefObject,
   type WheelEvent,
 } from "react";
-import type { VisaoPartida } from "../../partida";
-import { BolhaDoMapa } from "./BolhaDoMapa";
+import type {
+  VisaoInstituicao,
+  VisaoMinistro,
+  VisaoPartida,
+} from "../../partida";
+import { assentosDaCasa } from "./assentos";
+import { BolhaDoMapa, RECORTE_DO_ROSTO } from "./BolhaDoMapa";
 import {
   ControlesDoMapa,
   Miniatura,
@@ -28,13 +33,21 @@ import {
 } from "./ControlesDoMapa";
 import { desenharFundo } from "./fundoDoMapa";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
-import { iconeIndice, iconeLei } from "./iconesPersonalizados";
+import { retratoDaPessoa } from "../inicio/aparencia";
+import { iconeEsfera, iconeIndice, iconeLei } from "./iconesPersonalizados";
 import {
+  ANEL_DO_CONGRESSO_ATE,
+  ANEL_DO_CONGRESSO_DE,
+  PODER_JUDICIARIO,
+  PODER_LEGISLATIVO,
+  PREFIXO_INSTITUICAO,
+  PREFIXO_MINISTRO,
   RAIO_DA_POTENCIA,
-  RAIO_DA_PRESIDENCIA,
   RAIO_DO_GRUPO,
 } from "./organico";
-import { COR_PRESIDENCIA } from "./tema";
+import type { Preparo } from "./organico";
+import { PoderesDoMapa } from "./PoderesDoMapa";
+import { TrindadeDoMapa } from "./TrindadeDoMapa";
 import { useMapaVivo } from "./useMapaVivo";
 import {
   alturaDaVista,
@@ -79,6 +92,9 @@ const PAPEL = "#efe4cc";
 const LETRA_DO_GRUPO = 20;
 const DESLOCAMENTO_DO_BILHETE = 16;
 const DPR_MAXIMO = 2;
+/** O Senado é pequeno: duas filas de bolinhas mais encorpadas, coladas. */
+const FILAS_DO_SENADO = 2;
+const RAIO_DA_CADEIRA_DO_SENADO = 5.5;
 const VERDE = "#6fcf97";
 const VERMELHO = "#eb5757";
 const LARGURA_INICIAL = 4000;
@@ -99,6 +115,9 @@ function corDaSatisfacao(valor: number): string {
     FIM_DA_ESCALA;
   return `hsl(${verde} 55% 48%)`;
 }
+
+/** O que a bolha mostra além da posição: nome, ícone e, no ministro, o rosto. */
+type InfoDoNo = Readonly<{ nome: string; icone: string; retrato?: string }>;
 
 function useCaixa(ref: RefObject<HTMLElement | null>): Caixa {
   const [caixa, setCaixa] = useState<Caixa>({ w: 0, h: 0 });
@@ -123,7 +142,7 @@ export function MapaOrganico({
   selecionado: string | null;
   onSelecionar: (id: string | null) => void;
 }) {
-  const [visaoId, setVisaoId] = useState<IdDaVisao>("ligacoes");
+  const [visaoId, setVisaoId] = useState<IdDaVisao>("prioridade");
   const { preparo, registro, assentada, arrastar, soltar } = useMapaVivo(
     visao,
     visaoId,
@@ -170,28 +189,62 @@ export function MapaOrganico({
     [visao.bolhas],
   );
   const pesos = useMemo(() => pesosDaVisao(visao, visaoId), [visao, visaoId]);
+  const hierarquia = visao.hierarquia;
+  const ministros = useMemo(
+    () => new Map((hierarquia?.ministros ?? []).map((x) => [x.id, x])),
+    [hierarquia],
+  );
+  const instituicoes = useMemo(
+    () => new Map((hierarquia?.instituicoes ?? []).map((x) => [x.id, x])),
+    [hierarquia],
+  );
   const info = useMemo(
     () =>
-      new Map(
+      new Map<string, InfoDoNo>(
         preparo.nos.map((n) => {
+          if (n.tipo === "ministro") {
+            const x = ministros.get(n.id.slice(PREFIXO_MINISTRO.length));
+            return [
+              n.id,
+              {
+                nome: x?.nome ?? n.id,
+                icone: "",
+                retrato: x?.pessoa ? retratoDaPessoa(x.pessoa) : undefined,
+              },
+            ] as const;
+          }
+          if (n.tipo === "instituicao") {
+            const id = n.id.slice(PREFIXO_INSTITUICAO.length);
+            return [
+              n.id,
+              {
+                nome: instituicoes.get(id)?.nome ?? id,
+                icone: iconeEsfera(id, ICONE_INTERFACE.lei),
+                retrato: undefined,
+              },
+            ] as const;
+          }
           const lei = leis.get(n.id);
           const nome = lei?.nome ?? indices.get(n.id)?.nome ?? n.id;
           const icone = lei
             ? iconeLei(n.id, ICONE_LEI[n.id] ?? ICONE_INTERFACE.lei)
             : iconeIndice(n.id, ICONE_BOLHA[n.id] ?? "chart-line");
-          return [n.id, { nome, icone }] as const;
+          return [n.id, { nome, icone, retrato: undefined }] as const;
         }),
       ),
-    [preparo, leis, indices],
+    [preparo, leis, indices, ministros, instituicoes],
   );
   const itens = useMemo<ItemDeBusca[]>(
     () =>
       preparo.nos.map((n) => ({
         id: n.id,
-        nome: info.get(n.id)?.nome ?? n.id,
+        nome:
+          n.tipo === "ministro"
+            ? `${info.get(n.id)?.nome ?? n.id}: ${ministros.get(n.id.slice(PREFIXO_MINISTRO.length))?.pessoa?.nome ?? "vago"}`
+            : (info.get(n.id)?.nome ?? n.id),
         tipo: n.tipo,
       })),
-    [preparo, info],
+    [preparo, info, ministros],
   );
   const semDados = useMemo(
     () => VISOES.filter((v) => !visaoTemDados(visao, v.id)).map((v) => v.id),
@@ -281,6 +334,8 @@ export function MapaOrganico({
 
   // primeira imagem: o miolo do mapa à vista; ao mudar o tamanho da janela, reaplica
   const comecou = useRef(false);
+  /** O jogador já mexeu na câmera: o mapa não a reajusta mais sozinho. */
+  const mexeu = useRef(false);
   useEffect(() => {
     if (caixa.w === 0) return;
     if (!comecou.current) {
@@ -290,12 +345,45 @@ export function MapaOrganico({
     definirVista(vistaAtual.current);
   }, [caixa, preparo, definirVista]);
 
+  // o mapa continua abrindo depois da primeira imagem: quando assenta, reenquadra
+  // sozinho, se o jogador ainda não mexeu na câmera
+  useEffect(() => {
+    if (assentada === 0 || mexeu.current || caixaAtual.current.w === 0) return;
+    irPara(enquadrarPontos(miolo(preparo.nos), caixaAtual.current));
+  }, [assentada, irPara, preparo]);
+
   // ------------------------------------------------------------------ fundo --
   const foco = hover ?? selecionado;
   const vizinhos = useMemo(
-    () => (foco ? new Set(preparo.vizinhos.get(foco) ?? []) : SEM_VIZINHOS),
-    [foco, preparo],
+    () =>
+      foco
+        ? new Set(vizinhosDe(foco, preparo, visao.leis, visao.poderes))
+        : SEM_VIZINHOS,
+    [foco, preparo, visao.leis, visao.poderes],
   );
+  // as cadeiras do Congresso: a Câmara em cima, o Senado embaixo
+  const assentos = useMemo(() => {
+    const l = visao.poderes?.legislativo;
+    return l
+      ? [
+          ...assentosDaCasa(
+            l.camara,
+            "cima",
+            ANEL_DO_CONGRESSO_DE,
+            ANEL_DO_CONGRESSO_ATE,
+          ),
+          ...(l.senado
+            ? assentosDaCasa(
+                l.senado,
+                "baixo",
+                ANEL_DO_CONGRESSO_DE,
+                ANEL_DO_CONGRESSO_ATE,
+                { filas: FILAS_DO_SENADO, raio: RAIO_DA_CADEIRA_DO_SENADO },
+              )
+            : []),
+        ]
+      : [];
+  }, [visao.poderes]);
   const estadoDoFoco = useRef({ foco, vizinhos });
   estadoDoFoco.current = { foco, vizinhos };
 
@@ -317,6 +405,9 @@ export function MapaOrganico({
       const c = caixaAtual.current;
       desenharFundo(ctx, {
         nos: preparo.nos,
+        fixos: preparo.fixos,
+        auras: preparo.auras,
+        assentos,
         fios: preparo.fios,
         areas: preparo.areas,
         vista: vistaAtual.current,
@@ -331,7 +422,7 @@ export function MapaOrganico({
     };
     id = requestAnimationFrame(passo);
     return () => cancelAnimationFrame(id);
-  }, [preparo]);
+  }, [preparo, assentos]);
 
   // ------------------------------------------------------------------ mouse --
   const mundoDoMouse = (e: { clientX: number; clientY: number }) => {
@@ -357,6 +448,7 @@ export function MapaOrganico({
   );
   const escolher = useCallback(
     (id: string) => {
+      mexeu.current = true;
       aoSelecionar.current(id);
       irParaBolha(id);
     },
@@ -403,6 +495,7 @@ export function MapaOrganico({
     }
     const m = movendo.current;
     if (!m) return;
+    mexeu.current = true;
     cancelarViagem();
     const v = vistaAtual.current;
     const porPixel = v.w / caixaAtual.current.w;
@@ -431,6 +524,7 @@ export function MapaOrganico({
 
   // a roda manda vários eventos por quadro: soma tudo e muda a câmera uma vez só
   const aoRolar = (e: WheelEvent) => {
+    mexeu.current = true;
     cancelarViagem();
     const pendente = rolagem.current;
     pendente.passos += e.deltaY > 0 ? 1 : -1;
@@ -471,7 +565,15 @@ export function MapaOrganico({
       )
     : 0;
   const bilheteDe = hover
-    ? textoDoBilhete(hover, leis, indices, preparo.vizinhos)
+    ? textoDoBilhete(
+        hover,
+        leis,
+        indices,
+        ministros,
+        instituicoes,
+        preparo,
+        visao.poderes,
+      )
     : null;
 
   return (
@@ -486,22 +588,24 @@ export function MapaOrganico({
         onPointerUp={aoSoltar}
         onPointerCancel={aoSoltar}
       >
-        <circle
-          r={RAIO_DA_PRESIDENCIA}
-          fill={COR_PRESIDENCIA}
-          stroke={PAPEL}
-          strokeWidth={4}
-        />
-        <text
-          fontSize={34}
-          fill="white"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontWeight={700}
-          pointerEvents="none"
-        >
-          Presidência
-        </text>
+        <defs>
+          <clipPath id={RECORTE_DO_ROSTO} clipPathUnits="objectBoundingBox">
+            <circle cx="0.5" cy="0.5" r="0.5" />
+          </clipPath>
+        </defs>
+        {visao.poderes ? (
+          <PoderesDoMapa
+            poderes={visao.poderes}
+            aoEntrar={aoEntrar}
+            aoSair={aoSair}
+          />
+        ) : null}
+        {hierarquia?.trindade ? (
+          <TrindadeDoMapa
+            trindade={hierarquia.trindade}
+            fixos={preparo.fixos}
+          />
+        ) : null}
         {preparo.nos.map((n) => {
           const dado = info.get(n.id);
           const lei = leis.get(n.id);
@@ -512,9 +616,13 @@ export function MapaOrganico({
               no={n}
               nome={dado?.nome ?? n.id}
               icone={dado?.icone ?? ""}
+              retrato={dado?.retrato}
               selecionada={selecionado === n.id}
               destaque={destaqueDe(n.id, foco, vizinhos)}
-              fraca={peso !== undefined && peso < PESO_DO_ESMAECER}
+              fraca={
+                (peso !== undefined && peso < PESO_DO_ESMAECER) ||
+                (visaoId === "prioridade" && n.tipo === "lei")
+              }
               pulsa={mudou.has(n.id)}
               comNome={comNome}
               contorno={
@@ -604,7 +712,10 @@ export function MapaOrganico({
         alcance={preparo.alcance}
         retangulo={retangulo}
         versao={assentada}
-        onIr={(x, y) => irPara({ ...vistaAtual.current, cx: x, cy: y })}
+        onIr={(x, y) => {
+          mexeu.current = true;
+          irPara({ ...vistaAtual.current, cx: x, cy: y });
+        }}
       />
       <div ref={bilhete} className="org-bilhete" hidden={!bilheteDe}>
         {bilheteDe ? (
@@ -618,6 +729,23 @@ export function MapaOrganico({
       </div>
     </div>
   );
+}
+
+/** Quem se acende com a bolha em foco: os ligados a ela, ou o que o poder alcança agora. */
+function vizinhosDe(
+  id: string,
+  preparo: Preparo,
+  leis: VisaoPartida["leis"],
+  poderes: VisaoPartida["poderes"],
+): readonly string[] {
+  if (id === PODER_LEGISLATIVO) return poderes?.legislativo.emVotacao ?? [];
+  if (id === PODER_JUDICIARIO)
+    return leis
+      .filter(
+        (l) => l.nivelLegal === "constitucional" || l.nivelLegal === "petrea",
+      )
+      .map((l) => l.id);
+  return preparo.vizinhos.get(id) ?? [];
 }
 
 function destaqueDe(
@@ -640,9 +768,67 @@ function textoDoBilhete(
   id: string,
   leis: ReadonlyMap<string, VisaoPartida["leis"][number]>,
   indices: ReadonlyMap<string, VisaoPartida["bolhas"][number]>,
-  vizinhos: ReadonlyMap<string, readonly string[]>,
+  ministros: ReadonlyMap<string, VisaoMinistro>,
+  instituicoes: ReadonlyMap<string, VisaoInstituicao>,
+  preparo: Preparo,
+  poderes: VisaoPartida["poderes"],
 ): { titulo: string; linhas: string[] } | null {
-  const ligacoes = `Ligada a ${vizinhos.get(id)?.length ?? 0}`;
+  const alcancadas = `${vizinhosDe(id, preparo, [...leis.values()], poderes).length}`;
+  if (poderes && id === PODER_LEGISLATIVO) {
+    const { camara, senado } = poderes.legislativo;
+    const doGoverno = (c: typeof camara) => {
+      const g = c.partidos.find((p) => p.governo);
+      return g ? `${g.nome} tem ${g.cadeiras}` : "sem partido de governo";
+    };
+    return {
+      titulo: "Legislativo",
+      linhas: [
+        `Câmara: ${camara.total} cadeiras (${doGoverno(camara)})`,
+        ...(senado
+          ? [`Senado: ${senado.total} cadeiras (${doGoverno(senado)})`]
+          : []),
+        `${alcancadas} leis esperando voto agora`,
+      ],
+    };
+  }
+  if (poderes && id === PODER_JUDICIARIO)
+    return {
+      titulo: "Judiciário",
+      linhas: [
+        poderes.judiciario.pronto
+          ? `${poderes.judiciario.juizes.length} juízes`
+          : "Em construção: os juízes são de mentira",
+        `Guarda ${alcancadas} leis constitucionais ou pétreas`,
+      ],
+    };
+  const ligacoes = `Ligada a ${preparo.vizinhos.get(id)?.length ?? 0}`;
+  if (id.startsWith(PREFIXO_MINISTRO)) {
+    const x = ministros.get(id.slice(PREFIXO_MINISTRO.length));
+    return x
+      ? {
+          titulo: x.nome,
+          linhas: [
+            `Ministro: ${x.pessoa?.nome ?? "vago"}`,
+            `Cuida de ${x.instituicoes.length} instituições`,
+          ],
+        }
+      : null;
+  }
+  if (id.startsWith(PREFIXO_INSTITUICAO)) {
+    const x = instituicoes.get(id.slice(PREFIXO_INSTITUICAO.length));
+    return x
+      ? {
+          titulo: x.nome,
+          linhas: [
+            `Instituição sob ${ministros.get(x.ministro)?.nome ?? x.ministro}`,
+            `${preparo.vizinhos.get(id)?.length ?? 0} leis e índices`,
+          ],
+        }
+      : null;
+  }
+  const semEfeito = preparo.nos.find((n) => n.id === id)?.semEfeito
+    ? ["Nada no motor liga a ela ainda"]
+    : [];
   const lei = leis.get(id);
   if (lei) {
     const opcao = lei.opcoes?.find((o) => o.id === lei.opcaoAtual)?.rotulo;
@@ -654,6 +840,7 @@ function textoDoBilhete(
           ? `Popularidade ${Math.round(lei.popularidade.pais)}`
           : "Popularidade: sem dado",
         ligacoes,
+        ...semEfeito,
       ],
     };
   }
@@ -661,7 +848,11 @@ function textoDoBilhete(
   return indice
     ? {
         titulo: indice.nome,
-        linhas: [indice.frase ?? `Valor ${Math.round(indice.valor)}`, ligacoes],
+        linhas: [
+          indice.frase ?? `Valor ${Math.round(indice.valor)}`,
+          ligacoes,
+          ...semEfeito,
+        ],
       }
     : null;
 }

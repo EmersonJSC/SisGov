@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { criarPartida, montarVisao } from "../../partida";
-import { montarOrganico } from "./organico";
+import { FAIXA_DO_RAIO, montarOrganico, RAIO_DA_INSTITUICAO } from "./organico";
 
 describe("mapa orgânico", () => {
   const visao = montarVisao(criarPartida("brasil-2026", 1));
@@ -10,8 +10,39 @@ describe("mapa orgânico", () => {
 
   it("põe cada lei e cada índice uma vez", () => {
     const indices = doMapa.bolhas.filter((b) => b.tipo !== "grupo").length;
-    expect(mapa.nos).toHaveLength(doMapa.leis.length + indices);
+    const governo =
+      (doMapa.hierarquia?.ministros.length ?? 0) +
+      (doMapa.hierarquia?.instituicoes.length ?? 0);
+    expect(mapa.nos).toHaveLength(doMapa.leis.length + indices + governo);
     expect(new Set(mapa.nos.map((n) => n.id)).size).toBe(mapa.nos.length);
+  });
+
+  it("os índices ganham uma das áreas do governo, pelas leis ligadas a eles", () => {
+    const areas = new Set(doMapa.governo.map((a) => a.id));
+    const indices = mapa.nos.filter((n) => n.tipo === "indice");
+    const comArea = indices.filter((n) => areas.has(n.area));
+    expect(comArea.length).toBeGreaterThan(indices.length * 0.8);
+  });
+
+  it("a prioridade é ministro, instituição, índice e lei, do maior para o menor", () => {
+    const maior = (tipo: string) =>
+      Math.max(
+        ...mapa.nos.filter((n) => n.tipo === tipo).map((n) => n.raioBase),
+      );
+    const menor = (tipo: string) =>
+      Math.min(
+        ...mapa.nos.filter((n) => n.tipo === tipo).map((n) => n.raioBase),
+      );
+    expect(menor("ministro")).toBeGreaterThan(maior("instituicao"));
+    expect(menor("instituicao")).toBeGreaterThan(maior("indice"));
+    expect(menor("indice")).toBeGreaterThan(maior("lei"));
+  });
+
+  it("as faixas das visões não deixam lei ou índice passar para o degrau de cima", () => {
+    expect(FAIXA_DO_RAIO.lei.maximo).toBeLessThan(
+      FAIXA_DO_RAIO.indice.minimo + 1,
+    );
+    expect(FAIXA_DO_RAIO.indice.maximo).toBeLessThan(RAIO_DA_INSTITUICAO);
   });
 
   it("nenhuma bolha encosta em outra", () => {

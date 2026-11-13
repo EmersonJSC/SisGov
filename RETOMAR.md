@@ -53,6 +53,26 @@ barra do topo commitada (0963da58); **ícones das leis NÃO commitados**:
   pré-desenhados (demo em `public/demos/bolhas-canvas.html`, fora dos commits; abrir em localhost:5199/demos/bolhas-canvas.html).
   **Visões:** Ligações (padrão), Nível (funciona), Dinheiro (75 leis com `fluxo`: imposto verde, verba vermelha),
   Popularidade (**sem dado: o motor não calcula popularidade por lei; `saldoAnual` vale 0 em todas**; o botão avisa).
+  **Índices:** o campo `area` deles é o nome do tema ("Saúde"), não uma das 8 áreas; a área vem das leis ligadas
+  (`areaDoIndice` em `organico.ts`). 75 leis e 12 índices não têm ligação nenhuma (dado do motor): listar para o autor.
+  **Hierarquia (13/nov, NÃO commitada):** trindade (3 rostos + sigla do partido no meio) → 32 ministros (rosto) →
+  30 instituições (escudo com o ícone da esfera) → leis; índices presos ao ministro responsável (maioria das leis
+  ligadas a ele; senão o do tema). Dados em `src/partida/hierarquia.ts` (`visao.hierarquia`); layout em `organico.ts`;
+  `TrindadeDoMapa.tsx`; fios de hierarquia em ouro no canvas. Bolha sem nenhuma ligação no motor fica com anel
+  tracejado ("sem efeito"). **Anel afrouxado e Três Poderes (NÃO commitados; refeitos 3 vezes em 13/nov):** ministros num anel de raio 840 (fatia
+  proporcional ao que cuidam), ligados entre si, leis em pétalas para fora. **Miolo em camadas concêntricas** (ideia do autor):
+  trindade do partido no centro (Executivo, com halo), os 9 juízes de mentira do Judiciário PARADOS em volta dela (anel de
+  raio 235, ligados ao vizinho, cada um com aura; a animação de giro foi tirada porque os juízes saíam do lugar) e, por fora, o anel de cadeiras do Congresso (faixa 335–395; Senado em 2 filas de bolinhas maiores): Câmara na
+  metade de cima, Senado na de baixo, uma bolinha por cadeira na cor do partido (desenhadas no canvas, `assentos.ts`),
+  voltadas para dentro; aura de raio 440 mantém leis e índices fora. `poderes.ts`, `PoderesDoMapa.tsx`. Mouse no anel acende a
+  pauta (vazia no começo), na órbita as constitucionais e pétreas. **Falta:** o estudo do grafo
+  (script que exporta nós e ligações e classifica cada solta), pétrea sem dado, retratos melhores.
+  **Prioridade visual (13/nov):** Ministro (58) > Instituição (46) > Índice (30) > Lei (16), nesta ordem de tamanho e de
+  desenho (o de cima fica por cima); visão padrão "Padrão" (leis pequenas e apagadas, ministros e instituições com nome
+  e brilho); Ligações, Nível, Dinheiro e Popularidade são filtros que pesam dentro da faixa de cada degrau
+  (`FAIXA_DO_RAIO`). A câmera se reenquadra sozinha quando o mapa assenta, se o autor não mexeu.
+  **Autor pediu (13/nov):** levantar os requisitos do mapa cruzando GDD §17 com R11, R12 e R14 antes de mexer em mais
+  código; requisitos.md está defasado (mapa mudou; o jornal mínimo da mídia existe, commit e37a665b).
   Falta: popularidade por lei, instituições do jogador (junto dos índices, outro destaque; não existem na
   `VisaoPartida`), mídia, missão (administrar um setor público; GDD §18), crédito do game-icons na tela,
   `MapaPolitico.tsx`/`layout.ts` sem uso (apagar é pedido à parte).

@@ -287,6 +287,82 @@ export type VisaoArea = Readonly<{
   ministerios: readonly VisaoMinisterio[];
 }>;
 
+/** Uma pessoa do governo, com o que o retrato precisa. */
+export type VisaoPessoa = Readonly<{
+  id: string;
+  nome: string;
+  sexo: "f" | "m";
+}>;
+
+/** A trindade: presidente do partido, candidato eleito e vice, na cor do partido. */
+export type VisaoTrindade = Readonly<{
+  sigla: string;
+  nome: string;
+  cor: string;
+  presidente: VisaoPessoa;
+  candidato: VisaoPessoa;
+  vice: VisaoPessoa;
+}>;
+
+/** Um ministério (caixa) e quem o chefia; cuida de algumas instituições. */
+export type VisaoMinistro = Readonly<{
+  /** Id do molde do ministério. */
+  id: string;
+  nome: string;
+  pessoa: VisaoPessoa | null;
+  /** Ids das instituições (esferas) que ele cuida. */
+  instituicoes: readonly string[];
+}>;
+
+/** Uma instituição: o órgão de uma esfera, sob um ministério. */
+export type VisaoInstituicao = Readonly<{
+  /** Id da esfera. */
+  id: string;
+  nome: string;
+  /** Id do ministério (molde) responsável. */
+  ministro: string;
+}>;
+
+/** Quem manda em quem: trindade, ministros, instituições e as leis de cada uma. */
+export type VisaoHierarquia = Readonly<{
+  trindade: VisaoTrindade | null;
+  ministros: readonly VisaoMinistro[];
+  instituicoes: readonly VisaoInstituicao[];
+  /** Id da lei → id do ministério responsável. */
+  ministroDaLei: Readonly<Record<string, string>>;
+}>;
+
+/** Um partido numa casa do Congresso. */
+export type VisaoPartidoNaCasa = Readonly<{
+  id: string;
+  nome: string;
+  cor: string;
+  cadeiras: number;
+  /** É o partido do jogador (o que governa). */
+  governo: boolean;
+}>;
+
+/** Uma casa do Congresso: Câmara ou Senado. */
+export type VisaoCasa = Readonly<{
+  total: number;
+  partidos: readonly VisaoPartidoNaCasa[];
+}>;
+
+/** Os poderes além do Executivo: o Congresso de verdade e o Judiciário ainda de mentira. */
+export type VisaoPoderes = Readonly<{
+  legislativo: Readonly<{
+    camara: VisaoCasa;
+    senado: VisaoCasa | null;
+    /** Ids das leis esperando voto ou sanção agora. */
+    emVotacao: readonly string[];
+  }>;
+  judiciario: Readonly<{
+    /** Juízes só para ocupar o lugar: o motor ainda não tem Judiciário. */
+    juizes: readonly VisaoPessoa[];
+    pronto: boolean;
+  }>;
+}>;
+
 /** Superpotência do mundo, como a tela a desenha. */
 export type VisaoPotencia = Readonly<{
   id: string;
@@ -432,6 +508,10 @@ export type VisaoMercado = Readonly<{
 }>;
 
 export type VisaoPartida = Readonly<{
+  /** Trindade, ministros e instituições; ausente se o país não tem governo declarado. */
+  hierarquia?: VisaoHierarquia;
+  /** Legislativo e Judiciário; ausente sem Congresso. */
+  poderes?: VisaoPoderes;
   pais: string;
   cenario: string;
   turno: number;

@@ -52,6 +52,31 @@
   filter: drop-shadow(0 0 12px rgb(255 214 120 / 0.9));
 }
 
+/* lei ou índice que nada no motor liga: tracejado, para o buraco ficar à vista */
+.bolha.sem-efeito .bolha-corpo > circle:first-of-type,
+.bolha.sem-efeito .bolha-corpo > g + circle {
+  stroke-dasharray: 5 4;
+}
+
+.bolha-ministro .bolha-nome,
+.bolha-instituicao .bolha-nome {
+  font-weight: 700;
+}
+
+/* quem manda se destaca: brilho só nos ministros e nas instituições (poucos elementos) */
+.bolha-ministro .bolha-corpo {
+  filter: drop-shadow(0 0 7px rgb(255 255 255 / 0.5));
+}
+
+.bolha-instituicao .bolha-corpo {
+  filter: drop-shadow(0 0 5px rgb(232 200 114 / 0.55));
+}
+
+/* a lei fica recuada no padrão: pequena e apagada, a hierarquia vem primeiro */
+.bolha-lei.fraca {
+  opacity: 0.62;
+}
+
 .bolha.fraca {
   opacity: 0.5;
 }
@@ -130,12 +155,13 @@
 
 .org-visoes {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
 }
 
 .org-visoes button,
 .org-busca button {
-  flex: 1;
+  flex: 1 1 auto;
   padding: 6px 4px;
   font: inherit;
   font-size: 12px;
@@ -261,4 +287,10 @@
   .bolha-pulso {
     animation: none;
   }
+}
+
+/* ---------------------------------------------------------------- poderes -- */
+
+.poder {
+  cursor: help;
 }

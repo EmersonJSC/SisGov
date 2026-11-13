@@ -3,7 +3,7 @@
  * pelo nome, enquadrar tudo e a miniatura para se achar. Classes `org-`.
  */
 import { memo, useMemo, useState, type RefObject } from "react";
-import type { NoVivo } from "./organico";
+import type { NoVivo, TipoDoNo } from "./organico";
 import { VISOES, type IdDaVisao } from "./visoes";
 
 const MAXIMO_DE_RESULTADOS = 8;
@@ -14,8 +14,15 @@ const ESPESSURA_DO_QUADRO = 0.012;
 export type ItemDeBusca = Readonly<{
   id: string;
   nome: string;
-  tipo: "lei" | "indice";
+  tipo: TipoDoNo;
 }>;
+
+const ROTULO_DO_TIPO: Readonly<Record<TipoDoNo, string>> = {
+  lei: "Lei",
+  indice: "Índice",
+  ministro: "Ministro",
+  instituicao: "Órgão",
+};
 
 const semAcento = (t: string) =>
   t
@@ -95,7 +102,7 @@ export function ControlesDoMapa({
                 }}
               >
                 <span className={`org-tipo ${i.tipo}`}>
-                  {i.tipo === "lei" ? "Lei" : "Índice"}
+                  {ROTULO_DO_TIPO[i.tipo]}
                 </span>
                 {i.nome}
               </button>

@@ -21,7 +21,9 @@ function numero(id: string): number {
 }
 
 /** O retrato como imagem SVG embutida (data URI), pronta para `<img src>`. */
-export function retratoDaPessoa(p: PessoaDaLista): string {
+export function retratoDaPessoa(
+  p: Pick<PessoaDaLista, "id" | "sexo">,
+): string {
   const guardado = cache.get(p.id);
   if (guardado) return guardado;
   const uri = createAvatar(notionists, {
