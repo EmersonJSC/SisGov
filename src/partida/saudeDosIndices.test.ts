@@ -48,7 +48,7 @@ describe("alerta de um índice", () => {
     expect(r.mudancaDaSaude).toBe(-10);
   });
 
-  it("saúde boa mas piorando 5 pontos ou mais já preocupa (o ar que piora)", () => {
+  it("saúde boa mas piorando 2 pontos ou mais já preocupa (o ar que piora)", () => {
     const r = situacaoDoIndice(indice({ valor: 70, anterior: 76 }));
     expect(r.alerta).toBe("preocupante");
   });
@@ -71,9 +71,13 @@ describe("alerta de um índice", () => {
     expect(r.mudancaDaSaude).toBeUndefined();
   });
 
-  it("subindo 5 pontos ou mais é melhorando", () => {
-    const r = situacaoDoIndice(indice({ valor: 60, anterior: 50 }));
-    expect(r.tendencia).toBe("melhorando");
+  it("subindo 2 pontos ou mais é melhorando; menos que isso é estável", () => {
+    expect(
+      situacaoDoIndice(indice({ valor: 52, anterior: 50 })).tendencia,
+    ).toBe("melhorando");
+    expect(
+      situacaoDoIndice(indice({ valor: 51.5, anterior: 50 })).tendencia,
+    ).toBe("estavel");
   });
 });
 
@@ -88,13 +92,47 @@ describe("na visão da partida", () => {
     }
   });
 
-  it("depois de um turno, o motor guarda o valor anterior e a visão mede a mudança", () => {
+  it("o motor guarda até 4 turnos, o mais recente primeiro, e a visão mede a mudança", () => {
     const antes = criarPartida("brasil-2026", 1);
     const depois = avancar(antes, []);
-    expect(depois.estado.anterior).toEqual(antes.estado.jogabilidade);
+    expect(depois.estado.anteriores).toEqual([antes.estado.jogabilidade]);
+    let p = depois;
+    for (let i = 0; i < 5; i++) p = avancar(p, []);
+    expect(p.estado.anteriores).toHaveLength(4);
+    expect(
+      montarVisao(p).bolhas.find((b) => b.saude !== undefined)
+        ?.mesesDaTendencia,
+    ).toBe(8);
     const medidos = montarVisao(depois).bolhas.filter(
       (b) => b.mudancaDaSaude !== undefined,
     );
     expect(medidos.length).toBeGreaterThan(50);
+  });
+
+  it("parado, quase nenhum índice tem seta; mexendo nas leis, aparecem setas", () => {
+    const comSeta = (p: ReturnType<typeof criarPartida>) =>
+      montarVisao(p).bolhas.filter(
+        (b) => b.tendencia === "piorando" || b.tendencia === "melhorando",
+      ).length;
+    let parado = criarPartida("brasil-2026", 1, { semCongresso: true });
+    let mexendo = parado;
+    const leis = Object.values(parado.regras.leis)
+      .filter((l) => l.forma === "continua")
+      .slice(0, 40);
+    mexendo = avancar(
+      mexendo,
+      leis.map((l) => ({
+        tipo: "mudar_lei" as const,
+        lei: l.id,
+        valor: l.forma === "continua" ? l.faixa.max : 0,
+      })),
+    );
+    parado = avancar(parado, []);
+    for (let i = 0; i < 4; i++) {
+      parado = avancar(parado, []);
+      mexendo = avancar(mexendo, []);
+    }
+    expect(comSeta(parado)).toBeLessThanOrEqual(3);
+    expect(comSeta(mexendo)).toBeGreaterThan(5);
   });
 });

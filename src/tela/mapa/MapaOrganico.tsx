@@ -1067,7 +1067,7 @@ function textoDoBilhete(
               ]),
           ...(indice.tendencia && indice.tendencia !== "estavel"
             ? [
-                `${indice.tendencia === "piorando" ? "Piorando" : "Melhorando"} ${Math.abs(Math.round(indice.mudancaDaSaude ?? 0))} pontos desde o turno anterior`,
+                `${indice.tendencia === "piorando" ? "Piorando" : "Melhorando"} ${Math.abs(Math.round(indice.mudancaDaSaude ?? 0))} pontos nos últimos ${indice.mesesDaTendencia ?? 2} meses`,
               ]
             : []),
           ligacoes,

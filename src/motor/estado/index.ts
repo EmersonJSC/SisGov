@@ -57,8 +57,8 @@ export interface Estado {
   /** Cofre e dívida na moeda do país; os essenciais mostram em % do PIB. */
   tesouro: Tesouro;
   jogabilidade: Record<string, number>;
-  /** Os índices de jogabilidade no turno anterior: a tela mede a tendência por ele. */
-  anterior?: Record<string, number>;
+  /** Os índices de jogabilidade nos últimos turnos, o mais recente primeiro: a tela mede a tendência por eles. */
+  anteriores?: Record<string, number>[];
   /** Jogabilidade sem as leis: o que sobra tirando as contribuições. */
   base: Record<string, number>;
   leis: Record<string, ValorLei>;

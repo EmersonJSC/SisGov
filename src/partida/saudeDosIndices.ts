@@ -4,11 +4,14 @@
  * pior"). O estado junta o nível e a tendência:
  *
  * - crítico: saúde abaixo de 15 e piorando;
- * - preocupante: saúde abaixo de 33, ou piorou 5 pontos ou mais desde o turno anterior;
+ * - preocupante: saúde abaixo de 33, ou piorou 2 pontos ou mais na janela da
+ *   tendência (o turno mais antigo guardado, até 4 turnos = 8 meses atrás);
  * - bom: saúde acima de 66 e sem piorar;
  * - normal: o resto (os índices neutros ficam sempre aqui).
  *
- * Os cortes são palpites para a calibração do fim.
+ * O corte de 2 pontos em 4 turnos veio da medição de 13/nov: com o país parado
+ * quase nada passa dele; mexendo nas leis, cerca de 1 índice em 9. Os outros
+ * cortes são palpites para a calibração do fim.
  */
 import type { AlertaDoIndice, TendenciaDoIndice } from "./tiposVisao";
 
@@ -16,8 +19,8 @@ const FIM_DA_ESCALA = 100;
 const SAUDE_CRITICA = 15;
 const SAUDE_PREOCUPANTE = 33;
 const SAUDE_BOA = 66;
-/** Pontos de saúde que contam como piorar ou melhorar de um turno para o outro. */
-export const PASSO_DA_TENDENCIA = 5;
+/** Pontos de saúde que contam como piorar ou melhorar na janela da tendência. */
+export const PASSO_DA_TENDENCIA = 2;
 
 export type SituacaoDoIndice = Readonly<{
   saude?: number;

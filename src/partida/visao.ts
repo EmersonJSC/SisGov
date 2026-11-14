@@ -58,6 +58,7 @@ const textos = new Map(
   Object.values(textosDasLeis).map((t) => [(t as { id: string }).id, t]),
 );
 
+const MESES_DO_TURNO = 2;
 const NOME_DO_PODER = { judiciario: "Judiciário", legislativo: "Congresso" };
 
 const nomeDoId = (id: string) => {
@@ -439,10 +440,13 @@ function bolhasDaPartida(estado: Partida["estado"]): VisaoBolha[] {
       ...situacaoDoIndice({
         avaliacao: v.avaliacao,
         valor: estado.jogabilidade[v.id] ?? 0,
-        anterior: estado.anterior?.[v.id],
+        anterior: estado.anteriores?.at(-1)?.[v.id],
         minimo: v.dominio.minimo ?? 0,
         maximo: v.dominio.maximo ?? 100,
       }),
+      ...(estado.anteriores?.length
+        ? { mesesDaTendencia: estado.anteriores.length * MESES_DO_TURNO }
+        : {}),
     })),
     ...tiposGrupos.grupos.map((g) => ({
       id: g.id,

@@ -75,6 +75,8 @@ const ETAPAS: Etapa[] = [
   midia,
   invariantes,
 ];
+/** Quantos turnos de índices o estado guarda para a tendência (8 meses). */
+const TURNOS_GUARDADOS = 4;
 export function avancarTurno(
   regras: Regras,
   estado: Estado,
@@ -94,7 +96,10 @@ export function avancarTurno(
   if (motivo) throw new Error(`invariante no turno ${novo.turno}: ${motivo}`);
   return {
     ...novo,
-    anterior: estado.jogabilidade,
+    anteriores: [estado.jogabilidade, ...(estado.anteriores ?? [])].slice(
+      0,
+      TURNOS_GUARDADOS,
+    ),
     mudanca: {
       pib: novo.essenciais.pib_nominal - estado.essenciais.pib_nominal,
       divida: novo.tesouro.divida - estado.tesouro.divida,

@@ -162,7 +162,7 @@ export type VisaoFilha = Readonly<{
   ativa: boolean;
 }>;
 
-/** Como vai um índice: junta o nível (saúde) e a tendência desde o turno anterior. */
+/** Como vai um índice: junta o nível (saúde) e a tendência nos últimos turnos (até 8 meses). */
 export type AlertaDoIndice = "critico" | "preocupante" | "normal" | "bom";
 export type TendenciaDoIndice = "piorando" | "estavel" | "melhorando";
 
@@ -218,8 +218,10 @@ export type VisaoBolha = Readonly<{
   saude?: number;
   alerta?: AlertaDoIndice;
   tendencia?: TendenciaDoIndice;
-  /** Quanto a saúde mudou desde o turno anterior, em pontos (negativo piorou). */
+  /** Quanto a saúde mudou na janela da tendência, em pontos (negativo piorou). */
   mudancaDaSaude?: number;
+  /** Quantos meses atrás é a comparação da tendência (até 8). */
+  mesesDaTendencia?: number;
 }>;
 
 export type VisaoLigacao = Readonly<{

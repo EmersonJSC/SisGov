@@ -1900,7 +1900,9 @@ Duas telas de jogo: o **mapa** (o que você propõe e o país como está) e a
 - **Fios:** hierarquia em ouro; efeito verde (melhora) e vermelho (piora), que
   só correm com a bolha em foco. Bolha sem ligação nenhuma tem anel tracejado.
 - **Alerta do índice:** a cor do anel diz o nível (crítico a bom); a seta, se
-  subiu ou desceu.
+  subiu ou desceu. A seta compara com 8 meses atrás (4 turnos) e aparece a
+  partir de 2 pontos de saúde (13/nov): o índice anda devagar, e um turno só
+  não mostrava nada.
 
 ### Mesa (assinar e carimbar)
 
