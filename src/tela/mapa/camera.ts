@@ -2,7 +2,13 @@
  * Câmera do mapa com limites: o zoom tem mínimo e máximo, e o mapa não pode
  * ser arrastado para fora da sua área.
  */
-import type { Limites } from "./layout";
+/** Retângulo que contém o mapa, em coordenadas do mundo. */
+export type Limites = Readonly<{
+  minX: number;
+  minY: number;
+  maxX: number;
+  maxY: number;
+}>;
 
 /** Ponto do mundo no centro da tela e escala (pixels por unidade). */
 export type Camera = Readonly<{ x: number; y: number; k: number }>;

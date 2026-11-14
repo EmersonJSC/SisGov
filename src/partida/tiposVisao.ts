@@ -33,16 +33,10 @@ export type VisaoLei = Readonly<{
   nome: string;
   descricao: string;
   grupo: "orcamentaria" | "regulatoria" | "tributaria" | "institucional";
-  area: string;
-  /** Esfera da lei (a menor peça: 30 no mundo); o mapa agrupa por ela. */
+  /** Instituição onde a lei mora (o campo ainda se chama esfera). */
   esfera?: string;
-  /** Ministérios (nome real) a que esta lei pertence; hoje um só. */
-  ministerios: readonly string[];
+  /** Ministério que cuida da lei; o poder, se a instituição fica com um; vazio sem governo. */
   ministerio: string;
-  /** Id do ministério dono da lei (D-64). */
-  ministerioId: string;
-  /** Áreas do governo (esferas do mapa) onde a lei mora. */
-  areas: readonly string[];
   /** Família declarada pela lei do molde v4; ausente nas leis antigas. */
   familia?:
     "imposto" | "verba" | "programa" | "regra" | "constitucional" | "petrea";
@@ -276,25 +270,6 @@ export type VisaoGrupo = Readonly<{
   gosta: readonly VisaoMotivo[];
   /** O que mais derruba a satisfação, do maior para o menor. */
   odeia: readonly VisaoMotivo[];
-}>;
-
-export type VisaoMinisterio = Readonly<{
-  id: string;
-  nome: string;
-  cargo: string;
-  leis: readonly string[];
-  /** Pode ser extinto (não é do núcleo do governo). */
-  extinguivel: boolean;
-}>;
-
-export type VisaoArea = Readonly<{
-  id: string;
-  titulo: string;
-  curto: string;
-  faz: string;
-  /** Cargo de quem dá o rosto da área ("Fazenda"). */
-  cargo: string;
-  ministerios: readonly VisaoMinisterio[];
 }>;
 
 /** Uma pessoa do governo, com o que o retrato precisa. */
@@ -538,6 +513,4 @@ export type VisaoPartida = Readonly<{
   potencias: readonly VisaoPotencia[];
   /** Produção, importação e exportação por setor; ausente se o país não declara. */
   mercado?: VisaoMercado;
-  /** Áreas do governo e seus ministérios, na ordem do anel. */
-  governo: readonly VisaoArea[];
 }>;

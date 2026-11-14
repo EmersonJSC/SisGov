@@ -27,7 +27,7 @@ import {
 import { Icone } from "./Icone";
 import { ICONE_BOLHA, ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { iconeIndice, iconeLei } from "./iconesPersonalizados";
-import { ficaNaPresidencia, type BaseMapa } from "./layout";
+import { ficaNaPresidencia } from "./familia";
 import { efeitoDe, type Efeito, type IndiceRelacoes } from "./relacoes";
 import { COR_EFEITO } from "./tema";
 
@@ -509,7 +509,7 @@ export function DocumentoLei({
   visao,
   moeda,
   pib,
-  base,
+  cor,
   indice,
   rascunho,
   onRascunho,
@@ -544,7 +544,8 @@ export function DocumentoLei({
   visao: VisaoPartida;
   moeda: string;
   pib: number;
-  base: BaseMapa;
+  /** Cor do ministério da lei. */
+  cor: string;
   indice: IndiceRelacoes;
   /** Nível escolhido na janela, na unidade da visão. */
   rascunho: number;
@@ -566,7 +567,6 @@ export function DocumentoLei({
     () => new Map(visao.bolhas.map((b) => [b.id, b])),
     [visao],
   );
-  const cor = base.porNome.get(lei.areas[0])?.cor ?? "#666";
   // sem valor no país, qualquer escolha é lei nova
   const mudou = !!lei.naoLegislada || Math.abs(rascunho - lei.meta) > 1e-9;
   const constitucional = ficaNaPresidencia(lei);
@@ -636,7 +636,7 @@ export function DocumentoLei({
   return (
     <Documento
       duplo
-      orgao={lei.ministerios[0]}
+      orgao={lei.ministerio || "Governo"}
       setor={lei.naoLegislada ? "Nova lei" : "Alterar lei"}
       numero={numero}
       cor={cor}

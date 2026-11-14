@@ -49,7 +49,6 @@ arquivo) e `Conteudo` (ler os JSON do mundo e do país).
 | **Colisão**     | duas leis que não valem juntas; é um "ou"                                                                                                                     | `mundo/colisoes/colisoes.json`, `motor/leis/colisao.ts`  |
 | **Pop**         | fatia da população: profissão num estrato                                                                                                                     | `mundo/pops`, `motor/populacao`                          |
 | **Grupo**       | interesse que atravessa os pops; gosta da lei pela distância na bússola                                                                                       | `mundo/grupos`, `motor/grupos`                           |
-| **Área**        | tema antigo das leis (8 áreas). **Sai (autor, 13/nov);** o mapa ainda usa para a cor e a ordem das pétalas                                                    | `mundo/areas/areas.json`                                 |
 | **Organização** | nasce na partida (política ou crime) _(a construir)_                                                                                                          | —                                                        |
 
 **Bússola:** `economico` (esquerda − ↔ direita +) e `social`
@@ -208,9 +207,11 @@ Do centro para fora:
 **Desempenho:** fios no canvas, câmera no `viewBox`, bolha só reescreve a
 posição se mudou; ~1 ms de JS por quadro parado. Tecla F mede os quadros.
 
-**Herança ainda presa:** `layout.ts` (do mapa antigo) ainda dá funções a
-`TelaMapa`, `DocumentoLei`, `BolhaDoMapa`, `camera` e `familia`;
-`MapaPolitico.tsx` não é usado. As janelas Governo, Programas, Eleição, Mesa,
+**Herança:** o mapa antigo (`MapaPolitico.tsx`, `layout.ts`) e as 8 áreas
+(`mundo/areas`) saíram em 13/nov; cor, ordem e manchas vêm do ministério
+(`tema.ts`, `corDoMinisterio`). O índice ainda traz um `area` que é o tema
+dele (nome de instituição antiga), usado só para achar o ministro quando
+nenhuma lei liga nele. As janelas Governo, Programas, Eleição, Mesa,
 Mercado e Pregão existem, mas nada as abre (o autor vai dizer onde moram).
 
 ## 7. Dados

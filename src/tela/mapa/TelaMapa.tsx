@@ -20,9 +20,9 @@ import {
 import { comPedido } from "../fila";
 import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
-import { montarBase } from "./layout";
 import { Governo } from "./Governo";
 import { PREFIXO_MINISTRO } from "./organico";
+import { corDaLei } from "./tema";
 import { TrocaDeMinistro } from "./TrocaDeMinistro";
 import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
@@ -71,7 +71,6 @@ export function TelaMapa({
     () => ({ ...visao, leis: visao.leis.filter((l) => !l.naoLegislada) }),
     [visao],
   );
-  const base = useMemo(() => montarBase(visaoDoMapa), [visaoDoMapa]);
   const indice = useMemo(() => indexarRelacoes(visaoDoMapa), [visaoDoMapa]);
   const [selecionado, setSelecionado] = useState<string | null>(null);
   const [janela, setJanela] = useState<string | null>(null);
@@ -236,7 +235,7 @@ export function TelaMapa({
             visao={visao}
             moeda={partida.moeda}
             pib={partida.estado.essenciais.pib_nominal}
-            base={base}
+            cor={corDaLei(visao, lei.id)}
             indice={indice}
             rascunho={rascunho}
             onRascunho={setRascunho}

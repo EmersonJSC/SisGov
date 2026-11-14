@@ -50,8 +50,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 | 14. Mídia              | 1      | 1      | 8       |
 | 15. Mundo              | 2      | 1      | 8       |
 | 16. Economia           | 4      | 4      | 31      |
-| 17. Tela e mesa        | 8      | 10     | 6       |
-| **Total**              | **73** | **43** | **102** |
+| 17. Tela e mesa        | 9      | 9      | 6       |
+| **Total**              | **74** | **42** | **102** |
 
 ---
 
@@ -410,7 +410,7 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 **Mapa** (13/nov)
 
 - ✅ **R17.1** Mapa orgânico: bolhas soltas sobre uma hierarquia (trindade → ministros → instituições → leis em pétalas); índices presos ao ministro; grupos num anel de fora, potências mais longe.
-- ◐ **R17.12** Mapa por ministério e instituição, sem as 8 áreas antigas. (Feito no mapa, 13/nov: cor, ordem do anel e manchas vêm do ministério; a lei clareia o tom pela instituição. Falta, como refatoração: tirar o campo `area` das leis e índices, `mundo/areas` e o `layout.ts` antigo.)
+- ✅ **R17.12** Mapa por ministério e instituição, sem as 8 áreas antigas. (13/nov: cor, ordem do anel e manchas vêm do ministério; a lei clareia o tom pela instituição; `mundo/areas`, o mapa antigo e o `layout.ts` saíram.)
 - ◐ **R17.16** Três Poderes no miolo: trindade (Executivo), juízes em volta (Judiciário), anel de cadeiras (Câmara em cima, Senado embaixo). (Judiciário de mentira até R6.20; em aberto se cada instituição e lei responde a um poder.)
 - ✅ **R17.17** Prioridade visual Ministro > Instituição > Índice > Lei; visões Padrão, Ligações, Nível, Dinheiro e Popularidade como filtros dentro do degrau. (Popularidade sem dado: o motor não calcula popularidade por lei.)
 - ◐ **R17.18** Alerta do índice: cor do anel pelo nível, seta pela tendência. (A tendência com corte de 5 pontos por turno nunca dispara: decidir janela ou corte.)

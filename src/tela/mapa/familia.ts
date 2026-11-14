@@ -3,7 +3,18 @@
  * bolha no mapa e a prateleira no painel da área.
  */
 import type { VisaoLei } from "../../partida";
-import { ehConstitucional } from "./layout";
+
+export function ehConstitucional(lei: VisaoLei): boolean {
+  return lei.processo === "emenda-constitucional";
+}
+
+/**
+ * Leis que ficam também no centro, na Presidência: as pétreas e, nas leis
+ * ainda no formato antigo, as constitucionais.
+ */
+export function ficaNaPresidencia(lei: VisaoLei): boolean {
+  return lei.nivelLegal ? lei.nivelLegal === "petrea" : ehConstitucional(lei);
+}
 
 export type Familia =
   "imposto" | "verba" | "programa" | "regra" | "constituicao";

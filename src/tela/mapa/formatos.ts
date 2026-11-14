@@ -161,3 +161,29 @@ export const nomeDoPais = (id: string): string =>
     .split("-")
     .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
     .join(" ");
+
+/** Quebra um nome em até `linhas` linhas de no máximo `largura` letras. */
+export function quebrarNome(texto: string, largura = 16, linhas = 2) {
+  const saida: string[] = [];
+  // palavras longas com hífen podem quebrar no hífen ("Seguro-" "desemprego")
+  const palavras = texto
+    .split(/\s+/)
+    .flatMap((p) =>
+      p.length > largura && p.includes("-") ? p.split(/(?<=-)/) : [p],
+    );
+  for (const palavra of palavras) {
+    const ultima = saida.length - 1;
+    const junta = ultima >= 0 && saida[ultima].endsWith("-") ? "" : " ";
+    if (ultima >= 0 && `${saida[ultima]}${junta}${palavra}`.length <= largura)
+      saida[ultima] += `${junta}${palavra}`;
+    else saida.push(palavra);
+  }
+  if (saida.length > linhas) {
+    const resto = saida.slice(linhas - 1).join(" ");
+    saida.length = linhas - 1;
+    saida.push(
+      resto.length > largura ? `${resto.slice(0, largura - 1)}…` : resto,
+    );
+  }
+  return saida;
+}

@@ -5,14 +5,18 @@ describe("visão da partida para o mapa", () => {
   const partida = criarPartida("teste", 1);
   const visao = montarVisao(partida);
 
-  it("toda lei do mundo está numa área, com nome", () => {
+  it("toda lei do mundo aparece, com nome", () => {
     expect(visao.leis).toHaveLength(Object.keys(partida.regras.leis).length);
-    const areas = new Set(visao.governo.map((a) => a.id));
-    for (const lei of visao.leis) {
-      expect(areas.has(lei.area)).toBe(true);
+    for (const lei of visao.leis)
       // nome de gente, não o id ("Seguro-depósito" tem hífen e é nome)
       expect(lei.nome).not.toBe(lei.id);
-    }
+  });
+
+  it("no país com governo, toda lei diz quem cuida dela: um ministério ou um poder", () => {
+    const brasil = montarVisao(criarPartida("brasil-2026", 1));
+    for (const lei of brasil.leis) expect(lei.ministerio).not.toBe("");
+    const regras = brasil.leis.find((l) => l.id === "quorum-das-votacoes");
+    expect(regras?.ministerio).toBe("Congresso");
   });
 
   it("toda ligação liga dois nós que existem no mapa", () => {

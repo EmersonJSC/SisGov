@@ -1,5 +1,9 @@
 # Mapa político (herdado da tela antiga)
 
+> **Histórico (13/nov/2026):** este mapa e as áreas de `mundo/areas` saíram.
+> A tela é o mapa orgânico (`organico.ts`, `MapaOrganico.tsx`); ver
+> `docs/jogo/arquitetura.md`, seção da tela.
+
 Decidido com o autor em 01/nov/2026: a tela do jogo é o mapa da tela antiga,
 reaproveitado. Os componentes vieram do projeto antigo (commit `f62c3fef`,
 `src/ui/mapa/`) quase sem mudança; eles só leem a `VisaoPartida`, que agora é

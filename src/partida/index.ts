@@ -669,7 +669,6 @@ export type {
   Votacao,
 } from "../motor";
 export type {
-  VisaoArea,
   VisaoBolha,
   VisaoGrupo,
   VisaoLei,
@@ -679,7 +678,6 @@ export type {
   VisaoPrecoMundo,
   VisaoProduto,
   VisaoSetor,
-  VisaoMinisterio,
   VisaoOpcao,
   VisaoPartida,
   VisaoPotencia,

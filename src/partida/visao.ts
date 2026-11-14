@@ -27,7 +27,6 @@ import {
   type TipoGrupo,
 } from "../motor";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
-import areas from "../conteudo/mundo/areas/areas.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
 import type { Partida } from ".";
@@ -37,7 +36,6 @@ import { poderesDaPartida } from "./poderes";
 import { arquivoPais } from "./paises";
 import { mesesDaObra, mesesDaRede, mesesDaSaude } from "./previa";
 import type {
-  VisaoArea,
   VisaoBolha,
   VisaoConstrucao,
   VisaoLei,
@@ -60,35 +58,12 @@ const textos = new Map(
   Object.values(textosDasLeis).map((t) => [(t as { id: string }).id, t]),
 );
 
+const NOME_DO_PODER = { judiciario: "Judiciário", legislativo: "Congresso" };
+
 const nomeDoId = (id: string) => {
   const t = id.replace(/-/g, " ");
   return t[0].toUpperCase() + t.slice(1);
 };
-
-function areaDaLei(): Map<string, (typeof areas.areas)[number]> {
-  if (areas.versao !== 1)
-    throw new Error("mundo/areas/areas.json › versao: precisa ser 1");
-  return new Map(areas.areas.flatMap((a) => a.leis.map((id) => [id, a])));
-}
-
-function governo(): VisaoArea[] {
-  return areas.areas.map((a) => ({
-    id: a.id,
-    titulo: a.titulo,
-    curto: a.curto,
-    faz: a.faz,
-    cargo: a.cargo,
-    ministerios: [
-      {
-        id: a.id,
-        nome: a.titulo,
-        cargo: a.cargo,
-        leis: a.leis,
-        extinguivel: false,
-      },
-    ],
-  }));
-}
 
 /**
  * Zona de alerta do controle, em % (imposto: o pico da receita que o país
@@ -159,14 +134,13 @@ function comFluxo(
   return visao;
 }
 
-type Area = (typeof areas.areas)[number];
 type TextosDaLei = NonNullable<ReturnType<typeof textos.get>>;
 
 /** Campos que toda lei tem na tela, de régua ou de degraus. */
 function visaoComumDaLei(
   lei: Lei,
   valor: number | string,
-  area: Area,
+  ministerio: string,
   t: TextosDaLei,
   nomeLocal: string | undefined,
 ) {
@@ -180,11 +154,7 @@ function visaoComumDaLei(
       lei.classe === "constitucional"
         ? ("constitucional" as const)
         : ("derivada" as const),
-    area: area.id,
-    ministerios: [area.titulo],
-    ministerio: area.titulo,
-    ministerioId: area.id,
-    areas: [area.id],
+    ministerio,
     alteradaPorVoce: false,
     saldoAnual: 0,
     emVigor: true,
@@ -250,12 +220,12 @@ function visaoDosDegraus(
 function visaoDaLei(
   lei: Lei,
   valor: number | string,
-  area: Area,
+  ministerio: string,
   alerta: VisaoLei["alerta"],
   nomeLocal?: string,
 ): VisaoLei {
   const t = textos.get(lei.id) ?? {};
-  const comum = visaoComumDaLei(lei, valor, area, t, nomeLocal);
+  const comum = visaoComumDaLei(lei, valor, ministerio, t, nomeLocal);
   return {
     ...comum,
     ...(lei.forma === "continua"
@@ -521,37 +491,45 @@ function ligacoesDaPartida(partida: Partida): VisaoLigacao[] {
 
 export function montarVisao(partida: Partida): VisaoPartida {
   const { regras, estado } = partida;
-  const areaDa = areaDaLei();
+  const hierarquia = hierarquiaDaPartida(partida);
   // nome que o país dá à lei (Selic, Bolsa Família), em leis-vigentes.json
   const nomesLocais =
     arquivoPais<{ nomes?: Record<string, string> }>(
       partida.pais,
       "leis-vigentes",
     ).nomes ?? {};
-  for (const lei of Object.values(regras.leis))
-    if (!areaDa.has(lei.id))
-      throw new Error(`mundo/areas/areas.json › lei "${lei.id}" sem área`);
+  const nomeDoMinisterio = new Map(
+    (hierarquia?.ministros ?? []).map((m) => [m.id, m.nome]),
+  );
+  const poderDaInstituicao = new Map(
+    (hierarquia?.instituicoes ?? []).map((i) => [i.id, i.poder]),
+  );
+  /** Quem cuida da lei: o ministério, ou o poder que fica com a instituição dela. */
+  const ministerioDa = (lei: Lei) => {
+    const caixa = hierarquia?.ministroDaLei[lei.id];
+    if (caixa) return nomeDoMinisterio.get(caixa) ?? caixa;
+    const poder = poderDaInstituicao.get(lei.esfera ?? "");
+    return poder ? NOME_DO_PODER[poder] : "";
+  };
 
   return {
     pais: partida.pais,
     cenario: partida.pais,
-    hierarquia: hierarquiaDaPartida(partida),
+    hierarquia,
     poderes: poderesDaPartida(partida),
     turno: estado.turno,
-    leis: areas.areas.flatMap((a) =>
-      a.leis.map((id) =>
-        comFluxo(
-          visaoDaLei(
-            regras.leis[id],
-            estado.leis[id],
-            areaDa.get(id)!,
-            alertaDaLei(regras.leis[id], regras, estado),
-            nomesLocais[id],
-          ),
+    leis: Object.keys(regras.leis).map((id) =>
+      comFluxo(
+        visaoDaLei(
           regras.leis[id],
-          regras,
-          estado,
+          estado.leis[id],
+          ministerioDa(regras.leis[id]),
+          alertaDaLei(regras.leis[id], regras, estado),
+          nomesLocais[id],
         ),
+        regras.leis[id],
+        regras,
+        estado,
       ),
     ),
     bolhas: bolhasDaPartida(estado),
@@ -565,7 +543,6 @@ export function montarVisao(partida: Partida): VisaoPartida {
       peso: p.peso,
     })),
     mercado: regras.mercado && visaoDoMercado(regras, estado),
-    governo: governo(),
   };
 }
 

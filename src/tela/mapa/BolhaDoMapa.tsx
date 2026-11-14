@@ -7,7 +7,7 @@
 import { memo, type PointerEvent } from "react";
 import type { AlertaDoIndice, TendenciaDoIndice } from "../../partida";
 import { IconeSvg } from "./Icone";
-import { quebrarNome } from "./layout";
+import { quebrarNome } from "./formatos";
 import { transformDoNo, type NoVivo } from "./organico";
 
 const TINTA = "#2a2118";
