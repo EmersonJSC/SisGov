@@ -23,12 +23,5 @@
       "social": 0.4
     }
   },
-  "efeitos": [
-    {
-      "indice": "fome",
-      "sentido": -1,
-      "forca": "media",
-      "atraso_turnos": 0
-    }
-  ]
+  "efeitos": []
 }

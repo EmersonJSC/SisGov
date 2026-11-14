@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { criarPartida, montarVisao } from "../../partida";
-import { FAIXA_DO_RAIO, montarOrganico, RAIO_DA_INSTITUICAO } from "./organico";
+import {
+  DONO_PAIS,
+  FAIXA_DO_RAIO,
+  montarOrganico,
+  RAIO_DA_INSTITUICAO,
+} from "./organico";
 
 describe("mapa orgânico", () => {
   const visao = montarVisao(criarPartida("brasil-2026", 1));
@@ -17,11 +22,26 @@ describe("mapa orgânico", () => {
     expect(new Set(mapa.nos.map((n) => n.id)).size).toBe(mapa.nos.length);
   });
 
-  it("os índices ganham o ministério das leis ligadas a eles", () => {
-    const areas = new Set(doMapa.hierarquia?.ministros.map((m) => m.id));
-    const indices = mapa.nos.filter((n) => n.tipo === "indice");
-    const comArea = indices.filter((n) => areas.has(n.area));
-    expect(comArea.length).toBeGreaterThan(indices.length * 0.8);
+  it("o índice fica com o ministério da instituição dona dele", () => {
+    const ministroDe = new Map(
+      doMapa.hierarquia?.instituicoes.map((i) => [i.id, i.ministro]),
+    );
+    const daInstituicao = doMapa.bolhas.filter((b) => ministroDe.get(b.dono));
+    expect(daInstituicao.length).toBeGreaterThan(0);
+    for (const b of daInstituicao)
+      expect(mapa.nos.find((n) => n.id === b.id)?.area).toBe(
+        ministroDe.get(b.dono),
+      );
+  });
+
+  it("os índices do país ficam parados no miolo", () => {
+    const doPais = doMapa.bolhas.filter((b) => b.dono === DONO_PAIS);
+    expect(doPais.length).toBeGreaterThan(0);
+    for (const b of doPais) {
+      const n = mapa.nos.find((x) => x.id === b.id);
+      expect(n?.fx).toBeDefined();
+      expect(Math.hypot(n?.x ?? 0, n?.y ?? 0)).toBeLessThan(300);
+    }
   });
 
   it("a prioridade é ministro, instituição, índice e lei, do maior para o menor", () => {

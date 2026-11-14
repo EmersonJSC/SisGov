@@ -14,6 +14,7 @@ import pops from "../conteudo/mundo/pops/pops.json";
 import potencias from "../conteudo/mundo/potencias/potencias.json";
 import { paisesDisponiveis } from ".";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
+import instituicoesDoMundo from "../conteudo/mundo/ministerios/instituicoes.json";
 
 const leis = import.meta.glob("../conteudo/mundo/leis/*.json", {
   eager: true,
@@ -37,6 +38,28 @@ describe("contrato das leis", () => {
       expect(validarLei(lei, arquivo, jogabilidade)).toEqual([]);
     });
   }
+});
+
+describe("dono dos índices", () => {
+  const instituicoes = new Set(
+    instituicoesDoMundo.instituicoes.map((i) => i.id),
+  );
+  const donos = new Set([...instituicoes, "judiciario", "legislativo", "pais"]);
+
+  it("todo índice tem um dono que existe", () => {
+    const semDono = variaveis.variaveis
+      .filter((v) => !donos.has(v.dono))
+      .map((v) => `${v.id}: ${v.dono}`);
+    expect(semDono).toEqual([]);
+  });
+
+  it("toda instituição do Executivo tem ao menos um índice", () => {
+    const comIndice = new Set(variaveis.variaveis.map((v) => v.dono));
+    const semIndice = instituicoesDoMundo.instituicoes
+      .filter((i) => !("poder" in i) && !comIndice.has(i.id))
+      .map((i) => i.id);
+    expect(semIndice).toEqual([]);
+  });
 });
 
 describe("contrato das potências", () => {

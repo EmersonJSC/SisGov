@@ -26,12 +26,6 @@
   },
   "efeitos": [
     {
-      "indice": "fome",
-      "sentido": -1,
-      "forca": "media",
-      "atraso_turnos": 2
-    },
-    {
       "indice": "moradores_de_rua",
       "sentido": -1,
       "forca": "media",

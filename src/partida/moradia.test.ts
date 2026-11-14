@@ -151,6 +151,22 @@ describe("estoque de casas (motor)", () => {
     expect(m.despejadas).toBeLessThan(alta / 10);
   });
 
+  it("a casa de quem deixa de pagar fica vazia", () => {
+    expect(depois(30).vazias).toBeCloseTo(0, 1);
+    expect(depois(50, { aperto: 0.1 }).vazias).toBeGreaterThan(1);
+  });
+
+  it("quem volta a pagar ocupa as vazias", () => {
+    let m = moradiaInicial(regra, obras, pais);
+    for (let t = 0; t < 50; t++)
+      m = andarMoradia(regra, obras, m, { ...parado, aperto: 0.1 });
+    const alta = indicesDaMoradia(regra, m, pais.populacao).vazias;
+    for (let t = 0; t < 50; t++) m = andarMoradia(regra, obras, m, parado);
+    expect(indicesDaMoradia(regra, m, pais.populacao).vazias).toBeLessThan(
+      alta / 2,
+    );
+  });
+
   it("a empresa só constrói para quem paga", () => {
     const preco = 2;
     expect(depois(50, { preco, aperto: 0.4 }).deficit).toBeGreaterThan(

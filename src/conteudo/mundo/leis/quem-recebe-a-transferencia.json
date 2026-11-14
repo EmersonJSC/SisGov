@@ -31,12 +31,6 @@
       "atraso_turnos": 1
     },
     {
-      "indice": "fome",
-      "sentido": -1,
-      "forca": "media",
-      "atraso_turnos": 1
-    },
-    {
       "indice": "fraude_em_beneficios",
       "sentido": 1,
       "forca": "media",

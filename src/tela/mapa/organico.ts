@@ -29,6 +29,7 @@ import {
   type SimulationNodeDatum,
 } from "d3-force";
 import type { VisaoPartida } from "../../partida";
+import type { Poder } from "../../motor/governo";
 import { corDoMinisterio } from "./tema";
 
 const TAU = Math.PI * 2;
@@ -100,6 +101,12 @@ const AREA_DO_PODER = {
   judiciario: PODER_JUDICIARIO,
 } as const;
 const COR_SEM_PARTIDO = "#efe4cc";
+/** Dono dos índices que valem para o país inteiro (PIB, desigualdade, aprovação…). */
+export const DONO_PAIS = "pais";
+/** Os índices do país ficam em volta da trindade, entre os rostos e a órbita dos juízes. */
+const RAIO_DOS_INDICES_DO_PAIS = 172;
+/** Ângulo entre dois índices de um poder, lado a lado com a instituição dele. */
+const PASSO_AO_LADO = 0.17;
 export const RAIO_DO_GRUPO = 44;
 export const RAIO_DA_POTENCIA = 60;
 /** Distância do emblema aos três rostos da trindade. */
@@ -299,19 +306,6 @@ const noPonto = (angulo: number, raio: number) => ({
   y: Math.sin(angulo) * raio,
 });
 
-/** O valor que mais se repete (empate: o primeiro que apareceu). */
-function maisComum(valores: readonly string[]): string | undefined {
-  const contagem = new Map<string, number>();
-  valores.forEach((v) => contagem.set(v, (contagem.get(v) ?? 0) + 1));
-  return [...contagem].sort((a, b) => b[1] - a[1])[0]?.[0];
-}
-
-// Acento solto depois de decompor a letra: aceita "́" (o agudo de "é" decomposto),
-// rejeita "e". Tira os acentos para comparar "Saúde" com "saude".
-const ACENTO = /\p{Diacritic}/gu;
-const semAcento = (t: string) =>
-  t.normalize("NFD").replace(ACENTO, "").toLowerCase();
-
 /** Chave que muda só quando muda o conjunto de bolhas ou de ligações. */
 export function chaveDoMapa(visao: VisaoPartida): string {
   const leis = visao.leis.map((l) => l.id).join(",");
@@ -467,21 +461,15 @@ export function prepararOrganico(
       (i) => `${PREFIXO_INSTITUICAO}${i.id}`,
     ),
   );
-  const ministroDoTema = new Map(
-    (hierarquia?.instituicoes ?? []).map((i) => [
-      semAcento(i.nome),
-      i.ministro,
-    ]),
+  const instituicaoPorId = new Map(
+    (hierarquia?.instituicoes ?? []).map((i) => [i.id, i]),
   );
-  /** O ministro responsável pelo índice: o das leis ligadas a ele; senão, o do tema. */
-  const ministroDoIndice = (id: string, tema: string) =>
-    maisComum(
-      (vizinhosDeEfeito.get(id) ?? [])
-        .map((v) => ministroDaLei[v])
-        .filter((m): m is string => Boolean(m)),
-    ) ??
-    ministroDoTema.get(semAcento(tema)) ??
-    undefined;
+  /** O ministro do índice: o da instituição dona dele (poder e país não têm). */
+  const ministroDoIndice = (dono: string) =>
+    instituicaoPorId.get(dono)?.ministro ?? undefined;
+  /** O poder dono do índice, se for de um poder. */
+  const poderDoIndice = (dono: string): Poder | undefined =>
+    dono === "judiciario" || dono === "legislativo" ? dono : undefined;
 
   // ------------------------------------------------------------- posições --
   // o anel segue a ordem das caixas do governo
@@ -495,8 +483,7 @@ export function prepararOrganico(
       PESO_BASE_DO_MINISTRO +
       m.instituicoes.length * PESO_DA_INSTITUICAO +
       visao.leis.filter((l) => ministroDaLei[l.id] === m.id).length +
-      indicesVisao.filter((b) => ministroDoIndice(b.id, b.area) === m.id)
-        .length,
+      indicesVisao.filter((b) => ministroDoIndice(b.dono) === m.id).length,
   );
   const somaDosPesos = pesoDoMinistro.reduce((a, b) => a + b, 0);
   const anguloDoMinistro = new Map(
@@ -508,9 +495,6 @@ export function prepararOrganico(
             pesoDoMinistro[i] * METADE)) /
           somaDosPesos,
     ]),
-  );
-  const areaDoMinistro = new Map(
-    ministrosOrdenados.map((x) => [x.m.id, x.area]),
   );
   /** A área da instituição: o ministério dela, ou o poder que fica com ela. */
   const areaDaInstituicao = new Map(
@@ -612,10 +596,44 @@ export function prepararOrganico(
       ...partida(l.id, ministroDaLei[l.id]),
     };
   });
+  // índices de um poder: parados ao lado da instituição do poder, um de cada lado
+  const vezNoPoder = new Map<string, number>();
+  const doPoderAoLado = (poder: Poder) => {
+    const vez = vezNoPoder.get(poder) ?? 0;
+    vezNoPoder.set(poder, vez + 1);
+    const lado = vez % DOBRO === 0 ? 1 : -1;
+    const angulo =
+      LADO_DO_PODER[poder] +
+      lado * (Math.floor(vez / DOBRO) + 1) * PASSO_AO_LADO;
+    const p = noPonto(
+      angulo,
+      RAIO_DO_MIOLO + RAIO_DA_INSTITUICAO + FOLGA_POR_TIPO.instituicao,
+    );
+    return { ...p, fx: p.x, fy: p.y };
+  };
+  // índices do país: parados em volta da trindade, nos vãos entre os rostos
+  const doPais = indicesVisao.filter((b) => b.dono === DONO_PAIS);
+  const noMiolo = (id: string) => {
+    const i = doPais.findIndex((b) => b.id === id);
+    const p = noPonto(
+      COMECO + ((i + METADE) * TAU) / Math.max(1, doPais.length),
+      RAIO_DOS_INDICES_DO_PAIS,
+    );
+    return { ...p, fx: p.x, fy: p.y };
+  };
   const indices: NoVivo[] = indicesVisao.map((b) => {
-    const ministro = ministroDoIndice(b.id, b.area);
-    const area = (ministro && areaDoMinistro.get(ministro)) || "";
+    const poder = poderDoIndice(b.dono);
+    const ministro = ministroDoIndice(b.dono);
+    const area = poder
+      ? AREA_DO_PODER[poder]
+      : (areaDaInstituicao.get(b.dono) ?? "");
     const raio = RAIO_DO_INDICE;
+    const lugar =
+      b.dono === DONO_PAIS
+        ? noMiolo(b.id)
+        : poder
+          ? doPoderAoLado(poder)
+          : partida(b.id, ministro);
     return {
       id: b.id,
       tipo: "indice",
@@ -625,7 +643,7 @@ export function prepararOrganico(
       area,
       cor: corDaAreaId.get(area) ?? COR_SEM_AREA,
       semEfeito: !comAlgumaLigacao.has(b.id),
-      ...partida(b.id, ministro),
+      ...lugar,
     };
   });
   // a ordem é a do desenho: o que tem mais prioridade fica por cima
@@ -754,8 +772,24 @@ export function prepararOrganico(
       pendurar(`${PREFIXO_MINISTRO}${ministroDaLei[l.id]}`, l.id);
   });
   indicesVisao.forEach((b) => {
-    const ministro = ministroDoIndice(b.id, b.area);
-    if (ministro) pendurar(`${PREFIXO_MINISTRO}${ministro}`, b.id);
+    const poder = poderDoIndice(b.dono);
+    if (poder && poderes)
+      fiosDaHierarquia.push({
+        id: `h:${PODER_DO_LADO[poder]}>${b.id}`,
+        de: PODER_DO_LADO[poder],
+        para: b.id,
+        tipo: "hierarquia",
+        sinal: 1,
+      });
+    else if (b.dono === DONO_PAIS)
+      fiosDaHierarquia.push({
+        id: `h:${CENTRO_DA_TRINDADE}>${b.id}`,
+        de: CENTRO_DA_TRINDADE,
+        para: b.id,
+        tipo: "hierarquia",
+        sinal: 1,
+      });
+    else pendurar(`${PREFIXO_INSTITUICAO}${b.dono}`, b.id);
   });
   const entre = (de: string, para: string): FioDoMapa => ({
     id: `h:${de}>${para}`,
@@ -881,7 +915,7 @@ export function prepararOrganico(
     vizinhosDeEfeito,
     ministroDoIndice: new Map(
       indicesVisao.flatMap((b) => {
-        const m = ministroDoIndice(b.id, b.area);
+        const m = ministroDoIndice(b.dono);
         return m ? [[b.id, m] as const] : [];
       }),
     ),

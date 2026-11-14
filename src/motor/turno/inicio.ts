@@ -147,6 +147,7 @@ function conferirMoradia(regras: Regras, inicio: Inicio, obras: Obras) {
     r.indice_favela,
     r.indice_preco,
     r.indice_terra,
+    ...(r.indice_vazias ? [r.indice_vazias] : []),
   ]);
   faltaPop(regras, "moradia", r.pops_campo);
   faltaLei(regras, "moradia", [r.lei_verba], "continua");

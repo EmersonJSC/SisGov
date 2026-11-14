@@ -12,7 +12,7 @@
       "dominio": {
         "minimo": 1
       },
-      "area": "População",
+      "dono": "pais",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "habitantes"
@@ -27,7 +27,7 @@
       "dominio": {
         "minimo": 0
       },
-      "area": "Trabalho",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "pessoas trabalhando"
@@ -43,7 +43,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Trabalho",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% da força de trabalho sem emprego"
@@ -59,7 +59,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Trabalho",
+      "dono": "trabalho",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% das pessoas sem carteira",
@@ -77,7 +77,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Economia",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "PIB real (100 = início da partida)",
@@ -95,7 +95,7 @@
         "minimo": -15,
         "maximo": 15
       },
-      "area": "Economia",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "crescimento real do PIB (% ao ano)"
@@ -110,7 +110,7 @@
       "dominio": {
         "minimo": 0.001
       },
-      "area": "Economia",
+      "dono": "pais",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "índice de preços; 100 no início da partida"
@@ -126,7 +126,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Economia",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "inflação em 12 meses (%)"
@@ -141,7 +141,7 @@
       "dominio": {
         "minimo": 1
       },
-      "area": "Economia",
+      "dono": "pais",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "moeda corrente por ano"
@@ -156,7 +156,7 @@
       "dominio": {
         "minimo": 0
       },
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "receita do governo (% do PIB)"
@@ -172,7 +172,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "gasto do governo (% do PIB)"
@@ -187,7 +187,7 @@
       "dominio": {
         "minimo": 0
       },
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "juros pagos sobre a dívida (% do PIB)"
@@ -200,7 +200,7 @@
       "camada": "essencial",
       "unidade": "percentual_pib",
       "dominio": {},
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "receita − gasto (% do PIB)"
@@ -213,7 +213,7 @@
       "camada": "essencial",
       "unidade": "percentual_pib",
       "dominio": {},
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "receita − gasto − juros (% do PIB)"
@@ -228,7 +228,7 @@
       "dominio": {
         "minimo": 0
       },
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "neutra",
       "medida": {
         "unidade": "dinheiro guardado no Tesouro (% do PIB)"
@@ -243,7 +243,7 @@
       "dominio": {
         "minimo": 0
       },
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "dívida do governo (% do PIB)"
@@ -259,7 +259,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Contas",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "taxa de juros da dívida (% ao ano)"
@@ -275,7 +275,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = miséria geral, 100 = país rico"
@@ -291,7 +291,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "educacao",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = sem escola, 100 = todos com ensino superior"
@@ -307,7 +307,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Economia",
+      "dono": "industria",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = agrário, 100 = industrial avançado"
@@ -323,7 +323,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "saude",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = colapso, 100 = excelente"
@@ -339,7 +339,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "saude",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% na fila da saúde",
@@ -357,7 +357,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "saude",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% de pessoas vacinadas",
@@ -375,7 +375,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "saude",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "por mil habitantes",
@@ -386,14 +386,14 @@
     {
       "id": "abastecimento",
       "tipo": "calculado",
-      "nome": "Abastecimento",
+      "nome": "Comida na mesa",
       "camada": "jogabilidade",
       "unidade": "indice_0_100",
       "dominio": {
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "agricultura-e-pesca",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = fome geral, 100 = mesa farta para todos"
@@ -409,7 +409,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "saude",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = sem remédio para ninguém, 100 = remédio ao alcance de todos"
@@ -425,7 +425,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = guerra civil, 100 = sem crime"
@@ -441,7 +441,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0% = presídios vazios, 100% = todas as vagas ocupadas"
@@ -457,7 +457,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "defesa",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = sem defesa, 100 = potência militar"
@@ -473,7 +473,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "defesa",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = indefeso diante das potências, 100 = intocável"
@@ -489,7 +489,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "assistencia-social",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% da população abaixo da linha de pobreza"
@@ -505,7 +505,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "índice de Gini",
@@ -523,7 +523,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Política",
+      "dono": "controle-e-transparencia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0 = nenhuma, 100 = endêmica"
@@ -539,7 +539,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Política",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = ditadura total, 100 = plena"
@@ -555,7 +555,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Política",
+      "dono": "pais",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0 = consenso, 100 = ruptura"
@@ -571,7 +571,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "meio-ambiente",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = devastado, 100 = preservado"
@@ -587,7 +587,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Política",
+      "dono": "relacoes-exteriores",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = pária, 100 = referência"
@@ -603,7 +603,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Política",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% que aprova o governo"
@@ -619,7 +619,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "moradia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% das famílias sem casa adequada"
@@ -635,7 +635,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "moradia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0 = barata, 100 = fora do alcance da maioria"
@@ -651,7 +651,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "moradia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% das famílias morando em favela"
@@ -667,7 +667,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "agua-e-saneamento",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% das famílias com água tratada e esgoto"
@@ -683,7 +683,7 @@
         "minimo": 0,
         "maximo": 100
       },
-      "area": "Sociedade",
+      "dono": "terra",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% da terra rural nas mãos dos donos grandes"
@@ -700,7 +700,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Saúde",
+      "dono": "saude",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Chance de um surto de doença",
@@ -720,7 +720,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Saúde",
+      "dono": "saude",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Profissionais de saúde que deixam o país ou a rede",
@@ -740,7 +740,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Saúde",
+      "dono": "saude",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto a população está bem da cabeça: depressão, ansiedade, suicídio",
@@ -760,7 +760,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Vícios",
+      "dono": "saude",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quem tem problema com drogas",
@@ -780,7 +780,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Vícios",
+      "dono": "saude",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quem tem problema com apostas",
@@ -800,7 +800,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Vícios",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "O que se vende fora da lei",
@@ -820,7 +820,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Saneamento",
+      "dono": "agua-e-saneamento",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Chance de faltar água nas cidades",
@@ -840,7 +840,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Educação",
+      "dono": "educacao",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quem tem vaga na escola",
@@ -860,7 +860,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Educação",
+      "dono": "educacao",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte dos jovens que larga a escola",
@@ -880,7 +880,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Educação",
+      "dono": "educacao",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto os alunos aprendem de fato",
@@ -900,7 +900,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Ciência e pesquisa",
+      "dono": "ciencia-e-pesquisa",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Média do nível de tecnologia dos produtos; a tela mostra junto o melhor e o pior",
@@ -920,7 +920,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Ciência e pesquisa",
+      "dono": "ciencia-e-pesquisa",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quantos pesquisadores e técnicos saem do país",
@@ -940,30 +940,10 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Cultura e esporte",
+      "dono": "cultura",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quantos bens protegidos estão sem o dinheiro da conservação",
-        "zero": 0,
-        "cem": 100
-      },
-      "origem": "planilha"
-    },
-    {
-      "id": "fome",
-      "tipo": "calculado",
-      "nome": "Fome",
-      "camada": "jogabilidade",
-      "unidade": "indice_0_100",
-      "dominio": {
-        "minimo": 0,
-        "maximo": 100
-      },
-      "inicial": 50,
-      "area": "Assistência social",
-      "avaliacao": "maior_pior",
-      "medida": {
-        "unidade": "Parte das pessoas sem comida suficiente",
         "zero": 0,
         "cem": 100
       },
@@ -980,7 +960,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Assistência social",
+      "dono": "assistencia-social",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Pessoas vivendo na rua",
@@ -1000,7 +980,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Assistência social",
+      "dono": "assistencia-social",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte da verba de benefícios paga a quem não deveria",
@@ -1020,7 +1000,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Previdência",
+      "dono": "previdencia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Parte dos idosos que recebe aposentadoria ou pensão",
@@ -1040,7 +1020,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Previdência",
+      "dono": "previdencia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Benefícios menos contribuições, em % do PIB",
@@ -1060,7 +1040,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Previdência",
+      "dono": "previdencia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto quem trabalha acredita que vai receber",
@@ -1080,7 +1060,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Trabalho",
+      "dono": "trabalho",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte dos empregados parada",
@@ -1100,7 +1080,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Trabalho",
+      "dono": "trabalho",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Raiva acumulada por salário, emprego e direitos",
@@ -1120,7 +1100,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Trabalho",
+      "dono": "trabalho",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto os sindicatos conseguem mobilizar",
@@ -1140,7 +1120,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Trabalho",
+      "dono": "trabalho",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte das crianças que trabalha",
@@ -1159,13 +1139,13 @@
         "minimo": 0,
         "maximo": 100
       },
-      "inicial": 50,
-      "area": "Moradia",
-      "avaliacao": "maior_melhor",
+      "inicial": 30,
+      "dono": "moradia",
+      "avaliacao": "maior_pior",
       "medida": {
-        "unidade": "Casas construídas sem morador, por faixa",
+        "unidade": "% das casas prontas sem morador: quem foi despejado ou não consegue comprar",
         "zero": 0,
-        "cem": 100
+        "cem": 30
       },
       "origem": "planilha"
     },
@@ -1180,7 +1160,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Mortes por 100 mil habitantes",
@@ -1200,7 +1180,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Roubos e furtos por mil habitantes",
@@ -1220,7 +1200,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Pessoas mortas pela polícia por ano",
@@ -1240,7 +1220,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "O medo da população",
@@ -1260,7 +1240,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto a população confia na polícia",
@@ -1280,7 +1260,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto da polícia está comprada",
@@ -1300,7 +1280,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Líderes de organizações presos por ano",
@@ -1320,7 +1300,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Dinheiro de organizações apreendido por ano",
@@ -1340,7 +1320,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Segurança pública",
+      "dono": "seguranca-publica",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quantas mulheres sofrem violência em casa ou do parceiro",
@@ -1360,7 +1340,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Justiça e prisões",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Chance de quem comete crime ser pego e condenado",
@@ -1380,7 +1360,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Justiça e prisões",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "O quanto as penas são duras",
@@ -1400,7 +1380,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Justiça e prisões",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte dos presos que ainda espera julgamento",
@@ -1420,7 +1400,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Justiça e prisões",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte de quem sai e volta a cometer crime",
@@ -1440,7 +1420,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Justiça e prisões",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Meses que um processo leva",
@@ -1460,7 +1440,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Justiça e prisões",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto a população confia nos juízes",
@@ -1480,7 +1460,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Defesa",
+      "dono": "defesa",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Chance de os militares ou uma organização tentarem um golpe",
@@ -1500,7 +1480,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Defesa civil",
+      "dono": "defesa-civil",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "O quanto o país está pronto para enfrentar enchente, deslizamento, seca e incêndio",
@@ -1520,7 +1500,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Relações exteriores",
+      "dono": "relacoes-exteriores",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = país tutelado, 100 = autônomo",
@@ -1540,7 +1520,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Relações exteriores",
+      "dono": "relacoes-exteriores",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0 = paz com todos, 100 = crise com várias potências",
@@ -1560,7 +1540,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Imigração",
+      "dono": "imigracao",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% da população nascida fora",
@@ -1580,7 +1560,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Imigração",
+      "dono": "imigracao",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% da população sem documento",
@@ -1600,7 +1580,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Imigração",
+      "dono": "imigracao",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Pessoas acolhidas por refúgio ou asilo",
@@ -1620,7 +1600,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Imigração",
+      "dono": "imigracao",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% dos formados que saem do país por ano",
@@ -1640,7 +1620,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Imigração",
+      "dono": "imigracao",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0 = convivência, 100 = conflito aberto",
@@ -1660,7 +1640,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Imigração",
+      "dono": "imigracao",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto quem veio de fora já vive como quem nasceu aqui: fala a língua, tem trabalho registrado e documento",
@@ -1680,7 +1660,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Direitos e liberdades",
+      "dono": "justica-e-prisoes",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto pessoas são tratadas pior por quem são",
@@ -1700,7 +1680,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Direitos e liberdades",
+      "dono": "religiao",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Conflito entre religiões e entre religião e Estado",
@@ -1720,7 +1700,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Estado e eleições",
+      "dono": "eleicoes",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Parte dos eleitores que vota",
@@ -1740,7 +1720,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Estado e eleições",
+      "dono": "eleicoes",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto a população confia nas eleições e nas instituições",
@@ -1760,7 +1740,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Estado e eleições",
+      "dono": "judiciario",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto os juízes decidem sem pressão do governo",
@@ -1780,7 +1760,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Impostos",
+      "dono": "impostos",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Parte do imposto devido que não é paga",
@@ -1800,7 +1780,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Impostos",
+      "dono": "impostos",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Patrimônio que deixa o país por ano",
@@ -1820,7 +1800,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Impostos",
+      "dono": "impostos",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Imposto devido e não pago que se acumula, em % do PIB",
@@ -1840,7 +1820,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Orçamento e dívida",
+      "dono": "orcamento-e-divida",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% do orçamento já travado por lei (pisos e vinculações)",
@@ -1860,7 +1840,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Orçamento e dívida",
+      "dono": "orcamento-e-divida",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Anos até a dívida vencer, em média",
@@ -1880,7 +1860,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Orçamento e dívida",
+      "dono": "orcamento-e-divida",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% da dívida em moeda de fora",
@@ -1900,7 +1880,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Orçamento e dívida",
+      "dono": "orcamento-e-divida",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto o mercado acredita que o governo cumpre as regras",
@@ -1920,7 +1900,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Orçamento e dívida",
+      "dono": "funcionalismo",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% da receita que vai para salários do Estado",
@@ -1940,7 +1920,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Valor médio das empresas na bolsa, comparado ao início",
@@ -1960,7 +1940,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto investidores confiam nas regras e no futuro do país",
@@ -1980,7 +1960,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Preço da moeda de fora na moeda do país; 100 no início",
@@ -2000,7 +1980,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Moeda forte guardada pelo Banco Central, em meses de importação",
@@ -2020,7 +2000,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Crédito de bancos a pops e empresas, em % do PIB",
@@ -2040,7 +2020,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = bancos à beira da quebra, 100 = bancos fortes",
@@ -2060,7 +2040,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto o povo e as empresas esperam de inflação",
@@ -2080,7 +2060,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Moeda e bancos",
+      "dono": "moeda-e-bancos",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% da poupança guardada em cripto",
@@ -2100,7 +2080,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Empresas e estatais",
+      "dono": "estatais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% do PIB feito por empresas do Estado",
@@ -2120,7 +2100,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Empresas e estatais",
+      "dono": "concorrencia-e-consumidor",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "0 = muita concorrência, 100 = monopólio",
@@ -2140,7 +2120,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Empresas e estatais",
+      "dono": "estatais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "0 = estatais pesadas e corruptas, 100 = eficientes",
@@ -2160,7 +2140,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Empresas e estatais",
+      "dono": "industria",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Dias para abrir uma empresa",
@@ -2180,7 +2160,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Empresas e estatais",
+      "dono": "trabalho",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% do emprego em cooperativas",
@@ -2200,7 +2180,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comércio exterior e capital",
+      "dono": "comercio-exterior-e-capital",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Exportações mais importações, em % do PIB",
@@ -2220,7 +2200,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comércio exterior e capital",
+      "dono": "comercio-exterior-e-capital",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Exportações menos importações, em % do PIB",
@@ -2240,7 +2220,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comércio exterior e capital",
+      "dono": "comercio-exterior-e-capital",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% do consumo de produtos essenciais que vem de fora",
@@ -2260,7 +2240,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comércio exterior e capital",
+      "dono": "comercio-exterior-e-capital",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Dinheiro de fora que entra para investir, em % do PIB",
@@ -2280,7 +2260,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Agricultura e pesca",
+      "dono": "agricultura-e-pesca",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto a comida pesa no bolso",
@@ -2300,7 +2280,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Agricultura e pesca",
+      "dono": "agricultura-e-pesca",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Peixe que resta, por mar compartilhado; o índice é a média dos mares do país",
@@ -2320,7 +2300,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Terra",
+      "dono": "terra",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Tensão e violência pela terra",
@@ -2340,7 +2320,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Meio ambiente",
+      "dono": "meio-ambiente",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto o país emite: soma das contas das companhias, somada ao desmatamento",
@@ -2360,7 +2340,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Meio ambiente",
+      "dono": "meio-ambiente",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Mata derrubada no período. O mapa mostra onde; o número do estado aparece no papel",
@@ -2380,7 +2360,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Meio ambiente",
+      "dono": "meio-ambiente",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quão limpo está o ar, por estado",
@@ -2400,7 +2380,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Energia",
+      "dono": "energia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Soma do que as usinas geram no país",
@@ -2420,7 +2400,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Energia",
+      "dono": "energia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Soma do que companhias e população gastam, mais as perdas na rede",
@@ -2440,7 +2420,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Energia",
+      "dono": "energia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Preço médio da energia no país",
@@ -2460,7 +2440,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Energia",
+      "dono": "energia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% da energia gerada por fontes limpas",
@@ -2480,7 +2460,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Energia",
+      "dono": "energia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "% das famílias com luz",
@@ -2500,7 +2480,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Infraestrutura e transporte",
+      "dono": "infraestrutura-e-transporte",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Mortes no trânsito por 100 mil habitantes",
@@ -2520,7 +2500,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Infraestrutura e transporte",
+      "dono": "infraestrutura-e-transporte",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto custa construir hoje, comparado ao normal",
@@ -2540,7 +2520,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Infraestrutura e transporte",
+      "dono": "infraestrutura-e-transporte",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto custa levar carga dentro do país",
@@ -2560,7 +2540,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Infraestrutura e transporte",
+      "dono": "infraestrutura-e-transporte",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quantas obras não andam",
@@ -2580,7 +2560,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Infraestrutura e transporte",
+      "dono": "infraestrutura-e-transporte",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto tempo se perde parado no trânsito",
@@ -2600,7 +2580,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comunicação e tecnologia",
+      "dono": "comunicacao-e-tecnologia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto a mídia pode noticiar sem medo",
@@ -2620,7 +2600,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comunicação e tecnologia",
+      "dono": "comunicacao-e-tecnologia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto boato e notícia falsa circula",
@@ -2640,7 +2620,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comunicação e tecnologia",
+      "dono": "comunicacao-e-tecnologia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Quanto o povo acredita no que a imprensa diz",
@@ -2660,7 +2640,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comunicação e tecnologia",
+      "dono": "comunicacao-e-tecnologia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto da audiência está nas mãos de poucos donos",
@@ -2680,7 +2660,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comunicação e tecnologia",
+      "dono": "comunicacao-e-tecnologia",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Jornalistas ameaçados, presos ou agredidos por ano",
@@ -2700,7 +2680,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Comunicação e tecnologia",
+      "dono": "comunicacao-e-tecnologia",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Parte da população conectada",
@@ -2720,7 +2700,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Geral do país",
+      "dono": "pais",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Filhos por mulher",
@@ -2740,7 +2720,7 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Geral do país",
+      "dono": "industria",
       "avaliacao": "maior_melhor",
       "medida": {
         "unidade": "Média das produtividades de todas as companhias do jogo",
@@ -2760,10 +2740,110 @@
         "maximo": 100
       },
       "inicial": 50,
-      "area": "Mineração e petróleo",
+      "dono": "mineracao-e-petroleo",
       "avaliacao": "maior_pior",
       "medida": {
         "unidade": "Quanto custa encher o tanque e o botijão",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "envelhecimento",
+      "tipo": "calculado",
+      "nome": "Envelhecimento",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 25,
+      "dono": "previdencia",
+      "avaliacao": "neutra",
+      "medida": {
+        "unidade": "% da população com 65 anos ou mais",
+        "zero": 0,
+        "cem": 40
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "expectativa_de_vida",
+      "tipo": "calculado",
+      "nome": "Expectativa de vida",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 60,
+      "dono": "saude",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Anos que um bebê nascido hoje deve viver",
+        "zero": 40,
+        "cem": 90
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "turismo",
+      "tipo": "calculado",
+      "nome": "Turismo",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 20,
+      "dono": "turismo",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Milhões de visitantes de fora por ano",
+        "zero": 0,
+        "cem": 50
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "pratica_de_esporte",
+      "tipo": "calculado",
+      "nome": "Prática de esporte",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 40,
+      "dono": "esporte",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "% das pessoas que praticam esporte",
+        "zero": 0,
+        "cem": 100
+      },
+      "origem": "planilha"
+    },
+    {
+      "id": "tensao_federativa",
+      "tipo": "calculado",
+      "nome": "Tensão com estados e municípios",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 40,
+      "dono": "estados-e-municipios",
+      "avaliacao": "maior_pior",
+      "medida": {
+        "unidade": "0 = pacto em paz, 100 = governadores em guerra com o governo",
         "zero": 0,
         "cem": 100
       },

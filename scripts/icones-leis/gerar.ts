@@ -28,7 +28,7 @@ interface Lei {
 interface Indice {
   id: string;
   nome: string;
-  area: string;
+  dono: string;
 }
 interface Manifesto {
   version: number;
@@ -91,7 +91,7 @@ function gravarTudo() {
   for (const i of indices) {
     gravar(`${RAIZ}/indices/${i.id}.svg`, svgDaEsfera(INDICES[i.id]));
     manifestoIndices.icons[i.id] = {
-      area: i.area,
+      area: i.dono,
       name: i.nome,
       path: `indices/${i.id}.svg`,
     };

@@ -45,7 +45,13 @@
     "favela": 8,
     "saneamento": 55,
     "concentracao_terra": 75,
-    "popularidade_governo": 45
+    "popularidade_governo": 45,
+    "envelhecimento": 27,
+    "expectativa_de_vida": 73,
+    "turismo": 13,
+    "pratica_de_esporte": 38,
+    "tensao_federativa": 45,
+    "casas_vazias": 42
   },
   "opinioes": {
     "republica-do-norte": 97,

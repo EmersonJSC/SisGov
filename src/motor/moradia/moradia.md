@@ -5,7 +5,8 @@ Estoque de casas do país, só no motor (a tela mostra os índices). Aprovado em
 
 - **Família** = pessoas dos pops ÷ tamanho da família (`pessoas_por_familia`).
 - **Déficit** = famílias sem casa formal, em %. **Favela** = famílias em casa
-  precária, em %. Os dois saem da contagem; as outras leis continuam somando
+  precária, em %. **Casas vazias** = casas formais sem morador, em % das
+  famílias. Os três saem da contagem; as outras leis continuam somando
   direto nos índices.
 - A contagem move a **base** do índice: índice = base + leis.
 - **Desgaste:** as casas formais perdem o desgaste das obras (4% ao ano).
@@ -26,6 +27,12 @@ Estoque de casas do país, só no motor (a tela mostra os índices). Aprovado em
   só constrói para quem paga. Quem volta a pagar volta para a casa. Com menos
   gente sem pagar que no turno 0, quem está sem casa formal levanta menos casa
   precária. A casa do governo não depende disso.
+- **Casa vazia (14/nov):** a casa de quem é despejado não some, fica vazia;
+  quem volta a pagar volta para uma vazia; a obra pronta além das famílias
+  também fica vazia. As vazias desgastam como as formais, e a empresa as conta
+  como oferta e constrói menos. O índice de casas vazias (`indice_vazias`) anda
+  pela contagem, como déficit e favela: casa existindo sem ninguém que pague é
+  sinal de preço alto demais.
 - **Campo:** as famílias dos pops do campo são o limite. Cada ponto de
   concentração acima do turno 0 tira `campo_por_ponto` delas do campo, aos
   poucos (`exodo_velocidade`), e elas entram no déficit; o êxodo para ao chegar

@@ -171,7 +171,8 @@ export type VisaoBolha = Readonly<{
   nome: string;
   tipo: string;
   unidade: string;
-  area: string;
+  /** Quem responde pelo índice: id da instituição, um poder ("judiciario", "legislativo") ou "pais". */
+  dono: string;
   avaliacao?: string;
   valor: number;
   /** Escala da bolha (do domínio no conteúdo). */

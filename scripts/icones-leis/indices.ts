@@ -60,7 +60,6 @@ const NOMES: Record<string, string> = {
   tecnologia_do_pais: "microchip",
   fuga_de_cientistas: "atom",
   bens_em_risco: "cracked-shield",
-  fome: "bread",
   moradores_de_rua: "camping-tent",
   fraude_em_beneficios: "drama-masks",
   cobertura_da_previdencia: "umbrella",
@@ -151,6 +150,11 @@ const NOMES: Record<string, string> = {
   natalidade: "baby-bottle",
   produtividade: "gears",
   preco_do_combustivel: "gas-pump",
+  envelhecimento: "walking-boot",
+  expectativa_de_vida: "heart-beats",
+  turismo: "airplane-arrival",
+  pratica_de_esporte: "soccer-ball",
+  tensao_federativa: "split-arrows",
 };
 
 export const INDICES: Record<string, string> = Object.fromEntries(

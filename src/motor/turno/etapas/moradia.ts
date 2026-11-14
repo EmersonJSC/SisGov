@@ -11,7 +11,7 @@ import { tamanhoDoSetor, ritmoDasObras, apertoDaMoradia } from "./obras";
 
 /**
  * 6b. Moradia: casas desgastam, ficam prontas e começam (motor/moradia). O que
- * a contagem andou move a base do déficit e da favela.
+ * a contagem andou move a base do déficit, da favela e das casas vazias.
  */
 export const moradia: Etapa = (regras, estado) => {
   const regra = regras.moradia;
@@ -52,6 +52,12 @@ export const moradia: Etapa = (regras, estado) => {
         estado.base[regra.indice_deficit] + depois.deficit - antes.deficit,
       [regra.indice_favela]:
         estado.base[regra.indice_favela] + depois.favela - antes.favela,
+      ...(regra.indice_vazias
+        ? {
+            [regra.indice_vazias]:
+              estado.base[regra.indice_vazias] + depois.vazias - antes.vazias,
+          }
+        : {}),
     },
   };
 };

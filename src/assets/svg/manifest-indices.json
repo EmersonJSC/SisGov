@@ -124,7 +124,7 @@
     },
     "abastecimento": {
       "area": "Sociedade",
-      "name": "Abastecimento",
+      "name": "Comida na mesa",
       "path": "indices/abastecimento.svg"
     },
     "acesso_remedios": {
@@ -281,11 +281,6 @@
       "area": "Cultura e esporte",
       "name": "Bens em risco",
       "path": "indices/bens_em_risco.svg"
-    },
-    "fome": {
-      "area": "Assistência social",
-      "name": "Fome",
-      "path": "indices/fome.svg"
     },
     "moradores_de_rua": {
       "area": "Assistência social",
@@ -736,6 +731,31 @@
       "area": "Mineração e petróleo",
       "name": "Preço do combustível",
       "path": "indices/preco_do_combustivel.svg"
+    },
+    "envelhecimento": {
+      "area": "previdencia",
+      "name": "Envelhecimento",
+      "path": "indices/envelhecimento.svg"
+    },
+    "expectativa_de_vida": {
+      "area": "saude",
+      "name": "Expectativa de vida",
+      "path": "indices/expectativa_de_vida.svg"
+    },
+    "turismo": {
+      "area": "turismo",
+      "name": "Turismo",
+      "path": "indices/turismo.svg"
+    },
+    "pratica_de_esporte": {
+      "area": "esporte",
+      "name": "Prática de esporte",
+      "path": "indices/pratica_de_esporte.svg"
+    },
+    "tensao_federativa": {
+      "area": "estados-e-municipios",
+      "name": "Tensão com estados e municípios",
+      "path": "indices/tensao_federativa.svg"
     }
   }
 }

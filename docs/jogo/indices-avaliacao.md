@@ -30,20 +30,20 @@ Ligados ou criados pelas avaliações da favela e do saneamento:
 - Desigualdade (`desigualdade`): sobe com a saúde de dois andares (com plano × na fila).
 - Emprego informal (`emprego_informal`): parte das pessoas sem carteira; hoje sobe com o Seguro na folha.
 
-Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`:
+Mudados no passo A do nível 3 (14/nov):
 
-- Trabalho: `ocupados`, `desemprego`
-- População: `populacao`
-- Economia: `pib`, `crescimento_real`, `indice_precos`, `inflacao`,
-  `pib_nominal`, `industrializacao`
-- Contas: `arrecadacao`, `gasto_publico`, `juros_pagos`, `resultado_primario`,
-  `resultado_fiscal`, `cofre`, `divida_publica`, `taxa_juros`
-- Sociedade: `instrucao`, `abastecimento`, `acesso_remedios`,
-  `lotacao_presidios`, `poder_defensivo`, `seguranca_externa`, `pobreza`,
-  `deficit_habitacional`, `preco_moradia`,
-  `concentracao_terra`
-- Política: `corrupcao`, `liberdade_civil`, `polarizacao`,
-  `reputacao_internacional`, `popularidade_governo`
+- Comida na mesa (`abastecimento`): juntou a Fome; sai da cesta de comida do
+  mercado. As 4 leis que empurravam a Fome perderam o fio e devem agir por
+  preço ou renda.
+- Casas vazias (`casas_vazias`): contadas pela moradia (casa do despejado e
+  obra além das famílias); maior é pior.
+- Novos, sem fio ainda: Envelhecimento (`envelhecimento`), Expectativa de vida
+  (`expectativa_de_vida`), Turismo (`turismo`), Prática de esporte
+  (`pratica_de_esporte`), Tensão com estados e municípios (`tensao_federativa`).
+
+Os demais índices de `src/conteudo/mundo/indicadores/variaveis.json`. Desde
+14/nov cada um tem um **dono** (campo `dono`): uma instituição, um poder ou o
+país. A lista por dono sai de `npx vite-node scripts/grafo-nivel3.ts`.
 
 ## Ainda não existem
 

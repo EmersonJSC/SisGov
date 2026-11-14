@@ -5,6 +5,7 @@
   "indice_favela": "favela",
   "indice_preco": "preco_moradia",
   "indice_terra": "concentracao_terra",
+  "indice_vazias": "casas_vazias",
   "pops_campo": [
     "pequenos-agricultores",
     "assalariados-rurais",

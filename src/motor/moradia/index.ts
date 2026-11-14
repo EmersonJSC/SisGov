@@ -1,5 +1,6 @@
 // Estoque de casas: quantas famílias têm casa formal, quantas moram em casa
-// precária e quantas casas estão em obra. Déficit e favela saem dessa conta.
+// precária, quantas estão em obra e quantas ficaram vazias. Déficit, favela e
+// casas vazias saem dessa conta.
 // O motor não conhece nomes de lei nem de índice. Regras em moradia.md.
 import type { RegraDasObras } from "../mercado/construcoes";
 import { atrasoDasObras } from "../mercado/construcoes";
@@ -13,6 +14,8 @@ export interface RegraDaMoradia {
   indice_favela: string;
   indice_preco: string;
   indice_terra: string;
+  /** Casas vazias, em % das famílias; sem ele, a moradia não conta as vazias. */
+  indice_vazias?: string;
   /** Pops que vivem do campo. */
   pops_campo: string[];
   /** Lei contínua (fração do PIB) com que o governo constrói. */
@@ -50,6 +53,8 @@ export interface MoradiaNoEstado {
   exodo?: number;
   /** Famílias que perderam a casa formal por não pagar. Ausente em partida salva antes dele. */
   despejadas?: number;
+  /** Casas formais sem morador: de quem foi despejado ou feitas além de quem compra. Ausente em partida salva antes dele. */
+  vazias?: number;
 }
 
 export interface TurnoDaMoradia {
@@ -162,8 +167,9 @@ export function moradiaInicial(
 
 /**
  * Um turno: casas desgastam, as obras prontas entram, famílias saem do campo
- * ou voltam, quem não paga perde a casa, quem ficou sem casa levanta casa
- * precária, e governo e empresas começam obras novas.
+ * ou voltam, quem não paga perde a casa (que fica vazia), quem volta a pagar
+ * volta para uma vazia, quem ficou sem casa levanta casa precária, e governo e
+ * empresas começam obras novas (a empresa desconta as vazias).
  */
 export function andarMoradia(
   regra: RegraDaMoradia,
@@ -173,13 +179,17 @@ export function andarMoradia(
 ): MoradiaNoEstado {
   const total = familias(regra, turno.populacao);
   const passo = (turno.ritmo ?? 1) / atrasoDasObras(turno.atraso).prazo;
-  let formais = m.formais * (1 - obras.desgaste / TURNOS_POR_ANO);
+  const desgaste = 1 - obras.desgaste / TURNOS_POR_ANO;
+  let formais = m.formais * desgaste;
+  let vazias = (m.vazias ?? 0) * desgaste;
   const fila: ObraDeCasas[] = [];
   for (const obra of m.obras) {
     const falta = obra.falta - passo;
     if (falta <= 1e-9) formais += obra.casas;
     else fila.push({ ...obra, falta });
   }
+  // casa pronta além das famílias fica vazia
+  vazias += Math.max(0, formais - total);
   formais = Math.min(total, formais);
   const exodo = m.exodo ?? 0;
   const movimento = movimentoDoCampo(regra, exodo, formais, total, turno);
@@ -193,6 +203,8 @@ export function andarMoradia(
     turno.aperto,
   );
   formais -= despejo;
+  // a casa do despejado fica vazia; quem volta a pagar volta para uma vazia
+  vazias = Math.max(0, vazias + despejo);
   const semCasa = total - formais;
   const parte = Math.min(1, Math.max(0, m.parte_precaria + turno.aperto));
   const alvo = semCasa * parte;
@@ -203,11 +215,11 @@ export function andarMoradia(
   const custo =
     atrasoDasObras(turno.atraso_inicial).custo /
     atrasoDasObras(turno.atraso).custo;
-  // A empresa só vende para quem paga.
-  const naFila = fila.reduce((soma, o) => soma + o.casas, 0);
+  // A empresa só vende para quem paga e conta as vazias como oferta.
   const clientes = total * (1 - Math.max(0, turno.aperto));
+  const naFila = fila.reduce((soma, o) => soma + o.casas, 0);
   const privadas = Math.min(
-    Math.max(0, clientes - formais - naFila),
+    Math.max(0, clientes - formais - naFila - vazias),
     m.ritmo_privado * turno.setor * turno.preco * turno.animo * custo,
   );
   const governo = casasDoGoverno(
@@ -224,6 +236,7 @@ export function andarMoradia(
     obras: fila,
     exodo: exodo + movimento,
     despejadas: despejadas + despejo,
+    vazias,
   };
 }
 
@@ -247,7 +260,7 @@ export function pontosDoExodo(
   return regra.campo_por_ponto * concentracao * (noCampo / populacao) * 100;
 }
 
-/** Déficit e favela contados, em % das famílias. */
+/** Déficit, favela e casas vazias contados, em % das famílias. */
 export function indicesDaMoradia(
   regra: RegraDaMoradia,
   m: MoradiaNoEstado,
@@ -257,5 +270,6 @@ export function indicesDaMoradia(
   return {
     deficit: (1 - m.formais / total) * 100,
     favela: (m.precarias / total) * 100,
+    vazias: ((m.vazias ?? 0) / total) * 100,
   };
 }
