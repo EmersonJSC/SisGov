@@ -26,7 +26,7 @@
     "partido-ameaca-sair": { "texto": "{quem} ameaça deixar a base" },
     "ministro-nomeado": { "texto": "{quem} assume o ministério {caixa}" },
     "ministro-demitido": {
-      "texto": "Governo troca o ministro {caixa}; {quem} perde o cargo"
+      "texto": "Governo troca o ministro {caixa}"
     },
     "ministerio-oferecido": {
       "texto": "Governo dá o ministério {caixa} a {quem}"

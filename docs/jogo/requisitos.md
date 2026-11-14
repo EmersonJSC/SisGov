@@ -39,7 +39,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 | ---------------------- | ------ | ------ | ------- |
 | 4. Partida e turno     | 8      | 2      | 2       |
 | 5. Partido             | 0      | 0      | 5       |
-| 6. Governo             | 7      | 7      | 12      |
+| 6. Governo             | 7      | 9      | 10      |
 | 7. Leis e programas    | 11     | 5      | 5       |
 | 8. Bússola             | 4      | 1      | 1       |
 | 9. Índices             | 4      | 2      | 2       |
@@ -50,8 +50,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 | 14. Mídia              | 1      | 1      | 8       |
 | 15. Mundo              | 2      | 1      | 8       |
 | 16. Economia           | 4      | 4      | 31      |
-| 17. Tela e mesa        | 7      | 10     | 7       |
-| **Total**              | **72** | **41** | **105** |
+| 17. Tela e mesa        | 8      | 10     | 6       |
+| **Total**              | **73** | **43** | **102** |
 
 ---
 
@@ -112,7 +112,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ◐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com o ministro; superministério divide a competência. (13/nov: ministro e divisão feitos. Faltam o custo de estrutura, que é do caminho do dinheiro, e agradar quem é parecido.)
 - ✅ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem. (12/nov: agem competência e honestidade; habilidade, carisma e lealdade esperam Congresso, mídia e fatos do ministro.)
 - ◐ **R6.8** A ficha muda a força e o atraso das leis das instituições da caixa e o rendimento delas. (Competência muda força e atraso. Falta o rendimento agir na lei, que é R7.11.)
-- ☐ **R6.24** Trocar ministro a qualquer momento, sem esperar turno nem lei; toda troca causa revolta e polêmica (o demitido reage pela lealdade, o partido dele se irrita no Congresso, a mídia cobra). (13/nov)
+- ◐ **R6.24** Trocar ministro a qualquer momento, sem esperar turno nem lei; toda troca causa revolta e polêmica (o demitido reage pela lealdade, o partido dele se irrita no Congresso, a mídia cobra). (13/nov) (Feito: partido ressentido, notícia maior a cada troca do mandato, mágoa de 3 turnos nos grupos parecidos com quem saiu. Falta: a reação do demitido pela lealdade e a mídia ter efeito, seção 18 do GDD.)
 - ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão barulhenta, vira candidato).
 
 **Instituição por dentro** (11 e 13/nov)
@@ -419,7 +419,7 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 - ✅ **R17.21** Barra do topo: caixa, dívida, PIB, apoio, eleição e passar o turno.
 - ✅ **R17.22** Navegação: busca, enquadrar, miniatura, pinça, roda, setas e teclado.
 - ☐ **R17.23** Onde moram as janelas que saíram da barra (Governo, Programas, Eleição, Mesa, Mercado, Pregão, Salvar, Carregar, Recomeçar): existem, mas nada as abre. O autor vai dizer.
-- ☐ **R17.24** Trocar ministro pelo mapa (R6.24).
+- ✅ **R17.24** Trocar ministro pelo mapa (R6.24): o painel do ministério clicado traz a troca e o preço dela.
 - ◐ **R17.15** Causa e efeito: "o que empurra" no índice, "a conta que vem" na lei, marca da lei no gráfico. (Fios de efeito e o painel Atrapalham / Ajudam; faltam a conta que vem e o gráfico.)
 
 **Turno e fichas**

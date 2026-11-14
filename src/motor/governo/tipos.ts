@@ -79,9 +79,18 @@ export interface Orgao {
   corrupcao: number;
 }
 
+/** Ministro que o jogador tirou: quando, onde estava na bússola e qual troca do mandato foi. */
+export interface Troca {
+  turno: number;
+  bussola: PontoBussola;
+  ordem: number;
+}
+
 export interface EstadoGoverno {
   caixas: Caixa[];
   orgaos: Record<string, Orgao>;
+  /** Trocas pedidas pelo jogador nos últimos turnos (polêmica e mágoa). */
+  trocas?: Troca[];
 }
 
 /** Troca o ministro de uma caixa por alguém que está livre. */

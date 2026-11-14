@@ -10,6 +10,7 @@ import {
   competenciaEfetiva,
   corrupcaoDeEquilibrio,
   iniciarGoverno,
+  magoasDoGoverno,
   instituicoesDaCaixa,
   instituicoesSoltas,
   ministrosPorPartido,
@@ -299,13 +300,56 @@ describe("nomear e moeda Ministério", () => {
     ]);
   });
 
-  it("demitir técnico não ressente ninguém", () => {
+  it("demitir técnico vira notícia, mas não ressente partido", () => {
     const r = andarGoverno({
       ...base,
       fatos: [],
       pedidos: [{ tipo: "nomear", caixa: "saude", ministro: "e" }],
     });
-    expect(r.fatos.map((f) => f.tipo)).not.toContain("ministro-demitido");
+    const demitido = r.fatos.find((f) => f.tipo === "ministro-demitido");
+    expect(demitido?.quem).toEqual([]);
+    expect(demitido?.tamanho).toBe("pequeno");
+  });
+
+  it("cada troca do mandato é notícia maior e deixa mágoa que some em 3 turnos", () => {
+    const trocar = (
+      estado: typeof g,
+      turno: number,
+      caixa: string,
+      ministro: string,
+    ) =>
+      andarGoverno({
+        ...base,
+        estado,
+        turno,
+        fatos: [],
+        pedidos: [{ tipo: "nomear", caixa, ministro }],
+      });
+    const um = trocar(g, 3, "saude", "e");
+    const livre = (e: typeof g) =>
+      regras.pessoas.find((p) => !e.caixas.some((c) => c.ministro === p.id))!
+        .id;
+    const dois = trocar(um.estado, 4, "saude", livre(um.estado));
+    const tres = trocar(dois.estado, 5, "saude", livre(dois.estado));
+    const tamanho = (r: typeof um) =>
+      r.fatos.find((f) => f.tipo === "ministro-demitido")?.tamanho;
+    expect([um, dois, tres].map(tamanho)).toEqual([
+      "pequeno",
+      "medio",
+      "grande",
+    ]);
+    // a mágoa começa no turno seguinte e some aos poucos
+    const so = { ...um.estado, trocas: um.estado.trocas!.slice(0, 1) };
+    const pontos = [3, 4, 5, 6, 7].map((t) =>
+      magoasDoGoverno(so, t).reduce((s, m) => s + m.pontos, 0),
+    );
+    expect(pontos[0]).toBe(0);
+    expect(pontos[1]).toBeGreaterThan(pontos[2]);
+    expect(pontos[2]).toBeGreaterThan(pontos[3]);
+    expect(pontos[4]).toBe(0);
+    // a terceira troca magoa mais que a primeira
+    const terceira = { ...tres.estado, trocas: tres.estado.trocas!.slice(2) };
+    expect(magoasDoGoverno(terceira, 6)[0].pontos).toBeGreaterThan(pontos[1]);
   });
 
   it("pedido inválido para o turno", () => {

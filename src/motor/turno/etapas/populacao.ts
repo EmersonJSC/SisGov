@@ -6,6 +6,7 @@ import {
   gruposComDeslize,
   deslizarPops,
 } from "../../grupos";
+import { magoasDoGoverno } from "../../governo";
 import { migrarSetores } from "../../mercado";
 import { posicaoDoPais } from "../../mundo";
 import {
@@ -54,6 +55,9 @@ export function grupos(regras: Regras, estado: Estado, marco: Marco) {
       marco,
       esperado: rendaEsperada(regras, estado),
       anteriores: estado.turno === 0 ? undefined : estado.grupos,
+      magoas: estado.governo
+        ? magoasDoGoverno(estado.governo, estado.turno)
+        : [],
     },
   );
 }

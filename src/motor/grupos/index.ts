@@ -43,6 +43,15 @@ export interface Marco {
   renda_pop?: Record<string, number>;
 }
 
+/**
+ * Mágoa passageira de quem pensa parecido com um ponto da bússola (ex.: o
+ * ministro demitido): `pontos` já vem com o tempo descontado.
+ */
+export interface Magoa {
+  bussola: PontoBussola;
+  pontos: number;
+}
+
 /** Quanto cada pop andou na bússola desde o começo. */
 export type Deslize = Record<string, PontoBussola>;
 
@@ -53,6 +62,10 @@ const LIMITE_INDICE = 15;
 const PONTOS_EIXO = 50;
 /** Uma lei só, contra o marco, move o grupo no máximo isto. */
 const LIMITE_LEI = 15;
+/** Distância média na bússola (eixos com peso) a partir da qual o grupo já não se sente parecido. */
+const DISTANCIA_DE_ESTRANHO = 1;
+/** As mágoas somadas tiram do grupo no máximo isto. */
+const LIMITE_MAGOA = 15;
 const BASE_ESTOQUE = 5;
 const LIMIAR_RADICAL = 35;
 const LIMIAR_LEAL = 65;
@@ -184,6 +197,33 @@ export function pontosLeis(
   return pontos;
 }
 
+/** Parecença do grupo com um ponto da bússola: 1 no mesmo ponto, 0 longe; só nos eixos que ele liga. */
+export function parecenca(tipo: TipoGrupo, ponto: PontoBussola): number {
+  let distancia = 0;
+  let pesos = 0;
+  for (const eixo of EIXOS) {
+    const peso = tipo.peso[eixo] ?? 0;
+    if (!peso) continue;
+    distancia +=
+      peso * Math.abs((ponto[eixo] ?? 0) - (tipo.bussola[eixo] ?? 0));
+    pesos += peso;
+  }
+  if (!pesos) return 0;
+  return Math.max(0, 1 - distancia / pesos / DISTANCIA_DE_ESTRANHO);
+}
+
+/** Pontos que as mágoas tiram do grupo (negativo), até o limite. */
+export function pontosMagoas(
+  tipo: TipoGrupo,
+  magoas: readonly Magoa[],
+): number {
+  const soma = magoas.reduce(
+    (s, m) => s + m.pontos * parecenca(tipo, m.bussola),
+    0,
+  );
+  return -Math.min(LIMITE_MAGOA, soma);
+}
+
 /** Satisfação de 0 a 100; 50 no marco. */
 export function satisfacao(
   tipo: TipoGrupo,
@@ -192,6 +232,7 @@ export function satisfacao(
   leis: Record<string, Lei>,
   vigentes: Record<string, ValorLei>,
   marco: Marco,
+  magoa = 0,
 ): number {
   const variacao = (renda_real / marco.renda_real[tipo.id] - 1) * 100;
   let pontos = prender(variacao, -LIMITE_RENDA, LIMITE_RENDA);
@@ -202,7 +243,7 @@ export function satisfacao(
       LIMITE_INDICE,
     );
   pontos += pontosLeis(tipo, leis, vigentes, marco.leis);
-  return prender(NEUTRO + pontos, 0, 100);
+  return prender(NEUTRO + pontos + magoa, 0, 100);
 }
 
 /** Para onde radicais e lealistas andam com esta satisfação. */
@@ -232,6 +273,8 @@ export interface EntradaGrupos {
   esperado?: number;
   /** Grupos do turno anterior; sem eles, radicais e lealistas começam na base. */
   anteriores?: Record<string, Grupo>;
+  /** Mágoas passageiras (ex.: ministro demitido); sem elas, nenhuma. */
+  magoas?: readonly Magoa[];
 }
 
 export function calcularGrupos(
@@ -253,6 +296,7 @@ export function calcularGrupos(
       leis,
       entrada.vigentes,
       entrada.marco,
+      pontosMagoas(t, entrada.magoas ?? []),
     );
     const alvo = alvosEstoques(sat);
     const antes = entrada.anteriores?.[t.id];

@@ -332,10 +332,28 @@ describe("governo", () => {
     const depois = jogar(partida, 1, [
       { tipo: "nomear", caixa: "saude", ministro: livre.id },
     ]).estado;
-    expect(
-      depois.governo?.caixas.find((c) => c.id === "saude")?.ministro,
-    ).toBe(livre.id);
+    expect(depois.governo?.caixas.find((c) => c.id === "saude")?.ministro).toBe(
+      livre.id,
+    );
     expect(depois.fatos?.map((f) => f.tipo)).toContain("ministro-nomeado");
+  });
+
+  it("trocar ministro magoa no turno seguinte os grupos parecidos com quem saiu", () => {
+    const partida = criarPartida("brasil-2026", 1, { semCongresso: true });
+    const livre = (partida.regras.governo?.pessoas ?? []).find(
+      (p) => !partida.estado.governo?.caixas.some((c) => c.ministro === p.id),
+    ) as Ficha;
+    const com = jogar(
+      jogar(partida, 1, [
+        { tipo: "nomear", caixa: "saude", ministro: livre.id },
+      ]),
+      1,
+    ).estado.grupos;
+    const sem = jogar(jogar(partida, 1), 1).estado.grupos;
+    const quedas = Object.keys(sem).map(
+      (id) => sem[id].satisfacao - com[id].satisfacao,
+    );
+    expect(Math.max(...quedas)).toBeGreaterThan(2);
   });
 
   it("moeda Ministério: o partido recebe a caixa e vota mais com o governo", () => {

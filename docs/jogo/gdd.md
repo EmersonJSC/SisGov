@@ -2023,6 +2023,11 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   quê na coabitação).
 - **Leis a reestruturar:** padronizar o formato; o dinheiro que ainda entra e
   sai "fora das leis" se resolve aí.
+- **A mídia não pesa em nada (13/nov, corrigir quando fizermos mídia e
+  polêmica):** o jornal só mostra as manchetes; nenhuma notícia mexe em grupo,
+  voto ou aprovação. A polêmica (troca de ministro, escândalo, decreto
+  derrubado) precisa ter efeito pela mídia, não só pelo texto. Até lá, a troca
+  de ministro cobra direto nos grupos parecidos com quem saiu.
 - **Tribunais no Judiciário (13/nov):** o Judiciário deixa de ser um bloco só
   e vira os tribunais que o país declara, cada um com uma função genérica:
   constitucional, última instância, eleitoral, trabalho, militar. O motor não

@@ -33,6 +33,13 @@ A lei diz **onde fica na bússola**, nunca qual grupo gosta dela (bússola,
 
 Grupo novo só declara a própria posição; nenhuma lei precisa mudar.
 
+## Mágoa passageira (13/nov)
+
+`magoas` na entrada: pontos da bússola com uma força já descontada pelo tempo
+(hoje, o ministro que o jogador demitiu). Cada grupo perde força × parecença,
+e a parecença vai de 1 (mesmo ponto) a 0 (distância média de 1 ou mais, nos
+eixos que o grupo liga). As mágoas somadas tiram no máximo 15 pontos.
+
 ## Satisfação (0 a 100)
 
 Tudo é medido contra o **marco**, o estado do turno 0: no começo da partida

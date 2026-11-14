@@ -2,6 +2,7 @@
 // não conhece nomes de ministério nem de pessoa: instituições e moldes são do
 // mundo; pessoas e caixas, do país e do jogador. Comportamento em governo.md.
 import { novoFato, type Fato } from "../fatos";
+import type { Magoa } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
 import { candidatosDoPartido, fichaDe } from "./ministerios";
 import { andarOrgaos, iniciarOrgaos } from "./orgaos";
@@ -136,13 +137,47 @@ export interface SaidaGoverno {
   fatos: Fato[];
 }
 
-/** Troca o ministro de uma caixa; devolve o fato de quem foi demitido. */
+/** Trocas contadas como do mesmo mandato: 4 anos (24 turnos de 2 meses). */
+const TURNOS_DO_MANDATO = 24;
+/** Quantos turnos a mágoa dos parecidos com o demitido dura, sumindo aos poucos. */
+const DURACAO_DA_MAGOA = 3;
+/** Mágoa da primeira troca, e quanto cada troca seguinte do mandato soma. */
+const MAGOA_DA_TROCA = 6;
+const MAGOA_POR_TROCA = 3;
+const TAMANHO_DA_TROCA = ["pequeno", "medio", "grande"] as const;
+
+/** Trocas do jogador ainda dentro da janela do mandato. */
+export const trocasRecentes = (e: EstadoGoverno, turno: number) =>
+  (e.trocas ?? []).filter((t) => turno - t.turno < TURNOS_DO_MANDATO);
+
+/**
+ * Mágoa dos grupos parecidos com os ministros que o jogador tirou: começa no
+ * turno seguinte, some em `DURACAO_DA_MAGOA` turnos e cresce a cada troca do
+ * mandato.
+ */
+export function magoasDoGoverno(e: EstadoGoverno, turno: number): Magoa[] {
+  return (e.trocas ?? []).flatMap((t) => {
+    const idade = turno - t.turno - 1;
+    if (idade < 0 || idade >= DURACAO_DA_MAGOA) return [];
+    const cheia = MAGOA_DA_TROCA + MAGOA_POR_TROCA * (t.ordem - 1);
+    return [
+      { bussola: t.bussola, pontos: cheia * (1 - idade / DURACAO_DA_MAGOA) },
+    ];
+  });
+}
+
+/**
+ * Troca o ministro de uma caixa; devolve o fato de quem foi demitido. A troca
+ * pedida pelo jogador é polêmica: vira notícia maior a cada vez no mandato e
+ * deixa mágoa nos grupos parecidos com quem saiu.
+ */
 function nomear(
   r: RegrasGoverno,
   e: EstadoGoverno,
   turno: number,
   idDaCaixa: string,
   ministro: string,
+  doJogador = false,
 ): SaidaGoverno {
   const caixa = e.caixas.find((c) => c.id === idDaCaixa);
   if (!caixa) throw new Error(`pedido: a caixa "${idDaCaixa}" não existe`);
@@ -150,6 +185,11 @@ function nomear(
   if (e.caixas.some((c) => c.ministro === ministro))
     throw new Error(`pedido: ${ministro} já é ministro`);
   const saiu = fichaDe(r, caixa.ministro);
+  const recentes = trocasRecentes(e, turno);
+  const ordem = recentes.length + 1;
+  const tamanho =
+    TAMANHO_DA_TROCA[Math.min(ordem, TAMANHO_DA_TROCA.length) - 1];
+  const doPartido = saiu.origem !== TECNICO;
   const fatos = [
     novoFato({
       tipo: "ministro-nomeado",
@@ -158,22 +198,25 @@ function nomear(
       sobre: idDaCaixa,
       quem: [ministro],
     }),
-    ...(saiu.origem === TECNICO
-      ? []
-      : [
+    ...(doJogador || doPartido
+      ? [
           novoFato({
             tipo: "ministro-demitido",
             turno,
-            tamanho: "medio",
+            tamanho: doJogador ? tamanho : "medio",
             sobre: idDaCaixa,
-            quem: [saiu.origem],
+            quem: doPartido ? [saiu.origem] : [],
           }),
-        ]),
+        ]
+      : []),
   ];
   return {
     estado: {
       ...e,
       caixas: e.caixas.map((c) => (c === caixa ? { ...c, ministro } : c)),
+      ...(doJogador
+        ? { trocas: [...recentes, { turno, bussola: saiu.bussola, ordem }] }
+        : {}),
     },
     fatos,
   };
@@ -204,7 +247,7 @@ export function andarGoverno(e: EntradaGoverno): SaidaGoverno {
     fatos.push(...r.fatos);
   }
   for (const p of e.pedidos) {
-    const r = nomear(e.regras, estado, e.turno, p.caixa, p.ministro);
+    const r = nomear(e.regras, estado, e.turno, p.caixa, p.ministro, true);
     estado = r.estado;
     fatos.push(...r.fatos);
   }

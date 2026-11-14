@@ -7,6 +7,7 @@ import {
   deslizarPops,
   gruposComDeslize,
   motivoGruposInvalidos,
+  pontosMagoas,
   pontosLei,
   posicaoDaLei,
   type Marco,
@@ -280,5 +281,23 @@ describe("pops deslizam na bússola", () => {
     // sem deslize, nada muda
     expect(gruposComDeslize([g], pops, undefined)[0]).toBe(g);
     void tipoB;
+  });
+});
+
+describe("mágoa passageira", () => {
+  it("tira do grupo parecido com o ponto, não do distante, até o limite", () => {
+    const perto = pontosMagoas(tipo, [
+      { bussola: { economico: 0.9 }, pontos: 6 },
+    ]);
+    const longe = pontosMagoas(tipo, [
+      { bussola: { economico: -1 }, pontos: 6 },
+    ]);
+    expect(perto).toBeLessThan(-5);
+    expect(longe).toBeCloseTo(0);
+    const muitas = Array.from({ length: 10 }, () => ({
+      bussola: { economico: 1 },
+      pontos: 6,
+    }));
+    expect(pontosMagoas(tipo, muitas)).toBe(-15);
   });
 });

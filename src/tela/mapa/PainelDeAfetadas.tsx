@@ -4,6 +4,7 @@
  * ajudam, cada uma com uma barra do tamanho do efeito. Clicar numa lei abre a
  * janela dela. Só leitura.
  */
+import type { ReactNode } from "react";
 import type { Afetadas, LeiAfetante } from "./afetadas";
 import { ICONE_INTERFACE, ICONE_LEI } from "./icones";
 import { Icone } from "./Icone";
@@ -22,6 +23,8 @@ type Props = Readonly<{
   afetadas: Afetadas;
   onFechar: () => void;
   onAbrirLei: (id: string) => void;
+  /** O que vem antes das leis (ex.: a troca do ministro). */
+  topo?: ReactNode;
 }>;
 
 function Lado({
@@ -70,7 +73,12 @@ function Lado({
   );
 }
 
-export function PainelDeAfetadas({ afetadas, onFechar, onAbrirLei }: Props) {
+export function PainelDeAfetadas({
+  afetadas,
+  onFechar,
+  onAbrirLei,
+  topo,
+}: Props) {
   const maior = Math.max(
     1,
     ...[...afetadas.ajudam, ...afetadas.atrapalham].map((l) => l.peso),
@@ -94,6 +102,7 @@ export function PainelDeAfetadas({ afetadas, onFechar, onAbrirLei }: Props) {
           ×
         </button>
       </header>
+      {topo}
       <p className="afetadas-explicacao">{afetadas.explicacao}</p>
       <div className="afetadas-colunas">
         <Lado

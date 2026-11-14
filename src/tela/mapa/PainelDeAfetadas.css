@@ -128,3 +128,28 @@
   font-style: italic;
   opacity: 0.6;
 }
+
+.troca-ministro {
+  margin: 8px 0 4px;
+  padding: 8px 10px;
+  border: 1px solid rgba(239, 228, 204, 0.25);
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+.troca-ministro h3 {
+  margin: 0 0 4px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.troca-ministro p {
+  margin: 0 0 6px;
+}
+.troca-ministro select {
+  max-width: 100%;
+}
+.troca-preco {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  color: #e0a458;
+}

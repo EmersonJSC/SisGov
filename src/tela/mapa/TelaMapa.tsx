@@ -22,6 +22,8 @@ import { BarraDoTopo } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { montarBase } from "./layout";
 import { Governo } from "./Governo";
+import { PREFIXO_MINISTRO } from "./organico";
+import { TrocaDeMinistro } from "./TrocaDeMinistro";
 import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
@@ -215,6 +217,16 @@ export function TelaMapa({
             afetadas={afetadas}
             onFechar={fechar}
             onAbrirLei={selecionar}
+            topo={
+              afetadas.tipo === "ministro" ? (
+                <TrocaDeMinistro
+                  partida={partida}
+                  caixa={afetadas.id.slice(PREFIXO_MINISTRO.length)}
+                  extras={extras}
+                  setExtras={setExtras}
+                />
+              ) : null
+            }
           />
         ) : null}
         {lei && !partida.estado.encerrada ? (

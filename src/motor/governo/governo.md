@@ -71,6 +71,13 @@ Os pesos são de partida; calibrar com o jogo inteiro.
   alguém sem cargo. Vira os fatos `ministro-nomeado` e, se o demitido era de um
   partido, `ministro-demitido`; no turno seguinte esse partido perde 8 de
   termômetro no Congresso (ressentimento).
+- **Polêmica da troca (13/nov):** a troca pedida pelo jogador sempre vira
+  `ministro-demitido`, também a de técnico (sem partido em `quem`). A 1ª troca
+  dos últimos 24 turnos é notícia pequena, a 2ª média, da 3ª em diante grande.
+  Cada troca fica em `trocas` (turno, bússola de quem saiu, ordem) e
+  `magoasDoGoverno` dá a mágoa: 6 pontos mais 3 por troca anterior do mandato,
+  do turno seguinte em diante, sumindo em 3 turnos. Os grupos parecidos com
+  quem saiu pagam (motor/grupos, `magoas`).
 - **Moeda Ministério** (Congresso, `oferecer` com `moeda: "ministerio"`,
   `partido` e `caixa`): o fato `ministerio-oferecido` faz o governo nomear o
   candidato mais competente do partido. O partido vota mais com o governo
