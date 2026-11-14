@@ -17,8 +17,8 @@ describe("mapa orgânico", () => {
     expect(new Set(mapa.nos.map((n) => n.id)).size).toBe(mapa.nos.length);
   });
 
-  it("os índices ganham uma das áreas do governo, pelas leis ligadas a eles", () => {
-    const areas = new Set(doMapa.governo.map((a) => a.id));
+  it("os índices ganham o ministério das leis ligadas a eles", () => {
+    const areas = new Set(doMapa.hierarquia?.ministros.map((m) => m.id));
     const indices = mapa.nos.filter((n) => n.tipo === "indice");
     const comArea = indices.filter((n) => areas.has(n.area));
     expect(comArea.length).toBeGreaterThan(indices.length * 0.8);

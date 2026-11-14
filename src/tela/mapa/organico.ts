@@ -29,7 +29,7 @@ import {
   type SimulationNodeDatum,
 } from "d3-force";
 import type { VisaoPartida } from "../../partida";
-import { corDaArea } from "./tema";
+import { corDoMinisterio } from "./tema";
 
 const TAU = Math.PI * 2;
 const COMECO = -Math.PI * 0.5;
@@ -93,6 +93,12 @@ const AURA_DO_LEGISLATIVO = 440;
 /** Daqui para dentro só o miolo: o resto fica fora da aura do Legislativo, com folga. */
 const RAIO_DO_MIOLO = AURA_DO_LEGISLATIVO + 30;
 const COR_DO_LEGISLATIVO = "#78bef8";
+const COR_DO_JUDICIARIO = "#efe4cc";
+/** A "área" das instituições que ficam com um poder (cor; sem mancha). */
+const AREA_DO_PODER = {
+  legislativo: PODER_LEGISLATIVO,
+  judiciario: PODER_JUDICIARIO,
+} as const;
 const COR_SEM_PARTIDO = "#efe4cc";
 export const RAIO_DO_GRUPO = 44;
 export const RAIO_DA_POTENCIA = 60;
@@ -282,7 +288,7 @@ export function tipoDaLei(nivel: string | undefined): TipoDeLei {
   return nivel === "constitucional" ? "constitucional" : "regra";
 }
 
-/** Cor da esfera: a da área, clareando um pouco de uma esfera para a outra. */
+/** Cor da lei: a do ministério, clareando um pouco de uma instituição para a outra. */
 function corDaEsfera(corDaAreaHex: string, i: number): string {
   const clareamento = (i % TONS) * PASSO_DO_TOM;
   return `color-mix(in srgb, ${corDaAreaHex} ${PERCENTUAL - clareamento}%, white)`;
@@ -409,12 +415,17 @@ export function prepararOrganico(
   }> = {},
 ): Preparo {
   const { passos = PASSOS, anteriores } = opcoes;
-  const areas = visao.governo.map((a, i) => ({
-    id: a.id,
-    titulo: a.titulo,
-    cor: corDaArea(a.id, i),
+  // cada ministério é uma "área" do mapa: dá a cor, a mancha e o lugar no anel
+  const areas = (visao.hierarquia?.ministros ?? []).map((m, i, todos) => ({
+    id: m.id,
+    titulo: m.nome,
+    cor: corDoMinisterio(i, todos.length),
   }));
-  const corDaAreaId = new Map(areas.map((a) => [a.id, a.cor]));
+  const corDaAreaId = new Map<string, string>([
+    ...areas.map((a) => [a.id, a.cor] as const),
+    [AREA_DO_PODER.legislativo, COR_DO_LEGISLATIVO],
+    [AREA_DO_PODER.judiciario, COR_DO_JUDICIARIO],
+  ]);
   const hierarquia = visao.hierarquia;
 
   const indicesVisao = visao.bolhas.filter((b) => b.tipo !== "grupo");
@@ -473,22 +484,11 @@ export function prepararOrganico(
     undefined;
 
   // ------------------------------------------------------------- posições --
-  const ministrosOrdenados = [...(hierarquia?.ministros ?? [])]
-    .map((m) => ({
-      m,
-      area:
-        maisComum(
-          visao.leis
-            .filter((l) => ministroDaLei[l.id] === m.id)
-            .map((l) => l.area),
-        ) ?? "",
-    }))
-    .sort(
-      (a, b) =>
-        areas.findIndex((x) => x.id === a.area) -
-          areas.findIndex((x) => x.id === b.area) ||
-        a.m.id.localeCompare(b.m.id),
-    );
+  // o anel segue a ordem das caixas do governo
+  const ministrosOrdenados = (hierarquia?.ministros ?? []).map((m) => ({
+    m,
+    area: m.id,
+  }));
   // cada ministério ganha do anel uma fatia do tamanho do que cuida
   const pesoDoMinistro = ministrosOrdenados.map(
     ({ m }) =>
@@ -512,14 +512,19 @@ export function prepararOrganico(
   const areaDoMinistro = new Map(
     ministrosOrdenados.map((x) => [x.m.id, x.area]),
   );
+  /** A área da instituição: o ministério dela, ou o poder que fica com ela. */
   const areaDaInstituicao = new Map(
     (hierarquia?.instituicoes ?? []).map((i) => [
-      `${PREFIXO_INSTITUICAO}${i.id}`,
-      maisComum(
-        visao.leis.filter((l) => l.esfera === i.id).map((l) => l.area),
-      ) ??
-        areaDoMinistro.get(i.ministro ?? "") ??
-        "",
+      i.id,
+      i.ministro ?? (i.poder ? AREA_DO_PODER[i.poder] : ""),
+    ]),
+  );
+  /** As instituições de cada área, na ordem: a lei clareia o tom pela posição da dela. */
+  const instituicoesDaArea = new Map<string, string[]>();
+  areaDaInstituicao.forEach((area, inst) =>
+    instituicoesDaArea.set(area, [
+      ...(instituicoesDaArea.get(area) ?? []),
+      inst,
     ]),
   );
 
@@ -553,16 +558,6 @@ export function prepararOrganico(
     );
     return { ...p, fx: p.x, fy: p.y };
   };
-  const esferasDaArea = new Map(
-    areas.map((a) => [
-      a.id,
-      [
-        ...new Set(
-          visao.leis.filter((l) => l.area === a.id).map((l) => l.esfera ?? ""),
-        ),
-      ].sort(),
-    ]),
-  );
 
   const ministros: NoVivo[] = ministrosOrdenados.map(({ m, area }) => {
     const id = `${PREFIXO_MINISTRO}${m.id}`;
@@ -581,7 +576,7 @@ export function prepararOrganico(
   const instituicoes: NoVivo[] = (hierarquia?.instituicoes ?? []).map(
     (inst) => {
       const id = `${PREFIXO_INSTITUICAO}${inst.id}`;
-      const area = areaDaInstituicao.get(id) ?? "";
+      const area = areaDaInstituicao.get(inst.id) ?? "";
       return {
         id,
         tipo: "instituicao",
@@ -597,8 +592,9 @@ export function prepararOrganico(
     },
   );
   const leis: NoVivo[] = visao.leis.map((l) => {
-    const cor = corDaAreaId.get(l.area) ?? COR_SEM_AREA;
-    const indiceDaEsfera = (esferasDaArea.get(l.area) ?? []).indexOf(
+    const area = areaDaInstituicao.get(l.esfera ?? "") ?? "";
+    const cor = corDaAreaId.get(area) ?? COR_SEM_AREA;
+    const indiceDaEsfera = (instituicoesDaArea.get(area) ?? []).indexOf(
       l.esfera ?? "",
     );
     const raio = RAIO_DA_LEI;
@@ -608,7 +604,7 @@ export function prepararOrganico(
       raio,
       raioAlvo: raio,
       raioBase: raio,
-      area: l.area,
+      area,
       cor: corDaEsfera(cor, Math.max(0, indiceDaEsfera)),
       esfera: l.esfera,
       forca: tipoDaLei(l.nivelLegal),

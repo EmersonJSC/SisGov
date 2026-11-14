@@ -41,6 +41,31 @@ export function corDaArea(id: string, indice: number): string {
   return CORES[id] ?? RESERVA[indice % RESERVA.length];
 }
 
+const VOLTA = 360;
+/** Saturação e luz das cores dos ministérios (HSL, em %). */
+const SATURACAO = 52;
+const LUZ = 50;
+const HEX = 16;
+const CANAL = 255;
+const CENTO = 100;
+
+/**
+ * Cor do ministério: cada um com um matiz, espalhados pela roda na ordem do
+ * anel, para vizinhos ficarem diferentes. Hex, porque o fundo lê em canvas.
+ */
+export function corDoMinisterio(i: number, total: number): string {
+  const h = (i * VOLTA) / Math.max(1, total);
+  const s = SATURACAO / CENTO;
+  const l = LUZ / CENTO;
+  const k = (n: number) => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const canal = (n: number) =>
+    Math.round((l - a * Math.max(-1, Math.min(k(n) - 3, 9 - k(n), 1))) * CANAL)
+      .toString(HEX)
+      .padStart(2, "0");
+  return `#${canal(0)}${canal(8)}${canal(4)}`;
+}
+
 /** Nome curto para a esfera: "Ministério da Saúde" vira "Saúde". */
 export function nomeCurto(ministerio: string): string {
   return ministerio.replace(/^Ministério (da|do|dos|das|de) /, "");

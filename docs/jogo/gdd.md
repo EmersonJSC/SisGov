@@ -2023,6 +2023,16 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   quê na coabitação).
 - **Leis a reestruturar:** padronizar o formato; o dinheiro que ainda entra e
   sai "fora das leis" se resolve aí.
+- **Opinião central (13/nov, ideia do autor):** gostar e não gostar está
+  espalhado e cada peça faz do seu jeito: grupos têm satisfação (bússola,
+  renda, índices, mágoa) e radicais/lealistas; partidos têm termômetro no
+  Congresso (ressentimento, moedas); ministros têm lealdade que nada lê;
+  juízes e mídia não têm nada. Estruturar direito uma mecânica própria (não
+  copiar a de outro jogo), desenhada inteira antes do código: todo ator (grupo, partido, ministro, juiz, mídia, potência)
+  com a mesma régua de opinião, feita das mesmas partes (ideologia, interesse,
+  memória dos fatos que some com o tempo), e faixas que destravam o que ele
+  faz (apoia, cobra, protesta, trai). Desenhar antes de padronizar as leis
+  (10b), porque a lei vai dizer em que ela mexe nessa régua.
 - **A mídia não pesa em nada (13/nov, corrigir quando fizermos mídia e
   polêmica):** o jornal só mostra as manchetes; nenhuma notícia mexe em grupo,
   voto ou aprovação. A polêmica (troca de ministro, escândalo, decreto
