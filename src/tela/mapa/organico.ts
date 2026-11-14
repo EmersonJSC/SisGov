@@ -28,7 +28,7 @@ import {
   type SimulationLinkDatum,
   type SimulationNodeDatum,
 } from "d3-force";
-import type { VisaoPartida } from "../../partida";
+import type { VisaoJuiz, VisaoPartida, VisaoPoderes } from "../../partida";
 import type { Poder } from "../../motor/governo";
 import { corDoMinisterio } from "./tema";
 
@@ -103,8 +103,11 @@ const AREA_DO_PODER = {
 const COR_SEM_PARTIDO = "#efe4cc";
 /** Dono dos índices que valem para o país inteiro (PIB, desigualdade, aprovação…). */
 export const DONO_PAIS = "pais";
-/** Os índices do país ficam em volta da trindade, entre os rostos e a órbita dos juízes. */
-const RAIO_DOS_INDICES_DO_PAIS = 172;
+/** Os tribunais presididos pela corte suprema ficam em volta da trindade, entre os rostos e a órbita dos juízes. */
+const RAIO_DOS_TRIBUNAIS = 172;
+export const RAIO_DO_TRIBUNAL = 28;
+/** Os vãos entre os três rostos da trindade, onde cabem os tribunais. */
+const VAOS_DA_TRINDADE = 3;
 /** Ângulo entre dois índices de um poder, lado a lado com a instituição dele. */
 const PASSO_AO_LADO = 0.17;
 export const RAIO_DO_GRUPO = 44;
@@ -305,6 +308,42 @@ const noPonto = (angulo: number, raio: number) => ({
   x: Math.cos(angulo) * raio,
   y: Math.sin(angulo) * raio,
 });
+
+/** Posição de cada rosto na órbita: os tribunais em sequência, com um vão entre eles. */
+export function posicoesNaOrbita(
+  juizes: readonly Pick<VisaoJuiz, "tribunal">[],
+  R: number,
+) {
+  const vaos = new Set(juizes.map((j) => j.tribunal)).size;
+  const passos = juizes.length + (vaos > 1 ? vaos : 0);
+  let passo = 0;
+  return juizes.map((j, i) => {
+    if (vaos > 1 && i > 0 && juizes[i - 1].tribunal !== j.tribunal) passo++;
+    const a = (passo++ / passos) * TAU - Math.PI * METADE;
+    return { x: Math.cos(a) * R, y: Math.sin(a) * R, a };
+  });
+}
+
+/**
+ * Lugar de cada tribunal do miolo: logo à frente do juiz da órbita que o
+ * preside, para dentro; sem presidente, nos vãos da trindade, começando embaixo.
+ */
+export function posicoesDosTribunais(judiciario: VisaoPoderes["judiciario"]) {
+  const tribunais = judiciario.tribunais ?? [];
+  const orbita = posicoesNaOrbita(judiciario.juizes, RAIO_DA_ORBITA_DOS_JUIZES);
+  return tribunais.map((t, i) => {
+    const quem = judiciario.juizes.findIndex((j) => j.id === t.presidente);
+    const a =
+      quem >= 0
+        ? orbita[quem].a
+        : Math.PI * METADE +
+          (i * TAU) / Math.max(VAOS_DA_TRINDADE, tribunais.length);
+    return {
+      x: Math.cos(a) * RAIO_DOS_TRIBUNAIS,
+      y: Math.sin(a) * RAIO_DOS_TRIBUNAIS,
+    };
+  });
+}
 
 /** Chave que muda só quando muda o conjunto de bolhas ou de ligações. */
 export function chaveDoMapa(visao: VisaoPartida): string {
@@ -611,13 +650,13 @@ export function prepararOrganico(
     );
     return { ...p, fx: p.x, fy: p.y };
   };
-  // índices do país: parados em volta da trindade, nos vãos entre os rostos
+  // índices do país: parados num anel por fora das cadeiras do Congresso
   const doPais = indicesVisao.filter((b) => b.dono === DONO_PAIS);
   const noMiolo = (id: string) => {
     const i = doPais.findIndex((b) => b.id === id);
     const p = noPonto(
       COMECO + ((i + METADE) * TAU) / Math.max(1, doPais.length),
-      RAIO_DOS_INDICES_DO_PAIS,
+      RAIO_DO_MIOLO + RAIO_DO_INDICE + FOLGA_POR_TIPO.indice,
     );
     return { ...p, fx: p.x, fy: p.y };
   };
@@ -667,6 +706,22 @@ export function prepararOrganico(
     : [];
   const poderes = visao.poderes;
   const doCentro = { x: 0, y: 0 };
+  // os tribunais do miolo; a instituição do Judiciário (eleições) pendura no eleitoral
+  const tribunaisDoMiolo = (() => {
+    if (!poderes) return [];
+    const t = poderes.judiciario.tribunais ?? [];
+    const lugares = posicoesDosTribunais(poderes.judiciario);
+    return t.map((x, i) => ({
+      id: `${PREFIXO_PODER}tribunal:${x.id}`,
+      ...lugares[i],
+      raio: RAIO_DO_TRIBUNAL,
+    }));
+  })();
+  const eleitoral = poderes?.judiciario.eleitoral;
+  const doTribunalEleitoral =
+    tribunaisDoMiolo.find(
+      (t) => t.id === `${PREFIXO_PODER}tribunal:${eleitoral}`,
+    ) ?? null;
   const fixos: FixoDoMapa[] = [
     { id: CENTRO_DA_TRINDADE, ...doCentro, raio: RAIO_DO_EMBLEMA },
     ...rostos,
@@ -682,6 +737,7 @@ export function prepararOrganico(
             ...doCentro,
             raio: RAIO_DA_ORBITA_DOS_JUIZES,
           },
+          ...tribunaisDoMiolo,
         ]
       : []),
   ];
@@ -754,11 +810,16 @@ export function prepararOrganico(
   });
   (hierarquia?.instituicoes ?? []).forEach((i) => {
     const para = `${PREFIXO_INSTITUICAO}${i.id}`;
-    // sem ministro, o poder manda nela: o fio sai do centro dele, como o da trindade
-    if (i.poder && poderes)
+    // sem ministro, o poder manda nela: o fio sai do centro dele, como o da
+    // trindade; a do Judiciário sai do tribunal eleitoral, se houver
+    const de =
+      i.poder === "judiciario" && doTribunalEleitoral
+        ? doTribunalEleitoral.id
+        : i.poder && PODER_DO_LADO[i.poder];
+    if (i.poder && poderes && de)
       fiosDaHierarquia.push({
-        id: `h:${PODER_DO_LADO[i.poder]}>${para}`,
-        de: PODER_DO_LADO[i.poder],
+        id: `h:${de}>${para}`,
+        de,
         para,
         tipo: "hierarquia",
         sinal: 1,

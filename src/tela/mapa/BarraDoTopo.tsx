@@ -222,6 +222,7 @@ export function BarraDoTopo({
   partida,
   pedidos,
   papeis,
+  importante,
   aviso,
   onPassar,
   onAbrir,
@@ -231,6 +232,8 @@ export function BarraDoTopo({
   pedidos: number;
   /** Papéis esperando decisão na mesa. */
   papeis: number;
+  /** Há papel importante (vaga em tribunal): o botão da mesa pulsa. */
+  importante: boolean;
   aviso: string;
   onPassar: () => void;
   onAbrir: (j: JanelaDaBarra) => void;
@@ -301,7 +304,10 @@ export function BarraDoTopo({
       </div>
       <button
         type="button"
-        className="placa-ferro placa-ferro-pequena topo-mesa"
+        className={`placa-ferro placa-ferro-pequena topo-mesa${importante ? " topo-mesa-alerta" : ""}`}
+        title={
+          importante ? "Vaga em tribunal esperando a sua indicação" : undefined
+        }
         onClick={() => onAbrir("mesa")}
       >
         Mesa

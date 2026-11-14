@@ -12,7 +12,8 @@ import type { EstadoGoverno } from "../governo";
 import type { EstadoDaCampanha } from "../eleicao";
 import type { EstadoMidia } from "../midia";
 import type { EstadoProgramas } from "../programas";
-import type { Papel } from "../mesa";
+import type { PapelDaMesa } from "../mesa";
+import type { EstadoJudiciario } from "../judiciario";
 import type { EstadoCongresso } from "../politica";
 import type { MoradiaNoEstado } from "../moradia";
 import type { AtendimentoNoEstado } from "../atendimento";
@@ -94,6 +95,8 @@ export interface Estado {
   construcoes?: ConstrucoesNoEstado;
   /** Estoque de casas (motor/moradia); ausente sem a regra ou em partida salva antes dela. */
   moradia?: MoradiaNoEstado;
+  /** Juízes e vagas de cada tribunal (motor/judiciario); ausente sem Judiciário ou em partida salva antes dele. */
+  judiciario?: EstadoJudiciario;
   /** Rede de água e esgoto (motor/saneamento); ausente sem a regra ou em partida salva antes dela. */
   saneamento?: SaneamentoNoEstado;
   /** Rede de atendimento (motor/atendimento); ausente sem a regra ou em partida salva antes dela. */
@@ -133,5 +136,5 @@ export interface Estado {
   /** Programas formados, em formação e desfeitos (motor/programas); ausente sem programas. */
   programas?: EstadoProgramas;
   /** Papéis na mesa do presidente (motor/mesa); ausente = mesa vazia. */
-  mesa?: Papel[];
+  mesa?: PapelDaMesa[];
 }

@@ -235,7 +235,11 @@ describe("mesa", () => {
     ]).estado;
     expect(depois.leis["areas-protegidas"]).toBe(0.2);
     expect(depois.fatos?.map((f) => f.tipo)).toContain("papel-assinado");
-    expect(depois.mesa?.map((p) => [p.tipo, p.motivo])).toEqual([
+    expect(
+      depois.mesa?.flatMap((p) =>
+        p.familia === "leis" ? [[p.tipo, p.motivo]] : [],
+      ),
+    ).toEqual([
       ["aviso", "lei-aprovada"],
     ]);
   });
@@ -261,7 +265,8 @@ describe("mesa", () => {
 
   it("a mesa não guarda papel resolvido", () => {
     const depois = jogar(comPapel(), 2).estado;
-    expect(depois.mesa).toEqual([]);
+    // a vaga do STF que o Brasil já tem no começo não é papel de lei
+    expect(depois.mesa?.filter((p) => p.familia === "leis")).toEqual([]);
   });
 });
 
@@ -462,6 +467,7 @@ describe("jornal", () => {
       quem: {},
       caixa: {},
       area: {},
+      tribunal: {},
       programa: (id: string) => id,
       meta: (id: string) => id,
     };
@@ -478,6 +484,7 @@ describe("jornal", () => {
       quem: { p1: "Partido Um", p2: "Partido Dois" },
       caixa: {},
       area: {},
+      tribunal: {},
       programa: (id: string) => id,
       meta: (id: string) => id,
     };

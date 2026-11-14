@@ -12,6 +12,7 @@ import type { Potencia } from "../mundo";
 import type { PedidoNomear, RegrasGoverno } from "../governo";
 import type { PedidoPrometer } from "../eleicao";
 import type { PedidoCarimbar } from "../mesa";
+import type { PedidoIndicar, RegrasJudiciario } from "../judiciario";
 import type { RegrasMidia } from "../midia";
 import type { RegrasProgramas } from "../programas";
 import type { Congresso, PedidoCongresso } from "../politica";
@@ -71,6 +72,8 @@ export interface Regras {
   saneamento?: RegraDoSaneamento;
   /** Rede de atendimento (motor/atendimento); precisa das obras. */
   atendimento?: RegraDoAtendimento;
+  /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
+  judiciario?: RegrasJudiciario;
   /** Pares de leis que não valem juntas (motor/leis/colisao). */
   colisoes?: Colisao[];
 }
@@ -79,4 +82,8 @@ export type { PedidoMudarLei } from "../politica";
 
 /** Todo pedido do jogador num turno (motor/politica). */
 export type Pedido =
-  PedidoCongresso | PedidoCarimbar | PedidoNomear | PedidoPrometer;
+  | PedidoCongresso
+  | PedidoCarimbar
+  | PedidoNomear
+  | PedidoPrometer
+  | PedidoIndicar;

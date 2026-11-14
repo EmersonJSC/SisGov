@@ -449,6 +449,13 @@ São duas coisas diferentes, que o texto de 11/nov misturava:
   existe de verdade, conforme a independência; Foro especial manda o político
   ao tribunal de cima, mais lento; Delação premiada acelera. Vale para papel
   duvidoso, líder de organização e escândalo de ministro.
+- **Quem escolhe os juízes (lei, 14/nov):** escada com três degraus. A
+  carreira escolhe (o próprio tribunal preenche com um técnico; nada chega à
+  mesa); o presidente indica e o Senado aprova; o presidente indica livre. A
+  vaga chega como papel importante, com três cartas (aliado do partido,
+  técnico respeitado, nome do lado do Senado), abre a mesa sozinha e não vence.
+  A Independência da Justiça sobe com técnicos e cai com juízes do partido do
+  presidente. Aumentar a corte sai da lei e vira ação numa fatia futura.
 - Tribunal superior entra, simples: poucas cadeiras, cada uma com o lado do
   juiz na bússola. A vaga abre na aposentadoria e chega como papel na mesa;
   o presidente indica e, conforme a lei, o Congresso aprova. O lado do
@@ -2048,7 +2055,7 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   constitucional separada (Alemanha, Itália, França); tribunais por tema
   (Brasil, Alemanha). No mapa, os juízes se agrupam por tribunal na órbita; a
   instituição Eleições sem ministro se pendura no tribunal eleitoral, se o país
-  tiver. Entra com o Judiciário de verdade.
+  tiver. **Feito em 14/nov** (fatia 1 do Judiciário, `motor/judiciario`).
 
 **Caminho do dinheiro (13/nov, pensar com calma depois das leis)**
 
@@ -2168,6 +2175,7 @@ tecnologia como árvore.
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | O que é o jogo e por quê                                                     | este GDD                                                   |
 | Requisitos e status de cada um                                               | [requisitos.md](requisitos.md)                             |
+| Mecânicas e submecânicas, o que falta pensar em cada uma                     | [mecanicas.md](mecanicas.md)                               |
 | O que está feito, ordem e como construir                                     | [plano-de-desenvolvimento.md](plano-de-desenvolvimento.md) |
 | Acervo: o que se pensou de leis, índices, ligações, pops, grupos e economia  | `docs/jogo/leis.xlsx`                                      |
 | O que estamos construindo, já com mecânica (instituições, ministérios, leis) | `docs/jogo/gdd.xlsx`                                       |

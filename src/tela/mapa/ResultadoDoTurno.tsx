@@ -64,6 +64,9 @@ export function ResultadoDoTurno({
     quem: { ...partidos, ...governo.pessoas },
     caixa: governo.caixas,
     area: governo.instituicoes,
+    tribunal: Object.fromEntries(
+      (partida.regras.judiciario?.tribunais ?? []).map((t) => [t.id, t.rotulo]),
+    ),
     programa: (id) => estado.programas?.vidas[id]?.nome ?? id,
     meta: (id) =>
       estado.programas?.vidas[id]?.nome ??

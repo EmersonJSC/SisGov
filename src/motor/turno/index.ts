@@ -18,6 +18,7 @@ import { eleicao } from "./etapas/eleicao";
 import { midia } from "./etapas/midia";
 import { programas } from "./etapas/programas";
 import { invariantes } from "./etapas/invariantes";
+import { judiciario } from "./etapas/judiciario";
 import { indicesJogabilidade } from "./etapas/jogabilidade";
 import { moradia } from "./etapas/moradia";
 import { mundo, precosDoMundo } from "./etapas/mundo";
@@ -57,6 +58,7 @@ const ETAPAS: Etapa[] = [
   congresso,
   leisNovas,
   efeitosVencem,
+  judiciario,
   economiaReal,
   precosEJuros,
   capacidades,

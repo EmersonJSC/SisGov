@@ -54,6 +54,10 @@ import {
   gerarPessoas,
   motivoModeloInvalido,
   sortearMinistros,
+  motivoJudiciarioInvalido,
+  type JudiciarioDoPais,
+  type RegraDoJudiciario,
+  type RegrasJudiciario,
 } from "../motor";
 import { arquivoPais, temArquivoDoPais } from "./paises";
 import {
@@ -71,6 +75,7 @@ import programasDoMundo from "../conteudo/mundo/programas/programas.json";
 import nomesDeProgramas from "../conteudo/mundo/programas/nomes.json";
 import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import moradia from "../conteudo/mundo/moradia/moradia.json";
+import regraDoJudiciario from "../conteudo/mundo/judiciario/judiciario.json";
 import saneamento from "../conteudo/mundo/saneamento/saneamento.json";
 import atendimento from "../conteudo/mundo/atendimento/atendimento.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
@@ -220,6 +225,35 @@ export function elencoDoPais(
       bussola: bussolaDoPartido(p.defende, grupos),
     })),
   );
+}
+
+/** Tribunais do país (judiciario.json), com os nomes de pessoas.json; sem os dois, não há Judiciário. */
+function carregarJudiciario(
+  pais: string,
+  congresso: CongressoPais,
+  grupos: TipoGrupo[],
+): RegrasJudiciario | undefined {
+  if (
+    !temArquivoDoPais(pais, "judiciario") ||
+    !temArquivoDoPais(pais, "pessoas")
+  )
+    return undefined;
+  const doPais = arquivoPais<JudiciarioDoPais>(pais, "judiciario");
+  const motivo = motivoJudiciarioInvalido(doPais);
+  if (motivo) throw new Error(`país "${pais}" › judiciario: ${motivo}`);
+  return {
+    ...(regraDoJudiciario as RegraDoJudiciario),
+    tribunais: doPais.tribunais,
+    aposentadoria: doPais.aposentadoria,
+    idade_no_comeco: doPais.idade_no_comeco,
+    idade_do_indicado: doPais.idade_do_indicado,
+    modelo: arquivoPais<ModeloDePessoas>(pais, "pessoas"),
+    partidos: congresso.partidos.map((p) => ({
+      id: p.id,
+      cadeiras: p.cadeiras,
+      bussola: bussolaDoPartido(p.defende, grupos),
+    })),
+  };
 }
 
 /** Ministros do país (governo.json), se ele declara; confere o que o país diz. */
@@ -524,6 +558,7 @@ export function criarPartida(
     ministrosDoComeco(semente, pais, elenco, congresso, grupos, comeco),
     comeco?.caixas,
   );
+  const judiciario = carregarJudiciario(pais, congresso, grupos);
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);
@@ -549,6 +584,7 @@ export function criarPartida(
     programas: carregarProgramas(pais, leis),
     midia: carregarMidias(pais, grupos),
     ...(governo ? { governo: governo.regras } : {}),
+    ...(judiciario ? { judiciario } : {}),
     congresso: semCongresso
       ? undefined
       : congressoDasRegras(semSenado ? semOSenado(congresso) : congresso),
@@ -685,6 +721,8 @@ export type {
   VisaoInstituicao,
   VisaoMinistro,
   VisaoPessoa,
+  VisaoJuiz,
+  VisaoTribunal,
   AlertaDoIndice,
   TendenciaDoIndice,
   VisaoCasa,

@@ -1,8 +1,8 @@
 {
   "versao": 1,
   "id": "indicacao-de-juizes",
-  "nome": "Indicação de juízes",
-  "descricao": "Escada: o Congresso aprova, o presidente indica livre, ou o presidente aumenta a corte.",
+  "nome": "Quem escolhe os juízes",
+  "descricao": "Quem preenche a vaga quando um juiz de tribunal se aposenta: os próprios juízes, o presidente com o aval do Senado, ou o presidente sozinho.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "classe": "constitucional",
@@ -10,8 +10,17 @@
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "o-congresso-aprova",
-      "rotulo": "o Congresso aprova",
+      "id": "a-carreira-escolhe",
+      "rotulo": "a carreira escolhe",
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "efeitos": []
+    },
+    {
+      "id": "presidente-indica-senado-aprova",
+      "rotulo": "presidente indica, Senado aprova",
       "bussola": {
         "economico": 0,
         "social": 0
@@ -27,37 +36,9 @@
       },
       "efeitos": [
         {
-          "indice": "independencia_da_justica",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 12
-        },
-        {
           "indice": "confianca_na_democracia",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "presidente-aumenta-a-corte",
-      "rotulo": "presidente aumenta a corte",
-      "bussola": {
-        "economico": 0,
-        "social": 0.8
-      },
-      "efeitos": [
-        {
-          "indice": "independencia_da_justica",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        },
-        {
-          "indice": "confianca_na_democracia",
-          "sentido": -1,
-          "forca": "forte",
           "atraso_turnos": 12
         }
       ]

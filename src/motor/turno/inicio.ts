@@ -20,6 +20,7 @@ import {
   construcoesIniciais,
   precoDosSetores,
 } from "../mercado";
+import { juizesIniciais } from "../judiciario";
 import { moradiaInicial } from "../moradia";
 import { motivoOpinioesInvalidas } from "../mundo";
 import { motivoCongressoInvalido, iniciarCongresso } from "../politica";
@@ -155,6 +156,17 @@ function conferirMoradia(regras: Regras, inicio: Inicio, obras: Obras) {
     inicio.jogabilidade[r.indice_favela] > inicio.jogabilidade[r.indice_deficit]
   )
     erro("país: favela maior que o déficit habitacional");
+}
+
+function conferirJudiciario(regras: Regras) {
+  const r = regras.judiciario;
+  if (!r) return;
+  faltaIndice(regras, "judiciário", [r.indice_independencia]);
+  faltaLei(regras, "judiciário", [r.lei_escolha], "opcoes");
+  const lei = regras.leis[r.lei_escolha];
+  for (const o of lei.forma === "opcoes" ? lei.opcoes : [])
+    if (!(o.id in r.modos))
+      erro(`mundo: judiciário: a opção "${o.id}" da lei não tem modo`);
 }
 
 function conferirSaneamento(regras: Regras, obras: Obras) {
@@ -318,6 +330,9 @@ function estadoBase(
           ),
         }
       : {}),
+    ...(regras.judiciario
+      ? { judiciario: juizesIniciais(regras.judiciario, inicio.semente) }
+      : {}),
     midia: iniciarMidia(regras.midia ?? { midias: [] }),
     ...(regras.programas
       ? {
@@ -467,6 +482,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   conferirMercado(regras);
   conferirMoradia(regras, inicio, obras);
   conferirSaneamento(regras, obras);
+  conferirJudiciario(regras);
   conferirAtendimento(regras, obras);
   conferirPessoasEPoder(regras, inicio, coligacao);
 

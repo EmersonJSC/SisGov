@@ -1,0 +1,144 @@
+{
+  "versao": 1,
+  "aposentadoria": 75,
+  "idade_no_comeco": {
+    "de": 45,
+    "ate": 71
+  },
+  "idade_do_indicado": {
+    "de": 50,
+    "ate": 64
+  },
+  "tribunais": [
+    {
+      "id": "stf",
+      "rotulo": "STF",
+      "funcao": "constitucional",
+      "cadeiras": 11,
+      "juizes": [
+        {
+          "id": "gilmar-menezes",
+          "nome": "Gilmar Menezes",
+          "sexo": "m",
+          "idade": 71.0,
+          "anos_na_corte": 24.6,
+          "origem": "psdb",
+          "ja_presidiu": ["stf", "tse"]
+        },
+        {
+          "id": "carmen-luiza",
+          "nome": "Cármen Luíza",
+          "sexo": "f",
+          "idade": 72.7,
+          "anos_na_corte": 20.6,
+          "origem": "tecnico",
+          "bussola": {
+            "economico": -0.1,
+            "social": -0.2
+          },
+          "ja_presidiu": ["stf", "tse"]
+        },
+        {
+          "id": "dias-toffani",
+          "nome": "Dias Toffani",
+          "sexo": "m",
+          "idade": 59.1,
+          "anos_na_corte": 17.3,
+          "origem": "pt",
+          "ja_presidiu": ["stf", "tse"]
+        },
+        {
+          "id": "luiz-fuchs",
+          "nome": "Luiz Fuchs",
+          "sexo": "m",
+          "idade": 73.7,
+          "anos_na_corte": 15.8,
+          "origem": "tecnico",
+          "bussola": {
+            "economico": 0.1,
+            "social": 0.1
+          },
+          "ja_presidiu": ["stf", "tse"]
+        },
+        {
+          "id": "edson-fachini",
+          "nome": "Edson Fachini",
+          "sexo": "m",
+          "idade": 68.9,
+          "anos_na_corte": 11.6,
+          "origem": "tecnico",
+          "bussola": {
+            "economico": -0.2,
+            "social": -0.3
+          },
+          "ja_presidiu": ["tse"]
+        },
+        {
+          "id": "alexandre-de-morales",
+          "nome": "Alexandre de Morales",
+          "sexo": "m",
+          "idade": 58.0,
+          "anos_na_corte": 9.8,
+          "origem": "psdb",
+          "ja_presidiu": ["tse"]
+        },
+        {
+          "id": "nunes-marcos",
+          "nome": "Nunes Marcos",
+          "sexo": "m",
+          "idade": 54.6,
+          "anos_na_corte": 6.2,
+          "origem": "pl"
+        },
+        {
+          "id": "andre-mendanha",
+          "nome": "André Mendanha",
+          "sexo": "m",
+          "idade": 54.0,
+          "anos_na_corte": 5.1,
+          "origem": "pl",
+          "bussola": {
+            "economico": 0.4,
+            "social": 0.6
+          }
+        },
+        {
+          "id": "cristiano-zanini",
+          "nome": "Cristiano Zanini",
+          "sexo": "m",
+          "idade": 51.1,
+          "anos_na_corte": 3.4,
+          "origem": "pt"
+        },
+        {
+          "id": "flavio-dinis",
+          "nome": "Flávio Dinis",
+          "sexo": "m",
+          "idade": 58.7,
+          "anos_na_corte": 2.9,
+          "origem": "psb"
+        }
+      ],
+      "vagas": [
+        {
+          "saiu": "Luís Roberto Barrosa"
+        }
+      ],
+      "presidente": {
+        "juiz": "edson-fachini",
+        "ha_meses": 16
+      }
+    },
+    {
+      "id": "tse",
+      "rotulo": "TSE",
+      "funcao": "eleitoral",
+      "cadeiras": 0,
+      "presidido_por": "stf",
+      "presidente": {
+        "juiz": "nunes-marcos",
+        "ha_meses": 8
+      }
+    }
+  ]
+}

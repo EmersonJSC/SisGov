@@ -27,6 +27,10 @@ export const TIPOS_DE_FATO = [
   "meta-cumprida",
   "meta-quebrada",
   "segundo-turno",
+  "juiz-aposentado",
+  "juiz-nomeado",
+  "indicado-barrado",
+  "corte-novo-presidente",
   // Ninguém escreve ainda; o Congresso já lê (mídia e escândalos vêm depois).
   "escandalo",
   "manchete-contra",

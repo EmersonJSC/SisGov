@@ -1,0 +1,12 @@
+{
+  "versao": 1,
+  "id": "judiciario-mundo",
+  "lei_escolha": "indicacao-de-juizes",
+  "modos": {
+    "a-carreira-escolhe": "carreira",
+    "presidente-indica-senado-aprova": "senado",
+    "presidente-indica-livre": "livre"
+  },
+  "indice_independencia": "independencia_da_justica",
+  "pontos_independencia": 30
+}

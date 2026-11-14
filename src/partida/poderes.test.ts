@@ -36,11 +36,24 @@ describe("poderes na visão", () => {
     expect(governo).toHaveLength(1);
   });
 
-  it("o Judiciário ainda é de mentira, com juízes diferentes", () => {
-    expect(p.judiciario.pronto).toBe(false);
+  it("o Judiciário na órbita é só a corte suprema; os tribunais que ela preside ficam no miolo", () => {
+    expect(p.judiciario.pronto).toBe(true);
     expect(new Set(p.judiciario.juizes.map((j) => j.id)).size).toBe(
       p.judiciario.juizes.length,
     );
+    expect(p.judiciario.juizes).toHaveLength(11);
+    expect(new Set(p.judiciario.juizes.map((j) => j.tribunal))).toEqual(
+      new Set(["stf"]),
+    );
+    // no miolo, o STF e o TSE, que tira o presidente do STF
+    const ids = new Set(p.judiciario.juizes.map((j) => j.id));
+    expect(p.judiciario.tribunais?.map((t) => t.id)).toEqual(["stf", "tse"]);
+    for (const t of p.judiciario.tribunais ?? [])
+      expect(ids.has(t.presidente ?? "")).toBe(true);
+    expect(p.judiciario.tribunais?.[0].presidente).not.toBe(
+      p.judiciario.tribunais?.[1].presidente,
+    );
+    expect(p.judiciario.eleitoral).toBe("tse");
   });
 
   it("com o partido do jogador, ele governa e ganha a cor do latão", () => {

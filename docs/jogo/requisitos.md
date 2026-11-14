@@ -35,23 +35,23 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## Resumo
 
-| Sistema (GDD)          | ✅     | ◐      | ☐       |
-| ---------------------- | ------ | ------ | ------- |
-| 4. Partida e turno     | 8      | 2      | 2       |
-| 5. Partido             | 0      | 0      | 5       |
-| 6. Governo             | 7      | 9      | 10      |
-| 7. Leis e programas    | 11     | 5      | 5       |
-| 8. Bússola             | 4      | 1      | 1       |
-| 9. Índices             | 4      | 2      | 2       |
-| 10. Contas             | 3      | 1      | 3       |
-| 11. População e grupos | 5      | 3      | 11      |
-| 12. Congresso          | 12     | 2      | 5       |
-| 13. Eleição            | 4      | 2      | 5       |
-| 14. Mídia              | 1      | 1      | 8       |
-| 15. Mundo              | 2      | 1      | 8       |
-| 16. Economia           | 4      | 4      | 31      |
-| 17. Tela e mesa        | 11     | 8      | 5       |
-| **Total**              | **76** | **41** | **101** |
+| Sistema (GDD)          | ✅     | ◐      | ☐      |
+| ---------------------- | ------ | ------ | ------ |
+| 4. Partida e turno     | 8      | 2      | 2      |
+| 5. Partido             | 0      | 0      | 5      |
+| 6. Governo             | 8      | 10     | 8      |
+| 7. Leis e programas    | 11     | 5      | 5      |
+| 8. Bússola             | 4      | 1      | 1      |
+| 9. Índices             | 4      | 2      | 2      |
+| 10. Contas             | 3      | 1      | 3      |
+| 11. População e grupos | 5      | 3      | 11     |
+| 12. Congresso          | 12     | 2      | 5      |
+| 13. Eleição            | 4      | 2      | 5      |
+| 14. Mídia              | 1      | 1      | 8      |
+| 15. Mundo              | 2      | 1      | 8      |
+| 16. Economia           | 4      | 4      | 31     |
+| 17. Tela e mesa        | 11     | 8      | 5      |
+| **Total**              | **77** | **42** | **99** |
 
 ---
 
@@ -130,10 +130,10 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 **Judiciário, Justiça e prisões e estados** (13/nov: Judiciário é poder, Justiça e prisões é instituição)
 
-- ☐ **R6.20** Judiciário (poder, no miolo, sem ministro): fila de processos, independência, caso em etapas (rastro, investigação, processo, sentença). Hoje os juízes do mapa são de mentira.
-- ◐ **R6.27** Eleições sem ministro, sempre com o Judiciário (a corte eleitoral, quando houver tribunais); nenhuma caixa a leva. (Feito: travada no Judiciário, no mapa e no motor; falta a corte eleitoral.)
+- ◐ **R6.20** Judiciário (poder, no miolo, sem ministro): fila de processos, independência, caso em etapas (rastro, investigação, processo, sentença). (14/nov: tribunais do país e juízes de verdade em `motor/judiciario`; a independência sai de quem senta. Falta fila e caso.)
+- ✅ **R6.27** Eleições sem ministro, sempre com o Judiciário (a corte eleitoral, quando houver tribunais); nenhuma caixa a leva. (14/nov: no mapa, pendura no tribunal eleitoral; sem ele, no constitucional.)
 - ☐ **R6.21** Corrupção em cadeia: rastro nunca some; a chance de achar usa a independência de hoje.
-- ☐ **R6.22** Tribunal superior: cadeiras com lado; vaga vira papel; suspende lei que bate em direito.
+- ◐ **R6.22** Tribunal superior: cadeiras com lado; vaga vira papel; suspende lei que bate em direito. (14/nov: cadeiras com lado, aposentadoria abre vaga, papel importante com 3 cartas; a lei Quem escolhe os juízes diz se é a carreira, o Senado ou o presidente sozinho. Falta suspender lei.)
 - ☐ **R6.23** Governadores: partido, bússola e termômetro; falam com o governo pela instituição Estados e municípios (repasses e dívida dos estados); o ministro dela faz a verba render e esquenta o termômetro; oposição atrasa e culpa.
 
 **Construção**
@@ -411,7 +411,7 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 
 - ✅ **R17.1** Mapa orgânico: bolhas soltas sobre uma hierarquia (trindade → ministros → instituições → leis em pétalas); índices presos ao ministro; grupos num anel de fora, potências mais longe.
 - ✅ **R17.12** Mapa por ministério e instituição, sem as 8 áreas antigas. (13/nov: cor, ordem do anel e manchas vêm do ministério; a lei clareia o tom pela instituição; `mundo/areas`, o mapa antigo e o `layout.ts` saíram.)
-- ◐ **R17.16** Três Poderes no miolo: trindade (Executivo), juízes em volta (Judiciário), anel de cadeiras (Câmara em cima, Senado embaixo). (Judiciário de mentira até R6.20; em aberto se cada instituição e lei responde a um poder.)
+- ◐ **R17.16** Três Poderes no miolo: trindade (Executivo), juízes em volta (Judiciário), anel de cadeiras (Câmara em cima, Senado embaixo). (Juízes de verdade por tribunal desde 14/nov; em aberto se cada instituição e lei responde a um poder.)
 - ✅ **R17.17** Prioridade visual Ministro > Instituição > Índice > Lei; visões Padrão, Ligações, Nível, Dinheiro e Popularidade como filtros dentro do degrau. (Popularidade sem dado: o motor não calcula popularidade por lei.)
 - ✅ **R17.18** Alerta do índice: cor do anel pelo nível, seta pela tendência. (13/nov: compara com 8 meses atrás, corte de 2 pontos de saúde.)
 - ✅ **R17.19** Só leis promulgadas no mapa; as outras num botão no canto, com a folha para promulgar.

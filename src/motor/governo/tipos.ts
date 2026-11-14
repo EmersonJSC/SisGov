@@ -21,6 +21,8 @@ export interface Ficha {
   /** Aparência e idade, para os retratos e o perfil; fichas escritas à mão podem não ter. */
   sexo?: "f" | "m";
   idade?: number;
+  /** Turno em que sentou na corte (juízes); a antiguidade sai daqui. */
+  posse?: number;
 }
 
 /** Os poderes do miolo que ficam com instituição sem ministro. */

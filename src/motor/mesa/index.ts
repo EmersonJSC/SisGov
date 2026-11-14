@@ -1,8 +1,9 @@
 // Mesa do presidente: os papéis que chegam e esperam o carimbo. Comportamento
 // em mesa.md. Por ora só a família Leis.
+import type { Ficha } from "../governo";
 import type { PedidoCongresso, Tramitacao, Votacao } from "../politica";
 
-export type Familia = "leis";
+export type Familia = "leis" | "justica";
 
 /** Papel que pede decisão ("sancao") ou só avisa ("aviso"). */
 export type TipoDePapel = "sancao" | "aviso";
@@ -22,6 +23,30 @@ export interface Papel {
   prazo: number | null;
   motivo?: MotivoDoAviso;
 }
+
+/**
+ * Vaga num tribunal (família Justiça): importante, abre a mesa sozinha e não
+ * vence; volta a cada turno até alguém ocupar a cadeira.
+ */
+export interface PapelDeIndicacao {
+  id: string;
+  familia: "justica";
+  tipo: "indicacao";
+  tribunal: string;
+  cadeira: number;
+  /** Quem saiu da cadeira. */
+  saiu: string;
+  /** Quantas vezes o Senado já barrou um nome para esta vaga. */
+  barrados: number;
+  /** As três cartas: aliado, técnico e nome do lado do Senado. */
+  cartas: Ficha[];
+  turno: number;
+  prazo: null;
+  importante: true;
+}
+
+/** Tudo o que chega à mesa. */
+export type PapelDaMesa = Papel | PapelDeIndicacao;
 
 export type Carimbo = "assinar" | "vetar";
 
@@ -85,7 +110,7 @@ export function montarMesa(
 
 /** Carimbos viram assinar ou vetar da lei do papel; o resto passa direto. */
 export function traduzirCarimbos(
-  mesa: readonly Papel[],
+  mesa: readonly PapelDaMesa[],
   pedidos: readonly (PedidoCongresso | PedidoCarimbar)[],
 ): PedidoCongresso[] {
   return pedidos.flatMap((p): PedidoCongresso[] => {

@@ -4,8 +4,20 @@
  * só guarda ids (motor/mesa).
  */
 import { useState } from "react";
-import type { MotivoDoAviso, Papel } from "../../motor";
-import type { Partida, Pedido, VisaoPartida } from "../../partida";
+import {
+  votoDoSenado,
+  type Ficha,
+  type MotivoDoAviso,
+  type Papel,
+  type PapelDaMesa,
+  type PapelDeIndicacao,
+} from "../../motor";
+import {
+  nomesPartidos,
+  type Partida,
+  type Pedido,
+  type VisaoPartida,
+} from "../../partida";
 import { Documento, type JanelaProps } from "./DocumentoLei";
 import { ICONE_INTERFACE } from "./icones";
 import { trocar } from "./pedidos";
@@ -20,9 +32,100 @@ const AVISO: Record<MotivoDoAviso, string> = {
   decreto: "Decreto em vigor",
 };
 
-/** Papéis que ainda pedem uma decisão do presidente. */
-export function papeisParaDecidir(partida: Partida): Papel[] {
-  return (partida.estado.mesa ?? []).filter((p) => p.tipo === "sancao");
+/** Papéis que ainda pedem uma decisão do presidente: sanção e vaga em tribunal. */
+export function papeisParaDecidir(partida: Partida): PapelDaMesa[] {
+  return (partida.estado.mesa ?? []).filter(
+    (p) => p.tipo === "sancao" || p.tipo === "indicacao",
+  );
+}
+
+/** Vagas em tribunal: papel importante, que abre a mesa sozinho. */
+export const vagasNaMesa = (partida: Partida): PapelDeIndicacao[] =>
+  (partida.estado.mesa ?? []).filter(
+    (p): p is PapelDeIndicacao => p.tipo === "indicacao",
+  );
+
+const CARTA = [
+  "Aliado do seu partido",
+  "Técnico respeitado",
+  "Do lado do Senado",
+];
+
+/** A vaga num tribunal: quem saiu e as três cartas, com o voto previsto do Senado. */
+function Vaga({
+  partida,
+  papel,
+  escolhida,
+  escolher,
+}: {
+  partida: Partida;
+  papel: PapelDeIndicacao;
+  escolhida: string | null;
+  escolher: (pessoa: Ficha | null) => void;
+}) {
+  const r = partida.regras.judiciario;
+  const tribunal =
+    r?.tribunais.find((t) => t.id === papel.tribunal)?.rotulo ?? papel.tribunal;
+  const modo = r?.modos[String(partida.estado.leis[r.lei_escolha])];
+  const congresso = partida.regras.congresso;
+  const senado =
+    congresso?.senado ??
+    Object.fromEntries(
+      congresso?.partidos.map((p) => [p.id, p.cadeiras]) ?? [],
+    );
+  const base = [congresso?.governo ?? "", ...partida.estado.coligacao];
+  const partidos = nomesPartidos(partida.pais, partida.opcoes.comeco);
+  return (
+    <li className="papel papel-vaga">
+      <strong>Vaga no {tribunal}</strong>
+      <p>
+        {papel.saiu} se aposentou.{" "}
+        {modo === "senado"
+          ? "Você indica e o Senado vota o nome."
+          : "Você nomeia direto."}
+        {papel.barrados
+          ? ` O Senado já barrou ${papel.barrados} ${papel.barrados === 1 ? "nome" : "nomes"}.`
+          : ""}
+      </p>
+      <ul className="vaga-cartas">
+        {papel.cartas.map((c, i) => {
+          const voto =
+            r && modo === "senado" && congresso
+              ? votoDoSenado(r, senado, base, c)
+              : null;
+          return (
+            <li key={c.id}>
+              <button
+                type="button"
+                className={escolhida === c.id ? "ativo" : ""}
+                onClick={() => escolher(escolhida === c.id ? null : c)}
+              >
+                <small>{CARTA[i] ?? ""}</small>
+                <b>{c.nome}</b>
+                <span>
+                  {c.origem === "tecnico"
+                    ? "sem partido"
+                    : (partidos[c.origem] ?? c.origem)}
+                  {" · "}
+                  {Math.floor(c.idade ?? 0)} anos · competência {c.competencia}
+                </span>
+                {voto ? (
+                  <em className={voto.aprovado ? "passa" : "barra"}>
+                    Senado: {voto.aprovado ? "aprova" : "barra"} ({voto.sim} a{" "}
+                    {voto.nao})
+                  </em>
+                ) : null}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <small>
+        A vaga não vence: enquanto ninguém senta, o tribunal decide com menos
+        gente.
+      </small>
+    </li>
+  );
 }
 
 export function MesaDePapeis({
@@ -41,8 +144,32 @@ export function MesaDePapeis({
   onFechar: () => void;
 }) {
   const papeis = partida.estado.mesa ?? [];
-  const decisoes = papeis.filter((p) => p.tipo === "sancao");
-  const avisos = papeis.filter((p) => p.tipo === "aviso");
+  const decisoes = papeis.filter((p): p is Papel => p.tipo === "sancao");
+  const avisos = papeis.filter((p): p is Papel => p.tipo === "aviso");
+  const vagas = vagasNaMesa(partida);
+  const daVaga = (v: PapelDeIndicacao) => (x: Pedido) =>
+    x.tipo === "indicar" &&
+    x.tribunal === v.tribunal &&
+    x.cadeira === v.cadeira;
+  const escolhidaDa = (v: PapelDeIndicacao) => {
+    const x = extras.find(daVaga(v));
+    return x?.tipo === "indicar" ? x.pessoa : null;
+  };
+  const indicar = (v: PapelDeIndicacao, pessoa: Ficha | null) =>
+    setExtras(
+      trocar(
+        extras,
+        daVaga(v),
+        pessoa
+          ? {
+              tipo: "indicar",
+              tribunal: v.tribunal,
+              cadeira: v.cadeira,
+              pessoa: pessoa.id,
+            }
+          : undefined,
+      ),
+    );
   const [observacoes, setObservacoes] = useState<Record<string, string>>({});
   const tacita =
     partida.regras.congresso?.ignorar === "veto" ? "veto" : "sanção";
@@ -72,7 +199,7 @@ export function MesaDePapeis({
     <Documento
       orgao="Presidência"
       setor="Mesa"
-      numero={`${decisoes.length} para decidir`}
+      numero={`${decisoes.length + vagas.length} para decidir`}
       cor="#6b4e2e"
       icone={ICONE_INTERFACE.lei}
       onFechar={onFechar}
@@ -82,6 +209,22 @@ export function MesaDePapeis({
       <div className="folha mesa-papeis">
         {papeis.length === 0 ? (
           <p className="vazio">A mesa está vazia.</p>
+        ) : null}
+        {vagas.length ? (
+          <section>
+            <h2>Importante</h2>
+            <ul className="mesa-lista">
+              {vagas.map((v) => (
+                <Vaga
+                  key={v.id}
+                  partida={partida}
+                  papel={v}
+                  escolhida={escolhidaDa(v)}
+                  escolher={(pessoa) => indicar(v, pessoa)}
+                />
+              ))}
+            </ul>
+          </section>
         ) : null}
         {decisoes.length ? (
           <section>

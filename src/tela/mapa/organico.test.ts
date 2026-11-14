@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { criarPartida, montarVisao } from "../../partida";
 import {
+  ANEL_DO_CONGRESSO_ATE,
   DONO_PAIS,
   FAIXA_DO_RAIO,
   montarOrganico,
@@ -34,13 +35,15 @@ describe("mapa orgânico", () => {
       );
   });
 
-  it("os índices do país ficam parados no miolo", () => {
+  it("os índices do país ficam parados num anel por fora do Congresso", () => {
     const doPais = doMapa.bolhas.filter((b) => b.dono === DONO_PAIS);
     expect(doPais.length).toBeGreaterThan(0);
     for (const b of doPais) {
       const n = mapa.nos.find((x) => x.id === b.id);
       expect(n?.fx).toBeDefined();
-      expect(Math.hypot(n?.x ?? 0, n?.y ?? 0)).toBeLessThan(300);
+      const raio = Math.hypot(n?.x ?? 0, n?.y ?? 0);
+      expect(raio).toBeGreaterThan(ANEL_DO_CONGRESSO_ATE);
+      expect(raio).toBeLessThan(600);
     }
   });
 

@@ -9259,3 +9259,67 @@ p.congresso-mesa {
 .orgao-sobra small:first-of-type {
   color: #a8402e;
 }
+
+/* Vaga em tribunal: papel importante da mesa (família Justiça). */
+.papel-vaga {
+  border-left-color: #eb5757;
+  background: #eb57571a;
+}
+
+.papel-vaga > strong {
+  color: #ff8a80;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vaga-cartas {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.vaga-cartas button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  background: #ffffff0d;
+  border: 1px solid #ffffff33;
+  border-radius: 4px;
+}
+
+.vaga-cartas button.ativo {
+  outline: 3px solid #6fcf97;
+  background: #6fcf9722;
+}
+
+.vaga-cartas small {
+  font-size: 0.78em;
+  opacity: 0.75;
+}
+
+.vaga-cartas span {
+  font-size: 0.85em;
+}
+
+.vaga-cartas em {
+  font-style: normal;
+  font-size: 0.82em;
+  font-weight: 700;
+}
+
+.vaga-cartas em.passa {
+  color: #6fcf97;
+}
+
+.vaga-cartas em.barra {
+  color: #ff8a80;
+}

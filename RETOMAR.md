@@ -7,29 +7,36 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-10a (mapa) terminado; o item 5 (janelas: menu no brasão, salvar sozinho, Governo na trindade, Eleição e
-Mercado nos medidores, Mesa e Programas em botões) está **feito e NÃO commitado**.
+Nível 3 do grafo (índices e leis). Passo A (todo índice tem dono) commitado em 01749ca1; item 5 das
+janelas em ff0c2c18. Medida: `npx vite-node scripts/grafo-nivel3.ts`.
 
-Agora o **nível 3 do grafo: índices e leis** (plano em `~/.claude/plans/tidy-spinning-blum.md`).
-Medida: `npx vite-node scripts/grafo-nivel3.ts`.
-
-- Passo A (índices cobrem o país): **feito, NÃO commitado.**
-  - Todo índice tem `dono` (instituição, poder ou `pais`) no lugar de `area`; nenhuma instituição sem índice.
-  - O mapa põe o índice pelo dono: os 6 do país em volta da trindade; Independência da Justiça junto do
-    Judiciário.
-  - Fome juntou em Abastecimento, que agora se chama "Comida na mesa"; as 4 leis da fome perderam o fio.
-  - Casas vazias contadas pela moradia.
-  - 5 índices novos: envelhecimento, expectativa de vida, turismo, esporte, tensão federativa.
+O autor pediu o **Judiciário de verdade** antes dos passos B e C. Fatia 1 **feita, NÃO commitada**
+(`src/motor/judiciario`, regras em `judiciario.md`):
+- Brasil: só STF (11) e TSE (`cadeiras: 0`, `presidido_por: "stf"`: só o presidente importa); STJ, TST
+  e STM saíram (autor: não fazem sentido no jogo). Aposentadoria aos 75; idades declaradas no país
+  (`idade_no_comeco`, `idade_do_indicado`). O STF do Brasil é declarado como em jan/2027: 10 juízes com
+  nomes parecidos com os reais (Fachini, Morales, Gilmar Menezes…) e a cadeira do Barrosa vaga (Senado
+  rejeitou Messias em abr/2026); no mandato abrem Fuchs (2028), Cármen (2029) e Gilmar (2030);
+- presidente da corte como no Brasil, regra fixa: mandato de 2 anos, o mais antigo (`posse`) que ainda
+  não presidiu; o TSE vem depois do STF, sem repetir o presidente nem quem já presidiu o STF. Fato
+  `corte-novo-presidente`;
+- lei "Quem escolhe os juízes" (carreira, presidente + Senado, presidente livre);
+- vaga vira papel importante: a Mesa abre sozinha, o botão pulsa, 3 cartas com o voto previsto do Senado;
+- Independência da Justiça sai de quem senta;
+- mapa: a órbita é só o STF; no miolo, STF e TSE à frente do presidente com fio dourado; Eleições
+  pendura no TSE; índices do país num anel por fora das cadeiras do Congresso.
 
 ## Próximo
 
-**Judiciário de verdade, fatia 1** (o autor quis abrir já): proposta pelas 6 perguntas da
-`sisgov-gamedesign` está no chat, esperando o sim do autor. Depois: passo B (fios dos índices: 127 sem
-saída) e passo C (100 leis sem nada).
+**Jeito novo de trabalhar (autor, 14/nov): por mecânica inteira.** O documento das mecânicas está em
+[docs/jogo/mecanicas.md](docs/jogo/mecanicas.md) (19 mecânicas, cada uma com submecânicas: já tem,
+falta, a pensar). O autor escolhe uma → plano dela → aprova de uma vez → construir até o fim.
+Esperando a escolha (recomendação: 3. Opinião, porque as leis padronizadas dependem dela).
 
 ## Pendências do autor
 
-- Commit do item 5 e do passo A (só com a palavra dele).
+- Commit da fatia 1 do Judiciário (só com a palavra dele).
+- A base do governo tem 60 de 81 senadores: o Senado aprova quase todo aliado. Ver se o voto deve pesar mais a distância.
 - Opinião central: estruturar direito, mecânica própria (não copiar outro jogo), antes do 10b.
 - A mídia não pesa em nada (GDD §18): corrigir quando fizermos mídia e polêmica.
 - Conferir [docs/jogo/codigo-a-conferir.md](docs/jogo/codigo-a-conferir.md).

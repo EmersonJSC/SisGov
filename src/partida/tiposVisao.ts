@@ -282,6 +282,19 @@ export type VisaoPessoa = Readonly<{
   sexo: "f" | "m";
 }>;
 
+/**
+ * Um rosto na órbita do Judiciário: um juiz da corte suprema ou uma cadeira
+ * vaga.
+ */
+export type VisaoJuiz = VisaoPessoa &
+  Readonly<{
+    tribunal: string;
+    rotulo: string;
+    /** Cor do partido de origem; técnico fica na cor do papel. */
+    cor: string;
+    vaga: boolean;
+  }>;
+
 /** A trindade: presidente do partido, candidato eleito e vice, na cor do partido. */
 export type VisaoTrindade = Readonly<{
   sigla: string;
@@ -341,6 +354,14 @@ export type VisaoCasa = Readonly<{
   partidos: readonly VisaoPartidoNaCasa[];
 }>;
 
+/** Um tribunal no miolo do mapa, ligado ao juiz da órbita que o preside. */
+export type VisaoTribunal = Readonly<{
+  id: string;
+  rotulo: string;
+  /** Id do juiz da órbita que preside; null se a corte está sem ninguém. */
+  presidente: string | null;
+}>;
+
 /** Os poderes além do Executivo: o Congresso de verdade e o Judiciário ainda de mentira. */
 export type VisaoPoderes = Readonly<{
   legislativo: Readonly<{
@@ -350,9 +371,16 @@ export type VisaoPoderes = Readonly<{
     emVotacao: readonly string[];
   }>;
   judiciario: Readonly<{
-    /** Juízes só para ocupar o lugar: o motor ainda não tem Judiciário. */
-    juizes: readonly VisaoPessoa[];
+    /** Juízes na ordem dos tribunais; sem Judiciário no país, rostos só para ocupar o lugar. */
+    juizes: readonly VisaoJuiz[];
     pronto: boolean;
+    /**
+     * Os tribunais presididos por um juiz da órbita (a corte suprema e quem tira
+     * o presidente dela), com o id do presidente.
+     */
+    tribunais?: readonly VisaoTribunal[];
+    /** Tribunal que cuida das eleições (o eleitoral; sem ele, o constitucional). */
+    eleitoral?: string;
   }>;
 }>;
 

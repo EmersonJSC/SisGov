@@ -44,6 +44,10 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 | `meta-cumprida`          | Eleição      | médio                     | índice ou programa / — / —                      |
 | `meta-quebrada`          | Eleição      | grande                    | índice ou programa / — / —                      |
 | `segundo-turno`          | Eleição      | grande                    | — / — / —                                       |
+| `juiz-aposentado`        | Judiciário   | médio                     | tribunal / — / —                                |
+| `juiz-nomeado`           | Judiciário   | médio                     | tribunal / — / lado do juiz                     |
+| `indicado-barrado`       | Judiciário   | grande                    | tribunal / — / —                                |
+| `corte-novo-presidente`  | Judiciário   | médio                     | tribunal / — / —                                |
 | `escandalo`              | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `manchete-contra`        | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `grupo-com-raiva`        | (grupos)     | —                         | ninguém escreve nem lê ainda                    |

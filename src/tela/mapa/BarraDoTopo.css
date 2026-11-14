@@ -274,3 +274,25 @@
   font-family: var(--datilografia);
   font-size: 0.72em;
 }
+
+/* Papel importante na mesa (vaga em tribunal): o botão pulsa em vermelho. */
+.topo .topo-mesa.topo-mesa-alerta {
+  animation: topo-mesa-pulso 1.2s ease-in-out infinite;
+}
+
+@keyframes topo-mesa-pulso {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(235, 87, 87, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(235, 87, 87, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topo .topo-mesa.topo-mesa-alerta {
+    animation: none;
+    outline: 2px solid #eb5757;
+  }
+}

@@ -21,6 +21,8 @@ export interface NomesDoJornal {
   caixa: Record<string, string>;
   /** Nome da área (esfera), pelo id. */
   area: Record<string, string>;
+  /** Rótulo do tribunal (STF, Corte Suprema…), pelo id. */
+  tribunal: Record<string, string>;
   programa: (id: string) => string;
   /** Nome do índice (ou do programa) que o governo prometeu. */
   meta: (id: string) => string;
@@ -48,6 +50,7 @@ export function manchete(fato: Fato, nomes: NomesDoJornal): string {
     quem,
     caixa: nomes.caixa[sobre] ?? sobre,
     area: nomes.area[sobre] ?? sobre,
+    tribunal: nomes.tribunal[sobre] ?? sobre,
     programa: nomes.programa(sobre),
     meta: nomes.meta(sobre),
   };

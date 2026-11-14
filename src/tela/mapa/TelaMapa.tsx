@@ -1,7 +1,7 @@
 // Moldura do mapa político herdado da tela antiga: monta a visão da partida,
 // guarda o que está aberto e selecionado, a janela da lei (fatia 2), a barra
 // do topo e o resultado do turno (fatia 3).
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { candidatosDoPartido } from "../../motor";
 import {
   leiTravada,
@@ -27,7 +27,7 @@ import { TrocaDeMinistro } from "./TrocaDeMinistro";
 import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
-import { MesaDePapeis, papeisParaDecidir } from "./MesaDePapeis";
+import { MesaDePapeis, papeisParaDecidir, vagasNaMesa } from "./MesaDePapeis";
 import { NaoPromulgadas, naoPromulgadas } from "./NaoPromulgadas";
 import { afetadasDe } from "./afetadas";
 import { PainelDeAfetadas } from "./PainelDeAfetadas";
@@ -113,6 +113,16 @@ export function TelaMapa({
     // lei de opções sem valor no país começa na primeira opção
     return p ? nivelDe(l, p.valor) : Math.max(0, l.meta);
   };
+
+  // Vaga nova em tribunal é papel importante: a mesa abre sozinha uma vez.
+  const vagasVistas = useRef(new Set<string>());
+  useEffect(() => {
+    const novas = vagasNaMesa(partida).filter(
+      (v) => !vagasVistas.current.has(`${v.id}:${v.barrados}`),
+    );
+    novas.forEach((v) => vagasVistas.current.add(`${v.id}:${v.barrados}`));
+    if (novas.length) setMesa(true);
+  }, [partida]);
 
   // Turno novo: a janela aberta volta ao que vale (ou ao que está na fila)
   // e o resultado do turno abre se houve votação ou eleição.
@@ -203,6 +213,7 @@ export function TelaMapa({
         partida={partida}
         pedidos={fila.length + extras.length}
         papeis={papeisParaDecidir(partida).length}
+        importante={vagasNaMesa(partida).length > 0}
         aviso={aviso}
         onPassar={onPassar}
         onAbrir={(j) =>

@@ -17,6 +17,7 @@ import {
   colisoesDe,
 } from "../../leis";
 import { traduzirCarimbos, montarMesa } from "../../mesa";
+import type { PedidoIndicar } from "../../judiciario";
 import {
   type Votacao,
   tramitar,
@@ -69,8 +70,8 @@ export const congresso: Etapa = (regras, estado, pedidos) => {
     traduzirCarimbos(
       estado.mesa ?? [],
       pedidos.filter(
-        (p): p is Exclude<Pedido, PedidoNomear | PedidoPrometer> =>
-          p.tipo !== "nomear" && p.tipo !== "prometer",
+        (p): p is Exclude<Pedido, PedidoNomear | PedidoPrometer | PedidoIndicar> =>
+          p.tipo !== "nomear" && p.tipo !== "prometer" && p.tipo !== "indicar",
       ),
     ),
   );
