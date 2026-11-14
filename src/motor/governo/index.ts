@@ -25,7 +25,7 @@ export {
   instituicoesDaCaixa,
   instituicoesSoltas,
   ministrosPorPartido,
-  semMinistro,
+  poderDaInstituicao,
 } from "./ministerios";
 export {
   LIMITE_DO_ESCANDALO,
@@ -85,10 +85,10 @@ export function motivoCaixasInvalidas(
     return "precisa de uma caixa para a sobra (o gabinete)";
   const levadas = caixas.flatMap((c) => c.instituicoes);
   const estranha = levadas.find(
-    (i) => !r.instituicoes.some((x) => x.id === i && !x.semMinistro),
+    (i) => !r.instituicoes.some((x) => x.id === i && !x.poder),
   );
   if (estranha !== undefined)
-    return `instituição "${estranha}" não existe ou não tem ministro`;
+    return `instituição "${estranha}" não existe ou é só do poder`;
   const dobrada = levadas.find((i, n) => levadas.indexOf(i) !== n);
   if (dobrada !== undefined) return `${dobrada} está em duas caixas`;
   return null;

@@ -124,7 +124,7 @@ function Bandeja({
   onSoltar: (instituicao: string) => void;
 }) {
   const alvo = useAlvo(onSoltar);
-  const semMinistro = instituicoesDoGabinete().filter((i) => i.semMinistro);
+  const comPoder = instituicoesDoGabinete().filter((i) => i.poder);
   const daSobra = [...(sobra?.instituicoes ?? []), ...soltas];
   return (
     <div {...alvo} className={`ini-bandeja ${alvo.className}`}>
@@ -137,8 +137,14 @@ function Bandeja({
         {daSobra.length === 0 && <em>nenhuma</em>}
       </div>
       <p className="ini-observacao">
-        {semMinistro.map((i) => i.nome).join(" e ")}: ficam com os poderes, sem
-        ministro.
+        Sem ministro:{" "}
+        {comPoder
+          .map(
+            (i) =>
+              `${i.nome} fica com ${i.poder === "legislativo" ? "o Congresso" : "o Judiciário"}`,
+          )
+          .join("; ")}
+        .
       </p>
     </div>
   );

@@ -23,17 +23,17 @@ export const fichaDe = (r: RegrasGoverno, id: string): Ficha => {
   return f;
 };
 
-/** A instituição fica com um dos poderes, sem ministro? */
-export const semMinistro = (r: RegrasGoverno, instituicao: string) =>
-  instituicaoPorId(r, instituicao)?.semMinistro === true;
+/** O poder que fica com a instituição, sem ministro, ou null. */
+export const poderDaInstituicao = (r: RegrasGoverno, instituicao: string) =>
+  instituicaoPorId(r, instituicao)?.poder ?? null;
 
-/** Caixa que leva a instituição: a que a cita, senão a sobra; null se ela não tem ministro. */
+/** Caixa que leva a instituição: a que a cita, senão a sobra; null se ela fica com um poder. */
 export function caixaDaInstituicao(
   r: RegrasGoverno,
   caixas: readonly Caixa[],
   instituicao: string,
 ): Caixa | null {
-  if (semMinistro(r, instituicao)) return null;
+  if (poderDaInstituicao(r, instituicao)) return null;
   const dona =
     caixas.find((c) => c.instituicoes.includes(instituicao)) ??
     caixas.find((c) => c.sobra);
@@ -57,7 +57,7 @@ export const instituicoesSoltas = (
   caixas: readonly Caixa[],
 ): string[] =>
   r.instituicoes
-    .filter((i) => !i.semMinistro)
+    .filter((i) => !i.poder)
     .filter((i) => !caixas.some((c) => c.instituicoes.includes(i.id)))
     .map((i) => i.id);
 

@@ -14,13 +14,15 @@ const doPais = prepararComeco("brasil-2026", 42).caixas;
 
 describe("gabinete da tela inicial", () => {
   it("cada governo pronto tem uma só caixa da sobra e não repete instituição", () => {
-    const comMinistro = instituicoesDoGabinete().filter((i) => !i.semMinistro);
+    const comMinistro = instituicoesDoGabinete().filter((i) => !i.poder);
     for (const t of ["enxuto", "classico", "pais", "inchado"] as const) {
       const g = governoPronto(t, doPais);
       expect(g.filter((c) => c.sobra)).toHaveLength(1);
       const todas = g.flatMap((c) => c.instituicoes);
       expect(new Set(todas).size).toBe(todas.length);
-      expect(todas.every((i) => comMinistro.some((x) => x.id === i))).toBe(true);
+      expect(todas.every((i) => comMinistro.some((x) => x.id === i))).toBe(
+        true,
+      );
     }
   });
 
@@ -43,6 +45,13 @@ describe("gabinete da tela inicial", () => {
     expect(soltasDoGabinete(moverInstituicao(g, "saude", null))).toContain(
       "saude",
     );
+  });
+
+  it("eleições e regras dos poderes ficam com os poderes: não entram em caixa", () => {
+    const g = governoPronto("classico", []);
+    expect(moverInstituicao(g, "eleicoes", "educacao")).toBe(g);
+    expect(moverInstituicao(g, "regras-dos-poderes", "educacao")).toBe(g);
+    expect(soltasDoGabinete(g)).not.toContain("eleicoes");
   });
 
   it("quem cuida de mais instituições rende menos", () => {

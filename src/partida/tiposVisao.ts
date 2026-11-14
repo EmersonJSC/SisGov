@@ -332,6 +332,8 @@ export type VisaoInstituicao = Readonly<{
   nome: string;
   /** Id da caixa responsável; null se fica com um dos poderes, sem ministro. */
   ministro: string | null;
+  /** O poder que fica com ela quando não tem ministro (null se tem ministro). */
+  poder: "judiciario" | "legislativo" | null;
   /** Verba que a instituição recebe das leis de gasto, em % do PIB. */
   verba: number;
 }>;

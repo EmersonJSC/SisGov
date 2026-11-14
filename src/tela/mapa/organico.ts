@@ -76,6 +76,18 @@ export const RAIO_DO_JUIZ = 20;
 /** Faixa do anel das cadeiras. */
 export const ANEL_DO_CONGRESSO_DE = 335;
 export const ANEL_DO_CONGRESSO_ATE = 395;
+/**
+ * Instituição sem ministro fica parada logo fora do miolo, no lado do poder que
+ * cuida dela: a do Legislativo em cima (a Câmara), a do Judiciário embaixo.
+ */
+const LADO_DO_PODER = {
+  legislativo: -Math.PI * 0.5,
+  judiciario: Math.PI * 0.5,
+};
+const PODER_DO_LADO = {
+  legislativo: PODER_LEGISLATIVO,
+  judiciario: PODER_JUDICIARIO,
+};
 const AURA_DO_EXECUTIVO = 175;
 const AURA_DO_LEGISLATIVO = 440;
 /** Daqui para dentro só o miolo: o resto fica fora da aura do Legislativo, com folga. */
@@ -533,6 +545,14 @@ export function prepararOrganico(
       y: centro.y + Math.sin(angulo) * raio,
     };
   };
+  /** Ponto parado da instituição que fica com um poder, fora do miolo. */
+  const doPoder = (poder: keyof typeof LADO_DO_PODER) => {
+    const p = noPonto(
+      LADO_DO_PODER[poder],
+      RAIO_DO_MIOLO + RAIO_DA_INSTITUICAO + FOLGA_POR_TIPO.instituicao,
+    );
+    return { ...p, fx: p.x, fy: p.y };
+  };
   const esferasDaArea = new Map(
     areas.map((a) => [
       a.id,
@@ -570,7 +590,9 @@ export function prepararOrganico(
         raioBase: RAIO_DA_INSTITUICAO,
         area,
         cor: corDaAreaId.get(area) ?? COR_SEM_AREA,
-        ...partida(id, inst.ministro ?? undefined),
+        ...(inst.poder
+          ? doPoder(inst.poder)
+          : partida(id, inst.ministro ?? undefined)),
       };
     },
   );
@@ -716,12 +738,19 @@ export function prepararOrganico(
       sinal: 1,
     });
   });
-  (hierarquia?.instituicoes ?? []).forEach((i) =>
-    pendurar(
-      `${PREFIXO_MINISTRO}${i.ministro}`,
-      `${PREFIXO_INSTITUICAO}${i.id}`,
-    ),
-  );
+  (hierarquia?.instituicoes ?? []).forEach((i) => {
+    const para = `${PREFIXO_INSTITUICAO}${i.id}`;
+    // sem ministro, o poder manda nela: o fio sai do centro dele, como o da trindade
+    if (i.poder && poderes)
+      fiosDaHierarquia.push({
+        id: `h:${PODER_DO_LADO[i.poder]}>${para}`,
+        de: PODER_DO_LADO[i.poder],
+        para,
+        tipo: "hierarquia",
+        sinal: 1,
+      });
+    else pendurar(`${PREFIXO_MINISTRO}${i.ministro}`, para);
+  });
   visao.leis.forEach((l) => {
     const inst = instituicaoDaLei.get(l.id);
     if (inst && instituicoesNoMapa.has(inst)) pendurar(inst, l.id);

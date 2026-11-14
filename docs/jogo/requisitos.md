@@ -131,7 +131,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 **Judiciário, Justiça e prisões e estados** (13/nov: Judiciário é poder, Justiça e prisões é instituição)
 
 - ☐ **R6.20** Judiciário (poder, no miolo, sem ministro): fila de processos, independência, caso em etapas (rastro, investigação, processo, sentença). Hoje os juízes do mapa são de mentira.
-- ☐ **R6.27** Eleições sem ministro: por padrão com o Judiciário; o país declara quem organiza (Judiciário, órgão independente ou Executivo, e só aí entra numa caixa). (Hoje fica sem ministro, com competência média.)
+- ◐ **R6.27** Eleições sem ministro, sempre com o Judiciário (a corte eleitoral, quando houver tribunais); nenhuma caixa a leva. (Feito: travada no Judiciário, no mapa e no motor; falta a corte eleitoral.)
 - ☐ **R6.21** Corrupção em cadeia: rastro nunca some; a chance de achar usa a independência de hoje.
 - ☐ **R6.22** Tribunal superior: cadeiras com lado; vaga vira papel; suspende lei que bate em direito.
 - ☐ **R6.23** Governadores: partido, bússola e termômetro; falam com o governo pela instituição Estados e municípios (repasses e dívida dos estados); o ministro dela faz a verba render e esquenta o termômetro; oposição atrasa e culpa.

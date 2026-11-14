@@ -66,7 +66,8 @@ const instituicoes: Instituicao[] = [
   { id: "esporte", nome: "Esporte" },
   { id: "agro", nome: "Agro" },
   { id: "estado", nome: "Estado" },
-  { id: "eleicoes", nome: "Eleições", semMinistro: true },
+  { id: "eleicoes", nome: "Eleições", poder: "judiciario" },
+  { id: "regras", nome: "Regras", poder: "legislativo" },
 ];
 const moldes: Molde[] = [
   {
@@ -146,7 +147,7 @@ describe("ministério e ficha", () => {
     // ninguém leva agro nem estado: sobra do gabinete
     expect(caixa("pesca")).toBe("gabinete");
     expect(caixa("cargos")).toBe("gabinete");
-    // eleições fica com um dos poderes, sem ministro
+    // eleições fica com o Judiciário, sem ministro
     expect(caixa("eleicao")).toBeUndefined();
   });
 
@@ -367,8 +368,11 @@ describe("o governo do país", () => {
       /não existe/,
     );
     expect(checar(pais(...base, ["x", "c", ["falsa"]]))).toMatch(/não existe/);
+    expect(checar(pais(...base, ["x", "c", ["regras"]]))).toMatch(
+      /só do poder/,
+    );
     expect(checar(pais(...base, ["x", "c", ["eleicoes"]]))).toMatch(
-      /não tem ministro/,
+      /só do poder/,
     );
   });
 

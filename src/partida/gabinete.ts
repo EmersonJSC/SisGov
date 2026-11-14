@@ -37,8 +37,11 @@ const instituicoes = instituicoesDoMundo.instituicoes as Instituicao[];
 const moldes = moldesDeMinisterio.moldes as Molde[];
 const regras: RegrasGoverno = { instituicoes, moldes, pessoas: [] };
 
-/** As instituições do mundo, com nome e se ficam sem ministro. */
+/** As instituições do mundo, com nome e o poder que fica com elas sem ministro. */
 export const instituicoesDoGabinete = (): Instituicao[] => instituicoes;
+
+const doPoder = (id: string) =>
+  instituicoes.some((i) => i.id === id && i.poder);
 
 const semPasta = (n: number): CaixaDoGabinete => ({
   id: `sem-pasta-${n}`,
@@ -113,13 +116,14 @@ export function nomeAutomatico(lista: string[]): string {
 
 /**
  * Põe a instituição na caixa `destino` (tira de onde estava). Destino nulo:
- * fica solta, com a caixa da sobra.
+ * fica solta, com a caixa da sobra. A que fica com um poder não sai dele.
  */
 export function moverInstituicao(
   caixas: CaixaDoGabinete[],
   instituicao: string,
   destino: string | null,
 ): CaixaDoGabinete[] {
+  if (doPoder(instituicao)) return caixas;
   return caixas.map((c) => {
     const sem = c.instituicoes.filter((i) => i !== instituicao);
     return {

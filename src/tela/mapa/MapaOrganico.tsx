@@ -1029,7 +1029,7 @@ function textoDoBilhete(
           linhas: [
             x.ministro
               ? `Instituição sob ${ministros.get(x.ministro)?.nome ?? x.ministro}`
-              : "Instituição sem ministro: fica com um dos poderes",
+              : `Sem ministro: fica com ${x.poder === "legislativo" ? "o Congresso" : "o Judiciário"}`,
             `Recebe ${x.verba.toFixed(1)}% do PIB em verbas`,
             `${preparo.vizinhos.get(id)?.length ?? 0} leis e índices`,
           ],

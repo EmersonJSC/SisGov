@@ -49,12 +49,16 @@ export function hierarquiaDaPartida(
   if (!governo || !estado) return undefined;
   const { caixas } = estado;
 
-  const instituicoes = governo.instituicoes.map((i) => ({
-    id: i.id,
-    nome: i.nome,
-    ministro: caixaDaInstituicao(governo, caixas, i.id)?.id ?? null,
-    verba: verbaDaInstituicao(partida.regras.leis, partida.estado.leis, i.id),
-  }));
+  const instituicoes = governo.instituicoes.map((i) => {
+    const ministro = caixaDaInstituicao(governo, caixas, i.id)?.id ?? null;
+    return {
+      id: i.id,
+      nome: i.nome,
+      ministro,
+      poder: ministro ? null : (i.poder ?? null),
+      verba: verbaDaInstituicao(partida.regras.leis, partida.estado.leis, i.id),
+    };
+  });
   const ministros = caixas.map((c) => {
     const ficha = governo.pessoas.find((f) => f.id === c.ministro);
     const dele = instituicoes.filter((i) => i.ministro === c.id);

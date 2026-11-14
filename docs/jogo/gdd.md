@@ -390,12 +390,11 @@ aba Instituições novas.
 - **Todo país tem todas as instituições**, mesmo pequenas. A pequena é um
   caminho que o jogador pode crescer (um Brasil religioso faz Religião
   crescer).
-- **Eleições não tem ministro (13/nov).** Por padrão fica com o
-  **Judiciário**, no miolo (como a Justiça eleitoral do Brasil), e não com a
-  instituição Justiça e prisões. O país declara quem organiza: o Judiciário,
-  um órgão independente (Índia, México, Reino Unido) ou o Executivo (França e
-  Alemanha, pelo Interior); só no último caso ela entra numa caixa, como as
-  outras instituições.
+- **Eleições não tem ministro (13/nov).** Fica sempre com o **Judiciário**,
+  no miolo, ligada só à corte eleitoral (no Brasil, o TSE) quando os
+  tribunais existirem, e não com a instituição Justiça e prisões. Nenhuma
+  caixa a leva. No mapa, o escudo fica parado logo abaixo do anel do
+  Congresso; o de Regras dos poderes, logo acima, preso ao Congresso.
 - **As regras dos poderes** (medida provisória, indicação de juízes, quórum,
   foro privilegiado, iniciativa popular) não são de instituição: ficam no
   miolo, com Presidente, Congresso e Justiça.
@@ -2024,6 +2023,15 @@ seção 12; promessa e cota na seção 13; mundo na seção 15).
   quê na coabitação).
 - **Leis a reestruturar:** padronizar o formato; o dinheiro que ainda entra e
   sai "fora das leis" se resolve aí.
+- **Tribunais no Judiciário (13/nov):** o Judiciário deixa de ser um bloco só
+  e vira os tribunais que o país declara, cada um com uma função genérica:
+  constitucional, última instância, eleitoral, trabalho, militar. O motor não
+  sabe os nomes (STF, STJ, TSE são rótulos do Brasil). Três jeitos no mundo:
+  uma corte suprema faz tudo (EUA, Índia, Japão, Reino Unido); corte
+  constitucional separada (Alemanha, Itália, França); tribunais por tema
+  (Brasil, Alemanha). No mapa, os juízes se agrupam por tribunal na órbita; a
+  instituição Eleições sem ministro se pendura no tribunal eleitoral, se o país
+  tiver. Entra com o Judiciário de verdade.
 
 **Caminho do dinheiro (13/nov, pensar com calma depois das leis)**
 

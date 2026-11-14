@@ -23,12 +23,15 @@ export interface Ficha {
   idade?: number;
 }
 
+/** Os poderes do miolo que ficam com instituição sem ministro. */
+export type Poder = "judiciario" | "legislativo";
+
 /** Instituição do mundo: o órgão que executa as leis que moram nela. */
 export interface Instituicao {
   id: string;
   nome: string;
-  /** Fica com um dos poderes, sem ministro (eleições, regras dos poderes). */
-  semMinistro?: boolean;
+  /** Fica com este poder, sem ministro; nenhuma caixa a leva (eleições, regras dos poderes). */
+  poder?: Poder;
 }
 
 /** Caixa sugerida do mundo (aba Ministérios geral): o que costuma levar. */
