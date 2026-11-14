@@ -6,42 +6,32 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "agricultura-e-pesca",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibida",
       "rotulo": "proibida",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "feira-da-cidade",
       "rotulo": "feira da cidade",
-      "bussola": {
-        "economico": 0.07,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0.07, "social": -0.1 },
       "efeitos": []
     },
     {
       "id": "dentro-do-estado",
       "rotulo": "dentro do estado",
-      "bussola": {
-        "economico": 0.13,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0.13, "social": -0.2 },
       "efeitos": []
     },
     {
       "id": "livre",
       "rotulo": "livre",
-      "bussola": {
-        "economico": 0.2,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0.2, "social": -0.3 },
       "efeitos": []
     }
   ]

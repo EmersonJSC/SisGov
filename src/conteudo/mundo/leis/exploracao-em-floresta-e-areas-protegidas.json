@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "mineracao-e-petroleo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibida",
       "rotulo": "proibida",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "com-excecoes",
       "rotulo": "com exceções",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0.25
-      },
+      "bussola": { "economico": 0.1, "social": 0.25 },
       "efeitos": [
         {
           "indice": "meio_ambiente",
@@ -42,10 +38,7 @@
     {
       "id": "permitida",
       "rotulo": "permitida",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0.2, "social": 0.5 },
       "efeitos": [
         {
           "indice": "meio_ambiente",

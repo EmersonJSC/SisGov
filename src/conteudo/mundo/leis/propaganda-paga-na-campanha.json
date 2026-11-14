@@ -6,33 +6,26 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "eleicoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibida",
       "rotulo": "proibida",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "liberada-com-teto-de-gasto",
       "rotulo": "liberada com teto de gasto",
-      "bussola": {
-        "economico": 0.25,
-        "social": -0.15
-      },
+      "bussola": { "economico": 0.25, "social": -0.15 },
       "efeitos": []
     },
     {
       "id": "liberada",
       "rotulo": "liberada",
-      "bussola": {
-        "economico": 0.5,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0.5, "social": -0.3 },
       "efeitos": []
     }
   ]

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "agricultura-e-pesca",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibidas",
       "rotulo": "proibidas",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-racao-e-fibras",
       "rotulo": "só ração e fibras",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "produtividade",
@@ -36,10 +32,7 @@
     {
       "id": "com-rotulo",
       "rotulo": "com rótulo",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "produtividade",
@@ -52,10 +45,7 @@
     {
       "id": "liberadas",
       "rotulo": "liberadas",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "produtividade",

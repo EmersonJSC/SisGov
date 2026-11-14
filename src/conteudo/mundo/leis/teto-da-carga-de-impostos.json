@@ -4,26 +4,18 @@
   "nome": "Teto da carga de impostos",
   "descricao": "Quanto o país inteiro pode pagar de imposto, somando todos, em % do PIB: de sem teto até um teto apertado. Batido o teto, subir um imposto obriga a baixar outro.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "impostos",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0.25,
-    "max": 0.6
-  },
+  "faixa": { "min": 0.25, "max": 0.6 },
   "passo": 0.0175,
   "conta": "gasto",
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0.4,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.4, "social": 0 }
   },
   "efeitos": [
     {

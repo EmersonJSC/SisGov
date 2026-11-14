@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "fechado",
       "rotulo": "fechado",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "abre-com-acordo-do-sindicato",
       "rotulo": "abre com acordo do sindicato",
-      "bussola": {
-        "economico": 0.06,
-        "social": -0.04
-      },
+      "bussola": { "economico": 0.06, "social": -0.04 },
       "efeitos": [
         {
           "indice": "tensao_trabalhista",
@@ -36,10 +32,7 @@
     {
       "id": "livre",
       "rotulo": "livre",
-      "bussola": {
-        "economico": 0.12,
-        "social": -0.08
-      },
+      "bussola": { "economico": 0.12, "social": -0.08 },
       "efeitos": [
         {
           "indice": "tensao_trabalhista",
@@ -52,10 +45,7 @@
     {
       "id": "com-folga-em-outro-dia",
       "rotulo": "com folga em outro dia",
-      "bussola": {
-        "economico": 0.18,
-        "social": -0.12
-      },
+      "bussola": { "economico": 0.18, "social": -0.12 },
       "efeitos": [
         {
           "indice": "tensao_trabalhista",
@@ -68,10 +58,7 @@
     {
       "id": "livre-5",
       "rotulo": "livre",
-      "bussola": {
-        "economico": 0.24,
-        "social": -0.16
-      },
+      "bussola": { "economico": 0.24, "social": -0.16 },
       "efeitos": [
         {
           "indice": "tensao_trabalhista",
@@ -84,10 +71,7 @@
     {
       "id": "sem-folga-a-mais",
       "rotulo": "sem folga a mais",
-      "bussola": {
-        "economico": 0.3,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0.3, "social": -0.2 },
       "efeitos": [
         {
           "indice": "tensao_trabalhista",

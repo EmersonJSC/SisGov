@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "energia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "combustivel-de-usina",
       "rotulo": "combustível de usina",
-      "bussola": {
-        "economico": 0,
-        "social": 0.17
-      },
+      "bussola": { "economico": 0, "social": 0.17 },
       "efeitos": [
         {
           "indice": "tensao_internacional",
@@ -42,10 +38,7 @@
     {
       "id": "pesquisa-e-medicina",
       "rotulo": "pesquisa e medicina",
-      "bussola": {
-        "economico": 0,
-        "social": 0.33
-      },
+      "bussola": { "economico": 0, "social": 0.33 },
       "efeitos": [
         {
           "indice": "tensao_internacional",
@@ -64,10 +57,7 @@
     {
       "id": "nivel-de-bomba",
       "rotulo": "nível de bomba",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "tensao_internacional",

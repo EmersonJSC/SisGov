@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-ler-noticias-e-relatorios-das-embaixadas",
       "rotulo": "só ler notícias e relatórios das embaixadas",
-      "bussola": {
-        "economico": 0,
-        "social": 0.17
-      },
+      "bussola": { "economico": 0, "social": 0.17 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -36,10 +32,7 @@
     {
       "id": "tambem-escutar-comunicacoes",
       "rotulo": "também escutar comunicações",
-      "bussola": {
-        "economico": 0,
-        "social": 0.33
-      },
+      "bussola": { "economico": 0, "social": 0.33 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -52,10 +45,7 @@
     {
       "id": "tambem-infiltrar-agentes",
       "rotulo": "também infiltrar agentes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "contrato-particular-entre-os-dois",
       "rotulo": "contrato particular entre os dois",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -48,10 +44,7 @@
     {
       "id": "uniao-civil-com-direitos-basicos",
       "rotulo": "união civil com direitos básicos",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -76,10 +69,7 @@
     {
       "id": "casamento-igual-ao-de-qualquer-casal",
       "rotulo": "casamento igual ao de qualquer casal",
-      "bussola": {
-        "economico": 0,
-        "social": -0.6
-      },
+      "bussola": { "economico": 0, "social": -0.6 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

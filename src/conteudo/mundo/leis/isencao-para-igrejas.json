@@ -4,27 +4,23 @@
   "nome": "Isenção para igrejas",
   "descricao": "Quanto das igrejas e entidades religiosas fica livre de imposto. Escada: nenhuma isenção; só o prédio do templo; templo e doações recebidas; templo, doações e negócios ligados à igreja.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma-isencao",
       "rotulo": "nenhuma isenção",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-o-predio-do-templo",
       "rotulo": "só o prédio do templo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -37,10 +33,7 @@
     {
       "id": "templo-e-doacoes-recebidas",
       "rotulo": "templo e doações recebidas",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -53,10 +46,7 @@
     {
       "id": "templo",
       "rotulo": "templo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -69,10 +59,7 @@
     {
       "id": "doacoes-e-negocios-ligados-a-igreja",
       "rotulo": "doações e negócios ligados à igreja",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "pobreza",

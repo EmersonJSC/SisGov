@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "meio-ambiente",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "multa",
       "rotulo": "multa",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "embargo-da-area",
       "rotulo": "embargo da área",
-      "bussola": {
-        "economico": -0.1,
-        "social": -0.13
-      },
+      "bussola": { "economico": -0.1, "social": -0.13 },
       "efeitos": [
         {
           "indice": "desmatamento",
@@ -36,10 +32,7 @@
     {
       "id": "corte-de-credito-publico",
       "rotulo": "corte de crédito público",
-      "bussola": {
-        "economico": -0.2,
-        "social": -0.27
-      },
+      "bussola": { "economico": -0.2, "social": -0.27 },
       "efeitos": [
         {
           "indice": "desmatamento",
@@ -52,10 +45,7 @@
     {
       "id": "perda-da-terra",
       "rotulo": "perda da terra",
-      "bussola": {
-        "economico": -0.3,
-        "social": -0.4
-      },
+      "bussola": { "economico": -0.3, "social": -0.4 },
       "efeitos": [
         {
           "indice": "desmatamento",

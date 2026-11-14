@@ -21,6 +21,8 @@ const continua = (id: string, extra: Partial<Lei> = {}): Lei =>
     versao: 1,
     id,
     camada: "jogabilidade",
+    canal: "espera",
+    espera: "teste",
     forma: "continua",
     unidade: "fracao",
     faixa: { min: 0, max: 1 },
@@ -35,6 +37,8 @@ const escada = (id: string): Lei =>
     versao: 1,
     id,
     camada: "jogabilidade",
+    canal: "espera",
+    espera: "teste",
     forma: "opcoes",
     opcoes: ["nada", "pouco", "meio", "tudo"].map((o) => ({
       id: o,

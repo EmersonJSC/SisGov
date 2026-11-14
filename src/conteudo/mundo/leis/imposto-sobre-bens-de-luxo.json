@@ -4,25 +4,18 @@
   "nome": "Imposto sobre bens de luxo",
   "descricao": "Imposto por ano sobre jato, iate, helicóptero e carro caro, de 0% a 5% do valor.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.05
-  },
+  "faixa": { "min": 0, "max": 0.05 },
   "passo": 0.0025,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.3,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.3, "social": 0 }
   },
   "efeitos": [
     {

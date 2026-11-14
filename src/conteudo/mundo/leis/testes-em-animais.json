@@ -6,42 +6,32 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "ciencia-e-pesquisa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "livres",
       "rotulo": "livres",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "regulados",
       "rotulo": "regulados",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": []
     },
     {
       "id": "proibidos-em-cosmeticos",
       "rotulo": "proibidos em cosméticos",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": []
     },
     {
       "id": "proibidos-em-quase-tudo",
       "rotulo": "proibidos em quase tudo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": []
     }
   ]

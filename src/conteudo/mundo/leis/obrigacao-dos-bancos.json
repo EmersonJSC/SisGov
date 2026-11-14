@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "avisar-so-valores-muito-altos",
       "rotulo": "avisar só valores muito altos",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -36,10 +32,7 @@
     {
       "id": "avisar-valores-medios-e-guardar-os-dados-por-cinco-anos",
       "rotulo": "avisar valores médios e guardar os dados por cinco anos",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -52,10 +45,7 @@
     {
       "id": "avisar-qualquer-movimento-fora-do-padrao-do-cliente",
       "rotulo": "avisar qualquer movimento fora do padrão do cliente",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -68,10 +58,7 @@
     {
       "id": "com-multa-para-o-banco-que-nao-avisar",
       "rotulo": "com multa para o banco que não avisar",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

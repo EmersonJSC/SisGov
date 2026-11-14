@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "agricultura-e-pesca",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "livres",
       "rotulo": "livres",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "proibe-os-mais-toxicos",
       "rotulo": "proíbe os mais tóxicos",
-      "bussola": {
-        "economico": 0,
-        "social": -0.13
-      },
+      "bussola": { "economico": 0, "social": -0.13 },
       "efeitos": [
         {
           "indice": "meio_ambiente",
@@ -42,10 +38,7 @@
     {
       "id": "reavalia-todos",
       "rotulo": "reavalia todos",
-      "bussola": {
-        "economico": 0,
-        "social": -0.27
-      },
+      "bussola": { "economico": 0, "social": -0.27 },
       "efeitos": [
         {
           "indice": "meio_ambiente",
@@ -64,10 +57,7 @@
     {
       "id": "quase-nenhum",
       "rotulo": "quase nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "meio_ambiente",

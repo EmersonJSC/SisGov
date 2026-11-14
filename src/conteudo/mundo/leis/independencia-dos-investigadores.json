@@ -4,27 +4,23 @@
   "nome": "Independência dos investigadores",
   "descricao": "Quem escolhe o chefe dos investigadores e procuradores: o governo livre, de uma lista do órgão, ou chefe com mandato fixo.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "controle-e-transparencia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "governo-escolhe-livre",
       "rotulo": "governo escolhe livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "escolha-de-uma-lista-do-orgao",
       "rotulo": "escolha de uma lista do órgão",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -37,10 +33,7 @@
     {
       "id": "chefe-com-mandato-fixo",
       "rotulo": "chefe com mandato fixo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "corrupcao",

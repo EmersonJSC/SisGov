@@ -28,6 +28,8 @@ const mandato: Lei = {
   versao: 1,
   id: "m",
   camada: "essencial",
+  canal: "espera",
+  espera: "teste",
   forma: "opcoes",
   opcoes: [
     { id: "curto", mandato_anos: 4, efeitos: [] },
@@ -38,6 +40,8 @@ const outra: Lei = {
   versao: 1,
   id: "o",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "opcoes",
   opcoes: [
     { id: "x", efeitos: [] },

@@ -4,27 +4,23 @@
   "nome": "Religião do Estado",
   "descricao": "Escada: Estado laico, apoio a religiões, ou religião oficial.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "estado-laico",
       "rotulo": "Estado laico",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "apoio-a-religioes",
       "rotulo": "apoio a religiões",
-      "bussola": {
-        "economico": 0,
-        "social": 0.35
-      },
+      "bussola": { "economico": 0, "social": 0.35 },
       "efeitos": [
         {
           "indice": "tensao_religiosa",
@@ -43,10 +39,7 @@
     {
       "id": "religiao-oficial",
       "rotulo": "religião oficial",
-      "bussola": {
-        "economico": 0,
-        "social": 0.7
-      },
+      "bussola": { "economico": 0, "social": 0.7 },
       "efeitos": [
         {
           "indice": "tensao_religiosa",

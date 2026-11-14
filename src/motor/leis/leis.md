@@ -21,3 +21,20 @@ Formato e validador. A lei declara; o motor interpreta.
   base da faixa até `max` em `ate`; acima disso a lei fica na ponta (100% de
   imposto é tão extremo quanto 90%). Sem `ate`, vale o máximo da faixa. Assim
   a faixa do controle (0 a 100%) não mexe no equilíbrio das leis.
+- `canal` (14/nov, plano das leis): como a lei chega à vida do pop. `imposto`
+  (anda junto com `calculo`), `verba` (`conta: "gasto"`), `transferencia`
+  (`para`), `preco` (preço ou custo de um setor), `regra` (um módulo ou o
+  arquivo do país lê a lei), `direito` (muda uma liberdade) ou `espera`, com
+  `espera` dizendo o quê ("triagem" até a onda da lei, ou a mecânica que
+  falta). O validador confere que o canal bate com o que a lei faz.
+- **Revogar:** o pedido `mudar_lei` com `revogar: true` leva a lei ao valor
+  desligado (`valorDesligado`: mínimo da régua ou primeiro degrau) e passa pelo
+  Congresso como qualquer mudança; aprovado, a lei sai de `estado.leis` (volta a
+  "não legislada") e os efeitos dela voltam a zero. Lei `essencial` não se
+  revoga.
+- **Lei pela instituição:** o efeito de toda lei em índice vale vezes o
+  rendimento do órgão onde ela mora, com teto em 1 (`rendimentoDasLeis`,
+  motor/governo). Lei sem órgão (regras dos poderes) rende inteira.
+- **Fonte:** a planilha `docs/jogo/gdd.xlsx` (abas Leis, Leis - degraus, Leis -
+  efeitos). `npm run leis` gera os JSONs; `npm run leis:planilha` faz o
+  caminho de volta. Molde em `scripts/leis/molde.ts`.

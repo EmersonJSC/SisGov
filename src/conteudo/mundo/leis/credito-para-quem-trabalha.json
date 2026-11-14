@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "o-beneficio-e-igual-para-todos",
       "rotulo": "o benefício é igual para todos",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -36,10 +32,7 @@
     {
       "id": "um-extra-pequeno-para-quem-trabalha",
       "rotulo": "um extra pequeno para quem trabalha",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -52,10 +45,7 @@
     {
       "id": "metade-do-beneficio-so-para-quem-trabalha",
       "rotulo": "metade do benefício só para quem trabalha",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -68,10 +58,7 @@
     {
       "id": "todo-o-beneficio-so-para-quem-trabalha",
       "rotulo": "todo o benefício só para quem trabalha",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0
-      },
+      "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",

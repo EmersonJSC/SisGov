@@ -6,33 +6,26 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "ciencia-e-pesquisa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibida",
       "rotulo": "proibida",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-em-laboratorio-de-seguranca-maxima",
       "rotulo": "só em laboratório de segurança máxima",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": []
     },
     {
       "id": "liberada",
       "rotulo": "liberada",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": []
     }
   ]

@@ -58,6 +58,11 @@ export interface PedidoMudarLei {
   tipo: "mudar_lei";
   lei: string;
   valor: ValorLei;
+  /**
+   * Revogar: o valor é o de lei desligada (mínimo da régua ou primeiro degrau)
+   * e, aprovada, a lei volta a "não legislada". Lei essencial não se revoga.
+   */
+  revogar?: true;
 }
 
 /** Oferece uma moeda a um partido para uma lei que está na pauta. */

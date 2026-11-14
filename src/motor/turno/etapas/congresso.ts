@@ -15,6 +15,7 @@ import {
   valoresComPedidos,
   leiAtiva,
   colisoesDe,
+  valorDesligado,
 } from "../../leis";
 import { traduzirCarimbos, montarMesa } from "../../mesa";
 import type { PedidoIndicar } from "../../judiciario";
@@ -41,6 +42,12 @@ export const congresso: Etapa = (regras, estado, pedidos) => {
     if (!lei) throw new Error(`pedido: lei "${pedido.lei}" não existe`);
     const motivo = motivoValorInvalido(lei, pedido.valor);
     if (motivo) throw new Error(`pedido: ${pedido.lei} ${motivo}`);
+    if (pedido.tipo === "mudar_lei" && pedido.revogar) {
+      if (lei.camada === "essencial")
+        throw new Error(`pedido: ${lei.id} é essencial e não se revoga`);
+      if (pedido.valor !== valorDesligado(lei))
+        throw new Error(`pedido: revogar ${lei.id} pede o valor desligado`);
+    }
     const valores = valoresComPedidos(regras.leis, estado.leis, anteriores);
     const colide = leiAtiva(lei, pedido.valor)
       ? colisoesDe(lei.id, regras.colisoes ?? [], regras.leis, valores)
@@ -70,7 +77,12 @@ export const congresso: Etapa = (regras, estado, pedidos) => {
     traduzirCarimbos(
       estado.mesa ?? [],
       pedidos.filter(
-        (p): p is Exclude<Pedido, PedidoNomear | PedidoPrometer | PedidoIndicar> =>
+        (
+          p,
+        ): p is Exclude<
+          Pedido,
+          PedidoNomear | PedidoPrometer | PedidoIndicar
+        > =>
           p.tipo !== "nomear" && p.tipo !== "prometer" && p.tipo !== "indicar",
       ),
     ),
@@ -123,22 +135,72 @@ export function entradaDoCongresso(
     pedidos,
   };
 }
-/** 2. Leis novas: o que passou muda de valor e os efeitos entram na fila. */
-export const leisNovas: Etapa = (regras, estado) => {
+/** Pedidos de revogar do turno somados aos que ainda tramitam. */
+export function revogacoesDoTurno(
+  estado: Estado,
+  pedidos: readonly Pedido[],
+): string[] {
+  const novos = pedidos.flatMap((p) =>
+    p.tipo === "mudar_lei" && p.revogar ? [p.lei] : [],
+  );
+  // pedir outro valor para a lei desfaz a revogação
+  const trocados = new Set(
+    pedidos.flatMap((p) =>
+      p.tipo === "mudar_lei" && !p.revogar ? [p.lei] : [],
+    ),
+  );
+  return [
+    ...new Set([
+      ...(estado.revogacoes ?? []).filter((l) => !trocados.has(l)),
+      ...novos,
+    ]),
+  ];
+}
+
+/**
+ * 2. Leis novas: o que passou muda de valor e os efeitos entram na fila. A
+ * revogação aprovada tira a lei do país (volta a "não legislada").
+ */
+export const leisNovas: Etapa = (regras, estado, pedidos) => {
   let { leis, efeitos } = estado;
+  const revogacoes = revogacoesDoTurno(estado, pedidos);
+  const revogadas = new Set<string>();
   for (const v of estado.votacoes) {
     if (!v.muda_lei) continue;
-    leis = { ...leis, [v.lei]: v.valor };
+    const lei = regras.leis[v.lei];
+    const revoga =
+      revogacoes.includes(v.lei) && v.valor === valorDesligado(lei);
+    if (revoga) {
+      leis = Object.fromEntries(
+        Object.entries(leis).filter(([id]) => id !== v.lei),
+      );
+      revogadas.add(v.lei);
+    } else leis = { ...leis, [v.lei]: v.valor };
     efeitos = enfileirar(
       efeitos,
-      regras.leis[v.lei],
-      v.valor,
+      lei,
+      revoga ? undefined : v.valor,
       regras.governo && estado.governo
-        ? ajusteDaLei(regras.governo, estado.governo.caixas, regras.leis[v.lei])
+        ? ajusteDaLei(regras.governo, estado.governo.caixas, lei)
         : undefined,
     );
   }
-  return { ...estado, leis, efeitos };
+  // a revogação some quando a lei sai da pauta (aprovada, derrubada ou trocada)
+  const tramitando = new Set(
+    [
+      ...(estado.congresso?.pauta ?? []),
+      ...(estado.congresso?.sancao ?? []),
+    ].map((t) => t.lei),
+  );
+  const seguem = revogacoes.filter(
+    (l) => !revogadas.has(l) && (tramitando.has(l) || !regras.congresso),
+  );
+  return {
+    ...estado,
+    leis,
+    efeitos,
+    revogacoes: seguem.length > 0 ? seguem : undefined,
+  };
 };
 /** 3. Efeitos andam um turno em direção ao inteiro. */
 export const efeitosVencem: Etapa = (_, estado) => ({

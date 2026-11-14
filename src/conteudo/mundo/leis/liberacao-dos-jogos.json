@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada-liberado",
       "rotulo": "nada liberado",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": []
     },
     {
       "id": "loteria",
       "rotulo": "loteria",
-      "bussola": {
-        "economico": 0,
-        "social": -0.18
-      },
+      "bussola": { "economico": 0, "social": -0.18 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -48,10 +44,7 @@
     {
       "id": "bingo-e-corrida",
       "rotulo": "bingo e corrida",
-      "bussola": {
-        "economico": 0,
-        "social": -0.06
-      },
+      "bussola": { "economico": 0, "social": -0.06 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -76,10 +69,7 @@
     {
       "id": "cassino-presencial",
       "rotulo": "cassino presencial",
-      "bussola": {
-        "economico": 0,
-        "social": 0.06
-      },
+      "bussola": { "economico": 0, "social": 0.06 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -104,10 +94,7 @@
     {
       "id": "apostas-pela-internet",
       "rotulo": "apostas pela internet",
-      "bussola": {
-        "economico": 0,
-        "social": 0.18
-      },
+      "bussola": { "economico": 0, "social": 0.18 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -132,10 +119,7 @@
     {
       "id": "cassino-pela-internet",
       "rotulo": "cassino pela internet",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",

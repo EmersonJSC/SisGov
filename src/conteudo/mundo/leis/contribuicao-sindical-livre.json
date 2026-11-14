@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "todos-pagam",
       "rotulo": "todos pagam",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "descontado-direto-do-salario",
       "rotulo": "descontado direto do salário",
-      "bussola": {
-        "economico": 0.08,
-        "social": 0
-      },
+      "bussola": { "economico": 0.08, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -36,10 +32,7 @@
     {
       "id": "so-paga-quem-a-assembleia-do-sindicato-aprovar",
       "rotulo": "só paga quem a assembleia do sindicato aprovar",
-      "bussola": {
-        "economico": 0.16,
-        "social": 0
-      },
+      "bussola": { "economico": 0.16, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -52,10 +45,7 @@
     {
       "id": "so-paga-quem-autorizar-por-escrito",
       "rotulo": "só paga quem autorizar por escrito",
-      "bussola": {
-        "economico": 0.24,
-        "social": 0
-      },
+      "bussola": { "economico": 0.24, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -68,10 +58,7 @@
     {
       "id": "ninguem-paga-sem-filiacao",
       "rotulo": "ninguém paga sem filiação",
-      "bussola": {
-        "economico": 0.32,
-        "social": 0
-      },
+      "bussola": { "economico": 0.32, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -84,10 +71,7 @@
     {
       "id": "o-sindicato-vive-so-dos-socios",
       "rotulo": "o sindicato vive só dos sócios",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0
-      },
+      "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",

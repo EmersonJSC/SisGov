@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-quem-comete-o-crime",
       "rotulo": "só quem comete o crime",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "ser-membro-e-crime",
       "rotulo": "ser membro é crime",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -54,10 +50,7 @@
     {
       "id": "tambem-quem-ajuda-a-faccao-guarda-dinheiro",
       "rotulo": "também quem ajuda a facção (guarda dinheiro",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -88,10 +81,7 @@
     {
       "id": "paga",
       "rotulo": "paga",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -122,10 +112,7 @@
     {
       "id": "leva-recado",
       "rotulo": "leva recado)",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -156,10 +143,7 @@
     {
       "id": "tambem-quem-tem-sinais-de-pertencer-tatuagem",
       "rotulo": "também quem tem sinais de pertencer (tatuagem",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -190,10 +174,7 @@
     {
       "id": "mensagem",
       "rotulo": "mensagem",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -224,10 +205,7 @@
     {
       "id": "morar-com-o-chefe",
       "rotulo": "morar com o chefe)",
-      "bussola": {
-        "economico": 0,
-        "social": 0.7
-      },
+      "bussola": { "economico": 0, "social": 0.7 },
       "efeitos": [
         {
           "indice": "homicidios",

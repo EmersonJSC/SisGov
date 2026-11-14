@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "tem-que-provar-que-foi-na-medida",
       "rotulo": "tem que provar que foi na medida",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "em-casa-a-defesa-ja-e-presumida",
       "rotulo": "em casa a defesa já é presumida",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",
@@ -48,10 +44,7 @@
     {
       "id": "tambem-no-comercio-e-no-carro",
       "rotulo": "também no comércio e no carro",
-      "bussola": {
-        "economico": 0,
-        "social": 0.25
-      },
+      "bussola": { "economico": 0, "social": 0.25 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",
@@ -76,10 +69,7 @@
     {
       "id": "em-qualquer-lugar",
       "rotulo": "em qualquer lugar",
-      "bussola": {
-        "economico": 0,
-        "social": 0.38
-      },
+      "bussola": { "economico": 0, "social": 0.38 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",
@@ -104,10 +94,7 @@
     {
       "id": "sem-dever-de-fugir",
       "rotulo": "sem dever de fugir",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",

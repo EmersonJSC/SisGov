@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moradia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-quem-tem-escritura",
       "rotulo": "só quem tem escritura",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "valor-da-casa-sem-escritura",
       "rotulo": "valor da casa sem escritura",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -36,10 +32,7 @@
     {
       "id": "tambem-aluguel-ate-a-casa-nova",
       "rotulo": "também aluguel até a casa nova",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -52,10 +45,7 @@
     {
       "id": "casa-nova-antes-de-sair",
       "rotulo": "casa nova antes de sair",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",

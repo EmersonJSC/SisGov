@@ -518,6 +518,8 @@ export function DocumentoLei({
   travada,
   enviado,
   onEnviar,
+  revogando,
+  onRevogar,
   onTirar,
   onFechar,
   placar,
@@ -560,6 +562,10 @@ export function DocumentoLei({
   enviado: boolean;
   /** Põe (ou troca) o pedido do rascunho na fila. */
   onEnviar: () => void;
+  /** Há pedido de revogar esta lei na fila. */
+  revogando: boolean;
+  /** Pede ao Congresso que a lei volte a "não legislada". */
+  onRevogar: () => void;
   onTirar: () => void;
   onFechar: () => void;
 }) {
@@ -650,6 +656,15 @@ export function DocumentoLei({
             <button type="button" className="botao-revogar" onClick={onTirar}>
               Tirar da fila
             </button>
+          ) : lei.revogavel ? (
+            <button
+              type="button"
+              className="botao-revogar"
+              onClick={onRevogar}
+              title="Pede ao Congresso que a lei deixe de existir"
+            >
+              Revogar
+            </button>
           ) : null}
           <button
             type="button"
@@ -682,6 +697,14 @@ export function DocumentoLei({
           <h1 className="titulo-doc">{lei.nome}</h1>
           {lei.descricao ? (
             <p className="folha-explica">{lei.descricao}</p>
+          ) : null}
+          <p className="folha-como-chega">
+            <strong>Como chega a você:</strong> {lei.comoChega}
+          </p>
+          {revogando ? (
+            <p className="bloqueio-doc">
+              Pedido de revogar na fila: aprovado, a lei deixa de existir.
+            </p>
           ) : null}
           {travada ? (
             <p className="bloqueio-doc">

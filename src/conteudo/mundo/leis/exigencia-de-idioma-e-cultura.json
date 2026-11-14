@@ -6,33 +6,26 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "imigracao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "prova-de-idioma",
       "rotulo": "prova de idioma",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": []
     },
     {
       "id": "prova-de-idioma-e-de-valores",
       "rotulo": "prova de idioma e de valores",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": []
     }
   ]

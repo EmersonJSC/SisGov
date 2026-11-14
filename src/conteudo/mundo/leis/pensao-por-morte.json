@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "valor-inteiro-e-para-a-vida-toda",
       "rotulo": "valor inteiro e para a vida toda",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "valor-inteiro",
       "rotulo": "valor inteiro",
-      "bussola": {
-        "economico": 0,
-        "social": 0.08
-      },
+      "bussola": { "economico": 0, "social": 0.08 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -36,10 +32,7 @@
     {
       "id": "por-tempo-que-depende-da-idade-de-quem-fica",
       "rotulo": "por tempo que depende da idade de quem fica",
-      "bussola": {
-        "economico": 0,
-        "social": 0.16
-      },
+      "bussola": { "economico": 0, "social": 0.16 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -52,10 +45,7 @@
     {
       "id": "60-do-valor",
       "rotulo": "60% do valor",
-      "bussola": {
-        "economico": 0,
-        "social": 0.24
-      },
+      "bussola": { "economico": 0, "social": 0.24 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -68,10 +58,7 @@
     {
       "id": "por-tempo-limitado",
       "rotulo": "por tempo limitado",
-      "bussola": {
-        "economico": 0,
-        "social": 0.32
-      },
+      "bussola": { "economico": 0, "social": 0.32 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -84,10 +71,7 @@
     {
       "id": "so-para-filhos-menores-e-dependentes",
       "rotulo": "só para filhos menores e dependentes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "pobreza",

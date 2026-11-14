@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comercio-exterior-e-capital",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "antidumping",
       "rotulo": "antidumping",
-      "bussola": {
-        "economico": 0,
-        "social": 0.15
-      },
+      "bussola": { "economico": 0, "social": 0.15 },
       "efeitos": [
         {
           "indice": "abertura_comercial",
@@ -36,10 +32,7 @@
     {
       "id": "salvaguardas-amplas",
       "rotulo": "salvaguardas amplas",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "abertura_comercial",

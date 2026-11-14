@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "a-lei-vale-sempre",
       "rotulo": "a lei vale sempre",
-      "bussola": {
-        "economico": 0.08,
-        "social": 0
-      },
+      "bussola": { "economico": 0.08, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -36,10 +32,7 @@
     {
       "id": "so-horario-e-jornada",
       "rotulo": "só horário e jornada",
-      "bussola": {
-        "economico": 0.16,
-        "social": 0
-      },
+      "bussola": { "economico": 0.16, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -52,10 +45,7 @@
     {
       "id": "tambem-ferias-e-intervalos",
       "rotulo": "também férias e intervalos",
-      "bussola": {
-        "economico": 0.24,
-        "social": 0
-      },
+      "bussola": { "economico": 0.24, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -68,10 +58,7 @@
     {
       "id": "quase-tudo",
       "rotulo": "quase tudo",
-      "bussola": {
-        "economico": 0.32,
-        "social": 0
-      },
+      "bussola": { "economico": 0.32, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -84,10 +71,7 @@
     {
       "id": "menos-salario-minimo-e-seguranca",
       "rotulo": "menos salário mínimo e segurança",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0
-      },
+      "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",

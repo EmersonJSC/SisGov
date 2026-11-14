@@ -4,27 +4,23 @@
   "nome": "Iniciativa popular",
   "descricao": "Quanto poder o povo tem para propor e decidir leis. Escada: nenhum, só os políticos propõem; o povo propõe lei com assinaturas e o Congresso decide; lei com muitas assinaturas vai a plebiscito; o povo também revoga leis por voto.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "regras-dos-poderes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-os-politicos-propoem",
       "rotulo": "só os políticos propõem",
-      "bussola": {
-        "economico": 0,
-        "social": -0.12
-      },
+      "bussola": { "economico": 0, "social": -0.12 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -37,10 +33,7 @@
     {
       "id": "o-povo-propoe-lei-com-assinaturas-e-o-congresso-decide",
       "rotulo": "o povo propõe lei com assinaturas e o Congresso decide",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -53,10 +46,7 @@
     {
       "id": "lei-com-muitas-assinaturas-vai-a-plebiscito",
       "rotulo": "lei com muitas assinaturas vai a plebiscito",
-      "bussola": {
-        "economico": 0,
-        "social": -0.37
-      },
+      "bussola": { "economico": 0, "social": -0.37 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -69,10 +59,7 @@
     {
       "id": "o-povo-tambem-revoga-leis-por-voto",
       "rotulo": "o povo também revoga leis por voto",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "polarizacao",

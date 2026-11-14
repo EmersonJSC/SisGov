@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "meio-ambiente",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "o-presidente-manda",
       "rotulo": "o presidente manda",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "chefe-com-mandato",
       "rotulo": "chefe com mandato",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -36,10 +32,7 @@
     {
       "id": "orgao-independente",
       "rotulo": "órgão independente",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "corrupcao",

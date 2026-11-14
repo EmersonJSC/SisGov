@@ -20,6 +20,8 @@ const lei: Lei = {
   versao: 1,
   id: "l",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "continua",
   unidade: "fracao",
   faixa: { min: 0, max: 0.3 },
@@ -33,6 +35,8 @@ const opcoes: Lei = {
   versao: 1,
   id: "o",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "opcoes",
   opcoes: [
     { id: "x", bussola: { economico: 1 }, efeitos: [] },
@@ -225,6 +229,8 @@ const decreto: Lei = {
   versao: 1,
   id: "d",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "opcoes",
   opcoes: ["sem", "verba", "amplo", "tudo"].map((id) => ({
     id,

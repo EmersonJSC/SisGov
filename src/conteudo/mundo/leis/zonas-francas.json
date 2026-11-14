@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comercio-exterior-e-capital",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-em-areas-pobres",
       "rotulo": "só em áreas pobres",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "investimento_estrangeiro",
@@ -42,10 +38,7 @@
     {
       "id": "algumas-areas",
       "rotulo": "algumas áreas",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "investimento_estrangeiro",
@@ -64,10 +57,7 @@
     {
       "id": "muitas-areas-com-imposto-menor-e-regras-proprias-para-fabricas",
       "rotulo": "muitas áreas com imposto menor e regras próprias para fábricas",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "investimento_estrangeiro",

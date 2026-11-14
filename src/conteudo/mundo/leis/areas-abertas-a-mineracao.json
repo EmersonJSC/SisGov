@@ -6,51 +6,38 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "mineracao-e-petroleo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma-area-nova",
       "rotulo": "nenhuma área nova",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-onde-ja-tem-mina",
       "rotulo": "só onde já tem mina",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0.05
-      },
+      "bussola": { "economico": 0.1, "social": 0.05 },
       "efeitos": []
     },
     {
       "id": "terras-do-governo",
       "rotulo": "terras do governo",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0.2, "social": 0.1 },
       "efeitos": []
     },
     {
       "id": "todo-o-pais",
       "rotulo": "todo o país",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0.15
-      },
+      "bussola": { "economico": 0.3, "social": 0.15 },
       "efeitos": []
     },
     {
       "id": "fora-das-areas-protegidas",
       "rotulo": "fora das áreas protegidas",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0.4, "social": 0.2 },
       "efeitos": []
     }
   ]

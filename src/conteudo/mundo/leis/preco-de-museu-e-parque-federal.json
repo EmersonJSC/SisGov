@@ -6,22 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "esporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.05,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0.3,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.3, "social": 0 }
   },
   "efeitos": [
     {

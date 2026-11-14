@@ -6,23 +6,16 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "meio-ambiente",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do dano",
-  "faixa": {
-    "min": 0,
-    "max": 200
-  },
+  "faixa": { "min": 0, "max": 200 },
   "passo": 5,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": -0.4
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": -0.4 }
   },
   "efeitos": [
     {

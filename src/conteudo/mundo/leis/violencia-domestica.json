@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "crime-proprio-com-pena",
       "rotulo": "crime próprio com pena",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "violencia_contra_a_mulher",
@@ -48,10 +44,7 @@
     {
       "id": "afastar-o-agressor-na-hora",
       "rotulo": "afastar o agressor na hora",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "violencia_contra_a_mulher",
@@ -76,10 +69,7 @@
     {
       "id": "juizado-proprio-e-abrigo",
       "rotulo": "juizado próprio e abrigo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": [
         {
           "indice": "violencia_contra_a_mulher",

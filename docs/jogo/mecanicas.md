@@ -313,7 +313,8 @@ civil (duas filas), Transporte, Cultura e patrimônio (fila), Defesa civil
 
 ## 6. Leis
 
-O núcleo do governo. 512 leis no jogo, mas sem padrão.
+O núcleo do governo. 512 leis no jogo, mas sem padrão. **Plano:**
+[planos/leis.md](planos/leis.md) (14/nov, esperando as decisões do autor).
 
 ### 6.1 Formato e padronização
 

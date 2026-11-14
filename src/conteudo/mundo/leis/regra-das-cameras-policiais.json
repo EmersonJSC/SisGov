@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-camera",
       "rotulo": "sem câmera",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "camera-que-o-policial-liga-quando-quiser",
       "rotulo": "câmera que o policial liga quando quiser",
-      "bussola": {
-        "economico": 0,
-        "social": -0.17
-      },
+      "bussola": { "economico": 0, "social": -0.17 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -42,10 +38,7 @@
     {
       "id": "camera-sempre-ligada-durante-o-turno",
       "rotulo": "câmera sempre ligada durante o turno",
-      "bussola": {
-        "economico": 0,
-        "social": -0.33
-      },
+      "bussola": { "economico": 0, "social": -0.33 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -64,10 +57,7 @@
     {
       "id": "camera-sempre-ligada-e-imagens-revistas-por-orgao-independente",
       "rotulo": "câmera sempre ligada e imagens revistas por órgão independente",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",

@@ -6,51 +6,38 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "cultura",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "cinema",
       "rotulo": "cinema",
-      "bussola": {
-        "economico": -0.07,
-        "social": 0
-      },
+      "bussola": { "economico": -0.07, "social": 0 },
       "efeitos": []
     },
     {
       "id": "radio-e-tv-aberta",
       "rotulo": "rádio e TV aberta",
-      "bussola": {
-        "economico": -0.15,
-        "social": 0
-      },
+      "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": []
     },
     {
       "id": "tv-paga",
       "rotulo": "TV paga",
-      "bussola": {
-        "economico": -0.22,
-        "social": 0
-      },
+      "bussola": { "economico": -0.22, "social": 0 },
       "efeitos": []
     },
     {
       "id": "streaming",
       "rotulo": "streaming",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": []
     }
   ]

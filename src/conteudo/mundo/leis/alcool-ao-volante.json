@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-limite",
       "rotulo": "sem limite",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "limite-alto-com-multa",
       "rotulo": "limite alto com multa",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -36,10 +32,7 @@
     {
       "id": "limite-baixo-com-multa-e-suspensao-da-carteira",
       "rotulo": "limite baixo com multa e suspensão da carteira",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -52,10 +45,7 @@
     {
       "id": "tolerancia-zero-com-prisao",
       "rotulo": "tolerância zero com prisão",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",

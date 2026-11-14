@@ -4,45 +4,35 @@
   "nome": "Censura política",
   "descricao": "Como o governo pune quem o critica. Escada: nenhuma; multa por ofender autoridades; prisão por criticar o governo; jornais e redes só publicam com aprovação prévia.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "multa-por-ofender-autoridades",
       "rotulo": "multa por ofender autoridades",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": []
     },
     {
       "id": "prisao-por-criticar-o-governo",
       "rotulo": "prisão por criticar o governo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": []
     },
     {
       "id": "jornais-e-redes-so-publicam-com-aprovacao-previa",
       "rotulo": "jornais e redes só publicam com aprovação prévia",
-      "bussola": {
-        "economico": 0,
-        "social": 0.9
-      },
+      "bussola": { "economico": 0, "social": 0.9 },
       "efeitos": []
     }
   ]

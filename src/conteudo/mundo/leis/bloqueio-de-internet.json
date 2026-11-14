@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "bloquear-um-site-por-ordem-do-juiz",
       "rotulo": "bloquear um site por ordem do juiz",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -36,10 +32,7 @@
     {
       "id": "bloquear-redes-em-crise",
       "rotulo": "bloquear redes em crise",
-      "bussola": {
-        "economico": 0,
-        "social": 0.53
-      },
+      "bussola": { "economico": 0, "social": 0.53 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -52,10 +45,7 @@
     {
       "id": "apagao-local-em-conflito",
       "rotulo": "apagão local em conflito",
-      "bussola": {
-        "economico": 0,
-        "social": 0.8
-      },
+      "bussola": { "economico": 0, "social": 0.8 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",

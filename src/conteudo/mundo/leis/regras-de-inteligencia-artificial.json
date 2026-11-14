@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-regra",
       "rotulo": "sem regra",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "avisar-quando-e-ia",
       "rotulo": "avisar quando é IA",
-      "bussola": {
-        "economico": -0.12,
-        "social": 0
-      },
+      "bussola": { "economico": -0.12, "social": 0 },
       "efeitos": [
         {
           "indice": "desinformacao",
@@ -42,10 +38,7 @@
     {
       "id": "testes-em-areas-sensiveis",
       "rotulo": "testes em áreas sensíveis",
-      "bussola": {
-        "economico": -0.25,
-        "social": 0
-      },
+      "bussola": { "economico": -0.25, "social": 0 },
       "efeitos": [
         {
           "indice": "desinformacao",
@@ -64,10 +57,7 @@
     {
       "id": "proibir-usos-perigosos",
       "rotulo": "proibir usos perigosos",
-      "bussola": {
-        "economico": -0.37,
-        "social": 0
-      },
+      "bussola": { "economico": -0.37, "social": 0 },
       "efeitos": [
         {
           "indice": "desinformacao",
@@ -86,10 +76,7 @@
     {
       "id": "licenca-para-modelos-grandes",
       "rotulo": "licença para modelos grandes",
-      "bussola": {
-        "economico": -0.5,
-        "social": 0
-      },
+      "bussola": { "economico": -0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "desinformacao",

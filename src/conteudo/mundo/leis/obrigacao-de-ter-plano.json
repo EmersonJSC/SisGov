@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "ninguem",
       "rotulo": "ninguém",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "multa-leve",
       "rotulo": "multa leve",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -42,10 +38,7 @@
     {
       "id": "multa-pesada",
       "rotulo": "multa pesada",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -64,10 +57,7 @@
     {
       "id": "desconto-direto-no-salario",
       "rotulo": "desconto direto no salário",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",

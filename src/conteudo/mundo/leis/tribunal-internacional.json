@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "relacoes-exteriores",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nao-aceitar",
       "rotulo": "não aceitar",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aceitar-em-parte",
       "rotulo": "aceitar em parte",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -48,10 +44,7 @@
     {
       "id": "aceitar-por-completo",
       "rotulo": "aceitar por completo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",

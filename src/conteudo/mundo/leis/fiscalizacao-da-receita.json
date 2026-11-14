@@ -4,26 +4,18 @@
   "nome": "Fiscalização da Receita",
   "descricao": "Verba para auditores que cobram quem sonega.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "impostos",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.005
-  },
+  "faixa": { "min": 0, "max": 0.005 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.4,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.4, "social": 0 }
   },
   "efeitos": [
     {

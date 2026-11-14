@@ -17,11 +17,17 @@ export function motivoValorInvalido(lei: Lei, valor: ValorLei): string | null {
   return null;
 }
 
+/** O valor de lei desligada: o mínimo da régua ou o primeiro degrau. */
+export const valorDesligado = (lei: Lei): ValorLei =>
+  lei.forma === "continua" ? lei.faixa.min : lei.opcoes[0].id;
+
 /**
  * Efeitos ativos com a intensidade de cada um (0 a 1). Contínua: posição do
  * valor na faixa (mínimo = nada, máximo = inteiro). Opções: os da opção, inteiros.
  */
-export function efeitosDoValor(lei: Lei, valor: ValorLei) {
+export function efeitosDoValor(lei: Lei, valor: ValorLei | undefined) {
+  // não legislada: nenhum efeito
+  if (valor === undefined) return [];
   if (lei.forma === "continua") {
     const intensidade =
       ((valor as number) - lei.faixa.min) / (lei.faixa.max - lei.faixa.min);

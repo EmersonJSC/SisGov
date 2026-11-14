@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum-desconto",
       "rotulo": "nenhum desconto",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "desconto-pequeno-so-para-familias-muito-pobres",
       "rotulo": "desconto pequeno só para famílias muito pobres",
-      "bussola": {
-        "economico": -0.13,
-        "social": 0
-      },
+      "bussola": { "economico": -0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -36,10 +32,7 @@
     {
       "id": "desconto-grande-para-pobres-e-quase-pobres",
       "rotulo": "desconto grande para pobres e quase pobres",
-      "bussola": {
-        "economico": -0.27,
-        "social": 0
-      },
+      "bussola": { "economico": -0.27, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -52,10 +45,7 @@
     {
       "id": "luz-gratis-ate-o-consumo-basico-para-todos-os-pobres",
       "rotulo": "luz grátis até o consumo básico para todos os pobres",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0
-      },
+      "bussola": { "economico": -0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "pobreza",

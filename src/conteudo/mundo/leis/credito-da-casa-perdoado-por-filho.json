@@ -6,23 +6,16 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moradia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário mínimo",
-  "faixa": {
-    "min": 0,
-    "max": 40
-  },
+  "faixa": { "min": 0, "max": 40 },
   "passo": 0.1,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.1,
-      "social": 0.5
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.1, "social": 0.5 }
   },
   "efeitos": [
     {

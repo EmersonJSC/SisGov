@@ -5,19 +5,13 @@
   "descricao": "Dinheiro do governo para instalar e manter câmeras de vigilância nas ruas e nos prédios públicos.",
   "camada": "jogabilidade",
   "esfera": "seguranca-publica",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.001,
   "conta": "gasto",
-  "bussola": {
-    "ate": 0.005,
-    "min": { "social": 0 },
-    "max": { "social": 0.4 }
-  },
+  "bussola": { "min": { "social": 0 }, "max": { "social": 0.4 }, "ate": 0.005 },
   "efeitos": [
     {
       "indice": "seguranca",

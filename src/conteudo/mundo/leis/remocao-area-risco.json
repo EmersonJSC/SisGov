@@ -5,30 +5,21 @@
   "descricao": "De onde o governo pode tirar quem mora em casa precária.",
   "camada": "jogabilidade",
   "esfera": "moradia",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "Não remove",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "valores": {
-        "alcance": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
+      "valores": { "alcance": 0 },
       "efeitos": []
     },
     {
       "id": "so-risco",
       "rotulo": "Só área de risco",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
-      "valores": {
-        "alcance": 1
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
+      "valores": { "alcance": 1 },
       "efeitos": [
         {
           "indice": "favela",
@@ -41,13 +32,8 @@
     {
       "id": "area-publica",
       "rotulo": "Risco e área pública",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0.4
-      },
-      "valores": {
-        "alcance": 2
-      },
+      "bussola": { "economico": 0.1, "social": 0.4 },
+      "valores": { "alcance": 2 },
       "efeitos": [
         {
           "indice": "favela",
@@ -66,13 +52,8 @@
     {
       "id": "qualquer",
       "rotulo": "Qualquer área",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0.7
-      },
-      "valores": {
-        "alcance": 3
-      },
+      "bussola": { "economico": 0.2, "social": 0.7 },
+      "valores": { "alcance": 3 },
       "efeitos": [
         {
           "indice": "favela",

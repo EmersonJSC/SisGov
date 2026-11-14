@@ -6,23 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.02
-  },
+  "faixa": { "min": 0, "max": 0.02 },
   "passo": 0.001,
   "conta": "gasto",
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.2,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.2, "social": 0 }
   },
   "efeitos": []
 }

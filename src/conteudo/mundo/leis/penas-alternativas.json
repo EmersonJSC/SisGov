@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "prisao-para-qualquer-crime",
       "rotulo": "prisão para qualquer crime",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "servico-comunitario-so-para-infracoes-minimas",
       "rotulo": "serviço comunitário só para infrações mínimas",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "lotacao_presidios",
@@ -42,10 +38,7 @@
     {
       "id": "tornozeleira",
       "rotulo": "tornozeleira",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "lotacao_presidios",
@@ -64,10 +57,7 @@
     {
       "id": "servico-tambem-para-crimes-leves",
       "rotulo": "serviço também para crimes leves",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": [
         {
           "indice": "lotacao_presidios",
@@ -86,10 +76,7 @@
     {
       "id": "tornozeleira-5",
       "rotulo": "tornozeleira",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "lotacao_presidios",
@@ -108,10 +95,7 @@
     {
       "id": "servico-tambem-para-crimes-medios-sem-violencia",
       "rotulo": "serviço também para crimes médios sem violência",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "lotacao_presidios",

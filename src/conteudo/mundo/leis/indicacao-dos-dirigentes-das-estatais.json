@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "estatais",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "amigos-do-partido",
       "rotulo": "amigos do partido",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "mista",
       "rotulo": "mista",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "eficiencia_das_estatais",
@@ -42,10 +38,7 @@
     {
       "id": "concurso",
       "rotulo": "concurso",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "eficiencia_das_estatais",
@@ -64,10 +57,7 @@
     {
       "id": "lista-tecnica",
       "rotulo": "lista técnica",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "eficiencia_das_estatais",

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "ciencia-e-pesquisa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibida",
       "rotulo": "proibida",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-em-laboratorio",
       "rotulo": "só em laboratório",
-      "bussola": {
-        "economico": 0,
-        "social": -0.12
-      },
+      "bussola": { "economico": 0, "social": -0.12 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -36,10 +32,7 @@
     {
       "id": "tratar-adultos",
       "rotulo": "tratar adultos",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -52,10 +45,7 @@
     {
       "id": "embriao-sem-nascer",
       "rotulo": "embrião sem nascer",
-      "bussola": {
-        "economico": 0,
-        "social": -0.37
-      },
+      "bussola": { "economico": 0, "social": -0.37 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -68,10 +58,7 @@
     {
       "id": "bebes-editados",
       "rotulo": "bebês editados",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",

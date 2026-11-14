@@ -5,21 +5,16 @@
   "descricao": "Dinheiro do governo para usinas solares. Cada 1% do PIB por ano compra energia para cerca de 5% da demanda do país, pronta em 1 ano. Cada vez mais barata, mas varia com o dia.",
   "camada": "jogabilidade",
   "esfera": "energia",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.03
-  },
+  "faixa": { "min": 0, "max": 0.03 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.01,
     "min": {},
-    "max": {
-      "economico": 0.2,
-      "social": -0.6
-    }
+    "max": { "economico": 0.2, "social": -0.6 },
+    "ate": 0.01
   },
   "efeitos": [
     {

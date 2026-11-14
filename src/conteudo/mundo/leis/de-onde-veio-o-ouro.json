@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "mineracao-e-petroleo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "o-vendedor-declara",
       "rotulo": "o vendedor declara",
-      "bussola": {
-        "economico": -0.07,
-        "social": -0.07
-      },
+      "bussola": { "economico": -0.07, "social": -0.07 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -36,10 +32,7 @@
     {
       "id": "nota-com-a-origem",
       "rotulo": "nota com a origem",
-      "bussola": {
-        "economico": -0.13,
-        "social": -0.13
-      },
+      "bussola": { "economico": -0.13, "social": -0.13 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -52,10 +45,7 @@
     {
       "id": "rastreio-do-garimpo-a-loja",
       "rotulo": "rastreio do garimpo à loja",
-      "bussola": {
-        "economico": -0.2,
-        "social": -0.2
-      },
+      "bussola": { "economico": -0.2, "social": -0.2 },
       "efeitos": [
         {
           "indice": "corrupcao",

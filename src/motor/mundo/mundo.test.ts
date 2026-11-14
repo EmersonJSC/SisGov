@@ -101,6 +101,8 @@ const imposto: Lei = {
   versao: 1,
   id: "imposto",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "continua",
   unidade: "fracao",
   faixa: { min: 0, max: 0.4 },
@@ -112,6 +114,8 @@ const pena: Lei = {
   versao: 1,
   id: "pena",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "opcoes",
   opcoes: [
     { id: "abolida", bussola: { social: -0.4 }, efeitos: [] },

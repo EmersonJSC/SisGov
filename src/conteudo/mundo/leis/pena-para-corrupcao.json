@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "controle-e-transparencia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "devolve-o-dinheiro-e-paga-multa",
       "rotulo": "devolve o dinheiro e paga multa",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "perde-o-cargo-e-nao-pode-ser-candidato",
       "rotulo": "perde o cargo e não pode ser candidato",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -54,10 +50,7 @@
     {
       "id": "prisao-em-regime-fechado",
       "rotulo": "prisão em regime fechado",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -88,10 +81,7 @@
     {
       "id": "prisao-e-perda-dos-bens-sem-origem",
       "rotulo": "prisão e perda dos bens sem origem",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "corrupcao",

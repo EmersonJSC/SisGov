@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "vaga-anunciada-primeiro-para-quem-e-do-pais",
       "rotulo": "vaga anunciada primeiro para quem é do país",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "industrializacao",
@@ -36,10 +32,7 @@
     {
       "id": "limite-de-estrangeiros-nas-empresas-grandes",
       "rotulo": "limite de estrangeiros nas empresas grandes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "industrializacao",
@@ -52,10 +45,7 @@
     {
       "id": "contratar-de-fora-so-se-nao-houver-nacional-qualificado",
       "rotulo": "contratar de fora só se não houver nacional qualificado",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "industrializacao",

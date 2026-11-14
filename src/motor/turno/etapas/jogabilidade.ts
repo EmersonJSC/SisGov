@@ -2,6 +2,7 @@
 import { andarDerivas } from "../../deriva";
 import { somaPorIndice } from "../../efeitos";
 import type { Estado } from "../../estado";
+import { rendimentoDasLeis } from "../../governo";
 import {
   contaDoPais,
   segurancaDaCesta,
@@ -62,8 +63,17 @@ export function reacaoDasCestas(regras: Regras, estado: Estado) {
       soma[id] = (soma[id] ?? 0) + v;
   return soma;
 }
+/** Quanto cada lei rende hoje pela instituição dela (sem governo, inteira). */
+export const rendimentoDasLeisDoEstado = (regras: Regras, estado: Estado) =>
+  estado.governo
+    ? rendimentoDasLeis(estado.governo.orgaos, regras.leis, estado.leis)
+    : undefined;
+
 export function jogabilidade(regras: Regras, estado: Estado) {
-  const soma = somaPorIndice(estado.efeitos);
+  const soma = somaPorIndice(
+    estado.efeitos,
+    rendimentoDasLeisDoEstado(regras, estado),
+  );
   const cestas = reacaoDasCestas(regras, estado);
   const indices: Record<string, number> = {};
   for (const [id, base] of Object.entries(estado.base)) {
@@ -87,7 +97,10 @@ export const indicesJogabilidade: Etapa = (regras, estado) => {
         estado.base,
         todosIndices(estado),
         estado.marco.indices,
-        somaPorIndice(estado.efeitos),
+        somaPorIndice(
+          estado.efeitos,
+          rendimentoDasLeisDoEstado(regras, estado),
+        ),
         regras.dominios,
       )
     : estado.base;

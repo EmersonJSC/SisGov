@@ -5,17 +5,13 @@
   "descricao": "Quantos meses todo jovem é obrigado a servir nas forças armadas. Zero é sem serviço obrigatório.",
   "camada": "jogabilidade",
   "esfera": "defesa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "meses",
-  "faixa": {
-    "min": 0,
-    "max": 18
-  },
+  "faixa": { "min": 0, "max": 18 },
   "passo": 1,
-  "bussola": {
-    "min": { "social": -0.4 },
-    "max": { "social": 0.7 }
-  },
+  "bussola": { "min": { "social": -0.4 }, "max": { "social": 0.7 } },
   "efeitos": [
     {
       "indice": "poder_defensivo",

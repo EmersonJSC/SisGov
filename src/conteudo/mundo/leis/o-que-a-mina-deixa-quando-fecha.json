@@ -6,42 +6,32 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "mineracao-e-petroleo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "tapar-e-cercar",
       "rotulo": "tapar e cercar",
-      "bussola": {
-        "economico": -0.1,
-        "social": -0.07
-      },
+      "bussola": { "economico": -0.1, "social": -0.07 },
       "efeitos": []
     },
     {
       "id": "recuperar-terra-e-rio",
       "rotulo": "recuperar terra e rio",
-      "bussola": {
-        "economico": -0.2,
-        "social": -0.13
-      },
+      "bussola": { "economico": -0.2, "social": -0.13 },
       "efeitos": []
     },
     {
       "id": "dinheiro-para-a-cidade-recomecar",
       "rotulo": "dinheiro para a cidade recomeçar",
-      "bussola": {
-        "economico": -0.3,
-        "social": -0.2
-      },
+      "bussola": { "economico": -0.3, "social": -0.2 },
       "efeitos": []
     }
   ]

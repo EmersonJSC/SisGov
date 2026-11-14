@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "separado",
       "rotulo": "separado",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-em-flagrante",
       "rotulo": "só em flagrante",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",
@@ -42,10 +38,7 @@
     {
       "id": "crimes-leves",
       "rotulo": "crimes leves",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",
@@ -64,10 +57,7 @@
     {
       "id": "todos-os-crimes",
       "rotulo": "todos os crimes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "crimes_contra_o_patrimonio",

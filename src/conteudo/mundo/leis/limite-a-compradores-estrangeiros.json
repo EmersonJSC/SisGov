@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moradia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "livre",
       "rotulo": "livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "imposto-extra-na-compra",
       "rotulo": "imposto extra na compra",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "preco_moradia",
@@ -42,10 +38,7 @@
     {
       "id": "no-maximo-uma-casa-por-pessoa-e-nada-de-terra-rural",
       "rotulo": "no máximo uma casa por pessoa e nada de terra rural",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "preco_moradia",
@@ -64,10 +57,7 @@
     {
       "id": "proibido-comprar",
       "rotulo": "proibido comprar",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "preco_moradia",

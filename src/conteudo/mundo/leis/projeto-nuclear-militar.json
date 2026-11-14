@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "defesa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "publico",
       "rotulo": "público",
-      "bussola": {
-        "economico": 0,
-        "social": 0.45
-      },
+      "bussola": { "economico": 0, "social": 0.45 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",
@@ -36,10 +32,7 @@
     {
       "id": "secreto",
       "rotulo": "secreto",
-      "bussola": {
-        "economico": 0,
-        "social": 0.9
-      },
+      "bussola": { "economico": 0, "social": 0.9 },
       "efeitos": [
         {
           "indice": "reputacao_internacional",

@@ -4,8 +4,9 @@
   "nome": "Superávit",
   "descricao": "Para onde vai o dinheiro quando o governo arrecada mais do que gasta.",
   "camada": "essencial",
-  "esfera": "orcamento-e-divida",
   "classe": "absoluta",
+  "esfera": "orcamento-e-divida",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {

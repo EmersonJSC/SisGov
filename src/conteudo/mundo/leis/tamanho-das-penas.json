@@ -6,23 +6,16 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% das penas atuais",
-  "faixa": {
-    "min": 50,
-    "max": 200
-  },
+  "faixa": { "min": 50, "max": 200 },
   "passo": 5,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": 0.6
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": 0.6 }
   },
   "efeitos": [
     {

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "meio-ambiente",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "apoio-de-transporte",
       "rotulo": "apoio de transporte",
-      "bussola": {
-        "economico": 0,
-        "social": 0.17
-      },
+      "bussola": { "economico": 0, "social": 0.17 },
       "efeitos": [
         {
           "indice": "desmatamento",
@@ -42,10 +38,7 @@
     {
       "id": "patrulha-com-o-orgao",
       "rotulo": "patrulha com o órgão",
-      "bussola": {
-        "economico": 0,
-        "social": 0.33
-      },
+      "bussola": { "economico": 0, "social": 0.33 },
       "efeitos": [
         {
           "indice": "desmatamento",
@@ -64,10 +57,7 @@
     {
       "id": "comando-militar-da-regiao",
       "rotulo": "comando militar da região",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "desmatamento",

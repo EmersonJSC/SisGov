@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "terra",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "uso-coletivo-da-comunidade",
       "rotulo": "uso coletivo da comunidade",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "uso-sem-poder-vender",
       "rotulo": "uso sem poder vender",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "concentracao_terra",
@@ -36,10 +32,7 @@
     {
       "id": "titulo-com-prazo-para-vender",
       "rotulo": "título com prazo para vender",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "concentracao_terra",
@@ -52,10 +45,7 @@
     {
       "id": "titulo-pleno",
       "rotulo": "título pleno",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "concentracao_terra",

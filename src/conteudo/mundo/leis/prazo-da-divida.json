@@ -4,25 +4,18 @@
   "nome": "Prazo da dívida",
   "descricao": "Vai de curto (mais barato, arriscado) até longo (mais caro, seguro). Aparece como uma escada de vencimentos.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "orcamento-e-divida",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "anos",
-  "faixa": {
-    "min": 1,
-    "max": 15
-  },
+  "faixa": { "min": 1, "max": 15 },
   "passo": 1,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": 0 }
   },
   "efeitos": [
     {

@@ -6,51 +6,38 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "cultura",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-aviso",
       "rotulo": "sem aviso",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": []
     },
     {
       "id": "aviso-que-recomenda",
       "rotulo": "aviso que recomenda",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": []
     },
     {
       "id": "aviso-obrigatorio",
       "rotulo": "aviso obrigatório",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-com-responsavel",
       "rotulo": "só com responsável",
-      "bussola": {
-        "economico": 0,
-        "social": 0.25
-      },
+      "bussola": { "economico": 0, "social": 0.25 },
       "efeitos": []
     },
     {
       "id": "proibido-para-a-idade",
       "rotulo": "proibido para a idade",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": []
     }
   ]

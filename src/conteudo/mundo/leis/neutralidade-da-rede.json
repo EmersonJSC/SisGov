@@ -6,42 +6,32 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "nao-pode-bloquear-site",
       "rotulo": "não pode bloquear site",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": []
     },
     {
       "id": "nao-pode-deixar-site-lento",
       "rotulo": "não pode deixar site lento",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": []
     },
     {
       "id": "nao-pode-dar-aplicativo-de-graca",
       "rotulo": "não pode dar aplicativo de graça",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": []
     }
   ]

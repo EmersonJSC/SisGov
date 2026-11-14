@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "educacao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-como-funciona-o-corpo",
       "rotulo": "só como funciona o corpo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.08
-      },
+      "bussola": { "economico": 0, "social": -0.08 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -36,10 +32,7 @@
     {
       "id": "corpo",
       "rotulo": "corpo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.16
-      },
+      "bussola": { "economico": 0, "social": -0.16 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -52,10 +45,7 @@
     {
       "id": "prevencao-de-doencas-e-gravidez",
       "rotulo": "prevenção de doenças e gravidez",
-      "bussola": {
-        "economico": 0,
-        "social": -0.24
-      },
+      "bussola": { "economico": 0, "social": -0.24 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -68,10 +58,7 @@
     {
       "id": "tudo-isso-mais-respeito",
       "rotulo": "tudo isso mais respeito",
-      "bussola": {
-        "economico": 0,
-        "social": -0.32
-      },
+      "bussola": { "economico": 0, "social": -0.32 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -84,10 +71,7 @@
     {
       "id": "consentimento-e-identidade",
       "rotulo": "consentimento e identidade",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "polarizacao",

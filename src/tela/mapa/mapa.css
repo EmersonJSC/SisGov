@@ -5992,6 +5992,16 @@ button {
   opacity: 0.85;
 }
 
+/* O canal da lei: por onde ela chega à vida das pessoas. */
+.folha-como-chega {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border-left: 3px solid currentColor;
+  opacity: 0.9;
+}
+
 .aviso-folha {
   display: flex;
   align-items: center;

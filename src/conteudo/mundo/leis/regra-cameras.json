@@ -5,6 +5,8 @@
   "descricao": "Quem pode ver e usar as imagens das câmeras públicas.",
   "camada": "jogabilidade",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {

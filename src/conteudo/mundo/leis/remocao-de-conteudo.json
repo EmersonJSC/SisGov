@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-com-ordem-do-juiz",
       "rotulo": "só com ordem do juiz",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "conteudo-ilegal-em-24-horas",
       "rotulo": "conteúdo ilegal em 24 horas",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "desinformacao",
@@ -36,10 +32,7 @@
     {
       "id": "tambem-desinformacao",
       "rotulo": "também desinformação",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "desinformacao",

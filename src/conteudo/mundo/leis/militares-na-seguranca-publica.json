@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "defesa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "em-lugar-nenhum",
       "rotulo": "em lugar nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-em-fronteiras-e-presidios",
       "rotulo": "só em fronteiras e presídios",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "certeza_de_punicao",
@@ -48,10 +44,7 @@
     {
       "id": "em-bairros-violentos-por-tempo-limitado",
       "rotulo": "em bairros violentos por tempo limitado",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "certeza_de_punicao",
@@ -76,10 +69,7 @@
     {
       "id": "permanente-nas-grandes-cidades",
       "rotulo": "permanente nas grandes cidades",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": [
         {
           "indice": "certeza_de_punicao",

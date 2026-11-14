@@ -5,24 +5,16 @@
   "descricao": "Dinheiro do governo para construir casas e entregar a quem não tem.",
   "camada": "jogabilidade",
   "esfera": "moradia",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.03
-  },
+  "faixa": { "min": 0, "max": 0.03 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.015,
-    "min": {
-      "economico": 0.1,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.5,
-      "social": 0.1
-    }
+    "min": { "economico": 0.1, "social": 0 },
+    "max": { "economico": -0.5, "social": 0.1 },
+    "ate": 0.015
   },
   "efeitos": []
 }

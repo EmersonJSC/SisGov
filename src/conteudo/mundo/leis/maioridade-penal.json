@@ -4,16 +4,15 @@
   "nome": "Maioridade penal",
   "descricao": "A idade a partir da qual um jovem responde como adulto na justiça criminal.",
   "camada": "jogabilidade",
-  "esfera": "justica-e-prisoes",
   "classe": "constitucional",
+  "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "anos",
   "faixa": { "min": 12, "max": 18 },
   "passo": 1,
-  "bussola": {
-    "min": { "social": 0.7 },
-    "max": { "social": -0.2 }
-  },
+  "bussola": { "min": { "social": 0.7 }, "max": { "social": -0.2 } },
   "efeitos": [
     {
       "indice": "seguranca",

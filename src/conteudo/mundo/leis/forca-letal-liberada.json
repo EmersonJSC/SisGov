@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-em-legitima-defesa",
       "rotulo": "só em legítima defesa",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "tambem-para-salvar-refem",
       "rotulo": "também para salvar refém",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -48,10 +44,7 @@
     {
       "id": "outra-pessoa-em-risco-imediato",
       "rotulo": "outra pessoa em risco imediato",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -76,10 +69,7 @@
     {
       "id": "tambem-contra-quem-foge-armado-depois-de-um-crime",
       "rotulo": "também contra quem foge armado depois de um crime",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -104,10 +94,7 @@
     {
       "id": "tambem-contra-qualquer-suspeito-armado-em-area-de-crime",
       "rotulo": "também contra qualquer suspeito armado em área de crime",
-      "bussola": {
-        "economico": 0,
-        "social": 0.8
-      },
+      "bussola": { "economico": 0, "social": 0.8 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",

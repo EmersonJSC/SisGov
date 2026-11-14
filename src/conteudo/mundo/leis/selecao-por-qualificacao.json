@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "imigracao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "qualquer-um",
       "rotulo": "qualquer um",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "com-oferta-de-emprego",
       "rotulo": "com oferta de emprego",
-      "bussola": {
-        "economico": 0.15,
-        "social": 0
-      },
+      "bussola": { "economico": 0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "imigrantes_na_populacao",
@@ -36,10 +32,7 @@
     {
       "id": "sistema-de-pontos",
       "rotulo": "sistema de pontos",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "imigrantes_na_populacao",

@@ -6,42 +6,32 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "ciencia-e-pesquisa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "aberta-a-todos",
       "rotulo": "aberta a todos",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "fica-com-o-estado",
       "rotulo": "fica com o Estado",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": []
     },
     {
       "id": "fica-com-a-universidade",
       "rotulo": "fica com a universidade",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": []
     },
     {
       "id": "fica-com-a-empresa-parceira",
       "rotulo": "fica com a empresa parceira",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": []
     }
   ]

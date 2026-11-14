@@ -5,21 +5,16 @@
   "descricao": "Dinheiro do governo para torres de vento. Cada 1% do PIB por ano compra energia para cerca de 4,5% da demanda do país, pronta em 1,5 ano. Parecida com a solar, em outro ritmo.",
   "camada": "jogabilidade",
   "esfera": "energia",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.03
-  },
+  "faixa": { "min": 0, "max": 0.03 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.01,
     "min": {},
-    "max": {
-      "economico": 0.1,
-      "social": -0.5
-    }
+    "max": { "economico": 0.1, "social": -0.5 },
+    "ate": 0.01
   },
   "efeitos": [
     {

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "anonimato-livre",
       "rotulo": "anonimato livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "cadastro-nas-redes",
       "rotulo": "cadastro nas redes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.25
-      },
+      "bussola": { "economico": 0, "social": 0.25 },
       "efeitos": [
         {
           "indice": "desinformacao",
@@ -42,10 +38,7 @@
     {
       "id": "documento-para-postar",
       "rotulo": "documento para postar",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "desinformacao",

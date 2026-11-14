@@ -2,7 +2,7 @@
 import { ehBase } from "../calculos";
 import { INDICES_ESSENCIAIS } from "../estado";
 import { ehEstrato, ESTRATOS } from "../populacao";
-import { CAMADAS, CLASSES, EIXOS, FORCAS, type Lei } from "./tipos";
+import { CAMADAS, CANAIS, CLASSES, EIXOS, FORCAS, type Lei } from "./tipos";
 
 export interface ErroLei {
   arquivo: string;
@@ -39,6 +39,28 @@ function conferirCabecalho(c: Contexto, dado: Objeto, arquivo: string) {
     c.erro("classe", `precisa ser ${CLASSES.join(", ")}`);
   if (dado.esfera !== undefined && !ehKebab(dado.esfera))
     c.erro("esfera", "precisa ser kebab-case");
+  conferirCanal(c, dado);
+}
+
+/** O canal diz como a lei chega ao pop e precisa bater com o que ela faz. */
+function conferirCanal(c: Contexto, dado: Objeto) {
+  if (!CANAIS.includes(dado.canal as never))
+    return c.erro("canal", `precisa ser ${CANAIS.join(", ")}`);
+  if (dado.canal === "espera") {
+    if (typeof dado.espera !== "string" || dado.espera === "")
+      c.erro("espera", "diga o que a lei espera (a triagem ou a mecânica)");
+  } else if (dado.espera !== undefined)
+    c.erro("espera", 'só existe no canal "espera"');
+  const temCalculo = dado.calculo !== undefined;
+  if ((dado.canal === "imposto") !== temCalculo)
+    c.erro(
+      "canal",
+      'o canal "imposto" anda junto com o cálculo de arrecadação',
+    );
+  if (dado.canal === "transferencia" && dado.para === undefined)
+    c.erro("canal", 'o canal "transferencia" precisa de "para"');
+  if (dado.canal === "verba" && dado.conta !== "gasto")
+    c.erro("canal", 'o canal "verba" precisa de "conta": "gasto"');
 }
 
 /** Posição na bússola: eixos conhecidos, cada um de −1 a +1. */

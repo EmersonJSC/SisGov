@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "mineracao-e-petroleo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma-area-nova",
       "rotulo": "nenhuma área nova",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "terra",
       "rotulo": "terra",
-      "bussola": {
-        "economico": 0.13,
-        "social": 0.07
-      },
+      "bussola": { "economico": 0.13, "social": 0.07 },
       "efeitos": [
         {
           "indice": "meio_ambiente",
@@ -36,10 +32,7 @@
     {
       "id": "mar-raso",
       "rotulo": "mar raso",
-      "bussola": {
-        "economico": 0.27,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0.27, "social": 0.13 },
       "efeitos": [
         {
           "indice": "meio_ambiente",
@@ -52,10 +45,7 @@
     {
       "id": "aguas-profundas",
       "rotulo": "águas profundas",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0.4, "social": 0.2 },
       "efeitos": [
         {
           "indice": "meio_ambiente",

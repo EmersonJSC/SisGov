@@ -111,6 +111,8 @@ export type VisaoLei = Readonly<{
   sempreVisivel?: boolean;
   /** Pode sair do mapa (revogar) agora. */
   revogavel: boolean;
+  /** Como a lei chega à vida das pessoas (o canal dela, em frase de leigo). */
+  comoChega: string;
   /**
    * Modo real com Congresso (V1-12): a lei precisa de votação. `tipo` é o
    * caminho (lei ordinária, complementar, emenda); `naFila` diz se já há um

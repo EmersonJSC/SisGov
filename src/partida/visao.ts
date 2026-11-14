@@ -19,6 +19,7 @@ import {
   type Deriva,
   type RegraDoAtendimento,
   type RegraDoSaneamento,
+  type Canal,
   type Estado,
   type Lei,
   type LeiContinua,
@@ -137,6 +138,20 @@ function comFluxo(
 
 type TextosDaLei = NonNullable<ReturnType<typeof textos.get>>;
 
+/** O canal da lei em frase de leigo: como ela chega à vida das pessoas. */
+const COMO_CHEGA: Record<Canal, string> = {
+  imposto:
+    "Tira uma parte da renda de quem paga, ou sobe o preço do que é taxado.",
+  verba:
+    "Paga o órgão que cuida do assunto: com mais verba, ele atende mais gente.",
+  transferencia: "Põe dinheiro direto no bolso de quem recebe.",
+  preco: "Muda o preço ou o custo do que um setor vende.",
+  regra: "Muda uma regra que o país segue: quem pode, quanto, de que jeito.",
+  direito: "Muda o que as pessoas podem ou não podem fazer.",
+  espera:
+    "Por enquanto só mexe nos índices; o caminho até as pessoas ainda vai ser feito.",
+};
+
 /** Campos que toda lei tem na tela, de régua ou de degraus. */
 function visaoComumDaLei(
   lei: Lei,
@@ -159,7 +174,8 @@ function visaoComumDaLei(
     alteradaPorVoce: false,
     saldoAnual: 0,
     emVigor: true,
-    revogavel: false,
+    revogavel: valor !== undefined && lei.camada !== "essencial",
+    comoChega: COMO_CHEGA[lei.canal],
     exigencias: [],
     filhas: [],
     ...(valor === undefined ? { naoLegislada: true } : {}),

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moradia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma-venda",
       "rotulo": "nenhuma venda",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "venda-ao-morador-com-pequeno-desconto",
       "rotulo": "venda ao morador com pequeno desconto",
-      "bussola": {
-        "economico": 0.13,
-        "social": 0
-      },
+      "bussola": { "economico": 0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "deficit_habitacional",
@@ -36,10 +32,7 @@
     {
       "id": "venda-ao-morador-com-grande-desconto",
       "rotulo": "venda ao morador com grande desconto",
-      "bussola": {
-        "economico": 0.27,
-        "social": 0
-      },
+      "bussola": { "economico": 0.27, "social": 0 },
       "efeitos": [
         {
           "indice": "deficit_habitacional",
@@ -52,10 +45,7 @@
     {
       "id": "venda-ao-morador-com-grande-desconto-e-das-casas-vazias-a-qualquer-comprador",
       "rotulo": "venda ao morador com grande desconto e das casas vazias a qualquer comprador",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0
-      },
+      "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "deficit_habitacional",

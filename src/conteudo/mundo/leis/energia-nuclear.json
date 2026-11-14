@@ -5,21 +5,16 @@
   "descricao": "Dinheiro do governo para usinas nucleares. Cada 1% do PIB por ano compra energia para cerca de 2% da demanda do país, pronta em 6 anos. Muita energia constante, obra muito cara e muito demorada.",
   "camada": "jogabilidade",
   "esfera": "energia",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.03
-  },
+  "faixa": { "min": 0, "max": 0.03 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.01,
     "min": {},
-    "max": {
-      "economico": -0.5,
-      "social": 0.3
-    }
+    "max": { "economico": -0.5, "social": 0.3 },
+    "ate": 0.01
   },
   "efeitos": [
     {

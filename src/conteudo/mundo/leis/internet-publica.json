@@ -6,23 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.005
-  },
+  "faixa": { "min": 0, "max": 0.005 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.2,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.2, "social": 0 }
   },
   "efeitos": [
     {

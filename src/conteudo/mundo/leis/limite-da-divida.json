@@ -4,26 +4,19 @@
   "nome": "Limite da dívida",
   "descricao": "A dívida nunca passa de X% do PIB (de sem limite até 40%). Aparece como uma caixa d'água com linha máxima.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "orcamento-e-divida",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do PIB",
-  "faixa": {
-    "min": 40,
-    "max": 150
-  },
+  "faixa": { "min": 40, "max": 150 },
   "passo": 5,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0.4,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.4, "social": 0 }
   },
   "efeitos": [
     {

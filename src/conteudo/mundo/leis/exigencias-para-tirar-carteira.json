@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-exame",
       "rotulo": "sem exame",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aprender-com-habilitado-e-prova",
       "rotulo": "aprender com habilitado e prova",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -36,10 +32,7 @@
     {
       "id": "curso-na-internet-e-2-horas-de-aula",
       "rotulo": "curso na internet e 2 horas de aula",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -52,10 +45,7 @@
     {
       "id": "autoescola-obrigatoria",
       "rotulo": "autoescola obrigatória",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",

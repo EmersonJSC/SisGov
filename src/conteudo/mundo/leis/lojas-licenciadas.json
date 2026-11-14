@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma-venda-legal-de-droga",
       "rotulo": "nenhuma venda legal de droga",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-bebida-alcoolica",
       "rotulo": "só bebida alcoólica",
-      "bussola": {
-        "economico": 0.13,
-        "social": 0
-      },
+      "bussola": { "economico": 0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -42,10 +38,7 @@
     {
       "id": "bebida-e-cigarro",
       "rotulo": "bebida e cigarro",
-      "bussola": {
-        "economico": 0.25,
-        "social": 0
-      },
+      "bussola": { "economico": 0.25, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -64,10 +57,7 @@
     {
       "id": "bebida",
       "rotulo": "bebida",
-      "bussola": {
-        "economico": 0.38,
-        "social": 0
-      },
+      "bussola": { "economico": 0.38, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -86,10 +76,7 @@
     {
       "id": "cigarro-e-cannabis",
       "rotulo": "cigarro e cannabis",
-      "bussola": {
-        "economico": 0.5,
-        "social": 0
-      },
+      "bussola": { "economico": 0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",

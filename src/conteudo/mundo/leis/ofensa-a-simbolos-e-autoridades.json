@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "livre",
       "rotulo": "livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "punido-so-se-houver-ameaca",
       "rotulo": "punido só se houver ameaça",
-      "bussola": {
-        "economico": 0,
-        "social": 0.12
-      },
+      "bussola": { "economico": 0, "social": 0.12 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -36,10 +32,7 @@
     {
       "id": "violencia",
       "rotulo": "violência",
-      "bussola": {
-        "economico": 0,
-        "social": 0.24
-      },
+      "bussola": { "economico": 0, "social": 0.24 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -52,10 +45,7 @@
     {
       "id": "multa-por-ofender-bandeira-e-hino",
       "rotulo": "multa por ofender bandeira e hino",
-      "bussola": {
-        "economico": 0,
-        "social": 0.36
-      },
+      "bussola": { "economico": 0, "social": 0.36 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -68,10 +58,7 @@
     {
       "id": "multa-tambem-por-ofender-policiais-e-juizes",
       "rotulo": "multa também por ofender policiais e juízes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.48
-      },
+      "bussola": { "economico": 0, "social": 0.48 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -84,10 +71,7 @@
     {
       "id": "prisao-por-ofender-simbolos-e-autoridades",
       "rotulo": "prisão por ofender símbolos e autoridades",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

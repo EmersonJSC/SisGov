@@ -4,24 +4,15 @@
   "nome": "Imposto sobre consumo",
   "descricao": "Imposto embutido no preço de tudo o que se compra.",
   "camada": "essencial",
-  "esfera": "impostos",
   "classe": "absoluta",
+  "esfera": "impostos",
+  "canal": "imposto",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.005,
-  "calculo": {
-    "base": "consumo",
-    "modelo": "laffer"
-  },
-  "bussola": {
-    "ate": 0.4,
-    "min": {},
-    "max": { "economico": 0.2 }
-  },
+  "calculo": { "base": "consumo", "modelo": "laffer" },
+  "bussola": { "min": {}, "max": { "economico": 0.2 }, "ate": 0.4 },
   "efeitos": [
     {
       "indice": "padrao_vida",
@@ -29,11 +20,6 @@
       "forca": "media",
       "atraso_turnos": 2
     },
-    {
-      "indice": "pobreza",
-      "sentido": 1,
-      "forca": "fraca",
-      "atraso_turnos": 2
-    }
+    { "indice": "pobreza", "sentido": 1, "forca": "fraca", "atraso_turnos": 2 }
   ]
 }

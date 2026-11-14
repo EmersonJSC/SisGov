@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum-regime-especial",
       "rotulo": "nenhum regime especial",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "registro-gratis-e-rapido",
       "rotulo": "registro grátis e rápido",
-      "bussola": {
-        "economico": 0.13,
-        "social": 0
-      },
+      "bussola": { "economico": 0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -36,10 +32,7 @@
     {
       "id": "registro-rapido-e-imposto-unico-simples",
       "rotulo": "registro rápido e imposto único simples",
-      "bussola": {
-        "economico": 0.27,
-        "social": 0
-      },
+      "bussola": { "economico": 0.27, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -52,10 +45,7 @@
     {
       "id": "imposto-unico-baixo-e-sem-papelada-para-quem-fatura-pouco",
       "rotulo": "imposto único baixo e sem papelada para quem fatura pouco",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0
-      },
+      "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",

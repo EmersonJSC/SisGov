@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-a-empresa-do-estado",
       "rotulo": "só a empresa do Estado",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "estado-mais-uma-empresa-privada",
       "rotulo": "Estado mais uma empresa privada",
-      "bussola": {
-        "economico": 0.17,
-        "social": 0
-      },
+      "bussola": { "economico": 0.17, "social": 0 },
       "efeitos": [
         {
           "indice": "acesso_a_internet",
@@ -36,10 +32,7 @@
     {
       "id": "poucas-empresas-com-licenca",
       "rotulo": "poucas empresas com licença",
-      "bussola": {
-        "economico": 0.33,
-        "social": 0
-      },
+      "bussola": { "economico": 0.33, "social": 0 },
       "efeitos": [
         {
           "indice": "acesso_a_internet",
@@ -52,10 +45,7 @@
     {
       "id": "qualquer-empresa-que-cumpra-as-regras",
       "rotulo": "qualquer empresa que cumpra as regras",
-      "bussola": {
-        "economico": 0.5,
-        "social": 0
-      },
+      "bussola": { "economico": 0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "acesso_a_internet",

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "energia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "fechada",
       "rotulo": "fechada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-alguns-leiloes",
       "rotulo": "só alguns leilões",
-      "bussola": {
-        "economico": 0.25,
-        "social": 0
-      },
+      "bussola": { "economico": 0.25, "social": 0 },
       "efeitos": [
         {
           "indice": "energia_gerada",
@@ -42,10 +38,7 @@
     {
       "id": "leiloes-e-contratos-longos",
       "rotulo": "leilões e contratos longos",
-      "bussola": {
-        "economico": 0.5,
-        "social": 0
-      },
+      "bussola": { "economico": 0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "energia_gerada",

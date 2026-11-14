@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "defesa-civil",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-exigencia",
       "rotulo": "sem exigência",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "cidade-mapeia-o-risco",
       "rotulo": "cidade mapeia o risco",
-      "bussola": {
-        "economico": 0.15,
-        "social": 0
-      },
+      "bussola": { "economico": 0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "preparo_contra_desastres",
@@ -36,10 +32,7 @@
     {
       "id": "cidade-barra-casa-nova-em-area-de-risco",
       "rotulo": "cidade barra casa nova em área de risco",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "preparo_contra_desastres",

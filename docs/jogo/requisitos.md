@@ -37,10 +37,10 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 | Sistema (GDD)          | ✅     | ◐      | ☐      |
 | ---------------------- | ------ | ------ | ------ |
-| 4. Partida e turno     | 8      | 2      | 2      |
+| 4. Partida e turno     | 9      | 2      | 1      |
 | 5. Partido             | 0      | 0      | 5      |
 | 6. Governo             | 8      | 10     | 8      |
-| 7. Leis e programas    | 11     | 5      | 5      |
+| 7. Leis e programas    | 13     | 6      | 2      |
 | 8. Bússola             | 4      | 1      | 1      |
 | 9. Índices             | 4      | 2      | 2      |
 | 10. Contas             | 3      | 1      | 3      |
@@ -51,7 +51,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 | 15. Mundo              | 2      | 1      | 8      |
 | 16. Economia           | 4      | 4      | 31     |
 | 17. Tela e mesa        | 11     | 8      | 5      |
-| **Total**              | **77** | **42** | **99** |
+| **Total**              | **80** | **43** | **95** |
 
 ---
 
@@ -61,7 +61,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R4.2** Passar o turno: efeitos chegam com o atraso declarado.
 - ✅ **R4.3** Escolher o país: `brasil-2026` (12/nov; 476 leis com o valor de hoje, 19 partidos com nome e cor, companhias inventadas). Dívida: juros comem 16% do PIB e a dívida vai de 78% a 107% em 24 turnos; calibrar na Economia.
 - ◐ **R4.4** A partida acaba quando o partido perde o poder federal (hoje só pela eleição; ver R6.13).
-- ☐ **R4.11** Mundo sai da planilha: o exportador antigo (da `leis.xlsx`) foi apagado em 13/nov; um novo, da `gdd.xlsx`, nasce com as leis padronizadas (R7.22).
+- ✅ **R4.11** Mundo sai da planilha: o exportador antigo (da `leis.xlsx`) foi apagado em 13/nov; o novo lê a `gdd.xlsx` (abas Leis, Leis - degraus, Leis - efeitos), confere com o validador e escreve os JSONs (`npm run leis`, 14/nov).
 - ✅ **R4.12** Fatos do turno: mesa de fatos (memória curta, como RAM) em `motor/fatos`; cada etapa escreve, cada módulo pergunta o que precisa; fato gera fato; some em 1–3 turnos pelo tamanho. Hoje escrevem Congresso (lei aprovada/derrubada) e Política (base, eleição); a tela mostra como manchete no Resultado do turno (12/nov).
 - ✅ **R4.5** Criar o partido: nome e sigla; não escolhe lado. (12/nov; a sigla vira o id e não pode repetir a de outro partido.)
 - ✅ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação). (12/nov)
@@ -111,13 +111,13 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ◐ **R6.14** O país começa com os ministérios dele; o jogador muda no começo; depois só pela lei Organização dos ministérios (escada de 4 degraus). (13/nov: Brasil com 34 caixas. Faltam os outros países e a lei.)
 - ◐ **R6.15** Toda caixa tem ministro, custa estrutura e agrada quem é parecido com o ministro; superministério divide a competência. (13/nov: ministro e divisão feitos. Faltam o custo de estrutura, que é do caminho do dinheiro, e agradar quem é parecido.)
 - ✅ **R6.7** Ficha do ministro: competência, habilidade, carisma, honestidade, lealdade, bússola, origem. (12/nov: agem competência e honestidade; habilidade, carisma e lealdade esperam Congresso, mídia e fatos do ministro.)
-- ◐ **R6.8** A ficha muda a força e o atraso das leis das instituições da caixa e o rendimento delas. (Competência muda força e atraso. Falta o rendimento agir na lei, que é R7.11.)
+- ◐ **R6.8** A ficha muda a força e o atraso das leis das instituições da caixa e o rendimento delas. (Competência muda força e atraso; o rendimento age na lei desde 14/nov, R7.11.)
 - ◐ **R6.24** Trocar ministro a qualquer momento, sem esperar turno nem lei; toda troca causa revolta e polêmica (o demitido reage pela lealdade, o partido dele se irrita no Congresso, a mídia cobra). (13/nov) (Feito: partido ressentido, notícia maior a cada troca do mandato, mágoa de 3 turnos nos grupos parecidos com quem saiu. Falta: a reação do demitido pela lealdade e a mídia ter efeito, seção 18 do GDD.)
 - ☐ **R6.9** Fatos do ministro (escândalo, crise, demissão barulhenta, vira candidato).
 
 **Instituição por dentro** (11 e 13/nov)
 
-- ✅ **R6.16** Cada instituição tem verba (das leis de gasto dela), necessidade, rendimento = verba ÷ necessidade e corrupção interna. Não tem chefe próprio: quem manda é o ministro. (O rendimento ainda não age sobre a lei, é R7.11.)
+- ✅ **R6.16** Cada instituição tem verba (das leis de gasto dela), necessidade, rendimento = verba ÷ necessidade e corrupção interna. Não tem chefe próprio: quem manda é o ministro. (O rendimento age sobre a lei desde 14/nov, R7.11.)
 - ✅ **R6.17** Verba de sobra vira corrupção; cargos de livre nomeação e ministro desonesto também; escândalo ao cruzar 60.
 - ◐ **R6.18** Ficha da instituição no mapa, só de leitura (cor do rendimento, fila, leis que mexem). (13/nov: escudo sob o ministro, "Recebe X% do PIB" e o painel Atrapalham / Ajudam. Falta a ficha com rendimento, corrupção e fila.)
 
@@ -160,11 +160,11 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ✅ **R7.9** Colisão: leis que colidem não valem juntas.
 - ✅ **R7.10** Processo: índice que anda sozinho (deriva).
 - ◐ **R7.6** Temas em pacotes de leis pequenas (planilha completa; 5 escolhas de lista fora: vistos por país, setores, verba das estatais, ministérios).
-- ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito (hoje quase todas só por índice).
+- ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito. (14/nov: toda lei declara o `canal`; hoje 120 de 512 chegam por um caminho do motor e 392 esperam a triagem da onda delas.)
 - ◐ **R7.13** Toda lei numa instituição (13/nov: as 512; serão refeitas instituição por instituição) e índice preso ao ministro responsável (no mapa). As 8 áreas antigas saem (autor, 13/nov); o código ainda as usa.
-- ☐ **R7.22** Leis padronizadas por instituição, a partir da `gdd.xlsx`; o dinheiro que entra e sai "fora das leis" se resolve aí. (Próxima frente depois do mapa.)
-- ☐ **R7.8** Revogar = propor a volta a "não legislada", com voto.
-- ☐ **R7.11** Lei age pelo órgão: a regra funciona na medida da verba do órgão (ver R6.16).
+- ◐ **R7.22** Leis padronizadas por instituição, a partir da `gdd.xlsx`; o dinheiro que entra e sai "fora das leis" se resolve aí. (14/nov: base pronta, plano em `planos/leis.md`; faltam as 4 ondas.)
+- ✅ **R7.8** Revogar = propor a volta a "não legislada", com voto. (14/nov: botão na folha da lei; lei essencial não se revoga.)
+- ✅ **R7.11** Lei age pelo órgão: a regra funciona na medida da verba do órgão (ver R6.16). (14/nov: efeito × rendimento da instituição, teto 1.)
 - ☐ **R7.16** Tipos de lei: Lei com prazo (acaba sozinha), Ato, Posição por país, Operação.
 - ☐ **R7.17** Parte da divisão: a fatia vale o peso dela sobre a soma, quando a mecânica ler.
 

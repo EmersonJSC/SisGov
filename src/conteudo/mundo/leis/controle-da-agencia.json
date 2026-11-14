@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "ninguem",
       "rotulo": "ninguém",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "o-governo",
       "rotulo": "o governo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -42,10 +38,7 @@
     {
       "id": "o-congresso",
       "rotulo": "o Congresso",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -64,10 +57,7 @@
     {
       "id": "o-congresso-e-um-juiz",
       "rotulo": "o Congresso e um juiz",
-      "bussola": {
-        "economico": 0,
-        "social": -0.6
-      },
+      "bussola": { "economico": 0, "social": -0.6 },
       "efeitos": [
         {
           "indice": "corrupcao",

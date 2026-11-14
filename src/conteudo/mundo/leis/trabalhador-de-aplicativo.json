@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "autonomo-sem-regra",
       "rotulo": "autônomo sem regra",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "autonomo-com-seguro-de-acidente-e-ganho-minimo-por-hora",
       "rotulo": "autônomo com seguro de acidente e ganho mínimo por hora",
-      "bussola": {
-        "economico": -0.13,
-        "social": 0
-      },
+      "bussola": { "economico": -0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -36,10 +32,7 @@
     {
       "id": "autonomo-com-ferias-e-aposentadoria-pagas-em-parte-pelo-aplicativo",
       "rotulo": "autônomo com férias e aposentadoria pagas em parte pelo aplicativo",
-      "bussola": {
-        "economico": -0.27,
-        "social": 0
-      },
+      "bussola": { "economico": -0.27, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -52,10 +45,7 @@
     {
       "id": "empregado-com-carteira-assinada",
       "rotulo": "empregado com carteira assinada",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0
-      },
+      "bussola": { "economico": -0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",

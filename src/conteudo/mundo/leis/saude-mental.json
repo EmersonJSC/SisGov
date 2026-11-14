@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "consulta-na-rede",
       "rotulo": "consulta na rede",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "saude_mental",
@@ -48,10 +44,7 @@
     {
       "id": "centro-de-atendimento-perto-de-casa",
       "rotulo": "centro de atendimento perto de casa",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "saude_mental",
@@ -76,10 +69,7 @@
     {
       "id": "internacao-e-cuidado-continuo",
       "rotulo": "internação e cuidado contínuo",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "saude_mental",

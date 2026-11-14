@@ -3,8 +3,12 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, #1d2230 0%, #12141b 70%, #0b0c11 100%);
+  background: radial-gradient(
+    ellipse at center,
+    #1d2230 0%,
+    #12141b 70%,
+    #0b0c11 100%
+  );
 }
 
 .org-fundo {

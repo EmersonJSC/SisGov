@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "educacao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma-religiao-na-escola",
       "rotulo": "nenhuma religião na escola",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aula-opcional-sobre-a-historia-de-todas-as-religioes",
       "rotulo": "aula opcional sobre a história de todas as religiões",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -36,10 +32,7 @@
     {
       "id": "aula-opcional-da-religiao-escolhida-pela-familia",
       "rotulo": "aula opcional da religião escolhida pela família",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -52,10 +45,7 @@
     {
       "id": "aula-obrigatoria-da-religiao-da-maioria",
       "rotulo": "aula obrigatória da religião da maioria",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "polarizacao",

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibida",
       "rotulo": "proibida",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": []
     },
     {
       "id": "permitida",
       "rotulo": "permitida",
-      "bussola": {
-        "economico": 0.05,
-        "social": 0
-      },
+      "bussola": { "economico": 0.05, "social": 0 },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -42,10 +38,7 @@
     {
       "id": "obrigatoria-se-o-medico-nao-vetar",
       "rotulo": "obrigatória se o médico não vetar",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "acesso_remedios",

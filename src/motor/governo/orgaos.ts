@@ -197,3 +197,22 @@ export function andarOrgaos(
       .map((a) => ({ instituicao: a.instituicao, ministro: a.chefe.ministro })),
   };
 }
+
+/**
+ * Quanto cada lei rende hoje pela instituição onde mora: o rendimento do órgão,
+ * com teto em 1 (verba de sobra vira corrupção, não efeito). Lei sem órgão
+ * (regras dos poderes) rende inteira.
+ */
+export function rendimentoDasLeis(
+  orgaos: Record<string, Orgao>,
+  leis: Record<string, Lei>,
+  valores: Record<string, ValorLei>,
+): (lei: string) => number {
+  const porInstituicao = new Map(
+    Object.entries(orgaos).map(([instituicao, o]) => [
+      instituicao,
+      Math.min(1, situacaoDoOrgao(o, leis, valores, instituicao).rendimento),
+    ]),
+  );
+  return (lei) => porInstituicao.get(leis[lei]?.esfera ?? "") ?? 1;
+}

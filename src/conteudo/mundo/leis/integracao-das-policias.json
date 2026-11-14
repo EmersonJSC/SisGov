@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "policias-independentes",
       "rotulo": "polícias independentes",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "policias-cooperando",
       "rotulo": "polícias cooperando",
-      "bussola": {
-        "economico": 0,
-        "social": 0.25
-      },
+      "bussola": { "economico": 0, "social": 0.25 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -42,10 +38,7 @@
     {
       "id": "comando-unico",
       "rotulo": "comando único",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "homicidios",

@@ -4,25 +4,18 @@
   "nome": "Limite da folha do funcionalismo",
   "descricao": "Teto do que o Estado gasta com salários, em % da receita.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "funcionalismo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0.3,
-    "max": 0.8
-  },
+  "faixa": { "min": 0.3, "max": 0.8 },
   "passo": 0.025,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0.4,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.4, "social": 0 }
   },
   "efeitos": [
     {

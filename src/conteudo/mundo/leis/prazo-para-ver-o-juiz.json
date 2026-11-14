@@ -6,23 +6,16 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "dias",
-  "faixa": {
-    "min": 1,
-    "max": 30
-  },
+  "faixa": { "min": 1, "max": 30 },
   "passo": 1,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": -0.4
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": -0.4 }
   },
   "efeitos": [
     {

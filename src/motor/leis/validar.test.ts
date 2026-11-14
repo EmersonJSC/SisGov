@@ -6,6 +6,7 @@ const valida = {
   versao: 1,
   id: "teste",
   camada: "jogabilidade",
+  canal: "imposto",
   forma: "continua",
   unidade: "fracao",
   faixa: { min: 0, max: 0.5 },
@@ -27,6 +28,7 @@ describe("validarLei", () => {
     const servico = {
       ...valida,
       calculo: undefined,
+      canal: "regra",
       unidade: "meses",
       faixa: { min: 0, max: 24 },
       passo: 1,
@@ -47,6 +49,7 @@ describe("validarLei", () => {
     const velocidade = {
       ...valida,
       calculo: undefined,
+      canal: "regra",
       unidade: "livre",
       rotulo_unidade: "km/h",
       faixa: { min: 80, max: 140 },
@@ -66,10 +69,22 @@ describe("validarLei", () => {
   });
 
   it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {
-    const gasto = { ...valida, calculo: undefined };
+    const gasto = { ...valida, calculo: undefined, canal: "verba" };
     expect(campos({ ...gasto, conta: "gasto" })).toEqual([]);
-    expect(campos({ ...gasto, conta: "lucro" })).toEqual(["conta"]);
+    expect(campos({ ...gasto, conta: "lucro" })).toEqual(["canal", "conta"]);
     expect(campos({ ...valida, conta: "gasto" })).toEqual(["conta"]);
+  });
+
+  it("canal: diz como a lei chega ao pop e bate com o que ela faz", () => {
+    expect(campos({ ...valida, canal: undefined })).toEqual(["canal"]);
+    // imposto sem cálculo, ou cálculo em outro canal
+    expect(campos({ ...valida, canal: "direito" })).toEqual(["canal"]);
+    expect(campos({ ...valida, calculo: undefined })).toEqual(["canal"]);
+    // espera precisa dizer o quê; fora da espera, não tem motivo
+    const solta = { ...valida, calculo: undefined, canal: "espera" };
+    expect(campos(solta)).toEqual(["espera"]);
+    expect(campos({ ...solta, espera: "triagem" })).toEqual([]);
+    expect(campos({ ...valida, espera: "triagem" })).toEqual(["espera"]);
   });
 
   it("bússola: eixos conhecidos, entre -1 e 1", () => {
@@ -140,6 +155,7 @@ describe("validarLei", () => {
       versao: 1,
       id: "teste",
       camada: "jogabilidade",
+      canal: "direito",
       forma: "opcoes",
     };
     expect(campos({ ...base, opcoes: [{ id: "a", efeitos: [] }] })).toEqual([

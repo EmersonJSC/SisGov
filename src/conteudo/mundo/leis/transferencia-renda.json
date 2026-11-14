@@ -5,26 +5,19 @@
   "descricao": "Dinheiro pago direto às famílias mais pobres.",
   "camada": "jogabilidade",
   "esfera": "assistencia-social",
+  "canal": "transferencia",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.001,
   "conta": "gasto",
   "para": { "estrato": "pobre" },
   "bussola": {
-    "ate": 0.1,
     "min": { "economico": 0.4 },
-    "max": { "economico": -0.6 }
+    "max": { "economico": -0.6 },
+    "ate": 0.1
   },
   "efeitos": [
-    {
-      "indice": "pobreza",
-      "sentido": -1,
-      "forca": "forte",
-      "atraso_turnos": 2
-    }
+    { "indice": "pobreza", "sentido": -1, "forca": "forte", "atraso_turnos": 2 }
   ]
 }

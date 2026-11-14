@@ -7,23 +7,15 @@
   "origem": "planilha",
   "parte_de": "Fiscalização e repressão",
   "esfera": "seguranca-publica",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.002
-  },
+  "faixa": { "min": 0, "max": 0.002 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": 0.5
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": 0.5 }
   },
   "efeitos": [
     {

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum-banco-novo",
       "rotulo": "nenhum banco novo",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "analise-de-anos",
       "rotulo": "análise de anos",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "credito_ao_setor_privado",
@@ -48,10 +44,7 @@
     {
       "id": "bancos-digitais-e-cooperativas-com-analise-curta",
       "rotulo": "bancos digitais e cooperativas com análise curta",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "credito_ao_setor_privado",
@@ -76,10 +69,7 @@
     {
       "id": "licenca-em-meses-para-qualquer-tipo",
       "rotulo": "licença em meses para qualquer tipo",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "credito_ao_setor_privado",

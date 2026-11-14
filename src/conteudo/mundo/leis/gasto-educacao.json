@@ -5,18 +5,16 @@
   "descricao": "Dinheiro do governo para escolas e universidades.",
   "camada": "jogabilidade",
   "esfera": "educacao",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.001,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.1,
     "min": { "economico": 0.3 },
-    "max": { "economico": -0.4 }
+    "max": { "economico": -0.4 },
+    "ate": 0.1
   },
   "efeitos": [
     {

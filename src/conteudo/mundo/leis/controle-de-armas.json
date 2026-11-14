@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "venda-livre",
       "rotulo": "venda livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "checagem-de-antecedentes",
       "rotulo": "checagem de antecedentes",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -36,10 +32,7 @@
     {
       "id": "checagem-mais-curso-e-exame-de-tiro",
       "rotulo": "checagem mais curso e exame de tiro",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -52,10 +45,7 @@
     {
       "id": "licenca-so-com-motivo-comprovado-e-limite-de-armas-por-pessoa",
       "rotulo": "licença só com motivo comprovado e limite de armas por pessoa",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -68,10 +58,7 @@
     {
       "id": "proibido-para-civis",
       "rotulo": "proibido para civis",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "homicidios",

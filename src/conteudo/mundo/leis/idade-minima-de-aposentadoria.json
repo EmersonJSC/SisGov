@@ -6,22 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "anos",
-  "faixa": {
-    "min": 50,
-    "max": 75
-  },
+  "faixa": { "min": 50, "max": 75 },
   "passo": 1,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0.4,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.4, "social": 0 }
   },
   "efeitos": [
     {

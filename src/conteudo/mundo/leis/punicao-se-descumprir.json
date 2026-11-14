@@ -4,27 +4,23 @@
   "nome": "Punição se descumprir",
   "descricao": "O que acontece quando uma regra é quebrada: nenhuma, corte automático, proibir aumento de salário e contratação, ou crime de responsabilidade. Aparece como luzes de painel (amarelo e vermelho).",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "orcamento-e-divida",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "corte-automatico",
       "rotulo": "corte automático",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0.07
-      },
+      "bussola": { "economico": 0.1, "social": 0.07 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
@@ -37,10 +33,7 @@
     {
       "id": "proibir-aumento-de-salario-e-contratacao",
       "rotulo": "proibir aumento de salário e contratação",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0.2, "social": 0.13 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
@@ -53,10 +46,7 @@
     {
       "id": "crime-de-responsabilidade",
       "rotulo": "crime de responsabilidade",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0.3, "social": 0.2 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",

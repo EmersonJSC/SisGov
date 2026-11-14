@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "livre",
       "rotulo": "livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "taxa-sobre-entrada-especulativa",
       "rotulo": "taxa sobre entrada especulativa",
-      "bussola": {
-        "economico": -0.15,
-        "social": 0
-      },
+      "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",
@@ -36,10 +32,7 @@
     {
       "id": "controle-de-saida",
       "rotulo": "controle de saída",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",

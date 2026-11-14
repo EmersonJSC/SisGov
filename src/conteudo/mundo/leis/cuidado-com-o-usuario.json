@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "tratamento",
       "rotulo": "tratamento",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "troca-de-seringas-e-salas-de-uso",
       "rotulo": "troca de seringas e salas de uso",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
@@ -48,10 +44,7 @@
     {
       "id": "usuario-nao-e-preso",
       "rotulo": "usuário não é preso",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",

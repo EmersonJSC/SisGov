@@ -4,8 +4,9 @@
   "nome": "Déficit",
   "descricao": "De onde sai o dinheiro quando o governo gasta mais do que arrecada.",
   "camada": "essencial",
-  "esfera": "orcamento-e-divida",
   "classe": "absoluta",
+  "esfera": "orcamento-e-divida",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {

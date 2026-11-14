@@ -4,27 +4,23 @@
   "nome": "Renegociação da dívida",
   "descricao": "Vai de pagar tudo, passa por renegociar prazo e juros, até calote parcial e total.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "orcamento-e-divida",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "pagar-tudo",
       "rotulo": "pagar tudo",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "renegociar-prazo-e-juros",
       "rotulo": "renegociar prazo e juros",
-      "bussola": {
-        "economico": 0,
-        "social": -0.13
-      },
+      "bussola": { "economico": 0, "social": -0.13 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
@@ -43,10 +39,7 @@
     {
       "id": "calote-parcial",
       "rotulo": "calote parcial",
-      "bussola": {
-        "economico": 0,
-        "social": -0.27
-      },
+      "bussola": { "economico": 0, "social": -0.27 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
@@ -65,10 +58,7 @@
     {
       "id": "calote-total",
       "rotulo": "calote total",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",

@@ -4,27 +4,23 @@
   "nome": "Sigilo bancário",
   "descricao": "O quanto o Estado pode ver das contas das pessoas. Escada: Estado vê todas as contas sem pedir; vê só movimentos de valor alto; só com ordem de juiz; só com ordem de juiz e em crime grave.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "estado-ve-todas-as-contas-sem-pedir",
       "rotulo": "Estado vê todas as contas sem pedir",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "ve-so-movimentos-de-valor-alto",
       "rotulo": "vê só movimentos de valor alto",
-      "bussola": {
-        "economico": 0,
-        "social": -0.13
-      },
+      "bussola": { "economico": 0, "social": -0.13 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -43,10 +39,7 @@
     {
       "id": "so-com-ordem-de-juiz",
       "rotulo": "só com ordem de juiz",
-      "bussola": {
-        "economico": 0,
-        "social": -0.27
-      },
+      "bussola": { "economico": 0, "social": -0.27 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -65,10 +58,7 @@
     {
       "id": "so-com-ordem-de-juiz-e-em-crime-grave",
       "rotulo": "só com ordem de juiz e em crime grave",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

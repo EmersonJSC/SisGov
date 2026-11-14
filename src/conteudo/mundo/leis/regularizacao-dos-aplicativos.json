@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada-exigido",
       "rotulo": "nada exigido",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "carteira-e-ficha-criminal",
       "rotulo": "carteira e ficha criminal",
-      "bussola": {
-        "economico": -0.05,
-        "social": 0
-      },
+      "bussola": { "economico": -0.05, "social": 0 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -36,10 +32,7 @@
     {
       "id": "seguro-do-passageiro",
       "rotulo": "seguro do passageiro",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -52,10 +45,7 @@
     {
       "id": "carro-de-ate-10-anos",
       "rotulo": "carro de até 10 anos",
-      "bussola": {
-        "economico": -0.15,
-        "social": 0
-      },
+      "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -68,10 +58,7 @@
     {
       "id": "curso-de-direcao",
       "rotulo": "curso de direção",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",

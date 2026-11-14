@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "policia-militar-como-hoje",
       "rotulo": "polícia militar como hoje",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "justica-propria-separada",
       "rotulo": "justiça própria separada",
-      "bussola": {
-        "economico": 0,
-        "social": -0.17
-      },
+      "bussola": { "economico": 0, "social": -0.17 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -42,10 +38,7 @@
     {
       "id": "treino-e-hierarquia-civis",
       "rotulo": "treino e hierarquia civis",
-      "bussola": {
-        "economico": 0,
-        "social": -0.33
-      },
+      "bussola": { "economico": 0, "social": -0.33 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -64,10 +57,7 @@
     {
       "id": "policia-totalmente-civil",
       "rotulo": "polícia totalmente civil",
-      "bussola": {
-        "economico": 0,
-        "social": -0.5
-      },
+      "bussola": { "economico": 0, "social": -0.5 },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",

@@ -28,14 +28,18 @@ O autor pediu o **Judiciário de verdade** antes dos passos B e C. Fatia 1 **fei
 
 ## Próximo
 
-**Jeito novo de trabalhar (autor, 14/nov): por mecânica inteira.** O documento das mecânicas está em
-[docs/jogo/mecanicas.md](docs/jogo/mecanicas.md) (19 mecânicas, cada uma com submecânicas: já tem,
-falta, a pensar). O autor escolhe uma → plano dela → aprova de uma vez → construir até o fim.
-Esperando a escolha (recomendação: 3. Opinião, porque as leis padronizadas dependem dela).
+**Jeito novo (autor, 14/nov): por mecânica inteira.** [docs/jogo/mecanicas.md](docs/jogo/mecanicas.md).
+Mecânica em curso: **Leis**, plano aprovado em [docs/jogo/planos/leis.md](docs/jogo/planos/leis.md).
+- **Base feita (14/nov):** `canal` obrigatório em toda lei (120 chegam ao pop, 392 em "espera:
+  triagem"), lei pela instituição (efeito × rendimento), revogar com voto, "como chega a você" na
+  folha da lei, abas Leis / Leis - degraus / Leis - efeitos na `gdd.xlsx` com `npm run leis`
+  (planilha → JSON) e `npm run leis:planilha` (JSON → planilha).
+- **Agora: onda 1** (Impostos, Previdência, Assistência social, Orçamento e dívida, Moeda e bancos):
+  preencher Veredito e canal de cada lei na aba Leis, o autor revisa a onda inteira, depois construir.
+  Lei com prazo nasce com a Anistia fiscal.
 
 ## Pendências do autor
 
-- Commit da fatia 1 do Judiciário (só com a palavra dele).
 - A base do governo tem 60 de 81 senadores: o Senado aprova quase todo aliado. Ver se o voto deve pesar mais a distância.
 - Opinião central: estruturar direito, mecânica própria (não copiar outro jogo), antes do 10b.
 - A mídia não pesa em nada (GDD §18): corrigir quando fizermos mídia e polêmica.

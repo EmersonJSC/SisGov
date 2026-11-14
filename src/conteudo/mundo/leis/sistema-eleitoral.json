@@ -4,27 +4,23 @@
   "nome": "Sistema eleitoral",
   "descricao": "Como o voto vira cadeira no Congresso. Escada: proporcional (cadeiras na proporção dos votos); misto (metade proporcional, metade por distrito); distrital (cada distrito elege o mais votado). Vale na eleição seguinte.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "eleicoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proporcional-cadeiras-na-proporcao-dos-votos",
       "rotulo": "proporcional (cadeiras na proporção dos votos)",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "misto-metade-proporcional",
       "rotulo": "misto (metade proporcional",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -43,10 +39,7 @@
     {
       "id": "metade-por-distrito",
       "rotulo": "metade por distrito)",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -65,10 +58,7 @@
     {
       "id": "distrital-cada-distrito-elege-o-mais-votado",
       "rotulo": "distrital (cada distrito elege o mais votado)",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "polarizacao",

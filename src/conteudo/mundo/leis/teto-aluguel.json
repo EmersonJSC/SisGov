@@ -5,30 +5,21 @@
   "descricao": "Quanto o aluguel pode subir por ano, além da inflação.",
   "camada": "jogabilidade",
   "esfera": "moradia",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-teto",
       "rotulo": "Sem teto",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
-      "valores": {
-        "acima_inflacao": -1
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
+      "valores": { "acima_inflacao": -1 },
       "efeitos": []
     },
     {
       "id": "inflacao-mais-vinte",
       "rotulo": "Inflação + 20%",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
-      "valores": {
-        "acima_inflacao": 0.2
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
+      "valores": { "acima_inflacao": 0.2 },
       "efeitos": [
         {
           "indice": "preco_moradia",
@@ -41,13 +32,8 @@
     {
       "id": "inflacao-mais-dez",
       "rotulo": "Inflação + 10%",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0.1
-      },
-      "valores": {
-        "acima_inflacao": 0.1
-      },
+      "bussola": { "economico": -0.4, "social": 0.1 },
+      "valores": { "acima_inflacao": 0.1 },
       "efeitos": [
         {
           "indice": "preco_moradia",
@@ -66,13 +52,8 @@
     {
       "id": "so-inflacao",
       "rotulo": "Só a inflação",
-      "bussola": {
-        "economico": -0.6,
-        "social": 0.2
-      },
-      "valores": {
-        "acima_inflacao": 0
-      },
+      "bussola": { "economico": -0.6, "social": 0.2 },
+      "valores": { "acima_inflacao": 0 },
       "efeitos": [
         {
           "indice": "preco_moradia",

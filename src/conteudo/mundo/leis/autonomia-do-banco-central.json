@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "o-governo-manda",
       "rotulo": "o governo manda",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "mandato-com-indicacao-do-presidente",
       "rotulo": "mandato com indicação do presidente",
-      "bussola": {
-        "economico": 0.15,
-        "social": 0
-      },
+      "bussola": { "economico": 0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",
@@ -36,10 +32,7 @@
     {
       "id": "mandato-fixo-independente",
       "rotulo": "mandato fixo independente",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",

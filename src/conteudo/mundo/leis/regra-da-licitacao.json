@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "menor-preco",
       "rotulo": "menor preço",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": []
     },
     {
       "id": "preco-e-qualidade",
       "rotulo": "preço e qualidade",
-      "bussola": {
-        "economico": -0.03,
-        "social": 0
-      },
+      "bussola": { "economico": -0.03, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -48,10 +44,7 @@
     {
       "id": "obra-pronta-a-empreiteira-projeta-e-faz",
       "rotulo": "obra pronta (a empreiteira projeta e faz)",
-      "bussola": {
-        "economico": 0.13,
-        "social": 0
-      },
+      "bussola": { "economico": 0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -76,10 +69,7 @@
     {
       "id": "contratacao-direta-em-emergencia",
       "rotulo": "contratação direta em emergência",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",

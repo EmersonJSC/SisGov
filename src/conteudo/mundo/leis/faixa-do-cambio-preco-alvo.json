@@ -7,31 +7,19 @@
   "origem": "planilha",
   "parte_de": "Faixa do câmbio",
   "esfera": "moeda-e-bancos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "%",
-  "faixa": {
-    "min": -20,
-    "max": 40
-  },
+  "faixa": { "min": -20, "max": 40 },
   "passo": 0.5,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": 0 }
   },
   "efeitos": [
-    {
-      "indice": "cambio",
-      "sentido": 1,
-      "forca": "fraca",
-      "atraso_turnos": 2
-    },
+    { "indice": "cambio", "sentido": 1, "forca": "fraca", "atraso_turnos": 2 },
     {
       "indice": "reservas_internacionais",
       "sentido": -1,

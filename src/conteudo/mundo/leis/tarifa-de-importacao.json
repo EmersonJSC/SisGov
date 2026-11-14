@@ -6,22 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comercio-exterior-e-capital",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.5
-  },
+  "faixa": { "min": 0, "max": 0.5 },
   "passo": 0.025,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.3,
-      "social": 0.3
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.3, "social": 0.3 }
   },
   "efeitos": [
     {

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-regra",
       "rotulo": "sem regra",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aviso-de-risco-e-autoexclusao-voluntaria",
       "rotulo": "aviso de risco e autoexclusão voluntária",
-      "bussola": {
-        "economico": -0.07,
-        "social": 0
-      },
+      "bussola": { "economico": -0.07, "social": 0 },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",
@@ -42,10 +38,7 @@
     {
       "id": "limite-de-deposito-e-proibicao-de-pagar-com-cartao-de-credito",
       "rotulo": "limite de depósito e proibição de pagar com cartão de crédito",
-      "bussola": {
-        "economico": -0.15,
-        "social": 0
-      },
+      "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",
@@ -64,10 +57,7 @@
     {
       "id": "limite-de-deposito",
       "rotulo": "limite de depósito",
-      "bussola": {
-        "economico": -0.22,
-        "social": 0
-      },
+      "bussola": { "economico": -0.22, "social": 0 },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",
@@ -86,10 +76,7 @@
     {
       "id": "autoexclusao-em-todas-as-casas-e-propaganda-proibida",
       "rotulo": "autoexclusão em todas as casas e propaganda proibida",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",

@@ -4,27 +4,23 @@
   "nome": "Revisão periódica de gastos",
   "descricao": "Vai de nenhuma, passa por revisar as maiores áreas a cada 4 anos, até base zero. Aparece como um pente fino: lista de programas em verde, amarelo e vermelho, com quanto vai liberar antes de aplicar.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "orcamento-e-divida",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhuma",
       "rotulo": "nenhuma",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "revisar-as-maiores-areas-a-cada-4-anos",
       "rotulo": "revisar as maiores áreas a cada 4 anos",
-      "bussola": {
-        "economico": 0.15,
-        "social": 0
-      },
+      "bussola": { "economico": 0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -43,10 +39,7 @@
     {
       "id": "revisao-do-zero",
       "rotulo": "revisão do zero",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "corrupcao",

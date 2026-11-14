@@ -5,24 +5,16 @@
   "descricao": "Dinheiro do governo para levar água tratada e esgoto às famílias.",
   "camada": "jogabilidade",
   "esfera": "agua-e-saneamento",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.02
-  },
+  "faixa": { "min": 0, "max": 0.02 },
   "passo": 0.001,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.02,
-    "min": {
-      "economico": 0.1,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.5,
-      "social": 0
-    }
+    "min": { "economico": 0.1, "social": 0 },
+    "max": { "economico": -0.5, "social": 0 },
+    "ate": 0.02
   },
   "efeitos": []
 }

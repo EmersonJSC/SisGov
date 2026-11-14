@@ -6,51 +6,38 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "ciencia-e-pesquisa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "satelite",
       "rotulo": "satélite",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "foguete",
       "rotulo": "foguete",
-      "bussola": {
-        "economico": 0,
-        "social": 0.05
-      },
+      "bussola": { "economico": 0, "social": 0.05 },
       "efeitos": []
     },
     {
       "id": "astronauta",
       "rotulo": "astronauta",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": []
     },
     {
       "id": "estacao-espacial",
       "rotulo": "estação espacial",
-      "bussola": {
-        "economico": 0,
-        "social": 0.15
-      },
+      "bussola": { "economico": 0, "social": 0.15 },
       "efeitos": []
     },
     {
       "id": "chegar-a-lua",
       "rotulo": "chegar à Lua",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": []
     }
   ]

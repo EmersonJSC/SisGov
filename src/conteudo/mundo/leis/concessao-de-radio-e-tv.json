@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "comunicacao-e-tecnologia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "licenca-por-prazo-fixo-e-so-a-justica-pode-cassar",
       "rotulo": "licença por prazo fixo e só a Justiça pode cassar",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "o-governo-cassa-so-com-processo-e-defesa",
       "rotulo": "o governo cassa só com processo e defesa",
-      "bussola": {
-        "economico": 0,
-        "social": 0.15
-      },
+      "bussola": { "economico": 0, "social": 0.15 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -42,10 +38,7 @@
     {
       "id": "o-governo-renova",
       "rotulo": "o governo renova",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -64,10 +57,7 @@
     {
       "id": "cassa-como-achar-melhor",
       "rotulo": "cassa como achar melhor",
-      "bussola": {
-        "economico": 0,
-        "social": 0.45
-      },
+      "bussola": { "economico": 0, "social": 0.45 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -86,10 +76,7 @@
     {
       "id": "o-governo-escolhe-quem-tem-licenca-e-cassa-quando-quiser",
       "rotulo": "o governo escolhe quem tem licença e cassa quando quiser",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",

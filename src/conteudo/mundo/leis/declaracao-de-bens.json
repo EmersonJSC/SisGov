@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "eleicoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nao-precisa",
       "rotulo": "não precisa",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-os-bens",
       "rotulo": "só os bens",
-      "bussola": {
-        "economico": 0,
-        "social": -0.05
-      },
+      "bussola": { "economico": 0, "social": -0.05 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -36,10 +32,7 @@
     {
       "id": "uma-vez",
       "rotulo": "uma vez",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -52,10 +45,7 @@
     {
       "id": "na-candidatura",
       "rotulo": "na candidatura",
-      "bussola": {
-        "economico": 0,
-        "social": -0.15
-      },
+      "bussola": { "economico": 0, "social": -0.15 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -68,10 +58,7 @@
     {
       "id": "bens-e-dividas-todo-ano",
       "rotulo": "bens e dívidas todo ano",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -84,10 +71,7 @@
     {
       "id": "bens-e-dividas-do-candidato-e-da-familia",
       "rotulo": "bens e dívidas do candidato e da família",
-      "bussola": {
-        "economico": 0,
-        "social": -0.25
-      },
+      "bussola": { "economico": 0, "social": -0.25 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -100,10 +84,7 @@
     {
       "id": "conferidos-pela-receita",
       "rotulo": "conferidos pela Receita",
-      "bussola": {
-        "economico": 0,
-        "social": -0.3
-      },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": [
         {
           "indice": "corrupcao",

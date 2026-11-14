@@ -6,22 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0.15,
-    "max": 1
-  },
+  "faixa": { "min": 0.15, "max": 1 },
   "passo": 0.0425,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0,
-      "social": 0.5
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0, "social": 0.5 }
   },
   "efeitos": [
     {

@@ -5,6 +5,8 @@
   "descricao": "Quanto das compras e contratos das forças armadas o público pode ver.",
   "camada": "jogabilidade",
   "esfera": "defesa",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {

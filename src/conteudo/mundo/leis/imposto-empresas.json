@@ -4,23 +4,18 @@
   "nome": "Imposto sobre empresas",
   "descricao": "Quanto as empresas pagam sobre o lucro.",
   "camada": "essencial",
-  "esfera": "impostos",
   "classe": "absoluta",
+  "esfera": "impostos",
+  "canal": "imposto",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.005,
-  "calculo": {
-    "base": "lucro",
-    "modelo": "laffer"
-  },
+  "calculo": { "base": "lucro", "modelo": "laffer" },
   "bussola": {
-    "ate": 0.6,
     "min": { "economico": 0.6 },
-    "max": { "economico": -0.6 }
+    "max": { "economico": -0.6 },
+    "ate": 0.6
   },
   "efeitos": [
     {

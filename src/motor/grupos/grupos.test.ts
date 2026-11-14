@@ -34,6 +34,8 @@ const lei: Lei = {
   versao: 1,
   id: "l",
   camada: "jogabilidade",
+  canal: "espera",
+  espera: "teste",
   forma: "continua",
   unidade: "fracao",
   faixa: { min: 0, max: 0.5 },
@@ -164,6 +166,8 @@ describe("grupos", () => {
       versao: 1,
       id: "o",
       camada: "jogabilidade",
+      canal: "espera",
+      espera: "teste",
       forma: "opcoes",
       opcoes: [
         { id: "x", bussola: { economico: -0.5 }, efeitos: [] },

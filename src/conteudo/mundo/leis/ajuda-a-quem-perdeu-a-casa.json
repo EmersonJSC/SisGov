@@ -6,33 +6,26 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "defesa-civil",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "abrigo-e-cesta",
       "rotulo": "abrigo e cesta",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aluguel-por-meses",
       "rotulo": "aluguel por meses",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": []
     },
     {
       "id": "casa-nova",
       "rotulo": "casa nova",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0
-      },
+      "bussola": { "economico": -0.4, "social": 0 },
       "efeitos": []
     }
   ]

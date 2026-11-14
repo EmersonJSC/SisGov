@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "tudo-liberado",
       "rotulo": "tudo liberado",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-restricoes-leves",
       "rotulo": "só restrições leves",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
@@ -36,10 +32,7 @@
     {
       "id": "sem-propaganda",
       "rotulo": "sem propaganda",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
@@ -52,10 +45,7 @@
     {
       "id": "embalagem-padronizada-e-sem-propaganda",
       "rotulo": "embalagem padronizada e sem propaganda",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",

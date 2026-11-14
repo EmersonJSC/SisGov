@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "uma-idade-unica-para-todos",
       "rotulo": "uma idade única para todos",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "duas-idades-possiveis",
       "rotulo": "duas idades possíveis",
-      "bussola": {
-        "economico": 0,
-        "social": -0.07
-      },
+      "bussola": { "economico": 0, "social": -0.07 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -36,10 +32,7 @@
     {
       "id": "com-valor-menor-na-mais-cedo",
       "rotulo": "com valor menor na mais cedo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.13
-      },
+      "bussola": { "economico": 0, "social": -0.13 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -52,10 +45,7 @@
     {
       "id": "qualquer-idade-dentro-de-uma-faixa",
       "rotulo": "qualquer idade dentro de uma faixa",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -68,10 +58,7 @@
     {
       "id": "com-valor-que-cresce-a-cada-ano-adiado",
       "rotulo": "com valor que cresce a cada ano adiado",
-      "bussola": {
-        "economico": 0,
-        "social": -0.27
-      },
+      "bussola": { "economico": 0, "social": -0.27 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -84,10 +71,7 @@
     {
       "id": "qualquer-idade-a-partir-de-um-minimo-baixo",
       "rotulo": "qualquer idade a partir de um mínimo baixo",
-      "bussola": {
-        "economico": 0,
-        "social": -0.33
-      },
+      "bussola": { "economico": 0, "social": -0.33 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -100,10 +84,7 @@
     {
       "id": "com-valor-pelo-que-cada-um-contribuiu",
       "rotulo": "com valor pelo que cada um contribuiu",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

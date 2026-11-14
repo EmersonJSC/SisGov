@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "educacao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nao-aceita",
       "rotulo": "não aceita",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aceita-so-depois-de-curso-e-prova-completos",
       "rotulo": "aceita só depois de curso e prova completos",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "profissionais_saude",
@@ -42,10 +38,7 @@
     {
       "id": "aceita-com-prova-curta",
       "rotulo": "aceita com prova curta",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "profissionais_saude",
@@ -64,10 +57,7 @@
     {
       "id": "aceita-direto",
       "rotulo": "aceita direto",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "profissionais_saude",
@@ -86,10 +76,7 @@
     {
       "id": "com-registro-no-conselho",
       "rotulo": "com registro no conselho",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "profissionais_saude",

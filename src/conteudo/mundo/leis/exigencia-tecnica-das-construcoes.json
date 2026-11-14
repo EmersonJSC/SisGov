@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "minima",
       "rotulo": "mínima",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": []
     },
     {
       "id": "padrao",
       "rotulo": "padrão",
-      "bussola": {
-        "economico": -0.15,
-        "social": 0
-      },
+      "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -48,10 +44,7 @@
     {
       "id": "rigorosa-incendio",
       "rotulo": "rigorosa (incêndio",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -76,10 +69,7 @@
     {
       "id": "enchente",
       "rotulo": "enchente",
-      "bussola": {
-        "economico": 0.15,
-        "social": 0
-      },
+      "bussola": { "economico": 0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -104,10 +94,7 @@
     {
       "id": "terremoto",
       "rotulo": "terremoto)",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",

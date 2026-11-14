@@ -4,27 +4,23 @@
   "nome": "Progressividade",
   "descricao": "Quanto a alíquota do Imposto de renda sobe para quem ganha mais. Escada: todos pagam a mesma alíquota (imposto único); sobe pouco; sobe médio; sobe muito.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "todos-pagam-a-mesma-aliquota-imposto-unico",
       "rotulo": "todos pagam a mesma alíquota (imposto único)",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0
-      },
+      "bussola": { "economico": -0.4, "social": 0 },
       "efeitos": []
     },
     {
       "id": "sobe-pouco",
       "rotulo": "sobe pouco",
-      "bussola": {
-        "economico": -0.13,
-        "social": 0
-      },
+      "bussola": { "economico": -0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -43,10 +39,7 @@
     {
       "id": "sobe-medio",
       "rotulo": "sobe médio",
-      "bussola": {
-        "economico": 0.13,
-        "social": 0
-      },
+      "bussola": { "economico": 0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",
@@ -65,10 +58,7 @@
     {
       "id": "sobe-muito",
       "rotulo": "sobe muito",
-      "bussola": {
-        "economico": 0.4,
-        "social": 0
-      },
+      "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "desigualdade",

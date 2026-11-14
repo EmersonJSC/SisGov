@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "toda-profissao-com-conselho",
       "rotulo": "toda profissão com conselho",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-saude",
       "rotulo": "só saúde",
-      "bussola": {
-        "economico": 0.08,
-        "social": -0.04
-      },
+      "bussola": { "economico": 0.08, "social": -0.04 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -36,10 +32,7 @@
     {
       "id": "direito-e-engenharia",
       "rotulo": "direito e engenharia",
-      "bussola": {
-        "economico": 0.16,
-        "social": -0.08
-      },
+      "bussola": { "economico": 0.16, "social": -0.08 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -52,10 +45,7 @@
     {
       "id": "so-saude-e-engenharia-o-que-poe-vida-em-risco",
       "rotulo": "só saúde e engenharia (o que põe vida em risco)",
-      "bussola": {
-        "economico": 0.24,
-        "social": -0.12
-      },
+      "bussola": { "economico": 0.24, "social": -0.12 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -68,10 +58,7 @@
     {
       "id": "so-medico",
       "rotulo": "só médico",
-      "bussola": {
-        "economico": 0.32,
-        "social": -0.16
-      },
+      "bussola": { "economico": 0.32, "social": -0.16 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -84,10 +71,7 @@
     {
       "id": "enfermeiro-e-farmaceutico",
       "rotulo": "enfermeiro e farmacêutico",
-      "bussola": {
-        "economico": 0.4,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0.4, "social": -0.2 },
       "efeitos": [
         {
           "indice": "emprego_informal",

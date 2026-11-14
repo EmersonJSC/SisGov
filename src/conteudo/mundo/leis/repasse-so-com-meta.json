@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "educacao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-exigencia",
       "rotulo": "sem exigência",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "plano-de-melhora",
       "rotulo": "plano de melhora",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "qualidade_do_ensino",
@@ -48,10 +44,7 @@
     {
       "id": "nota-minima",
       "rotulo": "nota mínima",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "qualidade_do_ensino",
@@ -76,10 +69,7 @@
     {
       "id": "troca-da-direcao-da-escola-ruim",
       "rotulo": "troca da direção da escola ruim",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "qualidade_do_ensino",

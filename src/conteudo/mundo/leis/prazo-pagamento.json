@@ -5,42 +5,28 @@
   "descricao": "Quando o Estado paga a indenização.",
   "camada": "jogabilidade",
   "esfera": "estatais",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "a-vista",
       "rotulo": "À vista",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
-      "valores": {
-        "parcelas": 1
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
+      "valores": { "parcelas": 1 },
       "efeitos": []
     },
     {
       "id": "parcelado",
       "rotulo": "Parcelado em um ano",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "valores": {
-        "parcelas": 6
-      },
+      "bussola": { "economico": 0, "social": 0 },
+      "valores": { "parcelas": 6 },
       "efeitos": []
     },
     {
       "id": "titulos-longos",
       "rotulo": "Em títulos, em três anos",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
-      "valores": {
-        "parcelas": 18
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
+      "valores": { "parcelas": 18 },
       "efeitos": []
     }
   ]

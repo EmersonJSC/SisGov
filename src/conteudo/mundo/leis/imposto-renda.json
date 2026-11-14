@@ -4,17 +4,18 @@
   "nome": "Imposto de renda",
   "descricao": "Quanto as pessoas pagam sobre o que ganham.",
   "camada": "essencial",
-  "esfera": "impostos",
   "classe": "absoluta",
+  "esfera": "impostos",
+  "canal": "imposto",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 1 },
   "passo": 0.005,
   "calculo": { "base": "renda", "modelo": "laffer" },
   "bussola": {
-    "ate": 0.6,
     "min": { "economico": 0.5 },
-    "max": { "economico": -0.5 }
+    "max": { "economico": -0.5 },
+    "ate": 0.6
   },
   "efeitos": [
     {

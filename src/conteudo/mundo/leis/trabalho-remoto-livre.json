@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-presencial",
       "rotulo": "só presencial",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "um-dia-por-semana-de-casa",
       "rotulo": "um dia por semana de casa",
-      "bussola": {
-        "economico": 0,
-        "social": -0.13
-      },
+      "bussola": { "economico": 0, "social": -0.13 },
       "efeitos": [
         {
           "indice": "padrao_vida",
@@ -42,10 +38,7 @@
     {
       "id": "ate-tres-dias-por-semana-de-casa",
       "rotulo": "até três dias por semana de casa",
-      "bussola": {
-        "economico": 0,
-        "social": -0.27
-      },
+      "bussola": { "economico": 0, "social": -0.27 },
       "efeitos": [
         {
           "indice": "padrao_vida",
@@ -64,10 +57,7 @@
     {
       "id": "todos-os-dias-de-casa-se-patrao-e-empregado-combinarem",
       "rotulo": "todos os dias de casa se patrão e empregado combinarem",
-      "bussola": {
-        "economico": 0,
-        "social": -0.4
-      },
+      "bussola": { "economico": 0, "social": -0.4 },
       "efeitos": [
         {
           "indice": "padrao_vida",

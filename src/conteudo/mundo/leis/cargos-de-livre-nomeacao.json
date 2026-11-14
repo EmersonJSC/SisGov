@@ -6,22 +6,14 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "funcionalismo",
+  "canal": "regra",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0.001,
-    "max": 0.05
-  },
+  "faixa": { "min": 0.001, "max": 0.05 },
   "passo": 0.00245,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": 0.2,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": 0.2, "social": 0 }
   },
   "efeitos": [
     {

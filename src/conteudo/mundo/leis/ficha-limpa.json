@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "eleicoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-regra",
       "rotulo": "sem regra",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "qualquer-um-pode-concorrer",
       "rotulo": "qualquer um pode concorrer",
-      "bussola": {
-        "economico": 0,
-        "social": 0.07
-      },
+      "bussola": { "economico": 0, "social": 0.07 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -42,10 +38,7 @@
     {
       "id": "so-condenado-em-definitivo",
       "rotulo": "só condenado em definitivo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -64,10 +57,7 @@
     {
       "id": "sem-mais-recurso",
       "rotulo": "sem mais recurso",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -86,10 +76,7 @@
     {
       "id": "tambem-condenado-em-segunda-instancia",
       "rotulo": "também condenado em segunda instância",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -108,10 +95,7 @@
     {
       "id": "ainda-com-recurso",
       "rotulo": "ainda com recurso",
-      "bussola": {
-        "economico": 0,
-        "social": 0.33
-      },
+      "bussola": { "economico": 0, "social": 0.33 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -130,10 +114,7 @@
     {
       "id": "tambem-reu-em-processo-de-corrupcao-aceito-pela-justica",
       "rotulo": "também réu em processo de corrupção aceito pela Justiça",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "corrupcao",

@@ -97,6 +97,8 @@ export interface Estado {
   moradia?: MoradiaNoEstado;
   /** Juízes e vagas de cada tribunal (motor/judiciario); ausente sem Judiciário ou em partida salva antes dele. */
   judiciario?: EstadoJudiciario;
+  /** Leis com pedido de revogar em tramitação: aprovadas, voltam a "não legislada". */
+  revogacoes?: string[];
   /** Rede de água e esgoto (motor/saneamento); ausente sem a regra ou em partida salva antes dela. */
   saneamento?: SaneamentoNoEstado;
   /** Rede de atendimento (motor/atendimento); ausente sem a regra ou em partida salva antes dela. */

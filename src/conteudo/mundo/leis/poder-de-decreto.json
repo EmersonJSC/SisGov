@@ -4,27 +4,22 @@
   "nome": "Poder de decreto",
   "descricao": "Escada do que o presidente pode mudar sozinho: 1) sem decreto; 2) só verba e preço, com prazo; 3) tudo menos impostos, regras do poder e mandato, com prazo (como a medida provisória); 4) decreto amplo: tudo, sem o Congresso confirmar. Com prazo, a lei vale já e o Congresso tem 2 turnos para confirmar, ou cai.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "regras-dos-poderes",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-decreto",
       "rotulo": "sem decreto",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-verba-e-preco",
       "rotulo": "só verba e preço",
-      "bussola": {
-        "economico": 0,
-        "social": 0.12
-      },
+      "bussola": { "economico": 0, "social": 0.12 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",
@@ -37,10 +32,7 @@
     {
       "id": "com-prazo",
       "rotulo": "com prazo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.23
-      },
+      "bussola": { "economico": 0, "social": 0.23 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",
@@ -53,10 +45,7 @@
     {
       "id": "quase-tudo",
       "rotulo": "quase tudo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.35
-      },
+      "bussola": { "economico": 0, "social": 0.35 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",
@@ -69,10 +58,7 @@
     {
       "id": "com-prazo-5",
       "rotulo": "com prazo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.47
-      },
+      "bussola": { "economico": 0, "social": 0.47 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",
@@ -85,10 +71,7 @@
     {
       "id": "decreto-amplo",
       "rotulo": "decreto amplo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.58
-      },
+      "bussola": { "economico": 0, "social": 0.58 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",
@@ -101,10 +84,7 @@
     {
       "id": "sem-o-congresso",
       "rotulo": "sem o Congresso",
-      "bussola": {
-        "economico": 0,
-        "social": 0.7
-      },
+      "bussola": { "economico": 0, "social": 0.7 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",

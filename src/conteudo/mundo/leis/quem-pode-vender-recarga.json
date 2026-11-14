@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-a-distribuidora",
       "rotulo": "só a distribuidora",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "postos",
       "rotulo": "postos",
-      "bussola": {
-        "economico": 0.08,
-        "social": 0
-      },
+      "bussola": { "economico": 0.08, "social": 0 },
       "efeitos": [
         {
           "indice": "energia_gasta",
@@ -36,10 +32,7 @@
     {
       "id": "comercio",
       "rotulo": "comércio",
-      "bussola": {
-        "economico": 0.15,
-        "social": 0
-      },
+      "bussola": { "economico": 0.15, "social": 0 },
       "efeitos": [
         {
           "indice": "energia_gasta",
@@ -52,10 +45,7 @@
     {
       "id": "condominios",
       "rotulo": "condomínios",
-      "bussola": {
-        "economico": 0.22,
-        "social": 0
-      },
+      "bussola": { "economico": 0.22, "social": 0 },
       "efeitos": [
         {
           "indice": "energia_gasta",
@@ -68,10 +58,7 @@
     {
       "id": "qualquer-casa",
       "rotulo": "qualquer casa",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "energia_gasta",

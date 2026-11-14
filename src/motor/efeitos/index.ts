@@ -30,7 +30,7 @@ export function contribuicao(e: EfeitoEmCurso): number {
   return e.de + (e.para - e.de) * fracao;
 }
 
-function alvos(lei: Lei, valor: ValorLei) {
+function alvos(lei: Lei, valor: ValorLei | undefined) {
   const porIndice = new Map<string, { pontos: number; atraso: number }>();
   for (const { efeito, intensidade } of efeitosDoValor(lei, valor)) {
     const atual = porIndice.get(efeito.indice) ?? { pontos: 0, atraso: 0 };
@@ -72,7 +72,8 @@ const SEM_AJUSTE: AjusteDeEfeito = { atraso: 0, forca: 1 };
 export function enfileirar(
   fila: readonly EfeitoEmCurso[],
   lei: Lei,
-  valor: ValorLei,
+  /** Sem valor: a lei foi revogada e os efeitos dela voltam a zero. */
+  valor: ValorLei | undefined,
   ajuste: AjusteDeEfeito = SEM_AJUSTE,
 ): EfeitoEmCurso[] {
   const antigas = fila.filter((e) => e.lei === lei.id);
@@ -106,12 +107,19 @@ export function envelhecer(fila: readonly EfeitoEmCurso[]): EfeitoEmCurso[] {
   );
 }
 
-/** Soma das contribuições de hoje por índice. */
+/** Sem instituição que pese: toda lei rende inteira. */
+const INTEIRA = () => 1;
+
+/**
+ * Soma das contribuições de hoje por índice. `fator` diz quanto cada lei rende
+ * hoje (a lei age pela instituição dela: pouca verba, rende menos).
+ */
 export function somaPorIndice(
   fila: readonly EfeitoEmCurso[],
+  fator: (lei: string) => number = INTEIRA,
 ): Record<string, number> {
   const soma: Record<string, number> = {};
   for (const e of fila)
-    soma[e.indice] = (soma[e.indice] ?? 0) + contribuicao(e);
+    soma[e.indice] = (soma[e.indice] ?? 0) + contribuicao(e) * fator(e.lei);
   return soma;
 }

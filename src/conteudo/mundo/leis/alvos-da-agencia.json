@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "crime-e-terrorismo",
       "rotulo": "crime e terrorismo",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "organizacoes-radicais",
       "rotulo": "organizações radicais",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -42,10 +38,7 @@
     {
       "id": "movimentos-e-imprensa",
       "rotulo": "movimentos e imprensa",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -64,10 +57,7 @@
     {
       "id": "opositores-do-governo",
       "rotulo": "opositores do governo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.9
-      },
+      "bussola": { "economico": 0, "social": 0.9 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

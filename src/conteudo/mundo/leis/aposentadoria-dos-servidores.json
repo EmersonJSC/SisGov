@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "salario-integral",
       "rotulo": "salário integral",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "o-aposentado-tambem-contribui",
       "rotulo": "o aposentado também contribui",
-      "bussola": {
-        "economico": 0.25,
-        "social": 0
-      },
+      "bussola": { "economico": 0.25, "social": 0 },
       "efeitos": [
         {
           "indice": "deficit_da_previdencia",
@@ -48,10 +44,7 @@
     {
       "id": "mesmo-teto-do-trabalhador-comum",
       "rotulo": "mesmo teto do trabalhador comum",
-      "bussola": {
-        "economico": 0.5,
-        "social": 0
-      },
+      "bussola": { "economico": 0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "deficit_da_previdencia",

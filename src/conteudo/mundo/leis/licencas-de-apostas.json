@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "impostos",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "apostas-proibidas",
       "rotulo": "apostas proibidas",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "poucas-licencas-caras",
       "rotulo": "poucas licenças caras",
-      "bussola": {
-        "economico": 0.17,
-        "social": 0
-      },
+      "bussola": { "economico": 0.17, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -42,10 +38,7 @@
     {
       "id": "licenca-aberta-com-imposto-moderado",
       "rotulo": "licença aberta com imposto moderado",
-      "bussola": {
-        "economico": 0.33,
-        "social": 0
-      },
+      "bussola": { "economico": 0.33, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -64,10 +57,7 @@
     {
       "id": "licenca-barata-e-aberta-a-qualquer-empresa",
       "rotulo": "licença barata e aberta a qualquer empresa",
-      "bussola": {
-        "economico": 0.5,
-        "social": 0
-      },
+      "bussola": { "economico": 0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",

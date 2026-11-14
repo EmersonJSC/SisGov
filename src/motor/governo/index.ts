@@ -32,6 +32,7 @@ export {
   LIMITE_DO_ESCANDALO,
   corrupcaoDeEquilibrio,
   corrupcaoSeguinte,
+  rendimentoDasLeis,
   rendimentoDoOrgao,
   situacaoDoOrgao,
   verbaDaInstituicao,

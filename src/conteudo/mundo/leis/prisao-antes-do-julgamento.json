@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "ninguem",
       "rotulo": "ninguém",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-casos-raros",
       "rotulo": "só casos raros",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "presos_sem_julgamento",
@@ -42,10 +38,7 @@
     {
       "id": "so-quem-cometeu-crime-violento",
       "rotulo": "só quem cometeu crime violento",
-      "bussola": {
-        "economico": 0,
-        "social": 0.25
-      },
+      "bussola": { "economico": 0, "social": 0.25 },
       "efeitos": [
         {
           "indice": "presos_sem_julgamento",
@@ -64,10 +57,7 @@
     {
       "id": "tambem-quem-cometeu-crime-com-pena-alta",
       "rotulo": "também quem cometeu crime com pena alta",
-      "bussola": {
-        "economico": 0,
-        "social": 0.38
-      },
+      "bussola": { "economico": 0, "social": 0.38 },
       "efeitos": [
         {
           "indice": "presos_sem_julgamento",
@@ -86,10 +76,7 @@
     {
       "id": "a-maioria-dos-acusados-de-crime",
       "rotulo": "a maioria dos acusados de crime",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "presos_sem_julgamento",

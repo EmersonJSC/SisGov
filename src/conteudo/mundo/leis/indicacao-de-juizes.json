@@ -4,36 +4,28 @@
   "nome": "Quem escolhe os juízes",
   "descricao": "Quem preenche a vaga quando um juiz de tribunal se aposenta: os próprios juízes, o presidente com o aval do Senado, ou o presidente sozinho.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "regras-dos-poderes",
+  "canal": "regra",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "a-carreira-escolhe",
       "rotulo": "a carreira escolhe",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": []
     },
     {
       "id": "presidente-indica-senado-aprova",
       "rotulo": "presidente indica, Senado aprova",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "presidente-indica-livre",
       "rotulo": "presidente indica livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "confianca_na_democracia",

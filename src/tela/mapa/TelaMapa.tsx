@@ -17,7 +17,7 @@ import {
   type VisaoLei,
   empresasDoPais,
 } from "../../partida";
-import { comPedido } from "../fila";
+import { comPedido, comRevogacao } from "../fila";
 import { BarraDoTopo, type MenuDaPartida } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { Governo } from "./Governo";
@@ -269,6 +269,8 @@ export function TelaMapa({
             onEnviar={() =>
               valor !== null && setFila(comPedido(fila, partida, lei.id, valor))
             }
+            revogando={!!pedido?.revogar}
+            onRevogar={() => setFila(comRevogacao(fila, partida, lei.id))}
             placar={placar}
             partidos={partidos}
             governo={partida.regras.congresso?.governo ?? ""}

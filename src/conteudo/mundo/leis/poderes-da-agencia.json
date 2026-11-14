@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-analisar-informacao",
       "rotulo": "só analisar informação",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "escutar-com-ordem-do-juiz",
       "rotulo": "escutar com ordem do juiz",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -36,10 +32,7 @@
     {
       "id": "escutar-sem-juiz-e-infiltrar",
       "rotulo": "escutar sem juiz e infiltrar",
-      "bussola": {
-        "economico": 0,
-        "social": 0.53
-      },
+      "bussola": { "economico": 0, "social": 0.53 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -52,10 +45,7 @@
     {
       "id": "operacoes-secretas",
       "rotulo": "operações secretas",
-      "bussola": {
-        "economico": 0,
-        "social": 0.8
-      },
+      "bussola": { "economico": 0, "social": 0.8 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

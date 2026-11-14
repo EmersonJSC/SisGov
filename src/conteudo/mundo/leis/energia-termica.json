@@ -5,21 +5,16 @@
   "descricao": "Dinheiro do governo para usinas que queimam combustível. Cada 1% do PIB por ano compra energia para cerca de 6% da demanda do país, pronta em 1 ano. Obra rápida e barata, mas polui.",
   "camada": "jogabilidade",
   "esfera": "energia",
+  "canal": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.03
-  },
+  "faixa": { "min": 0, "max": 0.03 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "ate": 0.01,
     "min": {},
-    "max": {
-      "economico": 0.3,
-      "social": 0.5
-    }
+    "max": { "economico": 0.3, "social": 0.5 },
+    "ate": 0.01
   },
   "efeitos": [
     {

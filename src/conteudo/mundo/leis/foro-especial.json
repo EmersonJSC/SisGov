@@ -4,27 +4,23 @@
   "nome": "Foro especial",
   "descricao": "Quais políticos só podem ser julgados por tribunal superior. Escada: ninguém, políticos são julgados como qualquer cidadão; só por crimes cometidos no exercício do cargo; todos os crimes de ministros e parlamentares; todos os crimes, e vale até depois que deixam o cargo.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "constitucional",
+  "origem": "planilha",
   "esfera": "regras-dos-poderes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "ninguem",
       "rotulo": "ninguém",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "politicos-sao-julgados-como-qualquer-cidadao",
       "rotulo": "políticos são julgados como qualquer cidadão",
-      "bussola": {
-        "economico": 0,
-        "social": 0.1
-      },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -43,10 +39,7 @@
     {
       "id": "so-por-crimes-cometidos-no-exercicio-do-cargo",
       "rotulo": "só por crimes cometidos no exercício do cargo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.2
-      },
+      "bussola": { "economico": 0, "social": 0.2 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -65,10 +58,7 @@
     {
       "id": "todos-os-crimes-de-ministros-e-parlamentares",
       "rotulo": "todos os crimes de ministros e parlamentares",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -87,10 +77,7 @@
     {
       "id": "todos-os-crimes",
       "rotulo": "todos os crimes",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -109,10 +96,7 @@
     {
       "id": "e-vale-ate-depois-que-deixam-o-cargo",
       "rotulo": "e vale até depois que deixam o cargo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.5
-      },
+      "bussola": { "economico": 0, "social": 0.5 },
       "efeitos": [
         {
           "indice": "corrupcao",

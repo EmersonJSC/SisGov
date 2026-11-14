@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "multa-direta-para-todos",
       "rotulo": "multa direta para todos",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aviso-para-o-pequeno",
       "rotulo": "aviso para o pequeno",
-      "bussola": {
-        "economico": 0.1,
-        "social": 0
-      },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -42,10 +38,7 @@
     {
       "id": "aviso-para-todas-as-empresas",
       "rotulo": "aviso para todas as empresas",
-      "bussola": {
-        "economico": 0.2,
-        "social": 0
-      },
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -64,10 +57,7 @@
     {
       "id": "multa-so-com-dano-provado",
       "rotulo": "multa só com dano provado",
-      "bussola": {
-        "economico": 0.3,
-        "social": 0
-      },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",

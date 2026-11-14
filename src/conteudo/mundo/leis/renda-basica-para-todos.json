@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "ninguem",
       "rotulo": "ninguém",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "so-quem-comprova-necessidade",
       "rotulo": "só quem comprova necessidade",
-      "bussola": {
-        "economico": -0.07,
-        "social": -0.07
-      },
+      "bussola": { "economico": -0.07, "social": -0.07 },
       "efeitos": [
         {
           "indice": "fraude_em_beneficios",
@@ -48,10 +44,7 @@
     {
       "id": "todos-os-idosos-e-criancas",
       "rotulo": "todos os idosos e crianças",
-      "bussola": {
-        "economico": -0.13,
-        "social": -0.13
-      },
+      "bussola": { "economico": -0.13, "social": -0.13 },
       "efeitos": [
         {
           "indice": "fraude_em_beneficios",
@@ -76,10 +69,7 @@
     {
       "id": "todos-os-adultos-que-ganham-pouco",
       "rotulo": "todos os adultos que ganham pouco",
-      "bussola": {
-        "economico": -0.2,
-        "social": -0.2
-      },
+      "bussola": { "economico": -0.2, "social": -0.2 },
       "efeitos": [
         {
           "indice": "fraude_em_beneficios",
@@ -104,10 +94,7 @@
     {
       "id": "sem-exigir-nada",
       "rotulo": "sem exigir nada",
-      "bussola": {
-        "economico": -0.27,
-        "social": -0.27
-      },
+      "bussola": { "economico": -0.27, "social": -0.27 },
       "efeitos": [
         {
           "indice": "fraude_em_beneficios",
@@ -132,10 +119,7 @@
     {
       "id": "todos-os-moradores",
       "rotulo": "todos os moradores",
-      "bussola": {
-        "economico": -0.33,
-        "social": -0.33
-      },
+      "bussola": { "economico": -0.33, "social": -0.33 },
       "efeitos": [
         {
           "indice": "fraude_em_beneficios",
@@ -160,10 +144,7 @@
     {
       "id": "sem-exigir-nada-7",
       "rotulo": "sem exigir nada",
-      "bussola": {
-        "economico": -0.4,
-        "social": -0.4
-      },
+      "bussola": { "economico": -0.4, "social": -0.4 },
       "efeitos": [
         {
           "indice": "fraude_em_beneficios",

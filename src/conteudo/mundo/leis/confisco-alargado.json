@@ -6,51 +6,38 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "seguranca-publica",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-bens-provados-do-crime-apos-condenacao",
       "rotulo": "só bens provados do crime após condenação",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "tambem-bens-ligados-ao-crime-antes-da-condenacao",
       "rotulo": "também bens ligados ao crime antes da condenação",
-      "bussola": {
-        "economico": 0,
-        "social": 0.15
-      },
+      "bussola": { "economico": 0, "social": 0.15 },
       "efeitos": []
     },
     {
       "id": "tambem-patrimonio-que-nao-bate-com-a-renda-de-condenados",
       "rotulo": "também patrimônio que não bate com a renda de condenados",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": []
     },
     {
       "id": "patrimonio-que-nao-bate-com-a-renda-de-qualquer-investigado",
       "rotulo": "patrimônio que não bate com a renda de qualquer investigado",
-      "bussola": {
-        "economico": 0,
-        "social": 0.45
-      },
+      "bussola": { "economico": 0, "social": 0.45 },
       "efeitos": []
     },
     {
       "id": "que-precisa-provar-que-e-legal",
       "rotulo": "que precisa provar que é legal",
-      "bussola": {
-        "economico": 0,
-        "social": 0.6
-      },
+      "bussola": { "economico": 0, "social": 0.6 },
       "efeitos": []
     }
   ]

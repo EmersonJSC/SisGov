@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "imigracao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sai-livre",
       "rotulo": "sai livre",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "devolve-parte-do-custo-do-estudo",
       "rotulo": "devolve parte do custo do estudo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.13
-      },
+      "bussola": { "economico": 0, "social": 0.13 },
       "efeitos": [
         {
           "indice": "emigracao_de_formados",
@@ -42,10 +38,7 @@
     {
       "id": "devolve-o-custo-todo",
       "rotulo": "devolve o custo todo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.27
-      },
+      "bussola": { "economico": 0, "social": 0.27 },
       "efeitos": [
         {
           "indice": "emigracao_de_formados",
@@ -64,10 +57,7 @@
     {
       "id": "precisa-ficar-alguns-anos-no-pais-antes-de-sair",
       "rotulo": "precisa ficar alguns anos no país antes de sair",
-      "bussola": {
-        "economico": 0,
-        "social": 0.4
-      },
+      "bussola": { "economico": 0, "social": 0.4 },
       "efeitos": [
         {
           "indice": "emigracao_de_formados",

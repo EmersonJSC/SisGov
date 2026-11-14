@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "trabalho",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "equipamento-e-fiscal",
       "rotulo": "equipamento e fiscal",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -36,10 +32,7 @@
     {
       "id": "seguro-por-morte",
       "rotulo": "seguro por morte",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",
@@ -52,10 +45,7 @@
     {
       "id": "meses-de-salario-ao-acabar",
       "rotulo": "meses de salário ao acabar",
-      "bussola": {
-        "economico": -0.3,
-        "social": 0
-      },
+      "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "custo_das_obras",

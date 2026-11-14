@@ -2,7 +2,7 @@
  * Documento "Resultado do turno": o que o Congresso votou e, se houve, a
  * eleição. Usa o papel da janela da lei.
  */
-import { forcaDoFato } from "../../motor";
+import { forcaDoFato, valorDesligado } from "../../motor";
 import { PACIENCIA_BAIXA, TERMOMETRO_CONVITE } from "../../motor";
 import {
   indicesDoMundo,
@@ -79,10 +79,17 @@ export function ResultadoDoTurno({
   const fatos = [...(estado.fatos ?? [])].sort(
     (a, b) => b.turno - a.turno || forcaDoFato(b) - forcaDoFato(a),
   );
+  // revogação: o pedido leva ao valor desligado e a lei sai (ou vai sair) do país
+  const revogacao = (id: string, valor: number | string) =>
+    !!partida.regras.leis[id] &&
+    valor === valorDesligado(partida.regras.leis[id]) &&
+    (!!estado.revogacoes?.includes(id) || !(id in estado.leis));
   const valorPedido = (id: string, valor: number | string) =>
-    typeof valor === "number"
-      ? `${um(valor * 100)}%`
-      : (lei(id)?.opcoes?.find((o) => o.id === valor)?.rotulo ?? valor);
+    revogacao(id, valor)
+      ? "revogar"
+      : typeof valor === "number"
+        ? `${um(valor * 100)}%`
+        : (lei(id)?.opcoes?.find((o) => o.id === valor)?.rotulo ?? valor);
 
   return (
     <Documento

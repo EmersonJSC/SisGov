@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "feriado-religioso",
       "rotulo": "feriado religioso",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "domingo",
       "rotulo": "domingo",
-      "bussola": {
-        "economico": 0,
-        "social": 0.15
-      },
+      "bussola": { "economico": 0, "social": 0.15 },
       "efeitos": [
         {
           "indice": "custo_do_frete",
@@ -36,10 +32,7 @@
     {
       "id": "fim-de-semana",
       "rotulo": "fim de semana",
-      "bussola": {
-        "economico": 0,
-        "social": 0.3
-      },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "custo_do_frete",

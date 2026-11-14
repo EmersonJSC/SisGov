@@ -4,27 +4,23 @@
   "nome": "Gasto mínimo obrigatório",
   "descricao": "Você marca a área (saúde, educação, outras) e fixa um piso em % da receita. Aparece como envelopes com cadeado.",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "orcamento-e-divida",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "saude",
       "rotulo": "saúde",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "educacao",
       "rotulo": "educação",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "gasto_obrigatorio",
@@ -37,10 +33,7 @@
     {
       "id": "outras-areas",
       "rotulo": "outras áreas",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "gasto_obrigatorio",

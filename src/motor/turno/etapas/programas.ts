@@ -20,9 +20,7 @@ export const programas: Etapa = (regras, estado) => {
     turno: estado.turno,
     mandato: estado.inicio_mandato,
     atrasoDaLei: (lei) =>
-      governo && caixas
-        ? ajusteDaLei(governo, caixas, lei).atraso
-        : 0,
+      governo && caixas ? ajusteDaLei(governo, caixas, lei).atraso : 0,
   });
   return {
     ...estado,

@@ -6,22 +6,15 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 0.15
-  },
+  "faixa": { "min": 0, "max": 0.15 },
   "passo": 0.0075,
   "bussola": {
-    "min": {
-      "economico": 0,
-      "social": 0
-    },
-    "max": {
-      "economico": -0.4,
-      "social": 0
-    }
+    "min": { "economico": 0, "social": 0 },
+    "max": { "economico": -0.4, "social": 0 }
   },
   "efeitos": [
     {
@@ -30,11 +23,6 @@
       "forca": "media",
       "atraso_turnos": 2
     },
-    {
-      "indice": "saude",
-      "sentido": 1,
-      "forca": "media",
-      "atraso_turnos": 2
-    }
+    { "indice": "saude", "sentido": 1, "forca": "media", "atraso_turnos": 2 }
   ]
 }

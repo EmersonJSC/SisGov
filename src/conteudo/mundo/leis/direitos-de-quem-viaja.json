@@ -6,51 +6,38 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum-direito",
       "rotulo": "nenhum direito",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "comida-e-hotel",
       "rotulo": "comida e hotel",
-      "bussola": {
-        "economico": -0.05,
-        "social": 0
-      },
+      "bussola": { "economico": -0.05, "social": 0 },
       "efeitos": []
     },
     {
       "id": "dinheiro-de-volta",
       "rotulo": "dinheiro de volta",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0
-      },
+      "bussola": { "economico": -0.1, "social": 0 },
       "efeitos": []
     },
     {
       "id": "outra-viagem",
       "rotulo": "outra viagem",
-      "bussola": {
-        "economico": -0.15,
-        "social": 0
-      },
+      "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": []
     },
     {
       "id": "indenizacao",
       "rotulo": "indenização",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": []
     }
   ]

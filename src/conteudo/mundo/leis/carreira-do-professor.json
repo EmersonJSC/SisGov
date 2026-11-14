@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "educacao",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "cada-escola-paga-o-que-quiser",
       "rotulo": "cada escola paga o que quiser",
-      "bussola": {
-        "economico": -0.08,
-        "social": 0
-      },
+      "bussola": { "economico": -0.08, "social": 0 },
       "efeitos": [
         {
           "indice": "instrucao",
@@ -36,10 +32,7 @@
     {
       "id": "piso-de-salario-igual-para-todos",
       "rotulo": "piso de salário igual para todos",
-      "bussola": {
-        "economico": -0.16,
-        "social": 0
-      },
+      "bussola": { "economico": -0.16, "social": 0 },
       "efeitos": [
         {
           "indice": "instrucao",
@@ -52,10 +45,7 @@
     {
       "id": "piso-mais-aumento-a-cada-tempo-de-casa",
       "rotulo": "piso mais aumento a cada tempo de casa",
-      "bussola": {
-        "economico": -0.24,
-        "social": 0
-      },
+      "bussola": { "economico": -0.24, "social": 0 },
       "efeitos": [
         {
           "indice": "instrucao",
@@ -68,10 +58,7 @@
     {
       "id": "piso",
       "rotulo": "piso",
-      "bussola": {
-        "economico": -0.32,
-        "social": 0
-      },
+      "bussola": { "economico": -0.32, "social": 0 },
       "efeitos": [
         {
           "indice": "instrucao",
@@ -84,10 +71,7 @@
     {
       "id": "carreira-e-emprego-fixo-com-dedicacao-a-uma-escola-so",
       "rotulo": "carreira e emprego fixo com dedicação a uma escola só",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0
-      },
+      "bussola": { "economico": -0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "instrucao",

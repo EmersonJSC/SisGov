@@ -5,6 +5,8 @@
   "descricao": "Como uma obra ou empresa prova que não vai destruir o ambiente antes de começar.",
   "camada": "jogabilidade",
   "esfera": "meio-ambiente",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
@@ -32,7 +34,7 @@
         }
       ]
     },
-    { "id": "normal", "bussola": {}, "efeitos": [] },
+    { "id": "normal", "efeitos": [] },
     {
       "id": "rigoroso",
       "rotulo": "Licença rigorosa com consulta",

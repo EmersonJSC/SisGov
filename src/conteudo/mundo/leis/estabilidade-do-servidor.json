@@ -4,27 +4,23 @@
   "nome": "Estabilidade do servidor",
   "descricao": "Quando o funcionário público pode ser mandado embora. Escada: emprego para a vida toda; sai por falta grave; avaliação todo ano, duas notas ruins e sai; contrato igual ao do trabalhador comum (fora juiz, policial, diplomata e auditor).",
   "camada": "jogabilidade",
-  "origem": "planilha",
   "classe": "absoluta",
+  "origem": "planilha",
   "esfera": "funcionalismo",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "emprego-para-a-vida-toda",
       "rotulo": "emprego para a vida toda",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "sai-por-falta-grave",
       "rotulo": "sai por falta grave",
-      "bussola": {
-        "economico": 0.08,
-        "social": 0
-      },
+      "bussola": { "economico": 0.08, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -49,10 +45,7 @@
     {
       "id": "avaliacao-todo-ano",
       "rotulo": "avaliação todo ano",
-      "bussola": {
-        "economico": 0.17,
-        "social": 0
-      },
+      "bussola": { "economico": 0.17, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -77,10 +70,7 @@
     {
       "id": "duas-notas-ruins-e-sai",
       "rotulo": "duas notas ruins e sai",
-      "bussola": {
-        "economico": 0.25,
-        "social": 0
-      },
+      "bussola": { "economico": 0.25, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -105,10 +95,7 @@
     {
       "id": "contrato-igual-ao-do-trabalhador-comum-fora-juiz",
       "rotulo": "contrato igual ao do trabalhador comum (fora juiz",
-      "bussola": {
-        "economico": 0.33,
-        "social": 0
-      },
+      "bussola": { "economico": 0.33, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -133,10 +120,7 @@
     {
       "id": "policial",
       "rotulo": "policial",
-      "bussola": {
-        "economico": 0.42,
-        "social": 0
-      },
+      "bussola": { "economico": 0.42, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",
@@ -161,10 +145,7 @@
     {
       "id": "diplomata-e-auditor",
       "rotulo": "diplomata e auditor)",
-      "bussola": {
-        "economico": 0.5,
-        "social": 0
-      },
+      "bussola": { "economico": 0.5, "social": 0 },
       "efeitos": [
         {
           "indice": "atendimento",

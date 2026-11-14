@@ -4,23 +4,17 @@
   "nome": "Pena de morte",
   "descricao": "Se o Estado pode executar condenados por crimes graves.",
   "camada": "jogabilidade",
-  "esfera": "justica-e-prisoes",
   "classe": "constitucional",
+  "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
-    {
-      "id": "abolida",
-      "bussola": {
-        "social": -0.4
-      },
-      "efeitos": []
-    },
+    { "id": "abolida", "bussola": { "social": -0.4 }, "efeitos": [] },
     {
       "id": "crimes-graves",
       "rotulo": "Para crimes graves",
-      "bussola": {
-        "social": 0.7
-      },
+      "bussola": { "social": 0.7 },
       "efeitos": [
         {
           "indice": "liberdade_civil",

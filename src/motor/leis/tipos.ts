@@ -34,6 +34,24 @@ export const CLASSES = [
 ] as const;
 export type ClasseLei = (typeof CLASSES)[number];
 
+/**
+ * Canal: o caminho por onde a lei chega à vida do pop (plano das leis, 14/nov).
+ * imposto (cálculo de arrecadação), verba (gasto que vai à instituição),
+ * transferencia (gasto que vira renda de um estrato), preco (preço ou custo de
+ * um setor), regra (um módulo lê a lei), direito (muda uma liberdade). Lei
+ * cujo canal ainda não existe no motor fica em "espera", com o motivo.
+ */
+export const CANAIS = [
+  "imposto",
+  "verba",
+  "transferencia",
+  "preco",
+  "regra",
+  "direito",
+  "espera",
+] as const;
+export type Canal = (typeof CANAIS)[number];
+
 /** Efeito de jogabilidade. Receita, PIB e juros vêm do cálculo, não daqui. */
 export interface Efeito {
   /** Id de um índice de jogabilidade do mundo. */
@@ -52,6 +70,10 @@ interface LeiBase {
   classe?: ClasseLei;
   /** Instituição onde a lei mora (13/nov; o campo ainda se chama esfera). O ministério sai da caixa que leva a instituição. */
   esfera?: string;
+  /** Como a lei chega ao pop. */
+  canal: Canal;
+  /** Só no canal "espera": o que falta ("triagem" até a onda dela, ou a mecânica). */
+  espera?: string;
 }
 
 export interface LeiContinua extends LeiBase {

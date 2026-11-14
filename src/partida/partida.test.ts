@@ -239,9 +239,7 @@ describe("mesa", () => {
       depois.mesa?.flatMap((p) =>
         p.familia === "leis" ? [[p.tipo, p.motivo]] : [],
       ),
-    ).toEqual([
-      ["aviso", "lei-aprovada"],
-    ]);
+    ).toEqual([["aviso", "lei-aprovada"]]);
   });
 
   it("papel vetado vai à derrubada do veto, com a observação", () => {

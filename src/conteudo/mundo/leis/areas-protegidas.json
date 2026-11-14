@@ -5,20 +5,16 @@
   "descricao": "Parte do território guardada como parque ou reserva.",
   "camada": "jogabilidade",
   "esfera": "meio-ambiente",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": {
-    "min": 0,
-    "max": 1
-  },
+  "faixa": { "min": 0, "max": 1 },
   "passo": 0.01,
   "bussola": {
-    "ate": 0.4,
     "min": {},
-    "max": {
-      "economico": -0.2,
-      "social": -0.8
-    }
+    "max": { "economico": -0.2, "social": -0.8 },
+    "ate": 0.4
   },
   "efeitos": [
     {

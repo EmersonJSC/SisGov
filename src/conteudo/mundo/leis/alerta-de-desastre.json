@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "defesa-civil",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum",
       "rotulo": "nenhum",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "aviso-por-celular",
       "rotulo": "aviso por celular",
-      "bussola": {
-        "economico": -0.07,
-        "social": 0
-      },
+      "bussola": { "economico": -0.07, "social": 0 },
       "efeitos": [
         {
           "indice": "preparo_contra_desastres",
@@ -36,10 +32,7 @@
     {
       "id": "sirenes-em-areas-de-risco",
       "rotulo": "sirenes em áreas de risco",
-      "bussola": {
-        "economico": -0.13,
-        "social": 0
-      },
+      "bussola": { "economico": -0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "preparo_contra_desastres",
@@ -52,10 +45,7 @@
     {
       "id": "rede-nacional-de-monitoramento",
       "rotulo": "rede nacional de monitoramento",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0
-      },
+      "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "preparo_contra_desastres",

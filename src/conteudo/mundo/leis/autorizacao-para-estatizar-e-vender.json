@@ -6,33 +6,26 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "estatais",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "so-o-presidente",
       "rotulo": "só o presidente",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "o-congresso",
       "rotulo": "o Congresso",
-      "bussola": {
-        "economico": 0,
-        "social": -0.1
-      },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": []
     },
     {
       "id": "plebiscito",
       "rotulo": "plebiscito",
-      "bussola": {
-        "economico": 0,
-        "social": -0.2
-      },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": []
     }
   ]

@@ -6,24 +6,20 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "justica-e-prisoes",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "sem-cotas",
       "rotulo": "sem cotas",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "cotas-so-em-concursos-publicos",
       "rotulo": "cotas só em concursos públicos",
-      "bussola": {
-        "economico": -0.13,
-        "social": 0
-      },
+      "bussola": { "economico": -0.13, "social": 0 },
       "efeitos": [
         {
           "indice": "discriminacao",
@@ -42,10 +38,7 @@
     {
       "id": "tambem-vagas-reservadas-nos-conselhos-de-grandes-empresas",
       "rotulo": "também vagas reservadas nos conselhos de grandes empresas",
-      "bussola": {
-        "economico": -0.27,
-        "social": 0
-      },
+      "bussola": { "economico": -0.27, "social": 0 },
       "efeitos": [
         {
           "indice": "discriminacao",
@@ -64,10 +57,7 @@
     {
       "id": "tambem-cotas-de-contratacao-em-empresas-medias-e-grandes",
       "rotulo": "também cotas de contratação em empresas médias e grandes",
-      "bussola": {
-        "economico": -0.4,
-        "social": 0
-      },
+      "bussola": { "economico": -0.4, "social": 0 },
       "efeitos": [
         {
           "indice": "discriminacao",

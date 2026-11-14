@@ -7,24 +7,20 @@
   "origem": "planilha",
   "parte_de": "Peso da multa",
   "esfera": "infraestrutura-e-transporte",
+  "canal": "espera",
+  "espera": "triagem",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "igual-para-todos",
       "rotulo": "igual para todos",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": []
     },
     {
       "id": "pelo-preco-do-carro",
       "rotulo": "pelo preço do carro",
-      "bussola": {
-        "economico": -0.1,
-        "social": 0.15
-      },
+      "bussola": { "economico": -0.1, "social": 0.15 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
@@ -37,10 +33,7 @@
     {
       "id": "pelo-salario",
       "rotulo": "pelo salário",
-      "bussola": {
-        "economico": -0.2,
-        "social": 0.3
-      },
+      "bussola": { "economico": -0.2, "social": 0.3 },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
