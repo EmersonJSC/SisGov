@@ -18,7 +18,7 @@ import {
   empresasDoPais,
 } from "../../partida";
 import { comPedido } from "../fila";
-import { BarraDoTopo } from "./BarraDoTopo";
+import { BarraDoTopo, type MenuDaPartida } from "./BarraDoTopo";
 import { DocumentoLei, type Desvio, type Retangulo } from "./DocumentoLei";
 import { Governo } from "./Governo";
 import { PREFIXO_MINISTRO } from "./organico";
@@ -27,7 +27,7 @@ import { TrocaDeMinistro } from "./TrocaDeMinistro";
 import { Eleicao } from "./Eleicao";
 import { Programas } from "./Programas";
 import { Mercado } from "./Mercado";
-import { MesaDePapeis } from "./MesaDePapeis";
+import { MesaDePapeis, papeisParaDecidir } from "./MesaDePapeis";
 import { NaoPromulgadas, naoPromulgadas } from "./NaoPromulgadas";
 import { afetadasDe } from "./afetadas";
 import { PainelDeAfetadas } from "./PainelDeAfetadas";
@@ -48,6 +48,7 @@ interface Props {
   setExtras: (f: Pedido[]) => void;
   onPassar: () => void;
   aviso: string;
+  menu: MenuDaPartida;
 }
 
 /** Nível da visão que corresponde a um valor do motor. */
@@ -64,6 +65,7 @@ export function TelaMapa({
   setExtras,
   onPassar,
   aviso,
+  menu,
 }: Props) {
   const visao = useMemo(() => montarVisao(partida), [partida]);
   // o mapa só tem as leis promulgadas; as outras vêm pela janela do botão
@@ -200,8 +202,17 @@ export function TelaMapa({
       <BarraDoTopo
         partida={partida}
         pedidos={fila.length + extras.length}
+        papeis={papeisParaDecidir(partida).length}
         aviso={aviso}
         onPassar={onPassar}
+        onAbrir={(j) =>
+          j === "eleicao"
+            ? setEleicao(true)
+            : j === "mercado"
+              ? setMercado(true)
+              : setMesa(true)
+        }
+        menu={menu}
       />
       <main className="area-mapa">
         <MapaOrganico
@@ -209,6 +220,7 @@ export function TelaMapa({
           selecionado={selecionado}
           onSelecionar={selecionar}
           onAbrirPainel={abrirPainel}
+          onAbrirGoverno={() => setGoverno(true)}
         />
         {afetadas && !lei && !partida.estado.encerrada ? (
           <PainelDeAfetadas
@@ -283,6 +295,13 @@ export function TelaMapa({
           onClick={() => setNaoProm(!naoProm)}
         >
           Leis não promulgadas ({naoPromulgadas(visao).length})
+        </button>
+        <button
+          type="button"
+          className="np-botao np-programas"
+          onClick={() => setProgramas(!programas)}
+        >
+          Programas
         </button>
         {naoProm ? (
           <NaoPromulgadas

@@ -3,6 +3,7 @@ import {
   avancar,
   carregarPartida,
   criarPartida,
+  salvarPartida,
   type ComecoDoJogador,
   type OpcoesPartida,
   type Partida,
@@ -13,6 +14,15 @@ import { TelaInicio } from "./inicio/TelaInicio";
 import { TelaMapa } from "./mapa/TelaMapa";
 
 const CHAVE = "sisgov-partida";
+
+function guardar(partida: Partida): boolean {
+  try {
+    localStorage.setItem(CHAVE, salvarPartida(partida));
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 function lerSalvo(): string | null {
   try {
@@ -42,7 +52,9 @@ export function App() {
     teste: Pick<OpcoesPartida, "semCongresso" | "semSenado">,
   ) => {
     try {
-      trocar(criarPartida(pais, semente, { ...teste, comeco }));
+      const nova = criarPartida(pais, semente, { ...teste, comeco });
+      guardar(nova);
+      trocar(nova);
     } catch (e) {
       setAviso((e as Error).message);
     }
@@ -61,7 +73,10 @@ export function App() {
   const passar = () => {
     if (!partida) return;
     try {
-      trocar(avancar(partida, [...fila, ...extras]));
+      // salva sozinho a cada turno, para não perder a partida
+      const depois = avancar(partida, [...fila, ...extras]);
+      guardar(depois);
+      trocar(depois);
     } catch (e) {
       setAviso((e as Error).message);
     }
@@ -86,6 +101,21 @@ export function App() {
       setExtras={setExtras}
       onPassar={passar}
       aviso={aviso}
+      menu={{
+        onSalvar: () =>
+          setAviso(
+            guardar(partida) ? "Partida salva." : "Não deu para salvar.",
+          ),
+        onCarregar: carregar,
+        onRecomecar: () => {
+          if (
+            window.confirm(
+              "Recomeçar? A partida de agora fica no último salvo.",
+            )
+          )
+            trocar(null);
+        },
+      }}
     />
   );
 }

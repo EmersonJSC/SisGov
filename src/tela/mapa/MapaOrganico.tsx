@@ -153,12 +153,15 @@ export function MapaOrganico({
   selecionado,
   onSelecionar,
   onAbrirPainel,
+  onAbrirGoverno,
 }: {
   visao: VisaoPartida;
   selecionado: string | null;
   onSelecionar: (id: string | null) => void;
   /** Botão ao lado da bolha: abre o painel do que atrapalha e ajuda. */
   onAbrirPainel: (id: string) => void;
+  /** Clique na trindade: a janela do Governo. */
+  onAbrirGoverno?: () => void;
 }) {
   const [visaoId, setVisaoId] = useState<IdDaVisao>("prioridade");
   const { preparo, registro, assentada, arrastar, soltar } = useMapaVivo(
@@ -798,6 +801,7 @@ export function MapaOrganico({
           <TrindadeDoMapa
             trindade={hierarquia.trindade}
             fixos={preparo.fixos}
+            onClicar={onAbrirGoverno}
           />
         ) : null}
         {preparo.nos.map((n) => {

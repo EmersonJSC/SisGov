@@ -50,8 +50,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 | 14. Mídia              | 1      | 1      | 8       |
 | 15. Mundo              | 2      | 1      | 8       |
 | 16. Economia           | 4      | 4      | 31      |
-| 17. Tela e mesa        | 10     | 8      | 6       |
-| **Total**              | **75** | **41** | **102** |
+| 17. Tela e mesa        | 11     | 8      | 5       |
+| **Total**              | **76** | **41** | **101** |
 
 ---
 
@@ -418,7 +418,7 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 - ✅ **R17.20** Painel Atrapalham / Ajudam de ministro, instituição e índice.
 - ✅ **R17.21** Barra do topo: caixa, dívida, PIB, apoio, eleição e passar o turno.
 - ✅ **R17.22** Navegação: busca, enquadrar, miniatura, pinça, roda, setas e teclado.
-- ☐ **R17.23** Onde moram as janelas que saíram da barra (Governo, Programas, Eleição, Mesa, Mercado, Pregão, Salvar, Carregar, Recomeçar): existem, mas nada as abre. O autor vai dizer.
+- ✅ **R17.23** Onde moram as janelas (13/nov): menu no brasão (Salvar, Carregar, Recomeçar; salva sozinho a cada turno); Governo pelo clique na trindade; Eleição pelos medidores de apoio e eleição; Mercado pelo do PIB; Mesa por um botão ao lado de Passar o turno; Programas por um botão ao lado de Leis não promulgadas. Pregão (protótipo sem motor) fica escondido.
 - ✅ **R17.24** Trocar ministro pelo mapa (R6.24): o painel do ministério clicado traz a troca e o preço dela.
 - ◐ **R17.15** Causa e efeito: "o que empurra" no índice, "a conta que vem" na lei, marca da lei no gráfico. (Fios de efeito e o painel Atrapalham / Ajudam; faltam a conta que vem e o gráfico.)
 

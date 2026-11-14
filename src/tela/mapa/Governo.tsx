@@ -58,8 +58,10 @@ export function Governo({
 
   const origem = (f: Ficha) =>
     f.origem === "tecnico" ? "técnico" : (partidos[f.origem] ?? f.origem);
+  const naChapa = new Set(Object.values(partida.opcoes.comeco?.chapa ?? {}));
   const livres = rg.pessoas.filter(
-    (p) => !governo.caixas.some((c) => c.ministro === p.id),
+    (p) =>
+      !naChapa.has(p.id) && !governo.caixas.some((c) => c.ministro === p.id),
   );
   const nomeacao = (caixa: string) =>
     extras.find((x) => x.tipo === "nomear" && x.caixa === caixa);

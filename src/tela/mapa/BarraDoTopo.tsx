@@ -2,7 +2,8 @@
  * Barra do topo: o estado do país de relance, como nos jogos de estratégia.
  * Esquerda o brasão e o país; centro poucos medidores (ícone, número e, onde faz
  * sentido, uma barra que enche); direita a data e a placa de passar o turno. O
- * detalhe vem num bilhete ao passar o mouse. Menus não moram aqui.
+ * detalhe vem num bilhete ao passar o mouse. O brasão abre o menu da partida
+ * (salvar, carregar, recomeçar); alguns medidores abrem a janela deles.
  */
 import { useId, useState } from "react";
 import { createPortal } from "react-dom";
@@ -31,7 +32,12 @@ interface Medida {
   titulo: string;
   linhas: Linhas;
   rodape?: string;
+  /** Janela que o clique no medidor abre. */
+  abre?: JanelaDaBarra;
 }
+
+/** Janelas que a barra abre. */
+export type JanelaDaBarra = "eleicao" | "mercado" | "mesa";
 
 /** Dívida acima desta fração do PIB enche a barra toda. */
 const DIVIDA_CHEIA = 1.5;
@@ -47,7 +53,13 @@ function prazo(meses: number | null): string {
   return `${meses} ${meses === 1 ? "mês" : "meses"}`;
 }
 
-function Medidor({ m }: { m: Medida }) {
+function Medidor({
+  m,
+  onAbrir,
+}: {
+  m: Medida;
+  onAbrir: (j: JanelaDaBarra) => void;
+}) {
   const [posicao, setPosicao] = useState<{ x: number; y: number } | null>(null);
   const id = useId();
   const mostrar = (alvo: HTMLElement) => {
@@ -61,7 +73,8 @@ function Medidor({ m }: { m: Medida }) {
     <>
       <button
         type="button"
-        className={`topo-medidor topo-${m.estado}`}
+        className={`topo-medidor topo-${m.estado}${m.abre ? " topo-abre" : ""}`}
+        onClick={m.abre ? () => onAbrir(m.abre!) : undefined}
         aria-label={`${m.nome}: ${m.valor}`}
         aria-describedby={posicao ? id : undefined}
         onMouseEnter={(e) => mostrar(e.currentTarget)}
@@ -100,6 +113,7 @@ function Medidor({ m }: { m: Medida }) {
               </div>
             ))}
             {m.rodape && <p>{m.rodape}</p>}
+            {m.abre && <p className="topo-dica-clique">Clique para abrir.</p>}
           </div>,
           document.body,
         )}
@@ -162,6 +176,8 @@ function medidas(partida: Partida): Medida[] {
         ["Hoje", `${dinheiro(e.pib_nominal, moeda)} por ano`],
         ["Crescimento real", `${um(e.crescimento_real)}% ao ano`],
       ],
+      rodape: "O que o país produz, compra e vende.",
+      abre: "mercado",
     },
     {
       nome: "Apoio",
@@ -180,6 +196,7 @@ function medidas(partida: Partida): Medida[] {
         ],
       ],
       rodape: "Acima de 50%, o governo vence.",
+      abre: "eleicao",
     },
     {
       nome: "Eleição",
@@ -189,35 +206,92 @@ function medidas(partida: Partida): Medida[] {
       titulo: "Próxima eleição",
       linhas: [["Em", prazo(meses)]],
       rodape: "O primeiro turno cai um turno antes do fim do mandato.",
+      abre: "eleicao",
     },
   ];
 }
 
+/** O que o menu do brasão faz. */
+export type MenuDaPartida = Readonly<{
+  onSalvar: () => void;
+  onCarregar: () => void;
+  onRecomecar: () => void;
+}>;
+
 export function BarraDoTopo({
   partida,
   pedidos,
+  papeis,
   aviso,
   onPassar,
+  onAbrir,
+  menu,
 }: {
   partida: Partida;
   pedidos: number;
+  /** Papéis esperando decisão na mesa. */
+  papeis: number;
   aviso: string;
   onPassar: () => void;
+  onAbrir: (j: JanelaDaBarra) => void;
+  menu: MenuDaPartida;
 }) {
   const { estado } = partida;
+  const [menuAberto, setMenuAberto] = useState(false);
+  const escolher = (acao: () => void) => () => {
+    setMenuAberto(false);
+    acao();
+  };
   const ano = Math.floor(estado.turno / 6) + 1;
   const mes = (estado.turno % 6) * 2 + 1;
   return (
     <header className="topo">
       <div className="topo-pais">
-        <span className="topo-brasao">
+        <button
+          type="button"
+          className="topo-brasao"
+          aria-label="Menu da partida"
+          aria-expanded={menuAberto}
+          onClick={() => setMenuAberto(!menuAberto)}
+        >
           <Icone nome="flag-variant-outline" tamanho={26} />
-        </span>
+        </button>
+        {menuAberto &&
+          createPortal(
+            <div
+              className="topo-menu"
+              role="menu"
+              style={{ left: 16, top: 56 }}
+            >
+              <button
+                type="button"
+                role="menuitem"
+                onClick={escolher(menu.onSalvar)}
+              >
+                Salvar
+              </button>
+              <button
+                type="button"
+                role="menuitem"
+                onClick={escolher(menu.onCarregar)}
+              >
+                Carregar
+              </button>
+              <button
+                type="button"
+                role="menuitem"
+                onClick={escolher(menu.onRecomecar)}
+              >
+                Recomeçar
+              </button>
+            </div>,
+            document.body,
+          )}
         <strong>{nomeDoPais(partida.pais)}</strong>
       </div>
       <div className="topo-medidores" role="group" aria-label="Estado do país">
         {medidas(partida).map((m) => (
-          <Medidor key={m.nome} m={m} />
+          <Medidor key={m.nome} m={m} onAbrir={onAbrir} />
         ))}
       </div>
       {aviso && <span className="topo-aviso">{aviso}</span>}
@@ -225,6 +299,16 @@ export function BarraDoTopo({
         <small>Ano {ano}</small>
         <strong>mês {mes}</strong>
       </div>
+      <button
+        type="button"
+        className="placa-ferro placa-ferro-pequena topo-mesa"
+        onClick={() => onAbrir("mesa")}
+      >
+        Mesa
+        <small>
+          {papeis} {papeis === 1 ? "papel" : "papéis"}
+        </small>
+      </button>
       <button
         type="button"
         className="placa-ferro topo-turno"

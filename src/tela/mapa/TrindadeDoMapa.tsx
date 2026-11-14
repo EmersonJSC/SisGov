@@ -38,9 +38,12 @@ const PAPEIS = [
 export const TrindadeDoMapa = memo(function TrindadeDoMapa({
   trindade,
   fixos,
+  onClicar,
 }: {
   trindade: VisaoTrindade;
   fixos: readonly FixoDoMapa[];
+  /** Clicar na trindade abre a janela do Governo. */
+  onClicar?: () => void;
 }) {
   const centro = fixos.find((f) => f.id === CENTRO_DA_TRINDADE);
   const rostos = PAPEIS.map((p) => ({
@@ -51,7 +54,13 @@ export const TrindadeDoMapa = memo(function TrindadeDoMapa({
   if (!centro) return null;
   const contorno = rostos.map((r) => `${r.f!.x},${r.f!.y}`).join(" ");
   return (
-    <g className="trindade">
+    <g
+      className="trindade"
+      style={onClicar ? { cursor: "pointer" } : undefined}
+      onPointerDown={onClicar ? (e) => e.stopPropagation() : undefined}
+      onClick={onClicar}
+    >
+      <title>Governo: ministérios e órgãos</title>
       <polygon
         points={contorno}
         fill={trindade.cor}
