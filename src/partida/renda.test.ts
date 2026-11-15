@@ -3,9 +3,13 @@
 import { describe, expect, it } from "vitest";
 import { avancar, criarPartida, jogar, montarVisao, type Partida } from ".";
 import {
+  arrecadacao,
   consumoDasCestas,
+  dinheiroFora,
   motivoTerritoriosInvalidos,
   popsPorTerritorio,
+  saidaDoTurno,
+  tomada,
 } from "../motor";
 
 const base = (pais = "teste") => criarPartida(pais, 42, { semCongresso: true });
@@ -265,5 +269,104 @@ describe("estados", () => {
         { id: "a", nome: "A", pessoas: 0.5, campo: 0.1 },
       ]),
     ).toContain("precisam dar 1");
+  });
+});
+
+describe("saída", () => {
+  const brasil = () => base("brasil-2026");
+  const lei = (id: string, valor: number | string) => ({
+    tipo: "mudar_lei" as const,
+    lei: id,
+    valor,
+  });
+  // Pops com o padrão de vida no chão (estrato escolhido).
+  const comPadrao = (p: Partida, padrao: number, estrato?: string) => ({
+    ...p.estado,
+    pops: Object.fromEntries(
+      Object.entries(p.estado.pops).map(([id, x]) => [
+        id,
+        !estrato ||
+        p.regras.pops.find((t) => t.id === id)?.estrato === estrato
+          ? { ...x, padrao }
+          : x,
+      ]),
+    ),
+  });
+  const turnos = (p: Partida, estado: Partida["estado"], n: number) => {
+    let e = estado;
+    for (let i = 0; i < n; i++) e = saidaDoTurno(p.regras, e);
+    return e;
+  };
+
+  it("a tomada soma a opção e a régua pela posição na faixa", () => {
+    const p = brasil();
+    expect(tomada(p.regras.leis, {}, "informal")).toBe(0);
+    expect(
+      tomada(p.regras.leis, { "seguro-folha": "com-familia" }, "informal"),
+    ).toBeCloseTo(0.1);
+  });
+
+  it("encargo na folha leva formais ao informal; sem fiscal, leva mais", () => {
+    const p = brasil();
+    const inf = (pedidos: ReturnType<typeof lei>[]) =>
+      jogar(p, 12, pedidos).estado.pops["informais-urbanos"].pessoas;
+    const com = inf([lei("seguro-folha", "com-familia")]);
+    expect(com).toBeGreaterThan(inf([]) * 1.05);
+    expect(
+      inf([
+        lei("seguro-folha", "com-familia"),
+        lei("fiscalizacao-do-trabalho", 0),
+      ]),
+    ).toBeGreaterThan(com);
+  });
+
+  it("padrão de vida baixo leva gente para fora; quem melhora volta", () => {
+    const p = brasil();
+    const fora = turnos(p, comPadrao(p, 25), 12);
+    const s = fora.saida;
+    expect(s?.fator).toBeLessThan(1);
+    // O rico sai mais que o pobre; quem não declara (crianças) não sai.
+    expect(s?.fora["profissionais-liberais"]).toBeGreaterThan(
+      s?.fora["operarios-fabrica"] ?? 0,
+    );
+    expect(s?.fora.criancas ?? 0).toBe(0);
+    const voltou = turnos(p, { ...comPadrao(p, 75), saida: s }, 12);
+    expect(voltou.saida?.fora["profissionais-liberais"]).toBeLessThan(
+      s?.fora["profissionais-liberais"] ?? 0,
+    );
+  });
+
+  it("quem emigra sai da população no turno seguinte, e os pops fecham", () => {
+    const p = brasil();
+    const e = turnos(p, comPadrao(p, 20), 1);
+    const depois = avancar({ ...p, estado: e });
+    expect(depois.estado.essenciais.populacao).toBeLessThan(
+      p.estado.essenciais.populacao,
+    );
+  });
+
+  it("dinheiro do rico sai com o padrão baixo; o controle segura", () => {
+    const p = brasil();
+    const sai = turnos(p, comPadrao(p, 20, "rico"), 12);
+    expect(sai.saida?.dinheiro).toBeGreaterThan(0.05);
+    const controle = turnos(
+      p,
+      {
+        ...comPadrao(p, 20, "rico"),
+        leis: { ...p.estado.leis, "controle-de-capital": "controle-de-saida" },
+      },
+      12,
+    );
+    expect(controle.saida?.dinheiro).toBeLessThan(
+      (sai.saida?.dinheiro ?? 0) / 2,
+    );
+  });
+
+  it("o dinheiro fora não paga o imposto de renda do rico", () => {
+    const p = brasil();
+    const sai = turnos(p, comPadrao(p, 20, "rico"), 12);
+    const arrec = (e: Partida["estado"]) =>
+      arrecadacao(p.regras, e.leis, e.essenciais, dinheiroFora(p.regras, e));
+    expect(arrec(sai)).toBeLessThan(arrec(p.estado));
   });
 });

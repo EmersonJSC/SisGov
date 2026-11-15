@@ -15,6 +15,7 @@ import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
 import {
   arrecadacaoPorBase,
+  dinheiroFora,
   gastoPorLei,
   situacoesDeCapacidade,
 } from "./economia";
@@ -222,7 +223,9 @@ export function indicesDoFisco(
   const beneficios = p.leis_gasto.reduce((s, id) => s + (gasto[id] ?? 0), 0);
   const e = estado.essenciais;
   const contribuicao =
-    ((arrecadacaoPorBase(regras, estado.leis, e)[p.base_contribuicao] ?? 0) /
+    ((arrecadacaoPorBase(regras, estado.leis, e, dinheiroFora(regras, estado))[
+      p.base_contribuicao
+    ] ?? 0) /
       e.pib_nominal) *
     100;
   return {

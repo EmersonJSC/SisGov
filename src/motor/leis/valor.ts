@@ -47,3 +47,29 @@ export function fracaoDaBussola(
   const t = ((valor ?? min) - min) / (ate - min);
   return Math.min(1, Math.max(0, t));
 }
+
+/**
+ * Soma de uma tomada em todas as leis em vigor: a opção dá `valores[chave]`;
+ * a régua dá `valores[chave]` × a posição na faixa. O motor não conhece as leis,
+ * só a chave.
+ */
+export function tomada(
+  leis: Record<string, Lei>,
+  vigentes: Record<string, ValorLei>,
+  chave: string,
+): number {
+  let soma = 0;
+  for (const [id, valor] of Object.entries(vigentes)) {
+    const lei = leis[id];
+    if (!lei) continue;
+    if (lei.forma === "opcoes") {
+      soma += lei.opcoes.find((o) => o.id === valor)?.valores?.[chave] ?? 0;
+      continue;
+    }
+    const v = lei.valores?.[chave];
+    if (v === undefined || typeof valor !== "number") continue;
+    const { min, max } = lei.faixa;
+    soma += max > min ? (v * (valor - min)) / (max - min) : 0;
+  }
+  return soma;
+}

@@ -42,6 +42,7 @@ import {
   motivoTerritoriosInvalidos,
   type Territorio,
   type RegraDaDemografia,
+  type RegraDaSaida,
   type RegraDoEmprego,
   type ValorLei,
   ehEstrato,
@@ -192,6 +193,7 @@ function carregarPops(): TipoPop[] {
     divisao: "divisao" in t ? (t.divisao as TipoPop["divisao"]) : undefined,
     dependente: "dependente" in t ? (t.dependente as number) : undefined,
     filhos: "filhos" in t ? (t.filhos as TipoPop["filhos"]) : undefined,
+    emigra: "emigra" in t ? (t.emigra as number) : undefined,
   }));
   const motivo = motivoEscadasInvalidas(tipos) ?? motivoFontesInvalidas(tipos);
   if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);
@@ -219,6 +221,24 @@ function carregarDemografia(): RegraDaDemografia {
       );
   if (!(r.anos_crianca > 0))
     throw new Error("mundo/pops/pops.json › demografia: anos_crianca > 0");
+  return r;
+}
+
+/** Informal, emigrar e dinheiro para fora (passo G). */
+function carregarSaida(): RegraDaSaida {
+  const r = tiposPops.saida as RegraDaSaida;
+  const ids = new Set(tiposPops.pops.map((t) => t.id));
+  const erro = (m: string) => new Error(`mundo/pops/pops.json › saida: ${m}`);
+  if (r.informal)
+    for (const id of [r.informal.pop, ...r.informal.formais])
+      if (!ids.has(id)) throw erro(`pop "${id}" não existe`);
+  if (r.informal?.lei_fiscal && !carregarLeis()[r.informal.lei_fiscal])
+    throw erro(`lei "${r.informal.lei_fiscal}" não existe`);
+  for (const parte of [r.informal, r.emigrar, r.dinheiro])
+    if (parte && !(parte.ritmo > 0 && parte.ritmo <= 1))
+      throw erro("ritmo entre 0 e 1");
+  if (r.dinheiro && !r.dinheiro.estratos.every(ehEstrato))
+    throw erro("estrato do dinheiro não existe");
   return r;
 }
 
@@ -619,6 +639,7 @@ export function criarPartida(
     emprego: carregarEmprego(),
     demografia: carregarDemografia(),
     territorios: carregarTerritorios(pais),
+    saida: carregarSaida(),
     grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),

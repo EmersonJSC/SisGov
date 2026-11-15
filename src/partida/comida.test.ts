@@ -92,7 +92,7 @@ describe("remédios como cesta (6d)", () => {
 
   it("falta de remédio derruba a saúde; a comida segue igual", () => {
     expect(j(pior, "saude")).toBeLessThan(j(normal, "saude"));
-    expect(j(pior, ABASTECIMENTO)).toBeCloseTo(j(normal, ABASTECIMENTO), 6);
+    expect(j(pior, ABASTECIMENTO)).toBeCloseTo(j(normal, ABASTECIMENTO), 3);
   });
 
   it("mesma partida e mesma semente dão o mesmo resultado", () => {

@@ -245,6 +245,14 @@ function conferirContas(c: Contexto, dado: Objeto) {
     !(ehNumero(dado.arrecada) && dado.arrecada > 0 && dado.arrecada <= 10)
   )
     c.erro("arrecada", "precisa ser % do PIB entre 0 e 10");
+  if (
+    dado.valores !== undefined &&
+    (!ehObjeto(dado.valores) ||
+      !Object.values(dado.valores).every(
+        (n) => typeof n === "number" && Number.isFinite(n),
+      ))
+  )
+    c.erro("valores", "precisa ser números por chave");
   if (dado.encolhe !== undefined) {
     const en = dado.encolhe;
     if (

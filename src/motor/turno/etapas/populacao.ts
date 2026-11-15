@@ -8,15 +8,18 @@ import {
 } from "../../grupos";
 import { vazamento } from "../../fisco";
 import { desvioDosOrgaos, magoasDoGoverno } from "../../governo";
-import { lucroDosSetores, migrarSetores, precoDosSetores } from "../../mercado";
+import { migrarSetores, precoDosSetores } from "../../mercado";
 import { posicaoDoPais } from "../../mundo";
-import type { ValorLei } from "../../leis";
+import { tomada, type ValorLei } from "../../leis";
 import {
   type FontesDaRenda,
   type Pop,
   type Estrato,
   calcularPops,
   andarDemografia,
+  andarDinheiro,
+  andarEmigracao,
+  andarInformal,
   andarEmprego,
   migrarNaFaixa,
   migrarPops,
@@ -25,8 +28,17 @@ import {
 } from "../../populacao";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
-import { doTurno, gastoPorLei, impostoPorEstrato } from "./economia";
-import { todosIndices, comIndicesDasCestas } from "./jogabilidade";
+import {
+  dinheiroFora,
+  doTurno,
+  gastoPorLei,
+  impostoPorEstrato,
+} from "./economia";
+import {
+  PADRAO_INICIAL,
+  todosIndices,
+  comIndicesDasCestas,
+} from "./jogabilidade";
 
 /**
  * Dinheiro das leis de transferência que chega a cada estrato, por ano. O
@@ -264,7 +276,12 @@ export function pops(regras: Regras, estado: Estado): Record<string, Pop> {
     populacao: e.populacao,
     pib_nominal: e.pib_nominal,
     imposto_renda: 0,
-    impostos: impostoPorEstrato(regras, estado.leis, e),
+    impostos: impostoPorEstrato(
+      regras,
+      estado.leis,
+      e,
+      dinheiroFora(regras, estado),
+    ),
     transferencias: t.estratos,
     transferencias_pop: t.pops,
     migracao: estado.migracao,
@@ -351,7 +368,8 @@ export function setores(regras: Regras, estado: Estado) {
   );
 }
 /** 8. Pops e grupos: renda dos pops, depois satisfação dos grupos. */
-export const popsEGrupos: Etapa = (regras, estado) => {
+export const popsEGrupos: Etapa = (regras, antes) => {
+  const estado = comEmigrados(antes);
   const comPops = comIndicesDasCestas(regras, {
     ...estado,
     pops: pops(regras, estado),
@@ -360,12 +378,15 @@ export const popsEGrupos: Etapa = (regras, estado) => {
     ...comPops,
     grupos: grupos(regras, comPops, estado.marco),
   };
-  return empregoDoTurno(regras, {
-    ...comGrupos,
-    deslize: deslize(regras, comGrupos),
-    migracao: migracao(regras, comGrupos),
-    setores: setores(regras, comGrupos),
-  });
+  return saidaDoTurno(
+    regras,
+    empregoDoTurno(regras, {
+      ...comGrupos,
+      deslize: deslize(regras, comGrupos),
+      migracao: migracao(regras, comGrupos),
+      setores: setores(regras, comGrupos),
+    }),
+  );
 };
 /**
  * Vagas de cada pop contra o turno 0: a capacidade dos setores onde ele
@@ -456,5 +477,97 @@ export function empregoDoTurno(regras: Regras, estado: Estado): Estado {
           ? (base.ocupados0 * (1 - taxa)) / (1 - base.taxa0)
           : base.ocupados0,
     },
+  };
+}
+
+/**
+ * Quem emigrou no turno passado sai da população antes da renda ser
+ * calculada; as partes dos pops já foram ajustadas para isso (passo G).
+ */
+function comEmigrados(estado: Estado): Estado {
+  const s = estado.saida;
+  if (!s || s.fator === 1) return estado;
+  return {
+    ...estado,
+    saida: { ...s, fator: 1 },
+    essenciais: {
+      ...estado.essenciais,
+      populacao: estado.essenciais.populacao * s.fator,
+    },
+  };
+}
+/**
+ * Fiscalização: verba de hoje contra a do turno 0. Mais verba segura a fuga
+ * para o informal (até a metade); menos solta (até 1,5 vez).
+ */
+function fatorDaFiscalizacao(estado: Estado, lei: string | undefined) {
+  if (!lei) return 1;
+  const v = estado.leis[lei];
+  const v0 = estado.marco.leis[lei];
+  const hoje = typeof v === "number" ? v : 0;
+  const antes = typeof v0 === "number" ? v0 : 0;
+  if (!(hoje > 0)) return antes > 0 ? 1.5 : 1;
+  return Math.min(1.5, Math.max(0.5, antes / hoje));
+}
+/**
+ * Passo G: o encargo das leis leva formais ao informal; o padrão de vida baixo
+ * leva gente para fora do país e o dinheiro dos ricos também. As tomadas são
+ * `informal`, `trava_emigrar` e `trava_dinheiro`.
+ */
+export function saidaDoTurno(regras: Regras, estado: Estado): Estado {
+  const r = regras.saida;
+  if (!r) return estado;
+  const soma = (chave: string, leis = estado.leis) =>
+    tomada(regras.leis, leis, chave);
+  const base = estado.saida ?? {
+    encargo: soma("informal", estado.marco.leis),
+    fora: {},
+    dinheiro: 0,
+    fator: 1,
+  };
+  let migracao = estado.migracao;
+  let { encargo, fora, dinheiro } = base;
+  let fator = 1;
+  if (r.informal && estado.pops[r.informal.pop]) {
+    const alvo =
+      soma("informal") * fatorDaFiscalizacao(estado, r.informal.lei_fiscal);
+    const andou = andarInformal(
+      regras.pais.pops,
+      r.informal,
+      encargo,
+      alvo,
+      migracao,
+    );
+    encargo = andou.encargo;
+    migracao = andou.migracao;
+  }
+  if (r.emigrar) {
+    const andou = andarEmigracao(
+      regras.pops,
+      regras.pais.pops,
+      r.emigrar,
+      fora,
+      estado.pops,
+      PADRAO_INICIAL,
+      soma("trava_emigrar"),
+      migracao,
+    );
+    fora = andou.fora;
+    migracao = andou.migracao;
+    fator = andou.fator;
+  }
+  if (r.dinheiro)
+    dinheiro = andarDinheiro(
+      regras.pops,
+      r.dinheiro,
+      dinheiro,
+      estado.pops,
+      PADRAO_INICIAL,
+      soma("trava_dinheiro"),
+    );
+  return {
+    ...estado,
+    migracao,
+    saida: { encargo, fora, dinheiro, fator },
   };
 }

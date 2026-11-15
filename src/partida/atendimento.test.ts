@@ -144,7 +144,7 @@ describe("leis da rede: cada uma tem ganho e custo", () => {
     expect(conta.atendimento?.seguro).toBeLessThan(
       seguro.atendimento?.seguro ?? 0,
     );
-    expect(conta.atendimento?.encargo).toBeGreaterThan(0);
+    expect(conta.saida?.encargo).toBeGreaterThan(0);
     expect(custo(conta)).toBe(0);
   });
 

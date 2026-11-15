@@ -32,7 +32,8 @@ menos para a saúde (`fraco`), e o serviço duro faz gente largar a profissão
 
 Seguro na folha: parte do salário paga atendimento para quem tem emprego formal,
 sem sair do orçamento. Cada opção traz `valores.parte` (quem da folha entra) e
-`valores.informal` (parte dos `pops_encargo` que perde o emprego formal). O
+`valores.informal` (a tomada do informal: parte dos formais de `pops.json ›
+saida.informal` que perde o emprego formal; anda no passo G, motor/populacao). O
 segurado entra junto com os planos, antes da rede pública, mas pesa
 `peso_seguro` (paga tabela, não luxo) e o limite aos planos não o toca. Por isso
 a rede pública perde profissionais, e a verba dela pode cair sem perder

@@ -49,9 +49,6 @@ export function leisDoAtendimento(
         : 0,
     abandono: soma((id) => parteDaLei(regras, valores, id, "abandono")),
     seguro: parteDaLei(regras, valores, regra.lei_seguro),
-    informal:
-      parteDaLei(regras, valores, regra.lei_seguro, "informal") +
-      parteDaLei(regras, valores, regra.lei_conta, "informal"),
     procura: parteDaLei(regras, valores, regra.lei_gratuidade, "procura"),
     saida: parteDaLei(regras, valores, regra.lei_gratuidade, "saida"),
     cobranca: parteDaLei(regras, valores, regra.lei_cobranca, "cobranca"),
@@ -97,28 +94,14 @@ function fluxoDosProfissionais(
   });
 }
 
-/** Quem trocou de pop (formados, parados, encargo que foi para o informal). */
-function migracaoDoAtendimento(
-  regras: Regras,
-  regra: Regra,
-  estado: Estado,
-  antes: AtendimentoNoEstado,
-  nova: Rede,
-  troca: number,
-) {
-  const migracao = {
+/** Quem trocou de pop (formados e parados); o informal anda no passo G. */
+function migracaoDoAtendimento(regra: Regra, estado: Estado, troca: number) {
+  return {
     ...estado.migracao,
     [regra.pop_profissionais]:
       (estado.migracao?.[regra.pop_profissionais] ?? 0) + troca,
     [regra.pop_origem]: (estado.migracao?.[regra.pop_origem] ?? 0) - troca,
   };
-  for (const id of regra.pops_encargo) {
-    const saiu =
-      regras.pais.pops[id].parcela_pessoas * (nova.encargo - antes.encargo);
-    migracao[id] = (migracao[id] ?? 0) - saiu;
-    migracao[regra.pop_informal] = (migracao[regra.pop_informal] ?? 0) + saiu;
-  }
-  return migracao;
 }
 
 /** Os cinco índices que a rede resulta, na ordem que o estado guarda. */
@@ -236,7 +219,7 @@ export const atendimento: Etapa = (regras, estado) => {
   return {
     ...estado,
     essenciais: { ...estado.essenciais, populacao: novaPopulacao },
-    migracao: migracaoDoAtendimento(regras, regra, estado, s, nova, troca),
+    migracao: migracaoDoAtendimento(regra, estado, troca),
     atendimento: { ...nova, turmas, ...novos },
     base: baseDoAtendimento(regra, estado.base, s, nova, novos),
   };

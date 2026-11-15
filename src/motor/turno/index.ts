@@ -40,8 +40,10 @@ export {
   situacoesDeCapacidade,
   impostoSobreLucro,
   arrecadacao,
+  dinheiroFora,
   gastoDasLeis,
 } from "./etapas/economia";
+export { saidaDoTurno } from "./etapas/populacao";
 export {
   ritmoDasObras,
   apertoDoBolso,

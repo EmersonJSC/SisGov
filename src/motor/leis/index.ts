@@ -16,6 +16,7 @@ export {
   motivoValorInvalido,
   efeitosDoValor,
   fracaoDaBussola,
+  tomada,
   valorDesligado,
   type ValorLei,
 } from "./valor";

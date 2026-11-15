@@ -208,7 +208,6 @@ function conferirAtendimento(regras: Regras, obras: Obras) {
     r.pop_origem,
     r.pop_informal,
     ...r.pops_folha,
-    ...r.pops_encargo,
   ]);
   faltaLei(regras, "atendimento", [r.lei_verba, r.lei_basica], "continua");
   faltaLei(

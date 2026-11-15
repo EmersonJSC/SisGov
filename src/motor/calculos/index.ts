@@ -16,6 +16,8 @@ export interface Base {
    * não tira renda dos pops direto (consumo e lucro chegam por preço e lucro).
    */
   incide?: readonly Estrato[];
+  /** O dinheiro do estrato que está fora do país não paga esta base (passo G). */
+  foge?: boolean;
 }
 
 const TODOS = ["pobre", "medio", "rico"] as const;
@@ -24,7 +26,12 @@ const RICO = ["rico"] as const;
 // Consumo, lucro, emissões e terra usam a mesma curva (Laffer + evasão); muda só o que o país
 // declara (tamanho da base, pico e evasão). Ver calculos.md.
 export const BASES = {
-  renda: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA, incide: TODOS },
+  renda: {
+    arrecadar: arrecadacaoRenda,
+    padrao: PADRAO_RENDA,
+    incide: TODOS,
+    foge: true,
+  },
   consumo: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
   lucro: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
   emissoes: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
@@ -35,17 +42,24 @@ export const BASES = {
     arrecadar: arrecadacaoRenda,
     padrao: PADRAO_RENDA,
     incide: RICO,
+    foge: true,
   },
   // Dinheiro aplicado e ações acima de um valor.
   aplicacoes: {
     arrecadar: arrecadacaoRenda,
     padrao: PADRAO_RENDA,
     incide: RICO,
+    foge: true,
   },
   // Imóvel caro, em que se mora ou que se aluga.
   imovel: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA, incide: RICO },
   // Lucro que a empresa paga ao dono (dividendos).
-  capital: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA, incide: RICO },
+  capital: {
+    arrecadar: arrecadacaoRenda,
+    padrao: PADRAO_RENDA,
+    incide: RICO,
+    foge: true,
+  },
   // Lucro dos bancos (imposto extra sobre eles; o crédito encarece pelo índice).
   bancos: { arrecadar: arrecadacaoRenda, padrao: PADRAO_RENDA },
   // Cada transferência e pagamento pelo banco: pega todo mundo.

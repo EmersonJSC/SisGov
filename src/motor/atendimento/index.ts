@@ -59,8 +59,6 @@ export interface RegraDoAtendimento {
   lei_recusa: string;
   /** Pops com salário em folha: quem o seguro cobre. */
   pops_folha: string[];
-  /** Pops que perdem emprego formal quando a folha encarece. */
-  pops_encargo: string[];
   /** Pop para onde vai quem perde o emprego formal. */
   pop_informal: string;
   /** Pessoas que um profissional atende. */
@@ -163,8 +161,6 @@ export interface AtendimentoNoEstado {
   planos: number;
   /** Quantos desses vêm do seguro (0 a 1). */
   seguro: number;
-  /** Parte dos `pops_encargo` que o seguro já tirou do emprego formal (0 a 1). */
-  encargo: number;
   /** Quanto a mais cada pessoa usa a rede pública, hoje (0,2 = 20%). */
   procura: number;
   /** Parte da população que se forma por turno, no ritmo do turno 0. */
@@ -228,8 +224,6 @@ export interface LeisDoAtendimento {
   abandono: number;
   /** Parte da folha que o seguro cobre (0 a 1). */
   seguro: number;
-  /** Parte dos `pops_encargo` que a folha cara tira do emprego formal (0 a 1). */
-  informal: number;
   /** Quanto a mais cada pessoa usa a rede pública. */
   procura: number;
   /** Parte de quem tem plano que o larga pela rede de graça (0 a 1). */
@@ -566,7 +560,6 @@ export function atendimentoInicial(
     obras: [],
     planos,
     seguro,
-    encargo: leis.informal,
     procura,
     formacao:
       ((profissionais / populacao) * regra.aposentadoria) / TURNOS_POR_ANO,
@@ -716,7 +709,6 @@ export function andarAtendimento(
       vacinaAlvo(turno.leis, s.vacina_fora, s.indice / 100),
     ),
     liberdade: anda(s.liberdade, liberdadeAlvo(regra, turno.leis)),
-    encargo: anda(s.encargo, turno.leis.informal),
     procura: anda(s.procura, procuraAlvo(turno.leis, turno.com_bolso)),
     cobertura: anda(
       s.cobertura,

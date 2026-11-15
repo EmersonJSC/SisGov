@@ -864,11 +864,14 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 **Referências.** **Saída, voz e lealdade** (Hirschman, 1970): o insatisfeito sai (informal, emigrar, tirar dinheiro), reclama (voz: protesto, greve, voto) ou fica por apego (lealdade). Estudo de 14/nov.
 
 **No motor hoje**
-- ☐ R11.10 Insatisfeito sai: informalidade, fuga de dinheiro, emigração.
-- ◐ Só dois casos soltos: o Seguro na folha e os profissionais de saúde.
+- ✅ Passo G (15/nov): três saídas, cada uma com causa e tomada. Informal pelo custo da folha (tomada `informal` de qualquer lei; o Seguro na folha passou a usá-la; a verba da fiscalização do trabalho segura). Emigrar pelo padrão de vida abaixo do inicial (teto por estrato; volta quando melhora; tomada `trava_emigrar`). Dinheiro dos ricos pelo padrão de vida deles (até 30% da renda; não paga imposto de renda e patrimônio, não vira investimento; tomada `trava_dinheiro`, que o Controle de capital já liga).
+- ◐ Profissionais de saúde seguem com a regra própria de emigração.
+- ☐ Nenhuma lei liga `trava_emigrar` ainda (Imposto de saída e Taxa de saída para formados ficam para a revisão das leis).
+- ◐ Calibrar: sem lei, servidores e estudantes saem um pouco (população −0,1% em 4 anos), porque o salário do Estado não acompanha o PIB; subir o imposto do rico de 27,5% para 45% baixa o padrão dele só de 56,2 para 55,7, e o dinheiro não sai.
 
 **Em aberto**
-- Quando alguém sai: o que leva à informalidade, à fuga de dinheiro e à emigração, e com que números.
+- ~~Quando alguém sai: o que leva à informalidade, à fuga de dinheiro e à emigração, e com que números.~~ Decidido em 15/nov: informal pelo custo da folha (é o patrão quem decide a carteira); emigrar e tirar o dinheiro pelo padrão de vida (é a própria pessoa quem decide). Números genéricos, calibrar no fim.
+- Saída medida contra o próprio turno 0, não contra o resto do mundo: num país que cresce ninguém sai. Ver se a comparação com fora entra com o Mundo (15/nov).
 
 ---
 

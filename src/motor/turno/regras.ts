@@ -19,6 +19,7 @@ import type { Congresso, PedidoCongresso } from "../politica";
 import type {
   PopPais,
   RegraDaDemografia,
+  RegraDaSaida,
   RegraDoEmprego,
   Territorio,
   TipoPop,
@@ -85,6 +86,8 @@ export interface Regras {
   demografia?: RegraDaDemografia;
   /** Estados do país (motor/populacao, passo F); sem eles, o país é um estado só. */
   territorios?: Territorio[];
+  /** Informal, emigrar e dinheiro para fora (motor/populacao, passo G). */
+  saida?: RegraDaSaida;
   /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
   judiciario?: RegrasJudiciario;
   /** Papéis das leis de dinheiro (motor/fisco); sem ele, as regras não valem. */

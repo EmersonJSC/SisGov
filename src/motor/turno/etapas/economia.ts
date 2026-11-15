@@ -121,7 +121,8 @@ export const economiaReal: Etapa = (regras, estado) => {
       tendencia,
       marco[regra.indice_atraso] ?? atraso,
     );
-    const taxa = Math.max(0, base * animo + volatilidade * z);
+    const fugiu = 1 - parteDaRendaFora(regras, estado);
+    const taxa = Math.max(0, base * animo * fugiu + volatilidade * z);
     const capacidade = Object.values(c.prontas).reduce((s, v) => s + v, 0);
     const lucro = regras.mercado
       ? lucroDosSetores(
@@ -217,6 +218,22 @@ const posicaoNaFaixa = (lei: Lei, valor: ValorLei | undefined) =>
         Math.max(0, (valor - lei.faixa.min) / (lei.faixa.max - lei.faixa.min)),
       )
     : 0;
+/** Parte da renda de cada estrato que está fora do país (motor/populacao, passo G). */
+export function dinheiroFora(
+  regras: Regras,
+  estado: Estado,
+): Partial<Record<Estrato, number>> {
+  const d = regras.saida?.dinheiro;
+  const v = estado.saida?.dinheiro ?? 0;
+  if (!d || !(v > 0)) return {};
+  return Object.fromEntries(d.estratos.map((es) => [es, v]));
+}
+/** Parte da renda do país que está fora: não vira investimento aqui. */
+const parteDaRendaFora = (regras: Regras, estado: Estado) =>
+  Object.entries(dinheiroFora(regras, estado)).reduce(
+    (s, [es, v]) => s + (parteDaRenda(regras)[es as Estrato] ?? 0) * v,
+    0,
+  );
 /** Parte da renda do país que é de cada estrato, pela declaração do país. */
 export function parteDaRenda(regras: Regras): Partial<Record<Estrato, number>> {
   const parte: Partial<Record<Estrato, number>> = {};
@@ -251,6 +268,7 @@ export function arrecadacaoPorLei(
   regras: Regras,
   leis: Record<string, ValorLei>,
   e: IndicesEssenciais,
+  fora: Partial<Record<Estrato, number>> = {},
 ): Record<string, number> {
   const parte = parteDaRenda(regras);
   const total: Record<string, number> = {};
@@ -258,6 +276,7 @@ export function arrecadacaoPorLei(
     const lei = regras.leis[id];
     if (lei?.forma !== "continua" || !lei.calculo) continue;
     const { base, estrato } = lei.calculo;
+    const foge = (BASES[base] as Base).foge === true;
     const parametros = regras.pais.bases[base] ?? {
       ...BASES[base].padrao,
       parcela_pib: 0,
@@ -271,7 +290,10 @@ export function arrecadacaoPorLei(
         : fatorDaBase(regras, leis, base, undefined)
       : (estrato ? [estrato] : [...ESTRATOS]).reduce(
           (soma: number, es: Estrato) =>
-            soma + (parte[es] ?? 0) * fatorDaBase(regras, leis, base, es),
+            soma +
+            (parte[es] ?? 0) *
+              fatorDaBase(regras, leis, base, es) *
+              (foge ? 1 - (fora[es] ?? 0) : 1),
           0,
         );
     total[id] = BASES[base].arrecadar(
@@ -287,10 +309,11 @@ export function arrecadacaoPorBase(
   regras: Regras,
   leis: Record<string, ValorLei>,
   e: IndicesEssenciais,
+  fora: Partial<Record<Estrato, number>> = {},
 ): Partial<Record<IdBase, number>> {
   const total: Partial<Record<IdBase, number>> = {};
   for (const [id, valor] of Object.entries(
-    arrecadacaoPorLei(regras, leis, e),
+    arrecadacaoPorLei(regras, leis, e, fora),
   )) {
     const lei = regras.leis[id];
     if (lei.forma !== "continua" || !lei.calculo) continue;
@@ -306,11 +329,12 @@ export function impostoPorEstrato(
   regras: Regras,
   leis: Record<string, ValorLei>,
   e: IndicesEssenciais,
+  fora: Partial<Record<Estrato, number>> = {},
 ): Partial<Record<Estrato, number>> {
   const parte = parteDaRenda(regras);
   const total: Partial<Record<Estrato, number>> = {};
   for (const [id, valor] of Object.entries(
-    arrecadacaoPorLei(regras, leis, e),
+    arrecadacaoPorLei(regras, leis, e, fora),
   )) {
     const lei = regras.leis[id];
     if (lei.forma !== "continua" || !lei.calculo) continue;
@@ -329,8 +353,9 @@ export function arrecadacao(
   regras: Regras,
   leis: Record<string, ValorLei>,
   e: IndicesEssenciais,
+  fora: Partial<Record<Estrato, number>> = {},
 ): number {
-  const porBase = Object.values(arrecadacaoPorBase(regras, leis, e));
+  const porBase = Object.values(arrecadacaoPorBase(regras, leis, e, fora));
   return (porBase.reduce((a, b) => a + b, 0) / e.pib_nominal) * 100;
 }
 /**
@@ -406,7 +431,7 @@ export function arrecadacaoDasJanelas(regras: Regras, estado: Estado): number {
 export function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
   const e = estado.essenciais;
   const receitaPct =
-    arrecadacao(regras, estado.leis, e) +
+    arrecadacao(regras, estado.leis, e, dinheiroFora(regras, estado)) +
     regras.pais.receita_fora_das_leis +
     arrecadacaoDasJanelas(regras, estado);
   const pibTurno = e.pib_nominal / TURNOS_POR_ANO;

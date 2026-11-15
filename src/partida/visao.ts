@@ -8,6 +8,7 @@ import {
   empregoDoPais,
   maisBarata,
   arrecadacao,
+  dinheiroFora,
   BASES,
   gastoDasLeis,
   situacoesDeCapacidade,
@@ -86,7 +87,12 @@ function alertaDaLei(
   }
   if (lei.conta !== "gasto") return undefined;
   const receita =
-    arrecadacao(regras, estado.leis, estado.essenciais) +
+    arrecadacao(
+      regras,
+      estado.leis,
+      estado.essenciais,
+      dinheiroFora(regras, estado),
+    ) +
     regras.pais.receita_fora_das_leis;
   const gasto =
     gastoDasLeis(regras, estado.leis, estado.fiscal?.corte) +

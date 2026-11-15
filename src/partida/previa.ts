@@ -22,6 +22,7 @@ import {
   ritmoDasObras,
   TAXA_DERIVA,
   type ValorLei,
+  tomada,
 } from "../motor";
 import type { Partida } from "./index";
 
@@ -266,9 +267,11 @@ function previaDoAtendimento(
           aosPoucos: true,
         }),
       );
+  const encargo = (leis: typeof estado.leis) =>
+    tomada(regras.leis, leis, "informal");
   const informal =
-    (depois.informal - antes.informal) *
-    regra.pops_encargo.reduce(
+    (encargo({ ...estado.leis, [leiId]: valor }) - encargo(estado.leis)) *
+    (regras.saida?.informal?.formais ?? []).reduce(
       (soma, id) => soma + regras.pais.pops[id].parcela_pessoas * 100,
       0,
     );

@@ -155,3 +155,23 @@ declara em `treina.para`. Pop sem `treina` não muda.
 - `popsPorTerritorio`: os pops do campo (`moradia.pops_campo`) seguem a gente
   do campo de cada estado; os outros, a da cidade. A soma dá cada pop inteiro.
 - Ninguém lê ainda: voto, energia e governadores por estado vêm depois.
+
+## Saída (passo G, 15/nov)
+
+Regras em `pops.json › saida`; cada saída tem a sua causa e a sua tomada (a
+soma de `valores[chave]` das leis em vigor; na régua, × a posição na faixa).
+
+- Informal: tomada `informal` (parte dos `formais` que o custo da folha tira da
+  carteira). O encargo anda 5% do caminho por turno; quem sai vai ao pop
+  informal e volta se o encargo cai. A verba de `lei_fiscal` contra a do turno
+  0 multiplica o alvo (mais verba, até ½; menos, até 1,5×).
+- Emigrar: com o padrão de vida abaixo de 50, sai até o teto do estrato
+  (pobre 2%, médio 5%, rico 10%) ou o `emigra` do pop, × a piora; volta quando
+  melhora. Tomada `trava_emigrar` (0 a 1). Quem sai deixa a população no
+  turno seguinte; as partes dos outros pops sobem para eles não mudarem.
+  Profissionais de saúde têm regra própria (motor/atendimento) e `emigra` 0.
+- Dinheiro: com o padrão de vida médio dos ricos abaixo de 50, até 30% da renda
+  deles vai para fora. Tomada `trava_dinheiro` (controle de saída: 0,6). O que
+  está fora não paga as bases que `foge` (renda, patrimônio, aplicações,
+  dividendos) e não vira investimento aqui (motor/turno/economia).
+- Limite: quem emigra não encolhe o PIB; a mesma renda fica para menos gente.

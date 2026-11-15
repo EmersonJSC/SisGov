@@ -142,6 +142,11 @@ export interface LeiContinua extends LeiBase {
    */
   arrecada?: number;
   /**
+   * Tomadas que a lei liga (ex.: `informal`, `trava_emigrar`): o número vale
+   * no máximo da faixa e zero no mínimo (motor/leis/valor › tomada).
+   */
+  valores?: Record<string, number>;
+  /**
    * Posição na bússola no mínimo da faixa (`min`) e em `ate` (`max`); acima de
    * `ate` a lei fica na ponta. Sem `ate`, vale o máximo da faixa.
    */

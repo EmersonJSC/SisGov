@@ -15,6 +15,7 @@
       "id": "taxa-sobre-entrada-especulativa",
       "rotulo": "taxa sobre dinheiro que entra para especular",
       "bussola": { "economico": -0.15, "social": 0 },
+      "valores": { "trava_dinheiro": 0 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",
@@ -34,6 +35,7 @@
       "id": "controle-de-saida",
       "rotulo": "controle da saída de dinheiro",
       "bussola": { "economico": -0.3, "social": 0 },
+      "valores": { "trava_dinheiro": 0.6 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",

@@ -53,6 +53,8 @@ export interface TipoPop {
    * parte dele. Não paga imposto de estrato; a conta da casa conta com ele.
    */
   dependente?: number;
+  /** Quanto do pop pode emigrar no fundo do poço (0 a 1); sem isso, vale o do estrato (passo G). */
+  emigra?: number;
   /**
    * Só no dependente: filhos por adulto de cada estrato, em peso (ex.: o
    * pobre 1,3, o rico 0,7). A divisão do dependente sai dos adultos do país.
@@ -794,3 +796,12 @@ export function popsPorTerritorio(
     }),
   );
 }
+
+export {
+  andarDinheiro,
+  andarEmigracao,
+  andarInformal,
+  piora,
+  type RegraDaSaida,
+  type SaidaNoEstado,
+} from "./saida";
