@@ -175,3 +175,22 @@ soma de `valores[chave]` das leis em vigor; na régua, × a posição na faixa).
   está fora não paga as bases que `foge` (renda, patrimônio, aplicações,
   dividendos) e não vira investimento aqui (motor/turno/economia).
 - Limite: quem emigra não encolhe o PIB; a mesma renda fica para menos gente.
+
+## Serviço e direito (passo H, 15/nov)
+
+- Serviço (`pops.json › servicos`, `servicos.ts`): cada serviço aponta um
+  índice que diz quem é atendido (% da população) e um `valor`, a parte da
+  renda por pessoa do estrato `de` no turno 0 que o serviço inteiro vale
+  (saúde 8%, saneamento 3% da renda do pobre; para calibrar).
+- Quem chega antes: peso por estrato (`acesso`) ou por pop (`pops`, ex.: o
+  campo por último). `coberturaDosPops` enche a fila pelo peso até somar a
+  parte do índice, sem passar de 1 por pop; o pop guarda `servicos`.
+- O valor entra no `poder` do padrão de vida: parte atendida × valor (fixo do
+  turno 0, no marco). Perder o serviço baixa o padrão, e o pobre sente mais.
+  Serviço novo (educação, segurança) é uma linha a mais no bloco.
+- Direito: `TipoPop.direitos` diz quanto o pop liga para cada chave (−1 a 1);
+  as leis dão a chave pela tomada. O pop guarda `direito` (−1 a 1), fora do
+  padrão de vida; quem lê é o passo I. Nenhuma lei nem pop declara chave
+  ainda: entram na revisão das leis.
+- O índice "Padrão de vida" segue com base, leis e saneamento por fora (9 leis
+  apontam para ele); juntá-lo ao padrão dos pops fica para a revisão das leis.

@@ -45,6 +45,8 @@ export interface Marco {
   casa_razao?: Record<string, number>;
   /** Poder de compra de cada pop depois das cestas no turno 0 (padrão de vida). */
   poder_pop?: Record<string, number>;
+  /** Quanto vale cada serviço inteiro por pessoa, real, no turno 0 (passo H). */
+  valor_servico?: Record<string, number>;
 }
 
 /**

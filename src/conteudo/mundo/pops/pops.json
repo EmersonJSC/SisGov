@@ -46,6 +46,28 @@
       "ritmo": 0.1
     }
   },
+  "servicos": [
+    {
+      "id": "saude",
+      "indice": "atendimento",
+      "valor": 0.08,
+      "de": "pobre",
+      "acesso": { "pobre": 1, "medio": 1.5, "rico": 2 }
+    },
+    {
+      "id": "saneamento",
+      "indice": "saneamento",
+      "valor": 0.03,
+      "de": "pobre",
+      "acesso": { "pobre": 1, "medio": 1.5, "rico": 2 },
+      "pops": {
+        "pequenos-agricultores": 0.3,
+        "assalariados-rurais": 0.3,
+        "proprietarios-rurais": 0.6,
+        "informais-urbanos": 0.6
+      }
+    }
+  ],
   "pops": [
     {
       "id": "criancas",

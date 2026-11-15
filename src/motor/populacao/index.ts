@@ -55,6 +55,8 @@ export interface TipoPop {
   dependente?: number;
   /** Quanto do pop pode emigrar no fundo do poço (0 a 1); sem isso, vale o do estrato (passo G). */
   emigra?: number;
+  /** Quanto o pop liga para cada chave de direito das leis (−1 a 1; passo H). */
+  direitos?: Record<string, number>;
   /**
    * Só no dependente: filhos por adulto de cada estrato, em peso (ex.: o
    * pobre 1,3, o rico 0,7). A divisão do dependente sai dos adultos do país.
@@ -137,6 +139,10 @@ export interface Pop {
   poder?: number;
   /** Padrão de vida: 50 = o do turno 0, 1 a 99 (passo D). */
   padrao?: number;
+  /** Parte do pop que cada serviço atende (0 a 1; passo H). */
+  servicos?: Record<string, number>;
+  /** Direito que o pop sente, das leis em vigor (−1 a 1; passo H). */
+  direito?: number;
   /** Vive da família: fica fora da conta da casa (passo E). */
   dependente?: boolean;
   /**
@@ -805,3 +811,9 @@ export {
   type RegraDaSaida,
   type SaidaNoEstado,
 } from "./saida";
+export {
+  coberturaDosPops,
+  direitoDoPop,
+  rendaDoEstrato,
+  type Servico,
+} from "./servicos";

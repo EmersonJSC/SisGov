@@ -20,6 +20,7 @@ import type {
   PopPais,
   RegraDaDemografia,
   RegraDaSaida,
+  Servico,
   RegraDoEmprego,
   Territorio,
   TipoPop,
@@ -88,6 +89,8 @@ export interface Regras {
   territorios?: Territorio[];
   /** Informal, emigrar e dinheiro para fora (motor/populacao, passo G). */
   saida?: RegraDaSaida;
+  /** Serviços que o pop recebe e que valem renda no padrão de vida (passo H). */
+  servicos?: Servico[];
   /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
   judiciario?: RegrasJudiciario;
   /** Papéis das leis de dinheiro (motor/fisco); sem ele, as regras não valem. */

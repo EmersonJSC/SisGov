@@ -43,6 +43,7 @@ import {
   type Territorio,
   type RegraDaDemografia,
   type RegraDaSaida,
+  type Servico,
   type RegraDoEmprego,
   type ValorLei,
   ehEstrato,
@@ -194,6 +195,8 @@ function carregarPops(): TipoPop[] {
     dependente: "dependente" in t ? (t.dependente as number) : undefined,
     filhos: "filhos" in t ? (t.filhos as TipoPop["filhos"]) : undefined,
     emigra: "emigra" in t ? (t.emigra as number) : undefined,
+    direitos:
+      "direitos" in t ? (t.direitos as TipoPop["direitos"]) : undefined,
   }));
   const motivo = motivoEscadasInvalidas(tipos) ?? motivoFontesInvalidas(tipos);
   if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);
@@ -240,6 +243,25 @@ function carregarSaida(): RegraDaSaida {
   if (r.dinheiro && !r.dinheiro.estratos.every(ehEstrato))
     throw erro("estrato do dinheiro não existe");
   return r;
+}
+
+/** Serviços que o pop recebe e que valem renda no padrão de vida (passo H). */
+function carregarServicos(): Servico[] {
+  const lista = (tiposPops.servicos ?? []) as Servico[];
+  const ids = new Set(tiposPops.pops.map((t) => t.id));
+  const indices = dominiosDosIndices();
+  for (const s of lista) {
+    const erro = (m: string) =>
+      new Error(`mundo/pops/pops.json › servicos › ${s.id}: ${m}`);
+    if (!indices[s.indice]) throw erro(`índice "${s.indice}" não existe`);
+    if (!(s.valor >= 0)) throw erro("valor ≥ 0");
+    if (!ehEstrato(s.de)) throw erro(`estrato "${s.de}" não existe`);
+    if (s.acesso && !Object.keys(s.acesso).every(ehEstrato))
+      throw erro("estrato do acesso não existe");
+    for (const id of Object.keys(s.pops ?? {}))
+      if (!ids.has(id)) throw erro(`pop "${id}" não existe`);
+  }
+  return lista;
 }
 
 /** Estados declarados pelo país (passo F); sem arquivo, o país é um estado só. */
@@ -640,6 +662,7 @@ export function criarPartida(
     demografia: carregarDemografia(),
     territorios: carregarTerritorios(pais),
     saida: carregarSaida(),
+    servicos: carregarServicos(),
     grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),

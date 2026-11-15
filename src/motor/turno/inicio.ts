@@ -33,7 +33,11 @@ import {
 import { leisDoAtendimento } from "./etapas/atendimento";
 import { fluxosDoTurno, mostrarContas } from "./etapas/economia";
 import { invariantes } from "./etapas/invariantes";
-import { comIndicesDasCestas, todosIndices } from "./etapas/jogabilidade";
+import {
+  comIndicesDasCestas,
+  todosIndices,
+  valorDosServicos,
+} from "./etapas/jogabilidade";
 import { comReputacao } from "./etapas/mundo";
 import { pessoasNaFolha, indiceDoInformal } from "./etapas/obras";
 import { pops, grupos } from "./etapas/populacao";
@@ -466,6 +470,9 @@ function marcoDoTurnoZero(regras: Regras, e: Estado): Marco {
     poder_pop: Object.fromEntries(
       Object.entries(e.pops).map(([id, p]) => [id, p.poder ?? 0]),
     ),
+    ...(regras.servicos?.length
+      ? { valor_servico: valorDosServicos(regras, e) }
+      : {}),
     indices: todosIndices(e),
     leis: { ...e.leis },
     renda_real: Object.fromEntries(

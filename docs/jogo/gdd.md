@@ -537,11 +537,13 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 
 **Referências.** Victoria 3, diário 13 (padrão de vida). O estudo recomenda aproveitar "quase tudo" para população e grupos: padrão de vida por grupo (renda × custo de vida), radicais e lealistas pela **variação**, e natalidade e mortalidade pelo padrão. O estudo é de 22/out e "não decide nada"; a parte dos radicais foi decidida pelo autor em 14/nov.
 
-**No motor hoje.** ✅ Padrão de vida por pop (passo D, 15/nov): o que sobra da renda depois das cestas, descontada a inflação, de 1 a 99 (50 = o do turno 0). Ainda não mexe no índice "Padrão de vida" nem nos radicais (passo I). Os radicais ainda crescem pelo nível da satisfação (ver 2.6).
+**No motor hoje.** ✅ Padrão de vida por pop (passo D, 15/nov): o que sobra da renda depois das cestas, descontada a inflação, de 1 a 99 (50 = o do turno 0). ✅ Passo H (15/nov): o serviço que o pop recebe entra no padrão de vida. Cada serviço (saúde pelo índice Atendimento, saneamento pelo índice Saneamento) atende a parte do índice, quem tem mais acesso primeiro (o rico antes, o campo por último), e vale uma parte da renda do pobre (saúde 8%, saneamento 3%; para calibrar). No Brasil, sem serviço nenhum o padrão do informal cai de 50 a 46,8; com tudo atendido sobe a 58,3; o do rico quase não mexe. O direito virou tomada por pop (o pop diz quanto liga para cada chave, as leis dão a chave), guardado fora do padrão; nenhuma lei declara chave ainda. Ainda não mexe no índice "Padrão de vida" (9 leis apontam para ele; juntar fica para a revisão das leis) nem nos radicais (passo I). Os radicais ainda crescem pelo nível da satisfação (ver 2.6).
 
 **Em aberto**
 - ~~O padrão de vida vira um número por pop?~~ Decidido em 15/nov: sim, um número por pop (renda real ÷ custo da cesta e das contas); é a base dos radicais e da saída.
 - O bolso do gosto (renda, preço do que ele compra, emprego, serviço que recebe) é a mesma coisa que o padrão de vida, ou o padrão é só uma parte dele?
+- O índice "Padrão de vida" deve virar a média do padrão dos pops (hoje tem base, 9 leis e o saneamento por fora)? Decidir na revisão das leis (15/nov).
+- No Brasil, o índice Atendimento sobe de 30 para 40 em 4 anos sem lei nenhuma; com o passo H isso sobe o padrão do pobre sozinho. Conferir na calibração (15/nov).
 
 ---
 
@@ -2482,7 +2484,7 @@ Sem canal ou sem quem ganha e paga, a lei não está pronta.
 **No motor hoje**
 - Imposto: ✅ (`calculos`). Verba: ◐ (verba e rendimento sim; serviço só em atendimento e saneamento). Transferência: ✅. Preço e custo: ✅. Regra de módulo: ✅, módulo a módulo. Direito: ✅.
 - Planilha: regra 74, verba 70, imposto 16, direito 9, transferência 4, espera 338.
-- ☐ Canal de Emprego (R16.27). ☐ Verba que chega a quem recebe, exceto a transferência.
+- ☐ Canal de Emprego (R16.27). ◐ Verba que chega a quem recebe: a transferência, e desde o passo H (15/nov) o serviço da saúde e do saneamento, que entra no padrão de vida de cada pop pela parte atendida. Direito: tomada por pop pronta (`TipoPop.direitos` × `valores` da lei), sem lei ligada ainda.
 
 **Em aberto.** Se alguma lei de Governo precisa de canal próprio além de "regra de módulo". **ESTUDAR** (nenhuma fonte levanta o caso).
 

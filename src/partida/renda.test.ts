@@ -4,7 +4,10 @@ import { describe, expect, it } from "vitest";
 import { avancar, criarPartida, jogar, montarVisao, type Partida } from ".";
 import {
   arrecadacao,
+  coberturaDosPops,
+  comIndicesDasCestas,
   consumoDasCestas,
+  direitoDoPop,
   dinheiroFora,
   motivoTerritoriosInvalidos,
   popsPorTerritorio,
@@ -249,7 +252,9 @@ describe("estados", () => {
     const pa = (uf: string, id: string) =>
       porEstado[uf][id] / p.estado.pops[id].pessoas;
     // São Paulo tem mais gente; o Maranhão, mais campo.
-    const urbano = Object.keys(p.estado.pops).find((id) => !campo.includes(id))!;
+    const urbano = Object.keys(p.estado.pops).find(
+      (id) => !campo.includes(id),
+    )!;
     expect(pa("sp", urbano)).toBeGreaterThan(pa("ma", urbano));
     expect(pa("ma", campo[0]) / pa("ma", urbano)).toBeGreaterThan(
       pa("sp", campo[0]) / pa("sp", urbano),
@@ -285,8 +290,7 @@ describe("saída", () => {
     pops: Object.fromEntries(
       Object.entries(p.estado.pops).map(([id, x]) => [
         id,
-        !estrato ||
-        p.regras.pops.find((t) => t.id === id)?.estrato === estrato
+        !estrato || p.regras.pops.find((t) => t.id === id)?.estrato === estrato
           ? { ...x, padrao }
           : x,
       ]),
@@ -368,5 +372,57 @@ describe("saída", () => {
     const arrec = (e: Partida["estado"]) =>
       arrecadacao(p.regras, e.leis, e.essenciais, dinheiroFora(p.regras, e));
     expect(arrec(sai)).toBeLessThan(arrec(p.estado));
+  });
+});
+
+describe("serviço e direito", () => {
+  const brasil = () => base("brasil-2026");
+
+  it("o serviço atende a parte do índice; quem tem mais acesso chega antes", () => {
+    const p = brasil();
+    const s = p.regras.servicos!.find((x) => x.id === "saneamento")!;
+    const c = coberturaDosPops(p.regras.pops, p.estado.pops, s, 0.55);
+    const pops = p.estado.pops;
+    const gente = Object.values(pops).reduce((t, x) => t + x.pessoas, 0);
+    const atendidos = Object.entries(c).reduce(
+      (t, [id, parte]) => t + parte * pops[id].pessoas,
+      0,
+    );
+    expect(atendidos / gente).toBeCloseTo(0.55, 6);
+    // O campo fica por último; o rico chega antes do pobre.
+    expect(c["pequenos-agricultores"]).toBeLessThan(c["operarios-fabrica"]);
+    expect(c["operarios-fabrica"]).toBeLessThan(c["grandes-empresarios"]);
+    expect(Object.values(c).every((x) => x >= 0 && x <= 1)).toBe(true);
+    expect(
+      coberturaDosPops(p.regras.pops, pops, s, 1)["pequenos-agricultores"],
+    ).toBe(1);
+  });
+
+  it("turno 0 no padrão 50; perder o serviço baixa o padrão, mais do pobre", () => {
+    const p = brasil();
+    expect(p.estado.pops["informais-urbanos"].servicos?.saude).toBeGreaterThan(
+      0,
+    );
+    for (const x of Object.values(p.estado.pops))
+      expect(x.padrao).toBeCloseTo(50, 6);
+    const sem = comIndicesDasCestas(p.regras, {
+      ...p.estado,
+      jogabilidade: { ...p.estado.jogabilidade, atendimento: 0, saneamento: 0 },
+    }).pops;
+    const pobre = sem["informais-urbanos"].padrao!;
+    const rico = sem["grandes-empresarios"].padrao!;
+    expect(pobre).toBeLessThan(50);
+    expect(rico).toBeLessThan(50);
+    expect(50 - pobre).toBeGreaterThan(50 - rico);
+    expect(sem["informais-urbanos"].servicos?.saude).toBe(0);
+  });
+
+  it("direito: o pop soma o quanto liga × o que as leis dão na chave", () => {
+    const p = brasil();
+    const t = { ...p.regras.pops[0], direitos: { privacidade: 1, jogo: -0.5 } };
+    const leis = { privacidade: 0.6, jogo: 0.4 } as Record<string, number>;
+    expect(direitoDoPop(t, (k) => leis[k] ?? 0)).toBeCloseTo(0.4);
+    expect(direitoDoPop(t, () => 2)).toBe(1);
+    expect(direitoDoPop(p.regras.pops[0], () => 1)).toBeUndefined();
   });
 });

@@ -4,13 +4,20 @@ import { somaPorIndice } from "../../efeitos";
 import type { Estado } from "../../estado";
 import { indiceDaPrevidencia } from "../../fisco";
 import { rendimentoDasLeis } from "../../governo";
+import { tomada } from "../../leis";
 import {
   contaDoPais,
   segurancaDaCesta,
   reacaoDaCesta,
   reacaoCivil,
 } from "../../mercado";
-import { pedacos, type Estrato } from "../../populacao";
+import {
+  coberturaDosPops,
+  direitoDoPop,
+  pedacos,
+  rendaDoEstrato,
+  type Estrato,
+} from "../../populacao";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
 import {
@@ -109,16 +116,35 @@ function indicesDasCestas(
     const media = seguranca.find((c) => c.id === cesta.id)?.media;
     if (cesta.indice && media !== undefined) indices[cesta.indice] = media;
   }
-  return { indices, pops: comPadraoDeVida(estado, seguranca) };
+  return { indices, pops: comPadraoDeVida(regras, estado, seguranca) };
 }
 /** Padrão de vida igual ao do turno 0. */
 export const PADRAO_INICIAL = 50;
 /**
+ * Quanto vale cada serviço inteiro por pessoa, real (passo H): a parte
+ * `valor` da renda por pessoa do estrato `de`. Fica no marco do turno 0.
+ */
+export function valorDosServicos(
+  regras: Regras,
+  estado: Estado,
+): Record<string, number> {
+  return Object.fromEntries(
+    (regras.servicos ?? []).map((s) => [
+      s.id,
+      (s.valor * rendaDoEstrato(regras.pops, estado.pops, s.de) * 100) /
+        estado.essenciais.indice_precos,
+    ]),
+  );
+}
+/**
  * Padrão de vida de cada pop (passo D, GDD 2.3): o que sobra da renda depois
- * das cestas, descontada a inflação (`poder`), e o número de 1 a 99 que diz
- * quanto isso andou desde o turno 0 (50 = igual, 99 = o dobro ou mais).
+ * das cestas, descontada a inflação, mais o que valem os serviços que ele
+ * recebe (`poder`, passo H), e o número de 1 a 99 que diz quanto isso andou
+ * desde o turno 0 (50 = igual, 99 = o dobro ou mais). O pop guarda também a
+ * parte atendida de cada serviço e o direito que sente das leis.
  */
 function comPadraoDeVida(
+  regras: Regras,
   estado: Estado,
   seguranca: ReturnType<typeof segurancaDaCesta>,
 ): Estado["pops"] {
@@ -126,16 +152,49 @@ function comPadraoDeVida(
   for (const c of seguranca)
     for (const p of c.pops) gasto[p.id] = (gasto[p.id] ?? 0) + p.gasto;
   const poder0 = estado.marco?.poder_pop;
+  const valor = estado.marco?.valor_servico ?? valorDosServicos(regras, estado);
+  const cobertura = Object.fromEntries(
+    (regras.servicos ?? []).map((s) => [
+      s.id,
+      coberturaDosPops(
+        regras.pops,
+        estado.pops,
+        s,
+        (estado.jogabilidade[s.indice] ?? 0) / 100,
+      ),
+    ]),
+  );
+  const tipos = new Map(regras.pops.map((t) => [t.id, t]));
+  const daLei = (chave: string) => tomada(regras.leis, estado.leis, chave);
   return Object.fromEntries(
     Object.entries(estado.pops).map(([id, pop]) => {
       const sobra = Math.max(0, 1 - (gasto[id] ?? 0) / 100);
-      const poder = (pop.renda * sobra * 100) / estado.essenciais.indice_precos;
+      const servicos = Object.fromEntries(
+        Object.entries(cobertura).map(([s, c]) => [s, c[id] ?? 0]),
+      );
+      const recebe = Object.entries(servicos).reduce(
+        (soma, [s, parte]) => soma + parte * (valor[s] ?? 0),
+        0,
+      );
+      const poder =
+        (pop.renda * sobra * 100) / estado.essenciais.indice_precos + recebe;
       const antes = poder0?.[id];
       const padrao =
         antes && antes > 0
           ? Math.min(99, Math.max(1, (PADRAO_INICIAL * poder) / antes))
           : PADRAO_INICIAL;
-      return [id, { ...pop, poder, padrao }];
+      const t = tipos.get(id);
+      const direito = t && direitoDoPop(t, daLei);
+      return [
+        id,
+        {
+          ...pop,
+          poder,
+          padrao,
+          ...(regras.servicos?.length ? { servicos } : {}),
+          ...(direito !== undefined ? { direito } : {}),
+        },
+      ];
     }),
   );
 }
