@@ -18,6 +18,7 @@ import type { EstadoCongresso } from "../politica";
 import type { MoradiaNoEstado } from "../moradia";
 import type { AtendimentoNoEstado } from "../atendimento";
 import type { SaneamentoNoEstado } from "../saneamento";
+import type { OrganizacoesNoEstado } from "../organizacoes";
 import type { Votacao } from "../politica";
 import type {
   CapacidadeNoEstado,
@@ -120,6 +121,8 @@ export interface Estado {
   saida?: SaidaNoEstado;
   /** Padrão de vida e direito de costume de cada pop: a régua da piora (passo I1). */
   costume?: Costume;
+  /** Organizações políticas vivas e o que já somaram nos índices (passo I2). */
+  organizacoes?: OrganizacoesNoEstado;
   /**
    * O que mudou no último turno, na moeda do país: PIB nominal e dívida.
    * Ausente no turno 0 e em partida salva antes desta função.

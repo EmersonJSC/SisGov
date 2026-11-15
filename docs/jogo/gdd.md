@@ -829,11 +829,13 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 - Nenhum jogo é citado para organizações. **ESTUDAR** referência de jogo.
 
 **No motor hoje**
-- ☐ R11.14 Organizações políticas. ☐ R11.15 Crime organizado. ☐ R11.16 Gerador. ☐ R11.18 Financiadores e rastro.
-- "Falta: tudo." Igrejas e sindicatos já aparecem como donos sem lucro na Economia.
+- ◐ R11.14 Organizações políticas e ◐ R11.16 Gerador (passo I2, 15/nov, `motor/organizacoes`): 4 moldes no mundo (Movimento de rua, Revolucionários, Milícia política, Radicais ambientais; Extremistas religiosos e Separatistas esperam os grupos deles). Atraem os radicais acima da base dos grupos perto na bússola; armado só de grupo com `armas` (Sem trabalho formal, Militares, Donos de terra); só uma parte entra (rua 10%, armado 1%). Nasce sem sorte, depois de 4 turnos seguidos acima de 0,5% da população, no estado onde esses radicais pesam mais em proporção. Ameaça pequena, relevante, grave ou crítica; soma em Polarização, Segurança e Sensação de insegurança; nasce, cresce, racha e acaba no jornal. Tomadas `repressao` (corta a gente, cria radicais) e `inteligencia` (pega os chefes, racha); nenhuma lei liga ainda. No Brasil sem lei, em 4 anos: uma marcha de ~500 mil (relevante) no turno 6 e dois armados de 3 a 13 mil (pequenos), todos no Rio de Janeiro (o estado mais urbano; a piora ainda é do país inteiro).
+- ☐ R11.15 Crime organizado (espera Segurança e Vícios). ☐ R11.18 Financiadores e rastro. Igrejas e sindicatos já aparecem como donos sem lucro na Economia.
 
 **Em aberto**
 - Regras e números de nascer e crescer, ações de cada tipo, como o jogador as enfrenta.
+- Inteligência ainda é chance por turno (sorte); o autor tirou a sorte do nascer e do lugar (15/nov). Trocar por pistas que se acumulam? (15/nov)
+- O lugar só vale quando o estado tiver economia própria; hoje toda organização urbana nasce no estado mais urbano (15/nov).
 
 ---
 

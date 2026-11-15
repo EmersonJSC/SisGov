@@ -24,6 +24,7 @@ import { moradia } from "./etapas/moradia";
 import { mundo, precosDoMundo } from "./etapas/mundo";
 import { politica } from "./etapas/politica";
 import { popsEGrupos } from "./etapas/populacao";
+import { organizacoes } from "./etapas/organizacoes";
 import { saneamento } from "./etapas/saneamento";
 import { type Regras, type Pedido } from "./regras";
 
@@ -73,6 +74,7 @@ const ETAPAS: Etapa[] = [
   mundo,
   precosDoMundo,
   popsEGrupos,
+  organizacoes,
   governo,
   programas,
   politica,

@@ -92,8 +92,7 @@ function alertaDaLei(
       estado.leis,
       estado.essenciais,
       dinheiroFora(regras, estado),
-    ) +
-    regras.pais.receita_fora_das_leis;
+    ) + regras.pais.receita_fora_das_leis;
   const gasto =
     gastoDasLeis(regras, estado.leis, estado.fiscal?.corte) +
     regras.pais.gasto_fora_das_leis;

@@ -105,6 +105,22 @@
     },
     "prazo-acabou": {
       "texto": "{lei} chega ao fim do prazo"
+    },
+    "organizacao-nasceu": {
+      "texto": "{lugar}: surge nova organização radical",
+      "comQuem": "{lugar}: surge {quem}"
+    },
+    "organizacao-cresceu": {
+      "texto": "Organização radical ganha força",
+      "comQuem": "{quem} ganha força e preocupa o governo"
+    },
+    "organizacao-rachou": {
+      "texto": "Organização radical racha depois de prisões",
+      "comQuem": "Prisão de chefes racha a organização; surge {quem}"
+    },
+    "organizacao-acabou": {
+      "texto": "Organização radical se desfaz",
+      "comQuem": "{quem} se desfaz"
     }
   }
 }

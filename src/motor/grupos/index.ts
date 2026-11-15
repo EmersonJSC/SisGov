@@ -20,6 +20,8 @@ export interface TipoGrupo {
   bussola: PontoBussola;
   /** O quanto o grupo liga para cada eixo (0 a 1); ausente = 0. */
   peso: PontoBussola;
+  /** Pode pegar em armas: só ele alimenta organização armada (passo I2). */
+  armas?: boolean;
 }
 
 /** Grupo no estado. */

@@ -787,7 +787,8 @@ export function popsPorTerritorio(
   const total = lista.reduce((s, t) => s + t.pessoas, 0);
   return Object.fromEntries(
     lista.map((t) => {
-      const parteRural = rural > 0 ? (t.pessoas * t.campo) / rural : t.pessoas / total;
+      const parteRural =
+        rural > 0 ? (t.pessoas * t.campo) / rural : t.pessoas / total;
       const parteUrbana =
         urbano > 0 ? (t.pessoas * (1 - t.campo)) / urbano : t.pessoas / total;
       return [

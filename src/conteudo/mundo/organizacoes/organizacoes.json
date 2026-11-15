@@ -1,0 +1,90 @@
+{
+  "versao": 1,
+  "regra": {
+    "limiar": 0.005,
+    "turnos_para_nascer": 4,
+    "ritmo": 0.1,
+    "fim_turnos": 6,
+    "sem_armas": 0.05,
+    "niveis": {
+      "relevante": 0.0001,
+      "grave": 0.0005,
+      "critica": 0.002
+    },
+    "indices": {
+      "polarizacao": 20,
+      "seguranca": -30,
+      "sensacao_de_inseguranca": 30
+    },
+    "teto": 15,
+    "inteligencia": 0.2,
+    "revolta": 1
+  },
+  "moldes": [
+    {
+      "id": "movimento-de-rua",
+      "tipos": ["Movimento", "Coletivo", "Marcha", "Frente"],
+      "ideias": [
+        "Popular",
+        "pela Dignidade",
+        "do Povo",
+        "Livre",
+        "dos Trabalhadores",
+        "pela Justiça"
+      ],
+      "armas": false,
+      "adesao": 0.1
+    },
+    {
+      "id": "revolucionarios",
+      "tipos": ["Vanguarda", "Brigada", "Frente", "Liga"],
+      "ideias": [
+        "Vermelha",
+        "Proletária",
+        "Revolucionária",
+        "Operária",
+        "do Povo em Armas"
+      ],
+      "bussola": {
+        "economico": -0.8,
+        "social": -0.3
+      },
+      "armas": true,
+      "adesao": 0.01
+    },
+    {
+      "id": "milicia-politica",
+      "tipos": ["Guarda", "Legião", "Ordem", "Milícia"],
+      "ideias": [
+        "da Pátria",
+        "Soberana",
+        "Tradicional",
+        "de Defesa",
+        "Nacional"
+      ],
+      "bussola": {
+        "economico": 0.4,
+        "social": 0.8
+      },
+      "armas": true,
+      "adesao": 0.01
+    },
+    {
+      "id": "radicais-ambientais",
+      "tipos": ["Frente", "Rede", "Ação"],
+      "ideias": [
+        "pela Terra",
+        "Verde",
+        "Selvagem",
+        "de Libertação da Natureza"
+      ],
+      "bussola": {
+        "economico": -0.2,
+        "social": -0.7
+      },
+      "grupos": ["ambientalistas"],
+      "armas": false,
+      "adesao": 0.03
+    }
+  ]
+}

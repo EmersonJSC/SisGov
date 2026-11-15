@@ -26,3 +26,4 @@ export * from "./mercado";
 export * from "./moradia";
 export * from "./saneamento";
 export * from "./atendimento";
+export * from "./organizacoes";

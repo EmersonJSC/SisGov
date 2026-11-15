@@ -107,6 +107,7 @@
     },
     {
       "id": "sem-trabalho",
+      "armas": true,
       "bussola": {
         "economico": -0.35,
         "social": 0.15
@@ -202,6 +203,7 @@
     },
     {
       "id": "militares",
+      "armas": true,
       "bussola": {
         "economico": 0.2,
         "social": 0.7
@@ -445,6 +447,7 @@
     },
     {
       "id": "donos-terra",
+      "armas": true,
       "bussola": {
         "economico": 0.7,
         "social": 0.6

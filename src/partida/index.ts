@@ -67,6 +67,8 @@ import {
   type RegraDoJudiciario,
   type RegrasJudiciario,
   type RegrasDoFisco,
+  motivoOrganizacoesInvalidas,
+  type RegrasOrganizacoes,
 } from "../motor";
 import { arquivoPais, temArquivoDoPais } from "./paises";
 import {
@@ -91,6 +93,7 @@ import atendimento from "../conteudo/mundo/atendimento/atendimento.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
 import tiposGrupos from "../conteudo/mundo/grupos/grupos.json";
+import moldesOrganizacoes from "../conteudo/mundo/organizacoes/organizacoes.json";
 import potencias from "../conteudo/mundo/potencias/potencias.json";
 import produtos from "../conteudo/mundo/mercado/produtos.json";
 import produtores from "../conteudo/mundo/mercado/produtores.json";
@@ -195,8 +198,7 @@ function carregarPops(): TipoPop[] {
     dependente: "dependente" in t ? (t.dependente as number) : undefined,
     filhos: "filhos" in t ? (t.filhos as TipoPop["filhos"]) : undefined,
     emigra: "emigra" in t ? (t.emigra as number) : undefined,
-    direitos:
-      "direitos" in t ? (t.direitos as TipoPop["direitos"]) : undefined,
+    direitos: "direitos" in t ? (t.direitos as TipoPop["direitos"]) : undefined,
   }));
   const motivo = motivoEscadasInvalidas(tipos) ?? motivoFontesInvalidas(tipos);
   if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);
@@ -262,6 +264,23 @@ function carregarServicos(): Servico[] {
       if (!ids.has(id)) throw erro(`pop "${id}" não existe`);
   }
   return lista;
+}
+
+/** Moldes e regras das organizações políticas (passo I2). */
+function carregarOrganizacoes(grupos: TipoGrupo[]): RegrasOrganizacoes {
+  if (moldesOrganizacoes.versao !== 1)
+    throw new Error(
+      "mundo/organizacoes/organizacoes.json › versao: precisa ser 1",
+    );
+  const r = moldesOrganizacoes as unknown as RegrasOrganizacoes;
+  const motivo = motivoOrganizacoesInvalidas(
+    r,
+    grupos.map((g) => g.id),
+    Object.keys(dominiosDosIndices()),
+  );
+  if (motivo)
+    throw new Error(`mundo/organizacoes/organizacoes.json › ${motivo}`);
+  return r;
 }
 
 /** Estados declarados pelo país (passo F); sem arquivo, o país é um estado só. */
@@ -492,6 +511,7 @@ export function carregarGrupos(): TipoGrupo[] {
       cobra: g.cobra as TipoGrupo["cobra"],
       bussola: g.bussola,
       peso: g.peso,
+      ...("armas" in g && g.armas === true ? { armas: true } : {}),
     };
   });
 }
@@ -663,6 +683,7 @@ export function criarPartida(
     territorios: carregarTerritorios(pais),
     saida: carregarSaida(),
     servicos: carregarServicos(),
+    organizacoes: carregarOrganizacoes(grupos),
     grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),

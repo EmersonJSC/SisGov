@@ -34,6 +34,10 @@ export const TIPOS_DE_FATO = [
   "regra-fiscal-estourou",
   "regra-fiscal-barrou",
   "prazo-acabou",
+  "organizacao-nasceu",
+  "organizacao-cresceu",
+  "organizacao-rachou",
+  "organizacao-acabou",
   // Ninguém escreve ainda; o Congresso já lê (mídia e escândalos vêm depois).
   "escandalo",
   "manchete-contra",

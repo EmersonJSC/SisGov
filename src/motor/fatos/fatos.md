@@ -51,6 +51,10 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 | `regra-fiscal-estourou`  | Contas       | médio (grande com crime)  | lei da regra / — / —                            |
 | `regra-fiscal-barrou`    | Congresso    | pequeno                   | lei barrada / — / —                             |
 | `prazo-acabou`           | Congresso    | pequeno                   | lei com prazo / — / —                           |
+| `organizacao-nasceu`     | Organizações | pequeno (grande se grave) | estado / organização / —                        |
+| `organizacao-cresceu`    | Organizações | médio (grande se grave)   | estado / organização / —                        |
+| `organizacao-rachou`     | Organizações | médio (grande se grave)   | estado / organização nova / —                   |
+| `organizacao-acabou`     | Organizações | pequeno                   | estado / organização / —                        |
 | `escandalo`              | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `manchete-contra`        | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `grupo-com-raiva`        | (grupos)     | —                         | ninguém escreve nem lê ainda                    |

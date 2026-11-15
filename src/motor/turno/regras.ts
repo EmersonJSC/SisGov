@@ -26,6 +26,7 @@ import type {
   TipoPop,
 } from "../populacao";
 import type { RegrasDoFisco } from "../fisco";
+import type { RegrasOrganizacoes } from "../organizacoes";
 
 export interface ParametrosBase extends ParametrosRenda {
   /** Base cheia como fração do PIB nominal (renda tributável com alíquota zero). */
@@ -91,6 +92,8 @@ export interface Regras {
   saida?: RegraDaSaida;
   /** Serviços que o pop recebe e que valem renda no padrão de vida (passo H). */
   servicos?: Servico[];
+  /** Moldes e regras das organizações políticas (passo I2). */
+  organizacoes?: RegrasOrganizacoes;
   /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
   judiciario?: RegrasJudiciario;
   /** Papéis das leis de dinheiro (motor/fisco); sem ele, as regras não valem. */

@@ -61,7 +61,14 @@ export function ResultadoDoTurno({
   const governo = nomesDoGoverno(partida);
   const nomes: NomesDoJornal = {
     lei: (id) => lei(id)?.nome ?? id,
-    quem: { ...partidos, ...governo.pessoas },
+    quem: {
+      ...partidos,
+      ...governo.pessoas,
+      ...(estado.organizacoes?.nomes ?? {}),
+    },
+    lugar: Object.fromEntries(
+      (partida.regras.territorios ?? []).map((t) => [t.id, t.nome]),
+    ),
     caixa: governo.caixas,
     area: governo.instituicoes,
     tribunal: Object.fromEntries(
