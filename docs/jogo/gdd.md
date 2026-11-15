@@ -754,14 +754,15 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 - McCauley e Moskalenko, Gómez e outros (radicalização): só parte dos radicais vira organização.
 
 **No motor hoje**
-- ✅ R11.2 Grupos com bússola, tamanho e satisfação. ✅ R11.3 Radicais e lealistas (ainda pelo nível, a meta é pela piora). ◐ R11.4 Satisfação lê renda, índices e leis.
+- ✅ R11.2 Grupos com bússola, tamanho e satisfação. ✅ R11.3 Radicais e lealistas. Passo I1 (15/nov): radicais pela piora do padrão de vida dos membros contra o costume (anda 2% por turno até a vida de hoje, a piora que dura esfria), mais o direito perdido; alvo = 5 + piora em pontos × (1 − tomada `calma`). Lealistas seguem pela satisfação. No Brasil sem lei, em 4 anos: Estudantes 18%, Sem trabalho formal 17%, Militares 16%, Burocracia 16% (a vida desses pops já cai sem lei; calibrar). ◐ R11.4 Satisfação lê renda, índices e leis.
 - ☐ R11.13 25 grupos atravessam os pops. O motor tem 16 grupos; o GDD é a meta. Os números e os nomes dos cenários do `grupos.md` são "da época dos 4 grupos".
 - ☐ R11.11 Grupo forte torna mais populares as leis perto dele.
 
 **Em aberto**
 - Como medir a força de um grupo (gente e dinheiro) e quanto ela muda a popularidade de uma lei.
 - Como o bolso de um pop vira gosto do grupo que o atravessa.
-- Quanto de piora, em quanto tempo, vira radical, e quando o radical volta a esfriar.
+- ~~Quanto de piora, em quanto tempo, vira radical, e quando o radical volta a esfriar.~~ Decidido em 15/nov (I1): 1 ponto de radical por ponto de piora contra o costume; o costume anda 2% por turno.
+- Os radicais ainda não mexem em nada: voto, Congresso e índices não os leem. As organizações (I2) são o primeiro a ler.
 - Se o êxodo aparece como índice ou só como gente mudando de pop.
 
 ---

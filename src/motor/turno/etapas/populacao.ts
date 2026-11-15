@@ -4,6 +4,7 @@ import {
   type Marco,
   calcularGrupos,
   gruposComDeslize,
+  pioraDosPops,
   deslizarPops,
 } from "../../grupos";
 import { vazamento } from "../../fisco";
@@ -292,7 +293,12 @@ export function pops(regras: Regras, estado: Estado): Record<string, Pop> {
 const rendaEsperada = (regras: Regras, estado: Estado) =>
   Math.pow(doTurno(regras.pais.crescimento.tendencia), estado.turno);
 /** Grupos com os pops já calculados no estado (motor/grupos). */
-export function grupos(regras: Regras, estado: Estado, marco: Marco) {
+export function grupos(
+  regras: Regras,
+  estado: Estado,
+  marco: Marco,
+  piora?: Record<string, number>,
+) {
   return calcularGrupos(
     gruposComDeslize(regras.grupos, estado.pops, estado.deslize),
     regras.leis,
@@ -307,6 +313,8 @@ export function grupos(regras: Regras, estado: Estado, marco: Marco) {
       magoas: estado.governo
         ? magoasDoGoverno(estado.governo, estado.turno)
         : [],
+      piora,
+      calma: tomada(regras.leis, estado.leis, "calma"),
     },
   );
 }
@@ -374,9 +382,16 @@ export const popsEGrupos: Etapa = (regras, antes) => {
     ...estado,
     pops: pops(regras, estado),
   });
+  // Radicais pela piora contra o costume do turno anterior (passo I1).
+  const { piora, costume } = pioraDosPops(
+    comPops.pops,
+    estado.costume,
+    PADRAO_INICIAL,
+  );
   const comGrupos = {
     ...comPops,
-    grupos: grupos(regras, comPops, estado.marco),
+    costume,
+    grupos: grupos(regras, comPops, estado.marco, piora),
   };
   return saidaDoTurno(
     regras,

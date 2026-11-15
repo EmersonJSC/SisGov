@@ -5,7 +5,7 @@ import type { Acaso } from "../acaso";
 import type { Tesouro } from "../contas";
 import type { EfeitoEmCurso } from "../efeitos";
 import type { Eleicao } from "../eleicao";
-import type { Grupo, Marco } from "../grupos";
+import type { Costume, Grupo, Marco } from "../grupos";
 import type { PontoBussola, ValorLei } from "../leis";
 import type { Fato } from "../fatos";
 import type { EstadoGoverno } from "../governo";
@@ -118,6 +118,8 @@ export interface Estado {
   emprego?: EmpregoNoEstado;
   /** Encargo, gente fora e dinheiro fora (motor/populacao, passo G). */
   saida?: SaidaNoEstado;
+  /** Padrão de vida e direito de costume de cada pop: a régua da piora (passo I1). */
+  costume?: Costume;
   /**
    * O que mudou no último turno, na moeda do país: PIB nominal e dívida.
    * Ausente no turno 0 e em partida salva antes desta função.

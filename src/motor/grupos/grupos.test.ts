@@ -3,6 +3,8 @@ import type { Lei } from "../leis";
 import type { Pop } from "../populacao";
 import {
   alvosEstoques,
+  pioraDoGrupo,
+  pioraDosPops,
   calcularGrupos,
   deslizarPops,
   gruposComDeslize,
@@ -114,9 +116,12 @@ describe("grupos", () => {
     expect(acima.g.satisfacao).toBeGreaterThan(54);
   });
 
-  it("radicais andam 1 ponto por turno rumo ao alvo", () => {
+  it("radicais andam 1 ponto por turno rumo ao alvo da piora", () => {
     expect(alvosEstoques(50)).toEqual({ radicais: 5, lealistas: 5 });
-    expect(alvosEstoques(20).radicais).toBe(35);
+    // A satisfação baixa sozinha não faz radical; a piora faz.
+    expect(alvosEstoques(20).radicais).toBe(5);
+    expect(alvosEstoques(50, 0.2).radicais).toBeCloseTo(25);
+    expect(alvosEstoques(50, 0.2, 0.5).radicais).toBeCloseTo(15);
     const anteriores = {
       g: {
         pessoas: 0,
@@ -136,11 +141,37 @@ describe("grupos", () => {
         vigentes: { l: 0 },
         marco,
         anteriores,
+        piora: { a: 0.3, b: 0.3 },
       },
     );
     expect(g.g.satisfacao).toBeLessThan(35);
     expect(g.g.radicais).toBe(6);
     expect(g.g.lealistas).toBe(9);
+  });
+
+  it("piora: contra o costume, com direito perdido; a que dura esfria", () => {
+    const vida = (padrao: number, direito?: number) => ({
+      a: {
+        ...pop(10, 50),
+        padrao,
+        ...(direito !== undefined ? { direito } : {}),
+      },
+    });
+    let r = pioraDosPops(vida(40, 0.5), undefined, 50);
+    expect(r.piora.a).toBeCloseTo(0.2);
+    // Perder direito soma; melhorar não dá piora negativa.
+    expect(pioraDosPops(vida(40, 0), r.costume, 50).piora.a).toBeGreaterThan(
+      0.2,
+    );
+    expect(pioraDosPops(vida(60), undefined, 50).piora.a).toBe(0);
+    // Vida baixa e parada vira costume: a piora cai com o tempo.
+    for (let i = 0; i < 48; i++) r = pioraDosPops(vida(40, 0.5), r.costume, 50);
+    expect(r.piora.a).toBeLessThan(0.1);
+    expect(r.piora.a).toBeGreaterThan(0.05);
+    const grupo = { ...tipo, membros: { a: 1, b: 1 } };
+    expect(
+      pioraDoGrupo(grupo, { a: pop(10, 50), b: pop(30, 50) }, { a: 0.4, b: 0 }),
+    ).toBeCloseTo(0.1);
   });
 
   it("bússola: eixo por eixo, aproximar soma e afastar tira", () => {

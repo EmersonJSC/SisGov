@@ -73,7 +73,6 @@ const DISTANCIA_DE_ESTRANHO = 1;
 /** As mágoas somadas tiram do grupo no máximo isto. */
 const LIMITE_MAGOA = 15;
 const BASE_ESTOQUE = 5;
-const LIMIAR_RADICAL = 35;
 const LIMIAR_LEAL = 65;
 const GANHO_ESTOQUE = 2;
 const PASSO_ESTOQUE = 1;
@@ -252,15 +251,78 @@ export function satisfacao(
   return prender(NEUTRO + pontos + magoa, 0, 100);
 }
 
-/** Para onde radicais e lealistas andam com esta satisfação. */
-export function alvosEstoques(sat: number): {
+/**
+ * Para onde radicais e lealistas andam (passo I1). Radicais: a piora do
+ * padrão de vida dos membros, em pontos, × (1 − calma das leis). Lealistas:
+ * a satisfação acima de 65.
+ */
+export function alvosEstoques(
+  sat: number,
+  piora = 0,
+  calma = 0,
+): {
   radicais: number;
   lealistas: number;
 } {
   return {
-    radicais: BASE_ESTOQUE + GANHO_ESTOQUE * Math.max(0, LIMIAR_RADICAL - sat),
+    radicais:
+      BASE_ESTOQUE + Math.max(0, piora) * 100 * (1 - prender(calma, 0, 1)),
     lealistas: BASE_ESTOQUE + GANHO_ESTOQUE * Math.max(0, sat - LIMIAR_LEAL),
   };
+}
+
+/** O que o pop guarda para medir a piora: o padrão e o direito de costume. */
+export interface Costume {
+  padrao: Record<string, number>;
+  direito: Record<string, number>;
+}
+/** Parte do caminho que o costume anda por turno até a vida de hoje. */
+export const RITMO_COSTUME = 0.02;
+/** Quanto perder o direito inteiro (de 1 a 0) pesa, em parte de piora. */
+export const PESO_DIREITO = 0.25;
+
+/**
+ * Piora de cada pop (passo I1, GDD 2.6): o padrão de vida de hoje abaixo do
+ * de costume, mais o direito perdido abaixo do de costume. Melhorar não dá
+ * piora negativa; o costume anda devagar até a vida de hoje, e a piora que
+ * dura esfria. Sem costume, vale o padrão inicial e o direito de hoje.
+ */
+export function pioraDosPops(
+  pops: Record<string, Pop>,
+  costume: Costume | undefined,
+  inicial: number,
+): { piora: Record<string, number>; costume: Costume } {
+  const piora: Record<string, number> = {};
+  const novo: Costume = { padrao: {}, direito: {} };
+  for (const [id, p] of Object.entries(pops)) {
+    if (p.padrao === undefined) continue;
+    const c = costume?.padrao[id] ?? inicial;
+    let v = c > 0 ? Math.max(0, (c - p.padrao) / c) : 0;
+    novo.padrao[id] = c + RITMO_COSTUME * (p.padrao - c);
+    if (p.direito !== undefined) {
+      const d = costume?.direito[id] ?? p.direito;
+      v += PESO_DIREITO * Math.max(0, d - p.direito);
+      novo.direito[id] = d + RITMO_COSTUME * (p.direito - d);
+    }
+    piora[id] = Math.min(1, v);
+  }
+  return { piora, costume: novo };
+}
+
+/** Piora média dos membros do grupo, pesada pela gente de cada pop. */
+export function pioraDoGrupo(
+  tipo: TipoGrupo,
+  pops: Record<string, Pop>,
+  piora: Record<string, number>,
+): number {
+  let gente = 0;
+  let soma = 0;
+  for (const [id, f] of Object.entries(tipo.membros)) {
+    const n = (pops[id]?.pessoas ?? 0) * f;
+    gente += n;
+    soma += n * (piora[id] ?? 0);
+  }
+  return gente > 0 ? soma / gente : 0;
 }
 
 const andar = (de: number, para: number) =>
@@ -281,6 +343,10 @@ export interface EntradaGrupos {
   anteriores?: Record<string, Grupo>;
   /** Mágoas passageiras (ex.: ministro demitido); sem elas, nenhuma. */
   magoas?: readonly Magoa[];
+  /** Piora de cada pop (passo I1); sem ela, os radicais ficam na base. */
+  piora?: Record<string, number>;
+  /** Tomada `calma` das leis (0 a 1): baixa o alvo dos radicais. */
+  calma?: number;
 }
 
 export function calcularGrupos(
@@ -304,7 +370,11 @@ export function calcularGrupos(
       entrada.marco,
       pontosMagoas(t, entrada.magoas ?? []),
     );
-    const alvo = alvosEstoques(sat);
+    const alvo = alvosEstoques(
+      sat,
+      entrada.piora ? pioraDoGrupo(t, entrada.pops, entrada.piora) : 0,
+      entrada.calma,
+    );
     const antes = entrada.anteriores?.[t.id];
     grupos[t.id] = {
       pessoas,

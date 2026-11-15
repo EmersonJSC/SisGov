@@ -81,8 +81,13 @@ depois.
 
 ## Radicais e lealistas (% do grupo)
 
-- Alvo dos radicais = 5 + 2 × (35 − satisfação), se a satisfação está abaixo
-  de 35; senão 5.
+- Alvo dos radicais (passo I1, 15/nov) = 5 + piora dos membros em pontos ×
+  (1 − tomada `calma` das leis). A satisfação baixa sozinha não faz radical.
+- Piora do pop = padrão de vida abaixo do de costume ÷ o costume, mais 0,25 ×
+  o direito perdido abaixo do de costume (até 1). Melhorar não dá piora
+  negativa. O costume começa em 50 (e no direito de hoje) e anda 2% do caminho
+  por turno até a vida de hoje: a piora que dura esfria (em 4 anos fica ~60%).
+  Fica no estado (`costume`). A piora do grupo é a média dos membros, pela gente.
 - Alvo dos lealistas = 5 + 2 × (satisfação − 65), se está acima de 65;
   senão 5.
 - Cada um anda no máximo **1 ponto por turno** rumo ao alvo. Começam em 5.
