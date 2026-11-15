@@ -28,7 +28,7 @@
     "atendimento": 55,
     "vacinacao": 70,
     "profissionais_saude": 75,
-    "emprego_informal": 9,
+    "emprego_informal": 7.4,
     "seguranca": 45,
     "lotacao_presidios": 60,
     "poder_defensivo": 50,
@@ -94,28 +94,44 @@
     },
     "pops": {
       "desempregados": {
-        "parcela_pessoas": 0.07,
-        "parcela_renda": 0.0125
+        "parcela_pessoas": 0.035714,
+        "parcela_renda": 0.006378
+      },
+      "cuidam-da-casa": {
+        "parcela_pessoas": 0.034286,
+        "parcela_renda": 0.006122
       },
       "informais-urbanos": {
-        "parcela_pessoas": 0.09,
-        "parcela_renda": 0.025
+        "parcela_pessoas": 0.074,
+        "parcela_renda": 0.020556
+      },
+      "autonomos-negocio": {
+        "parcela_pessoas": 0.041,
+        "parcela_renda": 0.034194
       },
       "domesticos": {
         "parcela_pessoas": 0.04,
         "parcela_renda": 0.0125
       },
       "operarios-fabrica": {
-        "parcela_pessoas": 0.1125,
-        "parcela_renda": 0.075
+        "parcela_pessoas": 0.0825,
+        "parcela_renda": 0.055
       },
       "operarios-obra": {
-        "parcela_pessoas": 0.075,
-        "parcela_renda": 0.045
+        "parcela_pessoas": 0.04875,
+        "parcela_renda": 0.02925
+      },
+      "oficios": {
+        "parcela_pessoas": 0.03125,
+        "parcela_renda": 0.018683
+      },
+      "motoristas": {
+        "parcela_pessoas": 0.0375,
+        "parcela_renda": 0.023067
       },
       "servicos-basicos": {
-        "parcela_pessoas": 0.0625,
-        "parcela_renda": 0.03
+        "parcela_pessoas": 0.04625,
+        "parcela_renda": 0.0222
       },
       "pequenos-agricultores": {
         "parcela_pessoas": 0.0825,
@@ -137,9 +153,13 @@
         "parcela_pessoas": 0.02,
         "parcela_renda": 0.028
       },
+      "policiais": {
+        "parcela_pessoas": 0.012083,
+        "parcela_renda": 0.0118
+      },
       "burocratas": {
-        "parcela_pessoas": 0.035,
-        "parcela_renda": 0.042
+        "parcela_pessoas": 0.026667,
+        "parcela_renda": 0.032
       },
       "tecnicos": {
         "parcela_pessoas": 0.03,
@@ -150,8 +170,8 @@
         "parcela_renda": 0.07
       },
       "comerciantes": {
-        "parcela_pessoas": 0.05,
-        "parcela_renda": 0.0595
+        "parcela_pessoas": 0.025,
+        "parcela_renda": 0.02975
       },
       "estudantes": {
         "parcela_pessoas": 0.025,
@@ -162,8 +182,8 @@
         "parcela_renda": 0.028
       },
       "trabalhadores-escritorio": {
-        "parcela_pessoas": 0.07,
-        "parcela_renda": 0.0945
+        "parcela_pessoas": 0.049792,
+        "parcela_renda": 0.067219
       },
       "artistas-jornalistas": {
         "parcela_pessoas": 0.015,
@@ -190,8 +210,12 @@
         "parcela_renda": 0.025
       },
       "altos-funcionarios": {
-        "parcela_pessoas": 0.003,
-        "parcela_renda": 0.015
+        "parcela_pessoas": 0.00225,
+        "parcela_renda": 0.01125
+      },
+      "gerentes": {
+        "parcela_pessoas": 0.020958,
+        "parcela_renda": 0.031031
       }
     }
   }

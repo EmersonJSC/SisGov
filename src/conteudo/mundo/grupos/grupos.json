@@ -11,10 +11,12 @@
         "economico": 1,
         "social": 0.4
       },
-      "nome": "Operários",
+      "nome": "Operários, ofícios e motoristas",
       "membros": {
         "operarios-fabrica": 1,
-        "operarios-obra": 1
+        "operarios-obra": 1,
+        "oficios": 1,
+        "motoristas": 1
       },
       "cobra": [
         {
@@ -116,7 +118,8 @@
       "nome": "Sem trabalho formal",
       "membros": {
         "desempregados": 1,
-        "informais-urbanos": 1
+        "informais-urbanos": 1,
+        "cuidam-da-casa": 1
       },
       "cobra": [
         {
@@ -207,9 +210,10 @@
         "economico": 0.4,
         "social": 1
       },
-      "nome": "Militares",
+      "nome": "Militares e polícia",
       "membros": {
-        "militares": 1
+        "militares": 1,
+        "policiais": 1
       },
       "cobra": [
         {
@@ -238,7 +242,8 @@
       },
       "nome": "Pequeno comércio",
       "membros": {
-        "comerciantes": 1
+        "comerciantes": 1,
+        "autonomos-negocio": 1
       },
       "cobra": [
         {
@@ -386,7 +391,8 @@
       "nome": "Indústria e grandes empresas",
       "membros": {
         "grandes-empresarios": 1,
-        "industriais": 1
+        "industriais": 1,
+        "gerentes": 1
       },
       "cobra": [
         {
@@ -498,7 +504,13 @@
         "rentistas": 0.05,
         "proprietarios-rurais": 0.05,
         "profissionais-liberais": 0.05,
-        "altos-funcionarios": 0.05
+        "altos-funcionarios": 0.05,
+        "cuidam-da-casa": 0.03,
+        "autonomos-negocio": 0.08,
+        "gerentes": 0.1,
+        "policiais": 0.05,
+        "oficios": 0.05,
+        "motoristas": 0.03
       },
       "cobra": [
         {

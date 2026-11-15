@@ -80,8 +80,8 @@ describe("contrato do mercado", () => {
 });
 
 describe("contrato dos pops", () => {
-  it("são 25, cada um com bússola de −1 a +1", () => {
-    expect(pops.pops).toHaveLength(25);
+  it("são 31, cada um com bússola de −1 a +1", () => {
+    expect(pops.pops).toHaveLength(31);
     for (const p of pops.pops)
       for (const v of [p.bussola.economico, p.bussola.social])
         expect(Math.abs(v), p.id).toBeLessThanOrEqual(1);

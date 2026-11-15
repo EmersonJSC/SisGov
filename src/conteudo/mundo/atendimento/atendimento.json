@@ -49,13 +49,19 @@
     "tecnicos",
     "profissionais-tecnologia",
     "trabalhadores-escritorio",
-    "altos-funcionarios"
+    "altos-funcionarios",
+    "policiais",
+    "gerentes",
+    "oficios",
+    "motoristas"
   ],
   "pops_encargo": [
     "operarios-fabrica",
     "operarios-obra",
     "servicos-basicos",
-    "assalariados-rurais"
+    "assalariados-rurais",
+    "oficios",
+    "motoristas"
   ],
   "pop_informal": "informais-urbanos",
   "pessoas_por_profissional": 50,

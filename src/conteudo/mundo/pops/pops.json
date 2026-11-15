@@ -13,6 +13,17 @@
       "capital": 0
     },
     {
+      "id": "cuidam-da-casa",
+      "nome": "Cuidam da casa e desalentados",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.4
+      },
+      "setores": {},
+      "capital": 0
+    },
+    {
       "id": "informais-urbanos",
       "nome": "Informais urbanos",
       "estrato": "pobre",
@@ -23,9 +34,25 @@
       "setores": {},
       "capital": 0,
       "sobe": {
-        "para": "comerciantes",
+        "para": "autonomos-negocio",
         "exige": "instrucao"
       }
+    },
+    {
+      "id": "autonomos-negocio",
+      "nome": "Autônomos com negócio",
+      "estrato": "medio",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0.2
+      },
+      "setores": {
+        "essenciais": 0.4,
+        "luxo": 0.4,
+        "infraestrutura": 0.2
+      },
+      "capital": 0,
+      "desce": "informais-urbanos"
     },
     {
       "id": "domesticos",
@@ -62,7 +89,10 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": ["tecnologia", "construcao-civil"],
+        "para": [
+          "tecnologia",
+          "construcao-civil"
+        ],
         "exige": "instrucao"
       }
     },
@@ -84,7 +114,60 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": ["industria", "tecnologia"],
+        "para": [
+          "industria",
+          "tecnologia"
+        ],
+        "exige": "instrucao"
+      }
+    },
+    {
+      "id": "oficios",
+      "nome": "Trabalhadores de ofícios",
+      "estrato": "medio",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.2
+      },
+      "setores": {
+        "industria": 0.25,
+        "infraestrutura": 0.25,
+        "construcao-civil": 0.3,
+        "luxo": 0.2
+      },
+      "capital": 0,
+      "desce": "servicos-basicos",
+      "treina": {
+        "para": [
+          "construcao-civil",
+          "industria"
+        ],
+        "exige": "instrucao"
+      }
+    },
+    {
+      "id": "motoristas",
+      "nome": "Motoristas e operadores",
+      "estrato": "pobre",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0.3
+      },
+      "setores": {
+        "infraestrutura": 0.5,
+        "construcao-civil": 0.2,
+        "industria": 0.15,
+        "essenciais": 0.15
+      },
+      "capital": 0,
+      "sobe": {
+        "para": "autonomos-negocio",
+        "exige": "instrucao"
+      },
+      "treina": {
+        "para": [
+          "infraestrutura"
+        ],
         "exige": "instrucao"
       }
     },
@@ -107,13 +190,16 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": ["tecnologia", "luxo"],
+        "para": [
+          "tecnologia",
+          "luxo"
+        ],
         "exige": "instrucao"
       }
     },
     {
       "id": "pequenos-agricultores",
-      "nome": "Pequenos agricultores",
+      "nome": "Pequenos agricultores e pescadores",
       "estrato": "pobre",
       "bussola": {
         "economico": -0.2,
@@ -129,7 +215,10 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": ["industria", "construcao-civil"],
+        "para": [
+          "industria",
+          "construcao-civil"
+        ],
         "exige": "instrucao"
       }
     },
@@ -152,7 +241,10 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": ["construcao-civil", "luxo"],
+        "para": [
+          "construcao-civil",
+          "luxo"
+        ],
         "exige": "instrucao"
       }
     },
@@ -211,6 +303,25 @@
       "desce": "servicos-basicos"
     },
     {
+      "id": "policiais",
+      "nome": "Policiais",
+      "estrato": "medio",
+      "bussola": {
+        "economico": 0.2,
+        "social": 0.6
+      },
+      "setores": {
+        "essenciais": 0.9,
+        "militar": 0.1
+      },
+      "capital": 0,
+      "sobe": {
+        "para": "altos-funcionarios",
+        "exige": "instrucao"
+      },
+      "desce": "servicos-basicos"
+    },
+    {
       "id": "burocratas",
       "nome": "Servidores administrativos",
       "estrato": "medio",
@@ -229,7 +340,9 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": ["tecnologia"],
+        "para": [
+          "tecnologia"
+        ],
         "exige": "instrucao"
       }
     },
@@ -254,7 +367,9 @@
       },
       "desce": "operarios-fabrica",
       "treina": {
-        "para": ["luxo"],
+        "para": [
+          "luxo"
+        ],
         "exige": "instrucao"
       }
     },
@@ -278,13 +393,15 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": ["infraestrutura"],
+        "para": [
+          "infraestrutura"
+        ],
         "exige": "instrucao"
       }
     },
     {
       "id": "comerciantes",
-      "nome": "Pequenos comerciantes",
+      "nome": "Pequenos empregadores",
       "estrato": "medio",
       "bussola": {
         "economico": 0.4,
@@ -303,7 +420,9 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": ["tecnologia"],
+        "para": [
+          "tecnologia"
+        ],
         "exige": "instrucao"
       }
     },
@@ -351,7 +470,9 @@
       },
       "desce": "servicos-basicos",
       "treina": {
-        "para": ["infraestrutura"],
+        "para": [
+          "infraestrutura"
+        ],
         "exige": "instrucao"
       }
     },
@@ -374,7 +495,9 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": ["essenciais"],
+        "para": [
+          "essenciais"
+        ],
         "exige": "instrucao"
       }
     },
@@ -474,6 +597,23 @@
       },
       "capital": 0,
       "desce": "burocratas"
+    },
+    {
+      "id": "gerentes",
+      "nome": "Gerentes",
+      "estrato": "rico",
+      "bussola": {
+        "economico": 0.4,
+        "social": 0.1
+      },
+      "setores": {
+        "industria": 0.3,
+        "essenciais": 0.2,
+        "tecnologia": 0.25,
+        "luxo": 0.25
+      },
+      "capital": 0,
+      "desce": "trabalhadores-escritorio"
     }
   ]
 }

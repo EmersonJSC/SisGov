@@ -436,6 +436,12 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - Nenhum dinheiro some: todo real gasto ou cobrado vira renda de alguém, circula, fica guardado ou sai do país (14/nov).
 - Resultado emerge: a lei muda só um número. Se ela é boa ou ruim sai da renda do pop contra a conta, nunca de condição escrita na lei (04/nov).
 - A cesta é uma fatia da renda por estrato (meta do GDD).
+- Decidido em 15/nov (fase dos pops):
+  - Estudantes, Aposentados e Crianças são pops separados; cada um guarda por dentro a divisão entre pobre, médio e rico.
+  - Renda por fonte: cada setor tem um tamanho (no turno 0, o que os pops de hoje dão) e paga salário e lucro aos pops que estão nele. A Economia completa (3.3, 3.4) depois só calcula melhor esse tamanho.
+  - Quem não tem setor tem a renda ligada à de quem paga por ele: a doméstica à das famílias média e rica, o vendedor de rua à dos pobres.
+  - Terceiro caminho: o pop também muda para outro pop da mesma faixa quando o destino paga mais (ex.: o eletricista que abre a oficina vira Autônomo com negócio). É onde ligam as leis de quem trabalha por conta própria.
+  - Fase dos pops, na ordem: 31 pops, renda por fonte, desemprego, cesta e padrão de vida, demografia, estados, saída, lugar das tomadas de serviço e direito, organizações.
 
 **Ligações**
 - Recebe da Economia: salário, emprego, preços, lucro, aluguel.
@@ -454,7 +460,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 **No motor hoje**
 - ◐ R11.1 Pops com renda da economia: a renda ainda é parte fixa do PIB.
 - ✅ R11.5 Pops mudam de setor estudando. ✅ R11.6 Sobem e descem de estrato. ✅ R11.7 Cada pop tem bússola e desliza com a vida.
-- ☐ R11.8 Dados dentro do pop. ☐ R11.12 32 pops em 4 blocos, com crianças. O motor tem 25 tipos (8 pobres, 11 médios, 6 ricos); o GDD é a meta.
+- ☐ R11.8 Dados dentro do pop. ☐ R11.12 31 pops em 4 blocos, com crianças. O motor tem 25 tipos (8 pobres, 11 médios, 6 ricos); o GDD é a meta.
 - A cesta no motor dá a mesma quantia por pessoa; a meta é a fatia da renda por estrato.
 - O índice Desemprego e o pop Desempregados ainda não se ligam. O emprego e o salário saem da renda do pop, não o contrário.
 - Uma lei só (Transferência de renda) divide verba para um estrato.
@@ -531,7 +537,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 **No motor hoje.** Não há padrão de vida por pop. Cesta e bolso existem. Os radicais ainda crescem pelo nível da satisfação (ver 2.6).
 
 **Em aberto**
-- O padrão de vida vira um número por pop? Ele substitui, soma-se a ou fica ao lado da cesta e do bolso?
+- ~~O padrão de vida vira um número por pop?~~ Decidido em 15/nov: sim, um número por pop (renda real ÷ custo da cesta e das contas); é a base dos radicais e da saída.
 - O bolso do gosto (renda, preço do que ele compra, emprego, serviço que recebe) é a mesma coisa que o padrão de vida, ou o padrão é só uma parte dele?
 
 ---
@@ -786,6 +792,7 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 
 **Regras**
 - Pop, grupo e organização são camadas diferentes (06/nov).
+- Decidido em 15/nov: as organizações entram na fase dos pops, junto com os radicais pela piora (2.6).
 - Nomes sempre inventados; extremistas em todos os lados.
 - Não há lista fixa; o gerador cria.
 - Cada grupo tem limite (pacifista nunca pega em armas).
@@ -877,6 +884,7 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 **Regras**
 - Lugar (08/nov): todo pop tem campo e cidade e fica num estado.
 - O país declara os estados.
+- Decidido em 15/nov: o país declara as pessoas de cada estado e a divisão campo/cidade; cada pop segue a divisão nacional até ter dado próprio.
 
 **Mídia como lente.** **ESTUDAR** se a mídia tem alcance por estado.
 
@@ -891,7 +899,7 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 - ◐ Campo e cidade só na Moradia.
 
 **Em aberto**
-- Se entra na V1 ou depois, e o que depende disso (voto por estado, energia, governadores).
+- Se entra na V1 ou depois, e o que depende disso (voto por estado, energia, governadores). Decidido em 15/nov: entra na fase dos pops.
 - Se o êxodo aparece como índice ou só como gente mudando de pop.
 
 ---

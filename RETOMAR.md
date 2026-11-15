@@ -3,16 +3,13 @@
 Reescrito do zero a cada rodada; o anterior vai para o topo de
 [docs/historico/retomar.md](docs/historico/retomar.md) (não abrir sem precisar).
 
-**14/nov/2026**
+**15/nov/2026**
 
 ## Onde está
 
-**Requisitos a partir do GDD (14/nov, frente atual):** plano aprovado em `docs/jogo/prompt-requisitos.md`
-(com os 5 ajustes de 14/nov: nomes novos, autor lê a Parte antes, onda 1 commitada antes da auditoria,
-lotes de ~200 linhas com Fases 1+2 juntas, commit só com a palavra do autor). Rascunhos em
-`docs/jogo/requisitos-rascunho/` (fora dos commits, apagar no fim): `00-ficha.md`, `cortar.py` (corta o GDD
-por seção sem o "No motor hoje"; rodar de novo se o GDD mudar), `lotes.json` (26 lotes), `instrucoes-fase12.md`.
-**Parte 1 fechada (14/nov):** 105 requisitos (35 certos, 51 pela metade, 3 errados, 12 faltam, 4 não se aplicam) no `requisitos.md` (no lugar do antigo bloco 4), texto completo e prova em `docs/jogo/auditoria/`, "No motor hoje" da Parte 1 do GDD trocado, duplicados em `codigo-a-conferir.md`. Próxima: Parte 4 (Máquina pública), 5 lotes, só quando o autor chamar e depois de ele ler a Parte 4. **Custo real:** ~95 mil tokens por lote nos requisitos e ~240 mil na auditoria; a Parte 1 gastou ~17% da cota. O autor pediu para ir aos poucos: uma Parte por vez, só quando ele chamar. Ordem: 1 → 4 → 3 → 2 → 5 → 6 → 7 → 9 → 8.
+**Fase dos pops (15/nov, frente atual).** Combinado: requisitos se fazem por mecânica, na hora de construir (o molde do `prompt-requisitos.md` foi aposentado; Parte 1 fica como está). Antes de rever as leis, fechar o motor dos pops para receber as tomadas (canais). Decisões no GDD 2.1, 2.3, 2.7 e 2.9 ("Decidido em 15/nov"). Ordem: A 31 pops no conteúdo (Crianças vão no E) → B renda por fonte (setor paga salário e lucro; Estudantes/Aposentados com divisão pobre/médio/rico por dentro; quem não tem setor segue a renda de quem paga) → C desemprego → D cesta pela renda e padrão de vida por pop → E demografia e Crianças → F estados → G saída → H lugar das tomadas de serviço e direito → I organizações com radicais pela piora. Sonnet faz A, E, F, H com instrução fechada; Opus faz B e confere. **A está com um agente Sonnet** (conteúdo só; sem motor).
+
+Depois dos pops: revisar todas as leis (não estão jogáveis), cada uma dizendo em qual tomada liga. Canais hoje: imposto e transferência chegam ao pop; verba some no órgão; preço e direito sem leitor.
 
 **GDD por mecânica commitado (8bbe87da).** Autor leu só a Parte 1. `docs/jogo/gdd-novo/` fica até ele ler tudo.
 

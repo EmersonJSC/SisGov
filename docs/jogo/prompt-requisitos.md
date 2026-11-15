@@ -1,5 +1,10 @@
 # Prompt: plano dos requisitos a partir do GDD
 
+> **Aposentado em 14/nov/2026.** Só a Parte 1 foi feita neste molde. Ele custou caro
+> e entregou pouco. Daqui em diante, os requisitos de cada mecânica são escritos na
+> hora de construí-la: ler a seção do GDD, fazer uma lista curta do que ela pede e
+> conferir no código só esses itens. Tudo isso sem rodada de agentes.
+
 > Colar numa sessão nova do Claude Code (Opus). Refeito em 14/nov/2026.
 > O Opus coordena e entende o todo; Haiku e Sonnet fazem o trabalho por seção.
 
