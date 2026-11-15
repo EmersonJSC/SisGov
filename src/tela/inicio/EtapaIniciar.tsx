@@ -46,6 +46,22 @@ export function EtapaIniciar({
           />{" "}
           Sem Congresso (toda lei passa)
         </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={!e.semSenado}
+            onChange={(x) => mudar({ semSenado: !x.target.checked })}
+          />{" "}
+          Senado (liga e desliga)
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={e.comJudiciario}
+            onChange={(x) => mudar({ comJudiciario: x.target.checked })}
+          />{" "}
+          Judiciário (liga e desliga; fora da V1)
+        </label>
       </details>
     </section>
   );

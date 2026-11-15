@@ -32,6 +32,8 @@ export interface Escolhas {
   /** Ministros que o jogador pôs à mão, por caixa. */
   trocas: Record<string, string>;
   semCongresso: boolean;
+  semSenado: boolean;
+  comJudiciario: boolean;
 }
 
 export const ESCOLHAS_INICIAIS = (pais: string): Escolhas => ({
@@ -47,6 +49,8 @@ export const ESCOLHAS_INICIAIS = (pais: string): Escolhas => ({
   renomeadas: [],
   trocas: {},
   semCongresso: false,
+  semSenado: false,
+  comJudiciario: false,
 });
 
 const NOME_MINIMO = 3;

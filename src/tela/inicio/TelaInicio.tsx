@@ -46,7 +46,7 @@ interface Props {
     pais: string,
     semente: number,
     comeco: ComecoDoJogador,
-    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado">,
+    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado" | "comJudiciario">,
   ) => void;
 }
 
@@ -57,7 +57,6 @@ export function TelaInicio({
   onComecar,
 }: Props) {
   const [passo, setPasso] = useState(-1);
-  const [semSenado, setSemSenado] = useState(false);
   const [avisoDeTeste, setAvisoDeTeste] = useState("");
   const avisarDoTeste = (texto: string) => {
     setAvisoDeTeste(texto);
@@ -116,7 +115,11 @@ export function TelaInicio({
         caixas,
         ministros,
       },
-      { semCongresso: e.semCongresso, semSenado },
+      {
+        semCongresso: e.semCongresso,
+        semSenado: e.semSenado,
+        comJudiciario: e.comJudiciario,
+      },
     );
   };
 
@@ -131,14 +134,18 @@ export function TelaInicio({
         chapa: sugerida,
         ministros: ministrosSugeridos(e.pais, e.semente, sugerida),
       },
-      { semCongresso: e.semCongresso, semSenado },
+      {
+        semCongresso: e.semCongresso,
+        semSenado: e.semSenado,
+        comJudiciario: e.comJudiciario,
+      },
     );
   };
 
   useCheats((cheat) => {
     if (cheat === "pular") return pular();
-    setSemSenado(!semSenado);
-    avisarDoTeste(semSenado ? "Senado ligado" : "Senado desligado (teste)");
+    mudar({ semSenado: !e.semSenado });
+    avisarDoTeste(e.semSenado ? "Senado ligado" : "Senado desligado (teste)");
   });
 
   const sugerirChapa = () => {
@@ -149,7 +156,7 @@ export function TelaInicio({
   return (
     <div className="inicio">
       <div className="ini-quadro">
-        {(semSenado || avisoDeTeste) && (
+        {(e.semSenado || avisoDeTeste) && (
           <span className="ini-teste-aviso">
             {avisoDeTeste || "Teste: sem Senado"}
           </span>

@@ -8,7 +8,7 @@ const SEMENTE = 3;
 
 /** Partida com o juiz da primeira cadeira do STF a um passo da aposentadoria. */
 function comVelho(leiDeEscolha?: string): Partida {
-  const p = criarPartida("brasil-2026", SEMENTE);
+  const p = criarPartida("brasil-2026", SEMENTE, { comJudiciario: true });
   const j = p.estado.judiciario;
   if (!j) throw new Error("o Brasil precisa de Judiciário");
   const [primeiro, ...resto] = j.tribunais.stf;
@@ -38,7 +38,8 @@ const papelDaVaga = (p: Partida) =>
 
 describe("judiciário na partida", () => {
   it("o Brasil começa com o STF declarado (10 juízes e 1 vaga) e o TSE só com presidente", () => {
-    const j = criarPartida("brasil-2026", SEMENTE).estado.judiciario;
+    const j = criarPartida("brasil-2026", SEMENTE, { comJudiciario: true })
+      .estado.judiciario;
     expect(Object.keys(j?.tribunais ?? {})).toEqual(["stf", "tse"]);
     expect(j?.tribunais.stf).toHaveLength(11);
     expect(j?.tribunais.stf.filter(ehVaga)).toHaveLength(1);

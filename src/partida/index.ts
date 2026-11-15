@@ -573,6 +573,8 @@ export interface OpcoesPartida {
   semCongresso?: boolean;
   /** O país joga só com a Câmara, mesmo que declare Senado (teste). */
   semSenado?: boolean;
+  /** Liga o Judiciário (fora da V1, 15/nov: só existe na tela). */
+  comJudiciario?: boolean;
   /** Partido, chapa e ministros do jogador; sem isto o partido do país governa. */
   comeco?: ComecoDoJogador;
 }
@@ -639,6 +641,7 @@ export function criarPartida(
     ajustes = {},
     semCongresso = false,
     semSenado = false,
+    comJudiciario = false,
     comeco,
   } = opcoes;
   const declarado = arquivoPais<EstadoInicialPais>(pais, "estado-inicial");
@@ -668,7 +671,9 @@ export function criarPartida(
     ministrosDoComeco(semente, pais, elenco, congresso, grupos, comeco),
     comeco?.caixas,
   );
-  const judiciario = carregarJudiciario(pais, congresso, grupos);
+  const judiciario = comJudiciario
+    ? carregarJudiciario(pais, congresso, grupos)
+    : undefined;
   for (const id of INDICES_ESSENCIAIS)
     if (typeof inicial.essenciais[id] !== "number")
       throw new Error(`país "${pais}" › essenciais.${id}: precisa ser número`);

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { chapaSugerida, criarPartida, montarVisao } from ".";
 
 describe("poderes na visão", () => {
-  const partida = criarPartida("brasil-2026", 1);
+  const partida = criarPartida("brasil-2026", 1, { comJudiciario: true });
   const p = montarVisao(partida).poderes!;
 
   it("a Câmara tem os partidos do país, do maior para o menor", () => {
