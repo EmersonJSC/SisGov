@@ -10,7 +10,11 @@
         "social": 0.1
       },
       "setores": {},
-      "capital": 0
+      "capital": 0,
+      "pago_por": {
+        "pobre": 0.6,
+        "medio": 0.4
+      }
     },
     {
       "id": "cuidam-da-casa",
@@ -21,7 +25,11 @@
         "social": 0.4
       },
       "setores": {},
-      "capital": 0
+      "capital": 0,
+      "pago_por": {
+        "pobre": 0.7,
+        "medio": 0.3
+      }
     },
     {
       "id": "informais-urbanos",
@@ -420,7 +428,12 @@
         "social": -0.6
       },
       "setores": {},
-      "capital": 0
+      "capital": 0,
+      "pago_por": {
+        "pobre": 0.4,
+        "medio": 0.4,
+        "rico": 0.2
+      }
     },
     {
       "id": "aposentados",
@@ -431,7 +444,12 @@
         "social": 0.5
       },
       "setores": {},
-      "capital": 0
+      "capital": 0,
+      "pago_por": {
+        "pobre": 0.5,
+        "medio": 0.4,
+        "rico": 0.1
+      }
     },
     {
       "id": "trabalhadores-escritorio",

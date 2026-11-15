@@ -162,6 +162,7 @@ export function linhaDaLei(lei: Lei): Linha {
 
 /** "pobre", ou "pobre 0.6; medio 0.4" quando a renda se divide. */
 function rendaPara(para: NonNullable<LeiContinua["para"]>): string {
+  if ("pop" in para) return `pop ${para.pop}`;
   return "pesos" in para
     ? Object.entries(para.pesos)
         .map(([e, p]) => `${e} ${p}`)
@@ -171,6 +172,7 @@ function rendaPara(para: NonNullable<LeiContinua["para"]>): string {
 
 function paraDaPlanilha(v: string): LeiContinua["para"] {
   if (!v.includes(" ")) return { estrato: v as Estrato };
+  if (v.startsWith("pop ")) return { pop: v.slice(4).trim() };
   const pesos = Object.fromEntries(
     v.split(";").map((par) => {
       const [e, p] = par.trim().split(/\s+/);

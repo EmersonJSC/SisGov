@@ -117,10 +117,13 @@ export interface LeiContinua extends LeiBase {
   /** "gasto": o valor é gasto do governo, em fração do PIB (motor/contas). */
   conta?: "gasto";
   /**
-   * Lei de gasto que vira renda de pops: de um estrato, ou de vários, com o
-   * peso de cada um (motor/populacao).
+   * Lei de gasto que vira renda de pops: de um estrato, de vários (com o peso
+   * de cada um) ou de um pop só, pelo id (motor/populacao).
    */
-  para?: { estrato: Estrato } | { pesos: Partial<Record<Estrato, number>> };
+  para?:
+    | { estrato: Estrato }
+    | { pesos: Partial<Record<Estrato, number>> }
+    | { pop: string };
   /**
    * A lei encolhe uma base de imposto (ex.: "a partir de quanto cobra",
    * desconto por filho): no mínimo da faixa a base fica inteira; no máximo,

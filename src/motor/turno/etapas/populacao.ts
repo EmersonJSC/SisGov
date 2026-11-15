@@ -33,15 +33,28 @@ export function transferenciasPorEstrato(
   regras: Regras,
   estado: Estado,
 ): Partial<Record<Estrato, number>> {
+  return transferencias(regras, estado).estratos;
+}
+/** Dinheiro das transferências por estrato e por pop (lei com `para.pop`), por ano. */
+export function transferencias(
+  regras: Regras,
+  estado: Estado,
+): {
+  estratos: Partial<Record<Estrato, number>>;
+  pops: Record<string, number>;
+} {
   const e = estado.essenciais;
   const gasto = gastoPorLei(regras, estado.leis, estado.fiscal?.corte);
   const total: Partial<Record<Estrato, number>> = {};
+  const pops: Record<string, number> = {};
   const somar = (es: Estrato, v: number) => (total[es] = (total[es] ?? 0) + v);
   for (const id of Object.keys(estado.leis)) {
     const lei = regras.leis[id];
     if (lei.forma !== "continua" || !lei.para) continue;
     const dinheiro = ((gasto[id] ?? 0) / 100) * e.pib_nominal;
-    if ("pesos" in lei.para) {
+    if ("pop" in lei.para) {
+      pops[lei.para.pop] = (pops[lei.para.pop] ?? 0) + dinheiro;
+    } else if ("pesos" in lei.para) {
       const pesos = Object.entries(lei.para.pesos) as [Estrato, number][];
       const soma = pesos.reduce((s, [, p]) => s + p, 0);
       for (const [es, p] of pesos) somar(es, (dinheiro * p) / soma);
@@ -51,7 +64,7 @@ export function transferenciasPorEstrato(
       if (vaza.para) somar(vaza.para, dinheiro * vaza.parte);
     }
   }
-  return total;
+  return { estratos: total, pops };
 }
 /**
  * Parte da transferência de um estrato que vaza para o de cima: a cobertura
@@ -224,13 +237,14 @@ export function fontesDaRenda(
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 export function pops(regras: Regras, estado: Estado): Record<string, Pop> {
   const e = estado.essenciais;
-  const transferencias = transferenciasPorEstrato(regras, estado);
+  const t = transferencias(regras, estado);
   return calcularPops(regras.pops, regras.pais.pops, {
     populacao: e.populacao,
     pib_nominal: e.pib_nominal,
     imposto_renda: 0,
     impostos: impostoPorEstrato(regras, estado.leis, e),
-    transferencias,
+    transferencias: t.estratos,
+    transferencias_pop: t.pops,
     migracao: estado.migracao,
     fontes: fontesDaRenda(regras, estado),
   });

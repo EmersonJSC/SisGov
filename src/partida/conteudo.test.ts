@@ -86,6 +86,14 @@ describe("contrato dos pops", () => {
       for (const v of [p.bussola.economico, p.bussola.social])
         expect(Math.abs(v), p.id).toBeLessThanOrEqual(1);
   });
+
+  it("toda transferência a um pop aponta para um pop que existe", () => {
+    const ids = new Set(pops.pops.map((p) => p.id));
+    for (const [arquivo, lei] of Object.entries(leis)) {
+      const para = (lei as { para?: { pop?: string } }).para;
+      if (para?.pop) expect(ids.has(para.pop), arquivo).toBe(true);
+    }
+  });
 });
 
 describe("contrato da produção", () => {

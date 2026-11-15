@@ -6,7 +6,10 @@ import {
   arrecadacaoPorLei,
   impostoPorEstrato,
 } from "../motor/turno/etapas/economia";
-import { transferenciasPorEstrato } from "../motor/turno/etapas/populacao";
+import {
+  transferencias,
+  transferenciasPorEstrato,
+} from "../motor/turno/etapas/populacao";
 import { avancar, criarPartida, jogar } from ".";
 
 const SEMENTE = 3;
@@ -73,15 +76,19 @@ describe("bases novas", () => {
 });
 
 describe("transferências", () => {
-  it("a verba das aposentadorias chega ao pobre e à classe média", () => {
+  it("a verba das aposentadorias chega aos aposentados, não ao estrato", () => {
     const p = brasil();
-    const t = transferenciasPorEstrato(p.regras, p.estado);
-    const semApos = transferenciasPorEstrato(p.regras, {
+    const t = transferencias(p.regras, p.estado);
+    const semApos = transferencias(p.regras, {
       ...p.estado,
       leis: { ...p.estado.leis, "verba-das-aposentadorias": 0.01 },
     });
-    expect((t.medio ?? 0) - (semApos.medio ?? 0)).toBeGreaterThan(0);
-    expect((t.pobre ?? 0) - (semApos.pobre ?? 0)).toBeGreaterThan(0);
+    expect(
+      (t.pops.aposentados ?? 0) - (semApos.pops.aposentados ?? 0),
+    ).toBeGreaterThan(0);
+    expect(t.estratos.medio ?? 0).toBeCloseTo(semApos.estratos.medio ?? 0);
+    const apos = p.estado.pops.aposentados;
+    expect(apos.transferencia).toBeGreaterThan(apos.renda_bruta);
   });
 
   it("cobrir o país inteiro manda parte da Transferência à classe média", () => {

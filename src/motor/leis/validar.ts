@@ -234,6 +234,9 @@ function conferirContas(c: Contexto, dado: Objeto) {
         )
       )
         c.erro("para.pesos", `estratos (${ESTRATOS.join(", ")}) com peso > 0`);
+    } else if (dado.para.pop !== undefined) {
+      if (typeof dado.para.pop !== "string" || !dado.para.pop)
+        c.erro("para.pop", "precisa ser o id de um pop");
     } else if (!ehEstrato(dado.para.estrato))
       c.erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
   }

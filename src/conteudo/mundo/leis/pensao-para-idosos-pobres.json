@@ -13,7 +13,7 @@
   "faixa": { "min": 0.001, "max": 0.02 },
   "passo": 0.001,
   "conta": "gasto",
-  "para": { "estrato": "pobre" },
+  "para": { "pop": "aposentados" },
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": -0.4, "social": 0 }

@@ -79,6 +79,8 @@ export interface EntradaPops {
    */
   impostos?: Partial<Record<Estrato, number>>;
   transferencias: Partial<Record<Estrato, number>>;
+  /** Transferência a um pop só (ex.: aposentadoria), dividida pelas pessoas dele. */
+  transferencias_pop?: Record<string, number>;
   /** Quem trocou de pop até hoje, em fração da população (soma zero). */
   migracao?: Migracao;
   /** De onde vem a renda; sem isso, cada pop fica com a parte declarada do PIB. */
@@ -192,7 +194,8 @@ export function calcularPops(
       pessoas;
     const transferencia =
       (entrada.transferencias[t.estrato] ?? 0) /
-      (pessoasEstrato[t.estrato] as number);
+        (pessoasEstrato[t.estrato] as number) +
+      (pessoas > 0 ? (entrada.transferencias_pop?.[t.id] ?? 0) / pessoas : 0);
     pops[t.id] = {
       pessoas,
       renda_bruta,

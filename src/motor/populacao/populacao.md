@@ -75,8 +75,12 @@ declara em `treina.para`. Pop sem `treina` não muda.
   - **desvio** (B2): a corrupção dos órgãos (`desvioDosOrgaos`: verba ×
     corrupção × 0,3) sai do que pagaria o Estado e vira renda dos pops com
     `desvio` (peso), medida por unidade do PIB;
-  - **fixa**: o que sobra (aposentados, estudantes, desempregados, cuidam da
-    casa, até o passo B3).
+  - **fixa**: o que sobra de um pop sem setor nem `pago_por` (nenhum hoje).
+- Quem não trabalha (B3) vive de família ou bico pelo `pago_por` (aposentados,
+  estudantes, desempregados, cuidam da casa), e mais das transferências que o
+  país tiver: a lei com `para: { pop }` paga só aquele pop, dividida pelas
+  pessoas dele (aposentadoria aos aposentados, bolsa de pesquisa aos
+  estudantes). O seguro-desemprego entra no passo C.
 - No turno 0 toda fonte vale 1 e cada pop fica com a parte declarada. Depois a
   soma das rendas brutas continua sendo o PIB: a fonte que cresce tira das
   outras. A verba muda quem recebe, não o tamanho do PIB.
