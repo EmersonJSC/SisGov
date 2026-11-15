@@ -91,6 +91,8 @@ export interface Troca {
 export interface EstadoGoverno {
   caixas: Caixa[];
   orgaos: Record<string, Orgao>;
+  /** Desvio dos órgãos no turno 0, em % do PIB (régua da renda de quem recebe). */
+  desvio_inicial?: number;
   /** Trocas pedidas pelo jogador nos últimos turnos (polêmica e mágoa). */
   trocas?: Troca[];
 }

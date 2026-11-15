@@ -182,6 +182,7 @@ function carregarPops(): TipoPop[] {
     desce: "desce" in t ? (t.desce as string) : undefined,
     publico: "publico" in t ? (t.publico as number) : undefined,
     pago_por: "pago_por" in t ? (t.pago_por as TipoPop["pago_por"]) : undefined,
+    desvio: "desvio" in t ? (t.desvio as number) : undefined,
   }));
   const motivo = motivoEscadasInvalidas(tipos) ?? motivoFontesInvalidas(tipos);
   if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);

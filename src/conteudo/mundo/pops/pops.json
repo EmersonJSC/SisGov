@@ -498,7 +498,8 @@
         "essenciais": 0.15
       },
       "capital": 1,
-      "desce": "comerciantes"
+      "desce": "comerciantes",
+      "desvio": 1
     },
     {
       "id": "industriais",
@@ -514,7 +515,8 @@
         "infraestrutura": 0.2
       },
       "capital": 1,
-      "desce": "tecnicos"
+      "desce": "tecnicos",
+      "desvio": 0.5
     },
     {
       "id": "rentistas",
@@ -578,7 +580,8 @@
       },
       "capital": 0,
       "desce": "burocratas",
-      "publico": 1
+      "publico": 1,
+      "desvio": 1
     },
     {
       "id": "gerentes",

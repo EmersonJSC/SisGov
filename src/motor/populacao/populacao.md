@@ -72,6 +72,9 @@ declara em `treina.para`. Pop sem `treina` não muda.
     gasto sem `para`, mais o gasto fora das leis);
   - **pago por outros**: `pago_por` (peso de cada estrato); anda com a parte
     desse estrato na renda disponível;
+  - **desvio** (B2): a corrupção dos órgãos (`desvioDosOrgaos`: verba ×
+    corrupção × 0,3) sai do que pagaria o Estado e vira renda dos pops com
+    `desvio` (peso), medida por unidade do PIB;
   - **fixa**: o que sobra (aposentados, estudantes, desempregados, cuidam da
     casa, até o passo B3).
 - No turno 0 toda fonte vale 1 e cada pop fica com a parte declarada. Depois a

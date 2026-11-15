@@ -18,6 +18,8 @@ const DESFAZ_POR_TURNO = 0.08;
 const POR_SOBRA = 12;
 const POR_CARGOS = 1.2;
 const POR_DESONESTIDADE = 1.6;
+/** Parte da verba que vira desvio com a corrupção no máximo (100). */
+export const PARTE_DESVIADA = 0.3;
 /** Corrupção que vira escândalo ao cruzar. */
 export const LIMITE_DO_ESCANDALO = 60;
 
@@ -55,6 +57,27 @@ export function verbaDaInstituicao(
       l.forma === "continua" && l.conta === "gasto"
         ? soma + ((valores[l.id] as number | undefined) ?? 0) * 100
         : soma,
+    0,
+  );
+}
+
+/**
+ * Verba desviada em todos os órgãos, em % do PIB: verba × corrupção ×
+ * `PARTE_DESVIADA`. O dinheiro não some: vira renda de quem recebe o desvio
+ * (motor/populacao).
+ */
+export function desvioDosOrgaos(
+  leis: Record<string, Lei>,
+  valores: Record<string, ValorLei>,
+  orgaos: Record<string, Orgao>,
+): number {
+  return Object.entries(orgaos).reduce(
+    (soma, [instituicao, o]) =>
+      soma +
+      (verbaDaInstituicao(leis, valores, instituicao) *
+        o.corrupcao *
+        PARTE_DESVIADA) /
+        MAXIMO,
     0,
   );
 }

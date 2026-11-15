@@ -34,6 +34,8 @@ export interface TipoPop {
    * peso de cada estrato que paga; a renda anda com a renda dele.
    */
   pago_por?: Partial<Record<Estrato, number>>;
+  /** Peso do pop no dinheiro desviado pela corrupção dos órgãos. */
+  desvio?: number;
 }
 
 /**
@@ -207,6 +209,8 @@ export function motivoFontesInvalidas(tipos: TipoPop[]): string | null {
   for (const t of tipos) {
     if (t.publico !== undefined && !(t.publico >= 0 && t.publico <= 1))
       return `pop ${t.id}: publico precisa ser de 0 a 1`;
+    if (t.desvio !== undefined && !(t.desvio > 0))
+      return `pop ${t.id}: desvio precisa ser maior que 0`;
     if (t.pago_por) {
       const pesos = Object.entries(t.pago_por);
       if (pesos.length === 0) return `pop ${t.id}: pago_por vazio`;

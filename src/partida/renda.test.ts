@@ -69,4 +69,31 @@ describe("renda por fonte", () => {
       parte(sem, "informais-urbanos"),
     );
   });
+
+  it("a corrupção desvia verba: quem recebe ganha, o servidor perde", () => {
+    const p = base("brasil-2026");
+    const g = p.estado.governo!;
+    const corrupto: Partida = {
+      ...p,
+      estado: {
+        ...p.estado,
+        governo: {
+          ...g,
+          orgaos: Object.fromEntries(
+            Object.entries(g.orgaos).map(([id, o]) => [
+              id,
+              { ...o, corrupcao: 80 },
+            ]),
+          ),
+        },
+      },
+    };
+    const limpo = jogar(p, 1);
+    const sujo = jogar(corrupto, 1);
+    expect(parte(sujo, "altos-funcionarios")).toBeGreaterThan(
+      parte(limpo, "altos-funcionarios") * 1.2,
+    );
+    expect(parte(sujo, "burocratas")).toBeLessThan(parte(limpo, "burocratas"));
+    expect(soma(sujo)).toBeCloseTo(1, 6);
+  });
 });

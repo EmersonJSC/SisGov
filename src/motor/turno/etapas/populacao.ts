@@ -7,7 +7,7 @@ import {
   deslizarPops,
 } from "../../grupos";
 import { vazamento } from "../../fisco";
-import { magoasDoGoverno } from "../../governo";
+import { desvioDosOrgaos, magoasDoGoverno } from "../../governo";
 import { lucroDosSetores, migrarSetores, precoDosSetores } from "../../mercado";
 import { posicaoDoPais } from "../../mundo";
 import type { ValorLei } from "../../leis";
@@ -129,8 +129,32 @@ export function fontesDaRenda(
     }
   }
 
-  // No turno 0 toda fonte vale 1 (o marco ainda é provisório).
-  const indice: Record<string, number> = {};
+  // Desvio: a corrupção dos órgãos tira da verba e vira renda de quem recebe.
+  // A parte do pop vai por unidade do PIB; a fonte vale o desvio de hoje.
+  const governo = estado.governo;
+  const recebem = regras.pops.filter((t) => (t.desvio ?? 0) > 0);
+  const pesoDoDesvio = recebem.reduce((a, t) => a + (t.desvio ?? 0), 0);
+  const comDesvio = governo !== undefined && pesoDoDesvio > 0;
+  const desvio0 = (governo?.desvio_inicial ?? 0) / 100;
+  const desvio = !comDesvio
+    ? 0
+    : estado.turno === 0
+      ? desvio0
+      : desvioDosOrgaos(regras.leis, estado.leis, governo.orgaos) / 100;
+  if (comDesvio)
+    for (const t of recebem) {
+      const renda = regras.pais.pops[t.id]?.parcela_renda ?? 0;
+      if (!(renda > 0)) continue;
+      const porUnidade = (t.desvio ?? 0) / pesoDoDesvio / renda;
+      const p = partes[t.id] ?? { fixa: 1 };
+      const escala = Math.max(0, 1 - porUnidade * desvio0);
+      for (const k of Object.keys(p)) p[k] *= escala;
+      p.desvio = porUnidade;
+      partes[t.id] = p;
+    }
+
+  const indice: Record<string, number> = comDesvio ? { desvio } : {};
+  // No turno 0 as outras fontes valem 1 (o marco ainda é provisório).
   if (estado.turno === 0) return { partes, indice };
   const c = estado.construcoes;
   if (c && estado.marco) {
@@ -164,10 +188,13 @@ export function fontesDaRenda(
     }
   }
   if (estado.marco) {
-    const antes = gastoComPessoal(regras, estado.marco.leis);
+    // O que é desviado não paga ninguém do Estado.
+    const antes = gastoComPessoal(regras, estado.marco.leis) - desvio0 * 100;
     if (antes > 0)
       indice.estado =
-        gastoComPessoal(regras, estado.leis, estado.fiscal?.corte) / antes;
+        (gastoComPessoal(regras, estado.leis, estado.fiscal?.corte) -
+          desvio * 100) /
+        antes;
   }
   // Quem paga gasta da renda disponível (já com imposto e transferência): a
   // parte de cada estrato nela hoje contra a do turno 0.

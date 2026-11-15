@@ -5,7 +5,7 @@ import { novoFato, type Fato } from "../fatos";
 import type { Magoa } from "../grupos";
 import type { Lei, ValorLei } from "../leis";
 import { candidatosDoPartido, fichaDe } from "./ministerios";
-import { andarOrgaos, iniciarOrgaos } from "./orgaos";
+import { andarOrgaos, desvioDosOrgaos, iniciarOrgaos } from "./orgaos";
 import type {
   Caixa,
   EstadoGoverno,
@@ -36,6 +36,8 @@ export {
   rendimentoDoOrgao,
   situacaoDoOrgao,
   verbaDaInstituicao,
+  desvioDosOrgaos,
+  PARTE_DESVIADA,
   type SituacaoDoOrgao,
 } from "./orgaos";
 
@@ -67,7 +69,12 @@ export function iniciarGoverno(
     instituicoes: [...c.instituicoes],
   }));
   const cargos = fracaoDosCargos(r, leis, valores);
-  return { caixas, orgaos: iniciarOrgaos(r, caixas, leis, valores, cargos) };
+  const orgaos = iniciarOrgaos(r, caixas, leis, valores, cargos);
+  return {
+    caixas,
+    orgaos,
+    desvio_inicial: desvioDosOrgaos(leis, valores, orgaos),
+  };
 }
 
 /** Motivo de as caixas não fecharem (do país ou do jogador), ou null. */
