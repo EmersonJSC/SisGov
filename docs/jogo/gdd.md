@@ -465,6 +465,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - ✅ R11.5 Pops mudam de setor estudando. ✅ R11.6 Sobem e descem de estrato. ✅ R11.7 Cada pop tem bússola e desliza com a vida.
 - ☐ R11.8 Dados dentro do pop. ☐ R11.12 31 pops em 4 blocos, com crianças. O motor tem 25 tipos (8 pobres, 11 médios, 6 ricos); o GDD é a meta.
 - ✅ Passo D (15/nov): a cesta declara a `fatia` da renda de cada estrato (comida: pobre 25%, médio 15%, rico 7%; remédios 5%, 4%, 2%; números para calibrar); o total do país não muda, muda quem consome quanto.
+- ✅ País parado (conserto de 15/nov): salário do Estado, desvio, o que é pago por outros pops e quem não tem fonte andam × o PIB nominal, como salário e lucro de setor. Antes, servidores, informais, domésticos e estudantes perdiam ~12% de renda real em 4 anos sem lei e viravam radicais. No Brasil sem lei, em 4 anos, todo pop fica entre 52 e 57 de padrão de vida (o país cresce 6% por pessoa).
 - ✅ Passo C (15/nov): vagas seguem a capacidade dos setores; falta de vaga manda gente aos Desempregados devagar e o índice Desemprego anda com a taxa; seguro-desemprego pelas leis de valor e duração, pago do gasto público.
 - Uma lei só (Transferência de renda) divide verba para um estrato.
 
@@ -754,7 +755,7 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 - McCauley e Moskalenko, Gómez e outros (radicalização): só parte dos radicais vira organização.
 
 **No motor hoje**
-- ✅ R11.2 Grupos com bússola, tamanho e satisfação. ✅ R11.3 Radicais e lealistas. Passo I1 (15/nov): radicais pela piora do padrão de vida dos membros contra o costume (anda 2% por turno até a vida de hoje, a piora que dura esfria), mais o direito perdido; alvo = 5 + piora em pontos × (1 − tomada `calma`). Lealistas seguem pela satisfação. No Brasil sem lei, em 4 anos: Estudantes 18%, Sem trabalho formal 17%, Militares 16%, Burocracia 16% (a vida desses pops já cai sem lei; calibrar). ◐ R11.4 Satisfação lê renda, índices e leis.
+- ✅ R11.2 Grupos com bússola, tamanho e satisfação. ✅ R11.3 Radicais e lealistas. Passo I1 (15/nov): radicais pela piora do padrão de vida dos membros contra o costume (anda 2% por turno até a vida de hoje, a piora que dura esfria), mais o direito perdido; alvo = 5 + piora em pontos × (1 − tomada `calma`). Lealistas seguem pela satisfação. No Brasil sem lei, em 4 anos, os radicais ficam na base (5%) depois do conserto do país parado (15/nov). ◐ R11.4 Satisfação lê renda, índices e leis.
 - ☐ R11.13 25 grupos atravessam os pops. O motor tem 16 grupos; o GDD é a meta. Os números e os nomes dos cenários do `grupos.md` são "da época dos 4 grupos".
 - ☐ R11.11 Grupo forte torna mais populares as leis perto dele.
 
@@ -829,7 +830,7 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 - Nenhum jogo é citado para organizações. **ESTUDAR** referência de jogo.
 
 **No motor hoje**
-- ◐ R11.14 Organizações políticas e ◐ R11.16 Gerador (passo I2, 15/nov, `motor/organizacoes`): 4 moldes no mundo (Movimento de rua, Revolucionários, Milícia política, Radicais ambientais; Extremistas religiosos e Separatistas esperam os grupos deles). Atraem os radicais acima da base dos grupos perto na bússola; armado só de grupo com `armas` (Sem trabalho formal, Militares, Donos de terra); só uma parte entra (rua 10%, armado 1%). Nasce sem sorte, depois de 4 turnos seguidos acima de 0,5% da população, no estado onde esses radicais pesam mais em proporção. Ameaça pequena, relevante, grave ou crítica; soma em Polarização, Segurança e Sensação de insegurança; nasce, cresce, racha e acaba no jornal. Tomadas `repressao` (corta a gente, cria radicais) e `inteligencia` (pega os chefes, racha); nenhuma lei liga ainda. No Brasil sem lei, em 4 anos: uma marcha de ~500 mil (relevante) no turno 6 e dois armados de 3 a 13 mil (pequenos), todos no Rio de Janeiro (o estado mais urbano; a piora ainda é do país inteiro).
+- ◐ R11.14 Organizações políticas e ◐ R11.16 Gerador (passo I2, 15/nov, `motor/organizacoes`): 4 moldes no mundo (Movimento de rua, Revolucionários, Milícia política, Radicais ambientais; Extremistas religiosos e Separatistas esperam os grupos deles). Atraem os radicais acima da base dos grupos perto na bússola; armado só de grupo com `armas` (Sem trabalho formal, Militares, Donos de terra); só uma parte entra (rua 10%, armado 1%). Nasce sem sorte, depois de 4 turnos seguidos acima de 0,5% da população, no estado onde esses radicais pesam mais em proporção. Ameaça pequena, relevante, grave ou crítica; soma em Polarização, Segurança e Sensação de insegurança; nasce, cresce, racha e acaba no jornal. Tomadas `repressao` (corta a gente, cria radicais) e `inteligencia` (pega os chefes, racha); nenhuma lei liga ainda. No Brasil sem lei, em 4 anos, nenhuma nasce (depois do conserto do país parado, 15/nov); antes dele nasciam uma marcha e dois armados, todos no Rio de Janeiro (o estado mais urbano; a piora ainda é do país inteiro).
 - ☐ R11.15 Crime organizado (espera Segurança e Vícios). ☐ R11.18 Financiadores e rastro. Igrejas e sindicatos já aparecem como donos sem lucro na Economia.
 
 **Em aberto**

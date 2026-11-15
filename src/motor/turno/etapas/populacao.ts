@@ -233,14 +233,21 @@ export function fontesDaRenda(
       indice[`lucro:${s}`] = Math.max(0, lucro) / lucro0;
     }
   }
+  // Salário e lucro de setor são nível (capacidade × preços); o Estado, o
+  // desvio e quem é pago por outros são parte do PIB: × o PIB nominal contra
+  // o do turno 0 para ficarem na mesma conta. Sem fonte, também.
+  const pib0 = estado.marco?.indices.pib_nominal;
+  const neutro = pib0 ? estado.essenciais.pib_nominal / pib0 : 1;
+  if (comDesvio) indice.desvio = desvio * neutro;
   if (estado.marco) {
     // O que é desviado não paga ninguém do Estado.
     const antes = gastoComPessoal(regras, estado.marco.leis) - desvio0 * 100;
     if (antes > 0)
       indice.estado =
-        (gastoComPessoal(regras, estado.leis, estado.fiscal?.corte) -
+        ((gastoComPessoal(regras, estado.leis, estado.fiscal?.corte) -
           desvio * 100) /
-        antes;
+          antes) *
+        neutro;
   }
   // Quem paga gasta da renda disponível (já com imposto e transferência): a
   // parte de cada estrato nela hoje contra a do turno 0.
@@ -265,9 +272,10 @@ export function fontesDaRenda(
     if (totalAntes > 0 && totalHoje > 0)
       for (const [e, a0] of Object.entries(antes) as [Estrato, number][])
         if (a0 > 0)
-          indice[`pago:${e}`] = (hoje[e] ?? 0) / totalHoje / (a0 / totalAntes);
+          indice[`pago:${e}`] =
+            ((hoje[e] ?? 0) / totalHoje / (a0 / totalAntes)) * neutro;
   }
-  return { partes, indice };
+  return { partes, indice, neutro };
 }
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 export function pops(regras: Regras, estado: Estado): Record<string, Pop> {

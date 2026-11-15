@@ -426,3 +426,13 @@ describe("serviço e direito", () => {
     expect(direitoDoPop(p.regras.pops[0], () => 1)).toBeUndefined();
   });
 });
+
+describe("país parado", () => {
+  it("sem lei, ninguém perde: Estado, quem é pago por outros e quem não tem fonte andam com o PIB", () => {
+    const p = jogar(base("brasil-2026"), 24, []);
+    const padroes = Object.values(p.estado.pops).map((x) => x.padrao ?? 50);
+    expect(Math.min(...padroes)).toBeGreaterThan(49);
+    expect(Math.max(...padroes) - Math.min(...padroes)).toBeLessThan(8);
+    expect(p.estado.organizacoes?.vivas ?? []).toEqual([]);
+  });
+});

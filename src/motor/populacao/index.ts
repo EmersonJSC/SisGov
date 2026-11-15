@@ -115,8 +115,13 @@ export function pedacos(t: TipoPop): [Estrato, number, number][] {
 export interface FontesDaRenda {
   /** Pop → fonte → parte da renda bruta do pop (soma 1). */
   partes: Record<string, Record<string, number>>;
-  /** Fonte → quanto vale hoje ÷ no turno 0 (ausente = 1). */
+  /** Fonte → quanto vale hoje ÷ no turno 0 (ausente = `neutro`). */
   indice: Record<string, number>;
+  /**
+   * Quanto vale hoje a fonte sem índice e o pop sem fontes (bico, família):
+   * anda com o PIB nominal, para quem não muda nada não perder (ausente = 1).
+   */
+  neutro?: number;
 }
 
 /** O que o país declara de cada tipo de pop (frações que somam 1). */
@@ -250,11 +255,12 @@ export function calcularPops(
   const fracao = (id: string) => pais[id].parcela_pessoas + (mig[id] ?? 0);
   // Quanto as fontes do pop valem hoje contra o turno 0.
   const fator = (id: string) => {
+    const neutro = fontes?.neutro ?? 1;
     const partes = fontes?.partes[id];
-    if (!partes) return 1;
+    if (!partes) return neutro;
     let f = 0;
     for (const [fonte, parte] of Object.entries(partes))
-      f += parte * (fontes.indice[fonte] ?? 1);
+      f += parte * (fontes.indice[fonte] ?? neutro);
     return f;
   };
   // Quem muda de pop passa a ganhar como o pop novo; a soma da renda continua

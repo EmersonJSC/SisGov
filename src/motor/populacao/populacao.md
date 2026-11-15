@@ -84,6 +84,11 @@ declara em `treina.para`. Pop sem `treina` não muda.
 - No turno 0 toda fonte vale 1 e cada pop fica com a parte declarada. Depois a
   soma das rendas brutas continua sendo o PIB: a fonte que cresce tira das
   outras. A verba muda quem recebe, não o tamanho do PIB.
+- Mesma conta para todas (conserto de 15/nov): salário e lucro de setor são
+  nível (capacidade × preços); Estado, desvio e pago por outros são parte do
+  PIB e por isso andam × o PIB nominal contra o do turno 0 (`neutro`), como a
+  fonte que não tem índice e o pop sem fonte. Antes disso, quem vivia do Estado
+  ou de outros perdia ~12% de renda real em 4 anos sem lei nenhuma.
 
 ## Pop sem estrato fixo (passo B4, 15/nov)
 
