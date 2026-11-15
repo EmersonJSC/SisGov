@@ -38,6 +38,7 @@ import {
   type Votacao,
   motivoEscadasInvalidas,
   motivoFontesInvalidas,
+  type RegraDoEmprego,
   type ValorLei,
   ehEstrato,
   placarPrevisto,
@@ -189,6 +190,16 @@ function carregarPops(): TipoPop[] {
   const motivo = motivoEscadasInvalidas(tipos) ?? motivoFontesInvalidas(tipos);
   if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);
   return tipos;
+}
+
+/** Quem procura trabalho e quem fica fora da força (passo C). */
+function carregarEmprego(): RegraDoEmprego {
+  const r = tiposPops.emprego as RegraDoEmprego;
+  const ids = new Set(tiposPops.pops.map((t) => t.id));
+  for (const id of [r.desempregados, ...r.fora_da_forca])
+    if (!ids.has(id))
+      throw new Error(`mundo/pops/pops.json › emprego: pop "${id}" não existe`);
+  return r;
 }
 
 /** Nome de cada tipo de pop, para scripts e tela. */
@@ -576,6 +587,7 @@ export function criarPartida(
     leis,
     dominios: dominiosDosIndices(),
     pops: carregarPops(),
+    emprego: carregarEmprego(),
     grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),

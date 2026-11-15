@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   calcularPops,
+  andarEmprego,
   migrarNaFaixa,
   migrarPops,
+  taxaDeDesemprego,
   motivoEscadasInvalidas,
   motivoPopsInvalidos,
   type TipoPop,
@@ -210,5 +212,35 @@ describe("troca na mesma faixa (B5)", () => {
         { id: "y", estrato: "rico", bussola: {} },
       ]),
     ).toMatch(/mesmo estrato/);
+  });
+});
+
+describe("vagas e desemprego (C)", () => {
+  const pais = {
+    op: { parcela_pessoas: 0.5, parcela_renda: 0.5 },
+    des: { parcela_pessoas: 0.1, parcela_renda: 0.05 },
+    apo: { parcela_pessoas: 0.4, parcela_renda: 0.45 },
+  };
+  const regra = { desempregados: "des", fora_da_forca: ["apo"] };
+  const vazio = { fora: {}, demitidos: [] };
+
+  it("taxa conta só a força de trabalho", () => {
+    expect(taxaDeDesemprego(regra, { op: 50, des: 10, apo: 40 })).toBeCloseTo(
+      10 / 60,
+    );
+  });
+
+  it("vagas iguais: ninguém muda", () => {
+    const r = andarEmprego(pais, regra, vazio, undefined, { op: 1 });
+    expect(r.demitidos[0]).toBe(0);
+  });
+
+  it("falta vaga: uma parte vai para os desempregados, aos poucos", () => {
+    const r = andarEmprego(pais, regra, vazio, undefined, { op: 0.8 });
+    // Alvo: 10% da população fora; o passo fecha 30% disso.
+    expect(r.migracao.des).toBeCloseTo(0.03);
+    expect(r.migracao.op).toBeCloseTo(-0.03);
+    const volta = andarEmprego(pais, regra, r, r.migracao, { op: 1 });
+    expect(volta.migracao.des).toBeLessThan(r.migracao.des);
   });
 });

@@ -415,7 +415,8 @@ export function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
     gasto:
       ((gastoDasLeis(regras, estado.leis, estado.fiscal?.corte) +
         regras.pais.gasto_fora_das_leis +
-        (estado.atendimento?.custo ?? 0) * 100) /
+        (estado.atendimento?.custo ?? 0) * 100 +
+        (estado.emprego?.seguro ?? 0)) /
         100) *
       pibTurno,
     juros: ((e.taxa_juros / 100) * estado.tesouro.divida) / TURNOS_POR_ANO,

@@ -104,3 +104,18 @@ declara em `treina.para`. Pop sem `treina` não muda.
   não quanto ganha: sem lei, ninguém muda. Com o destino 5% à frente, um
   pouco muda; com 30% à frente, até 0,5% do pop por turno, vezes o índice
   `exige` (se houver). Mesmo limite de 30% do declarado.
+
+## Vagas e desemprego (passo C, 15/nov)
+
+- O mundo declara em `pops.json › emprego` o pop dos desempregados, os pops
+  fora da força de trabalho e as duas leis do seguro (valor e duração).
+- Vagas de cada pop: a capacidade dos setores onde ele trabalha contra a do
+  turno 0, dividida pelo crescimento normal do país; a parte paga pelo Estado
+  não perde vaga. Falta vaga: 30% da diferença vai aos desempregados por turno;
+  sobra vaga: 25% volta deles. Desempregados nunca abaixo de 30% do declarado;
+  um pop não perde mais de 60% da gente.
+- O índice Desemprego é o declarado mais o que a taxa (desempregados ÷ força
+  de trabalho) andou; Ocupados acompanha.
+- Seguro-desemprego: quem foi demitido nos últimos `duração ÷ 2` turnos
+  recebe `valor` × o PIB por pessoa; sai do gasto público e chega aos
+  desempregados no turno seguinte.

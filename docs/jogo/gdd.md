@@ -465,7 +465,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - ✅ R11.5 Pops mudam de setor estudando. ✅ R11.6 Sobem e descem de estrato. ✅ R11.7 Cada pop tem bússola e desliza com a vida.
 - ☐ R11.8 Dados dentro do pop. ☐ R11.12 31 pops em 4 blocos, com crianças. O motor tem 25 tipos (8 pobres, 11 médios, 6 ricos); o GDD é a meta.
 - A cesta no motor dá a mesma quantia por pessoa; a meta é a fatia da renda por estrato.
-- O índice Desemprego e o pop Desempregados ainda não se ligam. O emprego e o salário saem da renda do pop, não o contrário.
+- ✅ Passo C (15/nov): vagas seguem a capacidade dos setores; falta de vaga manda gente aos Desempregados devagar e o índice Desemprego anda com a taxa; seguro-desemprego pelas leis de valor e duração, pago do gasto público.
 - Uma lei só (Transferência de renda) divide verba para um estrato.
 
 **Em aberto**

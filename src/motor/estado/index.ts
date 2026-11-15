@@ -24,7 +24,7 @@ import type {
   ConstrucoesNoEstado,
   Preco,
 } from "../mercado";
-import type { Pop } from "../populacao";
+import type { EmpregoNoEstado, Pop } from "../populacao";
 
 export const INDICES_ESSENCIAIS = [
   "populacao",
@@ -114,6 +114,8 @@ export interface Estado {
   saneamento?: SaneamentoNoEstado;
   /** Rede de atendimento (motor/atendimento); ausente sem a regra ou em partida salva antes dela. */
   atendimento?: AtendimentoNoEstado;
+  /** Vagas, demitidos e seguro-desemprego (motor/populacao, passo C). */
+  emprego?: EmpregoNoEstado;
   /**
    * O que mudou no último turno, na moeda do país: PIB nominal e dívida.
    * Ausente no turno 0 e em partida salva antes desta função.

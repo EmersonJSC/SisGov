@@ -113,4 +113,35 @@ describe("renda por fonte", () => {
       agora.estudantes.transferencia,
     );
   });
+
+  it("setor que encolhe demite; o seguro paga quem foi demitido", () => {
+    const p = base("brasil-2026");
+    const c = p.estado.construcoes!;
+    const menor: Partida = {
+      ...p,
+      estado: {
+        ...p.estado,
+        construcoes: {
+          ...c,
+          prontas: { ...c.prontas, industria: c.prontas.industria * 0.7 },
+        },
+      },
+    };
+    const normal = jogar(p, 4).estado;
+    const crise = jogar(menor, 4).estado;
+    expect(crise.essenciais.desemprego).toBeGreaterThan(
+      normal.essenciais.desemprego + 1,
+    );
+    expect(crise.emprego!.seguro).toBeGreaterThan(normal.emprego!.seguro);
+    expect(crise.pops.desempregados.transferencia).toBeGreaterThan(
+      normal.pops.desempregados.transferencia,
+    );
+    const semSeguro = jogar(
+      avancar(menor, [
+        { tipo: "mudar_lei", lei: "seguro-desemprego-valor", valor: 0 },
+      ]),
+      3,
+    ).estado;
+    expect(semSeguro.emprego!.seguro).toBe(0);
+  });
 });

@@ -16,9 +16,11 @@ import {
   type Pop,
   type Estrato,
   calcularPops,
+  andarEmprego,
   migrarNaFaixa,
   migrarPops,
   pedacos,
+  taxaDeDesemprego,
 } from "../../populacao";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
@@ -66,6 +68,12 @@ export function transferencias(
       if (vaza.para) somar(vaza.para, dinheiro * vaza.parte);
     }
   }
+  // Seguro-desemprego do turno passado vai aos desempregados (passo C).
+  const r = regras.emprego;
+  const seguro = estado.emprego?.seguro ?? 0;
+  if (r && seguro > 0)
+    pops[r.desempregados] =
+      (pops[r.desempregados] ?? 0) + (seguro / 100) * e.pib_nominal;
   return { estratos: total, pops };
 }
 /**
@@ -337,10 +345,101 @@ export const popsEGrupos: Etapa = (regras, estado) => {
     ...comPops,
     grupos: grupos(regras, comPops, estado.marco),
   };
-  return {
+  return empregoDoTurno(regras, {
     ...comGrupos,
     deslize: deslize(regras, comGrupos),
     migracao: migracao(regras, comGrupos),
     setores: setores(regras, comGrupos),
-  };
+  });
 };
+/**
+ * Vagas de cada pop contra o turno 0: a capacidade dos setores onde ele
+ * trabalha, dividida pelo crescimento normal do país. A parte paga pelo Estado
+ * não perde vaga.
+ */
+export function vagasDosPops(
+  regras: Regras,
+  estado: Estado,
+): Record<string, number> {
+  const m = regras.mercado;
+  const c = estado.construcoes;
+  if (!m || !c) return {};
+  const esperado = rendaEsperada(regras, estado);
+  const vagas: Record<string, number> = {};
+  for (const t of regras.pops) {
+    const o = m.ocupacao[t.id];
+    const setores = estado.setores?.[t.id] ?? o?.setores ?? {};
+    let v = 0;
+    let soma = 0;
+    for (const [s, peso] of Object.entries(setores)) {
+      const inicio = c.inicio[s] ?? 0;
+      if (!(inicio > 0)) continue;
+      v += (peso * (c.prontas[s] ?? 0)) / inicio;
+      soma += peso;
+    }
+    if (!(soma > 0)) continue;
+    const publico = t.publico ?? 0;
+    vagas[t.id] = publico + ((1 - publico) * v) / soma / esperado;
+  }
+  return vagas;
+}
+/**
+ * Passo C: vagas mandam gente para os desempregados e de volta; o índice
+ * Desemprego anda o que a taxa andou; o seguro dos demitidos recentes sai do
+ * gasto e vai aos desempregados no turno seguinte.
+ */
+export function empregoDoTurno(regras: Regras, estado: Estado): Estado {
+  const r = regras.emprego;
+  if (!r || !estado.pops[r.desempregados]) return estado;
+  const e = estado.essenciais;
+  const pessoas = (f: (id: string) => number) =>
+    Object.fromEntries(regras.pops.map((t) => [t.id, f(t.id)]));
+  const base = estado.emprego ?? {
+    fora: {},
+    demitidos: [],
+    seguro: 0,
+    taxa0: taxaDeDesemprego(
+      r,
+      pessoas((id) => regras.pais.pops[id]?.parcela_pessoas ?? 0),
+    ),
+    desemprego0: e.desemprego,
+    ocupados0: e.ocupados,
+  };
+  const andou = andarEmprego(
+    regras.pais.pops,
+    r,
+    base,
+    estado.migracao,
+    vagasDosPops(regras, estado),
+  );
+  const numero = (id: string | undefined) => {
+    const v = id ? estado.leis[id] : undefined;
+    return typeof v === "number" ? v : 0;
+  };
+  // Duração em meses; o turno tem 2.
+  const turnos = Math.ceil(numero(r.lei_duracao) / 2);
+  const recentes = andou.demitidos.slice(0, turnos).reduce((a, v) => a + v, 0);
+  const taxa = taxaDeDesemprego(
+    r,
+    pessoas((id) => estado.pops[id]?.pessoas ?? 0),
+  );
+  return {
+    ...estado,
+    migracao: andou.migracao,
+    emprego: {
+      ...base,
+      fora: andou.fora,
+      demitidos: andou.demitidos,
+      // O demitido recebe a parte do salário médio (o PIB por pessoa).
+      seguro: 100 * numero(r.lei_valor) * recentes,
+    },
+    essenciais: {
+      ...e,
+      desemprego: Math.max(0, base.desemprego0 + (taxa - base.taxa0) * 100),
+      ocupados:
+        base.taxa0 < 1
+          ? (base.ocupados0 * (1 - taxa)) / (1 - base.taxa0)
+          : base.ocupados0,
+    },
+  };
+}

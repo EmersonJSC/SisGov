@@ -1,5 +1,11 @@
 {
   "versao": 1,
+  "emprego": {
+    "desempregados": "desempregados",
+    "fora_da_forca": ["aposentados", "estudantes", "cuidam-da-casa"],
+    "lei_valor": "seguro-desemprego-valor",
+    "lei_duracao": "seguro-desemprego-duracao"
+  },
   "pops": [
     {
       "id": "desempregados",

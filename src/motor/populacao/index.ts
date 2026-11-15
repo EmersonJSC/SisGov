@@ -422,3 +422,106 @@ export function migrarNaFaixa(
   }
   return novo;
 }
+
+/** Quem procura trabalho e quem fica fora da conta (mundo, `pops.json`). */
+export interface RegraDoEmprego {
+  /** Pop de quem procura trabalho e não acha. */
+  desempregados: string;
+  /** Pops fora da força de trabalho: não entram na taxa de desemprego. */
+  fora_da_forca: string[];
+  /** Lei do seguro-desemprego: parte do salário que o demitido recebe (0 a 1). */
+  lei_valor?: string;
+  /** Lei do seguro-desemprego: por quantos meses. */
+  lei_duracao?: string;
+}
+
+/** Emprego na partida (passo C, 15/nov). */
+export interface EmpregoNoEstado {
+  /** Fração da população de cada pop que perdeu a vaga (negativo = contratou de fora). */
+  fora: Record<string, number>;
+  /** Demitidos por turno, em fração da população, o mais recente primeiro. */
+  demitidos: number[];
+  /** Seguro-desemprego pago, em % do PIB por ano. */
+  seguro: number;
+  /** Taxa de desemprego do pop no turno 0 (régua do índice). */
+  taxa0: number;
+  /** Índices declarados pelo país no turno 0. */
+  desemprego0: number;
+  ocupados0: number;
+}
+
+/** Parte da diferença entre quem trabalha e as vagas que se fecha por turno. */
+const RITMO_DEMISSAO = 0.3;
+const RITMO_CONTRATACAO = 0.25;
+/** Desempregados nunca caem abaixo desta fração do que o país declarou. */
+const PISO_DESEMPREGADOS = 0.3;
+/** Um pop não perde mais que esta fração da gente para o desemprego. */
+const TETO_DEMISSAO = 0.6;
+/** Turnos de demitidos guardados (2 anos; o seguro mais longo do mundo cabe). */
+const TURNOS_DEMITIDOS = 12;
+
+/** Taxa de desemprego: desempregados ÷ força de trabalho (0 a 1). */
+export function taxaDeDesemprego(
+  regra: RegraDoEmprego,
+  pessoas: Record<string, number>,
+): number {
+  const total = Object.values(pessoas).reduce((a, v) => a + v, 0);
+  const fora = regra.fora_da_forca.reduce((a, id) => a + (pessoas[id] ?? 0), 0);
+  const forca = total - fora;
+  return forca > 0 ? (pessoas[regra.desempregados] ?? 0) / forca : 0;
+}
+
+/**
+ * Um turno de vagas (passo C). `vagas` diz, por pop, quantas vagas há contra
+ * as do turno 0 (1 = iguais). Falta vaga: uma parte da diferença vai para os
+ * desempregados; sobra vaga: uma parte volta deles. A população não muda.
+ */
+export function andarEmprego(
+  pais: Record<string, PopPais>,
+  regra: RegraDoEmprego,
+  atual: Pick<EmpregoNoEstado, "fora" | "demitidos">,
+  migracao: Migracao | undefined,
+  vagas: Record<string, number>,
+): { fora: Record<string, number>; demitidos: number[]; migracao: Migracao } {
+  const mig: Migracao = { ...migracao };
+  const d = regra.desempregados;
+  const fora = { ...atual.fora };
+  const passos: [string, number][] = [];
+  for (const [id, v] of Object.entries(vagas)) {
+    const parcela = pais[id]?.parcela_pessoas ?? 0;
+    if (!(parcela > 0) || id === d) continue;
+    const alvo = parcela * (1 - v);
+    const agora = fora[id] ?? 0;
+    const falta = alvo - agora;
+    let passo = falta * (falta > 0 ? RITMO_DEMISSAO : RITMO_CONTRATACAO);
+    if (passo > 0) {
+      const resta = parcela + (mig[id] ?? 0);
+      passo = Math.min(
+        passo,
+        Math.max(0, resta - parcela * (1 - TETO_DEMISSAO)),
+      );
+    }
+    if (passo !== 0) passos.push([id, passo]);
+  }
+  const demitidos = passos.reduce((a, [, p]) => a + Math.max(0, p), 0);
+  const contratados = passos.reduce((a, [, p]) => a + Math.max(0, -p), 0);
+  const parcelaD = pais[d]?.parcela_pessoas ?? 0;
+  const disponivel = Math.max(
+    0,
+    parcelaD + (mig[d] ?? 0) + demitidos - PISO_DESEMPREGADOS * parcelaD,
+  );
+  const escala = contratados > disponivel ? disponivel / contratados : 1;
+  let paraD = 0;
+  for (const [id, p] of passos) {
+    const passo = p < 0 ? p * escala : p;
+    fora[id] = (fora[id] ?? 0) + passo;
+    mig[id] = (mig[id] ?? 0) - passo;
+    paraD += passo;
+  }
+  mig[d] = (mig[d] ?? 0) + paraD;
+  return {
+    fora,
+    demitidos: [demitidos, ...atual.demitidos].slice(0, TURNOS_DEMITIDOS),
+    migracao: mig,
+  };
+}
