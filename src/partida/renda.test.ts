@@ -1,7 +1,8 @@
 // Renda por fonte (GDD 2.1, 15/nov): salário e lucro dos setores, salário do
 // Estado e o que outros pops pagam.
 import { describe, expect, it } from "vitest";
-import { avancar, criarPartida, jogar, type Partida } from ".";
+import { avancar, criarPartida, jogar, montarVisao, type Partida } from ".";
+import { consumoDasCestas } from "../motor";
 
 const base = (pais = "teste") => criarPartida(pais, 42, { semCongresso: true });
 const parte = (p: Partida, id: string) =>
@@ -143,5 +144,34 @@ describe("renda por fonte", () => {
       3,
     ).estado;
     expect(semSeguro.emprego!.seguro).toBe(0);
+  });
+
+  it("cesta pela renda: o pobre gasta mais da renda, o rico consome mais", () => {
+    const p = base("brasil-2026");
+    const q = consumoDasCestas(p.regras, p.estado);
+    expect(q.media.comida).toBeCloseTo(1, 6);
+    expect(q.porPop.comida["grandes-empresarios"]).toBeGreaterThan(
+      q.porPop.comida["informais-urbanos"],
+    );
+    const comida = montarVisao(p).mercado!.cestas.find(
+      (c) => c.id === "comida",
+    )!;
+    const gasto = (id: string) => comida.pops.find((x) => x.id === id)!.gasto;
+    expect(gasto("informais-urbanos")).toBeGreaterThan(
+      gasto("grandes-empresarios") * 3,
+    );
+  });
+
+  it("padrão de vida: 50 no começo, cai em quem perde renda", () => {
+    const p = base("brasil-2026");
+    expect(p.estado.pops.aposentados.padrao).toBe(50);
+    const corte = jogar(
+      avancar(p, [
+        { tipo: "mudar_lei", lei: "verba-das-aposentadorias", valor: 0.04 },
+      ]),
+      3,
+    ).estado.pops;
+    expect(corte.aposentados.padrao!).toBeLessThan(40);
+    expect(corte.professores.padrao!).toBeGreaterThan(45);
   });
 });

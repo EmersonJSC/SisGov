@@ -119,3 +119,15 @@ declara em `treina.para`. Pop sem `treina` não muda.
 - Seguro-desemprego: quem foi demitido nos últimos `duração ÷ 2` turnos
   recebe `valor` × o PIB por pessoa; sai do gasto público e chega aos
   desempregados no turno seguinte.
+
+## Cesta pela renda e padrão de vida (passo D, 15/nov)
+
+- A cesta (`mercado/produtos.json › cestas`) pode declarar `fatia`: a parte
+  da renda que cada estrato gasta nela no turno 0. O consumo por pessoa do
+  estrato é fatia × renda por pessoa dele, dividido para a média da população
+  dar 1: o total do país não muda, muda quem consome quanto
+  (`consumoDasCestas`).
+- Padrão de vida do pop: `poder` = renda depois das cestas, descontada a
+  inflação; `padrao` = 50 × poder ÷ poder do turno 0, de 1 a 99.
+- Fome e carência olham a renda espalhada dentro do pop (±50%, a mesma do
+  bolso): a ponta mais pobre do pop cai abaixo do corte antes da média.

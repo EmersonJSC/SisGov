@@ -10,6 +10,7 @@ import {
   reacaoDaCesta,
   reacaoCivil,
 } from "../../mercado";
+import { pedacos, type Estrato } from "../../populacao";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
 import {
@@ -18,6 +19,60 @@ import {
   situacoesDeCapacidade,
 } from "./economia";
 
+/**
+ * Quanto cada pessoa consome de cada cesta contra a média do turno 0 (passo
+ * D): a `fatia` da cesta × a renda por pessoa do estrato no turno 0, dividida
+ * para a média da população dar 1. Pop com divisão soma os pedaços.
+ */
+export function consumoDasCestas(
+  regras: Regras,
+  estado: Estado,
+): {
+  porPop: Record<string, Record<string, number>>;
+  media: Record<string, number>;
+} {
+  const porPop: Record<string, Record<string, number>> = {};
+  const media: Record<string, number> = {};
+  const m = regras.mercado;
+  if (!m) return { porPop, media };
+  const pessoas0: Partial<Record<Estrato, number>> = {};
+  const renda0: Partial<Record<Estrato, number>> = {};
+  for (const t of regras.pops) {
+    const d = regras.pais.pops[t.id];
+    if (!d) continue;
+    for (const [e, pp, pr] of pedacos(t)) {
+      pessoas0[e] = (pessoas0[e] ?? 0) + d.parcela_pessoas * pp;
+      renda0[e] = (renda0[e] ?? 0) + d.parcela_renda * pr;
+    }
+  }
+  for (const cesta of m.mercado.cestas) {
+    if (!cesta.fatia) continue;
+    const bruto = (e: Estrato) =>
+      (cesta.fatia?.[e] ?? 0) *
+      ((pessoas0[e] ?? 0) > 0 ? (renda0[e] ?? 0) / pessoas0[e]! : 0);
+    const escala = (Object.keys(pessoas0) as Estrato[]).reduce(
+      (s, e) => s + (pessoas0[e] ?? 0) * bruto(e),
+      0,
+    );
+    if (!(escala > 0)) continue;
+    const doPop: Record<string, number> = {};
+    let gente = 0;
+    let soma = 0;
+    for (const t of regras.pops) {
+      const q = pedacos(t).reduce(
+        (s, [e, pp]) => s + (pp * bruto(e)) / escala,
+        0,
+      );
+      doPop[t.id] = q;
+      const n = estado.pops[t.id]?.pessoas ?? 0;
+      gente += n;
+      soma += n * q;
+    }
+    porPop[cesta.id] = doPop;
+    media[cesta.id] = gente > 0 ? soma / gente : 1;
+  }
+  return { porPop, media };
+}
 /** Cestas cujo índice o mundo declara (ex.: abastecimento, acesso a remédios). */
 const cestasComIndice = (regras: Regras) =>
   (regras.mercado?.mercado.cestas ?? []).filter((c) => c.indice);
@@ -28,10 +83,11 @@ const cestasComIndice = (regras: Regras) =>
 function indicesDasCestas(
   regras: Regras,
   estado: Estado,
-): Record<string, number> {
+): { indices: Record<string, number>; pops: Estado["pops"] } {
   const cestas = cestasComIndice(regras);
   const m = regras.mercado;
-  if (cestas.length === 0 || !m) return {};
+  if (!m) return { indices: {}, pops: estado.pops };
+  const consumo = consumoDasCestas(regras, estado);
   const conta = contaDoPais(
     m.mercado,
     m.producao,
@@ -39,14 +95,48 @@ function indicesDasCestas(
     m.populacaoBase,
     estado.essenciais.populacao,
     estado.precos,
+    consumo.media,
   );
-  const seguranca = segurancaDaCesta(m.mercado, conta, estado.pops);
+  const seguranca = segurancaDaCesta(
+    m.mercado,
+    conta,
+    estado.pops,
+    consumo.porPop,
+  );
   const indices: Record<string, number> = {};
   for (const cesta of cestas) {
     const media = seguranca.find((c) => c.id === cesta.id)?.media;
     if (cesta.indice && media !== undefined) indices[cesta.indice] = media;
   }
-  return indices;
+  return { indices, pops: comPadraoDeVida(estado, seguranca) };
+}
+/** Padrão de vida igual ao do turno 0. */
+export const PADRAO_INICIAL = 50;
+/**
+ * Padrão de vida de cada pop (passo D, GDD 2.3): o que sobra da renda depois
+ * das cestas, descontada a inflação (`poder`), e o número de 1 a 99 que diz
+ * quanto isso andou desde o turno 0 (50 = igual, 99 = o dobro ou mais).
+ */
+function comPadraoDeVida(
+  estado: Estado,
+  seguranca: ReturnType<typeof segurancaDaCesta>,
+): Estado["pops"] {
+  const gasto: Record<string, number> = {};
+  for (const c of seguranca)
+    for (const p of c.pops) gasto[p.id] = (gasto[p.id] ?? 0) + p.gasto;
+  const poder0 = estado.marco?.poder_pop;
+  return Object.fromEntries(
+    Object.entries(estado.pops).map(([id, pop]) => {
+      const sobra = Math.max(0, 1 - (gasto[id] ?? 0) / 100);
+      const poder = (pop.renda * sobra * 100) / estado.essenciais.indice_precos;
+      const antes = poder0?.[id];
+      const padrao =
+        antes && antes > 0
+          ? Math.min(99, Math.max(1, (PADRAO_INICIAL * poder) / antes))
+          : PADRAO_INICIAL;
+      return [id, { ...pop, poder, padrao }];
+    }),
+  );
 }
 /**
  * Pontos que as cestas somam em outros índices (6c e 6d). Usa o índice do
@@ -150,7 +240,10 @@ export const todosIndices = (estado: Estado): Record<string, number> => ({
 });
 /** Índices das cestas de hoje no estado, para os grupos e o turno seguinte. */
 export function comIndicesDasCestas(regras: Regras, estado: Estado): Estado {
-  const indices = indicesDasCestas(regras, estado);
-  if (Object.keys(indices).length === 0) return estado;
-  return { ...estado, jogabilidade: { ...estado.jogabilidade, ...indices } };
+  const { indices, pops } = indicesDasCestas(regras, estado);
+  return {
+    ...estado,
+    pops,
+    jogabilidade: { ...estado.jogabilidade, ...indices },
+  };
 }

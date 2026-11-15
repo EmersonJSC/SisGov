@@ -464,7 +464,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - ◐ R11.1 Pops com renda da economia (B1, 15/nov): salário e lucro de setor, salário do Estado, pago por outros pops e desvio da corrupção (B2: verba × corrupção × 0,3; altos funcionários, grandes empresários e industriais); quem não trabalha vive de família ou bico, mais as transferências do país (B3: a transferência pode mirar um pop; aposentadoria vai aos aposentados, bolsa de pesquisa aos estudantes; no Brasil os aposentados passaram de 1,4% a 12% da população). Seguro-desemprego vem no passo C. B4: aposentados e estudantes com a divisão pobre, médio e rico por dentro (`divisao`); imposto e transferência de estrato pegam cada pedaço no seu. B5: troca na mesma faixa (`muda`) quando o destino melhorou 5% a mais desde o turno 0; sem lei ninguém muda.
 - ✅ R11.5 Pops mudam de setor estudando. ✅ R11.6 Sobem e descem de estrato. ✅ R11.7 Cada pop tem bússola e desliza com a vida.
 - ☐ R11.8 Dados dentro do pop. ☐ R11.12 31 pops em 4 blocos, com crianças. O motor tem 25 tipos (8 pobres, 11 médios, 6 ricos); o GDD é a meta.
-- A cesta no motor dá a mesma quantia por pessoa; a meta é a fatia da renda por estrato.
+- ✅ Passo D (15/nov): a cesta declara a `fatia` da renda de cada estrato (comida: pobre 25%, médio 15%, rico 7%; remédios 5%, 4%, 2%; números para calibrar); o total do país não muda, muda quem consome quanto.
 - ✅ Passo C (15/nov): vagas seguem a capacidade dos setores; falta de vaga manda gente aos Desempregados devagar e o índice Desemprego anda com a taxa; seguro-desemprego pelas leis de valor e duração, pago do gasto público.
 - Uma lei só (Transferência de renda) divide verba para um estrato.
 
@@ -537,7 +537,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 
 **Referências.** Victoria 3, diário 13 (padrão de vida). O estudo recomenda aproveitar "quase tudo" para população e grupos: padrão de vida por grupo (renda × custo de vida), radicais e lealistas pela **variação**, e natalidade e mortalidade pelo padrão. O estudo é de 22/out e "não decide nada"; a parte dos radicais foi decidida pelo autor em 14/nov.
 
-**No motor hoje.** Não há padrão de vida por pop. Cesta e bolso existem. Os radicais ainda crescem pelo nível da satisfação (ver 2.6).
+**No motor hoje.** ✅ Padrão de vida por pop (passo D, 15/nov): o que sobra da renda depois das cestas, descontada a inflação, de 1 a 99 (50 = o do turno 0). Ainda não mexe no índice "Padrão de vida" nem nos radicais (passo I). Os radicais ainda crescem pelo nível da satisfação (ver 2.6).
 
 **Em aberto**
 - ~~O padrão de vida vira um número por pop?~~ Decidido em 15/nov: sim, um número por pop (renda real ÷ custo da cesta e das contas); é a base dos radicais e da saída.

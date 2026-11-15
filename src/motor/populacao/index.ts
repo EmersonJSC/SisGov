@@ -88,6 +88,10 @@ export interface Pop {
   transferencia: number;
   /** Renda disponível: bruta − imposto + transferência. */
   renda: number;
+  /** O que sobra depois das cestas, descontada a inflação (passo D). */
+  poder?: number;
+  /** Padrão de vida: 50 = o do turno 0, 1 a 99 (passo D). */
+  padrao?: number;
 }
 
 /** Valores anuais na moeda do país. */
@@ -114,7 +118,7 @@ export interface EntradaPops {
 export type Migracao = Record<string, number>;
 
 /** Dentro de um pop, a renda vai da média −50% à média +50%. */
-const ESPALHO = 0.5;
+export const ESPALHO = 0.5;
 
 /** Renda média das pessoas dos pops. */
 export function rendaMedia(

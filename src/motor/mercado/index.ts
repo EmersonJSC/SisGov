@@ -17,8 +17,14 @@ export interface Setor {
 export interface Cesta {
   id: string;
   nome: string;
-  /** Quanto cada pessoa gasta, em fração da renda média inicial, a preço base. */
+  /** Quanto cada pessoa gasta, em média, em fração da renda média inicial, a preço base. */
   tamanho: number;
+  /**
+   * Parte da renda que cada estrato gasta nela no turno 0 (ex.: o pobre gasta
+   * mais da renda com comida, o rico come mais). Divide o `tamanho` entre os
+   * estratos sem mudar o total; sem ela, todos consomem igual.
+   */
+  fatia?: Record<string, number>;
   /** Como a tela chama a falta ("fome", "carência"); sem ele, "carência". */
   termo?: string;
   /** Índice do mundo que recebe a segurança alimentar média (0 a 100). */
@@ -126,6 +132,17 @@ function conferirCestas(erro: Erro, cestas: unknown[]): Set<string> {
     if (x.indice !== undefined && !ehTexto(x.indice))
       erro(`${c}.indice`, "precisa ser texto");
     if (x.reacao !== undefined) conferirReacao(erro, c, x);
+    if (
+      x.fatia !== undefined &&
+      (!ehObjeto(x.fatia) ||
+        !Object.values(x.fatia).every(
+          (v) => typeof v === "number" && v > 0 && v < 1,
+        ))
+    )
+      erro(
+        `${c}.fatia`,
+        "precisa dar, por estrato, uma parte da renda entre 0 e 1",
+      );
   });
   return ids;
 }

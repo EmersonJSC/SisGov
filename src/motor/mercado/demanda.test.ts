@@ -106,9 +106,12 @@ describe("fome por pop (fatia 6b)", () => {
   const de = (r: ReturnType<typeof seg>, id: string) =>
     r.pops.find((p) => p.id === id)!;
 
-  it("com a cesta atendida e preço no base ninguém passa fome", () => {
+  it("com a cesta atendida e preço no base, só a ponta mais pobre do pop pobre passa fome leve", () => {
     const r = seg({ graos: 100, frutas: 100 });
-    expect(r.leve).toBe(0);
+    // A média do pop pobre come; a renda se espalha ±50% dentro dele.
+    expect(de(r, "pobre").seguranca).toBeGreaterThanOrEqual(40);
+    expect(r.leve).toBeGreaterThan(0);
+    expect(r.leve).toBeLessThan(5);
     expect(r.grave).toBe(0);
   });
 

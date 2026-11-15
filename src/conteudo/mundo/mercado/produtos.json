@@ -209,7 +209,12 @@
           }
         ]
       },
-      "termo": "fome"
+      "termo": "fome",
+      "fatia": {
+        "pobre": 0.25,
+        "medio": 0.15,
+        "rico": 0.07
+      }
     },
     {
       "id": "remedios",
@@ -232,6 +237,11 @@
             "forca": "fraca"
           }
         ]
+      },
+      "fatia": {
+        "pobre": 0.05,
+        "medio": 0.04,
+        "rico": 0.02
       }
     }
   ],

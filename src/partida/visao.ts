@@ -3,6 +3,7 @@
 import {
   balancoDoPais,
   contaDoPais,
+  consumoDasCestas,
   segurancaDaCesta,
   empregoDoPais,
   maisBarata,
@@ -691,6 +692,7 @@ function visaoDoMercado(
     estado.pops,
     estado.setores,
   );
+  const consumo = consumoDasCestas(regras, estado);
   const conta = contaDoPais(
     m.mercado,
     m.producao,
@@ -698,18 +700,21 @@ function visaoDoMercado(
     m.populacaoBase,
     estado.essenciais.populacao,
     estado.precos,
+    consumo.media,
   );
   return {
     mundo: precosDoMundo(m, estado, nome),
     setores: setoresDoMercado(balanco, conta, nome),
-    cestas: segurancaDaCesta(m.mercado, conta, estado.pops).map((c) => ({
-      ...c,
-      termo: m.mercado.cestas.find((x) => x.id === c.id)?.termo ?? "carência",
-      pops: c.pops.map((p) => ({
-        ...p,
-        nome: tiposPops.pops.find((t) => t.id === p.id)?.nome ?? p.id,
-      })),
-    })),
+    cestas: segurancaDaCesta(m.mercado, conta, estado.pops, consumo.porPop).map(
+      (c) => ({
+        ...c,
+        termo: m.mercado.cestas.find((x) => x.id === c.id)?.termo ?? "carência",
+        pops: c.pops.map((p) => ({
+          ...p,
+          nome: tiposPops.pops.find((t) => t.id === p.id)?.nome ?? p.id,
+        })),
+      }),
+    ),
     capacidades: capacidadesDoMercado(regras, estado),
     emprego: emprego.setores,
     construcoes: construcoesDoPais(regras, estado),

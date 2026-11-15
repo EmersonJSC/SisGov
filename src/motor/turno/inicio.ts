@@ -459,6 +459,9 @@ function marcoDoTurnoZero(regras: Regras, e: Estado): Marco {
         (p.renda * 100) / e.essenciais.indice_precos,
       ]),
     ),
+    poder_pop: Object.fromEntries(
+      Object.entries(e.pops).map(([id, p]) => [id, p.poder ?? 0]),
+    ),
     indices: todosIndices(e),
     leis: { ...e.leis },
     renda_real: Object.fromEntries(

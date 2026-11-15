@@ -2,6 +2,7 @@
 // fatia 6a). Só os produtos que atendem uma cesta (ex.: comida). Tudo em % do
 // PIB inicial, a preço base. O motor não conhece nomes de produto.
 import { PONTOS_FORCA } from "../efeitos";
+import { ESPALHO } from "../populacao";
 import type { Mercado, Produto, ReacaoDaCesta } from "./index";
 import { alvoDoPreco, type Preco } from "./preco";
 import type { Cobertura, ProducaoDoMundo } from "./producao";
@@ -105,6 +106,8 @@ export function contaDoPais(
   populacaoBase: number,
   pessoas: number,
   precosMundo: Record<string, Preco>,
+  /** Consumo médio por pessoa de cada cesta hoje (1 = o do turno 0). */
+  consumo: Record<string, number> = {},
 ): ContaDoPais {
   const produtos: Record<string, LinhaDeDemanda> = {};
   const noMundo = (id: string) => precosMundo[id]?.valor ?? BASE;
@@ -114,6 +117,7 @@ export function contaDoPais(
     if (doGrupo.length === 0 || populacaoBase <= 0) continue;
     const total = (gente: number) =>
       BASE * cesta.tamanho * (gente / populacaoBase);
+    const hoje = consumo[cesta.id] ?? 1;
     // Produção declarada: cobertura × demanda do dia 0, com os preços do dia 0.
     const parteInicial = partes(doGrupo, noInicio);
     const producao = (p: Produto) =>
@@ -125,7 +129,7 @@ export function contaDoPais(
       const parte = partes(doGrupo, preco);
       return Object.fromEntries(
         doGrupo.map((p) => {
-          const demanda = total(pessoas) * parte[p.id]!;
+          const demanda = total(pessoas) * hoje * parte[p.id]!;
           return [
             p.id,
             linhaDeDemanda(p, demanda, producao(p), potencias, noMundo(p.id)),
@@ -180,6 +184,8 @@ export function segurancaDaCesta(
   mercado: Mercado,
   conta: ContaDoPais,
   pops: Record<string, { pessoas: number; renda: number }>,
+  /** Cesta → pop → quanto a pessoa consome contra a média (sem isso, 1). */
+  quanto: Record<string, Record<string, number>> = {},
 ): SegurancaDaCesta[] {
   const gente = Object.values(pops).reduce((s, p) => s + p.pessoas, 0);
   const renda = Object.values(pops).reduce(
@@ -205,9 +211,10 @@ export function segurancaDaCesta(
       0,
     );
     const lista = Object.entries(pops).map(([id, p]) => {
+      const q = quanto[cesta.id]?.[id] ?? 1;
       const gasto =
         p.renda > 0
-          ? (100 * cesta.tamanho * (preco / BASE)) / (p.renda / media)
+          ? (100 * cesta.tamanho * q * (preco / BASE)) / (p.renda / media)
           : 100;
       const faltaPct = 100 * falta;
       return {
@@ -217,10 +224,19 @@ export function segurancaDaCesta(
         seguranca: limitar(100 - gasto - faltaPct, 0, 100),
       };
     });
+    // Dentro do pop a renda se espalha (motor/populacao): a parte mais pobre
+    // dele cai abaixo do corte antes da média. Abaixo do corte está quem tem
+    // renda menor que a média × gasto ÷ (100 − falta − corte).
+    const abaixo = (l: SegurancaDoPop, corte: number) => {
+      const folga = 100 - l.falta - corte;
+      if (folga <= 0) return 1;
+      const razao = l.gasto / folga;
+      return limitar((razao - (1 - ESPALHO)) / (2 * ESPALHO), 0, 1);
+    };
     const parte = (corte: number) =>
       gente > 0
         ? lista.reduce(
-            (s, l) => s + (l.seguranca < corte ? pops[l.id]!.pessoas : 0),
+            (s, l) => s + abaixo(l, corte) * pops[l.id]!.pessoas,
             0,
           ) *
           (100 / gente)
