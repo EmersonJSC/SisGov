@@ -10,7 +10,15 @@ type Conferencia = (regras: Regras, estado: Estado) => string[];
 
 const se = (falhou: boolean, mensagem: string): string[] =>
   falhou ? [mensagem] : [];
-const finitos = (o: object) => Object.values(o).every(Number.isFinite);
+/** Todo número é finito, também dentro de objetos; marcas (sim ou não) não contam. */
+const finitos = (o: object): boolean =>
+  Object.values(o).every((v) =>
+    typeof v === "boolean"
+      ? true
+      : typeof v === "object" && v !== null
+        ? finitos(v)
+        : Number.isFinite(v),
+  );
 const entre = (v: number, min: number, max: number) => v >= min && v <= max;
 
 const contas: Conferencia = (_, { essenciais: e, tesouro }) => [

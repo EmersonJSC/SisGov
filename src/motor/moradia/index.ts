@@ -84,11 +84,15 @@ export interface TurnoDaMoradia {
 export const familias = (regra: RegraDaMoradia, populacao: number) =>
   populacao / regra.pessoas_por_familia;
 
-/** Pessoas dos pops que vivem do campo. */
+/** Pessoas dos pops que vivem do campo, com as crianças da casa deles. */
 export const pessoasNoCampo = (
   regra: RegraDaMoradia,
   pops: Record<string, Pop>,
-) => regra.pops_campo.reduce((soma, id) => soma + pops[id].pessoas, 0);
+) =>
+  regra.pops_campo.reduce(
+    (soma, id) => soma + (pops[id].casa?.pessoas ?? pops[id].pessoas),
+    0,
+  );
 
 /** Famílias que deixam o campo neste turno; negativo: voltam para ele. */
 function movimentoDoCampo(

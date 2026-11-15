@@ -13,47 +13,32 @@
     {
       "id": "relacoes-institucionais",
       "nome": "Relações institucionais",
-      "instituicoes": [
-        "estados-e-municipios"
-      ]
+      "instituicoes": ["estados-e-municipios"]
     },
     {
       "id": "controle-e-transparencia",
       "nome": "Controle e transparência",
-      "instituicoes": [
-        "controle-e-transparencia"
-      ]
+      "instituicoes": ["controle-e-transparencia"]
     },
     {
       "id": "fazenda",
       "nome": "Fazenda",
-      "instituicoes": [
-        "impostos",
-        "moeda-e-bancos"
-      ]
+      "instituicoes": ["impostos", "moeda-e-bancos"]
     },
     {
       "id": "planejamento-e-orcamento",
       "nome": "Planejamento e orçamento",
-      "instituicoes": [
-        "orcamento-e-divida"
-      ]
+      "instituicoes": ["orcamento-e-divida"]
     },
     {
       "id": "industria-e-comercio",
       "nome": "Indústria e comércio",
-      "instituicoes": [
-        "industria",
-        "comercio-exterior-e-capital"
-      ]
+      "instituicoes": ["industria", "comercio-exterior-e-capital"]
     },
     {
       "id": "gestao",
       "nome": "Gestão",
-      "instituicoes": [
-        "funcionalismo",
-        "estatais"
-      ]
+      "instituicoes": ["funcionalismo", "estatais"]
     },
     {
       "id": "pequenas-empresas-e-cooperativas",
@@ -63,72 +48,52 @@
     {
       "id": "trabalho",
       "nome": "Trabalho",
-      "instituicoes": [
-        "trabalho"
-      ]
+      "instituicoes": ["trabalho"]
     },
     {
       "id": "previdencia",
       "nome": "Previdência",
-      "instituicoes": [
-        "previdencia"
-      ]
+      "instituicoes": ["previdencia"]
     },
     {
       "id": "desenvolvimento-social",
       "nome": "Desenvolvimento social",
-      "instituicoes": [
-        "assistencia-social"
-      ]
+      "instituicoes": ["assistencia-social"]
     },
     {
       "id": "saude",
       "nome": "Saúde",
-      "instituicoes": [
-        "saude"
-      ]
+      "instituicoes": ["saude"]
     },
     {
       "id": "educacao",
       "nome": "Educação",
-      "instituicoes": [
-        "educacao"
-      ]
+      "instituicoes": ["educacao"]
     },
     {
       "id": "ciencia-e-tecnologia",
       "nome": "Ciência e tecnologia",
-      "instituicoes": [
-        "ciencia-e-pesquisa"
-      ]
+      "instituicoes": ["ciencia-e-pesquisa"]
     },
     {
       "id": "comunicacoes",
       "nome": "Comunicações",
-      "instituicoes": [
-        "comunicacao-e-tecnologia"
-      ]
+      "instituicoes": ["comunicacao-e-tecnologia"]
     },
     {
       "id": "cultura",
       "nome": "Cultura",
-      "instituicoes": [
-        "cultura"
-      ]
+      "instituicoes": ["cultura"]
     },
     {
       "id": "esporte",
       "nome": "Esporte",
-      "instituicoes": [
-        "esporte"
-      ]
+      "instituicoes": ["esporte"]
     },
     {
       "id": "turismo",
       "nome": "Turismo",
-      "instituicoes": [
-        "turismo"
-      ]
+      "instituicoes": ["turismo"]
     },
     {
       "id": "justica-e-seguranca",
@@ -143,23 +108,17 @@
     {
       "id": "defesa",
       "nome": "Defesa",
-      "instituicoes": [
-        "defesa"
-      ]
+      "instituicoes": ["defesa"]
     },
     {
       "id": "relacoes-exteriores",
       "nome": "Relações exteriores",
-      "instituicoes": [
-        "relacoes-exteriores"
-      ]
+      "instituicoes": ["relacoes-exteriores"]
     },
     {
       "id": "meio-ambiente",
       "nome": "Meio ambiente",
-      "instituicoes": [
-        "meio-ambiente"
-      ]
+      "instituicoes": ["meio-ambiente"]
     },
     {
       "id": "povos-indigenas",
@@ -169,16 +128,12 @@
     {
       "id": "agricultura",
       "nome": "Agricultura",
-      "instituicoes": [
-        "agricultura-e-pesca"
-      ]
+      "instituicoes": ["agricultura-e-pesca"]
     },
     {
       "id": "desenvolvimento-agrario",
       "nome": "Desenvolvimento agrário",
-      "instituicoes": [
-        "terra"
-      ]
+      "instituicoes": ["terra"]
     },
     {
       "id": "pesca",
@@ -188,17 +143,12 @@
     {
       "id": "minas-e-energia",
       "nome": "Minas e energia",
-      "instituicoes": [
-        "energia",
-        "mineracao-e-petroleo"
-      ]
+      "instituicoes": ["energia", "mineracao-e-petroleo"]
     },
     {
       "id": "transportes",
       "nome": "Transportes",
-      "instituicoes": [
-        "infraestrutura-e-transporte"
-      ]
+      "instituicoes": ["infraestrutura-e-transporte"]
     },
     {
       "id": "portos-e-aeroportos",
@@ -208,17 +158,12 @@
     {
       "id": "cidades",
       "nome": "Cidades",
-      "instituicoes": [
-        "moradia",
-        "agua-e-saneamento"
-      ]
+      "instituicoes": ["moradia", "agua-e-saneamento"]
     },
     {
       "id": "integracao-regional",
       "nome": "Integração regional",
-      "instituicoes": [
-        "defesa-civil"
-      ]
+      "instituicoes": ["defesa-civil"]
     },
     {
       "id": "direitos-humanos",

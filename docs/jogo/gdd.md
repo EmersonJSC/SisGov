@@ -472,7 +472,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - Quantos tipos de pop rodam de verdade no motor sem pesar.
 - Como a lei mira "idosos do campo" sem multiplicar pops.
 - Como a renda sai de salário e lucro sem o turno 0 mudar de valor.
-- Como a conta do bolso de Crianças lê a família (Crianças não têm renda própria).
+- ~~Como a conta do bolso de Crianças lê a família~~ Resolvido em 15/nov (passo E): a casa do adulto junta as crianças dele e divide a renda por todos.
 - Faltam pesca e artesãos como pops próprios? O estudo diz que faltam; a revisão trata pesca em "Pequenos agricultores e pescadores".
 
 ---
@@ -505,8 +505,8 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - OIT: quem tem idade de trabalhar se divide em empregado, desempregado e fora da força de trabalho.
 
 **No motor hoje**
-- ☐ R11.9 Nascer, envelhecer, morrer. ☐ R11.8 Dados de idade dentro do pop.
-- Estudantes e Aposentados têm tamanho fixo.
+- ✅ Passo E (15/nov): Crianças como pop que vive da família (gasta metade de um adulto; o adulto dá a parte delas no nível dele; a casa divide a renda por todos); ciclo criança → estudante → trabalhador → aposentado → morre e nasce o mesmo tanto, no ritmo do turno 0; a idade mínima de aposentadoria aposenta mais ou menos gente. Brasil: crianças 20%, estudantes 5%, aposentados 12%.
+- ☐ Faixas de idade dentro do pop (jovem, adulto, idoso): nada lê ainda. Natalidade e mortalidade pelo padrão de vida: sem decisão.
 - Pessoas (elenco): idade de 35 a 74, e envelhecer, aposentar e morrer ainda não existem.
 - Imigração (nascido fora): sem R próprio na seção 11 dos requisitos.
 

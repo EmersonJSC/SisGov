@@ -16,7 +16,12 @@ import type { PedidoIndicar, RegrasJudiciario } from "../judiciario";
 import type { RegrasMidia } from "../midia";
 import type { RegrasProgramas } from "../programas";
 import type { Congresso, PedidoCongresso } from "../politica";
-import type { PopPais, RegraDoEmprego, TipoPop } from "../populacao";
+import type {
+  PopPais,
+  RegraDaDemografia,
+  RegraDoEmprego,
+  TipoPop,
+} from "../populacao";
 import type { RegrasDoFisco } from "../fisco";
 
 export interface ParametrosBase extends ParametrosRenda {
@@ -75,6 +80,8 @@ export interface Regras {
   atendimento?: RegraDoAtendimento;
   /** Desempregados e força de trabalho (motor/populacao); sem ela, o desemprego fica o declarado. */
   emprego?: RegraDoEmprego;
+  /** Ciclo da vida (motor/populacao, passo E); sem ela, ninguém nasce nem envelhece. */
+  demografia?: RegraDaDemografia;
   /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
   judiciario?: RegrasJudiciario;
   /** Papéis das leis de dinheiro (motor/fisco); sem ele, as regras não valem. */

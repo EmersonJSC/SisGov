@@ -16,6 +16,7 @@ import {
   type Pop,
   type Estrato,
   calcularPops,
+  andarDemografia,
   andarEmprego,
   migrarNaFaixa,
   migrarPops,
@@ -321,7 +322,21 @@ export function migracao(regras: Regras, estado: Estado) {
     estado.migracao,
     entrada,
   );
-  return migrarNaFaixa(regras.pops, regras.pais.pops, subiu, entrada);
+  const trocou = migrarNaFaixa(regras.pops, regras.pais.pops, subiu, entrada);
+  // Ciclo da vida (passo E): a idade mínima de aposentadoria é a tomada.
+  const d = regras.demografia;
+  if (!d) return trocou;
+  const idade = (leis: Record<string, unknown>) => {
+    const v = d.lei_idade ? leis[d.lei_idade] : undefined;
+    return typeof v === "number" ? v : 0;
+  };
+  return andarDemografia(
+    regras.pops,
+    regras.pais.pops,
+    d,
+    trocou,
+    idade(estado.leis) - idade(estado.marco.leis),
+  );
 }
 /** Gente estuda e muda para o setor que paga mais (motor/mercado/emprego). */
 export function setores(regras: Regras, estado: Estado) {

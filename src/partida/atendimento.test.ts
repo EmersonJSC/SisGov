@@ -317,8 +317,10 @@ describe("leis da rede: cada uma tem ganho e custo", () => {
 describe("seguro na folha", () => {
   const com = (opcao: string, pais = "teste", leis = {}) =>
     depois({ ...leis, "seguro-folha": opcao }, pais);
-  const informais = (estado: ReturnType<typeof depois>) =>
-    estado.pops["informais-urbanos"].pessoas / estado.essenciais.populacao;
+  const informais = (estado: ReturnType<typeof depois>) => {
+    const p = estado.pops["informais-urbanos"];
+    return (p.casa?.pessoas ?? p.pessoas) / estado.essenciais.populacao;
+  };
 
   it("cobre quem tem emprego e passa do teto dos planos", () => {
     expect(com("todo-emprego").atendimento?.planos).toBeGreaterThan(0.25);

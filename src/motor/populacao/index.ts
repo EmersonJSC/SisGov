@@ -47,6 +47,47 @@ export interface TipoPop {
    * cada pedaço no seu; `estrato` fica para subir e descer.
    */
   divisao?: Partial<Record<Estrato, { pessoas: number; renda: number }>>;
+  /**
+   * Vive da família (ex.: crianças): quanto gasta contra um adulto da casa
+   * (0,5 = metade). Não tem renda do PIB: os adultos do mesmo estrato dão a
+   * parte dele. Não paga imposto de estrato; a conta da casa conta com ele.
+   */
+  dependente?: number;
+  /**
+   * Só no dependente: filhos por adulto de cada estrato, em peso (ex.: o
+   * pobre 1,3, o rico 0,7). A divisão do dependente sai dos adultos do país.
+   */
+  filhos?: Partial<Record<Estrato, number>>;
+}
+
+/**
+ * Divide o dependente com `filhos` pelos estratos dos adultos do país: a
+ * parte de cada estrato é adultos × peso dos filhos.
+ */
+export function comFilhos(
+  tipos: TipoPop[],
+  pais: Record<string, PopPais>,
+): TipoPop[] {
+  const adultos: Partial<Record<Estrato, number>> = {};
+  for (const t of tipos)
+    if (t.dependente === undefined)
+      for (const [e, pp] of pedacos(t))
+        adultos[e] =
+          (adultos[e] ?? 0) + (pais[t.id]?.parcela_pessoas ?? 0) * pp;
+  return tipos.map((t) => {
+    if (t.dependente === undefined || !t.filhos) return t;
+    const pesos = ESTRATOS.map(
+      (e) => [e, (adultos[e] ?? 0) * (t.filhos?.[e] ?? 0)] as const,
+    );
+    const soma = pesos.reduce((a, [, v]) => a + v, 0);
+    if (!(soma > 0)) return t;
+    const divisao = Object.fromEntries(
+      pesos
+        .filter(([, v]) => v > 0)
+        .map(([e, v]) => [e, { pessoas: v / soma, renda: v / soma }]),
+    );
+    return { ...t, divisao };
+  });
 }
 
 /** Pedaços do pop por estrato: [estrato, parte das pessoas, parte da renda]. */
@@ -86,12 +127,21 @@ export interface Pop {
   renda_bruta: number;
   imposto: number;
   transferencia: number;
-  /** Renda disponível: bruta − imposto + transferência. */
+  /** Renda disponível: bruta − imposto + transferência + família. */
   renda: number;
+  /** O que a família dá (+, ao dependente) ou tira (−, do adulto), por pessoa (passo E). */
+  familia?: number;
   /** O que sobra depois das cestas, descontada a inflação (passo D). */
   poder?: number;
   /** Padrão de vida: 50 = o do turno 0, 1 a 99 (passo D). */
   padrao?: number;
+  /** Vive da família: fica fora da conta da casa (passo E). */
+  dependente?: boolean;
+  /**
+   * A casa do pop: os adultos e os dependentes do mesmo estrato que vivem com
+   * eles. `pessoas` conta todos; `renda` é a renda por pessoa da casa.
+   */
+  casa?: { pessoas: number; renda: number };
 }
 
 /** Valores anuais na moeda do país. */
@@ -120,22 +170,32 @@ export type Migracao = Record<string, number>;
 /** Dentro de um pop, a renda vai da média −50% à média +50%. */
 export const ESPALHO = 0.5;
 
-/** Renda média das pessoas dos pops. */
-export function rendaMedia(
-  pops: Record<string, { pessoas: number; renda: number }>,
-): number {
-  const lista = Object.values(pops);
+type PopDaConta = {
+  pessoas: number;
+  renda: number;
+  dependente?: boolean;
+  casa?: { pessoas: number; renda: number };
+};
+/** Quem paga a conta da casa: a casa de cada pop (com os dependentes dentro). */
+const daCasa = (pops: Record<string, PopDaConta>) =>
+  Object.values(pops)
+    .filter((p) => !p.dependente)
+    .map((p) => p.casa ?? p);
+
+/** Renda média das pessoas dos pops (sem quem vive da família). */
+export function rendaMedia(pops: Record<string, PopDaConta>): number {
+  const lista = daCasa(pops);
   const pessoas = lista.reduce((s, p) => s + p.pessoas, 0);
   const renda = lista.reduce((s, p) => s + p.pessoas * p.renda, 0);
   return pessoas > 0 ? renda / pessoas : 0;
 }
 
-/** Parte das pessoas (0 a 1) com renda abaixo de `minimo`. */
+/** Parte das pessoas (0 a 1) com renda abaixo de `minimo`, sem quem vive da família. */
 export function parteAbaixoDe(
-  pops: Record<string, { pessoas: number; renda: number }>,
+  pops: Record<string, PopDaConta>,
   minimo: number,
 ): number {
-  const lista = Object.values(pops);
+  const lista = daCasa(pops);
   const pessoas = lista.reduce((s, p) => s + p.pessoas, 0);
   if (pessoas <= 0) return 0;
   const abaixo = lista.reduce((soma, p) => {
@@ -204,7 +264,8 @@ export function calcularPops(
     for (const [e, pp, pr] of pedacos(t)) {
       pessoasEstrato[e] =
         (pessoasEstrato[e] ?? 0) + fracao(t.id) * entrada.populacao * pp;
-      rendaEstrato[e] = (rendaEstrato[e] ?? 0) + rendaDe(t.id) * pr;
+      if (t.dependente === undefined)
+        rendaEstrato[e] = (rendaEstrato[e] ?? 0) + rendaDe(t.id) * pr;
     }
 
   const pops: Record<string, Pop> = {};
@@ -235,9 +296,77 @@ export function calcularPops(
       imposto,
       transferencia,
       renda: renda_bruta - imposto + transferencia,
+      ...(t.dependente !== undefined ? { dependente: true } : {}),
     };
   }
-  return pops;
+  return comFamilia(tipos, pops);
+}
+
+/**
+ * A família sustenta os dependentes (passo E). Em cada estrato há `k`
+ * dependentes por adulto; cada adulto fica com 1 unidade de consumo e cada
+ * dependente com `dependente` (0,5 = metade). O adulto dá aos seus a parte da
+ * renda que é deles, no nível dele; o dependente fica com a média do que
+ * recebe. A casa do adulto junta os dele: renda da casa ÷ todos dela. Nenhum
+ * dinheiro some, só muda de mão dentro da casa.
+ */
+function comFamilia(
+  tipos: TipoPop[],
+  pops: Record<string, Pop>,
+): Record<string, Pop> {
+  const adultos: Partial<Record<Estrato, number>> = {};
+  const dependentes: Partial<Record<Estrato, number>> = {};
+  const consumo: Partial<Record<Estrato, number>> = {};
+  for (const t of tipos) {
+    const p = pops[t.id];
+    if (!p) continue;
+    for (const [e, pp] of pedacos(t)) {
+      if (t.dependente !== undefined) {
+        dependentes[e] = (dependentes[e] ?? 0) + p.pessoas * pp;
+        consumo[e] = (consumo[e] ?? 0) + p.pessoas * pp * t.dependente;
+      } else adultos[e] = (adultos[e] ?? 0) + p.pessoas * pp;
+    }
+  }
+  if (Object.keys(dependentes).length === 0) return pops;
+  /** Dependentes e unidades de consumo deles por adulto do estrato. */
+  const porAdulto = (e: Estrato) => {
+    const a = adultos[e] ?? 0;
+    return a > 0
+      ? { gente: (dependentes[e] ?? 0) / a, consumo: (consumo[e] ?? 0) / a }
+      : { gente: 0, consumo: 0 };
+  };
+  const recebido: Partial<Record<Estrato, number>> = {};
+  const saida: Record<string, Pop> = { ...pops };
+  for (const t of tipos) {
+    const p = pops[t.id];
+    if (!p || t.dependente !== undefined) continue;
+    let familia = 0;
+    let casaGente = 0;
+    for (const [e, pp] of pedacos(t)) {
+      const k = porAdulto(e);
+      const da = (pp * p.renda * k.consumo) / (1 + k.consumo);
+      familia -= da;
+      recebido[e] = (recebido[e] ?? 0) + da * p.pessoas;
+      casaGente += pp * (1 + k.gente);
+    }
+    saida[t.id] = {
+      ...p,
+      familia,
+      renda: p.renda + familia,
+      casa: { pessoas: p.pessoas * casaGente, renda: p.renda / casaGente },
+    };
+  }
+  for (const t of tipos) {
+    const p = pops[t.id];
+    if (!p || t.dependente === undefined) continue;
+    let familia = 0;
+    for (const [e, pp] of pedacos(t)) {
+      const d = consumo[e] ?? 0;
+      if (d > 0) familia += (pp * (recebido[e] ?? 0) * t.dependente) / d;
+    }
+    saida[t.id] = { ...p, familia, renda: p.renda + familia };
+  }
+  return saida;
 }
 
 /** Motivo de `publico` e `pago_por` dos tipos não fecharem, ou null. */
@@ -528,4 +657,76 @@ export function andarEmprego(
     demitidos: [demitidos, ...atual.demitidos].slice(0, TURNOS_DEMITIDOS),
     migracao: mig,
   };
+}
+
+/** Ciclo da vida (passo E, mundo `pops.json › demografia`). */
+export interface RegraDaDemografia {
+  criancas: string;
+  estudantes: string;
+  aposentados: string;
+  /** Anos de criança (0 a 14 = 15): quem cresce vira estudante. */
+  anos_crianca: number;
+  /** Lei da idade mínima de aposentadoria (anos): mais baixa aposenta mais gente. */
+  lei_idade?: string;
+}
+
+/** Cada 10 anos a menos na idade mínima dobram quem se aposenta por turno. */
+const ANOS_PARA_DOBRAR = 10;
+/** A aposentadoria não cai abaixo desta fração do ritmo do turno 0. */
+const APOSENTA_MINIMO = 0.2;
+
+/**
+ * Um turno do ciclo da vida: a criança cresce e vira estudante, o estudante
+ * se forma e vai para quem trabalha, o trabalhador se aposenta, o aposentado
+ * morre e nasce o mesmo tanto de crianças, no ritmo do turno 0 (a população
+ * não muda). Os ritmos
+ * saem do país no turno 0: sem lei, nada anda. `idade` é a idade mínima de
+ * hoje menos a do turno 0 (em anos).
+ */
+export function andarDemografia(
+  tipos: TipoPop[],
+  pais: Record<string, PopPais>,
+  regra: RegraDaDemografia,
+  atual: Migracao | undefined,
+  idade: number,
+): Migracao {
+  const mig: Migracao = { ...atual };
+  const parte = (id: string) =>
+    (pais[id]?.parcela_pessoas ?? 0) + (mig[id] ?? 0);
+  const { criancas, estudantes, aposentados } = regra;
+  const inicial = (id: string) => pais[id]?.parcela_pessoas ?? 0;
+  const turnos = regra.anos_crianca * 6;
+  if (!(inicial(criancas) > 0) || !(turnos > 0)) return mig;
+  // Quantos nascem por turno no país do turno 0; todo ritmo sai disso.
+  const nascem0 = inicial(criancas) / turnos;
+  const especiais = new Set([criancas, estudantes, aposentados]);
+  const trabalham = tipos.filter((t) => !especiais.has(t.id)).map((t) => t.id);
+  const trabalham0 = trabalham.reduce((a, id) => a + inicial(id), 0);
+  const hoje = trabalham.reduce((a, id) => a + Math.max(0, parte(id)), 0);
+  const fator = Math.max(APOSENTA_MINIMO, 1 - idade / ANOS_PARA_DOBRAR);
+  // Nascer e morrer ficam no ritmo do turno 0 (a população não muda); só
+  // cai se sobram menos aposentados que no começo.
+  const morrem =
+    inicial(aposentados) > 0
+      ? nascem0 * Math.min(1, parte(aposentados) / inicial(aposentados))
+      : 0;
+  const crescem = parte(criancas) / turnos;
+  const formam =
+    inicial(estudantes) > 0
+      ? (parte(estudantes) * nascem0) / inicial(estudantes)
+      : 0;
+  const aposentam = trabalham0 > 0 ? (hoje * nascem0 * fator) / trabalham0 : 0;
+  const mover = (de: string, para: string, v: number) => {
+    mig[de] = (mig[de] ?? 0) - v;
+    mig[para] = (mig[para] ?? 0) + v;
+  };
+  mover(aposentados, criancas, morrem);
+  mover(criancas, estudantes, crescem);
+  if (hoje > 0)
+    for (const id of trabalham) {
+      const peso = Math.max(0, parte(id)) / hoje;
+      mover(estudantes, id, formam * peso);
+      mover(id, aposentados, aposentam * peso);
+    }
+  return mig;
 }

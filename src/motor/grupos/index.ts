@@ -41,6 +41,8 @@ export interface Marco {
   renda_real: Record<string, number>;
   /** Renda real de cada pop; sem ela, a vida não empurra o pop. */
   renda_pop?: Record<string, number>;
+  /** Renda por pessoa da casa ÷ a do pop, no turno 0 (conta da casa, passo E). */
+  casa_razao?: Record<string, number>;
   /** Poder de compra de cada pop depois das cestas no turno 0 (padrão de vida). */
   poder_pop?: Record<string, number>;
 }

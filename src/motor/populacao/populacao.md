@@ -131,3 +131,19 @@ declara em `treina.para`. Pop sem `treina` não muda.
   inflação; `padrao` = 50 × poder ÷ poder do turno 0, de 1 a 99.
 - Fome e carência olham a renda espalhada dentro do pop (±50%, a mesma do
   bolso): a ponta mais pobre do pop cai abaixo do corte antes da média.
+
+## Crianças, família e ciclo da vida (passo E, 15/nov)
+
+- Pop `dependente` (crianças, 0,5): sem renda do PIB. Em cada estrato, cada
+  adulto vale 1 unidade de consumo e cada criança 0,5; o adulto dá às suas a
+  parte da renda delas, no nível dele (`familia`, − no adulto, + na criança).
+  A divisão das crianças por estrato sai dos adultos do país × `filhos`
+  (pobre 1,3, médio 1, rico 0,7). Não pagam imposto de estrato.
+- `casa` do adulto: ele e as crianças dele; a renda da casa é a renda dele
+  dividida por todos. Conta da casa (bolso), seguro na folha, informal e campo
+  contam a casa.
+- Ciclo (`pops.json › demografia`): a criança cresce em 15 anos e vira
+  estudante; o estudante se forma e vai para quem trabalha; o trabalhador se
+  aposenta; o aposentado morre e nasce o mesmo tanto, no ritmo do turno 0.
+  Sem lei, nada anda. A idade mínima de aposentadoria é a tomada: cada 10 anos
+  a menos dobram quem se aposenta por turno.

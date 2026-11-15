@@ -53,12 +53,23 @@ export function parteDaLei(
 }
 /** Renda real dos pops: a de hoje e a do turno 0, com as pessoas de hoje. */
 function rendasReais({ pops, essenciais, marco }: Estado) {
-  const hoje: Record<string, { pessoas: number; renda: number }> = {};
+  const hoje: Record<
+    string,
+    { pessoas: number; renda: number; dependente?: boolean }
+  > = {};
   const inicio: typeof hoje = {};
-  for (const [id, { pessoas, renda }] of Object.entries(pops)) {
-    const real = (renda * 100) / essenciais.indice_precos;
+  // A conta é da casa (passo E): pessoas e renda da casa, quando houver.
+  for (const [id, p] of Object.entries(pops)) {
+    if (p.dependente) continue;
+    const pessoas = p.casa?.pessoas ?? p.pessoas;
+    const real = ((p.casa?.renda ?? p.renda) * 100) / essenciais.indice_precos;
     hoje[id] = { pessoas, renda: real };
-    inicio[id] = { pessoas, renda: marco.renda_pop?.[id] ?? real };
+    const renda0 = marco.renda_pop?.[id];
+    inicio[id] = {
+      pessoas,
+      renda:
+        renda0 !== undefined ? renda0 * (marco.casa_razao?.[id] ?? 1) : real,
+    };
   }
   return { hoje, inicio };
 }
@@ -86,19 +97,26 @@ export function comBolsoParaPlano(
   const { hoje, inicio } = rendasReais(estado);
   return 1 - parteAbaixoDe(hoje, regra.renda_plano * rendaMedia(inicio));
 }
-/** Parte das pessoas com salário em folha. */
+/** Parte das pessoas com salário em folha, com a família. */
 export const pessoasNaFolha = (
   regra: RegraDoAtendimento,
   pops: Estado["pops"],
   populacao: number,
 ) =>
-  regra.pops_folha.reduce((soma, id) => soma + pops[id].pessoas, 0) / populacao;
-/** Índice do emprego informal: a parte das pessoas no pop informal. */
+  // A casa de quem tem folha: o seguro cobre a família (passo E).
+  regra.pops_folha.reduce(
+    (soma, id) => soma + (pops[id].casa?.pessoas ?? pops[id].pessoas),
+    0,
+  ) / populacao;
+/** Índice do emprego informal: a parte das pessoas na casa do pop informal. */
 export const indiceDoInformal = (
   regra: RegraDoAtendimento,
   pops: Estado["pops"],
   populacao: number,
-) => (pops[regra.pop_informal].pessoas / populacao) * 100;
+) => {
+  const p = pops[regra.pop_informal];
+  return ((p.casa?.pessoas ?? p.pessoas) / populacao) * 100;
+};
 /** Quanto o preço pesa no bolso, a mais que no turno 0 (motor/moradia). */
 export function apertoDaMoradia(
   regra: RegraDaMoradia,

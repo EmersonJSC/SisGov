@@ -174,4 +174,42 @@ describe("renda por fonte", () => {
     expect(corte.aposentados.padrao!).toBeLessThan(40);
     expect(corte.professores.padrao!).toBeGreaterThan(45);
   });
+
+  it("a criança vive da família: a casa divide a renda dos adultos", () => {
+    const p = base("brasil-2026");
+    const c = p.estado.pops.criancas;
+    const op = p.estado.pops["operarios-fabrica"];
+    expect(c.renda_bruta).toBe(0);
+    expect(c.familia!).toBeGreaterThan(0);
+    expect(op.familia!).toBeLessThan(0);
+    expect(op.casa!.pessoas).toBeGreaterThan(op.pessoas);
+    expect(op.casa!.renda).toBeLessThan(op.renda - op.familia!);
+    // Nenhum dinheiro some: o que a família dá é o que a criança recebe.
+    const familia = Object.values(p.estado.pops).reduce(
+      (s, x) => s + x.pessoas * (x.familia ?? 0),
+      0,
+    );
+    expect(Math.abs(familia) / p.estado.essenciais.pib_nominal).toBeLessThan(
+      1e-9,
+    );
+  });
+
+  it("ciclo da vida: sem lei a população fica; idade menor aposenta mais", () => {
+    const p = base("brasil-2026");
+    const parte = (x: Partida, id: string) =>
+      x.estado.pops[id].pessoas / x.estado.essenciais.populacao;
+    const sem = jogar(p, 12);
+    for (const id of ["criancas", "estudantes", "aposentados"])
+      expect(parte(sem, id)).toBeCloseTo(parte(p, id), 3);
+    const cedo = jogar(
+      avancar(p, [
+        { tipo: "mudar_lei", lei: "idade-minima-de-aposentadoria", valor: 55 },
+      ]),
+      11,
+    );
+    expect(parte(cedo, "aposentados")).toBeGreaterThan(
+      parte(sem, "aposentados") + 0.01,
+    );
+    expect(parte(cedo, "criancas")).toBeCloseTo(parte(sem, "criancas"), 3);
+  });
 });

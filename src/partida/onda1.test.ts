@@ -46,7 +46,7 @@ describe("imposto de renda por estrato", () => {
     expect(agora.pobre).toBeCloseTo(antes.pobre ?? 0, 6);
   });
 
-  it("o pobre isento não paga imposto de renda; cobrar dele pesa no bolso dele", () => {
+  it("o pobre dependente não paga imposto de renda; cobrar dele pesa no bolso dele", () => {
     const p = brasil();
     expect(p.estado.leis["imposto-renda-pobre"]).toBe(0);
     const depois = avancar(p, [lei("imposto-renda-pobre", 0.1)]);

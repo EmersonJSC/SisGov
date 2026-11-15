@@ -38,6 +38,8 @@ import {
   type Votacao,
   motivoEscadasInvalidas,
   motivoFontesInvalidas,
+  comFilhos,
+  type RegraDaDemografia,
   type RegraDoEmprego,
   type ValorLei,
   ehEstrato,
@@ -186,6 +188,8 @@ function carregarPops(): TipoPop[] {
     pago_por: "pago_por" in t ? (t.pago_por as TipoPop["pago_por"]) : undefined,
     desvio: "desvio" in t ? (t.desvio as number) : undefined,
     divisao: "divisao" in t ? (t.divisao as TipoPop["divisao"]) : undefined,
+    dependente: "dependente" in t ? (t.dependente as number) : undefined,
+    filhos: "filhos" in t ? (t.filhos as TipoPop["filhos"]) : undefined,
   }));
   const motivo = motivoEscadasInvalidas(tipos) ?? motivoFontesInvalidas(tipos);
   if (motivo) throw new Error(`mundo/pops/pops.json › ${motivo}`);
@@ -199,6 +203,20 @@ function carregarEmprego(): RegraDoEmprego {
   for (const id of [r.desempregados, ...r.fora_da_forca])
     if (!ids.has(id))
       throw new Error(`mundo/pops/pops.json › emprego: pop "${id}" não existe`);
+  return r;
+}
+
+/** Ciclo da vida: quem é criança, estudante e aposentado (passo E). */
+function carregarDemografia(): RegraDaDemografia {
+  const r = tiposPops.demografia as RegraDaDemografia;
+  const ids = new Set(tiposPops.pops.map((t) => t.id));
+  for (const id of [r.criancas, r.estudantes, r.aposentados])
+    if (!ids.has(id))
+      throw new Error(
+        `mundo/pops/pops.json › demografia: pop "${id}" não existe`,
+      );
+  if (!(r.anos_crianca > 0))
+    throw new Error("mundo/pops/pops.json › demografia: anos_crianca > 0");
   return r;
 }
 
@@ -586,8 +604,9 @@ export function criarPartida(
   const regras: Regras = {
     leis,
     dominios: dominiosDosIndices(),
-    pops: carregarPops(),
+    pops: comFilhos(carregarPops(), inicial.parametros.pops),
     emprego: carregarEmprego(),
+    demografia: carregarDemografia(),
     grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),
