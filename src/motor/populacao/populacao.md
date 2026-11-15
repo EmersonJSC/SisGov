@@ -84,3 +84,13 @@ declara em `treina.para`. Pop sem `treina` não muda.
 - No turno 0 toda fonte vale 1 e cada pop fica com a parte declarada. Depois a
   soma das rendas brutas continua sendo o PIB: a fonte que cresce tira das
   outras. A verba muda quem recebe, não o tamanho do PIB.
+
+## Pop sem estrato fixo (passo B4, 15/nov)
+
+- O pop pode declarar `divisao`: parte das pessoas e da renda em cada estrato
+  (cada uma soma 1). Hoje: aposentados e estudantes.
+- Toda conta por estrato pega cada pedaço no seu: imposto de um estrato,
+  transferência de um estrato e o vazamento dela, a parte da renda de cada
+  estrato e quem paga o bico. O `estrato` do pop fica para subir e descer.
+- A renda do pop continua uma média só; a cesta não separa o aposentado pobre
+  do rico.

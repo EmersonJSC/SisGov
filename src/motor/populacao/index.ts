@@ -36,6 +36,24 @@ export interface TipoPop {
   pago_por?: Partial<Record<Estrato, number>>;
   /** Peso do pop no dinheiro desviado pela corrupção dos órgãos. */
   desvio?: number;
+  /**
+   * Pop sem estrato fixo (ex.: aposentados): parte das pessoas e da renda em
+   * cada estrato (cada uma soma 1). Imposto e transferência de estrato pegam
+   * cada pedaço no seu; `estrato` fica para subir e descer.
+   */
+  divisao?: Partial<Record<Estrato, { pessoas: number; renda: number }>>;
+}
+
+/** Pedaços do pop por estrato: [estrato, parte das pessoas, parte da renda]. */
+export function pedacos(t: TipoPop): [Estrato, number, number][] {
+  return t.divisao
+    ? (
+        Object.entries(t.divisao) as [
+          Estrato,
+          { pessoas: number; renda: number },
+        ][]
+      ).map(([e, d]) => [e, d.pessoas, d.renda])
+    : [[t.estrato, 1, 1]];
 }
 
 /**
@@ -172,30 +190,36 @@ export function calcularPops(
     mexeu && total > 0 ? pesoRenda(id) / total : pais[id].parcela_renda;
 
   const pessoasEstrato: Partial<Record<Estrato, number>> = {};
-  for (const t of tipos)
-    pessoasEstrato[t.estrato] =
-      (pessoasEstrato[t.estrato] ?? 0) + fracao(t.id) * entrada.populacao;
-
   const rendaEstrato: Partial<Record<Estrato, number>> = {};
   for (const t of tipos)
-    rendaEstrato[t.estrato] = (rendaEstrato[t.estrato] ?? 0) + rendaDe(t.id);
+    for (const [e, pp, pr] of pedacos(t)) {
+      pessoasEstrato[e] =
+        (pessoasEstrato[e] ?? 0) + fracao(t.id) * entrada.populacao * pp;
+      rendaEstrato[e] = (rendaEstrato[e] ?? 0) + rendaDe(t.id) * pr;
+    }
 
   const pops: Record<string, Pop> = {};
   for (const t of tipos) {
     const parcela_renda = rendaDe(t.id);
     const pessoas = fracao(t.id) * entrada.populacao;
     const renda_bruta = (parcela_renda * entrada.pib_nominal) / pessoas;
-    const doEstrato = entrada.impostos?.[t.estrato] ?? 0;
+    let doEstrato = 0;
+    let doEstratoTransf = 0;
+    for (const [e, pp, pr] of pedacos(t)) {
+      const imp = entrada.impostos?.[e] ?? 0;
+      if (imp > 0)
+        doEstrato += ((parcela_renda * pr) / (rendaEstrato[e] as number)) * imp;
+      doEstratoTransf +=
+        ((entrada.transferencias[e] ?? 0) * pessoas * pp) /
+        (pessoasEstrato[e] as number);
+    }
     const imposto =
-      (parcela_renda * entrada.imposto_renda +
-        (doEstrato > 0
-          ? (parcela_renda / (rendaEstrato[t.estrato] as number)) * doEstrato
-          : 0)) /
-      pessoas;
+      (parcela_renda * entrada.imposto_renda + doEstrato) / pessoas;
     const transferencia =
-      (entrada.transferencias[t.estrato] ?? 0) /
-        (pessoasEstrato[t.estrato] as number) +
-      (pessoas > 0 ? (entrada.transferencias_pop?.[t.id] ?? 0) / pessoas : 0);
+      pessoas > 0
+        ? (doEstratoTransf + (entrada.transferencias_pop?.[t.id] ?? 0)) /
+          pessoas
+        : 0;
     pops[t.id] = {
       pessoas,
       renda_bruta,
@@ -214,6 +238,20 @@ export function motivoFontesInvalidas(tipos: TipoPop[]): string | null {
       return `pop ${t.id}: publico precisa ser de 0 a 1`;
     if (t.desvio !== undefined && !(t.desvio > 0))
       return `pop ${t.id}: desvio precisa ser maior que 0`;
+    if (t.divisao) {
+      const partes = Object.entries(t.divisao);
+      const soma = (k: "pessoas" | "renda") =>
+        partes.reduce((a, [, d]) => a + (d?.[k] ?? 0), 0);
+      if (
+        partes.length === 0 ||
+        !partes.every(
+          ([e, d]) => ehEstrato(e) && d && d.pessoas >= 0 && d.renda >= 0,
+        ) ||
+        Math.abs(soma("pessoas") - 1) > 1e-6 ||
+        Math.abs(soma("renda") - 1) > 1e-6
+      )
+        return `pop ${t.id}: divisao precisa de estratos com pessoas e renda que somam 1`;
+    }
     if (t.pago_por) {
       const pesos = Object.entries(t.pago_por);
       if (pesos.length === 0) return `pop ${t.id}: pago_por vazio`;

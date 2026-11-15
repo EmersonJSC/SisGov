@@ -433,6 +433,20 @@
         "pobre": 0.4,
         "medio": 0.4,
         "rico": 0.2
+      },
+      "divisao": {
+        "pobre": {
+          "pessoas": 0.45,
+          "renda": 0.25
+        },
+        "medio": {
+          "pessoas": 0.45,
+          "renda": 0.5
+        },
+        "rico": {
+          "pessoas": 0.1,
+          "renda": 0.25
+        }
       }
     },
     {
@@ -449,6 +463,20 @@
         "pobre": 0.5,
         "medio": 0.4,
         "rico": 0.1
+      },
+      "divisao": {
+        "pobre": {
+          "pessoas": 0.55,
+          "renda": 0.25
+        },
+        "medio": {
+          "pessoas": 0.4,
+          "renda": 0.55
+        },
+        "rico": {
+          "pessoas": 0.05,
+          "renda": 0.2
+        }
       }
     },
     {

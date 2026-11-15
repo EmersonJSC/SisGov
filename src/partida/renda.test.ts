@@ -96,4 +96,21 @@ describe("renda por fonte", () => {
     expect(parte(sujo, "burocratas")).toBeLessThan(parte(limpo, "burocratas"));
     expect(soma(sujo)).toBeCloseTo(1, 6);
   });
+
+  it("aposentado e estudante têm pobre, médio e rico por dentro", () => {
+    const p = base();
+    const mudar = (lei: string, valor: number) =>
+      jogar(avancar(p, [{ tipo: "mudar_lei", lei, valor }]), 1).estado.pops;
+    const agora = jogar(p, 1).estado.pops;
+    // O imposto de renda do rico pega o aposentado rico.
+    expect(
+      mudar("imposto-renda-rico", 0.4).aposentados.imposto,
+    ).toBeGreaterThan(agora.aposentados.imposto);
+    // A transferência aos pobres chega ao estudante pobre.
+    const lei = "transferencia-renda";
+    const dobro = (p.estado.leis[lei] as number) * 2;
+    expect(mudar(lei, dobro).estudantes.transferencia).toBeGreaterThan(
+      agora.estudantes.transferencia,
+    );
+  });
 });

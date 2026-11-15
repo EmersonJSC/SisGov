@@ -22,7 +22,7 @@ import {
 } from "../../fisco";
 import { novoFato, type Fato } from "../../fatos";
 import type { Lei, ValorLei } from "../../leis";
-import { ESTRATOS, type Estrato } from "../../populacao";
+import { ESTRATOS, pedacos, type Estrato } from "../../populacao";
 import {
   situacaoDaCapacidade,
   animoDoInvestimento,
@@ -221,8 +221,9 @@ const posicaoNaFaixa = (lei: Lei, valor: ValorLei | undefined) =>
 export function parteDaRenda(regras: Regras): Partial<Record<Estrato, number>> {
   const parte: Partial<Record<Estrato, number>> = {};
   for (const t of regras.pops)
-    parte[t.estrato] =
-      (parte[t.estrato] ?? 0) + (regras.pais.pops[t.id]?.parcela_renda ?? 0);
+    for (const [e, , pr] of pedacos(t))
+      parte[e] =
+        (parte[e] ?? 0) + (regras.pais.pops[t.id]?.parcela_renda ?? 0) * pr;
   return parte;
 }
 /**

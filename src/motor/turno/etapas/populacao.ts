@@ -17,6 +17,7 @@ import {
   type Estrato,
   calcularPops,
   migrarPops,
+  pedacos,
 } from "../../populacao";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
@@ -78,9 +79,18 @@ function vazamentoDaTransferencia(
   const t = regras.fisco?.transferencia;
   if (!t || t.estrato !== estrato) return { parte: 0 };
   const cobertura = estado.leis[t.lei_cobertura];
-  const parteDoEstrato = regras.pops
-    .filter((p) => p.estrato === estrato)
-    .reduce((s, p) => s + (regras.pais.pops[p.id]?.parcela_pessoas ?? 0), 0);
+  const parteDoEstrato = regras.pops.reduce(
+    (s, p) =>
+      s +
+      pedacos(p)
+        .filter(([e]) => e === estrato)
+        .reduce(
+          (a, [, pp]) =>
+            a + (regras.pais.pops[p.id]?.parcela_pessoas ?? 0) * pp,
+          0,
+        ),
+    0,
+  );
   return {
     parte: vazamento(
       typeof cobertura === "number" ? cobertura : undefined,
@@ -222,8 +232,10 @@ export function fontesDaRenda(
       const r0 =
         (renda0[t.id] ?? 0) * (regras.pais.pops[t.id]?.parcela_pessoas ?? 0);
       const r = pop ? pop.pessoas * pop.renda : 0;
-      antes[t.estrato] = (antes[t.estrato] ?? 0) + r0;
-      hoje[t.estrato] = (hoje[t.estrato] ?? 0) + r;
+      for (const [e, , pr] of pedacos(t)) {
+        antes[e] = (antes[e] ?? 0) + r0 * pr;
+        hoje[e] = (hoje[e] ?? 0) + r * pr;
+      }
       totalAntes += r0;
       totalHoje += r;
     }
