@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # Mapa em três anéis (tarefa para o Sonnet)
 
 Pedido do autor (30/out/2026). Mudança **só de tela**: o motor e o conteúdo não mudam.

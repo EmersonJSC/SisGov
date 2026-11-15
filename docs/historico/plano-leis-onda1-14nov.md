@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # Plano da mecânica: Leis
 
 > Mecânica 6 de [mecanicas.md](../mecanicas.md). Escrito em 14/nov/2026 para o

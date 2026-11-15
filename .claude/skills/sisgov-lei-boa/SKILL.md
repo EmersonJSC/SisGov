@@ -5,6 +5,10 @@ description: Use sempre que for propor, listar, revisar ou reescrever leis do Si
 
 # Lei boa e lei ruim, segundo o autor
 
+As regras de toda lei (pergunta, jeito, régua sem limite, ponto doce e regulador,
+escassezes, nome) estão no GDD, Parte 4 (`docs/jogo/gdd.md`); esta tabela também
+está lá, na 4.15. Caso novo entra aqui e na 4.15.
+
 O autor julga a lei pelo que o jogador consegue fazer com ela. Antes de mostrar uma
 lista, passe cada lei por esta página e corrija o que cair em "ruim". Assim ele não
 precisa repetir a correção.
@@ -29,7 +33,6 @@ precisa repetir a correção.
 - **Escolha com vítima.** Escolher quem fica sem luz: "boa".
 - **Papel que obriga a escolher.** Assinar por cima, com escândalo, ou atrasar a licença e arriscar o apagão: "isso é perfeito".
 - **Régua que reparte a verba.** Divisão em 100%: "se eu subir em um setor, vai cair em outro... se eu investir, invisto em tudo".
-- **O presidente assinaria e pronto.** Se precisa de etapas, não é lei.
 
 ## O que faz uma lei ruim
 

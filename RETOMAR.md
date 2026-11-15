@@ -7,42 +7,42 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-Nível 3 do grafo (índices e leis). Passo A (todo índice tem dono) commitado em 01749ca1; item 5 das
-janelas em ff0c2c18. Medida: `npx vite-node scripts/grafo-nivel3.ts`.
+**GDD refeito por mecânica (14/nov), NÃO commitado:** [docs/jogo/gdd.md](docs/jogo/gdd.md) junta o GDD
+antigo, o mapa de mecânicas, as regras das leis, requisitos, `.md` do motor, planilhas, estudos e memórias.
+3 mecânicas no meio (Sociedade, Economia, Máquina pública); em volta Política, Mídia, Mundo, Tela, Narrativas. Antes de
+falar de uma mecânica, ler a parte dela. Substituídos foram para `docs/historico/`. Rascunhos, conflitos
+decididos e fontes em `docs/jogo/gdd-novo/` (apagar depois que o autor ler o GDD; o `08-conflitos.md` tem
+as decisões de 14/nov). Ordem decidida: Economia (dinheiro: bolsos e caminho) → Opinião (bolso vira
+opinião) → revisão das leis por instituição (GDD 4.14, pelas regras de todas as mecânicas que a lei toca). Nomes das mecânicas e peças decididos em 14/nov (estudo em `docs/jogo/estudos/nomes-das-mecanicas-14nov.md`).
+Judiciário commitado (9a15eb7c); base das leis commitada (f43df83a).
+Judiciário commitado (9a15eb7c); base das leis commitada (f43df83a).
 
-O autor pediu o **Judiciário de verdade** antes dos passos B e C. Fatia 1 **feita, NÃO commitada**
-(`src/motor/judiciario`, regras em `judiciario.md`):
-- Brasil: só STF (11) e TSE (`cadeiras: 0`, `presidido_por: "stf"`: só o presidente importa); STJ, TST
-  e STM saíram (autor: não fazem sentido no jogo). Aposentadoria aos 75; idades declaradas no país
-  (`idade_no_comeco`, `idade_do_indicado`). O STF do Brasil é declarado como em jan/2027: 10 juízes com
-  nomes parecidos com os reais (Fachini, Morales, Gilmar Menezes…) e a cadeira do Barrosa vaga (Senado
-  rejeitou Messias em abr/2026); no mandato abrem Fuchs (2028), Cármen (2029) e Gilmar (2030);
-- presidente da corte como no Brasil, regra fixa: mandato de 2 anos, o mais antigo (`posse`) que ainda
-  não presidiu; o TSE vem depois do STF, sem repetir o presidente nem quem já presidiu o STF. Fato
-  `corte-novo-presidente`;
-- lei "Quem escolhe os juízes" (carreira, presidente + Senado, presidente livre);
-- vaga vira papel importante: a Mesa abre sozinha, o botão pulsa, 3 cartas com o voto previsto do Senado;
-- Independência da Justiça sai de quem senta;
-- mapa: a órbita é só o STF; no miolo, STF e TSE à frente do presidente com fio dourado; Eleições
-  pendura no TSE; índices do país num anel por fora das cadeiras do Congresso.
+**Onda 1 quase pronta, NÃO commitada** (plano em `~/.claude/plans/tidy-spinning-blum.md`, aprovado 14/nov):
+- Regras de classificação no GDD, Parte 4 (tipo, jeito, canal; nada = não legislada; juntar/separar).
+- Validador cobra `jeito` nas leis triadas, níveis de 3 a 5, degrau "nada" (exceto essencial e canal regra).
+- Motor: IR em 3 leis por estrato (`calculo.estrato`); 7 bases novas (patrimônio, aplicações, imóvel,
+  capital, movimentação, folha, bancos); `encolhe`, `escala_gasto`, `para.pesos`, `arrecada`; módulo
+  `src/motor/fisco` (cobertura da transferência, juros com BC, regra fiscal com punição e trava,
+  pisos, conta da previdência); Lei com prazo (Anistia fiscal) e Ato (Renegociação/calote).
+- Dados: 88 leis da onda reescritas; saíram imposto-renda, progressividade, faixa sem IR, monopólio,
+  renda básica, fundo soberano (virou degrau do Superávit), gasto mínimo (virou Piso da saúde e da
+  educação). Brasil recalibrado (`receita_fora_das_leis` 10,81; `scripts/receita-inicial.ts`).
+- 1084+ testes verdes, `tsc -b` limpo. Folha da lei mostra "Tipo · Jeito".
+- Conserto: partida salva de antes da onda quebrava o turno (leis apagadas e opções trocadas); o
+  carregar (`src/partida/salvar.ts`) troca pelo valor de partida do país.
 
 ## Próximo
 
-**Jeito novo (autor, 14/nov): por mecânica inteira.** [docs/jogo/mecanicas.md](docs/jogo/mecanicas.md).
-Mecânica em curso: **Leis**, plano aprovado em [docs/jogo/planos/leis.md](docs/jogo/planos/leis.md).
-- **Base feita (14/nov):** `canal` obrigatório em toda lei (120 chegam ao pop, 392 em "espera:
-  triagem"), lei pela instituição (efeito × rendimento), revogar com voto, "como chega a você" na
-  folha da lei, abas Leis / Leis - degraus / Leis - efeitos na `gdd.xlsx` com `npm run leis`
-  (planilha → JSON) e `npm run leis:planilha` (JSON → planilha).
-- **Agora: onda 1** (Impostos, Previdência, Assistência social, Orçamento e dívida, Moeda e bancos):
-  preencher Veredito e canal de cada lei na aba Leis, o autor revisa a onda inteira, depois construir.
-  Lei com prazo nasce com a Anistia fiscal.
+1. Tela: janela "Leis para propor" com frase e lado; Atos à parte; relógio da lei com prazo.
+2. Coluna "Brasil tem?" na aba Leis; `npm run leis:planilha`.
+3. Mostrar na tela (foto), `npm run check`, commit `mundo: onda 1 das leis …`.
+4. Contar ao autor: preço/câmbio/crédito ficaram em "espera" (11 leis), poder-de-decreto tem 7 degraus quebrados (onda 4).
 
 ## Pendências do autor
 
 - A base do governo tem 60 de 81 senadores: o Senado aprova quase todo aliado. Ver se o voto deve pesar mais a distância.
 - Opinião central: estruturar direito, mecânica própria (não copiar outro jogo), antes do 10b.
-- A mídia não pesa em nada (GDD §18): corrigir quando fizermos mídia e polêmica.
+- A mídia não pesa em nada: é lente sobre os fatos (GDD 6.1); estudar como mexe em cada mecânica.
 - Conferir [docs/jogo/codigo-a-conferir.md](docs/jogo/codigo-a-conferir.md).
 
 ## Armadilhas

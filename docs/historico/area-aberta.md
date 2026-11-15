@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # Área aberta: o jogador sabe para onde ir
 
 > **Status: PROPOSTA (21–22/out/2026).** Desenho da tela quando o jogador

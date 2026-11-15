@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # Mecânicas do SisGov
 
 > **Para que serve:** o jogo inteiro dividido em mecânicas e submecânicas, com
@@ -17,12 +19,12 @@
 | --- | -------------------- | ------------ | -------------------------------------------------- |
 | 1   | Partida e turno      | 5            | quase pronta                                       |
 | 2   | Bússola              | 3            | pronta no básico                                   |
-| 3   | Opinião              | 4            | não existe; cada peça faz do seu jeito             |
+| 3   | Opinião              | 5            | só bússola e renda; falta o bolso (14/nov)         |
 | 4   | População            | 6            | base existe; falta demografia, saída, organizações |
-| 5   | Economia             | 12           | o maior buraco                                     |
+| 5   | Economia             | 14           | o maior buraco; modelo do Victoria 3 atualizado    |
 | 6   | Leis                 | 7            | 512 leis no jogo, sem padrão                       |
 | 7   | Índices              | 5            | 147 índices, 127 sem saída                         |
-| 8   | Contas do Estado     | 5            | básico feito; falta o caminho do dinheiro          |
+| 8   | Contas do Estado     | 5            | básico feito; dinheiro gasto ainda some            |
 | 9   | Governo (Executivo)  | 6            | meio caminho                                       |
 | 10  | Judiciário           | 7            | tribunais, vaga e presidente feitos                |
 | 11  | Congresso            | 8            | a mais pronta                                      |
@@ -34,6 +36,34 @@
 | 17  | Mesa                 | 7            | papéis de lei e vaga                               |
 | 18  | Tela                 | 6            | mapa feito                                         |
 | 19  | Narrativas e eventos | 3            | depois de tudo                                     |
+
+---
+
+## A base: política × população × economia (14/nov)
+
+O jogo quer a ligação que o Victoria 3 faz: **a economia mexe no pop, o pop
+mexe na política, a política (as leis) mexe na economia.** É a mais elogiada
+pelos jogadores do gênero; os outros jogos são criticados por ligação fraca
+(Frostpunk) ou que existe e ninguém entende (Democracy 4).
+
+- **A lei não diz quem gosta dela.** Diz onde mexe no dinheiro e na vida:
+  quem paga, quem recebe, que preço sobe, que emprego abre, que serviço
+  melhora. O motor calcula o efeito em cada pop, e o gosto nasce daí (3.5).
+- **A bússola continua**, como a parte da ideologia na opinião, com peso
+  menor que o bolso.
+- **Nenhum dinheiro some** (5.0): todo real gasto ou cobrado vira renda de
+  alguém, circula, fica guardado ou sai do país, mesmo o ilegal.
+- **O porquê à vista:** todo número que o jogador sente (gosto, preço,
+  salário) mostra de onde veio ao passar o mouse (SisGovpedia, GDD §18).
+- **Hoje (conferido no motor, 14/nov):** a satisfação do grupo lê renda,
+  índices cobrados e bússola das leis. O bolso só se mexe por imposto de renda
+  e transferência; as outras ~480 leis agradam ou irritam só pelo ponto
+  chutado na bússola. A verba gasta não chega a ninguém, exceto a
+  transferência.
+
+Ordem decidida: primeiro o **dinheiro** (caminho e conservação), depois o
+**gosto pelo bolso**, depois a revisão das leis instituição por instituição
+(`o-que-e-uma-lei.md`).
 
 ---
 
@@ -141,6 +171,24 @@ padronizadas**, porque a lei vai dizer em que mexe nessa régua.
 
 - **A pensar:** como o jogador vê a opinião de cada ator sem virar painel.
 
+### 3.5 Gosto pelo bolso (14/nov)
+
+A fórmula da bússola é a parte política do gosto; é boa, mas não a única.
+
+- **Quer:** o gosto do pop e do grupo soma:
+  - **bolso** (o mais forte): renda, preço do que ele compra, emprego,
+    serviço que recebe; calculado pelo motor a partir do que a lei mexe;
+  - **ideologia** (bússola), com peso menor;
+  - **memória**: tirar dói mais do que dar agrada (no CK3, aumentar exigência
+    custa −15 e reduzir dá +5); o ganho antigo vira costume (GDD §18).
+- **Na tela:** ao passar o mouse, cada parte com o seu número ("Operários:
+  −6 imposto, +4 salário mínimo, −3 ideologia"), como faz o CK3.
+- **Evitar:** lista escrita à mão de quem gosta de cada lei (Tropico,
+  Stellaris, Democracy 4): veterano adivinha tudo, vira tarefa, "falta
+  contexto". Com 500 leis, lista à mão vira sorteio.
+- **A pensar:** os pesos entre bolso, ideologia e memória; como o bolso de um
+  pop vira gosto do grupo que o atravessa; como mostrar sem virar painel.
+
 ---
 
 ## 4. População
@@ -213,16 +261,65 @@ Os pops no centro do jogo; grupos e organizações em cima deles.
 ## 5. Economia
 
 Um dos três pilares. O jogador cria condições; quem produz é a economia.
+Modelo: o do Victoria 3 (prédios, bens, mercados, pops com emprego, salário
+e padrão de vida), atualizado para hoje (serviços, informal, crédito, banco
+central). Estudo em `estudos/pesquisa-jogadores-14nov.md`, seção 4.
+
+- **Levar do Victoria 3:** pop no centro (prédio sem gente não produz);
+  necessidades atendidas por vários bens, com preferência; padrão de vida
+  que sobe e desce com o que sobra da renda; padrão caindo ou desemprego
+  radicaliza, subindo dá lealdade; riqueza dá peso político; dono recebe o
+  lucro e investe parte; impostos por tipo de base; déficit vira dívida.
+- **Mudar:** o dinheiro se conserva (no Victoria 3 não: bens surgem do nada e
+  a sobra é vendida "ao vazio"); ciclo econômico e crise (lá não há); o
+  jogador não constrói prédio (lá virou "jogo de construção" e barra de
+  progresso; aqui a lei dá condição e a economia constrói).
+- **Atualizar para hoje** (lá não existe, nada a copiar): serviços como setor
+  maior, trabalho informal, crédito e bancos, banco central e inflação,
+  economia digital, capital entrando e saindo do país.
+
+### 5.0 Nenhum dinheiro some (14/nov)
+
+- **Regra:** todo real cobrado ou gasto tem caminho, mesmo o que o jogador
+  não vê por ser ilegal. Ou circula na economia (salário, compra, lucro,
+  aluguel), ou fica guardado (poupança, banco, cofre), ou sai do país
+  (importação, remessa, fuga, conta lá fora).
+- **O ilegal também:** a corrupção não apaga dinheiro; ele vai para o bolso
+  de alguém (pop rico, ministro, organização), é gasto, lavado ou mandado para
+  fora, e deixa rastro.
+- **Conferência:** como já faz o Tesouro (cofre − dívida = resultado), a
+  economia inteira fecha a conta todo turno: o que saiu de um bolso entrou em
+  outro, ficou guardado ou foi ao exterior.
+- **Hoje:** ✗. A verba gasta some (só a transferência chega a um estrato); a
+  renda do pop é parte fixa do PIB (4.2).
+- **A pensar:** os bolsos do jogo (pops, companhias, Estado, bancos, exterior,
+  o ilegal); o que é contado um por um e o que é aproximado.
 
 ### 5.1 Mercado e produtos
 
 - **Já tem:** produtos em setores, mercado do país e do mundo (R16.1);
-  demanda dos pops e fome (R16.2).
+  demanda dos pops e fome (R16.2); ciclo de 4 anos e choques no preço do
+  mundo (`motor/mercado`, fatia 5a).
+- **Regra (14/nov):** produto que falta vem do mercado do mundo (compra de
+  quem tem sobra) ou fica faltando (preço sobe, fome, fila); nunca aparece do
+  nada. A sobra é vendida a alguém ou fica parada; nunca vai "ao vazio".
+- **Quer (14/nov):** pop compra o que precisa e paga imposto; cada
+  necessidade atendida por vários produtos com preferência e regras próprias
+  (energia de casa: eletricidade, gás ou lenha; lenha quando a luz falta ou
+  encarece). Ciclo e crise de verdade quando o mundo tiver países
+  funcionando.
 - **Falta:** cadeia entre setores completa (R16.5 ◐); setores com regra
   própria: remédios, militar (R16.6 ☐).
 
 ### 5.2 Prédios e obras
 
+- **Já tem (conferido 14/nov, `motor/mercado/construcoes.ts`):** capacidade
+  por setor, desgaste, investimento privado que abre obras para onde a margem
+  melhorou, fila da construção civil, corrupção que atrasa e encarece, lucro
+  por setor e fechamento depois de 3 turnos de prejuízo. Por setor, não por
+  prédio.
+- **Falta:** ligar ao pop: a renda do pop ainda é parte fixa do PIB, e
+  demissão, salário e lucro do setor não chegam a ele (fatia 5b, adiada);
 - **Falta:** prédios produzem, empregam e dão lucro, PIB é a soma (R16.7 ☐);
   obra com custo e prazo em fila (R16.8 ☐); corrupção atrasa obra (R16.10 ☐).
 - **A pensar:** custo e prazo de cada tipo de obra; duas filas (pública e
@@ -239,6 +336,9 @@ Um dos três pilares. O jogador cria condições; quem produz é a economia.
 
 - **Falta:** caminho do lucro (R16.9, R16.12, R16.33 ☐); reserva privada abre
   obras (R16.13 ☐).
+- **Quer (14/nov):** o lucro vai ao bolso do dono (pop rico, Estado, fundo,
+  estrangeiro); o dono gasta uma parte e investe outra, e é esse investimento
+  que abre as obras (hoje o investimento sai de uma conta, sem dono).
 - **A pensar:** quanto do lucro vai aos investidores e quanto à reserva; os 5
   tipos de dono (Estado, privado, estrangeiro, cooperativa, sem lucro).
 
@@ -333,7 +433,15 @@ O núcleo do governo. 512 leis no jogo, mas sem padrão. **Plano:**
 
 ### 6.3 Lei age pelo órgão
 
-- **Falta:** a regra funciona na medida da verba da instituição (R7.11 ☐).
+- **Já tem:** verba acima da necessidade vira corrupção na instituição
+  (`motor/governo`, R6.17): corrupção soma `12 × (rendimento − 1)` por turno
+  quando sobra verba.
+- **Falta:** a regra funciona na medida da verba da instituição (R7.11 ☐):
+  pouca verba ainda não enfraquece a lei.
+- **Quer (14/nov):** lei de regra custa. Fiscalizar uma regra pede trabalho à
+  instituição (sobe a necessidade dela); sem verba para isso, a regra alcança
+  menos gente (fuga da regra, 6.8). Esse custo vai a bolsos: salário de
+  fiscal, compra de equipamento; a multa de quem foi pego vai ao Tesouro.
 
 ### 6.4 Tipos
 
@@ -358,6 +466,20 @@ O núcleo do governo. 512 leis no jogo, mas sem padrão. **Plano:**
 - **Já tem:** índice que anda sozinho (R7.10).
 - **A pensar:** quais temas são processo (reforma agrária, moradia, terras) e
   quais leis empurram cada etapa.
+
+### 6.8 Ponto doce e regulador (14/nov)
+
+Regra em [o-que-e-uma-lei.md](o-que-e-uma-lei.md), seção 5: a régua vai ao
+extremo real, o mundo pune o exagero e um regulador move o ponto doce.
+
+- **Já tem:** imposto pela curva de Laffer, pico declarado pelo país
+  (`motor/calculos`); verba de sobra vira corrupção (6.3); transferência que
+  cobre mais que os pobres vaza para o estrato de cima (`motor/turno/etapas/populacao.ts`).
+- **Falta:** sonegação que cresce com o imposto e cai com a fiscalização
+  (hoje fixa); pouca verba enfraquece a lei (R7.11 ☐).
+- **A pensar:** fuga da regra para leis de regra e direito (regra forte demais
+  empurra para o informal ou o ilegal, conforme a verba de quem fiscaliza); o
+  regulador de cada lei sai da revisão instituição por instituição.
 
 ---
 
@@ -403,6 +525,12 @@ O núcleo do governo. 512 leis no jogo, mas sem padrão. **Plano:**
 
 - **Falta:** impostos → Tesouro → verba por lei → máquina do ministério →
   filtro da corrupção → instituição → população (R10.7 ☐).
+- **Reformular (14/nov), com 5.0:** o caminho do GDD para na "população". A
+  verba precisa virar coisas: salário de quem trabalha na instituição (médico,
+  professor, policial, que são pops), compra de bens e serviços (remédio,
+  obra, combustível, de companhias daqui ou de fora) e serviço entregue a um
+  pop. O desvio vira bolso de alguém. Assim a verba da saúde mexe em emprego,
+  setor e serviço, e o jogador sente o custo em gente, não num número.
 - **A pensar:** custo fixo por ministério e por cargo (sem ele, governo
   Inchado não tem desvantagem); quanto a corrupção some de verdade; o
   dinheiro "fora das leis" de hoje.

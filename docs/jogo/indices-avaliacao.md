@@ -47,7 +47,7 @@ país. A lista por dono sai de `npx vite-node scripts/grafo-nivel3.ts`.
 
 ## Ainda não existem
 
-- Organizações criminosas: a favela as fortalece; desenho pendente (GDD §18).
+- Organizações criminosas: a favela as fortalece; desenho pendente (GDD 2.7, Em aberto).
 - Dependência de drogas (`dependencia_drogas`), dependência de jogos
   (`dependencia_jogos`) e mercado ilegal (`mercado_ilegal`): aprovados em 05/nov;
-  desenho em [fase-1-redes.md](fase-1-redes.md).
+  desenho em GDD 4.17 (Serviços do Estado).

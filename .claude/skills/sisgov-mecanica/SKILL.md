@@ -13,7 +13,10 @@ procurando.
 | O que | Onde |
 | --- | --- |
 | Onde parei | `RETOMAR.md` |
-| O jogo como deve ser | `docs/jogo/gdd.md` |
+| O jogo como deve ser, por mecânica (ler a parte antes de mexer) | `docs/jogo/gdd.md`: 1 O jogo · 2 Sociedade · 3 Economia · 4 Máquina pública (leis, instituições, ministros) · 5 Política · 6 Mídia · 7 Mundo · 8 Tela · 9 Narrativas |
+| O que falta construir (R1…R19) | `docs/jogo/requisitos.md` (cada bloco diz a parte do GDD) |
+| Pesquisas e referências | `docs/jogo/estudos/` |
+| O que foi substituído (GDD antigo, mapa de mecânicas, regras de leis de 14/nov) | `docs/historico/` |
 | Como construir (camadas, roteiro, "começa com / expande depois") | `docs/jogo/plano-de-desenvolvimento.md` |
 | Regras e cálculos do Estado | `src/motor/<modulo>/` (cada módulo com `index.ts` e `.md`) |
 | Montar, salvar e carregar a partida | `src/partida/` |

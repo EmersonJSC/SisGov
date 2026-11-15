@@ -15,7 +15,7 @@
   de terra, moradia e saneamento.
 - **Agora:** planejar tudo em `docs/jogo/leis.xlsx` antes de programar: leis, índices,
   esferas, ligações e pops, depois os mecanismos. Base aprovada em 05/nov: População no
-  centro, ligada a Economia e Governo (GDD, seção 2). A próxima frente é a Economia.
+  centro, ligada a Economia e Governo (GDD, 1.2). A próxima frente é a Economia.
 - **A consertar quando o código voltar:** renda do pop vinda de salário e lucro; falta de
   trabalhador freando a produção; desemprego se movendo; toda lei chegando ao pop;
   idade e dados dentro do pop; reações de sair. Requisitos R7.12, R9.5, R11.8 a R11.11 e
@@ -134,7 +134,7 @@ derrubada de veto; bicameral; partido único (outra versão ou DLC).
 | Desgaste fixo por período; eleição a cada 6N turnos pelo apoio pesado por tamanho | mandato termina em vitória ou derrota que o jogador entende |
 
 **Expande depois:** perder o poder fora da eleição (impeachment, voto de
-desconfiança); percepção do déficit pelo eleitor (GDD, seção 13).
+desconfiança); percepção do déficit pelo eleitor (GDD, 5.6).
 
 ### Passo 10 — Tela ✅
 
@@ -186,7 +186,7 @@ jogo. Ficaram 8 leis na área Propriedade, ainda sem efeito.
 
 ### Passo 12b — Economia: construções, empresas, bolsa (espera a avaliação dos índices)
 
-Uma mecânica em três pilares, da base para o topo (GDD, seção 16).
+Uma mecânica em três pilares, da base para o topo (GDD, Parte 3).
 Um pilar fecha jogável na tela antes do próximo abrir. Nada mais
 abre até o 12b fechar.
 
@@ -197,7 +197,7 @@ abre até o 12b fechar.
 | 3 Bolsa           | Pregão em blocos de 2% sobre as empresas; preço = lucro × múltiplo; caixa dos compradores; dividendos no cofre                                                                                | script: vender derruba o preço dos outros blocos; contas fecham com dividendos. Na tela: comprar e vender no mesmo turno                                        |
 
 **Fica de fora:** oferta e procura completa, fome, cadeia de insumos, comércio
-automático, dinheiro na tela (GDD, seções 10 e 16).
+automático, dinheiro na tela (GDD, 3.6 e 3.12).
 
 ### Passo 13 — Leis em pacotes
 

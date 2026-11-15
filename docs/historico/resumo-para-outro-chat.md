@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # SisGov: resumo para levar a outro chat
 
 Escrito em 08/nov/2026. Texto simples, para quem nunca viu o projeto.

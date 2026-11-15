@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # Fase 1: Serviços do Estado
 
 Pedido do autor em 05/nov/2026: transformar saúde e saneamento numa mecânica só, as

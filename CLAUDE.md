@@ -5,7 +5,7 @@ SisGov é um simulador de governo em português. Quem joga assume a Presidência
 ## Leitura inicial
 
 1. `README.md`
-2. `RETOMAR.md` e `docs/jogo/gdd.md` (o jogo como deve ser; o feito e a ordem estão no plano; recomeço de 31/out/2026, o projeto antigo está em `docs/historico/projeto-antigo/` e na tag `projeto-antigo-2026-10-31`, não abrir sem precisar)
+2. `RETOMAR.md` e `docs/jogo/gdd.md` (o jogo como deve ser, por mecânica: Sociedade, Economia e Máquina pública no meio, Política, Mídia, Mundo, Tela e Narrativas em volta; o feito e a ordem estão no plano; recomeço de 31/out/2026, o projeto antigo está em `docs/historico/projeto-antigo/` e na tag `projeto-antigo-2026-10-31`, não abrir sem precisar)
 
 ## Não abrir sem o autor pedir
 
@@ -15,12 +15,14 @@ SisGov é um simulador de governo em português. Quem joga assume a Presidência
 - `docs/conteudo/rede.md` — referência da rede
 - `docs/Exemplos/` — referência externa (nada do Democracy 4 entra no projeto)
 
-Como construir: `docs/jogo/plano-de-desenvolvimento.md` (camadas, roteiro por passo). `docs/arquitetura/` é do projeto antigo.
+Antes de responder ou propor sobre uma mecânica, ler a parte dela no GDD (Regras, No motor hoje, Em aberto). Ideia nova vai para o "Em aberto" da mecânica, com data.
+
+Como construir: `docs/jogo/plano-de-desenvolvimento.md` (camadas, roteiro por passo). O que foi substituído está em `docs/historico/`.
 
 ## Como trabalhar
 
 - Fluxo enxuto: proposta curta no chat, o autor aprova, implementa-se. Sem spec, plano em arquivo, ledger ou subagente revisor, a menos que o autor peça.
-- Um passo por vez. Ideia nova vai para a seção 18 (Perguntas em aberto) do GDD; avisar e perguntar antes de abrir frente nova.
+- Um passo por vez. Ideia nova vai para o "Em aberto" da mecânica dela no GDD; avisar e perguntar antes de abrir frente nova.
 - Refatorar e mudar comportamento são pedidos separados.
 - Na terceira tentativa sem fechar uma tarefa, parar e rever com o autor.
 - Durante a mecânica: testes do que mudou e `npx tsc -b` (nunca `--noEmit`). O `npm run check` completo roda só ao terminar a mecânica inteira (ex.: o Grupos todo), não por camada.

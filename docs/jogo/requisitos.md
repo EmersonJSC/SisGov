@@ -7,6 +7,9 @@
 > está no fim e no [plano](plano-de-desenvolvimento.md); a arquitetura, em
 > [arquitetura.md](arquitetura.md).
 >
+> **14/nov:** o GDD foi refeito por mecânica (Partes 1 a 9). Os números R
+> não mudam; cada bloco abaixo diz em que parte do GDD está.
+>
 > **Status:** ✅ feito · ◐ parcial · ☐ falta. Medido no código em 13/nov.
 >
 > **Planilhas:** `docs/jogo/leis.xlsx` é o acervo; `docs/jogo/gdd.xlsx` é o que
@@ -57,6 +60,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 4. Partida e turno
 
+> No GDD: 1.4 e 1.5.
+
 - ✅ **R4.1** Turno de 2 meses; mandato de 4 anos = 24 turnos.
 - ✅ **R4.2** Passar o turno: efeitos chegam com o atraso declarado.
 - ✅ **R4.3** Escolher o país: `brasil-2026` (12/nov; 476 leis com o valor de hoje, 19 partidos com nome e cor, companhias inventadas). Dívida: juros comem 16% do PIB e a dívida vai de 78% a 107% em 24 turnos; calibrar na Economia.
@@ -80,6 +85,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 5. O partido
 
+> No GDD: 5.1.
+
 - ☐ **R5.1** Ficha do partido: bússola (da chapa), base, cadeiras, caixa, desgaste, coesão.
 - ☐ **R5.2** Governar longe da base derruba a coesão; o partido muda de lugar devagar.
 - ☐ **R5.3** Presidente do partido pesa na negociação e na campanha; troca custa coesão.
@@ -94,6 +101,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - Teste: governar sempre longe da base derruba a coesão em poucos turnos.
 
 ## 6. Governo: presidente, ministros, instituições, Judiciário, estados
+
+> No GDD: 5.2 a 5.8 e 4.18 a 4.21.
 
 **Pessoas e fichas**
 
@@ -148,6 +157,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 7. Leis e programas
 
+> No GDD: Parte 4.
+
 **Leis**
 
 - ✅ **R7.1** Duas camadas e duas formas (régua e degraus).
@@ -162,7 +173,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ◐ **R7.6** Temas em pacotes de leis pequenas (planilha completa; 5 escolhas de lista fora: vistos por país, setores, verba das estatais, ministérios).
 - ◐ **R7.12** Toda lei chega ao pop por renda, emprego, preço, serviço ou direito. (14/nov: toda lei declara o `canal`; hoje 120 de 512 chegam por um caminho do motor e 392 esperam a triagem da onda delas.)
 - ◐ **R7.13** Toda lei numa instituição (13/nov: as 512; serão refeitas instituição por instituição) e índice preso ao ministro responsável (no mapa). As 8 áreas antigas saem (autor, 13/nov); o código ainda as usa.
-- ◐ **R7.22** Leis padronizadas por instituição, a partir da `gdd.xlsx`; o dinheiro que entra e sai "fora das leis" se resolve aí. (14/nov: base pronta, plano em `planos/leis.md`; faltam as 4 ondas.)
+- ◐ **R7.22** Leis padronizadas por instituição, a partir da `gdd.xlsx`; o dinheiro que entra e sai "fora das leis" se resolve aí. (14/nov: base pronta, plano em `docs/historico/plano-leis-onda1-14nov.md`; faltam as 4 ondas.)
 - ✅ **R7.8** Revogar = propor a volta a "não legislada", com voto. (14/nov: botão na folha da lei; lei essencial não se revoga.)
 - ✅ **R7.11** Lei age pelo órgão: a regra funciona na medida da verba do órgão (ver R6.16). (14/nov: efeito × rendimento da instituição, teto 1.)
 - ☐ **R7.16** Tipos de lei: Lei com prazo (acaba sozinha), Ato, Posição por país, Operação.
@@ -187,6 +198,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 8. Bússola
 
+> No GDD: 2.5.
+
 - ✅ **R8.1** Eixos `economico` e `social`, de −1 a +1.
 - ✅ **R8.2** Leis, partidos, grupos e potências têm posição.
 - ✅ **R8.3** Posição do país = média das leis com peso.
@@ -195,6 +208,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ☐ **R8.6** O jogo percebe padrões ("corte de gastos").
 
 ## 9. Índices
+
+> No GDD: 4.16.
 
 - ✅ **R9.1** Índices essenciais do motor.
 - ✅ **R9.2** Índices de jogabilidade do mundo (147, da planilha; valor de partida 50 se o país não disser).
@@ -207,6 +222,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 10. Contas do Estado
 
+> No GDD: 3.12.
+
 - ✅ **R10.1** Receita, gasto, juros, cofre e dívida separados.
 - ☐ **R10.7** Caminho do dinheiro: impostos → Tesouro → verba por lei → máquina do ministério → filtro da corrupção (dinheiro some de verdade) → instituição. A pensar depois das leis (GDD §18).
 - ✅ **R10.2** Juros sobem com dívida e inflação.
@@ -216,6 +233,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ☐ **R10.6** Calote.
 
 ## 11. População e grupos
+
+> No GDD: Parte 2.
 
 - ◐ **R11.1** Pops com renda vinda da economia (renda ainda é parte fixa do PIB; R16.26).
 - ✅ **R11.2** Grupos com bússola, tamanho e satisfação.
@@ -238,6 +257,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - ☐ **R11.18** Financiadores de organizações e rastro.
 
 ## 12. Congresso
+
+> No GDD: 5.5.
 
 **Voto** (11–12/nov)
 
@@ -279,6 +300,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 13. Eleição, campanha e mandatos
 
+> No GDD: 5.6.
+
 - ✅ **R13.1** Mandato e eleição pela lei do país.
 - ✅ **R13.2** Desgaste sobe sempre.
 - ◐ **R13.3** Voto por grupo (satisfação feita; falta bússola dos candidatos, campanha e mídia).
@@ -300,6 +323,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 - Teste: promessa pequena cumprida rende pouco; perder no segundo turno acaba a partida.
 
 ## 14. Mídia
+
+> No GDD: Parte 6.
 
 - ◐ **R14.1** Mídias do país (8 maiores e redes): dono, bússola, audiência por grupo, credibilidade. (12/nov: Brasil com 8 mídias inventadas e as redes, no estado; ninguém lê ainda, é o passo 12.)
 - ✅ **R14.4** Jornal do turno: a notícia de maior impacto sai dos fatos. (12/nov: as 3 maiores, no topo do Resultado do turno.)
@@ -324,6 +349,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 15. Mundo
 
+> No GDD: Parte 7.
+
 - ✅ **R15.1** Potências com bússola, peso e relações (inventadas; trocar pelos 30 reais).
 - ✅ **R15.2** Reputação = média das opiniões pesada; segurança externa.
 - ◐ **R15.3** Potência reage (opinião anda; falta o cardápio).
@@ -346,6 +373,8 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ## 16. Economia
 
+> No GDD: Parte 3.
+
 A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 
 **Mercado**
@@ -367,7 +396,7 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 - ☐ **R16.22** Êxodo: gente do campo vai à cidade quando a renda esperada lá passa a do campo.
 - ☐ **R16.23** Quem chega à cidade pede casa; sem oferta, sobe déficit e favela.
 - ☐ **R16.24** Leis do campo nos 6 lados, ligadas à cidade só pelo êxodo.
-- ☐ **R16.25** Bem tomado pelo Estado (terra ou empresa) ganha destino por lei: comunidade, Estado ou famílias com título; uma lei por destino (GDD §18, a decidir).
+- ☐ **R16.25** Bem tomado pelo Estado (terra ou empresa) ganha destino por lei: comunidade, Estado ou famílias com título; uma lei por destino (GDD, Em aberto da 3.11).
 
 **Construções** (pilar 1)
 
@@ -406,6 +435,8 @@ A V1 pede só R16.26 e R16.27 (passo 10 da ordem); o resto vem depois.
 - ☐ **R16.33** Caminho do lucro completo: valor adicionado, salário, encargos, desgaste, juros, imposto, reinvestimento e dividendo.
 
 ## 17. Tela e mesa
+
+> No GDD: Parte 8.
 
 **Mapa** (13/nov)
 
@@ -481,4 +512,4 @@ de hoje jogado por um mandato inteiro, para mostrar a pessoas.
 
 ## Fora do jogo pronto
 
-Guerra iniciada pelo país, pesquisa como árvore (GDD, seção 18).
+Guerra iniciada pelo país, pesquisa como árvore (GDD 7.6 e 3.11).

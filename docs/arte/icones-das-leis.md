@@ -5,7 +5,7 @@
 > desenha (pessoa ou IA). Regras de arquivo em
 > [src/assets/svg/README.md](../../src/assets/svg/README.md).
 > Leis: [docs/jogo/leis/](../jogo/leis/README.md). Tela:
-> [área aberta](../jogo/interface/area-aberta.md).
+> [área aberta](../historico/area-aberta.md) (substituída pelo GDD, Parte 8).
 
 ## 1. Estilo (vale para todos)
 

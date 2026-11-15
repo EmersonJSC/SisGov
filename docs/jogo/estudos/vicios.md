@@ -26,7 +26,7 @@ fonte. Número é direção, não regra do jogo.
 ## O que virou lei
 
 O autor fechou 12 leis em 05/nov/2026: a lista está em
-[fase-1-redes.md](../fase-1-redes.md). As tabelas abaixo são a pesquisa inteira.
+GDD 4.17 (Serviços do Estado). As tabelas abaixo são a pesquisa inteira.
 
 - **Juntadas:** Redução de danos e Descriminalizar viraram Cuidado com o usuário;
   Pena do tráfico, Bloqueio de sites e a agência viraram Fiscalização e repressão;

@@ -688,7 +688,7 @@ TASK: generate the 2 images below, one image per item, all in the same style and
 
 ## Áreas do mapa e crise (pedido de 22/out/2026)
 
-Faixas do topo de cada área aberta (`docs/jogo/interface/area-aberta.md`), o fundo do mapa e a cena de crise. Lista e ordem em `docs/arte/artes-de-tela.md`.
+Faixas do topo de cada área aberta (`docs/historico/area-aberta.md`), o fundo do mapa e a cena de crise. Lista e ordem em `docs/arte/artes-de-tela.md`.
 
 ### Mapa político (fundo)
 

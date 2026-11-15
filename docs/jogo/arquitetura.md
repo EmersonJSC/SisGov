@@ -241,8 +241,8 @@ Mercado e Pregão existem, mas nada as abre (o autor vai dizer onde moram).
 - **Eficiência é medida.** `npm run medir`: turno abaixo de 50 ms, placar
   abaixo de 5 ms.
 
-Regras da lei e da rede: GDD, seções 7 e 16, e
-[fase-1-redes.md](fase-1-redes.md).
+Regras da lei e da rede: GDD, Partes 4 e 3.
+GDD 4.17 (Serviços do Estado).
 
 ## 9. Dívidas conhecidas
 
@@ -252,4 +252,4 @@ Regras da lei e da rede: GDD, seções 7 e 16, e
   rede entrar.
 - O campo `esfera` da lei guarda a instituição; renomear é pedido à parte.
 - Área (8 temas antigos) sai do mapa (decidido 13/nov), falta tirar do código.
-- Caminho do dinheiro a reformular depois das leis (GDD §18).
+- Caminho do dinheiro a reformular depois das leis (GDD 3.6).

@@ -1,3 +1,5 @@
+> **Substituído em 14/nov/2026** pelo [GDD por mecânica](../jogo/gdd.md). Guardado só como histórico.
+
 # Situação das leis
 
 Decisão do autor em 05/nov/2026: só contam como reais as leis ligadas a uma rede. As

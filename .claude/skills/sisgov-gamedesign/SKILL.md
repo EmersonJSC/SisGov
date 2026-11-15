@@ -34,7 +34,7 @@ Mecânicas de jogo, para inspirar o *tipo* de decisão. **Nada do Democracy 4**
 entra no projeto; nada de nome, número ou ligação de outro jogo.
 
 - **Victoria 3:** mercado de oferta e procura, comércio, interesse dos grupos,
-  nada se resolve com um botão. Resumo em `docs/jogo/mercado-vic3-referencia.md`.
+  nada se resolve com um botão. Resumo em `docs/jogo/estudos/mercado-vic3-referencia.md`.
 - **Leilão e lance (teoria dos leilões, Vickrey, Milgrom):** preço mínimo alto
   esvazia, baixo vende barato; quem aparece depende do lucro esperado e do
   risco do país.

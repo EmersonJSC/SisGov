@@ -2,7 +2,7 @@
 
 > **Status: VIGENTE (pedido de arte, 22/out/2026).** Imagens maiores que
 > ícones. Ícones em [icones-das-leis.md](icones-das-leis.md); tela em
-> [área aberta](../jogo/interface/area-aberta.md).
+> [área aberta](../historico/area-aberta.md) (substituída pelo GDD, Parte 8).
 
 ## Onde salvar
 
