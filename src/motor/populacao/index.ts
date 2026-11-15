@@ -25,6 +25,11 @@ export interface TipoPop {
   sobe?: Escada;
   /** Quem desce de estrato vai para este pop; sem isso, ninguém desce. */
   desce?: string;
+  /**
+   * Outro pop da mesma faixa para onde a gente vai quando ele melhora mais
+   * (ex.: o eletricista que abre a oficina). `exige` é um índice que freia.
+   */
+  muda?: { para: string; exige?: string };
   /** Onde o pop começa na bússola (−1 a +1 por eixo); desliza com a vida. */
   bussola: PontoBussola;
   /** Parte da renda paga pelo Estado (0 a 1); anda com o gasto público. */
@@ -263,11 +268,18 @@ export function motivoFontesInvalidas(tipos: TipoPop[]): string | null {
   return null;
 }
 
-/** Motivo de as escadas (sobe/desce) dos tipos não fecharem, ou null. */
+/** Motivo de as escadas (sobe/desce/muda) dos tipos não fecharem, ou null. */
 export function motivoEscadasInvalidas(tipos: TipoPop[]): string | null {
   const ordem = (e: Estrato) => ESTRATOS.indexOf(e);
   const por = (id: string) => tipos.find((t) => t.id === id);
   for (const t of tipos) {
+    if (t.muda) {
+      const alvo = por(t.muda.para);
+      if (!alvo)
+        return `pop ${t.id}: muda para "${t.muda.para}", que não existe`;
+      if (alvo.estrato !== t.estrato || alvo.id === t.id)
+        return `pop ${t.id}: muda para ${alvo.id}, que precisa ser outro pop do mesmo estrato`;
+    }
     if (t.sobe) {
       const alvo = por(t.sobe.para);
       if (!alvo)
@@ -350,6 +362,59 @@ export function migrarPops(
       (pop.pessoas / e.populacao) * PASSO_ESTRATO * forca,
       saiu + LIMITE_MIGRACAO * daqui,
       LIMITE_MIGRACAO * dali - entrou,
+    );
+    if (fluxo <= 0) continue;
+    novo[t.id] = saiu - fluxo;
+    novo[alvo] = entrou + fluxo;
+  }
+  return novo;
+}
+
+/** Fração do pop que muda para outro da mesma faixa por turno, no máximo. */
+export const PASSO_NA_FAIXA = 0.005;
+/** O destino precisa ter melhorado 5% a mais que o pop desde o turno 0. */
+const VANTAGEM_MINIMA = 1.05;
+/** Vantagem a mais (25%) para a força ser total. */
+const VANTAGEM_CHEIA = 0.25;
+
+/**
+ * Um turno de troca na mesma faixa (terceiro caminho, 15/nov): quando o pop
+ * de destino melhorou mais que o de origem desde o turno 0, um pouco da gente
+ * muda, freada pelo índice que o destino exige. A população total não muda.
+ */
+export function migrarNaFaixa(
+  tipos: TipoPop[],
+  pais: Record<string, PopPais>,
+  atual: Migracao | undefined,
+  e: EntradaMigracao,
+): Migracao {
+  const novo: Migracao = { ...atual };
+  if (!e.renda_pop) return novo;
+  const melhora = (id: string) => {
+    const marco = e.renda_pop?.[id];
+    const pop = e.pops[id];
+    return marco && pop ? (pop.renda * 100) / e.indice_precos / marco : 0;
+  };
+  for (const t of tipos) {
+    if (!t.muda) continue;
+    const daqui = melhora(t.id);
+    const dali = melhora(t.muda.para);
+    const pop = e.pops[t.id];
+    if (!(daqui > 0) || !(dali > 0) || !pop) continue;
+    const vantagem = dali / daqui;
+    const exige = t.muda.exige
+      ? entre((e.indices[t.muda.exige] ?? 0) / 100, 0, 1)
+      : 1;
+    const forca =
+      entre((vantagem - VANTAGEM_MINIMA) / VANTAGEM_CHEIA, 0, 1) * exige;
+    if (forca <= 0) continue;
+    const alvo = t.muda.para;
+    const saiu = novo[t.id] ?? 0;
+    const entrou = novo[alvo] ?? 0;
+    const fluxo = Math.min(
+      (pop.pessoas / e.populacao) * PASSO_NA_FAIXA * forca,
+      saiu + LIMITE_MIGRACAO * pais[t.id].parcela_pessoas,
+      LIMITE_MIGRACAO * pais[alvo].parcela_pessoas - entrou,
     );
     if (fluxo <= 0) continue;
     novo[t.id] = saiu - fluxo;

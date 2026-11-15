@@ -64,7 +64,10 @@
         "infraestrutura": 0.2
       },
       "capital": 0,
-      "desce": "informais-urbanos"
+      "desce": "informais-urbanos",
+      "muda": {
+        "para": "comerciantes"
+      }
     },
     {
       "id": "domesticos",
@@ -150,6 +153,9 @@
       "treina": {
         "para": ["construcao-civil", "industria"],
         "exige": "instrucao"
+      },
+      "muda": {
+        "para": "autonomos-negocio"
       }
     },
     {
@@ -644,7 +650,10 @@
         "luxo": 0.25
       },
       "capital": 0,
-      "desce": "trabalhadores-escritorio"
+      "desce": "trabalhadores-escritorio",
+      "muda": {
+        "para": "grandes-empresarios"
+      }
     }
   ]
 }

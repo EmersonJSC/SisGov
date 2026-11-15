@@ -180,6 +180,7 @@ function carregarPops(): TipoPop[] {
     bussola: t.bussola,
     sobe: "sobe" in t ? (t.sobe as TipoPop["sobe"]) : undefined,
     desce: "desce" in t ? (t.desce as string) : undefined,
+    muda: "muda" in t ? (t.muda as TipoPop["muda"]) : undefined,
     publico: "publico" in t ? (t.publico as number) : undefined,
     pago_por: "pago_por" in t ? (t.pago_por as TipoPop["pago_por"]) : undefined,
     desvio: "desvio" in t ? (t.desvio as number) : undefined,

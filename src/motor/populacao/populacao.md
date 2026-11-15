@@ -94,3 +94,13 @@ declara em `treina.para`. Pop sem `treina` não muda.
   estrato e quem paga o bico. O `estrato` do pop fica para subir e descer.
 - A renda do pop continua uma média só; a cesta não separa o aposentado pobre
   do rico.
+
+## Troca na mesma faixa (passo B5, 15/nov)
+
+- O pop pode declarar `muda: { para, exige? }`: outro pop do mesmo estrato
+  (ex.: ofícios → autônomos com negócio → pequenos empregadores; gerentes →
+  grandes empresários).
+- Compara quanto cada um melhorou desde o turno 0 (renda real ÷ a do turno 0),
+  não quanto ganha: sem lei, ninguém muda. Com o destino 5% à frente, um
+  pouco muda; com 30% à frente, até 0,5% do pop por turno, vezes o índice
+  `exige` (se houver). Mesmo limite de 30% do declarado.

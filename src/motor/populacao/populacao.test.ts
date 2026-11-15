@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   calcularPops,
+  migrarNaFaixa,
   migrarPops,
   motivoEscadasInvalidas,
   motivoPopsInvalidos,
@@ -164,5 +165,50 @@ describe("mobilidade de estrato (R11.6)", () => {
     expect(
       motivoEscadasInvalidas([TIPOS_M[0], { ...TIPOS_M[1], desce: "b" }]),
     ).toMatch(/estrato mais baixo/);
+  });
+});
+
+describe("troca na mesma faixa (B5)", () => {
+  const tipos: TipoPop[] = [
+    { id: "x", estrato: "medio", bussola: {}, muda: { para: "y" } },
+    { id: "y", estrato: "medio", bussola: {} },
+  ];
+  const pais = {
+    x: { parcela_pessoas: 0.5, parcela_renda: 0.5 },
+    y: { parcela_pessoas: 0.5, parcela_renda: 0.5 },
+  };
+  const pop = (renda: number) => ({
+    pessoas: 50,
+    renda_bruta: renda,
+    imposto: 0,
+    transferencia: 0,
+    renda,
+  });
+  const entrada = (rendaY: number) => ({
+    pops: { x: pop(10), y: pop(rendaY) },
+    populacao: 100,
+    renda_pop: { x: 10, y: 10 },
+    indice_precos: 100,
+    esperado: 1,
+    indices: {},
+  });
+
+  it("sem melhora do destino, ninguém muda", () => {
+    expect(migrarNaFaixa(tipos, pais, undefined, entrada(10.4))).toEqual({});
+  });
+
+  it("destino que melhorou mais puxa um pouco da gente", () => {
+    const m = migrarNaFaixa(tipos, pais, undefined, entrada(13));
+    expect(m.y).toBeGreaterThan(0);
+    expect((m.x ?? 0) + (m.y ?? 0)).toBeCloseTo(0);
+  });
+
+  it("recusa trocar para outro estrato", () => {
+    expect(
+      motivoEscadasInvalidas([
+        { id: "x", estrato: "medio", bussola: {}, muda: { para: "y" } },
+        { id: "y", estrato: "rico", bussola: {} },
+      ]),
+    ).toMatch(/mesmo estrato/);
   });
 });

@@ -16,6 +16,7 @@ import {
   type Pop,
   type Estrato,
   calcularPops,
+  migrarNaFaixa,
   migrarPops,
   pedacos,
 } from "../../populacao";
@@ -297,14 +298,22 @@ export function deslize(regras: Regras, estado: Estado) {
 }
 /** Gente sobe e desce de estrato com a renda e a instrução (motor/populacao). */
 export function migracao(regras: Regras, estado: Estado) {
-  return migrarPops(regras.pops, regras.pais.pops, estado.migracao, {
+  const entrada = {
     pops: estado.pops,
     populacao: estado.essenciais.populacao,
     renda_pop: estado.marco.renda_pop,
     indice_precos: estado.essenciais.indice_precos,
     esperado: rendaEsperada(regras, estado),
     indices: todosIndices(estado),
-  });
+  };
+  // Sobe e desce de estrato; depois troca na mesma faixa.
+  const subiu = migrarPops(
+    regras.pops,
+    regras.pais.pops,
+    estado.migracao,
+    entrada,
+  );
+  return migrarNaFaixa(regras.pops, regras.pais.pops, subiu, entrada);
 }
 /** Gente estuda e muda para o setor que paga mais (motor/mercado/emprego). */
 export function setores(regras: Regras, estado: Estado) {
