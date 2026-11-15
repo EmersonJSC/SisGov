@@ -27,6 +27,26 @@ export interface TipoPop {
   desce?: string;
   /** Onde o pop começa na bússola (−1 a +1 por eixo); desliza com a vida. */
   bussola: PontoBussola;
+  /** Parte da renda paga pelo Estado (0 a 1); anda com o gasto público. */
+  publico?: number;
+  /**
+   * Quem não tem setor e vive do que outros pops pagam (ex.: doméstico):
+   * peso de cada estrato que paga; a renda anda com a renda dele.
+   */
+  pago_por?: Partial<Record<Estrato, number>>;
+}
+
+/**
+ * De onde vem a renda bruta (fase dos pops, 15/nov). Cada pop tem uma parte da
+ * renda em cada fonte, medida no turno 0; cada fonte vale hoje um tanto do que
+ * valia. A soma das rendas continua sendo o PIB: a fonte que cresce tira das
+ * outras.
+ */
+export interface FontesDaRenda {
+  /** Pop → fonte → parte da renda bruta do pop (soma 1). */
+  partes: Record<string, Record<string, number>>;
+  /** Fonte → quanto vale hoje ÷ no turno 0 (ausente = 1). */
+  indice: Record<string, number>;
 }
 
 /** O que o país declara de cada tipo de pop (frações que somam 1). */
@@ -59,6 +79,8 @@ export interface EntradaPops {
   transferencias: Partial<Record<Estrato, number>>;
   /** Quem trocou de pop até hoje, em fração da população (soma zero). */
   migracao?: Migracao;
+  /** De onde vem a renda; sem isso, cada pop fica com a parte declarada do PIB. */
+  fontes?: FontesDaRenda;
 }
 
 /** Fração da população que entrou (+) ou saiu (−) de cada pop. */
@@ -124,15 +146,26 @@ export function calcularPops(
   entrada: EntradaPops,
 ): Record<string, Pop> {
   const mig = entrada.migracao ?? {};
-  const mexeu = Object.values(mig).some((v) => v !== 0);
+  const fontes = entrada.fontes;
+  const mexeu = fontes !== undefined || Object.values(mig).some((v) => v !== 0);
   const fracao = (id: string) => pais[id].parcela_pessoas + (mig[id] ?? 0);
+  // Quanto as fontes do pop valem hoje contra o turno 0.
+  const fator = (id: string) => {
+    const partes = fontes?.partes[id];
+    if (!partes) return 1;
+    let f = 0;
+    for (const [fonte, parte] of Object.entries(partes))
+      f += parte * (fontes.indice[fonte] ?? 1);
+    return f;
+  };
   // Quem muda de pop passa a ganhar como o pop novo; a soma da renda continua
   // sendo o PIB.
   const pesoRenda = (id: string) =>
-    (fracao(id) * pais[id].parcela_renda) / pais[id].parcela_pessoas;
+    (fracao(id) * pais[id].parcela_renda * fator(id)) /
+    pais[id].parcela_pessoas;
   const total = mexeu ? tipos.reduce((s, t) => s + pesoRenda(t.id), 0) : 1;
   const rendaDe = (id: string) =>
-    mexeu ? pesoRenda(id) / total : pais[id].parcela_renda;
+    mexeu && total > 0 ? pesoRenda(id) / total : pais[id].parcela_renda;
 
   const pessoasEstrato: Partial<Record<Estrato, number>> = {};
   for (const t of tipos)
@@ -167,6 +200,22 @@ export function calcularPops(
     };
   }
   return pops;
+}
+
+/** Motivo de `publico` e `pago_por` dos tipos não fecharem, ou null. */
+export function motivoFontesInvalidas(tipos: TipoPop[]): string | null {
+  for (const t of tipos) {
+    if (t.publico !== undefined && !(t.publico >= 0 && t.publico <= 1))
+      return `pop ${t.id}: publico precisa ser de 0 a 1`;
+    if (t.pago_por) {
+      const pesos = Object.entries(t.pago_por);
+      if (pesos.length === 0) return `pop ${t.id}: pago_por vazio`;
+      for (const [e, p] of pesos)
+        if (!ehEstrato(e) || !(p! > 0))
+          return `pop ${t.id}: pago_por precisa de estratos com peso > 0`;
+    }
+  }
+  return null;
 }
 
 /** Motivo de as escadas (sobe/desce) dos tipos não fecharem, ou null. */

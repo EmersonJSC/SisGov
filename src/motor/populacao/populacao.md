@@ -59,3 +59,21 @@ declara em `treina.para`. Pop sem `treina` não muda.
   salário médio do setor cai, e isso freia a corrida.
 - Universidade não é construção: o estudo é simulado pelo índice de instrução.
 - Aparece na tela do Mercado (empregos e salário por setor).
+
+## Renda por fonte (fase dos pops, passo B1, 15/nov)
+
+- A renda bruta de cada pop vem de fontes, com a parte de cada uma medida no
+  turno 0 (`fontesDaRenda` em `turno/etapas/populacao.ts`):
+  - **salário de setor**: (1 − capital) × peso do setor; anda com a capacidade
+    do setor e o nível geral de preços;
+  - **lucro de setor**: capital × peso; é a receita menos os salários, e na
+    receita só conta o preço do setor contra a média dos setores;
+  - **Estado**: `publico` do pop (0 a 1); anda com o gasto com pessoal (leis de
+    gasto sem `para`, mais o gasto fora das leis);
+  - **pago por outros**: `pago_por` (peso de cada estrato); anda com a parte
+    desse estrato na renda disponível;
+  - **fixa**: o que sobra (aposentados, estudantes, desempregados, cuidam da
+    casa, até o passo B3).
+- No turno 0 toda fonte vale 1 e cada pop fica com a parte declarada. Depois a
+  soma das rendas brutas continua sendo o PIB: a fonte que cresce tira das
+  outras. A verba muda quem recebe, não o tamanho do PIB.

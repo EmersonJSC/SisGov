@@ -440,6 +440,9 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
   - Estudantes, Aposentados e Crianças são pops separados; cada um guarda por dentro a divisão entre pobre, médio e rico.
   - Renda por fonte: cada setor tem um tamanho (no turno 0, o que os pops de hoje dão) e paga salário e lucro aos pops que estão nele. A Economia completa (3.3, 3.4) depois só calcula melhor esse tamanho.
   - Quem não tem setor tem a renda ligada à de quem paga por ele: a doméstica à das famílias média e rica, o vendedor de rua à dos pobres.
+  - Fontes da renda (15/nov): salário de setor (anda com capacidade e preço do setor); lucro de setor (a parte de dono); salário do Estado (anda com o gasto público; parte paga pelo Estado: servidores, militares, policiais e altos funcionários 100%, professores 80% (mais de 80% das matrículas são públicas), saúde 60% (55% dos médicos e 62% da enfermagem com vínculo público)); pago por outros pops (domésticos pelos médios e ricos, informais pelos pobres; números para calibrar); desvio (a corrupção do órgão vira renda de altos funcionários e de quem tem contrato com o Estado).
+  - Aposentado vive da aposentadoria, se a lei existir; desempregado do seguro por um tempo, se existir, depois de bico ou da família; estudante de bolsa ou bico. A transferência passa a poder mirar um pop, não só um estrato. No turno 0 tudo fica igual, menos esses pops, cujo dado do Brasil está errado (aposentados 1,4% da população) e será acertado.
+  - Limite assumido: a verba muda quem recebe, não o tamanho do PIB (o PIB anda pela capacidade). O gasto puxar a economia fica para a Economia.
   - Terceiro caminho: o pop também muda para outro pop da mesma faixa quando o destino paga mais (ex.: o eletricista que abre a oficina vira Autônomo com negócio). É onde ligam as leis de quem trabalha por conta própria.
   - Fase dos pops, na ordem: 31 pops, renda por fonte, desemprego, cesta e padrão de vida, demografia, estados, saída, lugar das tomadas de serviço e direito, organizações.
 
@@ -458,7 +461,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - Democracy 4: a pessoa em vários grupos para o voto.
 
 **No motor hoje**
-- ◐ R11.1 Pops com renda da economia: a renda ainda é parte fixa do PIB.
+- ◐ R11.1 Pops com renda da economia (B1, 15/nov): salário e lucro de setor, salário do Estado e pago por outros pops; aposentados, estudantes, desempregados e cuidam da casa ainda com parte fixa (B3).
 - ✅ R11.5 Pops mudam de setor estudando. ✅ R11.6 Sobem e descem de estrato. ✅ R11.7 Cada pop tem bússola e desliza com a vida.
 - ☐ R11.8 Dados dentro do pop. ☐ R11.12 31 pops em 4 blocos, com crianças. O motor tem 25 tipos (8 pobres, 11 médios, 6 ricos); o GDD é a meta.
 - A cesta no motor dá a mesma quantia por pessoa; a meta é a fatia da renda por estrato.

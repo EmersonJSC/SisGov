@@ -8,9 +8,11 @@ import {
 } from "../../grupos";
 import { vazamento } from "../../fisco";
 import { magoasDoGoverno } from "../../governo";
-import { migrarSetores } from "../../mercado";
+import { lucroDosSetores, migrarSetores, precoDosSetores } from "../../mercado";
 import { posicaoDoPais } from "../../mundo";
+import type { ValorLei } from "../../leis";
 import {
+  type FontesDaRenda,
   type Pop,
   type Estrato,
   calcularPops,
@@ -74,6 +76,124 @@ function vazamentoDaTransferencia(
     para: t.vaza_para,
   };
 }
+/** Gasto do Estado que paga gente (fora as transferências), em % do PIB. */
+function gastoComPessoal(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+  corte?: number,
+): number {
+  let total = regras.pais.gasto_fora_das_leis;
+  for (const [id, v] of Object.entries(gastoPorLei(regras, leis, corte))) {
+    const lei = regras.leis[id];
+    if (lei?.forma === "continua" && !lei.para) total += v;
+  }
+  return total;
+}
+/**
+ * De onde vem a renda de cada pop (GDD 2.1, 15/nov): salário e lucro dos
+ * setores onde trabalha, salário do Estado e o que outros pops pagam. No
+ * turno 0 toda fonte vale 1; depois o salário anda com a capacidade do setor,
+ * o lucro com a receita menos os salários, o Estado com o gasto com pessoal e
+ * quem é pago por outros com a renda de quem paga (no turno anterior).
+ */
+export function fontesDaRenda(
+  regras: Regras,
+  estado: Estado,
+): FontesDaRenda | undefined {
+  const m = regras.mercado;
+  if (!m) return undefined;
+  const partes: FontesDaRenda["partes"] = {};
+  for (const t of regras.pops) {
+    const p: Record<string, number> = {};
+    const publico = t.publico ?? 0;
+    if (publico > 0) p.estado = publico;
+    const resto = 1 - publico;
+    const o = m.ocupacao[t.id];
+    const setores = estado.setores?.[t.id] ?? o?.setores ?? {};
+    if (resto > 0 && o && Object.keys(setores).length > 0) {
+      for (const [s, peso] of Object.entries(setores)) {
+        const sal = resto * peso * (1 - o.capital);
+        const luc = resto * peso * o.capital;
+        if (sal > 0) p[`salario:${s}`] = (p[`salario:${s}`] ?? 0) + sal;
+        if (luc > 0) p[`lucro:${s}`] = (p[`lucro:${s}`] ?? 0) + luc;
+      }
+    } else if (resto > 0 && t.pago_por) {
+      const pesos = Object.entries(t.pago_por) as [Estrato, number][];
+      const soma = pesos.reduce((a, [, v]) => a + v, 0);
+      for (const [e, v] of pesos) p[`pago:${e}`] = (resto * v) / soma;
+    }
+    if (Object.keys(p).length > 0) {
+      const usado = Object.values(p).reduce((a, v) => a + v, 0);
+      if (usado < 1 - 1e-9) p.fixa = 1 - usado;
+      partes[t.id] = p;
+    }
+  }
+
+  // No turno 0 toda fonte vale 1 (o marco ainda é provisório).
+  const indice: Record<string, number> = {};
+  if (estado.turno === 0) return { partes, indice };
+  const c = estado.construcoes;
+  if (c && estado.marco) {
+    // O salário segue a capacidade do setor e o nível geral de preços. O lucro
+    // é a receita menos esses salários; na receita só conta o preço do setor
+    // contra a média dos setores (a inflação comum não mexe no lucro).
+    const geral =
+      estado.essenciais.indice_precos /
+      (estado.marco.indices.indice_precos ?? 100);
+    const preco = precoDosSetores(m.mercado, estado.precos);
+    const razao = (s: string) => {
+      const p0 = c.lucro?.preco0[s] ?? 0;
+      return p0 > 0 ? (preco[s] ?? p0) / p0 : 1;
+    };
+    let pesos = 0;
+    let media = 0;
+    for (const [s, inicio] of Object.entries(c.inicio)) {
+      pesos += inicio;
+      media += inicio * razao(s);
+    }
+    media = pesos > 0 ? media / pesos : 1;
+    for (const [s, inicio] of Object.entries(c.inicio)) {
+      if (!(inicio > 0)) continue;
+      const parte = (c.prontas[s] ?? 0) / inicio;
+      indice[`salario:${s}`] = parte * geral;
+      const salario0 = c.lucro?.salarios[s] ?? 0;
+      const lucro0 = inicio - salario0;
+      if (!(lucro0 > 0)) continue;
+      const lucro = (inicio * (razao(s) / media) - salario0) * parte * geral;
+      indice[`lucro:${s}`] = Math.max(0, lucro) / lucro0;
+    }
+  }
+  if (estado.marco) {
+    const antes = gastoComPessoal(regras, estado.marco.leis);
+    if (antes > 0)
+      indice.estado =
+        gastoComPessoal(regras, estado.leis, estado.fiscal?.corte) / antes;
+  }
+  // Quem paga gasta da renda disponível (já com imposto e transferência): a
+  // parte de cada estrato nela hoje contra a do turno 0.
+  const renda0 = estado.marco?.renda_pop;
+  if (renda0 && estado.pops) {
+    const antes: Partial<Record<Estrato, number>> = {};
+    const hoje: Partial<Record<Estrato, number>> = {};
+    let totalAntes = 0;
+    let totalHoje = 0;
+    for (const t of regras.pops) {
+      const pop = estado.pops[t.id];
+      const r0 =
+        (renda0[t.id] ?? 0) * (regras.pais.pops[t.id]?.parcela_pessoas ?? 0);
+      const r = pop ? pop.pessoas * pop.renda : 0;
+      antes[t.estrato] = (antes[t.estrato] ?? 0) + r0;
+      hoje[t.estrato] = (hoje[t.estrato] ?? 0) + r;
+      totalAntes += r0;
+      totalHoje += r;
+    }
+    if (totalAntes > 0 && totalHoje > 0)
+      for (const [e, a0] of Object.entries(antes) as [Estrato, number][])
+        if (a0 > 0)
+          indice[`pago:${e}`] = (hoje[e] ?? 0) / totalHoje / (a0 / totalAntes);
+  }
+  return { partes, indice };
+}
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 export function pops(regras: Regras, estado: Estado): Record<string, Pop> {
   const e = estado.essenciais;
@@ -85,6 +205,7 @@ export function pops(regras: Regras, estado: Estado): Record<string, Pop> {
     impostos: impostoPorEstrato(regras, estado.leis, e),
     transferencias,
     migracao: estado.migracao,
+    fontes: fontesDaRenda(regras, estado),
   });
 }
 /** Quanto a renda real cresce no ritmo normal do país desde o turno 0. */

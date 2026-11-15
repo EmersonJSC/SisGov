@@ -93,9 +93,10 @@ describe("energia (7)", () => {
     expect(grave.estado.jogabilidade.saude).toBeLessThan(
       leve.estado.jogabilidade.saude,
     );
+    // A falta leve freia um pouco a capacidade, e a renda vem dela (15/nov).
     expect(leve.estado.jogabilidade.saude).toBeCloseTo(
       jogar(base(), 2).estado.jogabilidade.saude,
-      3,
+      2,
     );
   });
 

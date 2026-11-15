@@ -36,6 +36,10 @@
       "sobe": {
         "para": "autonomos-negocio",
         "exige": "instrucao"
+      },
+      "pago_por": {
+        "pobre": 0.7,
+        "medio": 0.3
       }
     },
     {
@@ -67,6 +71,10 @@
       "sobe": {
         "para": "trabalhadores-escritorio",
         "exige": "instrucao"
+      },
+      "pago_por": {
+        "rico": 0.6,
+        "medio": 0.4
       }
     },
     {
@@ -89,10 +97,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "tecnologia",
-          "construcao-civil"
-        ],
+        "para": ["tecnologia", "construcao-civil"],
         "exige": "instrucao"
       }
     },
@@ -114,10 +119,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "industria",
-          "tecnologia"
-        ],
+        "para": ["industria", "tecnologia"],
         "exige": "instrucao"
       }
     },
@@ -138,10 +140,7 @@
       "capital": 0,
       "desce": "servicos-basicos",
       "treina": {
-        "para": [
-          "construcao-civil",
-          "industria"
-        ],
+        "para": ["construcao-civil", "industria"],
         "exige": "instrucao"
       }
     },
@@ -165,9 +164,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "infraestrutura"
-        ],
+        "para": ["infraestrutura"],
         "exige": "instrucao"
       }
     },
@@ -190,10 +187,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "tecnologia",
-          "luxo"
-        ],
+        "para": ["tecnologia", "luxo"],
         "exige": "instrucao"
       }
     },
@@ -215,10 +209,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "industria",
-          "construcao-civil"
-        ],
+        "para": ["industria", "construcao-civil"],
         "exige": "instrucao"
       }
     },
@@ -241,10 +232,7 @@
         "exige": "instrucao"
       },
       "treina": {
-        "para": [
-          "construcao-civil",
-          "luxo"
-        ],
+        "para": ["construcao-civil", "luxo"],
         "exige": "instrucao"
       }
     },
@@ -264,7 +252,8 @@
         "para": "altos-funcionarios",
         "exige": "instrucao"
       },
-      "desce": "servicos-basicos"
+      "desce": "servicos-basicos",
+      "publico": 0.8
     },
     {
       "id": "profissionais-saude",
@@ -282,7 +271,8 @@
         "para": "profissionais-liberais",
         "exige": "instrucao"
       },
-      "desce": "servicos-basicos"
+      "desce": "servicos-basicos",
+      "publico": 0.6
     },
     {
       "id": "militares",
@@ -300,7 +290,8 @@
         "para": "altos-funcionarios",
         "exige": "instrucao"
       },
-      "desce": "servicos-basicos"
+      "desce": "servicos-basicos",
+      "publico": 1
     },
     {
       "id": "policiais",
@@ -319,7 +310,8 @@
         "para": "altos-funcionarios",
         "exige": "instrucao"
       },
-      "desce": "servicos-basicos"
+      "desce": "servicos-basicos",
+      "publico": 1
     },
     {
       "id": "burocratas",
@@ -340,11 +332,10 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "tecnologia"
-        ],
+        "para": ["tecnologia"],
         "exige": "instrucao"
-      }
+      },
+      "publico": 1
     },
     {
       "id": "tecnicos",
@@ -367,9 +358,7 @@
       },
       "desce": "operarios-fabrica",
       "treina": {
-        "para": [
-          "luxo"
-        ],
+        "para": ["luxo"],
         "exige": "instrucao"
       }
     },
@@ -393,9 +382,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "infraestrutura"
-        ],
+        "para": ["infraestrutura"],
         "exige": "instrucao"
       }
     },
@@ -420,9 +407,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "tecnologia"
-        ],
+        "para": ["tecnologia"],
         "exige": "instrucao"
       }
     },
@@ -470,9 +455,7 @@
       },
       "desce": "servicos-basicos",
       "treina": {
-        "para": [
-          "infraestrutura"
-        ],
+        "para": ["infraestrutura"],
         "exige": "instrucao"
       }
     },
@@ -495,9 +478,7 @@
       },
       "desce": "informais-urbanos",
       "treina": {
-        "para": [
-          "essenciais"
-        ],
+        "para": ["essenciais"],
         "exige": "instrucao"
       }
     },
@@ -596,7 +577,8 @@
         "infraestrutura": 0.3
       },
       "capital": 0,
-      "desce": "burocratas"
+      "desce": "burocratas",
+      "publico": 1
     },
     {
       "id": "gerentes",

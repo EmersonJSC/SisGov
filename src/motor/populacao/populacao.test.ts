@@ -46,6 +46,39 @@ describe("pops", () => {
   });
 });
 
+describe("fontes da renda (15/nov)", () => {
+  const entrada = {
+    populacao: 100,
+    pib_nominal: 1000,
+    imposto_renda: 0,
+    transferencias: {},
+  };
+  const parte = (pops: ReturnType<typeof calcularPops>, id: string) =>
+    (pops[id].pessoas * pops[id].renda_bruta) / 1000;
+
+  it("com toda fonte valendo 1, a renda é a declarada", () => {
+    const pops = calcularPops(TIPOS, PAIS, {
+      ...entrada,
+      fontes: { partes: { a: { x: 1 }, b: { y: 1 } }, indice: {} },
+    });
+    expect(parte(pops, "a")).toBeCloseTo(0.4);
+    expect(parte(pops, "b")).toBeCloseTo(0.6);
+  });
+
+  it("a fonte que cresce tira das outras; a soma continua o PIB", () => {
+    const pops = calcularPops(TIPOS, PAIS, {
+      ...entrada,
+      fontes: {
+        partes: { a: { x: 1 }, b: { y: 0.5, fixa: 0.5 } },
+        indice: { x: 1.5 },
+      },
+    });
+    // a: 0,4 × 1,5 = 0,6; b: 0,6 × 1 = 0,6; dividido por 1,2.
+    expect(parte(pops, "a")).toBeCloseTo(0.5);
+    expect(parte(pops, "a") + parte(pops, "b")).toBeCloseTo(1);
+  });
+});
+
 describe("mobilidade de estrato (R11.6)", () => {
   const TIPOS_M: TipoPop[] = [
     {
