@@ -26,7 +26,7 @@ const CENARIOS: [string, number, Pedido[]][] = [
   [
     "imposto de renda 30%",
     1,
-    [{ tipo: "mudar_lei", lei: "imposto-renda", valor: 0.3 }],
+    [{ tipo: "mudar_lei", lei: "imposto-renda-medio", valor: 0.3 }],
   ],
   [
     "transferência 4% do PIB",

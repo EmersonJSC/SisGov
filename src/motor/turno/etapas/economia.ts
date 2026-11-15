@@ -1,6 +1,12 @@
 // Etapas do turno: economia. Comportamento em turno.md.
 import { sortearNormal } from "../../acaso";
-import { taxaAlvo, proximaTaxa, type IdBase, BASES } from "../../calculos";
+import {
+  taxaAlvo,
+  proximaTaxa,
+  type Base,
+  type IdBase,
+  BASES,
+} from "../../calculos";
 import {
   type Fluxos,
   type Tesouro,
@@ -8,7 +14,15 @@ import {
   regraFiscal,
 } from "../../contas";
 import type { Estado, IndicesEssenciais } from "../../estado";
-import type { ValorLei } from "../../leis";
+import {
+  alvoComBancoCentral,
+  estourosFiscais,
+  numeroDaOpcao,
+  punicao,
+} from "../../fisco";
+import { novoFato, type Fato } from "../../fatos";
+import type { Lei, ValorLei } from "../../leis";
+import { ESTRATOS, type Estrato } from "../../populacao";
 import {
   situacaoDaCapacidade,
   animoDoInvestimento,
@@ -138,12 +152,38 @@ export const economiaReal: Etapa = (regras, estado) => {
   };
 };
 /**
+ * Juro-alvo do turno: o do mercado (dívida e inflação); com o Banco Central
+ * (motor/fisco), a meta de inflação puxa e a autonomia diz quanto vale a taxa
+ * pedida pelo governo.
+ */
+export function alvoDoJuro(regras: Regras, estado: Estado): number {
+  const e = estado.essenciais;
+  const mercado = taxaAlvo(e.divida_publica, e.inflacao, regras.pais.juros);
+  const j = regras.fisco?.juros;
+  if (!j) return mercado;
+  const num = (id: string) => {
+    const v = estado.leis[id];
+    return typeof v === "number" ? v * 100 : undefined;
+  };
+  return alvoComBancoCentral(mercado, e.inflacao, {
+    meta: num(j.lei_meta),
+    taxa: num(j.lei_taxa),
+    autonomia: numeroDaOpcao(
+      regras.leis[j.lei_autonomia],
+      estado.leis[j.lei_autonomia],
+      "autonomia",
+      0,
+    ),
+    peso_da_meta: j.peso_da_meta,
+  });
+}
+/**
  * 5. Preços e juros: a inflação (ainda fixa, do país) sobe os preços e o PIB
  * nominal; a taxa de juros anda rumo ao alvo dado pela dívida.
  */
 export const precosEJuros: Etapa = (regras, estado) => {
   const e = estado.essenciais;
-  const alvo = taxaAlvo(e.divida_publica, e.inflacao, regras.pais.juros);
+  const alvo = alvoDoJuro(regras, estado);
   // O preço de uma rede em falta (ex.: energia) soma à inflação sentida.
   const pressao = situacoesDeCapacidade(regras, estado).reduce(
     (soma, { capacidade, situacao }) =>
@@ -169,6 +209,78 @@ export const capacidades: Etapa = (regras, estado) => ({
     estado.leis,
   ),
 });
+/** Posição do valor na faixa da régua, de 0 (mínimo) a 1 (máximo). */
+const posicaoNaFaixa = (lei: Lei, valor: ValorLei | undefined) =>
+  lei.forma === "continua" && typeof valor === "number"
+    ? Math.min(
+        1,
+        Math.max(0, (valor - lei.faixa.min) / (lei.faixa.max - lei.faixa.min)),
+      )
+    : 0;
+/** Parte da renda do país que é de cada estrato, pela declaração do país. */
+export function parteDaRenda(regras: Regras): Partial<Record<Estrato, number>> {
+  const parte: Partial<Record<Estrato, number>> = {};
+  for (const t of regras.pops)
+    parte[t.estrato] =
+      (parte[t.estrato] ?? 0) + (regras.pais.pops[t.id]?.parcela_renda ?? 0);
+  return parte;
+}
+/**
+ * Quanto sobra da base para um estrato depois das leis que a encolhem (ex.:
+ * "a partir de quanto cobra", desconto por filho). 1 = base inteira.
+ */
+export function fatorDaBase(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+  base: IdBase,
+  estrato: Estrato | undefined,
+): number {
+  let fator = 1;
+  for (const [id, valor] of Object.entries(leis)) {
+    const lei = regras.leis[id];
+    const en = lei?.forma === "continua" ? lei.encolhe : undefined;
+    if (!en || en.base !== base) continue;
+    if (en.estrato && en.estrato !== estrato) continue;
+    fator *= 1 - posicaoNaFaixa(lei, valor) * (1 - en.ate);
+  }
+  return fator;
+}
+/** Arrecadação anual de cada lei com cálculo, na moeda do país. */
+export function arrecadacaoPorLei(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+  e: IndicesEssenciais,
+): Record<string, number> {
+  const parte = parteDaRenda(regras);
+  const total: Record<string, number> = {};
+  for (const [id, valor] of Object.entries(leis)) {
+    const lei = regras.leis[id];
+    if (lei?.forma !== "continua" || !lei.calculo) continue;
+    const { base, estrato } = lei.calculo;
+    const parametros = regras.pais.bases[base] ?? {
+      ...BASES[base].padrao,
+      parcela_pib: 0,
+    };
+    // a lei do estrato cobra só da parte dele; a de todos, de cada parte (país
+    // sem pops declarados: a base inteira, com o que encolhe para todos)
+    const semPops = ESTRATOS.every((es) => !parte[es]);
+    const tamanho = semPops
+      ? estrato
+        ? 0
+        : fatorDaBase(regras, leis, base, undefined)
+      : (estrato ? [estrato] : [...ESTRATOS]).reduce(
+          (soma: number, es: Estrato) =>
+            soma + (parte[es] ?? 0) * fatorDaBase(regras, leis, base, es),
+          0,
+        );
+    total[id] = BASES[base].arrecadar(
+      valor as number,
+      e.pib_nominal * parametros.parcela_pib * tamanho,
+      parametros,
+    );
+  }
+  return total;
+}
 /** Arrecadação anual de cada base, na moeda do país. */
 export function arrecadacaoPorBase(
   regras: Regras,
@@ -176,21 +288,38 @@ export function arrecadacaoPorBase(
   e: IndicesEssenciais,
 ): Partial<Record<IdBase, number>> {
   const total: Partial<Record<IdBase, number>> = {};
-  for (const [id, valor] of Object.entries(leis)) {
+  for (const [id, valor] of Object.entries(
+    arrecadacaoPorLei(regras, leis, e),
+  )) {
     const lei = regras.leis[id];
     if (lei.forma !== "continua" || !lei.calculo) continue;
-    const base = lei.calculo.base;
-    const parametros = regras.pais.bases[base] ?? {
-      ...BASES[base].padrao,
-      parcela_pib: 0,
-    };
-    total[base] =
-      (total[base] ?? 0) +
-      BASES[base].arrecadar(
-        valor as number,
-        e.pib_nominal * parametros.parcela_pib,
-        parametros,
-      );
+    total[lei.calculo.base] = (total[lei.calculo.base] ?? 0) + valor;
+  }
+  return total;
+}
+/**
+ * Imposto que sai do bolso de cada estrato, por ano: a lei do estrato cobra
+ * dele; a lei de todos se divide pela renda entre os estratos que pagam a base.
+ */
+export function impostoPorEstrato(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+  e: IndicesEssenciais,
+): Partial<Record<Estrato, number>> {
+  const parte = parteDaRenda(regras);
+  const total: Partial<Record<Estrato, number>> = {};
+  for (const [id, valor] of Object.entries(
+    arrecadacaoPorLei(regras, leis, e),
+  )) {
+    const lei = regras.leis[id];
+    if (lei.forma !== "continua" || !lei.calculo) continue;
+    const { base, estrato } = lei.calculo;
+    const quem = estrato ? [estrato] : (BASES[base] as Base).incide;
+    if (!quem) continue;
+    const soma = quem.reduce((s, es) => s + (parte[es] ?? 0), 0);
+    for (const es of quem)
+      total[es] =
+        (total[es] ?? 0) + (soma > 0 ? (valor * (parte[es] ?? 0)) / soma : 0);
   }
   return total;
 }
@@ -203,16 +332,72 @@ export function arrecadacao(
   const porBase = Object.values(arrecadacaoPorBase(regras, leis, e));
   return (porBase.reduce((a, b) => a + b, 0) / e.pib_nominal) * 100;
 }
+/**
+ * Quanto o gasto de cada lei de verba é multiplicado pelas leis que mudam o
+ * gasto dela (ex.: idade mínima e a verba das aposentadorias). 1 = como está.
+ */
+export function escalaDoGasto(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+): Record<string, number> {
+  const escala: Record<string, number> = {};
+  for (const [id, valor] of Object.entries(leis)) {
+    const lei = regras.leis[id];
+    const es = lei?.escala_gasto;
+    if (!es) continue;
+    let fator = 1;
+    if (lei.forma === "continua" && "min" in es) {
+      const p = posicaoNaFaixa(lei, valor);
+      fator = es.min + (es.max - es.min) * p;
+    } else if (lei.forma === "opcoes")
+      fator = lei.opcoes.find((o) => o.id === valor)?.valores?.gasto ?? 1;
+    escala[es.lei] = (escala[es.lei] ?? 1) * fator;
+  }
+  return escala;
+}
+/** Gasto efetivo de cada lei de verba, em % do PIB, com a escala das outras. */
+export function gastoPorLei(
+  regras: Regras,
+  leis: Record<string, ValorLei>,
+  /** Corte automático da regra fiscal (motor/fisco): fração tirada de toda verba. */
+  corte = 0,
+): Record<string, number> {
+  const escala = escalaDoGasto(regras, leis);
+  const gasto: Record<string, number> = {};
+  for (const [id, valor] of Object.entries(leis)) {
+    const lei = regras.leis[id];
+    if (lei?.forma === "continua" && lei.conta === "gasto")
+      gasto[id] = (valor as number) * 100 * (escala[id] ?? 1) * (1 - corte);
+  }
+  return gasto;
+}
 /** Gasto das leis com `conta: "gasto"`, em % do PIB nominal. */
 export function gastoDasLeis(
   regras: Regras,
   leis: Record<string, ValorLei>,
+  corte = 0,
 ): number {
+  return Object.values(gastoPorLei(regras, leis, corte)).reduce(
+    (a, b) => a + b,
+    0,
+  );
+}
+/** Quanto cada uso a mais de uma lei com prazo rende (quem deve espera a próxima). */
+export const QUEDA_POR_USO = 0.7;
+/**
+ * Receita das leis que arrecadam enquanto valem (ex.: anistia fiscal), em % do
+ * PIB por ano: `arrecada` no máximo da faixa, menos a cada uso repetido.
+ */
+export function arrecadacaoDasJanelas(regras: Regras, estado: Estado): number {
   let total = 0;
-  for (const [id, valor] of Object.entries(leis)) {
+  for (const [id, valor] of Object.entries(estado.leis)) {
     const lei = regras.leis[id];
-    if (lei.forma === "continua" && lei.conta === "gasto")
-      total += (valor as number) * 100;
+    if (lei?.forma !== "continua" || !lei.arrecada) continue;
+    const usos = Math.max(1, estado.usos?.[id] ?? 1);
+    total +=
+      lei.arrecada *
+      posicaoNaFaixa(lei, valor) *
+      Math.pow(QUEDA_POR_USO, usos - 1);
   }
   return total;
 }
@@ -220,12 +405,14 @@ export function gastoDasLeis(
 export function fluxosDoTurno(regras: Regras, estado: Estado): Fluxos {
   const e = estado.essenciais;
   const receitaPct =
-    arrecadacao(regras, estado.leis, e) + regras.pais.receita_fora_das_leis;
+    arrecadacao(regras, estado.leis, e) +
+    regras.pais.receita_fora_das_leis +
+    arrecadacaoDasJanelas(regras, estado);
   const pibTurno = e.pib_nominal / TURNOS_POR_ANO;
   return {
     receita: (receitaPct / 100) * pibTurno,
     gasto:
-      ((gastoDasLeis(regras, estado.leis) +
+      ((gastoDasLeis(regras, estado.leis, estado.fiscal?.corte) +
         regras.pais.gasto_fora_das_leis +
         (estado.atendimento?.custo ?? 0) * 100) /
         100) *
@@ -255,14 +442,80 @@ export function mostrarContas(
 /** 6. Contas: receita, gasto e juros fecham o turno no cofre e na dívida. */
 export const contas: Etapa = (regras, estado) => {
   const fluxos = fluxosDoTurno(regras, estado);
-  const tesouro = fecharTurno(
+  const fechado = fecharTurno(
     estado.tesouro,
     fluxos,
     regraFiscal(regras.leis, estado.leis),
   );
-  return {
+  // ato de calote: a parte perdoada sai da dívida de uma vez
+  const perdao = (estado.perdao ?? 0) * Math.max(0, fechado.divida);
+  const tesouro = {
+    ...fechado,
+    divida: fechado.divida - perdao,
+    perdao: perdao > 0 ? perdao : undefined,
+  };
+  const essenciais = mostrarContas(estado.essenciais, fluxos, tesouro);
+  return conferirRegraFiscal(regras, {
     ...estado,
     tesouro,
-    essenciais: mostrarContas(estado.essenciais, fluxos, tesouro),
-  };
+    essenciais,
+    perdao: undefined,
+  });
 };
+/**
+ * Regra fiscal (motor/fisco): confere teto de gasto, meta de resultado,
+ * limite da dívida e teto da carga com as contas do turno. Regra estourada
+ * vira fato, e a punição em vigor vale no turno seguinte (corte das verbas,
+ * trava de aumento; crime de responsabilidade deixa o fato grande).
+ */
+export function conferirRegraFiscal(regras: Regras, estado: Estado): Estado {
+  const regra = regras.fisco?.regra_fiscal;
+  if (!regra) return estado;
+  const e = estado.essenciais;
+  const marco = estado.marco.indices;
+  const real = (gasto: number, pib: number, precos: number) =>
+    (gasto * pib) / precos;
+  const gasto0 =
+    marco.gasto_publico !== undefined &&
+    marco.pib_nominal !== undefined &&
+    marco.indice_precos !== undefined
+      ? real(marco.gasto_publico, marco.pib_nominal, marco.indice_precos)
+      : undefined;
+  const estouros = estourosFiscais(regra, estado.leis, {
+    gastoReal: gasto0
+      ? real(e.gasto_publico, e.pib_nominal, e.indice_precos) / gasto0
+      : 1,
+    anos: estado.turno / TURNOS_POR_ANO,
+    resultado_primario: e.resultado_primario,
+    divida_publica: e.divida_publica,
+    arrecadacao: e.arrecadacao,
+  });
+  const p = punicao(regras.leis, regra, estado.leis);
+  const novos = estouros.filter(
+    (x) => !(estado.fiscal?.estouros ?? []).includes(x),
+  );
+  const leiDe: Record<string, string | undefined> = {
+    teto_gasto: regra.lei_teto_gasto,
+    meta_resultado: regra.lei_meta_resultado,
+    limite_divida: regra.lei_limite_divida,
+    teto_carga: regra.lei_teto_carga,
+  };
+  const fatos: Fato[] = novos.map((x) =>
+    novoFato({
+      tipo: "regra-fiscal-estourou",
+      turno: estado.turno,
+      tamanho: p.crime ? "grande" : "medio",
+      sobre: leiDe[x],
+    }),
+  );
+  const estourou = estouros.length > 0;
+  return {
+    ...estado,
+    fiscal: {
+      estouros,
+      corte: estourou ? p.corte : 0,
+      trava: estourou && p.trava,
+    },
+    fatos: [...(estado.fatos ?? []), ...fatos],
+  };
+}

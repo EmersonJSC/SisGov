@@ -47,3 +47,35 @@ describe("partida salva antes das potências", () => {
     expect(carregada.estado.opinioes).toEqual(p.estado.opinioes);
   });
 });
+
+describe("partida salva antes de a lei mudar", () => {
+  it("lei que saiu do mundo sai; opção trocada volta; lei nova entra", () => {
+    const p = jogar(criarPartida("brasil-2026", 7), 2);
+    const antigo = JSON.parse(salvarPartida(p)) as {
+      estado: {
+        leis: Record<string, unknown>;
+        marco: { leis: Record<string, unknown> };
+        efeitos: { lei: string }[];
+      };
+    };
+    for (const leis of [antigo.estado.leis, antigo.estado.marco.leis]) {
+      delete leis["imposto-renda-rico"];
+      leis["imposto-renda"] = 0.2;
+      leis["aposentadoria-flexivel"] = "opcao-que-nao-existe";
+    }
+    antigo.estado.efeitos.push({
+      ...antigo.estado.efeitos[0],
+      lei: "imposto-renda",
+    });
+    const volta = carregarPartida(JSON.stringify(antigo));
+    expect(volta.estado.leis["imposto-renda"]).toBeUndefined();
+    expect(volta.estado.leis["imposto-renda-rico"]).toBe(
+      p.estado.leis["imposto-renda-rico"],
+    );
+    expect(volta.estado.marco.leis["imposto-renda-rico"]).toBeDefined();
+    expect(volta.estado.efeitos.some((e) => e.lei === "imposto-renda")).toBe(
+      false,
+    );
+    expect(() => jogar(volta, 2)).not.toThrow();
+  });
+});

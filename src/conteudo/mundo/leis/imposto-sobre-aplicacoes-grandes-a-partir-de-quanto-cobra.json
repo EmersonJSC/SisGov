@@ -8,13 +8,14 @@
   "origem": "planilha",
   "parte_de": "Imposto sobre aplicações grandes",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário mínimo",
   "faixa": { "min": 100, "max": 5000 },
   "passo": 0.1,
+  "encolhe": { "base": "aplicacoes", "ate": 0.2 },
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": -0.4, "social": 0 }

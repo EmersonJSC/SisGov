@@ -7,26 +7,47 @@
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "crédito dos bancos",
+  "jeito": "escolha",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhum",
-      "rotulo": "nenhum",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "ate-um-limite",
-      "rotulo": "até um limite",
+      "rotulo": "até um limite por pessoa",
       "bussola": { "economico": -0.05, "social": 0 },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "solidez_dos_bancos",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
     },
     {
       "id": "total",
       "rotulo": "total",
       "bussola": { "economico": -0.1, "social": 0 },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "solidez_dos_bancos",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "concentracao_de_mercado",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
     }
   ]
 }

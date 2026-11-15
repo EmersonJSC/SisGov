@@ -2,24 +2,37 @@
   "versao": 1,
   "id": "licencas-de-apostas",
   "nome": "Licenças de apostas",
-  "descricao": "Como as empresas podem explorar os jogos de aposta. Escada: apostas proibidas; poucas licenças caras; licença aberta com imposto moderado; licença barata e aberta a qualquer empresa.",
+  "descricao": "Quem pode explorar os jogos de aposta. Níveis: só o Estado; poucas licenças caras; licença aberta com imposto moderado; licença barata para qualquer empresa.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "apostas-proibidas",
-      "rotulo": "apostas proibidas",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
+      "id": "so-o-estado-explora",
+      "rotulo": "só o Estado explora",
+      "bussola": { "economico": -0.3, "social": 0 },
+      "efeitos": [
+        {
+          "indice": "mercado_ilegal",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "dependencia_de_jogos",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
     },
     {
       "id": "poucas-licencas-caras",
       "rotulo": "poucas licenças caras",
-      "bussola": { "economico": 0.17, "social": 0 },
+      "bussola": { "economico": 0.1, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -38,7 +51,7 @@
     {
       "id": "licenca-aberta-com-imposto-moderado",
       "rotulo": "licença aberta com imposto moderado",
-      "bussola": { "economico": 0.33, "social": 0 },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",

@@ -6,6 +6,7 @@ import {
   gruposComDeslize,
   deslizarPops,
 } from "../../grupos";
+import { vazamento } from "../../fisco";
 import { magoasDoGoverno } from "../../governo";
 import { migrarSetores } from "../../mercado";
 import { posicaoDoPais } from "../../mundo";
@@ -17,24 +18,71 @@ import {
 } from "../../populacao";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
-import { arrecadacaoPorBase, doTurno } from "./economia";
+import { doTurno, gastoPorLei, impostoPorEstrato } from "./economia";
 import { todosIndices, comIndicesDasCestas } from "./jogabilidade";
 
+/**
+ * Dinheiro das leis de transferência que chega a cada estrato, por ano. O
+ * gasto vale com a escala das outras leis (motor/contas); a lei com pesos
+ * divide entre os estratos; a cobertura da transferência (motor/fisco) manda
+ * ao estrato de cima a parte que passa dos pobres.
+ */
+export function transferenciasPorEstrato(
+  regras: Regras,
+  estado: Estado,
+): Partial<Record<Estrato, number>> {
+  const e = estado.essenciais;
+  const gasto = gastoPorLei(regras, estado.leis, estado.fiscal?.corte);
+  const total: Partial<Record<Estrato, number>> = {};
+  const somar = (es: Estrato, v: number) => (total[es] = (total[es] ?? 0) + v);
+  for (const id of Object.keys(estado.leis)) {
+    const lei = regras.leis[id];
+    if (lei.forma !== "continua" || !lei.para) continue;
+    const dinheiro = ((gasto[id] ?? 0) / 100) * e.pib_nominal;
+    if ("pesos" in lei.para) {
+      const pesos = Object.entries(lei.para.pesos) as [Estrato, number][];
+      const soma = pesos.reduce((s, [, p]) => s + p, 0);
+      for (const [es, p] of pesos) somar(es, (dinheiro * p) / soma);
+    } else {
+      const vaza = vazamentoDaTransferencia(regras, estado, lei.para.estrato);
+      somar(lei.para.estrato, dinheiro * (1 - vaza.parte));
+      if (vaza.para) somar(vaza.para, dinheiro * vaza.parte);
+    }
+  }
+  return total;
+}
+/**
+ * Parte da transferência de um estrato que vaza para o de cima: a cobertura
+ * (motor/fisco) passa da parte da população que é daquele estrato.
+ */
+function vazamentoDaTransferencia(
+  regras: Regras,
+  estado: Estado,
+  estrato: Estrato,
+): { parte: number; para?: Estrato } {
+  const t = regras.fisco?.transferencia;
+  if (!t || t.estrato !== estrato) return { parte: 0 };
+  const cobertura = estado.leis[t.lei_cobertura];
+  const parteDoEstrato = regras.pops
+    .filter((p) => p.estrato === estrato)
+    .reduce((s, p) => s + (regras.pais.pops[p.id]?.parcela_pessoas ?? 0), 0);
+  return {
+    parte: vazamento(
+      typeof cobertura === "number" ? cobertura : undefined,
+      parteDoEstrato,
+    ),
+    para: t.vaza_para,
+  };
+}
 /** Renda dos pops com as leis e o PIB do estado (motor/populacao). */
 export function pops(regras: Regras, estado: Estado): Record<string, Pop> {
   const e = estado.essenciais;
-  const transferencias: Partial<Record<Estrato, number>> = {};
-  for (const [id, valor] of Object.entries(estado.leis)) {
-    const lei = regras.leis[id];
-    if (lei.forma !== "continua" || !lei.para) continue;
-    const { estrato } = lei.para;
-    transferencias[estrato] =
-      (transferencias[estrato] ?? 0) + (valor as number) * e.pib_nominal;
-  }
+  const transferencias = transferenciasPorEstrato(regras, estado);
   return calcularPops(regras.pops, regras.pais.pops, {
     populacao: e.populacao,
     pib_nominal: e.pib_nominal,
-    imposto_renda: arrecadacaoPorBase(regras, estado.leis, e).renda ?? 0,
+    imposto_renda: 0,
+    impostos: impostoPorEstrato(regras, estado.leis, e),
     transferencias,
     migracao: estado.migracao,
   });

@@ -2,6 +2,7 @@
 import { andarDerivas } from "../../deriva";
 import { somaPorIndice } from "../../efeitos";
 import type { Estado } from "../../estado";
+import { indiceDaPrevidencia } from "../../fisco";
 import { rendimentoDasLeis } from "../../governo";
 import {
   contaDoPais,
@@ -11,7 +12,11 @@ import {
 } from "../../mercado";
 import type { Etapa } from "../comum";
 import type { Regras } from "../regras";
-import { situacoesDeCapacidade } from "./economia";
+import {
+  arrecadacaoPorBase,
+  gastoPorLei,
+  situacoesDeCapacidade,
+} from "./economia";
 
 /** Cestas cujo índice o mundo declara (ex.: abastecimento, acesso a remédios). */
 const cestasComIndice = (regras: Regras) =>
@@ -105,8 +110,39 @@ export const indicesJogabilidade: Etapa = (regras, estado) => {
       )
     : estado.base;
   const comBase = { ...estado, base };
-  return { ...comBase, jogabilidade: jogabilidade(regras, comBase) };
+  return {
+    ...comBase,
+    jogabilidade: {
+      ...jogabilidade(regras, comBase),
+      ...indicesDoFisco(regras, comBase),
+    },
+  };
 };
+/**
+ * Índices que saem de uma conta do motor e não das leis (motor/fisco): o
+ * déficit da previdência é benefício menos contribuição, em % do PIB.
+ */
+export function indicesDoFisco(
+  regras: Regras,
+  estado: Estado,
+): Record<string, number> {
+  const p = regras.fisco?.previdencia;
+  if (!p || !regras.dominios[p.indice]) return {};
+  const gasto = gastoPorLei(regras, estado.leis, estado.fiscal?.corte);
+  const beneficios = p.leis_gasto.reduce((s, id) => s + (gasto[id] ?? 0), 0);
+  const e = estado.essenciais;
+  const contribuicao =
+    ((arrecadacaoPorBase(regras, estado.leis, e)[p.base_contribuicao] ?? 0) /
+      e.pib_nominal) *
+    100;
+  return {
+    [p.indice]: indiceDaPrevidencia(
+      beneficios - contribuicao,
+      p.pontos_por_pct_pib,
+      regras.dominios[p.indice],
+    ),
+  };
+}
 /** Essenciais e jogabilidade num mapa só, para os grupos. */
 export const todosIndices = (estado: Estado): Record<string, number> => ({
   ...estado.essenciais,

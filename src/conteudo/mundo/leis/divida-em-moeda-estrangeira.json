@@ -8,14 +8,19 @@
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "câmbio",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 1 },
+  "faixa": { "min": 0.05, "max": 1 },
   "passo": 0.05,
-  "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": 0, "social": 0 }
-  },
-  "efeitos": []
+  "bussola": { "min": { "economico": 0.05 }, "max": { "economico": 0.3 } },
+  "efeitos": [
+    {
+      "indice": "divida_em_moeda_estrangeira",
+      "sentido": 1,
+      "forca": "forte",
+      "atraso_turnos": 0
+    }
+  ]
 }

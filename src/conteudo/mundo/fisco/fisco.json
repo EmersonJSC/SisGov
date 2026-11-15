@@ -1,0 +1,32 @@
+{
+  "versao": 1,
+  "transferencia": {
+    "lei_cobertura": "quem-recebe-a-transferencia",
+    "estrato": "pobre",
+    "vaza_para": "medio"
+  },
+  "juros": {
+    "lei_meta": "meta-de-inflacao",
+    "lei_taxa": "taxa-basica-de-juros",
+    "lei_autonomia": "autonomia-do-banco-central",
+    "peso_da_meta": 0.5
+  },
+  "regra_fiscal": {
+    "lei_teto_gasto": "teto-de-gasto",
+    "lei_meta_resultado": "meta-de-resultado",
+    "lei_limite_divida": "limite-da-divida",
+    "lei_teto_carga": "teto-da-carga-de-impostos",
+    "lei_punicao": "punicao-se-descumprir",
+    "folga_da_meta": 0.25,
+    "pisos": [
+      { "lei": "piso-da-saude", "instituicao": "saude" },
+      { "lei": "piso-da-educacao", "instituicao": "educacao" }
+    ]
+  },
+  "previdencia": {
+    "indice": "deficit_da_previdencia",
+    "leis_gasto": ["verba-das-aposentadorias", "pensao-para-idosos-pobres"],
+    "base_contribuicao": "folha",
+    "pontos_por_pct_pib": 10
+  }
+}

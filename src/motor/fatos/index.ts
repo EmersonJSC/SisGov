@@ -31,6 +31,9 @@ export const TIPOS_DE_FATO = [
   "juiz-nomeado",
   "indicado-barrado",
   "corte-novo-presidente",
+  "regra-fiscal-estourou",
+  "regra-fiscal-barrou",
+  "prazo-acabou",
   // Ninguém escreve ainda; o Congresso já lê (mídia e escândalos vêm depois).
   "escandalo",
   "manchete-contra",

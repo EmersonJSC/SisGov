@@ -7,6 +7,7 @@ const valida = {
   id: "teste",
   camada: "jogabilidade",
   canal: "imposto",
+  jeito: "regua",
   forma: "continua",
   unidade: "fracao",
   faixa: { min: 0, max: 0.5 },
@@ -39,7 +40,10 @@ describe("validarLei", () => {
     expect(campos({ ...servico, faixa: { min: 5, max: 5 } })).toEqual([
       "faixa",
     ]);
-    expect(campos({ ...servico, conta: "gasto" })).toEqual(["unidade"]);
+    expect(campos({ ...servico, conta: "gasto" })).toEqual([
+      "unidade",
+      "jeito",
+    ]);
     expect(campos({ ...valida, faixa: { min: 0, max: 24 } })).toEqual([
       "faixa",
     ]);
@@ -62,17 +66,29 @@ describe("validarLei", () => {
     expect(campos({ ...velocidade, rotulo_unidade: " " })).toEqual([
       "rotulo_unidade",
     ]);
-    expect(campos({ ...velocidade, conta: "gasto" })).toEqual(["unidade"]);
+    expect(campos({ ...velocidade, conta: "gasto" })).toEqual([
+      "unidade",
+      "jeito",
+    ]);
     const meta = { ...velocidade, faixa: { min: -5, max: 4 } };
     expect(campos(meta)).toEqual([]);
     expect(campos({ ...meta, unidade: "anos" })).toEqual(["faixa"]);
   });
 
   it('lei de gasto: conta só aceita "gasto" e não tem cálculo', () => {
-    const gasto = { ...valida, calculo: undefined, canal: "verba" };
+    const gasto = {
+      ...valida,
+      calculo: undefined,
+      canal: "verba",
+      jeito: "verba",
+    };
     expect(campos({ ...gasto, conta: "gasto" })).toEqual([]);
-    expect(campos({ ...gasto, conta: "lucro" })).toEqual(["canal", "conta"]);
-    expect(campos({ ...valida, conta: "gasto" })).toEqual(["conta"]);
+    expect(campos({ ...gasto, conta: "lucro" })).toEqual([
+      "canal",
+      "conta",
+      "jeito",
+    ]);
+    expect(campos({ ...valida, conta: "gasto" })).toEqual(["conta", "jeito"]);
   });
 
   it("canal: diz como a lei chega ao pop e bate com o que ela faz", () => {
@@ -155,7 +171,8 @@ describe("validarLei", () => {
       versao: 1,
       id: "teste",
       camada: "jogabilidade",
-      canal: "direito",
+      canal: "espera",
+      espera: "triagem",
       forma: "opcoes",
     };
     expect(campos({ ...base, opcoes: [{ id: "a", efeitos: [] }] })).toEqual([
@@ -170,6 +187,78 @@ describe("validarLei", () => {
         ],
       }),
     ).toEqual(["opcoes[1].id"]);
+  });
+});
+
+describe("regras de classificação (jeito)", () => {
+  const efeito = {
+    indice: "seguranca",
+    sentido: 1,
+    forca: "fraca",
+    atraso_turnos: 0,
+  };
+  const degrau = (id: string) => ({ id, efeitos: [efeito] });
+  const niveis = {
+    versao: 1,
+    id: "teste",
+    camada: "jogabilidade",
+    canal: "direito",
+    jeito: "niveis",
+    forma: "opcoes",
+    opcoes: ["a", "b", "c"].map(degrau),
+  };
+  it("lei triada precisa do jeito; na triagem, não", () => {
+    expect(campos({ ...niveis, jeito: undefined })).toEqual(["jeito"]);
+    expect(
+      campos({
+        ...niveis,
+        jeito: undefined,
+        canal: "espera",
+        espera: "triagem",
+      }),
+    ).toEqual([]);
+  });
+  it("níveis têm de 3 a 5 degraus; escolha pode ter 2", () => {
+    expect(campos(niveis)).toEqual([]);
+    const dois = { ...niveis, opcoes: ["a", "b"].map(degrau) };
+    expect(campos(dois)).toEqual(["opcoes"]);
+    expect(campos({ ...dois, jeito: "escolha" })).toEqual([]);
+    const seis = {
+      ...niveis,
+      opcoes: ["a", "b", "c", "d", "e", "f"].map(degrau),
+    };
+    expect(campos(seis)).toEqual(["opcoes"]);
+  });
+  it("degrau que não faz nada é recusado: nada é não legislada", () => {
+    const comNada = {
+      ...niveis,
+      opcoes: [
+        { id: "nada", efeitos: [], bussola: { economico: 0 } },
+        degrau("b"),
+        degrau("c"),
+      ],
+    };
+    expect(campos(comNada)).toEqual(["opcoes[0]"]);
+    const comLado = {
+      ...niveis,
+      opcoes: [
+        { id: "a", efeitos: [], bussola: { social: 0.2 } },
+        degrau("b"),
+        degrau("c"),
+      ],
+    };
+    expect(campos(comLado)).toEqual([]);
+  });
+  it("o jeito bate com a forma", () => {
+    expect(campos({ ...valida, jeito: "niveis" })).toEqual(["jeito"]);
+    expect(campos({ ...niveis, jeito: "regua" })).toEqual(["jeito"]);
+    expect(campos({ ...valida, jeito: "torto" })).toEqual(["jeito"]);
+  });
+  it("lei com prazo diz os turnos", () => {
+    expect(campos({ ...valida, tipo: "prazo", prazo_turnos: 3 })).toEqual([]);
+    expect(campos({ ...valida, tipo: "prazo" })).toEqual(["prazo_turnos"]);
+    expect(campos({ ...valida, prazo_turnos: 3 })).toEqual(["prazo_turnos"]);
+    expect(campos({ ...valida, tipo: "ato" })).toEqual([]);
   });
 });
 

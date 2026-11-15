@@ -194,7 +194,7 @@ describe("congresso novo", () => {
 
   it("classe da lei: imposto pede quórum absoluto; mandato, mais", () => {
     const { regras } = criarPartida("brasil-2026", 1);
-    expect(regras.leis["imposto-renda"].classe).toBe("absoluta");
+    expect(regras.leis["imposto-renda-medio"].classe).toBe("absoluta");
     expect(regras.leis["duracao-mandato"].classe).toBe("mandato");
     expect(regras.leis["quorum-das-votacoes"].classe).toBe("constitucional");
   });

@@ -2,30 +2,25 @@
   "versao": 1,
   "id": "autonomia-do-banco-central",
   "nome": "Autonomia do Banco Central",
-  "descricao": "Quem manda no Banco Central: de o governo manda, passa por mandato com indicação do presidente, até mandato fixo independente.",
+  "descricao": "Quem manda nos juros. Sem a lei, o governo manda e a Taxa básica é a que ele pedir. Com mandato, o Banco Central persegue a Meta de inflação.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "escolha",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "o-governo-manda",
-      "rotulo": "o governo manda",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "mandato-com-indicacao-do-presidente",
-      "rotulo": "mandato com indicação do presidente",
+      "rotulo": "mandato, com indicação do presidente",
       "bussola": { "economico": 0.15, "social": 0 },
+      "valores": { "autonomia": 0.5 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 6
         }
       ]
     },
@@ -33,12 +28,13 @@
       "id": "mandato-fixo-independente",
       "rotulo": "mandato fixo independente",
       "bussola": { "economico": 0.3, "social": 0 },
+      "valores": { "autonomia": 1 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 6
         }
       ]
     }

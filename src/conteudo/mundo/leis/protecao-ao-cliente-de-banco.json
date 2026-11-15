@@ -6,16 +6,10 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
-    {
-      "id": "nada",
-      "rotulo": "nada",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
     {
       "id": "custo-total-claro-no-contrato",
       "rotulo": "custo total claro no contrato",

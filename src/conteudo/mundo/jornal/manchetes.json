@@ -96,6 +96,15 @@
     },
     "corte-novo-presidente": {
       "texto": "{tribunal} tem novo presidente"
+    },
+    "regra-fiscal-estourou": {
+      "texto": "Governo estoura a regra: {lei}"
+    },
+    "regra-fiscal-barrou": {
+      "texto": "Regra fiscal barra mudança em {lei}"
+    },
+    "prazo-acabou": {
+      "texto": "{lei} chega ao fim do prazo"
     }
   }
 }

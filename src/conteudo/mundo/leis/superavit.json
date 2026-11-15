@@ -7,6 +7,7 @@
   "classe": "absoluta",
   "esfera": "orcamento-e-divida",
   "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
@@ -26,6 +27,20 @@
       "rotulo": "Abate a dívida",
       "superavit_ao_cofre": 0,
       "efeitos": []
+    },
+    {
+      "id": "guarda-no-fundo-soberano",
+      "rotulo": "Guarda no fundo soberano, para crises e para as próximas gerações",
+      "bussola": { "economico": 0.2, "social": 0 },
+      "superavit_ao_cofre": 1,
+      "efeitos": [
+        {
+          "indice": "credibilidade_fiscal",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
     }
   ]
 }

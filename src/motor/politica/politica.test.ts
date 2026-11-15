@@ -438,7 +438,8 @@ describe("moedas", () => {
 
   it("sem reserva de cargos ou emendas a moeda não existe", () => {
     const sem = { ...congresso, leis: { cargos: "cg", emendas: "em" } };
-    const valores = { l: 0.1, o: "x", d: "sem", cg: 0, em: "x", g: 0.1 };
+    // sem a lei de emendas, nenhuma emenda (nada = não legislada)
+    const valores = { l: 0.1, o: "x", d: "sem", cg: 0, g: 0.1 };
     expect(() =>
       tramitar(
         mesa([pedir(0.15), oferta("cargos")], { congresso: sem, valores }),

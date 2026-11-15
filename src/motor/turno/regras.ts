@@ -17,6 +17,7 @@ import type { RegrasMidia } from "../midia";
 import type { RegrasProgramas } from "../programas";
 import type { Congresso, PedidoCongresso } from "../politica";
 import type { PopPais, TipoPop } from "../populacao";
+import type { RegrasDoFisco } from "../fisco";
 
 export interface ParametrosBase extends ParametrosRenda {
   /** Base cheia como fração do PIB nominal (renda tributável com alíquota zero). */
@@ -74,6 +75,8 @@ export interface Regras {
   atendimento?: RegraDoAtendimento;
   /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
   judiciario?: RegrasJudiciario;
+  /** Papéis das leis de dinheiro (motor/fisco); sem ele, as regras não valem. */
+  fisco?: RegrasDoFisco;
   /** Pares de leis que não valem juntas (motor/leis/colisao). */
   colisoes?: Colisao[];
 }

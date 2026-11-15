@@ -7,15 +7,28 @@
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "estado-ve-todas-as-contas-sem-pedir",
       "rotulo": "Estado vê todas as contas sem pedir",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
+      "bussola": { "economico": 0, "social": 0.3 },
+      "efeitos": [
+        {
+          "indice": "liberdade_civil",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "sonegacao",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
     },
     {
       "id": "ve-so-movimentos-de-valor-alto",

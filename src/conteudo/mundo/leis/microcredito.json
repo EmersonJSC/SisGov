@@ -7,9 +7,10 @@
   "origem": "planilha",
   "esfera": "assistencia-social",
   "canal": "verba",
+  "jeito": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.002 },
+  "faixa": { "min": 0.0001, "max": 0.002 },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {

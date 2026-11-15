@@ -2,24 +2,18 @@
   "versao": 1,
   "id": "liberacao-dos-jogos",
   "nome": "Liberação dos jogos",
-  "descricao": "Escada do que é permitido: nada, loteria, bingo e corrida, cassino presencial, apostas pela internet, cassino pela internet.",
+  "descricao": "Que jogos de aposta são permitidos. Sem a lei, nenhum. Níveis: loteria; bingo e corrida; cassino presencial; apostas pela internet; cassino pela internet.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nada-liberado",
-      "rotulo": "nada liberado",
-      "bussola": { "economico": 0, "social": -0.3 },
-      "efeitos": []
-    },
-    {
       "id": "loteria",
       "rotulo": "loteria",
-      "bussola": { "economico": 0, "social": -0.18 },
+      "bussola": { "economico": 0, "social": 0.1 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -44,24 +38,24 @@
     {
       "id": "bingo-e-corrida",
       "rotulo": "bingo e corrida",
-      "bussola": { "economico": 0, "social": -0.06 },
+      "bussola": { "economico": 0, "social": 0 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
           "sentido": -1,
-          "forca": "media",
+          "forca": "fraca",
           "atraso_turnos": 2
         },
         {
           "indice": "dependencia_de_jogos",
           "sentido": 1,
-          "forca": "media",
+          "forca": "fraca",
           "atraso_turnos": 2
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
-          "forca": "media",
+          "forca": "fraca",
           "atraso_turnos": 2
         }
       ]
@@ -69,7 +63,7 @@
     {
       "id": "cassino-presencial",
       "rotulo": "cassino presencial",
-      "bussola": { "economico": 0, "social": 0.06 },
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -94,24 +88,24 @@
     {
       "id": "apostas-pela-internet",
       "rotulo": "apostas pela internet",
-      "bussola": { "economico": 0, "social": 0.18 },
+      "bussola": { "economico": 0, "social": -0.2 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         },
         {
           "indice": "dependencia_de_jogos",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]
@@ -119,7 +113,7 @@
     {
       "id": "cassino-pela-internet",
       "rotulo": "cassino pela internet",
-      "bussola": { "economico": 0, "social": 0.3 },
+      "bussola": { "economico": 0, "social": -0.3 },
       "efeitos": [
         {
           "indice": "mercado_ilegal",

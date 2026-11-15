@@ -2,7 +2,16 @@
 import { ehBase } from "../calculos";
 import { INDICES_ESSENCIAIS } from "../estado";
 import { ehEstrato, ESTRATOS } from "../populacao";
-import { CAMADAS, CANAIS, CLASSES, EIXOS, FORCAS, type Lei } from "./tipos";
+import {
+  CAMADAS,
+  CANAIS,
+  CLASSES,
+  EIXOS,
+  FORCAS,
+  JEITOS,
+  TIPOS,
+  type Lei,
+} from "./tipos";
 
 export interface ErroLei {
   arquivo: string;
@@ -40,6 +49,70 @@ function conferirCabecalho(c: Contexto, dado: Objeto, arquivo: string) {
   if (dado.esfera !== undefined && !ehKebab(dado.esfera))
     c.erro("esfera", "precisa ser kebab-case");
   conferirCanal(c, dado);
+  conferirTipo(c, dado);
+}
+
+/** Lei que já passou pela triagem da onda dela (plano das leis). */
+const ehTriada = (dado: Objeto) =>
+  !(dado.canal === "espera" && dado.espera === "triagem");
+
+/** Lei com prazo diz quantos turnos vale; os outros tipos não têm prazo. */
+function conferirTipo(c: Contexto, dado: Objeto) {
+  if (dado.tipo !== undefined && !TIPOS.includes(dado.tipo as never))
+    c.erro("tipo", `precisa ser ${TIPOS.join(", ")}`);
+  const comPrazo = dado.tipo === "prazo";
+  const prazo = dado.prazo_turnos;
+  if (comPrazo && !(Number.isInteger(prazo) && (prazo as number) > 0))
+    c.erro("prazo_turnos", "lei com prazo precisa de turnos inteiros > 0");
+  if (!comPrazo && prazo !== undefined)
+    c.erro("prazo_turnos", 'só existe no tipo "prazo"');
+}
+
+/** Degrau que não faz nada: sem efeito, sem lado, sem número para o motor. */
+const ehNada = (op: Objeto) =>
+  (!Array.isArray(op.efeitos) || op.efeitos.length === 0) &&
+  !(ehObjeto(op.bussola) && Object.values(op.bussola).some((v) => v !== 0)) &&
+  op.valores === undefined &&
+  op.mandato_anos === undefined &&
+  op.deficit_do_cofre === undefined &&
+  op.superavit_ao_cofre === undefined;
+
+/**
+ * Regras de classificação (GDD 4.3): o jeito bate com a forma, níveis têm
+ * de 3 a 5 degraus e nenhum degrau é "nada" (nada = não legislada).
+ */
+function conferirJeito(c: Contexto, dado: Objeto) {
+  const jeito = dado.jeito;
+  if (jeito === undefined) {
+    if (ehTriada(dado)) c.erro("jeito", "lei triada precisa do jeito");
+    return;
+  }
+  if (!JEITOS.includes(jeito as never))
+    return c.erro("jeito", `precisa ser ${JEITOS.join(", ")}`);
+  const regua = dado.forma === "continua";
+  const gasto = dado.conta === "gasto";
+  if (jeito === "verba" && !(regua && gasto))
+    c.erro("jeito", 'verba é régua com "conta": "gasto"');
+  if (jeito === "regua" && !(regua && !gasto))
+    c.erro("jeito", "régua é lei contínua sem gasto (gasto é verba)");
+  if ((jeito === "niveis" || jeito === "escolha") && regua)
+    c.erro("jeito", `${jeito} é lei de opções`);
+  if (dado.forma !== "opcoes" || !Array.isArray(dado.opcoes)) return;
+  // essencial é a estrutura do Estado: não se revoga, então sempre tem um
+  // valor, e o degrau "nenhum" é um valor de verdade
+  if (dado.camada === "essencial") return;
+  const opcoes = dado.opcoes as unknown[];
+  if (jeito === "niveis" && (opcoes.length < 3 || opcoes.length > 5))
+    c.erro("opcoes", "níveis têm de 3 a 5 degraus");
+  // no canal "regra" o módulo lê a opção pelo id: ela age sem efeito próprio
+  if (dado.canal === "regra") return;
+  opcoes.forEach((op, i) => {
+    if (ehObjeto(op) && ehNada(op))
+      c.erro(
+        `opcoes[${i}]`,
+        "degrau que não faz nada: o nada é a lei não legislada",
+      );
+  });
 }
 
 /** O canal diz como a lei chega ao pop e precisa bater com o que ela faz. */
@@ -140,6 +213,8 @@ function conferirContas(c: Contexto, dado: Objeto) {
         );
       if (calc.modelo !== "laffer")
         c.erro("calculo.modelo", 'precisa ser "laffer"');
+      if (calc.estrato !== undefined && !ehEstrato(calc.estrato))
+        c.erro("calculo.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
     }
   }
   if (dado.conta !== undefined && dado.conta !== "gasto")
@@ -148,8 +223,58 @@ function conferirContas(c: Contexto, dado: Objeto) {
     c.erro("conta", "lei de gasto não tem cálculo de arrecadação");
   if (dado.para !== undefined) {
     if (dado.conta !== "gasto") c.erro("para", "só lei de gasto tem para");
-    else if (!ehObjeto(dado.para) || !ehEstrato(dado.para.estrato))
+    else if (!ehObjeto(dado.para)) c.erro("para", "precisa ser um objeto");
+    else if (dado.para.pesos !== undefined) {
+      const pesos = dado.para.pesos;
+      if (
+        !ehObjeto(pesos) ||
+        Object.keys(pesos).length === 0 ||
+        !Object.entries(pesos).every(
+          ([k, v]) => ehEstrato(k) && ehNumero(v) && v > 0,
+        )
+      )
+        c.erro("para.pesos", `estratos (${ESTRATOS.join(", ")}) com peso > 0`);
+    } else if (!ehEstrato(dado.para.estrato))
       c.erro("para.estrato", `precisa ser ${ESTRATOS.join(", ")}`);
+  }
+  if (
+    dado.arrecada !== undefined &&
+    !(ehNumero(dado.arrecada) && dado.arrecada > 0 && dado.arrecada <= 10)
+  )
+    c.erro("arrecada", "precisa ser % do PIB entre 0 e 10");
+  if (dado.encolhe !== undefined) {
+    const en = dado.encolhe;
+    if (
+      !ehObjeto(en) ||
+      typeof en.base !== "string" ||
+      !ehBase(en.base) ||
+      (en.estrato !== undefined && !ehEstrato(en.estrato)) ||
+      !ehNumero(en.ate) ||
+      en.ate < 0 ||
+      en.ate > 1
+    )
+      c.erro(
+        "encolhe",
+        "precisa de base do motor, estrato opcional e ate de 0 a 1",
+      );
+  }
+}
+
+/** A lei que muda o gasto de outra diz qual e quanto (régua: min e max). */
+function conferirEscalaGasto(c: Contexto, dado: Objeto) {
+  const es = dado.escala_gasto;
+  if (es === undefined) return;
+  if (!ehObjeto(es) || !ehKebab(es.lei))
+    return c.erro("escala_gasto", "precisa dizer a lei de verba");
+  if (dado.forma === "continua") {
+    if (!ehNumero(es.min) || !ehNumero(es.max) || es.min < 0 || es.max < 0)
+      c.erro("escala_gasto", "régua precisa de min e max ≥ 0");
+  } else if (Array.isArray(dado.opcoes)) {
+    const sem = (dado.opcoes as unknown[]).some(
+      (op) =>
+        !ehObjeto(op) || !ehObjeto(op.valores) || !ehNumero(op.valores.gasto),
+    );
+    if (sem) c.erro("escala_gasto", "toda opção precisa de valores.gasto");
   }
 }
 
@@ -253,6 +378,8 @@ export function validarLei(
     conferirEfeitos(c, dado.efeitos, "efeitos");
   } else if (dado.forma === "opcoes") conferirOpcoes(c, dado);
   else c.erro("forma", 'precisa ser "continua" ou "opcoes"');
+  conferirJeito(c, dado);
+  conferirEscalaGasto(c, dado);
   return erros;
 }
 

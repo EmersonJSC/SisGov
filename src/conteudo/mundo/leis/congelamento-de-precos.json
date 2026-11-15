@@ -7,24 +7,25 @@
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "preço do setor (onda 3)",
+  "jeito": "escolha",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhum",
-      "rotulo": "nenhum",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "so-essenciais",
-      "rotulo": "só essenciais",
+      "rotulo": "só os essenciais",
       "bussola": { "economico": -0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "emprego_informal",
           "sentido": 1,
           "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mercado_ilegal",
+          "sentido": 1,
+          "forca": "fraca",
           "atraso_turnos": 2
         }
       ]
@@ -38,6 +39,12 @@
           "indice": "emprego_informal",
           "sentido": 1,
           "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mercado_ilegal",
+          "sentido": 1,
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]

@@ -113,6 +113,8 @@ export type VisaoLei = Readonly<{
   revogavel: boolean;
   /** Como a lei chega à vida das pessoas (o canal dela, em frase de leigo). */
   comoChega: string;
+  /** Tipo e jeito em palavra de leigo ("Lei com prazo · Régua"). */
+  classificacao: string;
   /**
    * Modo real com Congresso (V1-12): a lei precisa de votação. `tipo` é o
    * caminho (lei ordinária, complementar, emenda); `naFila` diz se já há um

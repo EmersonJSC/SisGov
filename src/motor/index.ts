@@ -14,6 +14,7 @@ export * from "./grupos";
 export * from "./leis";
 export * from "./mesa";
 export * from "./judiciario";
+export * from "./fisco";
 export * from "./pessoas";
 export * from "./midia";
 export * from "./mundo";

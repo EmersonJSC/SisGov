@@ -22,7 +22,7 @@ e prisões").
   partido) e `ja_presidiu`; `vagas` já abertas no começo (`saiu`); `presidente`
   (`juiz`, `ha_meses`). As cadeiras que sobram são sorteadas. Brasil: o STF de
   jan/2027 (começo do mandato), com nomes parecidos com os reais e nunca os
-  reais (GDD §19): 10 juízes e a cadeira de quem saiu em out/2025 vaga (o
+  reais (GDD, Anexo A): 10 juízes e a cadeira de quem saiu em out/2025 vaga (o
   Senado rejeitou o indicado em abr/2026); Fachini preside o STF desde set/2025
   e Nunes Marcos o TSE desde mai/2026.
 

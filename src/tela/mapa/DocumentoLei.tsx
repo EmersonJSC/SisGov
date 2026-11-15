@@ -699,6 +699,7 @@ export function DocumentoLei({
             <p className="folha-explica">{lei.descricao}</p>
           ) : null}
           <p className="folha-como-chega">
+            <strong>{lei.classificacao}.</strong>{" "}
             <strong>Como chega a você:</strong> {lei.comoChega}
           </p>
           {revogando ? (

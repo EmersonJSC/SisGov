@@ -18,7 +18,11 @@ export function comImposto(aliquota: number, semente = 42): Estado {
   return jogar(
     criarPartida("teste", semente, { semCongresso: true }),
     TURNOS_MANDATO,
-    [{ tipo: "mudar_lei", lei: "imposto-renda", valor: aliquota }],
+    [
+      { tipo: "mudar_lei", lei: "imposto-renda-pobre", valor: aliquota },
+      { tipo: "mudar_lei", lei: "imposto-renda-medio", valor: aliquota },
+      { tipo: "mudar_lei", lei: "imposto-renda-rico", valor: aliquota },
+    ],
   ).estado;
 }
 

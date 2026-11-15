@@ -2,42 +2,42 @@
   "versao": 1,
   "id": "criptomoedas",
   "nome": "Criptomoedas",
-  "descricao": "Vai de proibidas, passa por reguladas, até livres.",
+  "descricao": "Se moedas digitais (criptomoedas) podem circular. Sem a lei, são livres e sem regra.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "escolha",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "proibidas",
       "rotulo": "proibidas",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "reguladas",
-      "rotulo": "reguladas",
-      "bussola": { "economico": 0, "social": -0.2 },
+      "bussola": { "economico": 0, "social": 0.3 },
       "efeitos": [
         {
           "indice": "dinheiro_em_cripto",
-          "sentido": 1,
+          "sentido": -1,
           "forca": "media",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "mercado_ilegal",
+          "sentido": 1,
+          "forca": "fraca",
           "atraso_turnos": 2
         }
       ]
     },
     {
-      "id": "livres",
-      "rotulo": "livres",
-      "bussola": { "economico": 0, "social": -0.4 },
+      "id": "reguladas",
+      "rotulo": "reguladas",
+      "bussola": { "economico": 0, "social": -0.1 },
       "efeitos": [
         {
           "indice": "dinheiro_em_cripto",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]

@@ -31,9 +31,9 @@ describe("visão da partida para o mapa", () => {
   });
 
   it("lei contínua em %, lei de opções na posição da opção vigente", () => {
-    const renda = visao.leis.find((l) => l.id === "imposto-renda")!;
+    const renda = visao.leis.find((l) => l.id === "imposto-renda-medio")!;
     expect(renda.nivel).toBeCloseTo(
-      Number(partida.estado.leis["imposto-renda"]) * 100,
+      Number(partida.estado.leis["imposto-renda-medio"]) * 100,
     );
     const pena = visao.leis.find((l) => l.id === "pena-de-morte")!;
     expect(pena.opcoes![pena.nivel].id).toBe(

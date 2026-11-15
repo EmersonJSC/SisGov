@@ -7,10 +7,11 @@
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "crédito dos bancos",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.2 },
+  "faixa": { "min": 0.04, "max": 0.2 },
   "passo": 0.01,
   "bussola": {
     "min": { "economico": 0, "social": 0 },

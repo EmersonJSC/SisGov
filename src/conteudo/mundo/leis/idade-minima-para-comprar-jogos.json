@@ -1,14 +1,14 @@
 {
   "versao": 1,
   "id": "idade-minima-para-comprar-jogos",
-  "nome": "Idade mínima para comprar: jogos",
-  "descricao": "Idade para comprar bebida, cigarro e apostar. Dois controles na mesma lei: drogas e jogos.",
+  "nome": "Idade mínima para apostar",
+  "descricao": "Idade a partir da qual se pode apostar, de 14 a 25 anos.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "parte_de": "Idade mínima para comprar",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "anos",
   "faixa": { "min": 14, "max": 25 },
@@ -19,10 +19,10 @@
   },
   "efeitos": [
     {
-      "indice": "mortes_no_transito",
+      "indice": "dependencia_de_jogos",
       "sentido": -1,
-      "forca": "fraca",
-      "atraso_turnos": 2
+      "forca": "media",
+      "atraso_turnos": 4
     }
   ]
 }

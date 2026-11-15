@@ -86,13 +86,48 @@
         "parcela_pib": 0.06,
         "pico": 0.4,
         "evasao": 0.25
+      },
+      "patrimonio": {
+        "parcela_pib": 0.06,
+        "pico": 0.3,
+        "evasao": 0.3
+      },
+      "aplicacoes": {
+        "parcela_pib": 0.8,
+        "pico": 0.02,
+        "evasao": 0.4
+      },
+      "imovel": {
+        "parcela_pib": 0.5,
+        "pico": 0.03,
+        "evasao": 0.25
+      },
+      "capital": {
+        "parcela_pib": 0.045,
+        "pico": 0.3,
+        "evasao": 0.35
+      },
+      "movimentacao": {
+        "parcela_pib": 5,
+        "pico": 0.02,
+        "evasao": 0.2
+      },
+      "folha": {
+        "parcela_pib": 0.43,
+        "pico": 0.45,
+        "evasao": 0.35
+      },
+      "bancos": {
+        "parcela_pib": 0.02,
+        "pico": 0.35,
+        "evasao": 0.2
       }
     },
     "crescimento": {
       "tendencia": 2,
       "volatilidade": 1.5
     },
-    "receita_fora_das_leis": 14.13,
+    "receita_fora_das_leis": 10.81,
     "gasto_fora_das_leis": 3.96,
     "juros": {
       "neutro": 10,

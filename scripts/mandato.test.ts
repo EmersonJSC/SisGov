@@ -26,7 +26,7 @@ describe("mandato com o imposto de renda em três valores", () => {
 
   it("o efeito chega inteiro depois do atraso, não antes", () => {
     const pedido = [
-      { tipo: "mudar_lei" as const, lei: "imposto-renda", valor: 0.5 },
+      { tipo: "mudar_lei" as const, lei: "imposto-renda-medio", valor: 0.5 },
     ];
     const pv = (turnos: number) =>
       jogar(criarPartida("teste", 1, { semCongresso: true }), turnos, pedido)

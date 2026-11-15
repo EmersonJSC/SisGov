@@ -7,10 +7,11 @@
   "origem": "planilha",
   "esfera": "assistencia-social",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "preço do setor (onda 3)",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.5 },
+  "faixa": { "min": 0.05, "max": 0.5 },
   "passo": 0.025,
   "bussola": {
     "min": { "economico": 0, "social": 0 },

@@ -7,14 +7,28 @@
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "crédito dos bancos",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
       "id": "nenhum-banco-novo",
       "rotulo": "nenhum banco novo",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
+      "bussola": { "economico": -0.1, "social": 0 },
+      "efeitos": [
+        {
+          "indice": "credito_ao_setor_privado",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 4
+        },
+        {
+          "indice": "concentracao_de_mercado",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 4
+        }
+      ]
     },
     {
       "id": "analise-de-anos",

@@ -58,6 +58,7 @@ import {
   type JudiciarioDoPais,
   type RegraDoJudiciario,
   type RegrasJudiciario,
+  type RegrasDoFisco,
 } from "../motor";
 import { arquivoPais, temArquivoDoPais } from "./paises";
 import {
@@ -77,6 +78,7 @@ import derivas from "../conteudo/mundo/indicadores/derivas.json";
 import moradia from "../conteudo/mundo/moradia/moradia.json";
 import regraDoJudiciario from "../conteudo/mundo/judiciario/judiciario.json";
 import saneamento from "../conteudo/mundo/saneamento/saneamento.json";
+import fisco from "../conteudo/mundo/fisco/fisco.json";
 import atendimento from "../conteudo/mundo/atendimento/atendimento.json";
 import variaveis from "../conteudo/mundo/indicadores/variaveis.json";
 import tiposPops from "../conteudo/mundo/pops/pops.json";
@@ -579,6 +581,7 @@ export function criarPartida(
     moradia,
     saneamento,
     atendimento,
+    fisco: fisco as RegrasDoFisco,
     colisoes: colisoes.colisoes.map(([a, b]): Colisao => [a, b]),
     indicesPrincipais: principais.indices,
     programas: carregarProgramas(pais, leis),

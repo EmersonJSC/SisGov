@@ -2,57 +2,54 @@
   "versao": 1,
   "id": "punicao-se-descumprir",
   "nome": "Punição se descumprir",
-  "descricao": "O que acontece quando uma regra é quebrada: nenhuma, corte automático, proibir aumento de salário e contratação, ou crime de responsabilidade. Aparece como luzes de painel (amarelo e vermelho).",
+  "descricao": "O que acontece quando o governo estoura o Teto de gasto, a Meta de resultado, o Limite da dívida ou o Teto da carga. Sem a lei, nada.",
   "camada": "jogabilidade",
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhuma",
-      "rotulo": "nenhuma",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "corte-automatico",
-      "rotulo": "corte automático",
+      "rotulo": "corte automático das verbas",
       "bussola": { "economico": 0.1, "social": 0.07 },
+      "valores": { "corte": 0.1 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 12
+          "atraso_turnos": 4
         }
       ]
     },
     {
       "id": "proibir-aumento-de-salario-e-contratacao",
-      "rotulo": "proibir aumento de salário e contratação",
+      "rotulo": "proibir aumento de verba, salário e contratação",
       "bussola": { "economico": 0.2, "social": 0.13 },
+      "valores": { "trava": 1 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 4
         }
       ]
     },
     {
       "id": "crime-de-responsabilidade",
-      "rotulo": "crime de responsabilidade",
+      "rotulo": "crime de responsabilidade do presidente",
       "bussola": { "economico": 0.3, "social": 0.2 },
+      "valores": { "crime": 1, "trava": 1 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 4
         }
       ]
     }

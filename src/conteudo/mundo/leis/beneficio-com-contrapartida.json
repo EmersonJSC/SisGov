@@ -2,55 +2,82 @@
   "versao": 1,
   "id": "beneficio-com-contrapartida",
   "nome": "Benefício com contrapartida",
-  "descricao": "O que quem recebe ajuda do governo precisa fazer em troca. Escada: nada, a ajuda é livre; filhos na escola e vacina em dia; curso ou trabalho comunitário para os adultos; emprego ou curso obrigatório para quem pode trabalhar.",
+  "descricao": "O que quem recebe ajuda do governo precisa fazer em troca. Sem a lei, a ajuda é livre. Níveis: filhos na escola e vacina; curso ou trabalho comunitário; emprego ou curso obrigatório.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
-    {
-      "id": "nada",
-      "rotulo": "nada",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "a-ajuda-e-livre",
-      "rotulo": "a ajuda é livre",
-      "bussola": { "economico": 0.07, "social": 0 },
-      "efeitos": []
-    },
     {
       "id": "filhos-na-escola-e-vacina-em-dia",
       "rotulo": "filhos na escola e vacina em dia",
       "bussola": { "economico": 0.13, "social": 0 },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "evasao_escolar",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "vacinacao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
     },
     {
-      "id": "curso",
-      "rotulo": "curso",
-      "bussola": { "economico": 0.2, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "trabalho-comunitario-para-os-adultos",
-      "rotulo": "trabalho comunitário para os adultos",
+      "id": "curso-ou-trabalho-comunitario",
+      "rotulo": "curso ou trabalho comunitário para os adultos",
       "bussola": { "economico": 0.27, "social": 0 },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "evasao_escolar",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
     },
     {
-      "id": "emprego",
-      "rotulo": "emprego",
-      "bussola": { "economico": 0.33, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "curso-obrigatorio-para-quem-pode-trabalhar",
-      "rotulo": "curso obrigatório para quem pode trabalhar",
+      "id": "emprego-ou-curso-obrigatorio",
+      "rotulo": "emprego ou curso obrigatório para quem pode trabalhar",
       "bussola": { "economico": 0.4, "social": 0 },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "evasao_escolar",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "emprego_informal",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
     }
   ]
 }

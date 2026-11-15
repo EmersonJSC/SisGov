@@ -8,6 +8,7 @@
   "origem": "planilha",
   "esfera": "regras-dos-poderes",
   "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0.5, "max": 0.75 },

@@ -52,6 +52,21 @@ export const CANAIS = [
 ] as const;
 export type Canal = (typeof CANAIS)[number];
 
+/**
+ * Jeito: como o jogador mexe na lei (regras de classificação, GDD 4.3).
+ * regua (um número), verba (régua de gasto em % do PIB), niveis (escada de 3 a
+ * 5 degraus reais) ou escolha (opções sem ordem). Obrigatório depois da triagem.
+ */
+export const JEITOS = ["regua", "verba", "niveis", "escolha"] as const;
+export type Jeito = (typeof JEITOS)[number];
+
+/**
+ * Tipo: lei (fica valendo), prazo (acaba sozinha depois de `prazo_turnos` e
+ * volta a não legislada) ou ato (acontece uma vez, não fica no mapa).
+ */
+export const TIPOS = ["lei", "prazo", "ato"] as const;
+export type TipoLei = (typeof TIPOS)[number];
+
 /** Efeito de jogabilidade. Receita, PIB e juros vêm do cálculo, não daqui. */
 export interface Efeito {
   /** Id de um índice de jogabilidade do mundo. */
@@ -74,6 +89,12 @@ interface LeiBase {
   canal: Canal;
   /** Só no canal "espera": o que falta ("triagem" até a onda dela, ou a mecânica). */
   espera?: string;
+  /** Como o jogador mexe; obrigatório na lei já triada. */
+  jeito?: Jeito;
+  /** Ausente = lei. */
+  tipo?: TipoLei;
+  /** Só no tipo "prazo": quantos turnos ela vale antes de voltar a não legislada. */
+  prazo_turnos?: number;
 }
 
 export interface LeiContinua extends LeiBase {
@@ -88,11 +109,35 @@ export interface LeiContinua extends LeiBase {
   rotulo_unidade?: string;
   faixa: { min: number; max: number };
   passo: number;
-  calculo?: { base: IdBase; modelo: "laffer" };
+  /**
+   * Arrecadação pela base do motor. Com `estrato`, a alíquota cobra só da parte
+   * da base que é daquele estrato (ex.: imposto de renda do rico).
+   */
+  calculo?: { base: IdBase; modelo: "laffer"; estrato?: Estrato };
   /** "gasto": o valor é gasto do governo, em fração do PIB (motor/contas). */
   conta?: "gasto";
-  /** Lei de gasto que vira renda de um estrato de pops (motor/populacao). */
-  para?: { estrato: Estrato };
+  /**
+   * Lei de gasto que vira renda de pops: de um estrato, ou de vários, com o
+   * peso de cada um (motor/populacao).
+   */
+  para?: { estrato: Estrato } | { pesos: Partial<Record<Estrato, number>> };
+  /**
+   * A lei encolhe uma base de imposto (ex.: "a partir de quanto cobra",
+   * desconto por filho): no mínimo da faixa a base fica inteira; no máximo,
+   * vale `ate` dela. Com `estrato`, só a parte daquele estrato (motor/calculos).
+   */
+  encolhe?: { base: IdBase; estrato?: Estrato; ate: number };
+  /**
+   * A lei muda o gasto de outra lei de verba (ex.: idade mínima e a verba das
+   * aposentadorias): o gasto dela é multiplicado por `min` no mínimo da faixa e
+   * por `max` no máximo (motor/contas).
+   */
+  escala_gasto?: { lei: string; min: number; max: number };
+  /**
+   * Receita enquanto a lei vale, em % do PIB por ano no máximo da faixa (ex.:
+   * anistia fiscal traz dívida atrasada). Cai a cada uso repetido (motor/contas).
+   */
+  arrecada?: number;
   /**
    * Posição na bússola no mínimo da faixa (`min`) e em `ate` (`max`); acima de
    * `ate` a lei fica na ponta. Sem `ate`, vale o máximo da faixa.
@@ -122,6 +167,11 @@ export interface Opcao {
 export interface LeiOpcoes extends LeiBase {
   forma: "opcoes";
   opcoes: Opcao[];
+  /**
+   * A opção em vigor multiplica o gasto de outra lei de verba pelo número
+   * `valores.gasto` dela (motor/contas).
+   */
+  escala_gasto?: { lei: string };
 }
 
 export type Lei = LeiContinua | LeiOpcoes;

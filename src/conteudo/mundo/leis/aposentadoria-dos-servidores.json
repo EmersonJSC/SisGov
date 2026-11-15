@@ -6,35 +6,19 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
+  "escala_gasto": { "lei": "verba-das-aposentadorias" },
   "opcoes": [
     {
       "id": "salario-integral",
       "rotulo": "salário integral",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "o-aposentado-tambem-contribui",
-      "rotulo": "o aposentado também contribui",
-      "bussola": { "economico": 0.25, "social": 0 },
+      "bussola": { "economico": -0.2, "social": 0 },
+      "valores": { "gasto": 1.04 },
       "efeitos": [
         {
-          "indice": "deficit_da_previdencia",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 12
-        },
-        {
           "indice": "gasto_obrigatorio",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 12
-        },
-        {
-          "indice": "greves",
           "sentido": 1,
           "forca": "media",
           "atraso_turnos": 12
@@ -42,27 +26,42 @@
       ]
     },
     {
-      "id": "mesmo-teto-do-trabalhador-comum",
-      "rotulo": "mesmo teto do trabalhador comum",
-      "bussola": { "economico": 0.5, "social": 0 },
+      "id": "o-aposentado-tambem-contribui",
+      "rotulo": "o aposentado também contribui",
+      "bussola": { "economico": 0.25, "social": 0 },
+      "valores": { "gasto": 1 },
       "efeitos": [
-        {
-          "indice": "deficit_da_previdencia",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        },
         {
           "indice": "gasto_obrigatorio",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "fraca",
           "atraso_turnos": 12
         },
         {
           "indice": "greves",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
+    },
+    {
+      "id": "mesmo-teto-do-trabalhador-comum",
+      "rotulo": "mesmo teto do trabalhador comum",
+      "bussola": { "economico": 0.5, "social": 0 },
+      "valores": { "gasto": 0.95 },
+      "efeitos": [
+        {
+          "indice": "gasto_obrigatorio",
+          "sentido": -1,
+          "forca": "media",
           "atraso_turnos": 12
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
         }
       ]
     }

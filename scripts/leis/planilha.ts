@@ -29,7 +29,7 @@ const DO_ACERVO = {
   "Custo (acervo)": "Custo",
 } as const;
 /** Colunas que o autor e a triagem escrevem: a planilha guarda, o JSON não. */
-const DE_TRABALHO = ["Veredito", "Notas"] as const;
+const DE_TRABALHO = ["Veredito", "Canal proposto", "Notas"] as const;
 const LARGURA = 18;
 const LARGURA_DO_TEXTO = 48;
 const LARGAS = new Set([

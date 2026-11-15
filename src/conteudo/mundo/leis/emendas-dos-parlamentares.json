@@ -2,31 +2,40 @@
   "versao": 1,
   "id": "emendas-dos-parlamentares",
   "nome": "Emendas dos parlamentares",
-  "descricao": "Vai de nenhuma, passa por emendas transparentes, até emendas obrigatórias e secretas.",
+  "descricao": "Se deputados e senadores mandam verba para as suas bases. Sem a lei, nenhuma emenda. Cada degrau libera mais emendas para negociar votos.",
   "camada": "jogabilidade",
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
   "canal": "regra",
+  "jeito": "escolha",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhuma",
-      "rotulo": "nenhuma",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "emendas-transparentes",
       "rotulo": "emendas transparentes",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
+      "bussola": { "economico": 0, "social": -0.1 },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2
+        }
+      ]
     },
     {
       "id": "emendas-obrigatorias-e-secretas",
       "rotulo": "emendas obrigatórias e secretas",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
+      "bussola": { "economico": 0, "social": 0.3 },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2
+        }
+      ]
     }
   ]
 }

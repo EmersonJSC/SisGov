@@ -6,6 +6,7 @@
   "camada": "jogabilidade",
   "esfera": "terra",
   "canal": "verba",
+  "jeito": "verba",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 0.02 },

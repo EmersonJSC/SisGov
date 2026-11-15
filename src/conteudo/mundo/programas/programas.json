@@ -1362,7 +1362,7 @@
       },
       "leis": [
         {
-          "lei": "imposto-renda",
+          "lei": "imposto-renda-rico",
           "direcao": "desce",
           "minimo": 0.1
         },
@@ -1396,14 +1396,14 @@
       },
       "leis": [
         {
-          "lei": "faixa-sem-imposto-de-renda",
-          "direcao": "sobe",
+          "lei": "imposto-renda-medio",
+          "direcao": "desce",
           "minimo": 0.1
         },
         {
-          "lei": "progressividade",
-          "direcao": "sobe",
-          "minimo": "degrau"
+          "lei": "imposto-renda-pobre",
+          "direcao": "desce",
+          "minimo": 0.1
         },
         {
           "lei": "desconto-por-filho",

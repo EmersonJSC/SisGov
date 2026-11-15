@@ -7,39 +7,46 @@
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhum",
-      "rotulo": "nenhum",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "so-opina",
       "rotulo": "só opina",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": { "economico": 0.1, "social": 0 },
+      "efeitos": [
+        {
+          "indice": "credibilidade_fiscal",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "parecer-em-todo-projeto",
+      "rotulo": "parecer obrigatório em todo projeto de gasto",
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 4
         }
       ]
     },
     {
       "id": "com-poder-de-veto",
       "rotulo": "com poder de veto",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 4
         }
       ]
     }

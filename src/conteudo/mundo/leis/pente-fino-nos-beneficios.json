@@ -6,16 +6,10 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
-    {
-      "id": "nenhuma-conferencia",
-      "rotulo": "nenhuma conferência",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
     {
       "id": "conferencia-uma-vez-por-ano-em-um-cadastro",
       "rotulo": "conferência uma vez por ano em um cadastro",
@@ -49,13 +43,13 @@
         {
           "indice": "pobreza",
           "sentido": 1,
-          "forca": "media",
+          "forca": "fraca",
           "atraso_turnos": 2
         }
       ]
     },
     {
-      "id": "recadastro-obrigatorio-com-corte-automatico-de-quem-nao-responde",
+      "id": "recadastro-obrigatorio-com-corte-automatico",
       "rotulo": "recadastro obrigatório com corte automático de quem não responde",
       "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
@@ -68,7 +62,7 @@
         {
           "indice": "pobreza",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]

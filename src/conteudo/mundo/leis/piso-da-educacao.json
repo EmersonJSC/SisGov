@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "id": "piso-da-educacao",
+  "nome": "Piso da educação",
+  "descricao": "A verba da educação nunca desce abaixo de uma parte da arrecadação, de 5% a 30%. Protege a área, mas engessa o orçamento.",
+  "camada": "jogabilidade",
+  "classe": "absoluta",
+  "esfera": "orcamento-e-divida",
+  "canal": "regra",
+  "jeito": "regua",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0.05, "max": 0.3 },
+  "passo": 0.01,
+  "bussola": { "min": { "economico": -0.05 }, "max": { "economico": -0.3 } },
+  "efeitos": [
+    {
+      "indice": "gasto_obrigatorio",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

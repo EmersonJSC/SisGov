@@ -7,12 +7,13 @@
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.2 },
+  "faixa": { "min": 0.01, "max": 0.2 },
   "passo": 0.01,
+  "encolhe": { "base": "renda", "ate": 0.85 },
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": 0, "social": 0.4 }

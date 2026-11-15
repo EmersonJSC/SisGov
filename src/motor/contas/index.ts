@@ -9,6 +9,8 @@ export interface Tesouro {
   divida: number;
   /** Resultado nominal do último turno, na moeda do país. */
   resultado: number;
+  /** Dívida perdoada no último turno por um ato (calote), na moeda do país. */
+  perdao?: number;
 }
 
 /** Fluxos de um turno, na moeda do país. */
@@ -86,6 +88,7 @@ export function motivoContaNaoFecha(
 ): string | null {
   const variacao = depois.cofre - depois.divida - (antes.cofre - antes.divida);
   const escala = Math.max(1, Math.abs(antes.divida), Math.abs(antes.cofre));
-  if (Math.abs(variacao - depois.resultado) <= escala * 1e-9) return null;
+  const esperado = depois.resultado + (depois.perdao ?? 0);
+  if (Math.abs(variacao - esperado) <= escala * 1e-9) return null;
   return `contabilidade não fecha: cofre − dívida variou ${variacao}, resultado ${depois.resultado}`;
 }

@@ -7,18 +7,13 @@
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "câmbio",
+  "jeito": "escolha",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "livre",
-      "rotulo": "livre",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "taxa-sobre-entrada-especulativa",
-      "rotulo": "taxa sobre entrada especulativa",
+      "rotulo": "taxa sobre dinheiro que entra para especular",
       "bussola": { "economico": -0.15, "social": 0 },
       "efeitos": [
         {
@@ -26,18 +21,30 @@
           "sentido": -1,
           "forca": "media",
           "atraso_turnos": 2
+        },
+        {
+          "indice": "cambio",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2
         }
       ]
     },
     {
       "id": "controle-de-saida",
-      "rotulo": "controle de saída",
+      "rotulo": "controle da saída de dinheiro",
       "bussola": { "economico": -0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "confianca_do_mercado",
           "sentido": -1,
           "forca": "forte",
+          "atraso_turnos": 2
+        },
+        {
+          "indice": "reservas_internacionais",
+          "sentido": 1,
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]

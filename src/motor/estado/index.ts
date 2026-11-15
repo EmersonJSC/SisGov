@@ -99,6 +99,17 @@ export interface Estado {
   judiciario?: EstadoJudiciario;
   /** Leis com pedido de revogar em tramitação: aprovadas, voltam a "não legislada". */
   revogacoes?: string[];
+  /**
+   * Regra fiscal deste turno (motor/fisco): regras estouradas e o que a
+   * punição faz (corte das verbas, trava de aumento). Ausente sem as regras.
+   */
+  fiscal?: { estouros: string[]; corte: number; trava: boolean };
+  /** Leis com prazo em vigor: turno em que acabam (motor/leis). */
+  prazos?: Record<string, number>;
+  /** Quantas vezes cada lei com prazo ou ato já foi usado. */
+  usos?: Record<string, number>;
+  /** Parte da dívida perdoada por um ato deste turno (sai nas contas). */
+  perdao?: number;
   /** Rede de água e esgoto (motor/saneamento); ausente sem a regra ou em partida salva antes dela. */
   saneamento?: SaneamentoNoEstado;
   /** Rede de atendimento (motor/atendimento); ausente sem a regra ou em partida salva antes dela. */

@@ -2,24 +2,20 @@
   "versao": 1,
   "id": "pensao-por-morte",
   "nome": "Pensão por morte",
-  "descricao": "Quanto a família recebe da aposentadoria de quem morreu. Escada: valor inteiro e para a vida toda; valor inteiro, por tempo que depende da idade de quem fica; 60% do valor, por tempo limitado; só para filhos menores e dependentes.",
+  "descricao": "Quanto a família recebe da aposentadoria de quem morreu. Níveis: inteiro e para a vida toda; inteiro por tempo que depende da idade; 60% por tempo limitado; só para filhos menores.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
+  "escala_gasto": { "lei": "verba-das-aposentadorias" },
   "opcoes": [
     {
-      "id": "valor-inteiro-e-para-a-vida-toda",
+      "id": "valor-inteiro-para-a-vida-toda",
       "rotulo": "valor inteiro e para a vida toda",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "valor-inteiro",
-      "rotulo": "valor inteiro",
-      "bussola": { "economico": 0, "social": 0.08 },
+      "bussola": { "economico": -0.13, "social": 0 },
+      "valores": { "gasto": 1.03 },
       "efeitos": [
         {
           "indice": "pobreza",
@@ -31,52 +27,35 @@
     },
     {
       "id": "por-tempo-que-depende-da-idade-de-quem-fica",
-      "rotulo": "por tempo que depende da idade de quem fica",
-      "bussola": { "economico": 0, "social": 0.16 },
+      "rotulo": "valor inteiro, por tempo que depende da idade de quem fica",
+      "bussola": { "economico": 0, "social": 0.13 },
+      "valores": { "gasto": 1 },
+      "efeitos": []
+    },
+    {
+      "id": "60-por-cento-por-tempo-limitado",
+      "rotulo": "60% do valor, por tempo limitado",
+      "bussola": { "economico": 0, "social": 0.27 },
+      "valores": { "gasto": 0.97 },
       "efeitos": [
         {
           "indice": "pobreza",
-          "sentido": -1,
-          "forca": "media",
+          "sentido": 1,
+          "forca": "fraca",
           "atraso_turnos": 12
         }
       ]
     },
     {
-      "id": "60-do-valor",
-      "rotulo": "60% do valor",
-      "bussola": { "economico": 0, "social": 0.24 },
-      "efeitos": [
-        {
-          "indice": "pobreza",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "por-tempo-limitado",
-      "rotulo": "por tempo limitado",
-      "bussola": { "economico": 0, "social": 0.32 },
-      "efeitos": [
-        {
-          "indice": "pobreza",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "so-para-filhos-menores-e-dependentes",
+      "id": "so-para-filhos-menores",
       "rotulo": "só para filhos menores e dependentes",
       "bussola": { "economico": 0, "social": 0.4 },
+      "valores": { "gasto": 0.94 },
       "efeitos": [
         {
           "indice": "pobreza",
-          "sentido": -1,
-          "forca": "forte",
+          "sentido": 1,
+          "forca": "media",
           "atraso_turnos": 12
         }
       ]

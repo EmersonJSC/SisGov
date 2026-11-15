@@ -2,27 +2,23 @@
   "versao": 1,
   "id": "regime-dos-militares",
   "nome": "Regime dos militares",
-  "descricao": "Como os militares se aposentam em comparação com os demais trabalhadores. Escada: mesmas regras de todo mundo; idade mínima menor que a dos civis; idade menor e salário cheio na aposentadoria; idade menor, salário cheio e pensão vitalícia para a família.",
+  "descricao": "Regras próprias de aposentadoria dos militares. Sem a lei, as mesmas regras de todo mundo. Níveis: idade menor; e salário cheio; e pensão vitalícia para a família.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
+  "escala_gasto": { "lei": "verba-das-aposentadorias" },
   "opcoes": [
     {
-      "id": "mesmas-regras-de-todo-mundo",
-      "rotulo": "mesmas regras de todo mundo",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "idade-minima-menor-que-a-dos-civis",
+      "id": "idade-minima-menor",
       "rotulo": "idade mínima menor que a dos civis",
-      "bussola": { "economico": 0, "social": 0.1 },
+      "bussola": { "economico": 0, "social": 0.13 },
+      "valores": { "gasto": 0.98 },
       "efeitos": [
         {
-          "indice": "deficit_da_previdencia",
+          "indice": "gasto_obrigatorio",
           "sentido": 1,
           "forca": "fraca",
           "atraso_turnos": 12
@@ -30,40 +26,29 @@
       ]
     },
     {
-      "id": "idade-menor-e-salario-cheio-na-aposentadoria",
+      "id": "idade-menor-e-salario-cheio",
       "rotulo": "idade menor e salário cheio na aposentadoria",
-      "bussola": { "economico": 0, "social": 0.2 },
+      "bussola": { "economico": 0, "social": 0.27 },
+      "valores": { "gasto": 0.99 },
       "efeitos": [
         {
-          "indice": "deficit_da_previdencia",
+          "indice": "gasto_obrigatorio",
           "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "idade-menor",
-      "rotulo": "idade menor",
-      "bussola": { "economico": 0, "social": 0.3 },
-      "efeitos": [
-        {
-          "indice": "deficit_da_previdencia",
-          "sentido": 1,
-          "forca": "forte",
+          "forca": "fraca",
           "atraso_turnos": 12
         }
       ]
     },
     {
       "id": "salario-cheio-e-pensao-vitalicia-para-a-familia",
-      "rotulo": "salário cheio e pensão vitalícia para a família",
+      "rotulo": "idade menor, salário cheio e pensão vitalícia para a família",
       "bussola": { "economico": 0, "social": 0.4 },
+      "valores": { "gasto": 1 },
       "efeitos": [
         {
-          "indice": "deficit_da_previdencia",
+          "indice": "gasto_obrigatorio",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 12
         }
       ]

@@ -8,19 +8,33 @@
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
   "canal": "espera",
-  "espera": "triagem",
+  "espera": "rendimento das instituições",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nenhuma",
-      "rotulo": "nenhuma",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
       "id": "revisar-as-maiores-areas-a-cada-4-anos",
       "rotulo": "revisar as maiores áreas a cada 4 anos",
-      "bussola": { "economico": 0.15, "social": 0 },
+      "bussola": { "economico": 0.1, "social": 0 },
+      "efeitos": [
+        {
+          "indice": "corrupcao",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "greves",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 4
+        }
+      ]
+    },
+    {
+      "id": "revisar-todas-as-areas-todo-ano",
+      "rotulo": "revisar todas as áreas todo ano",
+      "bussola": { "economico": 0.2, "social": 0 },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -31,27 +45,27 @@
         {
           "indice": "greves",
           "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 12
+          "forca": "fraca",
+          "atraso_turnos": 4
         }
       ]
     },
     {
       "id": "revisao-do-zero",
-      "rotulo": "revisão do zero",
+      "rotulo": "revisão do zero: toda verba se justifica de novo",
       "bussola": { "economico": 0.3, "social": 0 },
       "efeitos": [
         {
           "indice": "corrupcao",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 12
         },
         {
           "indice": "greves",
           "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 12
+          "forca": "media",
+          "atraso_turnos": 4
         }
       ]
     }

@@ -6,6 +6,7 @@
   "camada": "jogabilidade",
   "esfera": "terra",
   "canal": "imposto",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 1 },

@@ -34,7 +34,7 @@ const lei = (id: string, valor: number | string): Pedido[] => [
 const CENARIOS: [string, Pedido[]][] = [
   ["sem mudar nada", []],
   ["pena de morte para crimes graves", lei("pena-de-morte", "crimes-graves")],
-  ["imposto de renda 60%", lei("imposto-renda", 0.6)],
+  ["imposto de renda 60%", lei("imposto-renda-medio", 0.6)],
   ["terras indígenas 30%", lei("terras-indigenas", 0.3)],
   ["verba militar 4% do PIB", lei("gasto-militar", 0.04)],
   ["serviço militar 18 meses", lei("servico-militar", 18)],

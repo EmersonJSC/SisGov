@@ -29,7 +29,7 @@ const CENARIOS: [string, PedidoMudarLei][] = [
   ],
   [
     "imposto de renda 20% → 30%",
-    { tipo: "mudar_lei", lei: "imposto-renda", valor: 0.3 },
+    { tipo: "mudar_lei", lei: "imposto-renda-medio", valor: 0.3 },
   ],
   [
     "transferência de renda 2% → 6%",

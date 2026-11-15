@@ -7,12 +7,13 @@
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "imposto",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.5 },
+  "faixa": { "min": 0.025, "max": 0.5 },
   "passo": 0.025,
+  "calculo": { "base": "patrimonio", "modelo": "laffer" },
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": -0.4, "social": 0 }

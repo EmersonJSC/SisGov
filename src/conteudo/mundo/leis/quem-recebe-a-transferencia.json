@@ -2,20 +2,17 @@
   "versao": 1,
   "id": "quem-recebe-a-transferencia",
   "nome": "Quem recebe a Transferência",
-  "descricao": "Quantas famílias entram na Transferência de renda, das 5% mais pobres até a metade do país.",
+  "descricao": "Quantas famílias entram na Transferência de renda, das 5% mais pobres até todo o país (renda básica). Mais famílias, menos para cada uma; passar dos pobres manda dinheiro à classe média.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0.05, "max": 0.5 },
+  "faixa": { "min": 0.05, "max": 1 },
   "passo": 0.0225,
-  "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": -0.3, "social": 0 }
-  },
+  "bussola": { "min": { "economico": 0 }, "max": { "economico": -0.5 } },
   "efeitos": [
     {
       "indice": "pobreza",

@@ -1,7 +1,6 @@
 {
   "versao": 1,
   "leis": {
-    "imposto-renda": 0.2,
     "protecao-digital": "sem-regra",
     "maioridade-penal": 18,
     "transparencia-militar": "sigilo-operacoes",
@@ -37,6 +36,9 @@
     "triagem-estrangeira": "aviso",
     "remessa-de-lucro": "media",
     "fabrica-de-fora": "isencao",
-    "concorrencia": "nenhuma"
+    "concorrencia": "nenhuma",
+    "imposto-renda-pobre": 0.2,
+    "imposto-renda-medio": 0.2,
+    "imposto-renda-rico": 0.2
   }
 }

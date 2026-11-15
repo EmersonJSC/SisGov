@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "imposto-renda-medio",
+  "nome": "Imposto de renda da classe média",
+  "descricao": "Quanto paga de Imposto de renda a classe média, sobre o que ganha.",
+  "camada": "essencial",
+  "classe": "absoluta",
+  "parte_de": "imposto-renda",
+  "esfera": "impostos",
+  "canal": "imposto",
+  "jeito": "regua",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.6 },
+  "passo": 0.005,
+  "calculo": { "base": "renda", "modelo": "laffer", "estrato": "medio" },
+  "bussola": { "min": { "economico": 0.3 }, "max": { "economico": -0.3 } },
+  "efeitos": [
+    {
+      "indice": "padrao_vida",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 2
+    }
+  ]
+}

@@ -97,7 +97,7 @@ real. Tempo: turno = 2 meses.
 ### Fatia 6: demanda dos pops, oferta, preço do país e fome (6a a 6d em código, 02/nov/2026)
 
 Desenho completo: a cobertura deixa de ser número declarado e vira resultado.
-Referência de como o Vic3 faz: `docs/jogo/mercado-vic3-referencia.md` (só a
+Referência de como o Vic3 faz: `docs/jogo/estudos/mercado-vic3-referencia.md` (só a
 ideia; nomes, textos e números são nossos). Entra em pedaços, a comida
 primeiro; os outros produtos só depois de o autor confirmar a comida na tela.
 

@@ -8,13 +8,14 @@
   "origem": "planilha",
   "parte_de": "Imposto sobre imóvel caro",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "x o salário mínimo",
   "faixa": { "min": 50, "max": 2000 },
   "passo": 0.1,
+  "encolhe": { "base": "imovel", "ate": 0.2 },
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": -0.5, "social": 0 }

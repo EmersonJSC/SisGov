@@ -6,6 +6,7 @@
   "camada": "jogabilidade",
   "esfera": "assistencia-social",
   "canal": "transferencia",
+  "jeito": "verba",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0, "max": 1 },

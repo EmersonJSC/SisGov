@@ -2,7 +2,7 @@
 // 6.7): três abas, uma linha por lei, por degrau e por efeito. A planilha é a
 // fonte; `npm run leis` gera os JSONs de `src/conteudo/mundo/leis/`.
 // Lei → linhas e linhas → lei são inversas: o teste confere a volta.
-import type { Efeito, Lei, Opcao } from "../../src/motor";
+import type { Efeito, Estrato, Lei, LeiContinua, Opcao } from "../../src/motor";
 
 export const PLANILHA = "docs/jogo/gdd.xlsx";
 export const PASTA_DAS_LEIS = "src/conteudo/mundo/leis";
@@ -23,6 +23,9 @@ export const COLUNAS_LEIS = [
   "Quórum",
   "Canal",
   "Espera",
+  "Tipo",
+  "Prazo (turnos)",
+  "Jeito",
   "Forma",
   "Unidade",
   "Nome da unidade",
@@ -35,11 +38,16 @@ export const COLUNAS_LEIS = [
   "Bússola no máximo: social",
   "Bússola até",
   "Imposto sobre",
+  "Imposto do estrato",
   "Conta",
   "Renda para",
+  "Encolhe",
+  "Muda o gasto",
+  "Arrecada (% do PIB)",
   "Parte de",
   "Origem",
   "Veredito",
+  "Canal proposto",
   "Notas",
 ] as const;
 
@@ -65,6 +73,24 @@ export const COLUNAS_EFEITOS = [
 ] as const;
 
 const FORMA_NA_PLANILHA = { continua: "Régua", opcoes: "Degraus" } as const;
+/** Tipo e jeito na planilha, em palavra de leigo; o JSON guarda o id. */
+const TIPO_NA_PLANILHA = {
+  lei: "Lei",
+  prazo: "Lei com prazo",
+  ato: "Ato",
+} as const;
+const JEITO_NA_PLANILHA = {
+  regua: "Régua",
+  verba: "Verba",
+  niveis: "Níveis",
+  escolha: "Escolha",
+} as const;
+/** O id de volta a partir da palavra da planilha. */
+const doRotulo = <K extends string>(
+  mapa: Record<K, string>,
+  v: Linha[string],
+): K | undefined =>
+  (Object.keys(mapa) as K[]).find((k) => mapa[k] === texto(v));
 
 const texto = (v: Linha[string]) =>
   v === undefined || v === "" ? undefined : String(v);
@@ -100,11 +126,18 @@ export function linhaDaLei(lei: Lei): Linha {
     Quórum: lei.classe,
     Canal: lei.canal,
     Espera: lei.espera,
+    Tipo: lei.tipo && TIPO_NA_PLANILHA[lei.tipo],
+    "Prazo (turnos)": lei.prazo_turnos,
+    Jeito: lei.jeito && JEITO_NA_PLANILHA[lei.jeito],
     Forma: FORMA_NA_PLANILHA[lei.forma],
     "Parte de": extra.parte_de,
     Origem: extra.origem,
   };
-  if (lei.forma === "opcoes") return comum;
+  if (lei.forma === "opcoes")
+    return {
+      ...comum,
+      "Muda o gasto": lei.escala_gasto && JSON.stringify(lei.escala_gasto),
+    };
   return {
     ...comum,
     Unidade: lei.unidade,
@@ -118,9 +151,33 @@ export function linhaDaLei(lei: Lei): Linha {
     "Bússola no máximo: social": lei.bussola?.max.social,
     "Bússola até": lei.bussola?.ate,
     "Imposto sobre": lei.calculo?.base,
+    "Imposto do estrato": lei.calculo?.estrato,
     Conta: lei.conta,
-    "Renda para": lei.para?.estrato,
+    "Renda para": lei.para && rendaPara(lei.para),
+    Encolhe: lei.encolhe && JSON.stringify(lei.encolhe),
+    "Muda o gasto": lei.escala_gasto && JSON.stringify(lei.escala_gasto),
+    "Arrecada (% do PIB)": lei.arrecada,
   };
+}
+
+/** "pobre", ou "pobre 0.6; medio 0.4" quando a renda se divide. */
+function rendaPara(para: NonNullable<LeiContinua["para"]>): string {
+  return "pesos" in para
+    ? Object.entries(para.pesos)
+        .map(([e, p]) => `${e} ${p}`)
+        .join("; ")
+    : para.estrato;
+}
+
+function paraDaPlanilha(v: string): LeiContinua["para"] {
+  if (!v.includes(" ")) return { estrato: v as Estrato };
+  const pesos = Object.fromEntries(
+    v.split(";").map((par) => {
+      const [e, p] = par.trim().split(/\s+/);
+      return [e, Number(p)];
+    }),
+  );
+  return { pesos };
 }
 
 export function linhasDosDegraus(lei: Lei): Linha[] {
@@ -202,11 +259,17 @@ export function leiDasLinhas(
     esfera: texto(l["Instituição"]),
     canal: String(l.Canal) as Lei["canal"],
     espera: texto(l.Espera),
+    jeito: doRotulo(JEITO_NA_PLANILHA, l.Jeito),
+    tipo: doRotulo(TIPO_NA_PLANILHA, l.Tipo),
+    prazo_turnos: numero(l["Prazo (turnos)"]),
   };
   if (l.Forma === FORMA_NA_PLANILHA.opcoes)
     return semVazios({
       ...cabeca,
       forma: "opcoes" as const,
+      escala_gasto: l["Muda o gasto"]
+        ? JSON.parse(String(l["Muda o gasto"]))
+        : undefined,
       opcoes: degraus.map((d) =>
         semVazios({
           id: String(d.Degrau),
@@ -223,7 +286,8 @@ export function leiDasLinhas(
       ),
     }) as Lei;
   const base = texto(l["Imposto sobre"]);
-  const estrato = texto(l["Renda para"]);
+  const doEstrato = texto(l["Imposto do estrato"]);
+  const para = texto(l["Renda para"]);
   return semVazios({
     ...cabeca,
     forma: "continua" as const,
@@ -231,9 +295,16 @@ export function leiDasLinhas(
     rotulo_unidade: texto(l["Nome da unidade"]),
     faixa: { min: Number(l["Mínimo"]), max: Number(l["Máximo"]) },
     passo: Number(l.Passo),
-    calculo: base ? { base, modelo: "laffer" } : undefined,
+    calculo: base
+      ? semVazios({ base, modelo: "laffer", estrato: doEstrato })
+      : undefined,
     conta: texto(l.Conta),
-    para: estrato ? { estrato } : undefined,
+    para: para ? paraDaPlanilha(para) : undefined,
+    encolhe: l.Encolhe ? JSON.parse(String(l.Encolhe)) : undefined,
+    escala_gasto: l["Muda o gasto"]
+      ? JSON.parse(String(l["Muda o gasto"]))
+      : undefined,
+    arrecada: numero(l["Arrecada (% do PIB)"]),
     bussola: bussolaDaRegua(l),
     efeitos: efeitosDe(efeitos),
   }) as Lei;

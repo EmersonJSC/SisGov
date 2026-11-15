@@ -23,7 +23,7 @@ const TURNOS_MANDATO = 24;
 const PAISES = ["teste", "teste-pobre"];
 
 const PACOTE: Pedido[] = [
-  { tipo: "mudar_lei", lei: "imposto-renda", valor: 0.25 },
+  { tipo: "mudar_lei", lei: "imposto-renda-medio", valor: 0.25 },
   { tipo: "mudar_lei", lei: "gasto-saude", valor: 0.06 },
   { tipo: "mudar_lei", lei: "areas-protegidas", valor: 0.2 },
 ];

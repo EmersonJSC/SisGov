@@ -27,6 +27,22 @@ Formato e validador. A lei declara; o motor interpreta.
   arquivo do país lê a lei), `direito` (muda uma liberdade) ou `espera`, com
   `espera` dizendo o quê ("triagem" até a onda da lei, ou a mecânica que
   falta). O validador confere que o canal bate com o que a lei faz.
+- `jeito` e `tipo` (14/nov, regras de classificação, GDD 4.3): `jeito` é
+  como o jogador mexe (`regua`, `verba`, `niveis` de 3 a 5 degraus, `escolha`),
+  obrigatório na lei já triada; `tipo` é `lei` (ausente), `prazo` (acaba
+  sozinha depois de `prazo_turnos`, volta a "não legislada"; o estado guarda o
+  fim em `prazos` e os usos em `usos`) ou `ato` (aprovado, acontece uma vez: os
+  efeitos entram, a lei não fica; `valores.perdao_da_divida` tira essa parte da
+  dívida nas contas). Degrau que não faz nada (sem efeito, sem lado, sem número
+  para o motor) é recusado: o nada é a lei não legislada. Escapam a lei
+  essencial (não se revoga) e o canal `regra` (o módulo lê a opção pelo id).
+- **Dinheiro além do cálculo:** `calculo.estrato` cobra só da parte da base
+  daquele estrato (imposto de renda do pobre, do médio, do rico); `encolhe`
+  encolhe uma base (ou a parte de um estrato) de 1 no mínimo da faixa até `ate`
+  no máximo ("a partir de quanto cobra", deduções); `escala_gasto` multiplica o
+  gasto de outra lei de verba (`min`/`max` na régua, `valores.gasto` nos
+  degraus); `para.pesos` divide uma transferência entre estratos; `arrecada` é
+  receita enquanto a lei vale (anistia fiscal), menor a cada uso repetido.
 - **Revogar:** o pedido `mudar_lei` com `revogar: true` leva a lei ao valor
   desligado (`valorDesligado`: mínimo da régua ou primeiro degrau) e passa pelo
   Congresso como qualquer mudança; aprovado, a lei sai de `estado.leis` (volta a

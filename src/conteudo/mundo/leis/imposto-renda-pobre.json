@@ -1,0 +1,21 @@
+{
+  "versao": 1,
+  "id": "imposto-renda-pobre",
+  "nome": "Imposto de renda do pobre",
+  "descricao": "Quanto paga de Imposto de renda quem ganha pouco, sobre o que ganha. Zero é isento.",
+  "camada": "essencial",
+  "classe": "absoluta",
+  "parte_de": "imposto-renda",
+  "esfera": "impostos",
+  "canal": "imposto",
+  "jeito": "regua",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.6 },
+  "passo": 0.005,
+  "calculo": { "base": "renda", "modelo": "laffer", "estrato": "pobre" },
+  "bussola": { "min": { "economico": -0.2 }, "max": { "economico": 0.4 } },
+  "efeitos": [
+    { "indice": "pobreza", "sentido": 1, "forca": "media", "atraso_turnos": 2 }
+  ]
+}

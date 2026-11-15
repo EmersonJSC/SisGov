@@ -2,37 +2,20 @@
   "versao": 1,
   "id": "aposentadoria-flexivel",
   "nome": "Aposentadoria flexível",
-  "descricao": "Se a pessoa escolhe quando se aposentar e como o valor muda. Escada: uma idade única para todos; duas idades possíveis, com valor menor na mais cedo; qualquer idade dentro de uma faixa, com valor que cresce a cada ano adiado; qualquer idade a partir de um mínimo baixo, com valor pelo que cada um contribuiu.",
+  "descricao": "Se a pessoa escolhe quando se aposentar. Sem a lei, uma idade única para todos. Níveis: duas idades; faixa com valor que cresce; idade livre com valor pelo que contribuiu.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "previdencia",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
+  "escala_gasto": { "lei": "verba-das-aposentadorias" },
   "opcoes": [
     {
-      "id": "uma-idade-unica-para-todos",
-      "rotulo": "uma idade única para todos",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "duas-idades-possiveis",
-      "rotulo": "duas idades possíveis",
-      "bussola": { "economico": 0, "social": -0.07 },
-      "efeitos": [
-        {
-          "indice": "liberdade_civil",
-          "sentido": 1,
-          "forca": "fraca",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "com-valor-menor-na-mais-cedo",
-      "rotulo": "com valor menor na mais cedo",
+      "id": "duas-idades-com-valor-menor-na-mais-cedo",
+      "rotulo": "duas idades possíveis, com valor menor na mais cedo",
       "bussola": { "economico": 0, "social": -0.13 },
+      "valores": { "gasto": 1 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -43,22 +26,10 @@
       ]
     },
     {
-      "id": "qualquer-idade-dentro-de-uma-faixa",
-      "rotulo": "qualquer idade dentro de uma faixa",
-      "bussola": { "economico": 0, "social": -0.2 },
-      "efeitos": [
-        {
-          "indice": "liberdade_civil",
-          "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "com-valor-que-cresce-a-cada-ano-adiado",
-      "rotulo": "com valor que cresce a cada ano adiado",
+      "id": "faixa-de-idade-com-valor-que-cresce",
+      "rotulo": "qualquer idade dentro de uma faixa, com valor que cresce a cada ano adiado",
       "bussola": { "economico": 0, "social": -0.27 },
+      "valores": { "gasto": 0.99 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -69,27 +40,21 @@
       ]
     },
     {
-      "id": "qualquer-idade-a-partir-de-um-minimo-baixo",
-      "rotulo": "qualquer idade a partir de um mínimo baixo",
-      "bussola": { "economico": 0, "social": -0.33 },
-      "efeitos": [
-        {
-          "indice": "liberdade_civil",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "com-valor-pelo-que-cada-um-contribuiu",
-      "rotulo": "com valor pelo que cada um contribuiu",
+      "id": "idade-livre-com-valor-pelo-que-contribuiu",
+      "rotulo": "qualquer idade a partir de um mínimo baixo, com valor pelo que cada um contribuiu",
       "bussola": { "economico": 0, "social": -0.4 },
+      "valores": { "gasto": 0.97 },
       "efeitos": [
         {
           "indice": "liberdade_civil",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
+          "atraso_turnos": 12
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "fraca",
           "atraso_turnos": 12
         }
       ]

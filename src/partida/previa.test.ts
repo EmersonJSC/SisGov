@@ -5,14 +5,14 @@ const partida = criarPartida("teste", 7);
 
 describe("prévia direta da lei", () => {
   it("nível da tela vira valor do motor, no passo da lei", () => {
-    expect(valorDoNivel(partida, "imposto-renda", 25.3)).toBe(0.255);
+    expect(valorDoNivel(partida, "imposto-renda-medio", 25.3)).toBe(0.255);
     expect(valorDoNivel(partida, "licenciamento-ambiental", 2)).toBe(
       "rigoroso",
     );
   });
 
   it("o valor vigente não muda nada", () => {
-    const p = previaDaLei(partida, "imposto-renda", 0.2);
+    const p = previaDaLei(partida, "imposto-renda-medio", 0.2);
     expect(p).toEqual({ indices: [], grupos: [] });
   });
 

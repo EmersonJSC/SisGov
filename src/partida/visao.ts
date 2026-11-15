@@ -88,7 +88,8 @@ function alertaDaLei(
     arrecadacao(regras, estado.leis, estado.essenciais) +
     regras.pais.receita_fora_das_leis;
   const gasto =
-    gastoDasLeis(regras, estado.leis) + regras.pais.gasto_fora_das_leis;
+    gastoDasLeis(regras, estado.leis, estado.fiscal?.corte) +
+    regras.pais.gasto_fora_das_leis;
   const nivel = Number(estado.leis[lei.id] ?? lei.faixa.min) * 100;
   // com déficit, o valor em vigor já é o limite: cortar verba nunca piora
   return { tipo: "verba", limite: nivel + Math.max(0, receita - gasto) };
@@ -152,6 +153,18 @@ const COMO_CHEGA: Record<Canal, string> = {
     "Por enquanto só mexe nos índices; o caminho até as pessoas ainda vai ser feito.",
 };
 
+const TIPO_NA_TELA = {
+  lei: "Lei",
+  prazo: "Lei com prazo",
+  ato: "Ato",
+} as const;
+const JEITO_NA_TELA = {
+  regua: "Régua",
+  verba: "Verba",
+  niveis: "Níveis",
+  escolha: "Escolha",
+} as const;
+
 /** Campos que toda lei tem na tela, de régua ou de degraus. */
 function visaoComumDaLei(
   lei: Lei,
@@ -176,6 +189,12 @@ function visaoComumDaLei(
     emVigor: true,
     revogavel: valor !== undefined && lei.camada !== "essencial",
     comoChega: COMO_CHEGA[lei.canal],
+    classificacao: [
+      TIPO_NA_TELA[lei.tipo ?? "lei"],
+      lei.jeito ? JEITO_NA_TELA[lei.jeito] : undefined,
+    ]
+      .filter(Boolean)
+      .join(" · "),
     exigencias: [],
     filhas: [],
     ...(valor === undefined ? { naoLegislada: true } : {}),

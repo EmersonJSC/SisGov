@@ -91,7 +91,6 @@ export function reservaDeEmendas(
   valores: Valores,
 ): number {
   const id = c.leis?.emendas;
-  return (
-    Math.max(0, degrau(id ? leis[id] : undefined, valores)) * EMENDAS_POR_DEGRAU
-  );
+  // sem a lei, nenhuma emenda; cada degrau dela libera mais (nada = não legislada)
+  return (degrau(id ? leis[id] : undefined, valores) + 1) * EMENDAS_POR_DEGRAU;
 }

@@ -10,6 +10,7 @@ import {
 } from "../../governo";
 import { gruposComDeslize } from "../../grupos";
 import {
+  type Lei,
   type ValorLei,
   motivoValorInvalido,
   valoresComPedidos,
@@ -18,6 +19,8 @@ import {
   valorDesligado,
 } from "../../leis";
 import { traduzirCarimbos, montarMesa } from "../../mesa";
+import { numeroDaOpcao } from "../../fisco";
+import { novoFato } from "../../fatos";
 import type { PedidoIndicar } from "../../judiciario";
 import {
   type Votacao,
@@ -34,7 +37,60 @@ import type { Pedido, Regras } from "../regras";
  * sequência e a lei sai no turno em que passa (motor/politica). Sem Congresso
  * nas regras, todo pedido passa e o decreto vale na hora.
  */
-export const congresso: Etapa = (regras, estado, pedidos) => {
+export const congresso: Etapa = (regras, estado, todos) => {
+  const barrados = todos.filter((p) =>
+    barradoPelaRegraFiscal(regras, estado, p),
+  );
+  const pedidos = todos.filter((p) => !barrados.includes(p));
+  const fatosDaRegra = barrados.map((p) =>
+    novoFato({
+      tipo: "regra-fiscal-barrou",
+      turno: estado.turno,
+      tamanho: "pequeno",
+      sobre: (p as { lei: string }).lei,
+    }),
+  );
+  const comFatos = fatosDaRegra.length
+    ? { ...estado, fatos: [...(estado.fatos ?? []), ...fatosDaRegra] }
+    : estado;
+  return congressoDosPedidos(regras, comFatos, pedidos);
+};
+/**
+ * Regra fiscal no Congresso (motor/fisco): com a trava ligada, nenhuma verba
+ * sobe; e nenhuma verba desce abaixo do piso da instituição dela.
+ */
+export function barradoPelaRegraFiscal(
+  regras: Regras,
+  estado: Estado,
+  pedido: Pedido,
+): boolean {
+  if (pedido.tipo !== "mudar_lei" && pedido.tipo !== "decretar") return false;
+  const lei = regras.leis[pedido.lei];
+  if (lei?.forma !== "continua" || lei.conta !== "gasto") return false;
+  const antes = estado.leis[pedido.lei];
+  const de = typeof antes === "number" ? antes : 0;
+  const revoga = pedido.tipo === "mudar_lei" && pedido.revogar;
+  const para = revoga ? 0 : (pedido.valor as number);
+  if (para > de && estado.fiscal?.trava) return true;
+  if (para >= de) return false;
+  const pisos = regras.fisco?.regra_fiscal?.pisos ?? [];
+  return pisos.some(({ lei: idPiso, instituicao }) => {
+    const piso = estado.leis[idPiso];
+    if (typeof piso !== "number" || lei.esfera !== instituicao) return false;
+    const verba = Object.entries(estado.leis).reduce((s, [id, v]) => {
+      const l = regras.leis[id];
+      if (l?.forma !== "continua" || l.conta !== "gasto") return s;
+      if (l.esfera !== instituicao) return s;
+      return s + (id === pedido.lei ? para : (v as number)) * 100;
+    }, 0);
+    return verba < piso * estado.essenciais.arrecadacao;
+  });
+}
+const congressoDosPedidos = (
+  regras: Regras,
+  estado: Estado,
+  pedidos: Pedido[],
+): Estado => {
   const anteriores: { lei: string; valor: ValorLei }[] = [];
   for (const pedido of pedidos) {
     if (pedido.tipo !== "mudar_lei" && pedido.tipo !== "decretar") continue;
@@ -163,6 +219,37 @@ export function revogacoesDoTurno(
  */
 export const leisNovas: Etapa = (regras, estado, pedidos) => {
   let { leis, efeitos } = estado;
+  const ajuste = (lei: Lei) =>
+    regras.governo && estado.governo
+      ? ajusteDaLei(regras.governo, estado.governo.caixas, lei)
+      : undefined;
+  const tirar = (id: string) =>
+    (leis = Object.fromEntries(Object.entries(leis).filter(([l]) => l !== id)));
+  // lei com prazo vencido volta sozinha a "não legislada"
+  const prazos = { ...(estado.prazos ?? {}) };
+  const usos = { ...(estado.usos ?? {}) };
+  const fatos = [...(estado.fatos ?? [])];
+  let perdao = 0;
+  for (const [id, fim] of Object.entries(prazos)) {
+    if (fim > estado.turno) continue;
+    delete prazos[id];
+    if (!(id in leis)) continue;
+    tirar(id);
+    efeitos = enfileirar(
+      efeitos,
+      regras.leis[id],
+      undefined,
+      ajuste(regras.leis[id]),
+    );
+    fatos.push(
+      novoFato({
+        tipo: "prazo-acabou",
+        turno: estado.turno,
+        tamanho: "pequeno",
+        sobre: id,
+      }),
+    );
+  }
   const revogacoes = revogacoesDoTurno(estado, pedidos);
   const revogadas = new Set<string>();
   for (const v of estado.votacoes) {
@@ -171,18 +258,28 @@ export const leisNovas: Etapa = (regras, estado, pedidos) => {
     const revoga =
       revogacoes.includes(v.lei) && v.valor === valorDesligado(lei);
     if (revoga) {
-      leis = Object.fromEntries(
-        Object.entries(leis).filter(([id]) => id !== v.lei),
-      );
+      tirar(v.lei);
+      delete prazos[v.lei];
       revogadas.add(v.lei);
-    } else leis = { ...leis, [v.lei]: v.valor };
+    } else if (lei.tipo === "ato") {
+      // o ato acontece uma vez: os efeitos ficam, a lei não
+      usos[v.lei] = (usos[v.lei] ?? 0) + 1;
+      perdao = Math.max(
+        perdao,
+        numeroDaOpcao(lei, v.valor, "perdao_da_divida", 0),
+      );
+    } else {
+      leis = { ...leis, [v.lei]: v.valor };
+      if (lei.tipo === "prazo" && !(v.lei in prazos)) {
+        prazos[v.lei] = estado.turno + (lei.prazo_turnos ?? 1);
+        usos[v.lei] = (usos[v.lei] ?? 0) + 1;
+      }
+    }
     efeitos = enfileirar(
       efeitos,
       lei,
       revoga ? undefined : v.valor,
-      regras.governo && estado.governo
-        ? ajusteDaLei(regras.governo, estado.governo.caixas, lei)
-        : undefined,
+      ajuste(lei),
     );
   }
   // a revogação some quando a lei sai da pauta (aprovada, derrubada ou trocada)
@@ -199,7 +296,11 @@ export const leisNovas: Etapa = (regras, estado, pedidos) => {
     ...estado,
     leis,
     efeitos,
+    fatos,
     revogacoes: seguem.length > 0 ? seguem : undefined,
+    prazos: Object.keys(prazos).length ? prazos : undefined,
+    usos: Object.keys(usos).length ? usos : undefined,
+    perdao: perdao > 0 ? perdao : undefined,
   };
 };
 /** 3. Efeitos andam um turno em direção ao inteiro. */

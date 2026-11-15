@@ -8,12 +8,13 @@
   "origem": "planilha",
   "parte_de": "Imposto sobre aplicações grandes",
   "esfera": "impostos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "imposto",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.03 },
+  "faixa": { "min": 0.0015, "max": 0.03 },
   "passo": 0.0015,
+  "calculo": { "base": "aplicacoes", "modelo": "laffer" },
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": -0.4, "social": 0 }

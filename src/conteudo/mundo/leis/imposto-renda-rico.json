@@ -1,0 +1,32 @@
+{
+  "versao": 1,
+  "id": "imposto-renda-rico",
+  "nome": "Imposto de renda do rico",
+  "descricao": "Quanto paga de Imposto de renda quem ganha muito, sobre o que ganha.",
+  "camada": "essencial",
+  "classe": "absoluta",
+  "parte_de": "imposto-renda",
+  "esfera": "impostos",
+  "canal": "imposto",
+  "jeito": "regua",
+  "forma": "continua",
+  "unidade": "fracao",
+  "faixa": { "min": 0, "max": 0.6 },
+  "passo": 0.005,
+  "calculo": { "base": "renda", "modelo": "laffer", "estrato": "rico" },
+  "bussola": { "min": { "economico": 0.5 }, "max": { "economico": -0.5 } },
+  "efeitos": [
+    {
+      "indice": "desigualdade",
+      "sentido": -1,
+      "forca": "media",
+      "atraso_turnos": 4
+    },
+    {
+      "indice": "saida_de_ricos",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 4
+    }
+  ]
+}

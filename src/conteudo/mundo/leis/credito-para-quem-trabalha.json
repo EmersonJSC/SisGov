@@ -2,55 +2,42 @@
   "versao": 1,
   "id": "credito-para-quem-trabalha",
   "nome": "Crédito para quem trabalha",
-  "descricao": "Quanto da Transferência de renda vai só para quem trabalha e ganha pouco. Escada: nada, o benefício é igual para todos; um extra pequeno para quem trabalha; metade do benefício só para quem trabalha; todo o benefício só para quem trabalha.",
+  "descricao": "Quanto da Transferência de renda vai só para quem trabalha e ganha pouco. Sem a lei, o benefício é igual para todos.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "assistencia-social",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
     {
-      "id": "nada",
-      "rotulo": "nada",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "o-beneficio-e-igual-para-todos",
-      "rotulo": "o benefício é igual para todos",
-      "bussola": { "economico": 0.1, "social": 0 },
-      "efeitos": [
-        {
-          "indice": "pobreza",
-          "sentido": -1,
-          "forca": "fraca",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
       "id": "um-extra-pequeno-para-quem-trabalha",
       "rotulo": "um extra pequeno para quem trabalha",
-      "bussola": { "economico": 0.2, "social": 0 },
+      "bussola": { "economico": 0.13, "social": 0 },
       "efeitos": [
         {
-          "indice": "pobreza",
+          "indice": "emprego_informal",
           "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 2
+          "forca": "fraca",
+          "atraso_turnos": 3
         }
       ]
     },
     {
       "id": "metade-do-beneficio-so-para-quem-trabalha",
       "rotulo": "metade do benefício só para quem trabalha",
-      "bussola": { "economico": 0.3, "social": 0 },
+      "bussola": { "economico": 0.27, "social": 0 },
       "efeitos": [
         {
-          "indice": "pobreza",
+          "indice": "emprego_informal",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "fraca",
           "atraso_turnos": 2
         }
       ]
@@ -61,9 +48,15 @@
       "bussola": { "economico": 0.4, "social": 0 },
       "efeitos": [
         {
-          "indice": "pobreza",
+          "indice": "emprego_informal",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
+          "atraso_turnos": 3
+        },
+        {
+          "indice": "pobreza",
+          "sentido": 1,
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]

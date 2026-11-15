@@ -2,37 +2,33 @@
   "versao": 1,
   "id": "renegociacao-da-divida",
   "nome": "Renegociação da dívida",
-  "descricao": "Vai de pagar tudo, passa por renegociar prazo e juros, até calote parcial e total.",
+  "descricao": "Ato: o governo deixa de pagar parte da dívida, de uma vez. A dívida cai na hora; o mercado e os países lembram.",
   "camada": "jogabilidade",
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "niveis",
+  "tipo": "ato",
   "forma": "opcoes",
   "opcoes": [
-    {
-      "id": "pagar-tudo",
-      "rotulo": "pagar tudo",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
     {
       "id": "renegociar-prazo-e-juros",
       "rotulo": "renegociar prazo e juros",
       "bussola": { "economico": 0, "social": -0.13 },
+      "valores": { "perdao_da_divida": 0.05 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 12
+          "atraso_turnos": 0
         },
         {
           "indice": "reputacao_internacional",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 12
+          "atraso_turnos": 0
         }
       ]
     },
@@ -40,18 +36,19 @@
       "id": "calote-parcial",
       "rotulo": "calote parcial",
       "bussola": { "economico": 0, "social": -0.27 },
+      "valores": { "perdao_da_divida": 0.3 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 0
         },
         {
           "indice": "reputacao_internacional",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 0
         }
       ]
     },
@@ -59,18 +56,19 @@
       "id": "calote-total",
       "rotulo": "calote total",
       "bussola": { "economico": 0, "social": -0.4 },
+      "valores": { "perdao_da_divida": 0.9 },
       "efeitos": [
         {
           "indice": "credibilidade_fiscal",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 0
         },
         {
           "indice": "reputacao_internacional",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 0
         }
       ]
     }

@@ -6,16 +6,10 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "moeda-e-bancos",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "direito",
+  "jeito": "niveis",
   "forma": "opcoes",
   "opcoes": [
-    {
-      "id": "proibida",
-      "rotulo": "proibida",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
     {
       "id": "em-contratos-grandes-e-aluguel",
       "rotulo": "em contratos grandes e aluguel",

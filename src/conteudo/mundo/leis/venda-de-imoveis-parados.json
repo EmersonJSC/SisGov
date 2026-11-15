@@ -7,15 +7,23 @@
   "classe": "absoluta",
   "origem": "planilha",
   "esfera": "orcamento-e-divida",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.3 },
+  "faixa": { "min": 0.01, "max": 0.3 },
   "passo": 0.015,
+  "arrecada": 0.15,
   "bussola": {
     "min": { "economico": 0, "social": 0 },
     "max": { "economico": 0.3, "social": 0 }
   },
-  "efeitos": []
+  "efeitos": [
+    {
+      "indice": "corrupcao",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    }
+  ]
 }

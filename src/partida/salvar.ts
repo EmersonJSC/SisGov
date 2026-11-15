@@ -1,5 +1,5 @@
 // Salvar e carregar a partida como texto. Comportamento em salvar.md.
-import type { Estado } from "../motor";
+import { motivoValorInvalido, type Estado, type ValorLei } from "../motor";
 import { criarPartida, type OpcoesPartida, type Partida } from ".";
 
 interface Arquivo {
@@ -37,11 +37,36 @@ export function carregarPartida(texto: string): Partida {
   )
     throw new Error("partida salva: faltam país, semente ou estado");
   const nova = criarPartida(arquivo.pais, arquivo.semente, arquivo.opcoes);
+  // Partida salva antes de a lei mudar (onda das leis): lei que saiu do mundo
+  // sai; valor que não serve mais (opção trocada) volta ao valor de partida;
+  // as vigentes novas do país que ela não conhecia entram.
+  const leisAtuais = (
+    salvas: Record<string, ValorLei>,
+    novas: Record<string, ValorLei>,
+  ) => {
+    const serve = ([id, v]: [string, ValorLei]) =>
+      id in nova.regras.leis && !motivoValorInvalido(nova.regras.leis[id], v);
+    if (Object.entries(salvas).every(serve)) return salvas;
+    return Object.fromEntries([
+      ...Object.entries(novas).filter(
+        ([id]) => !(id in salvas) || !serve([id, salvas[id]]),
+      ),
+      ...Object.entries(salvas).filter(serve),
+    ]);
+  };
+  const leis = leisAtuais(arquivo.estado.leis, nova.estado.leis);
+  const marco = arquivo.estado.marco;
   // Partida salva antes das potências: opiniões de partida do país.
   return {
     ...nova,
     estado: {
       ...arquivo.estado,
+      leis,
+      marco: {
+        ...marco,
+        leis: leisAtuais(marco.leis, nova.estado.marco.leis),
+      },
+      efeitos: arquivo.estado.efeitos.filter((ef) => ef.lei in leis),
       opinioes: arquivo.estado.opinioes ?? nova.estado.opinioes,
       precos: arquivo.estado.precos ?? nova.estado.precos,
       capacidade: arquivo.estado.capacidade ?? nova.estado.capacidade,

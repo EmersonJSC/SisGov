@@ -48,6 +48,9 @@ e lê o que precisa. Nenhum módulo chama outro; eles só se encontram aqui
 | `juiz-nomeado`           | Judiciário   | médio                     | tribunal / — / lado do juiz                     |
 | `indicado-barrado`       | Judiciário   | grande                    | tribunal / — / —                                |
 | `corte-novo-presidente`  | Judiciário   | médio                     | tribunal / — / —                                |
+| `regra-fiscal-estourou`  | Contas       | médio (grande com crime)  | lei da regra / — / —                            |
+| `regra-fiscal-barrou`    | Congresso    | pequeno                   | lei barrada / — / —                             |
+| `prazo-acabou`           | Congresso    | pequeno                   | lei com prazo / — / —                           |
 | `escandalo`              | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `manchete-contra`        | (mídia)      | —                         | só lido pelo Congresso por ora                  |
 | `grupo-com-raiva`        | (grupos)     | —                         | ninguém escreve nem lê ainda                    |

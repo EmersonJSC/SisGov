@@ -6,17 +6,14 @@
   "camada": "jogabilidade",
   "classe": "absoluta",
   "origem": "planilha",
-  "esfera": "impostos",
-  "canal": "verba",
+  "esfera": "orcamento-e-divida",
+  "canal": "regra",
+  "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": { "min": 0.25, "max": 0.6 },
   "passo": 0.0175,
-  "conta": "gasto",
-  "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": 0.4, "social": 0 }
-  },
+  "bussola": { "min": { "economico": 0.5 }, "max": { "economico": 0.05 } },
   "efeitos": [
     {
       "indice": "confianca_do_mercado",

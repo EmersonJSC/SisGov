@@ -11,7 +11,7 @@ const aprovada = novoFato({
   tipo: "lei-aprovada",
   turno: 3,
   tamanho: "medio",
-  sobre: "imposto-renda",
+  sobre: "imposto-renda-medio",
   quem: ["p1", "p2"],
 });
 const saiu = novoFato({
@@ -39,7 +39,9 @@ describe("mesa de fatos", () => {
 
   it("responde só o que o módulo pergunta", () => {
     expect(consultar(mesa, { quem: "p2" })).toEqual([aprovada, saiu]);
-    expect(consultar(mesa, { sobre: "imposto-renda" })).toEqual([aprovada]);
+    expect(consultar(mesa, { sobre: "imposto-renda-medio" })).toEqual([
+      aprovada,
+    ]);
     expect(consultar(mesa, { tamanhoMinimo: "grande" })).toEqual([saiu]);
     expect(consultar(mesa, { tipo: ["lei-rejeitada"], turno: 2 })).toEqual([
       caiu,

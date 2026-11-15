@@ -13,7 +13,9 @@ export const ALIQUOTAS = [0.1, 0.3, 0.5];
 export function mandato(aliquota: number, semente = 42): Estado {
   const partida = criarPartida("teste", semente, { semCongresso: true });
   return jogar(partida, TURNOS_MANDATO, [
-    { tipo: "mudar_lei", lei: "imposto-renda", valor: aliquota },
+    { tipo: "mudar_lei", lei: "imposto-renda-pobre", valor: aliquota },
+    { tipo: "mudar_lei", lei: "imposto-renda-medio", valor: aliquota },
+    { tipo: "mudar_lei", lei: "imposto-renda-rico", valor: aliquota },
   ]).estado;
 }
 

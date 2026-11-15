@@ -24,7 +24,20 @@ Mesma conta da renda; muda só o que o país declara. O lucro tem pico mais
 baixo que a renda (a empresa muda de lugar ou esconde o lucro com mais
 facilidade). Emissões é o valor do que se polui; base pequena e pico baixo
 (a indústria troca de processo ou esconde a emissão). Na V1 cada base é uma fatia fixa do PIB (`parcela_pib`); com o
-mercado, o motor passa a somar a base dos prédios e dos pops (GDD, seção 16).
+mercado, o motor passa a somar a base dos prédios e dos pops (GDD, Parte 3).
+
+## bases da onda 1 (14/nov) — mesma curva
+
+`patrimonio` (herança, bens de luxo, saída do país), `aplicacoes`, `imovel`,
+`capital` (dividendos), `movimentacao`, `folha` (contribuição da previdência) e
+`bancos` (lucro dos bancos). A base diz quem paga do bolso (`incide`): a renda e
+a movimentação, todos; patrimônio, aplicações, imóvel e capital, o rico; a
+folha, o pobre e o médio. Consumo, lucro, emissões, terra e bancos não tiram
+renda dos pops direto. A lei com `calculo.estrato` cobra só da parte da base
+daquele estrato, pela parte da renda que ele tem (`parteDaRenda`). O Brasil
+calibra cada base pela receita real de ordem de grandeza; a
+`receita_fora_das_leis` caiu o que as leis novas passaram a arrecadar
+(`scripts/receita-inicial.ts`).
 
 ## juros — prêmio pela dívida
 
