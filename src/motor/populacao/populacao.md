@@ -147,3 +147,11 @@ declara em `treina.para`. Pop sem `treina` não muda.
   aposenta; o aposentado morre e nasce o mesmo tanto, no ritmo do turno 0.
   Sem lei, nada anda. A idade mínima de aposentadoria é a tomada: cada 10 anos
   a menos dobram quem se aposenta por turno.
+
+## Estados (passo F, 15/nov)
+
+- O país declara os estados em `paises/<país>/estados.json`: parte da
+  população e parte dela no campo. Sem arquivo, o país é um estado só.
+- `popsPorTerritorio`: os pops do campo (`moradia.pops_campo`) seguem a gente
+  do campo de cada estado; os outros, a da cidade. A soma dá cada pop inteiro.
+- Ninguém lê ainda: voto, energia e governadores por estado vêm depois.

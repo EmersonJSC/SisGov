@@ -39,6 +39,8 @@ import {
   motivoEscadasInvalidas,
   motivoFontesInvalidas,
   comFilhos,
+  motivoTerritoriosInvalidos,
+  type Territorio,
   type RegraDaDemografia,
   type RegraDoEmprego,
   type ValorLei,
@@ -218,6 +220,15 @@ function carregarDemografia(): RegraDaDemografia {
   if (!(r.anos_crianca > 0))
     throw new Error("mundo/pops/pops.json › demografia: anos_crianca > 0");
   return r;
+}
+
+/** Estados declarados pelo país (passo F); sem arquivo, o país é um estado só. */
+function carregarTerritorios(pais: string): Territorio[] | undefined {
+  if (!temArquivoDoPais(pais, "estados")) return undefined;
+  const { estados } = arquivoPais<{ estados: Territorio[] }>(pais, "estados");
+  const motivo = motivoTerritoriosInvalidos(estados);
+  if (motivo) throw new Error(`país "${pais}" › estados.json: ${motivo}`);
+  return estados;
 }
 
 /** Nome de cada tipo de pop, para scripts e tela. */
@@ -607,6 +618,7 @@ export function criarPartida(
     pops: comFilhos(carregarPops(), inicial.parametros.pops),
     emprego: carregarEmprego(),
     demografia: carregarDemografia(),
+    territorios: carregarTerritorios(pais),
     grupos,
     potencias: lerPotencias(potencias),
     indiceReputacao: indiceDaReputacao(potencias),

@@ -20,6 +20,7 @@ import type {
   PopPais,
   RegraDaDemografia,
   RegraDoEmprego,
+  Territorio,
   TipoPop,
 } from "../populacao";
 import type { RegrasDoFisco } from "../fisco";
@@ -82,6 +83,8 @@ export interface Regras {
   emprego?: RegraDoEmprego;
   /** Ciclo da vida (motor/populacao, passo E); sem ela, ninguém nasce nem envelhece. */
   demografia?: RegraDaDemografia;
+  /** Estados do país (motor/populacao, passo F); sem eles, o país é um estado só. */
+  territorios?: Territorio[];
   /** Tribunais, juízes e quem escolhe (motor/judiciario); sem ele, não há Judiciário. */
   judiciario?: RegrasJudiciario;
   /** Papéis das leis de dinheiro (motor/fisco); sem ele, as regras não valem. */

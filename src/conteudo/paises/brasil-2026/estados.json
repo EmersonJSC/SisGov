@@ -1,0 +1,168 @@
+{
+  "versao": 1,
+  "fonte": "IBGE: população do Censo 2022; parte no campo do Censo 2010 (a última por estado).",
+  "estados": [
+    {
+      "id": "sp",
+      "nome": "São Paulo",
+      "pessoas": 0.218705,
+      "campo": 0.04
+    },
+    {
+      "id": "mg",
+      "nome": "Minas Gerais",
+      "pessoas": 0.101152,
+      "campo": 0.15
+    },
+    {
+      "id": "rj",
+      "nome": "Rio de Janeiro",
+      "pessoas": 0.079041,
+      "campo": 0.03
+    },
+    {
+      "id": "ba",
+      "nome": "Bahia",
+      "pessoas": 0.069635,
+      "campo": 0.28
+    },
+    {
+      "id": "pr",
+      "nome": "Paraná",
+      "pessoas": 0.056338,
+      "campo": 0.15
+    },
+    {
+      "id": "rs",
+      "nome": "Rio Grande do Sul",
+      "pessoas": 0.05358,
+      "campo": 0.15
+    },
+    {
+      "id": "pe",
+      "nome": "Pernambuco",
+      "pessoas": 0.044617,
+      "campo": 0.2
+    },
+    {
+      "id": "ce",
+      "nome": "Ceará",
+      "pessoas": 0.043288,
+      "campo": 0.25
+    },
+    {
+      "id": "pa",
+      "nome": "Pará",
+      "pessoas": 0.039988,
+      "campo": 0.32
+    },
+    {
+      "id": "sc",
+      "nome": "Santa Catarina",
+      "pessoas": 0.037477,
+      "campo": 0.16
+    },
+    {
+      "id": "go",
+      "nome": "Goiás",
+      "pessoas": 0.034768,
+      "campo": 0.1
+    },
+    {
+      "id": "ma",
+      "nome": "Maranhão",
+      "pessoas": 0.033389,
+      "campo": 0.37
+    },
+    {
+      "id": "pb",
+      "nome": "Paraíba",
+      "pessoas": 0.019551,
+      "campo": 0.25
+    },
+    {
+      "id": "am",
+      "nome": "Amazonas",
+      "pessoas": 0.019403,
+      "campo": 0.21
+    },
+    {
+      "id": "es",
+      "nome": "Espírito Santo",
+      "pessoas": 0.018861,
+      "campo": 0.17
+    },
+    {
+      "id": "mt",
+      "nome": "Mato Grosso",
+      "pessoas": 0.018024,
+      "campo": 0.18
+    },
+    {
+      "id": "rn",
+      "nome": "Rio Grande do Norte",
+      "pessoas": 0.016251,
+      "campo": 0.22
+    },
+    {
+      "id": "pi",
+      "nome": "Piauí",
+      "pessoas": 0.016104,
+      "campo": 0.34
+    },
+    {
+      "id": "al",
+      "nome": "Alagoas",
+      "pessoas": 0.015414,
+      "campo": 0.26
+    },
+    {
+      "id": "df",
+      "nome": "Distrito Federal",
+      "pessoas": 0.013888,
+      "campo": 0.03
+    },
+    {
+      "id": "ms",
+      "nome": "Mato Grosso do Sul",
+      "pessoas": 0.013592,
+      "campo": 0.14
+    },
+    {
+      "id": "se",
+      "nome": "Sergipe",
+      "pessoas": 0.010883,
+      "campo": 0.26
+    },
+    {
+      "id": "ro",
+      "nome": "Rondônia",
+      "pessoas": 0.007781,
+      "campo": 0.26
+    },
+    {
+      "id": "to",
+      "nome": "Tocantins",
+      "pessoas": 0.007436,
+      "campo": 0.21
+    },
+    {
+      "id": "ac",
+      "nome": "Acre",
+      "pessoas": 0.004087,
+      "campo": 0.27
+    },
+    {
+      "id": "ap",
+      "nome": "Amapá",
+      "pessoas": 0.003595,
+      "campo": 0.1
+    },
+    {
+      "id": "rr",
+      "nome": "Roraima",
+      "pessoas": 0.003152,
+      "campo": 0.24
+    }
+  ]
+}

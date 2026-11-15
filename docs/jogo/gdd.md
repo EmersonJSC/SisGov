@@ -898,8 +898,9 @@ O perfil é gerado da ficha da pessoa (bússola, origem, grupos, honestidade). N
 **Referências.** Pew: cidade ou campo separa muito a política (EUA). Nenhum jogo citado para estados. **ESTUDAR.**
 
 **No motor hoje**
-- ☐ R11.17 Pops por estado ("medido possível em 12/nov").
-- ◐ Campo e cidade só na Moradia.
+- ✅ Pops por estado (passo F, 15/nov): o país declara os estados em `estados.json` (parte das pessoas e parte no campo); os pops do campo seguem a gente do campo de cada estado, os outros a da cidade. Sem arquivo, o país é um estado só. Brasil com os 27 (Censo 2022; campo do Censo 2010).
+- ☐ Ninguém lê ainda: voto, energia e governadores por estado vêm com a Política. Sem tela.
+- ◐ Campo e cidade só na Moradia; divisão própria de um pop num estado ainda não existe (vale a nacional).
 
 **Em aberto**
 - Se entra na V1 ou depois, e o que depende disso (voto por estado, energia, governadores). Decidido em 15/nov: entra na fase dos pops.

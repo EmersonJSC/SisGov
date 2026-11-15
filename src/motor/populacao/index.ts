@@ -730,3 +730,67 @@ export function andarDemografia(
     }
   return mig;
 }
+
+/** Estado (ou província) do país, passo F: parte da população e parte dela no campo. */
+export interface Territorio {
+  id: string;
+  nome: string;
+  /** Parte da população do país (a soma dá 1). */
+  pessoas: number;
+  /** Parte da gente do estado que vive no campo (0 a 1). */
+  campo: number;
+}
+
+/** Por que a lista de estados não serve; null se serve. */
+export function motivoTerritoriosInvalidos(
+  territorios: Territorio[],
+): string | null {
+  if (territorios.length === 0) return "precisa de pelo menos um estado";
+  const ids = new Set<string>();
+  for (const t of territorios) {
+    if (ids.has(t.id)) return `estado "${t.id}" repetido`;
+    ids.add(t.id);
+    if (!(t.pessoas > 0)) return `estado "${t.id}": pessoas > 0`;
+    if (!(t.campo >= 0 && t.campo <= 1))
+      return `estado "${t.id}": campo entre 0 e 1`;
+  }
+  const soma = territorios.reduce((s, t) => s + t.pessoas, 0);
+  if (Math.abs(soma - 1) > 0.01)
+    return `as partes das pessoas somam ${soma.toFixed(3)}, precisam dar 1`;
+  return null;
+}
+
+/**
+ * Quantos de cada pop moram em cada estado. Os pops do campo seguem a gente
+ * do campo de cada estado; os outros seguem a da cidade. Sem estados, o país
+ * é um estado só ("pais"). A soma por pop dá o pop inteiro.
+ */
+export function popsPorTerritorio(
+  territorios: Territorio[] | undefined,
+  campo: string[],
+  pops: Record<string, Pop>,
+): Record<string, Record<string, number>> {
+  const lista = territorios?.length
+    ? territorios
+    : [{ id: "pais", nome: "", pessoas: 1, campo: 0 }];
+  const rural = lista.reduce((s, t) => s + t.pessoas * t.campo, 0);
+  const urbano = lista.reduce((s, t) => s + t.pessoas * (1 - t.campo), 0);
+  const doCampo = new Set(campo);
+  const total = lista.reduce((s, t) => s + t.pessoas, 0);
+  return Object.fromEntries(
+    lista.map((t) => {
+      const parteRural = rural > 0 ? (t.pessoas * t.campo) / rural : t.pessoas / total;
+      const parteUrbana =
+        urbano > 0 ? (t.pessoas * (1 - t.campo)) / urbano : t.pessoas / total;
+      return [
+        t.id,
+        Object.fromEntries(
+          Object.entries(pops).map(([id, p]) => [
+            id,
+            p.pessoas * (doCampo.has(id) ? parteRural : parteUrbana),
+          ]),
+        ),
+      ];
+    }),
+  );
+}

@@ -2,7 +2,11 @@
 // Estado e o que outros pops pagam.
 import { describe, expect, it } from "vitest";
 import { avancar, criarPartida, jogar, montarVisao, type Partida } from ".";
-import { consumoDasCestas } from "../motor";
+import {
+  consumoDasCestas,
+  motivoTerritoriosInvalidos,
+  popsPorTerritorio,
+} from "../motor";
 
 const base = (pais = "teste") => criarPartida(pais, 42, { semCongresso: true });
 const parte = (p: Partida, id: string) =>
@@ -211,5 +215,55 @@ describe("renda por fonte", () => {
       parte(sem, "aposentados") + 0.01,
     );
     expect(parte(cedo, "criancas")).toBeCloseTo(parte(sem, "criancas"), 3);
+  });
+});
+
+describe("estados", () => {
+  it("o Brasil tem 27 estados e a soma deles dá cada pop inteiro", () => {
+    const p = base("brasil-2026");
+    expect(p.regras.territorios).toHaveLength(27);
+    const porEstado = popsPorTerritorio(
+      p.regras.territorios,
+      p.regras.moradia?.pops_campo ?? [],
+      p.estado.pops,
+    );
+    for (const [id, pop] of Object.entries(p.estado.pops)) {
+      const total = Object.values(porEstado).reduce((s, e) => s + e[id], 0);
+      expect(total / pop.pessoas).toBeCloseTo(1, 9);
+    }
+  });
+
+  it("o pop do campo segue a gente do campo de cada estado", () => {
+    const p = base("brasil-2026");
+    const campo = p.regras.moradia?.pops_campo ?? [];
+    expect(campo.length).toBeGreaterThan(0);
+    const porEstado = popsPorTerritorio(
+      p.regras.territorios,
+      campo,
+      p.estado.pops,
+    );
+    const pa = (uf: string, id: string) =>
+      porEstado[uf][id] / p.estado.pops[id].pessoas;
+    // São Paulo tem mais gente; o Maranhão, mais campo.
+    const urbano = Object.keys(p.estado.pops).find((id) => !campo.includes(id))!;
+    expect(pa("sp", urbano)).toBeGreaterThan(pa("ma", urbano));
+    expect(pa("ma", campo[0]) / pa("ma", urbano)).toBeGreaterThan(
+      pa("sp", campo[0]) / pa("sp", urbano),
+    );
+  });
+
+  it("país sem estados é um estado só", () => {
+    const p = base("teste");
+    expect(p.regras.territorios).toBeUndefined();
+    const porEstado = popsPorTerritorio(undefined, [], p.estado.pops);
+    expect(Object.keys(porEstado)).toEqual(["pais"]);
+  });
+
+  it("estados que não somam 1 não servem", () => {
+    expect(
+      motivoTerritoriosInvalidos([
+        { id: "a", nome: "A", pessoas: 0.5, campo: 0.1 },
+      ]),
+    ).toContain("precisam dar 1");
   });
 });
