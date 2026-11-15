@@ -40,7 +40,7 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 | Sistema (GDD)          | ✅     | ◐      | ☐      |
 | ---------------------- | ------ | ------ | ------ |
-| 4. Partida e turno     | 9      | 2      | 1      |
+| 4. Partida e turno → Parte 1 nova (14/nov, abaixo) | — | — | — |
 | 5. Partido             | 0      | 0      | 5      |
 | 6. Governo             | 8      | 10     | 8      |
 | 7. Leis e programas    | 13     | 6      | 2      |
@@ -58,30 +58,139 @@ Congresso, mesa, mídia, programas e grupos sem um chamar o outro.
 
 ---
 
-## 4. Partida e turno
+## Parte 1. O jogo (refeita em 14/nov)
 
-> No GDD: 1.4 e 1.5.
+> Requisitos tirados do GDD, Parte 1 (1.1 a 1.5), e veredito da auditoria do motor de 14/nov. O texto completo (Entra, Sai, Aceite, Extremos, Depende de) e a prova de cada veredito estão em [`auditoria/`](auditoria/) (`parte-1-requisitos-*.md` e `parte-1-auditoria-*.md`). Substitui o antigo bloco 4 (R4.1 a R4.12). Veredito: CERTO · PELA METADE · ERRADO · FALTA · NÃO SE APLICA.
 
-- ✅ **R4.1** Turno de 2 meses; mandato de 4 anos = 24 turnos.
-- ✅ **R4.2** Passar o turno: efeitos chegam com o atraso declarado.
-- ✅ **R4.3** Escolher o país: `brasil-2026` (12/nov; 476 leis com o valor de hoje, 19 partidos com nome e cor, companhias inventadas). Dívida: juros comem 16% do PIB e a dívida vai de 78% a 107% em 24 turnos; calibrar na Economia.
-- ◐ **R4.4** A partida acaba quando o partido perde o poder federal (hoje só pela eleição; ver R6.13).
-- ✅ **R4.11** Mundo sai da planilha: o exportador antigo (da `leis.xlsx`) foi apagado em 13/nov; o novo lê a `gdd.xlsx` (abas Leis, Leis - degraus, Leis - efeitos), confere com o validador e escreve os JSONs (`npm run leis`, 14/nov).
-- ✅ **R4.12** Fatos do turno: mesa de fatos (memória curta, como RAM) em `motor/fatos`; cada etapa escreve, cada módulo pergunta o que precisa; fato gera fato; some em 1–3 turnos pelo tamanho. Hoje escrevem Congresso (lei aprovada/derrubada) e Política (base, eleição); a tela mostra como manchete no Resultado do turno (12/nov).
-- ✅ **R4.5** Criar o partido: nome e sigla; não escolhe lado. (12/nov; a sigla vira o id e não pode repetir a de outro partido.)
-- ✅ **R4.6** Montar a chapa entre pessoas de todos os partidos (nasce a coligação). (12/nov)
-- ✅ **R4.8** O lado do partido sai da chapa; o jogo nunca pede lado. (12/nov: média da bússola da chapa → 5 grupos que ele defende.)
-- ◐ **R4.9** (12/nov: feito o partido novo com 6% das cadeiras e o antigo governo na oposição ou na coligação. Falta a Aprovação começar alta.) Começo com história: o partido que governava vira oposição (ou entra na coligação, se o jogador quiser); partido novo, poucas cadeiras, presidente popular.
-- ✅ **R4.10** Tela de início em sequência: país → partido → chapa → governo → ministros → iniciar. (13/nov, no estilo da Art Bible.)
-- ☐ **R4.7** Placar final: tempo no poder e país deixado.
+### 1.1 Visão (CERTO 1, FALTA 4, PELA METADE 10)
 
-**Construção**
+| ID | Regra | R antigo | GDD | Veredito | Onde |
+| --- | --- | --- | --- | --- | --- |
+| JOGO-1.1-01 | Quando o partido do jogador deixa de ocupar o poder federal, inclusive quando o vice de outro partido assume a Presidência, o motor encerra a partida e abre o placar final. | R4.4 | L151–L152 | PELA METADE | `motor/turno/etapas/eleicao.ts:311`, `motor/turno/index.ts:84-85` |
+| JOGO-1.1-02 | Ao fim de cada turno, o motor grava no histórico do governo o valor de cada índice, o que melhorou, o que foi mais atacado, e os pops que mais gostaram e que mais odiaram. | R4.7 | L153–L153 | FALTA | `motor/turno/index.ts:42` |
+| JOGO-1.1-03 | A cada 4 anos de partida (24 turnos), o motor monta o resumão do histórico e o entrega como dado à tela. | R4.7 | L153–L153 | FALTA | `motor/eleicao/index.ts:26`, `motor/governo/index.ts:140` |
+| JOGO-1.1-04 | Ao fim da partida, o motor entrega como placar final o histórico completo do governo, sem nota única. | R4.7 | L153–L153 | FALTA | `motor/eleicao/index.ts:35-49`, `tela/mapa/ResultadoDoTurno.tsx:116` |
+| JOGO-1.1-05 | Quando o presidente, um ministro ou um candidato deixa o cargo, o partido do jogador segue como o jogador e a partida continua enquanto ele ocupar o poder federal. | novo | L136–L136 | FALTA | `motor/judiciario/index.ts:604`, `motor/governo/index.ts:187-217` |
+| JOGO-1.1-06 | Quando uma pessoa do partido age (erra, brilha, trai ou morre), o motor decide pela ficha dela e pelo estado do país. | novo | L129–L129 | PELA METADE | `motor/governo/ministerios.ts:82-85`, `motor/governo/orgaos.ts:155-159` |
+| JOGO-1.1-07 | Quando uma lei vai a voto, o resultado sai de grupos e mídia juntos, com o Congresso como voz dos grupos, e o jogo não deixa a aprovação difícil a ponto de travar o jogador. | R12 (Congresso), sem número preciso | L128–L128 | PELA METADE | `motor/politica/voto.ts:148-200`, `voto.ts:166-170` |
+| JOGO-1.1-08 | Quando um pop avalia uma lei, o gosto sai do efeito dela no bolso do pop (peso maior), da distância na bússola e da memória, e nenhuma lei é neutra na bússola. | novo | L132–L132 | PELA METADE | `motor/grupos/index.ts:157-179`, `governo/index.ts:140-150` |
+| JOGO-1.1-09 | Quando o jogador passa o turno sem propor nada, o motor ainda abre e fecha empresas, a mídia reage e os outros países mudam de posição. | novo | L131–L131 | PELA METADE | `motor/turno/index.ts:79`, `etapas/economia.ts:104` |
+| JOGO-1.1-10 | Quando o Estado financia uma obra, o prédio só é construído pela construção civil da economia, nunca pelo Estado direto. | novo | L137–L137 | PELA METADE | `motor/turno/etapas/obras.ts:21-42`, `motor/saneamento/index.ts:159-170` |
+| JOGO-1.1-11 | Quando um índice piora, o motor guarda junto a causa (lei, fato ou índice que empurrou), para a tela mostrar por quê. | novo | L141–L141 | PELA METADE | `motor/efeitos/index.ts:15-25`, `partida/tiposVisao.ts:277-279` |
+| JOGO-1.1-12 | Toda lei com valor é entregue ao jogador como régua com número, e não como duas ou três opções em palavras. | R7.1 | L146–L146 | PELA METADE | `motor/leis/tipos.ts:100-147`, `motor/leis/validar.ts:344-346` |
+| JOGO-1.1-13 | Quando o jogador escolhe o país, o motor oferece as 10 maiores economias, com empresas, pessoas e direitos autorais reais de fora. | R4.3 | L154–L154 | PELA METADE | `partida/paises.ts:36-39` |
+| JOGO-1.1-14 | Quando a chapa é montada, o motor calcula o lado do partido pela média da bússola das pessoas da chapa, sem o jogador escolher lado. | R4.8 | L156–L156 | CERTO | `partida/comeco.ts:80-88`, `motor/pessoas/ministros.ts:105-118` |
+| JOGO-1.1-15 | Quando o jogador foca uma área na campanha, os pops que priorizam essa área pesam mais na intenção de voto dele. | novo | L147–L147 | PELA METADE | `motor/eleicao/promessa.ts:53-68`, `turno/etapas/eleicao.ts:189-206` |
 
-- Dados: país em `conteudo/paises/<id>/` (estado inicial, leis vigentes, Congresso, ministérios, programas de antes, rótulos). Brasil 2026 e Brasil 2003 são países diferentes.
-- Estado: `turno`, `fatos` do último turno.
-- Módulo: `turno` só chama os módulos em ordem e junta os fatos; regra de cada coisa fica no módulo dela (hoje o `turno` tem ~2.500 linhas com regra dentro: tirar aos poucos, cada vez que um módulo novo nascer).
-- Tela: menu de início em telas curtas; o turno mostra os fatos como manchetes.
-- Teste: mesma semente e mesmos pedidos, mesma partida; todo fato tem tipo conhecido.
+### 1.2 As 3 mecânicas (CERTO 1, FALTA 2, NÃO SE APLICA 1, PELA METADE 13)
+
+| ID | Regra | R antigo | GDD | Veredito | Onde |
+| --- | --- | --- | --- | --- | --- |
+| JOGO-1.2-01 | Em cada turno, a Sociedade manda apoio e demanda à Máquina pública, a Máquina pública devolve leis e serviços, e a reação da Sociedade vira entrada do turno seguinte. | novo | L186–L189 | NÃO SE APLICA | `motor/turno/index.ts:54-76` |
+| JOGO-1.2-02 | Ao fim do turno, os pops trabalham, consomem e investem, e isso entra como oferta de trabalho, demanda e capital na Economia. | novo | L226–L226 | PELA METADE | `motor/populacao/index.ts:121-170`, `etapas/economia.ts:102-150` |
+| JOGO-1.2-03 | Ao fim do turno, as empresas pagam salário, abrem ou fecham vagas e definem preços, e o pop recebe a renda e paga o preço. | novo | L227–L227 | PELA METADE | `motor/mercado/demanda.ts:54-66`, `motor/mercado/emprego.ts:181` |
+| JOGO-1.2-04 | Ao fim do turno, a Economia gera os impostos que entram nas contas da Máquina pública, na medida das leis de imposto em vigor. | novo | L228–L228 | CERTO | `motor/turno/etapas/economia.ts:405-413`, `motor/calculos/renda.ts:23-33` |
+| JOGO-1.2-05 | Ao fim do turno, a lei em vigor cobra, gasta ou regula, e o resultado entra na Economia como imposto, verba ou regra. | novo | L229–L229 | PELA METADE | `etapas/economia.ts:359-376`, `etapas/populacao.ts:30-57` |
+| JOGO-1.2-06 | Ao fim do turno, a instituição entrega serviço, transferência de renda e direito ao pop, na medida da verba que recebeu. | novo | L230–L230 | PELA METADE | `motor/governo/orgaos.ts:121-123`, `rendimento.test.ts:48` |
+| JOGO-1.2-07 | Ao fim do turno, a opinião de cada pop vira voto, apoio e protesto, e chega à Máquina pública como pressão sobre leis e eleição. | novo | L231–L231 | PELA METADE | `motor/eleicao/votos.ts:30-53`, `etapas/politica.ts:21-30` |
+| JOGO-1.2-08 | Quando o motor calcula a opinião de um pop, soma bolso (peso maior), bússola (peso menor) e memória. | novo | L207–L207 | PELA METADE | `motor/grupos/index.ts:228-247` |
+| JOGO-1.2-09 | Toda lei declara o canal por onde chega ao pop (renda, emprego, preço, serviço ou direito) e o motor aplica o efeito por esse canal. | R7.12 | L214–L214 | PELA METADE | `motor/leis/validar.ts:119-137`, `partida/visao.ts:143` |
+| JOGO-1.2-10 | O motor guarda, para todo número que o jogador sente, de onde ele veio (lei, fato ou índice), e entrega isso à tela. | novo | L217–L217 | PELA METADE | `motor/efeitos/index.ts:15-25` |
+| JOGO-1.2-11 | A lei declara onde mexe no dinheiro e na vida; o motor calcula o gosto de cada pop a partir disso e da bússola, e a lei não guarda lista de quem a apoia. | novo | L215–L215 | PELA METADE | `motor/leis/tipos.ts:80-177`, `motor/grupos/index.ts:157-179` |
+| JOGO-1.2-12 | Os módulos de população, leis e economia rodam um turno completo com os outros desligados, e as ligações entre eles vêm do conteúdo das leis. | novo | L219–L219 | PELA METADE | `motor/turno/regras.ts:56-95`, `etapas/mundo.ts:38` |
+| JOGO-1.2-13 | Durante a partida, uma organização nasce de um grupo e passa a existir com nome, líder e ação, como camada separada de pop e de grupo. | novo | L220–L220 | FALTA |  |
+| JOGO-1.2-14 | Quando a mídia atua, ela lê um fato do turno que já existe e muda como ele chega ao pop, sem criar fato novo. | novo | L195–L195 | PELA METADE | `motor/midia/jornal.ts:103-114`, `motor/midia/index.ts:34-57` |
+| JOGO-1.2-15 | Quando comércio, preços de fora ou outros países mudam, o motor aplica o efeito na Sociedade, na Economia e na Máquina pública sem tratar o Mundo como uma das três mecânicas. | novo | L194–L194 | PELA METADE | `motor/mercado/preco.ts:70-88`, `demanda.ts:54-66` |
+| JOGO-1.2-16 | Quando uma lei muda o lucro de uma empresa, o preço da ação muda, o patrimônio dos pops que têm a ação muda, e esses pops reagem no voto e no investimento. | novo | L211–L211 | FALTA | `motor/calculos/index.ts:34-60` |
+| JOGO-1.2-17 | Toda lei é guardada numa instituição, e a instituição fica com um ministro responsável. | R7.13 | L197–L197 | PELA METADE | `motor/leis/tipos.ts:87`, `validar.ts:49-50` |
+
+### 1.3 Princípios (CERTO 2, ERRADO 2, FALTA 2, NÃO SE APLICA 3, PELA METADE 14)
+
+| ID | Regra | R antigo | GDD | Veredito | Onde |
+| --- | --- | --- | --- | --- | --- |
+| JOGO-1.3-01 | Toda ação do Estado que mexe em dinheiro, regra ou serviço é executada por uma lei em vigor; sem lei, o Estado não faz. | novo | L252–L252 | PELA METADE | `motor/turno/regras.ts:31-34`, `etapas/economia.ts:409` |
+| JOGO-1.3-02 | Toda decisão de governo do jogador é uma lei com bolha no mapa, sem painel de gestão; o painel só mostra dados. | novo | L253–L253 | NÃO SE APLICA |  |
+| JOGO-1.3-03 | Decisões do partido (chapa, ministros, coligação, campanha) são escolhas curtas, e o que os outros propõem chega como papel na mesa do jogador. | R17.6 | L253–L253 | PELA METADE | `motor/mesa/index.ts:8-52` |
+| JOGO-1.3-04 | Quando o presidente toma uma decisão (Ato ou Operação) pelo clique num país ou companhia, ela tem custo, tempo e reação, e só vale dentro do que as leis permitem. | R7.16 | L254–L254 | PELA METADE | `motor/turno/etapas/congresso.ts:264-270`, `politica/constantes.ts:39-40` |
+| JOGO-1.3-05 | Cada tema é dividido em leis menores, e cada lei tem uma escolha de verdade; o molde não aceita lei de controle único com efeito grande. | R7.6 | L255–L255 | FALTA | `motor/leis/validar.ts:163-164` |
+| JOGO-1.3-06 | Toda lei declara ganhadores e perdedores entre os pops e as consequências no tempo, e o texto e a cor da lei descrevem sem chamar de boa ou ruim. | novo | L256–L256 | FALTA | `motor/leis/tipos.ts:80-177`, `grupos/index.ts:157-179` |
+| JOGO-1.3-07 | Os textos entregues ao jogador não rotulam lei, ator ou resultado como de direita ou de esquerda; o lado aparece só como resultado nos dados. | R4.8 | L256–L256 | NÃO SE APLICA | `motor/fatos/index.ts:59` |
+| JOGO-1.3-08 | Todo real gasto, cobrado, desviado ou ganho fora da lei, inclusive no ilegal, vira renda de alguém, circula, fica guardado ou sai do país no mesmo turno. | R10.7 | L257–L257 | ERRADO | `motor/contas/index.ts:85-94`, `motor/turno/index.ts:99-101` |
+| JOGO-1.3-09 | Quando dinheiro é desviado, o motor registra quem recebeu e deixa um rastro que pode virar fato do turno. | R6.21 | L257–L257 | PELA METADE | `motor/governo/index.ts:262-270`, `orgaos.ts:22` |
+| JOGO-1.3-10 | Todo dinheiro que entra no Estado entra por lei ou por bem do Estado, todo gasto sai por lei ou obrigação, e gastar acima da receita exige dívida ou emissão. | R10.1 | L257–L257 | PELA METADE | `motor/contas/index.ts:60-82`, `regras.ts:31-32` |
+| JOGO-1.3-11 | Todo efeito de lei declara o atraso em turnos e chega inteiro ao fim dele, andando do valor antigo ao novo nesse prazo (GDD 1.5). | R4.2 | L258–L258 | CERTO | `motor/efeitos/index.ts:28-31` |
+| JOGO-1.3-12 | Toda escolha do jogador muda ao menos um dado visível ao jogador, e passar o turno sem agir é uma escolha válida que o jogador pode fazer sem obrigação. | novo | L259–L259 | PELA METADE | `motor/turno/index.ts:79-82`, `partida/partida.test.ts:27` |
+| JOGO-1.3-13 | Frase, manchete e evento são gerados a partir dos valores do turno, e nunca de um texto fixo sem dado por trás. | R7.5 | L260–L260 | PELA METADE | `partida/jornal.ts:42-61` |
+| JOGO-1.3-14 | O validador aceita lei inventada se o número está na ordem de grandeza do país, e não exige precisão de dado empírico. | novo | L261–L261 | PELA METADE | `validar.ts:189-200`, `valor.ts:11-12` |
+| JOGO-1.3-15 | O motor só lê leis, índices, partidos e mídias como dados do mundo, e o país declara apenas o estado de partida e os rótulos locais. | R4.11 | L262–L262 | CERTO | `etapas/economia.ts:498`, `politica/sessao.ts:50` |
+| JOGO-1.3-16 | Quando o jogador propõe uma lei, o Congresso a barra só se for exorbitante; fora isso, o que segura é a consequência, e aprovar não pode travar o jogo. | R12.18 | L263–L263 | ERRADO | `motor/politica/pauta.ts:122-123`, `sessao.ts:174-185` |
+| JOGO-1.3-17 | A ação de uma pessoa é calculada pela ficha e pelo estado do país, e não por um roteiro escrito. | novo | L264–L264 | PELA METADE | `ministerios.ts:82-85`, `orgaos.ts:155-160` |
+| JOGO-1.3-18 | Toda lei tem um canal (renda, emprego, preço, serviço ou direito) até o pop, e o validador recusa lei sem canal. | R7.12 | L265–L265 | PELA METADE | `validar.ts:120-121` |
+| JOGO-1.3-19 | A lei não guarda condição do tipo "se pobreza > X"; o efeito dela muda de sentido pela renda do pop contra a conta dele. | novo | L266–L266 | PELA METADE | `motor/leis/valor.ts:28-38`, `populacao.ts:30-57` |
+| JOGO-1.3-20 | A régua de cada lei vai de "nada" a "mais" em um único lado, e cada lado da Bússola tem leis próprias. | novo | L267–L267 | PELA METADE | `leis/valor.ts:20-22`, `leis/colisao.ts:58-62` |
+| JOGO-1.3-21 | O texto da lei e de cada opção traz um exemplo do dia a dia, sem jargão, mantendo a régua com número. | R7.5 | L268–L268 | NÃO SE APLICA | `partida/visao.ts:174-248` |
+| JOGO-1.3-22 | Cada decisão do jogador tem ao menos um efeito próprio que o jogador sente, e o resultado não depende de um traço de personalidade do jogador. | novo | L269–L269 | PELA METADE | `motor/efeitos/index.ts:15-25` |
+| JOGO-1.3-23 | Quando o Congresso está cheio, a lei nova entra na fila e atrasa, e o motor nunca proíbe o jogador de propor. | R12.18 | L270–L270 | PELA METADE | `motor/politica/pauta.ts:96-105`, `constantes.ts:45` |
+
+### 1.4 A partida (CERTO 20, ERRADO 1, FALTA 3, PELA METADE 5)
+
+| ID | Regra | R antigo | GDD | Veredito | Onde |
+| --- | --- | --- | --- | --- | --- |
+| JOGO-1.4-01 | No começo da partida, o jogador escolhe um país entre os declarados em `conteudo/paises/<id>/`, e o estado inicial, as leis vigentes, o Congresso, os ministérios, os programas de antes e os rótulos vêm dele. | R4.3 | L277–L280, L313 | CERTO | `partida/paises.ts:18`, `paises.ts:27` |
+| JOGO-1.4-02 | Na criação do partido, o jogador informa nome e sigla e não escolhe lado, posição nem bússola. | R4.5 | L280 | CERTO | `partida/comeco.ts:22-23`, `comeco.ts:57-58` |
+| JOGO-1.4-03 | A sigla do partido do jogador vira o id dele, e a criação recusa uma sigla igual à de outro partido do país. | R4.5 | L308 | CERTO | `comeco.ts:43-49`, `comeco.ts:62-63` |
+| JOGO-1.4-04 | Na montagem da chapa, o jogador preenche as vagas de presidente do partido, candidato a presidente e vice com pessoas de qualquer partido do país. | R4.6 | L281 | CERTO | `comeco.ts:25`, `comeco.ts:64-67` |
+| JOGO-1.4-05 | Cada partido de onde sai uma pessoa da chapa, que não seja o do jogador, entra na coligação do jogador. | R4.6 | L281 | CERTO | `comeco.ts:101-103`, `comeco.ts:120-126` |
+| JOGO-1.4-06 | Quando a chapa fica pronta, a média da bússola das pessoas dela define o lado do partido e os 5 grupos que ele defende. | R4.8 | L307 | CERTO | `comeco.ts:104`, `motor/pessoas/ministros.ts:23` |
+| JOGO-1.4-07 | No começo da partida, o partido do jogador entra no Congresso com 6% das cadeiras. | R4.9 | L297, L300 | CERTO | `motor/pessoas/partido.ts:10`, `partido.ts:73-76` |
+| JOGO-1.4-08 | No começo da partida, o partido que governava o país vai para a oposição, e o jogador pode, nesse momento, pôr esse partido na coligação. | R4.9 | L297, L299, L300 | CERTO | `comeco.ts:119`, `comeco.ts:124` |
+| JOGO-1.4-09 | No começo da partida, a Aprovação do presidente começa no valor que o país declara no estado de partida, sem regra de lua de mel à parte. | R4.9 | L297, L298 | ERRADO | `variaveis.json:597`, `partida/index.ts:435-437` |
+| JOGO-1.4-10 | Antes das caixas, o jogador escolhe o tamanho do governo em um de quatro degraus (Enxuto, Clássico, Do país, Inchado), e o degrau define quantas caixas o governo tem. | R6.25 | L282, L301 | CERTO | `partida/gabinete.ts:19-24`, `gabinete.ts:53-64` |
+| JOGO-1.4-11 | Depois do tamanho, cada cadeira de ministro recebe uma pessoa sorteada com base na chapa. | R6.26 | L301 | CERTO | `partida/index.ts:292-314`, `motor/pessoas/ministros.ts:44-71` |
+| JOGO-1.4-12 | Para cada cadeira, o jogador troca o ministro sorteado por uma de três cartas (o técnico, o aliado, o do seu partido) ou por qualquer pessoa da lista. | R6.26 | L301 | CERTO | `tela/inicio/EtapaMinisterios.tsx:127-140`, `EtapaMinisterios.tsx:243` |
+| JOGO-1.4-13 | A partida só inicia depois que todas as cadeiras de ministro estão preenchidas, e o passo "Governo" da ordem de construção inclui esses ministros. | R6.26 | L302 | CERTO | `motor/governo/index.ts:82-83`, `partida/index.ts:287` |
+| JOGO-1.4-14 | A montagem do começo exige os passos nesta ordem: país, partido, chapa, governo, ministros, iniciar, e cada passo lê o resultado do anterior. | R4.10 | L306 | PELA METADE | `TelaInicio.tsx:32-39`, `TelaInicio.tsx:98-105` |
+| JOGO-1.4-15 | A duração do mandato do presidente é a que a lei do país declara, em turnos, e o fim dele marca a eleição. | R4.1 | L304 | CERTO | `motor/eleicao/index.ts:62-75`, `turno/etapas/eleicao.ts:323-326` |
+| JOGO-1.4-16 | Quando o partido vence a eleição no fim do mandato, começa um novo mandato com desgaste maior que o anterior. | R4.4 | L304 | PELA METADE | `turno/etapas/eleicao.ts:296-312`, `inicio.ts:315` |
+| JOGO-1.4-17 | A cada turno de governo, o desgaste do partido sobe. | novo | L286 | CERTO | `turno/etapas/politica.ts:35`, `motor/eleicao/index.ts:26` |
+| JOGO-1.4-18 | Quando o partido do jogador deixa de governar o país, a partida termina e não há vitória final; se o vice de outro partido assume a Presidência, o partido deixou de governar e a partida acaba. | R4.4 | L305, L338 | PELA METADE | `turno/etapas/eleicao.ts:311`, `turno/index.ts:87-88` |
+| JOGO-1.4-19 | No fim da partida, o placar entrega quanto tempo o partido governou e o histórico do país que ele deixou, sem nota única (decisão do autor, GDD L152). | R4.7 | L305, L338 | FALTA | `turno/index.ts:101`, `tela/mapa/ResultadoDoTurno.tsx:116` |
+| JOGO-1.4-20 | Em cada turno, o jogador propõe quantas leis quiser, e nenhum contador de pontos de ação limita o que ele pode pedir. | novo | L310 | CERTO | `motor/politica/pauta.ts:26-40`, `pauta.ts:94-100` |
+| JOGO-1.4-21 | A partida salva sozinha a cada turno, e o menu do brasão permite salvar, carregar e recomeçar. | R17.3 | L292, L309 | CERTO | `tela/App.tsx:74-79`, `App.tsx:19-20` |
+| JOGO-1.4-22 | Quando um módulo faz algo que os outros devem saber, ele deixa um fato do turno, e os módulos que se importam o leem sem chamar o módulo de origem. | R4.12 | L290, L315 | PELA METADE | `congresso.ts:153`, `politica.ts:36-40` |
+| JOGO-1.4-23 | Ao iniciar, a partida entrega o partido e a chapa ao Partido e à Política, que os usam para a base de grupos e a posição na bússola. | novo | L314 | CERTO | `partida/comeco.ts:93-144`, `partida/index.ts:591-593` |
+| JOGO-1.4-24 | Ao iniciar, a partida entrega o governo e os ministros a Leis, que os usa como instituições, ministros e caixas. | novo | L314 | CERTO | `partida/index.ts:556-562`, `index.ts:608` |
+| JOGO-1.4-25 | Cada país declara em `conteudo/paises/<id>/` o estado inicial, as leis vigentes, o Congresso, os ministérios, os programas de antes e os rótulos, e o motor não contém nome de lei, partido ou país. | R4.3 | L313 | CERTO | `partida/index.ts:120` |
+| JOGO-1.4-26 | No começo da partida, o histórico do país (golpes, crises, guerras, governos, empresas e mídias tradicionais) vem do que o país declara, e os geradores criam o que ele não declara, sem empresa real. | novo | L294 | PELA METADE | `partida/index.ts:317-336`, `index.ts:339-348` |
+| JOGO-1.4-27 | Cada pessoa aparece com o perfil de rede social dela, sem rótulo de lado, e a rede é uma só, sem nome, e resume as redes do país. | novo | L284, L285, L303 | CERTO | `partida/perfil.ts:66-77`, `perfil.ts:26` |
+| JOGO-1.4-28 | Quando o jogador usa o botão Espiar sobre uma pessoa, as informações pessoais que aparecem dependem da Verba de inteligência e dos Poderes da agência. | novo | L293, L303 | FALTA | `motor/turno/regras.ts:84-91` |
+| JOGO-1.4-29 | Cada Espiar fere a privacidade da pessoa e grava uma linha no registro, que pode vazar. | novo | L293, L303 | FALTA | `motor/governo/tipos.ts:16` |
+
+### 1.5 O turno (CERTO 11, FALTA 1, PELA METADE 9)
+
+| ID | Regra | R antigo | GDD | Veredito | Onde |
+| --- | --- | --- | --- | --- | --- |
+| JOGO-1.5-01 | Cada turno corresponde a 2 meses de calendário do jogo, e um ano tem 6 turnos. | R4.1 | L347 | CERTO | `motor/turno/comum.ts:5`, `partida/visao.ts:62` |
+| JOGO-1.5-02 | `avancarTurno(regras, estado, pedidos)` devolve um novo estado, e, com a mesma semente e os mesmos pedidos, devolve sempre o mesmo estado. | novo | L348 | CERTO | `motor/turno/index.ts:82-110`, `economia.ts:104` |
+| JOGO-1.5-03 | Ao passar o turno, o estado do turno anterior continua igual, e o motor devolve outro estado. | novo | L364 | CERTO | `motor/turno/index.ts:90-94`, `congresso.ts:147-154` |
+| JOGO-1.5-04 | A semente e a posição do sorteio ficam guardadas no estado, e cada sorteio do turno avança a posição dentro do novo estado. | novo | L348, L364 | PELA METADE | `motor/estado/index.ts:56`, `motor/acaso/index.ts:5` |
+| JOGO-1.5-05 | O motor roda as etapas do turno nesta ordem: Congresso, Leis novas, Efeitos, Economia real, Preços e juros, Contas, Moradia, Jogabilidade, Pops e grupos, Governo, Programas, Política, Eleição, Mídia, Invariantes. | novo | L360, L375 | PELA METADE | `motor/turno/index.ts:57-79`, `congresso.ts:150` |
+| JOGO-1.5-06 | Uma lei do mundo que não está na lista de leis vigentes do país não arrecada, não gasta e não mexe em índice até ser legislada. | novo | L365 | CERTO | `turno/inicio.ts:279`, `efeitos/index.ts:48` |
+| JOGO-1.5-07 | Quando um pedido legisla uma lei, os efeitos dela andam de zero até o valor novo, no tempo que cada efeito declara. | novo | L365 | CERTO | `efeitos/index.ts:72-101`, `efeitos/index.ts:27-31` |
+| JOGO-1.5-08 | Cada efeito de lei declara em quantos turnos chega inteiro, e o efeito só chega por inteiro depois desse prazo. | R4.2 | L366 | CERTO | `motor/leis/tipos.ts:77`, `efeitos/index.ts:41` |
+| JOGO-1.5-09 | Quando o atraso declarado de um efeito é zero, o efeito chega inteiro no turno seguinte ao do pedido. | R4.2 | L366 | CERTO | `efeitos/index.ts:29`, `congresso.ts:115-128` |
+| JOGO-1.5-10 | O módulo `turno` chama cada módulo na ordem e junta os fatos que eles deixam, e a regra de cada coisa fica no módulo dela. | novo | L367, L375 | PELA METADE | `turno/index.ts:95`, `etapas/eleicao.ts:259-271` |
+| JOGO-1.5-11 | Cada fato do turno fica na memória de 1 a 3 turnos, conforme o tamanho dele, e depois some. | R4.12 | L368 | CERTO | `motor/fatos/index.ts:48`, `fatos/index.ts:77` |
+| JOGO-1.5-12 | Para cada índice, o motor entrega o valor de 8 meses atrás (4 turnos), e a tendência é de alta ou de queda quando a diferença for de 2 pontos ou mais, e estável quando for menor. | R17.18 | L369 | PELA METADE | `partida/visao.ts:478`, `saudeDosIndices.ts:54-55` |
+| JOGO-1.5-13 | A aprovação de uma lei vem da conta de votos do Congresso e do apoio dos grupos, sem nenhum sorteio, e passa quem tem votos. | R12.11 | L355, L370 | CERTO | `motor/politica/voto.ts:1`, `voto.ts:253` |
+| JOGO-1.5-14 | Na votação do Congresso, a lei que o Congresso considera exorbitante cai, mesmo com o jogador propondo. | R12.12 | L355 | PELA METADE | `voto.ts:255-256`, `pauta.ts:134-138` |
+| JOGO-1.5-15 | Quando o jogador propõe uma lei e depois desiste dela, o Congresso perde paciência (propor a mesma lei de novo fica mais difícil) e o presidente perde Aprovação. | novo | L371 | FALTA | `motor/turno/regras.ts:84-91`, `politica/constantes.ts:32-34` |
+| JOGO-1.5-16 | Para cada lei, o motor entrega o prazo, em turnos, do efeito mais longo dela, para que a tela mostre "efeito em N turnos". | novo | L366, L372 | PELA METADE | `partida/previa.ts:356-380`, `previa.ts:364` |
+| JOGO-1.5-17 | Antes de passar o turno, o jogador entrega ao motor pedidos de propor leis, trocar ministro, negociar com aliados e, em tempo de campanha, fazer campanha. | novo | L351–L356 | CERTO | `motor/turno/regras.ts:84-91`, `etapas/governo.ts:68` |
+| JOGO-1.5-18 | Antes de propor uma lei, o motor entrega os grupos que ganham e os grupos que perdem com ela, para a tela mostrar. | novo | L353 | CERTO | `partida/previa.ts:380-395`, `partida/index.ts:700` |
+| JOGO-1.5-19 | Em cada papel da mesa, o jogador escolhe assinar, vetar, recusar, encaminhar ou deixar na pilha, e a escolha entra nos pedidos do turno. | R17.2 | L354 | PELA METADE | `motor/mesa/index.ts:51`, `pauta.ts:44-80` |
+| JOGO-1.5-20 | Ao passar o turno, os efeitos chegam, a mídia reage aos fatos do turno e novos fatos (escândalo, choque de preço, atentado) podem acontecer. | novo | L356, L389 | PELA METADE | `etapas/midia.ts:9-16`, `motor/midia/jornal.ts:46-57` |
+| JOGO-1.5-21 | Na última etapa, o motor confere as invariantes do estado novo e avisa se alguma falha. | novo | L360, L375 | PELA METADE | `etapas/invariantes.ts:112-129`, `turno/index.ts:97-98` |
 
 ## 5. O partido
 

@@ -11,6 +11,7 @@ Atualizado em 14/nov/2026, quando o GDD foi refeito por mecânica.
 | [`jogo/plano-de-desenvolvimento.md`](jogo/plano-de-desenvolvimento.md) | Ordem de construir |
 | [`jogo/arquitetura.md`](jogo/arquitetura.md) | Como o código está montado |
 | [`jogo/indices-avaliacao.md`](jogo/indices-avaliacao.md) | Registro dos índices avaliados |
+| [`jogo/auditoria/`](jogo/auditoria/) | Requisitos por Parte do GDD e veredito do motor (Parte 1 em 14/nov) |
 | [`jogo/codigo-a-conferir.md`](jogo/codigo-a-conferir.md) | Lista de conferência do código |
 | [`jogo/estudos/`](jogo/estudos/) | Pesquisas e referências |
 | `jogo/gdd.xlsx` | O que se constrói (instituições, leis, degraus, efeitos) |

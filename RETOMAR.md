@@ -7,36 +7,16 @@ Reescrito do zero a cada rodada; o anterior vai para o topo de
 
 ## Onde está
 
-**GDD refeito por mecânica (14/nov), NÃO commitado:** [docs/jogo/gdd.md](docs/jogo/gdd.md) junta o GDD
-antigo, o mapa de mecânicas, as regras das leis, requisitos, `.md` do motor, planilhas, estudos e memórias.
-3 mecânicas no meio (Sociedade, Economia, Máquina pública); em volta Política, Mídia, Mundo, Tela, Narrativas. Antes de
-falar de uma mecânica, ler a parte dela. Substituídos foram para `docs/historico/`. Rascunhos, conflitos
-decididos e fontes em `docs/jogo/gdd-novo/` (apagar depois que o autor ler o GDD; o `08-conflitos.md` tem
-as decisões de 14/nov). Ordem decidida: Economia (dinheiro: bolsos e caminho) → Opinião (bolso vira
-opinião) → revisão das leis por instituição (GDD 4.14, pelas regras de todas as mecânicas que a lei toca). Nomes das mecânicas e peças decididos em 14/nov (estudo em `docs/jogo/estudos/nomes-das-mecanicas-14nov.md`).
-Judiciário commitado (9a15eb7c); base das leis commitada (f43df83a).
-Judiciário commitado (9a15eb7c); base das leis commitada (f43df83a).
+**Requisitos a partir do GDD (14/nov, frente atual):** plano aprovado em `docs/jogo/prompt-requisitos.md`
+(com os 5 ajustes de 14/nov: nomes novos, autor lê a Parte antes, onda 1 commitada antes da auditoria,
+lotes de ~200 linhas com Fases 1+2 juntas, commit só com a palavra do autor). Rascunhos em
+`docs/jogo/requisitos-rascunho/` (fora dos commits, apagar no fim): `00-ficha.md`, `cortar.py` (corta o GDD
+por seção sem o "No motor hoje"; rodar de novo se o GDD mudar), `lotes.json` (26 lotes), `instrucoes-fase12.md`.
+**Parte 1 fechada (14/nov):** 105 requisitos (35 certos, 51 pela metade, 3 errados, 12 faltam, 4 não se aplicam) no `requisitos.md` (no lugar do antigo bloco 4), texto completo e prova em `docs/jogo/auditoria/`, "No motor hoje" da Parte 1 do GDD trocado, duplicados em `codigo-a-conferir.md`. Próxima: Parte 4 (Máquina pública), 5 lotes, só quando o autor chamar e depois de ele ler a Parte 4. **Custo real:** ~95 mil tokens por lote nos requisitos e ~240 mil na auditoria; a Parte 1 gastou ~17% da cota. O autor pediu para ir aos poucos: uma Parte por vez, só quando ele chamar. Ordem: 1 → 4 → 3 → 2 → 5 → 6 → 7 → 9 → 8.
 
-**Onda 1 quase pronta, NÃO commitada** (plano em `~/.claude/plans/tidy-spinning-blum.md`, aprovado 14/nov):
-- Regras de classificação no GDD, Parte 4 (tipo, jeito, canal; nada = não legislada; juntar/separar).
-- Validador cobra `jeito` nas leis triadas, níveis de 3 a 5, degrau "nada" (exceto essencial e canal regra).
-- Motor: IR em 3 leis por estrato (`calculo.estrato`); 7 bases novas (patrimônio, aplicações, imóvel,
-  capital, movimentação, folha, bancos); `encolhe`, `escala_gasto`, `para.pesos`, `arrecada`; módulo
-  `src/motor/fisco` (cobertura da transferência, juros com BC, regra fiscal com punição e trava,
-  pisos, conta da previdência); Lei com prazo (Anistia fiscal) e Ato (Renegociação/calote).
-- Dados: 88 leis da onda reescritas; saíram imposto-renda, progressividade, faixa sem IR, monopólio,
-  renda básica, fundo soberano (virou degrau do Superávit), gasto mínimo (virou Piso da saúde e da
-  educação). Brasil recalibrado (`receita_fora_das_leis` 10,81; `scripts/receita-inicial.ts`).
-- 1084+ testes verdes, `tsc -b` limpo. Folha da lei mostra "Tipo · Jeito".
-- Conserto: partida salva de antes da onda quebrava o turno (leis apagadas e opções trocadas); o
-  carregar (`src/partida/salvar.ts`) troca pelo valor de partida do país.
+**GDD por mecânica commitado (8bbe87da).** Autor leu só a Parte 1. `docs/jogo/gdd-novo/` fica até ele ler tudo.
 
-## Próximo
-
-1. Tela: janela "Leis para propor" com frase e lado; Atos à parte; relógio da lei com prazo.
-2. Coluna "Brasil tem?" na aba Leis; `npm run leis:planilha`.
-3. Mostrar na tela (foto), `npm run check`, commit `mundo: onda 1 das leis …`.
-4. Contar ao autor: preço/câmbio/crédito ficaram em "espera" (11 leis), poder-de-decreto tem 7 degraus quebrados (onda 4).
+**Onda 1 das leis commitada (30b0ae69).** Ficaram para depois: janela "Leis para propor" (frase, lado, Atos à parte, relógio da lei com prazo) e coluna "Brasil tem?" na aba Leis. Avisar: preço/câmbio/crédito em "espera" (11 leis), poder-de-decreto com 7 degraus quebrados (onda 4).
 
 ## Pendências do autor
 

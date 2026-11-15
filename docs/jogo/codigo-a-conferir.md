@@ -306,3 +306,17 @@ testes. Os testes não cobrem tudo; conferir estes pontos:
 47. **Perfil de rede** (`mundo/pessoas/perfil.json`): 3 frases por eixo e tom, escritas
     pelo Claude; "segue" são as 3 pessoas mais próximas na bússola. Conferir o tom
     dos textos e se algum denuncia o lado.
+
+## Auditoria da Parte 1 (14/nov)
+
+Achado pela auditoria dos requisitos (`docs/jogo/auditoria/parte-1-auditoria-*.md`). Não apagar sem pedido.
+
+- **Aprovação em três cálculos:** `popularidade_governo` (declarado pelo país, 3 leis mexem, ninguém lê: morto); `satisfacaoMedia(grupos) - desgaste` (`partida/index.ts:435`, `motor/eleicao/index.ts:66`, em uso); `aprovacao(grupos)` em `motor/politica/voto.ts:113` (cópia da média, devolve 50 sem pessoas).
+- **Cadeiras do partido novo (6%)** contadas duas vezes: `motor/pessoas/partido.ts:66` (Câmara) e `partida/comeco.ts:105` (Senado).
+- **Nome e sigla do partido** validados em `partida/comeco.ts:57` e `tela/inicio/escolhas.ts:57`.
+- **Turnos por ano, meses por turno e mandato de 24 turnos** repetidos em 10 arquivos; `TURNOS_DO_MANDATO` (`motor/governo/index.ts:142`) e `DESGASTE_POR_TURNO = 2.25 / 24` ignoram a duração do mandato do país.
+- **Atraso do efeito** calculado por caminhos diferentes na prévia (`partida/previa.ts:364`, sem o ministro) e no turno (`congresso.ts:278`, com `ajusteDaLei`): os números podem divergir.
+- **Distância na bússola** em três lugares (`pessoas/ministros.ts:96`, `grupos/index.ts:201`, `pessoas/partido.ts:20`).
+- **Eleição:** `apurar` morta (antiga) ao lado de `primeiroTurno/segundoTurno`.
+- `TECNICO` declarado 8 vezes; `limitar`/`prender`/`entre` redefinidos por módulo.
+- Campo `parte_de` das leis: ninguém lê.

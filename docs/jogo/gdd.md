@@ -149,6 +149,7 @@
 
 **Regras**
 - Perder é perder o poder federal; a partida acaba. Jogar como oposição fica para depois. (12/nov)
+- Se o vice de outro partido assume, a partida também acaba (5.2). (autor, 14/nov)
 - **Placar e histórico:** o jogo guarda o histórico todo do governo: PIB, Segurança, Saúde e os outros números, o que melhorou, o que foi mais atacado, quais pops mais gostaram e quais mais odiaram. De 4 em 4 anos aparece um resumão de tudo, e o placar final é esse histórico inteiro. (autor, 14/nov)
 - Países reais podem entrar: as 10 maiores economias jogáveis; empresa, pessoa e direito autoral seguem de fora. (08/nov)
 - A V1 jogável já tem narrativas e gatilhos; podem ser montados antes. Depois de pronta, ganha uma base de gatilhos para parecer o mais real possível. (autor, 14/nov; substitui "narrativas só depois do motor", 07/nov)
@@ -164,10 +165,9 @@
 - Referência de "visão" para um jogo de governo com personagens: **ESTUDAR**.
 
 **No motor hoje**
-- ✅ Escolher país: `brasil-2026` (R4.3).
-- ◐ A partida só acaba pela eleição (R4.4).
-- ☐ Placar final e resumo de 4 em 4 anos (R4.7).
-- A visão em si não é peça de código.
+- Auditoria de 14/nov (`requisitos.md`, Parte 1; prova em `docs/jogo/auditoria/`): 1 certo, 10 pela metade, 4 faltam.
+- Falta: histórico do governo gravado a cada turno, resumão de 4 em 4 anos, placar final, partido que continua quando muda a pessoa.
+- A partida acaba só pela eleição.
 
 **Em aberto**
 - Jogar como oposição depois de perder o poder: para depois.
@@ -236,8 +236,9 @@
 - Como a mídia mexe em cada uma das 3 mecânicas: **ESTUDAR** (14/nov).
 
 **No motor hoje**
-- Hoje (conferido 14/nov) a satisfação do grupo lê renda, índices cobrados e bússola das leis. O bolso só se mexe por imposto de renda e transferência. As outras cerca de 480 leis agradam ou irritam só pelo ponto chutado na bússola. A verba gasta não chega a ninguém, exceto a transferência.
-- A mecânica de cada ponta está nas partes seguintes do GDD.
+- Auditoria de 14/nov (`requisitos.md`, Parte 1; prova em `docs/jogo/auditoria/`): 1 certo, 13 pela metade, 2 faltam, 1 não se aplica.
+- Hoje a satisfação do grupo lê renda, índices cobrados e bússola das leis. O bolso só se mexe por imposto de renda e transferência; as outras leis agradam ou irritam pelo ponto na bússola.
+- Falta: organizações que nascem na partida; a bolsa (lei → lucro → ação → voto).
 
 **Em aberto**
 - Como a renda de cada pop sai de salário e lucro sem o turno 0 mudar de valor; quanto falta de trabalhador freia a produção.
@@ -268,6 +269,12 @@
 17. **Simulador de governo, não de personalidade.** Cada decisão deve ter consequência própria e sentida.
 18. **Sem pontos de ação.** O limite vem do mundo (Congresso cheio) e só atrasa, nunca proíbe. (11/nov)
 
+**No motor hoje**
+- Auditoria de 14/nov (`requisitos.md`, Parte 1; prova em `docs/jogo/auditoria/`): 2 certos, 14 pela metade, 2 errados, 2 faltam, 3 não se aplicam.
+- Errado: **dinheiro some** (princípio 5): a conta do Estado fecha, mas a verba gasta só vira renda nas 4 leis que pagam pops; as outras leis de verba tiram do cofre e o dinheiro desaparece.
+- Errado: **o Congresso barra toda lei sem maioria** (princípio 11), não só a exorbitante, e recusa repropor a barrada.
+- Falta: o molde não impede lei de controle único (princípio 3); lei não declara ganhadores e perdedores (princípio 4), eles só saem do cálculo por grupo.
+
 ---
 
 ### 1.4 A partida: começo, mandato e fim
@@ -294,6 +301,7 @@
 
 **Regras**
 - Como se chega lá: o país começa como está e o partido que governava vira oposição. O jogador entra com uma história ("no meio de uma polarização, você surge como a salvação do país"): partido novo, poucas cadeiras, presidente popular. A Aprovação começa alta e a base se constrói com coligação. (12/nov)
+- A Aprovação inicial é declarada pelo país, como o resto do estado de partida. Não há "lua de mel" como regra à parte. (autor, 14/nov)
 - No começo, o jogador pode pôr o partido que governava na coligação. (12/nov)
 - Partido novo com 6% das cadeiras; o antigo governo vai para a oposição ou para a coligação.
 - Governo: o tamanho vem numa régua; os ministros são sorteados pela chapa e cada cadeira troca por uma de três cartas (o técnico, o aliado, o do seu partido) ou por qualquer pessoa da lista. (13/nov)
@@ -317,19 +325,13 @@
 - Rede social do político como forma de conhecer pessoa: **ESTUDAR**.
 
 **No motor hoje**
-- ✅ R4.1 Turno de 2 meses, mandato de 24 turnos.
-- ✅ R4.3 País `brasil-2026`.
-- ◐ R4.4 Acaba só pela eleição.
-- ✅ R4.5 Criar partido. ✅ R4.6 Chapa. ✅ R4.8 Lado pela chapa. ✅ R4.10 Tela de início.
-- ◐ R4.9 Falta a Aprovação começar alta.
-- ✅ R4.11 Mundo sai da planilha `gdd.xlsx` (`npm run leis`).
-- ✅ R4.12 Fatos do turno em `motor/fatos`; hoje escrevem Congresso e Política.
-- ☐ R4.7 Placar final.
-- Salvar e carregar: feito (R17.3, R17.23). Partida salva antiga é trocada pelo valor de partida do país ao carregar.
-- Na seção Partida e turno dos requisitos: 9 feitos, 2 parciais, 1 faltando.
+- Auditoria de 14/nov (`requisitos.md`, Parte 1; prova em `docs/jogo/auditoria/`): 20 certos, 5 pela metade, 1 errado, 3 faltam.
+- Certo: país, partido, sigla, chapa, coligação, 6% das cadeiras, ministros, tela de início, salvar.
+- Errado: a Aprovação declarada pelo país (`popularidade_governo`) ninguém lê; a Aprovação que vale é a satisfação média dos grupos menos o desgaste.
+- Falta: placar final (histórico do governo), espiar pela inteligência e o registro que vaza.
+- Velho no número: mandato de 24 turnos e desgaste por turno fixos no código, sem ler a duração do mandato do país.
 
 **Em aberto**
-- A Aprovação começa alta: de quanto e quanto tempo dura a lua de mel?
 - A história de entrada aparece como texto, tela ou só nos números?
 - O que um país precisa declarar para ser jogável (lista de arquivos obrigatórios)? Só o Brasil 2026 existe.
 - Quais mecânicas ainda não escrevem fato (ministro, instituição, economia, mundo) e quais fatos cada uma precisa.
@@ -367,7 +369,7 @@ Ordem das etapas no motor hoje (passo 8):
 - Fatos do turno somem em 1 a 3 turnos, pelo tamanho. (12/nov)
 - A seta de tendência na tela compara com 8 meses atrás, corte de 2 pontos.
 - Sem sorteio para a lei passar: a aprovação vem do Congresso e dos grupos. (14/nov)
-- Mudar de ideia custa: propor e desistir de uma lei não pode ser de graça. (14/nov)
+- Mudar de ideia custa: propor e desistir de uma lei não pode ser de graça. (14/nov) Paga-se nas duas pontas: o Congresso perde paciência (propor a mesma lei de novo fica mais difícil) e o presidente perde Aprovação. (autor, 14/nov)
 - Mostrar o atraso: a lei diz "efeito em N turnos". (14/nov)
 
 **Ligações**
@@ -378,10 +380,10 @@ Ordem das etapas no motor hoje (passo 8):
 - Referência externa de ordem de turno em simulador de governo: **ESTUDAR**.
 
 **No motor hoje**
-- ✅ R4.1 e R4.2 (turno e efeitos com atraso).
-- ✅ R4.12 Fatos.
-- Etapas feitas até o passo 8: todas as listadas em Peças.
-- Comportamento esperado testado (passo 4): imposto de renda mais alto dá mais arrecadação até o pico e padrão de vida menor, que chega em 2 turnos.
+- Auditoria de 14/nov (`requisitos.md`, Parte 1; prova em `docs/jogo/auditoria/`): 11 certos, 9 pela metade, 1 falta.
+- Certo: turno de 2 meses, mesma semente dá a mesma partida, efeito anda em rampa e chega inteiro no fim do atraso, fatos somem pelo tamanho.
+- Falta: desistir de uma lei (não existe pedido de retirar).
+- Duplicado: o atraso da prévia não usa o ajuste do ministro e o do turno usa; os números podem divergir.
 
 **Em aberto**
 - A ordem das etapas fica certa quando entrarem mídia, organizações e mundo? (quem lê o fato de quem no mesmo turno)
