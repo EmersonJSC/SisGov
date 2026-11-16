@@ -5,7 +5,7 @@
   "descricao": "Escada do que é permitido: nada, bebida, cigarro, cannabis, cocaína e sintéticas, crack e opioides.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "saude",
+  "esfera": "seguranca-publica",
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
@@ -13,13 +13,19 @@
     {
       "id": "nada-liberado",
       "rotulo": "nada liberado",
-      "bussola": { "economico": 0, "social": -0.3 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.3
+      },
       "efeitos": []
     },
     {
       "id": "bebida",
       "rotulo": "bebida",
-      "bussola": { "economico": 0, "social": -0.18 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.18
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -44,7 +50,10 @@
     {
       "id": "cigarro",
       "rotulo": "cigarro",
-      "bussola": { "economico": 0, "social": -0.06 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.06
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -69,7 +78,10 @@
     {
       "id": "cannabis",
       "rotulo": "cannabis",
-      "bussola": { "economico": 0, "social": 0.06 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.06
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -94,7 +106,10 @@
     {
       "id": "cocaina-e-sinteticas",
       "rotulo": "cocaína e sintéticas",
-      "bussola": { "economico": 0, "social": 0.18 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.18
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -119,7 +134,10 @@
     {
       "id": "crack-e-opioides",
       "rotulo": "crack e opioides",
-      "bussola": { "economico": 0, "social": 0.3 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",

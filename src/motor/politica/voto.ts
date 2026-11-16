@@ -47,6 +47,9 @@ const ACIMA_DO_QUORUM: Record<ClasseLei, number> = {
   absoluta: 0,
   constitucional: 0.1,
   mandato: 0.15,
+  // não chegam ao voto (motor/turno/etapas/congresso)
+  decreto: 0,
+  petrea: 0,
 };
 const COESAO_PADRAO = 0.7;
 const CONTAS_PADRAS = 0.5;

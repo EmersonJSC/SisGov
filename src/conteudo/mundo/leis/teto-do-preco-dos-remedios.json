@@ -6,8 +6,7 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "preco",
   "forma": "continua",
   "unidade": "fracao",
   "faixa": {
@@ -41,5 +40,6 @@
   ],
   "valores": {
     "preco_remedios": 15
-  }
+  },
+  "jeito": "regua"
 }

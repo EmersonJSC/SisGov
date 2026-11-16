@@ -244,3 +244,23 @@ Antes desta rodada, a direita ia a 15% e a esquerda a 54%.
 e o ganho volta pouco ao bolso. O ganho de quem corta é fiscal; ele só vira
 bolso se voltar como imposto menor, e hoje imposto cortado quase não chega ao
 bolso (só imposto de renda e preço da cesta). Isso é da instituição Impostos.
+
+### Terceira rodada da Saúde (16/nov): tipo da lei, drogas, rombo herdado
+
+- **Tipo da lei:** cada lei tem uma classe: ordinária, complementar,
+  constitucional, mandato, decreto ou pétrea. O decreto muda sem votação, e a
+  pétrea é recusada. A janela mostra um selo colorido com o porquê, e o botão vira
+  "Assinar o decreto".
+  - Constitucional: cobertura gratuita (SUS para todos) e piso da saúde.
+  - Complementar: filantrópicos.
+  - Decreto: farmácia popular, vacinação, saúde mental, saúde ambiental, onde se
+    vende remédio e aprovação de remédio de fora.
+  - O resto é ordinária.
+  - A medida provisória não é tipo: é o caminho do decreto-moeda que já existe.
+- **Drogas:** liberação, lojas licenciadas e venda pelo Estado foram para
+  Segurança.
+- **Rombo herdado:** o rombo com juros do turno 0 empurra a inflação mesmo parado
+  (0,1 ponto por 1% do PIB). No Brasil, a inflação vai de 4,8% a cerca de 5,8% em
+  2 anos parado.
+- **Na tela:** tirar a farmácia popular por decreto vale no turno seguinte, sem
+  votação. A popularidade foi de 50% para 44% num turno.

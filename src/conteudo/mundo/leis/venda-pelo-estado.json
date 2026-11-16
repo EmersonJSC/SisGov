@@ -5,7 +5,7 @@
   "descricao": "O que as lojas e farmácias do Estado podem vender de legal. Escada: nada; só remédio controlado na farmácia do Estado; remédio e bebida em lojas do Estado; remédio, bebida e cigarro em lojas do Estado.",
   "camada": "jogabilidade",
   "origem": "planilha",
-  "esfera": "saude",
+  "esfera": "seguranca-publica",
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
@@ -13,13 +13,19 @@
     {
       "id": "nada",
       "rotulo": "nada",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "so-remedio-controlado-na-farmacia-do-estado",
       "rotulo": "só remédio controlado na farmácia do Estado",
-      "bussola": { "economico": -0.12, "social": 0 },
+      "bussola": {
+        "economico": -0.12,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
@@ -38,7 +44,10 @@
     {
       "id": "remedio-e-bebida-em-lojas-do-estado",
       "rotulo": "remédio e bebida em lojas do Estado",
-      "bussola": { "economico": -0.25, "social": 0 },
+      "bussola": {
+        "economico": -0.25,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
@@ -57,7 +66,10 @@
     {
       "id": "remedio",
       "rotulo": "remédio",
-      "bussola": { "economico": -0.37, "social": 0 },
+      "bussola": {
+        "economico": -0.37,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
@@ -76,7 +88,10 @@
     {
       "id": "bebida-e-cigarro-em-lojas-do-estado",
       "rotulo": "bebida e cigarro em lojas do Estado",
-      "bussola": { "economico": -0.5, "social": 0 },
+      "bussola": {
+        "economico": -0.5,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",

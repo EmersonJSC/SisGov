@@ -216,8 +216,12 @@ export function inflacaoDoRombo(regras: Regras, estado: Estado): Estado {
   const e = estado.essenciais;
   const normal = estado.marco.indices.inflacao ?? e.inflacao;
   const rombo = s.rombo0 - e.resultado_primario;
+  // Rombo herdado (16/nov): o rombo com juros do turno 0 empurra a inflação
+  // mesmo parado; o jogador paga a conta do governo anterior.
+  const herdado = (r.peso_herdado ?? 0) * (s.herdado ?? 0);
   const inflacao =
-    e.inflacao + (normal + r.peso_rombo * rombo - e.inflacao) * r.passo;
+    e.inflacao +
+    (normal + r.peso_rombo * rombo + herdado - e.inflacao) * r.passo;
   const volta = 1 - Math.pow(1 - r.recompoe_por_ano, 1 / TURNOS_POR_ANO);
   const comeu = (inflacao - normal) / 100 / TURNOS_POR_ANO;
   const perda = s.perda * (1 - volta) + comeu;

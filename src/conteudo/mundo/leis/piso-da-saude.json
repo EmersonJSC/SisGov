@@ -4,15 +4,25 @@
   "nome": "Piso da saúde",
   "descricao": "A verba da saúde nunca desce abaixo de uma parte da arrecadação, de 5% a 30%. Protege a área, mas engessa o orçamento.",
   "camada": "jogabilidade",
-  "classe": "absoluta",
+  "classe": "constitucional",
   "esfera": "orcamento-e-divida",
   "canal": "regra",
   "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0.05, "max": 0.3 },
+  "faixa": {
+    "min": 0.05,
+    "max": 0.3
+  },
   "passo": 0.01,
-  "bussola": { "min": { "economico": -0.05 }, "max": { "economico": -0.3 } },
+  "bussola": {
+    "min": {
+      "economico": -0.05
+    },
+    "max": {
+      "economico": -0.3
+    }
+  },
   "efeitos": [
     {
       "indice": "gasto_obrigatorio",

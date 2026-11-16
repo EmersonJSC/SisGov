@@ -4,6 +4,7 @@
   "nome": "Aprovação de remédio feito fora",
   "descricao": "Se o remédio aprovado lá fora pode ser vendido aqui. Escada: análise completa aqui; prazo máximo, passou e está aprovado; vale a aprovação de agência forte de fora; vale a de qualquer agência reconhecida, sem análise.",
   "camada": "jogabilidade",
+  "classe": "decreto",
   "origem": "planilha",
   "esfera": "saude",
   "canal": "espera",
@@ -13,13 +14,19 @@
     {
       "id": "analise-completa-aqui",
       "rotulo": "análise completa aqui",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "prazo-maximo",
       "rotulo": "prazo máximo",
-      "bussola": { "economico": 0.08, "social": 0 },
+      "bussola": {
+        "economico": 0.08,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -44,7 +51,10 @@
     {
       "id": "passou-e-esta-aprovado",
       "rotulo": "passou e está aprovado",
-      "bussola": { "economico": 0.16, "social": 0 },
+      "bussola": {
+        "economico": 0.16,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -69,7 +79,10 @@
     {
       "id": "vale-a-aprovacao-de-agencia-forte-de-fora",
       "rotulo": "vale a aprovação de agência forte de fora",
-      "bussola": { "economico": 0.24, "social": 0 },
+      "bussola": {
+        "economico": 0.24,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -94,7 +107,10 @@
     {
       "id": "vale-a-de-qualquer-agencia-reconhecida",
       "rotulo": "vale a de qualquer agência reconhecida",
-      "bussola": { "economico": 0.32, "social": 0 },
+      "bussola": {
+        "economico": 0.32,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -119,7 +135,10 @@
     {
       "id": "sem-analise",
       "rotulo": "sem análise",
-      "bussola": { "economico": 0.4, "social": 0 },
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",

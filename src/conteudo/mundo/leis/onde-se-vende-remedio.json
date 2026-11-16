@@ -4,6 +4,7 @@
   "nome": "Onde se vende remédio",
   "descricao": "Quem pode vender remédio. Escada: só farmácia; remédio sem receita também no mercado; venda pela internet; receita só para remédio controlado.",
   "camada": "jogabilidade",
+  "classe": "decreto",
   "origem": "planilha",
   "esfera": "saude",
   "canal": "espera",
@@ -13,13 +14,19 @@
     {
       "id": "so-farmacia",
       "rotulo": "só farmácia",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "remedio-sem-receita-tambem-no-mercado",
       "rotulo": "remédio sem receita também no mercado",
-      "bussola": { "economico": 0.1, "social": -0.07 },
+      "bussola": {
+        "economico": 0.1,
+        "social": -0.07
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -38,7 +45,10 @@
     {
       "id": "venda-pela-internet",
       "rotulo": "venda pela internet",
-      "bussola": { "economico": 0.2, "social": -0.13 },
+      "bussola": {
+        "economico": 0.2,
+        "social": -0.13
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",
@@ -57,7 +67,10 @@
     {
       "id": "receita-so-para-remedio-controlado",
       "rotulo": "receita só para remédio controlado",
-      "bussola": { "economico": 0.3, "social": -0.2 },
+      "bussola": {
+        "economico": 0.3,
+        "social": -0.2
+      },
       "efeitos": [
         {
           "indice": "acesso_remedios",

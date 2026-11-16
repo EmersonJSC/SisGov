@@ -6,8 +6,7 @@
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "preco",
   "forma": "opcoes",
   "opcoes": [
     {
@@ -69,5 +68,6 @@
         "preco_remedios": -15
       }
     }
-  ]
+  ],
+  "jeito": "niveis"
 }

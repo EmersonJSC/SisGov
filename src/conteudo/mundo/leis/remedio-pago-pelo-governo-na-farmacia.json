@@ -2,12 +2,12 @@
   "versao": 1,
   "id": "remedio-pago-pelo-governo-na-farmacia",
   "nome": "Remédio pago pelo governo na farmácia",
-  "descricao": "A pessoa pega o remédio na farmácia comum e o governo paga. Escada: nada; desconto na lista básica; lista básica grátis; doença crônica grátis (pressão, diabetes, asma).",
+  "descricao": "A pessoa pega o remédio na farmácia comum e o governo paga. Quanto mais remédios entram, mais barato fica o remédio para quem compra, e mais caro para o Tesouro.",
   "camada": "jogabilidade",
+  "classe": "decreto",
   "origem": "planilha",
   "esfera": "saude",
-  "canal": "espera",
-  "espera": "triagem",
+  "canal": "preco",
   "forma": "opcoes",
   "opcoes": [
     {
@@ -151,5 +151,6 @@
         }
       ]
     }
-  ]
+  ],
+  "jeito": "niveis"
 }

@@ -35,5 +35,5 @@ O que existe no código mas não roda na partida da V1. Liga pelas
 | 16/nov | 4.18 | Obra da rede de saúde entrega tudo de uma vez depois de ~14 turnos (atendimento 30 → 39,5 no turno 14): dois anos sem sinal. Entregar aos poucos ou mostrar a obra andando. |
 | 16/nov | 4.18 | Rede de saúde: `vagas_fora` nasce negativo no Brasil (−55 milhões). Conferir. |
 | 16/nov | 4.3 | Verba da saúde abaixo de 4% é recusada (piso da saúde em vigor) sem o jogador saber por quê. |
-| 16/nov | 4.18 | Drogas ficam divididas entre Saúde e Segurança (autor); a regra "a licença segue o produto, drogas na Saúde" do GDD 4.18 está desconsiderada. Dividir as 6 leis quando a Segurança abrir. |
+| 16/nov | 4.18 | Drogas ficam divididas entre Saúde e Segurança (autor); a regra "a licença segue o produto, drogas na Saúde" do GDD 4.18 está desconsiderada. Dividido em 16/nov: liberação, lojas licenciadas e venda pelo Estado foram para Segurança. |
 | 16/nov | 2.4 | Imposto cortado quase não chega ao bolso: só o imposto de renda e o preço da cesta. Cortar o imposto sobre consumo de 17% para 14% devolve ~1,5% do PIB e o pobre sente só −1,2% na comida. Rever na instituição Impostos. |

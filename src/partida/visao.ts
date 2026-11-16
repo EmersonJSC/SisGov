@@ -187,9 +187,12 @@ function visaoComumDaLei(
     esfera: lei.esfera,
     // pétrea ainda não tem dado; constitucional vem da classe de quórum
     nivelLegal:
-      lei.classe === "constitucional"
-        ? ("constitucional" as const)
-        : ("derivada" as const),
+      lei.classe === "petrea"
+        ? ("petrea" as const)
+        : lei.classe === "constitucional"
+          ? ("constitucional" as const)
+          : ("derivada" as const),
+    classe: lei.classe ?? "comum",
     ministerio,
     alteradaPorVoce: false,
     saldoAnual: 0,
@@ -197,7 +200,7 @@ function visaoComumDaLei(
     revogavel: valor !== undefined && lei.camada !== "essencial",
     comoChega: COMO_CHEGA[lei.canal],
     classificacao: [
-      TIPO_NA_TELA[lei.tipo ?? "lei"],
+      lei.classe === "decreto" ? "Decreto" : TIPO_NA_TELA[lei.tipo ?? "lei"],
       lei.jeito ? JEITO_NA_TELA[lei.jeito] : undefined,
     ]
       .filter(Boolean)

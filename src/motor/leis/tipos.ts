@@ -24,13 +24,16 @@ export type Camada = (typeof CAMADAS)[number];
 /**
  * Quórum que a lei pede no Congresso (motor/politica): comum (mais sim que
  * não), absoluta (imposto, dívida), constitucional (regras do poder) ou
- * mandato (duração e reeleição).
+ * mandato (duração e reeleição). Fora do voto (16/nov): decreto (o
+ * presidente muda sem votação) e petrea (nenhuma lei muda).
  */
 export const CLASSES = [
   "comum",
   "absoluta",
   "constitucional",
   "mandato",
+  "decreto",
+  "petrea",
 ] as const;
 export type ClasseLei = (typeof CLASSES)[number];
 

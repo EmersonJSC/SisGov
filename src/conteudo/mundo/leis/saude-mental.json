@@ -4,6 +4,7 @@
   "nome": "Saúde mental",
   "descricao": "O que a rede pública oferece para a mente. Escada: nada; consulta na rede; centro de atendimento perto de casa; internação e cuidado contínuo.",
   "camada": "jogabilidade",
+  "classe": "decreto",
   "origem": "planilha",
   "esfera": "saude",
   "canal": "espera",

@@ -748,6 +748,9 @@ export function placarDaLei(
 ): Votacao | null {
   const { regras, estado } = partida;
   if (!regras.congresso || estado.leis[lei] === valor) return null;
+  // decreto e pétrea não vão a voto (16/nov)
+  const classe = regras.leis[lei]?.classe;
+  if (classe === "decreto" || classe === "petrea") return null;
   return placarPrevisto(
     entradaDoCongresso(regras, estado),
     lei,

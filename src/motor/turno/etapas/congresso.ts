@@ -53,7 +53,35 @@ export const congresso: Etapa = (regras, estado, todos) => {
   const comFatos = fatosDaRegra.length
     ? { ...estado, fatos: [...(estado.fatos ?? []), ...fatosDaRegra] }
     : estado;
-  return congressoDosPedidos(regras, comFatos, pedidos);
+  // Tipo da lei (16/nov): cláusula pétrea não muda; decreto muda sem voto.
+  const classe = (p: Pedido) =>
+    p.tipo === "mudar_lei" ? regras.leis[p.lei]?.classe : undefined;
+  for (const p of pedidos)
+    if (classe(p) === "petrea")
+      throw new Error(
+        `pedido: ${(p as { lei: string }).lei} é cláusula pétrea`,
+      );
+  const porDecreto = pedidos.filter((p) => classe(p) === "decreto");
+  const depois = congressoDosPedidos(
+    regras,
+    comFatos,
+    pedidos.filter((p) => !porDecreto.includes(p)),
+  );
+  const assinados = porDecreto
+    .map((p) => p as { lei: string; valor: ValorLei })
+    .filter((p) => estado.leis[p.lei] !== p.valor)
+    .map((p): Votacao => ({
+      lei: p.lei,
+      valor: p.valor,
+      exorbitante: false,
+      votos: {},
+      sim: 0,
+      nao: 0,
+      aprovada: true,
+      muda_lei: true,
+    }));
+  if (!assinados.length) return depois;
+  return { ...depois, votacoes: [...(depois.votacoes ?? []), ...assinados] };
 };
 /**
  * Regra fiscal no Congresso (motor/fisco): com a trava ligada, nenhuma verba

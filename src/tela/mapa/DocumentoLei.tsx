@@ -5,6 +5,7 @@
  * cadeia). "Enviar ao Congresso" põe o pedido na fila do turno.
  */
 import { PlacarDaLei } from "./PlacarDaLei";
+import type { ClasseLei } from "../../motor/leis";
 import type { PedidoOferecer, Votacao } from "../../partida";
 import {
   useEffect,
@@ -504,6 +505,61 @@ type LinhaDeEfeito = Readonly<{
 const pontos = (p: number) =>
   `${p > 0 ? "+" : "−"}${Math.abs(p).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} ${Math.abs(p) >= 0.95 && Math.abs(p) < 1.05 ? "ponto" : "pontos"}`;
 
+/** Selo do tipo da lei (16/nov): cor por tipo e o porquê de ser difícil mudar. */
+const SELOS: Record<ClasseLei, { nome: string; cor: string; porque: string }> =
+  {
+    petrea: {
+      nome: "Cláusula pétrea",
+      cor: "#7a1f1f",
+      porque: "Nenhuma lei muda isto.",
+    },
+    constitucional: {
+      nome: "Constitucional",
+      cor: "#8a5a00",
+      porque: "Muda só por emenda: pede apoio muito grande no Congresso.",
+    },
+    mandato: {
+      nome: "Regra de mandato",
+      cor: "#6b3fa0",
+      porque: "Pede o maior apoio do Congresso.",
+    },
+    absoluta: {
+      nome: "Lei complementar",
+      cor: "#1f5f8a",
+      porque: "Pede maioria absoluta no Congresso.",
+    },
+    comum: {
+      nome: "Lei ordinária",
+      cor: "#3d6b3d",
+      porque: "Maioria simples no Congresso.",
+    },
+    decreto: {
+      nome: "Decreto",
+      cor: "#555555",
+      porque: "O presidente assina e vale, sem votação.",
+    },
+  };
+
+function SeloDoTipo({ classe = "comum" }: { classe?: ClasseLei }) {
+  const s = SELOS[classe];
+  return (
+    <p className="folha-tipo" title={s.porque}>
+      <span
+        style={{
+          background: s.cor,
+          color: "#fff",
+          borderRadius: 4,
+          padding: "1px 8px",
+          marginRight: 6,
+        }}
+      >
+        {s.nome}
+      </span>
+      {s.porque}
+    </p>
+  );
+}
+
 export function DocumentoLei({
   lei,
   visao,
@@ -677,11 +733,13 @@ export function DocumentoLei({
           <button
             type="button"
             className="botao-assinar"
-            disabled={!mudou || carimbo || enviado}
+            disabled={!mudou || carimbo || enviado || lei.classe === "petrea"}
             onClick={enviar}
           >
             <Icone nome={ICONE_INTERFACE.assinar} tamanho={18} />
-            Enviar ao Congresso
+            {lei.classe === "decreto"
+              ? "Assinar o decreto"
+              : "Enviar ao Congresso"}
           </button>
         </div>
       }
@@ -695,6 +753,7 @@ export function DocumentoLei({
             {lei.naoLegislada ? " · ainda não legislada" : ""}
           </p>
           <h1 className="titulo-doc">{lei.nome}</h1>
+          <SeloDoTipo classe={lei.classe} />
           {lei.descricao ? (
             <p className="folha-explica">{lei.descricao}</p>
           ) : null}

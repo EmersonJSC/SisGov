@@ -567,6 +567,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
         ? {
             inflacao: {
               rombo0: comPops.essenciais.resultado_primario,
+              herdado: Math.max(0, -comPops.essenciais.resultado_fiscal),
               perda: 0,
             },
           }

@@ -10,11 +10,10 @@ describe("rombo vira inflação", () => {
     { tipo: "mudar_lei", lei: "imposto-consumo", valor: 0.07 },
   ]).estado;
 
-  it("parado, a inflação fica na normal do país", () => {
-    expect(parado.essenciais.inflacao).toBeCloseTo(
-      p.estado.essenciais.inflacao,
-      0,
-    );
+  it("parado, o rombo herdado sobe a inflação devagar (16/nov)", () => {
+    const normal = p.estado.essenciais.inflacao;
+    expect(parado.essenciais.inflacao).toBeGreaterThan(normal + 0.3);
+    expect(parado.essenciais.inflacao).toBeLessThan(normal + 2);
   });
 
   it("cortar imposto sem cortar gasto sobe a inflação e come o salário", () => {

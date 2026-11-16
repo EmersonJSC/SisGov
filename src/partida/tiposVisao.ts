@@ -2,6 +2,8 @@
 // Tipos copiados do projeto antigo (src/app/partida/tipos.ts); a tela do mapa
 // só lê isto. Quem monta é `montarVisao` (visao.ts).
 
+import type { ClasseLei } from "../motor/leis";
+
 export type VisaoOpcao = Readonly<{
   id: string;
   rotulo: string;
@@ -102,6 +104,8 @@ export type VisaoLei = Readonly<{
    * leis do formato antigo (áreas ainda não migradas).
    */
   nivelLegal?: "petrea" | "constitucional" | "derivada";
+  /** Tipo da lei (16/nov): quão difícil é mudá-la; o selo da janela. */
+  classe?: ClasseLei;
   /**
    * A lei vale hoje (está no mapa). Fora de vigor, ela está no catálogo:
    * pode ser aprovada, se nada a bloqueia.
