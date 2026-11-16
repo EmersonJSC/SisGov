@@ -583,6 +583,8 @@ export function atendimentoInicial(
       vagas,
       planos,
       seguro,
+      alcance: leis.alcance,
+      cobertura,
       procura,
       filantropia,
       reserva,

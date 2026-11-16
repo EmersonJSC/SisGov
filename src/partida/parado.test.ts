@@ -17,4 +17,13 @@ describe("governo parado", () => {
   it("a aprovação não sobe sozinha", () => {
     expect(apoioAtual(fim)).toBeLessThanOrEqual(apoioAtual(p.estado));
   });
+
+  it("nenhum índice do jogo salta do turno 0 para o turno 1", () => {
+    const antes = p.estado.jogabilidade;
+    const depois = jogar(p, 1, []).estado.jogabilidade;
+    const saltos = Object.keys(antes).filter(
+      (k) => Math.abs(depois[k] - antes[k]) > 0.3,
+    );
+    expect(saltos).toEqual([]);
+  });
 });

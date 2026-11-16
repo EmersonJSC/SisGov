@@ -39,6 +39,7 @@ import { fluxosDoTurno, mostrarContas } from "./etapas/economia";
 import { invariantes } from "./etapas/invariantes";
 import {
   comIndicesDasCestas,
+  indicesDoFisco,
   todosIndices,
   valorDosServicos,
 } from "./etapas/jogabilidade";
@@ -541,12 +542,18 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   // As contas de novo, com a rede de saúde do turno 0 já montada: sem isso o
   // gasto do turno 1 parece um salto (estoura o teto, puxa a inflação).
   const comPops = {
-    ...montado,
+    ...comReputacao(regras, montado),
     essenciais: mostrarContas(
       montado.essenciais,
       fluxosDoTurno(regras, montado),
       montado.tesouro,
     ),
+    // Índice que o motor calcula (déficit da previdência) já sai da conta no
+    // turno 0, não do valor declarado.
+    jogabilidade: {
+      ...comReputacao(regras, montado).jogabilidade,
+      ...indicesDoFisco(regras, montado),
+    },
   };
   const marco = marcoDoTurnoZero(regras, comPops);
   return invariantes(

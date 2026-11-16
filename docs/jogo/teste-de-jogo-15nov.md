@@ -162,3 +162,25 @@ no Rio (jornal do turno).
 
 **Erro meu no teste:** na primeira tentativa marquei a caixa "Sem Congresso"
 de um jeito que só mudava o desenho, e o jogo continuou com Congresso.
+
+## Índices que nasciam fora do ponto (15/nov, quarta rodada)
+
+Varri os 151 índices com o governo parado: o salto do turno 0 para o turno 1 e
+a deriva até o turno 12. Três nasciam fora do ponto, todos pelo mesmo motivo
+dos anteriores: o turno 0 era montado em uma ordem diferente da do turno.
+
+| Índice | Salto antes | Causa | Conserto |
+|---|---|---|---|
+| Déficit da previdência | 50 → 33 | O motor calcula a cada turno (benefício − contribuição, % do PIB × 10), mas o turno 0 usava o valor declarado pelo país | Turno 0 calcula também |
+| Desigualdade | −1,2 | A parte da rede de saúde no turno 0 não contava a cobertura e o alcance | Conta os dois |
+| Reputação internacional e segurança externa | +1,1 | A reputação do turno 0 era contada antes da rede de saúde (missão médica) | Recontada depois |
+
+**Depois:** nenhum índice do jogo salta mais de 0,3 ponto. Só andam sozinhos o
+PIB, os preços, a dívida, os juros e a população, por motivo real. Teste novo
+em `src/partida/parado.test.ts`, para não voltar.
+
+**Limites:**
+- O Brasil declara `deficit_da_previdencia: 50` em `estado-inicial.json`, mas
+  agora o valor declarado é ignorado (vale a conta: 33, ou seja, 3,3% do PIB,
+  perto do INSS real). O arquivo do país ficou com um número que não vale.
+- Varri só o Brasil, com a semente 42. Outros países podem ter os seus.
