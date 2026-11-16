@@ -1789,7 +1789,7 @@
     },
     "indicacao-de-juizes": {
       "area": "estado-e-eleicoes",
-      "name": "Indicação de juízes",
+      "name": "Quem escolhe os juízes",
       "path": "leis/estado-e-eleicoes/indicacao-de-juizes.svg"
     },
     "iniciativa-popular": {
@@ -2963,9 +2963,9 @@
       "path": "leis/vicios/alcool-ao-volante.svg"
     },
     "cuidado-com-o-usuario": {
-      "area": "vicios",
+      "area": "saude",
       "name": "Cuidado com o usuário",
-      "path": "leis/vicios/cuidado-com-o-usuario.svg"
+      "path": "leis/saude/cuidado-com-o-usuario.svg"
     },
     "fiscalizacao-e-repressao-drogas": {
       "area": "vicios",
@@ -2978,13 +2978,13 @@
       "path": "leis/vicios/fiscalizacao-e-repressao-jogos.svg"
     },
     "idade-minima-para-comprar-drogas": {
-      "area": "vicios",
+      "area": "saude",
       "name": "Idade mínima para comprar: drogas",
-      "path": "leis/vicios/idade-minima-para-comprar-drogas.svg"
+      "path": "leis/saude/idade-minima-para-comprar-drogas.svg"
     },
     "idade-minima-para-comprar-jogos": {
       "area": "vicios",
-      "name": "Idade mínima para comprar: jogos",
+      "name": "Idade mínima para apostar",
       "path": "leis/vicios/idade-minima-para-comprar-jogos.svg"
     },
     "imposto-das-drogas": {
@@ -3023,9 +3023,9 @@
       "path": "leis/vicios/monopolio-do-estado.svg"
     },
     "propaganda-e-embalagem": {
-      "area": "vicios",
+      "area": "saude",
       "name": "Propaganda e embalagem",
-      "path": "leis/vicios/propaganda-e-embalagem.svg"
+      "path": "leis/saude/propaganda-e-embalagem.svg"
     },
     "protecao-do-apostador": {
       "area": "vicios",
@@ -3661,6 +3661,16 @@
       "area": "comunicacao-e-tecnologia",
       "name": "Remoção de conteúdo",
       "path": "leis/comunicacao-e-tecnologia/remocao-de-conteudo.svg"
+    },
+    "medicos-para-onde-falta": {
+      "area": "saude",
+      "name": "Médicos para onde falta",
+      "path": "leis/saude/medicos-para-onde-falta.svg"
+    },
+    "rigor-da-analise-de-remedios": {
+      "area": "saude",
+      "name": "Rigor da análise de remédios",
+      "path": "leis/saude/rigor-da-analise-de-remedios.svg"
     }
   }
 }

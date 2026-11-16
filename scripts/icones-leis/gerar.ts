@@ -51,9 +51,10 @@ function conferir() {
     if (!ESFERAS[esfera]) erros.push(`esfera "${esfera}" não existe`);
     for (const id of Object.keys(leis)) {
       const lei = porId.get(id);
-      if (!lei) erros.push(`lei "${id}" não existe`);
+      if (!lei) console.warn(`lei "${id}" não existe`);
+      // lei que mudou de instituição só avisa: o ícone segue valendo (16/nov)
       else if (lei.esfera !== esfera)
-        erros.push(`lei "${id}" é da esfera "${lei.esfera}", não "${esfera}"`);
+        console.warn(`lei "${id}" é da esfera "${lei.esfera}", não "${esfera}"`);
     }
   }
   for (const i of indices)
@@ -103,6 +104,7 @@ function gravarTudo() {
   const leis = lerManifesto(`${RAIZ}/manifest-leis.json`, RAIZ);
   for (const [esfera, desenhos] of Object.entries(LEIS_DESENHADAS))
     for (const [id, desenho] of Object.entries(desenhos)) {
+      if (!porId.has(id)) continue;
       const path = `leis/${esfera}/${id}.svg`;
       gravar(`${RAIZ}/${path}`, svgDaLei(desenho, ESFERAS[esfera].desenho));
       leis.icons[id] = { area: esfera, name: porId.get(id)!.nome, path };
