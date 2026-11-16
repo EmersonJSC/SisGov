@@ -21,7 +21,7 @@ import {
   punicao,
 } from "../../fisco";
 import { novoFato, type Fato } from "../../fatos";
-import type { Lei, ValorLei } from "../../leis";
+import { tomada, type Lei, type ValorLei } from "../../leis";
 import { ESTRATOS, pedacos, type Estrato } from "../../populacao";
 import {
   situacaoDaCapacidade,
@@ -417,6 +417,10 @@ export function gastoPorLei(
     const lei = regras.leis[id];
     if (lei?.forma === "continua" && lei.conta === "gasto")
       gasto[id] = (valor as number) * 100 * (escala[id] ?? 1) * (1 - corte);
+    // Custo de serviço (16/nov): a tomada `custo`, em % do PIB, para a lei
+    // de opções ou de régua que não é verba (ex.: remédio grátis na farmácia).
+    const custo = tomada(regras.leis, { [id]: valor }, "custo");
+    if (custo) gasto[id] = (gasto[id] ?? 0) + custo * (1 - corte);
   }
   return gasto;
 }

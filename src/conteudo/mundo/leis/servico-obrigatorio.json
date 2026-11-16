@@ -12,42 +12,104 @@
     {
       "id": "sem-servico",
       "rotulo": "Sem serviço",
-      "bussola": { "economico": 0, "social": 0 },
-      "valores": { "alcance": 0, "fraco": 0, "abandono": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "valores": {
+        "alcance": 0,
+        "fraco": 0,
+        "abandono": 0
+      },
       "efeitos": []
     },
     {
       "id": "quem-estudou-de-graca",
       "rotulo": "Quem estudou de graça, 1 ano",
-      "bussola": { "economico": 0, "social": 0.2 },
-      "valores": { "alcance": 0.05, "fraco": 0, "abandono": 0 },
-      "efeitos": []
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
+      "valores": {
+        "alcance": 0.05,
+        "fraco": 0,
+        "abandono": 0
+      },
+      "efeitos": [
+        {
+          "indice": "fuga_de_profissionais",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 6
+        }
+      ]
     },
     {
       "id": "todos-um-ano",
       "rotulo": "Todos, 1 ano",
-      "bussola": { "economico": 0, "social": 0.4 },
-      "valores": { "alcance": 0.1, "fraco": 0, "abandono": 0.002 },
-      "efeitos": []
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
+      "valores": {
+        "alcance": 0.1,
+        "fraco": 0,
+        "abandono": 0.002
+      },
+      "efeitos": [
+        {
+          "indice": "fuga_de_profissionais",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 6
+        }
+      ]
     },
     {
       "id": "todos-dois-anos",
       "rotulo": "Todos, 2 anos",
-      "bussola": { "economico": 0, "social": 0.6 },
-      "valores": { "alcance": 0.2, "fraco": 0.3, "abandono": 0.005 },
-      "efeitos": []
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
+      "valores": {
+        "alcance": 0.2,
+        "fraco": 0.3,
+        "abandono": 0.005
+      },
+      "efeitos": [
+        {
+          "indice": "fuga_de_profissionais",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
+        }
+      ]
     },
     {
       "id": "lugar-sorteado",
       "rotulo": "Todos, 2 anos, lugar sorteado",
-      "bussola": { "economico": 0, "social": 0.8 },
-      "valores": { "alcance": 0.4, "fraco": 0.3, "abandono": 0.02 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.8
+      },
+      "valores": {
+        "alcance": 0.4,
+        "fraco": 0.3,
+        "abandono": 0.02
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
           "sentido": -1,
           "forca": "fraca",
           "atraso_turnos": 1
+        },
+        {
+          "indice": "fuga_de_profissionais",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 6
         }
       ]
     }

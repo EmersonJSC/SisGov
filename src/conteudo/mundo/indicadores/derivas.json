@@ -61,6 +61,24 @@
       "por": "saude",
       "sentido": 1,
       "forca": "fraca"
+    },
+    {
+      "indice": "risco_de_epidemia",
+      "por": "vacinacao",
+      "sentido": -1,
+      "forca": "media"
+    },
+    {
+      "indice": "risco_de_epidemia",
+      "por": "saneamento",
+      "sentido": -1,
+      "forca": "fraca"
+    },
+    {
+      "indice": "expectativa_de_vida",
+      "por": "saude",
+      "sentido": 1,
+      "forca": "media"
     }
   ]
 }

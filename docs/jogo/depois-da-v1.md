@@ -29,3 +29,9 @@ O que existe no código mas não roda na partida da V1. Liga pelas
 | 15/nov | 2.4 | Prévia de "Apoio dos grupos" não soma o bolso. |
 | 15/nov | 2.4 | Parado, a popularidade cai pouco (50% → 48% em 10 turnos); o rombo ainda não pesa no bolso. Conferir outros índices que nascem fora do ponto. |
 | 15/nov | 3.7 | Inflação pelo rombo usa só o primário; o rombo dos juros não pesa. Rever quando câmbio e expectativas entrarem. |
+| 15/nov | 4.19 | Ministros: entender e estudar melhor o papel deles (o que fazem no jogo, o que dá para programar) antes de mexer. |
+| 16/nov | 4.4 | Regras do plano (cobertura mínima, obrigação de ter plano) sem dente: pedem uma cesta "plano" no mercado para encarecer o plano de quem paga. |
+| 16/nov | 2.4 | A bússola pesa mais que o bolso: tirar a farmácia popular (remédio +3%) derruba a aprovação de 48% para 38% quase só pela bússola. O GDD pede bússola com peso menor. |
+| 16/nov | 4.18 | Obra da rede de saúde entrega tudo de uma vez depois de ~14 turnos (atendimento 30 → 39,5 no turno 14): dois anos sem sinal. Entregar aos poucos ou mostrar a obra andando. |
+| 16/nov | 4.18 | Rede de saúde: `vagas_fora` nasce negativo no Brasil (−55 milhões). Conferir. |
+| 16/nov | 4.3 | Verba da saúde abaixo de 4% é recusada (piso da saúde em vigor) sem o jogador saber por quê. |

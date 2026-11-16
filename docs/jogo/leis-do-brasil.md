@@ -534,7 +534,7 @@ Marque `[x]` na coluna "Tem?" quando conferir; `?` marca dúvida do modelo.
 | não promulgada | Coparticipação | — |  |
 | [ ]  | Dedução do plano | plano-e-familia |  |
 | não promulgada | Direito de recusar | — |  |
-| [ ]  | Farmácia Popular (Remédio pago pelo governo na farmácia) | doenca-cronica-gratis-pressao |  |
+| [ ]  | Farmácia Popular (Remédio pago pelo governo na farmácia) | cronicos-gratis |  |
 | [ ]  | Filantrópicos | convenios |  |
 | [ ]  | Gestão privada | servicos-de-apoio |  |
 | [ ]  | Imposto sobre remédio | 0.2 (fracao) |  |

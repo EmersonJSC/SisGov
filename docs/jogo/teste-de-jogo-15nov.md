@@ -184,3 +184,38 @@ em `src/partida/parado.test.ts`, para não voltar.
   agora o valor declarado é ignorado (vale a conta: 33, ou seja, 3,3% do PIB,
   perto do INSS real). O arquivo do país ficou com um número que não vale.
 - Varri só o Brasil, com a semente 42. Outros países podem ter os seus.
+
+## Saúde revista (16/nov, primeira instituição da trilha)
+
+**O que mudou nas leis (aprovado de A a F):**
+- **Lei de opções agora pode custar** (tomada `custo`, em % do PIB, somada ao
+  gasto). Antes só a régua de verba gastava; 14 leis da Saúde eram de graça.
+- **Farmácia popular:** os degraus "diabetes" e "asma" eram um erro da planilha
+  (a vírgula de "pressão, diabetes, asma" virou degrau). Agora: nada, desconto,
+  lista básica grátis, crônicos grátis (o Brasil), todo remédio grátis. Cada um
+  custa e baixa o preço do remédio.
+- **Saúde mental e ajuda para comprar plano** custam verba.
+- **Idade mínima para drogas** mexe na dependência, não mais no trânsito.
+- **Fuga de profissionais:** a carreira segura; o serviço obrigatório empurra.
+- **Risco de epidemia** cai com vacinação e saneamento; **expectativa de vida**
+  segue a saúde.
+- Drogas continuam na Saúde (GDD 4.18: a licença segue o produto).
+- Regras do plano ficaram sem dente (pedem uma cesta "plano"): depois-da-v1.
+
+**Medido (sem Congresso, 2 anos):**
+
+| | Aprovação | Gasto | Rombo sem juros | Inflação | Saúde | Operários | Finanças |
+|---|---|---|---|---|---|---|---|
+| Parado | 50 → 47,6 | 27,2% | +0,35% | 4,8 | 50 | 49 | 35 |
+| Esquerda (cobertura total, verba 7%, todo remédio grátis) | 50 → 54 | 30,5% | −3,0% | 6,4 | 57 | 73 | 11 |
+| Direita (gestão privada, planos livres, sem farmácia popular) | 50 → 15 | 27,2% | +0,3% | 4,8 | 44 | 2 | 71 |
+
+**Há dente:** as três terminam diferentes, e a esquerda paga em rombo e inflação.
+
+**O que não está bom:**
+1. **A direita só perde.** Gestão privada e planos livres não melhoram nada que se
+   veja; só a bússola pesa, e muito. A bússola pesa mais que o bolso (GDD 2.4 pede
+   o contrário).
+2. **A verba demora a aparecer:** atendimento parado em 30 por 14 turnos e depois
+   salta para 39,5 de uma vez, quando a obra fica pronta.
+3. **Cortar verba abaixo de 4% é recusado** pelo piso da saúde, sem aviso.
