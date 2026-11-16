@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Comparar bibliotecas de ícones</title>
+<style>
+  body { margin: 0; padding: 16px; background: #efe4cc; color: #2a2118; font: 14px system-ui, sans-serif; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  p { margin: 0 0 12px; opacity: .75; }
+  table { border-collapse: collapse; width: 100%; max-width: 760px; }
+  th { text-align: center; padding: 6px; border-bottom: 2px solid #2a2118; }
+  td { padding: 4px 6px; border-bottom: 1px solid #c9b995; text-align: center; }
+  td:first-child { text-align: left; width: 110px; }
+  img { width: 56px; height: 56px; }
+  small { display: block; opacity: .55; font-size: 10px; }
+  .falta { width: 56px; height: 56px; display: grid; place-items: center; opacity: .35; font-size: 11px; }
+</style>
+</head>
+<body>
+<h1>Mesmos temas, três bibliotecas</h1>
+<p>Tabler (traço, MIT) · Phosphor (traço, MIT) · game-icons.net (silhueta, CC BY 3.0)</p>
+<table id="t"><thead><tr><th>Tema</th><th>Tabler</th><th>Phosphor</th><th>game-icons</th></tr></thead><tbody></tbody></table>
+<script>
+const LINHAS = [
+  ["Imposto", "tabler:coin", "ph:coins", "game-icons:two-coins"],
+  ["Hospital", "tabler:building-hospital", "ph:hospital", "game-icons:hospital-cross"],
+  ["Escola", "tabler:school", "ph:graduation-cap", "game-icons:graduate-cap"],
+  ["Trator", "tabler:tractor", "ph:tractor", "game-icons:farm-tractor"],
+  ["Petróleo", "tabler:barrel", "ph:gas-pump", "game-icons:oil-pump"],
+  ["Polícia", "tabler:shield", "ph:siren", "game-icons:police-badge"],
+  ["Tribunal", "tabler:gavel", "ph:gavel", "game-icons:gavel"],
+  ["Prisão", "tabler:lock", "ph:lock-key", "game-icons:prisoner"],
+  ["Fábrica", "tabler:building-factory-2", "ph:factory", "game-icons:factory"],
+  ["Congresso", "tabler:building-bank", "ph:bank", "game-icons:greek-temple"],
+  ["Militar", "tabler:plane", "ph:airplane", "game-icons:tank"],
+  ["Energia", "tabler:bolt", "ph:lightning", "game-icons:power-lightning"],
+  ["Remédio", "tabler:pill", "ph:pill", "game-icons:pill"],
+  ["Moradia", "tabler:home", "ph:house", "game-icons:house"],
+  ["Trem", "tabler:train", "ph:train", "game-icons:steam-locomotive"],
+  ["Cigarro", "tabler:smoking", "ph:cigarette", "game-icons:cigarette"],
+];
+const corpo = document.querySelector("tbody");
+for (const [tema, ...nomes] of LINHAS) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td>${tema}</td>`;
+  for (const n of nomes) {
+    const [pref, nome] = n.split(":");
+    const td = document.createElement("td");
+    const img = new Image();
+    img.src = `https://api.iconify.design/${pref}/${nome}.svg`;
+    img.onerror = () => { td.innerHTML = '<div class="falta">não achei</div>'; };
+    td.append(img);
+    td.insertAdjacentHTML("beforeend", `<small>${nome}</small>`);
+    tr.append(td);
+  }
+  corpo.append(tr);
+}
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@ export const SAUDE: Record<string, string> = {
   "cobertura-minima-do-plano": "medical-pack",
   "conta-saude": "piggy-bank",
   "coparticipacao": "pay-money",
-  "cuidado-com-o-usuario": "bandage-roll",
+  "cuidado-com-o-usuario": "hand-bandage",
   "deducao-plano": "banknote",
   "direito-recusar": "padlock-open",
   "filantropicos": "heart-inside",
