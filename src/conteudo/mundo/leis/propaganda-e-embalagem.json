@@ -9,16 +9,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "tudo-liberado",
-      "rotulo": "tudo liberado",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "so-restricoes-leves",
       "rotulo": "só restrições leves",

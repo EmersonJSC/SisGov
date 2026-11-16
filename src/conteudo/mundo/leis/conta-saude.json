@@ -8,33 +8,45 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-conta",
-      "rotulo": "Sem conta",
-      "bussola": { "economico": 0, "social": 0 },
-      "valores": { "parte": 0, "informal": 0 },
-      "efeitos": []
-    },
     {
       "id": "voluntaria",
       "rotulo": "Voluntária",
-      "bussola": { "economico": 0.2, "social": 0 },
-      "valores": { "parte": 0.3, "informal": 0 },
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.3,
+        "informal": 0
+      },
       "efeitos": []
     },
     {
       "id": "obrigatoria-parcial",
       "rotulo": "Obrigatória para parte",
-      "bussola": { "economico": 0.4, "social": 0 },
-      "valores": { "parte": 0.6, "informal": 0.02 },
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.6,
+        "informal": 0.02
+      },
       "efeitos": []
     },
     {
       "id": "obrigatoria-todos",
       "rotulo": "Obrigatória para todos",
-      "bussola": { "economico": 0.6, "social": 0 },
-      "valores": { "parte": 1, "informal": 0.05 },
+      "bussola": {
+        "economico": 0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 1,
+        "informal": 0.05
+      },
       "efeitos": []
     }
   ]

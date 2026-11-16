@@ -9,16 +9,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "tratamento",
-      "rotulo": "tratamento",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "troca-de-seringas-e-salas-de-uso",
       "rotulo": "troca de seringas e salas de uso",

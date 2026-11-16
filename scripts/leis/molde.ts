@@ -43,6 +43,7 @@ export const COLUNAS_LEIS = [
   "Renda para",
   "Encolhe",
   "Muda o gasto",
+  "Primeiro degrau conta",
   "Arrecada (% do PIB)",
   "Valores",
   "Parte de",
@@ -139,6 +140,7 @@ export function linhaDaLei(lei: Lei): Linha {
     return {
       ...comum,
       "Muda o gasto": lei.escala_gasto && JSON.stringify(lei.escala_gasto),
+      "Primeiro degrau conta": lei.primeiro_degrau_conta ? "sim" : undefined,
     };
   return {
     ...comum,
@@ -277,6 +279,7 @@ export function leiDasLinhas(
       escala_gasto: l["Muda o gasto"]
         ? JSON.parse(String(l["Muda o gasto"]))
         : undefined,
+      primeiro_degrau_conta: l["Primeiro degrau conta"] === "sim" || undefined,
       opcoes: degraus.map((d) =>
         semVazios({
           id: String(d.Degrau),

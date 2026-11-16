@@ -8,16 +8,8 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "nenhum",
-      "rotulo": "Nenhum programa",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "bolsa-para-medico-daqui",
       "rotulo": "Bolsa para médico daqui ir ao interior",

@@ -8,33 +8,42 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-recusa",
-      "rotulo": "Sem recusa",
-      "bussola": { "economico": 0, "social": 0 },
-      "valores": { "parte": 0 },
-      "efeitos": []
-    },
     {
       "id": "motivo-medico",
       "rotulo": "Só por motivo médico",
-      "bussola": { "economico": 0, "social": -0.2 },
-      "valores": { "parte": 0.02 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
+      "valores": {
+        "parte": 0.02
+      },
       "efeitos": []
     },
     {
       "id": "motivo-de-crenca",
       "rotulo": "Por motivo de crença",
-      "bussola": { "economico": 0, "social": -0.4 },
-      "valores": { "parte": 0.08 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
+      "valores": {
+        "parte": 0.08
+      },
       "efeitos": []
     },
     {
       "id": "livre",
       "rotulo": "Livre para todos",
-      "bussola": { "economico": 0, "social": -0.6 },
-      "valores": { "parte": 0.2 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.6
+      },
+      "valores": {
+        "parte": 0.2
+      },
       "efeitos": []
     }
   ]

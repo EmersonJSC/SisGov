@@ -9,20 +9,8 @@
   "esfera": "saude",
   "canal": "preco",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "nada",
-      "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": [],
-      "valores": {
-        "custo": 0,
-        "preco_remedios": 0
-      }
-    },
     {
       "id": "desconto-na-lista-basica",
       "rotulo": "desconto na lista básica",
@@ -153,6 +141,41 @@
           "forca": "media",
           "atraso_turnos": 2,
           "porque": "quem tem doença crônica toma o remédio certo"
+        },
+        {
+          "indice": "pobreza",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "o pobre deixa de gastar com remédio"
+        }
+      ]
+    },
+    {
+      "id": "todo-remedio-gratis-entregue-em-casa",
+      "rotulo": "todo remédio grátis, entregue em casa",
+      "bussola": {
+        "economico": -0.7,
+        "social": 0
+      },
+      "valores": {
+        "custo": 1.6,
+        "preco_remedios": -60
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2,
+          "porque": "todo remédio chega de graça à porta"
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "ninguém deixa de tomar o remédio"
         },
         {
           "indice": "pobreza",

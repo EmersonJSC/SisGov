@@ -8,33 +8,45 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-seguro",
-      "rotulo": "Sem seguro",
-      "bussola": { "economico": 0, "social": 0 },
-      "valores": { "parte": 0, "informal": 0 },
-      "efeitos": []
-    },
     {
       "id": "grandes-empresas",
       "rotulo": "Grandes empresas",
-      "bussola": { "economico": -0.2, "social": 0 },
-      "valores": { "parte": 0.3, "informal": 0.02 },
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.3,
+        "informal": 0.02
+      },
       "efeitos": []
     },
     {
       "id": "todo-emprego",
       "rotulo": "Todo emprego formal",
-      "bussola": { "economico": -0.4, "social": 0 },
-      "valores": { "parte": 0.7, "informal": 0.05 },
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.7,
+        "informal": 0.05
+      },
       "efeitos": []
     },
     {
       "id": "com-familia",
       "rotulo": "Formais e família",
-      "bussola": { "economico": -0.6, "social": 0 },
-      "valores": { "parte": 1, "informal": 0.1 },
+      "bussola": {
+        "economico": -0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 1,
+        "informal": 0.1
+      },
       "efeitos": []
     }
   ]

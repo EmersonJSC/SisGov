@@ -178,6 +178,11 @@ export interface Opcao {
 }
 
 export interface LeiOpcoes extends LeiBase {
+  /**
+   * Degraus revistos (16/nov): o primeiro degrau já é lei; "nada" é a lei não
+   * estar em vigor. Sem a marca, o primeiro degrau conta como desligado.
+   */
+  primeiro_degrau_conta?: boolean;
   forma: "opcoes";
   opcoes: Opcao[];
   /**

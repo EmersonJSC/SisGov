@@ -10,16 +10,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "so-farmacia",
-      "rotulo": "só farmácia",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "remedio-sem-receita-tambem-no-mercado",
       "rotulo": "remédio sem receita também no mercado",

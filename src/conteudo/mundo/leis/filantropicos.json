@@ -9,19 +9,8 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-apoio",
-      "rotulo": "Sem apoio",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "valores": {
-        "parte": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "isencao",
       "rotulo": "Isenção de impostos",

@@ -10,16 +10,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "analise-completa-aqui",
-      "rotulo": "análise completa aqui",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "prazo-maximo",
       "rotulo": "prazo máximo",

@@ -9,6 +9,7 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
     {
       "id": "so-urgencia",
@@ -59,6 +60,19 @@
       "valores": {
         "procura": 0.3,
         "saida": 0.35
+      },
+      "efeitos": []
+    },
+    {
+      "id": "tudo-com-tratamento-de-ponta",
+      "rotulo": "Tudo, para todos, com remédio de alto custo e tratamento de ponta",
+      "bussola": {
+        "economico": -0.8,
+        "social": 0
+      },
+      "valores": {
+        "procura": 0.4,
+        "saida": 0.5
       },
       "efeitos": []
     }

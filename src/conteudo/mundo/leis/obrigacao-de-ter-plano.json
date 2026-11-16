@@ -9,16 +9,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "ninguem",
-      "rotulo": "ninguém",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "multa-leve",
       "rotulo": "multa leve",

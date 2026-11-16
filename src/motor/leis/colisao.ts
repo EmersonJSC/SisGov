@@ -2,13 +2,15 @@
 import type { Lei } from "./tipos";
 import type { ValorLei } from "./valor";
 
-/** Par de leis que não podem estar as duas acima do "nada". */
+/** Par de leis que não podem estar as duas em vigor (ligadas). */
 export type Colisao = readonly [string, string];
 
-/** A lei está acima do "nada": contínua fora do mínimo, opção fora da primeira. */
+/** A lei está ligada: contínua fora do mínimo; de degraus, em vigor (16/nov). */
 export function leiAtiva(lei: Lei, valor: ValorLei | undefined): boolean {
   if (valor === undefined) return false;
   if (lei.forma === "continua") return valor !== lei.faixa.min;
+  // lei revista (16/nov): não há degrau "nada", todo degrau em vigor liga
+  if (lei.primeiro_degrau_conta) return true;
   return valor !== lei.opcoes[0]?.id;
 }
 

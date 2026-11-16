@@ -14,18 +14,13 @@
       "id": "fazenda",
       "nome": "Fazenda",
       "tipo": "básico",
-      "instituicoes": [
-        "impostos",
-        "moeda-e-bancos"
-      ]
+      "instituicoes": ["impostos", "moeda-e-bancos"]
     },
     {
       "id": "planejamento-e-orcamento",
       "nome": "Planejamento e orçamento",
       "tipo": "comum",
-      "instituicoes": [
-        "orcamento-e-divida"
-      ]
+      "instituicoes": ["orcamento-e-divida"]
     },
     {
       "id": "economia",
@@ -55,98 +50,73 @@
       "id": "gestao",
       "nome": "Gestão",
       "tipo": "comum",
-      "instituicoes": [
-        "funcionalismo",
-        "estatais"
-      ]
+      "instituicoes": ["funcionalismo", "estatais"]
     },
     {
       "id": "trabalho",
       "nome": "Trabalho",
       "tipo": "básico",
-      "instituicoes": [
-        "trabalho"
-      ]
+      "instituicoes": ["trabalho"]
     },
     {
       "id": "previdencia",
       "nome": "Previdência",
       "tipo": "comum",
-      "instituicoes": [
-        "previdencia"
-      ]
+      "instituicoes": ["previdencia"]
     },
     {
       "id": "desenvolvimento-social",
       "nome": "Desenvolvimento social",
       "tipo": "básico",
-      "instituicoes": [
-        "assistencia-social"
-      ]
+      "instituicoes": ["assistencia-social"]
     },
     {
       "id": "saude",
       "nome": "Saúde",
       "tipo": "básico",
-      "instituicoes": [
-        "saude"
-      ]
+      "instituicoes": ["saude"]
     },
     {
       "id": "educacao",
       "nome": "Educação",
       "tipo": "básico",
-      "instituicoes": [
-        "educacao"
-      ]
+      "instituicoes": ["educacao"]
     },
     {
       "id": "ciencia-e-tecnologia",
       "nome": "Ciência e tecnologia",
       "tipo": "comum",
-      "instituicoes": [
-        "ciencia-e-pesquisa"
-      ]
+      "instituicoes": ["ciencia-e-pesquisa"]
     },
     {
       "id": "comunicacoes",
       "nome": "Comunicações",
       "tipo": "comum",
-      "instituicoes": [
-        "comunicacao-e-tecnologia"
-      ]
+      "instituicoes": ["comunicacao-e-tecnologia"]
     },
     {
       "id": "cultura",
       "nome": "Cultura",
       "tipo": "comum",
-      "instituicoes": [
-        "cultura"
-      ]
+      "instituicoes": ["cultura"]
     },
     {
       "id": "esporte",
       "nome": "Esporte",
       "tipo": "de causa",
-      "instituicoes": [
-        "esporte"
-      ]
+      "instituicoes": ["esporte"]
     },
     {
       "id": "turismo",
       "nome": "Turismo",
       "tipo": "de causa",
-      "instituicoes": [
-        "turismo"
-      ]
+      "instituicoes": ["turismo"]
     },
     {
       "id": "assuntos-religiosos",
       "nome": "Assuntos religiosos",
       "tipo": "de causa",
-      "instituicoes": [
-        "religiao"
-      ]
+      "instituicoes": ["religiao"]
     },
     {
       "id": "interior",
@@ -163,108 +133,79 @@
       "id": "justica",
       "nome": "Justiça",
       "tipo": "básico",
-      "instituicoes": [
-        "justica-e-prisoes"
-      ]
+      "instituicoes": ["justica-e-prisoes"]
     },
     {
       "id": "seguranca-publica",
       "nome": "Segurança pública",
       "tipo": "comum",
-      "instituicoes": [
-        "seguranca-publica"
-      ]
+      "instituicoes": ["seguranca-publica"]
     },
     {
       "id": "defesa",
       "nome": "Defesa",
       "tipo": "básico",
-      "instituicoes": [
-        "defesa"
-      ]
+      "instituicoes": ["defesa"]
     },
     {
       "id": "relacoes-exteriores",
       "nome": "Relações exteriores",
       "tipo": "básico",
-      "instituicoes": [
-        "relacoes-exteriores"
-      ]
+      "instituicoes": ["relacoes-exteriores"]
     },
     {
       "id": "meio-ambiente",
       "nome": "Meio ambiente",
       "tipo": "básico",
-      "instituicoes": [
-        "meio-ambiente"
-      ]
+      "instituicoes": ["meio-ambiente"]
     },
     {
       "id": "agricultura",
       "nome": "Agricultura",
       "tipo": "básico",
-      "instituicoes": [
-        "agricultura-e-pesca"
-      ]
+      "instituicoes": ["agricultura-e-pesca"]
     },
     {
       "id": "desenvolvimento-agrario",
       "nome": "Desenvolvimento agrário",
       "tipo": "comum",
-      "instituicoes": [
-        "terra"
-      ]
+      "instituicoes": ["terra"]
     },
     {
       "id": "minas-e-energia",
       "nome": "Minas e energia",
       "tipo": "básico",
-      "instituicoes": [
-        "energia",
-        "mineracao-e-petroleo"
-      ]
+      "instituicoes": ["energia", "mineracao-e-petroleo"]
     },
     {
       "id": "transportes",
       "nome": "Transportes",
       "tipo": "básico",
-      "instituicoes": [
-        "infraestrutura-e-transporte"
-      ]
+      "instituicoes": ["infraestrutura-e-transporte"]
     },
     {
       "id": "cidades",
       "nome": "Cidades",
       "tipo": "comum",
-      "instituicoes": [
-        "moradia",
-        "agua-e-saneamento"
-      ]
+      "instituicoes": ["moradia", "agua-e-saneamento"]
     },
     {
       "id": "recursos-hidricos",
       "nome": "Recursos hídricos",
       "tipo": "de causa",
-      "instituicoes": [
-        "agua-e-saneamento"
-      ]
+      "instituicoes": ["agua-e-saneamento"]
     },
     {
       "id": "governo-local",
       "nome": "Governo local",
       "tipo": "comum",
-      "instituicoes": [
-        "estados-e-municipios",
-        "defesa-civil"
-      ]
+      "instituicoes": ["estados-e-municipios", "defesa-civil"]
     },
     {
       "id": "controle-e-transparencia",
       "nome": "Controle e transparência",
       "tipo": "comum",
-      "instituicoes": [
-        "controle-e-transparencia"
-      ]
+      "instituicoes": ["controle-e-transparencia"]
     },
     {
       "id": "sem-pasta",

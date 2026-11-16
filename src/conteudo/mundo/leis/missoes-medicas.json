@@ -8,19 +8,8 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-missoes",
-      "rotulo": "Sem missões",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "valores": {
-        "parte": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "ajuda-em-desastres",
       "rotulo": "Ajuda em desastres",

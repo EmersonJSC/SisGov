@@ -8,9 +8,11 @@ describe("tipo da lei", () => {
 
   it("decreto não tem placar e vale no turno, com Congresso", () => {
     expect(p.regras.leis[lei].classe).toBe("decreto");
-    expect(placarDaLei(p, lei, "nada")).toBeNull();
-    const depois = avancar(p, [{ tipo: "mudar_lei", lei, valor: "nada" }]);
-    expect(depois.estado.leis[lei]).toBe("nada");
+    expect(placarDaLei(p, lei, "desconto-na-lista-basica")).toBeNull();
+    const depois = avancar(p, [
+      { tipo: "mudar_lei", lei, valor: "desconto-na-lista-basica" },
+    ]);
+    expect(depois.estado.leis[lei]).toBe("desconto-na-lista-basica");
   });
 
   it("cláusula pétrea é recusada", () => {
@@ -25,7 +27,9 @@ describe("tipo da lei", () => {
       },
     };
     expect(() =>
-      avancar(petrea, [{ tipo: "mudar_lei", lei, valor: "nada" }]),
+      avancar(petrea, [
+        { tipo: "mudar_lei", lei, valor: "desconto-na-lista-basica" },
+      ]),
     ).toThrow(/pétrea/);
   });
 });

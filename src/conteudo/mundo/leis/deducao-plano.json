@@ -8,33 +8,54 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-deducao",
-      "rotulo": "Sem dedução",
-      "bussola": { "economico": 0, "social": 0 },
-      "valores": { "parte": 0 },
-      "efeitos": []
-    },
     {
       "id": "parte-do-plano",
       "rotulo": "Parte do plano",
-      "bussola": { "economico": 0.2, "social": 0 },
-      "valores": { "parte": 0.2 },
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.2
+      },
       "efeitos": []
     },
     {
       "id": "plano-inteiro",
       "rotulo": "Plano inteiro",
-      "bussola": { "economico": 0.4, "social": 0 },
-      "valores": { "parte": 0.4 },
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.4
+      },
       "efeitos": []
     },
     {
       "id": "plano-e-familia",
       "rotulo": "Plano e família",
-      "bussola": { "economico": 0.6, "social": 0 },
-      "valores": { "parte": 0.6 },
+      "bussola": {
+        "economico": 0.6,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.6
+      },
+      "efeitos": []
+    },
+    {
+      "id": "todo-gasto-com-saude-sem-teto",
+      "rotulo": "Todo gasto com saúde, sem teto",
+      "bussola": {
+        "economico": 0.8,
+        "social": 0
+      },
+      "valores": {
+        "parte": 0.8
+      },
       "efeitos": []
     }
   ]

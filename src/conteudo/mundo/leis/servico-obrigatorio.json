@@ -8,21 +8,8 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-servico",
-      "rotulo": "Sem serviço",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "valores": {
-        "alcance": 0,
-        "fraco": 0,
-        "abandono": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "quem-estudou-de-graca",
       "rotulo": "Quem estudou de graça, 1 ano",

@@ -8,23 +8,8 @@
   "canal": "regra",
   "jeito": "niveis",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "sem-carreira",
-      "rotulo": "Sem carreira",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "valores": {
-        "parte": 0,
-        "alcance": 0,
-        "fraco": 0,
-        "abandono": 0,
-        "eficiencia": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "incentivo",
       "rotulo": "Incentivo à exclusividade",

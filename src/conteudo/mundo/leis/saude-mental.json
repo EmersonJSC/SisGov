@@ -10,19 +10,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "nada",
-      "rotulo": "nada",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": [],
-      "valores": {
-        "custo": 0
-      }
-    },
     {
       "id": "consulta-na-rede",
       "rotulo": "consulta na rede",

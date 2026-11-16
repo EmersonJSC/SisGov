@@ -9,16 +9,8 @@
   "canal": "espera",
   "espera": "triagem",
   "forma": "opcoes",
+  "primeiro_degrau_conta": true,
   "opcoes": [
-    {
-      "id": "o-plano-vende-o-que-quiser",
-      "rotulo": "o plano vende o que quiser",
-      "bussola": {
-        "economico": 0,
-        "social": 0
-      },
-      "efeitos": []
-    },
     {
       "id": "tem-que-cobrir-urgencia",
       "rotulo": "tem que cobrir urgência",
@@ -87,6 +79,30 @@
           "sentido": 1,
           "forca": "forte",
           "atraso_turnos": 4,
+          "porque": "quem tem plano é tratado de verdade"
+        }
+      ]
+    },
+    {
+      "id": "tudo-o-que-o-publico-cobre-sem-carencia",
+      "rotulo": "tudo o que a rede pública cobre, sem carência nem limite",
+      "bussola": {
+        "economico": -0.55,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "atendimento",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2,
+          "porque": "o plano atende tudo, e quase ninguém volta à fila pública"
+        },
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "forte",
+          "atraso_turnos": 2,
           "porque": "quem tem plano é tratado de verdade"
         }
       ]
