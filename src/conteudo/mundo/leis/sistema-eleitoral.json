@@ -14,13 +14,19 @@
     {
       "id": "proporcional-cadeiras-na-proporcao-dos-votos",
       "rotulo": "proporcional (cadeiras na proporção dos votos)",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "misto-metade-proporcional",
-      "rotulo": "misto (metade proporcional",
-      "bussola": { "economico": 0, "social": 0 },
+      "rotulo": "misto (metade proporcional, metade por distrito)",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "polarizacao",
@@ -32,25 +38,6 @@
           "indice": "participacao_eleitoral",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 4
-        }
-      ]
-    },
-    {
-      "id": "metade-por-distrito",
-      "rotulo": "metade por distrito)",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": [
-        {
-          "indice": "polarizacao",
-          "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 4
-        },
-        {
-          "indice": "participacao_eleitoral",
-          "sentido": -1,
-          "forca": "media",
           "atraso_turnos": 4
         }
       ]
@@ -58,7 +45,10 @@
     {
       "id": "distrital-cada-distrito-elege-o-mais-votado",
       "rotulo": "distrital (cada distrito elege o mais votado)",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "polarizacao",

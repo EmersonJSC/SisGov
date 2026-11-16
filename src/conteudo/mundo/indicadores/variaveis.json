@@ -1821,7 +1821,7 @@
       },
       "inicial": 50,
       "dono": "orcamento-e-divida",
-      "avaliacao": "maior_melhor",
+      "avaliacao": "maior_pior",
       "medida": {
         "unidade": "% do orçamento já travado por lei (pisos e vinculações)",
         "zero": 0,

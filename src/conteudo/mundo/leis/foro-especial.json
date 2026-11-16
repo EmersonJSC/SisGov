@@ -13,14 +13,11 @@
   "opcoes": [
     {
       "id": "ninguem",
-      "rotulo": "ninguém",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "politicos-sao-julgados-como-qualquer-cidadao",
-      "rotulo": "políticos são julgados como qualquer cidadão",
-      "bussola": { "economico": 0, "social": 0.1 },
+      "rotulo": "ninguém, políticos são julgados como qualquer cidadão",
+      "bussola": {
+        "economico": 0,
+        "social": 0.1
+      },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -39,7 +36,10 @@
     {
       "id": "so-por-crimes-cometidos-no-exercicio-do-cargo",
       "rotulo": "só por crimes cometidos no exercício do cargo",
-      "bussola": { "economico": 0, "social": 0.2 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -58,7 +58,10 @@
     {
       "id": "todos-os-crimes-de-ministros-e-parlamentares",
       "rotulo": "todos os crimes de ministros e parlamentares",
-      "bussola": { "economico": 0, "social": 0.3 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
       "efeitos": [
         {
           "indice": "corrupcao",
@@ -76,27 +79,11 @@
     },
     {
       "id": "todos-os-crimes",
-      "rotulo": "todos os crimes",
-      "bussola": { "economico": 0, "social": 0.4 },
-      "efeitos": [
-        {
-          "indice": "corrupcao",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        },
-        {
-          "indice": "confianca_na_justica",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "e-vale-ate-depois-que-deixam-o-cargo",
-      "rotulo": "e vale até depois que deixam o cargo",
-      "bussola": { "economico": 0, "social": 0.5 },
+      "rotulo": "todos os crimes, e vale até depois que deixam o cargo",
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
       "efeitos": [
         {
           "indice": "corrupcao",

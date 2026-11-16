@@ -13,13 +13,19 @@
     {
       "id": "nenhuma-punicao-especifica",
       "rotulo": "nenhuma punição específica",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "multa-para-quem-ofende-pessoas-por-causa-da-fe",
       "rotulo": "multa para quem ofende pessoas por causa da fé",
-      "bussola": { "economico": 0, "social": 0.18 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.18
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -38,7 +44,10 @@
     {
       "id": "prisao-para-quem-ofende-uma-religiao",
       "rotulo": "prisão para quem ofende uma religião",
-      "bussola": { "economico": 0, "social": 0.35 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.35
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -56,27 +65,11 @@
     },
     {
       "id": "prisao-para-quem-ofende",
-      "rotulo": "prisão para quem ofende",
-      "bussola": { "economico": 0, "social": 0.52 },
-      "efeitos": [
-        {
-          "indice": "liberdade_civil",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        },
-        {
-          "indice": "tensao_religiosa",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
-      "id": "critica-a-religiao-da-maioria",
-      "rotulo": "critica a religião da maioria",
-      "bussola": { "economico": 0, "social": 0.7 },
+      "rotulo": "prisão para quem ofende ou critica a religião da maioria",
+      "bussola": {
+        "economico": 0,
+        "social": 0.7
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",

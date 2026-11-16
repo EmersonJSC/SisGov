@@ -14,13 +14,19 @@
     {
       "id": "voto-livre",
       "rotulo": "voto livre",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "obrigatorio-com-multa-pequena",
       "rotulo": "obrigatório com multa pequena",
-      "bussola": { "economico": 0, "social": 0.1 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.1
+      },
       "efeitos": [
         {
           "indice": "participacao_eleitoral",
@@ -33,7 +39,10 @@
     {
       "id": "obrigatorio-com-multa-maior",
       "rotulo": "obrigatório com multa maior",
-      "bussola": { "economico": 0, "social": 0.2 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
       "efeitos": [
         {
           "indice": "participacao_eleitoral",
@@ -45,21 +54,11 @@
     },
     {
       "id": "obrigatorio",
-      "rotulo": "obrigatório",
-      "bussola": { "economico": 0, "social": 0.3 },
-      "efeitos": [
-        {
-          "indice": "participacao_eleitoral",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
-      "id": "e-quem-nao-vota-nao-tira-passaporte-nem-presta-concurso",
-      "rotulo": "e quem não vota não tira passaporte nem presta concurso",
-      "bussola": { "economico": 0, "social": 0.4 },
+      "rotulo": "obrigatório, e quem não vota não tira passaporte nem presta concurso",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
       "efeitos": [
         {
           "indice": "participacao_eleitoral",

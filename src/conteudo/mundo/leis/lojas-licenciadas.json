@@ -69,31 +69,7 @@
     },
     {
       "id": "bebida",
-      "rotulo": "bebida",
-      "bussola": {
-        "economico": 0.38,
-        "social": 0
-      },
-      "efeitos": [
-        {
-          "indice": "mercado_ilegal",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 2,
-          "porque": "a venda sai do tráfico para a loja"
-        },
-        {
-          "indice": "dependencia_de_drogas",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2,
-          "porque": "mais lugares vendendo"
-        }
-      ]
-    },
-    {
-      "id": "cigarro-e-cannabis",
-      "rotulo": "cigarro e cannabis",
+      "rotulo": "bebida, cigarro e cannabis",
       "bussola": {
         "economico": 0.5,
         "social": 0

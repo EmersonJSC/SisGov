@@ -12,14 +12,11 @@
   "opcoes": [
     {
       "id": "proibido-recusar-cliente",
-      "rotulo": "proibido recusar cliente",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "candidato",
-      "rotulo": "candidato",
-      "bussola": { "economico": 0.1, "social": 0 },
+      "rotulo": "proibido recusar cliente ou candidato",
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "discriminacao",
@@ -32,7 +29,10 @@
     {
       "id": "recusa-so-por-conviccao-religiosa-do-dono",
       "rotulo": "recusa só por convicção religiosa do dono",
-      "bussola": { "economico": 0.2, "social": 0 },
+      "bussola": {
+        "economico": 0.2,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "discriminacao",
@@ -45,12 +45,15 @@
     {
       "id": "escolhe-livremente-quem-contrata",
       "rotulo": "escolhe livremente quem contrata",
-      "bussola": { "economico": 0.3, "social": 0 },
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "discriminacao",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]
@@ -58,7 +61,10 @@
     {
       "id": "escolhe-livremente-quem-contrata-e-quem-atende",
       "rotulo": "escolhe livremente quem contrata e quem atende",
-      "bussola": { "economico": 0.4, "social": 0 },
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "discriminacao",

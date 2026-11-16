@@ -10,24 +10,35 @@
   "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 1 },
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
   "passo": 0.05,
   "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": 0.3, "social": 0 }
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
   },
   "efeitos": [
     {
       "indice": "desmatamento",
-      "sentido": -1,
+      "sentido": 1,
       "forca": "media",
-      "atraso_turnos": 6
+      "atraso_turnos": 6,
+      "porque": "o dono derruba a mata aqui e compra mata em outro lugar"
     },
     {
       "indice": "risco_de_falta_d_agua",
       "sentido": 1,
       "forca": "media",
-      "atraso_turnos": 6
+      "atraso_turnos": 6,
+      "porque": "a mata que segura a água da região some"
     }
   ]
 }

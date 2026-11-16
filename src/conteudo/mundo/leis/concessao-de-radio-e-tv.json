@@ -13,13 +13,19 @@
     {
       "id": "licenca-por-prazo-fixo-e-so-a-justica-pode-cassar",
       "rotulo": "licença por prazo fixo e só a Justiça pode cassar",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "o-governo-cassa-so-com-processo-e-defesa",
       "rotulo": "o governo cassa só com processo e defesa",
-      "bussola": { "economico": 0, "social": 0.15 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.15
+      },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -37,8 +43,11 @@
     },
     {
       "id": "o-governo-renova",
-      "rotulo": "o governo renova",
-      "bussola": { "economico": 0, "social": 0.3 },
+      "rotulo": "o governo renova ou cassa como achar melhor",
+      "bussola": {
+        "economico": 0,
+        "social": 0.45
+      },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",
@@ -50,25 +59,6 @@
           "indice": "reputacao_internacional",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
-      "id": "cassa-como-achar-melhor",
-      "rotulo": "cassa como achar melhor",
-      "bussola": { "economico": 0, "social": 0.45 },
-      "efeitos": [
-        {
-          "indice": "liberdade_de_imprensa",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        },
-        {
-          "indice": "reputacao_internacional",
-          "sentido": -1,
-          "forca": "forte",
           "atraso_turnos": 2
         }
       ]
@@ -76,7 +66,10 @@
     {
       "id": "o-governo-escolhe-quem-tem-licenca-e-cassa-quando-quiser",
       "rotulo": "o governo escolhe quem tem licença e cassa quando quiser",
-      "bussola": { "economico": 0, "social": 0.6 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
       "efeitos": [
         {
           "indice": "liberdade_de_imprensa",

@@ -12,14 +12,11 @@
   "opcoes": [
     {
       "id": "ninguem",
-      "rotulo": "ninguém",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "usuario-vai-preso",
-      "rotulo": "usuário vai preso",
-      "bussola": { "economico": 0, "social": -0.08 },
+      "rotulo": "ninguém, usuário vai preso",
+      "bussola": {
+        "economico": 0,
+        "social": -0.08
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",
@@ -38,7 +35,10 @@
     {
       "id": "so-quem-nunca-foi-preso",
       "rotulo": "só quem nunca foi preso",
-      "bussola": { "economico": 0, "social": -0.16 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.16
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",
@@ -57,7 +57,10 @@
     {
       "id": "todo-usuario-sem-outro-crime",
       "rotulo": "todo usuário sem outro crime",
-      "bussola": { "economico": 0, "social": -0.24 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.24
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",
@@ -75,27 +78,11 @@
     },
     {
       "id": "todo-usuario",
-      "rotulo": "todo usuário",
-      "bussola": { "economico": 0, "social": -0.32 },
-      "efeitos": [
-        {
-          "indice": "volta_ao_crime",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        },
-        {
-          "indice": "lotacao_presidios",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
-      "id": "sem-ficha-criminal",
-      "rotulo": "sem ficha criminal",
-      "bussola": { "economico": 0, "social": -0.4 },
+      "rotulo": "todo usuário, sem ficha criminal",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",

@@ -13,13 +13,19 @@
     {
       "id": "arma-proibida-para-civis",
       "rotulo": "arma proibida para civis",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "so-cacadores",
-      "rotulo": "só caçadores",
-      "bussola": { "economico": 0, "social": 0.18 },
+      "rotulo": "só caçadores, atiradores e vigilantes",
+      "bussola": {
+        "economico": 0,
+        "social": 0.35
+      },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -30,9 +36,12 @@
       ]
     },
     {
-      "id": "atiradores-e-vigilantes",
-      "rotulo": "atiradores e vigilantes",
-      "bussola": { "economico": 0, "social": 0.35 },
+      "id": "cidadao-sem-antecedentes-pode-ter-arma-em-casa",
+      "rotulo": "cidadão sem antecedentes pode ter arma em casa",
+      "bussola": {
+        "economico": 0,
+        "social": 0.52
+      },
       "efeitos": [
         {
           "indice": "homicidios",
@@ -43,22 +52,12 @@
       ]
     },
     {
-      "id": "cidadao-sem-antecedentes-pode-ter-arma-em-casa",
-      "rotulo": "cidadão sem antecedentes pode ter arma em casa",
-      "bussola": { "economico": 0, "social": 0.52 },
-      "efeitos": [
-        {
-          "indice": "homicidios",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
       "id": "tambem-pode-andar-armado-na-rua",
       "rotulo": "também pode andar armado na rua",
-      "bussola": { "economico": 0, "social": 0.7 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.7
+      },
       "efeitos": [
         {
           "indice": "homicidios",

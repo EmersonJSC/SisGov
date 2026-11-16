@@ -13,13 +13,19 @@
     {
       "id": "so-depois-da-condenacao",
       "rotulo": "só depois da condenação",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "depois-que-a-acusacao-e-aceita",
       "rotulo": "depois que a acusação é aceita",
-      "bussola": { "economico": 0, "social": 0.1 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.1
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -31,8 +37,11 @@
     },
     {
       "id": "durante-a-investigacao",
-      "rotulo": "durante a investigação",
-      "bussola": { "economico": 0, "social": 0.2 },
+      "rotulo": "durante a investigação, com ordem do juiz",
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -43,22 +52,12 @@
       ]
     },
     {
-      "id": "com-ordem-do-juiz",
-      "rotulo": "com ordem do juiz",
-      "bussola": { "economico": 0, "social": 0.3 },
-      "efeitos": [
-        {
-          "indice": "liberdade_civil",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
       "id": "automatico-ao-abrir-a-investigacao",
       "rotulo": "automático ao abrir a investigação",
-      "bussola": { "economico": 0, "social": 0.4 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",

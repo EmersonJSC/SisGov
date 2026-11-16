@@ -13,31 +13,37 @@
     {
       "id": "nao-trabalha",
       "rotulo": "não trabalha",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "trabalho-voluntario-dentro-do-presidio-cozinha",
-      "rotulo": "trabalho voluntário dentro do presídio (cozinha",
-      "bussola": { "economico": 0, "social": 0.1 },
-      "efeitos": []
-    },
-    {
-      "id": "limpeza",
-      "rotulo": "limpeza)",
-      "bussola": { "economico": 0, "social": 0.2 },
+      "rotulo": "trabalho voluntário dentro do presídio (cozinha, limpeza)",
+      "bussola": {
+        "economico": 0,
+        "social": 0.2
+      },
       "efeitos": []
     },
     {
       "id": "trabalho-obrigatorio-dentro-do-presidio",
       "rotulo": "trabalho obrigatório dentro do presídio",
-      "bussola": { "economico": 0, "social": 0.3 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.3
+      },
       "efeitos": []
     },
     {
       "id": "trabalho-obrigatorio-tambem-para-empresas-de-fora",
       "rotulo": "trabalho obrigatório também para empresas de fora",
-      "bussola": { "economico": 0, "social": 0.4 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
       "efeitos": []
     }
   ]

@@ -13,63 +13,81 @@
     {
       "id": "so-caminhao-e-onibus",
       "rotulo": "só caminhão e ônibus",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "mais-carro-velho",
       "rotulo": "mais carro velho",
-      "bussola": { "economico": 0, "social": -0.1 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
-          "sentido": 1,
+          "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "carro e moto com freio e pneu em ordem batem menos"
         },
         {
           "indice": "qualidade_do_ar",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "motor regulado polui menos"
         }
       ]
     },
     {
       "id": "mais-moto-velha",
       "rotulo": "mais moto velha",
-      "bussola": { "economico": 0, "social": -0.2 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
-          "sentido": 1,
+          "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "carro e moto com freio e pneu em ordem batem menos"
         },
         {
           "indice": "qualidade_do_ar",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "motor regulado polui menos"
         }
       ]
     },
     {
       "id": "todo-veiculo-todo-ano",
       "rotulo": "todo veículo todo ano",
-      "bussola": { "economico": 0, "social": -0.3 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.3
+      },
       "efeitos": [
         {
           "indice": "mortes_no_transito",
-          "sentido": 1,
+          "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "carro e moto com freio e pneu em ordem batem menos"
         },
         {
           "indice": "qualidade_do_ar",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "motor regulado polui menos"
         }
       ]
     }

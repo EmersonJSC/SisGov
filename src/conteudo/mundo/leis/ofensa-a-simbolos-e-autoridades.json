@@ -13,13 +13,19 @@
     {
       "id": "livre",
       "rotulo": "livre",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "punido-so-se-houver-ameaca",
-      "rotulo": "punido só se houver ameaça",
-      "bussola": { "economico": 0, "social": 0.12 },
+      "rotulo": "punido só se houver ameaça ou violência",
+      "bussola": {
+        "economico": 0,
+        "social": 0.24
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -30,22 +36,12 @@
       ]
     },
     {
-      "id": "violencia",
-      "rotulo": "violência",
-      "bussola": { "economico": 0, "social": 0.24 },
-      "efeitos": [
-        {
-          "indice": "liberdade_civil",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
       "id": "multa-por-ofender-bandeira-e-hino",
       "rotulo": "multa por ofender bandeira e hino",
-      "bussola": { "economico": 0, "social": 0.36 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.36
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
@@ -58,12 +54,15 @@
     {
       "id": "multa-tambem-por-ofender-policiais-e-juizes",
       "rotulo": "multa também por ofender policiais e juízes",
-      "bussola": { "economico": 0, "social": 0.48 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.48
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]
@@ -71,7 +70,10 @@
     {
       "id": "prisao-por-ofender-simbolos-e-autoridades",
       "rotulo": "prisão por ofender símbolos e autoridades",
-      "bussola": { "economico": 0, "social": 0.6 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
       "efeitos": [
         {
           "indice": "liberdade_civil",

@@ -13,13 +13,19 @@
     {
       "id": "so-em-legitima-defesa",
       "rotulo": "só em legítima defesa",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "tambem-para-salvar-refem",
-      "rotulo": "também para salvar refém",
-      "bussola": { "economico": 0, "social": 0.2 },
+      "rotulo": "também para salvar refém ou outra pessoa em risco imediato",
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
@@ -37,31 +43,6 @@
           "indice": "homicidios",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
-      "id": "outra-pessoa-em-risco-imediato",
-      "rotulo": "outra pessoa em risco imediato",
-      "bussola": { "economico": 0, "social": 0.4 },
-      "efeitos": [
-        {
-          "indice": "mortes_pela_policia",
-          "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 2
-        },
-        {
-          "indice": "confianca_na_policia",
-          "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 2
-        },
-        {
-          "indice": "homicidios",
-          "sentido": -1,
-          "forca": "media",
           "atraso_turnos": 2
         }
       ]
@@ -69,24 +50,27 @@
     {
       "id": "tambem-contra-quem-foge-armado-depois-de-um-crime",
       "rotulo": "também contra quem foge armado depois de um crime",
-      "bussola": { "economico": 0, "social": 0.6 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.6
+      },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",
           "sentido": 1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         },
         {
           "indice": "confianca_na_policia",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         },
         {
           "indice": "homicidios",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2
         }
       ]
@@ -94,7 +78,10 @@
     {
       "id": "tambem-contra-qualquer-suspeito-armado-em-area-de-crime",
       "rotulo": "também contra qualquer suspeito armado em área de crime",
-      "bussola": { "economico": 0, "social": 0.8 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.8
+      },
       "efeitos": [
         {
           "indice": "mortes_pela_policia",

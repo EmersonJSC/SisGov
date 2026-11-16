@@ -13,31 +13,37 @@
     {
       "id": "sem-tratamento-especial",
       "rotulo": "sem tratamento especial",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "cela-separada-no-mesmo-presidio",
       "rotulo": "cela separada no mesmo presídio",
-      "bussola": { "economico": 0, "social": 0.13 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
       "efeitos": []
     },
     {
       "id": "presidio-de-seguranca-maxima-so-para-chefes",
-      "rotulo": "presídio de segurança máxima só para chefes",
-      "bussola": { "economico": 0, "social": 0.25 },
-      "efeitos": []
-    },
-    {
-      "id": "visita-atras-do-vidro",
-      "rotulo": "visita atrás do vidro",
-      "bussola": { "economico": 0, "social": 0.38 },
+      "rotulo": "presídio de segurança máxima só para chefes, visita atrás do vidro",
+      "bussola": {
+        "economico": 0,
+        "social": 0.38
+      },
       "efeitos": []
     },
     {
       "id": "seguranca-maxima-com-isolamento-total-e-sem-visitas",
       "rotulo": "segurança máxima com isolamento total e sem visitas",
-      "bussola": { "economico": 0, "social": 0.5 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.5
+      },
       "efeitos": []
     }
   ]

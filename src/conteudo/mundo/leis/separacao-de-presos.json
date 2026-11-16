@@ -13,13 +13,19 @@
     {
       "id": "todos-juntos",
       "rotulo": "todos juntos",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "separa-quem-cometeu-crime-violento",
       "rotulo": "separa quem cometeu crime violento",
-      "bussola": { "economico": 0, "social": -0.1 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.1
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",
@@ -32,7 +38,10 @@
     {
       "id": "separa-quem-esta-preso-pela-primeira-vez-dos-reincidentes",
       "rotulo": "separa quem está preso pela primeira vez dos reincidentes",
-      "bussola": { "economico": 0, "social": -0.2 },
+      "bussola": {
+        "economico": 0,
+        "social": -0.2
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",
@@ -44,21 +53,11 @@
     },
     {
       "id": "presidio-proprio-para-quem-esta-preso-pela-primeira-vez",
-      "rotulo": "presídio próprio para quem está preso pela primeira vez",
-      "bussola": { "economico": 0, "social": -0.3 },
-      "efeitos": [
-        {
-          "indice": "volta_ao_crime",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 12
-        }
-      ]
-    },
-    {
-      "id": "com-estudo-e-trabalho",
-      "rotulo": "com estudo e trabalho",
-      "bussola": { "economico": 0, "social": -0.4 },
+      "rotulo": "presídio próprio para quem está preso pela primeira vez, com estudo e trabalho",
+      "bussola": {
+        "economico": 0,
+        "social": -0.4
+      },
       "efeitos": [
         {
           "indice": "volta_ao_crime",

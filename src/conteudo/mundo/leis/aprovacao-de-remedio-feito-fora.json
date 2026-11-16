@@ -2,7 +2,7 @@
   "versao": 1,
   "id": "aprovacao-de-remedio-feito-fora",
   "nome": "Aprovação de remédio feito fora",
-  "descricao": "Se o remédio aprovado lá fora pode ser vendido aqui. Escada: análise completa aqui; prazo máximo, passou e está aprovado; vale a aprovação de agência forte de fora; vale a de qualquer agência reconhecida, sem análise.",
+  "descricao": "Se o remédio já aprovado fora do país precisa passar de novo pela agência daqui. Cada degrau põe o remédio mais cedo na farmácia, com mais ou menos risco.",
   "camada": "jogabilidade",
   "classe": "decreto",
   "origem": "planilha",

@@ -12,14 +12,11 @@
   "opcoes": [
     {
       "id": "so-o-estado",
-      "rotulo": "só o Estado",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": []
-    },
-    {
-      "id": "pelo-seguro-desemprego",
-      "rotulo": "pelo Seguro-desemprego",
-      "bussola": { "economico": 0.08, "social": 0 },
+      "rotulo": "só o Estado, pelo Seguro-desemprego",
+      "bussola": {
+        "economico": 0.08,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -38,7 +35,10 @@
     {
       "id": "parte-numa-conta-do-trabalhador",
       "rotulo": "parte numa conta do trabalhador",
-      "bussola": { "economico": 0.16, "social": 0 },
+      "bussola": {
+        "economico": 0.16,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -56,8 +56,11 @@
     },
     {
       "id": "tudo-na-conta",
-      "rotulo": "tudo na conta",
-      "bussola": { "economico": 0.24, "social": 0 },
+      "rotulo": "tudo na conta, com fundo do Estado para quem junta pouco",
+      "bussola": {
+        "economico": 0.32,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "emprego_informal",
@@ -69,25 +72,6 @@
           "indice": "pobreza",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 6
-        }
-      ]
-    },
-    {
-      "id": "com-fundo-do-estado-para-quem-junta-pouco",
-      "rotulo": "com fundo do Estado para quem junta pouco",
-      "bussola": { "economico": 0.32, "social": 0 },
-      "efeitos": [
-        {
-          "indice": "emprego_informal",
-          "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 6
-        },
-        {
-          "indice": "pobreza",
-          "sentido": 1,
-          "forca": "forte",
           "atraso_turnos": 6
         }
       ]
@@ -95,7 +79,10 @@
     {
       "id": "so-a-conta",
       "rotulo": "só a conta",
-      "bussola": { "economico": 0.4, "social": 0 },
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "emprego_informal",
