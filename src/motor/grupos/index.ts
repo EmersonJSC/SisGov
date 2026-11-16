@@ -120,19 +120,24 @@ export function motivoGruposInvalidos(
   return null;
 }
 
-/** Pessoas e renda real média dos membros de um grupo. */
+/**
+ * Pessoas e bolso médio dos membros de um grupo (15/nov): o `poder` do pop
+ * (renda depois das cestas, sem a inflação, mais os serviços que recebe);
+ * pop sem `poder` (país sem mercado) entra com a renda real.
+ */
 export function rendaDoGrupo(
   tipo: TipoGrupo,
   pops: Record<string, Pop>,
   indice_precos: number,
 ): { pessoas: number; renda_real: number } {
   let pessoas = 0;
-  let renda = 0;
+  let bolso = 0;
   for (const [id, f] of Object.entries(tipo.membros)) {
-    pessoas += pops[id].pessoas * f;
-    renda += pops[id].pessoas * f * pops[id].renda;
+    const pop = pops[id];
+    pessoas += pop.pessoas * f;
+    bolso += pop.pessoas * f * (pop.poder ?? (pop.renda * 100) / indice_precos);
   }
-  return { pessoas, renda_real: ((renda / pessoas) * 100) / indice_precos };
+  return { pessoas, renda_real: bolso / pessoas };
 }
 
 /**

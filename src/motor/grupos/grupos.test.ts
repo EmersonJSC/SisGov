@@ -236,6 +236,23 @@ describe("grupos", () => {
   });
 });
 
+describe("bolso pelo padrão de vida (15/nov)", () => {
+  it("com o mesmo salário, quem paga a cesta mais cara fica menos satisfeito", () => {
+    const entrada = (poder: number) => ({
+      pops: { a: { ...pop(10, 100), poder }, b: { ...pop(20, 100), poder } },
+      indice_precos: 100,
+      indices: { x: 10 },
+      vigentes: { l: 0.1 },
+      marco,
+    });
+    const igual = calcularGrupos([tipo], { l: lei }, entrada(100));
+    const caro = calcularGrupos([tipo], { l: lei }, entrada(90));
+    expect(igual.g.satisfacao).toBe(50);
+    // o poder cai 10% com a mesma renda: −10 pontos
+    expect(caro.g.satisfacao).toBeCloseTo(40);
+  });
+});
+
 describe("pops deslizam na bússola", () => {
   const tipoPop = {
     id: "a",

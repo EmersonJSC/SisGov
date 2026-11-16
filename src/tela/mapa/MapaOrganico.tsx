@@ -222,6 +222,16 @@ export function MapaOrganico({
       ),
     [visao.bolhas],
   );
+  // O lugar do grupo é fixo (preparo); o número vem da visão de agora.
+  const satisfacoes = useMemo(
+    () =>
+      new Map(
+        visao.bolhas
+          .filter((b) => b.tipo === "grupo")
+          .map((b) => [b.id, b.valor]),
+      ),
+    [visao.bolhas],
+  );
   const pesos = useMemo(() => pesosDaVisao(visao, visaoId), [visao, visaoId]);
   const hierarquia = visao.hierarquia;
   const ministros = useMemo(
@@ -846,7 +856,7 @@ export function MapaOrganico({
             <path
               d={hexagono(RAIO_DO_GRUPO)}
               fill={PAPEL}
-              stroke={corDaSatisfacao(g.valor)}
+              stroke={corDaSatisfacao(satisfacoes.get(g.id) ?? g.valor)}
               strokeWidth={6}
             />
             <text
@@ -857,7 +867,7 @@ export function MapaOrganico({
               fontWeight={700}
               pointerEvents="none"
             >
-              {Math.round(g.valor)}
+              {Math.round(satisfacoes.get(g.id) ?? g.valor)}
             </text>
             <text
               y={RAIO_DO_GRUPO + LETRA_DO_GRUPO}
