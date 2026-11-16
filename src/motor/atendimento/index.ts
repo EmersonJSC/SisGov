@@ -547,10 +547,15 @@ export function atendimentoInicial(
     missao,
   });
   const procura = procuraAlvo(leis, pais.com_bolso);
-  const vagas =
-    (Math.max(0, pais.atendimento - soPlanos) / 100) *
-    populacao *
-    (1 + procura);
+  // As leis em vigor já valem no turno 0 (15/nov): a cobertura básica começa
+  // no alvo, e as vagas são as que faltam para o índice declarado.
+  const cobertura = coberturaAlvo(regra, leis.basica, pais.atraso);
+  const fora = soPlanos / 100;
+  const publico = Math.max(
+    0,
+    (pais.atendimento / 100 - fora - (1 - fora) * cobertura) / (1 - cobertura),
+  );
+  const vagas = publico * populacao * (1 + procura);
   const vacinados = pais.vacina / 100 / (1 - leis.recusa);
   const alcancados = (programa * pais.atendimento) / 100;
   return {
@@ -584,8 +589,8 @@ export function atendimentoInicial(
       disputa,
       missao,
     }),
-    cobertura: 0,
-    alcance: 0,
+    cobertura,
+    alcance: leis.alcance,
     fraqueza: 0,
     filantropia,
     reserva,

@@ -27,4 +27,4 @@ O que existe no código mas não roda na partida da V1. Liga pelas
 | 15/nov | 4 (leis) | Teto do preço dos remédios: bússola invertida (teto livre como esquerda). |
 | 15/nov | 4 (leis) | Texto "Como chega a você: só mexe nos índices" está velho nas 6 leis do preço. |
 | 15/nov | 2.4 | Prévia de "Apoio dos grupos" não soma o bolso. |
-| 15/nov | 2.4 | Parado, a popularidade sobe (50% → 54% em 10 turnos). |
+| 15/nov | 2.4 | Parado, a popularidade cai pouco (50% → 48% em 10 turnos); o rombo ainda não pesa no bolso. Conferir outros índices que nascem fora do ponto. |

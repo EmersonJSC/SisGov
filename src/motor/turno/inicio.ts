@@ -1,6 +1,10 @@
 // Estado do turno 0: confere o país e monta tudo o que a partida começa sabendo.
 import { semear } from "../acaso";
-import { atendimentoInicial, indiceDoAtendimento } from "../atendimento";
+import {
+  atendimentoInicial,
+  fraquezaDaRede,
+  indiceDoAtendimento,
+} from "../atendimento";
 import { ehBase } from "../calculos";
 import { filaInicial, somaPorIndice } from "../efeitos";
 import {
@@ -450,7 +454,25 @@ function atendimentoDoTurnoZero(regras: Regras, e: Estado): Estado {
   });
   if (atendimento > teto + 1e-6)
     erro("país: atendimento maior que o dos profissionais");
-  return { ...e, atendimento: inicial };
+  // Os pontos da rede na saúde já contam no turno 0: o turno 1 não salta.
+  const fraqueza = fraquezaDaRede(r, {
+    populacao,
+    profissionais,
+    vagas: inicial.vagas,
+    planos: inicial.planos,
+    seguro: inicial.seguro,
+    alcance: inicial.alcance,
+    cobertura: inicial.cobertura,
+    fraco: leisDoAtendimento(regras, r, e.leis).fraco,
+    procura: inicial.procura,
+    filantropia: inicial.filantropia,
+    reserva: inicial.reserva,
+    disputa: inicial.disputa,
+    missao: inicial.missao,
+    ambiental: inicial.ambiental,
+    ambiente: e.jogabilidade[r.indice_ambiente],
+  });
+  return { ...e, atendimento: { ...inicial, fraqueza } };
 }
 
 /** O marco é o próprio turno 0: grupos começam em 50. */

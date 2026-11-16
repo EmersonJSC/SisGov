@@ -75,3 +75,28 @@ Partida jogada pelo Claude no navegador: Brasil 2026, semente 42, chapa sugerida
 3. Memória: cortar dói mais do que dar agrada.
 4. Mais cestas no bolso (energia e moradia primeiro).
 5. Para onde vai o dinheiro do preço (3.6).
+
+## Ficar parado (15/nov, segunda rodada)
+
+**Causa:** a rede de saúde começava o jogo "fora do ponto". Três números do
+turno 0 nasciam em zero e iam até o alvo das leis que o Brasil **já tem**, como
+se essas leis tivessem acabado de ser aprovadas:
+- `alcance` (Telemedicina e Serviço obrigatório) e `cobertura` (atenção
+  básica): o Atendimento subia sozinho, 30 → 36 em 10 turnos;
+- `fraqueza` (pontos da rede na saúde): a Saúde saltava 50 → 59 no turno 1.
+
+Isso agradava operários, aposentados, educação e saúde e quem está sem
+trabalho, e a popularidade subia sem o jogador fazer nada.
+
+**Conserto:** o turno 0 já nasce no ponto das leis em vigor (`motor/atendimento`
+› `atendimentoInicial`, `motor/turno/inicio.ts`). Teste novo:
+`src/partida/parado.test.ts`.
+
+**Resultado na tela (mesma semente):** parado por 10 turnos, a popularidade vai
+de **50% para 48%** (antes ia para 54%). Saúde e Atendimento ficam parados.
+
+**Limites:**
+- A queda parado é pequena (−2 em 20 meses). Vem do desgaste e de Finanças
+  cobrando a dívida. O rombo (228 → 313 bi) ainda não pesa no bolso de ninguém.
+- Outros índices podem ter o mesmo defeito de "nascer fora do ponto". Só a
+  rede de saúde foi medida e consertada.
