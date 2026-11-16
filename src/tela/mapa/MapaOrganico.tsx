@@ -440,7 +440,13 @@ export function MapaOrganico({
       const ministro = preparo.ministroDoIndice.get(b.id);
       if (!b.alerta || b.alerta === "normal" || !ministro) return;
       const de = `${PREFIXO_MINISTRO}${ministro}`;
-      [`h:${CENTRO_DA_TRINDADE}>${de}`, `h:${de}>${b.id}`].forEach((fio) => {
+      // o fio segue do ministro à instituição dona e dela ao índice (16/nov)
+      const inst = `${PREFIXO_INSTITUICAO}${b.dono}`;
+      [
+        `h:${CENTRO_DA_TRINDADE}>${de}`,
+        `h:${de}>${inst}`,
+        `h:${inst}>${b.id}`,
+      ].forEach((fio) => {
         const antes = caminhos.get(fio);
         if (!antes || gravidade[b.alerta as AlertaAceso] > gravidade[antes])
           caminhos.set(fio, b.alerta as AlertaAceso);
