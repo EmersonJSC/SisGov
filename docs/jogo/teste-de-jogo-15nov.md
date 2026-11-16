@@ -134,13 +134,31 @@ ajustam sem mexer no código.
   inflação lia isso como gasto novo. A base agora sai do turno 0 completo.
 
 **Limites:**
-- **Não consegui ver a inflação subir jogando na tela.** Mandei a verba da
-  saúde maior, mas ela não entrou (provavelmente o Congresso barrou; não
-  confirmei se a caixa "Sem Congresso" ficou marcada). A mecânica está provada
-  pelos testes (`src/partida/rombo.test.ts`) e pela medição acima.
+- ~~Não consegui ver a inflação subir na tela.~~ Resolvido abaixo.
 - **O rombo que cresce na barra do topo (228 → 313 bi parado) são os juros da
   dívida**, não o gasto; ele não sobe a inflação, de propósito.
-- O "Caixa" do turno 0 mostra o rombo contado antes da rede de saúde (1,5% de
-  sobra no turno 0, 0,4% no turno 1).
 - Câmbio, crédito e expectativas (o resto do 3.7) continuam fora.
 - Os números (0,5; 25%; metade por ano; 100/70/30) são chute de jogo.
+
+## Defeito achado: o arcabouço travava toda verba (15/nov)
+
+**Por que a inflação não subia na tela:** o Brasil começa com o arcabouço fiscal
+em vigor, e a punição dele **trava qualquer aumento de verba** quando o teto de
+gasto estoura. O teto estourava **no turno 1, parado**, porque as contas do
+turno 0 eram feitas antes de a rede de saúde entrar na conta: o gasto parecia
+pular 1,1% do PIB de um turno para o outro. **Na prática, no Brasil o jogador
+nunca conseguia aumentar verba nenhuma.**
+
+**Conserto:** as contas do turno 0 são refeitas com o estado completo
+(`motor/turno/inicio.ts`). Agora turno 0 e turno 1 batem (gasto 27,1%, rombo
+das leis +0,41%), o arcabouço não estoura parado, e o "Caixa" do turno 0 fica
+certo.
+
+**Na tela, sem Congresso:** Verba da saúde de 4% para 8,6%. A popularidade
+subiu na hora (50% → 56%); a inflação foi de 4,8% a 6,9% em ano e meio, o
+salário perdeu 1,5%, e a popularidade voltou a 50%. O painel da inflação mostra
+os três números. A piora no bolso também fez surgir uma organização radical
+no Rio (jornal do turno).
+
+**Erro meu no teste:** na primeira tentativa marquei a caixa "Sem Congresso"
+de um jeito que só mudava o desenho, e o jogo continuou com Congresso.

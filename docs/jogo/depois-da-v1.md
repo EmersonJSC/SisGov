@@ -29,4 +29,3 @@ O que existe no código mas não roda na partida da V1. Liga pelas
 | 15/nov | 2.4 | Prévia de "Apoio dos grupos" não soma o bolso. |
 | 15/nov | 2.4 | Parado, a popularidade cai pouco (50% → 48% em 10 turnos); o rombo ainda não pesa no bolso. Conferir outros índices que nascem fora do ponto. |
 | 15/nov | 3.7 | Inflação pelo rombo usa só o primário; o rombo dos juros não pesa. Rever quando câmbio e expectativas entrarem. |
-| 15/nov | 3.12 | O Caixa do turno 0 conta o rombo antes da rede de saúde (1,5% contra 0,4% no turno 1). |

@@ -525,7 +525,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   const estado = estadoBase(regras, inicio, coligacao);
   // Turno 0 mostra as contas sem fechar: cofre e dívida são os declarados.
   const fluxos = fluxosDoTurno(regras, estado);
-  const comPops = [
+  const montado = [
     construcoesDoTurnoZero,
     moradiaDoTurnoZero,
     saneamentoDoTurnoZero,
@@ -538,6 +538,16 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       pops: pops(regras, estado),
     }),
   );
+  // As contas de novo, com a rede de saúde do turno 0 já montada: sem isso o
+  // gasto do turno 1 parece um salto (estoura o teto, puxa a inflação).
+  const comPops = {
+    ...montado,
+    essenciais: mostrarContas(
+      montado.essenciais,
+      fluxosDoTurno(regras, montado),
+      montado.tesouro,
+    ),
+  };
   const marco = marcoDoTurnoZero(regras, comPops);
   return invariantes(
     regras,
@@ -549,13 +559,7 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
       ...(regras.fisco?.inflacao
         ? {
             inflacao: {
-              // Com a rede de saúde do turno 0 já na conta (o resultado acima
-              // foi contado antes dela).
-              rombo0: mostrarContas(
-                comPops.essenciais,
-                fluxosDoTurno(regras, comPops),
-                comPops.tesouro,
-              ).resultado_primario,
+              rombo0: comPops.essenciais.resultado_primario,
               perda: 0,
             },
           }
