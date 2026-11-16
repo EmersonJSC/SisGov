@@ -39,19 +39,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o governo paga o remédio na farmácia"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "quem tem doença crônica toma o remédio certo"
         },
         {
           "indice": "pobreza",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o pobre deixa de gastar com remédio"
         }
       ]
     },
@@ -71,19 +74,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o governo paga o remédio na farmácia"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "quem tem doença crônica toma o remédio certo"
         },
         {
           "indice": "pobreza",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o pobre deixa de gastar com remédio"
         }
       ]
     },
@@ -103,19 +109,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o governo paga o remédio na farmácia"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "quem tem doença crônica toma o remédio certo"
         },
         {
           "indice": "pobreza",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o pobre deixa de gastar com remédio"
         }
       ]
     },
@@ -135,19 +144,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o governo paga o remédio na farmácia"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "quem tem doença crônica toma o remédio certo"
         },
         {
           "indice": "pobreza",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o pobre deixa de gastar com remédio"
         }
       ]
     }

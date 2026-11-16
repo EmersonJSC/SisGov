@@ -13,82 +13,105 @@
     {
       "id": "nenhuma-faculdade-privada",
       "rotulo": "nenhuma faculdade privada",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "poucas",
       "rotulo": "poucas",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "instrucao",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "mais gente com curso superior"
         },
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "faculdade particular forma mais profissionais"
         }
       ]
     },
     {
       "id": "com-prova-de-qualidade-antes-de-abrir",
       "rotulo": "com prova de qualidade antes de abrir",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "instrucao",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "mais gente com curso superior"
         },
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "faculdade particular forma mais profissionais"
         }
       ]
     },
     {
       "id": "abertura-livre-com-prova-de-qualidade-no-fim-do-curso",
       "rotulo": "abertura livre com prova de qualidade no fim do curso",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "instrucao",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "mais gente com curso superior"
         },
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "faculdade particular forma mais profissionais"
         }
       ]
     },
     {
       "id": "abertura-livre-sem-nenhum-controle",
       "rotulo": "abertura livre sem nenhum controle",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "instrucao",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "mais gente com curso superior"
         },
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "faculdade particular forma mais profissionais"
         }
       ]
     }

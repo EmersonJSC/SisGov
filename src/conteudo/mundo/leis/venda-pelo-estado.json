@@ -31,13 +31,15 @@
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o Estado vende, e mais gente compra"
         },
         {
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "a venda sai do tráfico para a loja do Estado"
         }
       ]
     },
@@ -53,13 +55,15 @@
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o Estado vende, e mais gente compra"
         },
         {
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "a venda sai do tráfico para a loja do Estado"
         }
       ]
     },
@@ -75,13 +79,15 @@
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o Estado vende, e mais gente compra"
         },
         {
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "a venda sai do tráfico para a loja do Estado"
         }
       ]
     },
@@ -97,13 +103,15 @@
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o Estado vende, e mais gente compra"
         },
         {
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "a venda sai do tráfico para a loja do Estado"
         }
       ]
     }

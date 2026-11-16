@@ -13,13 +13,17 @@
     {
       "id": "aviso-de-risco-e-autoexclusao-voluntaria",
       "rotulo": "aviso de risco e autoexclusão voluntária",
-      "bussola": { "economico": -0.1, "social": 0 },
+      "bussola": {
+        "economico": -0.1,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "limite de gasto e aviso seguram o apostador"
         },
         {
           "indice": "pobreza",
@@ -32,13 +36,17 @@
     {
       "id": "limite-de-deposito-e-sem-cartao-de-credito",
       "rotulo": "limite de depósito e proibição de pagar com cartão de crédito",
-      "bussola": { "economico": -0.2, "social": 0 },
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "limite de gasto e aviso seguram o apostador"
         },
         {
           "indice": "pobreza",
@@ -51,13 +59,17 @@
     {
       "id": "autoexclusao-geral-e-propaganda-proibida",
       "rotulo": "autoexclusão em todas as casas e propaganda proibida",
-      "bussola": { "economico": -0.3, "social": 0 },
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_jogos",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "limite de gasto e aviso seguram o apostador"
         },
         {
           "indice": "pobreza",

@@ -13,7 +13,10 @@
     {
       "id": "so-o-estado-explora",
       "rotulo": "só o Estado explora",
-      "bussola": { "economico": -0.3, "social": 0 },
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -25,14 +28,18 @@
           "indice": "dependencia_de_jogos",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais casas de aposta funcionando"
         }
       ]
     },
     {
       "id": "poucas-licencas-caras",
       "rotulo": "poucas licenças caras",
-      "bussola": { "economico": 0.1, "social": 0 },
+      "bussola": {
+        "economico": 0.1,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -44,14 +51,18 @@
           "indice": "dependencia_de_jogos",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais casas de aposta funcionando"
         }
       ]
     },
     {
       "id": "licenca-aberta-com-imposto-moderado",
       "rotulo": "licença aberta com imposto moderado",
-      "bussola": { "economico": 0.3, "social": 0 },
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -63,14 +74,18 @@
           "indice": "dependencia_de_jogos",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais casas de aposta funcionando"
         }
       ]
     },
     {
       "id": "licenca-barata-e-aberta-a-qualquer-empresa",
       "rotulo": "licença barata e aberta a qualquer empresa",
-      "bussola": { "economico": 0.5, "social": 0 },
+      "bussola": {
+        "economico": 0.5,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "mercado_ilegal",
@@ -82,7 +97,8 @@
           "indice": "dependencia_de_jogos",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais casas de aposta funcionando"
         }
       ]
     }

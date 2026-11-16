@@ -13,6 +13,8 @@ export type VisaoOpcao = Readonly<{
    * país como está agora (moeda do país). 0 se não toca o orçamento.
    */
   saldoAnual: number;
+  /** Porquê de cada efeito desta opção, por índice (16/nov). */
+  porques?: Readonly<Record<string, string>>;
   /**
    * Trava (V1-34): outra camada da mesa não deixa escolher esta opção agora.
    * `lei` é a lei que trava, para a tela levar até ela.
@@ -104,6 +106,8 @@ export type VisaoLei = Readonly<{
    * leis do formato antigo (áreas ainda não migradas).
    */
   nivelLegal?: "petrea" | "constitucional" | "derivada";
+  /** Porquê de cada efeito da régua, por índice (16/nov). */
+  porques?: Readonly<Record<string, string>>;
   /** Tipo da lei (16/nov): quão difícil é mudá-la; o selo da janela. */
   classe?: ClasseLei;
   /**

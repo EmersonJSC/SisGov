@@ -13,45 +13,60 @@
     {
       "id": "tudo-liberado",
       "rotulo": "tudo liberado",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "so-restricoes-leves",
       "rotulo": "só restrições leves",
-      "bussola": { "economico": 0, "social": 0.13 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.13
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "sem propaganda, menos gente começa"
         }
       ]
     },
     {
       "id": "sem-propaganda",
       "rotulo": "sem propaganda",
-      "bussola": { "economico": 0, "social": 0.27 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.27
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "sem propaganda, menos gente começa"
         }
       ]
     },
     {
       "id": "embalagem-padronizada-e-sem-propaganda",
       "rotulo": "embalagem padronizada e sem propaganda",
-      "bussola": { "economico": 0, "social": 0.4 },
+      "bussola": {
+        "economico": 0,
+        "social": 0.4
+      },
       "efeitos": [
         {
           "indice": "dependencia_de_drogas",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 12
+          "atraso_turnos": 12,
+          "porque": "sem propaganda, menos gente começa"
         }
       ]
     }

@@ -31,19 +31,22 @@
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o traficante perde o freguês"
         },
         {
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "droga liberada, mais gente usa"
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o adulto decide o que usa"
         }
       ]
     },
@@ -59,19 +62,22 @@
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o traficante perde o freguês"
         },
         {
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "droga liberada, mais gente usa"
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o adulto decide o que usa"
         }
       ]
     },
@@ -87,19 +93,22 @@
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o traficante perde o freguês"
         },
         {
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "droga liberada, mais gente usa"
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o adulto decide o que usa"
         }
       ]
     },
@@ -115,19 +124,22 @@
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o traficante perde o freguês"
         },
         {
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "droga liberada, mais gente usa"
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o adulto decide o que usa"
         }
       ]
     },
@@ -143,19 +155,22 @@
           "indice": "mercado_ilegal",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o traficante perde o freguês"
         },
         {
           "indice": "dependencia_de_drogas",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "droga liberada, mais gente usa"
         },
         {
           "indice": "liberdade_civil",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "o adulto decide o que usa"
         }
       ]
     }

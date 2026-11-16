@@ -13,7 +13,10 @@
     {
       "id": "filhos-na-escola-e-vacina-em-dia",
       "rotulo": "filhos na escola e vacina em dia",
-      "bussola": { "economico": 0.13, "social": 0 },
+      "bussola": {
+        "economico": 0.13,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "evasao_escolar",
@@ -25,14 +28,18 @@
           "indice": "vacinacao",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "quem recebe o benefício precisa estar com a vacina em dia"
         }
       ]
     },
     {
       "id": "curso-ou-trabalho-comunitario",
       "rotulo": "curso ou trabalho comunitário para os adultos",
-      "bussola": { "economico": 0.27, "social": 0 },
+      "bussola": {
+        "economico": 0.27,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "evasao_escolar",
@@ -57,7 +64,10 @@
     {
       "id": "emprego-ou-curso-obrigatorio",
       "rotulo": "emprego ou curso obrigatório para quem pode trabalhar",
-      "bussola": { "economico": 0.4, "social": 0 },
+      "bussola": {
+        "economico": 0.4,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "evasao_escolar",

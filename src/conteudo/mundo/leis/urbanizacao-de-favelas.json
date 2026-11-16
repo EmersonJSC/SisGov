@@ -10,12 +10,21 @@
   "jeito": "verba",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.01 },
+  "faixa": {
+    "min": 0,
+    "max": 0.01
+  },
   "passo": 0.0005,
   "conta": "gasto",
   "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": -0.4, "social": 0 }
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.4,
+      "social": 0
+    }
   },
   "efeitos": [
     {
@@ -24,6 +33,12 @@
       "forca": "media",
       "atraso_turnos": 12
     },
-    { "indice": "saude", "sentido": 1, "forca": "media", "atraso_turnos": 12 }
+    {
+      "indice": "saude",
+      "sentido": 1,
+      "forca": "media",
+      "atraso_turnos": 12,
+      "porque": "esgoto, água e rua chegam à favela"
+    }
   ]
 }

@@ -35,19 +35,22 @@
           "indice": "saude_mental",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "mais lugares para tratar ansiedade e depressão"
         },
         {
           "indice": "moradores_de_rua",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "quem tem transtorno grave sai da rua"
         },
         {
           "indice": "produtividade",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "menos gente afastada do trabalho"
         }
       ],
       "valores": {
@@ -66,19 +69,22 @@
           "indice": "saude_mental",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "mais lugares para tratar ansiedade e depressão"
         },
         {
           "indice": "moradores_de_rua",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "quem tem transtorno grave sai da rua"
         },
         {
           "indice": "produtividade",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "menos gente afastada do trabalho"
         }
       ],
       "valores": {
@@ -97,19 +103,22 @@
           "indice": "saude_mental",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "mais lugares para tratar ansiedade e depressão"
         },
         {
           "indice": "moradores_de_rua",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "quem tem transtorno grave sai da rua"
         },
         {
           "indice": "produtividade",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "menos gente afastada do trabalho"
         }
       ],
       "valores": {

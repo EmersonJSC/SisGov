@@ -32,13 +32,15 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "remédio à venda em mais lugares"
         },
         {
           "indice": "saude",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais gente se medica sozinha, sem médico"
         }
       ]
     },
@@ -54,13 +56,15 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "remédio à venda em mais lugares"
         },
         {
           "indice": "saude",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais gente se medica sozinha, sem médico"
         }
       ]
     },
@@ -76,13 +80,15 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "remédio à venda em mais lugares"
         },
         {
           "indice": "saude",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais gente se medica sozinha, sem médico"
         }
       ]
     }

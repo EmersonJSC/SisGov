@@ -2,7 +2,7 @@
   "versao": 1,
   "id": "validacao-de-diploma-estrangeiro",
   "nome": "Validação de diploma estrangeiro",
-  "descricao": "Se quem se formou fora pode atender aqui e com que prova. Escada: não aceita; aceita só depois de curso e prova completos; aceita com prova curta; aceita direto, com registro no conselho.",
+  "descricao": "Se quem se formou fora pode atender aqui e com que prova.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "educacao",
@@ -13,82 +13,81 @@
     {
       "id": "nao-aceita",
       "rotulo": "não aceita",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "aceita-so-depois-de-curso-e-prova-completos",
       "rotulo": "aceita só depois de curso e prova completos",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "entra profissional formado fora"
         },
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais gente atendendo"
         }
       ]
     },
     {
       "id": "aceita-com-prova-curta",
       "rotulo": "aceita com prova curta",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "entra profissional formado fora"
         },
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais gente atendendo"
         }
       ]
     },
     {
       "id": "aceita-direto",
-      "rotulo": "aceita direto",
-      "bussola": { "economico": 0, "social": 0 },
+      "rotulo": "aceita direto, com registro no conselho",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "profissionais_saude",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "entra profissional formado fora"
         },
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 2
-        }
-      ]
-    },
-    {
-      "id": "com-registro-no-conselho",
-      "rotulo": "com registro no conselho",
-      "bussola": { "economico": 0, "social": 0 },
-      "efeitos": [
-        {
-          "indice": "profissionais_saude",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2
-        },
-        {
-          "indice": "atendimento",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2
+          "atraso_turnos": 2,
+          "porque": "mais gente atendendo"
         }
       ]
     }

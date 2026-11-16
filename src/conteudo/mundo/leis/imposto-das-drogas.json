@@ -12,18 +12,28 @@
   "forma": "continua",
   "unidade": "livre",
   "rotulo_unidade": "% do preço",
-  "faixa": { "min": 0, "max": 200 },
+  "faixa": {
+    "min": 0,
+    "max": 200
+  },
   "passo": 5,
   "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": -0.2, "social": 0 }
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": -0.2,
+      "social": 0
+    }
   },
   "efeitos": [
     {
       "indice": "dependencia_de_drogas",
       "sentido": -1,
       "forca": "media",
-      "atraso_turnos": 0
+      "atraso_turnos": 0,
+      "porque": "droga mais cara, menos gente compra"
     },
     {
       "indice": "mercado_ilegal",

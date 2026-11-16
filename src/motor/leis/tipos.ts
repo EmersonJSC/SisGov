@@ -78,6 +78,8 @@ export interface Efeito {
   forca: Forca;
   /** Turnos (2 meses cada) até o efeito chegar inteiro. */
   atraso_turnos: number;
+  /** Frase do porquê, para a janela da lei (16/nov). */
+  porque?: string;
 }
 
 interface LeiBase {

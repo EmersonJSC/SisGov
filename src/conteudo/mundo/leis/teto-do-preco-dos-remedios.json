@@ -29,13 +29,15 @@
       "indice": "acesso_remedios",
       "sentido": 1,
       "forca": "media",
-      "atraso_turnos": 2
+      "atraso_turnos": 2,
+      "porque": "o remédio não pode passar do teto"
     },
     {
       "indice": "saude",
       "sentido": 1,
       "forca": "media",
-      "atraso_turnos": 2
+      "atraso_turnos": 2,
+      "porque": "mais gente consegue comprar o tratamento"
     }
   ],
   "valores": {

@@ -24,6 +24,7 @@ import {
   type RegraDoSaneamento,
   type Canal,
   type Estado,
+  type Efeito,
   type Lei,
   type LeiContinua,
   type LeiOpcoes,
@@ -172,6 +173,12 @@ const JEITO_NA_TELA = {
   escolha: "Escolha",
 } as const;
 
+/** A frase do porquê de cada efeito, por índice (16/nov). */
+const porquesDe = (efeitos: readonly Efeito[]) =>
+  Object.fromEntries(
+    efeitos.filter((e) => e.porque).map((e) => [e.indice, e.porque as string]),
+  );
+
 /** Campos que toda lei tem na tela, de régua ou de degraus. */
 function visaoComumDaLei(
   lei: Lei,
@@ -193,6 +200,7 @@ function visaoComumDaLei(
           ? ("constitucional" as const)
           : ("derivada" as const),
     classe: lei.classe ?? "comum",
+    ...(lei.forma === "continua" ? { porques: porquesDe(lei.efeitos) } : {}),
     ministerio,
     alteradaPorVoce: false,
     saldoAnual: 0,
@@ -258,6 +266,7 @@ function visaoDosDegraus(
       rotulo: t.opcoes?.find((x) => x.id === o.id)?.rotulo ?? nomeDoId(o.id),
       valor: i,
       saldoAnual: 0,
+      porques: porquesDe(o.efeitos),
     })),
     opcaoAtual: valor === undefined ? undefined : String(valor),
   };

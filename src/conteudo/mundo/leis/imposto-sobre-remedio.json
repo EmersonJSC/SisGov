@@ -27,9 +27,10 @@
   "efeitos": [
     {
       "indice": "acesso_remedios",
-      "sentido": 1,
+      "sentido": -1,
       "forca": "media",
-      "atraso_turnos": 1
+      "atraso_turnos": 2,
+      "porque": "o imposto entra no preço e o remédio fica mais caro"
     }
   ],
   "valores": {

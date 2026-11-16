@@ -44,7 +44,8 @@
           "indice": "fuga_de_profissionais",
           "sentido": -1,
           "forca": "fraca",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "com carreira e salário, o profissional fica"
         }
       ]
     },
@@ -67,7 +68,8 @@
           "indice": "fuga_de_profissionais",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "com carreira e salário, o profissional fica"
         }
       ]
     },
@@ -90,7 +92,8 @@
           "indice": "fuga_de_profissionais",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 6
+          "atraso_turnos": 6,
+          "porque": "com carreira e salário, o profissional fica"
         }
       ]
     }

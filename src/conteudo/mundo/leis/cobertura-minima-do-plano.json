@@ -13,101 +13,129 @@
     {
       "id": "o-plano-vende-o-que-quiser",
       "rotulo": "o plano vende o que quiser",
-      "bussola": { "economico": 0, "social": 0 },
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
       "efeitos": []
     },
     {
       "id": "tem-que-cobrir-urgencia",
       "rotulo": "tem que cobrir urgência",
-      "bussola": { "economico": -0.08, "social": 0 },
+      "bussola": {
+        "economico": -0.08,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "o plano atende mais, e menos gente cai na fila pública"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "quem tem plano é tratado de verdade"
         }
       ]
     },
     {
       "id": "nao-pode-recusar-quem-ja-tem-doenca",
       "rotulo": "não pode recusar quem já tem doença",
-      "bussola": { "economico": -0.16, "social": 0 },
+      "bussola": {
+        "economico": -0.16,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "o plano atende mais, e menos gente cai na fila pública"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "quem tem plano é tratado de verdade"
         }
       ]
     },
     {
       "id": "pacote-completo-consulta",
       "rotulo": "pacote completo (consulta",
-      "bussola": { "economico": -0.24, "social": 0 },
+      "bussola": {
+        "economico": -0.24,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "o plano atende mais, e menos gente cai na fila pública"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "quem tem plano é tratado de verdade"
         }
       ]
     },
     {
       "id": "internacao",
       "rotulo": "internação",
-      "bussola": { "economico": -0.32, "social": 0 },
+      "bussola": {
+        "economico": -0.32,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "o plano atende mais, e menos gente cai na fila pública"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "quem tem plano é tratado de verdade"
         }
       ]
     },
     {
       "id": "parto-e-remedio",
       "rotulo": "parto e remédio)",
-      "bussola": { "economico": -0.4, "social": 0 },
+      "bussola": {
+        "economico": -0.4,
+        "social": 0
+      },
       "efeitos": [
         {
           "indice": "atendimento",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "o plano atende mais, e menos gente cai na fila pública"
         },
         {
           "indice": "saude",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 4
+          "atraso_turnos": 4,
+          "porque": "quem tem plano é tratado de verdade"
         }
       ]
     }

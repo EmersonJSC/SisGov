@@ -71,6 +71,7 @@ export const COLUNAS_EFEITOS = [
   "Sentido",
   "Força",
   "Atraso (turnos)",
+  "Por quê",
 ] as const;
 
 const FORMA_NA_PLANILHA = { continua: "Régua", opcoes: "Degraus" } as const;
@@ -209,6 +210,7 @@ const linhaDoEfeito = (lei: string, degrau: string | undefined, e: Efeito) => ({
   Sentido: e.sentido,
   Força: e.forca,
   "Atraso (turnos)": e.atraso_turnos,
+  "Por quê": e.porque,
 });
 
 export function linhasDosEfeitos(lei: Lei): Linha[] {
@@ -227,6 +229,7 @@ function efeitosDe(linhas: readonly Linha[]): Efeito[] {
     sentido: Number(l.Sentido) as 1 | -1,
     forca: String(l["Força"]) as Efeito["forca"],
     atraso_turnos: Number(l["Atraso (turnos)"]),
+    ...(l["Por quê"] ? { porque: String(l["Por quê"]) } : {}),
   }));
 }
 

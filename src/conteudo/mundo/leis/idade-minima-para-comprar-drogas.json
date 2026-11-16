@@ -31,7 +31,8 @@
       "indice": "dependencia_de_drogas",
       "sentido": -1,
       "forca": "fraca",
-      "atraso_turnos": 6
+      "atraso_turnos": 6,
+      "porque": "quem começa mais tarde vicia menos"
     }
   ]
 }

@@ -647,6 +647,11 @@ export function DocumentoLei({
 
   const secaoDe = (id: string): Secao =>
     bolhas.get(id)?.tipo === "grupo" ? "grupo" : "indice";
+  // Porquê do efeito (16/nov): da opção do rascunho, ou da régua.
+  const opcaoDoRascunho = lei.opcoes?.[Math.round(rascunho)];
+  const porques = opcaoDoRascunho?.porques ?? lei.porques ?? {};
+  const comPorque = (id: string, detalhe: string) =>
+    porques[id] ? `${detalhe} · ${porques[id]}` : detalhe;
   const linhas: readonly LinhaDeEfeito[] = previa
     ? [
         ...previa.indices.map((e) => {
@@ -658,11 +663,14 @@ export function DocumentoLei({
             secao: "indice" as const,
             efeito: efeitoDe(Math.sign(e.pontos), b?.avaliacao),
             texto: pontos(e.pontos),
-            detalhe: e.porAno
-              ? `por ano, ${atraso(e.atrasoMeses)}`
-              : e.aosPoucos
-                ? `aos poucos, ${atraso(e.atrasoMeses)}`
-                : atraso(e.atrasoMeses),
+            detalhe: comPorque(
+              e.id,
+              e.porAno
+                ? `por ano, ${atraso(e.atrasoMeses)}`
+                : e.aosPoucos
+                  ? `aos poucos, ${atraso(e.atrasoMeses)}`
+                  : atraso(e.atrasoMeses),
+            ),
           };
         }),
         ...previa.grupos.map((g) => ({
@@ -684,7 +692,7 @@ export function DocumentoLei({
           secao: secaoDe(r.para),
           efeito: r.efeito,
           texto: "",
-          detalhe: `efeito direto, ${atraso(r.atrasoMeses)}`,
+          detalhe: comPorque(r.para, `efeito direto, ${atraso(r.atrasoMeses)}`),
         }));
   const secoes = (["indice", "grupo"] as const)
     .map((secao) => ({

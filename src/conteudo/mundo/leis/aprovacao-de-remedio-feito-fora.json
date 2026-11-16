@@ -32,19 +32,8 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "fraca",
-          "atraso_turnos": 3
-        },
-        {
-          "indice": "saude",
-          "sentido": 1,
-          "forca": "fraca",
-          "atraso_turnos": 3
-        },
-        {
-          "indice": "industrializacao",
-          "sentido": -1,
-          "forca": "fraca",
-          "atraso_turnos": 3
+          "atraso_turnos": 2,
+          "porque": "o remédio novo chega mais cedo"
         }
       ]
     },
@@ -60,19 +49,15 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 3
+          "atraso_turnos": 2,
+          "porque": "passou do prazo, o remédio entra"
         },
         {
           "indice": "saude",
-          "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 3
-        },
-        {
-          "indice": "industrializacao",
           "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 3
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "entra remédio que ninguém terminou de olhar"
         }
       ]
     },
@@ -88,19 +73,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 3
+          "atraso_turnos": 2,
+          "porque": "o que a agência forte aprovou entra aqui"
         },
         {
           "indice": "saude",
           "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 3
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "remédio bom chega mais rápido"
         },
         {
           "indice": "industrializacao",
           "sentido": -1,
-          "forca": "media",
-          "atraso_turnos": 3
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "o laboratório daqui perde a vantagem da espera"
         }
       ]
     },
@@ -116,19 +104,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 3
+          "atraso_turnos": 2,
+          "porque": "quase todo remédio de fora entra"
         },
         {
           "indice": "saude",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 3
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "entra remédio de agência fraca"
         },
         {
           "indice": "industrializacao",
           "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 3
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "o laboratório daqui perde a vantagem da espera"
         }
       ]
     },
@@ -144,19 +135,22 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 3
+          "atraso_turnos": 2,
+          "porque": "todo remédio entra, sem fila"
         },
         {
           "indice": "saude",
-          "sentido": 1,
+          "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 3
+          "atraso_turnos": 2,
+          "porque": "remédio ruim ou falso chega à farmácia"
         },
         {
           "indice": "industrializacao",
           "sentido": -1,
-          "forca": "forte",
-          "atraso_turnos": 3
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "o laboratório daqui perde a vantagem da espera"
         }
       ]
     }

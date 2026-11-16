@@ -30,7 +30,8 @@
       "indice": "atendimento",
       "sentido": 1,
       "forca": "media",
-      "atraso_turnos": 2
+      "atraso_turnos": 2,
+      "porque": "mais gente com plano, menos gente na fila pública"
     }
   ],
   "valores": {

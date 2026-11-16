@@ -33,13 +33,15 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "media",
-          "atraso_turnos": 3
+          "atraso_turnos": 3,
+          "porque": "o genérico custa menos que o de marca"
         },
         {
           "indice": "investimento_estrangeiro",
           "sentido": -1,
           "forca": "media",
-          "atraso_turnos": 3
+          "atraso_turnos": 3,
+          "porque": "o laboratório de fora vende menos o remédio de marca"
         }
       ]
     },
@@ -55,13 +57,15 @@
           "indice": "acesso_remedios",
           "sentido": 1,
           "forca": "forte",
-          "atraso_turnos": 3
+          "atraso_turnos": 3,
+          "porque": "o genérico custa menos que o de marca"
         },
         {
           "indice": "investimento_estrangeiro",
           "sentido": -1,
           "forca": "forte",
-          "atraso_turnos": 3
+          "atraso_turnos": 3,
+          "porque": "o laboratório de fora vende menos o remédio de marca"
         }
       ],
       "valores": {

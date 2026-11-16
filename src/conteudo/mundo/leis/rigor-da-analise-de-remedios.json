@@ -1,0 +1,101 @@
+{
+  "versao": 1,
+  "id": "rigor-da-analise-de-remedios",
+  "nome": "Rigor da análise de remédios",
+  "descricao": "O quanto a agência daqui examina um remédio antes de deixar vender. Análise leve põe remédio na farmácia mais rápido, com mais risco; análise rigorosa protege mais, mas o remédio demora a chegar.",
+  "camada": "jogabilidade",
+  "classe": "decreto",
+  "esfera": "saude",
+  "canal": "regra",
+  "jeito": "niveis",
+  "forma": "opcoes",
+  "opcoes": [
+    {
+      "id": "analise-leve",
+      "rotulo": "Análise leve e rápida",
+      "bussola": {
+        "economico": 0.3,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "acesso_remedios",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "o remédio chega à farmácia em meses, não anos"
+        },
+        {
+          "indice": "saude",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "passa remédio que faria mal"
+        }
+      ]
+    },
+    {
+      "id": "analise-padrao",
+      "rotulo": "Análise padrão",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": []
+    },
+    {
+      "id": "analise-rigorosa",
+      "rotulo": "Análise rigorosa",
+      "bussola": {
+        "economico": -0.2,
+        "social": 0
+      },
+      "valores": {
+        "custo": 0.01
+      },
+      "efeitos": [
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "só chega remédio bem testado"
+        },
+        {
+          "indice": "acesso_remedios",
+          "sentido": -1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "a fila de análise fica longa"
+        }
+      ]
+    },
+    {
+      "id": "rigorosa-com-fila-rapida",
+      "rotulo": "Rigorosa, com mais técnicos para a fila andar",
+      "bussola": {
+        "economico": -0.3,
+        "social": 0
+      },
+      "valores": {
+        "custo": 0.03
+      },
+      "efeitos": [
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "só chega remédio bem testado"
+        },
+        {
+          "indice": "acesso_remedios",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "mais técnicos fazem a fila andar"
+        }
+      ]
+    }
+  ]
+}
