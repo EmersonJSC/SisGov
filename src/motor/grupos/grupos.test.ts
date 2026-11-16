@@ -72,7 +72,7 @@ describe("grupos", () => {
     expect(igual.g.radicais).toBe(5);
 
     // renda +10% (10), índice x cai 3 (+3), lei +0,1 em faixa 0,5: anda
-  // 0,4 rumo ao grupo × peso 1 × 50 = 20, preso em 15 por lei e 10 no total
+  // 0,4 rumo ao grupo × peso 1 × 50 = 20, preso em 5 por lei (16/nov)
     const melhor = calcularGrupos(
       [tipo],
       { l: lei },
@@ -84,7 +84,7 @@ describe("grupos", () => {
         marco,
       },
     );
-    expect(melhor.g.satisfacao).toBeCloseTo(73);
+    expect(melhor.g.satisfacao).toBeCloseTo(68);
   });
 
   it("renda que cresce no ritmo esperado não muda a satisfação", () => {
@@ -186,13 +186,13 @@ describe("grupos", () => {
     };
     // eixo sem peso não conta: o grupo é autoritário, mas não liga
     expect(pontosLei(centro, social, 0.5, 0)).toBe(0);
-    // centro reclama da lei que vai para qualquer ponta
-    expect(pontosLei(centro, lei, 0.3, 0.25)).toBeCloseTo(-10);
-    expect(pontosLei(centro, lei, 0.2, 0.25)).toBeCloseTo(-10);
+    // centro reclama da lei que vai para qualquer ponta (−10, preso em −5)
+    expect(pontosLei(centro, lei, 0.3, 0.25)).toBeCloseTo(-5);
+    expect(pontosLei(centro, lei, 0.2, 0.25)).toBeCloseTo(-5);
     // lei não legislada conta como o mínimo da faixa
-    expect(pontosLei(tipo, lei, 0.05, undefined)).toBeCloseTo(10);
-    // uma lei só move no máximo 15
-    expect(pontosLei(centro, lei, 0, 0.25)).toBe(-15);
+    expect(pontosLei(tipo, lei, 0.05, undefined)).toBeCloseTo(5);
+    // uma lei só move no máximo 5 (16/nov)
+    expect(pontosLei(centro, lei, 0, 0.25)).toBe(-5);
     const opcoes: Lei = {
       versao: 1,
       id: "o",
@@ -206,7 +206,7 @@ describe("grupos", () => {
         { id: "z", efeitos: [] },
       ],
     };
-    expect(pontosLei(tipo, opcoes, "y", "x")).toBeCloseTo(15);
+    expect(pontosLei(tipo, opcoes, "y", "x")).toBeCloseTo(5);
     expect(pontosLei(tipo, opcoes, "y", "y")).toBe(0);
     // opção sem posição não puxa para lado nenhum
     expect(pontosLei(tipo, opcoes, "z", "x")).toBe(0);

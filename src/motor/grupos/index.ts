@@ -69,7 +69,8 @@ const LIMITE_INDICE = 15;
 /** Pontos por 1 unidade de eixo que a lei se aproxima do grupo (peso 1). */
 const PONTOS_EIXO = 50;
 /** Uma lei só, contra o marco, move o grupo no máximo isto. */
-const LIMITE_LEI = 15;
+/** Uma lei sozinha, pela bússola (autor, 16/nov: ±5). */
+const LIMITE_LEI = 5;
 /**
  * Todas as leis juntas, pela bússola, até ±10 (16/nov): o bolso (±25) pesa
  * mais que a ideologia (GDD 2.4, "bússola com peso menor").
@@ -169,7 +170,7 @@ export function posicaoDaLei(
 
 /**
  * Pontos que a lei dá ao grupo ao ir de `antes` para `agora`: eixo por eixo,
- * o quanto ela se aproximou dele × o peso do eixo × 50, até ±15.
+ * o quanto ela se aproximou dele × o peso do eixo × 50, até ±5.
  */
 export function pontosLei(
   tipo: TipoGrupo,

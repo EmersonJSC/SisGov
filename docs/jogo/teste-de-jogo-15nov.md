@@ -264,3 +264,19 @@ bolso (só imposto de renda e preço da cesta). Isso é da instituição Imposto
   2 anos parado.
 - **Na tela:** tirar a farmácia popular por decreto vale no turno seguinte, sem
   votação. A popularidade foi de 50% para 44% num turno.
+
+### Quarta rodada (16/nov): uma lei sozinha pesa até ±5
+
+O autor descongelou a linha: uma lei sozinha move o grupo até ±5 pela bússola
+(antes ±15); o GDD guarda a ideia, o número fica no código.
+
+| 2 anos, sem Congresso | Aprovação | Inflação | Operários | Finanças |
+|---|---|---|---|---|
+| Parado | 50 → 46,4 | 5,8 (rombo herdado) | 47 | 35 |
+| Esquerda | 50 → 47,6 | 7,8 | 57 | 22 |
+| Direita | 50 → 34,5 | 5,0 | 32 | 48 |
+| Só tirar a farmácia popular | 50 → 42 | | 40 | |
+
+A direita agora perde pelo bolso e pelo serviço (saúde e atendimento caem;
+aposentados 27, educação e saúde 23), não mais pela bússola. A esquerda ganha
+a base e paga em inflação.

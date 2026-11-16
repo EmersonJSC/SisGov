@@ -1,5 +1,9 @@
 # SisGov: Documento de design (GDD)
 
+> **🧊 CONGELADO em 15/nov/2026 durante a construção da V1.** Não editar.
+> Ideia nova vai para [depois-da-v1.md](depois-da-v1.md). Só o autor
+> descongela, dizendo "descongelar". Regras em `CLAUDE.md`.
+
 > **O jogo como ele deve ser quando estiver pronto**, organizado por mecânica.
 > Refeito em 14/nov/2026 juntando o GDD antigo, o mapa de mecânicas, as regras
 > das leis, os requisitos, os `.md` do motor, as planilhas, os estudos e as
@@ -11,8 +15,7 @@
 > · Referências · No motor hoje (✅ feito · ◐ pela metade · ☐ falta, com o
 > número R de [requisitos.md](requisitos.md)) · Em aberto.
 >
-> **Ideia nova** entra no "Em aberto" da mecânica dela, com data. Decidida
-> pelo autor, vira Regra.
+> **Ideia nova** (enquanto congelado) vai para [depois-da-v1.md](depois-da-v1.md).
 >
 > **Revisão do autor:** Parte 1 lida e corrigida em 14/nov (com reflexos em
 > 4.1, 5.5, 5.7, 6.3 e 9.2). As outras partes ainda não foram lidas por ele.
@@ -570,7 +573,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - **Satisfação do grupo (como funciona hoje):** 0 a 100, começa em 50 (o marco do turno 0) e soma renda, índices cobrados e leis.
   - Renda: 1 ponto por 1% de diferença, até ±25, contra a renda esperada. Crescer no ritmo normal não agrada ninguém.
   - Índices cobrados: 1 ponto por ponto, até ±15 por índice.
-  - Leis (bússola): quanto cada lei se aproximou do grupo desde o marco. Uma lei move o grupo no máximo ±15.
+  - Leis (bússola): quanto cada lei se aproximou do grupo desde o marco. Uma lei sozinha move o grupo pouco, e todas as leis juntas pela bússola pesam menos que o bolso; os números são de balanceamento e ficam no código (descongelado pelo autor, 16/nov).
   - Na meta do GDD, a satisfação é renda contra o esperado, leis perto ou longe, e o que a mídia que o grupo vê diz.
 - **Raiva do grupo (0 a 100):** separada da satisfação.
 - **Aprovação:** satisfação média dos pops, pesada pelo tamanho; é lida pelo Congresso e pela eleição (R9.9).
@@ -586,7 +589,7 @@ Legenda do motor: ✅ feito, ◐ pela metade, ☐ falta. R = requisito em `requi
 - Eleitor julga a melhora, não o nível (14/nov).
 - Porquê visível ao passar o mouse (14/nov).
 - Evitar lista à mão de quem gosta (14/nov).
-- Uma lei nunca decide sozinha o humor de um grupo: limite de ±15 (01/nov).
+- Uma lei nunca decide sozinha o humor de um grupo (01/nov; o limite é balanceamento, no código).
 - Até a mídia pesar, a troca de ministro cobra direto nos grupos parecidos com quem saiu (13/nov).
 
 **Mídia como lente (14/nov).** A mídia age sobre fatos que já existem e não cria gosto novo. O efeito da lei na opinião deve passar pela mídia (R14.2 ☐) e a mídia mobiliza a raiva (R14.9 ☐). **ESTUDAR** como ela mexe em cada uma das três peças do gosto: no bolso (o que o pop percebe), na bússola (empurra quem a assiste, R14.8 ☐) e na memória (o que fica lembrado e por quanto tempo).
