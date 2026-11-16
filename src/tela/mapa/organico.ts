@@ -466,6 +466,12 @@ export function prepararOrganico(
     ...visao.leis.map((l) => l.id),
     ...indicesVisao.map((b) => b.id),
   ]);
+  // verde é ajudar, vermelho é atrapalhar: subir um índice "maior é pior" atrapalha (16/nov)
+  const piorQuandoSobe = new Set(
+    indicesVisao
+      .filter((b) => "avaliacao" in b && b.avaliacao === "maior_pior")
+      .map((b) => b.id),
+  );
   const fiosDeEfeito: FioDoMapa[] = visao.ligacoes
     .filter((l) => existentes.has(l.origem) && existentes.has(l.alvo))
     .map((l) => ({
@@ -473,7 +479,7 @@ export function prepararOrganico(
       de: l.origem,
       para: l.alvo,
       tipo: "efeito",
-      sinal: l.sinal,
+      sinal: piorQuandoSobe.has(l.alvo) ? (l.sinal === 1 ? -1 : 1) : l.sinal,
     }));
   const vizinhosDeEfeito = new Map<string, string[]>();
   fiosDeEfeito.forEach((f) => {

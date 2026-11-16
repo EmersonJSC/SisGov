@@ -37,7 +37,8 @@ const ESPESSURA_DO_FOCO = 4;
 const OPACIDADE_DO_FOCO = 0.55;
 const VIBRACAO_DO_FOCO = 0.35;
 const PERIODO_DO_FOCO = 700;
-const OURO = "232, 200, 114";
+/** Pertencer (lei e índice dentro da instituição): estrutura, cinza e fina (16/nov). */
+const CINZA = "150, 150, 150";
 const AZUL = "120, 190, 255";
 const VERDE = "111, 207, 151";
 const VERMELHO = "235, 87, 87";
@@ -49,7 +50,7 @@ const OPACIDADE_DO_CONTORNO_DA_AURA = 0.35;
 const ESPESSURA_DO_CONTORNO_DA_AURA = 1.5;
 const OPACIDADE_DA_HIERARQUIA = 0.2;
 const OPACIDADE_DA_HIERARQUIA_APAGADA = 0.07;
-const ESPESSURA_DA_HIERARQUIA = 1.2;
+const ESPESSURA_DA_HIERARQUIA = 0.8;
 const BASE_HEX = 16;
 const DIGITOS_DA_COR = 2;
 /** Margem, no mundo, em volta da tela onde ainda se desenha (os pulsos entram sem pular). */
@@ -338,7 +339,7 @@ export function desenharFundo(
   const temFoco = e.foco !== null;
   tracar(
     p.esqueleto,
-    OURO,
+    CINZA,
     ESPESSURA_DA_HIERARQUIA,
     temFoco ? OPACIDADE_DA_HIERARQUIA_APAGADA : OPACIDADE_DA_HIERARQUIA,
   );
@@ -362,7 +363,7 @@ export function desenharFundo(
       );
     tracar(
       focais.filter((s) => s.tipo === "hierarquia" || s.tipo === "lateral"),
-      OURO,
+      CINZA,
       ESPESSURA_DO_FIO_EM_FOCO,
       OPACIDADE_DO_FIO_EM_FOCO,
     );
