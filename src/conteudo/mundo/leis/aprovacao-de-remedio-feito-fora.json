@@ -2,7 +2,7 @@
   "versao": 1,
   "id": "aprovacao-de-remedio-feito-fora",
   "nome": "Aprovação de remédio feito fora",
-  "descricao": "Se o remédio já aprovado fora do país precisa passar de novo pela agência daqui. Cada degrau põe o remédio mais cedo na farmácia, com mais ou menos risco.",
+  "descricao": "Se remédio aprovado em outro país entra aqui. Escada: só vale a análise daqui, com prazo máximo; se o prazo vencer, está aprovado; vale a de agência forte de fora; vale a de qualquer agência reconhecida; sem análise.",
   "camada": "jogabilidade",
   "classe": "decreto",
   "origem": "planilha",
@@ -13,8 +13,8 @@
   "primeiro_degrau_conta": true,
   "opcoes": [
     {
-      "id": "prazo-maximo",
-      "rotulo": "prazo máximo",
+      "id": "so-a-analise-daqui-com-prazo",
+      "rotulo": "só vale a análise daqui, com prazo máximo",
       "bussola": {
         "economico": 0.08,
         "social": 0
@@ -30,8 +30,8 @@
       ]
     },
     {
-      "id": "passou-e-esta-aprovado",
-      "rotulo": "passou e está aprovado",
+      "id": "prazo-vencido-esta-aprovado",
+      "rotulo": "se o prazo vencer, o remédio está aprovado",
       "bussola": {
         "economico": 0.16,
         "social": 0

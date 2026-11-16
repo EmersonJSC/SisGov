@@ -2,7 +2,7 @@
   "versao": 1,
   "id": "cuidado-com-o-usuario",
   "nome": "Cuidado com o usuário",
-  "descricao": "Escada: tratamento; troca de seringas e salas de uso; usuário não é preso.",
+  "descricao": "Como o Estado trata quem usa droga. Escada: troca de seringas e salas de uso; usuário não é preso; o Estado receita a droga ao dependente.",
   "camada": "jogabilidade",
   "origem": "planilha",
   "esfera": "saude",
@@ -70,6 +70,37 @@
           "forca": "media",
           "atraso_turnos": 2,
           "porque": "menos overdose e infecção chegando à emergência"
+        }
+      ]
+    },
+    {
+      "id": "estado-receita-a-droga-ao-dependente",
+      "rotulo": "o Estado receita a droga ao dependente",
+      "bussola": {
+        "economico": 0,
+        "social": -0.75
+      },
+      "efeitos": [
+        {
+          "indice": "dependencia_de_drogas",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2,
+          "porque": "o dependente grave sai do tráfico e entra em tratamento"
+        },
+        {
+          "indice": "lotacao_presidios",
+          "sentido": -1,
+          "forca": "forte",
+          "atraso_turnos": 2,
+          "porque": "usuário deixa de ir para a prisão"
+        },
+        {
+          "indice": "atendimento",
+          "sentido": -1,
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "a rede passa a atender e dar a droga todo dia"
         }
       ]
     }

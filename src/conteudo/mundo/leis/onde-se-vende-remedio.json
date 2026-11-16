@@ -2,7 +2,7 @@
   "versao": 1,
   "id": "onde-se-vende-remedio",
   "nome": "Onde se vende remédio",
-  "descricao": "Quem pode vender remédio. Escada: só farmácia; remédio sem receita também no mercado; venda pela internet; receita só para remédio controlado.",
+  "descricao": "Quem pode vender remédio. Escada: só em farmácia, com farmacêutico; também pela internet; remédio sem receita também no mercado; receita só para remédio controlado.",
   "camada": "jogabilidade",
   "classe": "decreto",
   "origem": "planilha",
@@ -13,8 +13,25 @@
   "primeiro_degrau_conta": true,
   "opcoes": [
     {
-      "id": "remedio-sem-receita-tambem-no-mercado",
-      "rotulo": "remédio sem receita também no mercado",
+      "id": "so-em-farmacia-com-farmaceutico",
+      "rotulo": "só em farmácia, com farmacêutico",
+      "bussola": {
+        "economico": 0,
+        "social": 0
+      },
+      "efeitos": [
+        {
+          "indice": "saude",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "o farmacêutico orienta quem compra"
+        }
+      ]
+    },
+    {
+      "id": "venda-pela-internet",
+      "rotulo": "também pela internet",
       "bussola": {
         "economico": 0.1,
         "social": -0.07
@@ -26,19 +43,12 @@
           "forca": "fraca",
           "atraso_turnos": 2,
           "porque": "remédio à venda em mais lugares"
-        },
-        {
-          "indice": "saude",
-          "sentido": -1,
-          "forca": "fraca",
-          "atraso_turnos": 2,
-          "porque": "mais gente se medica sozinha, sem médico"
         }
       ]
     },
     {
-      "id": "venda-pela-internet",
-      "rotulo": "venda pela internet",
+      "id": "remedio-sem-receita-tambem-no-mercado",
+      "rotulo": "remédio sem receita também no mercado",
       "bussola": {
         "economico": 0.2,
         "social": -0.13
@@ -54,7 +64,7 @@
         {
           "indice": "saude",
           "sentido": -1,
-          "forca": "media",
+          "forca": "fraca",
           "atraso_turnos": 2,
           "porque": "mais gente se medica sozinha, sem médico"
         }
@@ -78,7 +88,7 @@
         {
           "indice": "saude",
           "sentido": -1,
-          "forca": "forte",
+          "forca": "media",
           "atraso_turnos": 2,
           "porque": "mais gente se medica sozinha, sem médico"
         }
