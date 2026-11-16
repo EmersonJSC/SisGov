@@ -54,3 +54,9 @@ de novo quando a mecânica deles entrar.
   se aposentar).
 - **Garantia contra acidentes** sobe a concentração de mercado (a empresa
   pequena não consegue depositar).
+
+## Para quando chegarmos na instituição (16/nov)
+- **Terra:** reserva compensada em outra terra é complexa e tem valores errados; rever (talvez nem precise existir).
+- **Previdência:** o envelhecimento já existe nos pops; ligar o índice a eles em vez de criar outro.
+- **Energia:** "energia gasta" está como maior é melhor; rever a avaliação.
+- **Trabalho:** jornada máxima (mais horas sobe o padrão de vida); pensar com calma como a falta de tempo pesa.
