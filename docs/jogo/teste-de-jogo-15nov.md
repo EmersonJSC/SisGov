@@ -219,3 +219,28 @@ em `src/partida/parado.test.ts`, para não voltar.
 2. **A verba demora a aparecer:** atendimento parado em 30 por 14 turnos e depois
    salta para 39,5 de uma vez, quando a obra fica pronta.
 3. **Cortar verba abaixo de 4% é recusado** pelo piso da saúde, sem aviso.
+
+### Segunda rodada da Saúde (16/nov): bolso acima da bússola, direita com ganho
+
+**Mudou:**
+- Todas as leis juntas mexem no grupo pela bússola até ±10 (antes, ±15 cada,
+  sem teto). O bolso vai até ±25: agora pesa mais (GDD 2.4).
+- Sobra nas contas baixa a inflação abaixo da normal, e o salário rende a mais
+  (até 5%). Antes só o rombo contava. A barra do topo mostra "Salário rendendo a
+  mais".
+- Gestão privada economiza: de 0,05% a 0,3% do PIB.
+
+**Medido (2 anos, sem Congresso; a direita baixa o piso da saúde antes de cortar):**
+
+| | Aprovação | Gasto | Sobra sem juros | Inflação | Atendimento | Operários | Finanças | Indústria |
+|---|---|---|---|---|---|---|---|---|
+| Parado | 50 → 47,6 | 27,2% | +0,35% | 4,8 | 30 | 48 | 35 | 45 |
+| Esquerda | 50 → 50,7 | 31,3% | −3,75% | 6,8 | 30 | 58 | 22 | 35 |
+| Direita | 50 → 35,7 | 25,4% | +2,1% | 4,0 | 25,5 | 33 | 49 | 60 |
+
+Antes desta rodada, a direita ia a 15% e a esquerda a 54%.
+
+**Ainda não fecha:** a direita corta a saúde, a rede piora (atendimento 30 → 25,5)
+e o ganho volta pouco ao bolso. O ganho de quem corta é fiscal; ele só vira
+bolso se voltar como imposto menor, e hoje imposto cortado quase não chega ao
+bolso (só imposto de renda e preço da cesta). Isso é da instituição Impostos.

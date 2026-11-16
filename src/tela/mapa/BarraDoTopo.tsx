@@ -194,10 +194,15 @@ function medidas(partida: Partida): Medida[] {
           "Normal do país",
           `${um(estado.marco.indices.inflacao ?? e.inflacao)}% ao ano`,
         ],
-        [
-          "Salário comido",
-          `${um((estado.inflacao?.perda ?? 0) * 100)}% (o pobre sente inteiro)`,
-        ],
+        (estado.inflacao?.perda ?? 0) < 0
+          ? [
+              "Salário rendendo a mais",
+              `${um(-(estado.inflacao?.perda ?? 0) * 100)}% (o pobre sente inteiro)`,
+            ]
+          : [
+              "Salário comido",
+              `${um((estado.inflacao?.perda ?? 0) * 100)}% (o pobre sente inteiro)`,
+            ],
       ],
       rodape:
         "Gastar mais do que arrecada sobe a inflação; o salário corre atrás.",

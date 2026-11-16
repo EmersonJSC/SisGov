@@ -108,7 +108,7 @@ function perdaDoPop(
 ): number {
   const perda = estado.inflacao?.perda ?? 0;
   const sente = regras.fisco?.inflacao?.sente;
-  if (!tipo || !sente || !(perda > 0)) return 0;
+  if (!tipo || !sente || !perda) return 0;
   return (
     perda *
     pedacos(tipo).reduce((s, [e, , renda]) => s + renda * (sente[e] ?? 0), 0)

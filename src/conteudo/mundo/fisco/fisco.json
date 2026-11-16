@@ -38,7 +38,7 @@
   "inflacao": {
     "peso_rombo": 0.5,
     "passo": 0.25,
-    "recompoe_por_ano": 0.5,
+    "recompoe_por_ano": 0.5, "ganho_max": 0.05,
     "sente": {
       "pobre": 1,
       "medio": 0.7,

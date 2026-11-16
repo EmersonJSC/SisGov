@@ -37,6 +37,8 @@ export interface RegrasDoFisco {
     passo: number;
     /** Parte da perda do salário que se recupera por ano. */
     recompoe_por_ano: number;
+    /** Quanto o salário pode render a mais com a inflação abaixo da normal (16/nov). */
+    ganho_max: number;
     /** Quanto cada estrato sente da perda (1 = inteira). */
     sente: Partial<Record<Estrato, number>>;
   };

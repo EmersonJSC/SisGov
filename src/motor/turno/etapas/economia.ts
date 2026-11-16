@@ -206,6 +206,8 @@ export const precosEJuros: Etapa = (regras, antes) => {
  * Rombo e salário (15/nov, GDD 3.7): cada 1% do PIB de rombo acima do primeiro
  * ano empurra a inflação; ela anda `passo` do caminho por turno. A inflação acima
  * da normal (a do turno 0) vira perda no salário, que volta aos poucos.
+ * Vale ao contrário (16/nov): sobra acima do primeiro ano baixa a inflação, e o
+ * salário rende mais, até `ganho_max`.
  */
 export function inflacaoDoRombo(regras: Regras, estado: Estado): Estado {
   const r = regras.fisco?.inflacao;
@@ -213,15 +215,16 @@ export function inflacaoDoRombo(regras: Regras, estado: Estado): Estado {
   if (!r || !s) return estado;
   const e = estado.essenciais;
   const normal = estado.marco.indices.inflacao ?? e.inflacao;
-  const rombo = Math.max(0, s.rombo0 - e.resultado_primario);
+  const rombo = s.rombo0 - e.resultado_primario;
   const inflacao =
     e.inflacao + (normal + r.peso_rombo * rombo - e.inflacao) * r.passo;
   const volta = 1 - Math.pow(1 - r.recompoe_por_ano, 1 / TURNOS_POR_ANO);
-  const comeu = Math.max(0, inflacao - normal) / 100 / TURNOS_POR_ANO;
+  const comeu = (inflacao - normal) / 100 / TURNOS_POR_ANO;
+  const perda = s.perda * (1 - volta) + comeu;
   return {
     ...estado,
     essenciais: { ...e, inflacao },
-    inflacao: { ...s, perda: Math.min(1, s.perda * (1 - volta) + comeu) },
+    inflacao: { ...s, perda: Math.min(1, Math.max(-r.ganho_max, perda)) },
   };
 }
 /** 5b. Capacidade: as obras pagas pelas leis chegam e a capacidade desgasta. */

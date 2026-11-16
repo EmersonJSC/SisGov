@@ -70,6 +70,11 @@ const LIMITE_INDICE = 15;
 const PONTOS_EIXO = 50;
 /** Uma lei só, contra o marco, move o grupo no máximo isto. */
 const LIMITE_LEI = 15;
+/**
+ * Todas as leis juntas, pela bússola, até ±10 (16/nov): o bolso (±25) pesa
+ * mais que a ideologia (GDD 2.4, "bússola com peso menor").
+ */
+const LIMITE_LEIS = 10;
 /** Distância média na bússola (eixos com peso) a partir da qual o grupo já não se sente parecido. */
 const DISTANCIA_DE_ESTRANHO = 1;
 /** As mágoas somadas tiram do grupo no máximo isto. */
@@ -206,7 +211,7 @@ export function pontosLeis(
   };
   for (const id in agora) conta(id);
   for (const id in marco) if (!(id in agora)) conta(id);
-  return pontos;
+  return prender(pontos, -LIMITE_LEIS, LIMITE_LEIS);
 }
 
 /** Parecença do grupo com um ponto da bússola: 1 no mesmo ponto, 0 longe; só nos eixos que ele liga. */

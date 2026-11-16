@@ -72,7 +72,7 @@ describe("grupos", () => {
     expect(igual.g.radicais).toBe(5);
 
     // renda +10% (10), índice x cai 3 (+3), lei +0,1 em faixa 0,5: anda
-    // 0,4 rumo ao grupo × peso 1 × 50 = 20, preso em 15
+  // 0,4 rumo ao grupo × peso 1 × 50 = 20, preso em 15 por lei e 10 no total
     const melhor = calcularGrupos(
       [tipo],
       { l: lei },
@@ -84,7 +84,7 @@ describe("grupos", () => {
         marco,
       },
     );
-    expect(melhor.g.satisfacao).toBeCloseTo(78);
+    expect(melhor.g.satisfacao).toBeCloseTo(73);
   });
 
   it("renda que cresce no ritmo esperado não muda a satisfação", () => {
