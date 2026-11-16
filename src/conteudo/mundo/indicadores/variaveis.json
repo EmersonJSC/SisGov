@@ -1047,7 +1047,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "greves",
@@ -2087,7 +2088,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "concentracao_de_mercado",
@@ -2207,7 +2209,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "dependencia_de_importados",
@@ -2227,7 +2230,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "investimento_estrangeiro",
@@ -2627,7 +2631,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "concentracao_da_midia",
@@ -2647,7 +2652,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "violencia_contra_a_imprensa",
@@ -2667,7 +2673,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "acesso_a_internet",
@@ -2747,7 +2754,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "envelhecimento",
@@ -2767,7 +2775,8 @@
         "zero": 0,
         "cem": 40
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "expectativa_de_vida",
@@ -2807,7 +2816,8 @@
         "zero": 0,
         "cem": 50
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "pratica_de_esporte",
@@ -2827,7 +2837,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     },
     {
       "id": "tensao_federativa",
@@ -2847,7 +2858,8 @@
         "zero": 0,
         "cem": 100
       },
-      "origem": "planilha"
+      "origem": "planilha",
+      "fora_do_mapa": true
     }
   ]
 }

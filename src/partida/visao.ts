@@ -476,8 +476,9 @@ function medidaReal(
 
 /** Índices de jogabilidade e satisfação dos grupos, como bolhas. */
 function bolhasDaPartida(estado: Partida["estado"]): VisaoBolha[] {
+  // índice que nada mexe fica fora do mapa até a mecânica dele entrar (16/nov)
   const jogabilidade = variaveis.variaveis.filter(
-    (v) => v.camada !== "essencial",
+    (v) => v.camada !== "essencial" && !("fora_do_mapa" in v && v.fora_do_mapa),
   );
   return [
     ...jogabilidade.map((v) => ({
