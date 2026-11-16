@@ -541,7 +541,26 @@ export function estadoInicial(regras: Regras, inicio: Inicio): Estado {
   const marco = marcoDoTurnoZero(regras, comPops);
   return invariantes(
     regras,
-    { ...comPops, marco, grupos: grupos(regras, comPops, marco) },
+    {
+      ...comPops,
+      marco,
+      grupos: grupos(regras, comPops, marco),
+      // O rombo normal é o do turno 0, antes de qualquer decisão do jogador.
+      ...(regras.fisco?.inflacao
+        ? {
+            inflacao: {
+              // Com a rede de saúde do turno 0 já na conta (o resultado acima
+              // foi contado antes dela).
+              rombo0: mostrarContas(
+                comPops.essenciais,
+                fluxosDoTurno(regras, comPops),
+                comPops.tesouro,
+              ).resultado_primario,
+              perda: 0,
+            },
+          }
+        : {}),
+    },
     [],
   );
 }

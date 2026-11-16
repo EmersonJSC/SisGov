@@ -180,6 +180,29 @@ function medidas(partida: Partida): Medida[] {
       abre: "mercado",
     },
     {
+      nome: "Inflação",
+      icone: "trending-up",
+      valor: `${um(e.inflacao)}%`,
+      estado:
+        e.inflacao > (estado.marco.indices.inflacao ?? e.inflacao) + 0.5
+          ? "ruim"
+          : "neutra",
+      titulo: "Inflação (por ano)",
+      linhas: [
+        ["Hoje", `${um(e.inflacao)}% ao ano`],
+        [
+          "Normal do país",
+          `${um(estado.marco.indices.inflacao ?? e.inflacao)}% ao ano`,
+        ],
+        [
+          "Salário comido",
+          `${um((estado.inflacao?.perda ?? 0) * 100)}% (o pobre sente inteiro)`,
+        ],
+      ],
+      rodape:
+        "Gastar mais do que arrecada sobe a inflação; o salário corre atrás.",
+    },
+    {
       nome: "Apoio",
       icone: "account-group",
       valor: `${Math.round(apoio)}%`,

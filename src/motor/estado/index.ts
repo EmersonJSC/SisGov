@@ -105,6 +105,12 @@ export interface Estado {
    * punição faz (corte das verbas, trava de aumento). Ausente sem as regras.
    */
   fiscal?: { estouros: string[]; corte: number; trava: boolean };
+  /**
+   * Rombo e salário (15/nov): `rombo0` é o resultado primário (sem juros) do turno 0
+   * (% do PIB); `perda` é a parte do salário que a inflação acima da normal
+   * comeu e ainda não voltou (0 a 1).
+   */
+  inflacao?: { rombo0: number; perda: number };
   /** Leis com prazo em vigor: turno em que acabam (motor/leis). */
   prazos?: Record<string, number>;
   /** Quantas vezes cada lei com prazo ou ato já foi usado. */

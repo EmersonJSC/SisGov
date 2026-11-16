@@ -19,8 +19,14 @@
     "lei_punicao": "punicao-se-descumprir",
     "folga_da_meta": 0.25,
     "pisos": [
-      { "lei": "piso-da-saude", "instituicao": "saude" },
-      { "lei": "piso-da-educacao", "instituicao": "educacao" }
+      {
+        "lei": "piso-da-saude",
+        "instituicao": "saude"
+      },
+      {
+        "lei": "piso-da-educacao",
+        "instituicao": "educacao"
+      }
     ]
   },
   "previdencia": {
@@ -28,5 +34,15 @@
     "leis_gasto": ["verba-das-aposentadorias", "pensao-para-idosos-pobres"],
     "base_contribuicao": "folha",
     "pontos_por_pct_pib": 10
+  },
+  "inflacao": {
+    "peso_rombo": 0.5,
+    "passo": 0.25,
+    "recompoe_por_ano": 0.5,
+    "sente": {
+      "pobre": 1,
+      "medio": 0.7,
+      "rico": 0.3
+    }
   }
 }

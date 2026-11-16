@@ -100,3 +100,47 @@ de **50% para 48%** (antes ia para 54%). Saúde e Atendimento ficam parados.
   cobrando a dívida. O rombo (228 → 313 bi) ainda não pesa no bolso de ninguém.
 - Outros índices podem ter o mesmo defeito de "nascer fora do ponto". Só a
   rede de saúde foi medida e consertada.
+
+## O rombo pesa no bolso (15/nov, terceira rodada)
+
+**Como era:** a inflação ficava fixa em 4,8%, e preço e salário subiam juntos.
+O rombo só subia os juros, e devagar.
+
+**O que mudou (GDD 3.7):**
+1. **Rombo vira inflação.** Cada 1% do PIB de rombo sem juros (primário)
+   acima do turno 0 soma 0,5 ponto à inflação-alvo. A inflação anda 25% do
+   caminho por turno. Os juros já reagiam à inflação e sobem juntos.
+2. **O salário corre atrás.** A inflação acima da normal vira perda no poder
+   de compra, que volta pela metade a cada ano. O pobre sente inteira, a classe
+   média 70% e o rico 30%. A perda entra no padrão de vida e chega aos grupos.
+3. **Na tela:** "Inflação" na barra do topo, com hoje, normal do país e
+   salário comido.
+
+Os números ficam em `src/conteudo/mundo/fisco/fisco.json › inflacao` e se
+ajustam sem mexer no código.
+
+**Medido (sem Congresso, mesma semente):**
+- Parado: a inflação fica em 4,8% o mandato todo.
+- Imposto sobre consumo de 17% para 7%: a popularidade sobe na hora (49,8% →
+  52,7%); a inflação vai a 7% em um ano, o salário perde 3%, e em 4 anos a
+  vantagem some (46,4% contra 46,8% de quem não cortou).
+- Verba da saúde de 4% para 8,6%: rombo −4,25% do PIB, inflação 7%.
+
+**Dois consertos no caminho:**
+- Primeiro usei o rombo com juros, e virou espiral (inflação → juros → rombo →
+  inflação: 9,6% e juros de 22% em 4 anos). Troquei pelo rombo sem juros, que
+  é o que as leis do jogador mexem.
+- O rombo do turno 0 era contado antes da rede de saúde entrar na conta, e a
+  inflação lia isso como gasto novo. A base agora sai do turno 0 completo.
+
+**Limites:**
+- **Não consegui ver a inflação subir jogando na tela.** Mandei a verba da
+  saúde maior, mas ela não entrou (provavelmente o Congresso barrou; não
+  confirmei se a caixa "Sem Congresso" ficou marcada). A mecânica está provada
+  pelos testes (`src/partida/rombo.test.ts`) e pela medição acima.
+- **O rombo que cresce na barra do topo (228 → 313 bi parado) são os juros da
+  dívida**, não o gasto; ele não sobe a inflação, de propósito.
+- O "Caixa" do turno 0 mostra o rombo contado antes da rede de saúde (1,5% de
+  sobra no turno 0, 0,4% no turno 1).
+- Câmbio, crédito e expectativas (o resto do 3.7) continuam fora.
+- Os números (0,5; 25%; metade por ano; 100/70/30) são chute de jogo.

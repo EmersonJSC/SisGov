@@ -15,6 +15,7 @@ import {
   coberturaDosPops,
   direitoDoPop,
   pedacos,
+  type TipoPop,
   rendaDoEstrato,
   type Estrato,
 } from "../../populacao";
@@ -94,6 +95,23 @@ export function precoPorLei(
       c.id,
       tomada(regras.leis, estado.leis, `preco_${c.id}`),
     ]),
+  );
+}
+/**
+ * Parte do salário que a inflação comeu, para este pop (15/nov): a perda do
+ * país × quanto cada estrato dele sente, pesado pela renda de cada pedaço.
+ */
+function perdaDoPop(
+  regras: Regras,
+  estado: Estado,
+  tipo: TipoPop | undefined,
+): number {
+  const perda = estado.inflacao?.perda ?? 0;
+  const sente = regras.fisco?.inflacao?.sente;
+  if (!tipo || !sente || !(perda > 0)) return 0;
+  return (
+    perda *
+    pedacos(tipo).reduce((s, [e, , renda]) => s + renda * (sente[e] ?? 0), 0)
   );
 }
 /** Cestas cujo índice o mundo declara (ex.: abastecimento, acesso a remédios). */
@@ -193,7 +211,9 @@ function comPadraoDeVida(
         0,
       );
       const poder =
-        (pop.renda * sobra * 100) / estado.essenciais.indice_precos + recebe;
+        ((pop.renda * sobra * 100) / estado.essenciais.indice_precos) *
+          (1 - perdaDoPop(regras, estado, tipos.get(id))) +
+        recebe;
       const antes = poder0?.[id];
       const padrao =
         antes && antes > 0

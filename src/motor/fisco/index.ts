@@ -26,6 +26,20 @@ export interface RegrasDoFisco {
     /** Pontos de juro por ponto de inflação acima da meta. */
     peso_da_meta: number;
   };
+  /**
+   * Rombo vira inflação e a inflação come o salário (15/nov, GDD 3.7). Todos os
+   * números são do mundo, para calibrar sem mexer no código.
+   */
+  inflacao?: {
+    /** Pontos de inflação por 1% do PIB de rombo acima do primeiro ano. */
+    peso_rombo: number;
+    /** Parte do caminho até a inflação-alvo que anda por turno. */
+    passo: number;
+    /** Parte da perda do salário que se recupera por ano. */
+    recompoe_por_ano: number;
+    /** Quanto cada estrato sente da perda (1 = inteira). */
+    sente: Partial<Record<Estrato, number>>;
+  };
   /** Regras de orçamento que, estouradas, disparam a punição. */
   regra_fiscal?: {
     /** Régua: quanto o gasto real pode crescer por ano (fração). */
