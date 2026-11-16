@@ -44,6 +44,7 @@ export const COLUNAS_LEIS = [
   "Encolhe",
   "Muda o gasto",
   "Arrecada (% do PIB)",
+  "Valores",
   "Parte de",
   "Origem",
   "Veredito",
@@ -157,6 +158,7 @@ export function linhaDaLei(lei: Lei): Linha {
     Encolhe: lei.encolhe && JSON.stringify(lei.encolhe),
     "Muda o gasto": lei.escala_gasto && JSON.stringify(lei.escala_gasto),
     "Arrecada (% do PIB)": lei.arrecada,
+    Valores: lei.valores && JSON.stringify(lei.valores),
   };
 }
 
@@ -307,6 +309,7 @@ export function leiDasLinhas(
       ? JSON.parse(String(l["Muda o gasto"]))
       : undefined,
     arrecada: numero(l["Arrecada (% do PIB)"]),
+    valores: l.Valores ? JSON.parse(String(l.Valores)) : undefined,
     bussola: bussolaDaRegua(l),
     efeitos: efeitosDe(efeitos),
   }) as Lei;

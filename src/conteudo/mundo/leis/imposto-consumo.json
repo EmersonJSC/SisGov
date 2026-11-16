@@ -10,10 +10,22 @@
   "jeito": "regua",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 1 },
+  "faixa": {
+    "min": 0,
+    "max": 1
+  },
   "passo": 0.005,
-  "calculo": { "base": "consumo", "modelo": "laffer" },
-  "bussola": { "min": {}, "max": { "economico": 0.2 }, "ate": 0.4 },
+  "calculo": {
+    "base": "consumo",
+    "modelo": "laffer"
+  },
+  "bussola": {
+    "min": {},
+    "max": {
+      "economico": 0.2
+    },
+    "ate": 0.4
+  },
   "efeitos": [
     {
       "indice": "padrao_vida",
@@ -21,6 +33,14 @@
       "forca": "media",
       "atraso_turnos": 2
     },
-    { "indice": "pobreza", "sentido": 1, "forca": "fraca", "atraso_turnos": 2 }
-  ]
+    {
+      "indice": "pobreza",
+      "sentido": 1,
+      "forca": "fraca",
+      "atraso_turnos": 2
+    }
+  ],
+  "valores": {
+    "preco_comida": 40
+  }
 }

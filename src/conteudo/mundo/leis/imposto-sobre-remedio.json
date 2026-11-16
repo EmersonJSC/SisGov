@@ -10,11 +10,20 @@
   "espera": "triagem",
   "forma": "continua",
   "unidade": "fracao",
-  "faixa": { "min": 0, "max": 0.3 },
+  "faixa": {
+    "min": 0,
+    "max": 0.3
+  },
   "passo": 0.015,
   "bussola": {
-    "min": { "economico": 0, "social": 0 },
-    "max": { "economico": 0.3, "social": 0 }
+    "min": {
+      "economico": 0,
+      "social": 0
+    },
+    "max": {
+      "economico": 0.3,
+      "social": 0
+    }
   },
   "efeitos": [
     {
@@ -23,5 +32,8 @@
       "forca": "media",
       "atraso_turnos": 1
     }
-  ]
+  ],
+  "valores": {
+    "preco_remedios": 30
+  }
 }
