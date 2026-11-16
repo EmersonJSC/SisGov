@@ -55,7 +55,11 @@ export {
 } from "./etapas/obras";
 export { leisDoSaneamento } from "./etapas/saneamento";
 export { leisDoAtendimento } from "./etapas/atendimento";
-export { comIndicesDasCestas, consumoDasCestas } from "./etapas/jogabilidade";
+export {
+  comIndicesDasCestas,
+  consumoDasCestas,
+  precoPorLei,
+} from "./etapas/jogabilidade";
 export { type Inicio, estadoInicial } from "./inicio";
 
 const ETAPAS: Etapa[] = [

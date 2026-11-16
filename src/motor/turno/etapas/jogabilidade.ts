@@ -81,6 +81,21 @@ export function consumoDasCestas(
   }
   return { porPop, media };
 }
+/**
+ * Quanto as leis em vigor mudam o preço de cada cesta, em % (tomada
+ * `preco_<cesta>`, 15/nov). O motor só conhece as cestas do mundo.
+ */
+export function precoPorLei(
+  regras: Regras,
+  estado: Estado,
+): Record<string, number> {
+  return Object.fromEntries(
+    (regras.mercado?.mercado.cestas ?? []).map((c) => [
+      c.id,
+      tomada(regras.leis, estado.leis, `preco_${c.id}`),
+    ]),
+  );
+}
 /** Cestas cujo índice o mundo declara (ex.: abastecimento, acesso a remédios). */
 const cestasComIndice = (regras: Regras) =>
   (regras.mercado?.mercado.cestas ?? []).filter((c) => c.indice);
@@ -110,6 +125,7 @@ function indicesDasCestas(
     conta,
     estado.pops,
     consumo.porPop,
+    precoPorLei(regras, estado),
   );
   const indices: Record<string, number> = {};
   for (const cesta of cestas) {

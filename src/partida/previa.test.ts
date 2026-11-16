@@ -13,7 +13,7 @@ describe("prévia direta da lei", () => {
 
   it("o valor vigente não muda nada", () => {
     const p = previaDaLei(partida, "imposto-renda-medio", 0.2);
-    expect(p).toEqual({ indices: [], grupos: [] });
+    expect(p).toEqual({ indices: [], grupos: [], precos: [] });
   });
 
   it("subir e descer dá sinais opostos a quem está de um lado só", () => {

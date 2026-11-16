@@ -39,6 +39,8 @@ export interface PreviaLei {
   }[];
   /** Pontos de satisfação que a lei dá a cada grupo, contra hoje. */
   grupos: { id: string; pontos: number }[];
+  /** Quanto a lei muda o preço de cada cesta, em %, contra hoje (15/nov). */
+  precos: { id: string; nome: string; indice?: string; pct: number }[];
 }
 
 const MESES_POR_TURNO = 2;
@@ -392,5 +394,18 @@ export function previaDaLei(
       ),
     }))
     .filter((g) => Math.abs(g.pontos) > 1e-9);
-  return { indices, grupos };
+  const precos = (regras.mercado?.mercado.cestas ?? [])
+    .map((c) => {
+      const chave = `preco_${c.id}`;
+      return {
+        id: c.id,
+        nome: c.nome,
+        indice: c.indice,
+        pct:
+          tomada(regras.leis, { ...estado.leis, [leiId]: valor }, chave) -
+          tomada(regras.leis, estado.leis, chave),
+      };
+    })
+    .filter((p) => Math.abs(p.pct) > 1e-9);
+  return { indices, grupos, precos };
 }

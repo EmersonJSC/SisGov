@@ -767,6 +767,43 @@ export function DocumentoLei({
                 : "Só o que esta lei muda direto, sem cadeia."}
             </p>
           ) : null}
+          {previa?.precos.length ? (
+            <section className="efeitos-secao">
+              <h3>No bolso</h3>
+              <ul className="efeitos-folha">
+                {previa.precos.map((p) => (
+                  <li key={p.id}>
+                    <div className="efeito-linha com-texto">
+                      <Icone
+                        nome={
+                          p.indice
+                            ? iconeIndice(
+                                p.indice,
+                                ICONE_BOLHA[p.indice] ?? "chart-line",
+                              )
+                            : "chart-line"
+                        }
+                        tamanho={20}
+                      />
+                      <span className="efeito-nome">{p.nome}</span>
+                      <span
+                        className="efeito-texto"
+                        style={{
+                          color: COR_EFEITO[p.pct > 0 ? "piora" : "melhora"],
+                        }}
+                      >
+                        {p.pct > 0 ? "+" : "−"}
+                        {Math.abs(p.pct).toLocaleString("pt-BR", {
+                          maximumFractionDigits: 1,
+                        })}
+                        % no preço
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
           {secoes.map((g) => (
             <section key={g.secao} className="efeitos-secao">
               <h3>{NOME_DA_SECAO[g.secao]}</h3>

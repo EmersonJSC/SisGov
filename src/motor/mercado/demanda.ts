@@ -186,6 +186,8 @@ export function segurancaDaCesta(
   pops: Record<string, { pessoas: number; renda: number }>,
   /** Cesta → pop → quanto a pessoa consome contra a média (sem isso, 1). */
   quanto: Record<string, Record<string, number>> = {},
+  /** Cesta → quanto as leis mudam o preço, em % (tomada `preco_<cesta>`). */
+  porLei: Record<string, number> = {},
 ): SegurancaDaCesta[] {
   const gente = Object.values(pops).reduce((s, p) => s + p.pessoas, 0);
   const renda = Object.values(pops).reduce(
@@ -200,10 +202,9 @@ export function segurancaDaCesta(
       .filter((l): l is LinhaDeDemanda => l !== undefined);
     const demanda = linhas.reduce((s, l) => s + l.demanda, 0);
     if (demanda <= 0 || media <= 0) return [];
-    const preco = linhas.reduce(
-      (s, l) => s + (l.demanda * l.preco) / demanda,
-      0,
-    );
+    const preco =
+      linhas.reduce((s, l) => s + (l.demanda * l.preco) / demanda, 0) *
+      Math.max(0, 1 + (porLei[cesta.id] ?? 0) / 100);
     const falta = linhas.reduce(
       (s, l) =>
         s +
