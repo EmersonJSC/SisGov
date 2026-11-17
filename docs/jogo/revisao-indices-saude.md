@@ -161,7 +161,8 @@ caminho que sobe o atendimento cobra desvio (60 → 85) e desigualdade (52 → 6
 - Verba, atenção preventiva, telemedicina e exportação de médicos têm efeito
   quase zero no Brasil: falta profissional, não vaga. O fio verde promete efeito
   sem dizer de que ele depende.
-- Calibrar os profissionais. O pop "profissionais de saúde" é 0,9% do país
+- ~~Calibrar os profissionais.~~ Feito em 17/nov: 1 para 77, índice novo
+  "Médico onde falta" (Brasil 35). Antes: O pop "profissionais de saúde" é 0,9% do país
   (1,9 milhão) contra 4,3 milhões necessários (1 para 50 pessoas), e o índice
   começa em 50. Na vida real são cerca de 600 mil médicos (1 para 360 pessoas)
   e 2,9 milhões na enfermagem. O Atendimento começar em 30% parece baixo.

@@ -50,7 +50,13 @@ que cobrem rede pública, planos, remédios, profissionais, vacinação e drogas
    - carreira e gestão esticam o profissional;
    - missões tiram médico do país em troca de dinheiro e reputação;
    - filantropia abre vaga sem verba, mas de modo desigual.
-7. A Saúde (o quanto o país é saudável) recebe o Atendimento, a Vacinação e o
+7. **Médico onde falta (17/nov):** só a parte dos profissionais que está onde a
+   fila está atende a rede pública. No Brasil é 35%. A verba rende até faltar
+   médico no lugar certo; dali em diante o dinheiro a mais vira desvio, e quem
+   destrava é levar médico ao interior (médicos para onde falta, serviço
+   obrigatório, carreira, telemedicina). A conta de profissionais usa 1 para 77
+   pessoas, a média dos países ricos.
+8. A Saúde (o quanto o país é saudável) recebe o Atendimento, a Vacinação e o
    Saneamento por deriva. A Expectativa de vida recebe a Saúde.
 
 **As leis soltas (cerca de 19):**
