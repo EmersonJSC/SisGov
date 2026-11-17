@@ -68,15 +68,6 @@ export function leisDoAtendimento(
   };
 }
 type Regra = RegraDoAtendimento;
-
-/** Parte dos profissionais onde falta atendimento (0 a 1); sem o índice, todos estão. */
-export const distribuicaoDe = (
-  regra: Regra,
-  indices: Record<string, number>,
-) =>
-  regra.indice_distribuicao && indices[regra.indice_distribuicao] !== undefined
-    ? Math.min(1, Math.max(0, indices[regra.indice_distribuicao] / 100))
-    : 1;
 type Rede = ReturnType<typeof andarAtendimento>;
 
 /** Quem se forma, para ou emigra neste turno (motor/atendimento). */
@@ -220,7 +211,6 @@ export const atendimento: Etapa = (regras, estado) => {
       missao: nova.missao,
       ambiental: nova.ambiental,
       ambiente: estado.jogabilidade[regra.indice_ambiente],
-      distribuicao: distribuicaoDe(regra, estado.jogabilidade),
     },
     profissionais,
     nova.missao,

@@ -34,7 +34,7 @@ import {
   rendaParaAConta,
   trabalhoEmObra,
 } from "../saneamento";
-import { distribuicaoDe, leisDoAtendimento } from "./etapas/atendimento";
+import { leisDoAtendimento } from "./etapas/atendimento";
 import { fluxosDoTurno, mostrarContas } from "./etapas/economia";
 import { invariantes } from "./etapas/invariantes";
 import {
@@ -434,7 +434,6 @@ function atendimentoDoTurnoZero(regras: Regras, e: Estado): Estado {
   const { populacao } = e.essenciais;
   const profissionais = e.pops[r.pop_profissionais].pessoas;
   const atendimento = e.jogabilidade[r.indice];
-  const distribuicao = distribuicaoDe(r, e.jogabilidade);
   const inicial = atendimentoInicial(r, {
     populacao,
     profissionais,
@@ -445,23 +444,17 @@ function atendimentoDoTurnoZero(regras: Regras, e: Estado): Estado {
     na_folha: pessoasNaFolha(r, e.pops, populacao),
     informal: indiceDoInformal(r, e.pops, populacao),
     vacina: e.jogabilidade[r.indice_vacina],
-    distribuicao,
   });
   const teto = indiceDoAtendimento(r, {
     populacao,
     profissionais,
     vagas: populacao,
-    distribuicao,
     planos: inicial.planos,
     seguro: inicial.seguro,
     procura: inicial.procura,
-    alcance: inicial.alcance,
-    cobertura: inicial.cobertura,
   });
   if (atendimento > teto + 1e-6)
-    erro(
-      `país: atendimento ${atendimento} maior que o dos profissionais (${teto.toFixed(1)})`,
-    );
+    erro("país: atendimento maior que o dos profissionais");
   // Os pontos da rede na saúde já contam no turno 0: o turno 1 não salta.
   const fraqueza = fraquezaDaRede(r, {
     populacao,
@@ -479,7 +472,6 @@ function atendimentoDoTurnoZero(regras: Regras, e: Estado): Estado {
     missao: inicial.missao,
     ambiental: inicial.ambiental,
     ambiente: e.jogabilidade[r.indice_ambiente],
-    distribuicao,
   });
   return { ...e, atendimento: { ...inicial, fraqueza } };
 }

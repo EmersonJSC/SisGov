@@ -130,7 +130,7 @@
         "parcela_renda": 0.02262
       },
       "servicos-basicos": {
-        "parcela_pessoas": 0.039887,
+        "parcela_pessoas": 0.034627,
         "parcela_renda": 0.02177
       },
       "pequenos-agricultores": {
@@ -146,7 +146,7 @@
         "parcela_renda": 0.038441
       },
       "profissionais-saude": {
-        "parcela_pessoas": 0.00974,
+        "parcela_pessoas": 0.015,
         "parcela_renda": 0.040343
       },
       "militares": {

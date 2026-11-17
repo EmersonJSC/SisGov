@@ -29,13 +29,6 @@
           "forca": "fraca",
           "atraso_turnos": 6,
           "porque": "quem é obrigado a servir procura sair"
-        },
-        {
-          "indice": "medico_onde_falta",
-          "sentido": 1,
-          "forca": "fraca",
-          "atraso_turnos": 2,
-          "porque": "o recém-formado vai para onde falta médico"
         }
       ]
     },
@@ -58,13 +51,6 @@
           "forca": "media",
           "atraso_turnos": 6,
           "porque": "quem é obrigado a servir procura sair"
-        },
-        {
-          "indice": "medico_onde_falta",
-          "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 2,
-          "porque": "o recém-formado vai para onde falta médico"
         }
       ]
     },
@@ -87,13 +73,6 @@
           "forca": "forte",
           "atraso_turnos": 6,
           "porque": "quem é obrigado a servir procura sair"
-        },
-        {
-          "indice": "medico_onde_falta",
-          "sentido": 1,
-          "forca": "media",
-          "atraso_turnos": 2,
-          "porque": "o recém-formado vai para onde falta médico"
         }
       ]
     },
@@ -123,13 +102,6 @@
           "forca": "forte",
           "atraso_turnos": 6,
           "porque": "quem é obrigado a servir procura sair"
-        },
-        {
-          "indice": "medico_onde_falta",
-          "sentido": 1,
-          "forca": "forte",
-          "atraso_turnos": 2,
-          "porque": "o recém-formado vai para onde falta médico"
         }
       ]
     }

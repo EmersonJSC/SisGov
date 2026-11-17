@@ -40,3 +40,4 @@ O que existe no código mas não roda na partida da V1. Liga pelas
 | 16/nov | 4.16 | Sinais trocados nos efeitos (imposto sobre remédio, reposição de servidores): revisar índice por índice em cada instituição quando ela abrir, como a Saúde. |
 | 16/nov | 2.4 | Imposto cortado quase não chega ao bolso: só o imposto de renda e o preço da cesta. Cortar o imposto sobre consumo de 17% para 14% devolve ~1,5% do PIB e o pobre sente só −1,2% na comida. Rever na instituição Impostos. |
 | 16/nov | 8.7 | Ícones, imagens e bolhas próprios em SVG, no lugar da biblioteca game-icons.net (pedido do autor; 8.7 Arte final está fora da V1, aguardando ele mudar o escopo). |
+| 17/nov | 4.18 | Médico longe de quem precisa: falta de médico por distância, não por número. Feito e desfeito em 17/nov (índice Médico onde falta sem peça do jogo por trás). Quando voltar, sair da população (a fila por pop, como o saneamento já faz com o campo), nunca de cidade ou estado. |

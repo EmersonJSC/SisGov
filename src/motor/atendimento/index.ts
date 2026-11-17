@@ -63,8 +63,6 @@ export interface RegraDoAtendimento {
   pop_informal: string;
   /** Pessoas que um profissional atende. */
   pessoas_por_profissional: number;
-  /** Índice da parte dos profissionais que está onde falta atendimento (0 a 100). */
-  indice_distribuicao?: string;
   /** Índice que recebe a verba parada em vagas sem atendimento. */
   indice_desvio: string;
   /** Verba por ano (fração do PIB) que cobre 63% do país; cada vaga custa mais que a anterior. */
@@ -274,8 +272,6 @@ export interface Rede {
   ambiental?: number;
   /** Índice do ambiente hoje (0 a 100). */
   ambiente?: number;
-  /** Parte dos profissionais da rede pública que está onde a fila está (0 a 1). */
-  distribuicao?: number;
 }
 
 export interface TurnoDoAtendimento {
@@ -386,7 +382,6 @@ function contaDaRede(
     reserva = 0,
     disputa = 0,
     missao = 0,
-    distribuicao = 1,
   }: Rede,
 ) {
   const porProfissional = regra.pessoas_por_profissional;
@@ -404,9 +399,7 @@ function contaDaRede(
   );
   const doPlano = (noPlano * porProfissional) / peso;
   const uso = 1 + procura;
-  // médico concentrado onde já há médico não atende a fila de quem está longe
-  const semEsticar =
-    ((presentes - noPlano) * distribuicao * porProfissional) / uso;
+  const semEsticar = ((presentes - noPlano) * porProfissional) / uso;
   const teto = Math.min(populacao - doPlano, vagas / uso);
   const publico = Math.min(teto, semEsticar * (1 + alcance));
   const basico = (populacao - doPlano - publico) * cobertura;
@@ -536,8 +529,6 @@ export function atendimentoInicial(
     informal: number;
     /** Índice da vacinação. */
     vacina: number;
-    /** Parte dos profissionais onde falta atendimento (0 a 1). */
-    distribuicao?: number;
   },
 ): AtendimentoNoEstado {
   const { populacao, profissionais, leis } = pais;
@@ -599,7 +590,6 @@ export function atendimentoInicial(
       reserva,
       disputa,
       missao,
-      distribuicao: pais.distribuicao,
     }),
     cobertura,
     alcance: leis.alcance,
@@ -783,7 +773,6 @@ function redeDasLeis(
     com_bolso: number;
     na_folha: number;
     ambiente: number;
-    distribuicao?: number;
   },
 ): Rede {
   const { populacao, profissionais, atraso, com_bolso, na_folha, ambiente } =
@@ -809,7 +798,6 @@ function redeDasLeis(
     missao: leis.missao,
     ambiental: leis.ambiental,
     ambiente,
-    distribuicao: turno.distribuicao,
   };
 }
 
@@ -831,7 +819,6 @@ export function pontosDoAtendimento(
     na_folha: number;
     /** Índice do ambiente hoje (0 a 100). */
     ambiente: number;
-    distribuicao?: number;
   },
 ) {
   const redeAntes = redeDasLeis(regra, s, antes, turno);

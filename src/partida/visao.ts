@@ -366,9 +366,6 @@ function ligacoesDaSaude(
     ...alcance,
     [r.indice_profissionais, r.indice, 1],
     [r.indice_instrucao, r.indice_profissionais, 1],
-    ...(r.indice_distribuicao
-      ? ([[r.indice_distribuicao, r.indice, 1]] as Seta[])
-      : []),
   ];
   return setas.map(([o, a, sinal]) => ligacao(o, a, sinal, saude.atrasoMeses));
 }

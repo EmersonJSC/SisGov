@@ -11,11 +11,7 @@ atendimento pela deriva.
 - **Rede pública:** atende o menor entre quem sobrou, as vagas e os profissionais
   que restam. Hospital sem profissional não atende.
 - **Índice de profissionais:** quantos existem contra os que atenderiam todo
-  mundo (`pessoas_por_profissional`, 77: a média dos países ricos, médico e
-  enfermagem somados).
-- **Distribuição:** só a parte dos profissionais da rede pública que está onde a
-  fila está atende a fila (`indice_distribuicao`, "Médico onde falta"). O resto
-  está onde já há médico. Leis movem o índice; sem ele, todos estão no lugar.
+  mundo (`pessoas_por_profissional`).
 
 ## Vagas
 
