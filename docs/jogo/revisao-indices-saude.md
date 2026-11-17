@@ -23,39 +23,39 @@ Por isso a janela delas mostra "efeitos" vazios ou indiretos.
 ## 1. Saúde (o quanto a população é saudável)
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Atendimento, Vacinação, Saneamento (derivas) | + | ✅ |
-| Favela (deriva) | − | ✅ |
-| Urbanização de favelas | + | ✅ |
-| Farmácia popular | + | ✅ |
-| Teto do preço dos remédios | + | ✅ |
-| Cobertura mínima do plano | + | ✅ |
-| Onde se vende remédio (mais lugares) | − | ✅ (gente se medica sozinha) |
-| **Aprovação de remédio de fora** | + até "sem análise" (+forte) | ❌ **"Sem análise" melhorar a saúde no máximo não faz sentido.** Proposta: sobe até "vale a de agência forte de fora"; "qualquer agência" quase nada; "sem análise" **desce** a saúde (remédio ruim no mercado). |
+| Atendimento, Vacinação, Saneamento (derivas) | + | Sim |
+| Favela (deriva) | − | Sim |
+| Urbanização de favelas | + | Sim |
+| Farmácia popular | + | Sim |
+| Teto do preço dos remédios | + | Sim |
+| Cobertura mínima do plano | + | Sim |
+| Onde se vende remédio (mais lugares) | − | Sim (gente se medica sozinha) |
+| **Aprovação de remédio de fora** | + até "sem análise" (+forte) | Não: **"Sem análise" melhorar a saúde no máximo não faz sentido.** Proposta: sobe até "vale a de agência forte de fora"; "qualquer agência" quase nada; "sem análise" **desce** a saúde (remédio ruim no mercado). |
 
 ## 2. Atendimento (quem procura o posto e é atendido)
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Rede (verba, cobertura, planos…) | ± | ✅ |
-| Ajuda para comprar plano, Obrigação de ter plano, Cobertura mínima | + | ✅ (plano tira gente da fila) |
-| Vagas públicas em medicina | + | ✅ |
-| Validação de diploma estrangeiro | + | ✅ (mais médico) |
-| **Cuidado com o usuário de drogas** (troca de seringas; usuário não é preso) | − | ❌ **Não tem ligação.** Proposta: tirar; a lei mexe em dependência e prisão. |
-| **Estabilidade do servidor** (menos estabilidade) | + até forte | ⚠️ Vale para todo o funcionalismo, não só para a saúde. Proposta: ficar só fraca. |
-| **Reposição de servidores** (repor mais) | − | ❌ **Sinal trocado:** repor mais servidores deveria **subir** o atendimento e a folha. Proposta: inverter os dois. |
+| Rede (verba, cobertura, planos…) | ± | Sim |
+| Ajuda para comprar plano, Obrigação de ter plano, Cobertura mínima | + | Sim (plano tira gente da fila) |
+| Vagas públicas em medicina | + | Sim |
+| Validação de diploma estrangeiro | + | Sim (mais médico) |
+| **Cuidado com o usuário de drogas** (troca de seringas; usuário não é preso) | − | Não: **Não tem ligação.** Proposta: tirar; a lei mexe em dependência e prisão. |
+| **Estabilidade do servidor** (menos estabilidade) | + até forte | Atenção: Vale para todo o funcionalismo, não só para a saúde. Proposta: ficar só fraca. |
+| **Reposição de servidores** (repor mais) | − | Não: **Sinal trocado:** repor mais servidores deveria **subir** o atendimento e a folha. Proposta: inverter os dois. |
 
 ## 3. Vacinação
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Programa de vacinação (pela rede) | + | ✅ |
-| Benefício com contrapartida (vacina em dia) | + | ✅ |
+| Programa de vacinação (pela rede) | + | Sim |
+| Benefício com contrapartida (vacina em dia) | + | Sim |
 
 ## 4. Profissionais de saúde
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Rede (carreira, formação, quem se aposenta ou emigra) | ± | ✅ |
-| Vagas públicas em medicina, Faculdades privadas | + | ✅ (Educação forma o médico; por isso a Saúde aparece ligada à Educação) |
-| Validação de diploma estrangeiro | + | ✅ (**é a entrada de médicos**) |
-| Missões médicas (pela rede) | − | ✅ (**é a saída**: médico mandado para fora não atende aqui) |
+| Rede (carreira, formação, quem se aposenta ou emigra) | ± | Sim |
+| Vagas públicas em medicina, Faculdades privadas | + | Sim (Educação forma o médico; por isso a Saúde aparece ligada à Educação) |
+| Validação de diploma estrangeiro | + | Sim (**é a entrada de médicos**) |
+| Missões médicas (pela rede) | − | Sim (**é a saída**: médico mandado para fora não atende aqui) |
 
 **Mais Médicos:** hoje o Brasil dá o nome "Mais Médicos" para **Missões médicas**,
 que é **mandar médico para fora**. Mais Médicos é o contrário: **trazer médico**
@@ -66,42 +66,42 @@ entrada.
 ## 5. Acesso a remédios
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Farmácia popular, Teto do preço, Troca pelo genérico, Onde se vende | + | ✅ |
-| Aprovação de remédio de fora | + | ✅ (mais remédio no mercado) |
-| **Imposto sobre remédio** (mais imposto) | + | ❌ **Sinal trocado:** imposto maior encarece e **tira** o acesso. Proposta: inverter. |
+| Farmácia popular, Teto do preço, Troca pelo genérico, Onde se vende | + | Sim |
+| Aprovação de remédio de fora | + | Sim (mais remédio no mercado) |
+| **Imposto sobre remédio** (mais imposto) | + | Não: **Sinal trocado:** imposto maior encarece e **tira** o acesso. Proposta: inverter. |
 
 ## 6. Risco de epidemia
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Vacinação, Saneamento (derivas) | − | ✅ |
+| Vacinação, Saneamento (derivas) | − | Sim |
 
 ## 7. Fuga de profissionais
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Carreira exclusiva | − | ✅ (segura o profissional) |
-| Serviço obrigatório | + | ✅ (empurra para fora) |
+| Carreira exclusiva | − | Sim (segura o profissional) |
+| Serviço obrigatório | + | Sim (empurra para fora) |
 
 ## 8. Saúde mental
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Saúde mental | + | ✅ (é a única lei; ok por enquanto) |
+| Saúde mental | + | Sim (é a única lei; ok por enquanto) |
 
 ## 9. Dependência de drogas
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Liberação, Lojas licenciadas, Venda pelo Estado | + | ✅ |
-| Imposto das drogas, Propaganda e embalagem, Idade mínima, Cuidado com o usuário | − | ✅ |
+| Liberação, Lojas licenciadas, Venda pelo Estado | + | Sim |
+| Imposto das drogas, Propaganda e embalagem, Idade mínima, Cuidado com o usuário | − | Sim |
 
 ## 10. Dependência de jogos
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Liberação dos jogos, Licenças de apostas | + | ✅ |
-| Proteção do apostador, Idade mínima | − | ✅ |
+| Liberação dos jogos, Licenças de apostas | + | Sim |
+| Proteção do apostador, Idade mínima | − | Sim |
 
 ## 11. Expectativa de vida
 | Mexe | Sinal | Faz sentido? |
 |---|---|---|
-| Saúde (deriva) | + | ✅ |
+| Saúde (deriva) | + | Sim |
 
 ---
 
@@ -181,6 +181,10 @@ caminho que sobe o atendimento cobra desvio (60 → 85) e desigualdade (52 → 6
 ---
 
 ## Auditoria da mecânica (17/nov)
+> Depois da auditoria (17/nov, a2185e4a): o Médico onde falta e a régua de 1
+> para 77 saíram; Profissionais voltou ao que era antes (1 para 50, Brasil 50),
+> à espera da medida nova.
+
 Pedida pelo autor depois do índice Médico onde falta: como cada índice da
 Saúde é calculado, se faz sentido e se a Saúde comporta países diferentes.
 Regra nova (autor, 17/nov): número real é só referência, para pôr no eixo e
@@ -200,18 +204,18 @@ tem (pops, regiões, grupos), sem cidades.
 ### Índice por índice
 | Índice | Como é calculado | De onde vem o número | Faz sentido? |
 |---|---|---|---|
-| Atendimento | Conta da rede: o plano atende primeiro; a rede pública atende o menor entre vagas (verba), profissionais (× médico onde falta × o quanto o profissional estica) e quem sobrou; o atendimento básico cobre parte do resto. Leis de plano também somam pontos direto | País declara 30; o jogo acha as vagas que dão 30 | ✅ a conta; ⚠️ ver Médico onde falta |
-| Profissionais de saúde | Pessoas do pop "profissionais de saúde" × 77 ÷ população | Pop é 0,9% da população → 69 | ❌ a régua é a média dos países ricos (o 77), contra a regra nova |
-| Médico onde falta | Só leis (pontos fixos). Multiplica a capacidade dos profissionais na conta do Atendimento | Brasil 35, **escolhido à mão** para a verba parar de render perto de 40 | ❌ não sai de nenhuma peça do jogo |
-| Saúde (vida) | Deriva: Atendimento, Vacinação e Saneamento empurram para cima, Favela para baixo; leis somam; atendimento às pressas tira | País declara 50 | ⚠️ ver deriva sem fim |
-| Expectativa de vida | Deriva da Saúde | País declara 73 | ⚠️ ver deriva sem fim |
-| Vacinação | Rede: o programa de vacinação alcança quem a rede atende; a lei de recusa tira | País declara 75 | ✅ |
-| Acesso a remédios | Preço do remédio no mercado; leis mexem no preço | Mercado | ✅ |
-| Risco de epidemia | Deriva: Vacinação e Saneamento baixam | 50 em todo país | ⚠️ não pesa em nada (sem custo no PIB) |
-| Fuga de profissionais | Só leis | 50 em todo país | ⚠️ não tira médico do índice Profissionais |
-| Saúde mental | Uma lei | 50 em todo país | ✅ por enquanto |
-| Dependência de drogas | Leis | 50 em todo país | ✅ (consequência fica na Segurança) |
-| Dependência de jogos | Leis | 50 em todo país | ✅ (leis são de Impostos) |
+| Atendimento | Conta da rede: o plano atende primeiro; a rede pública atende o menor entre vagas (verba), profissionais (× médico onde falta × o quanto o profissional estica) e quem sobrou; o atendimento básico cobre parte do resto. Leis de plano também somam pontos direto | País declara 30; o jogo acha as vagas que dão 30 | Sim a conta; Atenção: ver Médico onde falta |
+| Profissionais de saúde | Pessoas do pop "profissionais de saúde" × 77 ÷ população | Pop é 0,9% da população → 69 | Não: a régua é a média dos países ricos (o 77), contra a regra nova |
+| Médico onde falta | Só leis (pontos fixos). Multiplica a capacidade dos profissionais na conta do Atendimento | Brasil 35, **escolhido à mão** para a verba parar de render perto de 40 | Não: não sai de nenhuma peça do jogo |
+| Saúde (vida) | Deriva: Atendimento, Vacinação e Saneamento empurram para cima, Favela para baixo; leis somam; atendimento às pressas tira | País declara 50 | Atenção: ver deriva sem fim |
+| Expectativa de vida | Deriva da Saúde | País declara 73 | Atenção: ver deriva sem fim |
+| Vacinação | Rede: o programa de vacinação alcança quem a rede atende; a lei de recusa tira | País declara 75 | Sim |
+| Acesso a remédios | Preço do remédio no mercado; leis mexem no preço | Mercado | Sim |
+| Risco de epidemia | Deriva: Vacinação e Saneamento baixam | 50 em todo país | Atenção: não pesa em nada (sem custo no PIB) |
+| Fuga de profissionais | Só leis | 50 em todo país | Atenção: não tira médico do índice Profissionais |
+| Saúde mental | Uma lei | 50 em todo país | Sim por enquanto |
+| Dependência de drogas | Leis | 50 em todo país | Sim (consequência fica na Segurança) |
+| Dependência de jogos | Leis | 50 em todo país | Sim (leis são de Impostos) |
 
 ### Teste: países de lados diferentes (Brasil, 24 turnos, sem Congresso)
 Cada perfil é só um jogo de leis, a partir do Brasil.
