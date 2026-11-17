@@ -105,13 +105,6 @@ const ESTILO_DO_ALERTA: Readonly<
   },
 };
 const OPACIDADE_DO_HALO_DO_ALERTA = 0.25;
-/** O fator que segura um índice agora pulsa, grosso; o que não rende fica tracejado (17/nov). */
-const ESPESSURA_DO_GARGALO = 3.2;
-const OPACIDADE_DO_GARGALO = 0.75;
-const VIBRACAO_DO_GARGALO = 0.4;
-const PERIODO_DO_GARGALO = 1100;
-const OPACIDADE_DO_QUE_NAO_RENDE = 0.35;
-const TRACO_DO_QUE_NAO_RENDE = [6, 6];
 
 type Ponto = Readonly<{ x: number; y: number }>;
 /** Um fio já resolvido: as duas pontas são as próprias bolhas (a posição é a de agora). */
@@ -120,7 +113,6 @@ type Seg = Readonly<{
   b: Ponto;
   tipo: FioDoMapa["tipo"];
   sinal: 1 | -1;
-  gargalo?: FioDoMapa["gargalo"];
 }>;
 type Alertado = Readonly<{
   seg: Seg;
@@ -134,10 +126,6 @@ export type FundoPreparado = Readonly<{
   esqueleto: readonly Seg[];
   positivos: readonly Seg[];
   negativos: readonly Seg[];
-  /** Fios do fator que segura o alvo agora. */
-  gargalos: readonly Seg[];
-  /** Fios de fator que não rende enquanto outro segura. */
-  naoRendem: readonly Seg[];
   /** Id da bolha → os fios que chegam nela ou saem dela. */
   incidentes: ReadonlyMap<string, readonly Seg[]>;
   alertados: readonly Alertado[];
@@ -179,18 +167,7 @@ export function prepararFundo(
     const a = porId.get(f.de);
     const b = porId.get(f.para);
     return a && b
-      ? [
-          {
-            f,
-            seg: {
-              a,
-              b,
-              tipo: f.tipo,
-              sinal: f.sinal,
-              gargalo: f.gargalo,
-            } as Seg,
-          },
-        ]
+      ? [{ f, seg: { a, b, tipo: f.tipo, sinal: f.sinal } as Seg }]
       : [];
   });
   const incidentes = new Map<string, Seg[]>();
@@ -223,16 +200,10 @@ export function prepararFundo(
       .filter(({ f }) => f.tipo === "hierarquia" || f.tipo === "lateral")
       .map(({ seg }) => seg),
     positivos: segmentos
-      .filter(({ f }) => f.tipo === "efeito" && f.sinal > 0 && !f.gargalo)
+      .filter(({ f }) => f.tipo === "efeito" && f.sinal > 0)
       .map(({ seg }) => seg),
     negativos: segmentos
-      .filter(({ f }) => f.tipo === "efeito" && f.sinal < 0 && !f.gargalo)
-      .map(({ seg }) => seg),
-    gargalos: segmentos
-      .filter(({ f }) => f.gargalo === "limita")
-      .map(({ seg }) => seg),
-    naoRendem: segmentos
-      .filter(({ f }) => f.gargalo === "nao_rende")
+      .filter(({ f }) => f.tipo === "efeito" && f.sinal < 0)
       .map(({ seg }) => seg),
     incidentes,
     alertados,
@@ -375,41 +346,8 @@ export function desenharFundo(
   const fundo = temFoco ? OPACIDADE_DO_FIO_APAGADO : OPACIDADE_DO_FIO;
   tracar(p.positivos, VERDE, ESPESSURA_DO_FIO, fundo);
   tracar(p.negativos, VERMELHO, ESPESSURA_DO_FIO, fundo);
-  /** O fio que não rende: tracejado e apagado, na cor do sinal. */
-  const tracejar = (lista: readonly Seg[], espessura: number) =>
-    [1, -1].forEach((sinal) => {
-      ctx.setLineDash(TRACO_DO_QUE_NAO_RENDE.map((t) => t * px));
-      tracar(
-        lista.filter((s) => s.sinal === sinal),
-        sinal > 0 ? VERDE : VERMELHO,
-        espessura,
-        OPACIDADE_DO_QUE_NAO_RENDE,
-      );
-      ctx.setLineDash([]);
-    });
-  tracejar(p.naoRendem, ESPESSURA_DO_FIO);
-  // o fio do fator que segura o índice agora pulsa, grosso, na cor do sinal
-  const pulso = e.animar
-    ? 1 + VIBRACAO_DO_GARGALO * Math.sin((e.tempo / PERIODO_DO_GARGALO) * GIRO)
-    : 1;
-  [1, -1].forEach((sinal) =>
-    tracar(
-      p.gargalos.filter((s) => s.sinal === sinal),
-      sinal > 0 ? VERDE : VERMELHO,
-      ESPESSURA_DO_GARGALO * pulso,
-      Math.min(1, OPACIDADE_DO_GARGALO * pulso),
-    ),
-  );
 
-  const todosOsFocais = temFoco
-    ? (p.incidentes.get(e.foco as string) ?? [])
-    : [];
-  if (temFoco)
-    tracejar(
-      todosOsFocais.filter((s) => s.gargalo === "nao_rende"),
-      ESPESSURA_DO_FIO_EM_FOCO,
-    );
-  const focais = todosOsFocais.filter((s) => s.gargalo !== "nao_rende");
+  const focais = temFoco ? (p.incidentes.get(e.foco as string) ?? []) : [];
   if (temFoco) {
     // um poder em foco: linhas azuis até tudo o que ele alcança agora
     const origem = p.porId.get(e.foco as string);

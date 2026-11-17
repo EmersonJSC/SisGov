@@ -175,8 +175,6 @@ export interface AtendimentoNoEstado {
   indice_informal: number;
   /** Pontos que a verba parada soma ao índice de desvio. */
   desvio: number;
-  /** O limite da conta que segura a rede pública hoje. */
-  gargalo?: GargaloDaRede;
   /** Pontos que a saúde de dois andares soma ao índice de desigualdade. */
   desigualdade: number;
   /** Parte da fila no atendimento básico, hoje (0 a 1). */
@@ -417,31 +415,7 @@ function contaDaRede(
     publico,
     basico,
     esticado: publico - Math.min(teto, semEsticar),
-    fila: populacao - doPlano,
-    porVagas: vagas / uso,
-    porMedicos: semEsticar * (1 + alcance),
-    distribuicao,
   };
-}
-
-/**
- * O que segura a rede pública hoje: o menor dos três limites da conta. Faltam
- * vagas (verba), médicos no país, ou médicos no lugar da fila: há médico que
- * daria conta se estivesse onde a fila está. `nenhum`: quem procura é atendido.
- */
-export type GargaloDaRede = "vagas" | "profissionais" | "distribuicao" | "nenhum";
-
-export function gargaloDaRede(
-  regra: RegraDoAtendimento,
-  rede: Rede,
-): GargaloDaRede {
-  const { fila, porVagas, porMedicos, distribuicao } = contaDaRede(regra, rede);
-  const resto = Math.min(fila, porVagas);
-  if (porMedicos < resto) {
-    const noLugar = distribuicao > 0 ? porMedicos / distribuicao : Infinity;
-    return noLugar >= resto ? "distribuicao" : "profissionais";
-  }
-  return porVagas < fila ? "vagas" : "nenhum";
 }
 
 /** Quem é atendido hoje, em % da população. */
@@ -593,21 +567,6 @@ export function atendimentoInicial(
   const vagas = publico * populacao * (1 + procura);
   const vacinados = pais.vacina / 100 / (1 - leis.recusa);
   const alcancados = (programa * pais.atendimento) / 100;
-  const hoje: Rede = {
-    populacao,
-    profissionais,
-    vagas,
-    planos,
-    seguro,
-    alcance: leis.alcance,
-    cobertura,
-    procura,
-    filantropia,
-    reserva,
-    disputa,
-    missao,
-    distribuicao: pais.distribuicao,
-  };
   return {
     vagas,
     vagas_fora:
@@ -627,8 +586,21 @@ export function atendimentoInicial(
     ),
     indice_informal: pais.informal,
     desvio: 0,
-    desigualdade: desigualdadeDaRede(regra, hoje),
-    gargalo: gargaloDaRede(regra, hoje),
+    desigualdade: desigualdadeDaRede(regra, {
+      populacao,
+      profissionais,
+      vagas,
+      planos,
+      seguro,
+      alcance: leis.alcance,
+      cobertura,
+      procura,
+      filantropia,
+      reserva,
+      disputa,
+      missao,
+      distribuicao: pais.distribuicao,
+    }),
     cobertura,
     alcance: leis.alcance,
     fraqueza: 0,

@@ -187,8 +187,6 @@ export type VisaoBolha = Readonly<{
   dono: string;
   avaliacao?: string;
   valor: number;
-  /** O que segura o índice agora, quando ele sai de uma conta com limites (17/nov). */
-  segura?: Readonly<{ nome: string; porque: string }>;
   /** Escala da bolha (do domínio no conteúdo). */
   minimo: number;
   maximo: number;
@@ -258,12 +256,6 @@ export type VisaoLigacao = Readonly<{
    * opção de dilema escolhida. Ocorrências paradas não aparecem.
    */
   ocorrencia?: Readonly<{ id: string; nome: string }>;
-  /**
-   * O fio na conta de um gargalo (17/nov): `limita` é o fator que segura o alvo
-   * agora; `nao_rende` é o fator que, subindo, não muda o alvo enquanto outro
-   * segura.
-   */
-  gargalo?: "limita" | "nao_rende";
 }>;
 
 /** Uma razão para um grupo estar mais ou menos satisfeito. */

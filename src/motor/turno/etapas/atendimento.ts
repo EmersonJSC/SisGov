@@ -7,7 +7,6 @@ import {
   fluxoDeProfissionais,
   indiceDoAtendimento,
   desvioDaRede,
-  gargaloDaRede,
   desigualdadeDaRede,
   fraquezaDaRede,
   indiceDosProfissionais,
@@ -126,7 +125,6 @@ function indicesDaRede(
   return {
     indice: indiceDoAtendimento(regra, rede),
     desvio: desvioDaRede(regra, rede),
-    gargalo: gargaloDaRede(regra, rede),
     desigualdade: desigualdadeDaRede(regra, rede),
     fraqueza: fraquezaDaRede(regra, rede),
     indice_profissionais: indiceDosProfissionais(

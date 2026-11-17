@@ -238,8 +238,6 @@ export type FioDoMapa = Readonly<{
   tipo: TipoDoFio;
   /** Só nos fios de efeito: + melhora, − piora. */
   sinal: 1 | -1;
-  /** O fator que segura o alvo agora, ou o que não rende enquanto outro segura. */
-  gargalo?: "limita" | "nao_rende";
 }>;
 
 /** Peça que não anda: os três rostos da trindade, o emblema e o centro de cada poder. */
@@ -482,7 +480,6 @@ export function prepararOrganico(
       para: l.alvo,
       tipo: "efeito",
       sinal: piorQuandoSobe.has(l.alvo) ? (l.sinal === 1 ? -1 : 1) : l.sinal,
-      ...(l.gargalo ? { gargalo: l.gargalo } : {}),
     }));
   const vizinhosDeEfeito = new Map<string, string[]>();
   fiosDeEfeito.forEach((f) => {
