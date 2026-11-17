@@ -10,6 +10,7 @@ import {
   comBolsoParaPlano,
   pessoasNaFolha,
   indiceDoSaneamento,
+  distribuicaoDe,
   leisDoAtendimento,
   leisDoSaneamento,
   pessoasNoCampo,
@@ -258,6 +259,7 @@ function previaDoAtendimento(
     com_bolso: comBolsoParaPlano(regra, estado),
     na_folha: pessoasNaFolha(regra, estado.pops, estado.essenciais.populacao),
     ambiente: estado.jogabilidade[regra.indice_ambiente],
+    distribuicao: distribuicaoDe(regra, estado.jogabilidade),
   });
   const atrasoMeses = mesesDaSaude(partida);
   const deriva = (por: string, base: number, atraso: number) =>

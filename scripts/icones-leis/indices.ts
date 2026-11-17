@@ -49,6 +49,7 @@ const NOMES: Record<string, string> = {
   concentracao_terra: "treasure-map",
   risco_de_epidemia: "virus",
   fuga_de_profissionais: "airplane-departure",
+  medico_onde_falta: "position-marker",
   saude_mental: "brain",
   dependencia_de_drogas: "skull-with-syringe",
   dependencia_de_jogos: "slot-machine",

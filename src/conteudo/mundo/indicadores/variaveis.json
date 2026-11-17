@@ -710,6 +710,25 @@
       "origem": "planilha"
     },
     {
+      "id": "medico_onde_falta",
+      "tipo": "calculado",
+      "nome": "Médico onde falta",
+      "camada": "jogabilidade",
+      "unidade": "indice_0_100",
+      "dominio": {
+        "minimo": 0,
+        "maximo": 100
+      },
+      "inicial": 100,
+      "dono": "saude",
+      "avaliacao": "maior_melhor",
+      "medida": {
+        "unidade": "Parte dos profissionais da rede pública que está onde falta atendimento",
+        "zero": 0,
+        "cem": 100
+      }
+    },
+    {
       "id": "fuga_de_profissionais",
       "tipo": "calculado",
       "nome": "Fuga de profissionais",

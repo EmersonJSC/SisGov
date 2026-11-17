@@ -54,7 +54,7 @@ export {
   apertoDaMoradia,
 } from "./etapas/obras";
 export { leisDoSaneamento } from "./etapas/saneamento";
-export { leisDoAtendimento } from "./etapas/atendimento";
+export { distribuicaoDe, leisDoAtendimento } from "./etapas/atendimento";
 export {
   comIndicesDasCestas,
   consumoDasCestas,

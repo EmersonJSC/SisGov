@@ -22,7 +22,15 @@
         "fraco": 0.2,
         "abandono": 0
       },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "medico_onde_falta",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "o médico da cidade atende quem está longe pela tela"
+        }
+      ]
     },
     {
       "id": "consultas",
@@ -36,7 +44,15 @@
         "fraco": 0.2,
         "abandono": 0
       },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "medico_onde_falta",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "o médico da cidade atende quem está longe pela tela"
+        }
+      ]
     },
     {
       "id": "livre",
@@ -50,7 +66,15 @@
         "fraco": 0.3,
         "abandono": 0
       },
-      "efeitos": []
+      "efeitos": [
+        {
+          "indice": "medico_onde_falta",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "o médico da cidade atende quem está longe pela tela"
+        }
+      ]
     }
   ]
 }

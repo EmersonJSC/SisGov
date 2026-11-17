@@ -56,7 +56,8 @@
     "motoristas"
   ],
   "pop_informal": "informais-urbanos",
-  "pessoas_por_profissional": 50,
+  "pessoas_por_profissional": 77,
+  "indice_distribuicao": "medico_onde_falta",
   "custo_vaga": 0.1,
   "custo_obra": 0.1,
   "prazo": 8,

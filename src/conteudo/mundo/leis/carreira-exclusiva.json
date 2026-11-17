@@ -31,6 +31,13 @@
           "forca": "fraca",
           "atraso_turnos": 6,
           "porque": "com carreira e salário, o profissional fica"
+        },
+        {
+          "indice": "medico_onde_falta",
+          "sentido": 1,
+          "forca": "fraca",
+          "atraso_turnos": 2,
+          "porque": "a carreira paga mais para quem vai ao interior"
         }
       ]
     },
@@ -55,6 +62,13 @@
           "forca": "media",
           "atraso_turnos": 6,
           "porque": "com carreira e salário, o profissional fica"
+        },
+        {
+          "indice": "medico_onde_falta",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "a carreira paga mais para quem vai ao interior"
         }
       ]
     },
@@ -79,6 +93,13 @@
           "forca": "forte",
           "atraso_turnos": 6,
           "porque": "com carreira e salário, o profissional fica"
+        },
+        {
+          "indice": "medico_onde_falta",
+          "sentido": 1,
+          "forca": "media",
+          "atraso_turnos": 2,
+          "porque": "a carreira paga mais para quem vai ao interior"
         }
       ]
     }

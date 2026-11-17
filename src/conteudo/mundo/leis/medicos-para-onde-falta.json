@@ -22,11 +22,11 @@
       },
       "efeitos": [
         {
-          "indice": "atendimento",
+          "indice": "medico_onde_falta",
           "sentido": 1,
           "forca": "fraca",
           "atraso_turnos": 2,
-          "porque": "o posto do interior ganha médico"
+          "porque": "o posto do interior e da periferia ganha médico"
         },
         {
           "indice": "desigualdade",
@@ -49,11 +49,11 @@
       },
       "efeitos": [
         {
-          "indice": "atendimento",
+          "indice": "medico_onde_falta",
           "sentido": 1,
           "forca": "media",
           "atraso_turnos": 2,
-          "porque": "o posto do interior ganha médico"
+          "porque": "o posto do interior e da periferia ganha médico"
         },
         {
           "indice": "profissionais_saude",
@@ -83,11 +83,11 @@
       },
       "efeitos": [
         {
-          "indice": "atendimento",
+          "indice": "medico_onde_falta",
           "sentido": 1,
           "forca": "forte",
           "atraso_turnos": 2,
-          "porque": "chegam muitos médicos de uma vez"
+          "porque": "o posto do interior e da periferia ganha médico"
         },
         {
           "indice": "profissionais_saude",

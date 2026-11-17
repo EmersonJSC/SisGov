@@ -27,7 +27,16 @@ const rede = { populacao: 1000, profissionais: 10, vagas: 300, planos: 0 };
 describe("conta da fila (motor)", () => {
   it("a rede atende o menor entre vagas e profissionais", () => {
     expect(indiceDoAtendimento(regra, rede)).toBeCloseTo(30);
-    expect(indiceDoAtendimento(regra, { ...rede, profissionais: 2 })).toBe(10);
+    expect(indiceDoAtendimento(regra, { ...rede, profissionais: 2 })).toBe(
+      (2 * regra.pessoas_por_profissional) / 10,
+    );
+  });
+
+  it("médico longe da fila não atende quem está nela", () => {
+    const poucos = { ...rede, profissionais: 2 };
+    expect(
+      indiceDoAtendimento(regra, { ...poucos, distribuicao: 0.5 }),
+    ).toBeCloseTo(indiceDoAtendimento(regra, poucos) / 2);
   });
 
   it("hospital sem profissional não atende", () => {
