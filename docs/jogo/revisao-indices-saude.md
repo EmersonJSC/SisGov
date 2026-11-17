@@ -270,3 +270,35 @@ O que o teste mostra:
 - **A fila por pop:** o serviço chega a cada pop por um peso
   (`pops.json › servicos`). O saneamento já põe o campo e os informais
   urbanos no fim da fila (peso 0,3 e 0,6). A saúde só usa o peso por renda.
+
+### De que bolso sai cada lei da rede (17/nov)
+Pedido do autor depois do seguro pela folha: quem paga, sem tomar lado. A
+regra do GDD (Parte 1, "Nenhum dinheiro some"): todo real gasto ou cobrado
+sai do bolso de alguém. Escrito por mim: confirmei no código onde o dinheiro
+sai, mas não joguei cada lei sozinha.
+
+| Lei | Quem paga no mundo | O que o jogo cobra hoje | Bate? |
+|---|---|---|---|
+| Verba da saúde, Atenção preventiva | o governo (imposto ou dívida) | gasto do governo: dívida e inflação | Sim |
+| Filantrópicos, Dedução do plano, Carreira, Vacinação, Saúde ambiental | o governo (isenção, imposto que deixa de entrar, salário) | `custo` da rede no gasto do governo | Sim |
+| Missões médicas | o país que recebe paga | dinheiro entra no governo | Sim |
+| Gestão privada | o governo paga a empresa | economia de 30% no custo da rede | Sim |
+| Abertura dos planos, Limite dos planos | quem compra o plano (classe média e rica) | **ninguém**: o plano não sai do bolso de nenhum pop | **Não** |
+| Seguro pela folha | patrão e empregado, um pedaço do salário | **só** empurra gente para o informal; o salário e o lucro não mudam | **Não** |
+| Conta de saúde | o trabalhador, um pedaço do salário | **só** empurra gente para o informal | **Não** |
+| Coparticipação | quem usa a rede e pode pagar | o dinheiro aparece na verba; **não sai** do bolso de ninguém | **Não** |
+| Cobertura gratuita | o governo (mais gente usando) | a procura sobe; o custo vem pela verba | Sim |
+
+O que isso explica:
+- **Os caminhos pagos pelo bolso saem de graça** no jogo. Por isso o plano e
+  o seguro resolvem quase tudo sem custo (achado do teste de limite).
+- **O seguro pela folha** (pergunta do autor): no mundo, sai do salário do
+  trabalhador com carteira e do custo da empresa. Quem tem carteira perde
+  renda, a empresa contrata menos e quem é informal fica na fila. A
+  desigualdade que o jogo soma (com carteira atendido, sem carteira na fila)
+  existe de verdade e cresce com a informalidade: ela não está errada, como
+  eu tinha dito. O que falta é o pedaço do salário sair do bolso.
+- Conserto proposto, com peças que existem: o pagamento privado sai da renda
+  dos pops que pagam (plano: quem tem bolso; seguro e conta: quem está na
+  folha; coparticipação: quem usa a rede). O padrão de vida deles cai, e o
+  grupo deles sente.
