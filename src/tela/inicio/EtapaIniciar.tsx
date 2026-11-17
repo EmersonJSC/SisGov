@@ -57,6 +57,14 @@ export function EtapaIniciar({
         <label>
           <input
             type="checkbox"
+            checked={e.semEleicao}
+            onChange={(x) => mudar({ semEleicao: x.target.checked })}
+          />{" "}
+          Sem eleição (perder não encerra a partida)
+        </label>
+        <label>
+          <input
+            type="checkbox"
             checked={e.comJudiciario}
             onChange={(x) => mudar({ comJudiciario: x.target.checked })}
           />{" "}

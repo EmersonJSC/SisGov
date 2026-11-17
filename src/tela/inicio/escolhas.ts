@@ -33,6 +33,7 @@ export interface Escolhas {
   trocas: Record<string, string>;
   semCongresso: boolean;
   semSenado: boolean;
+  semEleicao: boolean;
   comJudiciario: boolean;
 }
 
@@ -50,6 +51,7 @@ export const ESCOLHAS_INICIAIS = (pais: string): Escolhas => ({
   trocas: {},
   semCongresso: false,
   semSenado: false,
+  semEleicao: false,
   comJudiciario: false,
 });
 

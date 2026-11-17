@@ -46,7 +46,7 @@ interface Props {
     pais: string,
     semente: number,
     comeco: ComecoDoJogador,
-    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado" | "comJudiciario">,
+    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado" | "semEleicao" | "comJudiciario">,
   ) => void;
 }
 
@@ -118,6 +118,7 @@ export function TelaInicio({
       {
         semCongresso: e.semCongresso,
         semSenado: e.semSenado,
+        semEleicao: e.semEleicao,
         comJudiciario: e.comJudiciario,
       },
     );
@@ -137,6 +138,7 @@ export function TelaInicio({
       {
         semCongresso: e.semCongresso,
         semSenado: e.semSenado,
+        semEleicao: e.semEleicao,
         comJudiciario: e.comJudiciario,
       },
     );
@@ -144,6 +146,12 @@ export function TelaInicio({
 
   useCheats((cheat) => {
     if (cheat === "pular") return pular();
+    if (cheat === "eleicao") {
+      mudar({ semEleicao: !e.semEleicao });
+      return avisarDoTeste(
+        e.semEleicao ? "Eleição ligada" : "Eleição desligada (teste)",
+      );
+    }
     mudar({ semSenado: !e.semSenado });
     avisarDoTeste(e.semSenado ? "Senado ligado" : "Senado desligado (teste)");
   });

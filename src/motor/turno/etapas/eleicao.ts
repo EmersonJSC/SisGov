@@ -288,6 +288,8 @@ function fecharMandato(regras: Regras, estado: Estado): Estado {
     ? estado
     : rodadaUm(regras, estado);
   const eleicao = resultado(regras, pronto);
+  // teste sem eleição: o resultado vira fato, mas o governo segue
+  const segue = eleicao.venceu || !!regras.semEleicao;
   const fato = novoFato({
     tipo: eleicao.venceu ? "eleicao-vencida" : "eleicao-perdida",
     turno: estado.turno,
@@ -295,7 +297,7 @@ function fecharMandato(regras: Regras, estado: Estado): Estado {
   });
   return {
     ...pronto,
-    ...(eleicao.venceu && pronto.congresso
+    ...(segue && pronto.congresso
       ? {
           congresso: {
             ...pronto.congresso,
@@ -306,9 +308,9 @@ function fecharMandato(regras: Regras, estado: Estado): Estado {
       : {}),
     fatos: [...(pronto.fatos ?? []), fato],
     eleicao,
-    campanha: eleicao.venceu ? CAMPANHA_VAZIA : pronto.campanha,
-    inicio_mandato: eleicao.venceu ? estado.turno : estado.inicio_mandato,
-    encerrada: !eleicao.venceu,
+    campanha: segue ? CAMPANHA_VAZIA : pronto.campanha,
+    inicio_mandato: segue ? estado.turno : estado.inicio_mandato,
+    encerrada: !segue,
   };
 }
 

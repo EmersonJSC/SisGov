@@ -47,6 +47,8 @@ export interface ParametrosPais {
 }
 
 export interface Regras {
+  /** Teste: perder a eleição não encerra a partida; o mandato segue. */
+  semEleicao?: boolean;
   leis: Record<string, Lei>;
   /** Domínio de cada índice de jogabilidade. */
   dominios: Record<string, { min: number; max: number }>;

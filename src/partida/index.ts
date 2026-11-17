@@ -573,6 +573,8 @@ export interface OpcoesPartida {
   semCongresso?: boolean;
   /** O país joga só com a Câmara, mesmo que declare Senado (teste). */
   semSenado?: boolean;
+  /** Perder a eleição não encerra a partida (teste). */
+  semEleicao?: boolean;
   /** Liga o Judiciário (fora da V1, 15/nov: só existe na tela). */
   comJudiciario?: boolean;
   /** Partido, chapa e ministros do jogador; sem isto o partido do país governa. */
@@ -641,6 +643,7 @@ export function criarPartida(
     ajustes = {},
     semCongresso = false,
     semSenado = false,
+    semEleicao = false,
     comJudiciario = false,
     comeco,
   } = opcoes;
@@ -707,6 +710,7 @@ export function criarPartida(
     midia: carregarMidias(pais, grupos),
     ...(governo ? { governo: governo.regras } : {}),
     ...(judiciario ? { judiciario } : {}),
+    ...(semEleicao ? { semEleicao } : {}),
     congresso: semCongresso
       ? undefined
       : congressoDasRegras(semSenado ? semOSenado(congresso) : congresso),

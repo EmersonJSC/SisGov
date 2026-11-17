@@ -1,6 +1,6 @@
 // Cheats para testar: palavras digitadas fora de qualquer campo de texto.
 // Valem na tela inicial; a lista é o contrato (cheats.test.ts).
-export const CHEATS = ["senado", "pular"] as const;
+export const CHEATS = ["senado", "pular", "eleicao"] as const;
 export type Cheat = (typeof CHEATS)[number];
 
 /** Letras guardadas: o bastante para a maior palavra. */

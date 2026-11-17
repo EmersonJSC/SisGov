@@ -14,6 +14,7 @@ describe("cheats digitados", () => {
   it("acha a palavra, em qualquer caixa e no meio de outras letras", () => {
     expect(escrever("senado").cheat).toBe("senado");
     expect(escrever("xxPULARyy").cheat).toBe("pular");
+    expect(escrever("eleicao").cheat).toBe("eleicao");
   });
 
   it("zera o que foi digitado ao completar, para valer de novo", () => {

@@ -49,7 +49,7 @@ export function App() {
     pais: string,
     semente: number,
     comeco: ComecoDoJogador,
-    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado">,
+    teste: Pick<OpcoesPartida, "semCongresso" | "semSenado" | "semEleicao">,
   ) => {
     try {
       const nova = criarPartida(pais, semente, { ...teste, comeco });
