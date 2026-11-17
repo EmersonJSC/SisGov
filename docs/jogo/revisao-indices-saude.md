@@ -177,3 +177,92 @@ caminho que sobe o atendimento cobra desvio (60 → 85) e desigualdade (52 → 6
   e a revisão dizia que ele alivia a emergência.
 - O plano sozinho resolve quase tudo (seguro +14, obrigação +10); a esquerda
   depende de trazer médico.
+
+---
+
+## Auditoria da mecânica (17/nov)
+Pedida pelo autor depois do índice Médico onde falta: como cada índice da
+Saúde é calculado, se faz sentido e se a Saúde comporta países diferentes.
+Regra nova (autor, 17/nov): número real é só referência, para pôr no eixo e
+comparar. O jogo representa o Estado de forma abstrata, com as peças que já
+tem (pops, regiões, grupos), sem cidades.
+
+### A regra comum a todos
+- **O país declara o começo.** Cada índice nasce com o número que o país
+  escreve em `estado-inicial.json` (Brasil: Atendimento 30, Saúde 50…). Quem
+  não declara começa em 50.
+- **A partida só mexe na diferença.** Lei soma pontos fixos por degrau. A
+  deriva (um índice empurrando outro) mede contra o turno 0. A rede de
+  atendimento conta cinco índices e move cada um pelo que andou.
+- Por isso qualquer país cabe: o começo é declarado. O que as leis podem
+  fazer a partir dali é o que a mecânica decide.
+
+### Índice por índice
+| Índice | Como é calculado | De onde vem o número | Faz sentido? |
+|---|---|---|---|
+| Atendimento | Conta da rede: o plano atende primeiro; a rede pública atende o menor entre vagas (verba), profissionais (× médico onde falta × o quanto o profissional estica) e quem sobrou; o atendimento básico cobre parte do resto. Leis de plano também somam pontos direto | País declara 30; o jogo acha as vagas que dão 30 | ✅ a conta; ⚠️ ver Médico onde falta |
+| Profissionais de saúde | Pessoas do pop "profissionais de saúde" × 77 ÷ população | Pop é 0,9% da população → 69 | ❌ a régua é a média dos países ricos (o 77), contra a regra nova |
+| Médico onde falta | Só leis (pontos fixos). Multiplica a capacidade dos profissionais na conta do Atendimento | Brasil 35, **escolhido à mão** para a verba parar de render perto de 40 | ❌ não sai de nenhuma peça do jogo |
+| Saúde (vida) | Deriva: Atendimento, Vacinação e Saneamento empurram para cima, Favela para baixo; leis somam; atendimento às pressas tira | País declara 50 | ⚠️ ver deriva sem fim |
+| Expectativa de vida | Deriva da Saúde | País declara 73 | ⚠️ ver deriva sem fim |
+| Vacinação | Rede: o programa de vacinação alcança quem a rede atende; a lei de recusa tira | País declara 75 | ✅ |
+| Acesso a remédios | Preço do remédio no mercado; leis mexem no preço | Mercado | ✅ |
+| Risco de epidemia | Deriva: Vacinação e Saneamento baixam | 50 em todo país | ⚠️ não pesa em nada (sem custo no PIB) |
+| Fuga de profissionais | Só leis | 50 em todo país | ⚠️ não tira médico do índice Profissionais |
+| Saúde mental | Uma lei | 50 em todo país | ✅ por enquanto |
+| Dependência de drogas | Leis | 50 em todo país | ✅ (consequência fica na Segurança) |
+| Dependência de jogos | Leis | 50 em todo país | ✅ (leis são de Impostos) |
+
+### Teste: países de lados diferentes (Brasil, 24 turnos, sem Congresso)
+Cada perfil é só um jogo de leis, a partir do Brasil.
+
+| Perfil | Leis | Atendimento | Saúde | Vida (anos) | Desigualdade | Dívida | Inflação |
+|---|---|---|---|---|---|---|---|
+| Começo | — | 30 | 50 | 73 | 52 | 78 | 4,8 |
+| Parado | nenhuma | 30 | 50 | 73 | 52 | 114 | 5,9 |
+| Público (tipo sistema nacional) | verba 8%, poucos planos, preventiva 2% | 40 | 58 | 75 | 50 | 138 | 7,9 |
+| Seguro pela folha | seguro com família, poucos planos | 47 | 63 | 77 | **63** | 114 | 5,9 |
+| Mercado | verba 2%, planos livres, dedução sem teto, gestão privada, gratuidade só urgência | 36 | 53 | 73 | 54 | 114 | 5,9 |
+| Público com missões | verba 8%, missões, serviço obrigatório, mercado fechado | 42 | 59 | 75 | 50 | 137 | 7,9 |
+
+O que o teste mostra:
+- **Os dois lados chegam a algum lugar**, com custos diferentes: o público
+  paga em dívida e inflação; o mercado e o seguro, em desigualdade.
+- **O seguro pela folha ganha de todos** e sobe a desigualdade em 11. A conta
+  trata o seguro social como plano privado ("saúde de dois andares"). Um país
+  de seguro social é pouco desigual: a desigualdade do seguro está errada.
+- **O público para em 40**: preso no Médico onde falta (35). Dobrar a verba
+  rende 10 pontos e custa 24 de dívida.
+- **O corte da verba não aconteceu** no perfil Mercado: o piso da saúde
+  recusa sem aviso (já anotado no depois-da-v1).
+- A carreira exclusiva colide com a gestão privada que o Brasil já tem; os
+  perfis seguiram sem ela.
+
+### Problemas achados
+1. **Deriva sem fim.** A deriva soma a cada turno a distância do começo. Se o
+   Atendimento fica 10 acima do começo, a Saúde sobe 0,5 por turno para
+   sempre, até 100. A Expectativa de vida ganhou 4 anos em 4 anos no perfil
+   Seguro e continuaria subindo.
+2. **Seguro social conta como plano privado** na desigualdade.
+3. **Profissionais e Médico onde falta** estão montados em número de fora
+   (o 77) e número escolhido à mão (o 35).
+4. **Índices soltos começam em 50** em todo país (epidemia, fuga, saúde
+   mental, drogas, jogos): o país não declara, e só lei move.
+5. **Fuga e epidemia não pesam** em nada fora da Saúde (já anotado no
+   Encaixe).
+
+### O que eu usei que não devia
+- A média dos países ricos (1 para 77) como o 100 do índice Profissionais.
+- O índice Médico onde falta sem peça do jogo por trás, com o Brasil em 35
+  escolhido para a conta dar o resultado que eu queria.
+- Para os testes continuarem passando, mudei o tamanho do pop de
+  profissionais nos dois países de teste.
+- Nada de cidade, capital ou interior entrou no código: esses dados só
+  apareceram na conversa.
+
+### Peças que já existem para a distância
+- **A vaga mais cara:** a verba já rende menos a cada vaga nova, "porque
+  atende quem está mais longe" (`vagasDaVerba`).
+- **A fila por pop:** o serviço chega a cada pop por um peso
+  (`pops.json › servicos`). O saneamento já põe o campo e os informais
+  urbanos no fim da fila (peso 0,3 e 0,6). A saúde só usa o peso por renda.
