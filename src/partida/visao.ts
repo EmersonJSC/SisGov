@@ -20,6 +20,7 @@ import {
   obrasPorSetor,
   TURNOS_ATE_FECHAR,
   type Deriva,
+  type GargaloDaRede,
   type RegraDoAtendimento,
   type RegraDoSaneamento,
   type Canal,
@@ -308,11 +309,55 @@ const ligacao = (
   mecanismo: "afim",
 });
 
+type Saude = {
+  regra: RegraDoAtendimento;
+  atrasoMeses: number;
+  gargalo?: GargaloDaRede;
+};
+
+/** O que segura a rede pública, como a bolha do Atendimento conta. */
+const SEGURA: Readonly<
+  Record<GargaloDaRede, Readonly<{ nome: string; porque: string }>>
+> = {
+  vagas: { nome: "vagas", porque: "falta verba para a rede pública" },
+  profissionais: { nome: "profissionais", porque: "faltam médicos no país" },
+  distribuicao: {
+    nome: "médico onde falta",
+    porque: "há médico, mas longe da fila",
+  },
+  nenhum: { nome: "nada", porque: "quem procura é atendido" },
+};
+
+/**
+ * O gargalo nos fios que chegam ao Atendimento: o fator que segura limita; o do
+ * outro lado da conta não rende. Vagas: verba e entidades. Médicos: o índice de
+ * profissionais, o de distribuição e as leis que esticam o profissional (a gestão
+ * fica de fora: ela também faz a verba render).
+ */
+function gargaloDoFio(
+  r: RegraDoAtendimento,
+  gargalo: GargaloDaRede | undefined,
+  [origem, alvo]: Seta,
+): VisaoLigacao["gargalo"] {
+  if (!gargalo || gargalo === "nenhum" || alvo !== r.indice) return undefined;
+  const vagas = [r.lei_verba, r.lei_filantropia];
+  const medicos = [
+    r.indice_profissionais,
+    ...(r.indice_distribuicao ? [r.indice_distribuicao] : []),
+    ...r.leis_alcance.filter((id) => id !== r.lei_gestao),
+  ];
+  const limita = {
+    vagas: r.lei_verba,
+    profissionais: r.indice_profissionais,
+    distribuicao: r.indice_distribuicao,
+  }[gargalo];
+  if (origem === limita) return "limita";
+  const outroLado = gargalo === "vagas" ? medicos : vagas;
+  return outroLado.includes(origem) ? "nao_rende" : undefined;
+}
+
 /** As leis da saúde agem pela contagem, sem efeito declarado na lei. */
-function ligacoesDaSaude(
-  leis: Lei[],
-  saude: { regra: RegraDoAtendimento; atrasoMeses: number },
-): VisaoLigacao[] {
+function ligacoesDaSaude(leis: Lei[], saude: Saude): VisaoLigacao[] {
   const r = saude.regra;
   const alcance = r.leis_alcance.flatMap((id): Seta[] => {
     const lei = leis.find((l) => l.id === id);
@@ -370,7 +415,14 @@ function ligacoesDaSaude(
       ? ([[r.indice_distribuicao, r.indice, 1]] as Seta[])
       : []),
   ];
-  return setas.map(([o, a, sinal]) => ligacao(o, a, sinal, saude.atrasoMeses));
+  return setas.map((seta) => {
+    const [o, a, sinal] = seta;
+    const gargalo = gargaloDoFio(r, saude.gargalo, seta);
+    return {
+      ...ligacao(o, a, sinal, saude.atrasoMeses),
+      ...(gargalo ? { gargalo } : {}),
+    };
+  });
 }
 
 /** As leis da rede de água e esgoto agem pela contagem, sem efeito na lei. */
@@ -454,7 +506,7 @@ function ligacoes(
   derivas: Deriva[],
   moradia?: Moradia,
   rede?: { regra: RegraDoSaneamento; atrasoMeses: number },
-  saude?: { regra: RegraDoAtendimento; atrasoMeses: number },
+  saude?: Saude,
 ): VisaoLigacao[] {
   return [
     ...(saude ? ligacoesDaSaude(leis, saude) : []),
@@ -547,6 +599,7 @@ function ligacoesDaPartida(partida: Partida): VisaoLigacao[] {
     regras.atendimento && {
       regra: regras.atendimento,
       atrasoMeses: mesesDaSaude(partida),
+      gargalo: partida.estado.atendimento?.gargalo,
     },
   );
 }
@@ -594,7 +647,11 @@ export function montarVisao(partida: Partida): VisaoPartida {
         estado,
       ),
     ),
-    bolhas: bolhasDaPartida(estado),
+    bolhas: bolhasDaPartida(estado).map((b) =>
+      b.id === regras.atendimento?.indice && estado.atendimento?.gargalo
+        ? { ...b, segura: SEGURA[estado.atendimento.gargalo] }
+        : b,
+    ),
     ligacoes: ligacoesDaPartida(partida),
     grupos: [],
     potencias: (regras.potencias ?? []).map((p) => ({

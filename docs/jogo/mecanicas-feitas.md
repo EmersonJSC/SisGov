@@ -77,6 +77,14 @@ que cobrem rede pública, planos, remédios, profissionais, vacinação e drogas
 - O fio de efeito é verde quando ajuda e vermelho quando atrapalha, conforme a
   avaliação do índice (maior é melhor ou maior é pior).
 - O fio de pertencer é cinza e fino.
+- **Gargalo (17/nov):** a rede pública atende o menor de três limites (vagas,
+  profissionais, médico onde falta). O fio do limite que segura o Atendimento
+  agora fica grosso e pulsa. O fio do outro lado da conta, que não rende
+  enquanto aquele segura, fica tracejado. A dica do Atendimento diz "Segura
+  agora: …" e a do fator diz "Não rende agora". O Brasil começa preso em vagas;
+  com verba alta, o gargalo passa ao médico onde falta. Conta em
+  `gargaloDaRede` (`src/motor/atendimento/index.ts`), fios em `gargaloDoFio`
+  (`src/partida/visao.ts`), desenho em `fundoDoMapa.ts`.
 - Os 12 índices que nada mexe ficam fora do mapa até a mecânica deles entrar.
 
 ### Técnica

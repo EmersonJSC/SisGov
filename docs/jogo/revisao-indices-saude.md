@@ -166,6 +166,8 @@ caminho que sobe o atendimento cobra desvio (60 → 85) e desigualdade (52 → 6
   (1,9 milhão) contra 4,3 milhões necessários (1 para 50 pessoas), e o índice
   começa em 50. Na vida real são cerca de 600 mil médicos (1 para 360 pessoas)
   e 2,9 milhões na enfermagem. O Atendimento começar em 30% parece baixo.
+- Os saltos depois da calibração parecem grandes (autor, 17/nov): verba 6% dá
+  +7 e cada lei de levar médico ao interior dá +3 a +4. Rever a força no fim.
 
 **Revisaremos**
 - Revogar uma lei revista é lido como ligar o primeiro degrau, e a colisão

@@ -1059,6 +1059,16 @@ function textoDoBilhete(
   const semEfeito = preparo.nos.find((n) => n.id === id)?.semEfeito
     ? ["Nada no motor liga a ela ainda"]
     : [];
+  // o gargalo (17/nov): o fator que segura o alvo agora, ou o que não rende
+  const gargalo = preparo.fios.flatMap((f) => {
+    const alvo = indices.get(f.para);
+    if (f.de !== id || !f.gargalo || !alvo?.segura) return [];
+    return [
+      f.gargalo === "limita"
+        ? `É o que segura ${alvo.nome} agora`
+        : `Não rende agora: ${alvo.nome} está preso em ${alvo.segura.nome}`,
+    ];
+  });
   const lei = leis.get(id);
   if (lei) {
     const opcao = lei.opcoes?.find((o) => o.id === lei.opcaoAtual)?.rotulo;
@@ -1070,6 +1080,7 @@ function textoDoBilhete(
           ? `Popularidade ${Math.round(lei.popularidade.pais)}`
           : "Popularidade: sem dado",
         ligacoes,
+        ...gargalo,
         ...semEfeito,
       ],
     };
@@ -1090,7 +1101,11 @@ function textoDoBilhete(
                 `${indice.tendencia === "piorando" ? "Piorando" : "Melhorando"} ${Math.abs(Math.round(indice.mudancaDaSaude ?? 0))} pontos nos últimos ${indice.mesesDaTendencia ?? 2} meses`,
               ]
             : []),
+          ...(indice.segura
+            ? [`Segura agora: ${indice.segura.nome} (${indice.segura.porque})`]
+            : []),
           ligacoes,
+          ...gargalo,
           ...semEfeito,
         ],
       }
