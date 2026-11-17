@@ -148,3 +148,29 @@ Nada disto se faz agora: cada item espera a sua instituição abrir.
 | Funcionalismo | Estabilidade e reposição valem para todo servidor, mas só mexem na Saúde | ligar também em Educação, Segurança etc. |
 
 **Índices da Saúde que não empurram nada**: dependência de drogas, dependência de jogos, fuga de profissionais e risco de epidemia só recebem; os quatro ganham consequência nas linhas acima.
+
+---
+
+## Teste de limite do Atendimento (16/nov)
+Brasil, sem Congresso, 21 turnos. Tudo que ajuda: 30 → 97. Tudo que atrapalha:
+30 → 15. Atrapalha e depois ajuda: volta a 88 em cerca de 5 turnos. Ajuda e
+depois atrapalha: cai devagar, até 60. Dá para resolver para os dois lados, e o
+caminho que sobe o atendimento cobra desvio (60 → 85) e desigualdade (52 → 62).
+
+**Para arrumar no fim**
+- Verba, atenção preventiva, telemedicina e exportação de médicos têm efeito
+  quase zero no Brasil: falta profissional, não vaga. O fio verde promete efeito
+  sem dizer de que ele depende.
+- Calibrar os profissionais. O pop "profissionais de saúde" é 0,9% do país
+  (1,9 milhão) contra 4,3 milhões necessários (1 para 50 pessoas), e o índice
+  começa em 50. Na vida real são cerca de 600 mil médicos (1 para 360 pessoas)
+  e 2,9 milhões na enfermagem. O Atendimento começar em 30% parece baixo.
+
+**Revisaremos**
+- Revogar uma lei revista é lido como ligar o primeiro degrau, e a colisão
+  barra o pedido. Decidir quais leis podem ser revogadas; o Senado decide a
+  revogação.
+- Cuidado com o usuário está com o sinal de atrapalhar no Atendimento (−2,9),
+  e a revisão dizia que ele alivia a emergência.
+- O plano sozinho resolve quase tudo (seguro +14, obrigação +10); a esquerda
+  depende de trazer médico.
