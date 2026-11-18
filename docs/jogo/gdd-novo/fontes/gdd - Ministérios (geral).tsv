@@ -1,0 +1,42 @@
+Ministério (caixa)	Tipo	Instituições que costuma levar	Variações	Autor
+Gabinete do chefe de governo	básico	as que sobram em nenhuma outra caixa	coordena o governo; toda instituição sem dono cai aqui	
+Fazenda (Finanças)	básico	Impostos; Moeda e bancos	às vezes leva Orçamento e dívida	
+Planejamento e orçamento	comum	Orçamento e dívida (com estatística)		
+Economia	superministério	Impostos; Moeda e bancos; Orçamento e dívida; Indústria; Comércio exterior e capital; Trabalho; Previdência	junta num só o que outros dividem em Fazenda, Planejamento, Indústria, Trabalho e Previdência	
+Indústria e comércio	comum	Indústria; Comércio exterior e capital; Concorrência e consumidor		
+Gestão (Serviço público)	comum	Funcionalismo; Estatais		
+Trabalho	básico	Trabalho	às vezes leva Previdência	
+Previdência (Seguridade social)	comum	Previdência	às vezes leva Assistência social	
+Desenvolvimento social (Família)	básico	Assistência social		
+Saúde	básico	Saúde		
+Educação	básico	Educação	às vezes leva Ciência e pesquisa	
+Ciência e tecnologia	comum	Ciência e pesquisa	às vezes leva Comunicação e tecnologia (digital)	
+Comunicações (Digital)	comum	Comunicação e tecnologia		
+Cultura	comum	Cultura	às vezes leva Esporte, Turismo ou Religião	
+Esporte	de causa	Esporte	às vezes junto com Turismo ou Juventude	
+Turismo	de causa	Turismo		
+Assuntos religiosos	de causa	Religião		
+Interior	comum	Segurança pública; Imigração; Defesa civil; Estados e municípios	às vezes organiza Eleições	
+Justiça	básico	Justiça e prisões	às vezes leva Segurança pública, Imigração e Concorrência e consumidor	
+Segurança pública	comum	Segurança pública		
+Defesa	básico	Defesa		
+Relações exteriores	básico	Relações exteriores	às vezes leva Comércio exterior e capital	
+Meio ambiente	básico	Meio ambiente	às vezes leva Água e saneamento	
+Agricultura	básico	Agricultura e pesca	às vezes leva Terra	
+Desenvolvimento agrário (Terra)	comum	Terra		
+Energia (Minas e energia)	básico	Energia; Mineração e petróleo		
+Transportes (Infraestrutura)	básico	Infraestrutura e transporte		
+Cidades (Habitação)	comum	Moradia (com urbanismo); Água e saneamento		
+Recursos hídricos	de causa	Água e saneamento		
+Governo local (Regiões)	comum	Estados e municípios; Defesa civil		
+Controle e transparência (Anticorrupção)	comum	Controle e transparência		
+Ministérios de causa sem instituição	de causa	nenhuma: ministério sem pasta, só cargo para aliado	Mulheres, Igualdade, Povos originários, Juventude, Pequenas empresas…	
+				
+Legenda: caixa = nome com uma lista de instituições dentro; o jogador monta as suas. Tipo: básico (quase todo país tem), comum, superministério (junta muitas), de causa (foco num grupo ou tema). Sem nome de país.				
+Como muda de país para país (para estudo, não aprovado)		
+Livre, por decreto	o chefe de governo monta e remonta as caixas quando quer	
+Por medida ou lei simples	o presidente propõe e o Congresso confirma	
+Só por lei	criar ou fundir ministério exige lei aprovada	
+Algumas caixas fixas na Constituição	certos ministros têm de existir; o resto é livre	
+País sem uma caixa	a instituição continua, pequena, em outra caixa	
+Mesmo nome, outra coisa	o rótulo local engana; vale a instituição	

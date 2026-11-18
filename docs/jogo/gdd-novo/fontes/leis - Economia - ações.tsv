@@ -1,0 +1,21 @@
+Parte	Peça	Como funciona	Conta	Exemplo
+Preço	Lucro da empresa	Soma do lucro líquido dos prédios dela. Exemplos em milhões da moeda do país, por ano	Caminho do lucro	Lucro de 12 milhões
+Preço	Retorno exigido	Juros do país + prêmio de risco	Juros 8% + risco 5%	13%
+Preço	Prêmio de risco	Sobe com corrupção, dívida, regra fraca, ameaça de estatizar e violência. Cai com proteção e transparência	Base e organizações	5%
+Preço	Crescimento esperado	Parte reinvestida × retorno do prédio	65% × 12%	7,8%
+Preço	Múltiplo	Parte distribuída ÷ (retorno exigido − crescimento), com limites para não explodir	35% ÷ (13% − 7,8%)	6,7×
+Preço	Valor justo	Lucro × múltiplo	12 × 6,7	81
+Preço	Humor	Multiplica o valor justo. Nasce de alta recente, crédito barato, Confiança do mercado e notícias, sem sorteio; volta ao justo aos poucos	Entre 0,6 e 1,6	1,0
+Preço	Preço do mercado	Valor justo × humor, mais a pressão de compra e venda no turno	81 × 1,0	81
+Exemplo	Juros sobem	Juros de 8% para 10%: retorno exigido vai a 15%	35% ÷ 7,2% = 4,9×	Valor cai para 58
+Exemplo	Lucro sobe	Lucro de 12 para 15, com juros iguais	15 × 6,7	Valor sobe para 101
+Exemplo	Risco sobe	Ameaça de estatização leva o risco a 7%	35% ÷ 7,2% = 4,9×	Valor cai para 58
+Ciclo	Novidade	Setor novo, juros baixos ou lei boa criam chance de lucro	Humor sobe	Preço passa do justo
+Ciclo	Euforia	Alta atrai pequenos investidores e crédito	Humor sobe mais; dívida para comprar ação cresce	Bolha
+Ciclo	Aperto	Juros sobem, lucro decepciona ou fraude aparece	Compra perde força	Primeiras vendas
+Ciclo	Pânico	Quem usou crédito precisa vender	Humor cai rápido	Quebra
+Ciclo	Consequência	Patrimônio cai, consumo e investimento recuam, empresas adiam obras, bancos sofrem	Volta ao ciclo	Desemprego e pressão política
+Liga com	Captação	Preço alto ajuda empresa a vender ação e pagar obras	Bolsa → novo prédio	Mais emprego
+Liga com	Patrimônio	Ação compõe o patrimônio dos pops; alta aumenta a riqueza de quem tem	Bolsa → Pop	Tende a subir Desigualdade
+Liga com	Consumo dos ricos	Parte pequena do ganho vira gasto	Ponto de partida: 3% do ganho	Demanda por setores
+Liga com	Política	Queda reduz satisfação de Finanças, Indústria e dos pequenos investidores	Bolsa → Grupos	Pressão por socorro

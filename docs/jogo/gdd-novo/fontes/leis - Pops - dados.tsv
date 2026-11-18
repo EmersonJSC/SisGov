@@ -1,0 +1,33 @@
+Pop	Criança	Jovem (15 a 29)	Adulto (30 a 59)	Idoso (60+)	Campo	Formal	Informal	Público	Próprio	Fundamental	Médio	Superior	Patrimônio	Filhos por pessoa
+Crianças	1	0	0	0	0.25	0	0	0	0	1	0	0	Da família	0
+Estudantes	0.2	0.8	0	0	0.15	0	0	0	0	0.4	0.45	0.15	Da família	0.03
+Aposentados	0	0	0	1	0.25	0	0	0	0	0.55	0.3	0.15	Médio	0
+Cuidam da casa e desalentados	0	0.25	0.55	0.2	0.3	0	0	0	0	0.6	0.32	0.08	Pouco	0.53
+Desempregados	0	0.45	0.5	0.05	0.2	0	0	0	0	0.5	0.4	0.1	Pouco	0.39
+Grandes empresários	0	0.05	0.7	0.25	0.05	0	0	0	1	0	0.25	0.75	Alto	0.3
+Industriais	0	0.05	0.7	0.25	0.1	0	0	0	1	0	0.3	0.7	Alto	0.3
+Proprietários rurais	0	0.05	0.65	0.3	0.9	0	0	0	1	0.2	0.4	0.4	Alto	0.39
+Rentistas e investidores	0	0.05	0.6	0.35	0.05	0	0	0	1	0.05	0.35	0.6	Alto	0.23
+Pequenos empregadores	0	0.15	0.7	0.15	0.15	0.5	0.1	0	0.4	0.25	0.5	0.25	Médio	0.33
+Profissionais liberais	0	0.2	0.65	0.15	0.05	0	0	0	1	0	0.05	0.95	Médio	0.26
+Autônomos com negócio	0	0.25	0.65	0.1	0.2	0.1	0.3	0	0.6	0.4	0.48	0.12	Pouco	0.36
+Pequenos agricultores e pescadores	0	0.2	0.6	0.2	1	0	0.4	0	0.6	0.75	0.22	0.03	Pouco	0.53
+Informais urbanos	0	0.35	0.55	0.1	0.05	0	0.9	0	0.1	0.6	0.35	0.05	Nenhum	0.49
+Gerentes	0	0.15	0.75	0.1	0.05	1	0	0	0	0.05	0.3	0.65	Médio	0.3
+Altos funcionários	0	0.05	0.75	0.2	0	0	0	1	0	0	0.1	0.9	Médio	0.26
+Servidores administrativos	0	0.2	0.7	0.1	0.15	0	0	1	0	0.1	0.5	0.4	Pouco	0.3
+Policiais	0	0.3	0.65	0.05	0.15	0	0	1	0	0.1	0.7	0.2	Pouco	0.36
+Militares	0	0.4	0.55	0.05	0.2	0	0	1	0	0.15	0.7	0.15	Pouco	0.36
+Professores	0	0.2	0.7	0.1	0.15	0.3	0.05	0.65	0	0	0.1	0.9	Pouco	0.3
+Profissionais de saúde	0	0.25	0.65	0.1	0.1	0.45	0.05	0.5	0	0	0.25	0.75	Médio	0.26
+Profissionais de tecnologia	0	0.5	0.45	0.05	0.03	0.85	0.05	0.05	0.05	0	0.2	0.8	Médio	0.2
+Artistas e jornalistas	0	0.35	0.55	0.1	0.05	0.4	0.35	0.05	0.2	0.05	0.35	0.6	Pouco	0.2
+Técnicos e engenheiros	0	0.3	0.6	0.1	0.15	0.9	0.03	0.05	0.02	0.05	0.55	0.4	Pouco	0.26
+Trabalhadores de escritório e serviços	0	0.4	0.55	0.05	0.08	0.85	0.1	0.05	0	0.1	0.7	0.2	Pouco	0.3
+Trabalhadores de ofícios	0	0.3	0.6	0.1	0.15	0.5	0.35	0	0.15	0.55	0.4	0.05	Pouco	0.39
+Motoristas e operadores	0	0.25	0.65	0.1	0.2	0.6	0.3	0.05	0.05	0.6	0.37	0.03	Pouco	0.39
+Operários de fábrica	0	0.35	0.6	0.05	0.1	0.9	0.1	0	0	0.5	0.47	0.03	Pouco	0.39
+Operários de obra	0	0.35	0.6	0.05	0.15	0.55	0.45	0	0	0.7	0.29	0.01	Nenhum	0.43
+Assalariados rurais	0	0.3	0.6	0.1	1	0.45	0.55	0	0	0.8	0.19	0.01	Nenhum	0.53
+Trabalhadores de serviços básicos	0	0.4	0.5	0.1	0.1	0.7	0.3	0	0	0.6	0.38	0.02	Nenhum	0.43
+Trabalhadores domésticos	0	0.2	0.65	0.15	0.1	0.3	0.7	0	0	0.75	0.24	0.01	Nenhum	0.49

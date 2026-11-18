@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SisGov — Demos e Maquetes de Interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #0c1a14;
+    --fundo-card: #122820;
+    --fundo-elevado: #163228;
+    --tinta: #ede8d8;
+    --tinta-fraca: #9aa89d;
+    --ouro: #c9a54a;
+    --linha: #24402f;
+    --linha-destaque: #3b634b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: "Spectral", Georgia, serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .conteiner {
+    width: min(720px, 100%);
+  }
+  header {
+    margin-bottom: 36px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--tinta);
+  }
+  .subtitulo {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--tinta-fraca);
+    margin-top: 8px;
+  }
+  .divisa {
+    width: 60px;
+    height: 2px;
+    background: var(--ouro);
+    margin: 18px auto;
+  }
+  .lista-demos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .card-demo {
+    background: var(--fundo-card);
+    border: 1px solid var(--linha);
+    border-radius: 4px;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .2s ease;
+  }
+  .card-demo:hover {
+    border-color: var(--ouro);
+    background: var(--fundo-elevado);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+  .card-demo.bloqueado {
+    opacity: 0.55;
+    pointer-events: none;
+    border-style: dashed;
+  }
+  .tag {
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(201, 165, 74, 0.15);
+    color: var(--ouro);
+    border: 1px solid rgba(201, 165, 74, 0.3);
+    white-space: nowrap;
+  }
+  .tag.breve {
+    background: rgba(154, 168, 157, 0.1);
+    color: var(--tinta-fraca);
+    border-color: var(--linha);
+  }
+  .info h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--tinta);
+  }
+  .info p {
+    font-size: 14px;
+    color: var(--tinta-fraca);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  .seta {
+    font-size: 20px;
+    color: var(--ouro);
+    margin-left: 16px;
+  }
+  footer {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--tinta-fraca);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <div class="conteiner">
+    <header>
+      <h1>SisGov — Maquetes de Tela</h1>
+      <div class="divisa"></div>
+      <p class="subtitulo">Laboratório de prototipagem de interface (HTML com dados simulados)</p>
+    </header>
+
+    <main class="lista-demos">
+      <a href="/demos/mesa-dossie.html" class="card-demo" style="border-color: #c5a059; background: rgba(197, 160, 89, 0.12);">
+        <div class="info">
+          <h2 style="color: #f7dfa5;">🖋️ 1. Dossiê de Estado — Mesa, Papéis e Canetas (Nova)</h2>
+          <p>Foco 100% em burocracia, documentos e dossiê: mata-borrão de couro com cantos de latão, pasta parda com carimbo SISGOV, folha de despacho e caneta-tinteiro clássica.</p>
+        </div>
+        <span class="tag" style="background: #c5a059; color: #040605; font-weight: 700;">Nova Proposta</span>
+        <span class="seta">→</span>
+      </a>
+
+      <a href="/demos/tela-inicio.html" class="card-demo">
+        <div class="info">
+          <h2>1. Tela Inicial — Menu Minimalista</h2>
+          <p>Opção limpa apenas com texto e logotipo.</p>
+        </div>
+        <span class="tag">Minimal</span>
+        <span class="seta">→</span>
+      </a>
+
+      <a href="/demos/dossie-tropical.html" class="card-demo">
+        <div class="info">
+          <h2>1. Dossiê — Versão Antiga</h2>
+          <p>Estudo com papéis e polaroids na mesa.</p>
+        </div>
+        <span class="tag">Estudo</span>
+        <span class="seta">→</span>
+      </a>
+
+      <a href="/demos/abertura-engine.html" class="card-demo">
+        <div class="info">
+          <h2>1. Abertura — Canvas Engine</h2>
+          <p>Renderização em Canvas GPU com resolução fixa 1920x1080.</p>
+        </div>
+        <span class="tag">Engine</span>
+        <span class="seta">→</span>
+      </a>
+
+      <a href="/demos/abertura.html" class="card-demo">
+        <div class="info">
+          <h2>1. Abertura — Versão DOM/CSS (Legado)</h2>
+          <p>Versão inicial construída com divs e layout web padrão.</p>
+        </div>
+        <span class="tag">DOM</span>
+        <span class="seta">→</span>
+      </a>
+
+      <div class="card-demo bloqueado">
+        <div class="info">
+          <h2>2. Sequência de Início (Nova Partida)</h2>
+          <p>Seleção curta em etapas: País → Partido → Chapa → Ministérios.</p>
+        </div>
+        <span class="tag breve">Próxima</span>
+      </div>
+
+      <div class="card-demo bloqueado">
+        <div class="info">
+          <h2>3. Congresso Nacional</h2>
+          <p>Semicírculo de cadeiras, termômetros partidários, paciência e régua de quórum.</p>
+        </div>
+        <span class="tag breve">Em breve</span>
+      </div>
+
+      <div class="card-demo bloqueado">
+        <div class="info">
+          <h2>4. Mesa do Presidente</h2>
+          <p>Pilha de despachos, carimbos presidenciais (assinar, vetar, encaminhar) e prazos.</p>
+        </div>
+        <span class="tag breve">Em breve</span>
+      </div>
+    </main>
+
+    <footer>
+      <p>As maquetes ficam guardadas em <code>docs/jogo/interface/maquetes/</code> e espelhadas em <code>public/demos/</code>.</p>
+    </footer>
+  </div>
+</body>
+</html>

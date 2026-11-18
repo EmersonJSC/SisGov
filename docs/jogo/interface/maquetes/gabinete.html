@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mesa do gabinete (maquete)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Courier+Prime:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --papel: #efe4cc;
+        --papel-velho: #dfd2b5;
+        --tinta: #252320;
+        --ferro: #1c1e21;
+        --ferro-claro: #2c2f33;
+        --latao: #d4af37;
+        --ambar: #f0a030;
+        --vermelho: #9e2a2b;
+        --verde: #2f7d5b;
+        --azul: #1d3557;
+        --titulo: "Cinzel", Palatino, serif;
+        --dat: "Courier Prime", "Courier New", monospace;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      body {
+        background: var(--ferro); color: var(--tinta); font-family: var(--dat);
+        min-height: 100vh; padding: 16px; user-select: none;
+      }
+      h1, h2, h3 { font-family: var(--titulo); letter-spacing: 0.08em; }
+      .topo {
+        display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+        justify-content: space-between; color: var(--latao); margin-bottom: 14px;
+      }
+      .passos { display: flex; gap: 6px; }
+      .passo {
+        font-family: var(--titulo); font-size: 13px; padding: 6px 12px; color: var(--papel);
+        border-bottom: 3px solid transparent; opacity: 0.55; cursor: pointer;
+      }
+      .passo.ativo { opacity: 1; border-bottom-color: var(--latao); color: var(--latao); }
+      button {
+        font-family: var(--titulo); font-weight: 700; letter-spacing: 0.1em;
+        text-transform: uppercase; font-size: 12px; color: var(--latao);
+        background: var(--ferro-claro); border: 2px solid #0b0c0d; padding: 8px 14px; cursor: pointer;
+      }
+      button:hover { background: #3a3e43; }
+      button.forte { background: var(--latao); color: var(--ferro); }
+
+      .folha { background: var(--papel); padding: 20px; max-width: 900px; margin: 0 auto; }
+      .folha h2 { font-size: 20px; margin-bottom: 4px; }
+      .folha > p { font-size: 13px; opacity: 0.8; margin-bottom: 16px; }
+
+      .regua { margin: 10px 0 6px; }
+      .regua input { width: 100%; accent-color: var(--vermelho); height: 28px; }
+      .marcas { position: relative; height: 32px; font-size: 12px; margin: 0 10px; }
+      .marcas span { cursor: pointer; text-align: center; position: absolute; transform: translateX(-50%); white-space: nowrap; }
+      .marcas span.ativo { font-weight: 700; color: var(--vermelho); }
+      .total { font-family: var(--titulo); font-size: 40px; text-align: center; margin: 14px 0 4px; }
+      .total small { font-size: 16px; display: block; opacity: 0.7; }
+      .frase { text-align: center; font-size: 15px; margin-bottom: 16px; min-height: 2.6em; }
+      .efeitos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+      .efeito { background: var(--papel-velho); padding: 10px; border-left: 6px solid var(--latao); font-size: 13px; }
+      .efeito b { font-family: var(--titulo); display: block; font-size: 13px; margin-bottom: 2px; }
+      .efeito.ruim { border-left-color: var(--vermelho); }
+      .efeito.bom { border-left-color: var(--verde); }
+      .acoes { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+
+      .ajuste { margin-top: 16px; display: none; }
+      .ajuste.aberto { display: grid; grid-template-columns: 1fr 230px; gap: 12px; }
+      .mesa {
+        background: #5a3d26; border: 4px solid #2b1c10; padding: 10px;
+        background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 2px, transparent 2px 22px);
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; align-content: start;
+      }
+      .cadeira { background: var(--papel); padding: 7px; min-height: 80px; position: relative; display: flex; flex-direction: column; gap: 5px; }
+      .cadeira.alvo, .bandeja.alvo { outline: 3px dashed var(--latao); outline-offset: 2px; }
+      .cadeira .nome { font-family: var(--titulo); font-weight: 700; font-size: 12px; border-bottom: 1px solid var(--tinta); padding: 0 16px 3px 0; cursor: text; }
+      .fechar { position: absolute; top: 3px; right: 3px; background: none; border: 0; color: var(--tinta); padding: 0 4px; font-size: 13px; }
+      .vaga { border: 2px dashed rgba(37,35,32,.4); padding: 5px; font-size: 11px; text-align: center; opacity: 0.7; }
+      .fichas { display: flex; flex-wrap: wrap; gap: 4px; }
+      .ficha {
+        display: inline-flex; align-items: center; gap: 4px; font-size: 11px;
+        background: var(--azul); color: var(--papel); padding: 3px 6px 3px 4px; cursor: grab; touch-action: none;
+      }
+      .ficha svg { width: 11px; height: 11px; fill: var(--latao); flex: none; }
+      .nova { background: transparent; border: 3px dashed rgba(239,228,204,.5); color: var(--papel); min-height: 80px; }
+      .bandeja { background: var(--papel-velho); padding: 10px; border-top: 6px solid var(--vermelho); align-self: start; }
+      .bandeja h3 { font-size: 12px; margin-bottom: 4px; }
+      .bandeja p { font-size: 11px; margin-bottom: 8px; opacity: 0.75; }
+
+      table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      th { text-align: left; font-family: var(--titulo); font-size: 11px; padding: 6px; border-bottom: 2px solid var(--tinta); }
+      td { padding: 6px; border-bottom: 1px solid rgba(37,35,32,.2); vertical-align: middle; }
+      td.min { width: 1%; white-space: nowrap; }
+      .caixa-nome { font-family: var(--titulo); font-weight: 700; }
+      .caixa-inst { font-size: 11px; opacity: 0.75; }
+      .quem { display: flex; gap: 8px; align-items: center; }
+      .rosto { width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center; color: #fff; font-family: var(--titulo); font-weight: 700; }
+      .quem small { display: block; opacity: 0.7; font-size: 11px; }
+      .comp { font-family: var(--titulo); font-weight: 700; }
+      .comp .de { opacity: 0.5; font-weight: 400; text-decoration: line-through; margin-right: 4px; }
+      .comp.ruim { color: var(--vermelho); } .comp.meio { color: #b26b00; } .comp.bom { color: var(--verde); }
+      .tres-col { grid-template-columns: repeat(3, 1fr); }
+      .cadeiras { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+      .cadeira-r {
+        background: var(--papel-velho); padding: 10px 6px 8px; text-align: center; cursor: pointer;
+        position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px;
+        box-shadow: 0 3px 0 rgba(0,0,0,.25); border: 2px solid transparent;
+      }
+      .cadeira-r:hover, .cadeira-r.aberta { border-color: var(--latao); }
+      .cadeira-r b { font-family: var(--titulo); font-size: 11px; line-height: 1.2; }
+      .cadeira-r small { font-size: 11px; opacity: 0.7; }
+      .rosto.grande { width: 46px; height: 46px; font-size: 20px; }
+      .rosto.vazio { background: rgba(0,0,0,.2); color: var(--tinta); }
+      .nota { position: absolute; top: 6px; right: 6px; font-family: var(--titulo); font-weight: 700; font-size: 15px; }
+      .nota.ruim, i.ruim { color: var(--vermelho); } .nota.meio, i.meio { color: #b26b00; } .nota.bom, i.bom { color: var(--verde); }
+      i { font-style: normal; font-weight: 700; }
+      .escolha { background: var(--ferro-claro); color: var(--papel); padding: 14px; margin-bottom: 14px; }
+      .escolha h3 { color: var(--latao); font-size: 15px; }
+      .escolha > p { font-size: 12px; opacity: 0.75; margin: 4px 0 12px; }
+      .tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 10px; }
+      .carta-p {
+        background: var(--papel); color: var(--tinta); text-align: center; padding: 0 8px 10px; cursor: pointer;
+        display: flex; flex-direction: column; align-items: center; gap: 6px; border: 3px solid transparent;
+        transition: transform .12s;
+      }
+      .carta-p:hover { transform: translateY(-4px); border-color: var(--latao); }
+      .carta-p .tipo { align-self: stretch; color: #fff; font-family: var(--titulo); font-size: 12px; padding: 4px; margin: 0 -8px; }
+      .carta-p .tracos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; font-size: 10px; width: 100%; }
+      .carta-p .tracos span { display: flex; flex-direction: column; align-items: center; }
+      .carta-p .tracos i { font-family: var(--titulo); font-size: 18px; }
+      .todos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin-top: 10px; max-height: 320px; overflow: auto; }
+      .carta-p.pequena .rosto.grande { width: 30px; height: 30px; font-size: 14px; }
+      .carta-p.pequena .tracos i { font-size: 14px; }
+      .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; padding: 6px 0; }
+      .opcao { background: var(--papel); padding: 6px; cursor: pointer; border: 2px solid transparent; }
+      .opcao:hover { border-color: var(--latao); }
+
+      .fantasma { position: fixed; pointer-events: none; z-index: 50; opacity: 0.9; transform: rotate(-3deg); }
+      .pegando { opacity: 0.3; }
+      .dica { color: var(--papel); font-size: 12px; opacity: 0.6; margin: 12px auto 0; max-width: 900px; }
+      @media (max-width: 700px) {
+        .tres, .tres-col { grid-template-columns: 1fr; }
+        .efeitos { grid-template-columns: 1fr; }
+        .ajuste.aberto { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topo">
+      <div class="passos">
+        <span class="passo" data-ir="1">1 · Tamanho do governo</span>
+        <span class="passo" data-ir="2">2 · Ministros</span>
+      </div>
+    </div>
+    <div id="tela"></div>
+    <p class="dica">Maquete sem motor: números de exemplo.</p>
+
+    <script>
+      const ESCUDO =
+        '<svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/></svg>';
+      const INSTITUICOES = [
+        "Agricultura e pesca", "Água e saneamento", "Assistência social", "Ciência e pesquisa",
+        "Comércio exterior e capital", "Comunicação e tecnologia", "Concorrência e consumidor",
+        "Controle e transparência", "Cultura", "Defesa", "Defesa civil", "Educação", "Energia",
+        "Esporte", "Estados e municípios", "Estatais", "Funcionalismo", "Imigração", "Impostos",
+        "Indústria", "Infraestrutura e transporte", "Justiça e prisões", "Meio ambiente",
+        "Mineração e petróleo", "Moeda e bancos", "Moradia", "Orçamento e dívida", "Previdência",
+        "Relações exteriores", "Religião", "Saúde", "Segurança pública", "Terra", "Trabalho", "Turismo",
+      ];
+      /** Caixas conhecidas (aba Ministérios geral): dão nome ao que o jogador junta. */
+      const CONHECIDAS = [
+        ["Fazenda", ["Impostos", "Moeda e bancos"]],
+        ["Planejamento e orçamento", ["Orçamento e dívida"]],
+        ["Economia", ["Impostos", "Moeda e bancos", "Orçamento e dívida", "Indústria", "Comércio exterior e capital", "Trabalho", "Previdência"]],
+        ["Indústria e comércio", ["Indústria", "Comércio exterior e capital", "Concorrência e consumidor"]],
+        ["Gestão", ["Funcionalismo", "Estatais"]],
+        ["Interior", ["Segurança pública", "Imigração", "Defesa civil", "Estados e municípios"]],
+        ["Justiça e segurança", ["Justiça e prisões", "Segurança pública", "Imigração"]],
+        ["Energia", ["Energia", "Mineração e petróleo"]],
+        ["Cidades", ["Moradia", "Água e saneamento"]],
+        ["Governo local", ["Estados e municípios", "Defesa civil"]],
+        ["Desenvolvimento social", ["Assistência social"]],
+        ["Seguridade social", ["Previdência", "Assistência social"]],
+        ["Esporte e turismo", ["Esporte", "Turismo"]],
+        ["Agricultura", ["Agricultura e pesca", "Terra"]],
+        ["Desenvolvimento agrário", ["Terra"]],
+        ["Transportes", ["Infraestrutura e transporte"]],
+        ["Ciência e tecnologia", ["Ciência e pesquisa", "Comunicação e tecnologia"]],
+        ["Assuntos religiosos", ["Religião"]],
+        ["Controle e transparência", ["Controle e transparência"]],
+      ];
+      const MODELOS = {
+        pais: [
+          ["Impostos", "Moeda e bancos"], ["Orçamento e dívida"],
+          ["Indústria", "Comércio exterior e capital", "Concorrência e consumidor"],
+          ["Funcionalismo", "Estatais"], ["Trabalho"], ["Previdência"], ["Assistência social"],
+          ["Saúde"], ["Educação"], ["Ciência e pesquisa"], ["Comunicação e tecnologia"], ["Cultura"],
+          ["Esporte"], ["Turismo"], ["Justiça e prisões", "Segurança pública", "Imigração"],
+          ["Defesa"], ["Relações exteriores"], ["Meio ambiente"], ["Agricultura e pesca"], ["Terra"],
+          ["Energia", "Mineração e petróleo"], ["Infraestrutura e transporte"],
+          ["Moradia", "Água e saneamento"], ["Estados e municípios", "Defesa civil"],
+          ["Controle e transparência"], [],
+        ],
+        classico: [
+          ["Impostos", "Moeda e bancos"], ["Orçamento e dívida"],
+          ["Indústria", "Comércio exterior e capital", "Concorrência e consumidor"],
+          ["Trabalho"], ["Previdência", "Assistência social"], ["Saúde"], ["Educação"],
+          ["Ciência e pesquisa", "Comunicação e tecnologia"], ["Cultura", "Esporte", "Turismo"],
+          ["Segurança pública", "Imigração", "Defesa civil", "Estados e municípios"],
+          ["Justiça e prisões"], ["Defesa"], ["Relações exteriores"], ["Meio ambiente", "Água e saneamento"],
+          ["Agricultura e pesca", "Terra"], ["Energia", "Mineração e petróleo"],
+          ["Infraestrutura e transporte", "Moradia"], ["Funcionalismo", "Estatais", "Controle e transparência"],
+        ],
+        enxuto: [
+          ["Impostos", "Moeda e bancos", "Orçamento e dívida", "Indústria", "Comércio exterior e capital", "Trabalho", "Previdência"],
+          ["Saúde", "Assistência social"], ["Educação", "Ciência e pesquisa", "Cultura"],
+          ["Justiça e prisões", "Segurança pública", "Imigração", "Defesa civil"], ["Defesa"],
+          ["Relações exteriores"],
+          ["Infraestrutura e transporte", "Energia", "Mineração e petróleo", "Moradia", "Água e saneamento"],
+          ["Agricultura e pesca", "Terra", "Meio ambiente"],
+        ],
+      };
+      const NOMES = ["Ana Prado", "Rui Teles", "Clara Mota", "Davi Lins", "Eva Sales", "Hugo Brás",
+        "Íris Faro", "João Reis", "Lia Campos", "Marco Sá", "Nina Couto", "Otto Vale", "Paula Dias",
+        "Raul Pena", "Sara Luz", "Téo Ramos", "Vera Nunes", "Caio Leme", "Bia Torres", "Gil Rocha",
+        "Dora Melo", "Ivo Castro", "Luna Paes", "Beto Cruz", "Rita Alves", "Fábio Neri", "Joana Lago",
+        "Igor Maia", "Elis Porto", "Tom Freire", "Mel Duarte", "Ciro Vaz", "Nara Bento", "Leo Sena"];
+      const ORIGENS = [["Seu partido", "#9e2a2b"], ["Aliado", "#1d3557"], ["Técnico", "#5b5b5b"]];
+      
+      MODELOS.inchado = [...MODELOS.pais.filter((m) => m.length), [], [], [], [], []];
+      const PARADAS = [
+        ["enxuto", "Enxuto"], ["classico", "Clássico"], ["pais", "Do país"], ["inchado", "Inchado"],
+      ];
+      const SEM_DIVISAO = 3;
+      const CUSTO_POR_MINISTERIO = 0.06;
+      const CONGRESSO_PEDE = 18;
+
+      let semente = 7;
+      const sorte = () => ((semente = (semente * 9301 + 49297) % 233280) / 233280);
+      const PRIMEIROS = NOMES.map((n) => n.split(" ")[0]);
+      const ULTIMOS = NOMES.map((n) => n.split(" ")[1]);
+      /** Faixas de cada origem: [competência, lealdade, votos que traz]. */
+      const PERFIS = {
+        "Técnico": [[65, 95], [30, 60], [0, 0]],
+        "Aliado": [[40, 72], [30, 62], [6, 18]],
+        "Seu partido": [[40, 75], [70, 95], [0, 3]],
+      };
+      const entre = ([a, b]) => Math.round(a + sorte() * (b - a));
+      const pessoas = Array.from({ length: 72 }, (_, i) => {
+        const [origem, cor] = ORIGENS[i % 3];
+        const [c, l, v] = PERFIS[origem];
+        return { id: "p" + i, nome: PRIMEIROS[i % PRIMEIROS.length] + " " + ULTIMOS[(i + 3 + Math.floor(i / PRIMEIROS.length) * 5) % ULTIMOS.length],
+          origem, cor, comp: entre(c), leal: entre(l), votos: entre(v), hon: entre([30, 95]) };
+      });
+      const pessoa = (id) => pessoas.find((p) => p.id === id);
+      const efetiva = (comp, n) => Math.round(comp * Math.sqrt(Math.min(1, SEM_DIVISAO / Math.max(1, n))));
+      const classe = (v) => (v < 40 ? "ruim" : v < 60 ? "meio" : "bom");
+
+      const estado = { passo: 1, parada: 2, ajustado: false, ajustar: false, escolhendo: null, cadeiras: [], soltas: [] };
+
+      function aplicarModelo(modelo) {
+        const usadas = new Set(MODELOS[modelo].flat());
+        estado.cadeiras = MODELOS[modelo].map((inst, i) => ({ id: "c" + i + "-" + modelo, inst: [...inst], nome: null }));
+        estado.soltas = INSTITUICOES.filter((n) => !usadas.has(n));
+        estado.ajustado = false;
+        sortearPessoas();
+      }
+      function sortearPessoas() {
+        const livres = [...pessoas].sort((a, b) => b.comp + b.votos - a.comp - a.votos);
+        [...estado.cadeiras].sort((a, b) => b.inst.length - a.inst.length)
+          .forEach((c, i) => (c.pessoa = livres[i]?.id));
+      }
+
+      function nomeDaCaixa(c) {
+        if (c.nome) return c.nome;
+        if (c.inst.length === 0) return "Ministério sem pasta";
+        const a = new Set(c.inst);
+        let melhor = null, nota = 0;
+        CONHECIDAS.forEach(([nome, lista]) => {
+          const j = lista.filter((x) => a.has(x)).length / new Set([...lista, ...c.inst]).size;
+          if (j > nota) { nota = j; melhor = nome; }
+        });
+        if (nota > 0.5) return melhor;
+        if (c.inst.length === 1) return c.inst[0];
+        return c.inst.slice(0, 2).join(" e ") + (c.inst.length > 2 ? " +" + (c.inst.length - 2) : "");
+      }
+
+      function resumo() {
+        const n = estado.cadeiras.length;
+        const maior = [...estado.cadeiras].sort((a, b) => b.inst.length - a.inst.length)[0];
+        const vazias = estado.cadeiras.filter((c) => !c.inst.length).length;
+        return { n, maior, vazias, custo: (n * CUSTO_POR_MINISTERIO).toFixed(2).replace(".", ",") };
+      }
+      function frase({ n, maior }) {
+        const carga = maior.inst.length;
+        if (n < 12) return `Barato e ágil, mas ${nomeDaCaixa(maior)} cuida de ${carga} coisas sozinho, e o Congresso quer ${CONGRESSO_PEDE} cargos, não ${n}.`;
+        if (n < 22) return `Equilibrado: sobram poucos cargos para aliados, mas ninguém fica sobrecarregado demais.`;
+        if (n < 28) return `Cargos de sobra para o Congresso e cada ministro com foco, mas a máquina custa caro.`;
+        return `Ministério para todo aliado. O Congresso agradece; o orçamento e a mídia, não.`;
+      }
+
+      const ESC = '<svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/></svg>';
+      const ficha = (nome) => `<span class="ficha" data-inst="${nome}">${ESC}${nome}</span>`;
+
+      function telaTamanho() {
+        const r = resumo();
+        const carga = r.maior.inst.length;
+        const parte = Math.round(100 * Math.sqrt(Math.min(1, SEM_DIVISAO / carga)));
+        return `<div class="folha">
+          <h2>Quantos ministérios?</h2>
+          <p>Cada ministério é um cargo e um ministro cuidando das instituições dele. Mais ministérios dão mais cargos aos aliados e mais atenção; menos ministérios custam menos.</p>
+          <div class="regua">
+            <input type="range" min="0" max="3" step="1" value="${estado.parada}" id="regua" />
+            <div class="marcas">${PARADAS.map(([, rot], i) =>
+              `<span style="left:${(i * 100) / 3}%" data-parada="${i}" class="${!estado.ajustado && i === estado.parada ? "ativo" : ""}">${rot}<br><small>${MODELOS[PARADAS[i][0]].length}</small></span>`).join("")}</div>
+          </div>
+          <div class="total">${r.n} ministérios<small>${estado.ajustado ? "montagem sua" : PARADAS[estado.parada][1]}</small></div>
+          <p class="frase">${frase(r)}</p>
+          <div class="efeitos">
+            <div class="efeito ${r.n > 24 ? "ruim" : r.n < 12 ? "bom" : ""}"><b>Custo da máquina</b>${r.custo}% do orçamento por ano</div>
+            <div class="efeito ${r.n < CONGRESSO_PEDE ? "ruim" : "bom"}"><b>Cargos para aliados</b>${r.n} de ${CONGRESSO_PEDE} que o Congresso pede${r.n < CONGRESSO_PEDE ? ": votos mais difíceis" : ""}</div>
+            <div class="efeito ${parte < 60 ? "ruim" : parte < 100 ? "" : "bom"}"><b>Ministro mais carregado</b>${nomeDaCaixa(r.maior)}: ${carga} instituições, cada uma recebe ${parte}% da atenção</div>
+            <div class="efeito ${estado.soltas.length ? "ruim" : "bom"}"><b>Sem ministério</b>${estado.soltas.length ? estado.soltas.join(", ") + (estado.soltas.length > 1 ? ": ficam" : ": fica") + " com o gabinete, sem atenção" : "todas as instituições têm dono"}</div>
+          </div>
+          <div class="acoes">
+            <button id="ajustar">${estado.ajustar ? "Fechar ajuste" : "Ajustar caixas"}</button>
+            <button class="forte" data-ir="2">Escolher ministros →</button>
+          </div>
+          <div class="ajuste ${estado.ajustar ? "aberto" : ""}">
+            <div class="mesa">${estado.cadeiras.map((c) => `<div class="cadeira" data-alvo="${c.id}">
+                <button class="fechar" data-fechar="${c.id}" title="Tirar o ministério">✕</button>
+                <div class="nome" data-renomear="${c.id}">${nomeDaCaixa(c)}</div>
+                <div class="fichas">${c.inst.map(ficha).join("") || '<div class="vaga">sem pasta: só um cargo</div>'}</div>
+              </div>`).join("")}<button class="nova" id="nova">+ ministério</button></div>
+            <div class="bandeja" data-alvo="gabinete"><h3>Gabinete do chefe de governo</h3>
+              <p>Arraste para cá o que não terá ministro.</p>
+              <div class="fichas">${estado.soltas.map(ficha).join("") || "<em>nenhuma</em>"}</div>
+              <p style="margin-top:8px">Eleições: sem ministro (ligada à Justiça).</p></div>
+          </div>
+        </div>`;
+      }
+
+      function cartaDaPessoa(x, n, extra = "") {
+        const e = efetiva(x.comp, n);
+        return `<div class="carta-p ${extra}" data-escolher="${x.id}">
+          <div class="tipo" style="background:${x.cor}">${x.origem === "Técnico" ? "O técnico" : x.origem === "Aliado" ? "O aliado" : "O do seu partido"}</div>
+          <div class="rosto grande" style="background:${x.cor}">${x.nome[0]}</div>
+          <b>${x.nome}</b>
+          <div class="tracos">
+            <span>Rende aqui<i class="${classe(e)}">${e}</i></span>
+            <span>Votos<i>${x.votos}</i></span>
+            <span>Lealdade<i>${x.leal}</i></span>
+          </div></div>`;
+      }
+
+      function telaMinistros() {
+        const ocupadas = new Set(estado.cadeiras.map((c) => c.pessoa));
+        const ordem = [...estado.cadeiras].sort((a, b) => b.inst.length - a.inst.length);
+        const sentados = estado.cadeiras.map((c) => [c, pessoa(c.pessoa)]).filter(([, p]) => p);
+        const votos = sentados.reduce((t, [, p]) => t + p.votos, 0);
+        const media = (f) => Math.round(sentados.reduce((t, x) => t + f(x), 0) / Math.max(1, sentados.length));
+        const rende = media(([c, p]) => efetiva(p.comp, c.inst.length));
+        const leal = media(([, p]) => p.leal);
+        const cadeiras = ordem.map((c) => {
+          const p = pessoa(c.pessoa), ef = p ? efetiva(p.comp, c.inst.length) : 0;
+          return `<div class="cadeira-r ${estado.escolhendo === c.id ? "aberta" : ""}" data-trocar="${c.id}" title="${c.inst.join(", ") || "sem pasta"}">
+            ${p ? `<div class="rosto grande" style="background:${p.cor}">${p.nome[0]}</div>` : '<div class="rosto grande vazio">?</div>'}
+            <b>${nomeDaCaixa(c)}</b><small>${p ? p.nome : "vaga"}</small>
+            ${p ? `<span class="nota ${classe(ef)}">${ef}</span>` : ""}</div>`;
+        }).join("");
+        let escolha = "";
+        if (estado.escolhendo) {
+          const c = estado.cadeiras.find((x) => x.id === estado.escolhendo), n = c.inst.length;
+          const livres = pessoas.filter((x) => !ocupadas.has(x.id));
+          const melhor = (o) => livres.filter((x) => x.origem === o).sort((a, b) => b.comp - a.comp)[0];
+          const tres = ["Técnico", "Aliado", "Seu partido"].map(melhor).filter(Boolean);
+          const todos = estado.verTodos
+            ? `<div class="todos">${livres.sort((a, b) => b.comp - a.comp).map((x) => cartaDaPessoa(x, n, "pequena")).join("")}</div>` : "";
+          escolha = `<div class="escolha">
+            <h3>Quem senta em ${nomeDaCaixa(c)}?</h3>
+            <p>${c.inst.join(" · ") || "Sem pasta: só um cargo para aliado."}</p>
+            <div class="tres">${tres.map((x) => cartaDaPessoa(x, n)).join("")}</div>
+            <div class="acoes"><button id="ver-todos">${estado.verTodos ? "Esconder" : "Ver todos"}</button><button data-trocar="${c.id}">Fechar</button></div>
+            ${todos}</div>`;
+        }
+        return `<div class="folha">
+          <h2>Quem senta em cada cadeira?</h2>
+          <p>Clique numa cadeira para trocar. O número é quanto o ministro rende ali.</p>
+          <div class="efeitos tres-col">
+            <div class="efeito ${rende < 50 ? "ruim" : rende >= 65 ? "bom" : ""}"><b>Rendimento</b>média ${rende}</div>
+            <div class="efeito ${votos < 60 ? "ruim" : "bom"}"><b>Votos pelos cargos</b>${votos} deputados</div>
+            <div class="efeito ${leal < 55 ? "ruim" : leal >= 70 ? "bom" : ""}"><b>Lealdade</b>média ${leal}</div>
+          </div>
+          ${escolha}
+          <div class="cadeiras">${cadeiras}</div>
+          <div class="acoes" style="margin-top:14px">
+            <button data-ir="1">← Tamanho do governo</button>
+            <button class="forte" id="confirmar">Confirmar governo</button>
+          </div></div>`;
+      }
+
+      function desenhar() {
+        document.querySelectorAll(".passo").forEach((p) => p.classList.toggle("ativo", +p.dataset.ir === estado.passo));
+        document.getElementById("tela").innerHTML = estado.passo === 1 ? telaTamanho() : telaMinistros();
+        const r = document.getElementById("regua");
+        if (r) r.addEventListener("input", () => { estado.parada = +r.value; aplicarModelo(PARADAS[estado.parada][0]); desenhar(); });
+      }
+
+      // arrastar escudos (mouse e toque)
+      let arrasto = null;
+      document.addEventListener("pointerdown", (ev) => {
+        const el = ev.target.closest(".ficha");
+        if (!el) return;
+        ev.preventDefault();
+        const r = el.getBoundingClientRect();
+        const fantasma = el.cloneNode(true);
+        fantasma.classList.add("fantasma");
+        document.body.appendChild(fantasma);
+        el.classList.add("pegando");
+        arrasto = { el, fantasma, dx: ev.clientX - r.left, dy: ev.clientY - r.top, inst: el.dataset.inst, alvo: null };
+        mover(ev);
+      });
+      function mover(ev) {
+        if (!arrasto) return;
+        arrasto.fantasma.style.left = ev.clientX - arrasto.dx + "px";
+        arrasto.fantasma.style.top = ev.clientY - arrasto.dy + "px";
+        const sob = document.elementFromPoint(ev.clientX, ev.clientY)?.closest("[data-alvo]");
+        if (arrasto.alvo && arrasto.alvo !== sob) arrasto.alvo.classList.remove("alvo");
+        arrasto.alvo = sob;
+        if (sob) sob.classList.add("alvo");
+      }
+      document.addEventListener("pointermove", mover);
+      document.addEventListener("pointerup", () => {
+        if (!arrasto) return;
+        const { fantasma, el, alvo, inst } = arrasto;
+        fantasma.remove(); el.classList.remove("pegando"); arrasto = null;
+        if (!alvo) return;
+        estado.cadeiras.forEach((c) => (c.inst = c.inst.filter((x) => x !== inst)));
+        estado.soltas = estado.soltas.filter((x) => x !== inst);
+        const c = estado.cadeiras.find((c) => c.id === alvo.dataset.alvo);
+        if (c) c.inst.push(inst); else estado.soltas.push(inst);
+        estado.ajustado = true;
+        desenhar();
+      });
+
+      document.addEventListener("click", (ev) => {
+        const t = ev.target;
+        const ir = t.closest("[data-ir]");
+        if (ir) { estado.passo = +ir.dataset.ir; estado.escolhendo = null; return desenhar(); }
+        const parada = t.closest("[data-parada]");
+        if (parada) { estado.parada = +parada.dataset.parada; aplicarModelo(PARADAS[estado.parada][0]); return desenhar(); }
+        if (t.id === "ajustar") { estado.ajustar = !estado.ajustar; return desenhar(); }
+        if (t.id === "nova") { estado.cadeiras.push({ id: "c" + Date.now(), inst: [], nome: null }); estado.ajustado = true; return desenhar(); }
+        const fechar = t.closest("[data-fechar]");
+        if (fechar) {
+          const c = estado.cadeiras.find((c) => c.id === fechar.dataset.fechar);
+          estado.soltas.push(...c.inst);
+          estado.cadeiras = estado.cadeiras.filter((x) => x !== c);
+          estado.ajustado = true;
+          return desenhar();
+        }
+        const ren = t.closest("[data-renomear]");
+        if (ren) {
+          const c = estado.cadeiras.find((c) => c.id === ren.dataset.renomear);
+          const novo = prompt("Nome do ministério (vazio = automático):", nomeDaCaixa(c));
+          if (novo !== null) { c.nome = novo.trim() || null; desenhar(); }
+          return;
+        }
+        if (t.id === "ver-todos") { estado.verTodos = !estado.verTodos; return desenhar(); }
+        const escolherCedo = t.closest("[data-escolher]");
+        const trocar = !escolherCedo && t.closest("[data-trocar]");
+        if (trocar) { estado.verTodos = false; estado.escolhendo = estado.escolhendo === trocar.dataset.trocar ? null : trocar.dataset.trocar; return desenhar(); }
+        const escolher = t.closest("[data-escolher]");
+        if (escolher) {
+          estado.cadeiras.find((c) => c.id === estado.escolhendo).pessoa = escolher.dataset.escolher;
+          estado.escolhendo = null; estado.verTodos = false;
+          return desenhar();
+        }
+        if (t.id === "confirmar") alert("Na maquete, aqui o governo começa.");
+      });
+
+      aplicarModelo("pais");
+      desenhar();
+    </script>
+  </body>
+</html>

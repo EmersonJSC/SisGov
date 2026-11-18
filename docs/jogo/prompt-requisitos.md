@@ -1,5 +1,8 @@
 # Prompt: plano dos requisitos a partir do GDD
 
+> **Suspenso em 15/nov/2026.** Não rodar: o GDD está congelado e a prioridade
+> é a V1 jogável. Fica guardado para depois.
+
 > **Aposentado em 14/nov/2026.** Só a Parte 1 foi feita neste molde. Ele custou caro
 > e entregou pouco. Daqui em diante, os requisitos de cada mecânica são escritos na
 > hora de construí-la: ler a seção do GDD, fazer uma lista curta do que ela pede e

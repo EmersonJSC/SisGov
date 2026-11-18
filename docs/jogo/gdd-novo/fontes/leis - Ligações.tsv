@@ -1,0 +1,10 @@
+De	Para	Como controla	Como está hoje	Estado	Conserto planejado	Leis	Índices
+População	Economia	Trabalha, consome e investe	O emprego é só medido. Falta de gente não freia a produção	Fraca	Construção precisa de trabalhadores; consumo e investimento dos pops movem a economia		
+Economia	População	Paga salário, dá emprego e define preços	Renda é parte fixa do PIB. Só os preços pesam, na cesta	Fraca	Renda sai de salário, lucro, aluguel e transferência; desemprego se move		
+Economia	Governo	Gera o dinheiro dos impostos	Cada base é parte fixa do PIB, não sai da produção	Parcial	Bases saem das construções e dos pops		
+Governo	Economia	Cobra, gasta e regula por lei	Juros e imposto sobre lucro freiam obras. 8 leis de empresas só mexem na bússola	Parcial	Leis de empresas passam a agir no mercado		
+Governo	População	Dá serviços, renda e direitos	Serviços funcionam. Só 2 de 71 leis mudam a renda direto	Parcial	Toda lei chega ao pop; lei mira pop por idade, lugar e vínculo		
+População	Governo	Vota, apoia e protesta	Grupos e Congresso leem os pops. Sair quase não existe	Funciona melhor	Três reações; grupo forte torna leis populares		
+Mundo	País	Pressiona os três de fora: potências, comércio e preços	Fora dos pilares	—	Revisar na frente do Mundo		
+Política		Partidos, grupos, Congresso e eleição: o caminho de População para Governo	Não é pilar	—			
+Ciclo		A economia controla os pops, os pops controlam as leis, as leis controlam a economia e os pops, e os pops controlam a economia. A População fica no centro.					

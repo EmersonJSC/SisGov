@@ -1,0 +1,41 @@
+Ministério	Tipo	No Brasil	Instituições que cuida	Leis	Índices que responde	Índices sem lei que ajude	Divide instituição com	Decisão do autor
+Agricultura	básico	sim	Agricultura e pesca (agricultura)	13	3		Pesca	
+Cidades	comum	sim	Moradia; Saneamento	19	5	Casas vazias		
+Ciência e tecnologia	comum	sim	Ciência e pesquisa	18	2			
+Comunicações	comum	sim	Comunicação e tecnologia	15	6	Credibilidade da imprensa; Concentração da mídia; Violência contra a imprensa		
+Controle e transparência	comum	sim	Estado e eleições (controle-e-transparencia)	5	0		Gabinete do chefe de governo; Relações institucionais	
+Cultura	comum	sim	Cultura e esporte (cultura)	13	1		Esporte e turismo	
+Defesa	básico	sim	Defesa	9	2			
+Desenvolvimento agrário	comum	sim	Terra	16	3	Risco de falta d'água; Conflito no campo		
+Desenvolvimento social	básico	sim	Assistência social	18	4			
+Direitos humanos	comum	sim	Direitos e liberdades (liberdades)	8	0		Igualdade e minorias; Mulheres	
+Educação	básico	sim	Educação	23	5	Polarização		
+Esporte e turismo	de causa	sim	Cultura e esporte (esporte-e-turismo)	1	0		Cultura	
+Fazenda	básico	sim	Impostos; Moeda e bancos	36	14	Soberania; Dívida atrasada; Reservas internacionais	Economia	
+Gabinete do chefe de governo	básico	sim	Estado e eleições (governo); Estado e eleições (eleicoes)	30	7	Independência da Justiça; Obras paradas	Controle e transparência; Relações institucionais	
+Igualdade e minorias	de causa	sim	Direitos e liberdades (igualdade-e-minorias)	4	2		Direitos humanos; Mulheres	
+Indústria e comércio	comum	sim	Empresas e estatais (estatais-e-regras); Comércio exterior e capital	24	6	Estado na economia; Saldo comercial; Dependência de importados	Economia; Pequenas empresas e cooperativas	
+Integração regional	comum	sim	Defesa civil	8	1		Interior e segurança	
+Justiça e segurança	básico	sim	Justiça e prisões; Segurança pública; Imigração	61	24	Tensão com imigrantes	Interior e segurança; Justiça	
+Meio ambiente	básico	sim	Meio ambiente (meio-ambiente)	16	3		Povos indígenas	
+Minas e energia	básico	sim	Energia; Mineração e petróleo	29	10	Tensão internacional; Preço do combustível		
+Mulheres	de causa	sim	Direitos e liberdades (mulheres)	1	1		Direitos humanos; Igualdade e minorias	
+Pequenas empresas e cooperativas	de causa	sim	Empresas e estatais (pequenas-empresas-e-cooperativas)	2	2		Economia; Indústria e comércio	
+Pesca	de causa	sim	Agricultura e pesca (pesca)	3	1		Agricultura	
+Planejamento e orçamento	comum	sim	Orçamento e dívida	18	4		Economia	
+Portos e aeroportos	de causa	sim	Infraestrutura e transporte (portos-e-aeroportos)	2	0		Obras e infraestrutura; Transportes	
+Povos indígenas	de causa	sim	Meio ambiente (povos-indigenas)	1	0		Meio ambiente	
+Previdência	comum	sim	Previdência	12	5	Confiança na aposentadoria; Greves	Economia	
+Relações exteriores	básico	sim	Relações exteriores	5	0			
+Relações institucionais	comum	sim	Estado e eleições (congresso)	2	0		Controle e transparência; Gabinete do chefe de governo	
+Saúde	básico	sim	Saúde; Vícios	44	11	Risco de epidemia; Fuga de profissionais		
+Trabalho	básico	sim	Trabalho	37	5	Tensão trabalhista; Força dos sindicatos; Trabalho infantil	Economia	
+Transportes	básico	sim	Infraestrutura e transporte (estradas-e-veiculos)	19	3		Obras e infraestrutura; Portos e aeroportos	
+Economia	superministério	não	Impostos; Moeda e bancos; Orçamento e dívida; Comércio exterior e capital; Empresas e estatais (estatais-e-regras); Trabalho; Previdência	0	0		Fazenda; Indústria e comércio; Pequenas empresas e cooperativas; Planejamento e orçamento; Previdência; Trabalho	
+Interior e segurança	comum	não	Segurança pública; Imigração; Defesa civil	0	0		Integração regional; Justiça e segurança	
+Justiça	comum	não	Justiça e prisões	0	0		Justiça e segurança	
+Obras e infraestrutura	comum	não	Infraestrutura e transporte (obras)	0	0		Portos e aeroportos; Transportes	
+Legenda
+Coluna amarela (Decisão do autor): manter, juntar com outro ou cortar.
+Dados do código em 13/nov (brasil-2026). Ministérios com 'No Brasil = não' são moldes de outros países.
+'Divide instituição com': moldes alternativos; um país usa um ou outro, nunca os dois.

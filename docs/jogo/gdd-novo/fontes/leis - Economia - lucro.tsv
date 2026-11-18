@@ -1,0 +1,15 @@
+Passo	Etapa	O que acontece	Conta	Para quem vai	Exemplo (receita de 100)	Como está hoje	Leis que mexem	Situação
+1	Vender	O prédio vende o que produz	Quantidade × preço	Mercado	100	Hoje: capacidade × preço médio do setor	Tarifas, preço mínimo, concorrência	Parcial
+2	Comprar insumos	Paga outros prédios: aço, energia, frete	Receita − insumos	Outros prédios	−40	Não conta insumos	Tarifas e imposto sobre consumo	Falta
+3	Valor adicionado	O que o prédio realmente criou. A soma de todos é o PIB	Receita − insumos	Vira PIB		PIB anda pela capacidade	—	Parcial
+4	Pagar salários	Dinheiro vai aos pops que trabalham ali	Empregos × salário do setor	Pops	−30	Salário existe, mas não chega ao pop	Salário mínimo, jornada, sindicatos	Parcial
+5	Pagar encargos	Impostos sobre a folha e a produção	Parte da folha e da produção	Estado	−5	Só o Seguro na folha, de forma parcial	Encargos e impostos sobre produção	Parcial
+6	Guardar para o desgaste	Mantém o prédio funcionando	Desgaste do prédio	Reserva do prédio	−6	Desgaste existe, sem dinheiro	—	Parcial
+7	Pagar juros	Quem pegou crédito paga bancos	Dívida da empresa × juros	Bancos e investidores	−3	Não existe	Juros, regras dos bancos	Falta
+8	Lucro antes do imposto	O que sobrou de verdade	Soma dos passos anteriores	—		Lucro simplificado	—	Parcial
+9	Pagar imposto sobre lucro	Parte vai ao cofre	Lucro × alíquota, se houver lucro	Estado	−4	Funciona	Imposto sobre empresas	Funciona
+10	Lucro líquido	O que o dono decide usar	Lucro − imposto	Dono		Calculado por setor	—	Parcial
+11	Reinvestir	Parte fica para novas obras	Lucro × parte reinvestida	Reserva de investimento	−7,8	Investimento é taxa, sem dinheiro real	Juros, incentivos, confiança	Falta
+12	Pagar dividendo	Parte vai aos donos	Lucro × parte distribuída	Donos	−4,2	Não existe	Imposto sobre dividendos, remessa de lucro	Falta
+13	Virar renda do pop	Dividendo entra na renda, paga imposto e vira consumo ou poupança	Por cotas de cada dono	Pops ricos, fundos, bolsa	—	Não existe	Imposto de renda, ganhos na bolsa	Falta
+14	Abrir nova obra	A reserva vai para o setor que promete mais lucro	Reserva ÷ custo da obra	Construção civil	—	Investimento já vai para onde a margem melhora	Incentivos e licenças	Parcial

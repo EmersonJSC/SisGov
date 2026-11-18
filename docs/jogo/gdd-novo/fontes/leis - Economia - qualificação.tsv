@@ -1,0 +1,19 @@
+Pop	Nível	Anos de formação	Salário base (× piso)	Força para negociar	Vínculo comum
+Trabalhadores domésticos	1	0	1	Baixa	Informal
+Trabalhadores de serviços básicos	1	0	1.2	Baixa	Formal
+Assalariados rurais	1	0	1.1	Baixa	Informal
+Operários de obra	2	1	1.5	Média	Formal
+Operários de fábrica	2	1	1.7	Média	Formal
+Motoristas e operadores	2	1	1.8	Média	Formal
+Trabalhadores de ofícios	2	2	2	Média	Formal
+Trabalhadores de escritório e serviços	2	2	3	Baixa	Formal
+Servidores administrativos	3	3	3	Alta	Público
+Policiais	3	2	3.5	Alta	Público
+Militares	3	2	3.5	Alta	Público
+Professores	4	4	3.3	Alta	Público e privado
+Técnicos e engenheiros	3	4	4.5	Média	Formal
+Artistas e jornalistas	3	3	3	Baixa	Variado
+Profissionais de saúde	4	6	5	Alta	Público e privado
+Profissionais de tecnologia	4	4	6	Alta	Formal
+Gerentes	4	4	8	Alta	Formal
+Altos funcionários	4	5	12	Alta	Público

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo: bolhas em SVG ou canvas</title>
+<style>
+  html,body{margin:0;height:100%;background:#12141b;color:#efe4cc;font:14px system-ui,sans-serif}
+  .par{display:grid;grid-template-columns:1fr 1fr;height:calc(100% - 44px)}
+  .lado{position:relative;border-right:1px solid #333;overflow:hidden}
+  .lado h2{position:absolute;z-index:3;margin:8px;font-size:15px}
+  .num{position:absolute;z-index:3;right:10px;top:8px;font:700 15px ui-monospace,monospace;color:#e8c872;text-align:right}
+  svg,canvas{position:absolute;inset:0;width:100%;height:100%}
+  .barra{height:44px;display:flex;gap:14px;align-items:center;padding:0 12px;background:#0b0c11}
+  button{font:inherit;padding:5px 12px;cursor:pointer}
+</style></head><body>
+<div class="barra"><b>566 bolhas com ícone, zoom automático</b>
+ <button id="pausa">Pausar zoom</button><button id="de-novo">Medir de novo</button><span id="aviso"></span></div>
+<div class="par">
+  <div class="lado"><h2>SVG (como está hoje)</h2><div class="num" id="n1"></div><svg id="svg"></svg></div>
+  <div class="lado"><h2>Canvas (proposta)</h2><div class="num" id="n2"></div><canvas id="cv"></canvas></div>
+</div>
+<script>
+const ICONES=["/src/assets/svg/leis/agricultura-e-pesca/agrotoxicos.svg","/src/assets/svg/leis/agricultura-e-pesca/verba-de-irrigacao.svg","/src/assets/svg/leis/assistencia-social/parte-do-beneficio-em-comida.svg","/src/assets/svg/leis/ciencia-e-pesquisa/divisao-da-verba-de-ciencia-defesa.svg","/src/assets/svg/leis/comercio-exterior-e-capital/facilitacao-aduaneira.svg","/src/assets/svg/leis/comunicacao-e-tecnologia/internet-publica.svg","/src/assets/svg/leis/cultura-e-esporte/empresa-banca-cultura-e-desconta-do-imposto.svg","/src/assets/svg/leis/defesa-civil/verba-so-com-regra-de-area-de-risco.svg","/src/assets/svg/leis/direitos/discriminacao-e-crimes-de-odio.svg","/src/assets/svg/leis/direitos/identidade-de-genero.svg","/src/assets/svg/leis/economia/controle-de-capitais.svg","/src/assets/svg/leis/economia/quem-controla-o-banco-central.svg","/src/assets/svg/leis/educacao/bolsas-de-pos-graduacao.svg","/src/assets/svg/leis/educacao/ensino-tecnico.svg","/src/assets/svg/leis/educacao/piso-salarial-professores.svg","/src/assets/svg/leis/empresas-e-estatais/acao-de-ouro.svg","/src/assets/svg/leis/empresas/indexacao-de-contratos.svg","/src/assets/svg/leis/energia/abertura-a-geracao-privada.svg","/src/assets/svg/leis/estado-e-eleicoes/cargos-de-livre-nomeacao.svg","/src/assets/svg/leis/estado-e-eleicoes/mandatos-seguidos.svg","/src/assets/svg/leis/governo/garantias-penais.svg","/src/assets/svg/leis/governo/tribunais-superiores.svg","/src/assets/svg/leis/imigracao/servicos-para-imigrante-sem-documento.svg","/src/assets/svg/leis/impostos/imposto-sobre-dividendos.svg","/src/assets/svg/leis/infraestrutura-e-transporte/carregadores-nas-estradas-federais.svg","/src/assets/svg/leis/infraestrutura-e-transporte/exigencia-tecnica-das-construcoes.svg","/src/assets/svg/leis/infraestrutura-e-transporte/verba-de-conservacao-dos-transportes.svg","/src/assets/svg/leis/infraestrutura/transporte-publico.svg","/src/assets/svg/leis/justica-e-prisoes/separacao-de-presos.svg","/src/assets/svg/leis/meio-ambiente/mercado-de-carbono-teto-de-emissoes.svg","/src/assets/svg/leis/mineracao-e-petroleo/imposto-sobre-o-minerio.svg","/src/assets/svg/leis/moeda-e-bancos/meta-de-inflacao.svg","/src/assets/svg/leis/moradia/remocao-area-risco.svg","/src/assets/svg/leis/orcamento-e-divida/meta-de-resultado.svg","/src/assets/svg/leis/previdencia/direito-a-moradia-na-constituicao.svg","/src/assets/svg/leis/previdencia/tempo-minimo-de-contribuicao.svg","/src/assets/svg/leis/saude/abertura-planos.svg","/src/assets/svg/leis/saude/forma-de-gestao-hospitalar.svg","/src/assets/svg/leis/saude/programa-vacinacao.svg","/src/assets/svg/leis/saude/verba-da-saude-acima-do-piso.svg","/src/assets/svg/leis/seguranca/delacao-premiada.svg","/src/assets/svg/leis/seguranca/penas-e-progressao.svg","/src/assets/svg/leis/seguranca-publica/controle-da-agencia.svg","/src/assets/svg/leis/seguranca-publica/poderes-da-agencia.svg","/src/assets/svg/leis/seguranca/verba-policia-federal.svg","/src/assets/svg/leis/terra/terra-ocupada-sai-da-fila.svg","/src/assets/svg/leis/trabalho/feriados-nacionais-divisao-datas-de-negros-e-indigenas.svg","/src/assets/svg/leis/trabalho/negociacao-coletiva-e-sindicatos.svg"];
+const N=566, MUNDO=2600;
+let seed=7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+const bolhas=Array.from({length:N},(_,i)=>({x:(rnd()-.5)*MUNDO*1.5,y:(rnd()-.5)*MUNDO,r:16+rnd()*30,i:i%ICONES.length,cor:'hsl('+Math.floor(rnd()*360)+' 55% 60%)'}));
+const textos=[];
+Promise.all(ICONES.map(u=>fetch(u).then(r=>r.text()))).then(t=>{textos.push(...t.map(x=>x.replace(/var\(--fundo-lei,#0D1620\)/g,'#efe4cc')));iniciar()});
+let zoomAuto=true; document.getElementById('pausa').onclick=e=>{zoomAuto=!zoomAuto;e.target.textContent=zoomAuto?'Pausar zoom':'Retomar zoom'};
+function camera(t){const k=.12+(.5+.5*Math.sin(t/2500))*1.1;return{k,cx:Math.sin(t/7000)*300,cy:0}}
+function medidor(el){let q=0,js=0,t0=performance.now();return{marca(ms){q++;js+=ms;const a=performance.now();if(a-t0>=1000){el.textContent=q+' quadros/s\n'+(js/q).toFixed(1)+' ms de JS por quadro';q=0;js=0;t0=a}}}}
+function iniciar(){
+  document.getElementById('aviso').textContent='';
+  // ---- SVG: cada bolha é um grupo com o ícone inline (como o jogo hoje)
+  const svg=document.getElementById('svg');
+  const NS='http://www.w3.org/2000/svg';
+  bolhas.forEach(b=>{const g=document.createElementNS(NS,'g');g.setAttribute('transform','translate('+b.x+' '+b.y+')');
+    g.innerHTML='<circle r="'+b.r+'" fill="#efe4cc" stroke="'+b.cor+'" stroke-width="3"/><g transform="translate('+(-b.r*.95)+' '+(-b.r*.95)+') scale('+(b.r*1.9/24)+')" style="color:#2a2118">'+textos[b.i].replace(/<svg[^>]*>/,'').replace('</svg>','')+'</g>';
+    svg.appendChild(g)});
+  const m1=medidor(document.getElementById('n1'));
+  // ---- Canvas: cada ícone vira imagem UMA vez; depois é só copiar
+  const cv=document.getElementById('cv');const ctx=cv.getContext('2d');
+  const TAM=64; const sprites=textos.map(t=>{const c=document.createElement('canvas');c.width=c.height=TAM;const x=c.getContext('2d');const img=new Image();
+    img.onload=()=>x.drawImage(img,0,0,TAM,TAM);
+    img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(t.replace('<svg ','<svg width="'+TAM+'" height="'+TAM+'" color="#2a2118" ').replace(/currentColor/g,'#2a2118').replace(/var\(--fundo-lei,#0D1620\)/g,'#efe4cc'));return c});
+  const m2=medidor(document.getElementById('n2'));
+  function pintarCanvas(c){const L=cv.clientWidth,H=cv.clientHeight,d=devicePixelRatio||1;if(cv.width!==L*d){cv.width=L*d;cv.height=H*d}
+    ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);
+    const k=c.k*L/2600*2.2;ctx.setTransform(d*k,0,0,d*k,d*(L/2-c.cx*k),d*(H/2-c.cy*k));
+    bolhas.forEach(b=>{ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,6.2832);ctx.fillStyle='#efe4cc';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=b.cor;ctx.stroke();ctx.drawImage(sprites[b.i],b.x-b.r*.95,b.y-b.r*.95,b.r*1.9,b.r*1.9)})}
+  function pintarSvg(c){const L=svg.clientWidth,H=svg.clientHeight;const k=c.k*L/2600*2.2;svg.setAttribute('viewBox',(c.cx-L/2/k)+' '+(c.cy-H/2/k)+' '+(L/k)+' '+(H/k))}
+  let modo='ambos',tz=0,ult=performance.now(),quadros=0;
+  const lados=document.querySelectorAll('.lado');
+  function quadro(agora){const dt=agora-ult;ult=agora;if(zoomAuto)tz+=dt;const c=camera(tz);quadros++;
+    if(modo!=='canvas'){let a=performance.now();pintarSvg(c);m1.marca(performance.now()-a)}
+    if(modo!=='svg'){let a=performance.now();pintarCanvas(c);m2.marca(performance.now()-a)}
+    requestAnimationFrame(quadro)}
+  requestAnimationFrame(quadro);
+  const esperar=ms=>new Promise(r=>setTimeout(r,ms));
+  async function medir(m,ms){modo=m;lados[0].style.visibility=m==='canvas'?'hidden':'visible';lados[1].style.visibility=m==='svg'?'hidden':'visible';await esperar(500);const q0=quadros,t0=performance.now();await esperar(ms);return(quadros-q0)/((performance.now()-t0)/1000)}
+  async function testar(){const av=document.getElementById('aviso');av.textContent='medindo só o SVG...';const a=await medir('svg',3500);av.textContent='SVG: '+a.toFixed(0)+' quadros/s. Medindo só o canvas...';const b=await medir('canvas',3500);
+    modo='ambos';lados[0].style.visibility=lados[1].style.visibility='visible';
+    av.innerHTML='<b style="color:#e8c872">SVG: '+a.toFixed(0)+' quadros/s &nbsp;|&nbsp; Canvas: '+b.toFixed(0)+' quadros/s &nbsp;('+(b/a).toFixed(1)+'x)</b>'}
+  document.getElementById('de-novo').onclick=testar; testar();
+}
+</script></body></html>

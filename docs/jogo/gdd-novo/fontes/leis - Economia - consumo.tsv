@@ -1,0 +1,76 @@
+Setor	Produto	Categoria do pop	Pops que compram	Como chega ao pop	Prédios que compram	Estado compra	Exterior
+Agropecuária e pesca	Grãos	Comida	Todos	Pequenos mercados e mercados	Pecuária, Fábrica de alimentos	Sim	Exporta e importa
+Agropecuária e pesca	Fibras	—	—	—	Fábrica de roupas	Não	Exporta e importa
+Agropecuária e pesca	Frutas	Comida	Todos	Pequenos mercados e mercados	Fábrica de alimentos	Sim	Exporta e importa
+Agropecuária e pesca	Carne	Comida	Médio e rico	Pequenos mercados e mercados	Fábrica de alimentos	Sim	Exporta e importa
+Agropecuária e pesca	Madeira	—	—	—	Fábrica de móveis, Construtora	Não	Exporta e importa
+Agropecuária e pesca	Peixe	Comida	Todos	Pequenos mercados e mercados	Fábrica de alimentos	Sim	Exporta e importa
+Mineração e petróleo	Minério	—	—	—	Oficina de joias, Siderúrgica, Usina nuclear, Fábrica de cimento	Não	Exporta e importa
+Mineração e petróleo	Petróleo	—	—	—	Refinaria, Fábrica química	Não	Exporta e importa
+Mineração e petróleo	Combustível	Transporte	Médio e rico	Direto	Madeireira, Pesca, Térmica fóssil, Coleta de lixo, Transportadora, Transporte público	Sim	Exporta e importa
+Indústria leve	Alimentos	Comida	Todos	Pequenos mercados e mercados	Hotel e restaurante, Presídio privado, Presídio público	Sim	Exporta e importa
+Indústria leve	Remédios	Saúde	Todos	Pequenos mercados e mercados	Hospital privado, Hospital público	Sim	Exporta e importa
+Indústria leve	Roupas	Roupas	Todos	Pequenos mercados e mercados	—	Sim	Exporta e importa
+Indústria leve	Móveis	Casa	Médio e rico	Mercados	—	Sim	Exporta e importa
+Indústria leve	Joias e artigos finos	Lazer e luxo	Rico	Mercados	—	Não	Exporta e importa
+Indústria pesada	Aço	—	—	—	Fábrica de máquinas, Montadora, Fábrica de aviões, Fábrica de armas, Fábrica de veículos militares, Rede de transmissão, Construtora, Empreiteira, Ferrovia	Sim	Exporta e importa
+Indústria pesada	Produtos químicos	—	—	—	Fábrica de remédios, Fábrica de chips, Fábrica de armas, Estação de água, Estação de esgoto, Empresa de limpeza e apoio	Não	Exporta e importa
+Indústria pesada	Fertilizantes	—	—	—	Fazenda de grãos e fibras, Pomar	Não	Exporta e importa
+Indústria pesada	Máquinas	—	—	—	Fazenda de grãos e fibras, Madeireira, Mina, Poço de petróleo, Montadora, Fábrica de aviões, Fábrica de chips, Fábrica de veículos militares, Usina nuclear, Usina solar, Usina eólica, Rede de transmissão, Empreiteira, Porto, Oficina e pequeno negócio	Sim	Exporta e importa
+Indústria pesada	Veículos comuns	Transporte	Médio e rico	Mercados	Coleta de lixo, Transportadora, Transporte público, Empresa de segurança privada, Delegacia	Sim	Exporta e importa
+Indústria pesada	Veículos elétricos	Transporte	Médio e rico	Mercados	—	Sim	Exporta e importa
+Indústria pesada	Veículos de luxo	Transporte	Rico	Mercados	—	Não	Exporta e importa
+Indústria pesada	Aviões	—	—	—	—	Sim	Exporta e importa
+Indústria pesada	Chips	—	—	—	Montadora, Fábrica de aviões, Fábrica de eletrônicos, Fábrica de veículos militares, Usina solar, Empresa de software, Laboratório de inteligência artificial, Operadora de internet e telefone	Não	Exporta e importa
+Indústria pesada	Baterias	—	—	—	Fábrica de carros elétricos	Não	Exporta e importa
+Mineração e petróleo	Terras raras	—	—	—	Fábrica de baterias, Usina eólica	Não	Importa; o país declara se tem reserva, e quem produz pode sancionar pelo mercado
+Indústria pesada	Eletrônicos de ponta	Comunicação	Médio e rico	Mercados	—	Sim	Exporta e importa
+Defesa	Armas e munição	—	—	—	Quartel	Sim	Exporta e importa
+Defesa	Veículos e aeronaves militares	—	—	—	Quartel	Sim	Exporta e importa
+Energia	Energia	Moradia e contas	Todos	Direto	Mina, Refinaria, Fábrica de alimentos, Fábrica de remédios, Fábrica de roupas, Siderúrgica, Fábrica química, Fábrica de máquinas, Montadora, Fábrica de chips, Fábrica de eletrônicos, Estação de água, Estação de esgoto, Fábrica de cimento, Atacado, Pequeno mercado e loja, Supermercado e grande varejo, Ferrovia, Aeroporto, Empresa de software, Laboratório de inteligência artificial, Operadora de internet e telefone, Prédio de escritórios, Hotel e restaurante, Oficina e pequeno negócio, Presídio privado, Hospital privado, Escola privada, Faculdade privada, Hospital público, Escola e universidade pública, Delegacia, Tribunal, Presídio público, Repartição pública	Sim	Importa e exporta por linha
+Energia	Transmissão	Moradia e contas	Todos	Junto da conta de luz	—	Não	Não viaja
+Água e saneamento	Água	Moradia e contas	Todos	Direto	—	Sim	Não viaja
+Água e saneamento	Esgoto tratado	Moradia e contas	Todos	Direto	—	Sim	Não viaja
+Água e saneamento	Coleta de lixo	Moradia e contas	Todos	Direto	—	Sim	Não viaja
+Construção civil	Cimento	—	—	—	Construtora, Empreiteira	Sim	Exporta e importa
+Construção civil	Moradias	Moradia e contas	Médio e rico	Direto	Imobiliária	Sim	Não viaja
+Construção civil	Obras públicas	—	—	—	Hidrelétrica, Rodovia, Ferrovia, Porto, Aeroporto	Sim	Não viaja
+Comércio	Distribuição	—	—	—	Pequeno mercado e loja, Supermercado e grande varejo	Não	Não viaja
+Comércio	Varejo	Margem do comércio	Todos	Direto	Negócio informal	Não	Não viaja
+Transporte e logística	Rodovias	Transporte	Todos	Direto	Transportadora	Sim	Não viaja
+Transporte e logística	Ferrovias	—	—	—	—	Sim	Não viaja
+Transporte e logística	Portos	—	—	—	—	Sim	Não viaja
+Transporte e logística	Aeroportos	Transporte	Médio e rico	Direto	—	Sim	Não viaja
+Transporte e logística	Frete	—	—	—	Atacado	Sim	Não viaja
+Transporte e logística	Viagens urbanas	Transporte	Todos	Direto	—	Sim	Não viaja
+Tecnologia e comunicação	Software e nuvem	Comunicação	Médio e rico	Direto	Plataforma de rede social, Laboratório de inteligência artificial, Banco, Seguradora, Corretora, Escritório de serviços, Plano de saúde, Faculdade privada, Tribunal, Repartição pública	Sim	Exporta e importa
+Tecnologia e comunicação	Redes sociais	Comunicação	Todos	Direto	—	Não	Exporta e importa
+Tecnologia e comunicação	Inteligência artificial	Comunicação	Médio e rico	Direto	—	Sim	Exporta e importa
+Tecnologia e comunicação	Internet	Comunicação	Todos	Direto	Emissora e jornal	Sim	Não viaja
+Tecnologia e comunicação	Notícias e entretenimento	Lazer e luxo	Todos	Direto	—	Não	Exporta e importa
+Finanças e seguros	Crédito	Seguros e finanças	Médio e rico	Direto	—	Sim	Exporta e importa
+Finanças e seguros	Seguros	Seguros e finanças	Médio e rico	Direto	—	Sim	Exporta e importa
+Finanças e seguros	Negociação de ações	Seguros e finanças	Rico	Direto	—	Não	Exporta e importa
+Imóveis	Aluguel de casas	Moradia e contas	Todos	Direto	—	Sim	Não viaja
+Imóveis	Aluguel comercial	—	—	—	—	Sim	Não viaja
+Serviços às pessoas e empresas	Turismo e refeições	Restaurantes e turismo	Médio e rico	Direto	—	Não	Turistas de fora
+Serviços às pessoas e empresas	Serviços às empresas	—	—	—	—	Sim	Exporta e importa
+Serviços às pessoas e empresas	Limpeza e apoio	—	—	—	—	Sim	Não viaja
+Serviços às pessoas e empresas	Cuidado da casa	Serviços pessoais	Médio e rico	Direto	—	Não	Não viaja
+Serviços às pessoas e empresas	Bicos e venda de rua	Serviços pessoais	Todos	Direto	—	Não	Não viaja
+Serviços às pessoas e empresas	Consertos e serviços locais	Serviços pessoais	Todos	Direto	—	Sim	Não viaja
+Serviços às pessoas e empresas	Vigilância e segurança terceirizada	Serviços pessoais	Rico	Direto	—	Sim	Não viaja
+Serviços às pessoas e empresas	Custódia terceirizada	—	—	—	—	Sim	Não viaja
+Saúde e educação privadas	Atendimento privado	Saúde	Médio e rico	Direto	Plano de saúde	Sim	Não viaja
+Saúde e educação privadas	Planos	Saúde	Médio e rico	Direto	—	Não	Não viaja
+Saúde e educação privadas	Ensino privado	Educação	Médio e rico	Direto	—	Sim	Não viaja
+Saúde e educação privadas	Ensino superior privado	Educação	Médio e rico	Direto	—	Sim	Não viaja
+Serviço do Estado	Atendimento público	Saúde	Todos	Grátis ou por lei	—	Sim	Não viaja
+Serviço do Estado	Ensino público	Educação	Todos	Grátis ou por lei	—	Sim	Não viaja
+Serviço do Estado	Segurança	Bem público	Todos	Pago pelo Estado	—	Sim	Não viaja
+Serviço do Estado	Justiça	Bem público	Todos	Pago pelo Estado	—	Sim	Não viaja
+Serviço do Estado	Custódia	—	—	—	—	Sim	Não viaja
+Serviço do Estado	Defesa	Bem público	Todos	Pago pelo Estado	—	Sim	Não viaja
+Serviço do Estado	Administração	Bem público	Todos	Pago pelo Estado	—	Sim	Não viaja
+Indústria leve	Bebidas e cigarros	Lazer e luxo	Todos	Pequenos mercados e mercados	Hotel e restaurante	Não	Exporta e importa
+Serviços às pessoas e empresas	Apostas	Lazer e luxo	Todos	Direto	—	Não	Exporta e importa

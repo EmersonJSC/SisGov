@@ -4,6 +4,74 @@
 > (**o quê** e **por quê**); este plano diz **o que já está feito, em que
 > ordem e como construir**. Em conflito, vale o GDD.
 
+## 0. Escopo da V1 (decidido em 15/nov/2026)
+
+> O GDD está congelado (regras no `CLAUDE.md`). A V1 é **um mandato completo e
+> jogável**: assinar leis, sentir no bolso dos pops, o Congresso reagir e a
+> eleição dar a nota. Só se constrói o que está na coluna "Entra". O resto não
+> se toca até a V1 sair; o código que já existe dessas partes fica, desligado.
+> Antes de construir cada seção, o autor lê essa seção do GDD uma vez.
+>
+> **Regra da V1:** simples, feio e funcional vale mais do que bonito e sem
+> funcionar. A medida de cada passo é uma pergunta só: jogando, dá para sentir o
+> efeito da decisão? Arte, texto e acabamento ficam para depois.
+
+| Parte | Entra na V1 | Fica para depois |
+|---|---|---|
+| 1. O jogo | 1.3 Princípios, 1.4 Partida, 1.5 Turno | — |
+| 2. Sociedade | 2.1 Pops e bolso, 2.3 Padrão de vida, 2.4 Opinião, 2.5 Bússola, 2.6 Grupos | 2.2 Demografia, 2.7 Organizações, 2.8 Saída, 2.9 Estados |
+| 3. Economia | 3.1 Mercado (simples), 3.3 Trabalho, 3.5 Consumo, 3.6 Dinheiro não some, 3.7 só a inflação (simples), 3.12 Contas do Estado | 3.2 Empresas e obras (ficam fixas), 3.4 Lucro, 3.7 moeda, bancos e câmbio, 3.8 Pregão, 3.9 Estatais, 3.10 Comércio exterior, 3.11 os 12 setores |
+| 4. Máquina pública | 4.1 a 4.6, 4.10 Colisão e revogar, 4.13 Força e atraso, 4.16 Índices, 4.18 Instituições, 4.19 Ministros (o básico que já existe) | 4.8 Programas, 4.9 Processos, 4.11 Lei pela instituição, 4.14 Revisão por instituição, 4.17 Vícios, 4.20 Ministérios, 4.21 Fronteira |
+| 5. Política | 5.1 Partido e chapa, 5.5 Congresso (simples: a maioria aprova, o exorbitante é barrado), 5.6 Eleição no fim | 5.2 a 5.4, 5.7 Judiciário (fica no código, desligado), 5.8 Governadores, 5.9 Perder o poder, 5.10 Autoritário |
+| 6. Mídia | 6.3 Noticiário: uma manchete por turno sobre o fato mais forte | 6.2, 6.4 a 6.6 |
+| 7. Mundo | só preços de fora fixos | 7.1 a 7.6 |
+| 8. Tela | 8.1 Mapa, 8.2 Mesa, 8.3 Janelas (só as da V1), 8.5 Começo, 8.6 Salvar | 8.7 Arte final, 8.8 SisGovpedia |
+| 9. Narrativas | 9.1 Mesa de fatos, 9.2 Gatilhos | 9.3 a 9.5 |
+
+Decisões do autor (15/nov): mídia e narrativas entram na versão mínima; o
+Judiciário sai da V1; o Pregão e as empresas saem (lei mexe em custo e
+demanda, a empresa fica fixa); nenhum setor da 3.11 entra.
+
+### Como o jogo se estrutura (raciocínio do autor, 15/nov)
+
+Não é conta, é critério para decidir a ordem de construir:
+
+- **A base roda sozinha** (Hayek, Smith, Ostrom): pops e economia existem e se
+  organizam sem nenhuma lei do jogador. A base já traz o mínimo de regra que
+  ninguém assina (propriedade, troca, moeda).
+- **As leis são as regras do jogo** (North): vêm com o Estado, são onde o
+  jogador entra e mexem nas duas esferas, pops e economia. A economia se ajusta
+  aos pops e às leis.
+- **Toda lei favorece alguém** (Marx): cada lei mostra quem ganha e quem perde.
+  Quem perde reage; quem domina a economia pesa mais no Estado (por isso o
+  Congresso do Brasil, de direita, barra a esquerda, e isso não é defeito).
+- **Limite:** isso é raciocínio, não simulação. Não se modela classe, mais-valia
+  nem história; o jogo usa só os três critérios acima para não virar tentativa
+  de imitar a realidade.
+
+Ordem que sai disso: primeiro a base estável sem leis; depois as leis voltam
+uma de cada vez, junto com a instituição de que precisam, e só volta a lei que
+muda algo que um pop sente.
+
+### Trilha (15/nov) — reler no começo de toda rodada
+
+Pergunta de abertura: **qual instituição está aberta?** Se o trabalho não é
+dela, parar.
+
+1. [x] ~~Leis para o backup~~: desfeito em 15/nov. As leis ficam onde estão;
+   o motor inteiro (saúde, moradia, saneamento, energia, contas) se apoia
+   nelas, e tirá-las seria refazer trabalho. Cada instituição revê as suas.
+2. [~] **Saúde** (aberta; leis revistas em 16/nov, falta o autor jogar e sentir): os índices fazem sentido? Que leis da Saúde mexem
+   para mexer neles, e como? Jogar e sentir. Fecha quando o autor joga e sente.
+3. [ ] Próxima instituição, escolhida pelo autor ao fechar a anterior.
+
+Regras da trilha:
+- Uma instituição aberta por vez.
+- Achado no caminho vai para o `depois-da-v1.md`, sem conserto, salvo se
+  impedir de jogar a instituição aberta.
+- Partido, ministros e Congresso entram só quando uma lei precisar deles para
+  fazer sentido. Judiciário fica com o básico que já existe (desligado).
+
 ## 1. Onde estamos e por onde começar
 
 - **Feito:** passo 1 (escopo), 2 (índices), 2b (fundação), 3 (modelo de lei),

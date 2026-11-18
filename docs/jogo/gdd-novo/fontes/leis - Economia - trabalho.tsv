@@ -1,0 +1,22 @@
+Parte	Peça	Como funciona	Base	Situação
+Vaga	Prédio pede pops	Cada prédio tem vagas por pop e por nível	Victoria 3: empregos por método de produção	Falta
+Vaga	Qualificação	Só contrata quem tem o nível. Nível 1 é elementar, 2 operacional, 3 técnico, 4 superior	OIT: quatro níveis de habilidade; Victoria 3: qualificação limita contratação	Falta
+Salário	Base	Salário base do pop × piso do país	Autor: qualificação pesa no salário	Falta
+Salário	Lucro	Prédio com lucro maior paga um pouco mais; o efeito é pequeno	Autor; estudos de divisão do lucro, com efeito menor com acordo coletivo	Falta
+Salário	Disputa por gente	Vaga sem gente aumenta salário até faltar lucro. Quem já trabalha só troca por salário melhor	Victoria 3	Falta
+Salário	Prejuízo	Prédio no vermelho reduz salário até o piso legal; depois demite	Victoria 3, mais lei de piso	Falta
+Salário	Piso	Salário mínimo vale para o emprego formal; alto demais empurra para informal	Lei a criar em Trabalho	Falta
+Salário	Negociação	Sindicato e categoria forte seguram salário e reduzem diferença entre empresas	Estudo alemão de acordo coletivo	Falta
+Emprego	Desemprego	Quem perde vaga vai para Desempregados e move o índice	Conserto aprovado	Falta
+Emprego	Informal	Sem vaga formal, parte vira Informais ou Autônomos; encargo alto também empurra	Já há parte com Seguro na folha	Parcial
+Emprego	Falta de gente	Vaga aberta reduz produção	Conserto aprovado	Falta
+Emprego	Formação	Pop sobe de nível com tempo e Instrução; universidade e escola formam	Mudar de setor existe hoje	Parcial
+Estado	Salário público	Verba paga salário por lei, sem depender de lucro	Prédios do Estado aprovados	Falta
+Modelo	1. Piso do pop	Qualificação define o salário base e quem pode ocupar a vaga	Autor	Falta
+Modelo	2. Disputa por gente	Falta de qualificados sobe o salário; muita gente sobrando o segura	Victoria 3	Falta
+Modelo	3. Teto pelo lucro	Lucro limita até onde o salário sobe, e prédio muito lucrativo paga um bônus pequeno	Autor e Victoria 3	Falta
+Modelo	4. Lei e negociação	Piso legal e sindicato seguram quedas e aproximam salários	Estudos	Falta
+Modelo	5. Queda lenta	Salário cai devagar; antes de cair muito, o prédio demite	Melhora proposta	Falta
+Modelo	6. Formação	Salário alto atrai estudo e, depois de anos, aumenta gente qualificada	Melhora proposta	Falta
+Modelo	7. Estado disputa	Salário público é por lei, mas salário baixo perde gente para o privado	Melhora proposta	Falta
+Vaga	Gente disponível	Cada pop tem um número de pessoas. Entra quem se forma e quem vem de fora; sai quem se aposenta, emigra ou muda de setor. Vaga sem gente fica vazia e o salário sobe. Vagas são por pop, não por profissão	Decisão do autor	Falta

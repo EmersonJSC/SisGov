@@ -1,0 +1,1033 @@
+Lei	Degrau	Rótulo	Econômico	Social	Mandato (anos)	Falta paga pelo cofre	Sobra ao cofre	Valores
+abertura-a-geracao-privada	fechada	fechada	0	0
+abertura-a-geracao-privada	so-alguns-leiloes	só alguns leilões	0.25	0
+abertura-a-geracao-privada	leiloes-e-contratos-longos	leilões e contratos longos	0.5	0
+abertura-das-telecomunicacoes	so-a-empresa-do-estado	só a empresa do Estado	0	0
+abertura-das-telecomunicacoes	estado-mais-uma-empresa-privada	Estado mais uma empresa privada	0.17	0
+abertura-das-telecomunicacoes	poucas-empresas-com-licenca	poucas empresas com licença	0.33	0
+abertura-das-telecomunicacoes	qualquer-empresa-que-cumpra-as-regras	qualquer empresa que cumpra as regras	0.5	0
+abertura-planos	mercado-fechado	Mercado fechado	0	0				{"parte":0}
+abertura-planos	poucos-planos	Poucos planos	0.2	0				{"parte":0.25}
+abertura-planos	concorrencia	Concorrência	0.4	0				{"parte":0.5}
+abertura-planos	mercado-aberto	Mercado aberto	0.6	0				{"parte":1}
+acao-de-ouro	nenhuma	nenhuma	0	0
+acao-de-ouro	veto-na-venda-a-estrangeiro	veto na venda a estrangeiro	0	0.15
+acao-de-ouro	veto-amplo	veto amplo	0	0.3
+acesso-a-informacao	nada-obrigatorio	nada obrigatório	0	0
+acesso-a-informacao	gastos-publicados-no-site	gastos publicados no site	0	-0.17
+acesso-a-informacao	qualquer-pessoa-pede-dados-e-o-governo-responde-em-ate-20-dias	qualquer pessoa pede dados e o governo responde em até 20 dias	0	-0.33
+acesso-a-informacao	todos-os-contratos-no-site-em-tempo-real-e-punicao-para-quem-esconde	todos os contratos no site em tempo real e punição para quem esconde	0	-0.5
+acesso-ao-aborto	proibido	proibido	0	0
+acesso-ao-aborto	so-com-risco-de-vida	só com risco de vida	0	-0.17
+acesso-ao-aborto	tambem-em-estupro	também em estupro	0	-0.35
+acesso-ao-aborto	ate-12-semanas	até 12 semanas	0	-0.52
+acesso-ao-aborto	livre	livre	0	-0.7
+agrotoxicos	livres	livres	0	0
+agrotoxicos	proibe-os-mais-toxicos	proíbe os mais tóxicos	0	-0.13
+agrotoxicos	reavalia-todos	reavalia todos	0	-0.27
+agrotoxicos	quase-nenhum	quase nenhum	0	-0.4
+ajuda-a-quem-perdeu-a-casa	abrigo-e-cesta	abrigo e cesta	0	0
+ajuda-a-quem-perdeu-a-casa	aluguel-por-meses	aluguel por meses	-0.2	0
+ajuda-a-quem-perdeu-a-casa	casa-nova	casa nova	-0.4	0
+alcance-das-sancoes	so-simbolicas	só simbólicas	0	0
+alcance-das-sancoes	setoriais	setoriais	0	0.15
+alcance-das-sancoes	embargo-total	embargo total	0	0.3
+alcool-ao-volante	sem-limite	sem limite	0	0
+alcool-ao-volante	limite-alto-com-multa	limite alto com multa	0	0.1
+alcool-ao-volante	limite-baixo-com-multa-e-suspensao-da-carteira	limite baixo com multa e suspensão da carteira	0	0.2
+alcool-ao-volante	tolerancia-zero-com-prisao	tolerância zero com prisão	0	0.3
+alerta-de-desastre	nenhum	nenhum	0	0
+alerta-de-desastre	aviso-por-celular	aviso por celular	-0.07	0
+alerta-de-desastre	sirenes-em-areas-de-risco	sirenes em áreas de risco	-0.13	0
+alerta-de-desastre	rede-nacional-de-monitoramento	rede nacional de monitoramento	-0.2	0
+alvos-da-agencia	crime-e-terrorismo	crime e terrorismo	0	0
+alvos-da-agencia	organizacoes-radicais	organizações radicais	0	0.3
+alvos-da-agencia	movimentos-e-imprensa	movimentos e imprensa	0	0.6
+alvos-da-agencia	opositores-do-governo	opositores do governo	0	0.9
+aposentadoria-dos-servidores	salario-integral	salário integral	-0.2	0				{"gasto":1.04}
+aposentadoria-dos-servidores	o-aposentado-tambem-contribui	o aposentado também contribui	0.25	0				{"gasto":1}
+aposentadoria-dos-servidores	mesmo-teto-do-trabalhador-comum	mesmo teto do trabalhador comum	0.5	0				{"gasto":0.95}
+aposentadoria-especial	so-quem-trabalha-com-risco-de-vida	só quem trabalha com risco de vida, como mineiro	-0.13	0				{"gasto":0.97}
+aposentadoria-especial	tambem-trabalho-pesado-ou-insalubre	também quem faz trabalho pesado ou insalubre	-0.27	0				{"gasto":0.985}
+aposentadoria-especial	tambem-professores-e-trabalhadores-rurais	também professores e trabalhadores rurais	-0.4	0				{"gasto":1}
+aposentadoria-flexivel	duas-idades-com-valor-menor-na-mais-cedo	duas idades possíveis, com valor menor na mais cedo	0	-0.13				{"gasto":1}
+aposentadoria-flexivel	faixa-de-idade-com-valor-que-cresce	qualquer idade dentro de uma faixa, com valor que cresce a cada ano adiado	0	-0.27				{"gasto":0.99}
+aposentadoria-flexivel	idade-livre-com-valor-pelo-que-contribuiu	qualquer idade a partir de um mínimo baixo, com valor pelo que cada um contribuiu	0	-0.4				{"gasto":0.97}
+aprovacao-de-remedio-feito-fora	analise-completa-aqui	análise completa aqui	0	0
+aprovacao-de-remedio-feito-fora	prazo-maximo	prazo máximo	0.08	0
+aprovacao-de-remedio-feito-fora	passou-e-esta-aprovado	passou e está aprovado	0.16	0
+aprovacao-de-remedio-feito-fora	vale-a-aprovacao-de-agencia-forte-de-fora	vale a aprovação de agência forte de fora	0.24	0
+aprovacao-de-remedio-feito-fora	vale-a-de-qualquer-agencia-reconhecida	vale a de qualquer agência reconhecida	0.32	0
+aprovacao-de-remedio-feito-fora	sem-analise	sem análise	0.4	0
+aprovacao-de-tratados	so-o-presidente	só o presidente	0	0
+aprovacao-de-tratados	o-congresso	o Congresso	0	-0.1
+aprovacao-de-tratados	referendo	referendo	0	-0.2
+areas-abertas-a-mineracao	nenhuma-area-nova	nenhuma área nova	0	0
+areas-abertas-a-mineracao	so-onde-ja-tem-mina	só onde já tem mina	0.1	0.05
+areas-abertas-a-mineracao	terras-do-governo	terras do governo	0.2	0.1
+areas-abertas-a-mineracao	todo-o-pais	todo o país	0.3	0.15
+areas-abertas-a-mineracao	fora-das-areas-protegidas	fora das áreas protegidas	0.4	0.2
+areas-abertas-ao-petroleo-e-gas	nenhuma-area-nova	nenhuma área nova	0	0
+areas-abertas-ao-petroleo-e-gas	terra	terra	0.13	0.07
+areas-abertas-ao-petroleo-e-gas	mar-raso	mar raso	0.27	0.13
+areas-abertas-ao-petroleo-e-gas	aguas-profundas	águas profundas	0.4	0.2
+autonomia-das-forcas-armadas	ministro-civil-com-congresso-aprovando	ministro civil com Congresso aprovando	0	0
+autonomia-das-forcas-armadas	ministro-civil	ministro civil	0	0.2
+autonomia-das-forcas-armadas	ministro-militar	ministro militar	0	0.4
+autonomia-das-forcas-armadas	militares-escolhem-comando-e-orcamento	militares escolhem comando e orçamento	0	0.6
+autonomia-das-forcas-armadas	militares-acima-do-governo	militares acima do governo	0	0.8
+autonomia-do-banco-central	mandato-com-indicacao-do-presidente	mandato, com indicação do presidente	0.15	0				{"autonomia":0.5}
+autonomia-do-banco-central	mandato-fixo-independente	mandato fixo independente	0.3	0				{"autonomia":1}
+autorizacao-para-estatizar-e-vender	so-o-presidente	só o presidente	0	0
+autorizacao-para-estatizar-e-vender	o-congresso	o Congresso	0	-0.1
+autorizacao-para-estatizar-e-vender	plebiscito	plebiscito	0	-0.2
+aviso-antes-da-multa	multa-direta-para-todos	multa direta para todos	0	0
+aviso-antes-da-multa	aviso-para-o-pequeno	aviso para o pequeno	0.1	0
+aviso-antes-da-multa	aviso-para-todas-as-empresas	aviso para todas as empresas	0.2	0
+aviso-antes-da-multa	multa-so-com-dano-provado	multa só com dano provado	0.3	0
+beneficio-com-contrapartida	filhos-na-escola-e-vacina-em-dia	filhos na escola e vacina em dia	0.13	0
+beneficio-com-contrapartida	curso-ou-trabalho-comunitario	curso ou trabalho comunitário para os adultos	0.27	0
+beneficio-com-contrapartida	emprego-ou-curso-obrigatorio	emprego ou curso obrigatório para quem pode trabalhar	0.4	0
+bloqueio-de-bens	so-depois-da-condenacao	só depois da condenação	0	0
+bloqueio-de-bens	depois-que-a-acusacao-e-aceita	depois que a acusação é aceita	0	0.1
+bloqueio-de-bens	durante-a-investigacao	durante a investigação	0	0.2
+bloqueio-de-bens	com-ordem-do-juiz	com ordem do juiz	0	0.3
+bloqueio-de-bens	automatico-ao-abrir-a-investigacao	automático ao abrir a investigação	0	0.4
+bloqueio-de-internet	nenhum	nenhum	0	0
+bloqueio-de-internet	bloquear-um-site-por-ordem-do-juiz	bloquear um site por ordem do juiz	0	0.27
+bloqueio-de-internet	bloquear-redes-em-crise	bloquear redes em crise	0	0.53
+bloqueio-de-internet	apagao-local-em-conflito	apagão local em conflito	0	0.8
+cadastro-de-terras	cartorios-locais	cartórios locais	0	0
+cadastro-de-terras	cadastro-nacional	cadastro nacional	0	-0.07
+cadastro-de-terras	por-satelite	por satélite	0	-0.13
+cadastro-de-terras	publico-para-qualquer-um-ver	público para qualquer um ver	0	-0.2
+caminhao-parado-aos-domingos	feriado-religioso	feriado religioso	0	0
+caminhao-parado-aos-domingos	domingo	domingo	0	0.15
+caminhao-parado-aos-domingos	fim-de-semana	fim de semana	0	0.3
+carregadores-nas-estradas-federais	sem-exigencia	sem exigência	0	0
+carregadores-nas-estradas-federais	a-cada-400-km	a cada 400 km	-0.02	-0.05
+carregadores-nas-estradas-federais	a-cada-200-km	a cada 200 km	-0.05	-0.1
+carregadores-nas-estradas-federais	a-cada-100-km	a cada 100 km	-0.08	-0.15
+carregadores-nas-estradas-federais	a-cada-50-km	a cada 50 km	-0.1	-0.2
+carreira-do-professor	nada	nada	0	0
+carreira-do-professor	cada-escola-paga-o-que-quiser	cada escola paga o que quiser	-0.08	0
+carreira-do-professor	piso-de-salario-igual-para-todos	piso de salário igual para todos	-0.16	0
+carreira-do-professor	piso-mais-aumento-a-cada-tempo-de-casa	piso mais aumento a cada tempo de casa	-0.24	0
+carreira-do-professor	piso	piso	-0.32	0
+carreira-do-professor	carreira-e-emprego-fixo-com-dedicacao-a-uma-escola-so	carreira e emprego fixo com dedicação a uma escola só	-0.4	0
+carreira-exclusiva	sem-carreira	Sem carreira	0	0				{"parte":0,"alcance":0,"fraco":0,"abandono":0,"eficiencia":0}
+carreira-exclusiva	incentivo	Incentivo à exclusividade	-0.2	0				{"parte":0.2,"alcance":0.05,"fraco":0,"abandono":0,"eficiencia":0.03}
+carreira-exclusiva	novos-concursos	Novos concursos	-0.4	0				{"parte":0.5,"alcance":0.1,"fraco":0,"abandono":0.01,"eficiencia":0.06}
+carreira-exclusiva	toda-a-rede	Toda a rede	-0.6	0				{"parte":0.8,"alcance":0.15,"fraco":0,"abandono":0.03,"eficiencia":0.1}
+casamento-entre-pessoas-do-mesmo-sexo	nenhum	nenhum	0	0
+casamento-entre-pessoas-do-mesmo-sexo	contrato-particular-entre-os-dois	contrato particular entre os dois	0	-0.2
+casamento-entre-pessoas-do-mesmo-sexo	uniao-civil-com-direitos-basicos	união civil com direitos básicos	0	-0.4
+casamento-entre-pessoas-do-mesmo-sexo	casamento-igual-ao-de-qualquer-casal	casamento igual ao de qualquer casal	0	-0.6
+censura-politica	nenhuma	nenhuma	0	0
+censura-politica	multa-por-ofender-autoridades	multa por ofender autoridades	0	0.3
+censura-politica	prisao-por-criticar-o-governo	prisão por criticar o governo	0	0.6
+censura-politica	jornais-e-redes-so-publicam-com-aprovacao-previa	jornais e redes só publicam com aprovação prévia	0	0.9
+ciclo-completo	separado	separado	0	0
+ciclo-completo	so-em-flagrante	só em flagrante	0	0.1
+ciclo-completo	crimes-leves	crimes leves	0	0.2
+ciclo-completo	todos-os-crimes	todos os crimes	0	0.3
+cidadania-por-nascimento	so-por-sangue	só por sangue	0	0
+cidadania-por-nascimento	filhos-de-residentes	filhos de residentes	0	-0.2
+cidadania-por-nascimento	todo-nascido-aqui	todo nascido aqui	0	-0.4
+cobertura-gratuita	so-urgencia	Só urgência	0	0				{"procura":0,"saida":0}
+cobertura-gratuita	consultas-exames	Consultas e exames	-0.2	0				{"procura":0.1,"saida":0.1}
+cobertura-gratuita	internacao-cirurgia	Internação e cirurgia	-0.4	0				{"procura":0.2,"saida":0.2}
+cobertura-gratuita	tudo-para-todos	Tudo, para todos	-0.6	0				{"procura":0.3,"saida":0.35}
+cobertura-minima-do-plano	o-plano-vende-o-que-quiser	o plano vende o que quiser	0	0
+cobertura-minima-do-plano	tem-que-cobrir-urgencia	tem que cobrir urgência	-0.08	0
+cobertura-minima-do-plano	nao-pode-recusar-quem-ja-tem-doenca	não pode recusar quem já tem doença	-0.16	0
+cobertura-minima-do-plano	pacote-completo-consulta	pacote completo (consulta	-0.24	0
+cobertura-minima-do-plano	internacao	internação	-0.32	0
+cobertura-minima-do-plano	parto-e-remedio	parto e remédio)	-0.4	0
+comercio-aberto-no-domingo	fechado	fechado	0	0
+comercio-aberto-no-domingo	abre-com-acordo-do-sindicato	abre com acordo do sindicato	0.06	-0.04
+comercio-aberto-no-domingo	livre	livre	0.12	-0.08
+comercio-aberto-no-domingo	com-folga-em-outro-dia	com folga em outro dia	0.18	-0.12
+comercio-aberto-no-domingo	livre-5	livre	0.24	-0.16
+comercio-aberto-no-domingo	sem-folga-a-mais	sem folga a mais	0.3	-0.2
+como-se-divide-a-pesca	reservada-ao-pequeno	reservada ao pequeno	0	0
+como-se-divide-a-pesca	livre	livre	0.1	0
+como-se-divide-a-pesca	por-barco	por barco	0.2	0
+como-se-divide-a-pesca	cota-vendavel	cota vendável	0.3	0
+concessao-da-rede-de-transmissao	so-o-estado	só o Estado	0	0
+concessao-da-rede-de-transmissao	parte-concedida	parte concedida	0.2	0
+concessao-da-rede-de-transmissao	concessao-total-a-companhias	concessão total a companhias	0.4	0
+concessao-de-radio-e-tv	licenca-por-prazo-fixo-e-so-a-justica-pode-cassar	licença por prazo fixo e só a Justiça pode cassar	0	0
+concessao-de-radio-e-tv	o-governo-cassa-so-com-processo-e-defesa	o governo cassa só com processo e defesa	0	0.15
+concessao-de-radio-e-tv	o-governo-renova	o governo renova	0	0.3
+concessao-de-radio-e-tv	cassa-como-achar-melhor	cassa como achar melhor	0	0.45
+concessao-de-radio-e-tv	o-governo-escolhe-quem-tem-licenca-e-cassa-quando-quiser	o governo escolhe quem tem licença e cassa quando quiser	0	0.6
+concessao-rede	sem-concessao	Sem concessão	0	0				{"parte":0}
+concessao-rede	poucas-cidades	Poucas cidades	0.2	0				{"parte":0.25}
+concessao-rede	metade-das-cidades	Metade das cidades	0.4	0				{"parte":0.5}
+concessao-rede	quase-todas	Quase todas as cidades	0.6	0				{"parte":0.75}
+concorrencia-entre-taxi-e-aplicativo	cidade-pode-proibir-aplicativo	cidade pode proibir aplicativo	0	0
+concorrencia-entre-taxi-e-aplicativo	cidade-so-limita-os-carros	cidade só limita os carros	0.13	0
+concorrencia-entre-taxi-e-aplicativo	cidade-nao-pode-limitar	cidade não pode limitar	0.27	0
+concorrencia-entre-taxi-e-aplicativo	licenca-de-taxi-nao-se-vende-nem-se-herda	licença de táxi não se vende nem se herda	0.4	0
+concorrencia	nenhuma	Nenhuma	0.5	0				{"concentracao":1,"custo":0}
+concorrencia	fiscaliza	Fiscaliza	0	0				{"concentracao":0.5,"custo":0.02}
+concorrencia	desmembra	Pode desmembrar	-0.5	0.1				{"concentracao":0,"custo":0.05}
+confisco-alargado	so-bens-provados-do-crime-apos-condenacao	só bens provados do crime após condenação	0	0
+confisco-alargado	tambem-bens-ligados-ao-crime-antes-da-condenacao	também bens ligados ao crime antes da condenação	0	0.15
+confisco-alargado	tambem-patrimonio-que-nao-bate-com-a-renda-de-condenados	também patrimônio que não bate com a renda de condenados	0	0.3
+confisco-alargado	patrimonio-que-nao-bate-com-a-renda-de-qualquer-investigado	patrimônio que não bate com a renda de qualquer investigado	0	0.45
+confisco-alargado	que-precisa-provar-que-e-legal	que precisa provar que é legal	0	0.6
+congelamento-de-precos	so-essenciais	só os essenciais	-0.2	0
+congelamento-de-precos	geral	geral	-0.4	0
+conselho-fiscal-independente	so-opina	só opina	0.1	0
+conselho-fiscal-independente	parecer-em-todo-projeto	parecer obrigatório em todo projeto de gasto	0.2	0
+conselho-fiscal-independente	com-poder-de-veto	com poder de veto	0.3	0
+conta-de-demissao	so-o-estado	só o Estado	0	0
+conta-de-demissao	pelo-seguro-desemprego	pelo Seguro-desemprego	0.08	0
+conta-de-demissao	parte-numa-conta-do-trabalhador	parte numa conta do trabalhador	0.16	0
+conta-de-demissao	tudo-na-conta	tudo na conta	0.24	0
+conta-de-demissao	com-fundo-do-estado-para-quem-junta-pouco	com fundo do Estado para quem junta pouco	0.32	0
+conta-de-demissao	so-a-conta	só a conta	0.4	0
+conta-saude	sem-conta	Sem conta	0	0				{"parte":0,"informal":0}
+conta-saude	voluntaria	Voluntária	0.2	0				{"parte":0.3,"informal":0}
+conta-saude	obrigatoria-parcial	Obrigatória para parte	0.4	0				{"parte":0.6,"informal":0.02}
+conta-saude	obrigatoria-todos	Obrigatória para todos	0.6	0				{"parte":1,"informal":0.05}
+conteudo-nacional	nada	nada	0	0
+conteudo-nacional	cinema	cinema	-0.07	0
+conteudo-nacional	radio-e-tv-aberta	rádio e TV aberta	-0.15	0
+conteudo-nacional	tv-paga	TV paga	-0.22	0
+conteudo-nacional	streaming	streaming	-0.3	0
+contratos-flexiveis	so-contrato-fixo	só contrato fixo	0	0
+contratos-flexiveis	tambem-contrato-temporario-com-prazo	também contrato temporário com prazo	0.1	0
+contratos-flexiveis	tambem-pagamento-por-hora	também pagamento por hora	0.2	0
+contratos-flexiveis	tambem-trabalho-intermitente	também trabalho intermitente	0.3	0
+contratos-flexiveis	em-que-a-pessoa-e-chamada-so-quando-ha-servico	em que a pessoa é chamada só quando há serviço	0.4	0
+contribuicao-sindical-livre	todos-pagam	todos pagam	0	0
+contribuicao-sindical-livre	descontado-direto-do-salario	descontado direto do salário	0.08	0
+contribuicao-sindical-livre	so-paga-quem-a-assembleia-do-sindicato-aprovar	só paga quem a assembleia do sindicato aprovar	0.16	0
+contribuicao-sindical-livre	so-paga-quem-autorizar-por-escrito	só paga quem autorizar por escrito	0.24	0
+contribuicao-sindical-livre	ninguem-paga-sem-filiacao	ninguém paga sem filiação	0.32	0
+contribuicao-sindical-livre	o-sindicato-vive-so-dos-socios	o sindicato vive só dos sócios	0.4	0
+controle-da-agencia	ninguem	ninguém	0	0
+controle-da-agencia	o-governo	o governo	0	-0.2
+controle-da-agencia	o-congresso	o Congresso	0	-0.4
+controle-da-agencia	o-congresso-e-um-juiz	o Congresso e um juiz	0	-0.6
+controle-de-armas	venda-livre	venda livre	0	0
+controle-de-armas	checagem-de-antecedentes	checagem de antecedentes	0	-0.1
+controle-de-armas	checagem-mais-curso-e-exame-de-tiro	checagem mais curso e exame de tiro	0	-0.2
+controle-de-armas	licenca-so-com-motivo-comprovado-e-limite-de-armas-por-pessoa	licença só com motivo comprovado e limite de armas por pessoa	0	-0.3
+controle-de-armas	proibido-para-civis	proibido para civis	0	-0.4
+controle-de-capital	taxa-sobre-entrada-especulativa	taxa sobre dinheiro que entra para especular	-0.15	0
+controle-de-capital	controle-de-saida	controle da saída de dinheiro	-0.3	0
+controle-externo-da-policia	a-propria-policia	a própria polícia	0	0
+controle-externo-da-policia	outra-policia	outra polícia	0	-0.3
+controle-externo-da-policia	orgao-independente	órgão independente	0	-0.6
+coparticipacao	sem-cobranca	Sem cobrança	0	0				{"cobranca":0}
+coparticipacao	taxa-simbolica	Taxa simbólica	0.2	0				{"cobranca":0.1}
+coparticipacao	parte-da-consulta	Parte da consulta	0.4	0				{"cobranca":0.2}
+coparticipacao	boa-parte-da-conta	Boa parte da conta	0.6	0				{"cobranca":0.3}
+cotas-em-empresas-e-concursos	sem-cotas	sem cotas	0	0
+cotas-em-empresas-e-concursos	cotas-so-em-concursos-publicos	cotas só em concursos públicos	-0.13	0
+cotas-em-empresas-e-concursos	tambem-vagas-reservadas-nos-conselhos-de-grandes-empresas	também vagas reservadas nos conselhos de grandes empresas	-0.27	0
+cotas-em-empresas-e-concursos	tambem-cotas-de-contratacao-em-empresas-medias-e-grandes	também cotas de contratação em empresas médias e grandes	-0.4	0
+cotas-na-universidade	sem-cotas	sem cotas	0	0
+cotas-na-universidade	vagas-para-quem-veio-de-escola-publica	vagas para quem veio de escola pública	-0.1	0
+cotas-na-universidade	vagas-para-escola-publica-e-familia-de-baixa-renda	vagas para escola pública e família de baixa renda	-0.2	0
+cotas-na-universidade	vagas-para-escola-publica	vagas para escola pública	-0.3	0
+cotas-na-universidade	baixa-renda-e-cor-da-pele	baixa renda e cor da pele	-0.4	0
+credito-para-quem-trabalha	um-extra-pequeno-para-quem-trabalha	um extra pequeno para quem trabalha	0.13	0
+credito-para-quem-trabalha	metade-do-beneficio-so-para-quem-trabalha	metade do benefício só para quem trabalha	0.27	0
+credito-para-quem-trabalha	todo-o-beneficio-so-para-quem-trabalha	todo o benefício só para quem trabalha	0.4	0
+criptografia-livre	livre	livre	0	-0.5
+criptografia-livre	acesso-com-ordem-do-juiz	acesso com ordem do juiz	0	-0.17
+criptografia-livre	o-governo-guarda-a-chave	o governo guarda a chave	0	0.17
+criptografia-livre	proibida	proibida	0	0.5
+criptomoedas	proibidas	proibidas	0	0.3
+criptomoedas	reguladas	reguladas	0	-0.1
+cuidado-com-o-usuario	tratamento	tratamento	0	0
+cuidado-com-o-usuario	troca-de-seringas-e-salas-de-uso	troca de seringas e salas de uso	0	-0.25
+cuidado-com-o-usuario	usuario-nao-e-preso	usuário não é preso	0	-0.5
+de-onde-veio-o-ouro	nada	nada	0	0
+de-onde-veio-o-ouro	o-vendedor-declara	o vendedor declara	-0.07	-0.07
+de-onde-veio-o-ouro	nota-com-a-origem	nota com a origem	-0.13	-0.13
+de-onde-veio-o-ouro	rastreio-do-garimpo-a-loja	rastreio do garimpo à loja	-0.2	-0.2
+de-quem-e-a-invencao-paga-pelo-estado	aberta-a-todos	aberta a todos	0	0
+de-quem-e-a-invencao-paga-pelo-estado	fica-com-o-estado	fica com o Estado	0.1	0
+de-quem-e-a-invencao-paga-pelo-estado	fica-com-a-universidade	fica com a universidade	0.2	0
+de-quem-e-a-invencao-paga-pelo-estado	fica-com-a-empresa-parceira	fica com a empresa parceira	0.3	0
+declaracao-de-bens	nao-precisa	não precisa	0	0
+declaracao-de-bens	so-os-bens	só os bens	0	-0.05
+declaracao-de-bens	uma-vez	uma vez	0	-0.1
+declaracao-de-bens	na-candidatura	na candidatura	0	-0.15
+declaracao-de-bens	bens-e-dividas-todo-ano	bens e dívidas todo ano	0	-0.2
+declaracao-de-bens	bens-e-dividas-do-candidato-e-da-familia	bens e dívidas do candidato e da família	0	-0.25
+declaracao-de-bens	conferidos-pela-receita	conferidos pela Receita	0	-0.3
+deducao-plano	sem-deducao	Sem dedução	0	0				{"parte":0}
+deducao-plano	parte-do-plano	Parte do plano	0.2	0				{"parte":0.2}
+deducao-plano	plano-inteiro	Plano inteiro	0.4	0				{"parte":0.4}
+deducao-plano	plano-e-familia	Plano e família	0.6	0				{"parte":0.6}
+defesa-comercial	nenhuma	nenhuma	0	0
+defesa-comercial	antidumping	antidumping	0	0.15
+defesa-comercial	salvaguardas-amplas	salvaguardas amplas	0	0.3
+deficit	sai-do-cofre	Sai do cofre				1
+deficit	metade-e-metade	Metade do cofre, metade dívida				0.5
+deficit	vira-divida	Vira dívida				0
+delacao-premiada	nao-existe	não existe	0	0
+delacao-premiada	reducao-pequena-da-pena	redução pequena da pena	0	0.13
+delacao-premiada	reducao-grande-da-pena-e-protecao-ao-delator	redução grande da pena e proteção ao delator	0	0.27
+delacao-premiada	perdao-total-para-quem-entrega-os-chefes	perdão total para quem entrega os chefes	0	0.4
+deportacao	nenhuma	nenhuma	0	0
+deportacao	so-criminosos	só criminosos	0	0.2
+deportacao	quem-esta-ilegal	quem está ilegal	0	0.4
+deportacao	em-massa	em massa	0	0.6
+desconto-no-carro-de-quem-vive-de-dirigir	ninguem	ninguém	0	0
+desconto-no-carro-de-quem-vive-de-dirigir	taxista-paga-metade	taxista paga metade	-0.05	0
+desconto-no-carro-de-quem-vive-de-dirigir	taxista-nao-paga	taxista não paga	-0.1	0
+desconto-no-carro-de-quem-vive-de-dirigir	aplicativo-paga-metade	aplicativo paga metade	-0.15	0
+desconto-no-carro-de-quem-vive-de-dirigir	os-dois-nao-pagam	os dois não pagam	-0.2	0
+despejo-rapido	justica-comum	Na justiça comum	0	0				{"meses":12}
+despejo-rapido	seis-meses	Seis meses	0.2	-0.1				{"meses":6}
+despejo-rapido	tres-meses	Três meses	0.3	-0.3				{"meses":3}
+despejo-rapido	um-mes	Um mês	0.4	-0.5				{"meses":1}
+destino-dos-bens	leilao	leilão	0	0
+destino-dos-bens	parte-leilao	parte leilão	-0.13	0
+destino-dos-bens	parte-reuso	parte reuso	-0.27	0
+destino-dos-bens	reuso-social	reuso social	-0.4	0
+direito-de-greve	proibida	proibida	0	0
+direito-de-greve	so-com-votacao-secreta	só com votação secreta	-0.1	0
+direito-de-greve	livre-com-aviso	livre com aviso	-0.2	0
+direito-de-greve	livre	livre	-0.3	0
+direito-de-greve	livre-e-sem-punicao	livre e sem punição	-0.4	0
+direito-do-dono	nada	nada	0	0
+direito-do-dono	ser-ouvido	ser ouvido	0.13	0
+direito-do-dono	ser-indenizado	ser indenizado	0.27	0
+direito-do-dono	so-protege-com-aceite	só protege com aceite	0.4	0
+direito-recusar	sem-recusa	Sem recusa	0	0				{"parte":0}
+direito-recusar	motivo-medico	Só por motivo médico	0	-0.2				{"parte":0.02}
+direito-recusar	motivo-de-crenca	Por motivo de crença	0	-0.4				{"parte":0.08}
+direito-recusar	livre	Livre para todos	0	-0.6				{"parte":0.2}
+direitos-de-quem-viaja	nenhum-direito	nenhum direito	0	0
+direitos-de-quem-viaja	comida-e-hotel	comida e hotel	-0.05	0
+direitos-de-quem-viaja	dinheiro-de-volta	dinheiro de volta	-0.1	0
+direitos-de-quem-viaja	outra-viagem	outra viagem	-0.15	0
+direitos-de-quem-viaja	indenizacao	indenização	-0.2	0
+discurso-de-odio	sem-punicao	sem punição	0	0
+discurso-de-odio	multa-e-retirada-do-conteudo	multa e retirada do conteúdo	0	-0.13
+discurso-de-odio	indenizacao-a-vitima-e-servico-comunitario	indenização à vítima e serviço comunitário	0	-0.27
+discurso-de-odio	crime-com-prisao	crime com prisão	0	-0.4
+duracao-mandato	quatro-anos				4
+duracao-mandato	cinco-anos				5
+edicao-de-genes-em-pessoas	proibida	proibida	0	0
+edicao-de-genes-em-pessoas	so-em-laboratorio	só em laboratório	0	-0.12
+edicao-de-genes-em-pessoas	tratar-adultos	tratar adultos	0	-0.25
+edicao-de-genes-em-pessoas	embriao-sem-nascer	embrião sem nascer	0	-0.37
+edicao-de-genes-em-pessoas	bebes-editados	bebês editados	0	-0.5
+educacao-sexual	nada	nada	0	0
+educacao-sexual	so-como-funciona-o-corpo	só como funciona o corpo	0	-0.08
+educacao-sexual	corpo	corpo	0	-0.16
+educacao-sexual	prevencao-de-doencas-e-gravidez	prevenção de doenças e gravidez	0	-0.24
+educacao-sexual	tudo-isso-mais-respeito	tudo isso mais respeito	0	-0.32
+educacao-sexual	consentimento-e-identidade	consentimento e identidade	0	-0.4
+emendas-dos-parlamentares	emendas-transparentes	emendas transparentes	0	-0.1
+emendas-dos-parlamentares	emendas-obrigatorias-e-secretas	emendas obrigatórias e secretas	0	0.3
+empreiteira-condenada-fora-das-obras	nada	nada	0	0
+empreiteira-condenada-fora-das-obras	so-a-condenada	só a condenada	0	0.1
+empreiteira-condenada-fora-das-obras	tambem-as-do-mesmo-grupo	também as do mesmo grupo	0	0.2
+empreiteira-condenada-fora-das-obras	volta-com-acordo-e-multa	volta com acordo e multa	0	0.3
+empresa-simples	nenhum-regime-especial	nenhum regime especial	0	0
+empresa-simples	registro-gratis-e-rapido	registro grátis e rápido	0.13	0
+empresa-simples	registro-rapido-e-imposto-unico-simples	registro rápido e imposto único simples	0.27	0
+empresa-simples	imposto-unico-baixo-e-sem-papelada-para-quem-fatura-pouco	imposto único baixo e sem papelada para quem fatura pouco	0.4	0
+enriquecimento-de-uranio	nenhum	nenhum	0	0
+enriquecimento-de-uranio	combustivel-de-usina	combustível de usina	0	0.17
+enriquecimento-de-uranio	pesquisa-e-medicina	pesquisa e medicina	0	0.33
+enriquecimento-de-uranio	nivel-de-bomba	nível de bomba	0	0.5
+ensino-em-casa	proibido	proibido	0	0
+ensino-em-casa	com-registro-e-prova-todo-ano	com registro e prova todo ano	0.05	0.1
+ensino-em-casa	so-registro	só registro	0.1	0.2
+ensino-em-casa	sem-prova	sem prova	0.15	0.3
+ensino-em-casa	livre	livre	0.2	0.4
+ensino-religioso	nenhuma-religiao-na-escola	nenhuma religião na escola	0	0
+ensino-religioso	aula-opcional-sobre-a-historia-de-todas-as-religioes	aula opcional sobre a história de todas as religiões	0	0.13
+ensino-religioso	aula-opcional-da-religiao-escolhida-pela-familia	aula opcional da religião escolhida pela família	0	0.27
+ensino-religioso	aula-obrigatoria-da-religiao-da-maioria	aula obrigatória da religião da maioria	0	0.4
+escola-militarizada	nenhuma	nenhuma	0	0
+escola-militarizada	so-algumas-escolas-de-bairros-violentos	só algumas escolas de bairros violentos	0	0.13
+escola-militarizada	as-escolas-que-a-comunidade-pedir	as escolas que a comunidade pedir	0	0.27
+escola-militarizada	todas-as-escolas-publicas	todas as escolas públicas	0	0.4
+espionagem-no-exterior	nada	nada	0	0
+espionagem-no-exterior	so-ler-noticias-e-relatorios-das-embaixadas	só ler notícias e relatórios das embaixadas	0	0.17
+espionagem-no-exterior	tambem-escutar-comunicacoes	também escutar comunicações	0	0.33
+espionagem-no-exterior	tambem-infiltrar-agentes	também infiltrar agentes	0	0.5
+estabilidade-do-servidor	emprego-para-a-vida-toda	emprego para a vida toda	0	0
+estabilidade-do-servidor	sai-por-falta-grave	sai por falta grave	0.08	0
+estabilidade-do-servidor	avaliacao-todo-ano	avaliação todo ano	0.17	0
+estabilidade-do-servidor	duas-notas-ruins-e-sai	duas notas ruins e sai	0.25	0
+estabilidade-do-servidor	contrato-igual-ao-do-trabalhador-comum-fora-juiz	contrato igual ao do trabalhador comum (fora juiz	0.33	0
+estabilidade-do-servidor	policial	policial	0.42	0
+estabilidade-do-servidor	diplomata-e-auditor	diplomata e auditor)	0.5	0
+exigencia-de-idioma-e-cultura	nenhuma	nenhuma	0	0
+exigencia-de-idioma-e-cultura	prova-de-idioma	prova de idioma	0	0.2
+exigencia-de-idioma-e-cultura	prova-de-idioma-e-de-valores	prova de idioma e de valores	0	0.4
+exigencia-para-o-credito-rural	nada	nada	0	0
+exigencia-para-o-credito-rural	nao-ter-multa-aberta	não ter multa aberta	0	-0.13
+exigencia-para-o-credito-rural	reserva-em-dia	reserva em dia	0	-0.27
+exigencia-para-o-credito-rural	conferencia-por-satelite	conferência por satélite	0	-0.4
+exigencia-tecnica-das-construcoes	minima	mínima	-0.3	0
+exigencia-tecnica-das-construcoes	padrao	padrão	-0.15	0
+exigencia-tecnica-das-construcoes	rigorosa-incendio	rigorosa (incêndio	0	0
+exigencia-tecnica-das-construcoes	enchente	enchente	0.15	0
+exigencia-tecnica-das-construcoes	terremoto	terremoto)	0.3	0
+exigencias-para-tirar-carteira	sem-exame	sem exame	0	0
+exigencias-para-tirar-carteira	aprender-com-habilitado-e-prova	aprender com habilitado e prova	0	-0.1
+exigencias-para-tirar-carteira	curso-na-internet-e-2-horas-de-aula	curso na internet e 2 horas de aula	0	-0.2
+exigencias-para-tirar-carteira	autoescola-obrigatoria	autoescola obrigatória	0	-0.3
+exploracao-em-floresta-e-areas-protegidas	proibida	proibida	0	0
+exploracao-em-floresta-e-areas-protegidas	com-excecoes	com exceções	0.1	0.25
+exploracao-em-floresta-e-areas-protegidas	permitida	permitida	0.2	0.5
+fabrica-de-fora	isencao	Isenção de impostos	0.4	-0.1				{"velocidade":1.3,"producao":0,"custo":0.1}
+fabrica-de-fora	conteudo-local	Conteúdo local obrigatório	-0.1	0.2				{"velocidade":1,"producao":0.04,"custo":0}
+fabrica-de-fora	tecnologia	Exigência de tecnologia	-0.3	0.3				{"velocidade":0.7,"producao":0.08,"custo":0}
+faculdades-privadas	nenhuma-faculdade-privada	nenhuma faculdade privada	0	0
+faculdades-privadas	poucas	poucas	0	0
+faculdades-privadas	com-prova-de-qualidade-antes-de-abrir	com prova de qualidade antes de abrir	0	0
+faculdades-privadas	abertura-livre-com-prova-de-qualidade-no-fim-do-curso	abertura livre com prova de qualidade no fim do curso	0	0
+faculdades-privadas	abertura-livre-sem-nenhum-controle	abertura livre sem nenhum controle	0	0
+fazer-parte-de-faccao-e-crime	so-quem-comete-o-crime	só quem comete o crime	0	0
+fazer-parte-de-faccao-e-crime	ser-membro-e-crime	ser membro é crime	0	0.1
+fazer-parte-de-faccao-e-crime	tambem-quem-ajuda-a-faccao-guarda-dinheiro	também quem ajuda a facção (guarda dinheiro	0	0.2
+fazer-parte-de-faccao-e-crime	paga	paga	0	0.3
+fazer-parte-de-faccao-e-crime	leva-recado	leva recado)	0	0.4
+fazer-parte-de-faccao-e-crime	tambem-quem-tem-sinais-de-pertencer-tatuagem	também quem tem sinais de pertencer (tatuagem	0	0.5
+fazer-parte-de-faccao-e-crime	mensagem	mensagem	0	0.6
+fazer-parte-de-faccao-e-crime	morar-com-o-chefe	morar com o chefe)	0	0.7
+ficha-limpa	sem-regra	sem regra	0	0
+ficha-limpa	qualquer-um-pode-concorrer	qualquer um pode concorrer	0	0.07
+ficha-limpa	so-condenado-em-definitivo	só condenado em definitivo	0	0.13
+ficha-limpa	sem-mais-recurso	sem mais recurso	0	0.2
+ficha-limpa	tambem-condenado-em-segunda-instancia	também condenado em segunda instância	0	0.27
+ficha-limpa	ainda-com-recurso	ainda com recurso	0	0.33
+ficha-limpa	tambem-reu-em-processo-de-corrupcao-aceito-pela-justica	também réu em processo de corrupção aceito pela Justiça	0	0.4
+filantropicos	sem-apoio	Sem apoio	0	0				{"parte":0}
+filantropicos	isencao	Isenção de impostos	0	0.2				{"parte":0.02}
+filantropicos	convenios	Convênios com a rede	0	0.4				{"parte":0.05}
+filantropicos	rede-de-entidades	Rede de entidades	0	0.6				{"parte":0.08}
+forca-letal-liberada	so-em-legitima-defesa	só em legítima defesa	0	0
+forca-letal-liberada	tambem-para-salvar-refem	também para salvar refém	0	0.2
+forca-letal-liberada	outra-pessoa-em-risco-imediato	outra pessoa em risco imediato	0	0.4
+forca-letal-liberada	tambem-contra-quem-foge-armado-depois-de-um-crime	também contra quem foge armado depois de um crime	0	0.6
+forca-letal-liberada	tambem-contra-qualquer-suspeito-armado-em-area-de-crime	também contra qualquer suspeito armado em área de crime	0	0.8
+forcas-armadas-na-floresta	nenhum	nenhum	0	0
+forcas-armadas-na-floresta	apoio-de-transporte	apoio de transporte	0	0.17
+forcas-armadas-na-floresta	patrulha-com-o-orgao	patrulha com o órgão	0	0.33
+forcas-armadas-na-floresta	comando-militar-da-regiao	comando militar da região	0	0.5
+foro-especial	ninguem	ninguém	0	0
+foro-especial	politicos-sao-julgados-como-qualquer-cidadao	políticos são julgados como qualquer cidadão	0	0.1
+foro-especial	so-por-crimes-cometidos-no-exercicio-do-cargo	só por crimes cometidos no exercício do cargo	0	0.2
+foro-especial	todos-os-crimes-de-ministros-e-parlamentares	todos os crimes de ministros e parlamentares	0	0.3
+foro-especial	todos-os-crimes	todos os crimes	0	0.4
+foro-especial	e-vale-ate-depois-que-deixam-o-cargo	e vale até depois que deixam o cargo	0	0.5
+garimpo	proibido	proibido	0	0
+garimpo	so-cooperativa-registrada	só cooperativa registrada	0.13	0
+garimpo	livre-com-taxa-e-seguro-de-saude	livre com taxa e seguro de saúde	0.27	0
+garimpo	livre-sem-controle	livre sem controle	0.4	0
+gestao-privada	gestao-publica	Gestão pública	0	0				{"eficiencia":0,"disputa":0,"alcance":0,"fraco":0,"abandono":0}
+gestao-privada	servicos-de-apoio	Serviços de apoio	0.2	0				{"eficiencia":0.05,"disputa":0.1,"alcance":0,"fraco":0,"abandono":0}
+gestao-privada	hospitais-novos	Hospitais novos	0.4	0				{"eficiencia":0.1,"disputa":0.2,"alcance":0.05,"fraco":0,"abandono":0}
+gestao-privada	toda-a-rede	Toda a rede	0.6	0				{"eficiencia":0.2,"disputa":0.35,"alcance":0.1,"fraco":0,"abandono":0}
+idade-para-filme-e-tv	sem-aviso	sem aviso	0	-0.5
+idade-para-filme-e-tv	aviso-que-recomenda	aviso que recomenda	0	-0.25
+idade-para-filme-e-tv	aviso-obrigatorio	aviso obrigatório	0	0
+idade-para-filme-e-tv	so-com-responsavel	só com responsável	0	0.25
+idade-para-filme-e-tv	proibido-para-a-idade	proibido para a idade	0	0.5
+identificacao-dos-usuarios	anonimato-livre	anonimato livre	0	0
+identificacao-dos-usuarios	cadastro-nas-redes	cadastro nas redes	0	0.25
+identificacao-dos-usuarios	documento-para-postar	documento para postar	0	0.5
+indenizacao-da-familia-removida-por-obra	so-quem-tem-escritura	só quem tem escritura	0	0
+indenizacao-da-familia-removida-por-obra	valor-da-casa-sem-escritura	valor da casa sem escritura	-0.1	0
+indenizacao-da-familia-removida-por-obra	tambem-aluguel-ate-a-casa-nova	também aluguel até a casa nova	-0.2	0
+indenizacao-da-familia-removida-por-obra	casa-nova-antes-de-sair	casa nova antes de sair	-0.3	0
+indenizacao	valor-justo	Valor justo	0.1	0				{"pagar":1,"susto":0}
+indenizacao	abaixo-do-valor	Abaixo do valor	-0.4	0				{"pagar":0.5,"susto":4}
+indenizacao	confisco	Confisco, sem pagar	-0.8	0.3				{"pagar":0,"susto":14}
+independencia-da-emissora-estatal	governo-escolhe-o-diretor	governo escolhe o diretor	0	0
+independencia-da-emissora-estatal	conselho-escolhe-o-diretor	conselho escolhe o diretor	0	-0.25
+independencia-da-emissora-estatal	diretor-com-mandato-fixo	diretor com mandato fixo	0	-0.5
+independencia-das-agencias	o-ministro-manda	o ministro manda	0	0
+independencia-das-agencias	chefe-com-mandato-fixo	chefe com mandato fixo	0.2	0
+independencia-das-agencias	orgao-independente-com-verba-propria	órgão independente com verba própria	0.4	0
+independencia-do-orgao-ambiental	o-presidente-manda	o presidente manda	0	0
+independencia-do-orgao-ambiental	chefe-com-mandato	chefe com mandato	0	-0.2
+independencia-do-orgao-ambiental	orgao-independente	órgão independente	0	-0.4
+independencia-dos-investigadores	governo-escolhe-livre	governo escolhe livre	0	0
+independencia-dos-investigadores	escolha-de-uma-lista-do-orgao	escolha de uma lista do órgão	0	-0.25
+independencia-dos-investigadores	chefe-com-mandato-fixo	chefe com mandato fixo	0	-0.5
+indicacao-de-juizes	a-carreira-escolhe	a carreira escolhe	0	-0.2
+indicacao-de-juizes	presidente-indica-senado-aprova	presidente indica, Senado aprova	0	0
+indicacao-de-juizes	presidente-indica-livre	presidente indica livre	0	0.4
+indicacao-dos-dirigentes-das-estatais	amigos-do-partido	amigos do partido	0	0
+indicacao-dos-dirigentes-das-estatais	mista	mista	0.1	0
+indicacao-dos-dirigentes-das-estatais	concurso	concurso	0.2	0
+indicacao-dos-dirigentes-das-estatais	lista-tecnica	lista técnica	0.3	0
+iniciativa-popular	nenhum	nenhum	0	0
+iniciativa-popular	so-os-politicos-propoem	só os políticos propõem	0	-0.12
+iniciativa-popular	o-povo-propoe-lei-com-assinaturas-e-o-congresso-decide	o povo propõe lei com assinaturas e o Congresso decide	0	-0.25
+iniciativa-popular	lei-com-muitas-assinaturas-vai-a-plebiscito	lei com muitas assinaturas vai a plebiscito	0	-0.37
+iniciativa-popular	o-povo-tambem-revoga-leis-por-voto	o povo também revoga leis por voto	0	-0.5
+inspecao-de-alimentos	nenhuma	nenhuma	0	0
+inspecao-de-alimentos	por-amostra	por amostra	-0.03	-0.07
+inspecao-de-alimentos	permanente	permanente	-0.07	-0.13
+inspecao-de-alimentos	padrao-de-exportacao	padrão de exportação	-0.1	-0.2
+inspecoes-nucleares-internacionais	nenhuma	nenhuma	0	0
+inspecoes-nucleares-internacionais	inspecao-parcial	inspeção parcial	0	-0.1
+inspecoes-nucleares-internacionais	inspecao-total	inspeção total	0	-0.2
+integracao-das-policias	policias-independentes	polícias independentes	0	0
+integracao-das-policias	policias-cooperando	polícias cooperando	0	0.25
+integracao-das-policias	comando-unico	comando único	0	0.5
+isencao-para-igrejas	so-o-predio-do-templo	só o prédio do templo	0	0.13
+isencao-para-igrejas	templo-e-doacoes-recebidas	templo e doações recebidas	0	0.27
+isencao-para-igrejas	templo-doacoes-e-negocios	templo, doações e negócios ligados à igreja	0	0.4
+isolamento-de-chefes	sem-tratamento-especial	sem tratamento especial	0	0
+isolamento-de-chefes	cela-separada-no-mesmo-presidio	cela separada no mesmo presídio	0	0.13
+isolamento-de-chefes	presidio-de-seguranca-maxima-so-para-chefes	presídio de segurança máxima só para chefes	0	0.25
+isolamento-de-chefes	visita-atras-do-vidro	visita atrás do vidro	0	0.38
+isolamento-de-chefes	seguranca-maxima-com-isolamento-total-e-sem-visitas	segurança máxima com isolamento total e sem visitas	0	0.5
+legitima-defesa	tem-que-provar-que-foi-na-medida	tem que provar que foi na medida	0	0
+legitima-defesa	em-casa-a-defesa-ja-e-presumida	em casa a defesa já é presumida	0	0.13
+legitima-defesa	tambem-no-comercio-e-no-carro	também no comércio e no carro	0	0.25
+legitima-defesa	em-qualquer-lugar	em qualquer lugar	0	0.38
+legitima-defesa	sem-dever-de-fugir	sem dever de fugir	0	0.5
+lei-contra-discriminacao	so-no-emprego	só no emprego	0	0
+lei-contra-discriminacao	tambem-nos-servicos	também nos serviços	-0.2	0
+lei-contra-discriminacao	tambem-moradia-e-credito	também moradia e crédito	-0.4	0
+lei-contra-noticias-falsas	nenhuma	nenhuma	0	0
+lei-contra-noticias-falsas	a-plataforma-precisa-por-aviso-na-noticia-provada-falsa	a plataforma precisa pôr aviso na notícia provada falsa	0	0.15
+lei-contra-noticias-falsas	remocao-da-noticia-provada-falsa	remoção da notícia provada falsa	0	0.3
+lei-contra-noticias-falsas	multa-para-quem-espalha-de-proposito	multa para quem espalha de propósito	0	0.45
+lei-contra-noticias-falsas	prisao-para-quem-espalha-de-proposito	prisão para quem espalha de propósito	0	0.6
+liberacao-das-drogas	nada-liberado	nada liberado	0	-0.3
+liberacao-das-drogas	bebida	bebida	0	-0.18
+liberacao-das-drogas	cigarro	cigarro	0	-0.06
+liberacao-das-drogas	cannabis	cannabis	0	0.06
+liberacao-das-drogas	cocaina-e-sinteticas	cocaína e sintéticas	0	0.18
+liberacao-das-drogas	crack-e-opioides	crack e opioides	0	0.3
+liberacao-de-armas	arma-proibida-para-civis	arma proibida para civis	0	0
+liberacao-de-armas	so-cacadores	só caçadores	0	0.18
+liberacao-de-armas	atiradores-e-vigilantes	atiradores e vigilantes	0	0.35
+liberacao-de-armas	cidadao-sem-antecedentes-pode-ter-arma-em-casa	cidadão sem antecedentes pode ter arma em casa	0	0.52
+liberacao-de-armas	tambem-pode-andar-armado-na-rua	também pode andar armado na rua	0	0.7
+liberacao-dos-jogos	loteria	loteria	0	0.1
+liberacao-dos-jogos	bingo-e-corrida	bingo e corrida	0	0
+liberacao-dos-jogos	cassino-presencial	cassino presencial	0	-0.1
+liberacao-dos-jogos	apostas-pela-internet	apostas pela internet	0	-0.2
+liberacao-dos-jogos	cassino-pela-internet	cassino pela internet	0	-0.3
+liberacao-para-construir	a-cidade-decide-tudo	a cidade decide tudo	0	0
+liberacao-para-construir	regra-federal-perto-de-transporte	regra federal perto de transporte	0.13	0
+liberacao-para-construir	a-cidade-nao-pode-barrar-predio-onde-ha-agua-e-esgoto	a cidade não pode barrar prédio onde há água e esgoto	0.27	0
+liberacao-para-construir	vale-a-regra-federal-em-todo-o-pais	vale a regra federal em todo o país	0.4	0
+liberdade-de-recusa-das-empresas	proibido-recusar-cliente	proibido recusar cliente	0	0
+liberdade-de-recusa-das-empresas	candidato	candidato	0.1	0
+liberdade-de-recusa-das-empresas	recusa-so-por-conviccao-religiosa-do-dono	recusa só por convicção religiosa do dono	0.2	0
+liberdade-de-recusa-das-empresas	escolhe-livremente-quem-contrata	escolhe livremente quem contrata	0.3	0
+liberdade-de-recusa-das-empresas	escolhe-livremente-quem-contrata-e-quem-atende	escolhe livremente quem contrata e quem atende	0.4	0
+licenca-para-banco-novo	nenhum-banco-novo	nenhum banco novo	-0.1	0
+licenca-para-banco-novo	analise-de-anos	análise de anos	0.1	0
+licenca-para-banco-novo	bancos-digitais-e-cooperativas-com-analise-curta	bancos digitais e cooperativas com análise curta	0.2	0
+licenca-para-banco-novo	licenca-em-meses-para-qualquer-tipo	licença em meses para qualquer tipo	0.3	0
+licencas-de-apostas	so-o-estado-explora	só o Estado explora	-0.3	0
+licencas-de-apostas	poucas-licencas-caras	poucas licenças caras	0.1	0
+licencas-de-apostas	licenca-aberta-com-imposto-moderado	licença aberta com imposto moderado	0.3	0
+licencas-de-apostas	licenca-barata-e-aberta-a-qualquer-empresa	licença barata e aberta a qualquer empresa	0.5	0
+licenciamento-ambiental	frouxo	Licença simples	0.4	0.3
+licenciamento-ambiental	normal
+licenciamento-ambiental	rigoroso	Licença rigorosa com consulta	-0.3	-0.6
+limite-a-compradores-estrangeiros	livre	livre	0	0
+limite-a-compradores-estrangeiros	imposto-extra-na-compra	imposto extra na compra	0	0.13
+limite-a-compradores-estrangeiros	no-maximo-uma-casa-por-pessoa-e-nada-de-terra-rural	no máximo uma casa por pessoa e nada de terra rural	0	0.27
+limite-a-compradores-estrangeiros	proibido-comprar	proibido comprar	0	0.4
+limite-a-estrangeiro-na-terra	livre	livre	0	0
+limite-a-estrangeiro-na-terra	teto-por-municipio	teto por município	0	0.1
+limite-a-estrangeiro-na-terra	so-arrendar	só arrendar	0	0.2
+limite-a-estrangeiro-na-terra	proibido	proibido	0	0.3
+limite-planos	sem-limite	Sem limite	0	0				{"parte":0}
+limite-planos	so-o-que-falta	Só o que a rede não faz	-0.2	0				{"parte":0.5}
+limite-planos	quase-nenhum	Quase nenhum	-0.4	0				{"parte":0.8}
+limite-planos	proibidos	Proibidos	-0.6	0				{"parte":1}
+livre-negociacao	nada	nada	0	0
+livre-negociacao	a-lei-vale-sempre	a lei vale sempre	0.08	0
+livre-negociacao	so-horario-e-jornada	só horário e jornada	0.16	0
+livre-negociacao	tambem-ferias-e-intervalos	também férias e intervalos	0.24	0
+livre-negociacao	quase-tudo	quase tudo	0.32	0
+livre-negociacao	menos-salario-minimo-e-seguranca	menos salário mínimo e segurança	0.4	0
+lojas-licenciadas	nenhuma-venda-legal-de-droga	nenhuma venda legal de droga	0	0
+lojas-licenciadas	so-bebida-alcoolica	só bebida alcoólica	0.13	0
+lojas-licenciadas	bebida-e-cigarro	bebida e cigarro	0.25	0
+lojas-licenciadas	bebida	bebida	0.38	0
+lojas-licenciadas	cigarro-e-cannabis	cigarro e cannabis	0.5	0
+meia-entrada	ninguem	ninguém	0	0
+meia-entrada	estudantes	estudantes	-0.07	0
+meia-entrada	idosos-e-deficientes	idosos e deficientes	-0.15	0
+meia-entrada	professores	professores	-0.22	0
+meia-entrada	familia-pobre	família pobre	-0.3	0
+militares-na-seguranca-publica	em-lugar-nenhum	em lugar nenhum	0	0
+militares-na-seguranca-publica	so-em-fronteiras-e-presidios	só em fronteiras e presídios	0	0.2
+militares-na-seguranca-publica	em-bairros-violentos-por-tempo-limitado	em bairros violentos por tempo limitado	0	0.4
+militares-na-seguranca-publica	permanente-nas-grandes-cidades	permanente nas grandes cidades	0	0.6
+missoes-medicas	sem-missoes	Sem missões	0	0				{"parte":0}
+missoes-medicas	ajuda-em-desastres	Ajuda em desastres	0	0.2				{"parte":0.03}
+missoes-medicas	acordos	Acordos com vizinhos	0	0.4				{"parte":0.08}
+missoes-medicas	exportacao	Exportação de serviços	0	0.6				{"parte":0.15}
+moeda-de-fora-nos-contratos	em-contratos-grandes-e-aluguel	em contratos grandes e aluguel	0.17	-0.07
+moeda-de-fora-nos-contratos	circula-junto-com-a-nossa	circula junto com a nossa	0.33	-0.13
+moeda-de-fora-nos-contratos	substitui-a-nossa	substitui a nossa	0.5	-0.2
+morte-assistida	proibida	proibida	0	0
+morte-assistida	so-doenca-terminal	só doença terminal	0	-0.3
+morte-assistida	tambem-sofrimento-sem-cura	também sofrimento sem cura	0	-0.6
+multa-a-quem-contrata-sem-documento	nenhuma	nenhuma	0	0
+multa-a-quem-contrata-sem-documento	multa-leve	multa leve	0	0.15
+multa-a-quem-contrata-sem-documento	multa-pesada	multa pesada	0	0.3
+negociacao-coletiva	nao-vale-nada-alem-da-lei	não vale nada além da lei	0	0
+negociacao-coletiva	vale-so-para-os-socios-do-sindicato	vale só para os sócios do sindicato	-0.13	0
+negociacao-coletiva	vale-para-todos-da-empresa	vale para todos da empresa	-0.27	0
+negociacao-coletiva	vale-para-o-setor-inteiro	vale para o setor inteiro	-0.4	0
+neutralidade-da-rede	nada	nada	0	0
+neutralidade-da-rede	nao-pode-bloquear-site	não pode bloquear site	-0.1	0
+neutralidade-da-rede	nao-pode-deixar-site-lento	não pode deixar site lento	-0.2	0
+neutralidade-da-rede	nao-pode-dar-aplicativo-de-graca	não pode dar aplicativo de graça	-0.3	0
+o-que-a-mina-deixa-quando-fecha	nada	nada	0	0
+o-que-a-mina-deixa-quando-fecha	tapar-e-cercar	tapar e cercar	-0.1	-0.07
+o-que-a-mina-deixa-quando-fecha	recuperar-terra-e-rio	recuperar terra e rio	-0.2	-0.13
+o-que-a-mina-deixa-quando-fecha	dinheiro-para-a-cidade-recomecar	dinheiro para a cidade recomeçar	-0.3	-0.2
+o-que-acontece-com-quem-e-pego	multa	multa	0	0
+o-que-acontece-com-quem-e-pego	embargo-da-area	embargo da área	-0.1	-0.13
+o-que-acontece-com-quem-e-pego	corte-de-credito-publico	corte de crédito público	-0.2	-0.27
+o-que-acontece-com-quem-e-pego	perda-da-terra	perda da terra	-0.3	-0.4
+o-que-conta-como-terra-parada	so-a-abandonada	só a abandonada	0	0
+o-que-conta-como-terra-parada	a-que-quase-nada-produz	a que quase nada produz	-0.2	0
+o-que-conta-como-terra-parada	a-que-produz-abaixo-da-media	a que produz abaixo da média	-0.4	0
+o-que-o-assentado-recebe	uso-coletivo-da-comunidade	uso coletivo da comunidade	0	0
+o-que-o-assentado-recebe	uso-sem-poder-vender	uso sem poder vender	0.1	0
+o-que-o-assentado-recebe	titulo-com-prazo-para-vender	título com prazo para vender	0.2	0
+o-que-o-assentado-recebe	titulo-pleno	título pleno	0.3	0
+o-que-pode-ser-protegido	predios-e-monumentos-do-governo	prédios e monumentos do governo	0	0
+o-que-pode-ser-protegido	centros-historicos	centros históricos	-0.13	0
+o-que-pode-ser-protegido	terreiros-e-quilombos	terreiros e quilombos	-0.27	0
+o-que-pode-ser-protegido	festas-e-saberes	festas e saberes	-0.4	0
+obrigacao-de-ter-plano	ninguem	ninguém	0	0
+obrigacao-de-ter-plano	multa-leve	multa leve	-0.1	0
+obrigacao-de-ter-plano	multa-pesada	multa pesada	-0.2	0
+obrigacao-de-ter-plano	desconto-direto-no-salario	desconto direto no salário	-0.3	0
+obrigacao-dos-bancos	nenhuma	nenhuma	0	0
+obrigacao-dos-bancos	avisar-so-valores-muito-altos	avisar só valores muito altos	0	0.1
+obrigacao-dos-bancos	avisar-valores-medios-e-guardar-os-dados-por-cinco-anos	avisar valores médios e guardar os dados por cinco anos	0	0.2
+obrigacao-dos-bancos	avisar-qualquer-movimento-fora-do-padrao-do-cliente	avisar qualquer movimento fora do padrão do cliente	0	0.3
+obrigacao-dos-bancos	com-multa-para-o-banco-que-nao-avisar	com multa para o banco que não avisar	0	0.4
+ofensa-a-religiao	nenhuma-punicao-especifica	nenhuma punição específica	0	0
+ofensa-a-religiao	multa-para-quem-ofende-pessoas-por-causa-da-fe	multa para quem ofende pessoas por causa da fé	0	0.18
+ofensa-a-religiao	prisao-para-quem-ofende-uma-religiao	prisão para quem ofende uma religião	0	0.35
+ofensa-a-religiao	prisao-para-quem-ofende	prisão para quem ofende	0	0.52
+ofensa-a-religiao	critica-a-religiao-da-maioria	critica a religião da maioria	0	0.7
+ofensa-a-simbolos-e-autoridades	livre	livre	0	0
+ofensa-a-simbolos-e-autoridades	punido-so-se-houver-ameaca	punido só se houver ameaça	0	0.12
+ofensa-a-simbolos-e-autoridades	violencia	violência	0	0.24
+ofensa-a-simbolos-e-autoridades	multa-por-ofender-bandeira-e-hino	multa por ofender bandeira e hino	0	0.36
+ofensa-a-simbolos-e-autoridades	multa-tambem-por-ofender-policiais-e-juizes	multa também por ofender policiais e juízes	0	0.48
+ofensa-a-simbolos-e-autoridades	prisao-por-ofender-simbolos-e-autoridades	prisão por ofender símbolos e autoridades	0	0.6
+onde-se-vende-remedio	so-farmacia	só farmácia	0	0
+onde-se-vende-remedio	remedio-sem-receita-tambem-no-mercado	remédio sem receita também no mercado	0.1	-0.07
+onde-se-vende-remedio	venda-pela-internet	venda pela internet	0.2	-0.13
+onde-se-vende-remedio	receita-so-para-remedio-controlado	receita só para remédio controlado	0.3	-0.2
+onibus-gratis	pessoa-com-deficiencia-pobre	pessoa com deficiência pobre	0	0
+onibus-gratis	idoso-pobre	idoso pobre	-0.07	0
+onibus-gratis	jovem-pobre	jovem pobre	-0.13	0
+onibus-gratis	todo-idoso	todo idoso	-0.2	0
+onibus-gratis	todo-estudante	todo estudante	-0.27	0
+onibus-gratis	passe-livre-urbano-para-alunos	passe livre urbano para alunos	-0.33	0
+onibus-gratis	passe-livre-urbano-para-todos	passe livre urbano para todos	-0.4	0
+padroes-de-eficiencia-energetica	nenhum	nenhum	0	0
+padroes-de-eficiencia-energetica	aparelhos	aparelhos	-0.05	-0.07
+padroes-de-eficiencia-energetica	aparelhos-e-predios	aparelhos e prédios	-0.1	-0.15
+padroes-de-eficiencia-energetica	aparelhos-4	aparelhos	-0.15	-0.22
+padroes-de-eficiencia-energetica	predios-e-industria	prédios e indústria	-0.2	-0.3
+pagamento-por-resultado	nenhum-bonus	nenhum bônus	0	0
+pagamento-por-resultado	bonus-pequeno-para-a-escola-inteira-que-melhora	bônus pequeno para a escola inteira que melhora	0.13	0
+pagamento-por-resultado	bonus-por-nota-da-turma	bônus por nota da turma	0.27	0
+pagamento-por-resultado	bonus-alto-por-professor-conforme-a-nota-dos-alunos	bônus alto por professor conforme a nota dos alunos	0.4	0
+participacao-dos-trabalhadores	nenhuma	nenhuma	-0.3	0
+participacao-dos-trabalhadores	participacao-nos-lucros	participação nos lucros	-0.15	0
+participacao-dos-trabalhadores	vaga-no-conselho	vaga no conselho	0	0
+pena-de-morte	abolida			-0.4
+pena-de-morte	crimes-graves	Para crimes graves		0.7
+pena-maior-para-quem-repete-o-crime	igual-para-todos	igual para todos	0	0
+pena-maior-para-quem-repete-o-crime	pena-dobra-na-segunda-vez	pena dobra na segunda vez	0	0.2
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-violento	prisão perpétua no terceiro crime violento	0	0.4
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-de-qualquer-tipo	prisão perpétua no terceiro crime de qualquer tipo	0	0.6
+pena-para-corrupcao	devolve-o-dinheiro-e-paga-multa	devolve o dinheiro e paga multa	0	0
+pena-para-corrupcao	perde-o-cargo-e-nao-pode-ser-candidato	perde o cargo e não pode ser candidato	0	0.13
+pena-para-corrupcao	prisao-em-regime-fechado	prisão em regime fechado	0	0.27
+pena-para-corrupcao	prisao-e-perda-dos-bens-sem-origem	prisão e perda dos bens sem origem	0	0.4
+penas-alternativas	prisao-para-qualquer-crime	prisão para qualquer crime	0	0
+penas-alternativas	servico-comunitario-so-para-infracoes-minimas	serviço comunitário só para infrações mínimas	0	-0.1
+penas-alternativas	tornozeleira	tornozeleira	0	-0.2
+penas-alternativas	servico-tambem-para-crimes-leves	serviço também para crimes leves	0	-0.3
+penas-alternativas	tornozeleira-5	tornozeleira	0	-0.4
+penas-alternativas	servico-tambem-para-crimes-medios-sem-violencia	serviço também para crimes médios sem violência	0	-0.5
+pensao-por-morte	valor-inteiro-para-a-vida-toda	valor inteiro e para a vida toda	-0.13	0				{"gasto":1.03}
+pensao-por-morte	por-tempo-que-depende-da-idade-de-quem-fica	valor inteiro, por tempo que depende da idade de quem fica	0	0.13				{"gasto":1}
+pensao-por-morte	60-por-cento-por-tempo-limitado	60% do valor, por tempo limitado	0	0.27				{"gasto":0.97}
+pensao-por-morte	so-para-filhos-menores	só para filhos menores e dependentes	0	0.4				{"gasto":0.94}
+pente-fino-nos-beneficios	conferencia-uma-vez-por-ano-em-um-cadastro	conferência uma vez por ano em um cadastro	0.13	0
+pente-fino-nos-beneficios	cruzamento-constante-de-varios-cadastros	cruzamento constante de vários cadastros	0.27	0
+pente-fino-nos-beneficios	recadastro-obrigatorio-com-corte-automatico	recadastro obrigatório com corte automático de quem não responde	0.4	0
+peso-da-multa-base-de-calculo	igual-para-todos	igual para todos	0	0
+peso-da-multa-base-de-calculo	pelo-preco-do-carro	pelo preço do carro	-0.1	0.15
+peso-da-multa-base-de-calculo	pelo-salario	pelo salário	-0.2	0.3
+pesquisa-com-virus-perigosos	proibida	proibida	0	0
+pesquisa-com-virus-perigosos	so-em-laboratorio-de-seguranca-maxima	só em laboratório de segurança máxima	0	-0.1
+pesquisa-com-virus-perigosos	liberada	liberada	0	-0.2
+poder-de-decreto	sem-decreto	sem decreto	0	0
+poder-de-decreto	so-verba-e-preco	só verba e preço	0	0.12
+poder-de-decreto	com-prazo	com prazo	0	0.23
+poder-de-decreto	quase-tudo	quase tudo	0	0.35
+poder-de-decreto	com-prazo-5	com prazo	0	0.47
+poder-de-decreto	decreto-amplo	decreto amplo	0	0.58
+poder-de-decreto	sem-o-congresso	sem o Congresso	0	0.7
+poderes-da-agencia	so-analisar-informacao	só analisar informação	0	0
+poderes-da-agencia	escutar-com-ordem-do-juiz	escutar com ordem do juiz	0	0.27
+poderes-da-agencia	escutar-sem-juiz-e-infiltrar	escutar sem juiz e infiltrar	0	0.53
+poderes-da-agencia	operacoes-secretas	operações secretas	0	0.8
+policia-sem-formato-militar	policia-militar-como-hoje	polícia militar como hoje	0	0
+policia-sem-formato-militar	justica-propria-separada	justiça própria separada	0	-0.17
+policia-sem-formato-militar	treino-e-hierarquia-civis	treino e hierarquia civis	0	-0.33
+policia-sem-formato-militar	policia-totalmente-civil	polícia totalmente civil	0	-0.5
+policiamento-de-greves	so-acompanha	só acompanha	0	0
+policiamento-de-greves	cerca-e-negocia	cerca e negocia	0	0.13
+policiamento-de-greves	dispersa-sem-forca	dispersa sem força	0	0.27
+policiamento-de-greves	dispersa-com-forca	dispersa com força	0	0.4
+politica-estatal	preco-de-mercado	Preço de mercado	0.2	0				{"preco":1,"cofre":0}
+politica-estatal	preco-social	Preço social, abaixo do mercado	-0.5	0				{"preco":0.85,"cofre":-1}
+politica-estatal	lucro-para-o-cofre	Lucro para o cofre	0.1	0.1				{"preco":1.1,"cofre":1}
+prazo-pagamento	a-vista	À vista	0.1	0				{"parcelas":1}
+prazo-pagamento	parcelado	Parcelado em um ano	0	0				{"parcelas":6}
+prazo-pagamento	titulos-longos	Em títulos, em três anos	-0.2	0				{"parcelas":18}
+prazo-para-acabar-com-barragem-velha	sem-prazo	sem prazo	0	0
+prazo-para-acabar-com-barragem-velha	10-anos	10 anos	-0.1	-0.07
+prazo-para-acabar-com-barragem-velha	5-anos	5 anos	-0.2	-0.13
+prazo-para-acabar-com-barragem-velha	3-anos	3 anos	-0.3	-0.2
+preferencia-a-empresas-nacionais	nenhuma	nenhuma	0	0
+preferencia-a-empresas-nacionais	desempate-a-favor-do-pais	desempate a favor do país	0	0.1
+preferencia-a-empresas-nacionais	preco-ate-10-maior-aceito	preço até 10% maior aceito	0	0.2
+preferencia-a-empresas-nacionais	so-empresa-do-pais	só empresa do país	0	0.3
+preferencia-ao-trabalhador-nacional	nenhuma	nenhuma	0	0
+preferencia-ao-trabalhador-nacional	vaga-anunciada-primeiro-para-quem-e-do-pais	vaga anunciada primeiro para quem é do país	0	0.13
+preferencia-ao-trabalhador-nacional	limite-de-estrangeiros-nas-empresas-grandes	limite de estrangeiros nas empresas grandes	0	0.27
+preferencia-ao-trabalhador-nacional	contratar-de-fora-so-se-nao-houver-nacional-qualificado	contratar de fora só se não houver nacional qualificado	0	0.4
+presidio-terceirizado	todos-os-presidios-publicos	todos os presídios públicos	0	0
+presidio-terceirizado	empresas-cuidam-so-de-comida	empresas cuidam só de comida	0.1	0
+presidio-terceirizado	limpeza-e-saude	limpeza e saúde	0.2	0
+presidio-terceirizado	empresas-operam-alguns-presidios-inteiros	empresas operam alguns presídios inteiros	0.3	0
+presidio-terceirizado	empresas-operam-a-maioria-dos-presidios	empresas operam a maioria dos presídios	0.4	0
+prisao-antes-do-julgamento	ninguem	ninguém	0	0
+prisao-antes-do-julgamento	so-casos-raros	só casos raros	0	0.13
+prisao-antes-do-julgamento	so-quem-cometeu-crime-violento	só quem cometeu crime violento	0	0.25
+prisao-antes-do-julgamento	tambem-quem-cometeu-crime-com-pena-alta	também quem cometeu crime com pena alta	0	0.38
+prisao-antes-do-julgamento	a-maioria-dos-acusados-de-crime	a maioria dos acusados de crime	0	0.5
+profissoes-com-registro	toda-profissao-com-conselho	toda profissão com conselho	0	0
+profissoes-com-registro	so-saude	só saúde	0.08	-0.04
+profissoes-com-registro	direito-e-engenharia	direito e engenharia	0.16	-0.08
+profissoes-com-registro	so-saude-e-engenharia-o-que-poe-vida-em-risco	só saúde e engenharia (o que põe vida em risco)	0.24	-0.12
+profissoes-com-registro	so-medico	só médico	0.32	-0.16
+profissoes-com-registro	enfermeiro-e-farmaceutico	enfermeiro e farmacêutico	0.4	-0.2
+programa-espacial	satelite	satélite	0	0
+programa-espacial	foguete	foguete	0	0.05
+programa-espacial	astronauta	astronauta	0	0.1
+programa-espacial	estacao-espacial	estação espacial	0	0.15
+programa-espacial	chegar-a-lua	chegar à Lua	0	0.2
+programa-vacinacao	sem-programa	Sem programa	0	0				{"parte":0,"obrigacao":0}
+programa-vacinacao	campanhas	Campanhas	0	0.2				{"parte":0.3,"obrigacao":0}
+programa-vacinacao	calendario-escolar	Calendário nas escolas	0	0.4				{"parte":0.6,"obrigacao":0.3}
+programa-vacinacao	obrigatoria	Obrigatória para escola e emprego	0	0.6				{"parte":0.8,"obrigacao":1}
+projeto-nuclear-militar	nenhum	nenhum	0	0
+projeto-nuclear-militar	publico	público	0	0.45
+projeto-nuclear-militar	secreto	secreto	0	0.9
+propaganda-e-embalagem	tudo-liberado	tudo liberado	0	0
+propaganda-e-embalagem	so-restricoes-leves	só restrições leves	0	0.13
+propaganda-e-embalagem	sem-propaganda	sem propaganda	0	0.27
+propaganda-e-embalagem	embalagem-padronizada-e-sem-propaganda	embalagem padronizada e sem propaganda	0	0.4
+propaganda-paga-na-campanha	proibida	proibida	0	0
+propaganda-paga-na-campanha	liberada-com-teto-de-gasto	liberada com teto de gasto	0.25	-0.15
+propaganda-paga-na-campanha	liberada	liberada	0.5	-0.3
+protecao-ao-cliente-de-banco	custo-total-claro-no-contrato	custo total claro no contrato	-0.17	0
+protecao-ao-cliente-de-banco	7-dias-para-desistir-e-fim-da-tarifa-escondida	7 dias para desistir e fim da tarifa escondida	-0.33	0
+protecao-ao-cliente-de-banco	orgao-que-recebe-reclamacao-e-manda-devolver	órgão que recebe reclamação e manda devolver	-0.5	0
+protecao-contra-demissao	demissao-livre	demissão livre	0	0
+protecao-contra-demissao	sem-aviso	sem aviso	-0.1	0
+protecao-contra-demissao	aviso-de-um-mes-e-multa-pequena	aviso de um mês e multa pequena	-0.2	0
+protecao-contra-demissao	aviso-longo-e-multa-de-varios-meses-de-salario	aviso longo e multa de vários meses de salário	-0.3	0
+protecao-contra-demissao	demissao-so-com-falta-grave-do-empregado	demissão só com falta grave do empregado	-0.4	0
+protecao-digital	sem-regra	Sem regra		0.1
+protecao-digital	permissao-previa	Permissão prévia		-0.3
+protecao-digital	permissao-e-apagar	Permissão e direito de apagar		-0.6
+protecao-do-apostador	aviso-de-risco-e-autoexclusao-voluntaria	aviso de risco e autoexclusão voluntária	-0.1	0
+protecao-do-apostador	limite-de-deposito-e-sem-cartao-de-credito	limite de depósito e proibição de pagar com cartão de crédito	-0.2	0
+protecao-do-apostador	autoexclusao-geral-e-propaganda-proibida	autoexclusão em todas as casas e propaganda proibida	-0.3	0
+punicao-se-descumprir	corte-automatico	corte automático das verbas	0.1	0.07				{"corte":0.1}
+punicao-se-descumprir	proibir-aumento-de-salario-e-contratacao	proibir aumento de verba, salário e contratação	0.2	0.13				{"trava":1}
+punicao-se-descumprir	crime-de-responsabilidade	crime de responsabilidade do presidente	0.3	0.2				{"crime":1,"trava":1}
+quebra-de-patente	nunca	nunca	0	0
+quebra-de-patente	em-emergencia-de-saude	em emergência de saúde	-0.13	0
+quebra-de-patente	remedios	remédios	-0.27	0
+quebra-de-patente	setores-estrategicos	setores estratégicos	-0.4	0
+quem-paga-pelo-descarte	a-prefeitura	a prefeitura	0	0
+quem-paga-pelo-descarte	fabricante-paga-taxa	fabricante paga taxa	-0.1	-0.13
+quem-paga-pelo-descarte	fabricante-recolhe	fabricante recolhe	-0.2	-0.27
+quem-paga-pelo-descarte	proibicao-de-descartaveis	proibição de descartáveis	-0.3	-0.4
+quem-perde-a-acao-trabalhista-paga	nunca-paga	nunca paga	0	0
+quem-perde-a-acao-trabalhista-paga	paga-se-mentiu	paga se mentiu	0.13	0
+quem-perde-a-acao-trabalhista-paga	paga-as-custas	paga as custas	0.27	0
+quem-perde-a-acao-trabalhista-paga	paga-as-custas-e-o-advogado-do-patrao	paga as custas e o advogado do patrão	0.4	0
+quem-pode-pedir	so-o-governo	só o governo	0	0
+quem-pode-pedir	prefeitura-e-estado	prefeitura e estado	-0.1	0
+quem-pode-pedir	associacoes	associações	-0.2	0
+quem-pode-pedir	qualquer-cidadao	qualquer cidadão	-0.3	0
+quem-pode-vender-recarga	so-a-distribuidora	só a distribuidora	0	0
+quem-pode-vender-recarga	postos	postos	0.08	0
+quem-pode-vender-recarga	comercio	comércio	0.15	0
+quem-pode-vender-recarga	condominios	condomínios	0.22	0
+quem-pode-vender-recarga	qualquer-casa	qualquer casa	0.3	0
+refugio-e-asilo	nenhum	nenhum	0	0
+refugio-e-asilo	abrigo	abrigo	0	-0.25
+refugio-e-asilo	acolhimento-pleno-com-direitos	acolhimento pleno com direitos	0	-0.5
+regime-dos-militares	idade-minima-menor	idade mínima menor que a dos civis	0	0.13				{"gasto":0.98}
+regime-dos-militares	idade-menor-e-salario-cheio	idade menor e salário cheio na aposentadoria	0	0.27				{"gasto":0.99}
+regime-dos-militares	salario-cheio-e-pensao-vitalicia-para-a-familia	idade menor, salário cheio e pensão vitalícia para a família	0	0.4				{"gasto":1}
+regra-cameras	ordem-judicial	Só com ordem judicial		-0.3
+regra-cameras	uso-livre	Polícia usa livremente		0.3
+regra-cameras	reconhecimento-facial	Reconhecimento facial permanente		0.8
+regra-da-licitacao	menor-preco	menor preço	-0.2	0
+regra-da-licitacao	preco-e-qualidade	preço e qualidade	-0.03	0
+regra-da-licitacao	obra-pronta-a-empreiteira-projeta-e-faz	obra pronta (a empreiteira projeta e faz)	0.13	0
+regra-da-licitacao	contratacao-direta-em-emergencia	contratação direta em emergência	0.3	0
+regra-das-cameras-policiais	sem-camera	sem câmera	0	0
+regra-das-cameras-policiais	camera-que-o-policial-liga-quando-quiser	câmera que o policial liga quando quiser	0	-0.17
+regra-das-cameras-policiais	camera-sempre-ligada-durante-o-turno	câmera sempre ligada durante o turno	0	-0.33
+regra-das-cameras-policiais	camera-sempre-ligada-e-imagens-revistas-por-orgao-independente	câmera sempre ligada e imagens revistas por órgão independente	0	-0.5
+regra-pos-venda	livre	Livre	0.5	0				{"eficiencia":1,"tarifa":1}
+regra-pos-venda	agencia	Agência com teto de tarifa	-0.2	0				{"eficiencia":0.8,"tarifa":0.4}
+regra-pos-venda	devolucao	Com prazo de devolução ao Estado	-0.4	0				{"eficiencia":0.7,"tarifa":0.3}
+regras-de-inteligencia-artificial	sem-regra	sem regra	0	0
+regras-de-inteligencia-artificial	avisar-quando-e-ia	avisar quando é IA	-0.12	0
+regras-de-inteligencia-artificial	testes-em-areas-sensiveis	testes em áreas sensíveis	-0.25	0
+regras-de-inteligencia-artificial	proibir-usos-perigosos	proibir usos perigosos	-0.37	0
+regras-de-inteligencia-artificial	licenca-para-modelos-grandes	licença para modelos grandes	-0.5	0
+regularizacao-dos-aplicativos	nada-exigido	nada exigido	0	0
+regularizacao-dos-aplicativos	carteira-e-ficha-criminal	carteira e ficha criminal	-0.05	0
+regularizacao-dos-aplicativos	seguro-do-passageiro	seguro do passageiro	-0.1	0
+regularizacao-dos-aplicativos	carro-de-ate-10-anos	carro de até 10 anos	-0.15	0
+regularizacao-dos-aplicativos	curso-de-direcao	curso de direção	-0.2	0
+regularizacao	nenhuma	nenhuma	0	0
+regularizacao	so-quem-trabalha	só quem trabalha	0	-0.2
+regularizacao	todos	todos	0	-0.4
+religiao-do-estado	estado-laico	Estado laico	0	0
+religiao-do-estado	apoio-a-religioes	apoio a religiões	0	0.35
+religiao-do-estado	religiao-oficial	religião oficial	0	0.7
+remedio-pago-pelo-governo-na-farmacia	nada	nada	0	0
+remedio-pago-pelo-governo-na-farmacia	desconto-na-lista-basica	desconto na lista básica	-0.1	0
+remedio-pago-pelo-governo-na-farmacia	lista-basica-gratis	lista básica grátis	-0.2	0
+remedio-pago-pelo-governo-na-farmacia	doenca-cronica-gratis-pressao	doença crônica grátis (pressão	-0.3	0
+remedio-pago-pelo-governo-na-farmacia	diabetes	diabetes	-0.4	0
+remedio-pago-pelo-governo-na-farmacia	asma	asma)	-0.5	0
+remessa-de-lucro	baixa	Imposto baixo	0.5	0				{"imposto":0.05,"atrai":1.3}
+remessa-de-lucro	media	Imposto médio	0	0				{"imposto":0.2,"atrai":1}
+remessa-de-lucro	alta	Imposto alto	-0.4	0.2				{"imposto":0.4,"atrai":0.6}
+remicao-de-pena	nenhuma	nenhuma	0	0
+remicao-de-pena	quem-trabalha	quem trabalha	0	-0.1
+remicao-de-pena	quem-conclui-curso	quem conclui curso	0	-0.2
+remicao-de-pena	quem-le-livros	quem lê livros	0	-0.3
+remocao-area-risco	nenhuma	Não remove	0	0				{"alcance":0}
+remocao-area-risco	so-risco	Só área de risco	0	0.2				{"alcance":1}
+remocao-area-risco	area-publica	Risco e área pública	0.1	0.4				{"alcance":2}
+remocao-area-risco	qualquer	Qualquer área	0.2	0.7				{"alcance":3}
+remocao-de-conteudo	so-com-ordem-do-juiz	só com ordem do juiz	0	0
+remocao-de-conteudo	conteudo-ilegal-em-24-horas	conteúdo ilegal em 24 horas	0	-0.2
+remocao-de-conteudo	tambem-desinformacao	também desinformação	0	-0.4
+renegociacao-da-divida	renegociar-prazo-e-juros	renegociar prazo e juros	0	-0.13				{"perdao_da_divida":0.05}
+renegociacao-da-divida	calote-parcial	calote parcial	0	-0.27				{"perdao_da_divida":0.3}
+renegociacao-da-divida	calote-total	calote total	0	-0.4				{"perdao_da_divida":0.9}
+repasse-so-com-meta	sem-exigencia	sem exigência	0	0
+repasse-so-com-meta	plano-de-melhora	plano de melhora	0.1	0
+repasse-so-com-meta	nota-minima	nota mínima	0.2	0
+repasse-so-com-meta	troca-da-direcao-da-escola-ruim	troca da direção da escola ruim	0.3	0
+restricao-a-protestos	livre	livre	0	0
+restricao-a-protestos	exige-aviso	exige aviso	0	0.2
+restricao-a-protestos	define-locais	define locais	0	0.4
+restricao-a-protestos	bloquear-rua-e-crime	bloquear rua é crime	0	0.6
+revisao-periodica-de-gastos	revisar-as-maiores-areas-a-cada-4-anos	revisar as maiores áreas a cada 4 anos	0.1	0
+revisao-periodica-de-gastos	revisar-todas-as-areas-todo-ano	revisar todas as áreas todo ano	0.2	0
+revisao-periodica-de-gastos	revisao-do-zero	revisão do zero: toda verba se justifica de novo	0.3	0
+saude-ambiental	sem-vigilancia	Sem vigilância	0	0				{"parte":0}
+saude-ambiental	agua-e-ar	Água e ar das cidades	0	-0.2				{"parte":0.3}
+saude-ambiental	fabricas-e-lixo	Fábricas e lixo	0	-0.4				{"parte":0.6}
+saude-ambiental	todo-o-territorio	Todo o território	0	-0.6				{"parte":1}
+saude-mental	nada	nada	0	0
+saude-mental	consulta-na-rede	consulta na rede	-0.1	0
+saude-mental	centro-de-atendimento-perto-de-casa	centro de atendimento perto de casa	-0.2	0
+saude-mental	internacao-e-cuidado-continuo	internação e cuidado contínuo	-0.3	0
+seguranca-do-operario-na-obra	nada	nada	0	0
+seguranca-do-operario-na-obra	equipamento-e-fiscal	equipamento e fiscal	-0.1	0
+seguranca-do-operario-na-obra	seguro-por-morte	seguro por morte	-0.2	0
+seguranca-do-operario-na-obra	meses-de-salario-ao-acabar	meses de salário ao acabar	-0.3	0
+seguranca-terceirizada	so-em-predios	só em prédios	0	0
+seguranca-terceirizada	tambem-nas-ruas	também nas ruas	0.13	0
+seguranca-terceirizada	tambem-nos-bairros	também nos bairros	0.27	0
+seguranca-terceirizada	toda-a-policia	toda a polícia	0.4	0
+seguro-deposito	ate-um-limite	até um limite por pessoa	-0.05	0
+seguro-deposito	total	total	-0.1	0
+seguro-folha	sem-seguro	Sem seguro	0	0				{"parte":0,"informal":0}
+seguro-folha	grandes-empresas	Grandes empresas	-0.2	0				{"parte":0.3,"informal":0.02}
+seguro-folha	todo-emprego	Todo emprego formal	-0.4	0				{"parte":0.7,"informal":0.05}
+seguro-folha	com-familia	Formais e família	-0.6	0				{"parte":1,"informal":0.1}
+selecao-por-qualificacao	qualquer-um	qualquer um	0	0
+selecao-por-qualificacao	com-oferta-de-emprego	com oferta de emprego	0.15	0
+selecao-por-qualificacao	sistema-de-pontos	sistema de pontos	0.3	0
+sementes-transgenicas	proibidas	proibidas	0	0
+sementes-transgenicas	so-racao-e-fibras	só ração e fibras	0.1	0
+sementes-transgenicas	com-rotulo	com rótulo	0.2	0
+sementes-transgenicas	liberadas	liberadas	0.3	0
+separacao-de-presos	todos-juntos	todos juntos	0	0
+separacao-de-presos	separa-quem-cometeu-crime-violento	separa quem cometeu crime violento	0	-0.1
+separacao-de-presos	separa-quem-esta-preso-pela-primeira-vez-dos-reincidentes	separa quem está preso pela primeira vez dos reincidentes	0	-0.2
+separacao-de-presos	presidio-proprio-para-quem-esta-preso-pela-primeira-vez	presídio próprio para quem está preso pela primeira vez	0	-0.3
+separacao-de-presos	com-estudo-e-trabalho	com estudo e trabalho	0	-0.4
+servico-obrigatorio	sem-servico	Sem serviço	0	0				{"alcance":0,"fraco":0,"abandono":0}
+servico-obrigatorio	quem-estudou-de-graca	Quem estudou de graça, 1 ano	0	0.2				{"alcance":0.05,"fraco":0,"abandono":0}
+servico-obrigatorio	todos-um-ano	Todos, 1 ano	0	0.4				{"alcance":0.1,"fraco":0,"abandono":0.002}
+servico-obrigatorio	todos-dois-anos	Todos, 2 anos	0	0.6				{"alcance":0.2,"fraco":0.3,"abandono":0.005}
+servico-obrigatorio	lugar-sorteado	Todos, 2 anos, lugar sorteado	0	0.8				{"alcance":0.4,"fraco":0.3,"abandono":0.02}
+servicos-para-imigrante-sem-documento	nenhum-acesso	nenhum acesso	0	0
+servicos-para-imigrante-sem-documento	so-emergencia	só emergência	-0.1	-0.15
+servicos-para-imigrante-sem-documento	escola-e-saude-plenas	escola e saúde plenas	-0.2	-0.3
+sigilo-aberto-para-candidatos	nada	nada	0	0
+sigilo-aberto-para-candidatos	lista-de-bens	lista de bens	0	-0.13
+sigilo-aberto-para-candidatos	sigilo-fiscal-imposto-de-renda	sigilo fiscal (imposto de renda)	0	-0.27
+sigilo-aberto-para-candidatos	sigilo-fiscal-e-bancario	sigilo fiscal e bancário	0	-0.4
+sigilo-bancario	estado-ve-todas-as-contas-sem-pedir	Estado vê todas as contas sem pedir	0	0.3
+sigilo-bancario	ve-so-movimentos-de-valor-alto	vê só movimentos de valor alto	0	-0.13
+sigilo-bancario	so-com-ordem-de-juiz	só com ordem de juiz	0	-0.27
+sigilo-bancario	so-com-ordem-de-juiz-e-em-crime-grave	só com ordem de juiz e em crime grave	0	-0.4
+sistema-eleitoral	proporcional-cadeiras-na-proporcao-dos-votos	proporcional (cadeiras na proporção dos votos)	0	0
+sistema-eleitoral	misto-metade-proporcional	misto (metade proporcional	0	0
+sistema-eleitoral	metade-por-distrito	metade por distrito)	0	0
+sistema-eleitoral	distrital-cada-distrito-elege-o-mais-votado	distrital (cada distrito elege o mais votado)	0	0
+superavit	vai-ao-cofre	Vai ao cofre					1
+superavit	metade-e-metade	Metade ao cofre, metade abate a dívida					0.5
+superavit	abate-a-divida	Abate a dívida					0
+superavit	guarda-no-fundo-soberano	Guarda no fundo soberano, para crises e para as próximas gerações	0.2	0			1
+taxa-de-saida-para-formados	sai-livre	sai livre	0	0
+taxa-de-saida-para-formados	devolve-parte-do-custo-do-estudo	devolve parte do custo do estudo	0	0.13
+taxa-de-saida-para-formados	devolve-o-custo-todo	devolve o custo todo	0	0.27
+taxa-de-saida-para-formados	precisa-ficar-alguns-anos-no-pais-antes-de-sair	precisa ficar alguns anos no país antes de sair	0	0.4
+telemedicina-livre	so-presencial	Só presencial	0	0				{"alcance":0,"fraco":0,"abandono":0}
+telemedicina-livre	retornos	Só retornos	0	-0.2				{"alcance":0.1,"fraco":0.2,"abandono":0}
+telemedicina-livre	consultas	Consultas	0	-0.4				{"alcance":0.2,"fraco":0.2,"abandono":0}
+telemedicina-livre	livre	Livre	0	-0.6				{"alcance":0.35,"fraco":0.3,"abandono":0}
+testes-em-animais	livres	livres	0	0
+testes-em-animais	regulados	regulados	0	-0.1
+testes-em-animais	proibidos-em-cosmeticos	proibidos em cosméticos	0	-0.2
+testes-em-animais	proibidos-em-quase-tudo	proibidos em quase tudo	0	-0.3
+teto-aluguel	sem-teto	Sem teto	0.1	0				{"acima_inflacao":-1}
+teto-aluguel	inflacao-mais-vinte	Inflação + 20%	-0.2	0				{"acima_inflacao":0.2}
+teto-aluguel	inflacao-mais-dez	Inflação + 10%	-0.4	0.1				{"acima_inflacao":0.1}
+teto-aluguel	so-inflacao	Só a inflação	-0.6	0.2				{"acima_inflacao":0}
+teto-tamanho-terra	sem-teto	Sem teto	0.1	0				{"vezes_media":0}
+teto-tamanho-terra	cinquenta-vezes	Até 50 vezes a média	-0.2	0				{"vezes_media":50}
+teto-tamanho-terra	vinte-vezes	Até 20 vezes a média	-0.5	0.1				{"vezes_media":20}
+teto-tamanho-terra	cinco-vezes	Até 5 vezes a média	-0.8	0.3				{"vezes_media":5}
+teto-tarifa	sem-teto	Sem teto	0	0				{"parte":0}
+teto-tarifa	inflacao-mais-vinte	Inflação + 20%	-0.2	0				{"parte":0.2}
+teto-tarifa	inflacao-mais-dez	Inflação + 10%	-0.4	0				{"parte":0.4}
+teto-tarifa	so-inflacao	Só a inflação	-0.6	0				{"parte":0.6}
+titulo-posse	sem-titulo	Não vira dono	0	0				{"anos":0}
+titulo-posse	dez-anos	Dez anos	0.1	-0.2				{"anos":10}
+titulo-posse	cinco-anos	Cinco anos	0.2	-0.4				{"anos":5}
+titulo-posse	dois-anos	Dois anos	0.3	-0.6				{"anos":2}
+trabalhador-de-aplicativo	autonomo-sem-regra	autônomo sem regra	0	0
+trabalhador-de-aplicativo	autonomo-com-seguro-de-acidente-e-ganho-minimo-por-hora	autônomo com seguro de acidente e ganho mínimo por hora	-0.13	0
+trabalhador-de-aplicativo	autonomo-com-ferias-e-aposentadoria-pagas-em-parte-pelo-aplicativo	autônomo com férias e aposentadoria pagas em parte pelo aplicativo	-0.27	0
+trabalhador-de-aplicativo	empregado-com-carteira-assinada	empregado com carteira assinada	-0.4	0
+trabalho-de-presos	nao-trabalha	não trabalha	0	0
+trabalho-de-presos	trabalho-voluntario-dentro-do-presidio-cozinha	trabalho voluntário dentro do presídio (cozinha	0	0.1
+trabalho-de-presos	limpeza	limpeza)	0	0.2
+trabalho-de-presos	trabalho-obrigatorio-dentro-do-presidio	trabalho obrigatório dentro do presídio	0	0.3
+trabalho-de-presos	trabalho-obrigatorio-tambem-para-empresas-de-fora	trabalho obrigatório também para empresas de fora	0	0.4
+trabalho-remoto-livre	so-presencial	só presencial	0	0
+trabalho-remoto-livre	um-dia-por-semana-de-casa	um dia por semana de casa	0	-0.13
+trabalho-remoto-livre	ate-tres-dias-por-semana-de-casa	até três dias por semana de casa	0	-0.27
+trabalho-remoto-livre	todos-os-dias-de-casa-se-patrao-e-empregado-combinarem	todos os dias de casa se patrão e empregado combinarem	0	-0.4
+transparencia-militar	sigilo-total	Sigilo total		0.5
+transparencia-militar	sigilo-operacoes	Sigilo só das operações		0
+transparencia-militar	tudo-publico	Tudo público		-0.4
+tratamento-esgoto	sem-exigencia	Sem exigência	0	0				{"parte":0}
+tratamento-esgoto	trinta	30% tratado	0	-0.2				{"parte":0.3}
+tratamento-esgoto	sessenta	60% tratado	0	-0.4				{"parte":0.6}
+tratamento-esgoto	noventa	90% tratado	0	-0.6				{"parte":0.9}
+triagem-estrangeira	livre	Livre	0.5	-0.2				{"velocidade":1.2}
+triagem-estrangeira	aviso	Aviso ao governo acima de 10%	0	0				{"velocidade":0.9}
+triagem-estrangeira	aprovacao	Aprovação do Congresso	-0.3	0.4				{"velocidade":0.5}
+tribunal-de-drogas	ninguem	ninguém	0	0
+tribunal-de-drogas	usuario-vai-preso	usuário vai preso	0	-0.08
+tribunal-de-drogas	so-quem-nunca-foi-preso	só quem nunca foi preso	0	-0.16
+tribunal-de-drogas	todo-usuario-sem-outro-crime	todo usuário sem outro crime	0	-0.24
+tribunal-de-drogas	todo-usuario	todo usuário	0	-0.32
+tribunal-de-drogas	sem-ficha-criminal	sem ficha criminal	0	-0.4
+tribunal-internacional	nao-aceitar	não aceitar	0	0
+tribunal-internacional	aceitar-em-parte	aceitar em parte	0	-0.25
+tribunal-internacional	aceitar-por-completo	aceitar por completo	0	-0.5
+troca-pelo-generico	proibida	proibida	-0.1	0
+troca-pelo-generico	permitida	permitida	0.05	0
+troca-pelo-generico	obrigatoria-se-o-medico-nao-vetar	obrigatória se o médico não vetar	0.2	0
+validacao-de-diploma-estrangeiro	nao-aceita	não aceita	0	0
+validacao-de-diploma-estrangeiro	aceita-so-depois-de-curso-e-prova-completos	aceita só depois de curso e prova completos	0	0
+validacao-de-diploma-estrangeiro	aceita-com-prova-curta	aceita com prova curta	0	0
+validacao-de-diploma-estrangeiro	aceita-direto	aceita direto	0	0
+validacao-de-diploma-estrangeiro	com-registro-no-conselho	com registro no conselho	0	0
+venda-de-armas-ao-exterior	proibida	proibida	0	0
+venda-de-armas-ao-exterior	so-para-paises-aliados	só para países aliados	0.04	0.06
+venda-de-armas-ao-exterior	com-licenca-caso-a-caso	com licença caso a caso	0.08	0.12
+venda-de-armas-ao-exterior	para-qualquer-pais-sem-embargo	para qualquer país sem embargo	0.12	0.18
+venda-de-armas-ao-exterior	livre	livre	0.16	0.24
+venda-de-armas-ao-exterior	com-licenca-simples	com licença simples	0.2	0.3
+venda-de-casas-publicas	nenhuma-venda	nenhuma venda	0	0
+venda-de-casas-publicas	venda-ao-morador-com-pequeno-desconto	venda ao morador com pequeno desconto	0.13	0
+venda-de-casas-publicas	venda-ao-morador-com-grande-desconto	venda ao morador com grande desconto	0.27	0
+venda-de-casas-publicas	venda-ao-morador-com-grande-desconto-e-das-casas-vazias-a-qualquer-comprador	venda ao morador com grande desconto e das casas vazias a qualquer comprador	0.4	0
+venda-direta-do-produtor	proibida	proibida	0	0
+venda-direta-do-produtor	feira-da-cidade	feira da cidade	0.07	-0.1
+venda-direta-do-produtor	dentro-do-estado	dentro do estado	0.13	-0.2
+venda-direta-do-produtor	livre	livre	0.2	-0.3
+venda-pelo-estado	nada	nada	0	0
+venda-pelo-estado	so-remedio-controlado-na-farmacia-do-estado	só remédio controlado na farmácia do Estado	-0.12	0
+venda-pelo-estado	remedio-e-bebida-em-lojas-do-estado	remédio e bebida em lojas do Estado	-0.25	0
+venda-pelo-estado	remedio	remédio	-0.37	0
+venda-pelo-estado	bebida-e-cigarro-em-lojas-do-estado	bebida e cigarro em lojas do Estado	-0.5	0
+verba-so-com-regra-de-area-de-risco	sem-exigencia	sem exigência	0	0
+verba-so-com-regra-de-area-de-risco	cidade-mapeia-o-risco	cidade mapeia o risco	0.15	0
+verba-so-com-regra-de-area-de-risco	cidade-barra-casa-nova-em-area-de-risco	cidade barra casa nova em área de risco	0.3	0
+violencia-domestica	nada	nada	0	0
+violencia-domestica	crime-proprio-com-pena	crime próprio com pena	0	-0.1
+violencia-domestica	afastar-o-agressor-na-hora	afastar o agressor na hora	0	-0.2
+violencia-domestica	juizado-proprio-e-abrigo	juizado próprio e abrigo	0	-0.3
+vistoria-dos-veiculos	so-caminhao-e-onibus	só caminhão e ônibus	0	0
+vistoria-dos-veiculos	mais-carro-velho	mais carro velho	0	-0.1
+vistoria-dos-veiculos	mais-moto-velha	mais moto velha	0	-0.2
+vistoria-dos-veiculos	todo-veiculo-todo-ano	todo veículo todo ano	0	-0.3
+voto-obrigatorio	voto-livre	voto livre	0	0
+voto-obrigatorio	obrigatorio-com-multa-pequena	obrigatório com multa pequena	0	0.1
+voto-obrigatorio	obrigatorio-com-multa-maior	obrigatório com multa maior	0	0.2
+voto-obrigatorio	obrigatorio	obrigatório	0	0.3
+voto-obrigatorio	e-quem-nao-vota-nao-tira-passaporte-nem-presta-concurso	e quem não vota não tira passaporte nem presta concurso	0	0.4
+zonas-francas	nenhuma	nenhuma	0	0
+zonas-francas	so-em-areas-pobres	só em áreas pobres	0.1	0
+zonas-francas	algumas-areas	algumas áreas	0.2	0
+zonas-francas	muitas-areas-com-imposto-menor-e-regras-proprias-para-fabricas	muitas áreas com imposto menor e regras próprias para fábricas	0.3	0

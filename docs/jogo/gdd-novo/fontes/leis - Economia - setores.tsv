@@ -1,0 +1,16 @@
+Setor	Seção da ONU (ISIC)	Prédios e negócios	Onde está hoje	Esferas ligadas	Pops que trabalham ali	Situação
+Agropecuária e pesca	A	Fazendas, pomares, pecuária, pesca	Dentro de Essenciais	Agricultura e pesca, Terra	Pequenos agricultores e pescadores, Assalariados rurais, Motoristas e operadores	Aprovado
+Mineração e petróleo	B	Minas, poços, refinarias	Não existe	Energia, Meio ambiente	Operários de fábrica, Técnicos e engenheiros, Motoristas e operadores	Aprovado
+Indústria leve	C	Alimentos, remédios, roupas, móveis	Dentro de Essenciais e Indústria	Saúde, Empresas e estatais	Operários de fábrica, Trabalhadores de serviços básicos, Técnicos e engenheiros	Aprovado
+Indústria pesada	C	Aço, máquinas, veículos, aviões, chips	Indústria	Empresas e estatais, Comércio exterior e capital	Operários de fábrica, Técnicos e engenheiros, Gerentes, Trabalhadores de ofícios, Profissionais de tecnologia	Aprovado
+Defesa	C	Armas e veículos militares	Militar	Defesa	Operários de fábrica, Técnicos e engenheiros	Aprovado
+Energia	D	Usinas e transmissão	Capacidade à parte	Energia	Técnicos e engenheiros, Operários de fábrica, Operários de obra, Trabalhadores de ofícios	Aprovado
+Água e saneamento	E	Redes de água, esgoto e lixo	Rede à parte	Saneamento	Trabalhadores de serviços básicos, Técnicos e engenheiros, Trabalhadores de ofícios, Motoristas e operadores	Aprovado
+Construção civil	F	Empreiteiras e obras	Construção civil	Moradia, Transporte	Operários de fábrica, Operários de obra, Técnicos e engenheiros, Trabalhadores de ofícios, Motoristas e operadores	Aprovado
+Comércio	G	Atacado, lojas e mercados	Não existe	Empresas e estatais, Impostos	Trabalhadores de serviços básicos, Trabalhadores de escritório e serviços, Gerentes	Aprovado
+Transporte e logística	H	Rodovias, ferrovias, portos, aeroportos	Infraestrutura	Transporte	Trabalhadores de serviços básicos, Operários de fábrica, Técnicos e engenheiros, Motoristas e operadores	Aprovado
+Tecnologia e comunicação	J, K	Software, nuvem, redes, telefonia, mídia	Tecnologia e informação	Comunicação e tecnologia	Profissionais de tecnologia, Gerentes, Artistas e jornalistas, Técnicos e engenheiros, Trabalhadores de escritório e serviços	Aprovado
+Finanças e seguros	L	Bancos, seguradoras, corretoras	Não existe	Moeda e bancos	Trabalhadores de escritório e serviços, Gerentes, Profissionais liberais	Aprovado
+Imóveis	M	Aluguel e venda de imóveis	Moradia à parte	Moradia	Trabalhadores de escritório e serviços, Trabalhadores de serviços básicos	Aprovado
+Serviços às pessoas e empresas	I, N, O, S, T	Hotéis, restaurantes, escritórios, limpeza, turismo	Não existe	Trabalho, Cultura e esporte	Trabalhadores de serviços básicos, Gerentes, Profissionais liberais, Trabalhadores de escritório e serviços, Trabalhadores domésticos, Informais urbanos, Autônomos com negócio, Trabalhadores de ofícios, Policiais	Aprovado
+Saúde e educação privadas	Q, R	Hospitais, planos, escolas e faculdades	Redes à parte	Saúde, Educação	Profissionais de saúde, Trabalhadores de serviços básicos, Gerentes, Trabalhadores de escritório e serviços, Professores	Aprovado

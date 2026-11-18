@@ -1,0 +1,80 @@
+Setor	Prédio	Produz	Usa	Quem emprega	Dono privado comum	Hoje	Pode ser terceirizado
+Agropecuária e pesca	Fazenda de grãos e fibras	Grãos, Fibras	Máquinas, Fertilizantes	Pequenos agricultores e pescadores, Assalariados rurais, Motoristas e operadores	Proprietários rurais, Pequenos agricultores e pescadores	Parte existe	—
+Agropecuária e pesca	Pomar	Frutas	Fertilizantes	Pequenos agricultores e pescadores, Assalariados rurais	Proprietários rurais, Pequenos agricultores e pescadores	Produto já existe	—
+Agropecuária e pesca	Pecuária	Carne	Grãos	Assalariados rurais	Proprietários rurais	Novo	—
+Agropecuária e pesca	Madeireira	Madeira	Máquinas, Combustível	Assalariados rurais	Proprietários rurais	Novo	—
+Agropecuária e pesca	Pesca	Peixe	Combustível	Pequenos agricultores e pescadores	Pequenos empregadores	Novo	—
+Mineração e petróleo	Mina	Minério	Máquinas, Energia	Operários de fábrica, Técnicos e engenheiros, Motoristas e operadores	Grandes empresários	Novo	—
+Mineração e petróleo	Poço de petróleo	Petróleo	Máquinas	Operários de fábrica, Técnicos e engenheiros	Grandes empresários	Novo	—
+Mineração e petróleo	Refinaria	Combustível	Petróleo, Energia	Operários de fábrica, Técnicos e engenheiros	Grandes empresários	Novo	—
+Mineração e petróleo	Mina de terras raras	Terras raras	Máquinas, Energia	Operários de fábrica, Técnicos e engenheiros	Grandes empresários	Novo	—
+Indústria leve	Fábrica de alimentos	Alimentos	Grãos, Frutas, Carne, Peixe, Energia	Operários de fábrica, Trabalhadores de serviços básicos	Industriais	Produto já existe	—
+Indústria leve	Fábrica de bebidas e cigarros	Bebidas e cigarros	Grãos, Frutas, Energia	Operários de fábrica, Motoristas e operadores	Industriais, Grandes empresários	Novo	—
+Indústria leve	Fábrica de remédios	Remédios	Produtos químicos, Energia	Operários de fábrica, Técnicos e engenheiros	Industriais	Produto já existe	—
+Indústria leve	Fábrica de roupas	Roupas	Fibras, Energia	Operários de fábrica	Industriais, Pequenos empregadores	Novo	—
+Indústria leve	Fábrica de móveis	Móveis	Madeira	Operários de fábrica	Industriais, Pequenos empregadores	Novo	—
+Indústria leve	Oficina de joias	Joias e artigos finos	Minério	Operários de fábrica	Pequenos empregadores	Produto já existe	—
+Indústria pesada	Siderúrgica	Aço	Minério, Energia	Operários de fábrica, Técnicos e engenheiros, Gerentes	Industriais	Produto já existe	—
+Indústria pesada	Fábrica química	Produtos químicos, Fertilizantes	Petróleo, Energia	Operários de fábrica, Técnicos e engenheiros	Industriais	Novo	—
+Indústria pesada	Fábrica de máquinas	Máquinas	Aço, Energia	Operários de fábrica, Técnicos e engenheiros, Gerentes	Industriais	Produto já existe	—
+Indústria pesada	Montadora	Veículos comuns, Veículos de luxo	Aço, Máquinas, Chips, Energia	Operários de fábrica, Técnicos e engenheiros, Trabalhadores de ofícios	Industriais	Produto já existe	—
+Indústria pesada	Fábrica de aviões	Aviões	Aço, Máquinas, Chips	Operários de fábrica, Técnicos e engenheiros	Industriais	Produto já existe	—
+Indústria pesada	Fábrica de chips	Chips	Produtos químicos, Máquinas, Energia	Operários de fábrica, Técnicos e engenheiros, Profissionais de tecnologia	Grandes empresários	Produto já existe	—
+Indústria pesada	Fábrica de eletrônicos	Eletrônicos de ponta	Chips, Energia	Operários de fábrica, Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Indústria pesada	Fábrica de baterias	Baterias	Terras raras, Produtos químicos, Energia	Operários de fábrica, Técnicos e engenheiros	Industriais	Novo	—
+Indústria pesada	Fábrica de carros elétricos	Veículos elétricos	Aço, Máquinas, Chips, Baterias, Energia	Operários de fábrica, Técnicos e engenheiros, Trabalhadores de ofícios	Industriais	Novo	—
+Defesa	Fábrica de armas	Armas e munição	Aço, Produtos químicos	Operários de fábrica, Técnicos e engenheiros	Industriais	Produto já existe	—
+Defesa	Fábrica de veículos militares	Veículos e aeronaves militares	Aço, Chips, Máquinas	Operários de fábrica, Técnicos e engenheiros	Industriais	Produto já existe	—
+Defesa	Instalação nuclear militar	Bomba	Minério, Energia, Máquinas	Técnicos e engenheiros, Militares	Estado (fora da bolsa)	Novo	Não
+Energia	Hidrelétrica	Energia	Obras públicas	Técnicos e engenheiros, Operários de fábrica	Grandes empresários	Produto já existe	—
+Energia	Térmica fóssil	Energia	Combustível	Técnicos e engenheiros, Operários de fábrica	Grandes empresários	Produto já existe	—
+Energia	Usina nuclear	Energia	Minério, Máquinas	Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Energia	Usina solar	Energia	Chips, Máquinas	Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Energia	Usina eólica	Energia	Máquinas, Terras raras	Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Energia	Rede de transmissão	Transmissão	Aço, Máquinas	Técnicos e engenheiros, Operários de obra, Trabalhadores de ofícios	Grandes empresários	Novo	—
+Água e saneamento	Estação de água	Água	Energia, Produtos químicos	Trabalhadores de serviços básicos, Técnicos e engenheiros, Trabalhadores de ofícios	Grandes empresários	Novo	—
+Água e saneamento	Estação de esgoto	Esgoto tratado	Energia, Produtos químicos	Trabalhadores de serviços básicos, Técnicos e engenheiros	Grandes empresários	Novo	—
+Água e saneamento	Coleta de lixo	Coleta de lixo	Veículos comuns, Combustível	Trabalhadores de serviços básicos, Motoristas e operadores	Pequenos empregadores	Novo	—
+Construção civil	Fábrica de cimento	Cimento	Minério, Energia	Operários de fábrica	Industriais	Novo	—
+Construção civil	Construtora	Moradias	Cimento, Aço, Madeira	Operários de obra, Técnicos e engenheiros, Trabalhadores de ofícios	Industriais, Pequenos empregadores	Produto já existe	—
+Construção civil	Empreiteira	Obras públicas	Cimento, Aço, Máquinas	Operários de obra, Técnicos e engenheiros, Motoristas e operadores, Trabalhadores de ofícios	Industriais	Produto já existe	—
+Comércio	Atacado	Distribuição	Frete, Energia	Trabalhadores de serviços básicos, Trabalhadores de escritório e serviços	Grandes empresários	Novo	—
+Comércio	Pequeno mercado e loja	Varejo	Distribuição, Energia	Trabalhadores de serviços básicos, Autônomos com negócio	Pequenos empregadores	Novo	—
+Comércio	Supermercado e grande varejo	Varejo	Distribuição, Energia	Trabalhadores de serviços básicos, Trabalhadores de escritório e serviços, Gerentes	Grandes empresários	Novo	—
+Transporte e logística	Rodovia	Rodovias	Obras públicas	Trabalhadores de serviços básicos	Grandes empresários	Produto já existe	—
+Transporte e logística	Ferrovia	Ferrovias	Aço, Obras públicas, Energia	Operários de fábrica, Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Transporte e logística	Porto	Portos	Obras públicas, Máquinas	Operários de fábrica, Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Transporte e logística	Aeroporto	Aeroportos	Obras públicas, Energia	Trabalhadores de serviços básicos, Técnicos e engenheiros	Grandes empresários	Produto já existe	—
+Transporte e logística	Transportadora	Frete	Veículos comuns, Combustível, Rodovias	Trabalhadores de serviços básicos, Motoristas e operadores	Pequenos empregadores, Grandes empresários	Novo	—
+Transporte e logística	Transporte público	Viagens urbanas	Veículos comuns, Combustível	Trabalhadores de serviços básicos, Motoristas e operadores	Grandes empresários	Novo	—
+Tecnologia e comunicação	Empresa de software	Software e nuvem	Chips, Energia	Profissionais de tecnologia, Gerentes	Grandes empresários	Produto já existe	—
+Tecnologia e comunicação	Plataforma de rede social	Redes sociais	Software e nuvem	Profissionais de tecnologia, Artistas e jornalistas	Grandes empresários	Produto já existe	—
+Tecnologia e comunicação	Laboratório de inteligência artificial	Inteligência artificial	Chips, Energia, Software e nuvem	Profissionais de tecnologia	Grandes empresários	Produto já existe	—
+Tecnologia e comunicação	Operadora de internet e telefone	Internet	Chips, Energia	Técnicos e engenheiros, Trabalhadores de escritório e serviços	Grandes empresários	Novo	—
+Tecnologia e comunicação	Emissora e jornal	Notícias e entretenimento	Internet	Artistas e jornalistas, Trabalhadores de escritório e serviços	Grandes empresários	Novo	—
+Finanças e seguros	Banco	Crédito	Software e nuvem	Trabalhadores de escritório e serviços, Gerentes	Rentistas e investidores, Grandes empresários	Novo	—
+Finanças e seguros	Seguradora	Seguros	Software e nuvem	Trabalhadores de escritório e serviços	Rentistas e investidores	Novo	—
+Finanças e seguros	Corretora	Negociação de ações	Software e nuvem	Trabalhadores de escritório e serviços, Profissionais liberais	Rentistas e investidores	Novo	—
+Imóveis	Imobiliária	Aluguel de casas	Moradias	Trabalhadores de escritório e serviços	Rentistas e investidores, Pequenos empregadores	Novo	—
+Imóveis	Prédio de escritórios	Aluguel comercial	Energia	Trabalhadores de serviços básicos	Rentistas e investidores	Novo	—
+Serviços às pessoas e empresas	Hotel e restaurante	Turismo e refeições	Alimentos, Energia	Trabalhadores de serviços básicos, Gerentes	Pequenos empregadores, Grandes empresários	Novo	—
+Serviços às pessoas e empresas	Casa de apostas	Apostas	Software e nuvem, Energia	Trabalhadores de serviços básicos, Profissionais de tecnologia	Grandes empresários	Novo	—
+Serviços às pessoas e empresas	Escritório de serviços	Serviços às empresas	Software e nuvem	Profissionais liberais, Trabalhadores de escritório e serviços	Profissionais liberais	Novo	—
+Serviços às pessoas e empresas	Empresa de limpeza e apoio	Limpeza e apoio	Produtos químicos	Trabalhadores de serviços básicos	Pequenos empregadores	Novo	—
+Serviços às pessoas e empresas	Trabalho em casas	Cuidado da casa	—	Trabalhadores domésticos	Os próprios trabalhadores	Novo	—
+Serviços às pessoas e empresas	Negócio informal	Bicos e venda de rua	Varejo	Informais urbanos	Os próprios trabalhadores	Novo	—
+Serviços às pessoas e empresas	Oficina e pequeno negócio	Consertos e serviços locais	Máquinas, Energia	Autônomos com negócio, Trabalhadores de ofícios	Pequenos empregadores	Novo	—
+Serviços às pessoas e empresas	Empresa de segurança privada	Vigilância e segurança terceirizada	Veículos comuns	Policiais, Trabalhadores de serviços básicos	Grandes empresários, Pequenos empregadores	Novo	—
+Serviços às pessoas e empresas	Presídio privado	Custódia terceirizada	Alimentos, Energia	Policiais, Trabalhadores de serviços básicos	Grandes empresários	Novo	—
+Saúde e educação privadas	Hospital privado	Atendimento privado	Remédios, Energia	Profissionais de saúde, Trabalhadores de serviços básicos, Gerentes	Grandes empresários, Profissionais liberais	Novo	—
+Saúde e educação privadas	Plano de saúde	Planos	Atendimento privado, Software e nuvem	Trabalhadores de escritório e serviços	Rentistas e investidores	Novo	—
+Saúde e educação privadas	Escola privada	Ensino privado	Energia	Professores, Trabalhadores de serviços básicos	Pequenos empregadores	Novo	—
+Saúde e educação privadas	Faculdade privada	Ensino superior privado	Energia, Software e nuvem	Professores, Trabalhadores de escritório e serviços	Grandes empresários	Novo	—
+Serviço do Estado	Hospital público	Atendimento público	Remédios, Energia	Profissionais de saúde, Trabalhadores de serviços básicos	Estado	Novo	Sim: Gestão privada
+Serviço do Estado	Escola e universidade pública	Ensino público	Energia	Professores, Trabalhadores de serviços básicos	Estado	Novo	Sim: a criar
+Serviço do Estado	Delegacia	Segurança	Veículos comuns, Energia	Policiais, Servidores administrativos	Estado	Novo	Sim: Segurança terceirizada
+Serviço do Estado	Tribunal	Justiça	Software e nuvem, Energia	Servidores administrativos, Altos funcionários	Estado	Novo	Não
+Serviço do Estado	Presídio público	Custódia	Alimentos, Energia	Policiais, Trabalhadores de serviços básicos	Estado	Novo	Sim: Presídio terceirizado
+Serviço do Estado	Quartel	Defesa	Armas e munição, Veículos e aeronaves militares	Militares	Estado	Novo	Não
+Serviço do Estado	Repartição pública	Administração	Software e nuvem, Energia	Servidores administrativos, Altos funcionários	Estado	Novo	Não
+Serviço do Estado	Polo de pesquisa	Pesquisa, Técnicos formados	Chips, Software e nuvem, Energia	Técnicos e engenheiros, Profissionais de tecnologia	Estado	Novo	Não

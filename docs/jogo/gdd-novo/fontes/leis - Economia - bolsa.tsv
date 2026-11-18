@@ -1,0 +1,25 @@
+Parte	Peça	No jogo pronto (proposta)	Como está hoje	Esfera	Situação
+Sozinha	Empresas na bolsa	Empresas privadas e mistas abrem capital; prédios delas geram o lucro	5 empresas de protótipo	Sem decisão do jogador	Parcial: só tela
+Sozinha	Preço da ação	Lucro × múltiplo. O múltiplo sobe com confiança e cai com medo	Preço de protótipo, não vem do lucro	Sem decisão do jogador	Parcial: só tela
+Sozinha	Investidores	Pops, fundos, multinacionais e potências compram e vendem por conta própria, com caixa real	Compradores de protótipo	Sem decisão do jogador	Parcial: só tela
+Sozinha	Dividendo	Parte do lucro vai aos acionistas e vira renda ou nova ação	Não existe	Sem decisão do jogador	Falta
+Sozinha	Captação	Empresa vende ação e paga prédios novos	Não existe	Sem decisão do jogador	Falta
+Sozinha	Alta e queda	Ciclos, bolha e quebra nascem do lucro, do crédito e da confiança	Não existe	Sem decisão do jogador	Falta
+Base	Criar o mercado	Propriedade e contratos valem. Sem isso, pouca gente investe	Leis de indenização existem, sem efeito	Empresas e estatais, Justiça e prisões	Parcial
+Base	Regular o mercado	Empresas mostram contas; fraude é punida. Sem isso, a confiança cai	Não existe	Moeda e bancos	Falta
+Base	Estabilizar	Juros, inflação e bancos previsíveis. Sem isso, crises ficam mais fundas	Juros existem; a inflação está parada	Moeda e bancos, Orçamento e dívida	Parcial
+Base	Legitimar	Proteção social segura o apoio ao mercado. Sem isso, cresce a pressão contra ele	Só a Transferência de renda	Assistência social, Previdência	Parcial
+Regulamentar	Transparência das empresas	Ideia de lei: exige contas abertas. Ganho: confiança. Custo: despesa para empresas	Não existe	Moeda e bancos	Falta
+Regulamentar	Proteção do pequeno acionista	Ideia de lei: protege quem tem pouca ação. Ganho: mais gente investe. Custo: menos poder aos controladores	Não existe	Moeda e bancos	Falta
+Regulamentar	Informação privilegiada	Ideia de lei: pune negociar com segredo. Ganho: mercado justo. Custo: fiscalização	Não existe	Moeda e bancos, Justiça e prisões	Falta
+Regulamentar	Órgão da bolsa	Ideia de lei: verba para fiscalizar. Pouca não pega fraude; demais vira corrupção	Não existe	Moeda e bancos	Falta
+Regulamentar	Limite de risco dos bancos	Ideia de lei: limita aposta com crédito. Ganho: menos quebra. Custo: menos crédito	Não existe	Moeda e bancos	Falta
+Regulamentar	Imposto sobre ganhos na bolsa	Ideia de lei: taxa lucro em ações. Ganho: dinheiro. Custo: capital pode sair	Não existe	Impostos	Falta
+Entrar	Comprar e vender ações	O Estado negocia como investidor; dividendo vai ao cofre	Protótipo muda só a tela	Empresas e estatais	Parcial: só tela
+Entrar	Estatizar ou criar estatal	Vira dono e pode mandar na empresa	Leis existem, sem efeito	Empresas e estatais	Parcial
+Entrar	Fundo do Estado	Ideia de lei: guarda dinheiro em ações. Ganho: renda futura. Custo: risco e pressão política	Não existe	Orçamento e dívida	Falta
+Entrar	Socorro	Salva empresa ou banco. Ganho: evita quebra. Custo: dívida e risco de repetir	Não existe	Orçamento e dívida	Falta
+Caminho	País liberal	Regula o mínimo para o mercado funcionar. Ganho: capital e crescimento. Custo: ciclos e desigualdade. Precisa: contratos fortes e regras claras	Não existe	Base da bolsa	Falta
+Caminho	País coordenado	Empresas, bancos e sindicatos negociam. Ganho: estabilidade. Custo: mudança mais lenta. Precisa: acordos que durem	Não existe	Trabalho, Moeda e bancos	Falta
+Caminho	País com Estado dono	O Estado controla as grandes empresas. Ganho: dirige investimento. Custo: menos concorrência. Precisa: gestão competente e pouca corrupção	Não existe	Empresas e estatais	Falta
+Regulamentar	Pausa do pregão	Ideia de lei: para a negociação em queda forte. Ganho: tempo para acalmar. Custo: alguns correm para vender antes	Não existe	Moeda e bancos	Falta

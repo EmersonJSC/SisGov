@@ -1,0 +1,26 @@
+Tipo	Grupo	Quem entra	O que defende	Divisão social	Mudança	Econômico (− esquerda, + direita)	Social (− libertário, + tradicional)	Cobra	Tamanho (país de teste)	Pode pegar em armas	Organização (1 a 5)	Dinheiro (1 a 5)
+Econômico	Sindicatos	Parte dos empregados formais, mais forte em fábrica, obra e transporte	Salário, emprego e direitos do trabalho	Dono × trabalhador	Vem de Operários	-0.55	0.15	mais Padrão de vida, menos Desemprego, mais Saúde	0.030825	Rara	4	2
+Econômico	Sem trabalho formal	Informais, desempregados e parte de quem cuida da casa	Renda, bicos e proteção	Dono × trabalhador	Fica	-0.35	0.15	menos Desemprego, menos Pobreza, menos Favela, mais Atendimento	0.1215	Possível	1	1
+Econômico	Servidores públicos	Servidores e altos funcionários	Carreira, salário e tamanho do Estado	—	Vem de Burocracia	-0.05	0.25	menos Inflação, menos Corrupção	0.0078	Nunca	4	2
+Econômico	Educação e saúde	Professores e profissionais de saúde	Verba e carreira dos serviços	—	Fica	-0.4	-0.25	mais Instrução, mais Saúde, mais Profissionais de saúde	0.0132	Nunca	4	2
+Econômico	Pequenos negócios	Pequenos empregadores e autônomos com negócio	Menos imposto e menos burocracia	Dono × trabalhador	Vem de Pequeno comércio	0.4	0.3	menos Inflação, menos Juros, mais Segurança pública	0.0288	Rara	2	3
+Econômico	Classe profissional	Técnicos, escritório, tecnologia e liberais	Renda, serviços e estabilidade	—	Vem de Escritório, técnicos e tecnologia	0.15	-0.05	menos Inflação, menos Corrupção, mais Instrução, menos Preço da moradia	0.048	Nunca	2	3
+Econômico	Indústria e grandes empresas	Donos, gerentes e parte de técnicos	Lucro, proteção e infraestrutura	Campo × indústria	Fica	0.65	0.05	mais Crescimento, menos Juros, mais Industrialização	0.0069	Nunca	5	5
+Econômico	Finanças	Rentistas, bancos e parte dos ricos	Juros, bolsa e estabilidade	Dono × trabalhador	Fica	0.65	0	menos Dívida, mais Juros, menos Inflação	0.0005999999999999999	Nunca	5	5
+Econômico	Agronegócio	Proprietários rurais e parte de assalariados rurais	Terra, crédito e exportação	Campo × indústria	Vem de Donos de terra	0.7	0.6	mais Crescimento, mais Abastecimento	0.0005999999999999999	Possível	4	5
+Econômico	Agricultura familiar e sem-terra	Pequenos agricultores, pescadores e assalariados rurais	Terra, crédito e preço justo	Campo × indústria	Vem de Gente do campo	-0.3	0.4	mais Abastecimento, menos Pobreza, menos Concentração de terra	0.0246	Possível	3	1
+Identidade e valores	Religiosos conservadores	Parte de vários pops, maior em idade alta e campo	Família, moral e espaço da religião	Estado × igreja	Novo	0.1	0.8	menos Dependência de drogas, menos Dependência de jogos, mais Segurança pública	0.123586	Possível	4	3
+Identidade e valores	Religiosos sociais	Parte de vários pops, maior entre pobres	Caridade, renda e paz	Estado × igreja	Novo	-0.4	0.4	menos Pobreza, menos Desigualdade	0.08212	Nunca	3	2
+Identidade e valores	Laicos	Parte de vários pops, maior em cidade e escolaridade alta	Separar Estado e religião	Estado × igreja	Novo	0	-0.5	mais Liberdades	0.05414600000000001	Nunca	2	1
+Identidade e valores	Direitos e minorias	Parte de vários pops, maior em jovens e cidade	Igualdade e liberdades	—	Novo	-0.3	-0.7	mais Liberdades, menos Desigualdade	0.0666614	Rara	3	2
+Identidade e valores	Povos originários	Parte dos pops do campo	Terra e proteção cultural	Centro × periferia	Novo	-0.3	-0.4	mais Meio ambiente, menos Concentração de terra	0.008265750000000001	Rara	2	1
+Identidade e valores	Regionalistas	Parte dos pops de uma região	Mais poder e verba para a região	Centro × periferia	Novo	0	0.2	mais Padrão de vida, mais Saneamento	0.04626575	Possível	2	2
+Identidade e valores	Nacionalistas	Parte de vários pops	Soberania, indústria nacional e fronteiras	Centro × periferia	Novo	0.1	0.7	mais Industrialização, mais Segurança externa	0.05480000000000001	Possível	3	2
+Identidade e valores	Aposentados e idosos	Aposentados e parte dos mais velhos	Previdência e saúde	Geração	Vem de Aposentados	-0.1	0.5	mais Saúde, menos Inflação, mais Atendimento	0.129395	Nunca	3	2
+Identidade e valores	Jovens e estudantes	Estudantes e parte dos mais jovens	Escola, emprego e liberdade	Geração	Vem de Estudantes	-0.3	-0.6	mais Instrução, menos Desemprego, menos Preço da moradia	0.08921000000000001	Possível	3	1
+Causa	Ambientalistas	Parte de vários pops, maior em escolaridade alta	Natureza, clima e terras protegidas	—	Fica	-0.2	-0.7	mais Meio ambiente	0.04819885	Rara	3	2
+Causa	Armamentistas	Parte de vários pops, maior no campo	Direito às armas	—	Novo	0.4	0.6	mais Segurança pública	0.0446378	Alta	3	3
+Causa	Lei e ordem	Parte de vários pops, militares e polícia	Punição e polícia forte	—	Novo	0.3	0.75	mais Segurança pública, menos Mercado ilegal	0.082885	Possível	3	3
+Causa	Militares e polícia	Militares e policiais	Verba, carreira e respeito	—	Fica	0.2	0.7	mais Segurança pública, mais Poder defensivo, mais Segurança externa	0.007200000000000001	Alta	5	3
+Causa	Liberais de mercado	Parte de vários pops, maior em empresários e tecnologia	Menos Estado e mais concorrência	—	Novo	0.8	-0.4	mais Crescimento, mais Liberdades, menos Dívida	0.020775	Nunca	3	4
+Causa	Cultura e imprensa	Artistas, jornalistas e parte de estudantes	Liberdade e verba cultural	—	Fica	-0.4	-0.7	mais Liberdades, menos Corrupção	0.0018	Nunca	3	2

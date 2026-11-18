@@ -1,0 +1,285 @@
+[
+ {
+  "parte": 1,
+  "arquivos": [
+   "1.1-visao.md",
+   "1.2-as-3-mecanicas.md",
+   "1.3-principios-as-regras-que-nunca-mudam.md"
+  ],
+  "linhas": 144,
+  "id": "P1-L01"
+ },
+ {
+  "parte": 1,
+  "arquivos": [
+   "1.4-a-partida-comeco-mandato-e-fim.md",
+   "1.5-o-turno.md"
+  ],
+  "linhas": 101,
+  "id": "P1-L02"
+ },
+ {
+  "parte": 2,
+  "arquivos": [
+   "2.0-parte-2-sociedade-a-populacao-e-como-ela.md",
+   "2.1-pops-e-renda.md",
+   "2.2-demografia-vida.md",
+   "2.3-padrao-de-vida.md"
+  ],
+  "linhas": 127,
+  "id": "P2-L03"
+ },
+ {
+  "parte": 2,
+  "arquivos": [
+   "2.4-opiniao-interesse-ideologia-e-memoria.md",
+   "2.4a-a-rede-da-pessoa.md",
+   "2.5-bussola.md",
+   "2.6-grupos-de-interesse.md"
+  ],
+  "linhas": 200,
+  "id": "P2-L04"
+ },
+ {
+  "parte": 2,
+  "arquivos": [
+   "2.7-organizacoes.md",
+   "2.8-saida-e-voz-informal-emigrar-tirar-dinhe.md",
+   "2.9-territorio-estados.md"
+  ],
+  "linhas": 129,
+  "id": "P2-L05"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.0-parte-3-economia.md",
+   "3.1-mercado-e-produtos.md"
+  ],
+  "linhas": 145,
+  "id": "P3-L06"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.2-empresas-predios-e-obras.md",
+   "3.3-mercado-de-trabalho.md",
+   "3.4-propriedade-e-lucro.md"
+  ],
+  "linhas": 199,
+  "id": "P3-L07"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.5-consumo-e-necessidades.md",
+   "3.6-fluxo-do-dinheiro-nenhum-dinheiro-some.md",
+   "3.7-sistema-monetario-e-financeiro.md"
+  ],
+  "linhas": 188,
+  "id": "P3-L08"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.8-mercado-de-capitais-bolsa.md",
+   "3.9-companhias-e-estatais-operacoes-do-estad.md",
+   "3.10-setor-externo.md",
+   "3.11-setores-com-regra-propria.md"
+  ],
+  "linhas": 186,
+  "id": "P3-L09"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.11.1-energia-08-nov.md",
+   "3.11.2-moradia-e-terra-campo-cidade.md",
+   "3.11.3-agua-e-saneamento.md",
+   "3.11.4-agricultura-e-pesca-09-nov.md"
+  ],
+  "linhas": 176,
+  "id": "P3-L10"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.11.5-ciencia-e-pesquisa-09-nov.md",
+   "3.11.6-meio-ambiente-09-nov.md",
+   "3.11.7-construcao-civil-09-nov.md",
+   "3.11.8-transporte-09-nov.md",
+   "3.11.9-cultura-e-patrimonio-09-nov.md",
+   "3.11.10-defesa-civil-09-nov.md"
+  ],
+  "linhas": 183,
+  "id": "P3-L11"
+ },
+ {
+  "parte": 3,
+  "arquivos": [
+   "3.11.11-minerio-e-petroleo-09-nov.md",
+   "3.11.12-servicos-do-estado.md",
+   "3.12-financas-publicas.md"
+  ],
+  "linhas": 152,
+  "id": "P3-L12"
+ },
+ {
+  "parte": 4,
+  "arquivos": [
+   "4.0-parte-4-maquina-publica-as-leis-e-quem-a.md",
+   "4.1-o-que-e-uma-lei.md",
+   "4.2-tipos-de-lei.md",
+   "4.3-jeitos-regua-verba-e-niveis.md"
+  ],
+  "linhas": 165,
+  "id": "P4-L13"
+ },
+ {
+  "parte": 4,
+  "arquivos": [
+   "4.4-instrumentos-canais-como-a-lei-chega-ao.md",
+   "4.5-ponto-doce-e-regulador.md",
+   "4.6-escassezes-e-o-que-torna-a-lei-jogavel.md",
+   "4.7-nome-e-texto-da-lei.md",
+   "4.8-programas.md"
+  ],
+  "linhas": 190,
+  "id": "P4-L14"
+ },
+ {
+  "parte": 4,
+  "arquivos": [
+   "4.9-processos.md",
+   "4.10-colisao-e-revogar.md",
+   "4.11-lei-pela-instituicao.md",
+   "4.12-roteiro-da-lei-8-passos.md",
+   "4.13-implementacao-forca-e-atraso.md",
+   "4.14-processo-de-revisao-por-instituicao.md"
+  ],
+  "linhas": 191,
+  "id": "P4-L15"
+ },
+ {
+  "parte": 4,
+  "arquivos": [
+   "4.15-lei-boa-e-lei-ruim.md",
+   "4.16-indices.md",
+   "4.17-servicos-do-estado-e-vicios.md"
+  ],
+  "linhas": 173,
+  "id": "P4-L16"
+ },
+ {
+  "parte": 4,
+  "arquivos": [
+   "4.18-instituicoes.md",
+   "4.19-ministros.md",
+   "4.20-ministerios-caixas.md",
+   "4.21-a-fronteira-do-governo.md"
+  ],
+  "linhas": 127,
+  "id": "P4-L17"
+ },
+ {
+  "parte": 5,
+  "arquivos": [
+   "5.0-parte-5-politica.md",
+   "5.1-partido-e-chapa.md",
+   "5.2-presidente-e-vice.md",
+   "5.3-sucessao.md",
+   "5.4-pessoas-fichas.md",
+   "5.5-congresso-e-coligacao-o-coracao-do-voto.md"
+  ],
+  "linhas": 191,
+  "id": "P5-L18"
+ },
+ {
+  "parte": 5,
+  "arquivos": [
+   "5.6-eleicao-campanha-e-mandatos.md",
+   "5.7-judiciario-e-justica-e-prisoes.md",
+   "5.8-governadores.md",
+   "5.9-como-se-perde-o-poder.md"
+  ],
+  "linhas": 179,
+  "id": "P5-L19"
+ },
+ {
+  "parte": 5,
+  "arquivos": [
+   "5.10-caminho-autoritario.md"
+  ],
+  "linhas": 30,
+  "id": "P5-L20"
+ },
+ {
+  "parte": 6,
+  "arquivos": [
+   "6.0-parte-6-midia.md",
+   "6.1-a-midia-como-lente-das-tres-mecanicas.md",
+   "6.2-emissoras-e-redes.md",
+   "6.3-noticiario-jornal-e-pauta.md",
+   "6.4-fato-e-versao-mentira-escandalo-e-vazame.md",
+   "6.5-a-midia-muda-o-lado-do-pop-e-mobiliza-a.md",
+   "6.6-atos-do-presidente-e-leis-de-midia.md"
+  ],
+  "linhas": 186,
+  "id": "P6-L21"
+ },
+ {
+  "parte": 7,
+  "arquivos": [
+   "7.1-os-paises-e-as-fichas.md",
+   "7.2-a-ia-dos-paises-e-o-cardapio.md",
+   "7.3-opiniao-relacao-e-reputacao.md",
+   "7.4-comercio-e-precos-de-fora.md",
+   "7.5-posicoes-por-pais-atos-sancoes-e-alianca.md",
+   "7.6-seguranca-externa-ataque-e-guerra-fora-d.md"
+  ],
+  "linhas": 188,
+  "id": "P7-L22"
+ },
+ {
+  "parte": 8,
+  "arquivos": [
+   "8.0-parte-8-tela.md",
+   "8.1-mapa.md",
+   "8.2-mesa-assinar-e-carimbar.md",
+   "8.3-janelas-mercado-governo-programas-eleica.md"
+  ],
+  "linhas": 160,
+  "id": "P8-L23"
+ },
+ {
+  "parte": 8,
+  "arquivos": [
+   "8.4-o-comum-as-duas-telas.md",
+   "8.5-tela-inicial-e-comeco-da-partida-em-pass.md",
+   "8.6-salvar-e-carregar.md",
+   "8.7-icones-e-direcao-de-arte-so-o-que-define.md"
+  ],
+  "linhas": 164,
+  "id": "P8-L24"
+ },
+ {
+  "parte": 8,
+  "arquivos": [
+   "8.8-sisgovpedia-dicas-em-camadas.md"
+  ],
+  "linhas": 39,
+  "id": "P8-L25"
+ },
+ {
+  "parte": 9,
+  "arquivos": [
+   "9.1-a-mesa-de-fatos.md",
+   "9.2-gatilhos.md",
+   "9.3-eventos-e-crises.md",
+   "9.4-atos-com-custo-e-duracao.md",
+   "9.5-o-acaso-e-a-deriva.md"
+  ],
+  "linhas": 134,
+  "id": "P9-L26"
+ }
+]

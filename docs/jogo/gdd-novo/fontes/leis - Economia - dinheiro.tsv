@@ -1,0 +1,17 @@
+Parte	Peça	Como funciona	Base	Situação
+Juros	Banco Central	Sobe juros com inflação alta e reduz com economia fraca, se tiver autonomia	Regra de Taylor; lei de autonomia	Parcial
+Juros	Juros de mercado	Juros básicos + risco do país. Afeta crédito, dívida, múltiplo e câmbio	Já há juros por dívida e inflação	Parcial
+Crédito	Bancos	Pegam depósitos e reserva dos pops e emprestam a pops, prédios e Estado	Prédio Banco	Falta
+Crédito	Quanto emprestam	Sobe com confiança e lucro; cai com juros, calote e regra dura	Canal de crédito	Falta
+Crédito	Calote	Crise aumenta calote, banco reduz crédito e obras param	Canal de crédito	Falta
+Crédito	Crédito popular	Pop compra casa, carro e ação com crédito e paga parcela	Moradia já tem crédito imobiliário	Parcial
+Inflação	Demanda	Sobe quando procura passa da oferta	RBA	Falta
+Inflação	Custo	Sobe com salário, energia, insumos e câmbio	RBA	Falta
+Inflação	Expectativa	Se todos esperam inflação, salários e preços sobem junto	RBA; Banco Central com confiança segura	Falta
+Inflação	Moeda	Emissão sem produção aumenta preços	GDD: emissão paga em inflação	Falta
+Câmbio	Taxa	Valor da moeda contra o mundo. Sobe e desce por comércio, juros e Confiança do mercado	Novo	Falta
+Câmbio	Moeda fraca	Exporta mais, mas importados e dívida externa encarecem	Repasse do câmbio; maior em países emergentes	Falta
+Câmbio	Moeda forte	Importa barato, mas indústria sofre concorrência	Novo	Falta
+Câmbio	Regime	País escolhe dois de três: câmbio estável, capital livre, juros próprios	Trindade impossível	Falta
+Câmbio	Reservas	Dinheiro de fora que segura o câmbio; quando acaba, a moeda cai	Novo	Falta
+Ligação	Exterior	Comércio, investimento e sanções passam pelo câmbio	Mundo	Falta

@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personagens detalhados (maquete)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --papel: #f1e8d2;
+        --preto: #1c1a1a;
+        --vermelho: #d8362b;
+        --azul: #1f4e8c;
+        --amarelo: #f4b81c;
+        --verde: #2f7d5b;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background: var(--papel);
+        color: var(--preto);
+        font-family: "Oswald", Impact, sans-serif;
+        padding: 24px 16px 40px;
+        min-height: 100vh;
+      }
+      h1 {
+        font-size: clamp(30px, 5vw, 48px);
+        text-transform: uppercase;
+        max-width: 1100px;
+        margin: 0 auto 6px;
+      }
+      .sub {
+        max-width: 1100px;
+        margin: 0 auto 26px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .grade {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+      }
+      figure {
+        background: var(--papel);
+        border: 4px solid var(--preto);
+        box-shadow: 7px 7px 0 var(--azul);
+        padding: 12px 12px 14px;
+      }
+      figure:nth-child(even) {
+        transform: rotate(1deg);
+        box-shadow: 7px 7px 0 var(--vermelho);
+      }
+      figure:nth-child(odd) {
+        transform: rotate(-1deg);
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 3px solid var(--preto);
+      }
+      figcaption {
+        margin-top: 12px;
+      }
+      .nome {
+        display: block;
+        font-size: 26px;
+        font-weight: 700;
+      }
+      .cargo {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      .frase {
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+        margin-top: 8px;
+        border-top: 2px dashed var(--preto);
+        padding-top: 8px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        figure {
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Quem vai governar</h1>
+    <p class="sub">
+      Quatro retratos de meio corpo, com contorno, sombra em blocos e um objeto
+      que diz o cargo.
+    </p>
+
+    <main class="grade">
+      <figure>
+        <svg
+          viewBox="0 0 240 300"
+          role="img"
+          aria-label="Economista de mercado, mulher de cabelo curto com mecha grisalha, blazer azul e gráfico nas mãos"
+        >
+          <!-- fundo -->
+          <rect width="240" height="300" fill="#F4B81C" />
+          <g stroke="#1C1A1A" stroke-width="2" opacity=".35">
+            <line x1="120" y1="120" x2="0" y2="20" />
+            <line x1="120" y1="120" x2="240" y2="20" />
+            <line x1="120" y1="120" x2="0" y2="120" />
+            <line x1="120" y1="120" x2="240" y2="120" />
+            <line x1="120" y1="120" x2="30" y2="230" />
+            <line x1="120" y1="120" x2="210" y2="230" />
+          </g>
+          <!-- corpo: blazer -->
+          <path
+            d="M22 300 C26 232 66 210 120 210 C174 210 214 232 218 300 Z"
+            fill="#1F4E8C"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path d="M120 210 C104 226 92 250 96 300 L120 300 Z" fill="#17407a" />
+          <path
+            d="M120 210 C136 226 148 250 144 300 L120 300 Z"
+            fill="#17407a"
+          />
+          <!-- camisa -->
+          <path
+            d="M104 208 L120 252 L136 208 Z"
+            fill="#F1E8D2"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <!-- pescoço e rosto -->
+          <rect
+            x="106"
+            y="176"
+            width="28"
+            height="40"
+            fill="#8A5A3B"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M106 196 Q120 206 134 196 L134 210 Q120 218 106 210 Z"
+            fill="#6E4430"
+          />
+          <ellipse
+            cx="120"
+            cy="128"
+            rx="54"
+            ry="64"
+            fill="#8A5A3B"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M66 136 Q70 150 84 152 Q96 156 102 178 Q88 170 72 162 Z"
+            fill="#6E4430"
+          />
+          <path
+            d="M174 136 Q170 150 156 152 Q144 156 138 178 Q152 170 168 162 Z"
+            fill="#6E4430"
+          />
+          <!-- cabelo: bob com mecha -->
+          <path
+            d="M62 128 C54 70 86 44 122 44 C158 44 186 70 178 128 C172 102 158 84 120 84 C88 86 70 102 62 128 Z"
+            fill="#1C1A1A"
+          />
+          <path
+            d="M150 52 C166 70 174 96 176 124 C170 104 160 92 150 88 Z"
+            fill="#9A9A9A"
+          />
+          <path
+            d="M66 110 C64 88 78 76 96 72 C84 84 76 98 74 120 Z"
+            fill="#2c2a28"
+          />
+          <!-- olhos, sobrancelha, boca -->
+          <path
+            d="M92 124 Q100 118 108 124"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <path
+            d="M132 124 Q140 118 148 124"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <circle cx="100" cy="133" r="5" fill="#1C1A1A" />
+          <circle cx="140" cy="133" r="5" fill="#1C1A1A" />
+          <path
+            d="M96 164 Q120 176 144 164"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <path d="M100 150 L120 158" stroke="#6E4430" stroke-width="3" />
+          <!-- gráfico nas mãos -->
+          <rect
+            x="70"
+            y="236"
+            width="100"
+            height="62"
+            fill="#F1E8D2"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            transform="rotate(-4 120 267)"
+          />
+          <rect x="84" y="270" width="14" height="18" fill="#2F7D5B" />
+          <rect x="104" y="258" width="14" height="30" fill="#D8362B" />
+          <rect x="124" y="250" width="14" height="38" fill="#1F4E8C" />
+          <rect
+            x="144"
+            y="262"
+            width="14"
+            height="26"
+            fill="#F4B81C"
+            stroke="#1C1A1A"
+            stroke-width="2"
+          />
+        </svg>
+        <figcaption>
+          <span class="nome">Nome exemplo 1</span>
+          <span class="cargo">Economista de mercado</span>
+          <span class="frase"
+            >Cresce a economia primeiro e paga a conta depois.</span
+          >
+        </figcaption>
+      </figure>
+
+      <figure>
+        <svg
+          viewBox="0 0 240 300"
+          role="img"
+          aria-label="Líder sindical, homem de bigode e boné azul, camisa vermelha de mangas dobradas e megafone"
+        >
+          <rect width="240" height="300" fill="#F1E8D2" />
+          <path
+            d="M0 40 L240 110 L240 130 L0 60 Z"
+            fill="#1F4E8C"
+            opacity=".9"
+          />
+          <path
+            d="M0 170 L240 230 L240 250 L0 190 Z"
+            fill="#1F4E8C"
+            opacity=".9"
+          />
+          <!-- corpo: camisa vermelha -->
+          <path
+            d="M14 300 C18 236 62 214 120 214 C178 214 222 236 226 300 Z"
+            fill="#D8362B"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M120 214 C100 232 96 262 100 300 L120 300 Z"
+            fill="#b82b22"
+          />
+          <!-- braço com megafone -->
+          <path
+            d="M186 232 C200 240 206 256 200 270 L182 264 Z"
+            fill="#C98E5F"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path d="M190 210 L232 186 L240 202 L198 226 Z" fill="#1C1A1A" />
+          <path
+            d="M196 206 L230 186 L234 192 L200 214 Z"
+            fill="#F1E8D2"
+            stroke="#1C1A1A"
+            stroke-width="2"
+          />
+          <!-- pescoço e rosto -->
+          <rect
+            x="106"
+            y="176"
+            width="28"
+            height="40"
+            fill="#C98E5F"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M106 196 Q120 206 134 196 L134 212 Q120 220 106 212 Z"
+            fill="#A6714A"
+          />
+          <ellipse
+            cx="120"
+            cy="128"
+            rx="56"
+            ry="62"
+            fill="#C98E5F"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M66 110 Q74 96 96 104 Q120 112 144 104 Q166 96 174 110 Q170 140 160 170 Q140 184 120 184 Q100 184 80 170 Q70 140 66 110 Z"
+            fill="#A6714A"
+            opacity=".5"
+          />
+          <!-- boné -->
+          <path
+            d="M62 98 C64 62 90 46 120 46 C150 46 176 62 178 98 Z"
+            fill="#1F4E8C"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M54 98 L186 98 L186 106 L54 106 Z"
+            fill="#17407a"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path d="M120 46 L120 98" stroke="#17407a" stroke-width="3" />
+          <!-- sobrancelhas, olhos, bigode, boca gritando -->
+          <path
+            d="M90 122 L110 116"
+            stroke="#1C1A1A"
+            stroke-width="6"
+            stroke-linecap="round"
+          />
+          <path
+            d="M150 122 L130 116"
+            stroke="#1C1A1A"
+            stroke-width="6"
+            stroke-linecap="round"
+          />
+          <circle cx="100" cy="132" r="5" fill="#1C1A1A" />
+          <circle cx="140" cy="132" r="5" fill="#1C1A1A" />
+          <path
+            d="M92 156 Q120 146 148 156 Q140 160 120 158 Q100 160 92 156 Z"
+            fill="#1C1A1A"
+          />
+          <path d="M104 166 Q120 186 136 166 Z" fill="#1C1A1A" />
+          <path
+            d="M110 170 Q120 178 130 170 Q120 174 110 170 Z"
+            fill="#D8362B"
+          />
+        </svg>
+        <figcaption>
+          <span class="nome">Nome exemplo 2</span>
+          <span class="cargo">Líder sindical</span>
+          <span class="frase"
+            >O trabalhador primeiro, e a conta vem depois do salário.</span
+          >
+        </figcaption>
+      </figure>
+
+      <figure>
+        <svg
+          viewBox="0 0 240 300"
+          role="img"
+          aria-label="Ex-militar gestor de obra, homem de cabelo grisalho, óculos e camisa verde com crachá, capacete amarelo no ombro"
+        >
+          <rect width="240" height="300" fill="#2F7D5B" />
+          <g fill="#266a4c">
+            <rect x="0" y="0" width="40" height="40" />
+            <rect x="80" y="0" width="40" height="40" />
+            <rect x="160" y="0" width="40" height="40" />
+            <rect x="40" y="40" width="40" height="40" />
+            <rect x="120" y="40" width="40" height="40" />
+            <rect x="200" y="40" width="40" height="40" />
+          </g>
+          <!-- corpo: camisa verde escura -->
+          <path
+            d="M14 300 C18 236 62 214 120 214 C178 214 222 236 226 300 Z"
+            fill="#1f5f44"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M120 214 C104 232 100 262 104 300 L120 300 Z"
+            fill="#184d37"
+          />
+          <!-- crachá e medalha -->
+          <rect
+            x="84"
+            y="236"
+            width="36"
+            height="26"
+            fill="#F1E8D2"
+            stroke="#1C1A1A"
+            stroke-width="3"
+          />
+          <rect x="90" y="242" width="24" height="4" fill="#1C1A1A" />
+          <rect x="90" y="250" width="16" height="4" fill="#1C1A1A" />
+          <!-- capacete amarelo no ombro -->
+          <path
+            d="M150 210 C172 206 200 220 204 246 C200 252 170 254 152 240 Z"
+            fill="#F4B81C"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M160 224 Q176 226 190 236"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="3"
+          />
+          <!-- pescoço e rosto -->
+          <rect
+            x="106"
+            y="176"
+            width="28"
+            height="40"
+            fill="#E0B088"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M106 196 Q120 206 134 196 L134 212 Q120 220 106 212 Z"
+            fill="#C4956A"
+          />
+          <ellipse
+            cx="120"
+            cy="126"
+            rx="56"
+            ry="62"
+            fill="#E0B088"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M140 130 Q160 150 150 178 Q132 184 120 184 Q148 168 140 130 Z"
+            fill="#C4956A"
+            opacity=".7"
+          />
+          <!-- cabelo grisalho curto -->
+          <path
+            d="M66 110 C66 70 94 60 120 60 C150 60 174 70 174 110 C166 88 146 82 120 82 C94 82 74 90 66 110 Z"
+            fill="#8A8F94"
+            stroke="#1C1A1A"
+            stroke-width="3"
+          />
+          <path
+            d="M74 96 C86 84 104 80 120 80 C136 80 156 84 168 96 C156 90 138 88 120 88 C102 88 88 90 74 96 Z"
+            fill="#B9BDC1"
+          />
+          <!-- óculos de armação grossa -->
+          <circle
+            cx="98"
+            cy="128"
+            r="17"
+            fill="#F1E8D2"
+            fill-opacity=".35"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <circle
+            cx="142"
+            cy="128"
+            r="17"
+            fill="#F1E8D2"
+            fill-opacity=".35"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <line
+            x1="115"
+            y1="128"
+            x2="125"
+            y2="128"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <line
+            x1="81"
+            y1="124"
+            x2="66"
+            y2="118"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <line
+            x1="159"
+            y1="124"
+            x2="174"
+            y2="118"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <circle cx="98" cy="130" r="4" fill="#1C1A1A" />
+          <circle cx="142" cy="130" r="4" fill="#1C1A1A" />
+          <!-- sobrancelhas sérias e boca firme -->
+          <path
+            d="M84 110 L110 114"
+            stroke="#1C1A1A"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M156 110 L130 114"
+            stroke="#1C1A1A"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M104 162 L136 162"
+            stroke="#1C1A1A"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M100 150 Q106 152 110 150"
+            fill="none"
+            stroke="#C4956A"
+            stroke-width="3"
+          />
+        </svg>
+        <figcaption>
+          <span class="nome">Nome exemplo 3</span>
+          <span class="cargo">Ex-militar, gestor de obra</span>
+          <span class="frase"
+            >Ordem e obra pronta. Quem atrasa paga o preço.</span
+          >
+        </figcaption>
+      </figure>
+
+      <figure>
+        <svg
+          viewBox="0 0 240 300"
+          role="img"
+          aria-label="Professora, ex-vereadora, mulher de coque alto, lenço amarelo e livro azul nas mãos"
+        >
+          <rect width="240" height="300" fill="#1F4E8C" />
+          <circle cx="120" cy="120" r="92" fill="#F4B81C" />
+          <circle
+            cx="120"
+            cy="120"
+            r="92"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <!-- corpo: blusa papel com gola e lenço -->
+          <path
+            d="M14 300 C18 236 62 214 120 214 C178 214 222 236 226 300 Z"
+            fill="#F1E8D2"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M96 214 L120 250 L144 214 Z"
+            fill="#D8362B"
+            stroke="#1C1A1A"
+            stroke-width="3"
+          />
+          <path
+            d="M52 232 C70 252 100 258 120 262 C140 258 170 252 188 232 L192 250 C170 268 140 276 120 278 C100 276 70 268 48 250 Z"
+            fill="#F4B81C"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <!-- livro azul e giz -->
+          <path
+            d="M60 248 L120 232 L120 296 L60 300 Z"
+            fill="#1F4E8C"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M180 248 L120 232 L120 296 L180 300 Z"
+            fill="#17407a"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <line
+            x1="120"
+            y1="236"
+            x2="120"
+            y2="296"
+            stroke="#1C1A1A"
+            stroke-width="3"
+          />
+          <rect
+            x="168"
+            y="222"
+            width="36"
+            height="6"
+            fill="#F1E8D2"
+            stroke="#1C1A1A"
+            stroke-width="2"
+            transform="rotate(-20 186 225)"
+          />
+          <!-- pescoço e rosto -->
+          <rect
+            x="106"
+            y="176"
+            width="28"
+            height="40"
+            fill="#8A5A3B"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M106 196 Q120 206 134 196 L134 212 Q120 220 106 212 Z"
+            fill="#6E4430"
+          />
+          <ellipse
+            cx="120"
+            cy="128"
+            rx="52"
+            ry="62"
+            fill="#8A5A3B"
+            stroke="#1C1A1A"
+            stroke-width="5"
+          />
+          <path
+            d="M140 132 Q154 152 144 180 Q130 182 122 178 Q140 168 140 132 Z"
+            fill="#6E4430"
+            opacity=".6"
+          />
+          <!-- coque e fios soltos -->
+          <path
+            d="M68 120 C60 70 92 46 120 46 C150 46 180 70 172 120 C164 96 146 84 120 84 C94 84 76 96 68 120 Z"
+            fill="#1C1A1A"
+          />
+          <circle
+            cx="120"
+            cy="48"
+            r="20"
+            fill="#1C1A1A"
+            stroke="#1C1A1A"
+            stroke-width="3"
+          />
+          <path
+            d="M70 116 Q62 130 66 146"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <path
+            d="M170 116 Q178 130 174 146"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+          />
+          <!-- olhos firmes, sorriso -->
+          <path
+            d="M92 126 Q100 121 108 126"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <path
+            d="M132 126 Q140 121 148 126"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <circle cx="100" cy="134" r="5" fill="#1C1A1A" />
+          <circle cx="140" cy="134" r="5" fill="#1C1A1A" />
+          <path
+            d="M104 162 Q120 174 136 162"
+            fill="none"
+            stroke="#1C1A1A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+        </svg>
+        <figcaption>
+          <span class="nome">Nome exemplo 4</span>
+          <span class="cargo">Professora, ex-vereadora</span>
+          <span class="frase"
+            >Escola cheia e gente ouvida. Eu governo com as bases.</span
+          >
+        </figcaption>
+      </figure>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,1360 @@
+Lei	Degrau	Índice	Sentido	Força	Atraso (turnos)
+abertura-a-geracao-privada	so-alguns-leiloes	energia_gerada	1	media	12
+abertura-a-geracao-privada	so-alguns-leiloes	preco_da_energia	1	media	12
+abertura-a-geracao-privada	leiloes-e-contratos-longos	energia_gerada	1	forte	12
+abertura-a-geracao-privada	leiloes-e-contratos-longos	preco_da_energia	1	forte	12
+abertura-das-telecomunicacoes	estado-mais-uma-empresa-privada	acesso_a_internet	1	fraca	12
+abertura-das-telecomunicacoes	poucas-empresas-com-licenca	acesso_a_internet	1	media	12
+abertura-das-telecomunicacoes	qualquer-empresa-que-cumpra-as-regras	acesso_a_internet	1	forte	12
+abertura-de-empresa		tempo_para_abrir_empresa	-1	media	2
+abertura-de-empresa		emprego_informal	-1	media	2
+abrigos-para-quem-vive-na-rua		moradores_de_rua	-1	media	2
+acesso-a-informacao	gastos-publicados-no-site	corrupcao	-1	fraca	2
+acesso-a-informacao	qualquer-pessoa-pede-dados-e-o-governo-responde-em-ate-20-dias	corrupcao	-1	media	2
+acesso-a-informacao	todos-os-contratos-no-site-em-tempo-real-e-punicao-para-quem-esconde	corrupcao	-1	forte	2
+acesso-ao-aborto	so-com-risco-de-vida	natalidade	-1	fraca	2
+acesso-ao-aborto	so-com-risco-de-vida	polarizacao	1	fraca	2
+acesso-ao-aborto	tambem-em-estupro	natalidade	-1	media	2
+acesso-ao-aborto	tambem-em-estupro	polarizacao	1	media	2
+acesso-ao-aborto	ate-12-semanas	natalidade	-1	forte	2
+acesso-ao-aborto	ate-12-semanas	polarizacao	1	forte	2
+acesso-ao-aborto	livre	natalidade	-1	forte	2
+acesso-ao-aborto	livre	polarizacao	1	forte	2
+acoes-nos-bairros		homicidios	-1	media	12
+acoes-nos-bairros		pobreza	-1	media	12
+agrotoxicos	proibe-os-mais-toxicos	meio_ambiente	1	fraca	4
+agrotoxicos	proibe-os-mais-toxicos	preco_da_comida	1	fraca	4
+agrotoxicos	reavalia-todos	meio_ambiente	1	media	4
+agrotoxicos	reavalia-todos	preco_da_comida	1	media	4
+agrotoxicos	quase-nenhum	meio_ambiente	1	forte	4
+agrotoxicos	quase-nenhum	preco_da_comida	1	forte	4
+ajuda-para-comprar-plano		atendimento	1	media	2
+alcool-ao-volante	limite-alto-com-multa	mortes_no_transito	-1	fraca	2
+alcool-ao-volante	limite-baixo-com-multa-e-suspensao-da-carteira	mortes_no_transito	-1	media	2
+alcool-ao-volante	tolerancia-zero-com-prisao	mortes_no_transito	-1	forte	2
+alerta-de-desastre	aviso-por-celular	preparo_contra_desastres	1	fraca	2
+alerta-de-desastre	sirenes-em-areas-de-risco	preparo_contra_desastres	1	media	2
+alerta-de-desastre	rede-nacional-de-monitoramento	preparo_contra_desastres	1	forte	2
+aluguel-por-temporada-livre		preco_moradia	1	media	2
+aluguel-social		favela	-1	media	2
+aluguel-social		moradores_de_rua	-1	media	2
+alvos-da-agencia	organizacoes-radicais	liberdade_civil	-1	fraca	2
+alvos-da-agencia	organizacoes-radicais	polarizacao	1	fraca	2
+alvos-da-agencia	movimentos-e-imprensa	liberdade_civil	-1	media	2
+alvos-da-agencia	movimentos-e-imprensa	polarizacao	1	media	2
+alvos-da-agencia	opositores-do-governo	liberdade_civil	-1	forte	2
+alvos-da-agencia	opositores-do-governo	polarizacao	1	forte	2
+anistia-fiscal		divida_atrasada	-1	media	0
+anistia-fiscal		sonegacao	1	media	2
+anistia-fiscal		credibilidade_fiscal	-1	fraca	1
+apoio-a-cooperativas		trabalhadores_em_cooperativas	1	media	12
+aposentadoria-dos-servidores	salario-integral	gasto_obrigatorio	1	media	12
+aposentadoria-dos-servidores	o-aposentado-tambem-contribui	gasto_obrigatorio	-1	fraca	12
+aposentadoria-dos-servidores	o-aposentado-tambem-contribui	greves	1	fraca	2
+aposentadoria-dos-servidores	mesmo-teto-do-trabalhador-comum	gasto_obrigatorio	-1	media	12
+aposentadoria-dos-servidores	mesmo-teto-do-trabalhador-comum	greves	1	media	2
+aposentadoria-especial	so-quem-trabalha-com-risco-de-vida	cobertura_da_previdencia	1	fraca	12
+aposentadoria-especial	tambem-trabalho-pesado-ou-insalubre	cobertura_da_previdencia	1	fraca	12
+aposentadoria-especial	tambem-professores-e-trabalhadores-rurais	cobertura_da_previdencia	1	media	12
+aposentadoria-flexivel	duas-idades-com-valor-menor-na-mais-cedo	liberdade_civil	1	fraca	12
+aposentadoria-flexivel	faixa-de-idade-com-valor-que-cresce	liberdade_civil	1	media	12
+aposentadoria-flexivel	idade-livre-com-valor-pelo-que-contribuiu	liberdade_civil	1	media	12
+aposentadoria-flexivel	idade-livre-com-valor-pelo-que-contribuiu	pobreza	1	fraca	12
+aprovacao-de-remedio-feito-fora	prazo-maximo	acesso_remedios	1	fraca	3
+aprovacao-de-remedio-feito-fora	prazo-maximo	saude	1	fraca	3
+aprovacao-de-remedio-feito-fora	prazo-maximo	industrializacao	-1	fraca	3
+aprovacao-de-remedio-feito-fora	passou-e-esta-aprovado	acesso_remedios	1	media	3
+aprovacao-de-remedio-feito-fora	passou-e-esta-aprovado	saude	1	media	3
+aprovacao-de-remedio-feito-fora	passou-e-esta-aprovado	industrializacao	-1	media	3
+aprovacao-de-remedio-feito-fora	vale-a-aprovacao-de-agencia-forte-de-fora	acesso_remedios	1	media	3
+aprovacao-de-remedio-feito-fora	vale-a-aprovacao-de-agencia-forte-de-fora	saude	1	media	3
+aprovacao-de-remedio-feito-fora	vale-a-aprovacao-de-agencia-forte-de-fora	industrializacao	-1	media	3
+aprovacao-de-remedio-feito-fora	vale-a-de-qualquer-agencia-reconhecida	acesso_remedios	1	forte	3
+aprovacao-de-remedio-feito-fora	vale-a-de-qualquer-agencia-reconhecida	saude	1	forte	3
+aprovacao-de-remedio-feito-fora	vale-a-de-qualquer-agencia-reconhecida	industrializacao	-1	forte	3
+aprovacao-de-remedio-feito-fora	sem-analise	acesso_remedios	1	forte	3
+aprovacao-de-remedio-feito-fora	sem-analise	saude	1	forte	3
+aprovacao-de-remedio-feito-fora	sem-analise	industrializacao	-1	forte	3
+areas-abertas-ao-petroleo-e-gas	terra	meio_ambiente	-1	fraca	12
+areas-abertas-ao-petroleo-e-gas	mar-raso	meio_ambiente	-1	media	12
+areas-abertas-ao-petroleo-e-gas	aguas-profundas	meio_ambiente	-1	forte	12
+areas-protegidas		meio_ambiente	1	forte	12
+areas-protegidas		industrializacao	-1	fraca	12
+areas-protegidas		padrao_vida	-1	fraca	12
+areas-protegidas		preco_moradia	1	fraca	12
+assistencia-tecnica-ao-produtor		produtividade	1	media	6
+autonomia-das-forcas-armadas	ministro-civil	risco_de_golpe	1	fraca	2
+autonomia-das-forcas-armadas	ministro-civil	liberdade_civil	-1	fraca	2
+autonomia-das-forcas-armadas	ministro-militar	risco_de_golpe	1	media	2
+autonomia-das-forcas-armadas	ministro-militar	liberdade_civil	-1	media	2
+autonomia-das-forcas-armadas	militares-escolhem-comando-e-orcamento	risco_de_golpe	1	forte	2
+autonomia-das-forcas-armadas	militares-escolhem-comando-e-orcamento	liberdade_civil	-1	forte	2
+autonomia-das-forcas-armadas	militares-acima-do-governo	risco_de_golpe	1	forte	2
+autonomia-das-forcas-armadas	militares-acima-do-governo	liberdade_civil	-1	forte	2
+autonomia-do-banco-central	mandato-com-indicacao-do-presidente	confianca_do_mercado	1	media	6
+autonomia-do-banco-central	mandato-fixo-independente	confianca_do_mercado	1	forte	6
+auxilio-para-pessoas-com-deficiencia		pobreza	-1	media	2
+aviso-antes-da-multa	aviso-para-o-pequeno	emprego_informal	-1	fraca	3
+aviso-antes-da-multa	aviso-para-o-pequeno	corrupcao	-1	fraca	3
+aviso-antes-da-multa	aviso-para-todas-as-empresas	emprego_informal	-1	media	3
+aviso-antes-da-multa	aviso-para-todas-as-empresas	corrupcao	-1	media	3
+aviso-antes-da-multa	multa-so-com-dano-provado	emprego_informal	-1	forte	3
+aviso-antes-da-multa	multa-so-com-dano-provado	corrupcao	-1	forte	3
+beneficio-com-contrapartida	filhos-na-escola-e-vacina-em-dia	evasao_escolar	-1	media	3
+beneficio-com-contrapartida	filhos-na-escola-e-vacina-em-dia	vacinacao	1	media	2
+beneficio-com-contrapartida	curso-ou-trabalho-comunitario	evasao_escolar	-1	media	3
+beneficio-com-contrapartida	curso-ou-trabalho-comunitario	emprego_informal	-1	fraca	3
+beneficio-com-contrapartida	curso-ou-trabalho-comunitario	pobreza	1	fraca	2
+beneficio-com-contrapartida	emprego-ou-curso-obrigatorio	evasao_escolar	-1	media	3
+beneficio-com-contrapartida	emprego-ou-curso-obrigatorio	emprego_informal	-1	media	3
+beneficio-com-contrapartida	emprego-ou-curso-obrigatorio	pobreza	1	media	2
+beneficio-por-filho		natalidade	1	media	12
+beneficio-por-filho		pobreza	-1	media	12
+bloqueio-de-bens	depois-que-a-acusacao-e-aceita	liberdade_civil	-1	fraca	2
+bloqueio-de-bens	durante-a-investigacao	liberdade_civil	-1	media	2
+bloqueio-de-bens	com-ordem-do-juiz	liberdade_civil	-1	forte	2
+bloqueio-de-bens	automatico-ao-abrir-a-investigacao	liberdade_civil	-1	forte	2
+bloqueio-de-internet	bloquear-um-site-por-ordem-do-juiz	liberdade_de_imprensa	-1	fraca	0
+bloqueio-de-internet	bloquear-redes-em-crise	liberdade_de_imprensa	-1	media	0
+bloqueio-de-internet	apagao-local-em-conflito	liberdade_de_imprensa	-1	forte	0
+bolsa-em-faculdade-privada		instrucao	1	media	12
+bolsa-em-faculdade-privada		desigualdade	-1	media	12
+bolsa-por-frequencia		pobreza	-1	media	2
+bolsa-por-frequencia		instrucao	1	media	2
+caminhao-parado-aos-domingos	domingo	custo_do_frete	1	media	2
+caminhao-parado-aos-domingos	fim-de-semana	custo_do_frete	1	forte	2
+cargos-de-livre-nomeacao		corrupcao	-1	media	1
+cargos-de-livre-nomeacao		popularidade_governo	1	media	1
+cargos-de-livre-nomeacao		folha_do_funcionalismo	-1	media	1
+carregadores-nas-estradas-federais	a-cada-400-km	energia_gasta	1	fraca	12
+carregadores-nas-estradas-federais	a-cada-200-km	energia_gasta	1	media	12
+carregadores-nas-estradas-federais	a-cada-100-km	energia_gasta	1	forte	12
+carregadores-nas-estradas-federais	a-cada-50-km	energia_gasta	1	forte	12
+carreira-do-professor	cada-escola-paga-o-que-quiser	instrucao	1	fraca	12
+carreira-do-professor	piso-de-salario-igual-para-todos	instrucao	1	media	12
+carreira-do-professor	piso-mais-aumento-a-cada-tempo-de-casa	instrucao	1	media	12
+carreira-do-professor	piso	instrucao	1	forte	12
+carreira-do-professor	carreira-e-emprego-fixo-com-dedicacao-a-uma-escola-so	instrucao	1	forte	12
+casamento-entre-pessoas-do-mesmo-sexo	contrato-particular-entre-os-dois	liberdade_civil	1	fraca	2
+casamento-entre-pessoas-do-mesmo-sexo	contrato-particular-entre-os-dois	discriminacao	-1	fraca	2
+casamento-entre-pessoas-do-mesmo-sexo	contrato-particular-entre-os-dois	polarizacao	1	fraca	2
+casamento-entre-pessoas-do-mesmo-sexo	uniao-civil-com-direitos-basicos	liberdade_civil	1	media	2
+casamento-entre-pessoas-do-mesmo-sexo	uniao-civil-com-direitos-basicos	discriminacao	-1	media	2
+casamento-entre-pessoas-do-mesmo-sexo	uniao-civil-com-direitos-basicos	polarizacao	1	media	2
+casamento-entre-pessoas-do-mesmo-sexo	casamento-igual-ao-de-qualquer-casal	liberdade_civil	1	forte	2
+casamento-entre-pessoas-do-mesmo-sexo	casamento-igual-ao-de-qualquer-casal	discriminacao	-1	forte	2
+casamento-entre-pessoas-do-mesmo-sexo	casamento-igual-ao-de-qualquer-casal	polarizacao	1	forte	2
+ciclo-completo	so-em-flagrante	crimes_contra_o_patrimonio	-1	fraca	12
+ciclo-completo	so-em-flagrante	homicidios	-1	fraca	12
+ciclo-completo	crimes-leves	crimes_contra_o_patrimonio	-1	media	12
+ciclo-completo	crimes-leves	homicidios	-1	media	12
+ciclo-completo	todos-os-crimes	crimes_contra_o_patrimonio	-1	forte	12
+ciclo-completo	todos-os-crimes	homicidios	-1	forte	12
+cidadania-por-nascimento	filhos-de-residentes	integracao	1	media	12
+cidadania-por-nascimento	filhos-de-residentes	imigrantes_na_populacao	1	media	12
+cidadania-por-nascimento	todo-nascido-aqui	integracao	1	forte	12
+cidadania-por-nascimento	todo-nascido-aqui	imigrantes_na_populacao	1	forte	12
+clausula-de-barreira		participacao_eleitoral	-1	media	4
+clausula-de-barreira		polarizacao	1	media	4
+cobertura-minima-do-plano	tem-que-cobrir-urgencia	atendimento	1	fraca	4
+cobertura-minima-do-plano	tem-que-cobrir-urgencia	saude	1	fraca	4
+cobertura-minima-do-plano	nao-pode-recusar-quem-ja-tem-doenca	atendimento	1	media	4
+cobertura-minima-do-plano	nao-pode-recusar-quem-ja-tem-doenca	saude	1	media	4
+cobertura-minima-do-plano	pacote-completo-consulta	atendimento	1	media	4
+cobertura-minima-do-plano	pacote-completo-consulta	saude	1	media	4
+cobertura-minima-do-plano	internacao	atendimento	1	forte	4
+cobertura-minima-do-plano	internacao	saude	1	forte	4
+cobertura-minima-do-plano	parto-e-remedio	atendimento	1	forte	4
+cobertura-minima-do-plano	parto-e-remedio	saude	1	forte	4
+cobranca-na-universidade-publica		desigualdade	1	media	0
+cobranca-na-universidade-publica		instrucao	-1	media	0
+comercio-aberto-no-domingo	abre-com-acordo-do-sindicato	tensao_trabalhista	1	fraca	2
+comercio-aberto-no-domingo	livre	tensao_trabalhista	1	media	2
+comercio-aberto-no-domingo	com-folga-em-outro-dia	tensao_trabalhista	1	media	2
+comercio-aberto-no-domingo	livre-5	tensao_trabalhista	1	forte	2
+comercio-aberto-no-domingo	sem-folga-a-mais	tensao_trabalhista	1	forte	2
+comida-do-estado		abastecimento	1	media	1
+comida-do-estado		pobreza	-1	fraca	1
+como-o-orgao-consegue-a-terra		conflito_no_campo	1	media	3
+como-se-divide-a-pesca	livre	estoque_de_peixe	1	fraca	4
+como-se-divide-a-pesca	por-barco	estoque_de_peixe	1	media	4
+como-se-divide-a-pesca	cota-vendavel	estoque_de_peixe	1	forte	4
+complemento-ao-estado-pobre		vagas_na_escola	1	media	6
+complemento-ao-estado-pobre		qualidade_do_ensino	1	media	6
+complemento-ao-estado-pobre		evasao_escolar	-1	media	6
+compra-publica-de-comida-parte-da-sobra-comprada		preco_da_comida	1	fraca	3
+compra-publica-de-comida-parte-da-sobra-comprada		abastecimento	1	fraca	3
+compra-publica-de-comida-parte-vinda-do-pequeno		preco_da_comida	1	fraca	3
+compra-publica-de-comida-parte-vinda-do-pequeno		abastecimento	1	fraca	3
+compromisso-climatico-corte		reputacao_internacional	1	fraca	0
+compromisso-climatico-prazo		reputacao_internacional	1	fraca	0
+concessao-da-rede-de-transmissao	parte-concedida	preco_da_energia	1	media	12
+concessao-da-rede-de-transmissao	concessao-total-a-companhias	preco_da_energia	1	forte	12
+concessao-de-radio-e-tv	o-governo-cassa-so-com-processo-e-defesa	liberdade_de_imprensa	-1	fraca	2
+concessao-de-radio-e-tv	o-governo-cassa-so-com-processo-e-defesa	reputacao_internacional	-1	fraca	2
+concessao-de-radio-e-tv	o-governo-renova	liberdade_de_imprensa	-1	media	2
+concessao-de-radio-e-tv	o-governo-renova	reputacao_internacional	-1	media	2
+concessao-de-radio-e-tv	cassa-como-achar-melhor	liberdade_de_imprensa	-1	forte	2
+concessao-de-radio-e-tv	cassa-como-achar-melhor	reputacao_internacional	-1	forte	2
+concessao-de-radio-e-tv	o-governo-escolhe-quem-tem-licenca-e-cassa-quando-quiser	liberdade_de_imprensa	-1	forte	2
+concessao-de-radio-e-tv	o-governo-escolhe-quem-tem-licenca-e-cassa-quando-quiser	reputacao_internacional	-1	forte	2
+concorrencia-entre-taxi-e-aplicativo	cidade-so-limita-os-carros	congestionamento	1	fraca	2
+concorrencia-entre-taxi-e-aplicativo	cidade-nao-pode-limitar	congestionamento	1	media	2
+concorrencia-entre-taxi-e-aplicativo	licenca-de-taxi-nao-se-vende-nem-se-herda	congestionamento	1	forte	2
+congelamento-de-precos	so-essenciais	emprego_informal	1	media	2
+congelamento-de-precos	so-essenciais	mercado_ilegal	1	fraca	2
+congelamento-de-precos	geral	emprego_informal	1	forte	2
+congelamento-de-precos	geral	mercado_ilegal	1	media	2
+conselho-fiscal-independente	so-opina	credibilidade_fiscal	1	fraca	4
+conselho-fiscal-independente	parecer-em-todo-projeto	credibilidade_fiscal	1	media	4
+conselho-fiscal-independente	com-poder-de-veto	credibilidade_fiscal	1	forte	4
+conta-de-demissao	pelo-seguro-desemprego	emprego_informal	-1	fraca	6
+conta-de-demissao	pelo-seguro-desemprego	pobreza	1	fraca	6
+conta-de-demissao	parte-numa-conta-do-trabalhador	emprego_informal	-1	media	6
+conta-de-demissao	parte-numa-conta-do-trabalhador	pobreza	1	media	6
+conta-de-demissao	tudo-na-conta	emprego_informal	-1	media	6
+conta-de-demissao	tudo-na-conta	pobreza	1	media	6
+conta-de-demissao	com-fundo-do-estado-para-quem-junta-pouco	emprego_informal	-1	forte	6
+conta-de-demissao	com-fundo-do-estado-para-quem-junta-pouco	pobreza	1	forte	6
+conta-de-demissao	so-a-conta	emprego_informal	-1	forte	6
+conta-de-demissao	so-a-conta	pobreza	1	forte	6
+contas-individuais		indice_da_bolsa	1	media	12
+contratos-flexiveis	tambem-contrato-temporario-com-prazo	emprego_informal	-1	fraca	2
+contratos-flexiveis	tambem-pagamento-por-hora	emprego_informal	-1	media	2
+contratos-flexiveis	tambem-trabalho-intermitente	emprego_informal	-1	forte	2
+contratos-flexiveis	em-que-a-pessoa-e-chamada-so-quando-ha-servico	emprego_informal	-1	forte	2
+contribuicao-previdenciaria		emprego_informal	1	media	2
+contribuicao-sindical-livre	descontado-direto-do-salario	desigualdade	1	fraca	12
+contribuicao-sindical-livre	so-paga-quem-a-assembleia-do-sindicato-aprovar	desigualdade	1	media	12
+contribuicao-sindical-livre	so-paga-quem-autorizar-por-escrito	desigualdade	1	media	12
+contribuicao-sindical-livre	ninguem-paga-sem-filiacao	desigualdade	1	forte	12
+contribuicao-sindical-livre	o-sindicato-vive-so-dos-socios	desigualdade	1	forte	12
+controle-da-agencia	o-governo	corrupcao	-1	fraca	2
+controle-da-agencia	o-governo	liberdade_civil	1	fraca	2
+controle-da-agencia	o-congresso	corrupcao	-1	media	2
+controle-da-agencia	o-congresso	liberdade_civil	1	media	2
+controle-da-agencia	o-congresso-e-um-juiz	corrupcao	-1	forte	2
+controle-da-agencia	o-congresso-e-um-juiz	liberdade_civil	1	forte	2
+controle-de-armas	checagem-de-antecedentes	homicidios	-1	fraca	2
+controle-de-armas	checagem-mais-curso-e-exame-de-tiro	homicidios	-1	media	2
+controle-de-armas	licenca-so-com-motivo-comprovado-e-limite-de-armas-por-pessoa	homicidios	-1	forte	2
+controle-de-armas	proibido-para-civis	homicidios	-1	forte	2
+controle-de-capital	taxa-sobre-entrada-especulativa	confianca_do_mercado	-1	media	2
+controle-de-capital	taxa-sobre-entrada-especulativa	cambio	-1	fraca	2
+controle-de-capital	controle-de-saida	confianca_do_mercado	-1	forte	2
+controle-de-capital	controle-de-saida	reservas_internacionais	1	media	2
+controle-externo-da-policia	outra-policia	corrupcao_policial	-1	media	12
+controle-externo-da-policia	outra-policia	mortes_pela_policia	-1	media	12
+controle-externo-da-policia	outra-policia	confianca_na_policia	1	media	12
+controle-externo-da-policia	orgao-independente	corrupcao_policial	-1	forte	12
+controle-externo-da-policia	orgao-independente	mortes_pela_policia	-1	forte	12
+controle-externo-da-policia	orgao-independente	confianca_na_policia	1	forte	12
+cooperativas-habitacionais		deficit_habitacional	-1	media	12
+cota-de-entrada		imigrantes_na_populacao	1	media	12
+cota-de-entrada		tensao_com_imigrantes	1	media	12
+cotas-em-empresas-e-concursos	cotas-so-em-concursos-publicos	discriminacao	-1	fraca	12
+cotas-em-empresas-e-concursos	cotas-so-em-concursos-publicos	desigualdade	-1	fraca	12
+cotas-em-empresas-e-concursos	tambem-vagas-reservadas-nos-conselhos-de-grandes-empresas	discriminacao	-1	media	12
+cotas-em-empresas-e-concursos	tambem-vagas-reservadas-nos-conselhos-de-grandes-empresas	desigualdade	-1	media	12
+cotas-em-empresas-e-concursos	tambem-cotas-de-contratacao-em-empresas-medias-e-grandes	discriminacao	-1	forte	12
+cotas-em-empresas-e-concursos	tambem-cotas-de-contratacao-em-empresas-medias-e-grandes	desigualdade	-1	forte	12
+cotas-na-universidade	vagas-para-quem-veio-de-escola-publica	desigualdade	-1	fraca	12
+cotas-na-universidade	vagas-para-escola-publica-e-familia-de-baixa-renda	desigualdade	-1	media	12
+cotas-na-universidade	vagas-para-escola-publica	desigualdade	-1	forte	12
+cotas-na-universidade	baixa-renda-e-cor-da-pele	desigualdade	-1	forte	12
+creche-e-pre-escola		instrucao	1	media	2000000000000
+credito-compra-terra		concentracao_terra	-1	fraca	8
+credito-compra-terra		desigualdade	-1	fraca	12
+credito-da-casa-perdoado-por-filho		deficit_habitacional	-1	media	2
+credito-da-casa-perdoado-por-filho		natalidade	1	media	2
+credito-estudantil		instrucao	1	media	12
+credito-imobiliario		deficit_habitacional	-1	fraca	8
+credito-imobiliario		preco_moradia	1	fraca	6
+credito-para-quem-trabalha	um-extra-pequeno-para-quem-trabalha	emprego_informal	-1	fraca	3
+credito-para-quem-trabalha	metade-do-beneficio-so-para-quem-trabalha	emprego_informal	-1	media	3
+credito-para-quem-trabalha	metade-do-beneficio-so-para-quem-trabalha	pobreza	1	fraca	2
+credito-para-quem-trabalha	todo-o-beneficio-so-para-quem-trabalha	emprego_informal	-1	media	3
+credito-para-quem-trabalha	todo-o-beneficio-so-para-quem-trabalha	pobreza	1	media	2
+criptografia-livre	acesso-com-ordem-do-juiz	liberdade_civil	1	fraca	2
+criptografia-livre	o-governo-guarda-a-chave	liberdade_civil	1	media	2
+criptografia-livre	proibida	liberdade_civil	1	forte	2
+criptomoedas	proibidas	dinheiro_em_cripto	-1	media	2
+criptomoedas	proibidas	mercado_ilegal	1	fraca	2
+criptomoedas	reguladas	dinheiro_em_cripto	1	media	2
+cuidado-com-o-usuario	troca-de-seringas-e-salas-de-uso	dependencia_de_drogas	-1	media	2
+cuidado-com-o-usuario	troca-de-seringas-e-salas-de-uso	lotacao_presidios	-1	media	2
+cuidado-com-o-usuario	troca-de-seringas-e-salas-de-uso	atendimento	-1	media	2
+cuidado-com-o-usuario	usuario-nao-e-preso	dependencia_de_drogas	-1	forte	2
+cuidado-com-o-usuario	usuario-nao-e-preso	lotacao_presidios	-1	forte	2
+cuidado-com-o-usuario	usuario-nao-e-preso	atendimento	-1	forte	2
+de-onde-veio-o-ouro	o-vendedor-declara	corrupcao	-1	fraca	4
+de-onde-veio-o-ouro	nota-com-a-origem	corrupcao	-1	media	4
+de-onde-veio-o-ouro	rastreio-do-garimpo-a-loja	corrupcao	-1	forte	4
+declaracao-de-bens	so-os-bens	corrupcao	-1	fraca	2
+declaracao-de-bens	uma-vez	corrupcao	-1	fraca	2
+declaracao-de-bens	na-candidatura	corrupcao	-1	media	2
+declaracao-de-bens	bens-e-dividas-todo-ano	corrupcao	-1	media	2
+declaracao-de-bens	bens-e-dividas-do-candidato-e-da-familia	corrupcao	-1	forte	2
+declaracao-de-bens	conferidos-pela-receita	corrupcao	-1	forte	2
+defensoria-publica		presos_sem_julgamento	-1	media	2
+defensoria-publica		confianca_na_justica	1	media	2
+defesa-comercial	antidumping	abertura_comercial	-1	media	6
+defesa-comercial	salvaguardas-amplas	abertura_comercial	-1	forte	6
+delacao-premiada	reducao-pequena-da-pena	certeza_de_punicao	1	fraca	2
+delacao-premiada	reducao-grande-da-pena-e-protecao-ao-delator	certeza_de_punicao	1	media	2
+delacao-premiada	perdao-total-para-quem-entrega-os-chefes	certeza_de_punicao	1	forte	2
+deportacao	so-criminosos	pessoas_sem_documento	-1	fraca	2
+deportacao	so-criminosos	liberdade_civil	-1	fraca	2
+deportacao	quem-esta-ilegal	pessoas_sem_documento	-1	media	2
+deportacao	quem-esta-ilegal	liberdade_civil	-1	media	2
+deportacao	em-massa	pessoas_sem_documento	-1	forte	2
+deportacao	em-massa	liberdade_civil	-1	forte	2
+desconto-de-imposto-para-quem-pesquisa		produtividade	1	media	4
+desconto-de-imposto-para-quem-pesquisa		tecnologia_do_pais	1	media	4
+desconto-por-filho		natalidade	1	media	12
+desoneracao-da-folha		emprego_informal	-1	media	2
+despejo-rapido	seis-meses	preco_moradia	-1	fraca	6
+despejo-rapido	tres-meses	preco_moradia	-1	fraca	6
+despejo-rapido	tres-meses	favela	1	fraca	6
+despejo-rapido	um-mes	preco_moradia	-1	media	6
+despejo-rapido	um-mes	favela	1	fraca	6
+destino-dos-bens	parte-leilao	confianca_na_policia	1	fraca	12
+destino-dos-bens	parte-reuso	confianca_na_policia	1	media	12
+destino-dos-bens	reuso-social	confianca_na_policia	1	forte	12
+direito-de-greve	so-com-votacao-secreta	liberdade_civil	1	fraca	2
+direito-de-greve	so-com-votacao-secreta	padrao_vida	1	fraca	2
+direito-de-greve	livre-com-aviso	liberdade_civil	1	media	2
+direito-de-greve	livre-com-aviso	padrao_vida	1	media	2
+direito-de-greve	livre	liberdade_civil	1	forte	2
+direito-de-greve	livre	padrao_vida	1	forte	2
+direito-de-greve	livre-e-sem-punicao	liberdade_civil	1	forte	2
+direito-de-greve	livre-e-sem-punicao	padrao_vida	1	forte	2
+direito-de-processar-quem-polui		qualidade_do_ar	1	media	6
+direito-de-quem-planta-em-terra-alheia		produtividade	1	media	4
+direito-de-quem-planta-em-terra-alheia		conflito_no_campo	1	media	4
+direito-do-dono	ser-ouvido	bens_em_risco	-1	fraca	4
+direito-do-dono	ser-indenizado	bens_em_risco	-1	media	4
+direito-do-dono	so-protege-com-aceite	bens_em_risco	-1	forte	4
+discurso-de-odio	multa-e-retirada-do-conteudo	discriminacao	-1	fraca	2
+discurso-de-odio	multa-e-retirada-do-conteudo	tensao_religiosa	-1	fraca	2
+discurso-de-odio	indenizacao-a-vitima-e-servico-comunitario	discriminacao	-1	media	2
+discurso-de-odio	indenizacao-a-vitima-e-servico-comunitario	tensao_religiosa	-1	media	2
+discurso-de-odio	crime-com-prisao	discriminacao	-1	forte	2
+discurso-de-odio	crime-com-prisao	tensao_religiosa	-1	forte	2
+divida-em-moeda-estrangeira		divida_em_moeda_estrangeira	1	forte	0
+doacao-com-deducao		pobreza	-1	media	2
+doacao-de-empresas		corrupcao	1	media	2
+duracao-da-patente		produtividade	1	media	6
+edicao-de-genes-em-pessoas	so-em-laboratorio	reputacao_internacional	-1	fraca	6
+edicao-de-genes-em-pessoas	tratar-adultos	reputacao_internacional	-1	media	6
+edicao-de-genes-em-pessoas	embriao-sem-nascer	reputacao_internacional	-1	forte	6
+edicao-de-genes-em-pessoas	bebes-editados	reputacao_internacional	-1	forte	6
+educacao-na-prisao		volta_ao_crime	-1	media	12
+educacao-sexual	so-como-funciona-o-corpo	polarizacao	1	fraca	12
+educacao-sexual	corpo	polarizacao	1	media	12
+educacao-sexual	prevencao-de-doencas-e-gravidez	polarizacao	1	media	12
+educacao-sexual	tudo-isso-mais-respeito	polarizacao	1	forte	12
+educacao-sexual	consentimento-e-identidade	polarizacao	1	forte	12
+eletrificacao-rural		acesso_a_energia	1	media	12
+emendas-dos-parlamentares	emendas-transparentes	corrupcao	1	fraca	2
+emendas-dos-parlamentares	emendas-obrigatorias-e-secretas	corrupcao	1	media	2
+emissora-estatal		desinformacao	-1	media	2
+emprego-para-jovens		homicidios	-1	media	2
+empreiteira-condenada-fora-das-obras	so-a-condenada	corrupcao	-1	fraca	3
+empreiteira-condenada-fora-das-obras	so-a-condenada	custo_das_obras	1	fraca	3
+empreiteira-condenada-fora-das-obras	so-a-condenada	obras_paradas	1	fraca	3
+empreiteira-condenada-fora-das-obras	tambem-as-do-mesmo-grupo	corrupcao	-1	media	3
+empreiteira-condenada-fora-das-obras	tambem-as-do-mesmo-grupo	custo_das_obras	1	media	3
+empreiteira-condenada-fora-das-obras	tambem-as-do-mesmo-grupo	obras_paradas	1	media	3
+empreiteira-condenada-fora-das-obras	volta-com-acordo-e-multa	corrupcao	-1	forte	3
+empreiteira-condenada-fora-das-obras	volta-com-acordo-e-multa	custo_das_obras	1	forte	3
+empreiteira-condenada-fora-das-obras	volta-com-acordo-e-multa	obras_paradas	1	forte	3
+empresa-simples	registro-gratis-e-rapido	emprego_informal	-1	fraca	2
+empresa-simples	registro-rapido-e-imposto-unico-simples	emprego_informal	-1	media	2
+empresa-simples	imposto-unico-baixo-e-sem-papelada-para-quem-fatura-pouco	emprego_informal	-1	forte	2
+energia-eolica		meio_ambiente	1	media	6
+energia-hidreletrica		meio_ambiente	-1	fraca	12
+energia-nuclear		meio_ambiente	1	fraca	12
+energia-solar		meio_ambiente	1	media	6
+energia-solar		reputacao_internacional	1	fraca	6
+energia-termica		meio_ambiente	-1	media	3
+energia-termica		reputacao_internacional	-1	fraca	6
+enriquecimento-de-uranio	combustivel-de-usina	tensao_internacional	1	fraca	18
+enriquecimento-de-uranio	combustivel-de-usina	reputacao_internacional	-1	fraca	18
+enriquecimento-de-uranio	pesquisa-e-medicina	tensao_internacional	1	media	18
+enriquecimento-de-uranio	pesquisa-e-medicina	reputacao_internacional	-1	media	18
+enriquecimento-de-uranio	nivel-de-bomba	tensao_internacional	1	forte	18
+enriquecimento-de-uranio	nivel-de-bomba	reputacao_internacional	-1	forte	18
+ensino-em-casa	com-registro-e-prova-todo-ano	instrucao	-1	fraca	6
+ensino-em-casa	com-registro-e-prova-todo-ano	trabalho_infantil	1	fraca	6
+ensino-em-casa	so-registro	instrucao	-1	media	6
+ensino-em-casa	so-registro	trabalho_infantil	1	media	6
+ensino-em-casa	sem-prova	instrucao	-1	forte	6
+ensino-em-casa	sem-prova	trabalho_infantil	1	forte	6
+ensino-em-casa	livre	instrucao	-1	forte	6
+ensino-em-casa	livre	trabalho_infantil	1	forte	6
+ensino-religioso	aula-opcional-sobre-a-historia-de-todas-as-religioes	polarizacao	1	fraca	2
+ensino-religioso	aula-opcional-da-religiao-escolhida-pela-familia	polarizacao	1	media	2
+ensino-religioso	aula-obrigatoria-da-religiao-da-maioria	polarizacao	1	forte	2
+ensino-tecnico		instrucao	1	media	12
+ensino-tecnico		industrializacao	1	media	12
+escola-em-tempo-integral		qualidade_do_ensino	1	media	6
+escola-em-tempo-integral		evasao_escolar	-1	media	6
+escola-em-tempo-integral		vagas_na_escola	-1	media	6
+escola-militarizada	so-algumas-escolas-de-bairros-violentos	liberdade_civil	-1	fraca	2
+escola-militarizada	so-algumas-escolas-de-bairros-violentos	polarizacao	1	fraca	2
+escola-militarizada	as-escolas-que-a-comunidade-pedir	liberdade_civil	-1	media	2
+escola-militarizada	as-escolas-que-a-comunidade-pedir	polarizacao	1	media	2
+escola-militarizada	todas-as-escolas-publicas	liberdade_civil	-1	forte	2
+escola-militarizada	todas-as-escolas-publicas	polarizacao	1	forte	2
+escola-obrigatoria		instrucao	1	media	2000000000000
+escola-obrigatoria		vagas_na_escola	-1	media	2000000000000
+espionagem-no-exterior	so-ler-noticias-e-relatorios-das-embaixadas	reputacao_internacional	-1	fraca	2
+espionagem-no-exterior	tambem-escutar-comunicacoes	reputacao_internacional	-1	media	2
+espionagem-no-exterior	tambem-infiltrar-agentes	reputacao_internacional	-1	forte	2
+estabilidade-do-servidor	sai-por-falta-grave	atendimento	1	fraca	6
+estabilidade-do-servidor	sai-por-falta-grave	folha_do_funcionalismo	-1	fraca	6
+estabilidade-do-servidor	sai-por-falta-grave	corrupcao	1	fraca	6
+estabilidade-do-servidor	avaliacao-todo-ano	atendimento	1	fraca	6
+estabilidade-do-servidor	avaliacao-todo-ano	folha_do_funcionalismo	-1	fraca	6
+estabilidade-do-servidor	avaliacao-todo-ano	corrupcao	1	fraca	6
+estabilidade-do-servidor	duas-notas-ruins-e-sai	atendimento	1	media	6
+estabilidade-do-servidor	duas-notas-ruins-e-sai	folha_do_funcionalismo	-1	media	6
+estabilidade-do-servidor	duas-notas-ruins-e-sai	corrupcao	1	media	6
+estabilidade-do-servidor	contrato-igual-ao-do-trabalhador-comum-fora-juiz	atendimento	1	media	6
+estabilidade-do-servidor	contrato-igual-ao-do-trabalhador-comum-fora-juiz	folha_do_funcionalismo	-1	media	6
+estabilidade-do-servidor	contrato-igual-ao-do-trabalhador-comum-fora-juiz	corrupcao	1	media	6
+estabilidade-do-servidor	policial	atendimento	1	forte	6
+estabilidade-do-servidor	policial	folha_do_funcionalismo	-1	forte	6
+estabilidade-do-servidor	policial	corrupcao	1	forte	6
+estabilidade-do-servidor	diplomata-e-auditor	atendimento	1	forte	6
+estabilidade-do-servidor	diplomata-e-auditor	folha_do_funcionalismo	-1	forte	6
+estabilidade-do-servidor	diplomata-e-auditor	corrupcao	1	forte	6
+estradas-com-pedagio		mortes_no_transito	-1	media	6
+estradas-com-pedagio		custo_do_frete	1	media	6
+exigencia-de-capital-dos-bancos		solidez_dos_bancos	1	media	12
+exigencia-de-capital-dos-bancos		credito_ao_setor_privado	-1	media	12
+exigencia-para-o-credito-rural	nao-ter-multa-aberta	desmatamento	-1	fraca	3
+exigencia-para-o-credito-rural	reserva-em-dia	desmatamento	-1	media	3
+exigencia-para-o-credito-rural	conferencia-por-satelite	desmatamento	-1	forte	3
+exigencia-tecnica-das-construcoes	padrao	custo_das_obras	1	fraca	4
+exigencia-tecnica-das-construcoes	padrao	preco_moradia	1	fraca	4
+exigencia-tecnica-das-construcoes	padrao	preparo_contra_desastres	1	fraca	4
+exigencia-tecnica-das-construcoes	rigorosa-incendio	custo_das_obras	1	media	4
+exigencia-tecnica-das-construcoes	rigorosa-incendio	preco_moradia	1	media	4
+exigencia-tecnica-das-construcoes	rigorosa-incendio	preparo_contra_desastres	1	media	4
+exigencia-tecnica-das-construcoes	enchente	custo_das_obras	1	forte	4
+exigencia-tecnica-das-construcoes	enchente	preco_moradia	1	forte	4
+exigencia-tecnica-das-construcoes	enchente	preparo_contra_desastres	1	forte	4
+exigencia-tecnica-das-construcoes	terremoto	custo_das_obras	1	forte	4
+exigencia-tecnica-das-construcoes	terremoto	preco_moradia	1	forte	4
+exigencia-tecnica-das-construcoes	terremoto	preparo_contra_desastres	1	forte	4
+exigencias-para-tirar-carteira	aprender-com-habilitado-e-prova	mortes_no_transito	-1	fraca	4
+exigencias-para-tirar-carteira	curso-na-internet-e-2-horas-de-aula	mortes_no_transito	-1	media	4
+exigencias-para-tirar-carteira	autoescola-obrigatoria	mortes_no_transito	-1	forte	4
+exploracao-em-floresta-e-areas-protegidas	com-excecoes	meio_ambiente	-1	media	12
+exploracao-em-floresta-e-areas-protegidas	com-excecoes	reputacao_internacional	-1	media	12
+exploracao-em-floresta-e-areas-protegidas	permitida	meio_ambiente	-1	forte	12
+exploracao-em-floresta-e-areas-protegidas	permitida	reputacao_internacional	-1	forte	12
+facilitacao-aduaneira		abertura_comercial	1	media	6
+facilitacao-aduaneira		corrupcao	-1	media	6
+faculdades-privadas	poucas	instrucao	1	fraca	12
+faculdades-privadas	poucas	profissionais_saude	1	fraca	12
+faculdades-privadas	com-prova-de-qualidade-antes-de-abrir	instrucao	1	media	12
+faculdades-privadas	com-prova-de-qualidade-antes-de-abrir	profissionais_saude	1	media	12
+faculdades-privadas	abertura-livre-com-prova-de-qualidade-no-fim-do-curso	instrucao	1	forte	12
+faculdades-privadas	abertura-livre-com-prova-de-qualidade-no-fim-do-curso	profissionais_saude	1	forte	12
+faculdades-privadas	abertura-livre-sem-nenhum-controle	instrucao	1	forte	12
+faculdades-privadas	abertura-livre-sem-nenhum-controle	profissionais_saude	1	forte	12
+faixa-do-cambio-largura-da-faixa		cambio	1	fraca	2
+faixa-do-cambio-largura-da-faixa		reservas_internacionais	-1	fraca	2
+faixa-do-cambio-largura-da-faixa		divida_em_moeda_estrangeira	-1	fraca	2
+faixa-do-cambio-preco-alvo		cambio	1	fraca	2
+faixa-do-cambio-preco-alvo		reservas_internacionais	-1	fraca	2
+faixa-do-cambio-preco-alvo		divida_em_moeda_estrangeira	-1	fraca	2
+fazer-parte-de-faccao-e-crime	ser-membro-e-crime	homicidios	-1	fraca	2
+fazer-parte-de-faccao-e-crime	ser-membro-e-crime	lotacao_presidios	1	fraca	2
+fazer-parte-de-faccao-e-crime	ser-membro-e-crime	liberdade_civil	-1	fraca	2
+fazer-parte-de-faccao-e-crime	ser-membro-e-crime	reputacao_internacional	-1	fraca	2
+fazer-parte-de-faccao-e-crime	tambem-quem-ajuda-a-faccao-guarda-dinheiro	homicidios	-1	fraca	2
+fazer-parte-de-faccao-e-crime	tambem-quem-ajuda-a-faccao-guarda-dinheiro	lotacao_presidios	1	fraca	2
+fazer-parte-de-faccao-e-crime	tambem-quem-ajuda-a-faccao-guarda-dinheiro	liberdade_civil	-1	fraca	2
+fazer-parte-de-faccao-e-crime	tambem-quem-ajuda-a-faccao-guarda-dinheiro	reputacao_internacional	-1	fraca	2
+fazer-parte-de-faccao-e-crime	paga	homicidios	-1	media	2
+fazer-parte-de-faccao-e-crime	paga	lotacao_presidios	1	media	2
+fazer-parte-de-faccao-e-crime	paga	liberdade_civil	-1	media	2
+fazer-parte-de-faccao-e-crime	paga	reputacao_internacional	-1	media	2
+fazer-parte-de-faccao-e-crime	leva-recado	homicidios	-1	media	2
+fazer-parte-de-faccao-e-crime	leva-recado	lotacao_presidios	1	media	2
+fazer-parte-de-faccao-e-crime	leva-recado	liberdade_civil	-1	media	2
+fazer-parte-de-faccao-e-crime	leva-recado	reputacao_internacional	-1	media	2
+fazer-parte-de-faccao-e-crime	tambem-quem-tem-sinais-de-pertencer-tatuagem	homicidios	-1	forte	2
+fazer-parte-de-faccao-e-crime	tambem-quem-tem-sinais-de-pertencer-tatuagem	lotacao_presidios	1	forte	2
+fazer-parte-de-faccao-e-crime	tambem-quem-tem-sinais-de-pertencer-tatuagem	liberdade_civil	-1	forte	2
+fazer-parte-de-faccao-e-crime	tambem-quem-tem-sinais-de-pertencer-tatuagem	reputacao_internacional	-1	forte	2
+fazer-parte-de-faccao-e-crime	mensagem	homicidios	-1	forte	2
+fazer-parte-de-faccao-e-crime	mensagem	lotacao_presidios	1	forte	2
+fazer-parte-de-faccao-e-crime	mensagem	liberdade_civil	-1	forte	2
+fazer-parte-de-faccao-e-crime	mensagem	reputacao_internacional	-1	forte	2
+fazer-parte-de-faccao-e-crime	morar-com-o-chefe	homicidios	-1	forte	2
+fazer-parte-de-faccao-e-crime	morar-com-o-chefe	lotacao_presidios	1	forte	2
+fazer-parte-de-faccao-e-crime	morar-com-o-chefe	liberdade_civil	-1	forte	2
+fazer-parte-de-faccao-e-crime	morar-com-o-chefe	reputacao_internacional	-1	forte	2
+ficha-limpa	qualquer-um-pode-concorrer	corrupcao	-1	fraca	2
+ficha-limpa	qualquer-um-pode-concorrer	confianca_na_democracia	1	fraca	2
+ficha-limpa	so-condenado-em-definitivo	corrupcao	-1	fraca	2
+ficha-limpa	so-condenado-em-definitivo	confianca_na_democracia	1	fraca	2
+ficha-limpa	sem-mais-recurso	corrupcao	-1	media	2
+ficha-limpa	sem-mais-recurso	confianca_na_democracia	1	media	2
+ficha-limpa	tambem-condenado-em-segunda-instancia	corrupcao	-1	media	2
+ficha-limpa	tambem-condenado-em-segunda-instancia	confianca_na_democracia	1	media	2
+ficha-limpa	ainda-com-recurso	corrupcao	-1	forte	2
+ficha-limpa	ainda-com-recurso	confianca_na_democracia	1	forte	2
+ficha-limpa	tambem-reu-em-processo-de-corrupcao-aceito-pela-justica	corrupcao	-1	forte	2
+ficha-limpa	tambem-reu-em-processo-de-corrupcao-aceito-pela-justica	confianca_na_democracia	1	forte	2
+fim-dos-carros-a-combustao		emissoes_de_carbono	-1	media	1
+fiscalizacao-da-receita		sonegacao	-1	media	2
+fiscalizacao-do-trabalho		emprego_informal	-1	media	2
+fiscalizacao-e-repressao-drogas		mercado_ilegal	-1	fraca	2
+fiscalizacao-e-repressao-drogas		lotacao_presidios	1	fraca	2
+fiscalizacao-e-repressao-drogas		liberdade_civil	-1	fraca	2
+fiscalizacao-e-repressao-jogos		mercado_ilegal	-1	fraca	2
+fiscalizacao-e-repressao-jogos		lotacao_presidios	1	fraca	2
+fiscalizacao-e-repressao-jogos		liberdade_civil	-1	fraca	2
+forca-letal-liberada	tambem-para-salvar-refem	mortes_pela_policia	1	fraca	2
+forca-letal-liberada	tambem-para-salvar-refem	confianca_na_policia	-1	fraca	2
+forca-letal-liberada	tambem-para-salvar-refem	homicidios	-1	fraca	2
+forca-letal-liberada	outra-pessoa-em-risco-imediato	mortes_pela_policia	1	media	2
+forca-letal-liberada	outra-pessoa-em-risco-imediato	confianca_na_policia	-1	media	2
+forca-letal-liberada	outra-pessoa-em-risco-imediato	homicidios	-1	media	2
+forca-letal-liberada	tambem-contra-quem-foge-armado-depois-de-um-crime	mortes_pela_policia	1	forte	2
+forca-letal-liberada	tambem-contra-quem-foge-armado-depois-de-um-crime	confianca_na_policia	-1	forte	2
+forca-letal-liberada	tambem-contra-quem-foge-armado-depois-de-um-crime	homicidios	-1	forte	2
+forca-letal-liberada	tambem-contra-qualquer-suspeito-armado-em-area-de-crime	mortes_pela_policia	1	forte	2
+forca-letal-liberada	tambem-contra-qualquer-suspeito-armado-em-area-de-crime	confianca_na_policia	-1	forte	2
+forca-letal-liberada	tambem-contra-qualquer-suspeito-armado-em-area-de-crime	homicidios	-1	forte	2
+forcas-armadas-na-floresta	apoio-de-transporte	desmatamento	-1	fraca	1
+forcas-armadas-na-floresta	apoio-de-transporte	liberdade_civil	-1	fraca	1
+forcas-armadas-na-floresta	patrulha-com-o-orgao	desmatamento	-1	media	1
+forcas-armadas-na-floresta	patrulha-com-o-orgao	liberdade_civil	-1	media	1
+forcas-armadas-na-floresta	comando-militar-da-regiao	desmatamento	-1	forte	1
+forcas-armadas-na-floresta	comando-militar-da-regiao	liberdade_civil	-1	forte	1
+formacao-policial		mortes_pela_policia	-1	media	12
+formacao-policial		confianca_na_policia	1	media	12
+foro-especial	politicos-sao-julgados-como-qualquer-cidadao	corrupcao	1	fraca	12
+foro-especial	politicos-sao-julgados-como-qualquer-cidadao	confianca_na_justica	-1	fraca	12
+foro-especial	so-por-crimes-cometidos-no-exercicio-do-cargo	corrupcao	1	media	12
+foro-especial	so-por-crimes-cometidos-no-exercicio-do-cargo	confianca_na_justica	-1	media	12
+foro-especial	todos-os-crimes-de-ministros-e-parlamentares	corrupcao	1	media	12
+foro-especial	todos-os-crimes-de-ministros-e-parlamentares	confianca_na_justica	-1	media	12
+foro-especial	todos-os-crimes	corrupcao	1	forte	12
+foro-especial	todos-os-crimes	confianca_na_justica	-1	forte	12
+foro-especial	e-vale-ate-depois-que-deixam-o-cargo	corrupcao	1	forte	12
+foro-especial	e-vale-ate-depois-que-deixam-o-cargo	confianca_na_justica	-1	forte	12
+fundo-publico-de-campanha		corrupcao	-1	media	2
+garantia-contra-acidentes		meio_ambiente	1	media	6
+garantia-contra-acidentes		concentracao_de_mercado	1	media	6
+garimpo	so-cooperativa-registrada	emprego_informal	1	fraca	2
+garimpo	livre-com-taxa-e-seguro-de-saude	emprego_informal	1	media	2
+garimpo	livre-sem-controle	emprego_informal	1	forte	2
+gasto-cameras		seguranca	1	fraca	3
+gasto-cameras		liberdade_civil	-1	fraca	1
+gasto-educacao		instrucao	1	forte	18
+gasto-militar		poder_defensivo	1	forte	3
+gasto-policia		seguranca	1	media	6
+idade-minima-de-aposentadoria		cobertura_da_previdencia	-1	media	12
+idade-minima-para-comprar-drogas		mortes_no_transito	-1	fraca	2
+idade-minima-para-comprar-jogos		dependencia_de_jogos	-1	media	4
+idade-minima-para-trabalhar		instrucao	1	media	12
+idade-minima-para-trabalhar		pobreza	1	media	12
+idade-para-votar		participacao_eleitoral	1	media	2
+idade-voluntario		poder_defensivo	-1	fraca	4
+identificacao-dos-usuarios	cadastro-nas-redes	desinformacao	-1	media	2
+identificacao-dos-usuarios	cadastro-nas-redes	liberdade_civil	-1	media	2
+identificacao-dos-usuarios	documento-para-postar	desinformacao	-1	forte	2
+identificacao-dos-usuarios	documento-para-postar	liberdade_civil	-1	forte	2
+imposto-consumo		padrao_vida	-1	media	2
+imposto-consumo		pobreza	1	fraca	2
+imposto-das-drogas		dependencia_de_drogas	-1	media	0
+imposto-das-drogas		mercado_ilegal	1	media	0
+imposto-de-saida		saida_de_ricos	-1	media	4
+imposto-de-saida		investimento_estrangeiro	-1	media	4
+imposto-dos-jogos		mercado_ilegal	1	media	0
+imposto-empresas		industrializacao	-1	media	6
+imposto-poluicao		meio_ambiente	1	media	6
+imposto-poluicao		industrializacao	-1	fraca	6
+imposto-renda-medio		padrao_vida	-1	media	2
+imposto-renda-pobre		pobreza	1	media	2
+imposto-renda-rico		desigualdade	-1	media	4
+imposto-renda-rico		saida_de_ricos	1	fraca	4
+imposto-sobre-aplicacoes-grandes-a-partir-de-quanto-cobra		desigualdade	-1	fraca	2
+imposto-sobre-aplicacoes-grandes-a-partir-de-quanto-cobra		saida_de_ricos	1	fraca	2
+imposto-sobre-aplicacoes-grandes-a-partir-de-quanto-cobra		indice_da_bolsa	-1	fraca	2
+imposto-sobre-aplicacoes-grandes-quanto-cobra		desigualdade	-1	fraca	2
+imposto-sobre-aplicacoes-grandes-quanto-cobra		saida_de_ricos	1	fraca	2
+imposto-sobre-aplicacoes-grandes-quanto-cobra		indice_da_bolsa	-1	fraca	2
+imposto-sobre-bancos		credito_ao_setor_privado	-1	media	2
+imposto-sobre-bens-de-luxo		desigualdade	-1	media	2
+imposto-sobre-bens-de-luxo		sonegacao	1	media	2
+imposto-sobre-combustiveis		meio_ambiente	1	media	0
+imposto-sobre-dividendos		indice_da_bolsa	-1	media	2
+imposto-sobre-heranca		desigualdade	-1	media	12
+imposto-sobre-imovel-caro-a-partir-de-quanto-cobra		desigualdade	-1	fraca	2
+imposto-sobre-imovel-caro-a-partir-de-quanto-cobra		saida_de_ricos	1	fraca	2
+imposto-sobre-imovel-caro-a-partir-de-quanto-cobra		preco_moradia	-1	fraca	2
+imposto-sobre-imovel-caro-quanto-cobra		desigualdade	-1	fraca	2
+imposto-sobre-imovel-caro-quanto-cobra		saida_de_ricos	1	fraca	2
+imposto-sobre-imovel-caro-quanto-cobra		preco_moradia	-1	fraca	2
+imposto-sobre-movimentacao-financeira		sonegacao	-1	media	1
+imposto-sobre-movimentacao-financeira		credito_ao_setor_privado	-1	media	1
+imposto-sobre-remedio		acesso_remedios	1	media	1
+imposto-terra-parada		concentracao_terra	-1	media	12
+imposto-terra-parada		preco_moradia	-1	fraca	6
+incentivo-a-geracao-limpa-privada		matriz_limpa	1	media	6
+incentivo-a-setores		industrializacao	1	media	2
+incentivo-ao-investimento		industrializacao	1	media	2
+indenizacao-da-familia-removida-por-obra	valor-da-casa-sem-escritura	custo_das_obras	1	fraca	3
+indenizacao-da-familia-removida-por-obra	tambem-aluguel-ate-a-casa-nova	custo_das_obras	1	media	3
+indenizacao-da-familia-removida-por-obra	casa-nova-antes-de-sair	custo_das_obras	1	forte	3
+independencia-das-agencias	chefe-com-mandato-fixo	investimento_estrangeiro	1	media	6
+independencia-das-agencias	chefe-com-mandato-fixo	confianca_do_mercado	1	media	6
+independencia-das-agencias	orgao-independente-com-verba-propria	investimento_estrangeiro	1	forte	6
+independencia-das-agencias	orgao-independente-com-verba-propria	confianca_do_mercado	1	forte	6
+independencia-do-orgao-ambiental	chefe-com-mandato	corrupcao	-1	media	2
+independencia-do-orgao-ambiental	orgao-independente	corrupcao	-1	forte	2
+independencia-dos-investigadores	escolha-de-uma-lista-do-orgao	corrupcao	-1	media	2
+independencia-dos-investigadores	chefe-com-mandato-fixo	corrupcao	-1	forte	2
+indicacao-de-juizes	presidente-indica-livre	confianca_na_democracia	-1	media	12
+indicacao-dos-dirigentes-das-estatais	mista	eficiencia_das_estatais	1	fraca	12
+indicacao-dos-dirigentes-das-estatais	mista	corrupcao	-1	fraca	12
+indicacao-dos-dirigentes-das-estatais	concurso	eficiencia_das_estatais	1	media	12
+indicacao-dos-dirigentes-das-estatais	concurso	corrupcao	-1	media	12
+indicacao-dos-dirigentes-das-estatais	lista-tecnica	eficiencia_das_estatais	1	forte	12
+indicacao-dos-dirigentes-das-estatais	lista-tecnica	corrupcao	-1	forte	12
+iniciativa-popular	so-os-politicos-propoem	polarizacao	1	fraca	2
+iniciativa-popular	o-povo-propoe-lei-com-assinaturas-e-o-congresso-decide	polarizacao	1	media	2
+iniciativa-popular	lei-com-muitas-assinaturas-vai-a-plebiscito	polarizacao	1	forte	2
+iniciativa-popular	o-povo-tambem-revoga-leis-por-voto	polarizacao	1	forte	2
+inspecoes-nucleares-internacionais	inspecao-parcial	reputacao_internacional	1	media	2
+inspecoes-nucleares-internacionais	inspecao-total	reputacao_internacional	1	forte	2
+integracao-das-policias	policias-cooperando	homicidios	-1	media	2
+integracao-das-policias	policias-cooperando	liberdade_civil	-1	media	2
+integracao-das-policias	comando-unico	homicidios	-1	forte	2
+integracao-das-policias	comando-unico	liberdade_civil	-1	forte	2
+integracao-dos-imigrantes		integracao	1	media	12
+internet-publica		acesso_a_internet	1	media	12
+intervalo-para-voltar		confianca_na_democracia	1	media	2
+isencao-para-igrejas	so-o-predio-do-templo	pobreza	-1	fraca	2
+isencao-para-igrejas	templo-e-doacoes-recebidas	pobreza	-1	fraca	2
+isencao-para-igrejas	templo-e-doacoes-recebidas	sonegacao	1	fraca	2
+isencao-para-igrejas	templo-doacoes-e-negocios	pobreza	-1	fraca	2
+isencao-para-igrejas	templo-doacoes-e-negocios	sonegacao	1	media	2
+jornada-maxima		padrao_vida	1	media	2
+legitima-defesa	em-casa-a-defesa-ja-e-presumida	crimes_contra_o_patrimonio	-1	fraca	4
+legitima-defesa	em-casa-a-defesa-ja-e-presumida	homicidios	1	fraca	4
+legitima-defesa	em-casa-a-defesa-ja-e-presumida	sensacao_de_inseguranca	-1	fraca	4
+legitima-defesa	tambem-no-comercio-e-no-carro	crimes_contra_o_patrimonio	-1	media	4
+legitima-defesa	tambem-no-comercio-e-no-carro	homicidios	1	media	4
+legitima-defesa	tambem-no-comercio-e-no-carro	sensacao_de_inseguranca	-1	media	4
+legitima-defesa	em-qualquer-lugar	crimes_contra_o_patrimonio	-1	forte	4
+legitima-defesa	em-qualquer-lugar	homicidios	1	forte	4
+legitima-defesa	em-qualquer-lugar	sensacao_de_inseguranca	-1	forte	4
+legitima-defesa	sem-dever-de-fugir	crimes_contra_o_patrimonio	-1	forte	4
+legitima-defesa	sem-dever-de-fugir	homicidios	1	forte	4
+legitima-defesa	sem-dever-de-fugir	sensacao_de_inseguranca	-1	forte	4
+lei-contra-discriminacao	tambem-nos-servicos	discriminacao	-1	media	12
+lei-contra-discriminacao	tambem-nos-servicos	desigualdade	-1	media	12
+lei-contra-discriminacao	tambem-moradia-e-credito	discriminacao	-1	forte	12
+lei-contra-discriminacao	tambem-moradia-e-credito	desigualdade	-1	forte	12
+lei-contra-noticias-falsas	a-plataforma-precisa-por-aviso-na-noticia-provada-falsa	desinformacao	-1	fraca	2
+lei-contra-noticias-falsas	a-plataforma-precisa-por-aviso-na-noticia-provada-falsa	liberdade_de_imprensa	-1	fraca	2
+lei-contra-noticias-falsas	remocao-da-noticia-provada-falsa	desinformacao	-1	media	2
+lei-contra-noticias-falsas	remocao-da-noticia-provada-falsa	liberdade_de_imprensa	-1	media	2
+lei-contra-noticias-falsas	multa-para-quem-espalha-de-proposito	desinformacao	-1	forte	2
+lei-contra-noticias-falsas	multa-para-quem-espalha-de-proposito	liberdade_de_imprensa	-1	forte	2
+lei-contra-noticias-falsas	prisao-para-quem-espalha-de-proposito	desinformacao	-1	forte	2
+lei-contra-noticias-falsas	prisao-para-quem-espalha-de-proposito	liberdade_de_imprensa	-1	forte	2
+liberacao-das-drogas	bebida	mercado_ilegal	-1	fraca	2
+liberacao-das-drogas	bebida	dependencia_de_drogas	1	fraca	2
+liberacao-das-drogas	bebida	liberdade_civil	1	fraca	2
+liberacao-das-drogas	cigarro	mercado_ilegal	-1	media	2
+liberacao-das-drogas	cigarro	dependencia_de_drogas	1	media	2
+liberacao-das-drogas	cigarro	liberdade_civil	1	media	2
+liberacao-das-drogas	cannabis	mercado_ilegal	-1	media	2
+liberacao-das-drogas	cannabis	dependencia_de_drogas	1	media	2
+liberacao-das-drogas	cannabis	liberdade_civil	1	media	2
+liberacao-das-drogas	cocaina-e-sinteticas	mercado_ilegal	-1	forte	2
+liberacao-das-drogas	cocaina-e-sinteticas	dependencia_de_drogas	1	forte	2
+liberacao-das-drogas	cocaina-e-sinteticas	liberdade_civil	1	forte	2
+liberacao-das-drogas	crack-e-opioides	mercado_ilegal	-1	forte	2
+liberacao-das-drogas	crack-e-opioides	dependencia_de_drogas	1	forte	2
+liberacao-das-drogas	crack-e-opioides	liberdade_civil	1	forte	2
+liberacao-de-armas	so-cacadores	homicidios	1	fraca	2
+liberacao-de-armas	atiradores-e-vigilantes	homicidios	1	media	2
+liberacao-de-armas	cidadao-sem-antecedentes-pode-ter-arma-em-casa	homicidios	1	forte	2
+liberacao-de-armas	tambem-pode-andar-armado-na-rua	homicidios	1	forte	2
+liberacao-dos-jogos	loteria	mercado_ilegal	-1	fraca	2
+liberacao-dos-jogos	loteria	dependencia_de_jogos	1	fraca	2
+liberacao-dos-jogos	loteria	liberdade_civil	1	fraca	2
+liberacao-dos-jogos	bingo-e-corrida	mercado_ilegal	-1	fraca	2
+liberacao-dos-jogos	bingo-e-corrida	dependencia_de_jogos	1	fraca	2
+liberacao-dos-jogos	bingo-e-corrida	liberdade_civil	1	fraca	2
+liberacao-dos-jogos	cassino-presencial	mercado_ilegal	-1	media	2
+liberacao-dos-jogos	cassino-presencial	dependencia_de_jogos	1	media	2
+liberacao-dos-jogos	cassino-presencial	liberdade_civil	1	media	2
+liberacao-dos-jogos	apostas-pela-internet	mercado_ilegal	-1	media	2
+liberacao-dos-jogos	apostas-pela-internet	dependencia_de_jogos	1	media	2
+liberacao-dos-jogos	apostas-pela-internet	liberdade_civil	1	media	2
+liberacao-dos-jogos	cassino-pela-internet	mercado_ilegal	-1	forte	2
+liberacao-dos-jogos	cassino-pela-internet	dependencia_de_jogos	1	forte	2
+liberacao-dos-jogos	cassino-pela-internet	liberdade_civil	1	forte	2
+liberacao-para-construir	regra-federal-perto-de-transporte	preco_moradia	-1	fraca	12
+liberacao-para-construir	regra-federal-perto-de-transporte	deficit_habitacional	-1	fraca	12
+liberacao-para-construir	a-cidade-nao-pode-barrar-predio-onde-ha-agua-e-esgoto	preco_moradia	-1	media	12
+liberacao-para-construir	a-cidade-nao-pode-barrar-predio-onde-ha-agua-e-esgoto	deficit_habitacional	-1	media	12
+liberacao-para-construir	vale-a-regra-federal-em-todo-o-pais	preco_moradia	-1	forte	12
+liberacao-para-construir	vale-a-regra-federal-em-todo-o-pais	deficit_habitacional	-1	forte	12
+liberdade-de-recusa-das-empresas	candidato	discriminacao	1	fraca	2
+liberdade-de-recusa-das-empresas	recusa-so-por-conviccao-religiosa-do-dono	discriminacao	1	media	2
+liberdade-de-recusa-das-empresas	escolhe-livremente-quem-contrata	discriminacao	1	forte	2
+liberdade-de-recusa-das-empresas	escolhe-livremente-quem-contrata-e-quem-atende	discriminacao	1	forte	2
+licenca-para-banco-novo	nenhum-banco-novo	credito_ao_setor_privado	-1	media	4
+licenca-para-banco-novo	nenhum-banco-novo	concentracao_de_mercado	1	media	4
+licenca-para-banco-novo	analise-de-anos	credito_ao_setor_privado	1	fraca	4
+licenca-para-banco-novo	analise-de-anos	concentracao_de_mercado	-1	fraca	4
+licenca-para-banco-novo	analise-de-anos	solidez_dos_bancos	-1	fraca	4
+licenca-para-banco-novo	bancos-digitais-e-cooperativas-com-analise-curta	credito_ao_setor_privado	1	media	4
+licenca-para-banco-novo	bancos-digitais-e-cooperativas-com-analise-curta	concentracao_de_mercado	-1	media	4
+licenca-para-banco-novo	bancos-digitais-e-cooperativas-com-analise-curta	solidez_dos_bancos	-1	media	4
+licenca-para-banco-novo	licenca-em-meses-para-qualquer-tipo	credito_ao_setor_privado	1	forte	4
+licenca-para-banco-novo	licenca-em-meses-para-qualquer-tipo	concentracao_de_mercado	-1	forte	4
+licenca-para-banco-novo	licenca-em-meses-para-qualquer-tipo	solidez_dos_bancos	-1	forte	4
+licencas-de-apostas	so-o-estado-explora	mercado_ilegal	1	media	2
+licencas-de-apostas	so-o-estado-explora	dependencia_de_jogos	-1	fraca	2
+licencas-de-apostas	poucas-licencas-caras	mercado_ilegal	-1	fraca	2
+licencas-de-apostas	poucas-licencas-caras	dependencia_de_jogos	1	fraca	2
+licencas-de-apostas	licenca-aberta-com-imposto-moderado	mercado_ilegal	-1	media	2
+licencas-de-apostas	licenca-aberta-com-imposto-moderado	dependencia_de_jogos	1	media	2
+licencas-de-apostas	licenca-barata-e-aberta-a-qualquer-empresa	mercado_ilegal	-1	forte	2
+licencas-de-apostas	licenca-barata-e-aberta-a-qualquer-empresa	dependencia_de_jogos	1	forte	2
+licenciamento-ambiental	frouxo	industrializacao	1	media	6
+licenciamento-ambiental	frouxo	meio_ambiente	-1	media	6
+licenciamento-ambiental	frouxo	corrupcao	1	fraca	3
+licenciamento-ambiental	rigoroso	meio_ambiente	1	media	6
+licenciamento-ambiental	rigoroso	industrializacao	-1	media	6
+limite-a-compradores-estrangeiros	imposto-extra-na-compra	preco_moradia	-1	fraca	2
+limite-a-compradores-estrangeiros	imposto-extra-na-compra	confianca_do_mercado	-1	fraca	2
+limite-a-compradores-estrangeiros	no-maximo-uma-casa-por-pessoa-e-nada-de-terra-rural	preco_moradia	-1	media	2
+limite-a-compradores-estrangeiros	no-maximo-uma-casa-por-pessoa-e-nada-de-terra-rural	confianca_do_mercado	-1	media	2
+limite-a-compradores-estrangeiros	proibido-comprar	preco_moradia	-1	forte	2
+limite-a-compradores-estrangeiros	proibido-comprar	confianca_do_mercado	-1	forte	2
+limite-da-divida		credibilidade_fiscal	1	media	12
+limite-da-folha-do-funcionalismo		folha_do_funcionalismo	-1	media	12
+limite-de-aviso-ao-mercado		confianca_do_mercado	-1	media	2
+limite-de-dono-de-midia		liberdade_de_imprensa	1	media	12
+limite-de-poluicao-do-ar		qualidade_do_ar	1	media	6
+limite-total-de-mandatos		confianca_na_democracia	-1	media	12
+livre-negociacao	a-lei-vale-sempre	desigualdade	1	fraca	2
+livre-negociacao	so-horario-e-jornada	desigualdade	1	media	2
+livre-negociacao	tambem-ferias-e-intervalos	desigualdade	1	media	2
+livre-negociacao	quase-tudo	desigualdade	1	forte	2
+livre-negociacao	menos-salario-minimo-e-seguranca	desigualdade	1	forte	2
+lojas-licenciadas	so-bebida-alcoolica	mercado_ilegal	-1	fraca	2
+lojas-licenciadas	so-bebida-alcoolica	dependencia_de_drogas	1	fraca	2
+lojas-licenciadas	bebida-e-cigarro	mercado_ilegal	-1	media	2
+lojas-licenciadas	bebida-e-cigarro	dependencia_de_drogas	1	media	2
+lojas-licenciadas	bebida	mercado_ilegal	-1	forte	2
+lojas-licenciadas	bebida	dependencia_de_drogas	1	forte	2
+lojas-licenciadas	cigarro-e-cannabis	mercado_ilegal	-1	forte	2
+lojas-licenciadas	cigarro-e-cannabis	dependencia_de_drogas	1	forte	2
+maioridade-penal		seguranca	-1	fraca	2
+maioridade-penal		lotacao_presidios	-1	forte	6
+maioridade-penal		liberdade_civil	1	fraca	1
+mandatos-seguidos		confianca_na_democracia	-1	media	2
+mercado-de-carbono-cotas-de-graca		emissoes_de_carbono	-1	fraca	6
+mercado-de-carbono-teto-de-emissoes		emissoes_de_carbono	-1	fraca	6
+meta-de-inflacao		expectativa_de_inflacao	-1	media	12
+meta-de-resultado		credibilidade_fiscal	1	media	12
+microcredito		emprego_informal	-1	media	2
+microcredito		pobreza	-1	media	2
+militares-na-seguranca-publica	so-em-fronteiras-e-presidios	certeza_de_punicao	1	fraca	2
+militares-na-seguranca-publica	so-em-fronteiras-e-presidios	mortes_pela_policia	1	fraca	2
+militares-na-seguranca-publica	so-em-fronteiras-e-presidios	homicidios	-1	fraca	2
+militares-na-seguranca-publica	em-bairros-violentos-por-tempo-limitado	certeza_de_punicao	1	media	2
+militares-na-seguranca-publica	em-bairros-violentos-por-tempo-limitado	mortes_pela_policia	1	media	2
+militares-na-seguranca-publica	em-bairros-violentos-por-tempo-limitado	homicidios	-1	media	2
+militares-na-seguranca-publica	permanente-nas-grandes-cidades	certeza_de_punicao	1	forte	2
+militares-na-seguranca-publica	permanente-nas-grandes-cidades	mortes_pela_policia	1	forte	2
+militares-na-seguranca-publica	permanente-nas-grandes-cidades	homicidios	-1	forte	2
+missoes-de-paz		reputacao_internacional	1	media	2
+moeda-de-fora-nos-contratos	em-contratos-grandes-e-aluguel	confianca_do_mercado	1	fraca	2
+moeda-de-fora-nos-contratos	em-contratos-grandes-e-aluguel	reservas_internacionais	-1	fraca	2
+moeda-de-fora-nos-contratos	em-contratos-grandes-e-aluguel	soberania	-1	fraca	2
+moeda-de-fora-nos-contratos	circula-junto-com-a-nossa	confianca_do_mercado	1	media	2
+moeda-de-fora-nos-contratos	circula-junto-com-a-nossa	reservas_internacionais	-1	media	2
+moeda-de-fora-nos-contratos	circula-junto-com-a-nossa	soberania	-1	media	2
+moeda-de-fora-nos-contratos	substitui-a-nossa	confianca_do_mercado	1	forte	2
+moeda-de-fora-nos-contratos	substitui-a-nossa	reservas_internacionais	-1	forte	2
+moeda-de-fora-nos-contratos	substitui-a-nossa	soberania	-1	forte	2
+morte-assistida	so-doenca-terminal	liberdade_civil	1	media	12
+morte-assistida	so-doenca-terminal	polarizacao	1	media	12
+morte-assistida	tambem-sofrimento-sem-cura	liberdade_civil	1	forte	12
+morte-assistida	tambem-sofrimento-sem-cura	polarizacao	1	forte	12
+multa-a-quem-contrata-sem-documento	multa-leve	pessoas_sem_documento	-1	media	2
+multa-a-quem-contrata-sem-documento	multa-pesada	pessoas_sem_documento	-1	forte	2
+negociacao-coletiva	vale-so-para-os-socios-do-sindicato	desigualdade	-1	fraca	2
+negociacao-coletiva	vale-so-para-os-socios-do-sindicato	padrao_vida	1	fraca	2
+negociacao-coletiva	vale-para-todos-da-empresa	desigualdade	-1	media	2
+negociacao-coletiva	vale-para-todos-da-empresa	padrao_vida	1	media	2
+negociacao-coletiva	vale-para-o-setor-inteiro	desigualdade	-1	forte	2
+negociacao-coletiva	vale-para-o-setor-inteiro	padrao_vida	1	forte	2
+o-que-acontece-com-quem-e-pego	embargo-da-area	desmatamento	-1	fraca	3
+o-que-acontece-com-quem-e-pego	corte-de-credito-publico	desmatamento	-1	media	3
+o-que-acontece-com-quem-e-pego	perda-da-terra	desmatamento	-1	forte	3
+o-que-o-assentado-recebe	uso-sem-poder-vender	concentracao_terra	1	fraca	6
+o-que-o-assentado-recebe	titulo-com-prazo-para-vender	concentracao_terra	1	media	6
+o-que-o-assentado-recebe	titulo-pleno	concentracao_terra	1	forte	6
+o-que-pode-ser-protegido	centros-historicos	bens_em_risco	1	fraca	6
+o-que-pode-ser-protegido	terreiros-e-quilombos	bens_em_risco	1	media	6
+o-que-pode-ser-protegido	festas-e-saberes	bens_em_risco	1	forte	6
+obrigacao-de-ter-plano	multa-leve	atendimento	1	fraca	4
+obrigacao-de-ter-plano	multa-leve	popularidade_governo	-1	fraca	4
+obrigacao-de-ter-plano	multa-pesada	atendimento	1	media	4
+obrigacao-de-ter-plano	multa-pesada	popularidade_governo	-1	media	4
+obrigacao-de-ter-plano	desconto-direto-no-salario	atendimento	1	forte	4
+obrigacao-de-ter-plano	desconto-direto-no-salario	popularidade_governo	-1	forte	4
+obrigacao-dos-bancos	avisar-so-valores-muito-altos	liberdade_civil	-1	fraca	2
+obrigacao-dos-bancos	avisar-valores-medios-e-guardar-os-dados-por-cinco-anos	liberdade_civil	-1	media	2
+obrigacao-dos-bancos	avisar-qualquer-movimento-fora-do-padrao-do-cliente	liberdade_civil	-1	forte	2
+obrigacao-dos-bancos	com-multa-para-o-banco-que-nao-avisar	liberdade_civil	-1	forte	2
+ofensa-a-religiao	multa-para-quem-ofende-pessoas-por-causa-da-fe	liberdade_civil	-1	fraca	2
+ofensa-a-religiao	multa-para-quem-ofende-pessoas-por-causa-da-fe	tensao_religiosa	1	fraca	2
+ofensa-a-religiao	prisao-para-quem-ofende-uma-religiao	liberdade_civil	-1	media	2
+ofensa-a-religiao	prisao-para-quem-ofende-uma-religiao	tensao_religiosa	1	media	2
+ofensa-a-religiao	prisao-para-quem-ofende	liberdade_civil	-1	forte	2
+ofensa-a-religiao	prisao-para-quem-ofende	tensao_religiosa	1	forte	2
+ofensa-a-religiao	critica-a-religiao-da-maioria	liberdade_civil	-1	forte	2
+ofensa-a-religiao	critica-a-religiao-da-maioria	tensao_religiosa	1	forte	2
+ofensa-a-simbolos-e-autoridades	punido-so-se-houver-ameaca	liberdade_civil	-1	fraca	2
+ofensa-a-simbolos-e-autoridades	violencia	liberdade_civil	-1	media	2
+ofensa-a-simbolos-e-autoridades	multa-por-ofender-bandeira-e-hino	liberdade_civil	-1	media	2
+ofensa-a-simbolos-e-autoridades	multa-tambem-por-ofender-policiais-e-juizes	liberdade_civil	-1	forte	2
+ofensa-a-simbolos-e-autoridades	prisao-por-ofender-simbolos-e-autoridades	liberdade_civil	-1	forte	2
+onde-se-vende-remedio	remedio-sem-receita-tambem-no-mercado	acesso_remedios	1	fraca	2
+onde-se-vende-remedio	remedio-sem-receita-tambem-no-mercado	saude	-1	fraca	2
+onde-se-vende-remedio	venda-pela-internet	acesso_remedios	1	media	2
+onde-se-vende-remedio	venda-pela-internet	saude	-1	media	2
+onde-se-vende-remedio	receita-so-para-remedio-controlado	acesso_remedios	1	forte	2
+onde-se-vende-remedio	receita-so-para-remedio-controlado	saude	-1	forte	2
+padroes-de-eficiencia-energetica	aparelhos	energia_gasta	-1	fraca	12
+padroes-de-eficiencia-energetica	aparelhos	produtividade	1	fraca	12
+padroes-de-eficiencia-energetica	aparelhos-e-predios	energia_gasta	-1	media	12
+padroes-de-eficiencia-energetica	aparelhos-e-predios	produtividade	1	media	12
+padroes-de-eficiencia-energetica	aparelhos-4	energia_gasta	-1	forte	12
+padroes-de-eficiencia-energetica	aparelhos-4	produtividade	1	forte	12
+padroes-de-eficiencia-energetica	predios-e-industria	energia_gasta	-1	forte	12
+padroes-de-eficiencia-energetica	predios-e-industria	produtividade	1	forte	12
+pagamento-por-floresta-em-pe		desmatamento	-1	media	4
+pagamento-por-resultado	bonus-pequeno-para-a-escola-inteira-que-melhora	instrucao	1	fraca	2
+pagamento-por-resultado	bonus-por-nota-da-turma	instrucao	1	media	2
+pagamento-por-resultado	bonus-alto-por-professor-conforme-a-nota-dos-alunos	instrucao	1	forte	2
+parte-da-pena-cumprida-presa		lotacao_presidios	1	media	4
+parte-da-pena-cumprida-presa		sensacao_de_inseguranca	-1	media	4
+parte-da-pena-cumprida-presa		crimes_contra_o_patrimonio	-1	media	4
+parte-do-beneficio-em-comida		abastecimento	1	media	1
+parte-do-beneficio-em-comida		preco_da_comida	1	fraca	2
+participacao-dos-trabalhadores	participacao-nos-lucros	desigualdade	-1	media	12
+participacao-dos-trabalhadores	vaga-no-conselho	desigualdade	-1	forte	12
+pena-de-morte	crimes-graves	liberdade_civil	-1	media	0
+pena-de-morte	crimes-graves	seguranca	1	fraca	6
+pena-maior-para-quem-repete-o-crime	pena-dobra-na-segunda-vez	volta_ao_crime	-1	fraca	6
+pena-maior-para-quem-repete-o-crime	pena-dobra-na-segunda-vez	lotacao_presidios	1	fraca	6
+pena-maior-para-quem-repete-o-crime	pena-dobra-na-segunda-vez	liberdade_civil	-1	fraca	6
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-violento	volta_ao_crime	-1	media	6
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-violento	lotacao_presidios	1	media	6
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-violento	liberdade_civil	-1	media	6
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-de-qualquer-tipo	volta_ao_crime	-1	forte	6
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-de-qualquer-tipo	lotacao_presidios	1	forte	6
+pena-maior-para-quem-repete-o-crime	prisao-perpetua-no-terceiro-crime-de-qualquer-tipo	liberdade_civil	-1	forte	6
+pena-para-corrupcao	perde-o-cargo-e-nao-pode-ser-candidato	corrupcao	-1	fraca	4
+pena-para-corrupcao	perde-o-cargo-e-nao-pode-ser-candidato	confianca_na_democracia	1	fraca	4
+pena-para-corrupcao	perde-o-cargo-e-nao-pode-ser-candidato	obras_paradas	1	fraca	4
+pena-para-corrupcao	perde-o-cargo-e-nao-pode-ser-candidato	polarizacao	1	fraca	4
+pena-para-corrupcao	prisao-em-regime-fechado	corrupcao	-1	media	4
+pena-para-corrupcao	prisao-em-regime-fechado	confianca_na_democracia	1	media	4
+pena-para-corrupcao	prisao-em-regime-fechado	obras_paradas	1	media	4
+pena-para-corrupcao	prisao-em-regime-fechado	polarizacao	1	media	4
+pena-para-corrupcao	prisao-e-perda-dos-bens-sem-origem	corrupcao	-1	forte	4
+pena-para-corrupcao	prisao-e-perda-dos-bens-sem-origem	confianca_na_democracia	1	forte	4
+pena-para-corrupcao	prisao-e-perda-dos-bens-sem-origem	obras_paradas	1	forte	4
+pena-para-corrupcao	prisao-e-perda-dos-bens-sem-origem	polarizacao	1	forte	4
+penas-alternativas	servico-comunitario-so-para-infracoes-minimas	lotacao_presidios	-1	fraca	2
+penas-alternativas	servico-comunitario-so-para-infracoes-minimas	volta_ao_crime	-1	fraca	2
+penas-alternativas	tornozeleira	lotacao_presidios	-1	media	2
+penas-alternativas	tornozeleira	volta_ao_crime	-1	media	2
+penas-alternativas	servico-tambem-para-crimes-leves	lotacao_presidios	-1	media	2
+penas-alternativas	servico-tambem-para-crimes-leves	volta_ao_crime	-1	media	2
+penas-alternativas	tornozeleira-5	lotacao_presidios	-1	forte	2
+penas-alternativas	tornozeleira-5	volta_ao_crime	-1	forte	2
+penas-alternativas	servico-tambem-para-crimes-medios-sem-violencia	lotacao_presidios	-1	forte	2
+penas-alternativas	servico-tambem-para-crimes-medios-sem-violencia	volta_ao_crime	-1	forte	2
+pensao-para-idosos-pobres		pobreza	-1	media	2
+pensao-para-idosos-pobres		cobertura_da_previdencia	1	media	2
+pensao-por-morte	valor-inteiro-para-a-vida-toda	pobreza	-1	fraca	12
+pensao-por-morte	60-por-cento-por-tempo-limitado	pobreza	1	fraca	12
+pensao-por-morte	so-para-filhos-menores	pobreza	1	media	12
+pente-fino-nos-beneficios	conferencia-uma-vez-por-ano-em-um-cadastro	fraude_em_beneficios	-1	fraca	2
+pente-fino-nos-beneficios	conferencia-uma-vez-por-ano-em-um-cadastro	pobreza	1	fraca	2
+pente-fino-nos-beneficios	cruzamento-constante-de-varios-cadastros	fraude_em_beneficios	-1	media	2
+pente-fino-nos-beneficios	cruzamento-constante-de-varios-cadastros	pobreza	1	fraca	2
+pente-fino-nos-beneficios	recadastro-obrigatorio-com-corte-automatico	fraude_em_beneficios	-1	forte	2
+pente-fino-nos-beneficios	recadastro-obrigatorio-com-corte-automatico	pobreza	1	media	2
+peso-da-multa-base-de-calculo	pelo-preco-do-carro	mortes_no_transito	-1	fraca	1
+peso-da-multa-base-de-calculo	pelo-salario	mortes_no_transito	-1	media	1
+peso-da-multa-peso-da-multa		mortes_no_transito	-1	fraca	1
+peso-maximo-do-caminhao		custo_do_frete	-1	media	3
+peso-maximo-do-caminhao		mortes_no_transito	1	media	3
+piso-da-educacao		gasto_obrigatorio	1	media	2
+piso-da-saude		gasto_obrigatorio	1	media	2
+piso-do-frete		custo_do_frete	1	media	2
+piso-do-frete		preco_da_comida	1	media	2
+poder-de-decreto	so-verba-e-preco	confianca_na_democracia	-1	fraca	0
+poder-de-decreto	com-prazo	confianca_na_democracia	-1	fraca	0
+poder-de-decreto	quase-tudo	confianca_na_democracia	-1	media	0
+poder-de-decreto	com-prazo-5	confianca_na_democracia	-1	media	0
+poder-de-decreto	decreto-amplo	confianca_na_democracia	-1	forte	0
+poder-de-decreto	sem-o-congresso	confianca_na_democracia	-1	forte	0
+poderes-da-agencia	escutar-com-ordem-do-juiz	liberdade_civil	-1	fraca	2
+poderes-da-agencia	escutar-sem-juiz-e-infiltrar	liberdade_civil	-1	media	2
+poderes-da-agencia	operacoes-secretas	liberdade_civil	-1	forte	2
+policia-ambiental		meio_ambiente	1	media	6
+policia-ambiental		corrupcao	-1	fraca	6
+policia-comunitaria		confianca_na_policia	1	media	12
+policia-sem-formato-militar	justica-propria-separada	mortes_pela_policia	-1	fraca	12
+policia-sem-formato-militar	justica-propria-separada	confianca_na_policia	1	fraca	12
+policia-sem-formato-militar	treino-e-hierarquia-civis	mortes_pela_policia	-1	media	12
+policia-sem-formato-militar	treino-e-hierarquia-civis	confianca_na_policia	1	media	12
+policia-sem-formato-militar	policia-totalmente-civil	mortes_pela_policia	-1	forte	12
+policia-sem-formato-militar	policia-totalmente-civil	confianca_na_policia	1	forte	12
+policiamento-de-greves	cerca-e-negocia	liberdade_civil	-1	fraca	2
+policiamento-de-greves	cerca-e-negocia	polarizacao	1	fraca	2
+policiamento-de-greves	dispersa-sem-forca	liberdade_civil	-1	media	2
+policiamento-de-greves	dispersa-sem-forca	polarizacao	1	media	2
+policiamento-de-greves	dispersa-com-forca	liberdade_civil	-1	forte	2
+policiamento-de-greves	dispersa-com-forca	polarizacao	1	forte	2
+prazo-da-divida		prazo_medio_da_divida	1	media	12
+prazo-maximo-no-beneficio		pobreza	1	media	6
+prazo-maximo-no-beneficio		emprego_informal	-1	fraca	6
+prazo-para-licenca-ambiental		desmatamento	1	media	2
+prazo-para-ver-o-juiz		presos_sem_julgamento	-1	media	2
+preco-de-museu-e-parque-federal		bens_em_risco	-1	media	2
+preco-maximo-ao-governo		corrupcao	-1	media	2
+preferencia-a-empresas-nacionais	desempate-a-favor-do-pais	industrializacao	1	fraca	12
+preferencia-a-empresas-nacionais	preco-ate-10-maior-aceito	industrializacao	1	media	12
+preferencia-a-empresas-nacionais	so-empresa-do-pais	industrializacao	1	forte	12
+preferencia-ao-trabalhador-nacional	vaga-anunciada-primeiro-para-quem-e-do-pais	industrializacao	-1	fraca	2
+preferencia-ao-trabalhador-nacional	limite-de-estrangeiros-nas-empresas-grandes	industrializacao	-1	media	2
+preferencia-ao-trabalhador-nacional	contratar-de-fora-so-se-nao-houver-nacional-qualificado	industrializacao	-1	forte	2
+presidio-terceirizado	empresas-cuidam-so-de-comida	lotacao_presidios	1	fraca	2
+presidio-terceirizado	limpeza-e-saude	lotacao_presidios	1	media	2
+presidio-terceirizado	empresas-operam-alguns-presidios-inteiros	lotacao_presidios	1	forte	2
+presidio-terceirizado	empresas-operam-a-maioria-dos-presidios	lotacao_presidios	1	forte	2
+previdencia-privada-com-deducao		indice_da_bolsa	1	media	12
+previdencia-privada-com-deducao		desigualdade	1	media	12
+prisao-antes-do-julgamento	so-casos-raros	presos_sem_julgamento	1	fraca	2
+prisao-antes-do-julgamento	so-casos-raros	lotacao_presidios	1	fraca	2
+prisao-antes-do-julgamento	so-quem-cometeu-crime-violento	presos_sem_julgamento	1	media	2
+prisao-antes-do-julgamento	so-quem-cometeu-crime-violento	lotacao_presidios	1	media	2
+prisao-antes-do-julgamento	tambem-quem-cometeu-crime-com-pena-alta	presos_sem_julgamento	1	forte	2
+prisao-antes-do-julgamento	tambem-quem-cometeu-crime-com-pena-alta	lotacao_presidios	1	forte	2
+prisao-antes-do-julgamento	a-maioria-dos-acusados-de-crime	presos_sem_julgamento	1	forte	2
+prisao-antes-do-julgamento	a-maioria-dos-acusados-de-crime	lotacao_presidios	1	forte	2
+profissoes-com-registro	so-saude	emprego_informal	-1	fraca	4
+profissoes-com-registro	direito-e-engenharia	emprego_informal	-1	media	4
+profissoes-com-registro	so-saude-e-engenharia-o-que-poe-vida-em-risco	emprego_informal	-1	media	4
+profissoes-com-registro	so-medico	emprego_informal	-1	forte	4
+profissoes-com-registro	enfermeiro-e-farmaceutico	emprego_informal	-1	forte	4
+projeto-nuclear-militar	publico	reputacao_internacional	-1	media	12
+projeto-nuclear-militar	secreto	reputacao_internacional	-1	forte	12
+propaganda-e-embalagem	so-restricoes-leves	dependencia_de_drogas	-1	fraca	12
+propaganda-e-embalagem	sem-propaganda	dependencia_de_drogas	-1	media	12
+propaganda-e-embalagem	embalagem-padronizada-e-sem-propaganda	dependencia_de_drogas	-1	forte	12
+protecao-ao-cliente-de-banco	custo-total-claro-no-contrato	credito_ao_setor_privado	-1	fraca	2
+protecao-ao-cliente-de-banco	custo-total-claro-no-contrato	pobreza	-1	fraca	2
+protecao-ao-cliente-de-banco	7-dias-para-desistir-e-fim-da-tarifa-escondida	credito_ao_setor_privado	-1	media	2
+protecao-ao-cliente-de-banco	7-dias-para-desistir-e-fim-da-tarifa-escondida	pobreza	-1	media	2
+protecao-ao-cliente-de-banco	orgao-que-recebe-reclamacao-e-manda-devolver	credito_ao_setor_privado	-1	forte	2
+protecao-ao-cliente-de-banco	orgao-que-recebe-reclamacao-e-manda-devolver	pobreza	-1	forte	2
+protecao-contra-demissao	sem-aviso	emprego_informal	1	fraca	12
+protecao-contra-demissao	aviso-de-um-mes-e-multa-pequena	emprego_informal	1	media	12
+protecao-contra-demissao	aviso-longo-e-multa-de-varios-meses-de-salario	emprego_informal	1	forte	12
+protecao-contra-demissao	demissao-so-com-falta-grave-do-empregado	emprego_informal	1	forte	12
+protecao-digital	permissao-previa	liberdade_civil	1	fraca	2
+protecao-digital	permissao-e-apagar	liberdade_civil	1	media	2
+protecao-do-apostador	aviso-de-risco-e-autoexclusao-voluntaria	dependencia_de_jogos	-1	fraca	2
+protecao-do-apostador	aviso-de-risco-e-autoexclusao-voluntaria	pobreza	-1	fraca	2
+protecao-do-apostador	limite-de-deposito-e-sem-cartao-de-credito	dependencia_de_jogos	-1	media	2
+protecao-do-apostador	limite-de-deposito-e-sem-cartao-de-credito	pobreza	-1	fraca	2
+protecao-do-apostador	autoexclusao-geral-e-propaganda-proibida	dependencia_de_jogos	-1	forte	2
+protecao-do-apostador	autoexclusao-geral-e-propaganda-proibida	pobreza	-1	media	2
+protecao-do-apostador	autoexclusao-geral-e-propaganda-proibida	mercado_ilegal	1	fraca	2
+publicidade-do-governo		liberdade_de_imprensa	-1	media	2
+punicao-se-descumprir	corte-automatico	credibilidade_fiscal	1	fraca	4
+punicao-se-descumprir	proibir-aumento-de-salario-e-contratacao	credibilidade_fiscal	1	media	4
+punicao-se-descumprir	crime-de-responsabilidade	credibilidade_fiscal	1	forte	4
+quebra-de-patente	em-emergencia-de-saude	reputacao_internacional	-1	fraca	1
+quebra-de-patente	remedios	reputacao_internacional	-1	media	1
+quebra-de-patente	setores-estrategicos	reputacao_internacional	-1	forte	1
+quem-paga-pelo-descarte	fabricante-paga-taxa	meio_ambiente	1	fraca	6
+quem-paga-pelo-descarte	fabricante-recolhe	meio_ambiente	1	media	6
+quem-paga-pelo-descarte	proibicao-de-descartaveis	meio_ambiente	1	forte	6
+quem-perde-a-acao-trabalhista-paga	paga-se-mentiu	tempo_da_justica	-1	fraca	4
+quem-perde-a-acao-trabalhista-paga	paga-se-mentiu	tensao_trabalhista	1	fraca	4
+quem-perde-a-acao-trabalhista-paga	paga-se-mentiu	forca_dos_sindicatos	-1	fraca	4
+quem-perde-a-acao-trabalhista-paga	paga-as-custas	tempo_da_justica	-1	media	4
+quem-perde-a-acao-trabalhista-paga	paga-as-custas	tensao_trabalhista	1	media	4
+quem-perde-a-acao-trabalhista-paga	paga-as-custas	forca_dos_sindicatos	-1	media	4
+quem-perde-a-acao-trabalhista-paga	paga-as-custas-e-o-advogado-do-patrao	tempo_da_justica	-1	forte	4
+quem-perde-a-acao-trabalhista-paga	paga-as-custas-e-o-advogado-do-patrao	tensao_trabalhista	1	forte	4
+quem-perde-a-acao-trabalhista-paga	paga-as-custas-e-o-advogado-do-patrao	forca_dos_sindicatos	-1	forte	4
+quem-pode-vender-recarga	postos	energia_gasta	1	fraca	4
+quem-pode-vender-recarga	comercio	energia_gasta	1	media	4
+quem-pode-vender-recarga	condominios	energia_gasta	1	forte	4
+quem-pode-vender-recarga	qualquer-casa	energia_gasta	1	forte	4
+quem-recebe-a-transferencia		pobreza	-1	media	1
+quem-recebe-a-transferencia		fraude_em_beneficios	1	media	1
+quorum-das-votacoes		confianca_na_democracia	-1	media	2
+quorum-das-votacoes		confianca_do_mercado	1	media	2
+refugio-e-asilo	abrigo	refugiados_no_pais	1	media	2
+refugio-e-asilo	abrigo	reputacao_internacional	1	media	2
+refugio-e-asilo	acolhimento-pleno-com-direitos	refugiados_no_pais	1	forte	2
+refugio-e-asilo	acolhimento-pleno-com-direitos	reputacao_internacional	1	forte	2
+regime-dos-militares	idade-minima-menor	gasto_obrigatorio	1	fraca	12
+regime-dos-militares	idade-menor-e-salario-cheio	gasto_obrigatorio	1	fraca	12
+regime-dos-militares	salario-cheio-e-pensao-vitalicia-para-a-familia	gasto_obrigatorio	1	media	12
+regra-cameras	ordem-judicial	liberdade_civil	1	fraca	1
+regra-cameras	uso-livre	seguranca	1	fraca	3
+regra-cameras	uso-livre	liberdade_civil	-1	fraca	1
+regra-cameras	reconhecimento-facial	seguranca	1	media	3
+regra-cameras	reconhecimento-facial	liberdade_civil	-1	forte	1
+regra-da-licitacao	preco-e-qualidade	custo_das_obras	-1	fraca	2
+regra-da-licitacao	preco-e-qualidade	obras_paradas	1	fraca	2
+regra-da-licitacao	preco-e-qualidade	corrupcao	1	fraca	2
+regra-da-licitacao	obra-pronta-a-empreiteira-projeta-e-faz	custo_das_obras	-1	media	2
+regra-da-licitacao	obra-pronta-a-empreiteira-projeta-e-faz	obras_paradas	1	media	2
+regra-da-licitacao	obra-pronta-a-empreiteira-projeta-e-faz	corrupcao	1	media	2
+regra-da-licitacao	contratacao-direta-em-emergencia	custo_das_obras	-1	forte	2
+regra-da-licitacao	contratacao-direta-em-emergencia	obras_paradas	1	forte	2
+regra-da-licitacao	contratacao-direta-em-emergencia	corrupcao	1	forte	2
+regra-das-cameras-policiais	camera-que-o-policial-liga-quando-quiser	mortes_pela_policia	-1	fraca	2
+regra-das-cameras-policiais	camera-que-o-policial-liga-quando-quiser	confianca_na_policia	1	fraca	2
+regra-das-cameras-policiais	camera-sempre-ligada-durante-o-turno	mortes_pela_policia	-1	media	2
+regra-das-cameras-policiais	camera-sempre-ligada-durante-o-turno	confianca_na_policia	1	media	2
+regra-das-cameras-policiais	camera-sempre-ligada-e-imagens-revistas-por-orgao-independente	mortes_pela_policia	-1	forte	2
+regra-das-cameras-policiais	camera-sempre-ligada-e-imagens-revistas-por-orgao-independente	confianca_na_policia	1	forte	2
+regras-de-inteligencia-artificial	avisar-quando-e-ia	desinformacao	-1	fraca	2
+regras-de-inteligencia-artificial	avisar-quando-e-ia	industrializacao	-1	fraca	2
+regras-de-inteligencia-artificial	testes-em-areas-sensiveis	desinformacao	-1	media	2
+regras-de-inteligencia-artificial	testes-em-areas-sensiveis	industrializacao	-1	media	2
+regras-de-inteligencia-artificial	proibir-usos-perigosos	desinformacao	-1	forte	2
+regras-de-inteligencia-artificial	proibir-usos-perigosos	industrializacao	-1	forte	2
+regras-de-inteligencia-artificial	licenca-para-modelos-grandes	desinformacao	-1	forte	2
+regras-de-inteligencia-artificial	licenca-para-modelos-grandes	industrializacao	-1	forte	2
+regularizacao-dos-aplicativos	carteira-e-ficha-criminal	mortes_no_transito	-1	fraca	3
+regularizacao-dos-aplicativos	seguro-do-passageiro	mortes_no_transito	-1	media	3
+regularizacao-dos-aplicativos	carro-de-ate-10-anos	mortes_no_transito	-1	forte	3
+regularizacao-dos-aplicativos	curso-de-direcao	mortes_no_transito	-1	forte	3
+regularizacao	so-quem-trabalha	pessoas_sem_documento	-1	media	2
+regularizacao	so-quem-trabalha	emprego_informal	-1	media	2
+regularizacao	todos	pessoas_sem_documento	-1	forte	2
+regularizacao	todos	emprego_informal	-1	forte	2
+religiao-do-estado	apoio-a-religioes	tensao_religiosa	1	media	12
+religiao-do-estado	apoio-a-religioes	liberdade_civil	-1	media	12
+religiao-do-estado	religiao-oficial	tensao_religiosa	1	forte	12
+religiao-do-estado	religiao-oficial	liberdade_civil	-1	forte	12
+remedio-pago-pelo-governo-na-farmacia	desconto-na-lista-basica	acesso_remedios	1	fraca	2
+remedio-pago-pelo-governo-na-farmacia	desconto-na-lista-basica	saude	1	fraca	2
+remedio-pago-pelo-governo-na-farmacia	desconto-na-lista-basica	pobreza	-1	fraca	2
+remedio-pago-pelo-governo-na-farmacia	lista-basica-gratis	acesso_remedios	1	media	2
+remedio-pago-pelo-governo-na-farmacia	lista-basica-gratis	saude	1	media	2
+remedio-pago-pelo-governo-na-farmacia	lista-basica-gratis	pobreza	-1	media	2
+remedio-pago-pelo-governo-na-farmacia	doenca-cronica-gratis-pressao	acesso_remedios	1	media	2
+remedio-pago-pelo-governo-na-farmacia	doenca-cronica-gratis-pressao	saude	1	media	2
+remedio-pago-pelo-governo-na-farmacia	doenca-cronica-gratis-pressao	pobreza	-1	media	2
+remedio-pago-pelo-governo-na-farmacia	diabetes	acesso_remedios	1	forte	2
+remedio-pago-pelo-governo-na-farmacia	diabetes	saude	1	forte	2
+remedio-pago-pelo-governo-na-farmacia	diabetes	pobreza	-1	forte	2
+remedio-pago-pelo-governo-na-farmacia	asma	acesso_remedios	1	forte	2
+remedio-pago-pelo-governo-na-farmacia	asma	saude	1	forte	2
+remedio-pago-pelo-governo-na-farmacia	asma	pobreza	-1	forte	2
+remicao-de-pena	quem-trabalha	volta_ao_crime	-1	fraca	2
+remicao-de-pena	quem-trabalha	lotacao_presidios	-1	fraca	2
+remicao-de-pena	quem-conclui-curso	volta_ao_crime	-1	media	2
+remicao-de-pena	quem-conclui-curso	lotacao_presidios	-1	media	2
+remicao-de-pena	quem-le-livros	volta_ao_crime	-1	forte	2
+remicao-de-pena	quem-le-livros	lotacao_presidios	-1	forte	2
+remocao-area-risco	so-risco	favela	-1	fraca	6
+remocao-area-risco	area-publica	favela	-1	media	6
+remocao-area-risco	area-publica	deficit_habitacional	1	fraca	6
+remocao-area-risco	qualquer	favela	-1	forte	6
+remocao-area-risco	qualquer	deficit_habitacional	1	media	6
+remocao-area-risco	qualquer	liberdade_civil	-1	fraca	6
+remocao-de-conteudo	conteudo-ilegal-em-24-horas	desinformacao	-1	media	2
+remocao-de-conteudo	tambem-desinformacao	desinformacao	-1	forte	2
+renegociacao-da-divida	renegociar-prazo-e-juros	credibilidade_fiscal	-1	fraca	0
+renegociacao-da-divida	renegociar-prazo-e-juros	reputacao_internacional	-1	fraca	0
+renegociacao-da-divida	calote-parcial	credibilidade_fiscal	-1	media	0
+renegociacao-da-divida	calote-parcial	reputacao_internacional	-1	media	0
+renegociacao-da-divida	calote-total	credibilidade_fiscal	-1	forte	0
+renegociacao-da-divida	calote-total	reputacao_internacional	-1	forte	0
+repasse-a-entidades-religiosas		moradores_de_rua	-1	media	2
+repasse-a-entidades-religiosas		polarizacao	1	media	2
+repasse-so-com-meta	plano-de-melhora	qualidade_do_ensino	1	fraca	6
+repasse-so-com-meta	plano-de-melhora	greves	1	fraca	6
+repasse-so-com-meta	plano-de-melhora	desigualdade	1	fraca	6
+repasse-so-com-meta	nota-minima	qualidade_do_ensino	1	media	6
+repasse-so-com-meta	nota-minima	greves	1	media	6
+repasse-so-com-meta	nota-minima	desigualdade	1	media	6
+repasse-so-com-meta	troca-da-direcao-da-escola-ruim	qualidade_do_ensino	1	forte	6
+repasse-so-com-meta	troca-da-direcao-da-escola-ruim	greves	1	forte	6
+repasse-so-com-meta	troca-da-direcao-da-escola-ruim	desigualdade	1	forte	6
+reposicao-de-servidores		folha_do_funcionalismo	-1	media	3
+reposicao-de-servidores		atendimento	-1	media	3
+reposicao-de-servidores		qualidade_do_ensino	-1	media	3
+reserva-compensada-em-outra-terra		desmatamento	-1	media	6
+reserva-compensada-em-outra-terra		risco_de_falta_d_agua	1	media	6
+reserva-da-fazenda		desmatamento	-1	media	4
+reserva-da-fazenda		preco_da_comida	1	media	4
+reserva-de-capacidade		preco_da_energia	1	media	6
+restricao-a-protestos	exige-aviso	liberdade_civil	-1	fraca	2
+restricao-a-protestos	define-locais	liberdade_civil	-1	media	2
+restricao-a-protestos	bloquear-rua-e-crime	liberdade_civil	-1	forte	2
+revisao-periodica-de-gastos	revisar-as-maiores-areas-a-cada-4-anos	corrupcao	-1	fraca	12
+revisao-periodica-de-gastos	revisar-as-maiores-areas-a-cada-4-anos	greves	1	fraca	4
+revisao-periodica-de-gastos	revisar-todas-as-areas-todo-ano	corrupcao	-1	media	12
+revisao-periodica-de-gastos	revisar-todas-as-areas-todo-ano	greves	1	fraca	4
+revisao-periodica-de-gastos	revisao-do-zero	corrupcao	-1	media	12
+revisao-periodica-de-gastos	revisao-do-zero	greves	1	media	4
+salario-dos-militares		risco_de_golpe	-1	media	2
+salario-dos-militares		poder_defensivo	1	media	2
+salario-minimo		padrao_vida	1	media	0
+salario-minimo		desigualdade	-1	media	0
+salario-minimo		emprego_informal	1	media	0
+saude-mental	consulta-na-rede	saude_mental	1	fraca	6
+saude-mental	consulta-na-rede	moradores_de_rua	-1	fraca	6
+saude-mental	consulta-na-rede	produtividade	1	fraca	6
+saude-mental	centro-de-atendimento-perto-de-casa	saude_mental	1	media	6
+saude-mental	centro-de-atendimento-perto-de-casa	moradores_de_rua	-1	media	6
+saude-mental	centro-de-atendimento-perto-de-casa	produtividade	1	media	6
+saude-mental	internacao-e-cuidado-continuo	saude_mental	1	forte	6
+saude-mental	internacao-e-cuidado-continuo	moradores_de_rua	-1	forte	6
+saude-mental	internacao-e-cuidado-continuo	produtividade	1	forte	6
+seguranca-do-operario-na-obra	equipamento-e-fiscal	custo_das_obras	1	fraca	3
+seguranca-do-operario-na-obra	seguro-por-morte	custo_das_obras	1	media	3
+seguranca-do-operario-na-obra	meses-de-salario-ao-acabar	custo_das_obras	1	forte	3
+seguranca-terceirizada	tambem-nas-ruas	crimes_contra_o_patrimonio	-1	fraca	2
+seguranca-terceirizada	tambem-nos-bairros	crimes_contra_o_patrimonio	-1	media	2
+seguranca-terceirizada	toda-a-policia	crimes_contra_o_patrimonio	-1	forte	2
+segurar-a-conta-de-luz		preco_da_energia	-1	media	0
+segurar-a-conta-de-luz		popularidade_governo	1	media	0
+seguro-de-safra		abastecimento	1	media	3
+seguro-deposito	ate-um-limite	solidez_dos_bancos	1	media	2
+seguro-deposito	total	solidez_dos_bancos	1	media	2
+seguro-deposito	total	credito_ao_setor_privado	1	fraca	2
+seguro-deposito	total	concentracao_de_mercado	-1	fraca	4
+seguro-desemprego-duracao		pobreza	-1	fraca	2
+seguro-desemprego-valor		pobreza	-1	fraca	2
+selecao-por-qualificacao	com-oferta-de-emprego	imigrantes_na_populacao	-1	media	12
+selecao-por-qualificacao	sistema-de-pontos	imigrantes_na_populacao	-1	forte	12
+sementes-transgenicas	so-racao-e-fibras	produtividade	1	fraca	6
+sementes-transgenicas	com-rotulo	produtividade	1	media	6
+sementes-transgenicas	liberadas	produtividade	1	forte	6
+separacao-de-presos	separa-quem-cometeu-crime-violento	volta_ao_crime	-1	fraca	12
+separacao-de-presos	separa-quem-esta-preso-pela-primeira-vez-dos-reincidentes	volta_ao_crime	-1	media	12
+separacao-de-presos	presidio-proprio-para-quem-esta-preso-pela-primeira-vez	volta_ao_crime	-1	forte	12
+separacao-de-presos	com-estudo-e-trabalho	volta_ao_crime	-1	forte	12
+servico-militar		poder_defensivo	1	media	4
+servico-militar		liberdade_civil	-1	fraca	1
+servico-militar		padrao_vida	-1	fraca	6
+servico-obrigatorio	lugar-sorteado	liberdade_civil	-1	fraca	1
+servicos-para-imigrante-sem-documento	so-emergencia	integracao	1	media	2
+servicos-para-imigrante-sem-documento	escola-e-saude-plenas	integracao	1	forte	2
+sigilo-aberto-para-candidatos	lista-de-bens	corrupcao	-1	fraca	2
+sigilo-aberto-para-candidatos	sigilo-fiscal-imposto-de-renda	corrupcao	-1	media	2
+sigilo-aberto-para-candidatos	sigilo-fiscal-e-bancario	corrupcao	-1	forte	2
+sigilo-bancario	estado-ve-todas-as-contas-sem-pedir	liberdade_civil	-1	media	2
+sigilo-bancario	estado-ve-todas-as-contas-sem-pedir	sonegacao	-1	media	2
+sigilo-bancario	ve-so-movimentos-de-valor-alto	liberdade_civil	1	fraca	2
+sigilo-bancario	ve-so-movimentos-de-valor-alto	sonegacao	1	fraca	2
+sigilo-bancario	so-com-ordem-de-juiz	liberdade_civil	1	media	2
+sigilo-bancario	so-com-ordem-de-juiz	sonegacao	1	media	2
+sigilo-bancario	so-com-ordem-de-juiz-e-em-crime-grave	liberdade_civil	1	forte	2
+sigilo-bancario	so-com-ordem-de-juiz-e-em-crime-grave	sonegacao	1	forte	2
+sistema-eleitoral	misto-metade-proporcional	polarizacao	1	fraca	4
+sistema-eleitoral	misto-metade-proporcional	participacao_eleitoral	-1	fraca	4
+sistema-eleitoral	metade-por-distrito	polarizacao	1	media	4
+sistema-eleitoral	metade-por-distrito	participacao_eleitoral	-1	media	4
+sistema-eleitoral	distrital-cada-distrito-elege-o-mais-votado	polarizacao	1	forte	4
+sistema-eleitoral	distrital-cada-distrito-elege-o-mais-votado	participacao_eleitoral	-1	forte	4
+subsidio-a-barcos		estoque_de_peixe	-1	media	4
+subsidio-a-carros-eletricos		energia_gasta	1	media	3
+subsidio-a-combustiveis		meio_ambiente	-1	media	0
+subsidio-aos-insumos		preco_da_comida	-1	media	3
+subsidio-aos-insumos		concentracao_terra	1	media	3
+superavit	guarda-no-fundo-soberano	credibilidade_fiscal	1	media	4
+tamanho-das-penas		peso_das_penas	1	media	12
+tamanho-das-penas		lotacao_presidios	1	media	12
+tarifa-de-importacao		abertura_comercial	-1	media	2
+tarifa-social-de-agua		pobreza	-1	media	0
+tarifa-social-de-gas		pobreza	-1	media	0
+tarifa-social-de-luz		pobreza	-1	media	0
+taxa-basica-de-juros		credito_ao_setor_privado	-1	media	2
+taxa-de-saida-para-formados	devolve-parte-do-custo-do-estudo	emigracao_de_formados	-1	fraca	2
+taxa-de-saida-para-formados	devolve-parte-do-custo-do-estudo	liberdade_civil	-1	fraca	2
+taxa-de-saida-para-formados	devolve-o-custo-todo	emigracao_de_formados	-1	media	2
+taxa-de-saida-para-formados	devolve-o-custo-todo	liberdade_civil	-1	media	2
+taxa-de-saida-para-formados	precisa-ficar-alguns-anos-no-pais-antes-de-sair	emigracao_de_formados	-1	forte	2
+taxa-de-saida-para-formados	precisa-ficar-alguns-anos-no-pais-antes-de-sair	liberdade_civil	-1	forte	2
+tempo-minimo-de-contribuicao		cobertura_da_previdencia	-1	media	12
+tempo-minimo-de-contribuicao		pobreza	1	media	12
+terra-ocupada-sai-da-fila		conflito_no_campo	1	media	2
+terras-indigenas		meio_ambiente	1	media	12
+terras-indigenas		industrializacao	-1	fraca	12
+teto-aluguel	inflacao-mais-vinte	preco_moradia	-1	fraca	3
+teto-aluguel	inflacao-mais-dez	preco_moradia	-1	media	3
+teto-aluguel	inflacao-mais-dez	deficit_habitacional	1	fraca	12
+teto-aluguel	so-inflacao	preco_moradia	-1	forte	3
+teto-aluguel	so-inflacao	deficit_habitacional	1	media	12
+teto-da-carga-de-impostos		confianca_do_mercado	1	media	6
+teto-de-gasto		credibilidade_fiscal	1	media	12
+teto-de-juros		credito_ao_setor_privado	-1	media	2
+teto-de-juros		emprego_informal	1	media	2
+teto-de-pesca		estoque_de_peixe	1	media	4
+teto-do-aditivo		custo_das_obras	-1	media	2
+teto-do-aditivo		corrupcao	-1	media	2
+teto-do-aditivo		obras_paradas	1	media	2
+teto-do-preco-dos-remedios		acesso_remedios	1	media	2
+teto-do-preco-dos-remedios		saude	1	media	2
+teto-tamanho-terra	cinquenta-vezes	concentracao_terra	-1	fraca	12
+teto-tamanho-terra	vinte-vezes	concentracao_terra	-1	media	12
+teto-tamanho-terra	vinte-vezes	abastecimento	-1	fraca	6
+teto-tamanho-terra	cinco-vezes	concentracao_terra	-1	forte	12
+teto-tamanho-terra	cinco-vezes	abastecimento	-1	media	6
+titulo-posse	dez-anos	favela	-1	fraca	12
+titulo-posse	cinco-anos	favela	-1	media	12
+titulo-posse	cinco-anos	concentracao_terra	-1	fraca	12
+titulo-posse	dois-anos	favela	-1	forte	12
+titulo-posse	dois-anos	concentracao_terra	-1	fraca	12
+trabalhador-de-aplicativo	autonomo-com-seguro-de-acidente-e-ganho-minimo-por-hora	emprego_informal	-1	fraca	2
+trabalhador-de-aplicativo	autonomo-com-ferias-e-aposentadoria-pagas-em-parte-pelo-aplicativo	emprego_informal	-1	media	2
+trabalhador-de-aplicativo	empregado-com-carteira-assinada	emprego_informal	-1	forte	2
+trabalho-de-quem-pede-refugio		integracao	1	media	2
+trabalho-remoto-livre	um-dia-por-semana-de-casa	padrao_vida	1	fraca	2
+trabalho-remoto-livre	um-dia-por-semana-de-casa	desigualdade	1	fraca	2
+trabalho-remoto-livre	ate-tres-dias-por-semana-de-casa	padrao_vida	1	media	2
+trabalho-remoto-livre	ate-tres-dias-por-semana-de-casa	desigualdade	1	media	2
+trabalho-remoto-livre	todos-os-dias-de-casa-se-patrao-e-empregado-combinarem	padrao_vida	1	forte	2
+trabalho-remoto-livre	todos-os-dias-de-casa-se-patrao-e-empregado-combinarem	desigualdade	1	forte	2
+transferencia-renda		pobreza	-1	forte	2
+transparencia-militar	sigilo-total	corrupcao	1	media	6
+transparencia-militar	tudo-publico	corrupcao	-1	media	6
+transparencia-militar	tudo-publico	poder_defensivo	1	fraca	6
+transporte-interno-por-empresa-de-fora		custo_do_frete	-1	media	4
+transporte-interno-por-empresa-de-fora		congestionamento	-1	media	4
+transporte-interno-por-empresa-de-fora		industrializacao	-1	media	4
+trazer-cientistas-de-volta		fuga_de_cientistas	-1	media	4
+tribunal-de-drogas	usuario-vai-preso	volta_ao_crime	-1	fraca	2
+tribunal-de-drogas	usuario-vai-preso	lotacao_presidios	-1	fraca	2
+tribunal-de-drogas	so-quem-nunca-foi-preso	volta_ao_crime	-1	media	2
+tribunal-de-drogas	so-quem-nunca-foi-preso	lotacao_presidios	-1	media	2
+tribunal-de-drogas	todo-usuario-sem-outro-crime	volta_ao_crime	-1	media	2
+tribunal-de-drogas	todo-usuario-sem-outro-crime	lotacao_presidios	-1	media	2
+tribunal-de-drogas	todo-usuario	volta_ao_crime	-1	forte	2
+tribunal-de-drogas	todo-usuario	lotacao_presidios	-1	forte	2
+tribunal-de-drogas	sem-ficha-criminal	volta_ao_crime	-1	forte	2
+tribunal-de-drogas	sem-ficha-criminal	lotacao_presidios	-1	forte	2
+tribunal-internacional	aceitar-em-parte	reputacao_internacional	1	media	2
+tribunal-internacional	aceitar-em-parte	soberania	-1	media	2
+tribunal-internacional	aceitar-em-parte	liberdade_civil	1	media	2
+tribunal-internacional	aceitar-por-completo	reputacao_internacional	1	forte	2
+tribunal-internacional	aceitar-por-completo	soberania	-1	forte	2
+tribunal-internacional	aceitar-por-completo	liberdade_civil	1	forte	2
+troca-pelo-generico	permitida	acesso_remedios	1	media	3
+troca-pelo-generico	permitida	investimento_estrangeiro	-1	media	3
+troca-pelo-generico	obrigatoria-se-o-medico-nao-vetar	acesso_remedios	1	forte	3
+troca-pelo-generico	obrigatoria-se-o-medico-nao-vetar	investimento_estrangeiro	-1	forte	3
+urbanizacao-de-favelas		saneamento	1	media	12
+urbanizacao-de-favelas		saude	1	media	12
+vagas-publicas-em-medicina		profissionais_saude	1	media	12
+vagas-publicas-em-medicina		atendimento	1	media	12
+vale-escola		vagas_na_escola	1	media	2
+vale-escola		instrucao	1	media	2
+validacao-de-diploma-estrangeiro	aceita-so-depois-de-curso-e-prova-completos	profissionais_saude	1	fraca	2
+validacao-de-diploma-estrangeiro	aceita-so-depois-de-curso-e-prova-completos	atendimento	1	fraca	2
+validacao-de-diploma-estrangeiro	aceita-com-prova-curta	profissionais_saude	1	media	2
+validacao-de-diploma-estrangeiro	aceita-com-prova-curta	atendimento	1	media	2
+validacao-de-diploma-estrangeiro	aceita-direto	profissionais_saude	1	forte	2
+validacao-de-diploma-estrangeiro	aceita-direto	atendimento	1	forte	2
+validacao-de-diploma-estrangeiro	com-registro-no-conselho	profissionais_saude	1	forte	2
+validacao-de-diploma-estrangeiro	com-registro-no-conselho	atendimento	1	forte	2
+validade-das-regras		produtividade	1	fraca	12
+validade-das-regras		corrupcao	-1	fraca	12
+velocidade-maxima-nas-estradas-federais		mortes_no_transito	1	media	1
+venda-de-armas-ao-exterior	so-para-paises-aliados	reputacao_internacional	-1	fraca	6
+venda-de-armas-ao-exterior	com-licenca-caso-a-caso	reputacao_internacional	-1	media	6
+venda-de-armas-ao-exterior	para-qualquer-pais-sem-embargo	reputacao_internacional	-1	media	6
+venda-de-armas-ao-exterior	livre	reputacao_internacional	-1	forte	6
+venda-de-armas-ao-exterior	com-licenca-simples	reputacao_internacional	-1	forte	6
+venda-de-casas-publicas	venda-ao-morador-com-pequeno-desconto	deficit_habitacional	1	fraca	12
+venda-de-casas-publicas	venda-ao-morador-com-grande-desconto	deficit_habitacional	1	media	12
+venda-de-casas-publicas	venda-ao-morador-com-grande-desconto-e-das-casas-vazias-a-qualquer-comprador	deficit_habitacional	1	forte	12
+venda-de-imoveis-parados		corrupcao	1	fraca	2
+venda-pelo-estado	so-remedio-controlado-na-farmacia-do-estado	dependencia_de_drogas	1	fraca	2
+venda-pelo-estado	so-remedio-controlado-na-farmacia-do-estado	mercado_ilegal	-1	fraca	2
+venda-pelo-estado	remedio-e-bebida-em-lojas-do-estado	dependencia_de_drogas	1	media	2
+venda-pelo-estado	remedio-e-bebida-em-lojas-do-estado	mercado_ilegal	-1	media	2
+venda-pelo-estado	remedio	dependencia_de_drogas	1	forte	2
+venda-pelo-estado	remedio	mercado_ilegal	-1	forte	2
+venda-pelo-estado	bebida-e-cigarro-em-lojas-do-estado	dependencia_de_drogas	1	forte	2
+venda-pelo-estado	bebida-e-cigarro-em-lojas-do-estado	mercado_ilegal	-1	forte	2
+verba-da-defesa-civil		preparo_contra_desastres	1	media	4
+verba-da-diplomacia		reputacao_internacional	1	media	12
+verba-da-fronteira		pessoas_sem_documento	-1	media	2
+verba-da-justica		tempo_da_justica	-1	media	12
+verba-da-justica		certeza_de_punicao	1	media	12
+verba-das-aposentadorias		pobreza	-1	media	0
+verba-de-ciencia-e-tecnologia		tecnologia_do_pais	1	media	12
+verba-de-cultura-e-esporte		bens_em_risco	-1	media	4
+verba-de-inteligencia		chefes_presos	1	media	2
+verba-de-inteligencia		dinheiro_do_crime_apreendido	1	media	2
+verba-de-inteligencia		homicidios	1	media	2
+verba-dos-presidios		volta_ao_crime	-1	media	2
+verba-orgao-terras		concentracao_terra	-1	media	12
+verba-orgao-terras		pobreza	-1	fraca	18
+verba-so-com-regra-de-area-de-risco	cidade-mapeia-o-risco	preparo_contra_desastres	1	media	6
+verba-so-com-regra-de-area-de-risco	cidade-barra-casa-nova-em-area-de-risco	preparo_contra_desastres	1	forte	6
+violencia-domestica	crime-proprio-com-pena	violencia_contra_a_mulher	-1	fraca	4
+violencia-domestica	crime-proprio-com-pena	lotacao_presidios	1	fraca	4
+violencia-domestica	crime-proprio-com-pena	tempo_da_justica	1	fraca	4
+violencia-domestica	afastar-o-agressor-na-hora	violencia_contra_a_mulher	-1	media	4
+violencia-domestica	afastar-o-agressor-na-hora	lotacao_presidios	1	media	4
+violencia-domestica	afastar-o-agressor-na-hora	tempo_da_justica	1	media	4
+violencia-domestica	juizado-proprio-e-abrigo	violencia_contra_a_mulher	-1	forte	4
+violencia-domestica	juizado-proprio-e-abrigo	lotacao_presidios	1	forte	4
+violencia-domestica	juizado-proprio-e-abrigo	tempo_da_justica	1	forte	4
+vistoria-dos-veiculos	mais-carro-velho	mortes_no_transito	1	fraca	6
+vistoria-dos-veiculos	mais-carro-velho	qualidade_do_ar	1	fraca	6
+vistoria-dos-veiculos	mais-moto-velha	mortes_no_transito	1	media	6
+vistoria-dos-veiculos	mais-moto-velha	qualidade_do_ar	1	media	6
+vistoria-dos-veiculos	todo-veiculo-todo-ano	mortes_no_transito	1	forte	6
+vistoria-dos-veiculos	todo-veiculo-todo-ano	qualidade_do_ar	1	forte	6
+voto-obrigatorio	obrigatorio-com-multa-pequena	participacao_eleitoral	1	fraca	2
+voto-obrigatorio	obrigatorio-com-multa-maior	participacao_eleitoral	1	media	2
+voto-obrigatorio	obrigatorio	participacao_eleitoral	1	forte	2
+voto-obrigatorio	e-quem-nao-vota-nao-tira-passaporte-nem-presta-concurso	participacao_eleitoral	1	forte	2
+zonas-francas	so-em-areas-pobres	investimento_estrangeiro	1	fraca	12
+zonas-francas	so-em-areas-pobres	industrializacao	1	fraca	12
+zonas-francas	algumas-areas	investimento_estrangeiro	1	media	12
+zonas-francas	algumas-areas	industrializacao	1	media	12
+zonas-francas	muitas-areas-com-imposto-menor-e-regras-proprias-para-fabricas	investimento_estrangeiro	1	forte	12
+zonas-francas	muitas-areas-com-imposto-menor-e-regras-proprias-para-fabricas	industrializacao	1	forte	12

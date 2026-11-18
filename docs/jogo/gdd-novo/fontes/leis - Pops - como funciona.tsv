@@ -1,0 +1,22 @@
+Parte	Peça	O que faz	Como funciona hoje	Liga com	Situação	Arquivo
+Pop	Tamanho	Quantas pessoas estão em cada pop	País declara a parte da população; muda pela mobilidade	Todas as contas de pop	Funciona	motor/populacao
+Pop	Renda bruta	Quanto cada pessoa ganha antes do imposto	Parte fixa da renda × PIB nominal ÷ pessoas. Não vem do salário nem do lucro do setor	PIB, Mercado	Parcial: renda não sai da economia	motor/populacao
+Pop	Imposto	Quanto sai da renda	Só o Imposto de renda, igual para todos na proporção da renda. Consumo não entra na renda	Imposto de renda	Parcial: sem progressividade	motor/populacao
+Pop	Transferência	Quanto entra de renda do governo	Lei de gasto divide igual dentro de um estrato. Só Transferência de renda faz isso, para pobres	Transferência de renda	Parcial: uma lei só	motor/populacao
+Pop	Subir e descer de estrato	Gente muda de pop pela renda	Renda acima do esperado: sobe, se tiver Instrução. Abaixo: desce. Até 1% do pop por turno e 30% do total	Instrução	Funciona	motor/populacao
+Pop	Mudar de setor	Gente estuda e vai para o setor que paga mais	Até 0,5% do pop por turno × Instrução; destino precisa pagar 5% a mais	Instrução, Mercado	Funciona	motor/mercado/emprego.ts
+Pop	Emprego e salário	Mostra empregos, salário e lucro por setor	Sai da renda do pop, não o contrário. A ligação inversa foi adiada (fatia 5b)	Mercado	Parcial: só mede	motor/mercado/emprego.ts
+Pop	Desemprego	Quem perde o trabalho	O índice Desemprego e o pop Desempregados não se ligam, e nenhuma conta muda o índice	Trabalho	Falta	motor/estado
+Pop	Cesta	Quem consegue pagar comida e remédio	Compara o preço da cesta com a renda de cada pop e mostra fome e carência	Abastecimento, Acesso a remédios	Funciona	motor/mercado/demanda.ts
+Pop	Bolso	Quem consegue pagar um serviço	Conta quanta gente fica abaixo da renda necessária para pagar conta, plano ou casa	Saúde, Saneamento, Moradia	Funciona	motor/turno
+Pop	Bússola	O que o pop pensa	Cada pop tem posição e anda até 0,02 por turno pela renda e pelo governo; teto de 0,3	Grupos, Congresso	Funciona	motor/grupos
+Pop	Grupos	Transforma pops em força política	Grupo soma frações dos pops; satisfação sai de renda, índices e leis	Congresso	Funciona	motor/grupos
+Pop	Idade	Jovens, adultos e idosos	Não existe: ninguém nasce, envelhece ou morre. Estudantes e Aposentados têm tamanho fixo	Previdência, Educação, Saúde	Falta	motor/populacao
+Pop	Lugar	Cidade ou campo	Só a Moradia separa os pops do campo; sem êxodo de pop	Moradia, Terra, Transporte	Parcial	motor/moradia
+Pop	Sair do país	Gente emigra	Só Profissionais de saúde. É o único caso em que a população muda	Saúde, Imigração	Parcial	motor/atendimento
+Da lei ao pop	Opinião	A lei agrada ou irrita	68 das 71 leis têm bússola e chegam aos grupos pela distância	Grupos	Funciona	motor/grupos
+Da lei ao pop	Renda direta	A lei muda o dinheiro no bolso	2 de 71: Imposto de renda e Transferência de renda. Nenhuma lei escolhe um pop	Impostos, Assistência social	Parcial	motor/populacao
+Da lei ao pop	Mudança de pop	A lei tira gente de um pop e põe em outro	Só o encargo do Seguro na folha: formal vira informal	Saúde, Trabalho	Parcial	motor/turno
+Da lei ao pop	Serviço	A lei muda quem é atendido	Saúde, Saneamento e Moradia usam a renda dos pops para contar quem paga	Saúde, Saneamento, Moradia	Funciona	motor/turno
+Pop	Filhos por pessoa	Quantas crianças dependem de cada pessoa do pop, em média	Não existe: Crianças é um pop solto, sem família	Benefício por filho, Natalidade, Bolso	Falta	
+Pop	Divisão da verba	A verba de uma lei de benefício é dividida entre os pops pelas regras da esfera (pobres, quem trabalha, por filho, todos)	Só a Transferência de renda divide, igual dentro do estrato pobre	Assistência social, Previdência	Parcial: uma lei só	

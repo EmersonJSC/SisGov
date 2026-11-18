@@ -26,7 +26,7 @@ passo tem "Começa com", "Pronto quando" e "Expande depois". Um passo por vez.
   listas o que **é do passo** e o que **não é**. O que não é vai para a
   seção 18 (Perguntas em aberto) do GDD, com o motivo (ex.: "precisa dos pops do passo 7").
   Avisar antes de seguir, não depois.
-- O "Expande depois" **não** entra. Ideia nova vai para a seção 18 (Perguntas em aberto) do GDD
+- O "Expande depois" **não** entra. Ideia nova vai para `docs/jogo/depois-da-v1.md` (GDD congelado)
   e o autor fica sabendo.
 - Se o passo exigir mexer em passo pronto, parar: o desenho estava errado,
   rever com o autor.

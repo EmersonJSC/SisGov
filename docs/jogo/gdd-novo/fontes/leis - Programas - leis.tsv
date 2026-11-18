@@ -1,0 +1,315 @@
+Programa	Lei	Esfera	Subesfera	Forma	Direção	Mínimo
+Remédio barato	Teto do preço dos remédios	Saúde		Valor contínuo	liga ou aperta	—
+Remédio barato	Remédio pago pelo governo na farmácia	Saúde		4 níveis	sobe	1 degrau
+Remédio barato	Troca pelo genérico	Saúde		3 níveis	sobe	1 degrau
+Saúde da família	Verba da saúde	Saúde		Valor contínuo	sobe	10% da régua
+Saúde da família	Atenção preventiva	Saúde		Valor contínuo	sobe	10% da régua
+Saúde da família	Vacinação	Saúde		4 níveis	sobe	1 degrau
+Saúde da família	Saúde mental	Saúde		4 níveis	sobe	1 degrau
+Plano para todos	Obrigação de ter plano	Saúde		4 níveis	sobe	1 degrau
+Plano para todos	Ajuda para comprar plano	Saúde		Valor contínuo	sobe	10% da régua
+Plano para todos	Cobertura mínima do plano	Saúde		4 níveis	sobe	1 degrau
+Plano para todos	Limite aos planos	Saúde		4 níveis	sobe	1 degrau
+Saúde livre	Abertura de planos	Saúde		4 níveis	sobe	1 degrau
+Saúde livre	Dedução do plano	Saúde		4 níveis	sobe	1 degrau
+Saúde livre	Conta de saúde	Saúde		4 níveis	sobe	1 degrau
+Saúde livre	Gestão privada	Saúde		4 níveis	sobe	1 degrau
+Saúde livre	Aprovação de remédio feito fora	Saúde		4 níveis	sobe	1 degrau
+Escola o dia todo	Escola obrigatória	Educação		Valor contínuo	sobe	10% da régua
+Escola o dia todo	Creche e pré-escola	Educação		Valor contínuo	sobe	10% da régua
+Escola o dia todo	Escola em tempo integral	Educação		Valor contínuo	sobe	10% da régua
+Escola o dia todo	Bolsa por frequência	Educação		Valor contínuo	sobe	10% da régua
+Universidade aberta	Cotas na universidade	Educação		4 níveis	sobe	1 degrau
+Universidade aberta	Bolsa em faculdade privada	Educação		Valor contínuo	sobe	10% da régua
+Universidade aberta	Crédito estudantil	Educação		Valor contínuo	sobe	10% da régua
+Universidade aberta	Divisão da verba de construção	Infraestrutura e transporte	Obras	Divisão de 100%	fatia de universidades sobe	1 fatia
+Escola por resultado	Pagamento por resultado	Educação		4 níveis	sobe	1 degrau
+Escola por resultado	Repasse só com meta	Educação		4 níveis	sobe	1 degrau
+Escola por resultado	Vale-escola	Educação		Valor contínuo	sobe	10% da régua
+Escola por resultado	Gestão privada de escolas	Educação		Valor contínuo	sobe	10% da régua
+Escola tradicional	Escola militarizada	Educação		4 níveis	sobe	1 degrau
+Escola tradicional	Ensino religioso	Educação		4 níveis	sobe	1 degrau
+Escola tradicional	Ensino em casa	Educação		4 níveis	sobe	1 degrau
+Escola tradicional	Educação sexual	Educação		4 níveis	desce (proibida)	1 degrau
+Tarifa social	Tarifa social de luz	Assistência social		4 níveis	sobe	1 degrau
+Tarifa social	Tarifa social de água	Assistência social		Valor contínuo	sobe	10% da régua
+Tarifa social	Tarifa social de gás	Assistência social		Valor contínuo	sobe	10% da régua
+Renda da família	Transferência de renda	Assistência social		Valor contínuo	sobe	10% da régua
+Renda da família	Quem recebe a Transferência	Assistência social		Valor contínuo	sobe	10% da régua
+Renda da família	Benefício por filho	Assistência social		Valor contínuo	sobe	10% da régua
+Renda da família	Benefício com contrapartida	Assistência social		4 níveis	sobe	1 degrau
+Renda da família	Bolsa por frequência	Educação		Valor contínuo	sobe	10% da régua
+Porta de saída	Prazo máximo no benefício	Assistência social		Valor contínuo	mais curto	10% da régua
+Porta de saída	Pente-fino nos benefícios	Assistência social		4 níveis	sobe	1 degrau
+Porta de saída	Benefício com contrapartida	Assistência social		4 níveis	sobe	1 degrau
+Porta de saída	Microcrédito	Assistência social		Valor contínuo	sobe	10% da régua
+Reforma da previdência	Idade mínima de aposentadoria	Previdência		Valor contínuo	sobe	10% da régua
+Reforma da previdência	Tempo mínimo de contribuição	Previdência		Valor contínuo	sobe	10% da régua
+Reforma da previdência	Aposentadoria dos servidores	Previdência		3 níveis	igual à dos outros	1 degrau
+Reforma da previdência	Regime dos militares	Previdência		4 níveis	igual ao dos outros	1 degrau
+Reforma da previdência	Pensão por morte	Previdência		4 níveis	desce	1 degrau
+Previdência por conta	Contas individuais	Previdência		Valor contínuo	sobe	10% da régua
+Previdência por conta	Previdência privada com dedução	Previdência		Valor contínuo	sobe	10% da régua
+Previdência por conta	Aposentadoria flexível	Previdência		4 níveis	sobe	1 degrau
+Valorização do trabalho	Salário mínimo	Trabalho		Valor contínuo	sobe	10% da régua
+Valorização do trabalho	Negociação coletiva	Trabalho		4 níveis	sobe	1 degrau
+Valorização do trabalho	Proteção contra demissão	Trabalho		4 níveis	sobe	1 degrau
+Valorização do trabalho	Jornada máxima	Trabalho		Valor contínuo	desce (menos horas)	10% da régua
+Valorização do trabalho	Fiscalização do trabalho	Trabalho		Valor contínuo	sobe	10% da régua
+Reforma trabalhista	Contratos flexíveis	Trabalho		4 níveis	sobe	1 degrau
+Reforma trabalhista	Livre negociação	Trabalho		4 níveis	sobe	1 degrau
+Reforma trabalhista	Contribuição sindical livre	Trabalho		4 níveis	sobe	1 degrau
+Reforma trabalhista	Quem perde a ação trabalhista paga	Trabalho		4 níveis	sobe	1 degrau
+Reforma trabalhista	Trabalho remoto livre	Trabalho		4 níveis	sobe	1 degrau
+Reforma trabalhista	Conta de demissão	Trabalho		4 níveis	sobe	1 degrau
+Primeiro emprego	Subsídio à contratação	Trabalho		Valor contínuo	sobe	10% da régua
+Primeiro emprego	Salário de entrada do jovem	Trabalho		Valor contínuo	liga	—
+Primeiro emprego	Ensino técnico	Educação		Valor contínuo	sobe	10% da régua
+Primeiro emprego	Emprego para jovens	Segurança pública		Valor contínuo	sobe	10% da régua
+Empresa simples	Empresa simples	Trabalho		4 níveis	sobe	1 degrau
+Empresa simples	Abertura de empresa	Empresas e estatais	Pequenas empresas e cooperativas	Valor contínuo	sobe	10% da régua
+Empresa simples	Aviso antes da multa	Trabalho		4 níveis	sobe	1 degrau
+Empresa simples	Desoneração da folha	Trabalho		Valor contínuo	sobe	10% da régua
+Casa própria	Verba de habitação	Moradia		Valor contínuo	sobe	10% da régua
+Casa própria	Crédito imobiliário	Moradia		Valor contínuo	sobe	10% da régua
+Casa própria	Cooperativas habitacionais	Moradia		Valor contínuo	sobe	10% da régua
+Casa própria	Título de posse	Moradia		Valor contínuo	sobe	10% da régua
+Bairro digno	Urbanização de favelas	Moradia		Valor contínuo	sobe	10% da régua
+Bairro digno	Verba de saneamento	Saneamento		Valor contínuo	sobe	10% da régua
+Bairro digno	Tratamento de esgoto	Saneamento		Valor contínuo	sobe	10% da régua
+Bairro digno	Remoção de área de risco	Moradia		4 níveis	sobe	1 degrau
+Bairro digno	Indenização da família removida por obra	Moradia		4 níveis	sobe	1 degrau
+Construir mais	Liberação para construir	Moradia		4 níveis	sobe	1 degrau
+Construir mais	Despejo rápido	Moradia		4 níveis	sobe	1 degrau
+Construir mais	Aluguel por temporada livre	Moradia		Valor contínuo	sobe	10% da régua
+Construir mais	Venda de casas públicas	Moradia		4 níveis	sobe	1 degrau
+Segurança cidadã	Polícia comunitária	Segurança pública		Valor contínuo	sobe	10% da régua
+Segurança cidadã	Ações nos bairros	Segurança pública		Valor contínuo	sobe	10% da régua
+Segurança cidadã	Formação policial	Segurança pública		Valor contínuo	sobe	10% da régua
+Segurança cidadã	Uso das câmeras	Segurança pública		4 níveis	sobe	1 degrau
+Segurança cidadã	Emprego para jovens	Segurança pública		Valor contínuo	sobe	10% da régua
+Mão dura	Força letal liberada	Segurança pública		4 níveis	sobe	1 degrau
+Mão dura	Fazer parte de facção é crime	Segurança pública		4 níveis	sobe	1 degrau
+Mão dura	Legítima defesa	Segurança pública		4 níveis	sobe	1 degrau
+Mão dura	Liberação de armas	Segurança pública		4 níveis	sobe	1 degrau
+Mão dura	Militares na segurança pública	Defesa		4 níveis	sobe	1 degrau
+Siga o dinheiro	Obrigação dos bancos	Segurança pública		4 níveis	sobe	1 degrau
+Siga o dinheiro	Bloqueio de bens	Segurança pública		4 níveis	sobe	1 degrau
+Siga o dinheiro	Confisco alargado	Segurança pública		4 níveis	sobe	1 degrau
+Siga o dinheiro	Destino dos bens	Segurança pública		Níveis	sobe	1 degrau
+Siga o dinheiro	Verba de inteligência	Segurança pública		Valor contínuo	sobe	10% da régua
+Siga o dinheiro	Delação premiada	Justiça e prisões		4 níveis	sobe	1 degrau
+Menos presos	Penas alternativas	Justiça e prisões		4 níveis	sobe	1 degrau
+Menos presos	Tribunal de drogas	Justiça e prisões		4 níveis	sobe	1 degrau
+Menos presos	Prazo para ver o juiz	Justiça e prisões		Valor contínuo	mais curto	10% da régua
+Menos presos	Defensoria pública	Justiça e prisões		Valor contínuo	sobe	10% da régua
+Menos presos	Remição de pena	Justiça e prisões		4 níveis	sobe	1 degrau
+Menos presos	Indulto coletivo	Justiça e prisões		Lei com prazo	sobe	10% da régua
+Menos presos	Presídio terceirizado	Justiça e prisões		4 níveis	desce	1 degrau
+Prisão dura	Maioridade penal	Justiça e prisões		Valor contínuo	desce (idade menor)	10% da régua
+Prisão dura	Tamanho das penas	Justiça e prisões		Valor contínuo	sobe	10% da régua
+Prisão dura	Parte da pena cumprida presa	Justiça e prisões		Valor contínuo	sobe	10% da régua
+Prisão dura	Isolamento de chefes	Justiça e prisões		4 níveis	sobe	1 degrau
+Prisão dura	Divisão da verba de construção	Infraestrutura e transporte	Obras	Divisão de 100%	fatia de presídios sobe	1 fatia
+Prisão dura	Pena maior para quem repete o crime	Justiça e prisões		4 níveis	sobe	1 degrau
+Defesa forte	Verba militar	Defesa		Valor contínuo	sobe	10% da régua
+Defesa forte	Salário dos militares	Defesa		Valor contínuo	sobe	10% da régua
+Defesa forte	Serviço militar obrigatório	Defesa		Valor contínuo	sobe	10% da régua
+Defesa forte	Autonomia das Forças Armadas	Defesa		5 níveis	sobe	1 degrau
+Prevenção de desastres	Alerta de desastre	Defesa civil		4 níveis	sobe	1 degrau
+Prevenção de desastres	Reserva de emergência	Defesa civil		Valor contínuo	sobe	10% da régua
+Prevenção de desastres	Verba só com regra de área de risco	Defesa civil		3 níveis	sobe	1 degrau
+Prevenção de desastres	Remoção de área de risco	Moradia		4 níveis	sobe	1 degrau
+Abertura comercial	Tarifa de importação	Comércio exterior e capital		Régua por setor	desce	10% da régua
+Abertura comercial	Facilitação aduaneira	Comércio exterior e capital		Valor contínuo	sobe	10% da régua
+Abertura comercial	Remessa de lucro ao exterior	Comércio exterior e capital		Valor contínuo	mais livre	10% da régua
+Abertura comercial	Zonas francas	Comércio exterior e capital		4 níveis	sobe	1 degrau
+Compre nacional	Defesa comercial	Comércio exterior e capital		3 níveis	sobe	1 degrau
+Compre nacional	Preferência a empresas nacionais	Empresas e estatais	Estatais e regras	Níveis	sobe	1 degrau
+Compre nacional	Preferência ao trabalhador nacional	Trabalho		4 níveis	sobe	1 degrau
+Compre nacional	Subsídio às exportações	Comércio exterior e capital		Régua por setor	sobe	10% da régua
+Fronteira fechada	Verba da fronteira	Imigração		Valor contínuo	sobe	10% da régua
+Fronteira fechada	Deportação	Imigração		Níveis	sobe	1 degrau
+Fronteira fechada	Restrição de vistos por país	Imigração		Níveis por país	sobe	1 degrau
+Fronteira fechada	Multa a quem contrata sem documento	Imigração		Níveis	sobe	1 degrau
+Acolhida	Regularização	Imigração		Níveis	sobe	1 degrau
+Acolhida	Refúgio e asilo	Imigração		Níveis	sobe	1 degrau
+Acolhida	Trabalho de quem pede refúgio	Imigração		Valor contínuo	sobe	10% da régua
+Acolhida	Integração dos imigrantes	Imigração		Valor contínuo	sobe	10% da régua
+Imigração qualificada	Seleção por qualificação	Imigração		3 níveis	sobe	1 degrau
+Imigração qualificada	Trabalho temporário por setor	Imigração		Escolha de setores	sobe	1 degrau
+Imigração qualificada	Validação de diploma estrangeiro	Educação		4 níveis	sobe	1 degrau
+Igualdade	Casamento entre pessoas do mesmo sexo	Direitos e liberdades	Igualdade e minorias	4 níveis	aberto	—
+Igualdade	Lei contra discriminação	Direitos e liberdades	Igualdade e minorias	3 níveis	sobe	1 degrau
+Igualdade	Cotas em empresas e concursos	Direitos e liberdades	Igualdade e minorias	4 níveis	sobe	1 degrau
+Igualdade	Discurso de ódio	Direitos e liberdades	Igualdade e minorias	4 níveis	mais punido	1 degrau
+Valores tradicionais	Religião do Estado	Direitos e liberdades	Liberdades	3 níveis	sobe	1 degrau
+Valores tradicionais	Ofensa à religião	Direitos e liberdades	Liberdades	4 níveis	mais punida	1 degrau
+Valores tradicionais	Acesso ao aborto	Direitos e liberdades	Mulheres	5 níveis	mais fechado	1 degrau
+Valores tradicionais	Isenção para igrejas	Impostos		4 níveis	sobe	1 degrau
+Reforma política	Duração do mandato	Estado e eleições	Eleições	Valor contínuo (1 a 10 anos, depois indefinido)	muda	10% da régua
+Reforma política	Mandatos seguidos	Estado e eleições	Eleições	Valor contínuo (1 a 4, depois ilimitado)	muda	10% da régua
+Reforma política	Intervalo para voltar	Estado e eleições	Eleições	Valor contínuo (0 a 3 mandatos)	muda	10% da régua
+Reforma política	Limite total de mandatos	Estado e eleições	Eleições	Valor contínuo (1 a 4, depois ilimitado)	muda	10% da régua
+Reforma política	Quórum das votações	Estado e eleições	Congresso	Régua por setor	muda	10% da régua
+Reforma política	Sistema eleitoral	Estado e eleições	Eleições	3 níveis	muda	1 degrau
+Reforma política	Cláusula de barreira	Estado e eleições	Eleições	Valor contínuo	muda	10% da régua
+Faxina	Ficha limpa	Estado e eleições	Eleições	4 níveis	sobe	1 degrau
+Faxina	Declaração de bens	Estado e eleições	Controle e transparência	4 níveis	sobe	1 degrau
+Faxina	Acesso à informação	Estado e eleições	Controle e transparência	4 níveis	sobe	1 degrau
+Faxina	Independência dos investigadores	Estado e eleições	Controle e transparência	3 níveis	sobe	1 degrau
+Faxina	Pena para corrupção	Estado e eleições	Controle e transparência	4 níveis	sobe	1 degrau
+Faxina	Foro especial	Estado e eleições	Controle e transparência	4 níveis	desce	1 degrau
+Estado enxuto	Cargos de livre nomeação	Estado e eleições	Governo	Valor contínuo	desce	10% da régua
+Estado enxuto	Organização dos ministérios	Estado e eleições	Governo	Divisão de esferas	menos ministérios	1 ministério a menos
+Estado enxuto	Reposição de servidores	Orçamento e dívida		Valor contínuo	desce	10% da régua
+Estado enxuto	Estabilidade do servidor	Orçamento e dívida		4 níveis	desce	1 degrau
+Estado enxuto	Venda de imóveis parados	Orçamento e dívida		Valor contínuo	sobe	10% da régua
+Imposto dos ricos	Imposto sobre herança	Impostos		Valor contínuo	sobe	10% da régua
+Imposto dos ricos	Imposto sobre dividendos	Impostos		Valor contínuo	sobe	10% da régua
+Imposto dos ricos	Imposto sobre imóvel caro	Impostos		Dois controles	sobe	10% da régua
+Imposto dos ricos	Imposto sobre aplicações grandes	Impostos		Dois controles	sobe	10% da régua
+Imposto dos ricos	Imposto sobre bens de luxo	Impostos		Valor contínuo	sobe	10% da régua
+Imposto dos ricos	Imposto de saída	Impostos		Valor contínuo	sobe	10% da régua
+Corte de impostos	Imposto de renda	Impostos		Valor contínuo	desce	10% da régua
+Corte de impostos	Imposto sobre empresas	Impostos		Valor contínuo	desce	10% da régua
+Corte de impostos	Incentivo ao investimento	Impostos		Valor contínuo	sobe	10% da régua
+Corte de impostos	Teto da carga de impostos	Impostos		Valor contínuo	liga	—
+Alívio da classe média	Faixa sem Imposto de renda	Impostos		Valor contínuo	sobe	10% da régua
+Alívio da classe média	Progressividade	Impostos		4 níveis	sobe	1 degrau
+Alívio da classe média	Desconto por filho	Impostos		Valor contínuo	sobe	10% da régua
+Ajuste fiscal	Teto de gasto	Orçamento e dívida		Valor contínuo	liga ou aperta	—
+Ajuste fiscal	Meta de resultado	Orçamento e dívida		Valor contínuo	sobe	10% da régua
+Ajuste fiscal	Limite da dívida	Orçamento e dívida		Valor contínuo	aperta	10% da régua
+Ajuste fiscal	Punição se descumprir	Orçamento e dívida		Níveis	sobe	1 degrau
+Ajuste fiscal	Limite da folha do funcionalismo	Orçamento e dívida		Valor contínuo	aperta	10% da régua
+Ajuste fiscal	Conselho fiscal independente	Orçamento e dívida		3 níveis	sobe	1 degrau
+Tripé da moeda	Autonomia do Banco Central	Moeda e bancos		3 níveis	sobe	1 degrau
+Tripé da moeda	Meta de inflação	Moeda e bancos		Valor contínuo	liga	—
+Tripé da moeda	Faixa do câmbio	Moeda e bancos		Dois controles	mais solto	10% da régua
+Privatização	Autorização para estatizar e vender	Empresas e estatais	Estatais e regras	3 níveis	mais aberta para vender	1 degrau
+Privatização	Regra depois da venda	Empresas e estatais	Estatais e regras	4 níveis	sobe	1 degrau
+Privatização	Independência das agências	Empresas e estatais	Estatais e regras	3 níveis	sobe	1 degrau
+Privatização	Ação de ouro	Empresas e estatais	Estatais e regras	3 níveis	sobe	1 degrau
+Estado empresário	Verba das estatais	Empresas e estatais	Estatais e regras	Escolha de setor e régua	sobe	1 degrau
+Estado empresário	Política da empresa estatal	Empresas e estatais	Estatais e regras	4 níveis	mais missão pública	1 degrau
+Estado empresário	Indenização na estatização	Empresas e estatais	Estatais e regras	Valor contínuo	desce	10% da régua
+Estado empresário	Indicação dos dirigentes das estatais	Empresas e estatais	Estatais e regras	3 níveis	pelo governo	1 degrau
+Economia solidária	Apoio a cooperativas	Empresas e estatais	Pequenas empresas e cooperativas	Valor contínuo	sobe	10% da régua
+Economia solidária	Compra pública de comida	Agricultura e pesca	Agricultura	Dois controles	sobe	10% da régua
+Economia solidária	Participação dos trabalhadores	Empresas e estatais	Estatais e regras	3 níveis	sobe	1 degrau
+Agricultura familiar	Compra pública de comida	Agricultura e pesca	Agricultura	Dois controles	sobe	10% da régua
+Agricultura familiar	Crédito rural barato	Agricultura e pesca	Agricultura	Dois controles	sobe	10% da régua
+Agricultura familiar	Assistência técnica ao produtor	Agricultura e pesca	Agricultura	Valor contínuo	sobe	10% da régua
+Agricultura familiar	Venda direta do produtor	Agricultura e pesca	Agricultura	4 níveis	sobe	1 degrau
+Agricultura familiar	Seguro de safra	Agricultura e pesca	Agricultura	Valor contínuo	sobe	10% da régua
+Agronegócio	Subsídio aos insumos	Agricultura e pesca	Agricultura	Régua por setor	sobe	10% da régua
+Agronegócio	Agrotóxicos	Agricultura e pesca	Agricultura	4 níveis	mais liberado	1 degrau
+Agronegócio	Sementes transgênicas	Agricultura e pesca	Agricultura	4 níveis	mais liberado	1 degrau
+Agronegócio	Verba de irrigação	Agricultura e pesca	Agricultura	Valor contínuo	sobe	10% da régua
+Reforma agrária	Teto de tamanho da terra	Terra		Valor contínuo	desce	10% da régua
+Reforma agrária	Imposto sobre terra e imóvel parado	Terra		Valor contínuo	sobe	10% da régua
+Reforma agrária	Verba do órgão de terras	Terra		Valor contínuo	sobe	10% da régua
+Reforma agrária	Como o órgão consegue a terra	Terra		Valor contínuo	mais forte	10% da régua
+Reforma agrária	Apoio ao assentado	Terra		Valor contínuo	sobe	10% da régua
+Terra com dono	Regularização de terra pública ocupada	Terra		Lei com prazo, dois controles	sobe	10% da régua
+Terra com dono	Cadastro de terras	Terra		4 níveis	sobe	1 degrau
+Terra com dono	Terra ocupada sai da fila	Terra		Valor contínuo	liga	—
+Terra com dono	Prazo de defesa do dono	Terra		Valor contínuo	mais longo	10% da régua
+Terra com dono	Crédito para comprar terra	Terra		Valor contínuo	sobe	10% da régua
+Terra com dono	Reserva compensada em outra terra	Terra		Valor contínuo	sobe	10% da régua
+Desmatamento zero	Fiscalização ambiental	Meio ambiente	Meio ambiente	Valor contínuo	sobe	10% da régua
+Desmatamento zero	O que acontece com quem é pego	Meio ambiente	Meio ambiente	4 níveis	sobe	1 degrau
+Desmatamento zero	Áreas protegidas	Meio ambiente	Meio ambiente	Valor contínuo	sobe	10% da régua
+Desmatamento zero	Terras indígenas	Meio ambiente	Povos indígenas	Valor contínuo	sobe	10% da régua
+Desmatamento zero	Exigência para o crédito rural	Agricultura e pesca	Agricultura	4 níveis	sobe	1 degrau
+Economia verde	Mercado de carbono	Meio ambiente	Meio ambiente	Dois controles	sobe	10% da régua
+Economia verde	Imposto sobre poluição	Meio ambiente	Meio ambiente	Valor contínuo	sobe	10% da régua
+Economia verde	Pagamento por floresta em pé	Meio ambiente	Meio ambiente	Valor contínuo	sobe	10% da régua
+Economia verde	Compromisso climático	Meio ambiente	Meio ambiente	Meta e prazo	sobe	10% da régua
+Destravar licença	Licenciamento ambiental	Meio ambiente	Meio ambiente	4 níveis	mais fácil	1 degrau
+Destravar licença	Prazo para licença ambiental	Meio ambiente	Meio ambiente	Valor contínuo	mais curto	10% da régua
+Destravar licença	Anistia a desmatadores	Meio ambiente	Meio ambiente	Lei com prazo, régua	liga	—
+Destravar licença	Áreas abertas ao petróleo e gás	Mineração e petróleo		4 níveis	sobe	1 degrau
+Destravar licença	Áreas abertas à mineração	Mineração e petróleo		4 níveis	sobe	1 degrau
+Energia limpa	Investimento em energia solar	Energia		Valor contínuo	sobe	10% da régua
+Energia limpa	Investimento em energia eólica	Energia		Valor contínuo	sobe	10% da régua
+Energia limpa	Incentivo à geração limpa privada	Energia		Valor contínuo	sobe	10% da régua
+Energia limpa	Padrões de eficiência energética	Energia		3 níveis	sobe	1 degrau
+Luz no campo	Eletrificação rural	Energia		Valor contínuo	sobe	10% da régua
+Luz no campo	Tarifa social de luz	Assistência social		4 níveis	sobe	1 degrau
+Luz no campo	Investimento na rede de transmissão	Energia		Valor contínuo	sobe	10% da régua
+Abertura elétrica	Abertura à geração privada	Energia		3 níveis	sobe	1 degrau
+Abertura elétrica	Concessão da rede de transmissão	Energia		3 níveis	sobe	1 degrau
+Abertura elétrica	Independência das agências	Empresas e estatais	Estatais e regras	3 níveis	sobe	1 degrau
+Abertura elétrica	Autorização para estatizar e vender	Empresas e estatais	Estatais e regras	3 níveis	mais aberta para vender	1 degrau
+O petróleo é nosso	Parte do Estado no petróleo	Mineração e petróleo		Valor contínuo	sobe	10% da régua
+O petróleo é nosso	Royalties do petróleo	Mineração e petróleo		Valor contínuo	sobe	10% da régua
+O petróleo é nosso	Destino dos royalties	Mineração e petróleo		Régua por setor	mais para o país	10% da régua
+Gasolina barata	Subsídio a combustíveis	Mineração e petróleo		Valor contínuo	sobe	10% da régua
+Gasolina barata	Imposto sobre combustíveis	Mineração e petróleo		Valor contínuo	desce	10% da régua
+Gasolina barata	Segurar a conta de luz	Energia		Valor contínuo	liga	—
+Plano de obras	Verba de construção	Infraestrutura e transporte	Obras	Valor contínuo	sobe	10% da régua
+Plano de obras	Divisão da verba de construção	Infraestrutura e transporte	Obras	Divisão de 100%	muda	1 fatia
+Plano de obras	Prioridade das obras	Infraestrutura e transporte	Obras	Valor contínuo	muda	10% da régua
+Plano de obras	Verba de conservação dos transportes	Infraestrutura e transporte	Estradas e veículos	Valor contínuo	sobe	10% da régua
+Obra limpa	Regra da licitação	Infraestrutura e transporte	Obras	4 níveis	mais rígida	1 degrau
+Obra limpa	Teto do aditivo	Infraestrutura e transporte	Obras	Valor contínuo	desce	10% da régua
+Obra limpa	Empreiteira condenada fora das obras	Infraestrutura e transporte	Obras	4 níveis	sobe	1 degrau
+Obra limpa	Exigência técnica das construções	Infraestrutura e transporte	Obras	3 níveis	sobe	1 degrau
+Carro elétrico	Subsídio a carros elétricos	Infraestrutura e transporte	Estradas e veículos	Valor contínuo	sobe	10% da régua
+Carro elétrico	Carregadores nas estradas federais	Infraestrutura e transporte	Estradas e veículos	5 níveis	sobe	1 degrau
+Carro elétrico	Quem pode vender recarga	Infraestrutura e transporte	Estradas e veículos	5 níveis	sobe	1 degrau
+Carro elétrico	Fim dos carros a combustão	Infraestrutura e transporte	Estradas e veículos	Meta e prazo	liga	—
+Redes reguladas	Lei contra notícias falsas	Comunicação e tecnologia		5 níveis	sobe	1 degrau
+Redes reguladas	Remoção de conteúdo	Comunicação e tecnologia		3 níveis	sobe	1 degrau
+Redes reguladas	Identificação dos usuários	Comunicação e tecnologia		3 níveis	sobe	1 degrau
+Redes reguladas	Regras de inteligência artificial	Comunicação e tecnologia		5 níveis	sobe	1 degrau
+Internet livre	Criptografia livre	Comunicação e tecnologia		4 níveis	sobe	1 degrau
+Internet livre	Neutralidade da rede	Comunicação e tecnologia		4 níveis	sobe	1 degrau
+Internet livre	Bloqueio de internet	Comunicação e tecnologia		4 níveis	desce	1 degrau
+Drogas reguladas	Liberação das drogas	Vícios		6 níveis	sobe	1 degrau
+Drogas reguladas	Imposto das drogas	Vícios		Valor contínuo	liga	—
+Drogas reguladas	Lojas licenciadas	Vícios		4 níveis	sobe	1 degrau
+Drogas reguladas	Cuidado com o usuário	Vícios		3 níveis	sobe	1 degrau
+Drogas reguladas	Idade mínima para comprar	Vícios		Valor contínuo, uma idade para drogas e outra para jogos	liga	—
+Apostas reguladas	Liberação dos jogos	Vícios		6 níveis	sobe	1 degrau
+Apostas reguladas	Licenças de apostas	Vícios		4 níveis	sobe	1 degrau
+Apostas reguladas	Imposto dos jogos	Vícios		Valor contínuo	liga	—
+Apostas reguladas	Proteção do apostador	Vícios		4 níveis	sobe	1 degrau
+Apostas reguladas	Propaganda e embalagem	Vícios		Níveis, um controle para drogas e outro para jogos	mais restrita	1 degrau
+Inovação	Verba de ciência e tecnologia	Ciência e pesquisa		Valor contínuo	sobe	10% da régua
+Inovação	Desconto de imposto para quem pesquisa	Ciência e pesquisa		Valor contínuo	sobe	10% da régua
+Inovação	Bolsas de pesquisa	Ciência e pesquisa		Valor contínuo	sobe	10% da régua
+Inovação	Trazer cientistas de volta	Ciência e pesquisa		Valor contínuo	sobe	10% da régua
+Cultura viva	Verba de cultura e esporte	Cultura e esporte	Cultura	Valor contínuo	sobe	10% da régua
+Cultura viva	Quem pode pedir	Cultura e esporte	Cultura	4 níveis	sobe	1 degrau
+Cultura viva	Empresa banca cultura e desconta do imposto	Cultura e esporte	Cultura	Valor contínuo	sobe	10% da régua
+Grandes usinas	Investimento em hidrelétricas	Energia		Valor contínuo	sobe	10% da régua
+Grandes usinas	Investimento em térmicas fósseis	Energia		Valor contínuo	sobe	10% da régua
+Grandes usinas	Investimento em usinas nucleares	Energia		Valor contínuo	sobe	10% da régua
+Grandes usinas	Reserva de capacidade	Energia		Valor contínuo	sobe	10% da régua
+Banco seguro	Exigência de capital dos bancos	Moeda e bancos		Valor contínuo	sobe	10% da régua
+Banco seguro	Proteção ao cliente de banco	Moeda e bancos		4 níveis	sobe	1 degrau
+Banco seguro	Seguro-depósito	Moeda e bancos		3 níveis	sobe	1 degrau
+Banco seguro	Licença para banco novo	Moeda e bancos		4 níveis	mais fácil	1 degrau
+Desburocratização	Validade das regras	Empresas e estatais	Estatais e regras	Valor contínuo	liga	—
+Desburocratização	Profissões com registro	Trabalho		4 níveis	desce	1 degrau
+Desburocratização	Comércio aberto no domingo	Trabalho		4 níveis	aberto	—
+Desburocratização	Transporte interno por empresa de fora	Infraestrutura e transporte	Portos e aeroportos	Régua por setor	aberto	—
+Família grande	Crédito da casa perdoado por filho	Moradia		Valor contínuo	sobe	10% da régua
+Família grande	Desconto por filho	Impostos		Valor contínuo	sobe	10% da régua
+Família grande	Benefício por filho	Assistência social		Valor contínuo	sobe	10% da régua
+Fome zero	Comida do Estado	Assistência social		Valor contínuo	sobe	10% da régua
+Fome zero	Compra pública de comida	Agricultura e pesca	Agricultura	Dois controles	sobe	10% da régua
+Fome zero	Parte do benefício em comida	Assistência social		Valor contínuo	sobe	10% da régua
+Médico onde falta	Missões médicas	Saúde		4 níveis	sobe	1 degrau
+Médico onde falta	Serviço obrigatório	Saúde		5 níveis	sobe	1 degrau
+Médico onde falta	Vagas públicas em medicina	Educação		Valor contínuo	sobe	10% da régua
+Indústria do futuro	Incentivo a setores	Impostos		Valor contínuo + setores marcados	sobe	10% da régua
+Indústria do futuro	Desconto de imposto para quem pesquisa	Ciência e pesquisa		Valor contínuo	sobe	10% da régua
+Indústria do futuro	Fábrica estrangeira no país	Comércio exterior e capital		4 níveis	mais exigência	1 degrau
+Indústria do futuro	Quebra de patente	Ciência e pesquisa		4 níveis	sobe	1 degrau
+Fundo da escola	Verba da educação	Educação		Valor contínuo	sobe	10% da régua
+Fundo da escola	Complemento ao estado pobre	Educação		Valor contínuo	sobe	10% da régua
+Fundo da escola	Carreira do professor	Educação		4 níveis	sobe	1 degrau

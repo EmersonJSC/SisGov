@@ -1,0 +1,24 @@
+Parte	Peça	Como funciona	Base ou exemplo
+Nascer	Gatilho	Grupos com muitos radicais e insatisfação longa criam chance de organização	Radicais, satisfação, repressão e líder
+Nascer	Quem pode	Grupo que nunca pega em armas não forma organização armada; pode criar movimento de rua. Coluna Pode pegar em armas, na aba Grupos	Pacifista nunca pega em armas
+Nascer	Mistura	Grupos próximos na bússola se ligam. Cada ligação soma gente e muda a ideia	Armamentistas + conservadores + religiosos fundamentalistas é perigoso
+Nascer	Crime	Crime não precisa de grupo: nasce de mercado ilegal, presídio, favela e corrupção	Lucro e falta de Estado
+Nome	Gerador	Junta palavra de tipo, palavra de ideia e palavra de lugar ou símbolo. A mistura escolhe as palavras	Frente + Sagrada + da Fronteira
+Nome	Tipos	Frente, Vanguarda, Guardiões, Irmandade, Comando, Companhia, Círculo, Legião	Lista inicial
+Nome	Ideias	Sagrada, Popular, Patriota, Verde, Livre, Nova Aliança, Terra Alta	Sai do grupo que mais pesa
+Nome	Sem repetir	Duas organizações não usam o mesmo nome; nenhum nome é real	Regra de conteúdo
+Atributos	Gente	Pessoas que seguem a organização	Radicais e recrutamento
+Atributos	Dinheiro	Doações, crime e negócios	Grupos, mercado ilegal e corrupção
+Atributos	Armas	Capacidade de violência	Armamentistas, militares, contrabando
+Atributos	Poder	Influência sobre bairros, presídios, Estado ou política	Território, corrupção e medo
+Atributos	Organização	Disciplina e liderança	Grupos de origem e líder
+Ameaça	Nível	Sai de gente, dinheiro, armas e poder: pequena, relevante, grave ou crítica	Várias existem; poucas preocupam muito
+Ameaça	Mapa	Pequenas aparecem discretas; graves viram alerta e eventos	Mostra só o que importa
+Vida	Aliança e racha	Podem se unir, disputar espaço ou rachar	Organizações - vida
+Dinheiro	Financiadores	Potências, empresas na bolsa, doadores e crime podem pagar uma organização por interesse próprio	Ideia do autor
+Dinheiro	Rastro	Cada pagamento deixa rastro. Mais dinheiro e mais tempo aumentam a chance de ser descoberto	Corrupção e órgãos fracos escondem
+Investigação	Abertura	Polícia, órgão financeiro ou imprensa abrem investigação	Verba e liberdade de imprensa ajudam
+Investigação	Resultado	Pode prender líderes, cortar dinheiro, derrubar ação, gerar sanção e escândalo	Liga organização, bolsa e mundo
+Atributos	Corrupção interna	Quanto os líderes desviam. Sobe com dinheiro fácil, isenção, sigilo e repasse sem controle; desce com fiscalização. Passa do limite: escândalo, racha e quem está ligado cai junto	Vale para toda organização
+Atributos	Engajamento político	Só para organizações legais. Quietista: não entra na política. Ativa: age quando uma lei toca seus temas. Militante: age em toda eleição. Sobe com leis contra seus valores e com líder ambicioso	Nem toda igreja age; depende da vertente e do líder
+Nascer	Igrejas	Nascem dos grupos religiosos, de vários lados da bússola: vertentes conservadoras e vertentes sociais. Nenhuma religião tem nome real	Todo lado tem a sua
